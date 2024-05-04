@@ -87,9 +87,44 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
         setState({...state , isOpen : false})
       }
 
-    let dateNow = new Date()
+
+    let dateObject = document.querySelector('.datepicker-modal')
+    let datePickerObject = document.querySelector('.datepicker')
+    if (dateObject && datePickerObject){
+      dateObject.style.display = 'block'
+      dateObject.style.zIndex = '-1'
+      dateObject.style.backgroundColor = 'unset'
+      dateObject.style.transition = '0.3s'
+      datePickerObject.style.transform = 'translateY(100%)'
+      datePickerObject.style.transition = '0.3s'
+    }
+    useEffect( () => {
+      if(dateObject && datePickerObject){
+
+        if (state.isOpen){
+          appear()
+        }
+        else{
+          disappear()
+        }
+      }
+      
+    } , [state.isOpen] )
+    function appear(){
+      dateObject.style.zIndex = '999'
+      dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'
+      datePickerObject.style.transform = 'translateY(0%)'
+    }
+    function disappear(){
+      dateObject.style.display = 'block'
+      dateObject.style.zIndex = '-1'
+      dateObject.style.backgroundColor = 'unset'
+      datePickerObject.style.transform = 'translateY(100%)'
+    }
 
 
+
+    // dateObject.style = 'block'
     return (
       <div className = {cl.SecondAddCreating} 
       style={{minWidth : document.documentElement.clientWidth.toString() + 'px' }}
@@ -102,7 +137,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
             showCaption = {true}
             dateConfig = {dateConfig}
             value={state.time}
-            isOpen={state.isOpen}
+            isOpen={true}
             onSelect={handleSelect}
             onCancel={handleCancel}
             min = {new Date()}
