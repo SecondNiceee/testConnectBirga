@@ -111,6 +111,29 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       }
       
     } , [state.isOpen] )
+
+
+    useEffect( () => {
+      let startY;
+      let endY;
+      let startX;
+      let endX;
+
+      document.addEventListener('touchstart' , (e) => {
+          startY = e.touches[0].pageY
+          startX = e.touches[0].pageX
+      })
+      document.addEventListener('touchmove' , (e) => {
+        endY = e.touches[0].pageY
+        endX = e.touches[0].pageX
+      })
+      document.addEventListener('touchend' , (e) => {
+          if (endY > startY) {
+            setState({...state,isOpen : false})
+          }
+      } )
+  } , [])
+
     function appear(){
       dateObject.style.zIndex = '999'
       dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'

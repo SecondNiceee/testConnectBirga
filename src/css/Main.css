@@ -1176,8 +1176,9 @@
           transform: translateY(100%);
 }
 
-.datepicker-modal {
-  background: unset;
+.Modal-Portal .datepicker-modal {
+  overflow-y: hidden;
+  background-color: unset;
 }
 
 input {
