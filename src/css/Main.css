@@ -1176,6 +1176,10 @@
           transform: translateY(100%);
 }
 
+.datepicker-modal {
+  background: unset;
+}
+
 input {
   background: none;
   padding: 0;

@@ -40,7 +40,7 @@ const AdCreating = () => {
             if (localSpet === spet){
                 setStationNow((spet) * (-100))
             }
-        } , 310 )
+        } , 300 )
     }
     function backAnimte(){
         let localSpet = spet
@@ -49,7 +49,7 @@ const AdCreating = () => {
             if (localSpet === spet){
                 setStationNow((spet) * (-100))
             }
-        } , 310 )
+        } , 300 )
     }
 
     function goForward(){
