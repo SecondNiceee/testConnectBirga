@@ -6,10 +6,10 @@ import SmallDimond from '../../UI/SmallDimond/SmallDimond'
 import FalseTie from '../../UI/FalseTie/FalseTie'
 import { useSelector } from 'react-redux';
 
-const FirstBlock = ({taskName, executionPlace, time, tonValue , setDetailsActive , isButton , photos }) => {
+const FirstBlock = ({ className, taskName, executionPlace, time, tonValue , setDetailsActive , isButton , photos }) => {
     const tonConstant = useSelector(state => state.ton.value)
     return (
-             <div className="First__block">
+             <div className={ className ? ["First__block" , className].join(' ') : "First__block" }>
                 {photos.length ? (<div className='first__photos'> 
                     {photos.map( (e) => {
                         return <img src={URL.createObjectURL(e)} className='first__photo' alt="" />

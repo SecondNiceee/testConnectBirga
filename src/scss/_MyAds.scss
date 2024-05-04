@@ -1,8 +1,8 @@
 .MyAdsContainer{
-    margin-left: 16px;
-    margin-right: 16px;
-    padding-top: 24px;
-    margin-bottom: 18.33px;
+    // margin-left: 16px;
+    // margin-right: 16px;
+    // padding-top: 24px;
+    // margin-bottom: 18.33px;
     .AdCreatingMy{
         position: fixed;
         width: 100%;
@@ -14,7 +14,7 @@
         top: 0;
         z-index: 10;
         transition: 0.5s;
-        transform: translateX(100%);
+        transform: translateX(300%);
     }
     .details-enter{
         transform: translateX(100%);
@@ -170,4 +170,18 @@
     line-height: 25px;
     letter-spacing: 0%;
     text-align: left;
+}
+
+.modal-reaction{
+    border-radius: 50px;
+    background-color: #20303f;
+    width: 100%;
+    padding: 0px 16px;
+}
+.modal-reaction .white-block{
+    border-radius: 19px;
+    width: 53px;
+    height: 4px;
+    margin-top: 14px;
+    
 }

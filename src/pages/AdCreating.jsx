@@ -40,7 +40,7 @@ const AdCreating = () => {
             if (localSpet === spet){
                 setStationNow((spet) * (-100))
             }
-        } , 200 )
+        } , 310 )
     }
 
     function goForward(){
@@ -121,7 +121,7 @@ const AdCreating = () => {
         <motion.div
          className="AdCreating__container"
          
-        style={{transform : 'translateX(' + stationNow.toString() + '%)', transition : '0.2s'}}
+        style={{transform : 'translateX(' + stationNow.toString() + '%)', transition : '0.3s'}}
         >
             <button style={{position : 'absolute'}} onClick={() => {goForward()}} >Выфвфывфы</button>
             <AdCreatingOne setTaskInformation = {setTaskInformation}  taskInformation = {taskInformation} />

@@ -60,7 +60,7 @@ const Profile = () => {
   });
   // setTimeout(window.scrollTo(0,0),100);
 
-  const areaRef = useRef(null)
+
 
 
 

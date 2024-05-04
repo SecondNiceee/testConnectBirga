@@ -11,9 +11,6 @@ import "./css/style.css";
 
 import First from "./pages/First/First";
 import Profile from './pages/Profile/Profile'
-import AdCreatingTwo from "./pages/ADCreatingTwo/AdCreatingTwo/AddCreatingTwo";
-import AdCreatingOne from "./pages/AdCreatingOne/AdCreatingOne/AdCreatingOne";
-import AdCreatingThree from "./pages/AdCreatingThree/AdCreatingThree";
 import FirstMenu from "./pages/FirstMenu/FirstMenu";
 import Balance from './pages/Balance'
 import MyAds from './pages/MyAds/MyAds'
@@ -25,9 +22,6 @@ import AdCreating from "./pages/AdCreating";
 import { fetchUserInfo } from "./store/telegramUserInfo";
 
 
-const app = window.Telegram.WebApp;
-app.ready()
-app.isClosingConfirmationEnabled = true;
 
 
 const AnimatedSwitch = () =>{
@@ -42,7 +36,7 @@ const AnimatedSwitch = () =>{
                 <Route path="/AdCreating" element = {<AdCreating/>} />
                 <Route path="/Profile" element = {<Profile />}  /> 
                 <Route path="/Balance" element = { <Balance /> }  />
-                {/* <Route path="/MyAds" element = { <MyAds/> } /> */}
+                <Route path="/MyAds" element = { <MyAds/> } />
             </Routes>
           </AnimatePresence>
         </div>
@@ -52,9 +46,7 @@ function App() {
 
   
   window.Telegram.WebApp.expand();
-  const app = window.Telegram.WebApp;
   const dispatch = useDispatch()
-  // alert(window.Telegram.WebApp.initDataUnsafe.user.photo_url)
   const orderInformations = useSelector(state => state.information.orderInformations)
   const status = useSelector(state => state.information.status)
   

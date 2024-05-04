@@ -2095,12 +2095,6 @@ input {
   bottom: 50%;
 }
 
-.MyAdsContainer {
-  margin-left: 16px;
-  margin-right: 16px;
-  padding-top: 24px;
-  margin-bottom: 18.33px;
-}
 .MyAdsContainer .AdCreatingMy {
   position: fixed;
   width: 100%;
@@ -2118,9 +2112,9 @@ input {
   z-index: 10;
   -webkit-transition: 0.5s;
   transition: 0.5s;
-  -webkit-transform: translateX(100%);
-      -ms-transform: translateX(100%);
-          transform: translateX(100%);
+  -webkit-transform: translateX(300%);
+      -ms-transform: translateX(300%);
+          transform: translateX(300%);
 }
 .MyAdsContainer .details-enter {
   -webkit-transform: translateX(100%);

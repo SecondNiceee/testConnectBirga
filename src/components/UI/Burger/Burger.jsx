@@ -1,10 +1,10 @@
 import React from 'react';
 import classes from "./Burger.module.css"
-const Burger = (props) => {
+const Burger = (props, style) => {
     return (
-        <div className={classes.burgerMainWrapper}>
+        <div {...props}className={classes.burgerMainWrapper}>
 
-            <div {...props}  className= {classes.Burger}>
+            <div  className= {classes.Burger}>
                 <div  className="Burger__wrapper">
 
                 </div>

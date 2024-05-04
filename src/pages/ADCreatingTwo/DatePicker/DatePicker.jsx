@@ -5,12 +5,13 @@ import CatchDate from "../CatchDate/CatchDate";
 import FullPicker from "../../../components/UI/FullPicker/FullPicker";
 
 
-const DatePicker = ({ className, taskInformation, setTaskInformation, GreyIntWidth, GreyWidth }) => {
+const MyDatePicker = ({ className, taskInformation, setTaskInformation, GreyIntWidth, GreyWidth, setState, state , ...props}) => {
   const [whichOne, setWhichOne] = useState("startOnly");
   const keys = ["startOnly", "startAndEnd"];
 
   return (
     <div
+    {...props}
       className={
         className ? [cl.DatePicker, className].join(" ") : cl.DatePickerr
       }
@@ -35,9 +36,10 @@ const DatePicker = ({ className, taskInformation, setTaskInformation, GreyIntWid
         GreyIntWidth = {GreyIntWidth}
         GreyWidth = {GreyWidth}
       />
-      <CatchDate className={cl.CatchDate} whichOne={whichOne} />
+      <CatchDate
+       className={cl.CatchDate} whichOne={whichOne} state={state} setState = {setState} />
     </div>
   );
 };
 
-export default memo(DatePicker);
+export default memo(MyDatePicker);

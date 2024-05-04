@@ -197,6 +197,7 @@
     border-radius: 14px;
     background: rgb(46, 165, 255);
     padding: 6px 12.67px;
+    margin-right: 13px;
 
 
     color: rgb(255, 255, 255);
@@ -216,20 +217,67 @@
     margin-left: auto;
 }
 .reactions__block{
-    position: fixed;
-    transform: translateX(130%);
     transition:  0.3s;
-    width:  calc(100% - 32px);
+
+    width:  calc(100% );
 }
 
-
-
-
-.aboutReaction{
+.my-ad-one{
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 20px;
+    margin-bottom: 18.33px;
+    min-width: 100vw;
     display: flex;
+    height: 100vh;
+    overflow-y: scroll;
+    flex-direction: column;
+    position: relative;
+}
+.FirstAdsBlock{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.top{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.top .topIcon{
+    width: 28.33px;
+    height: 28.33px;
+}
+.MyAdsContainer{
+    display: flex;
+
+}
+.aboutOne{
+    padding: 0px 16px;
+    padding-top: 20px;
+    min-width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    position: relative;
+}
+.aboutReaction{
+    /* display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;   
+    justify-content: center;    */
+
+
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 20px;
+    margin-bottom: 18.33px;
+    min-width: 100vw;
+    display: flex;
+    height: 100vh;
+    overflow-y: scroll;
+    flex-direction: column;
+    position: relative;
+
+
 }
 .about__top{
     display: flex;
@@ -237,6 +285,7 @@
     margin-right: auto;
     gap: 40px;
     align-items: center;
+    margin-top: 26px;
 }
 .top__one{
     align-items: center;
@@ -450,7 +499,7 @@
 }
 .about-reaction-textarea{
     max-height: 280px;
-
+    overflow: hidden;
 
     color: rgb(218, 245, 254);
     font-family: "SF Pro Display 400";

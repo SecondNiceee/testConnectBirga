@@ -11,7 +11,7 @@ const DescriptionAndPhoto = ({
   setTaskInformation,
   MyInformation,
 }) => {
-  console.log(taskInformation)
+
   return (
     <div
       className={
