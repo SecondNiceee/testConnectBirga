@@ -87,6 +87,8 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
         setState({...state , isOpen : false})
       }
 
+    let dateNow = new Date()
+
 
     return (
       <div className = {cl.SecondAddCreating} 
@@ -103,6 +105,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
             isOpen={state.isOpen}
             onSelect={handleSelect}
             onCancel={handleCancel}
+            min = {new Date()}
           />
 
 
