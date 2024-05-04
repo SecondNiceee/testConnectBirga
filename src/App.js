@@ -58,7 +58,6 @@ function App() {
   console.log(orderInformations)
 
 
-
   const userInfo = useSelector (state => state.telegramUserInfo.id)
   console.log(userInfo)
 

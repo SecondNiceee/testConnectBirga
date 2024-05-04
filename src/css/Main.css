@@ -1170,6 +1170,12 @@
   display: flex;
 }
 
+.datepicker {
+  -webkit-transform: translateY(100%);
+      -ms-transform: translateY(100%);
+          transform: translateY(100%);
+}
+
 input {
   background: none;
   padding: 0;
@@ -2317,6 +2323,20 @@ input {
   line-height: 25px;
   letter-spacing: 0%;
   text-align: left;
+}
+
+.modal-reaction {
+  border-radius: 50px;
+  background-color: #20303f;
+  width: 100%;
+  padding: 0px 16px;
+}
+
+.modal-reaction .white-block {
+  border-radius: 19px;
+  width: 53px;
+  height: 4px;
+  margin-top: 14px;
 }
 
 * {

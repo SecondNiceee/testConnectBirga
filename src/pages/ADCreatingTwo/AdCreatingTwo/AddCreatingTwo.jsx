@@ -95,7 +95,6 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       dateObject.style.zIndex = '-1'
       dateObject.style.backgroundColor = 'unset'
       dateObject.style.transition = '0.3s'
-      datePickerObject.style.transform = 'translateY(100%)'
       datePickerObject.style.transition = '0.3s'
     }
     useEffect( () => {
@@ -103,9 +102,11 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
 
         if (state.isOpen){
           appear()
+          document.documentElement.style.overflow = 'hidden'
         }
         else{
           disappear()
+          document.documentElement.style.overflow = 'visible'
         }
       }
       
