@@ -206,7 +206,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
 
     function appear(){
       dateObject.style.zIndex = '100'
-      dateObject.style.bottom = '-80px'
+      dateObject.style.bottom = '-300px'
       dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'
       datePickerObject.style.transform = 'translateY(0%)'
       document.documentElement.style.marginTop = '80px'
@@ -215,7 +215,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       }
       MainButton.disable()
       window.scrollTo({
-        top : 80,
+        top : 300,
         behavior : 'auto'
       })
     }
@@ -230,7 +230,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
 
       document.documentElement.style.marginTop = '0px'
       window.scrollTo({
-        top : '0px',
+        top : 0,
         behavior : 'auto'
       })
 
