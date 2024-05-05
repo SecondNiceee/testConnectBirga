@@ -245,7 +245,15 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
         behavior : 'auto'
       })
     }
-
+    
+    useEffect ( () => {
+      if (document.documentElement.style.marginTop === '0px'){
+        window.scrollTo({
+          top : 0,
+          behavior : 'auto'
+        })
+      }
+    }, [document.documentElement.style.marginTop] )
 
 
     // dateObject.style = 'block'
