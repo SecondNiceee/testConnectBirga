@@ -245,13 +245,15 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
         behavior : 'auto'
       })
     }
-    
+    if (document.documentElement.style.marginTop === '0px' && window.scrollY !== 0){
+
+      window.scrollTo({
+        top : 0,
+        behavior : 'auto'
+      })
+    }
     useEffect ( () => {
       if (document.documentElement.style.marginTop === '0px'){
-        window.scrollTo({
-          top : 0,
-          behavior : 'auto'
-        })
       }
     }, [document.documentElement.style.marginTop] )
 
