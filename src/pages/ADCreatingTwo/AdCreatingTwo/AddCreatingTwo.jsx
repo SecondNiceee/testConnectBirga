@@ -256,7 +256,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       if (document.documentElement.style.marginTop === '0px'){
       }
     }, [document.documentElement.style.marginTop] )
-
+    alert(window.scrollY)
 
     // dateObject.style = 'block'
     return (
