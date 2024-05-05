@@ -218,5 +218,6 @@
   .datepicker-modal{
     overflow-y: hidden;
     background-color: unset;  
+    height: calc(100% + 80px);
   }
 }

@@ -118,32 +118,54 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       let endY;
       let startX;
       let endX;
-
-      document.addEventListener('touchstart' , (e) => {
-          startY = e.touches[0].pageY
-          startX = e.touches[0].pageX
-      })
-      document.addEventListener('touchmove' , (e) => {
+      function handleStart(e){
+        startY = e.touches[0].pageY
+        startX = e.touches[0].pageX
+      }
+      function handleMove(e){
         endY = e.touches[0].pageY
         endX = e.touches[0].pageX
-      })
-      document.addEventListener('touchend' , (e) => {
-          if (endY > startY) {
-            setState({...state,isOpen : false})
-          }
-      } )
+      }
+      function handleEnd(e){
+        if (endY > startY) {
+          setState({...state,isOpen : false})
+        }
+      }
+      document.addEventListener('touchstart' , handleStart)
+      document.addEventListener('touchmove' , handleMove)
+      document.addEventListener('touchend' , handleEnd )
+      return () => {
+        document.removeEventListener('touchstart' , handleStart)
+        document.removeEventListener('touchmove' , handleMove)
+        document.removeEventListener('touchend' , handleEnd)
+      }
   } , [])
 
     function appear(){
       dateObject.style.zIndex = '999'
+      dateObject.style.bottom = '-80px'
       dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'
       datePickerObject.style.transform = 'translateY(0%)'
+      document.documentElement.style.marginTop = '80px'
+      window.scrollTo({
+        top : 80,
+        behavior : 'auto'
+      })
     }
     function disappear(){
+      dateObject.style.bottom = '0px'
       dateObject.style.display = 'block'
       dateObject.style.zIndex = '-1'
       dateObject.style.backgroundColor = 'unset'
       datePickerObject.style.transform = 'translateY(100%)'
+
+      document.documentElement.style.marginTop = '0px'
+      window.scrollTo({
+        top : '0px',
+        behavior : 'auto'
+      })
+
+
     }
 
 
