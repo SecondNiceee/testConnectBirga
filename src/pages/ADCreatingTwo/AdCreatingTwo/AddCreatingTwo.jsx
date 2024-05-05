@@ -214,9 +214,9 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
 
     function appear(){
       document.documentElement.style.overflow = 'hidden'
-      document.documentElement.style.marginTop = '300px'
+      document.documentElement.style.marginTop = '400px'
       window.scrollTo({
-        top : 300,
+        top : 400,
         behavior : 'auto'
       })
 
