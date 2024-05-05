@@ -35,21 +35,21 @@ const AdCreating = () => {
     function animte(){
 
         let localSpet = spet
-        setStationNow ( (spet)*(-100) - 3)
+        setStationNow ( (spet)*(-100) - 5)
         setTimeout( () => {
             if (localSpet === spet){
                 setStationNow((spet) * (-100))
             }
-        } , 300 )
+        } , 310 )
     }
     function backAnimte(){
         let localSpet = spet
-        setStationNow ( (spet)*(-100) + 3)
+        setStationNow ( (spet)*(-100) + 5)
         setTimeout( () => {
             if (localSpet === spet){
                 setStationNow((spet) * (-100))
             }
-        } , 300 )
+        } , 310 )
     }
 
     function goForward(){

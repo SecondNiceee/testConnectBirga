@@ -231,10 +231,6 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
     function disappear(){
 
       document.documentElement.style.marginTop = '0px'
-      window.scrollTo({
-        top : 0,
-        behavior : 'auto'
-      })
       MainButton.show()
       dateObject.style.backgroundColor = 'unset'
       // dateObject.style.bottom = '0px'
@@ -243,7 +239,11 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       datePickerObject.style.transform = 'translateY(100%)'
 
       document.documentElement.style.overflow = 'visible'
-
+      
+      window.scrollTo({
+        top : 0,
+        behavior : 'auto'
+      })
     }
 
 
