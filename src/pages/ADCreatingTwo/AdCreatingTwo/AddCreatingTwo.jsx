@@ -205,34 +205,32 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
 
 
     function appear(){
-      dateObject.style.zIndex = '100'
-      dateObject.style.bottom = '-300px'
-      dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'
-      datePickerObject.style.transform = 'translateY(0%)'
-      document.documentElement.style.marginTop = '80px'
-      if (mainRef.current){
-        mainRef.current.style.zIndex = '101'
-      }
-      MainButton.disable()
+      document.documentElement.style.marginTop = '300px'
       window.scrollTo({
         top : 300,
         behavior : 'auto'
       })
+
+      dateObject.style.zIndex = '100'
+      // dateObject.style.bottom = '-300px'
+      // dateObject.style.height = 'calc(100% + 300px)'
+      dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'
+      datePickerObject.style.transform = 'translateY(0%)'
+      MainButton.disable()
     }
     function disappear(){
-      mainRef.current.style.zIndex = '-1'
-      MainButton.enable()
-      dateObject.style.bottom = '0px'
-      dateObject.style.display = 'block'
-      dateObject.style.zIndex = '-1'
-      dateObject.style.backgroundColor = 'unset'
-      datePickerObject.style.transform = 'translateY(100%)'
-
       document.documentElement.style.marginTop = '0px'
       window.scrollTo({
         top : 0,
         behavior : 'auto'
       })
+      MainButton.enable()
+      dateObject.style.backgroundColor = 'unset'
+      // dateObject.style.bottom = '0px'
+      dateObject.style.display = 'block'
+      // dateObject.style.zIndex = '-1'
+      datePickerObject.style.transform = 'translateY(100%)'
+
 
 
     }
@@ -245,9 +243,6 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       
       style={{minWidth : document.documentElement.clientWidth.toString() + 'px' }}
       >
-        <div className="dragBlock" ref = {mainRef}>
-
-        </div>
 
     <DatePicker
           confirmText = 'Сохранить'
