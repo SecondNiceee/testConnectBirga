@@ -100,6 +100,14 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       dateObject.style.transition = '0.3s'
       datePickerObject.style.transition = '0.3s'
     }
+    useState(() => {
+      function backHandler(){
+        if (state.isOpen){
+            setState({...state, isOpen : false})
+        }
+      }
+      BackButton.onClick( )
+    } )
     useEffect( () => {
       if(dateObject && datePickerObject){
 
@@ -205,6 +213,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
 
 
     function appear(){
+      document.documentElement.style.overflow = 'hidden'
       document.documentElement.style.marginTop = '300px'
       window.scrollTo({
         top : 300,
@@ -216,22 +225,24 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       // dateObject.style.height = 'calc(100% + 300px)'
       dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'
       datePickerObject.style.transform = 'translateY(0%)'
-      MainButton.disable()
+      MainButton.hide()
+      
     }
     function disappear(){
+
       document.documentElement.style.marginTop = '0px'
       window.scrollTo({
         top : 0,
         behavior : 'auto'
       })
-      MainButton.enable()
+      MainButton.show()
       dateObject.style.backgroundColor = 'unset'
       // dateObject.style.bottom = '0px'
       dateObject.style.display = 'block'
       // dateObject.style.zIndex = '-1'
       datePickerObject.style.transform = 'translateY(100%)'
 
-
+      document.documentElement.style.overflow = 'visible'
 
     }
 
