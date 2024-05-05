@@ -4,7 +4,7 @@ const CreateInput = ({className , value , setValue ,  ...props }) => {
 
 
     return (
-        <input spellcheck="false" autocomplete="off" value={value} onChange={(e) => {
+        <input spellCheck="false" autoComplete="off" value={value} onChange={(e) => {
             setValue(e.target.value)}} className = {className ? [cl.CreateInput , className].join(' ') : cl.CreateInput} type="text" {...props}  />
     );
 };

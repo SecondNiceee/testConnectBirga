@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeTaskInformation } from '../../../store/information';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import Cap from '../../../components/UI/Cap/Cap';
 import Budget from '../Budget/Budget'
@@ -12,6 +12,7 @@ import DatePicker from 'react-mobile-datepicker';
 
 
 import cl from './SecondAddCreating.module.css'
+import MainButton from '../../../constants/MainButton';
 
 
 const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , GreyWidth , GreyIntWidth}) => {
@@ -87,9 +88,11 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
         setState({...state , isOpen : false})
       }
 
+      const mainRef = useRef(null)
 
     let dateObject = document.querySelector('.datepicker-modal')
     let datePickerObject = document.querySelector('.datepicker')
+    
     if (dateObject && datePickerObject){
       dateObject.style.display = 'block'
       dateObject.style.zIndex = '-1'
@@ -113,46 +116,112 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
     } , [state.isOpen] )
 
 
-    useEffect( () => {
+  //   useEffect( () => {
+  //     let startY;
+  //     let endY;
+  //     let startX;
+  //     let endX;
+  //     function handleStart(e){
+  //       startY = e.touches[0].pageY
+  //       startX = e.touches[0].pageX
+  //     }
+  //     function handleMove(e){
+  //       endY = e.touches[0].pageY
+  //       endX = e.touches[0].pageX
+  //     }
+  //     function handleEnd(e){
+  //       if (endY > startY) {
+  //         setState({...state,isOpen : false})
+  //       }
+  //     }
+  //     document.addEventListener('touchstart' , handleStart)
+  //     document.addEventListener('touchmove' , handleMove)
+  //     document.addEventListener('touchend' , handleEnd )
+  //     return () => {
+  //       document.removeEventListener('touchstart' , handleStart)
+  //       document.removeEventListener('touchmove' , handleMove)
+  //       document.removeEventListener('touchend' , handleEnd)
+  //     }
+  // } , [])
+
+
+
+
+  useEffect( () => {
+    if (dateObject){
+      console.log('Дропдаюн!!!!')
+      
       let startY;
       let endY;
       let startX;
       let endX;
+      let targ = false;
       function handleStart(e){
-        startY = e.touches[0].pageY
-        startX = e.touches[0].pageX
-      }
-      function handleMove(e){
-        endY = e.touches[0].pageY
-        endX = e.touches[0].pageX
-      }
-      function handleEnd(e){
-        if (endY > startY) {
-          setState({...state,isOpen : false})
+        if (e.target.closest('.datepicker') === null || e.target.closest('.datepicker-navbar') !== null)  {
+          targ = true
+          datePickerObject.style.transition = '0s'
+          startY = e.touches[0].clientY
+          startX = e.touches[0].clientX
         }
       }
-      document.addEventListener('touchstart' , handleStart)
-      document.addEventListener('touchmove' , handleMove)
-      document.addEventListener('touchend' , handleEnd )
-      return () => {
-        document.removeEventListener('touchstart' , handleStart)
-        document.removeEventListener('touchmove' , handleMove)
-        document.removeEventListener('touchend' , handleEnd)
+      function handleMove(e){
+        if (targ){
+
+          endY = e.touches[0].clientY
+          endX = e.touches[0].clientX
+          if (endY >= startY) {
+            datePickerObject.style.transform = `translateY(${endY - startY}px)`
+          }
+        }
       }
-  } , [])
+      function handleEnd(e){
+        if (targ){
+          datePickerObject.style.transition = '0.3s'
+          if (endY - startY > 60) {
+            setState({...state,isOpen : false})
+          }
+          else{
+            datePickerObject.style.transform = 'translateY(0px)'
+          }
+        }
+        targ = false
+      }
+  
+  
+        dateObject.addEventListener('touchstart' , handleStart)
+        dateObject.addEventListener('touchmove' , handleMove)
+        dateObject.addEventListener('touchend' , handleEnd )
+        return () => {
+          document.removeEventListener('touchstart' , handleStart)
+          document.removeEventListener('touchmove' , handleMove)
+          document.removeEventListener('touchend' , handleEnd)
+        }
+    }
+
+} , [dateObject])
+
+
+
+
 
     function appear(){
-      dateObject.style.zIndex = '999'
+      dateObject.style.zIndex = '100'
       dateObject.style.bottom = '-80px'
       dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'
       datePickerObject.style.transform = 'translateY(0%)'
       document.documentElement.style.marginTop = '80px'
+      if (mainRef.current){
+        mainRef.current.style.zIndex = '101'
+      }
+      MainButton.disable()
       window.scrollTo({
         top : 80,
         behavior : 'auto'
       })
     }
     function disappear(){
+      mainRef.current.style.zIndex = '-1'
+      MainButton.enable()
       dateObject.style.bottom = '0px'
       dateObject.style.display = 'block'
       dateObject.style.zIndex = '-1'
@@ -173,8 +242,12 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
     // dateObject.style = 'block'
     return (
       <div className = {cl.SecondAddCreating} 
+      
       style={{minWidth : document.documentElement.clientWidth.toString() + 'px' }}
       >
+        <div className="dragBlock" ref = {mainRef}>
+
+        </div>
 
     <DatePicker
           confirmText = 'Сохранить'

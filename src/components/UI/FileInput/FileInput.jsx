@@ -44,7 +44,7 @@ const FileInput = ({className , files , setFiles}) => {
                                 setFiles([...files , ...newFiles])
         }
 
-                        }} type="file" multiple = {true} name='file'  id="file"  accept="image/*" class= {cl.none}/>
+                        }} type="file" multiple = {true} name='file'  id="file"  accept="image/*" className= {cl.none}/>
 
 
 
