@@ -69,8 +69,6 @@ function App() {
      dispatch ( fetchUserInfo() )
   },[] )
 
-
-
   // async function getAll(){
   //   let io = await axios.get( 'https://birga.ywa.su/api/user/findAll' )
 
@@ -140,7 +138,7 @@ function App() {
                 width : '100%',
                 height : '80vh'
               }}/>
-              <p>{userInfo.firstName}</p>
+              <p>{userInfo.id}</p>
               <AnimatedSwitch />
           </div>
 
