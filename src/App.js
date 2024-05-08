@@ -84,6 +84,9 @@ function App() {
                 height : '80vh'
               }}/>
               <p>{userInfo.id}</p>
+              <p>{userInfo.photo}</p>
+              <p>{userInfo.firstName}</p>
+              <p>{userInfo.lastName}</p>
               <AnimatedSwitch />
           </div>
 
