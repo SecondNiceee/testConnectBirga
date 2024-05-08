@@ -53,7 +53,7 @@ function App() {
     let io = await axios.get( 'https://birga.ywa.su/api/user/findOne' , { params : {
       id : id
     }} )
-    await alert(io.json.stringify)
+    alert(io.json.stringify)
   }
   gotcha()
 
