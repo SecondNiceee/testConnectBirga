@@ -662,6 +662,7 @@
     min-width: calc(100% + 16px);
     overflow-x: scroll;
     gap: 8px;
+    align-items: center;
 }
 .documents-agree{
     border-radius: 22px;
@@ -669,4 +670,38 @@
     width: 235px;
     height: 34px;
     background: #d4f2ff;
+    display: flex;
+    gap:7px;
 }
+.documents-agree img{
+    width: 17px;
+    height: 17px;
+}
+.documents-agree p{
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    color: #2d9ef4;
+}
+.user-agree{
+    display: flex;
+    border-radius: 22px;
+    padding: 8px 15px;
+    width: 148px;
+    height: 34px;
+    background: #e2ffd4;
+    gap: 7px;
+}
+.user-agree img{
+    width: 17px;
+    height: 17px;
+}
+.user-agree p{
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    color: #4cab20;
+}
+
