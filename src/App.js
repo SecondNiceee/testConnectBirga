@@ -47,15 +47,15 @@ const AnimatedSwitch = () =>{
 function App() {
 
 
-  async function gotcha(){
+  // async function gotcha(){
 
-    let id = await window.Telegram.WebApp.initDataUnsafe.user.id
-    let io = await axios.get( 'https://birga.ywa.su/api/user/findOne' , { params : {
-      id : id
-    }} )
-    alert(io.json.stringify)
-  }
-  gotcha()
+  //   let id = 2144832745
+  //   let io = await axios.get( 'https://birga.ywa.su/api/user/findOne' , { params : {
+  //     id : id
+  //   }} )
+  //   console.log(io.data.photo)
+  // }
+  // gotcha()
 
   window.Telegram.WebApp.expand();
 
