@@ -69,7 +69,10 @@ function App() {
      dispatch ( fetchUserInfo() )
   },[] )
 
-
+  alert(userInfo)
+  alert(userInfo.firstName)
+  alert(userInfo.lastName)
+  alert(userInfo.photo)
 
 
 
@@ -139,10 +142,10 @@ function App() {
           <FirstMenu/>
 
           <div className="MainContainer" >
-              {/* <img src={userInfo.photo} style={{
+              <img src={userInfo.photo} style={{
                 width : '100%',
                 height : '100vh'
-              }}/> */}
+              }}/>
               <AnimatedSwitch />
           </div>
 
