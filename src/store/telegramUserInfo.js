@@ -4,9 +4,9 @@ import axios from "axios";
 export const fetchUserInfo = createAsyncThunk(
     'telegramUserInfo/fetchUserInfo',
     async function(){
-        let firstName =  window.Telegram.WebApp.initDataUnsafe.user.first_name
-        let lastName =   window.Telegram.WebApp.initDataUnsafe.user.last_name
-        let UserId =  window.Telegram.WebApp.initDataUnsafe.user.id
+        let firstName = window.Telegram.WebApp.initDataUnsafe.user.first_name
+        let lastName =  window.Telegram.WebApp.initDataUnsafe.user.last_name
+        let UserId = window.Telegram.WebApp.initDataUnsafe.user.id
         let photo =  'хай хай'
         // let photo = await axios.get( 'https://birga.ywa.su/api/user/findOne' ,  {
         //     params : {
@@ -30,7 +30,7 @@ const telegramUserInfo = createSlice(  {
         state : null,
         id : '',
         photo : '',
-        firstName : '',
+        firstName : 'неверный ферст нэйм',
         lastName : '',
     },
     extraReducers : builder => {
