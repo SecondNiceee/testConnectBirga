@@ -1,6 +1,6 @@
 import {  useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {  useLocation } from "react-router-dom";
+import {  json, useLocation } from "react-router-dom";
 import {BrowserRouter, Route, Routes } from "react-router-dom";
 import {AnimatePresence} from 'framer-motion'
 
@@ -47,14 +47,14 @@ const AnimatedSwitch = () =>{
 function App() {
 
 
-  // async function gotcha(){
+  async function gotcha(){
 
-  //   let id = await window.Telegram.WebApp.initDataUnsafe.user.id
-  //   let io = await axios.get( 'https://birga.ywa.su/api/user/findOne' , { params : {
-  //     id : id
-  //   }} )
-  //   alert(io.photo)
-  // }
+    let id = await window.Telegram.WebApp.initDataUnsafe.user.id
+    let io = await axios.get( 'https://birga.ywa.su/api/user/findOne' , { params : {
+      id : id
+    }} )
+    alert(io.json.stringify)
+  }
 
 
   window.Telegram.WebApp.expand();
