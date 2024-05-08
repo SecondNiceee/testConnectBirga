@@ -69,10 +69,10 @@ function App() {
      dispatch ( fetchUserInfo() )
   },[] )
 
-  alert(userInfo)
-  alert(userInfo.firstName)
-  alert(userInfo.lastName)
-  alert(userInfo.photo)
+  // alert(userInfo)
+  // alert(userInfo.firstName)
+  // alert(userInfo.lastName)
+  // alert(userInfo.photo)
 
 
 
