@@ -38,7 +38,7 @@ const AnimatedSwitch = () =>{
                 <Route path="/AdCreating" element = {<AdCreating/>} />
                 <Route path="/Profile" element = {<Profile />}  /> 
                 <Route path="/Balance" element = { <Balance /> }  />
-                {/* <Route path="/MyAds" element = { <MyAds/> } /> */}
+                <Route path="/MyAds" element = { <MyAds/> } />
             </Routes>
           </AnimatePresence>
         </div>
@@ -63,7 +63,6 @@ function App() {
   const orderInformations = useSelector(state => state.information.orderInformations)
   const status = useSelector(state => state.information.status)
   const userInfo = useSelector (state => state.telegramUserInfo)
-  alert(userInfo.photo)
   useEffect ( () => {
     dispatch( fetchTon() )
     dispatch ( fetchTasksInformation() )
@@ -140,10 +139,10 @@ function App() {
           <FirstMenu/>
 
           <div className="MainContainer" >
-              <img src={userInfo.photo} style={{
+              {/* <img src={userInfo.photo} style={{
                 width : '100%',
                 height : '100vh'
-              }}/>
+              }}/> */}
               <AnimatedSwitch />
           </div>
 

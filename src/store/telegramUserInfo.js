@@ -7,12 +7,12 @@ export const fetchUserInfo = createAsyncThunk(
         let firstName = await window.Telegram.WebApp.initDataUnsafe.user.first_name 
         let lastName =  await window.Telegram.WebApp.initDataUnsafe.user.last_name
         let UserId = await window.Telegram.WebApp.initDataUnsafe.user.id
-        let photo = await axios.get( 'http://localhost:5000/user/findOne' ,  {
+        let photo = await axios.get( 'https://birga.ywa.su/api/user/findOne' ,  {
             params : {
               id : UserId
             }
           })
-          
+
         // let firstName = 'Привет'
         // let lastName =  'Как дела'
         // let UserId = '14'
