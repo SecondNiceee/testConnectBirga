@@ -8,18 +8,14 @@ export const fetchUserInfo = createAsyncThunk(
         let lastName =   window.Telegram.WebApp.initDataUnsafe.user.last_name
         let UserId = window.Telegram.WebApp.initDataUnsafe.user.id
 
-        // let user  = await axios.get( 'https://birga.ywa.su/api/user/findOne' ,  {
-        //     params : {
-        //       id : UserId
-        //     }
-        //   })
-
-        // let firstName = 'Привет'
-        // let lastName =  'Как дела'
-        // let UserId = '14'
+        let user  = await axios.get( 'https://birga.ywa.su/api/user/findOne' ,  {
+            params : {
+              id : UserId
+            }
+          })
         // let photo = 'бла бла фото еб'
 
-        return {firstName : firstName, lastName : lastName , id : UserId , photo : 'чукча'}
+        return {firstName : firstName, lastName : lastName , id : UserId , photo : user.photo}
     }
 
 

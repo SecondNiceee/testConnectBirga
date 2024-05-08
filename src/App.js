@@ -69,63 +69,8 @@ function App() {
      dispatch ( fetchUserInfo() )
   },[] )
 
-  // async function getAll(){
-  //   let io = await axios.get( 'https://birga.ywa.su/api/user/findAll' )
 
-  //   console.log(io)
-    
-  // }
-  
-  // getAll()
-  
-
-
-
-  // async function postUser(){
-  //   axios.post('https://birga.ywa.su/api/user' ,     {
-  //     "id": 2,
-  //     "fl": "Nick",
-  //     "link": "arsenAlievi",
-  //     "photo": "https://api.telegram.org/file/bot7126399086:AAE0G1hZ-4COnEcbBvmRTvvsKq5ihmkNWjs/photos/file_3.jpg",
-  //     "chatId": 1
-  //   }, 
-  //   {
-  //     headers : {
-  //       accept: 'application/json'
-  //     }
-  //   }
-  //    )
-    
-  // }
-  // postUser()
-
-
-  // async function catchMe(){
-  //   let io = await axios.get( 'http://localhost:5000/user/findOne' ,  {
-  //     params : {
-  //       id : 858931156
-  //     }
-  //   })
-  //   console.log(io)
-  //   return io
-  // }
-  // useEffect (  () => {
-  //   catchMe()
-  // }  )
-
-
-  // async function addOne(){
-  //     await axios.post('http://localhost:5000/category/category' , сategoryName: 'lox')
-  // }
-  // addOne()
-
-//   async  function getIt (){
-//     let task = await axios.get('http://localhost:5000/advertisement/findAll')
-//     console.log(task)
-//     return task
-// }
-//   getIt()
-//   console.log(tonConstant)
+ 
 
   return (
       <BrowserRouter>
