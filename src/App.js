@@ -75,6 +75,8 @@ function App() {
   alert(userInfo.photo)
 
 
+  alert(window.Telegram.WebApp.initDataUnsafe.user.first_name)
+
 
 
   // async function getAll(){
