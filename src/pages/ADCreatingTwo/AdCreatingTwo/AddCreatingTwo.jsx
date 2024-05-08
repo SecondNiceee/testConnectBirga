@@ -50,11 +50,6 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
               caption: 'Час',
               step: 1,
           },
-          'minute': {
-              format: 'mm',
-              caption: 'Мин',
-              step: 1,
-          },
       }
 
       const [state, setState] = useState({

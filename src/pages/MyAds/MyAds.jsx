@@ -102,7 +102,40 @@ const MyAds = () => {
           setMenuActive,
         }}
       />
-      
+
+{/* 
+
+      <div className="last-ads">
+        <div className="white-block">
+
+        </div>
+        <div className="last-top">
+          <img src={icon} alt="" className="icon" />
+          <div className="top-name-bl">
+            <p>Александр П.</p>
+            <img src={subtruct} className="last-subtruct" alt="" />
+          </div>
+          <div className="top-characters">
+            <img src={star} className="last-star" alt="" />
+            <div className="characters-bl">
+              <p>4 ◦ 158 отзывов ◦ Стаж 8 лет</p>
+            </div>
+          </div>
+          <img className="last-left-arr" src = {leftArr}></img>
+        </div>
+        <div className="last-images">
+          <img src={photo} alt="" />
+          <img src={photo} alt="" />
+        </div>
+        <div className="last-sertificates">
+          <div className="documents-agree">
+            <img src="" alt="" />
+            <p>Документы подтвержены</p>
+          </div>
+          .documents-
+        </div>
+      </div>
+       */}
 
       
 

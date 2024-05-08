@@ -20,7 +20,9 @@ import MyAds from './pages/MyAds/MyAds'
 import { fetchTon } from "./store/ton";
 import AdCreating from "./pages/AdCreating";
 import { fetchUserInfo } from "./store/telegramUserInfo";
-
+import { fetchTasksInformation } from './store/information'
+import { asyncThunkCreator } from "@reduxjs/toolkit";
+import axios from "axios";
 
 
 
@@ -44,22 +46,64 @@ const AnimatedSwitch = () =>{
 }
 function App() {
 
-  
+
+  // async function gotcha(){
+
+  //   let id = await window.Telegram.WebApp.initDataUnsafe.user.id
+  //   let io = await axios.get( 'https://birga.ywa.su/api/user/findOne' , { params : {
+  //     id : id
+  //   }} )
+  //   alert(io.photo)
+  // }
+
+
   window.Telegram.WebApp.expand();
+
   const dispatch = useDispatch()
   const orderInformations = useSelector(state => state.information.orderInformations)
   const status = useSelector(state => state.information.status)
-  
+  const userInfo = useSelector (state => state.telegramUserInfo)
+  alert(userInfo.photo)
   useEffect ( () => {
     dispatch( fetchTon() )
-    dispatch (fetchUserInfo())
+    dispatch ( fetchTasksInformation() )
+     dispatch ( fetchUserInfo() )
   },[] )
-  console.log(status)
-  console.log(orderInformations)
 
 
-  const userInfo = useSelector (state => state.telegramUserInfo.id)
-  console.log(userInfo)
+
+
+
+
+  // async function getAll(){
+  //   let io = await axios.get( 'https://birga.ywa.su/api/user/findAll' )
+
+  //   console.log(io)
+    
+  // }
+  
+  // getAll()
+  
+
+
+
+  // async function postUser(){
+  //   axios.post('https://birga.ywa.su/api/user' ,     {
+  //     "id": 2,
+  //     "fl": "Nick",
+  //     "link": "arsenAlievi",
+  //     "photo": "https://api.telegram.org/file/bot7126399086:AAE0G1hZ-4COnEcbBvmRTvvsKq5ihmkNWjs/photos/file_3.jpg",
+  //     "chatId": 1
+  //   }, 
+  //   {
+  //     headers : {
+  //       accept: 'application/json'
+  //     }
+  //   }
+  //    )
+    
+  // }
+  // postUser()
 
 
   // async function catchMe(){
@@ -96,6 +140,10 @@ function App() {
           <FirstMenu/>
 
           <div className="MainContainer" >
+              <img src={userInfo.photo} style={{
+                width : '100%',
+                height : '100vh'
+              }}/>
               <AnimatedSwitch />
           </div>
 

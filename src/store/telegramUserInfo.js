@@ -12,7 +12,12 @@ export const fetchUserInfo = createAsyncThunk(
               id : UserId
             }
           })
-        return {firstName : firstName, lastName : lastName , id : UserId , photo : photo}
+          
+        // let firstName = 'Привет'
+        // let lastName =  'Как дела'
+        // let UserId = '14'
+        // let photo = 'бла бла фото еб'
+        // return {firstName : firstName, lastName : lastName , id : UserId , photo : photo}
     }
 
 
@@ -34,8 +39,9 @@ const telegramUserInfo = createSlice(  {
         state.firstName = action.payload.firstName 
         state.lastName = action.payload.lastName 
         state.photo = action.payload.photo 
-        builder.addCase(fetchUserInfo.rejected, ( (state , action) => {state.status = 'error'} )  )
-     } )  )
+    } ) )
+        builder.addCase(fetchUserInfo.rejected, ( (state ) => {state.status = 'error'} )  )
+        
     }
 }   )
 
