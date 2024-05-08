@@ -588,6 +588,7 @@
     padding: 0px 16px; 
     border-radius: 17px;
     background-color: #20303f;
+    left: 200%;
 }
 .white-block{
     border-radius: 19px;
@@ -612,6 +613,7 @@
     flex-direction: column;
     margin-left: 11px;
     gap: 3px;
+    margin-left: 11px;
 }
 .top-name-bl{
     display: flex;

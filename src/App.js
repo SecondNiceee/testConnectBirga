@@ -136,10 +136,10 @@ function App() {
           <FirstMenu/>
 
           <div className="MainContainer" >
-              {/* <img src={userInfo.photo} style={{
+              <img src={userInfo.photo} style={{
                 width : '100%',
                 height : '100vh'
-              }}/> */}
+              }}/>
               <p>{userInfo.firstName}</p>
               <AnimatedSwitch />
           </div>

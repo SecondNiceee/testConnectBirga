@@ -7,7 +7,7 @@ export const fetchUserInfo = createAsyncThunk(
         let firstName = window.Telegram.WebApp.initDataUnsafe.user.first_name
         let lastName =   window.Telegram.WebApp.initDataUnsafe.user.last_name
         let UserId = window.Telegram.WebApp.initDataUnsafe.user.id
-        let photo = await axios.get( 'https://birga.ywa.su/api/user/findOne' ,  {
+        let user  = await axios.get( 'https://birga.ywa.su/api/user/findOne' ,  {
             params : {
               id : UserId
             }
@@ -18,7 +18,7 @@ export const fetchUserInfo = createAsyncThunk(
         // let UserId = '14'
         // let photo = 'бла бла фото еб'
 
-        return {firstName : firstName, lastName : lastName , id : UserId , photo : photo}
+        return {firstName : firstName, lastName : lastName , id : UserId , photo : user.photo}
     }
 
 
