@@ -27,7 +27,7 @@ const FirstTop = ({ setFilterBy, setMenuActive , userInfo ,  ...props }) => {
         placeholder="Поиск по заданиям..."
       />
       <Link to = '/Profile'>
-        <img src={userInfo.photo} alt="" />
+        <img className="icon" src={userInfo.photo} alt="" />
       </Link>
     </div>
   );

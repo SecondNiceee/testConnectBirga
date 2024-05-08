@@ -81,7 +81,7 @@ const Profile = () => {
     >
       <Burger onClick={() => setMenuActive(true)} />
 
-      <img src={userInfo.photo} className="profile__icon" alt="" />
+      <img src={userInfo.photo} className="profile__icon icon" alt="" />
 
       <p
         ref={inputRef}
