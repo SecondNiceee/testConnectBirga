@@ -4,7 +4,7 @@ import axios from "axios";
 export const fetchUserInfo = createAsyncThunk(
     'telegramUserInfo/fetchUserInfo',
     async function(){
-        let firstName = window.Telegram.WebApp.initDataUnsafe.user.first_name
+        let firstName = 'привет'
         let lastName =  window.Telegram.WebApp.initDataUnsafe.user.last_name
         let UserId = window.Telegram.WebApp.initDataUnsafe.user.id
         let photo =  'хай хай'
