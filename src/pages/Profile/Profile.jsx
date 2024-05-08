@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import { motion } from "framer-motion";
 
@@ -13,7 +13,6 @@ import greyArrowRight from "../../images/icons/greyArrowRight.svg";
 import Burger from "../../components/UI/Burger/Burger";
 import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
-import userInfo from "../../constants/Name";
 import AboutMe from "../../components/UI/AboutMe/AboutMe";
 import TextAboutMe from "../../components/UI/AboutMeText/TextAboutMe";
 
@@ -40,7 +39,6 @@ const Profile = () => {
   const inputRef = useRef(null);
 
   const [aboutMeModal, setAboutMeModal] = useState(false);
-
 
 
   // useEffect(  () => {
@@ -70,6 +68,8 @@ const Profile = () => {
   const opac = useMemo(() => {
     return aboutMeModal ? "0.8" : "0";
   }, [aboutMeModal]);
+
+  const userInfo = useSelector(state => state.telegramUserInfo)
   return (
     <motion.div
       className="profile__container"
@@ -81,7 +81,7 @@ const Profile = () => {
     >
       <Burger onClick={() => setMenuActive(true)} />
 
-      <img src={icon} className="profile__icon" alt="" />
+      <img src={userInfo.photo} className="profile__icon" alt="" />
 
       <p
         ref={inputRef}
@@ -89,10 +89,10 @@ const Profile = () => {
         className="urName"
         id="Name"
       >
-        {" "}
-        {userInfo.second
-          ? userInfo.first + " " + userInfo.second
-          : userInfo.first}{" "}
+
+        {userInfo.lastName
+          ? userInfo.firstName + " " + userInfo.lastName
+          : userInfo.firstName}
       </p>
       <div className="profile__options">
         <Link to="/Balance" className="option__balance">

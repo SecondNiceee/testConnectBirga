@@ -1,7 +1,9 @@
 import React from 'react';
 import icon from '../../../images/icons/icon.svg'
 import Burger from '../../../components/UI/Burger/Burger';
+import { useSelector } from 'react-redux';
 const Top = ({setMenuActive , name}) => {
+    const userInfo = useSelector(state => state.telegramUserInfo)
     return (
         <div className="top">
             <Burger
@@ -15,7 +17,7 @@ const Top = ({setMenuActive , name}) => {
                 }}
             />
             <p className="MyAds">{name}</p>
-            <img className="topIcon" src={icon} alt="" />
+            <img className="topIcon" src={userInfo.photo} alt="" />
 
         </div>
     );

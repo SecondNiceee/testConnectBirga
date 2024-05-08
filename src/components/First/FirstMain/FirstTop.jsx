@@ -4,8 +4,12 @@ import OneInput from "../../UI/OneInput/OneInput";
 
 import icon from "../../../images/icons/icon.svg";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const FirstTop = ({ setFilterBy, setMenuActive , ...props }) => {
+const FirstTop = ({ setFilterBy, setMenuActive , userInfo ,  ...props }) => {
+
+  
+
   const [inputValue, setInputValue] = useState("");
   return (
     <div props className="FirstTop">
@@ -23,7 +27,7 @@ const FirstTop = ({ setFilterBy, setMenuActive , ...props }) => {
         placeholder="Поиск по заданиям..."
       />
       <Link to = '/Profile'>
-        <img src={icon} alt="" />
+        <img src={userInfo.photo} alt="" />
       </Link>
     </div>
   );

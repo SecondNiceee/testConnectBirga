@@ -19,6 +19,7 @@ const FirstMenu = () => {
     const setMenuActive = (set) => {
         dispatch(changeMenuActive(set))
     }
+    const userInfo = useSelector(state => state.telegramUserInfo)
 
     return (
         <div className= {  isMenuActive ? 'FirstMenu'  :  'FirstMenu hidden'  }>
@@ -27,10 +28,10 @@ const FirstMenu = () => {
 
             <Link onClick={() => {setMenuActive(false)}} to={'/Profile'} className="FirstMenu__top">
                 <div>
-                    <img className='icon' src= {HumanIcon} alt="" />
+                    <img className='icon' src= {userInfo.photo} alt="" />
                 </div>
                 <div className="FirstMenu__top-right">
-                    <p className='MenuName'>Nedzelskiy</p>
+                    <p className='MenuName'>{userInfo.firstName}</p>
                     <Link onClick={() => {setMenuActive(false)}} to={'/Profile'} className='MenuProfile'>
                         <p className='MenuProfileLink'>Профиль</p>
 

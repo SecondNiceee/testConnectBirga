@@ -79,15 +79,6 @@ function App() {
           <FirstMenu/>
 
           <div className="MainContainer" >
-              <img src={userInfo.photo} style={{
-                objectFit : 'cover',
-                width : '100%',
-                height : '80vh'
-              }}/>
-              <p>ХХАХАХАХАХХАА автоматизация</p>
-              <p>{userInfo.photo}</p>
-              <p>{userInfo.firstName}</p>
-              <p>{userInfo.lastName}</p>
               <AnimatedSwitch />
           </div>
 

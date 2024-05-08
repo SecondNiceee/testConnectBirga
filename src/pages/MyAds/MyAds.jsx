@@ -91,6 +91,8 @@ const MyAds = () => {
     animte();
   }
 
+  const userInfo = useSelector(state => state.telegramUserInfo)
+
   return (
     <div
       style={{
@@ -100,7 +102,7 @@ const MyAds = () => {
       className="MyAdsContainer"
     >
 
-      <AboutReaction aboutReaction = {aboutReaction} />
+      <AboutReaction  aboutReaction = {aboutReaction} />
 
       <AboutOne goForward={goForward} task={task} setMenuActive={setMenuActive} />
 

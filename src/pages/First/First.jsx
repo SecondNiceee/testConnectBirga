@@ -29,6 +29,7 @@ const First = () => {
     dispatch(changeMenuActive(set));
   } , [dispatch])
   
+
   const [filterBy, setFilterBy] = useState("");
 
   const filteredArr = useFilteredArr(ordersInformation, filterBy);
@@ -41,6 +42,8 @@ const First = () => {
 
     
    useListner({isMenuActive, setMenuActive , setDetailsActive, isDetailsActive  }    )
+
+   const userInfo = useSelector(state => state.telegramUserInfo)
 
   return (
     <motion.div
@@ -60,6 +63,7 @@ const First = () => {
         style={isMenuActive ? { opacity: "0.5" } : {}}
         setMenuActive={setMenuActive}
         setFilterBy={setFilterBy}
+        userInfo = {userInfo}
       />
 
       <FirstMain
