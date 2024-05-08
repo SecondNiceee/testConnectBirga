@@ -138,7 +138,7 @@ function App() {
           <div className="MainContainer" >
               <img src={userInfo.photo} style={{
                 width : '100%',
-                height : '100vh'
+                height : '80vh'
               }}/>
               <p>{userInfo.firstName}</p>
               <AnimatedSwitch />
