@@ -17,7 +17,7 @@ export const fetchUserInfo = createAsyncThunk(
         // let lastName =  'Как дела'
         // let UserId = '14'
         // let photo = 'бла бла фото еб'
-        // return {firstName : firstName, lastName : lastName , id : UserId , photo : photo}
+         return {firstName : firstName, lastName : lastName , id : UserId , photo : photo}
     }
 
 
