@@ -177,7 +177,7 @@ const MyAds = () => {
     <div
       style={{
         transform: "translateX(" + stationNow.toString() + "%)",
-        transition: "0.3s",
+        transition: "transform 0.3s ease",
       }}
       className="MyAdsContainer"
     >
