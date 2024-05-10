@@ -9,7 +9,7 @@ import WhiteBlock from './WhiteBlock';
 import LastTop from './LastTop';
 import LastImages from './LastImages';
 import LastSertificates from './LastSertificates';
-const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc}) => {
+const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc , openAboutReaction}) => {
     const [transform,setTransform] = useState(0)
     const [transition , setTransition] = useState('0.3s')
     
@@ -38,13 +38,15 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
         function endHandler(e){
             
             setTransition('0.3s')
-            
-            if (move - start > 80){
-                setClosed(true)
-            }
-            else{
-                
-                setTransform(0)
+            if (openAboutReaction) {
+                if (move - start > 80){
+                    
+                    setClosed(true)
+                }
+                else{
+                    
+                    setTransform(0)
+                }
             }
             move = 0;
             start = 0;
@@ -60,6 +62,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
     }, [setClosed] )
     const style = useMemo( () => {
         if (isClosed) {
+
             return {
                 transform : 'translateY(100%) translateX(-100%)' ,
                 transition : transition
@@ -77,15 +80,13 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
             setTransform('100%')
         }
         else{
-
-            document.documentElement.style.marginTop = '150px'
-            window.scrollTo( {
-                top : 150          
-             } )
-            document.documentElement.style.overflowY = 'hidden'
-            document.documentElement.style.overflowX = 'hidden'
+            // document.documentElement.style.marginTop = '150px'
+            // window.scrollTo( {
+            //     top : 150          
+            //  } )
+            // document.documentElement.style.overflowY = 'hidden'
+            // document.documentElement.style.overflowX = 'hidden'
             setTransform(0)
-            console.log('должен появиться')
         }
     } , [isClosed ]  )
     return (

@@ -104,8 +104,13 @@ const MyAds = () => {
           navigate(-1);
         }
         else{
-          spet += 1
-          animte()
+          if(!isClosed){
+            setClosed(true)
+          }
+          else{
+            spet += 1
+            animte()
+          }
         }
       }
     }
@@ -204,7 +209,7 @@ const MyAds = () => {
       />
 
 
-      <LastAds openAboutReactionFunc = {openAboutReactionFunc} isClosed={isClosed} setClosed = {setClosed} aboutReaction={aboutReaction} />
+      <LastAds openAboutReaction = {openAboutReaction} openAboutReactionFunc = {openAboutReactionFunc} isClosed={isClosed} setClosed = {setClosed} aboutReaction={aboutReaction} />
 
       
 
