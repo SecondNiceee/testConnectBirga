@@ -12,7 +12,7 @@ import "./MyAds.css";
 import MyAdOne from "./components/MyAdOne";
 import AboutOne from "./components/AboutOne";
 import AboutReaction from "./components/AboutReaction";
-
+import { motion } from "framer-motion";
 import LastAds from "./components/LastAds";
 let spet = 2;
 const MyAds = () => {
@@ -174,11 +174,14 @@ const MyAds = () => {
   } , [openAboutReaction] )
 
   return (
-    <div
+    <motion.div
       style={{
         transform: "translate3d(" + stationNow.toString() + "% , 0 , 0)",
         transition: "transform 0.3s ease",
       }}
+      initial={{ opacity: 0,  }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
       className="MyAdsContainer"
     >
 
@@ -213,7 +216,7 @@ const MyAds = () => {
 
       
 
-    </div>
+    </motion.div>
   );
 };
 
