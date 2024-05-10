@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 
 const FirstBlock = ({ className, taskName, executionPlace, time, tonValue , setDetailsActive , isButton , photos }) => {
     const tonConstant = useSelector(state => state.ton.value)
+    
     return (
              <div className={ className ? ["First__block" , className].join(' ') : "First__block" }>
                 {photos.length ? (<div className='first__photos'> 
@@ -25,6 +26,7 @@ const FirstBlock = ({ className, taskName, executionPlace, time, tonValue , setD
                     <p>{time.start}</p>
                 </div>
                 <div className="FirstMain__bottom">
+                    
                     <div className="FirstMain__bottom-left">
                         <div className="FirstMain__price-up">
                             <h3>{tonValue} TON</h3>

@@ -264,7 +264,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;    */
-
+    background: rgb(24, 34, 45);
 
     padding-left: 16px;
     padding-right: 16px;
@@ -276,7 +276,8 @@
     overflow-y: scroll;
     flex-direction: column;
     position: relative;
-
+    transform: translateX(200%);
+    background-color: ;
 
 }
 .about__top{
@@ -488,11 +489,11 @@
     letter-spacing: 0.01em;
     background: linear-gradient(360deg, #18222d 100%, rgba(24, 34, 45, 0) 100%);
 }
-.TextContainer .background{
-    bottom: -2px;
+.ur__town .background{
+    bottom: 37px;
     left: 0;
     width: 100%;
-    height: 280px;
+    height: 120px;
     /* opacity: 0.5; */
     position: absolute;
     background: linear-gradient(360deg, #18222d, rgba(24, 34, 45, 0));
@@ -581,12 +582,16 @@
     margin-top: 0px;
 }
 .last-ads{
+    transform: translateY(100%);
+    height: calc(100vh - 68px);
+    border-top-left-radius:17px ;
+    border-top-right-radius: 17px;
     position: absolute;
     width: calc(100vw);
     left: 0;
     top: 70px;
     padding: 0px 16px; 
-    border-radius: 17px;
+    
     background-color: #20303f;
     left: 200%;
 }
@@ -598,6 +603,9 @@
     margin-top: 14px;
     margin-left: auto;
     margin-right: auto;
+}
+.last-top-center{
+    margin-left: 11px;
 }
 .last-top{
     display: flex;
@@ -634,6 +642,11 @@
 .top-characters{
     display: flex;
     gap: 2px;
+    align-items: center;
+}
+.last-star{
+    width: 11px;
+    height: 11;
 }
 .characters-bl p{
     font-family: "SF Pro Display";
@@ -658,6 +671,7 @@
     height: 141px;
     min-width: 246px;
     max-height: 141px;
+    object-fit: cover;
 }
 .last-sertificates{
     margin-top: 18px;
@@ -670,11 +684,12 @@
 .documents-agree{
     border-radius: 22px;
     padding: 8px 15px;
-    width: 235px;
+    
     height: 34px;
     background: #d4f2ff;
     display: flex;
     gap:7px;
+    min-width: 235px;
 }
 .documents-agree img{
     width: 17px;
@@ -691,7 +706,7 @@
     display: flex;
     border-radius: 22px;
     padding: 8px 15px;
-    width: 148px;
+    min-width: 235px;
     height: 34px;
     background: #e2ffd4;
     gap: 7px;
@@ -707,4 +722,18 @@
     line-height: 120%;
     color: #4cab20;
 }
+.last-textarea{
+    overflow: hidden;
 
+    color: rgb(218, 245, 254);
+    font-family: "SF Pro Display 400";
+    font-size: 16.67px;
+    font-weight: 400;
+    line-height: 18.31px;
+    letter-spacing: 1%;
+    text-align: left;
+    width: 100%;
+    outline: none;
+    background-color: transparent;
+    margin-top: 18px;
+}
