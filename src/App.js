@@ -1,4 +1,4 @@
-import {  useEffect } from "react";
+import {  lazy, useEffect, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {  json, useLocation } from "react-router-dom";
 import {BrowserRouter, Route, Routes } from "react-router-dom";
@@ -9,22 +9,37 @@ import "./css/Fonts.css";
 import "./css/Values.css";
 import "./css/style.css";
 
-import First from "./pages/First/First";
-import Profile from './pages/Profile/Profile'
+
 import FirstMenu from "./pages/FirstMenu/FirstMenu";
-import Balance from './pages/Balance'
-import MyAds from './pages/MyAds/MyAds'
 
 
 
 import { fetchTon } from "./store/ton";
-import AdCreating from "./pages/AdCreating";
 import { fetchUserInfo } from "./store/telegramUserInfo";
 import { fetchTasksInformation } from './store/information'
+import Loader from "react-js-loader";
 import { asyncThunkCreator } from "@reduxjs/toolkit";
 import axios from "axios";
+const First = lazy(() => import('./pages/First/First'))
+const AdCreating = lazy( () => import ('./pages/AdCreating') )
+const Profile = lazy( () => import('./pages/Profile/Profile') )
+const Balance = lazy( () => import('./pages/Balance') )
+const MyAds = lazy(  () =>  import('./pages/MyAds/MyAds') )
 
 
+const MyLoader = () => {
+  return (
+    <div style={{
+      width : '100vw',
+      height : '100vh',
+      display : 'flex',
+      alignItems : 'center',
+      justifyContent : 'center'
+    }}>
+         <Loader type="spinner-default" bgColor={'white'} color={'black'}  size={50} />
+    </div>
+  )
+}
 
 const AnimatedSwitch = () =>{
       const location = useLocation()
@@ -34,11 +49,33 @@ const AnimatedSwitch = () =>{
           <div style={ isMenuActive ? {   opacity : '0.6' }  : { maxWidth : '0px' } } className="black" ></div>
           <AnimatePresence>
             <Routes location={location} key={location.pathname}>
-                <Route path="/" element = {<First/>} />
-                <Route path="/AdCreating" element = {<AdCreating/>} />
-                <Route path="/Profile" element = {<Profile />}  /> 
-                <Route path="/Balance" element = { <Balance /> }  />
-                <Route path="/MyAds" element = { <MyAds/> } />
+              
+                <Route path="/" element = {
+                  <Suspense fallback = {<MyLoader />}>
+                    <First/>
+                  </Suspense>
+                } />
+
+                <Route path="/AdCreating" element = {
+                                  <Suspense fallback = {<MyLoader />}>
+                                  <AdCreating/>
+                                </Suspense>} />
+
+                <Route path="/Profile" element = {
+                                  <Suspense fallback = {<MyLoader />}>
+                                  <Profile/>
+                                </Suspense>}  /> 
+
+                <Route path="/Balance" element = {
+                                    <Suspense fallback = { <MyLoader />}>
+                                    <Balance/>
+                                  </Suspense>}  />
+
+                <Route path="/MyAds" element = {                   
+                <Suspense fallback = {<MyLoader />}>
+                    <MyAds/>
+                  </Suspense> } />
+
             </Routes>
           </AnimatePresence>
         </div>
