@@ -47,14 +47,8 @@ const MyAds = () => {
     window.scrollTo( {
       top : 150
     } )
+    document.documentElement.style.overflowY = 'hidden'
 
-    window.addEventListener('scroll' , () => {
-      if ( window.screenTop < 150) {
-        window.scrollTo( {
-          top : 150
-        } )
-      } 
-    })
   } , [] )
 
   useEffect( () => {
