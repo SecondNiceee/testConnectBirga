@@ -258,6 +258,7 @@
     height: 100vh;
     overflow-y: scroll;
     position: relative;
+    z-index: 20;
 }
 .aboutReaction{
     /* display: flex;
