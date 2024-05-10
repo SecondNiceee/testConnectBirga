@@ -11,7 +11,7 @@ import LastImages from './LastImages';
 import LastSertificates from './LastSertificates';
 const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc , openAboutReaction}) => {
     const [transform, setTransform] = useState(0)
-    const [transition , setTransition] = useState('0.3s')
+    const [transition , setTransition] = useState('0.4s')
     
     useEffect( () => {
         
@@ -81,7 +81,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             transform : 'translate3d(-100% , ' + transform.toString() + 'px , 0)' ,
             transition :  'transform ' + transition
         }
-    }, [ isClosed , transform , transition])
+    }, [ isClosed ])
 
     useEffect(  () => {
        
