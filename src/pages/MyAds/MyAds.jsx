@@ -49,7 +49,7 @@ const MyAds = () => {
    
 
 
-    if (spet === 1){
+    if (spet === 1 || openAboutReaction){
       document.documentElement.style.overflowY = 'hidden'
           document.documentElement.style.marginTop = '150px'
           window.scrollTo( {
@@ -58,25 +58,7 @@ const MyAds = () => {
     }
         )
     }
-    
-    if (openAboutReaction) {
-      if (document.querySelector('.aboutReaction').scrollTop > 0 ){
-        
-        if (document.querySelector('.aboutReaction').scrollTop < 10){
-          document.documentElement.style.marginTop = '150px'
-        
-          window.scrollTo( {
-            top :  150
-          } )
-        }
-      }
-      else{
-        document.documentElement.style.marginTop = '0px'
-        window.scrollTo( {
-          top : 0
-        } )
-      }
-    }
+
 
 
   
