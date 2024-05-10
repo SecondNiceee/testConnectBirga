@@ -50,10 +50,12 @@ const MyAds = () => {
     window.addEventListener('touchmove' , () => {
       if (spet === 2){
         if ( document.querySelector('.my-ad-one').scrollTop > 0 ){
-          document.documentElement.style.marginTop = '150px'
-          window.scrollTo( {
-            top :  150
-          } )
+          if (document.querySelector('.my-ad-one').scrollTop < 10){
+            document.documentElement.style.marginTop = '150px'
+            window.scrollTo( {
+              top :  150
+            } )
+          }
         }
         else{
           document.documentElement.style.marginTop = '0px'
@@ -65,10 +67,12 @@ const MyAds = () => {
     if (spet === 1){
 
       if (document.querySelector('.aboutOne').scrollTop > 0 ){
-        document.documentElement.style.marginTop = '150px'
-        window.scrollTo( {
-          top :  150
-        } )
+        if (document.querySelector('.aboutOne').scrollTop < 10){
+          document.documentElement.style.marginTop = '150px'
+          window.scrollTo( {
+            top :  150
+          } )
+        }
       }
       else{
         document.documentElement.style.marginTop = '0px'
@@ -80,10 +84,12 @@ const MyAds = () => {
 
     if (openAboutReaction) {
       if (document.querySelector('.aboutReaction').scrollTop > 0 ){
-        document.documentElement.style.marginTop = '150px'
-        window.scrollTo( {
-          top :  150
-        } )
+        if (document.querySelector('.aboutReaction').scrollTop < 10){
+          document.documentElement.style.marginTop = '150px'
+          window.scrollTo( {
+            top :  150
+          } )
+        }
       }
       else{
         document.documentElement.style.marginTop = '0px'
