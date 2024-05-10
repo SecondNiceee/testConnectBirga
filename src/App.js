@@ -60,9 +60,7 @@ function App() {
   window.Telegram.WebApp.expand();
 
   const dispatch = useDispatch()
-  const orderInformations = useSelector(state => state.information.orderInformations)
-  const status = useSelector(state => state.information.status)
-  const userInfo = useSelector (state => state.telegramUserInfo)
+  
   useEffect ( () => {
     dispatch( fetchTon() )
     dispatch ( fetchTasksInformation() )

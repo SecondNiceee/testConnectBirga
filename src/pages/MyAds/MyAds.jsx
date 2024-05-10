@@ -47,10 +47,11 @@ const MyAds = () => {
     window.scrollTo( {
       top : 150
     } )
-    document.documentElement.style.overflowY = 'hidden'
+
 
   } , [] )
 
+  
   useEffect( () => {
     document.querySelector('.MainContainer').style.overflowY = 'hidden'
     return () => {
