@@ -13,7 +13,7 @@ import { useNavigate } from 'react-router-dom';
 const variants = {
     initial : {opacity : 0},
     animate : {opacity : 1},
-    transition : {duration : 0.4}
+    transition : {duration : 0.1}
 }
 
 let spet = 0;
