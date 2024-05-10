@@ -44,7 +44,7 @@ const MyAds = () => {
   useEffect( () => {
    
     window.addEventListener('touchmove' , () => {
-      if (document.querySelector('.aboutOne').scrollTop > 0){
+      if (document.querySelector('.aboutOne').scrollTop > 0 || document.querySelector('.my-ad-one').scrollTop > 150 || document.querySelector('.aboutReaction').scrollTop > 150 ){
         document.documentElement.style.marginTop = '150px'
         window.scrollTo( {
           top :  150
@@ -56,6 +56,8 @@ const MyAds = () => {
           top : 0
         } )
       }
+
+
     } )
   } , [] )
 
