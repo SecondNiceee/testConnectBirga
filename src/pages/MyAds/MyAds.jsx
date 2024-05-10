@@ -176,7 +176,7 @@ const MyAds = () => {
   return (
     <div
       style={{
-        transform: "translateX(" + stationNow.toString() + "%)",
+        transform: "translate3d(" + stationNow.toString() + "% , 0 , 0)",
         transition: "transform 0.3s ease",
       }}
       className="MyAdsContainer"
