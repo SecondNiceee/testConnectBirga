@@ -31,7 +31,7 @@ const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetails
     
               if (isMenuActive) {
                 if (
-                  endTouchX - startTouchX < 80 &&
+                  endTouchX - startTouchX < 160 &&
                   Math.abs(startTouchY - endTouchY) < 150
                 ) {
                     if (isDetailsActive) {

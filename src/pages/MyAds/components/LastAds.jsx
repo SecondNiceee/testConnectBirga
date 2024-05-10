@@ -87,7 +87,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
             setTransform(0)
             console.log('должен появиться')
         }
-    } , [isClosed]  )
+    } , [isClosed ]  )
     return (
 
 
