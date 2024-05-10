@@ -19,6 +19,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
         let start;
         let move;
         function startHandler(e){   
+            console.log(e.target.closest('.last-sertificates'))
             setTransition('0s')
             start = e.touches[0].pageY;
         }

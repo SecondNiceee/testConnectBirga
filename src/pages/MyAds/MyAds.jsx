@@ -86,12 +86,14 @@ const MyAds = () => {
     };
   });
 
-
+  const [openAboutReaction , setOpenAboutReaction] = useState(false)
+  const [isClosed , setClosed] = useState(true)
   useListner({
     isMenuActive,
     setMenuActive,
     setDetailsActive,
     isDetailsActive,
+    isClosed
   });
 
   function animte() {
@@ -107,9 +109,7 @@ const MyAds = () => {
   const userInfo = useSelector(state => state.telegramUserInfo)
 
 
-  const [isClosed , setClosed] = useState(true)
 
-  const [openAboutReaction , setOpenAboutReaction] = useState(false)
 
   function closeAboutReactionFunc(){
     spet -= 1
