@@ -45,7 +45,8 @@ const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetails
           }
 
         }
-    
+        document.removeEventListener('touchstart' , listnerFunctionOne)
+        document.removeEventListener('touchend' , listnerFunctionTwo)
         document.addEventListener("touchstart", listnerFunctionOne);
         document.addEventListener("touchend", listnerFunctionTwo);
     
