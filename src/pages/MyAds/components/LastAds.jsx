@@ -62,14 +62,14 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
     }, [setClosed] )
     const style = useMemo( () => {
         if (isClosed) {
-            return {
-                transform : 'translateY(100%) translateX(-100%)' ,
-                transition : transition
+            return {  
+                transform : 'translate3d(-100% , 100% , 0)',
+                transition : 'transform ' + transition
             }
         }
         return {
-            transform : 'translateY(' + transform.toString() + 'px) translateX(-100%)' ,
-            transition : transition
+            transform : 'translate3d(-100% , ' + transform.toString() + 'px , 0)' ,
+            transition :  'transform ' + transition
         }
     }, [transform, isClosed, transition])
 
