@@ -42,7 +42,20 @@ const MyAds = () => {
   
 
 
+  useEffect( () => {
+    document.documentElement.style.marginTop = '150px'
+    window.scrollTo( {
+      top : 150
+    } )
 
+    window.addEventListener('scroll' , () => {
+      if ( window.screenTop < 150) {
+        window.scrollTo( {
+          top : 150
+        } )
+      } 
+    })
+  } , [] )
 
   useEffect( () => {
     document.querySelector('.MainContainer').style.overflowY = 'hidden'
