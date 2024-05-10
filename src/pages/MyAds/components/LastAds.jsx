@@ -73,25 +73,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
 
     useEffect(  () => {
         if (isClosed){
-            if (document.querySelector('.aboutOne').scrollTop > 0) {
-
-                document.documentElement.style.marginTop = '150px'
-                window.scrollTo( {
-                    top : 150           
-                 } )
-
-            }
-            else{
-
-                document.documentElement.style.marginTop = '0px'
-                window.scrollTo( {
-                    top : 0           
-                 } )
-            }
-            setTimeout( ( ) => {
-                document.documentElement.style.overflowY = 'unset'
-                document.documentElement.style.overflowX = 'unset'
-            } , 300 )
+        
             setTransform('100%')
         }
         else{

@@ -72,7 +72,7 @@ const MyAds = () => {
     }
 
 
-  } , [spet , aboutReaction] )
+  } , [ aboutReaction, openAboutReaction] )
 
 
 
