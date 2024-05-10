@@ -74,10 +74,12 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
     useEffect(  () => {
         if (isClosed){
             if (document.querySelector('.aboutOne').scrollTop > 0) {
+
                 document.documentElement.style.marginTop = '150px'
                 window.scrollTo( {
                     top : 150           
                  } )
+
             }
             else{
 
@@ -86,9 +88,10 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
                     top : 0           
                  } )
             }
-
-            document.documentElement.style.overflowY = 'unset'
-            document.documentElement.style.overflowX = 'unset'
+            setTimeout( ( ) => {
+                document.documentElement.style.overflowY = 'unset'
+                document.documentElement.style.overflowX = 'unset'
+            } , 300 )
             setTransform('100%')
         }
         else{
@@ -112,7 +115,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
 
             <WhiteBlock />
 
-            <LastTop openAboutReactionFunc = {openAboutReactionFunc} />
+            <LastTop  openAboutReactionFunc = {openAboutReactionFunc} />
 
             <LastImages />
 
