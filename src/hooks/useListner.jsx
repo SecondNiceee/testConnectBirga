@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 
 const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetailsActive , isClosed} ) => {
     return (  useEffect(() => {
@@ -15,7 +15,7 @@ const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetails
           endTouchX = e.changedTouches[0].pageX;
           
           endTouchY = e.changedTouches[0].pageY;
-          console.log(isClosed)
+
           if (isClosed){
 
               if (
@@ -54,7 +54,7 @@ const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetails
           document.removeEventListener('touchstart' , listnerFunctionOne)
           document.removeEventListener('touchend' , listnerFunctionTwo)
         }
-      }, [isMenuActive , isDetailsActive , isClosed])   )    ;  ;
+      }, [isMenuActive , isDetailsActive , isClosed , setDetailsActive , setMenuActive])   )    ;  ;
 };
 
 export default useListner;

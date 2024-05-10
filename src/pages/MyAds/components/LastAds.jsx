@@ -19,7 +19,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
         let start;
         let move;
         function startHandler(e){   
-            console.log(e.target.closest('.last-sertificates'))
+
             setTransition('0s')
             start = e.touches[0].pageY;
         }
@@ -57,7 +57,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
             window.removeEventListener('touchmove' , moveHandler)
             window.removeEventListener('touchend' , endHandler)
         }
-    }, [] )
+    }, [setClosed] )
     const style = useMemo( () => {
         if (isClosed) {
             return {
@@ -69,20 +69,30 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc})
             transform : 'translateY(' + transform.toString() + 'px) translateX(-100%)' ,
             transition : transition
         }
-    }, [transform, isClosed])
+    }, [transform, isClosed, transition])
 
     useEffect(  () => {
         if (isClosed){
-            document.documentElement.style.marginTop = '0px'
-            window.scrollTo( {
-                top : 0           
-             } )
+            if (document.querySelector('.aboutOne').scrollTop > 0) {
+                document.documentElement.style.marginTop = '150px'
+                window.scrollTo( {
+                    top : 150           
+                 } )
+            }
+            else{
+
+                document.documentElement.style.marginTop = '0px'
+                window.scrollTo( {
+                    top : 0           
+                 } )
+            }
 
             document.documentElement.style.overflowY = 'unset'
             document.documentElement.style.overflowX = 'unset'
             setTransform('100%')
         }
         else{
+
             document.documentElement.style.marginTop = '150px'
             window.scrollTo( {
                 top : 150          

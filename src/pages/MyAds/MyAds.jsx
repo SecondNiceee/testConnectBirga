@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 
 // import myImage from '../../images/desccription.png'
@@ -16,6 +16,7 @@ import AboutReaction from "./components/AboutReaction";
 import LastAds from "./components/LastAds";
 let spet = 2;
 const MyAds = () => {
+
   const [isDetailsActive, setDetailsActive] = useState(false);
 
   const isMenuActive = useSelector((state) => state.menu.value);
@@ -31,7 +32,10 @@ const MyAds = () => {
   const dispatch = useDispatch();
 
   const [stationNow, setStationNow] = useState(-200);
+  
+  const [openAboutReaction , setOpenAboutReaction] = useState(false)
 
+  const [isClosed , setClosed] = useState(true)
 
   const aboutReaction = `Доброго времени суток!
   Работа выполняется до полного согласования, пока результат Вас полностью не устроит.
@@ -44,7 +48,23 @@ const MyAds = () => {
   useEffect( () => {
    
     window.addEventListener('touchmove' , () => {
-      if (document.querySelector('.aboutOne').scrollTop > 0 || document.querySelector('.my-ad-one').scrollTop > 0 || document.querySelector('.aboutReaction').scrollTop > 0 ){
+      if (spet === 2){
+        if ( document.querySelector('.my-ad-one').scrollTop > 0 ){
+          document.documentElement.style.marginTop = '150px'
+          window.scrollTo( {
+            top :  150
+          } )
+        }
+        else{
+          document.documentElement.style.marginTop = '0px'
+          window.scrollTo( {
+            top : 0
+          } )
+        }
+      }
+    if (spet === 1){
+
+      if (document.querySelector('.aboutOne').scrollTop > 0 ){
         document.documentElement.style.marginTop = '150px'
         window.scrollTo( {
           top :  150
@@ -56,26 +76,44 @@ const MyAds = () => {
           top : 0
         } )
       }
+    }
+
+    if (openAboutReaction) {
+      if (document.querySelector('.aboutReaction').scrollTop > 0 ){
+        document.documentElement.style.marginTop = '150px'
+        window.scrollTo( {
+          top :  150
+        } )
+      }
+      else{
+        document.documentElement.style.marginTop = '0px'
+        window.scrollTo( {
+          top : 0
+        } )
+      }
+    }
 
 
     } )
-  } , [] )
 
 
-  useEffect( () => {
     document.querySelector('.MainContainer').style.overflowY = 'hidden'
+    BackButton.show();
+
     return () => {
       document.querySelector('.MainContainer').style.overflowY = 'unset'
     }
-  } ,[] )
 
-  function setMenuActive(arg) {
+
+  } , [openAboutReaction] )
+
+
+
+  const setMenuActive = useCallback( (arg) => {
     dispatch(changeMenuActive(arg));
-  }
+  } , [dispatch]  )
 
-  useEffect(() => {
-    BackButton.show();
-  }, []);
+
 
   function goBack() {
     if (isDetailsActive) {
@@ -86,7 +124,7 @@ const MyAds = () => {
         closeAboutReactionFunc()
       }
       else{
-        if (spet == 2){
+        if (spet === 2){
           navigate(-1);
         }
         else{
@@ -96,35 +134,33 @@ const MyAds = () => {
       }
     }
   }
+  
+  function goForward() {
+    spet -= 1;
+    animte();
+  }
+  
+  function animte() {
+    setStationNow(spet * -100);
+  }
 
   useEffect(() => {
     BackButton.onClick(goBack);
     return () => {
       BackButton.offClick(goBack);
-    };
-  });
+    };  
+  });  
 
-  const [openAboutReaction , setOpenAboutReaction] = useState(false)
-  const [isClosed , setClosed] = useState(true)
   useListner({
     isMenuActive,
     setMenuActive,
     setDetailsActive,
     isDetailsActive,
     isClosed
-  });
+  });  
 
-  function animte() {
-    let localSpet = spet;
-    setStationNow(spet * -100);
-  }
 
-  function goForward() {
-    spet -= 1;
-    animte();
-  }
-
-  const userInfo = useSelector(state => state.telegramUserInfo)
+  // const userInfo = useSelector(state => state.telegramUserInfo)
 
 
 
