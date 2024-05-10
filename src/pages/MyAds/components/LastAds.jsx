@@ -38,9 +38,9 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
         function endHandler(e){
             
             setTransition('0.3s')
-            if (openAboutReaction) {
+            if (!openAboutReaction){
+
                 if (move - start > 80){
-                    
                     setClosed(true)
                 }
                 else{
@@ -62,7 +62,6 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
     }, [setClosed] )
     const style = useMemo( () => {
         if (isClosed) {
-
             return {
                 transform : 'translateY(100%) translateX(-100%)' ,
                 transition : transition
@@ -80,6 +79,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             setTransform('100%')
         }
         else{
+
             // document.documentElement.style.marginTop = '150px'
             // window.scrollTo( {
             //     top : 150          

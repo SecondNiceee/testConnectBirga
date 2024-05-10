@@ -16,14 +16,7 @@ const AboutReaction = ({aboutReaction, ref,  ...props}) => {
   `
   return (
     <div className="aboutReaction" ref = {ref} {...props}>
-      <button style={{
-        width : '200px',
-        height : '50px',
-        position : 'fixed',     
-        left : '25%',
-        top : '0%'
-      }}
-      >НАЗАД</button>
+
 
       <Top name={'Отклики'}/>
 
