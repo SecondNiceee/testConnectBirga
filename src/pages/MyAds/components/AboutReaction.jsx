@@ -8,14 +8,14 @@ import AboutMain from "./AboutMain";
 import ExampleWorks from "./ExampleWorks";
 import Top from "./Top";
 
-const AboutReaction = ({aboutReaction, ...props}) => {
+const AboutReaction = ({aboutReaction, ref,  ...props}) => {
   const aboutU = `хай как дела я ахахаха пустые строки тут оказываются тоже возможно , но это же просто предпочтение, верно??
 
   смешно прикол
   или неттт???
   `
   return (
-    <div className="aboutReaction" {...props}>
+    <div className="aboutReaction" ref = {ref} {...props}>
       <button style={{
         width : '200px',
         height : '50px',

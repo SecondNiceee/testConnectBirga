@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 
 // import myImage from '../../images/desccription.png'
@@ -39,19 +39,27 @@ const MyAds = () => {
   Гарантирую достойный результат!
     
   Опыт работы 8 лет в сфере типографического дизайна, без трудностей поможет мне выполнить Ваш заказ любой сложности с: растровыми изображениями и векторной графикой, разработкой макетов полиграфической продукции (визитки, листовки, буклеты, евробуклеты и т.д.), рекламной продукции (ручки, пакеты, футболки и т.д.), наружной рекламы, разработкой логотипов и фирменого стиля`
-  
 
 
   useEffect( () => {
-    document.documentElement.style.marginTop = '150px'
-    window.scrollTo( {
-      top : 150
+   
+    window.addEventListener('touchmove' , () => {
+      if (document.querySelector('.aboutOne').scrollTop > 0){
+        document.documentElement.style.marginTop = '150px'
+        window.scrollTo( {
+          top :  150
+        } )
+      }
+      else{
+        document.documentElement.style.marginTop = '0px'
+        window.scrollTo( {
+          top : 0
+        } )
+      }
     } )
-
-
   } , [] )
 
-  
+
   useEffect( () => {
     document.querySelector('.MainContainer').style.overflowY = 'hidden'
     return () => {
@@ -155,15 +163,20 @@ const MyAds = () => {
       className="MyAdsContainer"
     >
 
-      <AboutReaction
-      aboutReaction = {aboutReaction}
-      style = {
-        stylesAboutReaction
-      }
-       />
+
+
+
+          <AboutReaction
+          
+          aboutReaction = {aboutReaction}
+          style = {
+            stylesAboutReaction
+          }
+
+          />
+
 
       <AboutOne setClosed = {setClosed} goForward={goForward} task={task} setMenuActive={setMenuActive} />
-
       <MyAdOne
         {...{
           myAdsArray,
