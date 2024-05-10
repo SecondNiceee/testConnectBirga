@@ -4,12 +4,12 @@ import LastTopCenter from './LastTopCenter';
 import LastLeftArr from './LastLeftArr';
 const LastTop = ({openAboutReactionFunc}) => {
     return (
-        <div className="last-top">
+        <div onClick = {() => {
+            openAboutReactionFunc()
+        }} className="last-top">
             <img src={icon} alt="" className="icon" />
             <LastTopCenter />
-            <LastLeftArr onClick = {() => {
-                openAboutReactionFunc()
-            }} />
+            <LastLeftArr  />
         </div>
     );
 };
