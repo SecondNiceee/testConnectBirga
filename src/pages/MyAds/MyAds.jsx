@@ -64,7 +64,7 @@ const MyAds = () => {
   
 
 
-    document.querySelector('.MainContainer').style.overflowY = 'hidden'
+    // document.querySelector('.MainContainer').style.overflowY = 'hidden'
     BackButton.show();
 
     return () => {
