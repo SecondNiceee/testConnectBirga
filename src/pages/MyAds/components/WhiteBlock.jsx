@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { memo } from 'react';
 const WhiteBlock = () => {
     return (
         <div className="white-block">
@@ -8,4 +8,4 @@ const WhiteBlock = () => {
     );
 };
 
-export default WhiteBlock;
+export default memo(WhiteBlock);

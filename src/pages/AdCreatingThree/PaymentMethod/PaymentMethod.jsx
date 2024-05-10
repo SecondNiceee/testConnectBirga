@@ -11,12 +11,12 @@ const PaymentMethod = ({className}) => {
                 </div>
                 <p>Способ оплаты</p>
             </div>
-            <a className={cl.link} href="">
+            <p className={cl.link} >
                 <p>Wallet Pay</p>
                 <div className="block" style={{display : 'block', lineHeight : 0}}>
                     <img src={upDown} style={ {width : 'auto' , height : '13px'  }} alt="" />
                 </div>
-            </a>
+            </p>
         </div>
     );
 };

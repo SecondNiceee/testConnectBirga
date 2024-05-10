@@ -1,6 +1,7 @@
 import React from 'react';
 import greenSubtruct from '../../../images/icons/greenSubtruct.svg';
 import subtruct from '../../../images/icons/Subtract.svg';
+import { memo } from 'react';
 const LastSertificates = () => {
     return (
         <div className="last-sertificates">
@@ -19,4 +20,4 @@ const LastSertificates = () => {
     );
 };
 
-export default LastSertificates;
+export default memo(LastSertificates);

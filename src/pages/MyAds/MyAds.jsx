@@ -15,6 +15,13 @@ import AboutReaction from "./components/AboutReaction";
 import { motion } from "framer-motion";
 import LastAds from "./components/LastAds";
 let spet = 2;
+const aboutReaction = `Доброго времени суток!
+  Работа выполняется до полного согласования, пока результат Вас полностью не устроит.
+  Фиксированная стоимость, независимо от количества предложенных вариантов.
+  Гарантирую достойный результат!
+    
+  Опыт работы 8 лет в сфере типографического дизайна, без трудностей поможет мне выполнить Ваш заказ любой сложности с: растровыми изображениями и векторной графикой, разработкой макетов полиграфической продукции (визитки, листовки, буклеты, евробуклеты и т.д.), рекламной продукции (ручки, пакеты, футболки и т.д.), наружной рекламы, разработкой логотипов и фирменого стиля`
+
 const MyAds = () => {
 
   const [isDetailsActive, setDetailsActive] = useState(false);
@@ -36,13 +43,6 @@ const MyAds = () => {
   const [openAboutReaction , setOpenAboutReaction] = useState(false)
 
   const [isClosed , setClosed] = useState(true)
-
-  const aboutReaction = `Доброго времени суток!
-  Работа выполняется до полного согласования, пока результат Вас полностью не устроит.
-  Фиксированная стоимость, независимо от количества предложенных вариантов.
-  Гарантирую достойный результат!
-    
-  Опыт работы 8 лет в сфере типографического дизайна, без трудностей поможет мне выполнить Ваш заказ любой сложности с: растровыми изображениями и векторной графикой, разработкой макетов полиграфической продукции (визитки, листовки, буклеты, евробуклеты и т.д.), рекламной продукции (ручки, пакеты, футболки и т.д.), наружной рекламы, разработкой логотипов и фирменого стиля`
 
 
   useEffect( () => {
@@ -116,10 +116,10 @@ const MyAds = () => {
     }
   }
   
-  function goForward() {
+  const goForward = useCallback( () => {
     spet -= 1;
     animte();
-  }
+  } , [] )
   
   function animte() {
     setStationNow(spet * -100);
@@ -152,11 +152,12 @@ const MyAds = () => {
     setOpenAboutReaction(false)
   }
 
-  function openAboutReactionFunc(){
-      spet += 1
-      animte()
-      setOpenAboutReaction(true)
-  }
+  const openAboutReactionFunc = useCallback( () => {
+
+    spet += 1
+    animte()
+    setOpenAboutReaction(true)
+  } , [] )
 
   const stylesAboutReaction = useMemo( () => {
     if (openAboutReaction){
@@ -188,17 +189,19 @@ const MyAds = () => {
 
 
 
-          <AboutReaction
+      <AboutReaction
           
           aboutReaction = {aboutReaction}
           style = {
             stylesAboutReaction
           }
 
-          />
+      />
 
 
       <AboutOne setClosed = {setClosed} goForward={goForward} task={task} setMenuActive={setMenuActive} />
+
+
       <MyAdOne
         {...{
           myAdsArray,

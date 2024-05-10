@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , memo} from "react";
 import Burger from "../../../components/UI/Burger/Burger";
 import MyAdsBlock from "./MyAdsBlock";
 import PickerContent from "./PickerContent";
@@ -33,7 +33,6 @@ const MyAdOne = ({
         );
         console.log(myAdsArray);
       }
-    
   return (
     <div className="my-ad-one">
       <Top name={'Мои задания'} setMenuActive={setMenuActive}/>
@@ -62,4 +61,4 @@ const MyAdOne = ({
   );
 };
 
-export default MyAdOne;
+export default memo(MyAdOne);

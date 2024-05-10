@@ -13,7 +13,7 @@ const PickerContent = ({myAdsArray , setTask , goForward , setDetailsActive , se
           <div className="AdsContainer">
             {myAdsArray.map((e, i) => {
               return (
-                <div
+                <div key={i}
                   className="block"
                   onClick={() => {
                     setTask(e);

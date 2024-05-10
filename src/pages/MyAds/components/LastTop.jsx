@@ -2,6 +2,7 @@ import React from 'react';
 import icon from '../../../images/icons/icon.svg';
 import LastTopCenter from './LastTopCenter';
 import LastLeftArr from './LastLeftArr';
+import { memo } from 'react';
 const LastTop = ({openAboutReactionFunc}) => {
     return (
         <div onClick = {() => {
@@ -14,4 +15,4 @@ const LastTop = ({openAboutReactionFunc}) => {
     );
 };
 
-export default LastTop;
+export default memo(LastTop);

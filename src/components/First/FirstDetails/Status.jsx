@@ -9,7 +9,7 @@ const Status = (isActive) => {
                 :
                 <p className='FalseActive'>Не активен</p>
             }
-            <a>См.больше</a>
+            <p>См.больше</p>
         </div>
     );
 };

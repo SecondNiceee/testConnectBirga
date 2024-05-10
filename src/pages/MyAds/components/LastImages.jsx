@@ -1,6 +1,6 @@
 import React from 'react';
 import photo from '../../../images/nonUsed/photo.svg' 
-
+import { memo } from 'react';
 const LastImages = () => {
     return (
         <div className="last-images">
@@ -10,4 +10,4 @@ const LastImages = () => {
     );
 };
 
-export default LastImages;
+export default memo(LastImages);

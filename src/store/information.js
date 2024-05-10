@@ -3,7 +3,6 @@ import axios from 'axios'
 export const fetchTasksInformation = createAsyncThunk( 
   'information/fetchTasksInformation' , 
   async function (){
-      console.log('Идет ftch')
       let task = await axios.get('http://localhost:5000/advertisement/findAll')
       return task.data
   }
