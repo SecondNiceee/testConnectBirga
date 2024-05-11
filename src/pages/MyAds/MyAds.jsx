@@ -1,4 +1,4 @@
-import React, { Suspense, useCallback, useEffect, useMemo, useState } from "react";
+import React, { Suspense, lazy, useCallback, useEffect, useMemo, useState } from "react";
 
 
 // import myImage from '../../images/desccription.png'
@@ -9,11 +9,15 @@ import { changeMyAds } from "../../store/information";
 import { changeMenuActive } from "../../store/menuSlice";
 import useListner from "../../hooks/useListner";
 import "./MyAds.css";
-import MyAdOne from "./components/MyAdOne";
-import AboutOne from "./components/AboutOne";
-import AboutReaction from "./components/AboutReaction";
+
 import { motion } from "framer-motion";
-import LastAds from "./components/LastAds";
+
+
+const LastAds = lazy( () => import ("./components/LastAds") )
+const MyAdOne = lazy( () => import ("./components/MyAdOne") )
+const AboutOne = lazy( () => import ("./components/AboutOne") )
+const AboutReaction = lazy( () => import ("./components/AboutReaction") )
+
 let spet = 2;
 const aboutReaction = `Доброго времени суток!
   Работа выполняется до полного согласования, пока результат Вас полностью не устроит.
