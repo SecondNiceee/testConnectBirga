@@ -109,6 +109,7 @@ function App() {
 
   return (
       <BrowserRouter>
+        <div>привет</div>
         <div className="UperContainer">
 
           <FirstMenu/>

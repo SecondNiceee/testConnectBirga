@@ -71,7 +71,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             window.removeEventListener('touchmove' , moveHandler)
             window.removeEventListener('touchend' , endHandler)
         }
-    }, [isClosed] )
+    }, [] )
 
     
     useEffect(  () => {
@@ -102,6 +102,8 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             transition :  'transform ' + transition 
         }
     }, [ isClosed , transform  ])
+
+
     return (
 
 
