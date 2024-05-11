@@ -18,7 +18,7 @@ const MyAdOne = ({
 }) => {
 
     const [index, setIndex] = useState(0);
-
+    console.log('рендер')
 
 
     function setMyArray(par) {

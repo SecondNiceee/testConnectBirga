@@ -28,6 +28,8 @@ const aboutReaction = `Доброго времени суток!
 
 const MyAds = () => {
 
+  console.log('рендер')
+
   const [reactionVisibility , setReactionVisibility] = useState('hidden')
 
   const [isDetailsActive, setDetailsActive] = useState(false);

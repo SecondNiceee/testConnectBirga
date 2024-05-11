@@ -7,6 +7,7 @@ import ReactionBlock from './ReactionBlock';
 import LastAds from './LastAds';
 const AboutOne = ({task, setMenuActive, goForward, setClosed }) => {
   
+  console.log('рендер')
     return (
         <div className="aboutOne" style={{
           position : 'relative'

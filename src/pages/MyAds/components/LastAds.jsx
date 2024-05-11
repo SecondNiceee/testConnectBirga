@@ -10,6 +10,9 @@ import LastTop from './LastTop';
 import LastImages from './LastImages';
 import LastSertificates from './LastSertificates';
 const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc , openAboutReaction}) => {
+
+    console.log('рендер')
+    
     const [transform, setTransform] = useState(0)
     const [transition , setTransition] = useState('0.4s')
     
