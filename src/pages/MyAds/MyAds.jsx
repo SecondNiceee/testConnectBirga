@@ -28,7 +28,6 @@ const aboutReaction = `Доброго времени суток!
 
 const MyAds = () => {
 
-  console.log('рендер')
 
   const [reactionVisibility , setReactionVisibility] = useState('hidden')
 
@@ -95,6 +94,8 @@ const MyAds = () => {
 
     return () => {
       document.documentElement.style.overflowY = 'unset'
+      document.documentElement.style.marginTop = '150px'
+      document.querySelector('.MainContainer').style.overflowY = 'unset'
     }
 
 
