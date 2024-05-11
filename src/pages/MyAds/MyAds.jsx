@@ -236,10 +236,10 @@ const MyAds = () => {
       className="MyAdsContainer"
     >
 
-
+{/* 
       <div className="blackBack" style={blackStyle}>
 
-      </div>
+      </div> */}
 
       <AboutReaction
           
