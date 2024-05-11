@@ -37,15 +37,15 @@ const MyLoader = () => {
       alignItems : 'center',
       justifyContent : 'center'
     }}>
-<Triangle
-  visible={true}
-  height="80"
-  width="80"
-  color="white"
-  ariaLabel="triangle-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  />
+      <Triangle
+        visible={true}
+        height="80"
+        width="80"
+        color="white"
+        ariaLabel="triangle-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        />
     </div>
   )
 }
@@ -121,7 +121,8 @@ function App() {
         <div className="UperContainer">
 
           <FirstMenu/>
-
+          <p>ахахах</p>
+          <p>Афывфывфывфывфыв</p>
           <div className="MainContainer" >
               <AnimatedSwitch />
           </div>
