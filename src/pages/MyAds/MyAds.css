@@ -229,8 +229,8 @@
     margin-bottom: 18.33px;
     min-width: 100vw;
     display: flex;
-    /* height: 100vh;
-    overflow-y: scroll; */
+    height: 100vh;
+    overflow-y: scroll;
     flex-direction: column;
     position: relative;
 }
@@ -590,6 +590,7 @@
     position: fixed;
     width: calc(100vw);
     left: 0;
+    /* top: 70px; */
     padding: 0px 16px; 
     z-index: 30;
     background-color: #20303f;

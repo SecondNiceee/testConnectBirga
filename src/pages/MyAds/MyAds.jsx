@@ -49,26 +49,36 @@ const MyAds = () => {
    
 
 
-    if (spet === 1 || openAboutReaction){
-          document.documentElement.style.overflowY = 'hidden'
-          document.documentElement.style.marginTop = '150px'
+    // if (spet === 1 || openAboutReaction){
+    //       document.documentElement.style.overflowY = 'hidden'
+    //       document.documentElement.style.marginTop = '150px'
+    //       console.log(window.s)
+    //       document.querySelector('.aboutOne').style.marginTop = window.scrollY  + 'px'
+    //       window.scrollTo( {  
+    //         top :  150 + window.scrollY
+    // }
+    //     )
+    //     // document.querySelector('.last-ads').style.top = window.scrollY  - 70 + 150  + 'px'
+    // }
+    // else{
+    //   document.documentElement.style.overflowY = 'visible'
+    //   document.documentElement.style.marginTop = '0px'
+    //   window.scrollTo( {
+    //     top :  window.scrollY
+      
+    //   }
+    // )
+    // }
+    document.documentElement.style.overflowY = 'hidden'
+    document.documentElement.style.marginTop = '150px'
+
+    document.querySelector('.container').style.overflowY = 'hidden'
           window.scrollTo( {  
-            top :  150 + window.scrollY
+            top :  300 
     }
         )
-        document.querySelector('.aboutOne').style.marginTop = window.scrollY - 150 + 'px'
-    }
-    else{
-      document.documentElement.style.overflowY = 'visible'
-      document.documentElement.style.marginTop = '0px'
-      window.scrollTo( {
-        top :  window.scrollY
-      
-}
-    )
-    }
 
-
+    document.querySelector('.container').style.marginTop = '150px'
 
   
 
