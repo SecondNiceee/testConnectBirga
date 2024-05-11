@@ -17,7 +17,8 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
     const [transition , setTransition] = useState('0.4s')
     
     useEffect( () => {
-        
+    
+
         let start;
         let move;
         function startHandler(e){   

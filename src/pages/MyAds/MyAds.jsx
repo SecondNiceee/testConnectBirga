@@ -54,29 +54,15 @@ const MyAds = () => {
 
   useEffect( () => {
    
+    setClosed(false)
+    setTimeout( () => {
+      setClosed(true)
+    } , 400 )
 
-
-    // if (spet === 1 || openAboutReaction){
-    //       document.documentElement.style.overflowY = 'hidden'
-    //       document.documentElement.style.marginTop = '150px'
-    //       console.log(window.s)
-    //       document.querySelector('.aboutOne').style.marginTop = window.scrollY  + 'px'
-    //       window.scrollTo( {  
-    //         top :  150 + window.scrollY
-    // }
-    //     )
-    //     // document.querySelector('.last-ads').style.top = window.scrollY  - 70 + 150  + 'px'
-    // }
-    // else{
-    //   document.documentElement.style.overflowY = 'visible'
-    //   document.documentElement.style.marginTop = '0px'
-    //   window.scrollTo( {
-    //     top :  window.scrollY
-      
-    //   }
-    // )
-    // }
-
+    setClosed(false)
+    setTimeout( () => {
+      setClosed(true)
+    } , 400 )
 
     document.documentElement.style.marginTop = '150px'
     document.documentElement.scrollTo({
@@ -93,8 +79,12 @@ const MyAds = () => {
     BackButton.show();
 
     return () => {
+      document.documentElement.scrollTo({
+        top : 0,
+        behavior : 'auto'
+      })
       document.documentElement.style.overflowY = 'unset'
-      document.documentElement.style.marginTop = '150px'
+      document.documentElement.style.marginTop = '0px'
       document.querySelector('.MainContainer').style.overflowY = 'unset'
     }
 
