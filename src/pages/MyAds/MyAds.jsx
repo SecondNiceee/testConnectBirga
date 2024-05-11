@@ -72,9 +72,7 @@ const MyAds = () => {
 
 
     document.documentElement.style.marginTop = '150px'
-    window.scrollTo( {  
-            top :  150
-    }
+    window.scroll( 0 , 150
         )
     document.documentElement.style.overflowY = 'clip'
     document.querySelector('.container').style.overflowY = 'clip'
