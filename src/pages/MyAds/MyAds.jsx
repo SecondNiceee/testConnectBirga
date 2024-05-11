@@ -75,8 +75,9 @@ const MyAds = () => {
 
 
     document.querySelector('.container').style.marginTop = '150px'
-    
+
     document.querySelector('.container').style.overflowY = 'hidden'
+    document.querySelector('.container').style.overflowX = 'hidden'
           window.scrollTo( {  
             top :  300 
     }
