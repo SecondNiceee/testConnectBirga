@@ -77,7 +77,7 @@ const MyAds = () => {
     BackButton.show();
 
     return () => {
-      document.querySelector('.MainContainer').style.overflowY = 'unset'
+      document.documentElement.style.overflowY = 'unset'
     }
 
 

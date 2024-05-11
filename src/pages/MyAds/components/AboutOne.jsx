@@ -19,7 +19,7 @@ const AboutOne = ({task, setMenuActive, goForward, setClosed , isClosed , aboutR
  
           <ReactionBlock setClosed={setClosed} goForward = {goForward} />
 
-          <LastAds openAboutReaction = {openAboutReaction} openAboutReactionFunc = {openAboutReactionFunc} isClosed={isClosed} setClosed = {setClosed} aboutReaction={aboutReaction} />
+          
 
         </div>
     );
