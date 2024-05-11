@@ -168,8 +168,9 @@ const MyAds = () => {
     setOpenAboutReaction(true)
   } , [] )
 
+  
   const stylesAboutReaction = useMemo( () => {
-    if (openAboutReaction){
+    if (openAboutReaction || spet === 1){
       return {
         zIndex : 100,
         visibility : 'unset'
@@ -181,7 +182,7 @@ const MyAds = () => {
         visibility : 'hidden'
       }
     }
-  } , [openAboutReaction] )
+  } , [openAboutReaction , spet] )
 
   const blackStyle = useMemo(() => {
     if (!isClosed){
