@@ -52,11 +52,12 @@ const MyAds = () => {
     if (spet === 1 || openAboutReaction){
           document.documentElement.style.overflowY = 'hidden'
           document.documentElement.style.marginTop = '150px'
-          window.scrollTo( {
-            top :  150
-          
+          console.log(window.scrollY)
+          window.scrollTo( {  
+            top :  150 + window.scrollY
     }
         )
+        document.querySelector('.aboutOne').style.marginTop = window.scrollY - 150 + 'px'
     }
     else{
       document.documentElement.style.overflowY = 'visible'
