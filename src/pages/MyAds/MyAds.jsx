@@ -22,6 +22,7 @@ import AboutOne from "./components/AboutOne";
 // const AboutOne = lazy( () => import ("./components/AboutOne") )
 // const AboutReaction = lazy( () => import ("./components/AboutReaction") )
 
+
 let spet = 2;
 const aboutReaction = `Доброго времени суток!
   Работа выполняется до полного согласования, пока результат Вас полностью не устроит.
@@ -54,6 +55,7 @@ const MyAds = () => {
   const [openAboutReaction , setOpenAboutReaction] = useState(false)
 
   const [isClosed , setClosed] = useState(true)
+  
 
 
   useEffect( () => {
@@ -243,6 +245,7 @@ const MyAds = () => {
       </div> */}
 
   
+
         <AboutReaction
             
             aboutReaction = {aboutReaction}
@@ -253,13 +256,20 @@ const MyAds = () => {
         />
 
 
+
+
           <AboutOne setClosed = {setClosed} goForward={goForward} task={task} setMenuActive={setMenuActive}  />
+
 
 
 
 
         <LastAds openAboutReaction = {openAboutReaction} openAboutReactionFunc = {openAboutReactionFunc} isClosed={isClosed} setClosed = {setClosed} aboutReaction={aboutReaction} />
  
+
+
+
+
 
               <MyAdOne
                 {...{
@@ -272,6 +282,7 @@ const MyAds = () => {
                   setMenuActive,
                 }}
               />
+
 
 
 

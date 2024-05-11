@@ -18,6 +18,7 @@ import { fetchTon } from "./store/ton";
 import { fetchUserInfo } from "./store/telegramUserInfo";
 import { fetchTasksInformation } from './store/information'
 import { Triangle } from 'react-loader-spinner'
+import Loader from "react-js-loader";
 import { asyncThunkCreator } from "@reduxjs/toolkit";
 import axios from "axios";
 const First = lazy(() => import('./pages/First/First'))
@@ -120,6 +121,9 @@ function App() {
         <div className="UperContainer">
 
           <FirstMenu/>
+          <p>ахахах</p>
+          <p>Хай это test репа</p>
+          <p>Афывфывфывфывфыв</p>
           <div className="MainContainer" >
               <AnimatedSwitch />
           </div>
