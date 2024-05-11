@@ -24,7 +24,7 @@ const aboutReaction = `Доброго времени суток!
 
 const MyAds = () => {
 
-  const [blackBisibility , setBlackVisibility] = useState('hidden')
+  const [reactionVisibility , setReactionVisibility] = useState('hidden')
 
   const [isDetailsActive, setDetailsActive] = useState(false);
 
@@ -132,7 +132,7 @@ const MyAds = () => {
     spet -= 1;
     if (spet === 1){
       setTimeout(() => {
-        setBlackVisibility = 'hidden'
+        setReactionVisibility('visible')
       } , 320)
     }
 
@@ -182,13 +182,13 @@ const MyAds = () => {
     if (openAboutReaction || spet === 1){
       return {
         zIndex : 100,
-        visibility : 'unset'
+        visibility : reactionVisibility
       }
     }
     else{
       return{
         zIndex : -1,
-        visibility : 'hidden'
+        visibility : reactionVisibility
       }
     }
   } , [openAboutReaction , spet] )
