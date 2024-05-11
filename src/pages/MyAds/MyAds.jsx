@@ -72,14 +72,14 @@ const MyAds = () => {
 
 
     document.documentElement.style.marginTop = '150px'
-    document.documentElement.style.overflowY = 'clip'
-    document.querySelector('.container').style.overflow = 'clip'
-    document.querySelector('.MainContainer').style.overflowY = 'clip'
-    document.querySelector('.MyAdsContainer').style.overflowY = 'clip'
     window.scrollTo( {  
             top :  150
     }
         )
+    document.documentElement.style.overflowY = 'clip'
+    document.querySelector('.container').style.overflowY = 'clip'
+    document.querySelector('.MainContainer').style.overflowY = 'clip'
+    document.querySelector('.MyAdsContainer').style.overflowY = 'clip'
   
 
     BackButton.show();
