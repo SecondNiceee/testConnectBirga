@@ -24,6 +24,8 @@ const aboutReaction = `Доброго времени суток!
 
 const MyAds = () => {
 
+  const [blackBisibility , setBlackVisibility] = useState('hidden')
+
   const [isDetailsActive, setDetailsActive] = useState(false);
 
   const isMenuActive = useSelector((state) => state.menu.value);
@@ -126,7 +128,14 @@ const MyAds = () => {
   }
   
   const goForward = useCallback( () => {
+    
     spet -= 1;
+    if (spet === 1){
+      setTimeout(() => {
+        setBlackVisibility = 'hidden'
+      } , 320)
+    }
+
     animte();
   } , [] )
   
