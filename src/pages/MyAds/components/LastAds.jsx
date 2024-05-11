@@ -69,6 +69,19 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
         }
     }, [isClosed] )
 
+    
+    useEffect(  () => {
+        
+        if (isClosed){
+            
+            setTransform('100%')
+        }
+        else{
+            
+            setTransform(0)
+        }
+    } , [isClosed ]  )
+    
     const style = useMemo( () => {
         
         if (isClosed) {
@@ -82,18 +95,6 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             transition :  'transform ' + transition
         }
     }, [ isClosed ])
-
-    useEffect(  () => {
-       
-        if (isClosed){
-        
-            setTransform('100%')
-        }
-        else{
-
-            setTransform(0)
-        }
-    } , [isClosed ]  )
     return (
 
 
