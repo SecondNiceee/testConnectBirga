@@ -587,7 +587,7 @@
     height: calc(100vh - 68px);
     border-top-left-radius:17px ;
     border-top-right-radius: 17px;
-    position: absolute;
+    position: fixed;
     width: calc(100vw);
     left: 0;
     top: 70px;
