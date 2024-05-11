@@ -90,19 +90,19 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
         if (isClosed) {
             return {  
                 transform : 'translate3d(100% , 100% , 0)',
-                transition : 'transform 0.4s ease-in-out '
+                transition : 'transform 0.4s'
             }
         }
         return {
             transform : 'translate3d(100% , ' + transform.toString() + 'px , 0)' ,
-            transition :  'transform ' + transition + ' ease-in-out'
+            transition :  'transform ' + transition 
         }
     }, [ isClosed , transform  ])
     return (
 
 
-        <div className={"last-ads"} 
-        style={style}
+        <div className={isClosed ? "last-ads" : "last-ads open"} 
+        // style={style}
         >
 
             <WhiteBlock />
