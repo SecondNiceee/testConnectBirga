@@ -18,15 +18,14 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
         let start;
         let move;
         function startHandler(e){   
-            if (!isClosed){
+            if (!isClosed && e.target.closest('.bottom__one') === null){
                 setTransition('0s')
                 start = e.touches[0].pageY;
             }
         }
         function moveHandler(e){
-            if (e.target.closest('.bottom__one') === null){
                 console.log('работает')
-                if (!isClosed){
+                if (!isClosed && e.target.closest('.bottom__one') === null){
     
                     move = e.touches[0].pageY;
         
@@ -39,10 +38,9 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
                         setTransform(move - start)
                     }
                 }
-            }
         }
         function endHandler(e){
-            if (!isClosed){
+            if (!isClosed && e.target.closest('.bottom__one') === null){
 
                 setTransition('0.3s')
                 if (!openAboutReaction){
