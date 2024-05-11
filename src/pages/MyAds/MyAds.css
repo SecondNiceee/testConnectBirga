@@ -278,7 +278,7 @@
     flex-direction: column;
     position: relative;
     transform: translateX(200%);
-    background-color: ;
+    will-change: z-index , visibility;
 
 }
 .about__top{
