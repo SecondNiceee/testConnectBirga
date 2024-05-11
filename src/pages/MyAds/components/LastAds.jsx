@@ -80,6 +80,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
         else{
             document.querySelector('.aboutOne').style.overflowY = 'clip'
             document.querySelector('.MyAdsContainer').style.overflowY = 'clip'
+            document.querySelector('.MyAdsContainer').style.overflowY = 'clip'
             setTransform(0)
         }
     } , [isClosed ]  )
