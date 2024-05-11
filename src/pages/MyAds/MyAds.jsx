@@ -251,7 +251,7 @@ const MyAds = () => {
       />
 
 
-      <AboutOne openAboutReaction = {openAboutReaction} aboutReaction = {aboutReaction} setClosed = {setClosed} goForward={goForward} task={task} setMenuActive={setMenuActive} isClosed={isClosed} openAboutReactionFunc = {openAboutReactionFunc} />
+      <AboutOne setClosed = {setClosed} goForward={goForward} task={task} setMenuActive={setMenuActive}  />
 
       <LastAds openAboutReaction = {openAboutReaction} openAboutReactionFunc = {openAboutReactionFunc} isClosed={isClosed} setClosed = {setClosed} aboutReaction={aboutReaction} />
 

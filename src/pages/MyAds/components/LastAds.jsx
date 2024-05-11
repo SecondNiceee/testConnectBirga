@@ -89,19 +89,19 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
         
         if (isClosed) {
             return {  
-                transform : 'translate3d(-100% , 100% , 0)',
+                transform : 'translate3d(100% , 100% , 0)',
                 transition : 'transform 0.3s '
             }
         }
         return {
-            transform : 'translate3d(-100% , ' + transform.toString() + 'px , 0)' ,
+            transform : 'translate3d(100% , ' + transform.toString() + 'px , 0)' ,
             transition :  'transform ' + transition
         }
     }, [ isClosed , transform  ])
     return (
 
 
-        <div className="last-ads" 
+        <div className={"last-ads"} 
         style={style}
         >
 
@@ -119,4 +119,4 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
     );
 };
 
-export default memo(LastAds);
+export default LastAds;

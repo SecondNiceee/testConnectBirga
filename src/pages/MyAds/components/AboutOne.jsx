@@ -5,7 +5,7 @@ import { memo } from 'react';
 import Top from './Top';
 import ReactionBlock from './ReactionBlock';
 import LastAds from './LastAds';
-const AboutOne = ({task, setMenuActive, goForward, setClosed , isClosed , aboutReaction , openAboutReactionFunc , openAboutReaction}) => {
+const AboutOne = ({task, setMenuActive, goForward, setClosed }) => {
   
     return (
         <div className="aboutOne" style={{

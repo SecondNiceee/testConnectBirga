@@ -584,21 +584,23 @@
     margin-top: 0px;
 }
 .last-ads{
-    transform: translateY(100%);
+    transform: translate3d(100% , 100% , 0px);
     height: calc(100vh - 68px);
     border-top-left-radius:17px ;
     border-top-right-radius: 17px;
-    position: fixed;
+    position: absolute;
     width: calc(100vw);
-    transition: transform 0.3s;
+    transition: transform 0.45s;
     left: 0;
     /* top: 70px; */
     padding: 0px 16px; 
     z-index: 250;
     background-color: #20303f;
     bottom: 0;
-    left: 200%;
     will-change:  transform , top , transition;
+}
+.open{
+    transform: translate3d(100% , 0% , 0px);
 }
 .white-block{
     border-radius: 19px;
