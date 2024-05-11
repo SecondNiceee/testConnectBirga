@@ -75,8 +75,8 @@ const MyAds = () => {
     window.scroll( 0 , 150
         )
     document.documentElement.style.overflowY = 'clip'
-    document.querySelector('.container').style.overflowY = 'clip'
-    document.querySelector('.MainContainer').style.overflowY = 'clip'
+    // document.querySelector('.container').style.overflowY = 'clip'
+    // document.querySelector('.MainContainer').style.overflowY = 'clip'
     
   
 
@@ -87,7 +87,7 @@ const MyAds = () => {
     }
 
 
-  } , [ aboutReaction, openAboutReaction , spet] )
+  } , [] )
 
 
 
@@ -180,6 +180,36 @@ const MyAds = () => {
     }
   } , [openAboutReaction] )
 
+  const blackStyle = useMemo(() => {
+    if (!isClosed){
+      return {
+        bottom : 0,
+        top : 0,
+        left : '100%',
+        right : 0,
+        backgroundColor : 'black',
+        zIndex : 200,
+        position : 'fixed',
+        width : '100vw',
+        height : '100vh',
+        opacity : '0.8',
+        transition : '0.4s',
+      }
+    }
+    return {
+      opacity : '0',
+      left : '100%',
+      top : 0,
+      width : '100vw',
+      height : '100vh',
+      backgroundColor : 'black',
+      zIndex : -1,
+      position : 'fixed',
+      transition : '0.4s'
+
+    }
+  } , [isClosed] )
+
   return (
     <motion.div
       style={{
@@ -193,7 +223,9 @@ const MyAds = () => {
     >
 
 
+      <div className="blackBack" style={blackStyle}>
 
+      </div>
 
       <AboutReaction
           
