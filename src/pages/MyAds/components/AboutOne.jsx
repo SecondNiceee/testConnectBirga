@@ -4,10 +4,13 @@ import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 import { memo } from 'react';
 import Top from './Top';
 import ReactionBlock from './ReactionBlock';
-const AboutOne = ({task, setMenuActive, goForward, setClosed}) => {
+import LastAds from './LastAds';
+const AboutOne = ({task, setMenuActive, goForward, setClosed , isClosed , aboutReaction , openAboutReactionFunc , openAboutReaction}) => {
   
     return (
-        <div className="aboutOne">
+        <div className="aboutOne" style={{
+          position : 'relative'
+        }}>
           
           <Top name={'Мои задания'} setMenuActive={setMenuActive}/>
 
@@ -15,6 +18,8 @@ const AboutOne = ({task, setMenuActive, goForward, setClosed}) => {
           <FirstBlock  className={'FirstAdsBlock'}  {...task} />
  
           <ReactionBlock setClosed={setClosed} goForward = {goForward} />
+
+          <LastAds openAboutReaction = {openAboutReaction} openAboutReactionFunc = {openAboutReactionFunc} isClosed={isClosed} setClosed = {setClosed} aboutReaction={aboutReaction} />
 
         </div>
     );
