@@ -52,7 +52,6 @@ const MyAds = () => {
     if (spet === 1 || openAboutReaction){
           document.documentElement.style.overflowY = 'hidden'
           document.documentElement.style.marginTop = '150px'
-          console.log(window.scrollY)
           window.scrollTo( {  
             top :  150 + window.scrollY
     }
@@ -202,6 +201,7 @@ const MyAds = () => {
 
       <AboutOne openAboutReaction = {openAboutReaction} aboutReaction = {aboutReaction} setClosed = {setClosed} goForward={goForward} task={task} setMenuActive={setMenuActive} isClosed={isClosed} openAboutReactionFunc = {openAboutReactionFunc} />
 
+      <LastAds openAboutReaction = {openAboutReaction} openAboutReactionFunc = {openAboutReactionFunc} isClosed={isClosed} setClosed = {setClosed} aboutReaction={aboutReaction} />
 
       <MyAdOne
         {...{

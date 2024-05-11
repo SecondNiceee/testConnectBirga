@@ -594,6 +594,7 @@
     padding: 0px 16px; 
     z-index: 30;
     background-color: #20303f;
+    bottom: 0;
     left: 200%;
 }
 .white-block{
