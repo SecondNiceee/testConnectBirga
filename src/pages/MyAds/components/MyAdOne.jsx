@@ -33,7 +33,6 @@ const MyAdOne = ({
         );
         console.log(myAdsArray);
       }
-      alert(isDetailsActive)
   return (
     <div className="my-ad-one">
       <Top name={'Мои задания'} setMenuActive={setMenuActive}/>

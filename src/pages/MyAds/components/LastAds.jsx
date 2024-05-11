@@ -24,7 +24,6 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             }
         }
         function moveHandler(e){
-                console.log('работает')
                 if (!isClosed && e.target.closest('.bottom__one') === null && e.target.closest('.last-images') === null && e.target.closest('.last-sertificates') === null ){
     
                     move = e.touches[0].pageY;
