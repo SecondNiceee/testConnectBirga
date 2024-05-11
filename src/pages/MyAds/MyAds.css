@@ -249,7 +249,7 @@
 }
 .MyAdsContainer{
     display: flex;
-
+    will-change: transform , transition;
 }
 .aboutOne{
     padding: 0px 16px;
@@ -596,6 +596,7 @@
     background-color: #20303f;
     bottom: 0;
     left: 200%;
+    will-change:  transform , top;
 }
 .white-block{
     border-radius: 19px;
