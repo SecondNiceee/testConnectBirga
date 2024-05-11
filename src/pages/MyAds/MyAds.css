@@ -248,7 +248,7 @@
     height: 28.33px;
 }
 .MyAdsContainer{
-    transition: "transform 0.3s ease";
+    transition: transform 0.3s ease;
     display: flex;
     will-change: transform , transition;
 }
