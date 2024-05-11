@@ -90,7 +90,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
         if (isClosed) {
             return {  
                 transform : 'translate3d(100% , 100% , 0)',
-                transition : 'transform 0.3s '
+                transition : 'transform 0.4s '
             }
         }
         return {
