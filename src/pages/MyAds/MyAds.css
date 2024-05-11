@@ -589,15 +589,15 @@
     border-top-left-radius:17px ;
     border-top-right-radius: 17px;
     position: absolute;
-    width: calc(100vw);
-    transition: transform 0.45s;
+    width: 100vw;
+    transition: transform 0.35s;
     left: 0;
     /* top: 70px; */
     padding: 0px 16px; 
     z-index: 250;
     background-color: #20303f;
     bottom: 0;
-    will-change:  transform , top , transition;
+    will-change:  transform  , transition;
 }
 .open{
     transform: translate3d(100% , 0% , 0px);
