@@ -71,8 +71,8 @@ const MyAds = () => {
     // }
 
 
-    document.documentElement.style.overflowY = 'hidden'
     document.documentElement.style.marginTop = '150px'
+    document.documentElement.style.overflowY = 'hidden'
     document.querySelector('.container').style.overflowX = 'hidden'
 
     window.scrollTo( {  
