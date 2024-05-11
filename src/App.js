@@ -122,6 +122,7 @@ function App() {
 
           <FirstMenu/>
           <p>ахахах</p>
+          <p>Хай это test репа</p>
           <p>Афывфывфывфывфыв</p>
           <div className="MainContainer" >
               <AnimatedSwitch />
