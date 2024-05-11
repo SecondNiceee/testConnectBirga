@@ -25,7 +25,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
         }
         function moveHandler(e){
                 console.log('работает')
-                if (!isClosed && e.target.closest('.bottom__one') === null){
+                if (!isClosed && e.target.closest('.bottom__one') === null && e.target.closest('.last-images') === null && e.target.closest('.last-sertificates') === null ){
     
                     move = e.touches[0].pageY;
         
@@ -40,7 +40,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
                 }
         }
         function endHandler(e){
-            if (!isClosed && e.target.closest('.bottom__one') === null){
+            if (!isClosed && e.target.closest('.bottom__one') === null  && e.target.closest('.last-images') === null && e.target.closest('.last-sertificates') === null){
 
                 setTransition('0.3s')
                 if (!openAboutReaction){
@@ -74,11 +74,11 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
     useEffect(  () => {
         
         if (isClosed){
-            
+            document.querySelector('.aboutOne').style.overflowY = 'scroll'
             setTransform('100%')
         }
         else{
-            
+            document.querySelector('.aboutOne').style.overflowY = 'hidden'
             setTransform(0)
         }
     } , [isClosed ]  )
