@@ -87,7 +87,6 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
     } , [isClosed ]  )
 
     const style = useMemo( () => {
-    const style = useMemo( () => {
         
         if (isClosed) {
             return {  
@@ -108,10 +107,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
         onTouchMove={moveHandler}
         onTouchEnd={endHandler}
         onTouchStart={startHandler}
-        style={style} 
-        onTouchMove={moveHandler}
-        onTouchEnd={endHandler}
-        onTouchStart={startHandler}
+        
         >
 
             <WhiteBlock />
