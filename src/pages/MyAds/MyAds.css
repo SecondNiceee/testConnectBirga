@@ -590,7 +590,6 @@
     position: fixed;
     width: calc(100vw);
     left: 0;
-    top: 70px;
     padding: 0px 16px; 
     z-index: 30;
     background-color: #20303f;
