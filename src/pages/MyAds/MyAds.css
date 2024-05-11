@@ -590,7 +590,7 @@
     border-top-right-radius: 17px;
     position: absolute;
     width: 100vw;
-    transition: transform 0.35s;
+    transition: transform 0.4s;
     left: 0;
     /* top: 70px; */
     padding: 0px 16px; 
