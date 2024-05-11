@@ -24,17 +24,20 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             }
         }
         function moveHandler(e){
-            if (!isClosed){
-
-                move = e.touches[0].pageY;
+            if (e.target.closest('.bottom__one') === null){
+                console.log('работает')
+                if (!isClosed){
     
-                if (move - start <= 0){
-                    setTransform(0)
-    
-                }
-                else{
-    
-                    setTransform(move - start)
+                    move = e.touches[0].pageY;
+        
+                    if (move - start <= 0){
+                        setTransform(0)
+        
+                    }
+                    else{
+        
+                        setTransform(move - start)
+                    }
                 }
             }
         }
@@ -81,7 +84,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             setTransform(0)
         }
     } , [isClosed ]  )
-    
+
     const style = useMemo( () => {
         
         if (isClosed) {
@@ -94,7 +97,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             transform : 'translate3d(-100% , ' + transform.toString() + 'px , 0)' ,
             transition :  'transform ' + transition
         }
-    }, [ isClosed ])
+    }, [ isClosed , transform  ])
     return (
 
 
