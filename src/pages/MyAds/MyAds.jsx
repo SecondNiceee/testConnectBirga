@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { Suspense, useCallback, useEffect, useMemo, useState } from "react";
 
 
 // import myImage from '../../images/desccription.png'
@@ -241,31 +241,43 @@ const MyAds = () => {
 
       </div> */}
 
-      <AboutReaction
-          
-          aboutReaction = {aboutReaction}
-          style = {
-            stylesAboutReaction
-          }
+      <Suspense fallback = {<p>loading</p>}>
 
-      />
+        <AboutReaction
+            
+            aboutReaction = {aboutReaction}
+            style = {
+              stylesAboutReaction
+            }
+
+        />
+      </Suspense>
 
 
-      <AboutOne setClosed = {setClosed} goForward={goForward} task={task} setMenuActive={setMenuActive}  />
+      <Suspense fallback = {<p>Loading</p>}>
+          <AboutOne setClosed = {setClosed} goForward={goForward} task={task} setMenuActive={setMenuActive}  />
+      </Suspense>
 
-      <LastAds openAboutReaction = {openAboutReaction} openAboutReactionFunc = {openAboutReactionFunc} isClosed={isClosed} setClosed = {setClosed} aboutReaction={aboutReaction} />
 
-      <MyAdOne
-        {...{
-          myAdsArray,
-          setTask,
-          goForward,
-          setMyAdsArray,
-          setDetailsActive,
-          isDetailsActive,
-          setMenuActive,
-        }}
-      />
+      <Suspense fallback = {<p>Loading</p>}>
+        <LastAds openAboutReaction = {openAboutReaction} openAboutReactionFunc = {openAboutReactionFunc} isClosed={isClosed} setClosed = {setClosed} aboutReaction={aboutReaction} />
+      </Suspense>
+
+
+        <Suspense fallback = {<p>Loading</p>}>
+
+              <MyAdOne
+                {...{
+                  myAdsArray,
+                  setTask,
+                  goForward,
+                  setMyAdsArray,
+                  setDetailsActive,
+                  isDetailsActive,
+                  setMenuActive,
+                }}
+              />
+        </Suspense>
 
 
      
