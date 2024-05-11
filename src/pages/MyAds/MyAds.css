@@ -596,7 +596,7 @@
     background-color: #20303f;
     bottom: 0;
     left: 200%;
-    will-change:  transform , top;
+    will-change:  transform , top , transition;
 }
 .white-block{
     border-radius: 19px;
