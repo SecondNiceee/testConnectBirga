@@ -63,7 +63,7 @@ const MyAds = () => {
       document.documentElement.style.overflowY = 'visible'
       document.documentElement.style.marginTop = '0px'
       window.scrollTo( {
-        top :  0
+        top :  window.scrollY
       
 }
     )
