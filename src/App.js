@@ -17,6 +17,7 @@ import FirstMenu from "./pages/FirstMenu/FirstMenu";
 import { fetchTon } from "./store/ton";
 import { fetchUserInfo } from "./store/telegramUserInfo";
 import { fetchTasksInformation } from './store/information'
+import { Triangle } from 'react-loader-spinner'
 import Loader from "react-js-loader";
 import { asyncThunkCreator } from "@reduxjs/toolkit";
 import axios from "axios";
@@ -36,7 +37,15 @@ const MyLoader = () => {
       alignItems : 'center',
       justifyContent : 'center'
     }}>
-         <Loader type="spinner-default" bgColor={'white'} color={'black'}  size={50} />
+<Triangle
+  visible={true}
+  height="80"
+  width="80"
+  color="white"
+  ariaLabel="triangle-loading"
+  wrapperStyle={{}}
+  wrapperClass=""
+  />
     </div>
   )
 }
@@ -109,7 +118,6 @@ function App() {
 
   return (
       <BrowserRouter>
-        <div>привет</div>
         <div className="UperContainer">
 
           <FirstMenu/>

@@ -12,11 +12,10 @@ import "./MyAds.css";
 
 import { motion } from "framer-motion";
 
-
-const LastAds = lazy( () => import ("./components/LastAds") )
-const MyAdOne = lazy( () => import ("./components/MyAdOne") )
-const AboutOne = lazy( () => import ("./components/AboutOne") )
-const AboutReaction = lazy( () => import ("./components/AboutReaction") )
+import LastAds from "./components/LastAds"; 
+import MyAdOne from "./components/MyAdOne";
+import AboutOne from "./components/AboutOne";
+import AboutReaction from "./components/AboutReaction";
 
 let spet = 2;
 const aboutReaction = `Доброго времени суток!
@@ -239,7 +238,6 @@ const MyAds = () => {
 
       </div> */}
 
-      <Suspense fallback = {<p>loading</p>}>
 
         <AboutReaction
             
@@ -249,20 +247,19 @@ const MyAds = () => {
             }
 
         />
-      </Suspense>
 
 
-      <Suspense fallback = {<p>Loading</p>}>
+
+
           <AboutOne setClosed = {setClosed} goForward={goForward} task={task} setMenuActive={setMenuActive}  />
-      </Suspense>
 
 
-      <Suspense fallback = {<p>Loading</p>}>
+
         <LastAds openAboutReaction = {openAboutReaction} openAboutReactionFunc = {openAboutReactionFunc} isClosed={isClosed} setClosed = {setClosed} aboutReaction={aboutReaction} />
-      </Suspense>
 
 
-        <Suspense fallback = {<p>Loading</p>}>
+
+
 
               <MyAdOne
                 {...{
@@ -275,7 +272,7 @@ const MyAds = () => {
                   setMenuActive,
                 }}
               />
-        </Suspense>
+
 
 
      
