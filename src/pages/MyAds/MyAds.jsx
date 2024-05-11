@@ -119,6 +119,7 @@ const MyAds = () => {
             setClosed(true)
           }
           else{
+            setReactionVisibility('unset')
             spet += 1
             animte()
           }
