@@ -17,24 +17,24 @@
         transform: translateX(300%);
     }
     .details-enter{
-        transform: translateX(100%);
+        transform: translateX(300%);
         transition:  0.35s;
     }
     .details-enter-active{
-        transform: translateX(0%);
+        transform: translateX(200%);
         transition: 0.35s;        transition: 0.35s;
     }
     .details-enter-done{
-        transform: translateX(0%);
+        transform: translateX(200%);
         transition: 0.35s;
     }
 
     .details-exit{
-        transform: translateX(100%);
+        transform: translateX(200%);
         transition: 0.35s;
     }
     .details-exit-active{
-        transform: translateX(0%);
+        transform: translateX(300%);
         transition: 0.35s;
         transition: 0.35s;
     }

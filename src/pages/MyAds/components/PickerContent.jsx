@@ -15,9 +15,12 @@ const PickerContent = ({myAdsArray , setTask , goForward , setDetailsActive , se
               return (
                 <div key={i}
                   className="block"
-                  onClick={() => {
-                    setTask(e);
-                    goForward();
+                  onClick={(e) => {
+                    if (e.target.closest('.MyButton_MyButton__DY3IO') === null){
+
+                      setTask(e);
+                      goForward();
+                    }
                   }}
                 >
                   <FirstBlock
