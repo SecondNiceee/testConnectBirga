@@ -75,6 +75,7 @@ const MyAds = () => {
     document.documentElement.style.overflowY = 'clip'
     document.querySelector('.container').style.overflow = 'clip'
     document.querySelector('.MainContainer').style.overflowY = 'clip'
+    document.querySelector('.MyAdsContainer').style.overflowY = 'clip'
     window.scrollTo( {  
             top :  150
     }
