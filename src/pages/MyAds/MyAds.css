@@ -591,6 +591,9 @@
     position: absolute;
     width: 100vw;
     transition: transform 0.4s;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    transform: rotateZ(360deg);
     left: 0;
     /* top: 70px; */
     padding: 0px 16px; 
