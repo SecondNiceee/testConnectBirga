@@ -74,15 +74,14 @@ const MyAds = () => {
     document.documentElement.style.marginTop = '150px'
     document.documentElement.style.overflowY = 'hidden'
     document.querySelector('.container').style.overflowX = 'hidden'
-
+    document.querySelector('.container').style.overflowY = 'hidden'
+    document.querySelector('.MainContainer').style.overflowY = 'hidden'
     window.scrollTo( {  
             top :  150
     }
         )
   
 
-
-    // document.querySelector('.MainContainer').style.overflowY = 'hidden'
     BackButton.show();
 
     return () => {
