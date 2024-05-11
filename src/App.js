@@ -120,8 +120,6 @@ function App() {
         <div className="UperContainer">
 
           <FirstMenu/>
-          <p>как делаd</p>
-          <p>ахахаdsadasdх</p>
           <div className="MainContainer" >
               <AnimatedSwitch />
           </div>
