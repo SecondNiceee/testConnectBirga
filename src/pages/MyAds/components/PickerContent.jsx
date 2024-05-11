@@ -16,7 +16,7 @@ const PickerContent = ({myAdsArray , setTask , goForward , setDetailsActive , se
                 <div key={i}
                   className="block"
                   onClick={(e) => {
-                    if (e.target.closest('.MyButton_MyButton__DY3IO') === null){
+                    if (e.target.closest('.FirstMain__bottom-right') === null){
                       // setTask(e);
                       goForward();
                     }
