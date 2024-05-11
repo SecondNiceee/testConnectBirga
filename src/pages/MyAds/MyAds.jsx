@@ -218,7 +218,7 @@ const MyAds = () => {
     <motion.div
       style={{
         transform: "translate3d(" + stationNow.toString() + "% , 0 , 0)",
-        transition: "transform 0.3s ease",
+        
       }}
       initial={{ opacity: 0,  }}
       animate={{ opacity: 1 }}
