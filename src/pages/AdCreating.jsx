@@ -41,7 +41,16 @@ const AdCreating = () => {
 
             setError({ ...error,  ton : false})
         }
-    } , [error, taskInformation.taskName , taskInformation.tonValue ] )
+        if (error.startError && taskInformation.startTime.length > 0){
+            setError({ ...error,  startError : false})
+        }
+        if (error.endError && taskInformation.endTime.lensth > 0){
+            setError({ ...error,  endError : false})
+        }
+        if (error.singleError && taskInformation.singleTime.length > 0){
+            setError({ ...error,  singleError : false})
+        }
+    } , [error, taskInformation.taskName , taskInformation.tonValue , taskInformation.startTime , taskInformation.endTime , taskInformation.singleTime ] )
 
 
 
