@@ -91,3 +91,33 @@ body { width: 100%; height: auto; background: rgb(24, 34, 45); }
   border-radius: 50%;
 }
 
+
+
+
+@keyframes anime{
+  0%  {
+      transform : translateX(20px)
+  }
+  20%  {
+      transform : translateX(-20px)
+  }
+  40%  {
+      transform : translateX(10px)
+  }
+  40%  {
+      transform : translateX(-10px)
+  }
+  60%  {
+      transform : translateX(5px)
+  }
+  80%  {
+      transform : translateX(-5px)
+  }
+  100%  {
+      transform : translateX(0px)
+  }
+
+}
+.animut{
+  animation: anime 10s;
+}

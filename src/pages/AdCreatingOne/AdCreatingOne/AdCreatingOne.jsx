@@ -1,7 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { changeTaskInformation } from "../../../store/information";
-import {   motion } from "framer-motion";
 import React, { memo, useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
@@ -12,16 +9,14 @@ import DescriptionAndPhoto from "../DescriptionAndPhoto/DescriptionAndPhoto";
 import MakePrivate from "../MakePrivate/MakePrivate";
 import ChoiceCategory from "../ChoiceCategory/ChoiceCategory";
 import ChoiceSubCategory from "../ChoiceSubCategory";
-import StartOn from "../StartOn/StartOn";
-import BackButton from "../../../constants/BackButton";
-import MainButton from '../../../constants/MainButton'
+import StartOn from "../StartOn/StartOn"
 
 import cl from "./AdCreatingOne.module.css";
 
 
   let transform = [  {opacity : 0} , {opacity : 1} ]
 
-const AdCreatingOne =   ({ taskInformation , setTaskInformation,  MyInformation, className }) => {
+const AdCreatingOne =   ({ taskInformation , setTaskInformation,  MyInformation, className , errorName }) => {
 
 
   const [isCategoryChoiceOpen, setCatagoryChoiceOpen] = useState(false);
@@ -41,6 +36,8 @@ const AdCreatingOne =   ({ taskInformation , setTaskInformation,  MyInformation,
   }
 
 
+
+
   return (
     <div
   
@@ -49,6 +46,7 @@ const AdCreatingOne =   ({ taskInformation , setTaskInformation,  MyInformation,
         className ? [cl.AdCreating, className].join(" ") : cl.AdCreating
       }
     >
+
       {MyInformation ? '' : 
             <Cap step={1} className={cl.Cap}>
             {" "}
@@ -65,8 +63,10 @@ const AdCreatingOne =   ({ taskInformation , setTaskInformation,  MyInformation,
         />
       )}
       <TaskName
+        errorName={errorName}
         taskInformation={taskInformation}
         setTaskInformation={setTaskInformation}
+      
       />
       <DescriptionAndPhoto
         MyInformation={MyInformation}

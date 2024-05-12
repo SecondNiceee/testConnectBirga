@@ -30,6 +30,21 @@ const AdCreating = () => {
     
     const dispatch = useDispatch()
 
+    const [error , setError] = useState({
+        name : false,
+        ton : false,
+    })
+
+    useEffect( () => {
+        if (error.name && taskInformation.taskName.length > 5){
+            setError({ ...error,  name : false})
+        }
+        if (error.ton && taskInformation.tonValue > 0.5){
+
+            setError({ ...error,  ton : false})
+        }
+    } , [error, taskInformation.taskName , taskInformation.tonValue ] )
+
 
 
     function animte(){
@@ -52,23 +67,50 @@ const AdCreating = () => {
         } , 310 )
     }
 
-    function goForward(){
-
-        if (spet !== 2){
-
-            
-                spet += 1
-                if (spet == 2){
-                    MainButton.setText('ЗАКОЛДИРОВАТЬ')
+    function checking(){
+        let taskName = false
+        let ton = false
+        switch (spet)
+        {
+            case 0 : {
+                if (taskInformation.taskName.length < 5){
+                    taskName = true
                 }
-                animte()
-            
+                setError({...error , name : taskName})
+                return (Object.values({...error , name : taskName}).every(value => value === false))
+            }
+            case 1 : {
+                if (taskInformation.tonValue < 0.5){
+                    ton = true
+
+                }
+                setError({...error , ton : ton})
+                return (Object.values({...error , ton : ton}).every(value => value === false))
+            }
+        }
+    }
+
+    function goForward(){
+        if  (checking()){
+
+            if (spet !== 2){
+    
+                
+                    spet += 1
+                    if (spet == 2){
+                        MainButton.setText('ЗАКОЛДИРОВАТЬ')
+                    }
+                    animte()
+                
+            }
+            else{
+                dispatch(changeTaskInformation (taskInformation) )
+                navigate('/MyAds')
+                alert('отправлено!')
+                MainButton.hide()
+            }
         }
         else{
-            dispatch(changeTaskInformation (taskInformation) )
-            navigate('/MyAds')
-            alert('отправлено!')
-            MainButton.hide()
         }
     }
     function goBack(){
@@ -127,8 +169,9 @@ const AdCreating = () => {
         style={{transform : 'translateX(' + stationNow.toString() + '%)', transition : '0.3s'}}
         >
             <button style={{position : 'absolute'}} onClick={() => {goForward()}} >Выфвфывфы</button>
-            <AdCreatingOne setTaskInformation = {setTaskInformation}  taskInformation = {taskInformation} />
-            <AdCreatingTwo GreyIntWidth = {GreyIntWidth} GreyWidth={GreyWidth} setTaskInformation = {setTaskInformation} taskInformation = {taskInformation} tonConstant = {tonConstant} />
+            <button style={{position : 'absolute' , left : '100%' , zIndex : 20}} onClick={() => {goForward()}} >Выфвфывфы</button>
+            <AdCreatingOne errorName={error.name} setTaskInformation = {setTaskInformation}  taskInformation = {taskInformation} />
+            <AdCreatingTwo errors = {{ton : error.ton}} GreyIntWidth = {GreyIntWidth} GreyWidth={GreyWidth} setTaskInformation = {setTaskInformation} taskInformation = {taskInformation} tonConstant = {tonConstant} />
             <AdCreatingThree taskInformation = {taskInformation} />
         </motion.div>
     );

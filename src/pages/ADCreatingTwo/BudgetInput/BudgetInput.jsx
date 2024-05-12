@@ -7,8 +7,8 @@ const BudgetInput = ({
   setBudget,
   budget,
   tonValue,
-  setTonValue,
-  tonConstant,
+  style,
+  errorTon
 }) => {
   const KisInteger = function (obj) {
     return "0123456789".includes(obj[obj.length - 1]);
@@ -50,8 +50,9 @@ const BudgetInput = ({
     >
 
       <p className={[cl.input, cl.hidden].join(" ")} ref={ref1}></p>
-      <p style={ budget ? {display : 'none'} : {}  }  className = { [cl.input , cl.absolute].join(' ') }> 0 </p>
-      <input
+      <p style={ budget ? {display : 'none'} : {color : style.color}  }  className = { [cl.input , cl.absolute].join(' ') }> 0 </p>
+      <input 
+         style={style}
         value={budget}
         onChange={(e) => {
           setBudget(
@@ -79,12 +80,28 @@ const BudgetInput = ({
 
         {/* <p  className={cl.input}>{budget}</p> */}
 
-      <p style={ {left : budgetWidth()  }} className={cl.budgetText}>RUB</p>
+      <p style={ {left : budgetWidth() , color : style.color  }} className={cl.budgetText}>RUB</p>
 
-      <div className={cl.bottomTextContainer}>
-          <p className={cl.text}> К холду <span> {tonValue} TON </span>  </p>
-          <img src={Info} alt="" />
+      {!errorTon 
+      ? (
+        <div className={cl.bottomTextContainer}>
+            <p className={cl.text}>
+              К холду <span> {tonValue} TON </span> 
+              
+              
+                </p>
+            <img src={Info} alt="" />
       </div>
+      )
+      :
+          <div className={cl.bottomTextContainer}>
+            <p className={cl.text} style={{color : 'red'}}>
+              Сумма должна быть больше 0.5 тонн
+              </p>
+          </div>
+
+
+          }
       
     </label>
   );

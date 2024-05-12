@@ -15,7 +15,7 @@ import cl from './SecondAddCreating.module.css'
 import MainButton from '../../../constants/MainButton';
 
 
-const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , GreyWidth , GreyIntWidth}) => {
+const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , GreyWidth , GreyIntWidth , errors}) => {
 
 
 
@@ -119,40 +119,12 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
     } , [state.isOpen] )
 
 
-  //   useEffect( () => {
-  //     let startY;
-  //     let endY;
-  //     let startX;
-  //     let endX;
-  //     function handleStart(e){
-  //       startY = e.touches[0].pageY
-  //       startX = e.touches[0].pageX
-  //     }
-  //     function handleMove(e){
-  //       endY = e.touches[0].pageY
-  //       endX = e.touches[0].pageX
-  //     }
-  //     function handleEnd(e){
-  //       if (endY > startY) {
-  //         setState({...state,isOpen : false})
-  //       }
-  //     }
-  //     document.addEventListener('touchstart' , handleStart)
-  //     document.addEventListener('touchmove' , handleMove)
-  //     document.addEventListener('touchend' , handleEnd )
-  //     return () => {
-  //       document.removeEventListener('touchstart' , handleStart)
-  //       document.removeEventListener('touchmove' , handleMove)
-  //       document.removeEventListener('touchend' , handleEnd)
-  //     }
-  // } , [])
 
 
 
 
   useEffect( () => {
     if (dateObject){
-      console.log('Дропдаюн!!!!')
       
       let startY;
       let endY;
@@ -274,7 +246,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
 
 
             <Cap className={cl.Cap}  step={2} > <p className = {cl.CapText}> Создайте объявление </p> </Cap>
-            <Budget taskInformation={taskInformation} setTaskInformation={setTaskInformation}  className={cl.Budget} tonConstant = {tonConstant} />
+            <Budget errorTon = {errors.ton} taskInformation={taskInformation} setTaskInformation={setTaskInformation}  className={cl.Budget} tonConstant = {tonConstant} />
             <MyDatePicker 
             
             state={state} setState = {setState} GreyWidth = {GreyWidth} GreyIntWidth={GreyIntWidth} taskInformation={taskInformation} setTaskInformation={setTaskInformation} className={cl.DatePicker} />

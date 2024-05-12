@@ -38,6 +38,7 @@ const CatchDate = ({ className , whichOne , state, setState,  ...props }) => {
     minute : 'numeric',
     timezone: 'UTC'
   };
+  // console.log(state)
 
 return (
     <div
