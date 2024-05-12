@@ -97,11 +97,14 @@ const AdCreating = () => {
                 if (taskInformation.singleTime.length === 0){
                     singleError = true
                 }
-                if (taskInformation.startTime.length === 0){
-                    startError = true
-                }
-                if (taskInformation.endTime.length === 0){
-                    endError = true
+                else{
+
+                    if (taskInformation.startTime.length === 0){
+                        startError = true
+                    }
+                    if (taskInformation.endTime.length === 0){
+                        endError = true
+                    }
                 }
                 setError({...error , ton : ton , singleError : singleError , startError : startError , endError : endError})
                 return (Object.values({...error , ton : ton , singleError : singleError , startError : startError , endError : endError}).every(value => value === false))
