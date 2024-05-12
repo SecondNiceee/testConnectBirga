@@ -44,6 +44,7 @@ return (
     <div
     {...props}
      style={ whichOne === 'startOnly' ? {} : {transform : getTranslate() }}
+      id="dateSwapper"
       className={className ? [cl.CatchDate, className].join(" ") : cl.CatchDate   }>
         {/* <input type="datetime-local" name="startOnly" />
         <input type="datetime" name='start' />

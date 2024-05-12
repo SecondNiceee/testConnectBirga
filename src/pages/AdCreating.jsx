@@ -34,22 +34,45 @@ const AdCreating = () => {
     })
 
     useEffect( () => {
-        if (error.name && taskInformation.taskName.length > 5){
-            setError({ ...error,  name : false})
+        let startError = false;
+        let endError = false;
+        let singleError = false;
+        if (spet === 0){
+            if (error.name && taskInformation.taskName.length > 5){
+                setError({ ...error,  name : false})
+            }
         }
-        if (error.ton && taskInformation.tonValue > 0.5){
+        if (spet === 1){
+            
+            if (error.ton && taskInformation.tonValue > 0.5){
+    
+                setError({ ...error,  ton : false})
+            }
+            if (document.getElementById('dateSwapper').style.transform){
+                if (taskInformation.startTime.length === 0){
+                    startError = true
+                }
+                if (taskInformation.endTime.length === 0){
+                    endError = true
+                }
+                if (taskInformation.endTime <= taskInformation.startTime){
+                    endError = true
+                    startError = true
+                }
+            }
+            else{
+                if (taskInformation.singleTime.length === 0){
+                    singleError = true
+                }
+            }
+            if ((error.singleError === true && !document.getElementById('dateSwapper').style.transform) ||(  (error.startError === true || error.endError === true) && document.getElementById('dateSwapper').style.transform )  ){
 
-            setError({ ...error,  ton : false})
+                if (error.singleError !== singleError || error.startError !== startError || error.endError !== endError ){
+                    setError({ ...error,  singleError : singleError , startError : startError , endError : endError})
+                }
+            }
         }
-        if (error.startError && taskInformation.startTime.length > 0){
-            setError({ ...error,  startError : false})
-        }
-        if (error.endError && taskInformation.endTime.lensth > 0){
-            setError({ ...error,  endError : false})
-        }
-        if (error.singleError && taskInformation.singleTime.length > 0){
-            setError({ ...error,  singleError : false})
-        }
+
     } , [error, taskInformation.taskName , taskInformation.tonValue , taskInformation.startTime , taskInformation.endTime , taskInformation.singleTime ] )
 
 
@@ -94,18 +117,24 @@ const AdCreating = () => {
                     ton = true
 
                 }
-                if (taskInformation.singleTime.length === 0){
-                    singleError = true
-                }
-                else{
-
+                if (document.getElementById('dateSwapper').style.transform){
                     if (taskInformation.startTime.length === 0){
                         startError = true
                     }
                     if (taskInformation.endTime.length === 0){
                         endError = true
                     }
+                    if (taskInformation.endTime <= taskInformation.startTime){
+                        endError = true
+                        startError = true
+                    }
                 }
+                else{
+                    if (taskInformation.singleTime.length === 0){
+                        singleError = true
+                    }
+                }
+
                 setError({...error , ton : ton , singleError : singleError , startError : startError , endError : endError})
                 return (Object.values({...error , ton : ton , singleError : singleError , startError : startError , endError : endError}).every(value => value === false))
             }
