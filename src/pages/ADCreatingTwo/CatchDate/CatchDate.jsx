@@ -3,7 +3,7 @@ import cl from "./CatchDate.module.css";
 
 import dateIcon from "../../../images/icons/date.svg";
 import rightArrow from "../../../images/icons/ArrowRight.svg";
-const CatchDate = ({ className , whichOne , state, setState,  ...props }) => {
+const CatchDate = ({ className , whichOne , state, setState,errors,  ...props }) => {
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const [widthOfDocument, setWidthOfDocument] = useState(
@@ -52,7 +52,9 @@ return (
       onClick = {() => {
         setState({...state, isOpen : true , isSingleOpen : true})
       }} 
-        htmlFor="startOnly" ref={ref1} className={[cl.DateTimePicker , cl.flexStart].join(' ')}   >
+        htmlFor="startOnly" ref={ref1} className={[cl.DateTimePicker , cl.flexStart].join(' ')} 
+        style={errors.singleError ? {border : '1px solid red'} : {}}
+        >
         <div className={cl.left}>
           <img className={cl.leftImage} src={dateIcon} alt="" />
           <p className={cl.text}>
@@ -69,7 +71,7 @@ return (
               onClick = {() => {
                 setState({...state, isOpen : true , isStartOpen : true})
               }} 
-         className={cl.DateTimePicker}>
+         className={cl.DateTimePicker}   style={errors.startError ? {border : '1px solid red'} : {}} >
           <div className={cl.left}>
             <img className={cl.leftImage} src={dateIcon} alt="" />
             <p className={cl.text}>
@@ -83,6 +85,7 @@ return (
                       onClick = {() => {
                         setState({...state, isOpen : true , isEndOpen : true})
                       }} 
+                      style={errors.endError ? {border : '1px solid red'} : {}}
         >
           <div className={cl.left}>
             <img className={cl.leftImage} src={dateIcon} alt="" />

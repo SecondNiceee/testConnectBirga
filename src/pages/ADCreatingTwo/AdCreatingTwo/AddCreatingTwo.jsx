@@ -70,13 +70,15 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
         if (state.isStartOpen){
 
           setState({...state , time : time, isOpen : false, isStartOpen : false, startTime : time })
+          setTaskInformation({...taskInformation , startTime :time })
         }
         if (state.isSingleOpen){
-          
           setState({...state , time : time, isOpen : false, isSingleOpen : false, singleTime : time })
+          setTaskInformation({...taskInformation , singleTime :time })
         }
         if (state.isEndOpen){
           setState({...state , time : time, isOpen : false, isEndOpen : false, endTime : time })
+          setTaskInformation({...taskInformation , endTime :time })
         }
       }
       function handleCancel(){
@@ -219,10 +221,6 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
         behavior : 'auto'
       })
     }
-    useEffect ( () => {
-      if (document.documentElement.style.marginTop === '0px'){
-      }
-    }, [document.documentElement.style.marginTop] )
 
     // dateObject.style = 'block'
     return (
@@ -248,7 +246,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
             <Cap className={cl.Cap}  step={2} > <p className = {cl.CapText}> Создайте объявление </p> </Cap>
             <Budget errorTon = {errors.ton} taskInformation={taskInformation} setTaskInformation={setTaskInformation}  className={cl.Budget} tonConstant = {tonConstant} />
             <MyDatePicker 
-            
+            errors = {{singleError : errors.singleError , startError : errors.startError, endError : errors.endError }}
             state={state} setState = {setState} GreyWidth = {GreyWidth} GreyIntWidth={GreyIntWidth} taskInformation={taskInformation} setTaskInformation={setTaskInformation} className={cl.DatePicker} />
       </div>
     );

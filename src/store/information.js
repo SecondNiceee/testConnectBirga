@@ -19,7 +19,9 @@ const information = createSlice( {
             photos: [],
             budget: 0,
             tonValue: 0,
-            taskDate: { start: "", end: "" },
+            startTime : "",
+            endTime : "",
+            singleTime : "",
             isPrivate : false
           } ,
 

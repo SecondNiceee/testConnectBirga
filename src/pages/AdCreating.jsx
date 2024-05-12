@@ -3,18 +3,13 @@ import AdCreatingOne from './AdCreatingOne/AdCreatingOne/AdCreatingOne';
 import AdCreatingThree from './AdCreatingThree/AdCreatingThree';
 import AdCreatingTwo from './ADCreatingTwo/AdCreatingTwo/AddCreatingTwo'
 
-import { motion, transform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import { addMyAds, changeTaskInformation } from '../store/information';
+import {  changeTaskInformation } from '../store/information';
 import BackButton from '../constants/BackButton';
 import MainButton from '../constants/MainButton';
 import { useNavigate } from 'react-router-dom';
 
-const variants = {
-    initial : {opacity : 0},
-    animate : {opacity : 1},
-    transition : {duration : 0.1}
-}
 
 let spet = 0;
 const AdCreating = () => {
@@ -33,6 +28,9 @@ const AdCreating = () => {
     const [error , setError] = useState({
         name : false,
         ton : false,
+        singleError : false,
+        startError : false,
+        endError : false
     })
 
     useEffect( () => {
@@ -70,6 +68,9 @@ const AdCreating = () => {
     function checking(){
         let taskName = false
         let ton = false
+        let singleError = false;
+        let startError = false;
+        let endError = false;
         switch (spet)
         {
             case 0 : {
@@ -84,8 +85,17 @@ const AdCreating = () => {
                     ton = true
 
                 }
-                setError({...error , ton : ton})
-                return (Object.values({...error , ton : ton}).every(value => value === false))
+                if (taskInformation.singleTime.length === 0){
+                    singleError = true
+                }
+                if (taskInformation.startTime.length === 0){
+                    startError = true
+                }
+                if (taskInformation.endTime.length === 0){
+                    endError = true
+                }
+                setError({...error , ton : ton , singleError : singleError , startError : startError , endError : endError})
+                return (Object.values({...error , ton : ton , singleError : singleError , startError : startError , endError : endError}).every(value => value === false))
             }
         }
     }
@@ -97,7 +107,7 @@ const AdCreating = () => {
     
                 
                     spet += 1
-                    if (spet == 2){
+                    if (spet === 2){
                         MainButton.setText('ЗАКОЛДИРОВАТЬ')
                     }
                     animte()
@@ -171,7 +181,7 @@ const AdCreating = () => {
             <button style={{position : 'absolute'}} onClick={() => {goForward()}} >Выфвфывфы</button>
             <button style={{position : 'absolute' , left : '100%' , zIndex : 20}} onClick={() => {goForward()}} >Выфвфывфы</button>
             <AdCreatingOne errorName={error.name} setTaskInformation = {setTaskInformation}  taskInformation = {taskInformation} />
-            <AdCreatingTwo errors = {{ton : error.ton}} GreyIntWidth = {GreyIntWidth} GreyWidth={GreyWidth} setTaskInformation = {setTaskInformation} taskInformation = {taskInformation} tonConstant = {tonConstant} />
+            <AdCreatingTwo errors = {{ton : error.ton , singleError : error.singleError , startError : error.startError , endError : error.endError}} GreyIntWidth = {GreyIntWidth} GreyWidth={GreyWidth} setTaskInformation = {setTaskInformation} taskInformation = {taskInformation} tonConstant = {tonConstant} />
             <AdCreatingThree taskInformation = {taskInformation} />
         </motion.div>
     );
