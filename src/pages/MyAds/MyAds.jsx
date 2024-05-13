@@ -71,13 +71,14 @@ const MyAds = () => {
     } , 400 )
 
     document.documentElement.style.marginTop = '150px'
+
     window.scrollTo({
       top : 150,
       behavior : 'auto'
     })
-    document.documentElement.style.overflowY = 'clip'
-    // document.querySelector('.container').style.overflowY = 'clip'
-    document.querySelector('.MainContainer').style.overflowY = 'hidden'
+
+    // document.documentElement.style.overflowY = 'clip'
+    // document.querySelector('.MainContainer').style.overflowY = 'hidden'
 
     
   
