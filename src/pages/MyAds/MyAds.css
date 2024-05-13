@@ -686,7 +686,7 @@
     margin-top: 18px;
     display: flex;
     min-width: calc(100% + 16px);
-    overflow-x: scroll;
+    overflow-x: hidden;
     gap: 8px;
     align-items: center;
 }
