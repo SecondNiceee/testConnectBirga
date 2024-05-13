@@ -18,7 +18,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
     const [transform, setTransform] = useState(0)
     const [transition , setTransition] = useState('0.4s')
     function startHandler(e){   
-        if (!isClosed && e.target.closest('.bottom__one') === null){
+        if (!isClosed && e.target.closest('.bottom__one') === null && e.target.closest('.last-images') === null && e.target.closest('.last-sertificates') === null ){
             setTransition('0s')
             start = e.touches[0].pageY;
         }
