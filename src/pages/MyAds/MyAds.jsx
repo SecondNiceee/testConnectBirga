@@ -86,10 +86,10 @@ const MyAds = () => {
     BackButton.show();
 
     return () => {
-      document.documentElement.scrollTo({
-        top : 0,
-        behavior : 'auto'
-      })
+      // document.documentElement.scrollTo({
+      //   top : 0,
+      //   behavior : 'auto'
+      // })
       document.documentElement.style.overflowY = 'unset'
       document.documentElement.style.marginTop = '0px'
       document.querySelector('.MainContainer').style.overflowY = 'unset'
