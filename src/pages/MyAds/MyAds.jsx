@@ -77,8 +77,8 @@ const MyAds = () => {
       behavior : 'auto'
     })
 
-    // document.documentElement.style.overflowY = 'clip'
-    // document.querySelector('.MainContainer').style.overflowY = 'hidden'
+     document.documentElement.style.overflow = 'clip'
+    document.querySelector('.MainContainer').style.overflowY = 'hidden'
 
     
   
