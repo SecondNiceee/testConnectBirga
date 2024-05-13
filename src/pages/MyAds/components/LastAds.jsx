@@ -22,6 +22,10 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             setTransition('0s')
             start = e.touches[0].pageY;
         }
+        else{
+            setTransition('0s')
+            start = 0;
+        }
     }
     function moveHandler(e){
             if (!isClosed && e.target.closest('.bottom__one') === null && e.target.closest('.last-images') === null && e.target.closest('.last-sertificates') === null ){
@@ -36,6 +40,9 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
     
                     setTransform(move - start)
                 }
+            }
+            else{
+                setTransform(0)
             }
     }
     function endHandler(e){
@@ -54,6 +61,9 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             }
             move = 0;
             start = 0;
+        }
+        else{
+            setTransform(0)
         }
     }
     
