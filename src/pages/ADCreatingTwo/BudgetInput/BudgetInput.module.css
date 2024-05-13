@@ -87,7 +87,7 @@ input:focus {outline: none;}
 }
 .absolute{
     position: absolute;
-    top: 11px;
+    top: 24px;
     left: 16px;
     opacity: 0.5;
 }
