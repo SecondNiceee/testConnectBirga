@@ -71,7 +71,7 @@ const MyAds = () => {
     } , 400 )
 
     document.documentElement.style.marginTop = '150px'
-    document.documentElement.scrollTo({
+    window.scrollTo({
       top : 150,
       behavior : 'auto'
     })
