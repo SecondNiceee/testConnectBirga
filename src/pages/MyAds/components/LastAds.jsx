@@ -18,15 +18,13 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
     const [transform, setTransform] = useState(0)
     const [transition , setTransition] = useState('0.4s')
     function startHandler(e){   
+        if (!isClosed){
             setTransition('0s')
             start = e.touches[0].pageY;
-    
-        // else{
-        //     setTransition('0s')
-        //     start = 0;
-        // }
+        }
     }
     function moveHandler(e){
+            if (!isClosed ){
 
                 move = e.touches[0].pageY;
     
@@ -38,12 +36,10 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
     
                     setTransform(move - start)
                 }
-            
-            // else{
-            //     setTransform(0)
-            // }
+            }
     }
     function endHandler(e){
+        if (!isClosed ){
 
             setTransition('0.3s')
             if (!openAboutReaction){
@@ -58,10 +54,7 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             }
             move = 0;
             start = 0;
-
-        // else{
-        //     setTransform(0)
-        // }
+        }
     }
     
     // useEffect( () => {
