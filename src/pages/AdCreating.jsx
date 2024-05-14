@@ -174,6 +174,7 @@ const AdCreating = () => {
                         MainButton.setText('Далее')
                     }
                     animte()
+                    alert(spet)
                 
             }
             else{
@@ -184,6 +185,7 @@ const AdCreating = () => {
             }
         }
         else{
+            alert('не прошел чекинг')
         }
     }
     function goBack(){
