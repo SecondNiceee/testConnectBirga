@@ -61,7 +61,7 @@ const BudgetInput = ({
               : e.target.value.substring(0, e.target.value.length - 1)
           );
         }}
-        inputmode="numeric"
+        inputMode="numeric"
         
         id="budget"
         name="budget"

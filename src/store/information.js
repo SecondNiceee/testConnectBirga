@@ -3,8 +3,36 @@ import axios from 'axios'
 export const fetchTasksInformation = createAsyncThunk( 
   'information/fetchTasksInformation' , 
   async function (){
-      let task = await axios.get('http://localhost:5000/advertisement/findAll')
-      return task.data
+      let tasks = []
+      let task = await axios.get('https://back-birga.ywa.su/advertisement/findAll')
+
+      if (task.data.length === 0){
+        return []
+      }
+      else{
+
+        for (let order of task.data) {
+          tasks.push({
+            taskName : order.title,
+            executionPlace: "Можно выполнить удаленно",
+            time : {start : order.startTime , end : order.endTime},
+            tonValue : order.price,
+            taskDescription : order.description,
+            photos : order.photos || "",
+            customerName : order.user.fl,
+
+  
+            rate : '5',
+            customerName : order.user.fl,
+            isActive : true,
+            creationTime : order.createdAt,
+            viewsNumber : '51', 
+            
+          })
+        }
+
+        return tasks
+      }
   }
  )
 const information = createSlice( {
@@ -12,7 +40,7 @@ const information = createSlice( {
     initialState : {
         status  : null ,
         taskInformation :  {
-            category: { name: "Дизайн", value: "design1" },
+            category: { name: "", value: "" },
             subCategory: "Выбрать",
             taskName: "",
             taskDescription: "",
@@ -163,6 +191,7 @@ const information = createSlice( {
         }
     },
     extraReducers : builder => {
+
       builder.addCase( fetchTasksInformation.pending, (state => {state.status = 'loading'} )  )
       builder.addCase( fetchTasksInformation.fulfilled, ((state , action) => {state.status = 'loading'  
       state.orderInformations = action.payload }  ) )

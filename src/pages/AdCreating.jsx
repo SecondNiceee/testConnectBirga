@@ -5,10 +5,11 @@ import AdCreatingTwo from './ADCreatingTwo/AdCreatingTwo/AddCreatingTwo'
 
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
-import {  changeTaskInformation } from '../store/information';
+import {  changeTaskInformation, postInformation } from '../store/information';
 import BackButton from '../constants/BackButton';
 import MainButton from '../constants/MainButton';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 let spet = 0;
@@ -97,6 +98,21 @@ const AdCreating = () => {
         } , 310 )
     }
 
+
+    async function post (el) {
+        axios.post('https://back-birga.ywa.su/advertisement' , {
+          userId : 1,
+          title : el.taskName,
+          description : el.taskDescription,
+          dedline : 1,
+          category : 1,
+          subCategory : 1,
+          price : el.tonValue,
+          startTime : el.startTime && el.endTime ? el.startTime : el.singleTime,
+          endTime : el.startTime && el.endTime ? el.endTime : ""
+        })
+      }
+
     function checking(){
         let taskName = false
         let ton = false
@@ -156,6 +172,8 @@ const AdCreating = () => {
             }
             else{
                 dispatch(changeTaskInformation (taskInformation) )
+                post(taskInformation)
+
                 navigate('/MyAds')
                 alert('отправлено!')
                 MainButton.hide()
