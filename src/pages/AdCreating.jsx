@@ -174,9 +174,7 @@ const AdCreating = () => {
                 
             }
             else{
-                dispatch(changeTaskInformation (taskInformation) )
                 post(taskInformation)
-
                 navigate('/MyAds')
                 alert('отправлено!')
                 MainButton.hide()
@@ -209,9 +207,6 @@ const AdCreating = () => {
     } , [] ) 
 
     
-    if (stationNow === -200){
-        MainButton.setText('ЗАКОЛДИРОВАТЬ')
-    }
     else{
         MainButton.setText('ДАЛЕЕ')
     }
