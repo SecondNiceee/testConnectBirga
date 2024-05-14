@@ -100,17 +100,20 @@ const AdCreating = () => {
 
 
     async function post (el) {
-        axios.post('https://back-birga.ywa.su/advertisement' , {
-          userId : 1,
+        axios.post('https://back-birga.ywa.su/advertisement' ,
+         {
+          userId : window.Telegram.WebApp.initDataUnsafe.user.id,
           title : el.taskName,
           description : el.taskDescription,
-          dedline : 1,
+          deadline : 1,
           category : 1,
           subCategory : 1,
-          price : el.tonValue,
+          price : Math.round(el.tonValue),
           startTime : el.startTime && el.endTime ? el.startTime : el.singleTime,
-          endTime : el.startTime && el.endTime ? el.endTime : ""
-        })
+          endTime : el.startTime && el.endTime ? el.endTime : el.singleTime
+        }
+    
+    )
       }
 
     function checking(){
@@ -239,6 +242,7 @@ const AdCreating = () => {
         >
             <button style={{position : 'absolute'}} onClick={() => {goForward()}} >Выфвфывфы</button>
             <button style={{position : 'absolute' , left : '100%' , zIndex : 20}} onClick={() => {goForward()}} >Выфвфывфы</button>
+            <button style={{position : 'absolute' , left : '200%' , zIndex : 20}} onClick={() => {post(taskInformation)}} >Отослать</button>
             <AdCreatingOne errorName={error.name} setTaskInformation = {setTaskInformation}  taskInformation = {taskInformation} />
             <AdCreatingTwo errors = {{ton : error.ton , singleError : error.singleError , startError : error.startError , endError : error.endError}} GreyIntWidth = {GreyIntWidth} GreyWidth={GreyWidth} setTaskInformation = {setTaskInformation} taskInformation = {taskInformation} tonConstant = {tonConstant} />
             <AdCreatingThree taskInformation = {taskInformation} />

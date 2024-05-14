@@ -94,19 +94,12 @@ function App() {
 
   window.Telegram.WebApp.expand();
 
-  
-  async function lol (){
-    let task = await axios.get('https://back-birga.ywa.su/advertisement/findAll')
-    return task.data
-}
-lol()
 
 
   const dispatch = useDispatch()
   
   useEffect ( () => {
     dispatch( fetchTon() )
-    dispatch ( fetchTasksInformation() )
      dispatch ( fetchUserInfo() )
   },[] )
 

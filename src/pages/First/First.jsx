@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useDebugValue, useEffect, useMemo, useState } from "react";
 import {  CSSTransition } from "react-transition-group";
 import { motion } from "framer-motion";
 
@@ -12,12 +12,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import MainButton from "../../constants/MainButton";
 import useListner from "../../hooks/useListner";
+import { fetchTasksInformation } from "../../store/information";
 
 
 const First = () => {
 
   const dispatch = useDispatch();
-
+  useEffect( () => {
+    dispatch ( fetchTasksInformation() )
+  } , [] )
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
   );
