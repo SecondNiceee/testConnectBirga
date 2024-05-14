@@ -157,6 +157,9 @@ const AdCreating = () => {
                 setError({...error , ton : ton , singleError : singleError , startError : startError , endError : endError})
                 return (Object.values({...error , ton : ton , singleError : singleError , startError : startError , endError : endError}).every(value => value === false))
             }
+            case 2 : {
+                return true
+            }
         }
     }
 
