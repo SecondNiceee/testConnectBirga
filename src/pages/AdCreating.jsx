@@ -170,13 +170,16 @@ const AdCreating = () => {
                     if (spet === 2){
                         MainButton.setText('ЗАКОЛДИРОВАТЬ')
                     }
+                    else{
+                        MainButton.setText('Далее')
+                    }
                     animte()
                 
             }
             else{
+                alert('отправлено!')
                 post(taskInformation)
                 navigate('/MyAds')
-                alert('отправлено!')
                 MainButton.hide()
             }
         }
@@ -221,6 +224,7 @@ const AdCreating = () => {
     useEffect (  () => {
         MainButton.show()
         BackButton.show()
+        MainButton.setText('Далее')
         return () => {
             MainButton.hide()
         }
