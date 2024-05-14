@@ -207,9 +207,6 @@ const AdCreating = () => {
     } , [] ) 
 
     
-    else{
-        MainButton.setText('ДАЛЕЕ')
-    }
     useEffect( () => {
         MainButton.onClick ( goForward )
         BackButton.onClick( goBack )
