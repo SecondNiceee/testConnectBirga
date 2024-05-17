@@ -94,13 +94,24 @@ function App() {
 
   window.Telegram.WebApp.expand();
 
-
+  async function start(){
+    axios.post("https://back-birga.ywa.su/category/category" , {
+      "category": "Дизайн",
+      "id": 1
+  })
+  axios.post("https://back-birga.ywa.su/category/subCategory" , {
+    "subCategory": "Подкатегория",
+    "categoryId": 1
+  })
+  }
 
   const dispatch = useDispatch()
+
   
   useEffect ( () => {
     dispatch( fetchTon() )
      dispatch ( fetchUserInfo() )
+     start()
   },[] )
 
 
