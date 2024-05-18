@@ -113,13 +113,8 @@ const AdCreating = () => {
           price : Math.round(el.tonValue),
           startTime : el.startTime && el.endTime ? el.startTime : el.singleTime,
           endTime : el.startTime && el.endTime ? el.endTime : el.singleTime,
-          photos : [el.photos[0]]
+        //   photos : [el.photos[0]]
         },
-        {
-            'headers' : {
-                'Content-Type' : 'multipart/form-data'
-            }
-        }
         
     
     )
