@@ -12,7 +12,7 @@ const TaskDetailsContainer = ({orderInformation}) => {
       <FullDescription fullDescription={orderInformation.taskDescription} />
       <Dedline dedline={orderInformation.time.end} />
       <div className="TaskDetails-row">
-        <Customer rate={orderInformation.rate} customerName={orderInformation.customerName} />
+        <Customer userPhoto = {orderInformation.userPhoto} rate={orderInformation.rate} customerName={orderInformation.customerName} />
         <Status isActive={orderInformation.isActive} />
       </div>
     </div>

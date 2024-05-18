@@ -2,12 +2,12 @@ import React from 'react';
 import icon from '../../../images/icons/icon.svg'
 import galks from '../../../images/icons/Subtract.svg'
 import Star from '../../../images/icons/Star.svg'
-const Customer = ({customerName, rate}) => {
+const Customer = ({customerName, rate, userPhoto}) => {
     return (
         <div className = 'customerContainer'>
             <p className='customer__up'>Заказчик</p>
             <div className="customer__information">
-                <img className='information-icon' src={icon} alt="" />
+                <img className='information-icon' src={userPhoto} alt="" />
                 <div className="customer__information-right">
                     <div className="customer__information-right-name">
                         <p>{customerName}</p>
