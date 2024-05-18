@@ -177,6 +177,7 @@ const AdCreating = () => {
                         MainButton.setText('Далее')
                     }
                     animte()
+
                 
             }
             else{
@@ -186,9 +187,7 @@ const AdCreating = () => {
                 MainButton.hide()
             }
         }
-        else{
 
-        }
     }
     function goBack(){
         if (spet === 0){
