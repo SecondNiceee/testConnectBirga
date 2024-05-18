@@ -100,7 +100,7 @@ const AdCreating = () => {
         } , 310 )
     }
     
-    alert(taskInformation.photos[0])
+
 
     async function post (el) {
         let myFormData = new FormData()
@@ -113,7 +113,7 @@ const AdCreating = () => {
         myFormData.append('price' ,el.tonValue )
         myFormData.append('startTime' , el.startTime && el.endTime ? el.startTime : el.singleTime)
         myFormData.append('endTime' ,  el.startTime && el.endTime ? el.endTime : el.singleTime)
-        myFormData.append('photos' , [el.photos[0]])
+        myFormData.append('photos' , el.photos[0])
         axios.post('https://back-birga.ywa.su/advertisement' ,
                         myFormData,
         {
