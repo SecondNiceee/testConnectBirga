@@ -15,6 +15,12 @@ import cl from './SecondAddCreating.module.css'
 import MainButton from '../../../constants/MainButton';
 
 
+
+Date.prototype.addHours = function(h) {
+  this.setTime(this.getTime() + (h*60*60*1000));
+  return this;
+}
+
 const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , GreyWidth , GreyIntWidth , errors}) => {
 
 
@@ -53,7 +59,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       }
 
       const [state, setState] = useState({
-        time: new Date(),
+        time: new Date().addHours(1),
         isOpen: false,
         isPicked : false,
         singleOpen : null,
@@ -125,58 +131,6 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
 
 
 
-//   useEffect( () => {
-//     if (dateObject){
-      
-//       let startY;
-//       let endY;
-//       let startX;
-//       let endX;
-//       let targ = false;
-//       function handleStart(e){
-//         if (e.target.closest('.datepicker') === null || e.target.closest('.datepicker-navbar') !== null)  {
-//           targ = true
-//           datePickerObject.style.transition = '0s'
-//           startY = e.touches[0].clientY
-//           startX = e.touches[0].clientX
-//         }
-//       }
-//       function handleMove(e){
-//         if (targ){
-
-//           endY = e.touches[0].clientY
-//           endX = e.touches[0].clientX
-//           if (endY >= startY) {
-//             datePickerObject.style.transform = `translateY(${endY - startY}px)`
-//           }
-//         }
-//       }
-//       function handleEnd(e){
-//         if (targ){
-//           datePickerObject.style.transition = '0.3s'
-//           if (endY - startY > 60) {
-//             setState({...state,isOpen : false})
-//           }
-//           else{
-//             datePickerObject.style.transform = 'translateY(0px)'
-//           }
-//         }
-//         targ = false
-//       }
-  
-  
-//         dateObject.addEventListener('touchstart' , handleStart)
-//         dateObject.addEventListener('touchmove' , handleMove)
-//         dateObject.addEventListener('touchend' , handleEnd )
-//         return () => {
-//           document.removeEventListener('touchstart' , handleStart)
-//           document.removeEventListener('touchmove' , handleMove)
-//           document.removeEventListener('touchend' , handleEnd)
-//         }
-//     }
-
-// } , [dateObject])
-
 
 
 
@@ -214,15 +168,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
         behavior : 'auto'
       })
     }
-    // if (document.documentElement.style.marginTop === '0px' && window.scrollY !== 0){
 
-    //   window.scrollTo({
-    //     top : 0,
-    //     behavior : 'auto'
-    //   })
-    // }
-
-    // dateObject.style = 'block'
     return (
       <div className = {cl.SecondAddCreating} 
       
@@ -239,7 +185,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
             isOpen={true}
             onSelect={handleSelect}
             onCancel={handleCancel}
-            min = {new Date()}
+             min = { new Date(new Date().addHours(1) + 1)    }
           />
 
 
