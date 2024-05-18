@@ -100,7 +100,7 @@ const AdCreating = () => {
         } , 310 )
     }
     
-    alert(el.photos[0])
+    alert(taskInformation.photos[0])
 
     async function post (el) {
         let myFormData = new FormData()
