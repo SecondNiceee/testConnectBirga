@@ -19,7 +19,7 @@ const First = () => {
 
   const dispatch = useDispatch();
   useEffect( () => {
-    dispatch ( fetchTasksInformation() )
+    dispatch ( fetchTasksInformation('getOrders') )
   } , [] )
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
@@ -38,6 +38,7 @@ const First = () => {
   const filteredArr = useFilteredArr(ordersInformation, filterBy);
 
   const [isDetailsActive, setDetailsActive ] = useState(false);
+
   useEffect(() => {
     BackButton.hide()
     MainButton.hide()

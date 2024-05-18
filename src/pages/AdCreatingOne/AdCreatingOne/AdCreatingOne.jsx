@@ -25,6 +25,9 @@ const AdCreatingOne =   ({ taskInformation , setTaskInformation,  MyInformation,
 
   const navigate = useNavigate()
 
+
+
+
   function goForward(){
     transform  =  [ {x:'-100%'} , {x : 0} ]
     navigate('/AdCreatingTwo')

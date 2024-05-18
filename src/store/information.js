@@ -1,38 +1,72 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from 'axios'
+import axios from 'axios';
+
+export const fetchMyOrders = createAsyncThunk(
+  "information/fetchMyOrders" , 
+  async function (){
+    let tasks = []
+    let task = await axios.get('https://back-birga.ywa.su/advertisement/findByUser' , {
+      params : {
+         userId : window.Telegram.WebApp.initDataUnsafe.user.id
+      }
+    })
+    console.log(task)
+
+    if (task.data.length === 0){
+      return []
+    }
+    else{
+      for (let order of task.data) {
+        tasks.push({
+          taskName : order.title,
+          executionPlace: "Можно выполнить удаленно",
+          time : {start : order.startTime , end : order.endTime},
+          tonValue : order.price,
+          taskDescription : order.description,
+          photos : order.photos || [],
+          rate : '5',
+          isActive : true,
+          creationTime : order.createdAt,
+          viewsNumber : '51', 
+          
+        })
+      }
+      return tasks
+    }
+  }
+)
 export const fetchTasksInformation = createAsyncThunk( 
   'information/fetchTasksInformation' , 
-  async function (){
-      let tasks = []
-      let task = await axios.get('https://back-birga.ywa.su/advertisement/findAll')
-
-      if (task.data.length === 0){
-        return []
-      }
-      else{
-
-        for (let order of task.data) {
-          tasks.push({
-            taskName : order.title,
-            executionPlace: "Можно выполнить удаленно",
-            time : {start : order.startTime , end : order.endTime},
-            tonValue : order.price,
-            taskDescription : order.description,
-            photos : order.photos || "",
-            customerName : order.user.fl,
-
-  
-            rate : '5',
-            customerName : order.user.fl,
-            isActive : true,
-            creationTime : order.createdAt,
-            viewsNumber : '51', 
-            
-          })
+  async function (par){
+        let tasks = []
+        let task = await axios.get('https://back-birga.ywa.su/advertisement/findAll')
+        if (task.data.length === 0){
+          return []
         }
-
-        return tasks
-      }
+        else{
+  
+          for (let order of task.data) {
+            tasks.push({
+              taskName : order.title,
+              executionPlace: "Можно выполнить удаленно",
+              time : {start : order.startTime , end : order.endTime},
+              tonValue : order.price,
+              taskDescription : order.description,
+              photos : order.photos || "",
+              customerName : order.user.fl,
+  
+    
+              rate : '5',
+              customerName : order.user.fl,
+              isActive : true,
+              creationTime : order.createdAt,
+              viewsNumber : '51', 
+              
+            })
+          }
+  
+          return tasks
+        }
   }
  )
 const information = createSlice( {
@@ -196,7 +230,26 @@ const information = createSlice( {
       builder.addCase( fetchTasksInformation.fulfilled, ((state , action) => {state.status = 'loading'  
       state.orderInformations = action.payload }  ) )
       builder.addCase( fetchTasksInformation.rejected , ( (state , action) => {state.status = 'error'} )  )
-    }
+      
+        builder.addCase( fetchMyOrders.pending, (state => {state.status = 'loading'} )  )
+        builder.addCase( fetchMyOrders.fulfilled, ((state , action) => {state.status = 'loading'  
+        state.myAdsArray = action.payload
+        console.log('привет')
+       }  ) )
+        builder.addCase( fetchMyOrders.rejected , ( (state , action) => {state.status = 'error' 
+        } )  )
+    },
+      // extraReducers : builder => {
+
+      //   builder.addCase( fetchMyOrders.pending, (state => {state.status = 'loading'} )  )
+      //   builder.addCase( fetchMyOrders.fulfilled, ((state , action) => {state.status = 'loading'  
+      //   state.myAdsArray = action.payload
+      //   console.log('привет')
+      //  }  ) )
+      //   builder.addCase( fetchMyOrders.rejected , ( (state , action) => {state.status = 'error' 
+      //   } )  )
+      // }
+
 })
 export const {changeTaskInformation , changeMyAds, addMyAds} = information.actions;
 export default information.reducer;

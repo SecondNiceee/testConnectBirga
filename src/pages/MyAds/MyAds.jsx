@@ -5,7 +5,7 @@ import React, { Suspense, lazy, useCallback, useEffect, useMemo, useState } from
 import { useDispatch, useSelector } from "react-redux";
 import BackButton from "../../constants/BackButton";
 import {  useNavigate } from "react-router-dom";
-import { changeMyAds } from "../../store/information";
+import { changeMyAds, fetchMyOrders, fetchTasksInformation } from "../../store/information";
 import { changeMenuActive } from "../../store/menuSlice";
 import useListner from "../../hooks/useListner";
 import "./MyAds.css";
@@ -40,15 +40,18 @@ const MyAds = () => {
 
   const isMenuActive = useSelector((state) => state.menu.value);
 
-  const [myAdsArray, setMyAdsArray] = useState(
-    useSelector((state) => state.information.myAdsArray)
-  );
-
-  const [task, setTask] = useState(myAdsArray[0]);
-
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+
+  const myAdsArray =  useSelector((state) => state.information.myAdsArray)
+
+  function setMyAdsArray(arr){
+    
+  }
+
+  const [task, setTask] = useState(myAdsArray[0]);
+
 
   const [stationNow, setStationNow] = useState(-200);
   
@@ -56,7 +59,9 @@ const MyAds = () => {
 
   const [isClosed , setClosed] = useState(true)
   
-
+  useEffect( () => {
+    dispatch(fetchMyOrders())
+  }, [])
 
   useEffect( () => {
    
