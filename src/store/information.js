@@ -55,7 +55,7 @@ export const fetchTasksInformation = createAsyncThunk(
               photos : order.photos || "",
               customerName : order.user.fl,
   
-              userPhoto : task.data.photo,
+              userPhoto : order.user.photo || "",
               rate : '5',
               customerName : order.user.fl,
               isActive : true,
