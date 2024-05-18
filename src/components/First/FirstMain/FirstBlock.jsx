@@ -13,7 +13,8 @@ const FirstBlock = ({ className, taskName, executionPlace, time, tonValue , setD
              <div className={ className ? ["First__block" , className].join(' ') : "First__block" }>
                 {photos.length ? (<div className='first__photos'> 
                     {photos.map( (e) => {
-                        return <img src={URL.createObjectURL(e)} className='first__photo' alt="" />
+                        // return <img src={URL.createObjectURL(e)} className='first__photo' alt="" />
+                        return <img className='first__photo' src = {'https://back-birga.ywa.su/' + e} />
                     } )}
                  </div>) : ''  }
                 <div className="FirstMain__top">
