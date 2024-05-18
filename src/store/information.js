@@ -60,7 +60,7 @@ export const fetchTasksInformation = createAsyncThunk(
               customerName : order.user.fl,
               isActive : true,
               creationTime : order.createdAt,
-              viewsNumber : '51', 
+              viewsNumber : '50',
               
             })
           }
