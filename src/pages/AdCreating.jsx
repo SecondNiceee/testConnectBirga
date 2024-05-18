@@ -99,7 +99,7 @@ const AdCreating = () => {
             }
         } , 310 )
     }
-
+    console.log('dasd')
 
     async function post (el) {
         axios.post('https://back-birga.ywa.su/advertisement' ,
