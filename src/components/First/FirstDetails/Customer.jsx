@@ -7,7 +7,9 @@ const Customer = ({customerName, rate, userPhoto}) => {
         <div className = 'customerContainer'>
             <p className='customer__up'>Заказчик</p>
             <div className="customer__information">
-                <img className='information-icon' src={userPhoto} alt="" />
+                <img style={{
+                    borderRadius : '50%'
+                }} className='information-icon' src={userPhoto} alt="" />
                 <div className="customer__information-right">
                     <div className="customer__information-right-name">
                         <p>{customerName}</p>
