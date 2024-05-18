@@ -101,24 +101,29 @@ const AdCreating = () => {
     }
 
 
-    async function post (el) {
-        axios.post('https://back-birga.ywa.su/advertisement' ,
-         {
-          userId : window.Telegram.WebApp.initDataUnsafe.user.id,
-          title : el.taskName,
-          description : el.taskDescription,
-          deadline : 1,
-          category : 1,
-          subCategory : 1,
-          price : Math.round(el.tonValue),
-          startTime : el.startTime && el.endTime ? el.startTime : el.singleTime,
-          endTime : el.startTime && el.endTime ? el.endTime : el.singleTime,
-          photos : [el.photos[0]]
-        },
+    // async function post (el) {
+    //     axios.post('https://back-birga.ywa.su/advertisement' ,
+    //      {
+    //       userId : window.Telegram.WebApp.initDataUnsafe.user.id,
+    //       title : el.taskName,
+    //       description : el.taskDescription,
+    //       deadline : 1,
+    //       category : 1,
+    //       subCategory : 1,
+    //       price : Math.round(el.tonValue),
+    //       startTime : el.startTime && el.endTime ? el.startTime : el.singleTime,
+    //       endTime : el.startTime && el.endTime ? el.endTime : el.singleTime,
+    //       photos : [el.photos[0]]
+    //     },
+    //     {
+    //         'headers' : {
+    //             'Content-Type' : 'multipart/form-data'
+    //         }
+    //     }
         
     
-    )
-      }
+    // )
+    //   }
 
 
     function checking(){
