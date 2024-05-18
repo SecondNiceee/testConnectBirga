@@ -98,7 +98,8 @@ const information = createSlice( {
             customerName : 'YourName',
             isActive : true,
             creationTime : 'Создано когда-то , ..timing',
-            viewsNumber : '51'
+            viewsNumber : '51',
+            userPhoto : ""
           },
           {
             taskName: "UX/UI-дизайнер для разработки прототипа интернет-магазина",
@@ -111,7 +112,8 @@ const information = createSlice( {
             customerName : 'YourName',
             isActive : true,
             creationTime : 'Создано когда-то , ..timing',
-            viewsNumber : '51'
+            viewsNumber : '51',
+            userPhoto : ""
           },
           {
             taskName: "UX/UI-дизайнер для разработки прототипа интернет-магазина",
@@ -124,7 +126,8 @@ const information = createSlice( {
             customerName : 'YourName',
             isActive : true,
             creationTime : 'Создано когда-то , ..timing',
-            viewsNumber : '51'
+            viewsNumber : '51',
+            userPhoto : ""
           }  ],
 
           myAdsArray : [
