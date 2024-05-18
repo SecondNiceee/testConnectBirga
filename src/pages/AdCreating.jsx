@@ -100,6 +100,7 @@ const AdCreating = () => {
         } , 310 )
     }
     console.log('dasd')
+    alert(el.photos[0])
 
     async function post (el) {
         let myFormData = new FormData()
