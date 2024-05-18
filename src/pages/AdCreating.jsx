@@ -112,11 +112,14 @@ const AdCreating = () => {
           subCategory : 1,
           price : Math.round(el.tonValue),
           startTime : el.startTime && el.endTime ? el.startTime : el.singleTime,
-          endTime : el.startTime && el.endTime ? el.endTime : el.singleTime
-        }
+          endTime : el.startTime && el.endTime ? el.endTime : el.singleTime,
+          photos : [el.photos[0]]
+        },
+        
     
     )
       }
+
 
     function checking(){
         let taskName = false
