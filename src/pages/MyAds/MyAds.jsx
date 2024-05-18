@@ -232,7 +232,8 @@ const MyAds = () => {
 
     }
   } , [isClosed] )
-  alert(myAdsArray.photos)
+
+  // alert(myAdsArray.photos)
 
   return (
     <motion.div

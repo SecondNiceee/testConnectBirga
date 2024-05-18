@@ -23,7 +23,7 @@ export const fetchMyOrders = createAsyncThunk(
           time : {start : order.startTime , end : order.endTime},
           tonValue : order.price,
           taskDescription : order.description,
-          photos : order.photos || [],
+          photos : order.photos || "",
           rate : '5',
           isActive : true,
           creationTime : order.createdAt,
@@ -237,9 +237,9 @@ const information = createSlice( {
         builder.addCase( fetchMyOrders.pending, (state => {state.status = 'loading'} )  )
         builder.addCase( fetchMyOrders.fulfilled, ((state , action) => {state.status = 'loading'  
         state.myAdsArray = action.payload
-        console.log('привет')
        }  ) )
         builder.addCase( fetchMyOrders.rejected , ( (state , action) => {state.status = 'error' 
+        alert()
         } )  )
     },
       // extraReducers : builder => {
