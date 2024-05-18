@@ -102,19 +102,24 @@ const AdCreating = () => {
     console.log('dasd')
 
     async function post (el) {
+        let myFormData = new FormData()
+        myFormData.append('userId' , window.Telegram.WebApp.initDataUnsafe.user.id)
+        myFormData.append('title' , el.taskName)
+        myFormData.append('description' , el.taskDescription)
+        myFormData.append('deadline' , 1)
+        myFormData.append('category' , 1)
+        myFormData.append('subCategory' , 1)
+        myFormData.append('price' ,el.tonValue )
+        myFormData.append('startTime' , el.startTime && el.endTime ? el.startTime : el.singleTime)
+        myFormData.append('endTime' ,  el.startTime && el.endTime ? el.endTime : el.singleTime)
+        myFormData.append('photos' , [el.photos[0]])
         axios.post('https://back-birga.ywa.su/advertisement' ,
-         {
-          userId : window.Telegram.WebApp.initDataUnsafe.user.id,
-          title : el.taskName,
-          description : el.taskDescription,
-          deadline : 1,
-          category : 1,
-          subCategory : 1,
-          price : Math.round(el.tonValue),
-          startTime : el.startTime && el.endTime ? el.startTime : el.singleTime,
-          endTime : el.startTime && el.endTime ? el.endTime : el.singleTime,
-        //   photos : [el.photos[0]]
-        },
+                        myFormData,
+        {
+            'headers' : {
+                'Content-Type' : 'multipart/form-data'
+            }
+        }
         
     
     )
