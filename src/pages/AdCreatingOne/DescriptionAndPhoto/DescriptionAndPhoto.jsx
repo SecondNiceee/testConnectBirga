@@ -32,6 +32,10 @@ const DescriptionAndPhoto = ({
             document.querySelector('.adCreatingOne').scrollTo({
               top : 200
             })
+            window.scrollTo( { 
+              top : 200,
+              behavior: 'auto'
+            })
             document.querySelector('.adCreatingOne').scrollTop  = 200;
           }}
           value={taskInformation.taskDescription}
