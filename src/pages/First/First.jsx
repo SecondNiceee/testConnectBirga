@@ -24,6 +24,7 @@ const First = () => {
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
   );
+  console.log(ordersInformation)
 
 
   const isMenuActive = useSelector((state) => state.menu.value);

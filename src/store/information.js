@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
+
 export const fetchMyOrders = createAsyncThunk(
   "information/fetchMyOrders" , 
   async function (){
@@ -10,20 +11,34 @@ export const fetchMyOrders = createAsyncThunk(
          userId : window.Telegram.WebApp.initDataUnsafe.user.id
       }
     })
-    console.log(task)
+
+    const urlToObject= async(image)=> {
+      const response = await fetch(image);
+      // here image is url/location of image
+      const blob = await response.blob();
+      const file = new File([blob], image, {type: blob.type});
+      return file
+    }
 
     if (task.data.length === 0){
       return []
     }
     else{
+
+
       for (let order of task.data) {
+        let filePhotos =  []
+        for (let photo of order.photos){
+          await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
+        }
+
         tasks.push({
           taskName : order.title,
           executionPlace: "Можно выполнить удаленно",
           time : {start : order.startTime , end : order.endTime},
           tonValue : order.price,
           taskDescription : order.description,
-          photos : order.photos || "",
+          photos : filePhotos || [],
           rate : '5',
           isActive : true,
           creationTime : order.createdAt,
@@ -31,6 +46,7 @@ export const fetchMyOrders = createAsyncThunk(
           
         })
       }
+      console.log(tasks)
       return tasks
     }
   }
@@ -38,6 +54,15 @@ export const fetchMyOrders = createAsyncThunk(
 export const fetchTasksInformation = createAsyncThunk( 
   'information/fetchTasksInformation' , 
   async function (par){
+
+        const urlToObject= async(image)=> {
+          const response = await fetch(image);
+          // here image is url/location of image
+          const blob = await response.blob();
+          const file = new File([blob], image, {type: blob.type});
+          return file
+        }
+
         let tasks = []
         let task = await axios.get('https://back-birga.ywa.su/advertisement/findAll')
         if (task.data.length === 0){
@@ -46,16 +71,26 @@ export const fetchTasksInformation = createAsyncThunk(
         else{
   
           for (let order of task.data) {
+            
+
+
+
+            let filePhotos =  []
+            for (let photo of order.photos){
+              await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
+            }
+
+
             tasks.push({
               taskName : order.title,
               executionPlace: "Можно выполнить удаленно",
               time : {start : order.startTime , end : order.endTime},
               tonValue : order.price,
               taskDescription : order.description,
-              photos : order.photos || "",
+              photos : filePhotos || [],
               customerName : order.user.fl,
   
-              userPhoto : order.user.photo || "",
+              userPhoto : order.user.photo|| "",
               rate : '5',
               customerName : order.user.fl,
               isActive : true,

@@ -100,7 +100,7 @@ function App() {
         userId : 2144832745
       }
     })
-    console.log(task)
+
 
     if (task.data.length === 0){
       return []
@@ -116,13 +116,14 @@ function App() {
           photos : order.photos || "",
 
 
-          rate : '5',
+          rate : '5', 
           isActive : true,
           creationTime : order.createdAt,
           viewsNumber : '51', 
           
         })
       }
+      console.log(tasks)
       return tasks
     }
   }

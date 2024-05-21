@@ -9,7 +9,11 @@ export default configureStore( {
         ton : ton,
         menu : menuSlice,
         telegramUserInfo : telegramUserInfo
-    }
+    },
+    middleware: getDefaultMiddleware =>
+        getDefaultMiddleware({
+          serializableCheck: false,
+        }),
 
 });
 
