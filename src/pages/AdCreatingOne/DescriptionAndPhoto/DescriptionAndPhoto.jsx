@@ -27,6 +27,8 @@ const DescriptionAndPhoto = ({
           onFocus = { (e) => {
             console.log(e.target.getBoundingClientRect().y)
             console.log(document.querySelector('.adCreatingOne'))
+            document.querySelector('.adCreatingOne').scroll(0 ,200)
+            document.querySelector('.adCreatingOne').scrollTo(0 ,200)
             document.querySelector('.adCreatingOne').scrollTo({
               top : 200
             })
