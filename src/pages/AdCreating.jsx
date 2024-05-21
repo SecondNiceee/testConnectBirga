@@ -117,6 +117,7 @@ const AdCreating = () => {
         }
         else{
             myFormData.append('startTime' ,  el.singleTime)
+            myFormData.append('endTime' ,  "")
         }
         if (el.photos.length !== 0){
             for (let file of el.photos){
