@@ -49,12 +49,13 @@ const MyAdOne = ({
         setIndex={setIndex}
       />
 
-      <CSSTransition classNames="details" in={isDetailsActive} timeout={0}>
+      <CSSTransition classNames="details" in={isDetailsActive} timeout={0} mountOnEnter>
         <AdCreatingOne
           className="AdCreatingMy"
           taskInformation={myAdsArray[index]}
           setTaskInformation={setMyArray}
           MyInformation={true}
+        
         />
       </CSSTransition>
     </div>
