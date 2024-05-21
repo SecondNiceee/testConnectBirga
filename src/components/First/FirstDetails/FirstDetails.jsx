@@ -7,15 +7,8 @@ import SimilarAds from './SimilarAds';
 const FirstDetails = ({  orderInformation , similarAds , isDetailsActive, setDetailsActive}) => {
     const BackButton = window.Telegram.WebApp.BackButton;
 
-    var options = {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        hour : 'numeric',
-        minute : 'numeric',
-        timezone: 'UTC'
-      };
-      
+
+
     function closeDetails(){
         setDetailsActive(false)
     }

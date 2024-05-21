@@ -37,7 +37,7 @@ export const fetchMyOrders = createAsyncThunk(
         tasks.push({
           taskName : order.title,
           executionPlace: "Можно выполнить удаленно",
-          time : {start : order.startTime , end : order.endTime},
+          time : {start : new Date(order.startTime) , end : new Date(order.endTime)},
           tonValue : order.price,
           taskDescription : order.description,
           photos : filePhotos || [],
@@ -84,17 +84,22 @@ export const fetchTasksInformation = createAsyncThunk(
                 }
               }
             }
-
-
+            let one = new Date(order.startTime)
+            let two;
+            if (order.endTime !== ""){
+               two = new Date(order.endTime)
+            }
+            else{
+               two = ""
+            }
             tasks.push({
               taskName : order.title,
               executionPlace: "Можно выполнить удаленно",
-              time : {start : order.startTime , end : order.endTime},
+              time : {start : one , end : two},
               tonValue : order.price,
               taskDescription : order.description,
               photos : filePhotos || [],
               customerName : order.user.fl,
-  
               userPhoto : order.user.photo|| "",
               rate : '5',
               customerName : order.user.fl,

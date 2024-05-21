@@ -10,7 +10,7 @@ const TaskDetailsContainer = ({orderInformation}) => {
     <div className="Task__container-one">
       <FirstBlock {...orderInformation} isButton = {false} />
       <FullDescription fullDescription={orderInformation.taskDescription} />
-      <Dedline dedline={orderInformation.time.end} />
+      <Dedline dedline={orderInformation.time} />
       <div className="TaskDetails-row">
         <Customer userPhoto = {orderInformation.userPhoto} rate={orderInformation.rate} customerName={orderInformation.customerName} />
         <Status isActive={orderInformation.isActive} />

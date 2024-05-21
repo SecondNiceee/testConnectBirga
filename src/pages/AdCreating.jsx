@@ -112,7 +112,7 @@ const AdCreating = () => {
         myFormData.append('subCategory' , 1)
         myFormData.append('price' ,el.tonValue )
         myFormData.append('startTime' , el.startTime && el.endTime ? el.startTime : el.singleTime)
-        myFormData.append('endTime' ,  el.startTime && el.endTime ? el.endTime : el.singleTime)
+        myFormData.append('endTime' ,  el.startTime && el.endTime ? el.endTime : "")
         if (el.photos.length !== 0){
             for (let file of el.photos){
                 myFormData.append('photos' , file)

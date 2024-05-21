@@ -699,7 +699,7 @@
   letter-spacing: 0%;
   text-align: left;
 }
-.Task__container-one .DeadlineContainer p:nth-child(2) {
+.Task__container-one .DeadlineContainer p:nth-child(2), .Task__container-one .DeadlineContainer p:nth-child(3) {
   /* Default text */
   color: rgb(255, 255, 255);
   font-family: "SF Pro Display";
@@ -1168,6 +1168,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  will-change: transform;
 }
 
 .datepicker {

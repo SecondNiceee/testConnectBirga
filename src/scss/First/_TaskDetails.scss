@@ -182,7 +182,7 @@
             letter-spacing: 0%;
             text-align: left;
         }
-        p:nth-child(2){
+        p:nth-child(2) , p:nth-child(3) {
             /* Default text */
             color: rgb(255, 255, 255);
             font-family: "SF Pro Display";
