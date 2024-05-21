@@ -111,8 +111,13 @@ const AdCreating = () => {
         myFormData.append('category' , 1)
         myFormData.append('subCategory' , 1)
         myFormData.append('price' ,el.tonValue )
-        myFormData.append('startTime' , el.startTime && el.endTime ? el.startTime : el.singleTime)
-        myFormData.append('endTime' ,  el.startTime && el.endTime ? el.endTime : "")
+        if (document.getElementById('dateSwapper').style.transform){
+            myFormData.append('startTime' , el.startTime)
+            myFormData.append('endTime' ,  el.endTime)
+        }
+        else{
+            myFormData.append('startTime' ,  el.singleTime)
+        }
         if (el.photos.length !== 0){
             for (let file of el.photos){
                 myFormData.append('photos' , file)
