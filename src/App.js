@@ -150,7 +150,7 @@ function App() {
   useEffect ( () => {
     dispatch( fetchTon() )
      dispatch ( fetchUserInfo() )
-     start()
+    //  start()
   },[] )
 
 
