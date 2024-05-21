@@ -250,10 +250,10 @@ const AdCreating = () => {
         MainButton.setText('Далее')
 
 
-        document.documentElement.style.marginTop = '150px'
+        document.documentElement.style.marginTop = '20px'
 
         window.scrollTo({
-        top : 150,
+        top : 20,
         behavior : 'auto'
         })
 
