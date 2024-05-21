@@ -24,6 +24,10 @@ const DescriptionAndPhoto = ({
       <div className={cl.InputContainer}>
         <p className={cl.inputCounter} style={ taskInformation.taskDescription.length < 500 ? {} : {color : '#8a0303'}}>{taskInformation.taskDescription.length} / 500</p>
         <TextArea 
+          onFocus = { (e) => {
+            console.log(e.target.getBoundingClientRect().y)
+            document.querySelector('.adCreatingOne').scroll( 0, e.target.getBoundingClientRect().y )
+          }}
           value={taskInformation.taskDescription}
           className={cl.DescriptionInput}
           placeholder="Дайте подробное тз..."
