@@ -277,7 +277,7 @@ const AdCreating = () => {
             <button ref = {blurRef} style={{position : 'absolute'}} onClick={() => {goForward()}} >Выфвфывфы</button>
             <button style={{position : 'absolute' , left : '100%' , zIndex : 20}} onClick={() => {goForward()}} >Выфвфывфы</button>
             <button style={{position : 'absolute' , left : '200%' , zIndex : 20}} onClick={() => {post(taskInformation)}} >Отослать</button>
-            <AdCreatingOne errorName={error.name} setTaskInformation = {setTaskInformation}  taskInformation = {taskInformation} />
+            <AdCreatingOne className={'adCreatingOne'} errorName={error.name} setTaskInformation = {setTaskInformation}  taskInformation = {taskInformation} />
             <AdCreatingTwo errors = {{ton : error.ton , singleError : error.singleError , startError : error.startError , endError : error.endError}} GreyIntWidth = {GreyIntWidth} GreyWidth={GreyWidth} setTaskInformation = {setTaskInformation} taskInformation = {taskInformation} tonConstant = {tonConstant} />
             <AdCreatingThree taskInformation = {taskInformation} />
         </motion.div>

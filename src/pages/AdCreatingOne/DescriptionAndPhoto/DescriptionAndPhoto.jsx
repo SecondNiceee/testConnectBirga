@@ -26,7 +26,8 @@ const DescriptionAndPhoto = ({
         <TextArea 
           onFocus = { (e) => {
             console.log(e.target.getBoundingClientRect().y)
-            document.querySelector('.adCreatingOne').scroll( 0, e.target.getBoundingClientRect().y )
+            console.log(document.querySelector('.adCreatingOne'))
+            document.querySelector('.adCreatingOne').scrollIntoView()
           }}
           value={taskInformation.taskDescription}
           className={cl.DescriptionInput}
