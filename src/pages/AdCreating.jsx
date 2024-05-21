@@ -114,7 +114,10 @@ const AdCreating = () => {
         myFormData.append('startTime' , el.startTime && el.endTime ? el.startTime : el.singleTime)
         myFormData.append('endTime' ,  el.startTime && el.endTime ? el.endTime : el.singleTime)
         if (el.photos.length !== 0){
-            myFormData.append('photos' , el.photos[0])
+            for (let file of el.photos){
+                myFormData.append('photos' , file)
+            }
+            // myFormData.append('photos' , el.photos[0])
         }
         axios.post('https://back-birga.ywa.su/advertisement' ,
                         myFormData,

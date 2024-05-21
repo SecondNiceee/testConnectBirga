@@ -25,9 +25,8 @@ export const fetchMyOrders = createAsyncThunk(
     }
     else{
 
-
-      let filePhotos =  []
       for (let order of task.data) {
+        let filePhotos =  []
         if (order.photos){
 
           for (let photo of order.photos){
