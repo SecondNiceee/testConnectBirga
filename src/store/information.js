@@ -26,10 +26,13 @@ export const fetchMyOrders = createAsyncThunk(
     else{
 
 
+      let filePhotos =  []
       for (let order of task.data) {
-        let filePhotos =  []
-        for (let photo of order.photos){
-          await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
+        if (order.photos){
+
+          for (let photo of order.photos){
+            await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
+          }
         }
 
         tasks.push({
@@ -74,9 +77,12 @@ export const fetchTasksInformation = createAsyncThunk(
             
 
             let filePhotos =  []
-            if (order.photos.length !== 0){
-              for (let photo of order.photos){
-                await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
+            if (order.photos){
+
+              if (order.photos.length !== 0){
+                for (let photo of order.photos){
+                  await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
+                }
               }
             }
 
