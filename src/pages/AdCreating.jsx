@@ -199,6 +199,7 @@ const AdCreating = () => {
                 post(taskInformation)
                 navigate('/MyAds')
                 MainButton.hide()
+                spet = 0
             }
         }
 
