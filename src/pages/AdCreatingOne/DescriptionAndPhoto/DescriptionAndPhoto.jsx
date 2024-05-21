@@ -27,7 +27,10 @@ const DescriptionAndPhoto = ({
           onFocus = { (e) => {
             console.log(e.target.getBoundingClientRect().y)
             console.log(document.querySelector('.adCreatingOne'))
-            document.querySelector('.adCreatingOne').scrollIntoView()
+            document.querySelector('.adCreatingOne').scrollTo({
+              top : 200
+            })
+            document.querySelector('.adCreatingOne').scrollTop  = 200;
           }}
           value={taskInformation.taskDescription}
           className={cl.DescriptionInput}
