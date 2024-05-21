@@ -209,6 +209,7 @@
 
 .AdCreating__container{
   display: flex;
+  will-change: transform;
 }
 .datepicker{
   transform: translateY(100%);
