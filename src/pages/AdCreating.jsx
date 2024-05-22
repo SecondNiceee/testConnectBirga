@@ -148,7 +148,7 @@ const AdCreating = () => {
         myFormData,
         {
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "multipart/form-data",
           },
         }
       );
