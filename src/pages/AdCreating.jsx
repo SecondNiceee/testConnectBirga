@@ -153,7 +153,7 @@ const AdCreating = () => {
         }
       );
     } catch (e) {
-      alert(e);
+      alert(e.response);
     }
   }
 
