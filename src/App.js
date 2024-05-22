@@ -154,8 +154,13 @@ function App() {
   },[] )
 
 
- 
-
+  var isAndroid = navigator.userAgent.toLowerCase();;
+  console.log(isAndroid)
+  if(isAndroid) {
+    console.log('Устройство является Android');
+  } else {
+    console.log('Устройство не является Android');
+  }
   return (
       <BrowserRouter>
         <div className="UperContainer">
