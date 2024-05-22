@@ -15,7 +15,7 @@ const FileInput = ({ className, files, setFiles }) => {
   }, [myRef.files]);
 
   var device = navigator.userAgent.toLowerCase();
-
+  console.log(!device.includes("android"))
   return (
     <label
       htmlFor="file"
