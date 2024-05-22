@@ -86,7 +86,6 @@ export const fetchTasksInformation = createAsyncThunk(
             }
             let one = new Date(order.startTime)
             let two;
-            console.log(order.endTime)
             if (order.endTime){
                two = new Date(order.endTime)
             }

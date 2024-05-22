@@ -206,7 +206,6 @@ const AdCreating = () => {
                 
             }
             else{
-                alert('отправлено!')
                 post(taskInformation)
                 navigate('/MyAds')
                 MainButton.hide()

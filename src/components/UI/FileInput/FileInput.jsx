@@ -49,7 +49,6 @@ const FileInput = ({ className, files, setFiles }) => {
         <input
           ref={myRef}
           onChange={(event) => {
-            alert(event.target.files);
             if (event.target.files && event.target.files[0]) {
               let newFiles = [];
               for (let photo of event.target.files) {
