@@ -101,11 +101,16 @@ const AdCreating = () => {
     }
     
 
-
+    async function finish(){
+        await post(taskInformation)
+        navigate('/MyAds')
+        MainButton.hide()
+        spet = 0
+    }
     async function post (el) {
         let myFormData = new FormData()
         // myFormData.append('userId' , window.Telegram.WebApp.initDataUnsafe.user.id)
-        myFormData.append('userId' , 2144832745)
+        myFormData.append('userId' , '2144832745')
         myFormData.append('title' , el.taskName)
         myFormData.append('description' , el.taskDescription)
         myFormData.append('deadline' , 1)
@@ -126,16 +131,15 @@ const AdCreating = () => {
             }
             // myFormData.append('photos' , el.photos[0])
         }
-        axios.post('https://back-birga.ywa.su/advertisement' ,
+         let  responce = await axios.post('https://back-birga.ywa.su/advertisement' ,
                         myFormData,
         {
             'headers' : {
-                'Content-Type' : 'multipart/form-data'
+                'Content-Type' : 'multipart/form-data',
             }
         }
-        
-    
-    )
+    ) 
+      console.log(responce)
       }
 
 
@@ -207,10 +211,11 @@ const AdCreating = () => {
                 
             }
             else{
-                post(taskInformation)
-                navigate('/MyAds')
-                MainButton.hide()
-                spet = 0
+                finish()
+                // post(taskInformation)
+                // navigate('/MyAds')
+                // MainButton.hide()
+                // spet = 0
             }
         }
 
