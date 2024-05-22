@@ -58,7 +58,7 @@ const FileInput = ({ className, files, setFiles }) => {
             }
           }}
           type="file"
-          multiple={!device.includes("android")}
+          multiple={device.includes("android") ? false : true}
           // multiple = {false}
           name="file"
           id="file"
