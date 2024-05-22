@@ -19,10 +19,20 @@ const FirstBlock = ({ className, taskName, executionPlace, time, tonValue , setD
     return (
              <div className={ className ? ["First__block" , className].join(' ') : "First__block" }>
                 {photos.length ? (<div className='first__photos'> 
+
                     {photos.map( (e) => {
-                        return <img src={URL.createObjectURL(e)} className='first__photo' alt="" />
+                        return <img src={URL.createObjectURL(e)}
+                        style={photos.length === 1 ? {
+                            minWidth : '240px'
+                        }
+                    : 
+                    {}
+                       }
+                         className='first__photo' alt="" />
                         // return <img className='first__photo' src = {'https://back-birga.ywa.su/' + e} />
                     } )}
+                    
+
                  </div>) : ''  }
                 <div className="FirstMain__top">
                     <Pallete  />
