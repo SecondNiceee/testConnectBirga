@@ -15,6 +15,8 @@ const FileInput = ({ className, files, setFiles }) => {
   }, [myRef.files]);
 
   var device = navigator.userAgent.toLowerCase();
+
+  
   return (
     <label
       htmlFor="file"
