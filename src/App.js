@@ -123,7 +123,6 @@ function App() {
           
         })
       }
-      console.log(tasks)
       return tasks
     }
   }
@@ -150,7 +149,6 @@ function App() {
   useEffect ( () => {
     dispatch( fetchTon() )
      dispatch ( fetchUserInfo() )
-    //  start()
   },[] )
 
 
