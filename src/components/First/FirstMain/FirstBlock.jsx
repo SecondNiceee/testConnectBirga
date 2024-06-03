@@ -40,7 +40,7 @@ const FirstBlock = ({ className, taskName, executionPlace, time, tonValue , setD
                     <ShareIcon className='share__icon' />
                 </div>
                 <div className="FirstMain__middle">
-                    <p>{executionPlace}</p>
+                    {/* <p>{executionPlace}</p> */}
                     <p>{time.start.toLocaleString("ru", options)}</p>
                 </div>
                 <div className="FirstMain__bottom">

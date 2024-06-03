@@ -136,14 +136,12 @@ const AdCreating = () => {
       myFormData.append("endTime", "");
     }
 
-    try {
         if (el.photos.length !== 0) {
             for (let file of el.photos) {
               myFormData.append("photos", file);
             }
-            // myFormData.append('photos' , el.photos[0])
           }
-      let responce = await axios.post(
+        await axios.post(
         "https://back-birga.ywa.su/advertisement",
         myFormData,
         {
@@ -153,9 +151,6 @@ const AdCreating = () => {
           },
         }
       );
-    } catch (e) {
-      alert(e.response);
-    }
   }
 
   function checking() {
