@@ -23,7 +23,7 @@ const FirstBlock = ({ className, taskName, executionPlace, time, tonValue , setD
                     {photos.map( (e) => {
                         return <img src={URL.createObjectURL(e)}
                         style={photos.length === 1 ? {
-                            minWidth : '240px'
+                            width : 'calc(100% - 3.67px)'
                         }
                     : 
                     {}

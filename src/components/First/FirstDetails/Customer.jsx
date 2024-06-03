@@ -12,7 +12,11 @@ const Customer = ({customerName, rate, userPhoto}) => {
                 }} className='information-icon' src={userPhoto} alt="" />
                 <div className="customer__information-right">
                     <div className="customer__information-right-name">
-                        <p>{customerName}</p>
+                        <p>{customerName.length > 15 ? 
+                        customerName.substring(0, 13) + '..'
+                        : 
+                        customerName
+                    }</p>
                         <img src= {galks} alt="" />
                     </div>
                     <div className="customer__information-right-rate">
