@@ -37,12 +37,13 @@ const First = () => {
 
   const filteredArr = useFilteredArr(ordersInformation, filterBy);
 
-  const [isDetailsActive, setDetailsActive ] = useState(false);
+  const [isDetailsActive, setDetailsActive ] = useState({id : 0 , isOpen : false  });
 
   useEffect(() => {
     BackButton.hide()
     MainButton.hide()
   } )
+
 
     
    useListner({isMenuActive, setMenuActive , setDetailsActive, isDetailsActive  }    )
@@ -77,7 +78,7 @@ const First = () => {
       />
 
       <CSSTransition
-        in={isDetailsActive}
+        in={isDetailsActive.isOpen}
         timeout={200}
         mountOnEnter
         unmountOnExit
@@ -86,8 +87,8 @@ const First = () => {
         <FirstDetails
           className="FirstDetails"
           setDetailsActive={setDetailsActive}
-          isDetailsActive={isDetailsActive}
-          orderInformation={ordersInformation[0]}
+          isDetailsActive={isDetailsActive.isOpen }
+          orderInformation={ordersInformation[isDetailsActive.id]}
           similarAds={ordersInformation}
         />
       </CSSTransition>

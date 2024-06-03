@@ -8,7 +8,9 @@ const FirstMain = ({ ordersInformation, setDetailsActive , ...props}) => {
         <h1 className="EmptyText"> Нет таких предложений </h1>
       ) : (
         ordersInformation.map((e,i) => {
-          return <FirstBlock key={i} setDetailsActive={setDetailsActive}   {...e} isButton = {true} />;
+          return <FirstBlock key={i} setDetailsActive={() => {
+            setDetailsActive({isOpen : true , id : i})
+          }}   {...e} isButton = {true} />;
         })
       )}
 

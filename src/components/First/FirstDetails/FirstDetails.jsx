@@ -10,7 +10,7 @@ const FirstDetails = ({  orderInformation , similarAds , isDetailsActive, setDet
 
 
     function closeDetails(){
-        setDetailsActive(false)
+        setDetailsActive({...isDetailsActive , isOpen : false})
     }
 
     useEffect( ()=> {
