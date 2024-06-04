@@ -33,6 +33,10 @@ const aboutReaction = `Доброго времени суток!
 
 const MyAds = () => {
 
+  useEffect(() => {
+    BackButton.hide()
+  })
+
 
   const [reactionVisibility , setReactionVisibility] = useState('hidden')
 
@@ -152,8 +156,7 @@ const MyAds = () => {
     setStationNow(spet * -100);
   }
 
-  
-  BackButton.hide()
+
 
   // useEffect(() => {
   //   if (spet != 2){
