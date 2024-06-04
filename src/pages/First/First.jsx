@@ -42,6 +42,10 @@ const First = () => {
   useEffect(() => {
     BackButton.hide()
     MainButton.hide()
+    if (isDetailsActive){
+      MainButton.show()
+      MainButton.setText('ОТКЛИКНУТЬСЯ')
+    }
   } )
 
 
