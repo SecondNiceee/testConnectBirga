@@ -141,6 +141,7 @@ const AdCreating = () => {
               myFormData.append("photos", file);
             }
           }
+           
         await axios.post(
         "https://back-birga.ywa.su/advertisement",
         myFormData,
@@ -219,7 +220,7 @@ const AdCreating = () => {
       if (spet !== 2) {
         spet += 1;
         if (spet === 2) {
-          MainButton.setText("ЗАКОЛДИРОВАТЬ");
+          MainButton.setText("ЗАХОЛДИРОВАТЬ");
         } else {
           MainButton.setText("Далее");
         }

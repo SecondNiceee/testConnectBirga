@@ -6,7 +6,8 @@ import { motion } from "framer-motion";
 import Dimond from "../../images/icons/Dimond.svg";
 import ArrowRight from "../../images/icons/rightArrow.svg";
 import Pencel from "../../components/UI/Pencel/Pencel";
-import icon from "../../images/icons/icon.svg";
+
+
 import orangeWallet from "../../images/icons/OrangeWallet.svg";
 import Subtract from "../../images/icons/SubtractWhite.svg";
 import greyArrowRight from "../../images/icons/greyArrowRight.svg";
@@ -15,6 +16,15 @@ import { Link, useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
 import AboutMe from "../../components/UI/AboutMe/AboutMe";
 import TextAboutMe from "../../components/UI/AboutMeText/TextAboutMe";
+
+
+import balanceIcon from '../../images/profileIcons/balance.svg';
+import notificationIcon from '../../images/profileIcons/notifications.svg';
+import shablonsIcon from '../../images/profileIcons/shablons.svg';
+import subsctibeIcon from '../../images/profileIcons/subscribe.svg';
+import tarifIconIcon from '../../images/profileIcons/tarif.svg';
+import workExamplesIcon from '../../images/profileIcons/workExamples.svg'
+
 
 let scrollTo = 0;
 const variants = {
@@ -97,7 +107,7 @@ const Profile = () => {
       <div className="profile__options">
         <Link to="/Balance" className="option__balance">
           <div className="option__left">
-            <img src={orangeWallet} className="orangeWallet" alt="" />
+            <img src={balanceIcon} className="orangeWallet" alt="" />
             <p>Баланс</p>
           </div>
 
@@ -113,35 +123,35 @@ const Profile = () => {
         </Link>
         <div className="option">
           <div className="option__left">
-            <img src={orangeWallet} className="orangeWallet" alt="" />
+            <img src={tarifIconIcon} className="orangeWallet" alt="" />
             <p>Тарифы</p>
           </div>
           <img src={ArrowRight} className="arrowRight" alt="" />
         </div>
         <div className="option">
           <div className="option__left">
-            <img src={orangeWallet} className="orangeWallet" alt="" />
+            <img src={notificationIcon} className="orangeWallet" alt="" />
             <p>Уведомления</p>
           </div>
           <img className="arrowRight" src={ArrowRight} alt="" />
         </div>
         <div className="option">
           <div className="option__left">
-            <img src={orangeWallet} className="orangeWallet" alt="" />
+            <img src={workExamplesIcon} className="orangeWallet" alt="" />
             <p>О себе и примеры работ</p>
           </div>
           <img className="arrowRight" src={ArrowRight} alt="" />
         </div>
         <div className="option">
           <div className="option__left">
-            <img src={orangeWallet} className="orangeWallet" alt="" />
+            <img src={subsctibeIcon} className="orangeWallet" alt="" />
             <p>Подписка за задания</p>
           </div>
           <img className="arrowRight" src={ArrowRight} alt="" />
         </div>
         <div className="option">
           <div className="option__left">
-            <img src={orangeWallet} className="orangeWallet" alt="" />
+            <img src={shablonsIcon} className="orangeWallet" alt="" />
             <p>Шаблоны откликов</p>
           </div>
           <img className="arrowRight" src={ArrowRight} alt="" />

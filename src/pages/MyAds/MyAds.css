@@ -245,6 +245,7 @@
 }
 .top .topIcon{
     width: 28.33px;
+    border-radius: 50%;
     height: 28.33px;
 }
 .MyAdsContainer{
