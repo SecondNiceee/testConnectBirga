@@ -15,8 +15,12 @@ const AboutOne = ({task, setMenuActive, goForward, setClosed }) => {
           
           <Top name={'Мои задания'} setMenuActive={setMenuActive}/>
 
-
-          <FirstBlock  className={'FirstAdsBlock'}  {...task} />
+        {task ? 
+        <FirstBlock  className={'FirstAdsBlock'}  {...task} />
+      :
+      ""
+      }
+          
  
           <ReactionBlock setClosed={setClosed} goForward = {goForward} />
 
