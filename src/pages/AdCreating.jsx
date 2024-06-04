@@ -227,10 +227,6 @@ const AdCreating = () => {
         animte();
       } else {
         finish();
-        // post(taskInformation)
-        // navigate('/MyAds')
-        // MainButton.hide()
-        // spet = 0
       }
     }
   }

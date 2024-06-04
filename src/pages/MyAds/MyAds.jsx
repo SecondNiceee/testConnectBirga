@@ -155,6 +155,12 @@ const MyAds = () => {
   }
 
   useEffect(() => {
+    if (spet != 2){
+      BackButton.hide()
+    }
+    else{
+      BackButton.show()
+    }
     BackButton.onClick(goBack);
     return () => {
       BackButton.offClick(goBack);
@@ -182,7 +188,7 @@ const MyAds = () => {
   }
 
   const openAboutReactionFunc = useCallback( () => {
-
+   
     spet += 1
     animte()
     setOpenAboutReaction(true)
