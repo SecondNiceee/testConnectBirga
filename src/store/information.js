@@ -120,7 +120,7 @@ const information = createSlice( {
         status  : null ,
         taskInformation :  {
             category: { name: "", value: "" },
-            subCategory: "",
+            subCategory: "Выбрать",
             taskName: "",
             taskDescription: "",
             photos: [],

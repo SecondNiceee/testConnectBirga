@@ -120,8 +120,7 @@ const AdCreating = () => {
   }
   async function post(el) {
     let myFormData = new FormData();
-    // myFormData.append('userId' , window.Telegram.WebApp.initDataUnsafe.user.id)
-     myFormData.append("userId", "2144832745");
+     myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id);
     myFormData.append("title", el.taskName);
     myFormData.append("description", el.taskDescription);
     myFormData.append("deadline", 1);

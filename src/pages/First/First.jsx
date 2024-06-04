@@ -49,7 +49,7 @@ const First = () => {
   } )
 
 
-  
+
     
    useListner({isMenuActive, setMenuActive , setDetailsActive, isDetailsActive  }    )
 
@@ -85,14 +85,14 @@ const First = () => {
       <CSSTransition
         in={isDetailsActive.isOpen}
         timeout={200}
-        mountOnEnter
-        unmountOnExit
         classNames="left-right"
+        mountOnEnter
+        
       >
         <FirstDetails
           className="FirstDetails"
           setDetailsActive={setDetailsActive}
-          isDetailsActive={isDetailsActive.isOpen }
+          isDetailsActive={isDetailsActive }
           orderInformation={ordersInformation[isDetailsActive.id]}
           similarAds={ordersInformation}
         />
