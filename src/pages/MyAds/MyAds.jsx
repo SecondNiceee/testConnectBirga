@@ -152,18 +152,21 @@ const MyAds = () => {
     setStationNow(spet * -100);
   }
 
-  useEffect(() => {
-    if (spet != 2){
-      BackButton.hide()
-    }
-    else{
-      BackButton.show()
-    }
-    BackButton.onClick(goBack);
-    return () => {
-      BackButton.offClick(goBack);
-    };  
-  });  
+  
+  BackButton.hide()
+
+  // useEffect(() => {
+  //   if (spet != 2){
+  //     BackButton.hide()
+  //   }
+  //   else{
+  //     BackButton.show()
+  //   }
+  //   BackButton.onClick(goBack);
+  //   return () => {
+  //     BackButton.offClick(goBack);
+  //   };  
+  // });  
 
   useListner({
     isMenuActive,
