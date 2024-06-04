@@ -42,7 +42,7 @@ const First = () => {
   useEffect(() => {
     BackButton.hide()
     MainButton.hide()
-    if (isDetailsActive){
+    if (isDetailsActive.isOpen){
       MainButton.show()
       MainButton.setText('ОТКЛИКНУТЬСЯ')
     }
