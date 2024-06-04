@@ -33,9 +33,19 @@ const aboutReaction = `Доброго времени суток!
 
 const MyAds = () => {
 
-  useEffect(() => {
-    BackButton.hide()
-  })
+    useEffect(() => {
+      if (spet != 2){
+        BackButton.hide()
+      }
+      else{
+        BackButton.show()
+      }
+      BackButton.onClick(goBack);
+      return () => {
+        BackButton.offClick(goBack);
+      };  
+    });  
+  
 
 
   const [reactionVisibility , setReactionVisibility] = useState('hidden')
@@ -157,19 +167,6 @@ const MyAds = () => {
   }
 
 
-
-  // useEffect(() => {
-  //   if (spet != 2){
-  //     BackButton.hide()
-  //   }
-  //   else{
-  //     BackButton.show()
-  //   }
-  //   BackButton.onClick(goBack);
-  //   return () => {
-  //     BackButton.offClick(goBack);
-  //   };  
-  // });  
 
   useListner({
     isMenuActive,
