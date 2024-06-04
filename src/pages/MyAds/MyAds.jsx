@@ -34,7 +34,7 @@ const aboutReaction = `Доброго времени суток!
 const MyAds = () => {
 
     useEffect(() => {
-      if (spet != 2){
+      if (spet == 2){
         BackButton.hide()
       }
       else{
