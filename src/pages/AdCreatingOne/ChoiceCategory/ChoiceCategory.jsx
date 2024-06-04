@@ -6,7 +6,7 @@ import BackButton from "../../../constants/BackButton";
 
 const categoriesArr = [
   { name: "Дизайн", icon: "Palitra.png", value: "design1", key: 1 }
-]
+] 
 const ChoiceCategory = ({
   setTaskInformation,
   taskInformation,

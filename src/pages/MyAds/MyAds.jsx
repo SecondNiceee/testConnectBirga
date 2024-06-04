@@ -89,8 +89,6 @@ const MyAds = () => {
     
   
 
-    BackButton.show();
-
     return () => {
       // document.documentElement.scrollTo({
       //   top : 0,
