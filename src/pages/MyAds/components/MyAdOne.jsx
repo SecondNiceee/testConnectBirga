@@ -32,7 +32,12 @@ const MyAdOne = ({
   
   useMemo(() => {
     if (isDetailsActive){
+      BackButton.show()
       BackButton.onClick(save)
+    }
+    else{
+      BackButton.hide()
+      BackButton.offClick(save)
     }
     return () => {
       BackButton.offClick(save)
