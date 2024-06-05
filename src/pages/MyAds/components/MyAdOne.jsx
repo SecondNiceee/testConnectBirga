@@ -29,26 +29,26 @@ const MyAdOne = ({
     taskName : false,
     timeError : false
   })
-  if (isDetailsActive){
-    BackButton.show()
-    setChangingTask(myAdsArray[index])
-    BackButton.onClick(save)
-  }
-  else{
-    BackButton.hide()
-    BackButton.offClick(save)
-  }
-  // useMemo(() => {
-  //   if (isDetailsActive){
-  //     BackButton.show()
-  //     setChangingTask(myAdsArray[index])
-  //     BackButton.onClick(save)
-  //   }
-  //   else{
-  //     BackButton.hide()
-  //     BackButton.offClick(save)
-  //   }
-  // }, )
+  // if (isDetailsActive){
+  //   BackButton.show()
+  //   setChangingTask(myAdsArray[index])
+  //   BackButton.onClick(save)
+  // }
+  // else{
+  //   BackButton.hide()
+  //   BackButton.offClick(save)
+  // }
+  useMemo(() => {
+    if (isDetailsActive){
+      BackButton.show()
+      setChangingTask(myAdsArray[index])
+      BackButton.onClick(save)
+    }
+    else{
+      BackButton.hide()
+      BackButton.offClick(save)
+    }
+  }, [isDetailsActive] )
   console.log(changingTask)
 
 
