@@ -49,6 +49,7 @@ const MyAdOne = ({
     let taskName = false 
     let timeError = false
     console.log('changing Task : ' + changingTask)
+    console.log(changingTask)
     console.log(taskName)
     console.log(timeError)
   
