@@ -80,6 +80,7 @@ const MyAdOne = ({
   function save() {
 
         if (changingTask !== myAdsArray[index]){
+          alert()
           if ( checkMistakes() ) {
             alert('ошибок нет')
             // let myFormData = new FormData();
