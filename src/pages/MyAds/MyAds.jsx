@@ -41,6 +41,9 @@ const MyAds = () => {
         BackButton.show()
       }
       if (!isDetailsActive){
+        BackButton.onClick(goBack);
+      }
+      else{
         BackButton.offClick(goBack);
       }
       return () => {
