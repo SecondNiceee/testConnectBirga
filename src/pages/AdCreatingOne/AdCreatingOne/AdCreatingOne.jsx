@@ -77,7 +77,7 @@ const AdCreatingOne = ({
       )}
       
       <TaskName
-        style = {mistakes.timeError ? {border : '1px solid black'} : {}}
+        style = {mistakes.taskName ? {border : '1px solid black'} : {}}
         errorName={errorName}
         taskInformation={taskInformation}
         setTaskInformation={setTaskInformation}

@@ -317,7 +317,7 @@ const AdCreating = () => {
         setTaskInformation={setTaskInformation}
         taskInformation={taskInformation}
         MyInformation={false}
-        mistakes={false}
+        mistakes={ {timeError : false, taskName : false} }
       />
       <AdCreatingTwo
         errors={{
