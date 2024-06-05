@@ -40,7 +40,7 @@ const MyAdOne = ({
       BackButton.hide()
       BackButton.offClick(save)
     }
-  }, [isDetailsActive])
+  }, )
   console.log(changingTask)
 
 
