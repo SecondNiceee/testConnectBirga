@@ -40,7 +40,7 @@ const MyAdOne = ({
       BackButton.hide()
       BackButton.offClick(save)
     }
-  }, [isDetailsActive, changingTask])
+  }, [isDetailsActive])
   console.log(changingTask)
 
 
@@ -48,7 +48,7 @@ const MyAdOne = ({
     alert('Вызов функции save')
     let taskName = false 
     let timeError = false
-    console.log(taskName)
+    console.log(changingTask)
     console.log(timeError)
   
       if (changingTask.taskName.length < 5){
