@@ -38,7 +38,7 @@ const MyAdOne = ({
   //   BackButton.hide()
   //   BackButton.offClick(save)
   // }
-  useMemo(() => {
+  useEffect(() => {
     if (isDetailsActive){
       BackButton.show()
       setChangingTask(myAdsArray[index])
