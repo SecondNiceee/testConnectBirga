@@ -90,7 +90,7 @@ const AdCreatingOne = ({
       />
       {MyInformation ? (
         <>
-          <StartOn
+          {/* <StartOn
             style = {mistakes.timeError ? {border : '1px solid black'} : {}}
             title = 'Начать'
             className={cl.startOn}
@@ -101,7 +101,7 @@ const AdCreatingOne = ({
             title = 'Закончить'
             className={cl.startOn}
             text={taskInformation.time.end.length > 0 ? taskInformation.time.end.toLocaleString("ru", options) : 'Не указана'}
-          />
+          /> */}
         </>
       ) : (
         ""
