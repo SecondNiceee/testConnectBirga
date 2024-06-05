@@ -41,30 +41,34 @@ const MyAdOne = ({
       BackButton.offClick(save)
     }
   }, [isDetailsActive])
+  console.log(changingTask)
+
+
+  function checkMistakes(){
+    alert('Вызов функции save')
+    let taskName = false 
+    let timeError = false
+    console.log(changingTask)
+      if (changingTask.taskName.length < 5){
+         taskName = true
+      }
+
+      if (changingTask.time.end.length > 0) {
+        if (changingTask.time.end < changingTask.time.start){
+          timeError = true
+        }
+      }
+      let rezult = {taskName : taskName, timeError : timeError}
+      setMistakes(rezult)
+      return (Object.values(rezult).every(value => value === false))
+  }
 
   function save() {
-    function checkMistakes(){
-      alert('Вызов функции save')
-      let taskName = false 
-      let timeError = false
-        console.log(changingTask)
-        if (changingTask.taskName.length < 5){
-           taskName = true
-        }
-
-        if (changingTask.time.end.length > 0) {
-          if (changingTask.time.end < changingTask.time.start){
-            timeError = true
-          }
-        }
-        let rezult = {taskName : taskName, timeError : timeError}
-        setMistakes(rezult)
-        return (Object.values(rezult).every(value => value === false))
-    }
 
         if (changingTask !== myAdsArray[index]){
           if ( checkMistakes() ) {
             alert('ошибок нет')
+            setDetailsActive(false)
           }
         }
       
@@ -85,7 +89,12 @@ const MyAdOne = ({
   return (
     <div className="my-ad-one">
       <Top name={'Мои задания'} setMenuActive={setMenuActive}/>
-
+      <button style={{
+        position : 'absolute',
+        zIndex : '999'
+      }} onClick={() => {
+        save()
+      }}>Save</button>
       <MyAdsBlock
         deals={1}
         finishedDeals={"70%"}
