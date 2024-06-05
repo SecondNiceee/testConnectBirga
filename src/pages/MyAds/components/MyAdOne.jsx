@@ -6,6 +6,7 @@ import AdCreatingOne from "../../AdCreatingOne/AdCreatingOne/AdCreatingOne";
 import { CSSTransition } from "react-transition-group";
 import Top from "./Top";
 import BackButton from "../../../constants/BackButton";
+import axios from "axios";
 
 
 const MyAdOne = ({
@@ -29,27 +30,24 @@ const MyAdOne = ({
     taskName : false,
     timeError : false
   })
-  // if (isDetailsActive){
-  //   BackButton.show()
-  //   setChangingTask(myAdsArray[index])
-  //   BackButton.onClick(save)
-  // }
-  // else{
-  //   BackButton.hide()
-  //   BackButton.offClick(save)
-  // }
-  useEffect(() => {
+
+  useEffect( () => {
     if (isDetailsActive){
-      BackButton.show()
       setChangingTask(myAdsArray[index])
+    }
+  }, [isDetailsActive] )
+
+
+  if (isDetailsActive){
+      BackButton.show()
       BackButton.onClick(save)
     }
     else{
       BackButton.hide()
       BackButton.offClick(save)
     }
-  }, [isDetailsActive] )
-  console.log(changingTask)
+  
+
 
 
   function checkMistakes(){
@@ -84,6 +82,34 @@ const MyAdOne = ({
         if (changingTask !== myAdsArray[index]){
           if ( checkMistakes() ) {
             alert('ошибок нет')
+            // let myFormData = new FormData();
+            // myFormData.append("id", changingTask.id);
+            // myFormData.append("title", changingTask.taskName);
+            // myFormData.append("description", changingTask.taskDescription);
+            // myFormData.append("deadline", 1);
+            // myFormData.append("price", changingTask.tonValue);
+            // myFormData.append("startTime", changingTask.time.start);
+            // myFormData.append("endTime", changingTask.time.end);
+            // if (changingTask.photos.length !== 0) {
+            //   for (let file of changingTask.photos) {
+            //     myFormData.append("photos", file);
+            //   }
+            // }
+            // axios.post(
+            //   "https://back-birga.ywa.su/advertisement",
+            //   myFormData,
+            //   {
+            //     headers: {
+            //       "Content-Type": "multipart/form-data",
+            //       "Access-Control-Allow-Origin": "*"
+            //     },
+            //   }
+            // );
+
+
+
+
+
             setDetailsActive(false)
           }
         }
