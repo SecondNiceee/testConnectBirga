@@ -48,7 +48,8 @@ const MyAdOne = ({
     alert('Вызов функции save')
     let taskName = false 
     let timeError = false
-    console.log(changingTask)
+    console.log('changing Task : ' + changingTask)
+    console.log(taskName)
     console.log(timeError)
   
       if (changingTask.taskName.length < 5){
