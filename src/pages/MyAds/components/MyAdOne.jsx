@@ -48,7 +48,9 @@ const MyAdOne = ({
     alert('Вызов функции save')
     let taskName = false 
     let timeError = false
-    console.log(changingTask)
+    console.log(taskName)
+    console.log(timeError)
+  
       if (changingTask.taskName.length < 5){
          taskName = true
       }
@@ -59,6 +61,10 @@ const MyAdOne = ({
         }
       }
       let rezult = {taskName : taskName, timeError : timeError}
+      
+      console.log(taskName)
+      console.log(timeError)
+
       setMistakes(rezult)
       return (Object.values(rezult).every(value => value === false))
   }
