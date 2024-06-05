@@ -44,7 +44,7 @@ const MyAds = () => {
       return () => {
         BackButton.offClick(goBack);
       };  
-    });  
+    } , [spet]);  
   
 
     // myFormData.append("title", el.taskName);
