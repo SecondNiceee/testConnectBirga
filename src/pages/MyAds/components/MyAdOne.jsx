@@ -80,7 +80,7 @@ const MyAdOne = ({
   function save() {
 
         if (changingTask !== myAdsArray[index]){
-          alert()
+          alert('отработка if ')
           if ( checkMistakes() ) {
             alert('ошибок нет')
             // let myFormData = new FormData();
@@ -115,6 +115,7 @@ const MyAdOne = ({
           }
         }
         else{
+          alert('отработка else')
           setDetailsActive(false)
         }
       
