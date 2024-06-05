@@ -33,6 +33,11 @@ const aboutReaction = `Доброго времени суток!
 
 const MyAds = () => {
 
+
+  const [reactionVisibility , setReactionVisibility] = useState('hidden')
+
+  const [isDetailsActive, setDetailsActive] = useState(false);
+
     useEffect(() => {
       if (spet == 2){
         BackButton.hide()
@@ -60,9 +65,7 @@ const MyAds = () => {
     // myFormData.append("price", el.tonValue);
 
 
-  const [reactionVisibility , setReactionVisibility] = useState('hidden')
 
-  const [isDetailsActive, setDetailsActive] = useState(false);
 
   const [changingTask , setChangingTask] = useState(
     {
