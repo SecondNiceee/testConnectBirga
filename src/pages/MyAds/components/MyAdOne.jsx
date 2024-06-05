@@ -73,7 +73,7 @@ const MyAdOne = ({
       console.log(taskName)
       console.log(timeError)
 
-      setMistakes(rezult)
+      // setMistakes(rezult)
       return (Object.values(rezult).every(value => value === false))
   }
 
