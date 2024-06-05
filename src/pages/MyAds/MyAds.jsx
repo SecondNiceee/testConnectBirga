@@ -39,7 +39,7 @@ const MyAds = () => {
   const [isDetailsActive, setDetailsActive] = useState(false);
 
     useEffect(() => {
-      if (spet == 2){
+      if (spet == 2 && !isDetailsActive){
         BackButton.hide()
       }
       else{
