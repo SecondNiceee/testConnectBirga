@@ -33,8 +33,8 @@ const MyAdOne = ({
   useMemo(() => {
     if (isDetailsActive){
       BackButton.show()
-      BackButton.onClick(save)
       setChangingTask(myAdsArray[index])
+      BackButton.onClick(save)
     }
     else{
       BackButton.hide()
@@ -61,7 +61,7 @@ const MyAdOne = ({
         }
       }
       let rezult = {taskName : taskName, timeError : timeError}
-      
+
       console.log(taskName)
       console.log(timeError)
 
