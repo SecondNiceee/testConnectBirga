@@ -113,6 +113,9 @@ const MyAdOne = ({
             setDetailsActive(false)
           }
         }
+        else{
+          setDetailsActive(false)
+        }
       
   }
   
