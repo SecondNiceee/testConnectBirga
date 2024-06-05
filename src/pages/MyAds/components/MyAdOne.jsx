@@ -39,10 +39,7 @@ const MyAdOne = ({
       BackButton.hide()
       BackButton.offClick(save)
     }
-    return () => {
-      BackButton.offClick(save)
-    }
-  })
+  }, [isDetailsActive])
 
   function save() {
     function checkMistakes(){
