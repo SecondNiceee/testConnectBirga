@@ -47,10 +47,30 @@ const MyAds = () => {
     });  
   
 
+    // myFormData.append("title", el.taskName);
+    // myFormData.append("description", el.taskDescription);
+    // myFormData.append("deadline", 1);
+    // myFormData.append("category", 1);
+    // myFormData.append("subCategory", 1);
+    // myFormData.append("price", el.tonValue);
+
 
   const [reactionVisibility , setReactionVisibility] = useState('hidden')
 
   const [isDetailsActive, setDetailsActive] = useState(false);
+
+  const [changingTask , setChangingTask] = useState(
+    {
+      taskName : '',
+      taskDescription : '',
+      deadline : 1,
+      category : 1,
+      subCategory : 1,
+      price : 2000,
+      time : {start : '' , end : ''},
+      photos : []
+    }
+  )
 
   const isMenuActive = useSelector((state) => state.menu.value);
 
@@ -255,6 +275,13 @@ const MyAds = () => {
       className="MyAdsContainer"
     >
 
+      <button style={{
+        position : 'fixed',
+        left : '200%',
+        zIndex : 999
+      }} onClick={() => {
+        goBack()
+      }}>НАЗАД</button>
 
       <div className="blackBack" style={blackStyle}>
 
@@ -296,6 +323,8 @@ const MyAds = () => {
                   setDetailsActive,
                   isDetailsActive,
                   setMenuActive,
+                  changingTask,
+                  setChangingTask
                 }}
               />
 

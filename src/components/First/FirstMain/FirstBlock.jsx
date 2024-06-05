@@ -41,7 +41,7 @@ const FirstBlock = ({ className, taskName, executionPlace, time, tonValue , setD
                 </div>
                 <div className="FirstMain__middle">
                     {/* <p>{executionPlace}</p> */}
-                    <p>{time.start.toLocaleString("ru", options)}</p>
+                    <p> {"Начать: " + time.start.toLocaleString("ru", options)}</p>
                 </div>
                 <div className="FirstMain__bottom">
                     

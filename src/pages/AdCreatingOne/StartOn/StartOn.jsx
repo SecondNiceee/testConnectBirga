@@ -2,10 +2,10 @@ import React from 'react';
 import cl from './StartOn.module.css'
 import DateIcon from '../../../images/icons/date.svg'
 import arrowRight from '../../../images/icons/ArrowRight.svg'
-const StartOn = ({className , text}) => {
+const StartOn = ({className , text, title , props}) => {
     return (
-        <div className={className ? [cl.startOnContainer , className].join(' ') : cl.startOnContainer}>
-            <p className={cl.greyText}>Начать</p>
+        <div {...props} className={className ? [cl.startOnContainer , className].join(' ') : cl.startOnContainer}>
+            <p className={cl.greyText}>{title}</p>
         <div className={cl.startOn}>
             <div className={cl.startOnLeft}>
                 <img className={cl.dateIcon} src={DateIcon} alt="" />

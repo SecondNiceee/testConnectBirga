@@ -31,6 +31,7 @@
   height: 100%;
   -webkit-transition: 0.5s;
   transition: 0.5s;
+  padding-bottom: 18px;
 }
 
 .EmptyText {
@@ -2148,6 +2149,8 @@ input {
   -webkit-transform: translateX(300%);
       -ms-transform: translateX(300%);
           transform: translateX(300%);
+  height: 100vh;
+  padding-bottom: 20px;
 }
 .MyAdsContainer .details-enter {
   -webkit-transform: translateX(300%);
