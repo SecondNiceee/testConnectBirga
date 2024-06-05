@@ -316,6 +316,8 @@ const AdCreating = () => {
         errorName={error.name}
         setTaskInformation={setTaskInformation}
         taskInformation={taskInformation}
+        MyInformation={false}
+        mistakes={false}
       />
       <AdCreatingTwo
         errors={{
