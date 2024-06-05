@@ -49,7 +49,7 @@ const MyAds = () => {
       return () => {
         BackButton.offClick(goBack);
       };  
-    } , [spet]);  
+    } , [spet, isDetailsActive]);  
   
 
     // myFormData.append("title", el.taskName);

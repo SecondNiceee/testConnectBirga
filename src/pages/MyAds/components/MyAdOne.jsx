@@ -34,6 +34,7 @@ const MyAdOne = ({
     if (isDetailsActive){
       BackButton.show()
       BackButton.onClick(save)
+      setChangingTask(myAdsArray[index])
     }
     else{
       BackButton.hide()
@@ -60,17 +61,13 @@ const MyAdOne = ({
         setMistakes(rezult)
         return (Object.values(rezult).every(value => value === false))
     }
-      if (isDetailsActive){
-        setChangingTask(myAdsArray[index])
-        console.log(myAdsArray[index])
-      }
-      else{
+
         if (changingTask !== myAdsArray[index]){
           if ( checkMistakes() ) {
             alert('ошибок нет')
           }
         }
-      }
+      
   }
   
     function setMyArray(par) {
