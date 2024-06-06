@@ -86,6 +86,8 @@ const MyAdOne = ({
     }
   
     function save() {
+          console.log('changing Task в функции save: ')
+          console.log(changingTask)
           alert('реальный вызов save')
           if (changingTask !== myAdsArray[index]){
             alert('отработка if ')
