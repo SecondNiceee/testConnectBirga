@@ -94,7 +94,7 @@ const MyAdOne = ({
           if (changingTaskVar !== myAdsArray[index]){
             // window.Telegram.WebApp.PopupParams = {title : 'Сохранение' , message : 'Сохранить изменения перед выходом?'}
             // console.log(window.Telegram.WebApp.PopupParams)
-            // window.Telegram.WebApp.showPopup()
+             window.Telegram.WebApp.web_app_open_popup()
             if ( checkMistakes(changingTaskVar) ) {
               setDetailsActive(false)
             }
