@@ -6,7 +6,7 @@ const TaskName = ({className , taskInformation , setTaskInformation , errorName 
     return (
         <div {...props} className = { className ? [className , cl.TaskName].join(' ') : cl.TaskName}>
             <GreyText className={cl.GreyText} > Название задания </GreyText>
-            <CreateInput style = {errorName 
+            <CreateInput style = {errorName || mistakes.taskName
                 ? {border : 'solid 1px red'}
                 : {}
             } value={taskInformation.taskName} setValue={ (e) => {setTaskInformation({...taskInformation , taskName : e})} } className={cl.CreateInput} placeholder = "Что нужно сделать?" />
