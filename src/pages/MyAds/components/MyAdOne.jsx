@@ -7,6 +7,7 @@ import { CSSTransition } from "react-transition-group";
 import Top from "./Top";
 import BackButton from "../../../constants/BackButton";
 import axios from "axios";
+import { initPopup } from '@tma.js/sdk';
 
               // let myFormData = new FormData();
               // myFormData.append("id", changingTask.id);
@@ -32,6 +33,7 @@ import axios from "axios";
               //   }
               // );
 let changed = false;
+const popup = initPopup();
 let changingTaskVar = {}
 const MyAdOne = ({
   myAdsArray,
@@ -94,10 +96,24 @@ const MyAdOne = ({
           if (changingTaskVar !== myAdsArray[index]){
             // window.Telegram.WebApp.PopupParams = {title : 'Сохранение' , message : 'Сохранить изменения перед выходом?'}
             // console.log(window.Telegram.WebApp.PopupParams)
-             window.Telegram.WebApp.web_app_open_popup()
-            if ( checkMistakes(changingTaskVar) ) {
-              setDetailsActive(false)
-            }
+            popup
+            .open({
+              title: 'Сохранить?',
+              message: 'Сохранить изменения перед выходом?',
+              buttons: [{ id: 'save', type: 'ok', text: 'Да' },
+              { id: 'delete', type: 'destructive', text: 'Нет' }
+              ],
+            })
+            .then(buttonId => {
+              if (buttonId === 'delete' || buttonId === null){
+                setDetailsActive(false)
+              }
+              if (buttonId === 'save'){
+                if ( checkMistakes(changingTaskVar) ) {
+                  setDetailsActive(false)
+                }
+              }
+            });
           }
           else{
             setDetailsActive(false)
