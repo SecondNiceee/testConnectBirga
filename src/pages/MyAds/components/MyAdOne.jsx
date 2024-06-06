@@ -122,7 +122,7 @@ const MyAdOne = ({
                       myFormData.append("photos", file);
                     }
                   }
-                  axios.post(
+                  axios.put(
                     "https://back-birga.ywa.su/advertisement",
                     myFormData,
                     {
@@ -136,7 +136,7 @@ const MyAdOne = ({
 
                 setDetailsActive(false)
 
-                
+
               }
             });
           }
