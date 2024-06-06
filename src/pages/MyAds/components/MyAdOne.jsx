@@ -111,13 +111,13 @@ const MyAdOne = ({
 
                   let myFormData = new FormData();
                   let answer = {
-                    id : changingTask.id,
-                    title : changingTask.taskName,
-                    description : changingTask.taskDescription,
+                    id : changingTaskVar.id,
+                    title : changingTaskVar.taskName,
+                    description : changingTaskVar.taskDescription,
                     deadline : 1,
-                    price : changingTask.tonValue,
-                    startTime : changingTask.time.start,
-                    endTime : changingTask.time.end
+                    price : changingTaskVar.tonValue,
+                    startTime : changingTaskVar.time.start,
+                    endTime : changingTaskVar.time.end
                   }
                   console.log(answer)
                   if (changingTask.photos.length !== 0) {
