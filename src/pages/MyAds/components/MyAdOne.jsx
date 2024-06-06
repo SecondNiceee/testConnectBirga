@@ -108,7 +108,7 @@ const MyAdOne = ({
               }
               if (buttonId === 'save'){
                 if ( checkMistakes(changingTaskVar) ) {
-                  
+
                   let myFormData = new FormData();
                   myFormData.append("id", changingTask.id);
                   myFormData.append("title", changingTask.taskName);
@@ -117,6 +117,7 @@ const MyAdOne = ({
                   myFormData.append("price", changingTask.tonValue);
                   myFormData.append("startTime", changingTask.time.start);
                   myFormData.append("endTime", changingTask.time.end);
+                  console.log(myFormData)
                   if (changingTask.photos.length !== 0) {
                     for (let file of changingTask.photos) {
                       myFormData.append("photos", file);
