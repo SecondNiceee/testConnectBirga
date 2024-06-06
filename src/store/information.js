@@ -35,6 +35,7 @@ export const fetchMyOrders = createAsyncThunk(
         }
 
         tasks.push({
+          id : order.id,
           taskName : order.title,
           executionPlace: "Можно выполнить удаленно",
           time : {start : new Date(order.startTime) , end : new Date(order.endTime)},
