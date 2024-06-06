@@ -32,6 +32,81 @@ const MyAdOne = ({
   })
 
   useEffect( () => {
+
+
+
+    function checkMistakes(){
+      let taskName = false 
+      let timeError = false
+      console.log('changing Task : ' + changingTask)
+      console.log(changingTask)
+      console.log(taskName)
+      console.log(timeError)
+    
+        if (changingTask.taskName.length < 5){
+           taskName = true
+        }
+  
+        if (changingTask.time.end.length > 0) {
+          if (changingTask.time.end < changingTask.time.start){
+            timeError = true
+          }
+        }
+        let rezult = {taskName : taskName, timeError : timeError}
+  
+        console.log(taskName)
+        console.log(timeError)
+  
+        // setMistakes(rezult)
+        return (Object.values(rezult).every(value => value === false))
+    }
+  
+    function save() {
+          alert('реальный вызов save')
+          if (changingTask !== myAdsArray[index]){
+            alert('отработка if ')
+            if ( checkMistakes() ) {
+              alert('ошибок нет')
+              // let myFormData = new FormData();
+              // myFormData.append("id", changingTask.id);
+              // myFormData.append("title", changingTask.taskName);
+              // myFormData.append("description", changingTask.taskDescription);
+              // myFormData.append("deadline", 1);
+              // myFormData.append("price", changingTask.tonValue);
+              // myFormData.append("startTime", changingTask.time.start);
+              // myFormData.append("endTime", changingTask.time.end);
+              // if (changingTask.photos.length !== 0) {
+              //   for (let file of changingTask.photos) {
+              //     myFormData.append("photos", file);
+              //   }
+              // }
+              // axios.post(
+              //   "https://back-birga.ywa.su/advertisement",
+              //   myFormData,
+              //   {
+              //     headers: {
+              //       "Content-Type": "multipart/form-data",
+              //       "Access-Control-Allow-Origin": "*"
+              //     },
+              //   }
+              // );
+  
+  
+  
+  
+  
+              setDetailsActive(false)
+            }
+          }
+          else{
+            alert('отработка else')
+            setDetailsActive(false)
+          }
+        
+    }
+
+
+
     if (isDetailsActive){
       setChangingTask(myAdsArray[index])
     }
@@ -50,75 +125,7 @@ const MyAdOne = ({
 
 
 
-  function checkMistakes(){
-    let taskName = false 
-    let timeError = false
-    console.log('changing Task : ' + changingTask)
-    console.log(changingTask)
-    console.log(taskName)
-    console.log(timeError)
-  
-      if (changingTask.taskName.length < 5){
-         taskName = true
-      }
 
-      if (changingTask.time.end.length > 0) {
-        if (changingTask.time.end < changingTask.time.start){
-          timeError = true
-        }
-      }
-      let rezult = {taskName : taskName, timeError : timeError}
-
-      console.log(taskName)
-      console.log(timeError)
-
-      // setMistakes(rezult)
-      return (Object.values(rezult).every(value => value === false))
-  }
-
-  function save() {
-        alert('реальный вызов save')
-        if (changingTask !== myAdsArray[index]){
-          alert('отработка if ')
-          if ( checkMistakes() ) {
-            alert('ошибок нет')
-            // let myFormData = new FormData();
-            // myFormData.append("id", changingTask.id);
-            // myFormData.append("title", changingTask.taskName);
-            // myFormData.append("description", changingTask.taskDescription);
-            // myFormData.append("deadline", 1);
-            // myFormData.append("price", changingTask.tonValue);
-            // myFormData.append("startTime", changingTask.time.start);
-            // myFormData.append("endTime", changingTask.time.end);
-            // if (changingTask.photos.length !== 0) {
-            //   for (let file of changingTask.photos) {
-            //     myFormData.append("photos", file);
-            //   }
-            // }
-            // axios.post(
-            //   "https://back-birga.ywa.su/advertisement",
-            //   myFormData,
-            //   {
-            //     headers: {
-            //       "Content-Type": "multipart/form-data",
-            //       "Access-Control-Allow-Origin": "*"
-            //     },
-            //   }
-            // );
-
-
-
-
-
-            setDetailsActive(false)
-          }
-        }
-        else{
-          alert('отработка else')
-          setDetailsActive(false)
-        }
-      
-  }
   
     function setMyArray(par) {
         console.log(par);
@@ -135,12 +142,12 @@ const MyAdOne = ({
   return (
     <div className="my-ad-one">
       <Top name={'Мои задания'} setMenuActive={setMenuActive}/>
-      <button style={{
+      {/* <button style={{
         position : 'absolute',
         zIndex : '999'
       }} onClick={() => {
         save()
-      }}>Save</button>
+      }}>Save</button> */}
       <MyAdsBlock
         deals={1}
         finishedDeals={"70%"}
