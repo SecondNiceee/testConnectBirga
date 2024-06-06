@@ -77,7 +77,9 @@ const AdCreatingOne = ({
       )}
       
       <TaskName
-        style = {mistakes.taskName ? {border : '1px solid black'} : {}}
+        // style = {mistakes.taskName ? {border : '1px solid red'} : {}}
+        text = {MyInformation ? '' : 'Например, разработать дизайн'}
+        mistakes = {mistakes}
         errorName={errorName}
         taskInformation={taskInformation}
         setTaskInformation={setTaskInformation}
@@ -91,13 +93,13 @@ const AdCreatingOne = ({
       {MyInformation ? (
         <>
           <StartOn
-            style = {mistakes.timeError ? {border : '1px solid black'} : {}}
+            mistakes = {mistakes}
             title = 'Начать'
             className={cl.startOn}
             text={taskInformation.time.start.toLocaleString("ru", options)}
           />
           <StartOn
-            style = {mistakes.timeError ? {border : '1px solid black'} : {}}
+            mistakes = {mistakes}
             title = 'Закончить'
             className={cl.startOn}
             text={taskInformation.time.end.length > 0 ? taskInformation.time.end.toLocaleString("ru", options) : 'Не указана'}

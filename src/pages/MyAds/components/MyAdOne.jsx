@@ -85,7 +85,7 @@ const MyAdOne = ({
         console.log(taskName)
         console.log(timeError)
   
-        // setMistakes(rezult)
+        setMistakes(rezult)
         return (Object.values(rezult).every(value => value === false))
     }
   
@@ -94,14 +94,11 @@ const MyAdOne = ({
           console.log(changingTask)
           alert('реальный вызов save')
           if (changingTaskVar !== myAdsArray[index]){
-            alert('отработка if ')
             if ( checkMistakes(changingTaskVar) ) {
-              alert('ошибок нет')
               setDetailsActive(false)
             }
           }
           else{
-            alert('отработка else')
             setDetailsActive(false)
           }
         
