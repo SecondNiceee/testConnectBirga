@@ -8,7 +8,30 @@ import Top from "./Top";
 import BackButton from "../../../constants/BackButton";
 import axios from "axios";
 
-
+              // let myFormData = new FormData();
+              // myFormData.append("id", changingTask.id);
+              // myFormData.append("title", changingTask.taskName);
+              // myFormData.append("description", changingTask.taskDescription);
+              // myFormData.append("deadline", 1);
+              // myFormData.append("price", changingTask.tonValue);
+              // myFormData.append("startTime", changingTask.time.start);
+              // myFormData.append("endTime", changingTask.time.end);
+              // if (changingTask.photos.length !== 0) {
+              //   for (let file of changingTask.photos) {
+              //     myFormData.append("photos", file);
+              //   }
+              // }
+              // axios.post(
+              //   "https://back-birga.ywa.su/advertisement",
+              //   myFormData,
+              //   {
+              //     headers: {
+              //       "Content-Type": "multipart/form-data",
+              //       "Access-Control-Allow-Origin": "*"
+              //     },
+              //   }
+              // );
+let changed = false;
 const MyAdOne = ({
   myAdsArray,
   setTask,
@@ -39,7 +62,7 @@ const MyAdOne = ({
       let taskName = false 
       let timeError = false
       console.log('changing Task : ' + changingTask)
-      console.log(changingTask)
+      console.log(changingTask) // ?? Почему changing Task здесь равен не истинному значению, а изначальному
       console.log(taskName)
       console.log(timeError)
     
@@ -67,34 +90,6 @@ const MyAdOne = ({
             alert('отработка if ')
             if ( checkMistakes() ) {
               alert('ошибок нет')
-              // let myFormData = new FormData();
-              // myFormData.append("id", changingTask.id);
-              // myFormData.append("title", changingTask.taskName);
-              // myFormData.append("description", changingTask.taskDescription);
-              // myFormData.append("deadline", 1);
-              // myFormData.append("price", changingTask.tonValue);
-              // myFormData.append("startTime", changingTask.time.start);
-              // myFormData.append("endTime", changingTask.time.end);
-              // if (changingTask.photos.length !== 0) {
-              //   for (let file of changingTask.photos) {
-              //     myFormData.append("photos", file);
-              //   }
-              // }
-              // axios.post(
-              //   "https://back-birga.ywa.su/advertisement",
-              //   myFormData,
-              //   {
-              //     headers: {
-              //       "Content-Type": "multipart/form-data",
-              //       "Access-Control-Allow-Origin": "*"
-              //     },
-              //   }
-              // );
-  
-  
-  
-  
-  
               setDetailsActive(false)
             }
           }
@@ -107,7 +102,8 @@ const MyAdOne = ({
 
 
 
-    if (isDetailsActive){
+    if (isDetailsActive && changed === false){
+      changed = true
       setChangingTask(myAdsArray[index])
     }
     if (isDetailsActive){
@@ -115,10 +111,11 @@ const MyAdOne = ({
         BackButton.onClick(save)
       }
       else{
+        changed = false
         BackButton.hide()
         BackButton.offClick(save)
       }
-  }, [isDetailsActive] )
+  }, [isDetailsActive, changingTask] )
 
 
   
