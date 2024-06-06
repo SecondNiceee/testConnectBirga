@@ -51,7 +51,6 @@ const MyAdOne = ({
 
 
   function checkMistakes(){
-    alert('Вызов функции save')
     let taskName = false 
     let timeError = false
     console.log('changing Task : ' + changingTask)
@@ -78,7 +77,7 @@ const MyAdOne = ({
   }
 
   function save() {
-
+        alert('реальный вызов save')
         if (changingTask !== myAdsArray[index]){
           alert('отработка if ')
           if ( checkMistakes() ) {
