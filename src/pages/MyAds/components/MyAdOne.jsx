@@ -32,6 +32,7 @@ import axios from "axios";
               //   }
               // );
 let changed = false;
+let changingTaskVar = {}
 const MyAdOne = ({
   myAdsArray,
   setTask,
@@ -43,6 +44,9 @@ const MyAdOne = ({
   changingTask,
   setChangingTask
 }) => {
+  
+
+  changingTaskVar = changingTask
 
   
 
@@ -89,9 +93,9 @@ const MyAdOne = ({
           console.log('changing Task в функции save: ')
           console.log(changingTask)
           alert('реальный вызов save')
-          if (changingTask !== myAdsArray[index]){
+          if (changingTaskVar !== myAdsArray[index]){
             alert('отработка if ')
-            if ( checkMistakes(changingTask) ) {
+            if ( checkMistakes(changingTaskVar) ) {
               alert('ошибок нет')
               setDetailsActive(false)
             }
