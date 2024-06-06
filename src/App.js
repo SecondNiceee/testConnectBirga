@@ -95,19 +95,7 @@ const AnimatedSwitch = () =>{
 const popup = initPopup();
 function App() {
 
-  popup
-  .open({
-    title: 'Hello!',
-    message: 'Here is a test message.',
-    buttons: [{ id: 'my-id', type: 'default', text: 'Default text' }],
-  })
-  .then(buttonId => {
-    console.log(
-      buttonId === null 
-        ? 'User did not click any button'
-        : `User clicked a button with ID "${buttonId}"`
-    );
-  });
+
   async function lol (){
     let tasks = []
     let task = await axios.get('https://back-birga.ywa.su/advertisement/findByUser' , {
