@@ -2338,6 +2338,7 @@ input {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 8px;
+  padding-bottom: 20px;
 }
 
 .block {

@@ -110,13 +110,15 @@ const MyAdOne = ({
                 if ( checkMistakes(changingTaskVar) ) {
 
                   let myFormData = new FormData();
-                  myFormData.append("id", changingTask.id);
-                  myFormData.append("title", changingTask.taskName);
-                  myFormData.append("description", changingTask.taskDescription);
-                  myFormData.append("deadline", 1);
-                  myFormData.append("price", changingTask.tonValue);
-                  myFormData.append("startTime", changingTask.time.start);
-                  myFormData.append("endTime", changingTask.time.end);
+                  let answer = {
+                    'id' : changingTask.id,
+                    title : changingTask.taskName,
+                    "description" : changingTask.taskDescription,
+                    deadline : 1,
+                    price : changingTask.tonValue,
+                    startTime : changingTask.time.start,
+                    endTime : changingTask.time.end
+                  }
                   console.log(myFormData)
                   if (changingTask.photos.length !== 0) {
                     for (let file of changingTask.photos) {
@@ -125,7 +127,7 @@ const MyAdOne = ({
                   }
                   axios.put(
                     "https://back-birga.ywa.su/advertisement",
-                    myFormData,
+                    answer,
                     {
                       headers: {
                         "Content-Type": "multipart/form-data",
@@ -133,6 +135,9 @@ const MyAdOne = ({
                       },
                     }
                   );
+
+                  // popup.close()
+
                 }
 
                 setDetailsActive(false)

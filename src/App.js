@@ -10,8 +10,8 @@ import "./css/Values.css";
 import "./css/style.css";
 
 
-import { postEvent } from '@tma.js/sdk';
-import { initPopup } from '@tma.js/sdk';
+// import { postEvent } from '@tma.js/sdk';
+// import { initPopup } from '@tma.js/sdk';
 
 import FirstMenu from "./pages/FirstMenu/FirstMenu";
 
@@ -91,8 +91,6 @@ const AnimatedSwitch = () =>{
         </div>
       )
 }
-
-const popup = initPopup();
 function App() {
 
 
