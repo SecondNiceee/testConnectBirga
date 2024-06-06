@@ -111,9 +111,9 @@ const MyAdOne = ({
 
                   let myFormData = new FormData();
                   let answer = {
-                    'id' : changingTask.id,
+                    id : changingTask.id,
                     title : changingTask.taskName,
-                    "description" : changingTask.taskDescription,
+                    description : changingTask.taskDescription,
                     deadline : 1,
                     price : changingTask.tonValue,
                     startTime : changingTask.time.start,
@@ -130,7 +130,7 @@ const MyAdOne = ({
                     answer,
                     {
                       headers: {
-                        "Content-Type": "multipart/form-data",
+                        "Content-Type": "application/json",
                         "Access-Control-Allow-Origin": "*"
                       },
                     }
