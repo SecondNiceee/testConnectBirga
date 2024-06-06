@@ -90,11 +90,10 @@ const MyAdOne = ({
     }
   
     function save() {
-          console.log('changing Task в функции save: ')
-          console.log(changingTask)
           alert('реальный вызов save')
           if (changingTaskVar !== myAdsArray[index]){
-            window.Telegram.WebApp.PopupParams = {title : 'Сохранение' , message : 'Сохранить изменения перед выходом?'}
+            // window.Telegram.WebApp.PopupParams = {title : 'Сохранение' , message : 'Сохранить изменения перед выходом?'}
+            console.log(window.Telegram.WebApp.PopupParams)
             window.Telegram.WebApp.showPopup()
             if ( checkMistakes(changingTaskVar) ) {
               setDetailsActive(false)
