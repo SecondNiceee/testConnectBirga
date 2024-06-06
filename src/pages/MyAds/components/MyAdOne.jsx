@@ -35,17 +35,17 @@ const MyAdOne = ({
     if (isDetailsActive){
       setChangingTask(myAdsArray[index])
     }
+    if (isDetailsActive){
+        BackButton.show()
+        BackButton.onClick(save)
+      }
+      else{
+        BackButton.hide()
+        BackButton.offClick(save)
+      }
   }, [isDetailsActive] )
 
 
-  if (isDetailsActive){
-      BackButton.show()
-      BackButton.onClick(save)
-    }
-    else{
-      BackButton.hide()
-      BackButton.offClick(save)
-    }
   
 
 
