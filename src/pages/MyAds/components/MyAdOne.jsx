@@ -92,15 +92,13 @@ const MyAdOne = ({
     }
   
     function save() {
-          alert('реальный вызов save')
           if (changingTaskVar !== myAdsArray[index]){
-            // window.Telegram.WebApp.PopupParams = {title : 'Сохранение' , message : 'Сохранить изменения перед выходом?'}
-            // console.log(window.Telegram.WebApp.PopupParams)
+
             popup
             .open({
               title: 'Сохранить?',
               message: 'Сохранить изменения перед выходом?',
-              buttons: [{ id: 'save', type: 'ok', text: 'Да' },
+              buttons: [{ id: 'save', type: 'default', text: 'Да' },
               { id: 'delete', type: 'destructive', text: 'Нет' }
               ],
             })
@@ -110,8 +108,35 @@ const MyAdOne = ({
               }
               if (buttonId === 'save'){
                 if ( checkMistakes(changingTaskVar) ) {
-                  setDetailsActive(false)
+                  
+                  let myFormData = new FormData();
+                  myFormData.append("id", changingTask.id);
+                  myFormData.append("title", changingTask.taskName);
+                  myFormData.append("description", changingTask.taskDescription);
+                  myFormData.append("deadline", 1);
+                  myFormData.append("price", changingTask.tonValue);
+                  myFormData.append("startTime", changingTask.time.start);
+                  myFormData.append("endTime", changingTask.time.end);
+                  if (changingTask.photos.length !== 0) {
+                    for (let file of changingTask.photos) {
+                      myFormData.append("photos", file);
+                    }
+                  }
+                  axios.post(
+                    "https://back-birga.ywa.su/advertisement",
+                    myFormData,
+                    {
+                      headers: {
+                        "Content-Type": "multipart/form-data",
+                        "Access-Control-Allow-Origin": "*"
+                      },
+                    }
+                  );
                 }
+
+                setDetailsActive(false)
+
+                
               }
             });
           }
