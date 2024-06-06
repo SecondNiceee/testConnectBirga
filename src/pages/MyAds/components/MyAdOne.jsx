@@ -119,7 +119,7 @@ const MyAdOne = ({
                     startTime : changingTask.time.start,
                     endTime : changingTask.time.end
                   }
-                  console.log(myFormData)
+                  console.log(answer)
                   if (changingTask.photos.length !== 0) {
                     for (let file of changingTask.photos) {
                       myFormData.append("photos", file);
