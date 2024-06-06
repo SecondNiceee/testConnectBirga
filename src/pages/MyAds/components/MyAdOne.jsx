@@ -47,7 +47,8 @@ const MyAdOne = ({
   
 
 
-  
+  console.log('общий changing Task : ')
+  console.log(changingTask)
   const [index, setIndex] = useState(0);
   const [mistakes, setMistakes] = useState({
     taskName : false,
@@ -58,7 +59,7 @@ const MyAdOne = ({
 
 
 
-    function checkMistakes(){
+    function checkMistakes(changingTask){
       let taskName = false 
       let timeError = false
       console.log('changing Task : ' + changingTask)
@@ -88,7 +89,7 @@ const MyAdOne = ({
           alert('реальный вызов save')
           if (changingTask !== myAdsArray[index]){
             alert('отработка if ')
-            if ( checkMistakes() ) {
+            if ( checkMistakes(changingTask) ) {
               alert('ошибок нет')
               setDetailsActive(false)
             }
