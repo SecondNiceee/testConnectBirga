@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { ProgressBar, ThreeDots, ThreeCircles } from "react-loader-spinner";
-import "./FirstLoader.css";
+import { ProgressBar, ThreeDots, ThreeCircles, Triangle } from "react-loader-spinner";
+import "./loaders.css";
 const FirstLoader = () => {
   let [dotStyles, setDotStyles] = useState({
     display: "none",
@@ -13,18 +13,18 @@ const FirstLoader = () => {
   });
   return (
     <div className="firstLoader">
-    <ThreeCircles
-        visible={true}
-        height="80"
-        width="80"
-        color="white"
-        ariaLabel="three-circles-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-    />
+        <Triangle
+          visible={true}
+          height="80"
+          width="80"
+          color="white"
+          ariaLabel="triangle-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+        />
       <div className="loaderText-block">
         <p className="loaderText">Загрузка заданий</p>
-        <ThreeDots
+        {/* <ThreeDots
           visible={true}
           height="20"
           width="20"
@@ -33,7 +33,7 @@ const FirstLoader = () => {
           ariaLabel="three-dots-loading"
           wrapperStyle={{}}
           wrapperClass="threeDots"
-        />
+        /> */}
       </div>
     </div>
   );

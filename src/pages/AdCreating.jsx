@@ -5,11 +5,16 @@ import AdCreatingTwo from "./ADCreatingTwo/AdCreatingTwo/AddCreatingTwo";
 
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { changeTaskInformation, postInformation, postMyTask } from "../store/information";
+import {
+  changeTaskInformation,
+  postInformation,
+  postMyTask,
+} from "../store/information";
 import BackButton from "../constants/BackButton";
 import MainButton from "../constants/MainButton";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import PostLoader from "../loaders/PostLoader";
 
 let spet = 0;
 const AdCreating = () => {
@@ -27,10 +32,9 @@ const AdCreating = () => {
 
   const blurRef = useRef(null);
 
-  const status = useSelector(state => state.information.postTaskStatus)
-  
+  const status = useSelector((state) => state.information.postTaskStatus);
 
-  console.log(status)
+  console.log(status);
 
   const [error, setError] = useState({
     name: false,
@@ -142,22 +146,22 @@ const AdCreating = () => {
     }
 
     if (el.photos.length !== 0) {
-        for (let file of el.photos) {
-          myFormData.append("photos", file);
-        }
+      for (let file of el.photos) {
+        myFormData.append("photos", file);
       }
-           
-    dispatch(postMyTask(myFormData))
-      //   let state = await axios.post(
-      //   "https://back-birga.ywa.su/advertisement",
-      //   myFormData,
-      //   {
-      //     headers: {
-      //       "Content-Type": "multipart/form-data",
-      //       "Access-Control-Allow-Origin": "*"
-      //     },
-      //   }
-      // );
+    }
+
+    dispatch(postMyTask(myFormData));
+    //   let state = await axios.post(
+    //   "https://back-birga.ywa.su/advertisement",
+    //   myFormData,
+    //   {
+    //     headers: {
+    //       "Content-Type": "multipart/form-data",
+    //       "Access-Control-Allow-Origin": "*"
+    //     },
+    //   }
+    // );
   }
 
   function checking() {
@@ -293,7 +297,37 @@ const AdCreating = () => {
         transition: "0.3s",
       }}
     >
-      <button
+      {status === null ? (
+        <>
+          <PostLoader />
+        </>
+      ) : (
+        <>
+          <AdCreatingOne
+            className={"adCreatingOne"}
+            errorName={error.name}
+            setTaskInformation={setTaskInformation}
+            taskInformation={taskInformation}
+            MyInformation={false}
+            mistakes={{ timeError: false, taskName: false }}
+          />
+          <AdCreatingTwo
+            errors={{
+              ton: error.ton,
+              singleError: error.singleError,
+              startError: error.startError,
+              endError: error.endError,
+            }}
+            GreyIntWidth={GreyIntWidth}
+            GreyWidth={GreyWidth}
+            setTaskInformation={setTaskInformation}
+            taskInformation={taskInformation}
+            tonConstant={tonConstant}
+          />
+          <AdCreatingThree taskInformation={taskInformation} />
+        </>
+      )}
+      {/* <button
         ref={blurRef}
         style={{ position: "absolute" }}
         onClick={() => {
@@ -317,29 +351,7 @@ const AdCreating = () => {
         }}
       >
         Отослать
-      </button>
-      <AdCreatingOne
-        className={"adCreatingOne"}
-        errorName={error.name}
-        setTaskInformation={setTaskInformation}
-        taskInformation={taskInformation}
-        MyInformation={false}
-        mistakes={ {timeError : false, taskName : false} }
-      />
-      <AdCreatingTwo
-        errors={{
-          ton: error.ton,
-          singleError: error.singleError,
-          startError: error.startError,
-          endError: error.endError,
-        }}
-        GreyIntWidth={GreyIntWidth}
-        GreyWidth={GreyWidth}
-        setTaskInformation={setTaskInformation}
-        taskInformation={taskInformation}
-        tonConstant={tonConstant}
-      />
-      <AdCreatingThree taskInformation={taskInformation} />
+      </button> */}
     </motion.div>
   );
 };

@@ -17,5 +17,15 @@
 }
 .threeDots{
     transform: translateY(4px);
-    margin-left: 4px;
+    margin-left: 5px;
+}
+
+.postLoader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
 }
