@@ -5,7 +5,7 @@ import AdCreatingTwo from "./ADCreatingTwo/AdCreatingTwo/AddCreatingTwo";
 
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { changeTaskInformation, postInformation } from "../store/information";
+import { changeTaskInformation, postInformation, postMyTask } from "../store/information";
 import BackButton from "../constants/BackButton";
 import MainButton from "../constants/MainButton";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +26,11 @@ const AdCreating = () => {
   const dispatch = useDispatch();
 
   const blurRef = useRef(null);
+
+  const status = useSelector(state => state.information.postTaskStatus)
+  
+
+  console.log(status)
 
   const [error, setError] = useState({
     name: false,
@@ -141,16 +146,17 @@ const AdCreating = () => {
         }
       }
            
-        await axios.post(
-        "https://back-birga.ywa.su/advertisement",
-        myFormData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-            "Access-Control-Allow-Origin": "*"
-          },
-        }
-      );
+        postMyTask(myFormData)
+      //   let state = await axios.post(
+      //   "https://back-birga.ywa.su/advertisement",
+      //   myFormData,
+      //   {
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //       "Access-Control-Allow-Origin": "*"
+      //     },
+      //   }
+      // );
   }
 
   function checking() {

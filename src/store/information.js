@@ -1,6 +1,25 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
+export const postMyTask = createAsyncThunk(
+  "information/postMytask" , 
+  async function(data){
+
+    await axios.post(
+      "https://back-birga.ywa.su/advertisement",
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "Access-Control-Allow-Origin": "*"
+        },
+      }
+    );
+    return true
+
+
+  }
+)
 
 export const fetchMyOrders = createAsyncThunk(
   "information/fetchMyOrders" , 
@@ -121,6 +140,7 @@ const information = createSlice( {
         orderStatus  : null ,
         myOrderStatus : null,
         changeOrderStatus : null,
+        postTaskStatus : null,
         taskInformation :  {
             category: { name: "", value: "" },
             subCategory: "Выбрать",
@@ -289,6 +309,9 @@ const information = createSlice( {
         builder.addCase( fetchMyOrders.rejected , ( (state , action) => {state.myOrderStatus = 'error' 
         alert()
         } )  )
+        builder.addCase(  postMyTask.pending , (   (state ) => {state.postTaskStatus = 'pending'}   )  )
+        builder.addCase(  postMyTask.fulfilled , (   (state ) => {state.postTaskStatus = 'complete'}   )  )
+        builder.addCase(  postMyTask.rejected , (   (state ) => {state.postTaskStatus = 'error'}   )  )
     },
       // extraReducers : builder => {
 
