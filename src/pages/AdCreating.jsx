@@ -297,7 +297,7 @@ const AdCreating = () => {
         transition: "0.3s",
       }}
     >
-      {status === null ? (
+      {status === 'pending' ? (
         <>
           <PostLoader />
         </>
