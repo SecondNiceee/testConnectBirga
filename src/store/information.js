@@ -118,7 +118,9 @@ export const fetchTasksInformation = createAsyncThunk(
 const information = createSlice( {
     name : 'taskInformation',
     initialState : {
-        status  : null ,
+        orderStatus  : null ,
+        myOrderStatus : null,
+        changeOrderStatus : null,
         taskInformation :  {
             category: { name: "", value: "" },
             subCategory: "Выбрать",
@@ -275,16 +277,16 @@ const information = createSlice( {
     },
     extraReducers : builder => {
 
-      builder.addCase( fetchTasksInformation.pending, (state => {state.status = 'loading'} )  )
-      builder.addCase( fetchTasksInformation.fulfilled, ((state , action) => {state.status = 'loading'  
+      builder.addCase( fetchTasksInformation.pending, (state => {state.orderStatus = 'loading'} )  )
+      builder.addCase( fetchTasksInformation.fulfilled, ((state , action) => {state.orderStatus = 'complete'  
       state.orderInformations = action.payload }  ) )
-      builder.addCase( fetchTasksInformation.rejected , ( (state , action) => {state.status = 'error'} )  )
+      builder.addCase( fetchTasksInformation.rejected , ( (state , action) => {state.orderStatus = 'error'} )  )
       
-        builder.addCase( fetchMyOrders.pending, (state => {state.status = 'loading'} )  )
-        builder.addCase( fetchMyOrders.fulfilled, ((state , action) => {state.status = 'loading'  
+        builder.addCase( fetchMyOrders.pending, (state => {state.myOrderStatus = 'loading'} )  )
+        builder.addCase( fetchMyOrders.fulfilled, ((state , action) => {state.myOrderStatus = 'complete'  
         state.myAdsArray = action.payload
        }  ) )
-        builder.addCase( fetchMyOrders.rejected , ( (state , action) => {state.status = 'error' 
+        builder.addCase( fetchMyOrders.rejected , ( (state , action) => {state.myOrderStatus = 'error' 
         alert()
         } )  )
     },

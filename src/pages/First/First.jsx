@@ -24,6 +24,9 @@ const First = () => {
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
   );
+  const orderStatus = useSelector(
+    (state) => state.information.orderStatus
+  )
 
 
   const isMenuActive = useSelector((state) => state.menu.value);
@@ -69,7 +72,10 @@ const First = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.1 , duration : 0 }}
     >
-      <FirstTop
+
+      {orderStatus === 'complete' ? 
+      <>
+  <FirstTop
         style={isMenuActive ? { opacity: "0.5" } : {}}
         setMenuActive={setMenuActive}
         setFilterBy={setFilterBy}
@@ -97,6 +103,12 @@ const First = () => {
           similarAds={ordersInformation}
         />
       </CSSTransition>
+
+      </>
+      :
+      <div>Загрузка информации...</div>
+    }
+    
     </motion.div>
   );
 };
