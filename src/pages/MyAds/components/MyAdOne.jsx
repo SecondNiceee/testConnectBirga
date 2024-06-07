@@ -8,6 +8,8 @@ import Top from "./Top";
 import BackButton from "../../../constants/BackButton";
 import axios from "axios";
 import { initPopup } from '@tma.js/sdk';
+import { putMyTask } from "../../../store/information";
+import { useDispatch, useSelector } from "react-redux";
 
               // let myFormData = new FormData();
               // myFormData.append("id", changingTask.id);
@@ -47,6 +49,10 @@ const MyAdOne = ({
   setChangingTask
 }) => {
   
+  dispatch = useDispatch()
+  putStatus = useSelector(state => state.information.putTaskStatus)
+  getStatus = useSelector(state => state.information.myOrderStatus)
+
 
   changingTaskVar = changingTask
 
@@ -125,16 +131,18 @@ const MyAdOne = ({
                       myFormData.append("photos", file);
                     }
                   }
-                  axios.put(
-                    "https://back-birga.ywa.su/advertisement",
-                    answer,
-                    {
-                      headers: {
-                        "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*"
-                      },
-                    }
-                  );
+                  dispatch(putMyTask(answer))
+                  
+                  // axios.put(
+                  //   "https://back-birga.ywa.su/advertisement",
+                  //   answer,
+                  //   {
+                  //     headers: {
+                  //       "Content-Type": "application/json",
+                  //       "Access-Control-Allow-Origin": "*"
+                  //     },
+                  //   }
+                  // );
 
                   // popup.close()
 

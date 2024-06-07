@@ -1,10 +1,27 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
+
+export const putMyTask = createAsyncThunk(
+  'inforation/putMyTask' , 
+  async function(data){
+    await axios.put(
+      "https://back-birga.ywa.su/advertisement",
+      data,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*"
+        },
+      }
+    );
+    return true
+  }
+)
+
 export const postMyTask = createAsyncThunk(
   "information/postMytask" , 
   async function(data){
-    console.log('пушь') 
     await axios.post(
       "https://back-birga.ywa.su/advertisement",
       data,
@@ -142,6 +159,7 @@ const information = createSlice( {
         myOrderStatus : null,
         changeOrderStatus : null,
         postTaskStatus : null,
+        putTaskStatus : null,
         taskInformation :  {
             category: { name: "", value: "" },
             subCategory: "Выбрать",
@@ -313,6 +331,10 @@ const information = createSlice( {
         builder.addCase(  postMyTask.pending , (   (state ) => {state.postTaskStatus = 'pending'}   )  )
         builder.addCase(  postMyTask.fulfilled , (   (state ) => {state.postTaskStatus = 'complete'}   )  )
         builder.addCase(  postMyTask.rejected , (   (state ) => {state.postTaskStatus = 'error'}   )  )
+
+        builder.addCase(  putMyTask.pending , (   (state ) => {state.putTaskStatus = 'pending'}   )  )
+        builder.addCase(  putMyTask.fulfilled , (   (state ) => {state.putTaskStatus = 'complete'}   )  )
+        builder.addCase(  putMyTask.rejected , (   (state ) => {state.putTaskStatus = 'error'}   )  )
     },
       // extraReducers : builder => {
 
