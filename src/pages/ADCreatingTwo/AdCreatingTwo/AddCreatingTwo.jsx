@@ -92,8 +92,8 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       }
 
 
-    let dateObject = document.querySelector('.datepicker-modal')
-    let datePickerObject = document.querySelector('.datepicker')
+    let dateObject = document.querySelectorAll('.datepicker-modal')[1]
+    let datePickerObject = document.querySelectorAll('.datepicker')[1]
     
     if (dateObject && datePickerObject){
       dateObject.style.display = 'block'

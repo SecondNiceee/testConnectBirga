@@ -15,7 +15,7 @@ import MyDatePicker from "../../ADCreatingTwo/DatePicker/DatePicker";
 import cl from "./AdCreatingOne.module.css";
 import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
 import BackButton from "../../../constants/BackButton";
-
+import '../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css'
 let transform = [{ opacity: 0 }, { opacity: 1 }];
 
 Date.prototype.addHours = function(h) {
@@ -138,8 +138,8 @@ const AdCreatingOne = ({
     setState({ ...state, isOpen: false });
   }
 
-  let dateObject = document.querySelector(".datepicker-modal");
-  let datePickerObject = document.querySelector(".datepicker");
+  let dateObject = document.querySelectorAll(".datepicker-modal")[0];
+  let datePickerObject = document.querySelectorAll(".datepicker")[0];
 
   if (dateObject && datePickerObject) {
     dateObject.style.display = "block";
