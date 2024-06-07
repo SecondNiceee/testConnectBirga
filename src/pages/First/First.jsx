@@ -13,6 +13,7 @@ import { changeMenuActive } from "../../store/menuSlice";
 import MainButton from "../../constants/MainButton";
 import useListner from "../../hooks/useListner";
 import { fetchTasksInformation } from "../../store/information";
+import FirstLoader from "../../loaders/FirstLoader";
 
 
 const First = () => {
@@ -72,15 +73,15 @@ const First = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.1 , duration : 0 }}
     >
+      <FirstTop
+            style={isMenuActive ? { opacity: "0.5" } : {}}
+            setMenuActive={setMenuActive}
+            setFilterBy={setFilterBy}
+            userInfo = {userInfo}
+          />
 
       {orderStatus === 'complete' ? 
       <>
-  <FirstTop
-        style={isMenuActive ? { opacity: "0.5" } : {}}
-        setMenuActive={setMenuActive}
-        setFilterBy={setFilterBy}
-        userInfo = {userInfo}
-      />
 
       <FirstMain
         style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
@@ -106,7 +107,7 @@ const First = () => {
 
       </>
       :
-      <div>Загрузка информации...</div>
+      <FirstLoader/>
     }
     
     </motion.div>
