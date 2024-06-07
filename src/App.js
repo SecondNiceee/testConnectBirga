@@ -28,7 +28,7 @@ const Profile = lazy( () => import('./pages/Profile/Profile') )
 const Balance = lazy( () => import('./pages/Balance') )
 const MyAds = lazy(  () =>  import('./pages/MyAds/MyAds') )
 
-
+console.log('start')
 const MyLoader = () => {
   return (
     <div style={{
