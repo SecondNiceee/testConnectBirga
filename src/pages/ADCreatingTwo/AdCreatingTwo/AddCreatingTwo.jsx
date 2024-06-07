@@ -162,6 +162,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
         top : 0,
         behavior : 'auto'
       })
+
     }
 
     return (
