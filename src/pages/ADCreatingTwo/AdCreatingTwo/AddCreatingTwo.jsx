@@ -91,7 +91,6 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
         setState({...state , isOpen : false})
       }
 
-      const mainRef = useRef(null)
 
     let dateObject = document.querySelector('.datepicker-modal')
     let datePickerObject = document.querySelector('.datepicker')
@@ -144,8 +143,6 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       })
 
       dateObject.style.zIndex = '100'
-      // dateObject.style.bottom = '-300px'
-      // dateObject.style.height = 'calc(100% + 300px)'
       dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'
       datePickerObject.style.transform = 'translateY(0%)'
       MainButton.hide()
@@ -156,9 +153,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       document.documentElement.style.marginTop = '0px'
       MainButton.show()
       dateObject.style.backgroundColor = 'unset'
-      // dateObject.style.bottom = '0px'
       dateObject.style.display = 'block'
-      // dateObject.style.zIndex = '-1'
       datePickerObject.style.transform = 'translateY(100%)'
 
       document.documentElement.style.overflow = 'visible'

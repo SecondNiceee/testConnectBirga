@@ -10,10 +10,17 @@ import MakePrivate from "../MakePrivate/MakePrivate";
 import ChoiceCategory from "../ChoiceCategory/ChoiceCategory";
 import ChoiceSubCategory from "../ChoiceSubCategory";
 import StartOn from "../StartOn/StartOn";
-
+import DatePicker from "react-mobile-datepicker";
+import MyDatePicker from "../../ADCreatingTwo/DatePicker/DatePicker";
 import cl from "./AdCreatingOne.module.css";
+import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
 
 let transform = [{ opacity: 0 }, { opacity: 1 }];
+
+Date.prototype.addHours = function(h) {
+  this.setTime(this.getTime() + (h*60*60*1000));
+  return this;
+}
 
 const AdCreatingOne = ({
   taskInformation,
@@ -21,7 +28,7 @@ const AdCreatingOne = ({
   MyInformation,
   className,
   errorName,
-  mistakes
+  mistakes,
 }) => {
   const [isCategoryChoiceOpen, setCatagoryChoiceOpen] = useState(false);
 
@@ -46,6 +53,144 @@ const AdCreatingOne = ({
   function goBack() {
     transform = [{ opacity: 0 }, { opacity: 1 }];
     navigate(-1);
+  }
+
+  const monthMap = {
+    1: "Янв",
+    2: "Фев",
+    3: "Март",
+    4: "Апр",
+    5: "Май",
+    6: "Июнь",
+    7: "Июль",
+    8: "Авг",
+    9: "Сен",
+    10: "Окт",
+    11: "Ноя",
+    12: "Дек",
+  };
+  const dateConfig = {
+    month: {
+      format: (value) => monthMap[value.getMonth() + 1],
+      caption: "Мес",
+      step: 1,
+    },
+    date: {
+      format: "DD",
+      caption: "День",
+      step: 1,
+    },
+    hour: {
+      format: "hh",
+      caption: "Час",
+      step: 1,
+    },
+  };
+
+  const [state, setState] = useState({
+    time: new Date().addHours(1),
+    isOpen: false,
+    isPicked: false,
+    singleOpen: null,
+    startTime: null,
+    endTime: null,
+    isSingleOpen: false,
+    isStartOpen: false,
+    isEndOpen: false,
+  });
+  function handleClick() {
+    setState({ ...state, isOpen: true });
+  }
+  function handleSelect(time) {
+    if (state.isStartOpen) {
+      setState({
+        ...state,
+        time: time,
+        isOpen: false,
+        isStartOpen: false,
+        startTime: time,
+      });
+      setTaskInformation({ ...taskInformation, startTime: time });
+    }
+    if (state.isSingleOpen) {
+      setState({
+        ...state,
+        time: time,
+        isOpen: false,
+        isSingleOpen: false,
+        singleTime: time,
+      });
+      setTaskInformation({ ...taskInformation, singleTime: time });
+    }
+    if (state.isEndOpen) {
+      setState({
+        ...state,
+        time: time,
+        isOpen: false,
+        isEndOpen: false,
+        endTime: time,
+      });
+      setTaskInformation({ ...taskInformation, endTime: time });
+    }
+  }
+  function handleCancel() {
+    setState({ ...state, isOpen: false });
+  }
+
+  let dateObject = document.querySelector(".datepicker-modal");
+  let datePickerObject = document.querySelector(".datepicker");
+
+  if (dateObject && datePickerObject) {
+    dateObject.style.display = "block";
+    dateObject.style.zIndex = "-1";
+    dateObject.style.backgroundColor = "unset";
+    dateObject.style.transition = "0.3s";
+    datePickerObject.style.transition = "0.3s";
+  }
+  // useState(() => {
+  //   function backHandler(){
+  //     if (state.isOpen){
+  //         setState({...state, isOpen : false})
+  //     }
+  //   }
+  //   BackButton.onClick( )
+  // } )
+  useEffect(() => {
+    if (dateObject && datePickerObject) {
+      if (state.isOpen) {
+        appear();
+        document.documentElement.style.overflow = "hidden";
+      } else {
+        disappear();
+        document.documentElement.style.overflow = "visible";
+      }
+    }
+  }, [state.isOpen]);
+
+  function appear() {
+    document.documentElement.style.overflow = "hidden";
+    document.documentElement.style.marginTop = "400px";
+    window.scrollTo({
+      top: 400,
+      behavior: "auto",
+    });
+
+    dateObject.style.zIndex = "100";
+    dateObject.style.backgroundColor = "rgba(0, 0, 0, .6)";
+    datePickerObject.style.transform = "translateY(0%)";
+  }
+  function disappear() {
+    document.documentElement.style.marginTop = "0px";
+    dateObject.style.backgroundColor = "unset";
+    dateObject.style.display = "block";
+    datePickerObject.style.transform = "translateY(100%)";
+
+    document.documentElement.style.overflow = "visible";
+
+    window.scrollTo({
+      top: 0,
+      behavior: "auto",
+    });
   }
 
   return (
@@ -75,11 +220,11 @@ const AdCreatingOne = ({
           setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
         />
       )}
-      
+
       <TaskName
         // style = {mistakes.taskName ? {border : '1px solid red'} : {}}
-        text = {MyInformation ? '' : 'Например, разработать дизайн'}
-        mistakes = {mistakes}
+        text={MyInformation ? "" : "Например, разработать дизайн"}
+        mistakes={mistakes}
         errorName={errorName}
         taskInformation={taskInformation}
         setTaskInformation={setTaskInformation}
@@ -92,22 +237,31 @@ const AdCreatingOne = ({
       />
       {MyInformation ? (
         <>
-          <StartOn
-            mistakes = {mistakes}
-            title = 'Начать'
-            className={cl.startOn}
-            text={taskInformation.time.start.toLocaleString("ru", options)}
-          />
-          <StartOn
-            mistakes = {mistakes}
-            title = 'Закончить'
-            className={cl.startOn}
-            text={taskInformation.time.end.length > 0 ? taskInformation.time.end.toLocaleString("ru", options) : 'Не указана'}
+          <CatchDate
+            className={''}
+            whichOne={'startAndEnd'}
+            state={state}
+            setState={setState}
+            errors={{}}
           />
         </>
       ) : (
         ""
       )}
+
+      <DatePicker
+        confirmText="Сохранить"
+        cancelText="Отмена"
+        theme="ios"
+        showCaption={true}
+        dateConfig={dateConfig}
+        value={state.time}
+        isOpen={true}
+        onSelect={handleSelect}
+        onCancel={handleCancel}
+        min={new Date(new Date().addHours(1) + 1)}
+      />
+
       <CSSTransition
         classNames={"modal"}
         in={isCategoryChoiceOpen}

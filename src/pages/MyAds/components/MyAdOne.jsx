@@ -1,4 +1,4 @@
-import React, { useState , memo, useEffect, useMemo} from "react";
+import React, { useState, memo, useEffect, useMemo } from "react";
 import Burger from "../../../components/UI/Burger/Burger";
 import MyAdsBlock from "./MyAdsBlock";
 import PickerContent from "./PickerContent";
@@ -7,36 +7,13 @@ import { CSSTransition } from "react-transition-group";
 import Top from "./Top";
 import BackButton from "../../../constants/BackButton";
 import axios from "axios";
-import { initPopup } from '@tma.js/sdk';
+// import { initPopup } from "@tma.js/sdk";
 import { putMyTask } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
 
-              // let myFormData = new FormData();
-              // myFormData.append("id", changingTask.id);
-              // myFormData.append("title", changingTask.taskName);
-              // myFormData.append("description", changingTask.taskDescription);
-              // myFormData.append("deadline", 1);
-              // myFormData.append("price", changingTask.tonValue);
-              // myFormData.append("startTime", changingTask.time.start);
-              // myFormData.append("endTime", changingTask.time.end);
-              // if (changingTask.photos.length !== 0) {
-              //   for (let file of changingTask.photos) {
-              //     myFormData.append("photos", file);
-              //   }
-              // }
-              // axios.post(
-              //   "https://back-birga.ywa.su/advertisement",
-              //   myFormData,
-              //   {
-              //     headers: {
-              //       "Content-Type": "multipart/form-data",
-              //       "Access-Control-Allow-Origin": "*"
-              //     },
-              //   }
-              // );
 let changed = false;
-const popup = initPopup();
-let changingTaskVar = {}
+// const popup = initPopup();
+let changingTaskVar = {};
 const MyAdOne = ({
   myAdsArray,
   setTask,
@@ -44,171 +21,152 @@ const MyAdOne = ({
   setDetailsActive,
   setMyAdsArray,
   isDetailsActive,
-  setMenuActive, 
+  setMenuActive,
   changingTask,
-  setChangingTask
+  setChangingTask,
 }) => {
-  
-  const dispatch = useDispatch()
-  let putStatus = useSelector(state => state.information.putTaskStatus)
-  let getStatus = useSelector(state => state.information.myOrderStatus)
+  const dispatch = useDispatch();
+  let putStatus = useSelector((state) => state.information.putTaskStatus);
+  let getStatus = useSelector((state) => state.information.myOrderStatus);
 
+  changingTaskVar = changingTask;
 
-  changingTaskVar = changingTask
-
-  
-
-
-  console.log('общий changing Task : ')
-  console.log(changingTask)
+  console.log("общий changing Task : ");
+  console.log(changingTask);
   const [index, setIndex] = useState(0);
   const [mistakes, setMistakes] = useState({
-    taskName : false,
-    timeError : false
-  })
+    taskName: false,
+    timeError: false,
+  });
 
-  useEffect( () => {
+  useEffect(() => {
+    function checkMistakes(changingTask) {
+      let taskName = false;
+      let timeError = false;
+      console.log("changing Task : " + changingTask);
+      console.log(changingTask); // ?? Почему changing Task здесь равен не истинному значению, а изначальному
+      console.log(taskName);
+      console.log(timeError);
 
+      if (changingTask.taskName.length < 5) {
+        taskName = true;
+      }
 
-
-    function checkMistakes(changingTask){
-      let taskName = false 
-      let timeError = false
-      console.log('changing Task : ' + changingTask)
-      console.log(changingTask) // ?? Почему changing Task здесь равен не истинному значению, а изначальному
-      console.log(taskName)
-      console.log(timeError)
-    
-        if (changingTask.taskName.length < 5){
-           taskName = true
+      if (changingTask.time.end.length > 0) {
+        if (changingTask.time.end < changingTask.time.start) {
+          timeError = true;
         }
-  
-        if (changingTask.time.end.length > 0) {
-          if (changingTask.time.end < changingTask.time.start){
-            timeError = true
-          }
-        }
-        let rezult = {taskName : taskName, timeError : timeError}
-  
-        console.log(taskName)
-        console.log(timeError)
-  
-        setMistakes(rezult)
-        return (Object.values(rezult).every(value => value === false))
+      }
+      let rezult = { taskName: taskName, timeError: timeError };
+
+      console.log(taskName);
+      console.log(timeError);
+
+      setMistakes(rezult);
+      return Object.values(rezult).every((value) => value === false);
     }
-  
+
     function save() {
-          if (changingTaskVar !== myAdsArray[index]){
+      if (changingTaskVar !== myAdsArray[index]) {
+        // popup
+        //   .open({
+        //     title: "Сохранить?",
+        //     message: "Сохранить изменения перед выходом?",
+        //     buttons: [
+        //       { id: "save", type: "default", text: "Да" },
+        //       { id: "delete", type: "destructive", text: "Нет" },
+        //     ],
+        //   })
+        //   .then((buttonId) => {
+        //     if (buttonId === "delete" || buttonId === null) {
+        //       setDetailsActive(false);
+        //     }
+        //     if (buttonId === "save") {
+        //       if (checkMistakes(changingTaskVar)) {
+        //         let myFormData = new FormData();
+        //         let answer = {
+        //           id: changingTaskVar.id,
+        //           title: changingTaskVar.taskName,
+        //           description: changingTaskVar.taskDescription,
+        //           deadline: 1,
+        //           price: changingTaskVar.tonValue,
+        //           startTime: changingTaskVar.time.start,
+        //           endTime: changingTaskVar.time.end,
+        //         };
 
-            popup
-            .open({
-              title: 'Сохранить?',
-              message: 'Сохранить изменения перед выходом?',
-              buttons: [{ id: 'save', type: 'default', text: 'Да' },
-              { id: 'delete', type: 'destructive', text: 'Нет' }
-              ],
-            })
-            .then(buttonId => {
-              if (buttonId === 'delete' || buttonId === null){
-                setDetailsActive(false)
-              }
-              if (buttonId === 'save'){
-                if ( checkMistakes(changingTaskVar) ) {
+        //         if (changingTask.photos.length !== 0) {
+        //           for (let file of changingTask.photos) {
+        //             myFormData.append("photos", file);
+        //           }
+        //         }
+        //         dispatch(putMyTask(answer));
 
-                  let myFormData = new FormData();
-                  let answer = {
-                    id : changingTaskVar.id,
-                    title : changingTaskVar.taskName,
-                    description : changingTaskVar.taskDescription,
-                    deadline : 1,
-                    price : changingTaskVar.tonValue,
-                    startTime : changingTaskVar.time.start,
-                    endTime : changingTaskVar.time.end
-                  }
-                  
-                  if (changingTask.photos.length !== 0) {
-                    for (let file of changingTask.photos) {
-                      myFormData.append("photos", file);
-                    }
-                  }
-                  dispatch(putMyTask(answer))
+        //         // axios.put(
+        //         //   "https://back-birga.ywa.su/advertisement",
+        //         //   answer,
+        //         //   {
+        //         //     headers: {
+        //         //       "Content-Type": "application/json",
+        //         //       "Access-Control-Allow-Origin": "*"
+        //         //     },
+        //         //   }
+        //         // );
 
-                  // axios.put(
-                  //   "https://back-birga.ywa.su/advertisement",
-                  //   answer,
-                  //   {
-                  //     headers: {
-                  //       "Content-Type": "application/json",
-                  //       "Access-Control-Allow-Origin": "*"
-                  //     },
-                  //   }
-                  // );
+        //         // popup.close()
+        //       }
 
-                  // popup.close()
-
-                }
-
-                setDetailsActive(false)
-
-
-              }
-            });
-          }
-          else{
-            setDetailsActive(false)
-          }
-        
+        //       setDetailsActive(false);
+        //     }
+        //   });
+      } else {
+        setDetailsActive(false);
+      }
     }
 
-
-
-    if (isDetailsActive && changed === false){
-      changed = true
-      setChangingTask(myAdsArray[index])
+    if (isDetailsActive && changed === false) {
+      changed = true;
+      setChangingTask(myAdsArray[index]);
     }
-    if (isDetailsActive){
-        BackButton.show()
-        BackButton.onClick(save)
-      }
-      else{
-        changed = false
-        BackButton.hide()
-        BackButton.offClick(save)
-      }
-  }, [isDetailsActive, changingTask] )
+    if (isDetailsActive) {
+      BackButton.show();
+      BackButton.onClick(save);
+    } else {
+      changed = false;
+      BackButton.hide();
+      BackButton.offClick(save);
+    }
+  }, [isDetailsActive, changingTask]);
+
+  function setMyArray(par) {
+    console.log(par);
+    setMyAdsArray(
+      [...myAdsArray].map((e, i) => {
+        if (i === index) {
+          return par;
+        }
+        return e;
+      })
+    );
+    console.log(myAdsArray);
+  }
 
 
-  
 
-
-
-
-  
-    function setMyArray(par) {
-        console.log(par);
-        setMyAdsArray(
-          [...myAdsArray].map((e, i) => {
-            if (i === index) {
-              return par;
-            }
-            return e;
-          })
-        );
-        console.log(myAdsArray);
-      }
   return (
     <div className="my-ad-one">
-      <Top name={'Мои задания'} setMenuActive={setMenuActive}/>
+      <Top name={"Мои задания"} setMenuActive={setMenuActive} />
       {/* <button style={{
         position : 'absolute',
         zIndex : '999'
       }} onClick={() => {
         save()
       }}>Save</button> */}
-      <MyAdsBlock
-        deals={1}
-        finishedDeals={"70%"}
-      />
+
+
+
+
+
+      <MyAdsBlock deals={1} finishedDeals={"70%"} />
       <PickerContent
         myAdsArray={myAdsArray}
         setTask={setTask}
@@ -217,14 +175,13 @@ const MyAdOne = ({
         setIndex={setIndex}
       />
 
-      <CSSTransition classNames="details" in={isDetailsActive} timeout={0} >
+      <CSSTransition classNames="details" in={isDetailsActive} timeout={0}>
         <AdCreatingOne
-          mistakes = {mistakes}
+          mistakes={mistakes}
           className="AdCreatingMy"
           taskInformation={changingTask}
           setTaskInformation={setChangingTask}
           MyInformation={true}
-        
         />
       </CSSTransition>
     </div>
