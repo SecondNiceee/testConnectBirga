@@ -47,7 +47,6 @@ const MyAdOne = ({
       console.log(changingTask); // ?? Почему changing Task здесь равен не истинному значению, а изначальному
       console.log(taskName);
       console.log(timeError);
-
       if (changingTask.taskName.length < 5) {
         taskName = true;
       }
