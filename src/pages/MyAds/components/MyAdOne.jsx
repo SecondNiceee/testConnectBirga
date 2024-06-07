@@ -49,9 +49,9 @@ const MyAdOne = ({
   setChangingTask
 }) => {
   
-  dispatch = useDispatch()
-  putStatus = useSelector(state => state.information.putTaskStatus)
-  getStatus = useSelector(state => state.information.myOrderStatus)
+  const dispatch = useDispatch()
+  let putStatus = useSelector(state => state.information.putTaskStatus)
+  let getStatus = useSelector(state => state.information.myOrderStatus)
 
 
   changingTaskVar = changingTask
@@ -132,7 +132,7 @@ const MyAdOne = ({
                     }
                   }
                   dispatch(putMyTask(answer))
-                  
+
                   // axios.put(
                   //   "https://back-birga.ywa.su/advertisement",
                   //   answer,
