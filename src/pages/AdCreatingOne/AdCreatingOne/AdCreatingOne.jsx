@@ -14,6 +14,7 @@ import DatePicker from "react-mobile-datepicker";
 import MyDatePicker from "../../ADCreatingTwo/DatePicker/DatePicker";
 import cl from "./AdCreatingOne.module.css";
 import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
+import BackButton from "../../../constants/BackButton";
 
 let transform = [{ opacity: 0 }, { opacity: 1 }];
 
@@ -147,14 +148,14 @@ const AdCreatingOne = ({
     dateObject.style.transition = "0.3s";
     datePickerObject.style.transition = "0.3s";
   }
-  // useState(() => {
-  //   function backHandler(){
-  //     if (state.isOpen){
-  //         setState({...state, isOpen : false})
-  //     }
-  //   }
-  //   BackButton.onClick( )
-  // } )
+  useState(() => {
+    function backHandler(){
+      if (state.isOpen){
+          setState({...state, isOpen : false})
+      }
+    }
+    BackButton.onClick( )
+  } )
   useEffect(() => {
     if (dateObject && datePickerObject) {
       if (state.isOpen) {
