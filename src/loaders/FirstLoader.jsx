@@ -11,23 +11,6 @@ const FirstLoader = () => {
   let [dotStylesThree, setDotStylesThree] = useState({
     display: "none",
   });
-  useEffect(() => {
-    setInterval(() => {
-      console.log("воу");
-      let display = "block";
-      if (dotStyles.display === "none") {
-        display = "block";
-      } else {
-        display = "none";
-      }
-      setDotStyles({
-        display: display,
-      });
-      setDotStyles({
-        display: display,
-      });
-    }, 1500);
-  }, []);
   return (
     <div className="firstLoader">
     <ThreeCircles

@@ -4,7 +4,7 @@ import axios from 'axios';
 export const postMyTask = createAsyncThunk(
   "information/postMytask" , 
   async function(data){
-
+    console.log('пушь') 
     await axios.post(
       "https://back-birga.ywa.su/advertisement",
       data,
@@ -15,6 +15,7 @@ export const postMyTask = createAsyncThunk(
         },
       }
     );
+
     return true
 
 
