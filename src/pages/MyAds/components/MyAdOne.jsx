@@ -44,7 +44,7 @@ const MyAdOne = ({
   }, [putStatus]);
 
 
-  const save = useCallback(() =>  {
+  const save = () =>  {
     if (changingTaskVar !== myAdsArray[index]) {
       window.Telegram.WebApp
         .showPopup({
@@ -100,7 +100,7 @@ const MyAdOne = ({
     } else {
       setDetailsActive(false);
     }
-  })
+  }
 
 
 
@@ -149,8 +149,8 @@ const MyAdOne = ({
       BackButton.onClick(save);
     } else {
       changed = false;
-      BackButton.hide();
       BackButton.offClick(save);
+      BackButton.hide();
     }
   }, [isDetailsActive, changingTask]);
 
