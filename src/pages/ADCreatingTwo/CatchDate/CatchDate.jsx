@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import dateIcon from "../../../images/icons/date.svg";
 import rightArrow from "../../../images/icons/ArrowRight.svg";
 import GreyText from "../../../components/UI/GreyText/GreyText";
-import './CatchDate.module.css'
+import './CatchDate.css'
 
 let errorDate = new Date(0)
 const CatchDate = ({ className , whichOne , state, setState,errors,  ...props }) => {
