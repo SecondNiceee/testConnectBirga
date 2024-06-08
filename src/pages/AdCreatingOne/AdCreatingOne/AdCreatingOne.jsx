@@ -257,14 +257,14 @@ const AdCreatingOne = ({
       />
       {MyInformation ? (
         <>
-          <CatchDate
+          {/* <CatchDate
             className={cl.myCatchDate}
             whichOne={'startAndEnd'}
             state={state}
             setState={setState}
             errors={{}}
             
-          />
+          /> */}
         </>
       ) : (
         ""
