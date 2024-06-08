@@ -146,18 +146,9 @@ const MyAdOne = ({
     }
   }, [isDetailsActive, changingTask]);
 
-
+  BackButton.offClick(save);
   useEffect( () => {
-    alert('оффклик')
-    BackButton.offClick(save);
-    BackButton.offClick(save);
-    BackButton.offClick(save);
-    BackButton.offClick(save);
-    BackButton.offClick(save);
-    BackButton.offClick(save);
-    BackButton.offClick(save);
-    BackButton.offClick(save);
-    BackButton.offClick(save);
+    
     if (isDetailsActive) {
       alert('онклик')
       BackButton.show();
