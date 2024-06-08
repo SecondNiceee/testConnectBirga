@@ -3,7 +3,12 @@ import cl from "./CatchDate.module.css";
 
 import dateIcon from "../../../images/icons/date.svg";
 import rightArrow from "../../../images/icons/ArrowRight.svg";
+import GreyText from "../../../components/UI/GreyText/GreyText";
+
+
+let errorDate = new Date(0)
 const CatchDate = ({ className , whichOne , state, setState,errors,  ...props }) => {
+  console.log(String(errorDate) === String(state.endTime))
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const [widthOfDocument, setWidthOfDocument] = useState(
@@ -68,6 +73,8 @@ return (
 
       <div ref={ref2} className={cl.PeriodInput} >
 
+        <GreyText className={cl.myAdsGreyText}> НАЧАТЬ:  </GreyText>
+
         <div 
               onClick = {() => {
                 setState({...state, isOpen : true , isStartOpen : true})
@@ -82,17 +89,21 @@ return (
           <img src={rightArrow} alt="" className={cl.arrowRight} />
         </div>
 
+
+
+        <GreyText className={ [cl.myAdsGreyText , cl.myAdsGreyTextTwo].join(' ') }> ЗАКОНЧИТЬ:  </GreyText>
         <div className={cl.DateTimePicker}
                       onClick = {() => {
                         setState({...state, isOpen : true , isEndOpen : true})
                       }} 
                       style={errors.endError ? {border : '1px solid red'} : {}}
         >
+          
           <div className={cl.left}>
             <img className={cl.leftImage} src={dateIcon} alt="" />
             <p className={cl.text}>
 
-            {state.endTime ? state.endTime.toLocaleString("ru", options) : 'Дата и время конца'  } 
+            {state.endTime && String(state.endTime) !== String(errorDate) ? state.endTime.toLocaleString("ru", options) : 'Дата и время конца'  } 
             </p>
           </div>
           <img src={rightArrow} alt="" className={cl.arrowRight} />

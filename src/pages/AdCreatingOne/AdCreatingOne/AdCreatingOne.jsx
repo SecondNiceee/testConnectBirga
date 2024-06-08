@@ -30,6 +30,7 @@ const AdCreatingOne = ({
   className,
   errorName,
   mistakes,
+  isDetailsActive
 }) => {
   const [isCategoryChoiceOpen, setCatagoryChoiceOpen] = useState(false);
 
@@ -88,17 +89,24 @@ const AdCreatingOne = ({
     },
   };
 
+  
+
   const [state, setState] = useState({
     time: new Date().addHours(1),
     isOpen: false,
     isPicked: false,
     singleOpen: null,
-    startTime: null,
-    endTime: null,
+    startTime: taskInformation.time.end,
+    endTime: taskInformation.time.end,
     isSingleOpen: false,
     isStartOpen: false,
     isEndOpen: false,
   });
+  useEffect( () => {
+      console.log('был рендер')
+      console.log(taskInformation.time.end)
+     setState({...state , startTime : taskInformation.time.start , endTime : taskInformation.time.end})
+  }, [isDetailsActive, taskInformation.time.start ,  taskInformation.time.end ] )  
   function handleClick() {
     setState({ ...state, isOpen: true });
   }
@@ -111,7 +119,12 @@ const AdCreatingOne = ({
         isStartOpen: false,
         startTime: time,
       });
-      setTaskInformation({ ...taskInformation, startTime: time });
+      if (taskInformation.time){
+        setTaskInformation({ ...taskInformation, time: {...taskInformation.time , start : time} });
+      }
+      else{
+        setTaskInformation({ ...taskInformation, startTime: time });
+      }
     }
     if (state.isSingleOpen) {
       setState({
@@ -131,7 +144,13 @@ const AdCreatingOne = ({
         isEndOpen: false,
         endTime: time,
       });
-      setTaskInformation({ ...taskInformation, endTime: time });
+      if (taskInformation.time){
+        setTaskInformation({ ...taskInformation, time: {...taskInformation.time , end : time} });
+      }
+      else{
+        setTaskInformation({ ...taskInformation, endTime: time });
+      }
+      
     }
   }
   function handleCancel() {
@@ -239,11 +258,12 @@ const AdCreatingOne = ({
       {MyInformation ? (
         <>
           <CatchDate
-            className={''}
+            className={cl.myCatchDate}
             whichOne={'startAndEnd'}
             state={state}
             setState={setState}
             errors={{}}
+            
           />
         </>
       ) : (
