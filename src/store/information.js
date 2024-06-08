@@ -171,7 +171,8 @@ const information = createSlice( {
             startTime : "",
             endTime : "",
             singleTime : "",
-            isPrivate : false
+            isPrivate : false,
+            time : {start : null , end : null}
           } ,
 
           orderInformations :   [  {

@@ -7,12 +7,12 @@ import { CSSTransition } from "react-transition-group";
 import Top from "./Top";
 import BackButton from "../../../constants/BackButton";
 import axios from "axios";
-import { initPopup } from "@tma.js/sdk";
+// import { initPopup } from "@tma.js/sdk";
 import { putMyTask } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
 
 let changed = false;
-const popup = initPopup();
+// const popup = initPopup();
 let changingTaskVar = {};
 const MyAdOne = ({
   myAdsArray,
@@ -70,44 +70,56 @@ const MyAdOne = ({
 
     function save() {
       if (changingTaskVar !== myAdsArray[index]) {
-        popup
-          .open({
-            title: "Сохранить?",
-            message: "Сохранить изменения перед выходом?",
-            buttons: [
-              { id: "save", type: "default", text: "Да" },
-              { id: "delete", type: "destructive", text: "Нет" },
-            ],
-          })
-          .then((buttonId) => {
-            if (buttonId === "delete" || buttonId === null) {
-              setDetailsActive(false);
-            }
-            if (buttonId === "save") {
-              if (checkMistakes(changingTaskVar)) {
-                let myFormData = new FormData();
-                let answer = {
-                  id: changingTaskVar.id,
-                  title: changingTaskVar.taskName,
-                  description: changingTaskVar.taskDescription,
-                  deadline: 1,
-                  price: changingTaskVar.tonValue,
-                  startTime: changingTaskVar.time.start,
-                  endTime: changingTaskVar.time.end,
-                };
+        // popup
+        //   .open({
+        //     title: "Сохранить?",
+        //     message: "Сохранить изменения перед выходом?",
+        //     buttons: [
+        //       { id: "save", type: "default", text: "Да" },
+        //       { id: "delete", type: "destructive", text: "Нет" },
+        //     ],
+        //   })
+        //   .then((buttonId) => {
+        //     if (buttonId === "delete" || buttonId === null) {
+        //       setDetailsActive(false);
+        //     }
+        //     if (buttonId === "save") {
+        //       if (checkMistakes(changingTaskVar)) {
+        //         let myFormData = new FormData();
+        //         let answer = {
+        //           id: changingTaskVar.id,
+        //           title: changingTaskVar.taskName,
+        //           description: changingTaskVar.taskDescription,
+        //           deadline: 1,
+        //           price: changingTaskVar.tonValue,
+        //           startTime: changingTaskVar.time.start,
+        //           endTime: changingTaskVar.time.end,
+        //         };
 
-                if (changingTask.photos.length !== 0) {
-                  for (let file of changingTask.photos) {
-                    myFormData.append("photos", file);
-                  }
-                }
-                dispatch(putMyTask(answer));
+        //         if (changingTask.photos.length !== 0) {
+        //           for (let file of changingTask.photos) {
+        //             myFormData.append("photos", file);
+        //           }
+        //         }
+        //         dispatch(putMyTask(answer));
 
-              }
+        //         // axios.put(
+        //         //   "https://back-birga.ywa.su/advertisement",
+        //         //   answer,
+        //         //   {
+        //         //     headers: {
+        //         //       "Content-Type": "application/json",
+        //         //       "Access-Control-Allow-Origin": "*"
+        //         //     },
+        //         //   }
+        //         // );
 
-              setDetailsActive(false);
-            }
-          });
+        //         // popup.close()
+        //       }
+
+        //       setDetailsActive(false);
+        //     }
+        //   });
       } else {
         setDetailsActive(false);
       }
