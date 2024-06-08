@@ -72,7 +72,7 @@ const MyAdOne = ({
 
       setTimeout(  () => {
         dispatch(fetchMyOrders())
-      }, 500  )
+      }, 1  )
     
 
       setDetailsActive(false);   
