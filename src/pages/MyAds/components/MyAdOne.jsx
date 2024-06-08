@@ -144,16 +144,19 @@ const MyAdOne = ({
       changed = true;
       setChangingTask(myAdsArray[index]);
     }
+  }, [isDetailsActive, changingTask]);
+
+
+  useEffect( () => {
     if (isDetailsActive) {
       BackButton.show();
       BackButton.onClick(save);
     } else {
-      alert('офффКлик проихсодит')
       changed = false;
       BackButton.offClick(save);
       BackButton.hide();
     }
-  }, [isDetailsActive, changingTask]);
+  } , [isDetailsActive])
 
   function setMyArray(par) {
     console.log(par);
