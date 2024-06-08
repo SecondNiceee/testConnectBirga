@@ -159,6 +159,7 @@ const MyAdOne = ({
     BackButton.offClick(save);
     BackButton.offClick(save);
     if (isDetailsActive) {
+      alert('онклик')
       BackButton.show();
       BackButton.onClick(save);
     } else {
