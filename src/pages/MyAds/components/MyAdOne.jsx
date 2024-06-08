@@ -25,8 +25,6 @@ const MyAdOne = ({
   changingTask,
   setChangingTask,
 }) => {
-
-  
   const dispatch = useDispatch();
   let putStatus = useSelector((state) => state.information.putTaskStatus);
   let getStatus = useSelector((state) => state.information.myOrderStatus);
@@ -40,6 +38,12 @@ const MyAdOne = ({
     taskName: false,
     timeError: false,
   });
+
+  useEffect(() => {
+    if (putStatus === "complete") {
+      dispatch(fetchMyOrders());
+    }
+  }, [putStatus]);
 
   useEffect(() => {
     function checkMistakes(changingTask) {
@@ -67,16 +71,9 @@ const MyAdOne = ({
       return Object.values(rezult).every((value) => value === false);
     }
 
-    async function putTask(answer){
-      dispatch(putMyTask(answer));
-
-      setTimeout(  () => {
-        dispatch(fetchMyOrders())
-      }, 1  )
-    
-
-      setDetailsActive(false);   
-
+    async function putTask(answer) {
+      dispatch(putMyTask(answer))
+      setDetailsActive(false);
     }
 
     function save() {
@@ -112,8 +109,7 @@ const MyAdOne = ({
                     myFormData.append("photos", file);
                   }
                 }
-                putTask(answer)
-                
+                putTask(answer);
 
                 // axios.put(
                 //   "https://back-birga.ywa.su/advertisement",
@@ -125,14 +121,12 @@ const MyAdOne = ({
                 //     },
                 //   }
                 // );
-
-               
               }
 
               setDetailsActive(false);
             }
           });
-          popup.close()
+        popup.close();
       } else {
         setDetailsActive(false);
       }
@@ -141,7 +135,6 @@ const MyAdOne = ({
     if (isDetailsActive && changed === false) {
       changed = true;
       setChangingTask(myAdsArray[index]);
-      
     }
     if (isDetailsActive) {
       BackButton.show();
@@ -166,8 +159,6 @@ const MyAdOne = ({
     console.log(myAdsArray);
   }
 
-
-
   return (
     <div className="my-ad-one">
       <Top name={"Мои задания"} setMenuActive={setMenuActive} />
@@ -177,10 +168,6 @@ const MyAdOne = ({
       }} onClick={() => {
         save()
       }}>Save</button> */}
-
-
-
-
 
       <MyAdsBlock deals={1} finishedDeals={"70%"} />
       <PickerContent
