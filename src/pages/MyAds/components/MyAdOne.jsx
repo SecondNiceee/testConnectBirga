@@ -69,11 +69,12 @@ const MyAdOne = ({
 
     async function putTask(answer){
       dispatch(putMyTask(answer));
-      setTimeout(() => {
+
+      setTimeout(  () => {
         dispatch(fetchMyOrders())
-      } , 4000)
-      dispatch(fetchMyOrders())
-      
+      }, 500  )
+    
+
       setDetailsActive(false);   
 
     }
