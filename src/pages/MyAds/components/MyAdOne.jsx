@@ -148,6 +148,7 @@ const MyAdOne = ({
       BackButton.show();
       BackButton.onClick(save);
     } else {
+      alert('офффКлик проихсодит')
       changed = false;
       BackButton.offClick(save);
       BackButton.hide();
