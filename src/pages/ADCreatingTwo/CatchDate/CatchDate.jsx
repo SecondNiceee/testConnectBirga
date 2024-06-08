@@ -91,7 +91,7 @@ return (
 
 
 
-        <GreyText className={ [cl.myAdsGreyText , cl.myAdsGreyTextTwo].join(' ') }> ЗАКОНЧИТЬ:  </GreyText>
+        <GreyText className={ cl.myAdsGreyTextTwo} > ЗАКОНЧИТЬ:  </GreyText>
         <div className={cl.DateTimePicker}
                       onClick = {() => {
                         setState({...state, isOpen : true , isEndOpen : true})
