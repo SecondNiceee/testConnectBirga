@@ -148,12 +148,12 @@ const MyAdOne = ({
 
 
   useEffect( () => {
+    BackButton.offClick(save);
     if (isDetailsActive) {
       BackButton.show();
       BackButton.onClick(save);
     } else {
       changed = false;
-      BackButton.offClick(save);
       BackButton.hide();
     }
   } , [isDetailsActive])
