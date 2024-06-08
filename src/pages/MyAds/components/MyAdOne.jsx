@@ -1,4 +1,4 @@
-import React, { useState, memo, useEffect, useMemo } from "react";
+import React, { useState, memo, useEffect, useMemo, useCallback } from "react";
 import Burger from "../../../components/UI/Burger/Burger";
 import MyAdsBlock from "./MyAdsBlock";
 import PickerContent from "./PickerContent";
@@ -31,8 +31,6 @@ const MyAdOne = ({
 
   changingTaskVar = changingTask;
 
-  console.log("общий changing Task : ");
-  console.log(changingTask);
   const [index, setIndex] = useState(0);
   const [mistakes, setMistakes] = useState({
     taskName: false,
@@ -45,133 +43,102 @@ const MyAdOne = ({
     }
   }, [putStatus]);
 
-  useEffect(() => {
-    function checkMistakes(changingTask) {
-      let taskName = false;
-      let timeError = false;
-      console.log("changing Task : " + changingTask);
-      console.log(changingTask); // ?? Почему changing Task здесь равен не истинному значению, а изначальному
-      console.log(taskName);
-      console.log(timeError);
-      if (changingTask.taskName.length < 5) {
-        taskName = true;
-      }
 
-      if (changingTask.time.end.length > 0) {
-        if (changingTask.time.end < changingTask.time.start) {
-          timeError = true;
-        }
-      }
-      let rezult = { taskName: taskName, timeError: timeError };
+  const save = useCallback(() =>  {
+    if (changingTaskVar !== myAdsArray[index]) {
+      window.Telegram.WebApp
+        .showPopup({
+          title: "Сохранить?",
+          message: "Сохранить изменения перед выходом?",
+          buttons: [
+            { id: "save", type: "default", text: "Да" },
+            { id: "delete", type: "destructive", text: "Нет" },
+          ],
+        } , (buttonId) => {
 
-      console.log(taskName);
-      console.log(timeError);
+          if (buttonId === "delete" || buttonId === null) {
+            setDetailsActive(false);
+          }
+          if (buttonId === "save") {
+            if (checkMistakes(changingTaskVar)) {
+              let myFormData = new FormData();
+              let answer = {
+                id: changingTaskVar.id,
+                title: changingTaskVar.taskName,
+                description: changingTaskVar.taskDescription,
+                deadline: 1,
+                price: changingTaskVar.tonValue,
+                startTime: changingTaskVar.time.start,
+                endTime: changingTaskVar.time.end,
+              };
 
-      setMistakes(rezult);
-      return Object.values(rezult).every((value) => value === false);
-    }
+              if (changingTask.photos.length !== 0) {
+                for (let file of changingTask.photos) {
+                  myFormData.append("photos", file);
+                }
+              }
+              putTask(answer);
 
-    async function putTask(answer) {
-      dispatch(putMyTask(answer))
+              // axios.put(
+              //   "https://back-birga.ywa.su/advertisement",
+              //   answer,
+              //   {
+              //     headers: {
+              //       "Content-Type": "application/json",
+              //       "Access-Control-Allow-Origin": "*"
+              //     },
+              //   }
+              // );
+            }
+
+            setDetailsActive(false);
+          }
+
+
+        } )
+        
+    } else {
       setDetailsActive(false);
     }
-
-    function save() {
-      if (changingTaskVar !== myAdsArray[index]) {
-        window.Telegram.WebApp
-          .showPopup({
-            title: "Сохранить?",
-            message: "Сохранить изменения перед выходом?",
-            buttons: [
-              { id: "save", type: "default", text: "Да" },
-              { id: "delete", type: "destructive", text: "Нет" },
-            ],
-          } , (buttonId) => {
-
-            if (buttonId === "delete" || buttonId === null) {
-              setDetailsActive(false);
-            }
-            if (buttonId === "save") {
-              if (checkMistakes(changingTaskVar)) {
-                let myFormData = new FormData();
-                let answer = {
-                  id: changingTaskVar.id,
-                  title: changingTaskVar.taskName,
-                  description: changingTaskVar.taskDescription,
-                  deadline: 1,
-                  price: changingTaskVar.tonValue,
-                  startTime: changingTaskVar.time.start,
-                  endTime: changingTaskVar.time.end,
-                };
-
-                if (changingTask.photos.length !== 0) {
-                  for (let file of changingTask.photos) {
-                    myFormData.append("photos", file);
-                  }
-                }
-                putTask(answer);
-
-                // axios.put(
-                //   "https://back-birga.ywa.su/advertisement",
-                //   answer,
-                //   {
-                //     headers: {
-                //       "Content-Type": "application/json",
-                //       "Access-Control-Allow-Origin": "*"
-                //     },
-                //   }
-                // );
-              }
-
-              setDetailsActive(false);
-            }
+  })
 
 
-          } )
-          .then((buttonId) => {
-            
-            if (buttonId === "delete" || buttonId === null) {
-              setDetailsActive(false);
-            }
-            if (buttonId === "save") {
-              if (checkMistakes(changingTaskVar)) {
-                let myFormData = new FormData();
-                let answer = {
-                  id: changingTaskVar.id,
-                  title: changingTaskVar.taskName,
-                  description: changingTaskVar.taskDescription,
-                  deadline: 1,
-                  price: changingTaskVar.tonValue,
-                  startTime: changingTaskVar.time.start,
-                  endTime: changingTaskVar.time.end,
-                };
 
-                if (changingTask.photos.length !== 0) {
-                  for (let file of changingTask.photos) {
-                    myFormData.append("photos", file);
-                  }
-                }
-                putTask(answer);
 
-                // axios.put(
-                //   "https://back-birga.ywa.su/advertisement",
-                //   answer,
-                //   {
-                //     headers: {
-                //       "Content-Type": "application/json",
-                //       "Access-Control-Allow-Origin": "*"
-                //     },
-                //   }
-                // );
-              }
+  function checkMistakes(changingTask) {
+    let taskName = false;
+    let timeError = false;
+    console.log("changing Task : " + changingTask);
+    console.log(changingTask); // ?? Почему changing Task здесь равен не истинному значению, а изначальному
+    console.log(taskName);
+    console.log(timeError);
+    if (changingTask.taskName.length < 5) {
+      taskName = true;
+    }
 
-              setDetailsActive(false);
-            }
-          });
-      } else {
-        setDetailsActive(false);
+    if (changingTask.time.end.length > 0) {
+      if (changingTask.time.end < changingTask.time.start) {
+        timeError = true;
       }
     }
+    let rezult = { taskName: taskName, timeError: timeError };
+
+    console.log(taskName);
+    console.log(timeError);
+
+    setMistakes(rezult);
+    return Object.values(rezult).every((value) => value === false);
+  }
+
+  async function putTask(answer) {
+    dispatch(putMyTask(answer))
+    setDetailsActive(false);
+  }
+
+
+
+  useEffect(() => {
+
 
     if (isDetailsActive && changed === false) {
       changed = true;
