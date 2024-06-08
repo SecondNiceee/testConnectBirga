@@ -146,7 +146,6 @@ const MyAdOne = ({
     }
   }, [isDetailsActive, changingTask]);
 
-  BackButton.offClick(save);
   useEffect( () => {
     
     if (isDetailsActive) {
@@ -156,6 +155,9 @@ const MyAdOne = ({
     } else {
       changed = false;
       BackButton.hide();
+    }
+    return () => {
+      BackButton.offClick(save);
     }
   } , [isDetailsActive])
 
@@ -191,7 +193,8 @@ const MyAdOne = ({
         setIndex={setIndex}
       />
 
-      <CSSTransition classNames="details" in={isDetailsActive} timeout={0}>
+      <CSSTransition classNames="details" in={isDetailsActive} timeout={0}
+      mountOnEnter unmountOnExit>
         <AdCreatingOne
           mistakes={mistakes}
           className="AdCreatingMy"
