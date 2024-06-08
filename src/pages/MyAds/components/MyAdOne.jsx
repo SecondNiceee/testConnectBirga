@@ -8,7 +8,7 @@ import Top from "./Top";
 import BackButton from "../../../constants/BackButton";
 import axios from "axios";
 import { initPopup } from "@tma.js/sdk";
-import { putMyTask } from "../../../store/information";
+import { fetchMyOrders, putMyTask } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
 
 let changed = false;
@@ -101,6 +101,8 @@ const MyAdOne = ({
                   }
                 }
                 dispatch(putMyTask(answer));
+                dispatch(fetchMyOrders())
+                setDetailsActive(false);   
 
                 // axios.put(
                 //   "https://back-birga.ywa.su/advertisement",
