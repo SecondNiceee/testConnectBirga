@@ -7,12 +7,12 @@ import { CSSTransition } from "react-transition-group";
 import Top from "./Top";
 import BackButton from "../../../constants/BackButton";
 import axios from "axios";
-import { initPopup } from "@tma.js/sdk";
+// import { initPopup } from "@tma.js/sdk";
 import { fetchMyOrders, putMyTask } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
 
 let changed = false;
-const popup = initPopup();
+// const popup = initPopup();
 let changingTaskVar = {};
 const MyAdOne = ({
   myAdsArray,
@@ -78,8 +78,8 @@ const MyAdOne = ({
 
     function save() {
       if (changingTaskVar !== myAdsArray[index]) {
-        popup
-          .open({
+        window.Telegram.WebApp
+          .showPopup({
             title: "Сохранить?",
             message: "Сохранить изменения перед выходом?",
             buttons: [
@@ -126,7 +126,6 @@ const MyAdOne = ({
               setDetailsActive(false);
             }
           });
-        popup.close();
       } else {
         setDetailsActive(false);
       }
