@@ -71,7 +71,7 @@ return (
         <img src={rightArrow} alt="" className={cl.arrowRight} />
       </label>
 
-      <div ref={ref2} className={cl.PeriodInput} >
+      {/* <div ref={ref2} className={cl.PeriodInput} >
 
         <GreyText className={cl.myAdsGreyText}> НАЧАТЬ:  </GreyText>
 
@@ -108,7 +108,7 @@ return (
           </div>
           <img src={rightArrow} alt="" className={cl.arrowRight} />
         </div>
-      </div>
+      </div> */}
 
     </div>
   );
