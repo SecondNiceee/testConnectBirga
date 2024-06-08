@@ -148,6 +148,13 @@ const MyAdOne = ({
 
 
   useEffect( () => {
+    alert('оффклик')
+    BackButton.offClick(save);
+    BackButton.offClick(save);
+    BackButton.offClick(save);
+    BackButton.offClick(save);
+    BackButton.offClick(save);
+    BackButton.offClick(save);
     BackButton.offClick(save);
     BackButton.offClick(save);
     BackButton.offClick(save);
