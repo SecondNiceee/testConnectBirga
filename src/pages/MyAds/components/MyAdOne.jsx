@@ -67,6 +67,13 @@ const MyAdOne = ({
       return Object.values(rezult).every((value) => value === false);
     }
 
+    async function putTask(answer){
+      dispatch(putMyTask(answer));
+      dispatch(fetchMyOrders())
+      setDetailsActive(false);   
+
+    }
+
     function save() {
       if (changingTaskVar !== myAdsArray[index]) {
         popup
@@ -100,9 +107,8 @@ const MyAdOne = ({
                     myFormData.append("photos", file);
                   }
                 }
-                dispatch(putMyTask(answer));
-                dispatch(fetchMyOrders())
-                setDetailsActive(false);   
+                putTask(answer)
+                
 
                 // axios.put(
                 //   "https://back-birga.ywa.su/advertisement",
@@ -115,12 +121,13 @@ const MyAdOne = ({
                 //   }
                 // );
 
-                popup.close()
+               
               }
 
               setDetailsActive(false);
             }
           });
+          popup.close()
       } else {
         setDetailsActive(false);
       }
