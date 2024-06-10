@@ -5,8 +5,8 @@ import { CSSTransition } from "react-transition-group";
 import Cap from "../../../components/UI/Cap/Cap";
 import Categories from "../Categories/Categories";
 import TaskName from "../TaskName/TaskName";
-import DescriptionAndPhoto from "../DescriptionAndPhoto/DescriptionAndPhoto";
-import MakePrivate from "../MakePrivate/MakePrivate";
+import DescriptionAndPhoto from "../../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
+import MakePrivate from "../../../components/UI/MakePrivate/MakePrivate";
 import ChoiceCategory from "../ChoiceCategory/ChoiceCategory";
 import ChoiceSubCategory from "../ChoiceSubCategory";
 import StartOn from "../StartOn/StartOn";
@@ -241,9 +241,9 @@ const AdCreatingOne = ({
 
       <TaskName
         // style = {mistakes.taskName ? {border : '1px solid red'} : {}}
+        title = "Название задания "
         text={MyInformation ? "" : "Например, разработать дизайн"}
-        mistakes={mistakes}
-        errorName={errorName}
+        errorValue = {mistakes.taskName || errorName ? true : false}
         taskInformation={taskInformation}
         setTaskInformation={setTaskInformation}
       />
@@ -252,6 +252,9 @@ const AdCreatingOne = ({
         taskInformation={taskInformation}
         setTaskInformation={setTaskInformation}
         className={cl.DescriptionAndPhoto}
+        textTitle={"Описание"}
+        filesTitle={"ИЗОБРАЖЕНИЯ"}
+        textPlaceholder={"Дайте подробное тз..."}
         text = {taskInformation.taskDescription}
         setText={(e) => {
           setTaskInformation({...taskInformation , taskDescription : e })

@@ -1,15 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import plus from "../../../images/icons/plus-circle.svg";
+
 import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
+import AdCreateFunc from '../../../components/UI/AdCreateFunc/AdCreateFunc';
 const PickerContent = ({myAdsArray , setTask , goForward , setDetailsActive , setIndex}) => {
     return (
     <div className="PickerContent">
         <div className="picler__block">
-          <Link to="/AdCreating" className="AdCreactingFunction">
+
+          <AdCreateFunc text={"Создать объявление"} link={'/AdCreating'} />
+          {/* <Link to="/AdCreating" className="AdCreactingFunction">
             <img src={plus} alt="" />
             <p>Создать объявление</p>
-          </Link>
+          </Link> */}
           <div className="AdsContainer">
             {myAdsArray.map((e, i) => {
               return (

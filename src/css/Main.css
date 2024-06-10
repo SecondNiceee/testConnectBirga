@@ -18,9 +18,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-transform: translateX(0%);
-      -ms-transform: translateX(0%);
-          transform: translateX(0%);
+  -webkit-transform: translateX(-100%);
+      -ms-transform: translateX(-100%);
+          transform: translateX(-100%);
 }
 
 .AllTasks {
@@ -2385,6 +2385,14 @@ input {
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;
+}
+
+.responce-make-private {
+  margin-top: 18px;
+}
+
+.responce-descriprion {
+  margin-top: 18px;
 }
 
 * {
