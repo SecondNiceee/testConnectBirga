@@ -20,18 +20,16 @@ const First = () => {
     isOpen: false,
   });
 
-  console.log("рендер");
 
-  function closeDetails() {
-    setDetailsActive({ ...isDetailsActive, isOpen: false });
-  }
+  // function closeDetails() {
+  //   setDetailsActive({ ...isDetailsActive, isOpen: false });
+  // }
 
 
 
     
     useEffect( () => {
       function forward() {
-        console.log('вызов forward')
         if (step === 0) {
           setStep(step + 1);
         }
@@ -40,7 +38,14 @@ const First = () => {
   
       
       function back(){
+        if (step === 1){
           setStep(step - 1)
+          return true
+        }
+        else{
+          setDetailsActive(false)
+          return true
+        }
       }
       BackButton.hide();
       MainButton.hide();
@@ -48,17 +53,12 @@ const First = () => {
         BackButton.show();
         MainButton.show();
         MainButton.onClick(forward);
-        BackButton.offClick(closeDetails)
-        BackButton.offClick(back)
-        // BackButton.onClick(back);
+        BackButton.onClick(back);
         console.log('вызов')
         if (step === 0) {
-          BackButton.onClick(closeDetails)
           MainButton.setText("ОТКЛИКНУТЬСЯ");
         }
         if (step === 1) {
-          BackButton.offClick(closeDetails)
-          BackButton.onClick(back)
           MainButton.setText("Далее");
         }
       }
