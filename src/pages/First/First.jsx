@@ -49,8 +49,10 @@ const First = () => {
   }
     
     useEffect( () => {
+
       MainButton.onClick(forward);
       BackButton.onClick(back);
+      varStep = 0
 
      
     }, [] )
