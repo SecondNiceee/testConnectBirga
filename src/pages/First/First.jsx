@@ -29,9 +29,20 @@ const First = () => {
     function forward() {
       console.log('вызов forward')
       if (step === 0) {
-        setStep(step += 1);
+        setStep(step + 1);
+      }
+      console.log(step)
+    }
+
+    function back(){
+      if (step === 0){
+        closeDetails()
+      }
+      if(step === 1){
+        setStep(step - 1)
       }
     }
+
 
     BackButton.hide();
     MainButton.hide();
@@ -40,6 +51,7 @@ const First = () => {
       BackButton.show();
       MainButton.show();
       MainButton.onClick(forward);
+      BackButton.onClick(back);
       if (step === 0) {
         MainButton.setText("ОТКЛИКНУТЬСЯ");
       }
@@ -47,7 +59,7 @@ const First = () => {
         MainButton.setText("Далее");
       }
     }
-    BackButton.onClick(closeDetails);
+   
 
   const isMenuActive = useSelector((state) => state.menu.value);
 
@@ -97,6 +109,9 @@ const First = () => {
       transition={{ duration: 0.1, duration: 0 }}
     >
       <div className="first-wrapper" style={style}>
+        {/* <button onClick={() => {
+          forward()
+        }} >ыфвфывфыв</button> */}
         <AllTasks
           ordersInformation={ordersInformation}
           isDetailsActive={isDetailsActive}
