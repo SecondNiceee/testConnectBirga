@@ -21,6 +21,8 @@ const First = () => {
     isOpen: false,
   });
 
+  varStep = step;
+
 
   // function closeDetails() {
   //   setDetailsActive({ ...isDetailsActive, isOpen: false });
@@ -39,7 +41,10 @@ const First = () => {
         console.log('бэк')
         console.log(varStep)
         if (varStep === 1){
-          setStep(step - 1)
+          setStep(step - 2)
+          setTimeout(() => {
+            setStep(step + 1)
+          } , 10)
         }
         if (varStep === 0){
           setDetailsActive(false)
