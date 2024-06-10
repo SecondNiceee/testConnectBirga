@@ -53,8 +53,12 @@ const First = () => {
 
       MainButton.onClick(forward);
       BackButton.onClick(back);
-      varStep = 0
+      return () => {
+        varStep = 0
+        MainButton.offClick(forward)
+        BackButton.offClick(back)
 
+      }
      
     }, [] )
 
