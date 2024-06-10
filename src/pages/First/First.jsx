@@ -25,6 +25,7 @@ const First = () => {
   useEffect(() => {
 
     function forward(){
+      console.log('вызов forward')
       if (step === 0){
         step += 1
       }
@@ -56,6 +57,7 @@ const First = () => {
   );
 
   const style = useMemo(() => {
+    console.log('вызов style')
     switch (step){
       case 0:
         return {
