@@ -10,42 +10,53 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import Responce from "./Responce";
 
-
-
 const First = () => {
   const dispatch = useDispatch();
 
-  const [step, setStep] = useState(0)
+  const [step, setStep] = useState(0);
 
   const [isDetailsActive, setDetailsActive] = useState({
     id: 0,
     isOpen: false,
   });
 
+  console.log("рендер");
 
-  console.log('рендер')
+  function closeDetails() {
+    setDetailsActive({ ...isDetailsActive, isOpen: false });
+  }
+
   useEffect(() => {
+    BackButton.show();
+    BackButton.onClick(closeDetails);
+    return () => {
+      BackButton.offClick(closeDetails);
+      BackButton.hide();
+    };
+  });
 
-    function forward(){
-      if (step === 0){
-        setStep(step += 1)
+  useEffect(() => {
+    function forward() {
+      console.log('вызов forward')
+      if (step === 0) {
+        setStep((step += 1));
       }
     }
-
 
     BackButton.hide();
     MainButton.hide();
     if (isDetailsActive.isOpen) {
       MainButton.show();
-      MainButton.onClick(forward)
-      if (step === 0){
+      MainButton.onClick(forward);
+      if (step === 0) {
         MainButton.setText("ОТКЛИКНУТЬСЯ");
       }
-      if (step === 1){
+      if (step === 1) {
         MainButton.setText("Далее");
       }
     }
   });
+
 
 
   const isMenuActive = useSelector((state) => state.menu.value);
@@ -58,18 +69,18 @@ const First = () => {
   );
 
   const style = useMemo(() => {
-    console.log('вызов style')
-    switch (step){
+    console.log("вызов style");
+    switch (step) {
       case 0:
         return {
-          transform : 'translateX(0%)'
-        }
+          transform: "translateX(0%)",
+        };
       case 1:
-        return{
-          transform : 'translateX(-100%)'
-        }
+        return {
+          transform: "translateX(-100%)",
+        };
     }
-  } , [step])
+  }, [step]);
 
   useListner({
     isMenuActive,
@@ -81,7 +92,6 @@ const First = () => {
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
   );
-
 
   return (
     <motion.div
@@ -96,9 +106,7 @@ const First = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.1, duration: 0 }}
     >
-      <div className="first-wrapper"
-      style={style}>
-
+      <div className="first-wrapper" style={style}>
         <AllTasks
           ordersInformation={ordersInformation}
           isDetailsActive={isDetailsActive}
@@ -107,10 +115,8 @@ const First = () => {
           isMenuActive={isMenuActive}
         />
 
-
-        <Responce orderInformation ={ ordersInformation[isDetailsActive.id]}  />
+        <Responce orderInformation={ordersInformation[isDetailsActive.id]} />
       </div>
-
     </motion.div>
   );
 };
