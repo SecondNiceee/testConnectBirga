@@ -7,7 +7,6 @@ import './CatchDate.css'
 
 let errorDate = new Date(0)
 const CatchDate = ({ className , whichOne , state, setState,errors,  ...props }) => {
-  console.log(String(errorDate) === String(state.endTime))
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const [widthOfDocument, setWidthOfDocument] = useState(
@@ -42,7 +41,6 @@ const CatchDate = ({ className , whichOne , state, setState,errors,  ...props })
     minute : 'numeric',
     timezone: 'UTC'
   };
-  // console.log(state)
 
 return (
     <div

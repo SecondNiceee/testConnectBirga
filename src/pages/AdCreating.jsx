@@ -34,7 +34,6 @@ const AdCreating = () => {
 
   const status = useSelector((state) => state.information.postTaskStatus);
 
-  console.log(status);
 
   const [error, setError] = useState({
     name: false,
@@ -253,7 +252,6 @@ const AdCreating = () => {
   }
 
   const GreyIntWidth = useMemo(() => {
-    console.log("привет");
     return (document.documentElement.clientWidth - 36) / 2;
   }, []);
   const GreyWidth = useMemo(() => {

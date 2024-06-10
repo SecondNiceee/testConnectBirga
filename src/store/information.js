@@ -87,7 +87,6 @@ export const fetchMyOrders = createAsyncThunk(
           
         })
       }
-      console.log(tasks)
       return tasks
     }
   }
@@ -338,16 +337,7 @@ const information = createSlice( {
         builder.addCase(  putMyTask.fulfilled , (   (state ) => {state.putTaskStatus = 'complete'}   )  )
         builder.addCase(  putMyTask.rejected , (   (state ) => {state.putTaskStatus = 'error'}   )  )
     },
-      // extraReducers : builder => {
 
-      //   builder.addCase( fetchMyOrders.pending, (state => {state.status = 'loading'} )  )
-      //   builder.addCase( fetchMyOrders.fulfilled, ((state , action) => {state.status = 'loading'  
-      //   state.myAdsArray = action.payload
-      //   console.log('привет')
-      //  }  ) )
-      //   builder.addCase( fetchMyOrders.rejected , ( (state , action) => {state.status = 'error' 
-      //   } )  )
-      // }
 
 })
 export const {changeTaskInformation , changeMyAds, addMyAds} = information.actions;

@@ -108,10 +108,6 @@ const MyAdOne = ({
   function checkMistakes(changingTask) {
     let taskName = false;
     let timeError = false;
-    console.log("changing Task : " + changingTask);
-    console.log(changingTask); // ?? Почему changing Task здесь равен не истинному значению, а изначальному
-    console.log(taskName);
-    console.log(timeError);
     if (changingTask.taskName.length < 5) {
       taskName = true;
     }
@@ -123,8 +119,6 @@ const MyAdOne = ({
     }
     let rezult = { taskName: taskName, timeError: timeError };
 
-    console.log(taskName);
-    console.log(timeError);
 
     setMistakes(rezult);
     return Object.values(rezult).every((value) => value === false);
@@ -161,7 +155,6 @@ const MyAdOne = ({
   } , [isDetailsActive])
 
   function setMyArray(par) {
-    console.log(par);
     setMyAdsArray(
       [...myAdsArray].map((e, i) => {
         if (i === index) {
@@ -170,7 +163,6 @@ const MyAdOne = ({
         return e;
       })
     );
-    console.log(myAdsArray);
   }
 
   return (

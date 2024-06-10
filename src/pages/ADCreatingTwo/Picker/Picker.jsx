@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import cl from './Picker.module.css'
 const Picker = ({className , whichOne , setWhichOne , setTaskInformation, taskInformation}) => {
-    console.log(whichOne)
     return (
         <div className = {className ? [cl.Picker , className].join(' ') : cl.Picker}>
             <div className={  whichOne === 'startOnly' ? [cl.greyBlock , cl.leftBlock].join(' ') :  [cl.greyBlock , cl.rightBlock].join(' ') }>

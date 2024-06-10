@@ -6,8 +6,7 @@ import '../css/Values.css'
 import '../css/Main.css'
 const PageTransition = ({children}) => {
     let location = useLocation()
-    console.log(children)
-    console.log(location)
+
     return (
         <TransitionGroup>
             <CSSTransition

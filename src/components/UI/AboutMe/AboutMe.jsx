@@ -5,7 +5,6 @@ import closeIcon from "../../../images/icons/close.svg";
 let animation = true;
 const AboutMe = ({ setAboutMeModal, setAboutU, aboutU, aboutMeModal , scrollTo }) => {
   const [inf, setInf] = useState(aboutU);
-  console.log(inf , inf.length , inf.split(/\r\n|\r|\n/).length - 1)
   const [pos, setPos] = useState(80);
   const [startMove, setStartMove] = useState(0);
   const [tran, setTran] = useState("0.4s");

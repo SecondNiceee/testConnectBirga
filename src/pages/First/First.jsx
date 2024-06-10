@@ -1,63 +1,52 @@
-import React, { useCallback, useDebugValue, useEffect, useMemo, useState } from "react";
-import {  CSSTransition } from "react-transition-group";
+import React, { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-import FirstTop from "../../components/First/FirstMain/FirstTop";
-import FirstMain from "../../components/First/FirstMain/FirstMain";
-import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
-import BackButton from '../../constants/BackButton'
+import BackButton from "../../constants/BackButton";
 
-import { useFilteredArr } from "../../hooks/useFilteredArr";
-import { useDispatch, useSelector } from "react-redux";
-import { changeMenuActive } from "../../store/menuSlice";
 import MainButton from "../../constants/MainButton";
 import useListner from "../../hooks/useListner";
-import { fetchTasksInformation } from "../../store/information";
-import FirstLoader from "../../loaders/FirstLoader";
-
+import AllTasks from "./AllTasks";
+import { useDispatch, useSelector } from "react-redux";
+import { changeMenuActive } from "../../store/menuSlice";
+import Responce from "./Responce";
 
 const First = () => {
-
   const dispatch = useDispatch();
-  useEffect( () => {
-    dispatch ( fetchTasksInformation('getOrders') )
-  } , [] )
-  const ordersInformation = useSelector(
-    (state) => state.information.orderInformations
-  );
-  const orderStatus = useSelector(
-    (state) => state.information.orderStatus
-  )
 
+  const [isDetailsActive, setDetailsActive] = useState({
+    id: 0,
+    isOpen: false,
+  });
+
+  useEffect(() => {
+    BackButton.hide();
+    MainButton.hide();
+    if (isDetailsActive.isOpen) {
+      MainButton.show();
+      MainButton.setText("ОТКЛИКНУТЬСЯ");
+    }
+  });
 
   const isMenuActive = useSelector((state) => state.menu.value);
 
-  const setMenuActive = useCallback( (set) => {
-    dispatch(changeMenuActive(set));
-  } , [dispatch])
-  
+  const setMenuActive = useCallback(
+    (set) => {
+      dispatch(changeMenuActive(set));
+    },
+    [dispatch]
+  );
 
-  const [filterBy, setFilterBy] = useState("");
+  useListner({
+    isMenuActive,
+    setMenuActive,
+    setDetailsActive,
+    isDetailsActive,
+  });
 
-  const filteredArr = useFilteredArr(ordersInformation, filterBy);
+  const ordersInformation = useSelector(
+    (state) => state.information.orderInformations
+  );
 
-  const [isDetailsActive, setDetailsActive ] = useState({id : 0 , isOpen : false  });
-
-  useEffect(() => {
-    BackButton.hide()
-    MainButton.hide()
-    if (isDetailsActive.isOpen){
-      MainButton.show()
-      MainButton.setText('ОТКЛИКНУТЬСЯ')
-    }
-  } )
-
-
-
-    
-   useListner({isMenuActive, setMenuActive , setDetailsActive, isDetailsActive  }    )
-
-   const userInfo = useSelector(state => state.telegramUserInfo)
 
   return (
     <motion.div
@@ -68,48 +57,21 @@ const First = () => {
           setMenuActive(false);
         }
       }}
-
-      initial={{ opacity: 0,  }}
+      initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.1 , duration : 0 }}
+      transition={{ duration: 0.1, duration: 0 }}
     >
-      <FirstTop
-            style={isMenuActive ? { opacity: "0.5" } : {}}
-            setMenuActive={setMenuActive}
-            setFilterBy={setFilterBy}
-            userInfo = {userInfo}
-          />
-
-      {orderStatus === 'complete' ? 
-      <>
-
-      <FirstMain
-        style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
+      <AllTasks
+        ordersInformation={ordersInformation}
+        isDetailsActive={isDetailsActive}
         setDetailsActive={setDetailsActive}
-        ordersInformation={filteredArr}
+        setMenuActive={setMenuActive}
+        isMenuActive={isMenuActive}
       />
 
-      <CSSTransition
-        in={isDetailsActive.isOpen}
-        timeout={200}
-        classNames="left-right"
-        mountOnEnter
-        
-      >
-        <FirstDetails
-          className="FirstDetails"
-          setDetailsActive={setDetailsActive}
-          isDetailsActive={isDetailsActive }
-          orderInformation={ordersInformation[isDetailsActive.id]}
-          similarAds={ordersInformation}
-        />
-      </CSSTransition>
 
-      </>
-      :
-      <FirstLoader/>
-    }
-    
+      <Responce orderInformation ={ ordersInformation[isDetailsActive.id]}  />
+
     </motion.div>
   );
 };

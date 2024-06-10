@@ -11,8 +11,6 @@ const Dedline = ({dedline}) => {
     timezone: 'UTC'
   };
 
-  console.log(dedline.end)
-  
 
     return (
         <div className='DeadlineContainer'>

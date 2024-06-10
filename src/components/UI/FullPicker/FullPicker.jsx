@@ -11,13 +11,6 @@ const FullPicker = ({values , keys , nowKey , setNowKey, className , GreyIntWidt
         {e}
          </p>
     ))
-    // const trackRef = useRef(null)
-    // const GreyIntWidth = useMemo(   () => {
-    //     console.log('привет')
-    //     return (document.documentElement.clientWidth  - 36) / numb
-    // } , [] )
-    // const  GreyWidth = GreyIntWidth.toString() + 'px'
-
 
     const myTransform = useMemo( () => {
         for (let i = 0; i < keys.length ; i++ ){

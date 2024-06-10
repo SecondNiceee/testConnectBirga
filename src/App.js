@@ -28,7 +28,6 @@ const Profile = lazy( () => import('./pages/Profile/Profile') )
 const Balance = lazy( () => import('./pages/Balance') )
 const MyAds = lazy(  () =>  import('./pages/MyAds/MyAds') )
 
-console.log('start')
 const MyLoader = () => {
   return (
     <div style={{
@@ -94,41 +93,52 @@ const AnimatedSwitch = () =>{
 function App() {
 
 
-  async function lol (){
-    let tasks = []
-    let task = await axios.get('https://back-birga.ywa.su/advertisement/findByUser' , {
-      params : {
-        // userId : window.Telegram.WebApp.initDataUnsafe.user.id
-        userId : 2144832745
-      }
-    })
+
+  const categorys = useSelector(state => state.categorys.category)
+  useEffect( () => {
+    console.log(categorys)
+  }, []  )
 
 
-    if (task.data.length === 0){
-      return []
-    }
-    else{
-      for (let order of task.data) {
-        tasks.push({
-          taskName : order.title,
-          executionPlace: "Можно выполнить удаленно",
-          time : {start : order.startTime , end : order.endTime},
-          tonValue : order.price,
-          taskDescription : order.description,
-          photos : order.photos || "",
 
 
-          rate : '5', 
-          isActive : true,
-          creationTime : order.createdAt,
-          viewsNumber : '51', 
+  // async function lol (){
+  //   let tasks = []
+  //   let task = await axios.get('https://back-birga.ywa.su/advertisement/findByUser' , {
+  //     params : {
+  //       // userId : window.Telegram.WebApp.initDataUnsafe.user.id
+  //       userId : 2144832745
+  //     }
+  //   })
+
+
+
+
+  //   if (task.data.length === 0){
+  //     return []
+  //   }
+  //   else{
+  //     for (let order of task.data) {
+  //       tasks.push({
+  //         taskName : order.title,
+  //         executionPlace: "Можно выполнить удаленно",
+  //         time : {start : order.startTime , end : order.endTime},
+  //         tonValue : order.price,
+  //         taskDescription : order.description,
+  //         photos : order.photos || "",
+
+
+  //         rate : '5', 
+  //         isActive : true,
+  //         creationTime : order.createdAt,
+  //         viewsNumber : '51', 
           
-        })
-      }
-      return tasks
-    }
-  }
-  lol()
+  //       })
+  //     }
+  //     return tasks
+  //   }
+  // }
+  // lol()
 
 
 

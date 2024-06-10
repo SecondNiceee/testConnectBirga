@@ -3,7 +3,6 @@ import cl from "./DateInput.module.css";
 import dateIcon from "../../../images/icons/date.svg";
 import rightArrow from "../../../images/icons/ArrowRight.svg";
 const DateInput = ({ className, date, setDate, ref, ...props }) => {
-  console.log(ref);
   return (
     <div className={cl.AllPickers}>
 

@@ -14,7 +14,6 @@ const ShowComponents = ({children}) => {
     , [])
 
     React.Children.map(children ,  child => {
-        console.log(child)
         return <p>привет</p>
     }
 )

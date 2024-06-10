@@ -108,7 +108,6 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
       <div className="sub__block">
             <div className="sub__wrapper">
                     {sortSubCategory.map((e, id) => {
-                         console.log('Был вызов')
                         return (
                             <div key={id}  className="SubBlock" onClick={() => {
                                 setTaskInformation( {...taskInformation , subCategory : e})

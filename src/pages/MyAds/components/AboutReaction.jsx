@@ -16,7 +16,6 @@ const AboutReaction = ({aboutReaction,  ...props}) => {
   или неттт???
   `
 
-  console.log('рендер')
 
 
   return (

@@ -103,8 +103,6 @@ const AdCreatingOne = ({
     isEndOpen: false,
   });
   useEffect( () => {
-      console.log('был рендер')
-      console.log(taskInformation.time.end)
      setState({...state , startTime : taskInformation.time.start , endTime : taskInformation.time.end})
   }, [isDetailsActive, taskInformation.time.start ,  taskInformation.time.end ] )  
   function handleClick() {
@@ -254,6 +252,21 @@ const AdCreatingOne = ({
         taskInformation={taskInformation}
         setTaskInformation={setTaskInformation}
         className={cl.DescriptionAndPhoto}
+        text = {taskInformation.taskDescription}
+        setText={(e) => {
+          setTaskInformation({...taskInformation , taskDescription : e })
+        }}
+        photos={taskInformation.photos}
+        setPhotos={ (e)  => {  
+          if (!e) {
+            alert('ошибка фото!!')
+          }
+          else{
+            setTaskInformation(  {...taskInformation , photos : e }  )  
+          }
+  
+          }  }
+
       />
       {MyInformation ? (
         <>
