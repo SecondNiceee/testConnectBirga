@@ -34,9 +34,9 @@ const First = () => {
     console.log(step)
   }
 
-  
+  let varStep = step;
   function back(){
-    if (step === 1){
+    if (varStep === 1){
       setStep(step - 1)
       return true
     }
