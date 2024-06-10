@@ -26,16 +26,6 @@ const First = () => {
     setDetailsActive({ ...isDetailsActive, isOpen: false });
   }
 
-  useEffect(() => {
-    BackButton.show();
-    BackButton.onClick(closeDetails);
-    return () => {
-      BackButton.offClick(closeDetails);
-      BackButton.hide();
-    };
-  });
-
-  useEffect(() => {
     function forward() {
       console.log('вызов forward')
       if (step === 0) {
@@ -45,7 +35,9 @@ const First = () => {
 
     BackButton.hide();
     MainButton.hide();
+
     if (isDetailsActive.isOpen) {
+      BackButton.show();
       MainButton.show();
       MainButton.onClick(forward);
       if (step === 0) {
@@ -55,9 +47,7 @@ const First = () => {
         MainButton.setText("Далее");
       }
     }
-  });
-
-
+    BackButton.onClick(closeDetails);
 
   const isMenuActive = useSelector((state) => state.menu.value);
 
