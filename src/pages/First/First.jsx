@@ -38,9 +38,9 @@ const First = () => {
   }
 
   function back(){
-    if (varStep === 1){
-      // setStep(step - 1)
-      varStep -= 1
+    if (varStep > 0){
+      setStep(step - 1)
+      varStep -= 0.5
       return true
     }
     else{
