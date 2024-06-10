@@ -35,10 +35,11 @@ const First = () => {
     }
 
     function back(){
-      if (step === 0){
+      let varStep = step
+      if (varStep === 0){
         closeDetails()
       }
-      if(step === 1){
+      if(varStep === 1){
         setStep(step - 1)
       }
     }
