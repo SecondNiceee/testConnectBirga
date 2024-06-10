@@ -23,11 +23,25 @@ const First = () => {
 
 
   useEffect(() => {
+
+    function forward(){
+      if (step === 0){
+        step += 1
+      }
+    }
+
+
     BackButton.hide();
     MainButton.hide();
     if (isDetailsActive.isOpen) {
       MainButton.show();
-      MainButton.setText("ОТКЛИКНУТЬСЯ");
+      MainButton.onClick(forward)
+      if (step === 0){
+        MainButton.setText("ОТКЛИКНУТЬСЯ");
+      }
+      if (step === 1){
+        MainButton.setText("Далее");
+      }
     }
   });
 
@@ -79,16 +93,20 @@ const First = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.1, duration: 0 }}
     >
-      <AllTasks
-        ordersInformation={ordersInformation}
-        isDetailsActive={isDetailsActive}
-        setDetailsActive={setDetailsActive}
-        setMenuActive={setMenuActive}
-        isMenuActive={isMenuActive}
-      />
+      <div className="wrapper"
+      style={style}>
+
+        <AllTasks
+          ordersInformation={ordersInformation}
+          isDetailsActive={isDetailsActive}
+          setDetailsActive={setDetailsActive}
+          setMenuActive={setMenuActive}
+          isMenuActive={isMenuActive}
+        />
 
 
-      <Responce orderInformation ={ ordersInformation[isDetailsActive.id]}  />
+        <Responce orderInformation ={ ordersInformation[isDetailsActive.id]}  />
+      </div>
 
     </motion.div>
   );
