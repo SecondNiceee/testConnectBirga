@@ -27,26 +27,26 @@ const First = () => {
 
 
 
+  function forward() {
+    if (step === 0) {
+      setStep(step + 1);
+    }
+    console.log(step)
+  }
+
+  
+  function back(){
+    if (step === 1){
+      setStep(step - 1)
+      return true
+    }
+    else{
+      setDetailsActive(false)
+      return true
+    }
+  }
     
     useEffect( () => {
-      function forward() {
-        if (step === 0) {
-          setStep(step + 1);
-        }
-        console.log(step)
-      }
-  
-      
-      function back(){
-        if (step === 1){
-          setStep(step - 1)
-          return true
-        }
-        else{
-          setDetailsActive(false)
-          return true
-        }
-      }
       MainButton.onClick(forward);
       BackButton.onClick(back);
 
