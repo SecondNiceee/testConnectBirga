@@ -5,7 +5,13 @@
 }
 .First {
   display: flex;
-  transform: translateX(0%);
+}
+
+.first-wrapper{
+    display: flex;
+    transform: translateX(0%);
+    transition: translate 0.4s;
+    will-change: transform;
 }
 
 .AllTasks{  

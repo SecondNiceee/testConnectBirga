@@ -93,7 +93,7 @@ const First = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.1, duration: 0 }}
     >
-      <div className="wrapper"
+      <div className="first-wrapper"
       style={style}>
 
         <AllTasks
