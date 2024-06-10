@@ -29,6 +29,7 @@ const First = () => {
 
   console.log(varStep)
   function forward() {
+    console.log(varStep)
     if (varStep === 0) {
       setStep(step + 1);
       varStep += 1
