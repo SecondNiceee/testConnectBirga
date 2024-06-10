@@ -9,7 +9,7 @@ import AllTasks from "./AllTasks";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import Responce from "./Responce";
-
+let varStep = 0
 const First = () => {
   const dispatch = useDispatch();
 
@@ -28,16 +28,17 @@ const First = () => {
 
 
   function forward() {
-    if (step === 0) {
+    if (varStep === 0) {
       setStep(step + 1);
+      varStep += 1
     }
     console.log(step)
   }
 
-  let varStep = step;
   function back(){
     if (varStep === 1){
       setStep(step - 1)
+      varStep -= 1
       return true
     }
     else{
