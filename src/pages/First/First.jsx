@@ -27,36 +27,25 @@ const First = () => {
   // }
 
 
-  console.log(varStep)
+  varStep = step
+  function forward() {
+    if (varStep === 0) {
+      setStep(step + 1);
+    }
+  }
 
+
+  function back(){
+    console.log('бэк')
+    if (varStep > 0){
+      setStep(step - 1)
+    }
+    else{
+      setDetailsActive(false)
+    }
+  }
     
     useEffect( () => {
-
-
-      function forward() {
-        console.log(varStep)
-        if (varStep === 0) {
-          alert()
-          setStep(step + 1);
-          varStep += 1
-        }
-      }
-    
-      function back(){
-        console.log('бэк')
-        console.log(varStep)
-        if (varStep > 0){
-          setStep(step - 1)
-          varStep -= 0.5
-          return true
-        }
-        else{
-          setDetailsActive(false)
-          return true
-        }
-      }
-
-
 
       MainButton.onClick(forward);
       BackButton.onClick(back);
