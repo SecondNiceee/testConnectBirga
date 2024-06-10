@@ -34,16 +34,10 @@ const First = () => {
       console.log(step)
     }
 
-    let varStep = step
+    
     function back(){
-      if (varStep === 0){
-        closeDetails()
-      }
-      if(varStep === 1){
         setStep(step - 1)
-      }
     }
-
 
     BackButton.hide();
     MainButton.hide();
@@ -52,11 +46,16 @@ const First = () => {
       BackButton.show();
       MainButton.show();
       MainButton.onClick(forward);
-      BackButton.onClick(back);
+      BackButton.offClick(closeDetails)
+      BackButton.offClick(back)
+      // BackButton.onClick(back);
       if (step === 0) {
+        BackButton.onClick(closeDetails)
         MainButton.setText("ОТКЛИКНУТЬСЯ");
       }
       if (step === 1) {
+        BackButton.offClick(closeDetails)
+        BackButton.onClick(back)
         MainButton.setText("Далее");
       }
     }
@@ -110,9 +109,6 @@ const First = () => {
       transition={{ duration: 0.1, duration: 0 }}
     >
       <div className="first-wrapper" style={style}>
-        {/* <button onClick={() => {
-          forward()
-        }} >ыфвфывфыв</button> */}
         <AllTasks
           ordersInformation={ordersInformation}
           isDetailsActive={isDetailsActive}
