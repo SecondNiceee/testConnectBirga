@@ -34,8 +34,8 @@ const First = () => {
       console.log(step)
     }
 
+    let varStep = step
     function back(){
-      let varStep = step
       if (varStep === 0){
         closeDetails()
       }
