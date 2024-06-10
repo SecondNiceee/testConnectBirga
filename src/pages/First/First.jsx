@@ -11,10 +11,11 @@ import { changeMenuActive } from "../../store/menuSlice";
 import Responce from "./Responce";
 
 
-let step = 0
 
 const First = () => {
   const dispatch = useDispatch();
+
+  const [step, setStep] = useState(0)
 
   const [isDetailsActive, setDetailsActive] = useState({
     id: 0,
@@ -22,12 +23,12 @@ const First = () => {
   });
 
 
+  console.log('рендер')
   useEffect(() => {
 
     function forward(){
-      console.log('вызов forward')
       if (step === 0){
-        step += 1
+        setStep(step += 1)
       }
     }
 
