@@ -37,10 +37,11 @@ const First = () => {
 
   function back(){
     console.log('бэк')
-    if (varStep > 0){
+    console.log(varStep)
+    if (varStep === 1){
       setStep(step - 1)
     }
-    else{
+    if (varStep === 0){
       setDetailsActive(false)
     }
   }
