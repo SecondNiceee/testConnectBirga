@@ -16,6 +16,7 @@
     gap: calc(7px);
     align-items: center;
     flex-grow: 1;
+    line-height: 0;
  }
  .ActiveMainLabel{
     max-width: 100%;

@@ -26,40 +26,45 @@ const First = () => {
     setDetailsActive({ ...isDetailsActive, isOpen: false });
   }
 
-    function forward() {
-      console.log('вызов forward')
-      if (step === 0) {
-        setStep(step + 1);
-      }
-      console.log(step)
-    }
+
 
     
-    function back(){
-        setStep(step - 1)
-    }
-
-    BackButton.hide();
-    MainButton.hide();
-
-    if (isDetailsActive.isOpen) {
-      BackButton.show();
-      MainButton.show();
-      MainButton.onClick(forward);
-      BackButton.offClick(closeDetails)
-      BackButton.offClick(back)
-      // BackButton.onClick(back);
-      if (step === 0) {
-        BackButton.onClick(closeDetails)
-        MainButton.setText("ОТКЛИКНУТЬСЯ");
+    useEffect( () => {
+      function forward() {
+        console.log('вызов forward')
+        if (step === 0) {
+          setStep(step + 1);
+        }
+        console.log(step)
       }
-      if (step === 1) {
+  
+      
+      function back(){
+          setStep(step - 1)
+      }
+      BackButton.hide();
+      MainButton.hide();
+      if (isDetailsActive.isOpen) {
+        BackButton.show();
+        MainButton.show();
+        MainButton.onClick(forward);
         BackButton.offClick(closeDetails)
-        BackButton.onClick(back)
-        MainButton.setText("Далее");
+        BackButton.offClick(back)
+        // BackButton.onClick(back);
+        if (step === 0) {
+          BackButton.onClick(closeDetails)
+          MainButton.setText("ОТКЛИКНУТЬСЯ");
+        }
+        if (step === 1) {
+          BackButton.offClick(closeDetails)
+          BackButton.onClick(back)
+          MainButton.setText("Далее");
+        }
       }
-    }
-   
+     
+    }, [isDetailsActive.isOpen , step] )
+
+
 
   const isMenuActive = useSelector((state) => state.menu.value);
 
