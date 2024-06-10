@@ -47,23 +47,26 @@ const First = () => {
           return true
         }
       }
-      BackButton.hide();
-      MainButton.hide();
-      if (isDetailsActive.isOpen) {
-        BackButton.show();
-        MainButton.show();
-        MainButton.onClick(forward);
-        BackButton.onClick(back);
-        console.log('вызов')
-        if (step === 0) {
-          MainButton.setText("ОТКЛИКНУТЬСЯ");
-        }
-        if (step === 1) {
-          MainButton.setText("Далее");
-        }
-      }
+      MainButton.onClick(forward);
+      BackButton.onClick(back);
+
      
-    }, [isDetailsActive.isOpen , step] )
+    }, [] )
+
+
+    BackButton.hide();
+    MainButton.hide();
+    if (isDetailsActive.isOpen) {
+      BackButton.show();
+      MainButton.show();
+
+    }
+    if (step === 0) {
+      MainButton.setText("ОТКЛИКНУТЬСЯ");
+    }
+    if (step === 1) {
+      MainButton.setText("Далее");
+    }
 
 
 
