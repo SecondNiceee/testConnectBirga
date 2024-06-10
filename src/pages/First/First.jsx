@@ -29,29 +29,29 @@ const First = () => {
   // }
 
 
+  function forward() {
+    if (varStep === 0) {
+      setStep(step + 1);
+      varStep += 1;
+    }
+  }
+
+
+  function back(){
+    console.log('бэк')
+    console.log(varStep)
+    if (varStep === 1){
+      setStep(step - 2)
+      setTimeout(() => {
+        setStep(step + 1)
+      } , 10)
+    }
+    if (varStep === 0){
+      setDetailsActive(false)
+    }
+  }
+    
   useEffect( () => {
-      function forward() {
-        if (varStep === 0) {
-          setStep(step + 1);
-          varStep += 1;
-        }
-      }
-    
-    
-      function back(){
-        console.log('бэк')
-        console.log(varStep)
-        if (varStep === 1){
-          setStep(step - 2)
-          setTimeout(() => {
-            setStep(step + 1)
-          } , 10)
-        }
-        if (varStep === 0){
-          setDetailsActive(false)
-        }
-      }
-        
     
       MainButton.onClick(forward);
       BackButton.onClick(back);
