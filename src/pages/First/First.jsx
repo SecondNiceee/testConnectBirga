@@ -27,27 +27,26 @@ const First = () => {
   // }
 
 
-  varStep = step
-  function forward() {
-    if (varStep === 0) {
-      setStep(step + 1);
-    }
-  }
-
-
-  function back(){
-    console.log('бэк')
-    console.log(varStep)
-    if (varStep === 1){
-      setStep(step - 1)
-    }
-    if (varStep === 0){
-      setDetailsActive(false)
-    }
-  }
+  useEffect( () => {
+      function forward() {
+        if (varStep === 0) {
+          setStep(step + 1);
+        }
+      }
     
-    useEffect( () => {
-
+    
+      function back(){
+        console.log('бэк')
+        console.log(varStep)
+        if (varStep === 1){
+          setStep(step - 1)
+        }
+        if (varStep === 0){
+          setDetailsActive(false)
+        }
+      }
+        
+    
       MainButton.onClick(forward);
       BackButton.onClick(back);
       return () => {
