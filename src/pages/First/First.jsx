@@ -51,6 +51,7 @@ const First = () => {
         BackButton.offClick(closeDetails)
         BackButton.offClick(back)
         // BackButton.onClick(back);
+        console.log('вызов')
         if (step === 0) {
           BackButton.onClick(closeDetails)
           MainButton.setText("ОТКЛИКНУТЬСЯ");
