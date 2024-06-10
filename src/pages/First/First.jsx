@@ -29,7 +29,7 @@ const First = () => {
     function forward() {
       console.log('вызов forward')
       if (step === 0) {
-        setStep((step += 1));
+        setStep(step += 1);
       }
     }
 
