@@ -21,7 +21,7 @@ const First = () => {
     isOpen: false,
   });
 
-  varStep = step;
+
 
 
   // function closeDetails() {
@@ -33,6 +33,7 @@ const First = () => {
       function forward() {
         if (varStep === 0) {
           setStep(step + 1);
+          varStep += 1;
         }
       }
     
