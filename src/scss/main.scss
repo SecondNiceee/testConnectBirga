@@ -2,11 +2,12 @@
 @import './Values/Values.scss';
 @import './First/_FirstRem.scss';
 @import './First/_TaskDetails.scss';
-@import './AdCreating.scss';
+@import './AdCreating/AdCreating';
 @import './Profile/Profile.scss';
-@import './Balance.scss';
-@import './_MyAds.scss';
+@import './Balance/_Balance';
+@import './MyAds/MyAds';
 @import './First/Responce.scss';
+@import './Shablon/shablon.scss';
 * {
     -webkit-tap-highlight-color: transparent;
     // overflow: hidden;

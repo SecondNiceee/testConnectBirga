@@ -4,14 +4,11 @@ import { CSSTransition } from "react-transition-group";
 
 import Cap from "../../../components/UI/Cap/Cap";
 import Categories from "../Categories/Categories";
-import TaskName from "../TaskName/TaskName";
+import TaskName from "../../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
-import MakePrivate from "../../../components/UI/MakePrivate/MakePrivate";
 import ChoiceCategory from "../ChoiceCategory/ChoiceCategory";
 import ChoiceSubCategory from "../ChoiceSubCategory";
-import StartOn from "../StartOn/StartOn";
 import DatePicker from "react-mobile-datepicker";
-import MyDatePicker from "../../ADCreatingTwo/DatePicker/DatePicker";
 import cl from "./AdCreatingOne.module.css";
 import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
 import BackButton from "../../../constants/BackButton";
@@ -242,10 +239,12 @@ const AdCreatingOne = ({
       <TaskName
         // style = {mistakes.taskName ? {border : '1px solid red'} : {}}
         title = "Название задания "
-        text={MyInformation ? "" : "Например, разработать дизайн"}
+        underText={MyInformation ? "" : "Например, разработать дизайн"}
         errorValue = {mistakes.taskName || errorName ? true : false}
-        taskInformation={taskInformation}
-        setTaskInformation={setTaskInformation}
+        text={taskInformation.taskName}
+        setText={(e) => {
+          setTaskInformation({...taskInformation , taskName : e})
+        }}
       />
       <DescriptionAndPhoto
         MyInformation={MyInformation}

@@ -18,9 +18,9 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-transform: translateX(-100%);
-      -ms-transform: translateX(-100%);
-          transform: translateX(-100%);
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
 }
 
 .AllTasks {
@@ -2392,6 +2392,41 @@ input {
 }
 
 .responce-descriprion {
+  margin-top: 18px;
+}
+
+.shablon-wrapper {
+  min-width: 100vw;
+  padding-top: 23px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.shablon-wrapper .shablon-name {
+  margin-top: 18px;
+}
+.shablon-wrapper .shablon-title {
+  color: rgb(255, 255, 255);
+  font-family: "SF Pro Display 400";
+  font-size: 17.67px;
+  font-weight: 400;
+  line-height: -1px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-left: 16px;
+}
+.shablon-wrapper .shablon-notice {
+  max-width: 256px;
+  color: rgb(218, 245, 254);
+  font-family: "SF Pro Display 400";
+  font-size: 13.33px;
+  font-weight: 400;
+  line-height: 15.64px;
+  letter-spacing: 2%;
+  text-align: left;
+  margin-left: 16px;
+  margin-top: 6px;
+}
+.shablon-wrapper .shablon-description {
   margin-top: 18px;
 }
 

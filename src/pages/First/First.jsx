@@ -1,5 +1,5 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { motion, transform } from "framer-motion";
 
 import BackButton from "../../constants/BackButton";
 
@@ -10,6 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import Responce from "./Responce";
 
+
+let step = 0
+
 const First = () => {
   const dispatch = useDispatch();
 
@@ -17,6 +20,7 @@ const First = () => {
     id: 0,
     isOpen: false,
   });
+
 
   useEffect(() => {
     BackButton.hide();
@@ -27,6 +31,7 @@ const First = () => {
     }
   });
 
+
   const isMenuActive = useSelector((state) => state.menu.value);
 
   const setMenuActive = useCallback(
@@ -35,6 +40,19 @@ const First = () => {
     },
     [dispatch]
   );
+
+  const style = useMemo(() => {
+    switch (step){
+      case 0:
+        return {
+          transform : 'translateX(0%)'
+        }
+      case 1:
+        return{
+          transform : 'translateX(-100%)'
+        }
+    }
+  } , [step])
 
   useListner({
     isMenuActive,
