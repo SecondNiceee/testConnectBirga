@@ -41,9 +41,9 @@ const First = () => {
     console.log('бэк')
     console.log(varStep)
     if (varStep === 1){
-      setStep(step - 2)
+      setStep(-9)
       setTimeout(() => {
-        setStep(step + 1)
+        setStep(0)
       } , 10)
     }
     if (varStep === 0){
