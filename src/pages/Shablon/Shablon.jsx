@@ -21,6 +21,7 @@ const Shablon = () => {
     }
     BackButton.show()
     MainButton.show()
+    MainButton.setText('Добавить шаблон')
     BackButton.onClick(goBack)
     MainButton.onClick(forward)
     return () => {
