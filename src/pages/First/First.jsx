@@ -36,8 +36,7 @@ const First = () => {
     }
   }
 
-
-  function back(){
+  function realBack(){
     console.log('бэк')
     console.log(varStep)
     if (varStep === 1){
@@ -50,6 +49,9 @@ const First = () => {
     if (step === 0){
       setDetailsActive(false)
     }
+  }
+  function back(){
+    realBack()
   }
     
   useEffect( () => {
