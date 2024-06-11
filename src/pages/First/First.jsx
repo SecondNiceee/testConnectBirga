@@ -29,8 +29,10 @@ const First = () => {
     setStep(varStep)
   } , [])
 
-  console.log(isDetailsActive)
+  
 
+  isDetailsActiveVar = isDetailsActive.id
+  varStep = step
 
   function closeDetails() {
     setDetailsActive({ ...isDetailsActive, isOpen: false });
