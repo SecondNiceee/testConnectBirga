@@ -65,6 +65,10 @@ const First = () => {
       if (isDetailsActive.isOpen){
         BackButton.show()
       }
+      else{
+        BackButton.hide()
+        MainButton.hide()
+      }
       return () => {
         MainButton.offClick(forward)
         BackButton.offClick(back)
@@ -74,8 +78,8 @@ const First = () => {
     }, )
 
 
-    BackButton.hide();
-    MainButton.hide();
+    // BackButton.hide();
+    // MainButton.hide();
     if (isDetailsActive.isOpen) {
       BackButton.show();
       MainButton.show();
