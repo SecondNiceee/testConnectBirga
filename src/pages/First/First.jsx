@@ -35,7 +35,7 @@ const First = () => {
       varStep += 1;
     }
   }
-
+  varStep = step
   function realBack(){
     console.log('бэк')
     console.log(varStep)
