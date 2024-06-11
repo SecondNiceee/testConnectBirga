@@ -47,7 +47,7 @@ const First = () => {
       //   setStep(0)
       // } , 4000)
     }
-    if (varStep === 0){
+    if (step === 0){
       setDetailsActive(false)
     }
   }
