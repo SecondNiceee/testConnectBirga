@@ -11,16 +11,21 @@ import { changeMenuActive } from "../../store/menuSlice";
 import Responce from "./Responce";
 
 let varStep = 0
+let isDetailsActiveVar = false;
+
 const First = () => {
   const dispatch = useDispatch();
 
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(varStep);
 
   const [isDetailsActive, setDetailsActive] = useState({
     id: 0,
-    isOpen: false,
+    isOpen: isDetailsActiveVar,
   });
 
+
+
+  isDetailsActiveVar = isDetailsActive
   varStep = step;
 
 
