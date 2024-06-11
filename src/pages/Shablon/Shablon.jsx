@@ -28,7 +28,6 @@ const Shablon = () => {
       MainButton.offClick(forward)
       BackButton.offClick(goBack)
       MainButton.hide()
-      BackButton.hide()
     }
   }, [])
   return (
