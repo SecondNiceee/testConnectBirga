@@ -44,7 +44,7 @@ const First = () => {
       setStep(-9)
       setTimeout(() => {
         setStep(0)
-      } , 10)
+      } , 4000)
     }
     if (varStep === 0){
       setDetailsActive(false)
