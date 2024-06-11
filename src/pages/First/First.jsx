@@ -24,9 +24,9 @@ const First = () => {
   varStep = step;
 
 
-  // function closeDetails() {
-  //   setDetailsActive({ ...isDetailsActive, isOpen: false });
-  // }
+  function closeDetails() {
+    setDetailsActive({ ...isDetailsActive, isOpen: false });
+  }
 
 
   useEffect( () => {
@@ -44,7 +44,7 @@ const First = () => {
           setStep(step - 1)
         }
         if (step === 0){
-          setDetailsActive(false)
+          closeDetails()
         }
       }
         
