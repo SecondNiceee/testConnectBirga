@@ -4,13 +4,16 @@ import Shablon from "./components/Shablon";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
-
+let varShablon = false
 const Responce = ({ orderInformation }) => {
-  const [shablon, setShablon] = useState(false);
+  const [shablon, setShablon] = useState(varShablon);
   const [responce, setResponce] = useState({
     text: "",
     photos: [],
   });
+
+  varShablon = shablon;
+
 
   return (
     <div className="responce-wrapper">
