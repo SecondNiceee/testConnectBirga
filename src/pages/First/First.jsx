@@ -26,8 +26,11 @@ const First = () => {
 
   useEffect( () => {
     setDetailsActive({...isDetailsActive , isOpen : isDetailsActiveVar})
+    if(isDetailsActive){
+      BackButton.show()
+    }
     setStep(varStep)
-  } , [])
+  } , [isDetailsActive ])
 
   
 
