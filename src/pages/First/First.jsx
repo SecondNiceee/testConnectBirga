@@ -40,10 +40,10 @@ const First = () => {
       function back(){
         console.log('бэк')
         console.log(varStep)
-        if (varStep === 1){
+        if (step === 1){
           setStep(step - 1)
         }
-        if (varStep === 0){
+        if (step === 0){
           setDetailsActive(false)
         }
       }
@@ -58,7 +58,7 @@ const First = () => {
 
       }
      
-    }, [] )
+    }, )
 
 
     BackButton.hide();
