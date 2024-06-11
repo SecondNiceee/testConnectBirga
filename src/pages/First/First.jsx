@@ -27,7 +27,7 @@ const First = () => {
   useEffect( () => {
     // setStep(varStep)
     // setDetailsActive({...isDetailsActive , isOpen : isDetailsActiveVar})
-    if(isDetailsActive){
+    if(isDetailsActive.isOpen){
       BackButton.show()
     }
   } , [isDetailsActive ])
@@ -62,6 +62,9 @@ const First = () => {
     
       MainButton.onClick(forward);
       BackButton.onClick(back);
+      if (isDetailsActive.isOpen){
+        BackButton.show()
+      }
       return () => {
         MainButton.offClick(forward)
         BackButton.offClick(back)
