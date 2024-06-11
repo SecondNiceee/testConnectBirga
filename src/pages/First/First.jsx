@@ -41,10 +41,11 @@ const First = () => {
     console.log('бэк')
     console.log(varStep)
     if (varStep === 1){
-      setStep(-9)
-      setTimeout(() => {
-        setStep(0)
-      } , 4000)
+      alert()
+      // setStep(-9)
+      // setTimeout(() => {
+      //   setStep(0)
+      // } , 4000)
     }
     if (varStep === 0){
       setDetailsActive(false)
