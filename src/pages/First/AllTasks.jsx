@@ -56,6 +56,7 @@ const AllTasks = ({isDetailsActive , setDetailsActive ,isMenuActive, setMenuActi
             timeout={200}
             classNames="left-right"
             mountOnEnter
+            unmountOnExit
           >
             <FirstDetails
               className="FirstDetails"
