@@ -65,7 +65,7 @@ const First = () => {
 
       }
      
-    }, [] )
+    })
 
 
     BackButton.hide();
