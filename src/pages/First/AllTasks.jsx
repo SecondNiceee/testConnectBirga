@@ -51,21 +51,22 @@ const AllTasks = ({isDetailsActive , setDetailsActive ,isMenuActive, setMenuActi
             ordersInformation={filteredArr}
           />
 
-          <CSSTransition
+          {/* <CSSTransition
             in={isDetailsActive.isOpen}
+            
             timeout={200}
             classNames="left-right"
             mountOnEnter
             unmountOnExit
-          >
+          > */}
             <FirstDetails
-              className="FirstDetails"
+              className={isDetailsActive.isOpen === true ? "active" : ""}
               setDetailsActive={setDetailsActive}
               isDetailsActive={isDetailsActive}
               orderInformation={ordersInformation[isDetailsActive.id]}
               similarAds={ordersInformation}
             />
-          </CSSTransition>
+          {/* </CSSTransition> */}
         </>
       ) : (
         <FirstLoader />

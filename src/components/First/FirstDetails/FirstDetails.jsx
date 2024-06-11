@@ -4,7 +4,7 @@ import TaskDetailsContainer from './TaskDetailsContainer';
 import TimeAndWatches from './TimeAndWatches';
 import SimilarAds from './SimilarAds';
 
-const FirstDetails = ({  orderInformation , similarAds , isDetailsActive, setDetailsActive}) => {
+const FirstDetails = ({  orderInformation , similarAds , isDetailsActive, setDetailsActive , className}) => {
     const BackButton = window.Telegram.WebApp.BackButton;
 
 
@@ -13,7 +13,7 @@ const FirstDetails = ({  orderInformation , similarAds , isDetailsActive, setDet
 
     return (
 
-        <div className  =  'TaskDetails' >
+        <div className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
 
             <TaskDetailsContainer  orderInformation = {orderInformation} />
 

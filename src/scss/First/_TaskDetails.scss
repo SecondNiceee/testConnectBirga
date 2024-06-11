@@ -11,9 +11,10 @@
     left: 0;
     transform: translateX(100%);
     &.active{
-        left: 0%;
+        transform: translateX(0%);
     }
 }
+
 .Task__container-one{
     display: flex;
     flex-direction: column;

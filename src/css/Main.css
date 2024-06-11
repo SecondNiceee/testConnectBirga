@@ -510,7 +510,9 @@
           transform: translateX(100%);
 }
 .TaskDetails.active {
-  left: 0%;
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
 }
 
 .Task__container-one {
