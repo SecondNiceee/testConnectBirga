@@ -34,7 +34,7 @@ const First = () => {
 
   
 
-  isDetailsActiveVar = isDetailsActive.id
+  isDetailsActiveVar = isDetailsActive.isOpen
   varStep = step
 
   function closeDetails() {
