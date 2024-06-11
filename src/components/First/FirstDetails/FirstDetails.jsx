@@ -9,19 +9,7 @@ const FirstDetails = ({  orderInformation , similarAds , isDetailsActive, setDet
 
 
 
-    function closeDetails(){
-        
-        setDetailsActive({...isDetailsActive , isOpen : false} )
-    }
 
-    useEffect( ()=> {
-        BackButton.show()
-        BackButton.onClick( closeDetails )
-        return () => {
-            BackButton.offClick(closeDetails)
-            BackButton.hide()
-        }
-    } )
 
     return (
 

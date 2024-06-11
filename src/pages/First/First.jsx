@@ -21,7 +21,7 @@ const First = () => {
     isOpen: false,
   });
 
-
+  varStep = step;
 
 
   // function closeDetails() {
@@ -29,32 +29,25 @@ const First = () => {
   // }
 
 
-  function forward() {
-    if (varStep === 0) {
-      setStep(step + 1);
-      varStep += 1;
-    }
-  }
-  varStep = step
-  function realBack(){
-    console.log('бэк')
-    console.log(varStep)
-    if (varStep === 1){
-      alert()
-      // setStep(-9)
-      // setTimeout(() => {
-      //   setStep(0)
-      // } , 4000)
-    }
-    else{
-      setDetailsActive(false)
-    }
-  }
-  function back(){
-    realBack()
-  }
-    
   useEffect( () => {
+      function forward() {
+        if (varStep === 0) {
+          setStep(step + 1);
+        }
+      }
+    
+    
+      function back(){
+        console.log('бэк')
+        console.log(varStep)
+        if (varStep === 1){
+          setStep(step - 1)
+        }
+        if (varStep === 0){
+          setDetailsActive(false)
+        }
+      }
+        
     
       MainButton.onClick(forward);
       BackButton.onClick(back);
@@ -65,7 +58,7 @@ const First = () => {
 
       }
      
-    })
+    }, [] )
 
 
     BackButton.hide();
