@@ -24,9 +24,10 @@ const First = () => {
   });
 
 
-
-  isDetailsActiveVar = isDetailsActive.isOpen
-  varStep = step;
+  useEffect( () => {
+    setDetailsActive({...isDetailsActive , isOpen : isDetailsActiveVar})
+    setStep(varStep)
+  } , [])
 
 
   function closeDetails() {
