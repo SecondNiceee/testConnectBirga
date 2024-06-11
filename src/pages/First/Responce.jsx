@@ -24,7 +24,7 @@ const Responce = ({ orderInformation }) => {
         className={"responce-make-private"}
       />
       {shablon ? (
-        <AdCreateFunc text={"Создать шаблон"} link={"/"}  />
+        <AdCreateFunc text={"Создать шаблон"} link={"/Shablon"}  />
       ) : (
         <div>
           <DescriptionAndPhoto

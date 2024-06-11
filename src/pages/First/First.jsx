@@ -38,8 +38,6 @@ const First = () => {
     
     
       function back(){
-        console.log('бэк')
-        console.log(varStep)
         if (step === 1){
           setStep(step - 1)
         }

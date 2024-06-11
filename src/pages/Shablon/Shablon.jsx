@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import TaskName from "../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
+import BackButton from "../../constants/BackButton";
+import { useNavigate } from "react-router-dom";
+import MainButton from "../../constants/MainButton";
 
 const Shablon = () => {
   const [shablon, setShablon] = useState({
@@ -8,6 +11,25 @@ const Shablon = () => {
     text: "",
     photos: [],
   });
+  const navigate = useNavigate()
+  useEffect( () => {
+    function goBack(){
+      navigate(-1)
+    }
+    function forward(){
+      alert('Арсен еще не сделал')
+    }
+    BackButton.show()
+    MainButton.show()
+    BackButton.onClick(goBack)
+    MainButton.onClick(forward)
+    return () => {
+      MainButton.offClick(forward)
+      BackButton.offClick(goBack)
+      MainButton.hide()
+      BackButton.hide()
+    }
+  }, [])
   return (
     <div className="shablon-wrapper">
       <h3 className="shablon-title">Новый шаблон</h3>
