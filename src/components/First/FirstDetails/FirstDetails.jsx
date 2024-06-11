@@ -12,16 +12,25 @@ const FirstDetails = ({  orderInformation , similarAds , isDetailsActive, setDet
 
 
     return (
-
-        <div className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
-
-            <TaskDetailsContainer  orderInformation = {orderInformation} />
-
-            <TimeAndWatches time={orderInformation.creationTime} watches={orderInformation.viewsNumber} />
-
-            <SimilarAds similarAds = {[]} />
-
-        </div>
+        <>
+        {orderInformation 
+            ? 
+            (
+            <div className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
+    
+                <TaskDetailsContainer  orderInformation = {orderInformation} />
+    
+                <TimeAndWatches time={orderInformation.creationTime} watches={orderInformation.viewsNumber} />
+    
+                <SimilarAds similarAds = {[]} />
+    
+            </div>
+            )
+            :
+            <>
+            </>
+        }
+        </>
     );
 };
 
