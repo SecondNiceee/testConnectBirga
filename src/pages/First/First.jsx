@@ -27,6 +27,9 @@ const First = () => {
   console.log(isDetailsActiveVar)
 
 
+  console.log(varStep)
+  console.log(step)
+
   useEffect( () => {
     // setStep(varStep)
     // setDetailsActive({...isDetailsActive , isOpen : isDetailsActiveVar})
@@ -49,6 +52,7 @@ const First = () => {
       function forward() {
         if (varStep === 0) {
           setStep(step + 1);
+          varStep = step
         }
       }
     
