@@ -25,7 +25,7 @@ const First = () => {
 
 
 
-  isDetailsActiveVar = isDetailsActive
+  isDetailsActiveVar = isDetailsActive.isOpen
   varStep = step;
 
 
