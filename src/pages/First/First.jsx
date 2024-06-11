@@ -29,6 +29,8 @@ const First = () => {
     setStep(varStep)
   } , [])
 
+  console.log(isDetailsActive)
+
 
   function closeDetails() {
     setDetailsActive({ ...isDetailsActive, isOpen: false });
@@ -56,7 +58,6 @@ const First = () => {
       MainButton.onClick(forward);
       BackButton.onClick(back);
       return () => {
-        varStep = 0
         MainButton.offClick(forward)
         BackButton.offClick(back)
 
