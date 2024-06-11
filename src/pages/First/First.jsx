@@ -23,6 +23,9 @@ const First = () => {
     isOpen: isDetailsActiveVar,
   });
 
+  console.log(isDetailsActive)
+  console.log(isDetailsActiveVar)
+
 
   useEffect( () => {
     // setStep(varStep)
