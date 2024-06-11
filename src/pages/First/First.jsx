@@ -65,10 +65,10 @@ const First = () => {
       if (isDetailsActive.isOpen){
         BackButton.show()
       }
-      else{
-        BackButton.hide()
-        MainButton.hide()
-      }
+      // else{
+      //   BackButton.hide()
+      //   MainButton.hide()
+      // }
       return () => {
         MainButton.offClick(forward)
         BackButton.offClick(back)
