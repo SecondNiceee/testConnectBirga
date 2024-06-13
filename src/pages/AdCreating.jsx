@@ -38,9 +38,6 @@ const AdCreating = () => {
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);
 
-  console.log(categorys.find((e) => e.category === "Другое"));
-  console.log(subCategorys.find((e) => e.subCategory === "Нет"));
-
   useEffect(() => {
     if (categorys && subCategorys) {
       setTaskInformation({
@@ -51,7 +48,6 @@ const AdCreating = () => {
     }
   }, [categorys, subCategorys]);
 
-  console.log(taskInformation);
 
   const [error, setError] = useState({
     name: false,
@@ -146,8 +142,8 @@ const AdCreating = () => {
   }
   async function post(el) {
     let myFormData = new FormData();
-    myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id);
-    // myFormData.append("userId", 2144832745);
+    // myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id);
+    myFormData.append("userId", 2144832745);
     myFormData.append("title", el.taskName);
     myFormData.append("description", el.taskDescription);
     myFormData.append("deadline", 1);
@@ -161,12 +157,13 @@ const AdCreating = () => {
       myFormData.append("startTime", el.singleTime);
       myFormData.append("endTime", "");
     }
+    myFormData.append("photos", el.photos);
 
-    if (el.photos.length !== 0) {
-      for (let file of el.photos) {
-        myFormData.append("photos", file);
-      }
-    }
+    // if (el.photos.length !== 0) {
+    //   for (let file of el.photos) {
+    //     myFormData.append("photos", file);
+    //   }
+    // }
 
     dispatch(postMyTask(myFormData));
     //   let state = await axios.post(
@@ -305,6 +302,9 @@ const AdCreating = () => {
     };
   }, []);
 
+  // console.log(taskInformation.category.id)
+  // console.log(taskInformation.subCategory.id)
+
   return (
     <motion.div
       className="AdCreating__container"
@@ -345,7 +345,7 @@ const AdCreating = () => {
           <AdCreatingThree taskInformation={taskInformation} />
         </>
       )}
-      {/* <button
+      <button
         ref={blurRef}
         style={{ position: "absolute" }}
         onClick={() => {
@@ -369,7 +369,7 @@ const AdCreating = () => {
         }}
       >
         Отослать
-      </button> */}
+      </button>
     </motion.div>
   );
 };

@@ -129,8 +129,6 @@ function App() {
     dispatch(getCategorys())
     dispatch(getSubCategorys())
   }, []);
-  console.log(categorys);
-  console.log(subCategory)
 
   window.Telegram.WebApp.expand();
 

@@ -23,7 +23,7 @@ export const putMyTask = createAsyncThunk(
 export const postMyTask = createAsyncThunk(
   "information/postMytask" , 
   async function(data){
-    await axios.post(
+    let a = await axios.post(
       "https://back-birga.ywa.su/advertisement",
       data,
       {
@@ -33,6 +33,7 @@ export const postMyTask = createAsyncThunk(
         },
       }
     );
+    alert(a)
 
     return true
 
@@ -64,13 +65,13 @@ export const fetchMyOrders = createAsyncThunk(
     else{
 
       for (let order of task.data) {
-        let filePhotos =  []
-        if (order.photos){
+        // let filePhotos =  []
+        // if (order.photos){
 
-          for (let photo of order.photos){
-            await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
-          }
-        }
+        //   for (let photo of order.photos){
+        //     await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
+        //   }
+        // }
 
         tasks.push({
           id : order.id,
@@ -79,7 +80,7 @@ export const fetchMyOrders = createAsyncThunk(
           time : {start : new Date(order.startTime) , end : new Date(order.endTime)},
           tonValue : order.price,
           taskDescription : order.description,
-          photos : filePhotos || [],
+          photos : order.photos || [],
           rate : '5',
           isActive : true,
           creationTime : order.createdAt,
@@ -113,15 +114,15 @@ export const fetchTasksInformation = createAsyncThunk(
           for (let order of task.data) {
             
 
-            let filePhotos =  []
-            if (order.photos){
+            // let filePhotos =  []
+            // if (order.photos){
 
-              if (order.photos.length !== 0){
-                for (let photo of order.photos){
-                  await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
-                }
-              }
-            }
+            //   if (order.photos.length !== 0){
+            //     for (let photo of order.photos){
+            //       await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
+            //     }
+            //   }
+            // }
             let one = new Date(order.startTime)
             let two;
             if (order.endTime){
@@ -130,13 +131,20 @@ export const fetchTasksInformation = createAsyncThunk(
             else{
                two = ""
             }
+            let orderPhotos = await axios.get('https://back-birga.ywa.su/advertisment/getPhotos' , 
+              {
+                params : {
+                  id : order.id
+                }
+              }
+            )
             tasks.push({
               taskName : order.title,
               executionPlace: "Можно выполнить удаленно",
               time : {start : one , end : two},
               tonValue : order.price,
               taskDescription : order.description,
-              photos : filePhotos || [],
+              photos : orderPhotos,
               customerName : order.user.fl,
               userPhoto : order.user.photo|| "",
               rate : '5',
