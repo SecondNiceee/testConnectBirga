@@ -23,18 +23,23 @@ export const putMyTask = createAsyncThunk(
 export const postMyTask = createAsyncThunk(
   "information/postMytask" , 
   async function(data){
-    let a = await axios.post(
-      "https://back-birga.ywa.su/advertisement",
-      data,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Access-Control-Allow-Origin": "*"
-        },
-      }
-    );
-    alert(a)
+    try{
 
+      let a = await axios.post(
+        "https://back-birga.ywa.su/advertisement",
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "Access-Control-Allow-Origin": "*"
+          },
+        }
+      );
+    }
+    catch(e){
+        console.log(e)
+    }
+    alert('пуш')
     return true
 
 
@@ -131,13 +136,14 @@ export const fetchTasksInformation = createAsyncThunk(
             else{
                two = ""
             }
-            let orderPhotos = await axios.get('https://back-birga.ywa.su/advertisment/getPhotos' , 
+            let orderPhotos = await axios.get('https://back-birga.ywa.su/advertisement/getPhotos' , 
               {
                 params : {
                   id : order.id
                 }
               }
             )
+            console.log(orderPhotos)
             tasks.push({
               taskName : order.title,
               executionPlace: "Можно выполнить удаленно",

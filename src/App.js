@@ -130,6 +130,8 @@ function App() {
     dispatch(getSubCategorys())
   }, []);
 
+  console.log(new Date())
+
   window.Telegram.WebApp.expand();
 
   async function start() {

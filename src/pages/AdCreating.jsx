@@ -157,14 +157,15 @@ const AdCreating = () => {
       myFormData.append("startTime", el.singleTime);
       myFormData.append("endTime", "");
     }
-    myFormData.append("photos", el.photos);
+    // myFormData.append("photos", el.photos);
+    
 
-    // if (el.photos.length !== 0) {
-    //   for (let file of el.photos) {
-    //     myFormData.append("photos", file);
-    //   }
-    // }
-
+    if (el.photos.length !== 0) {
+      for (let file of el.photos) {
+        myFormData.append("photos", file);
+      }
+    }
+    
     dispatch(postMyTask(myFormData));
     //   let state = await axios.post(
     //   "https://back-birga.ywa.su/advertisement",
