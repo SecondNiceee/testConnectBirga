@@ -16,8 +16,6 @@ const FirstBlock = ({ className, taskName, executionPlace, time, tonValue , setD
         minute : 'numeric',
         timezone: 'UTC'
       };
-      console.log(photos)
-      console.log(taskName)
     return (
         <>
         {photos !== undefined ? 

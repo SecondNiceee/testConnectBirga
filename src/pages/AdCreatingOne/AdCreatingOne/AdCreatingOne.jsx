@@ -27,13 +27,21 @@ const AdCreatingOne = ({
   className,
   errorName,
   mistakes,
-  isDetailsActive
+  isDetailsActive,
+  categorys,
+  subCategorys
 }) => {
+
+
+
+
   const [isCategoryChoiceOpen, setCatagoryChoiceOpen] = useState(false);
 
   const [isSubcategoryChoiceOpen, setSubcategoryChoiceOpen] = useState(false);
 
   const navigate = useNavigate();
+
+
 
   var options = {
     year: "numeric",
@@ -233,6 +241,8 @@ const AdCreatingOne = ({
           taskInformation={taskInformation}
           setCatagoryChoiceOpen={setCatagoryChoiceOpen}
           setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
+          categorys = {categorys}
+          subCategorys = {subCategorys}
         />
       )}
 
@@ -309,6 +319,8 @@ const AdCreatingOne = ({
           taskInformation={taskInformation}
           setTaskInformation={setTaskInformation}
           setCatagoryChoiceOpen={setCatagoryChoiceOpen}
+          categorys = {categorys}
+          subCategorys={subCategorys}
         />
       </CSSTransition>
 
@@ -320,6 +332,7 @@ const AdCreatingOne = ({
         mountOnEnter
       >
         <ChoiceSubCategory
+          subCategorys = {subCategorys}
           setTaskInformation={setTaskInformation}
           setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
           taskInformation={taskInformation}

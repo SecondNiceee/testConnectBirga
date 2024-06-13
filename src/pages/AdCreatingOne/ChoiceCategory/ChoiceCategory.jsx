@@ -4,13 +4,12 @@ import OneInput from "../../../components/UI/OneInput/OneInput";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import BackButton from "../../../constants/BackButton";
 
-const categoriesArr = [
-  { name: "Дизайн", icon: "Palitra.png", value: "design1", key: 1 }
-] 
 const ChoiceCategory = ({
   setTaskInformation,
   taskInformation,
   setCatagoryChoiceOpen,
+  categorys,
+  subCategorys
 
 }) => {
   
@@ -24,7 +23,7 @@ const ChoiceCategory = ({
     return () => {
       BackButton.offClick( closeCategory )
     }
-  }  )
+  }, []  )
   return (
     <div className={cl.ChoiceCategory}>
       <OneInput
@@ -34,11 +33,19 @@ const ChoiceCategory = ({
         className={cl.OneInput}
       />
       <div className={cl.categoryContainer}>
-        {categoriesArr.map((e) => {
+        {categorys.map((e) => {
           return (
             <div
               onClick={() => {
-                setTaskInformation({ ...taskInformation, category: {name : e.name , value : e.value} , subCategory : 'Выбрать'});
+                if(e.category === 'Другое'){
+                  console.log(subCategorys)
+                  console.log(subCategorys.find(e => e.subCategory === 'Нет'))
+                    setTaskInformation({ ...taskInformation, category: e , subCategory : subCategorys.find(e => e.subCategory === 'Нет')});
+                }
+                else{
+                  let sortedCategorys = subCategorys.filter(el => el.category.id === e.id)
+                  setTaskInformation({ ...taskInformation, category: e , subCategory : sortedCategorys.find(e => e.subCategory === 'Другое')});
+                }
                 setCatagoryChoiceOpen(false);
               }}
               className={cl.wrap}

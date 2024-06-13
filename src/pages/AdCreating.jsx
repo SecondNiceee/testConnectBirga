@@ -34,6 +34,24 @@ const AdCreating = () => {
 
   const status = useSelector((state) => state.information.postTaskStatus);
 
+  const categorys = useSelector((state) => state.categorys.category);
+
+  const subCategorys = useSelector((state) => state.categorys.subCategory);
+
+  console.log(categorys.find((e) => e.category === "Другое"));
+  console.log(subCategorys.find((e) => e.subCategory === "нет"));
+
+  useEffect(() => {
+    if (categorys && subCategorys) {
+      setTaskInformation({
+        ...taskInformation,
+        category: categorys.find((e) => e.category === "Другое"),
+        subCategory: subCategorys.find((e) => e.subCategory === "нет"),
+      });
+    }
+  }, [categorys, subCategorys]);
+
+  console.log(taskInformation);
 
   const [error, setError] = useState({
     name: false,
@@ -128,13 +146,13 @@ const AdCreating = () => {
   }
   async function post(el) {
     let myFormData = new FormData();
-     myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id);
+    myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id);
     // myFormData.append("userId", 2144832745);
     myFormData.append("title", el.taskName);
     myFormData.append("description", el.taskDescription);
     myFormData.append("deadline", 1);
-    myFormData.append("category", 1);
-    myFormData.append("subCategory", 1);
+    myFormData.append("category", taskInformation.category.id);
+    myFormData.append("subCategory", taskInformation.subCategory.id);
     myFormData.append("price", el.tonValue);
     if (document.getElementById("dateSwapper").style.transform) {
       myFormData.append("startTime", el.startTime);
@@ -295,7 +313,7 @@ const AdCreating = () => {
         transition: "0.3s",
       }}
     >
-      {status === 'pending' ? (
+      {status === "pending" ? (
         <>
           <PostLoader />
         </>
@@ -308,6 +326,8 @@ const AdCreating = () => {
             taskInformation={taskInformation}
             MyInformation={false}
             mistakes={{ timeError: false, taskName: false }}
+            categorys={categorys}
+            subCategorys={subCategorys}
           />
           <AdCreatingTwo
             errors={{

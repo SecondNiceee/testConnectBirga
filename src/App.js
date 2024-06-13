@@ -19,6 +19,7 @@ import { fetchUserInfo } from "./store/telegramUserInfo";
 import { fetchTasksInformation } from "./store/information";
 import { Triangle } from "react-loader-spinner";
 import axios from "axios";
+import { getCategorys, getSubCategorys } from "./store/categorys";
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
@@ -121,43 +122,15 @@ const AnimatedSwitch = () => {
 };
 function App() {
   const categorys = useSelector((state) => state.categorys.category);
+  const subCategory = useSelector((state) => state.categorys.subCategory)
+  
+  const dispatch = useDispatch()
   useEffect(() => {
-    console.log(categorys);
+    dispatch(getCategorys())
+    dispatch(getSubCategorys())
   }, []);
-
-  // async function lol (){
-  //   let tasks = []
-  //   let task = await axios.get('https://back-birga.ywa.su/advertisement/findByUser' , {
-  //     params : {
-  //       // userId : window.Telegram.WebApp.initDataUnsafe.user.id
-  //       userId : 2144832745
-  //     }
-  //   })
-
-  //   if (task.data.length === 0){
-  //     return []
-  //   }
-  //   else{
-  //     for (let order of task.data) {
-  //       tasks.push({
-  //         taskName : order.title,
-  //         executionPlace: "Можно выполнить удаленно",
-  //         time : {start : order.startTime , end : order.endTime},
-  //         tonValue : order.price,
-  //         taskDescription : order.description,
-  //         photos : order.photos || "",
-
-  //         rate : '5',
-  //         isActive : true,
-  //         creationTime : order.createdAt,
-  //         viewsNumber : '51',
-
-  //       })
-  //     }
-  //     return tasks
-  //   }
-  // }
-  // lol()
+  console.log(categorys);
+  console.log(subCategory)
 
   window.Telegram.WebApp.expand();
 
@@ -172,7 +145,7 @@ function App() {
     });
   }
 
-  const dispatch = useDispatch();
+
 
   useEffect(() => {
     dispatch(fetchTon());

@@ -23,12 +23,6 @@ const First = () => {
     isOpen: isDetailsActiveVar,
   });
 
-  console.log(isDetailsActive)
-  console.log(isDetailsActiveVar)
-
-
-  console.log(varStep)
-  console.log(step)
 
   useEffect( () => {
     // setStep(varStep)
@@ -111,7 +105,6 @@ const First = () => {
   );
 
   const style = useMemo(() => {
-    console.log("вызов style");
     switch (step) {
       case 0:
         return {
