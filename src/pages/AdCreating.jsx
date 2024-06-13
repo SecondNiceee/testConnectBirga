@@ -39,14 +39,14 @@ const AdCreating = () => {
   const subCategorys = useSelector((state) => state.categorys.subCategory);
 
   console.log(categorys.find((e) => e.category === "Другое"));
-  console.log(subCategorys.find((e) => e.subCategory === "нет"));
+  console.log(subCategorys.find((e) => e.subCategory === "Нет"));
 
   useEffect(() => {
     if (categorys && subCategorys) {
       setTaskInformation({
         ...taskInformation,
         category: categorys.find((e) => e.category === "Другое"),
-        subCategory: subCategorys.find((e) => e.subCategory === "нет"),
+        subCategory: subCategorys.find((e) => e.subCategory === "Нет"),
       });
     }
   }, [categorys, subCategorys]);
