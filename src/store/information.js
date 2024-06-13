@@ -129,6 +129,8 @@ export const fetchTasksInformation = createAsyncThunk(
             //   }
             // }
             let one = new Date(order.startTime)
+
+
             let two;
             if (order.endTime){
                two = new Date(order.endTime)
@@ -143,16 +145,43 @@ export const fetchTasksInformation = createAsyncThunk(
                 }
               }
             )
-            console.log(orderPhotos)
+
+
+            const array = orderPhotos[0].data; // массив чисел данных изображения
+            console.log(orderPhotos.data)
+
+            // Создаем типизированный массив Uint8Array
+            const uintArray = new Uint8Array(array);
+            
+            // Создаем Blob из массива данных
+            const blob = new Blob([uintArray], { type: 'image/jpeg' });
+            
+            // Создаем URL для объекта Blob
+            const imageUrl = URL.createObjectURL(blob);
+            
+            // Создаем новый элемент <img> для отображения изображения
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            document.body.appendChild(img);
+            
+            // Теперь изображение отображается на странице
+            
+            // Если нужно сохранить файл на диск, то можно воспользоватся объектом File
+            const fileName = 'photo.jpg';
+            const file = new File([blob], fileName, { type: 'image/jpeg' });
+
+            console.log(file)
+
+
             tasks.push({
               taskName : order.title,
               executionPlace: "Можно выполнить удаленно",
               time : {start : one , end : two},
               tonValue : order.price,
               taskDescription : order.description,
-              photos : orderPhotos,
+              photos : [file] || [],
               customerName : order.user.fl,
-              userPhoto : order.user.photo|| "",
+              userPhoto : order.user.photo || "",
               rate : '5',
               customerName : order.user.fl,
               isActive : true,
