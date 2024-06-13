@@ -3,11 +3,11 @@ import React, { useEffect, useMemo, useState } from 'react';
 import rightArrow from '../../images/icons/rightArrow.svg'
 import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
-const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorys}) => {
+const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
 
 
-    subCategorys = subCategorys.filter(e => e.category.id === taskInformation.category.id)
-
+    let subCategorys = subCategorysPar.filter(e => e.category.id === taskInformation.category.id && e.subCategory !== 'Другое')
+    subCategorys.push(subCategorysPar.find(e => taskInformation.category.id && e.subCategory === 'Другое'))
 
     let k = taskInformation.category.value
 

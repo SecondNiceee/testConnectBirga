@@ -332,7 +332,7 @@ const AdCreatingOne = ({
         mountOnEnter
       >
         <ChoiceSubCategory
-          subCategorys = {subCategorys}
+          subCategorysPar = {subCategorys}
           setTaskInformation={setTaskInformation}
           setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
           taskInformation={taskInformation}

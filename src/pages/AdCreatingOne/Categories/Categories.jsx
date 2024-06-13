@@ -13,14 +13,15 @@ const Categories = ({className , taskInformation, setCatagoryChoiceOpen , setSub
                     rezult+=word + ' '
                 }
                 else{
+                    rezult = rezult.slice(0 , rezult.length - 1)
+                    if(rezult[rezult.length-1] === ','){
+                        rezult = rezult.slice(0 , rezult.length - 1)
+                    }
                     rezult += '..'
                     break
                 }
             }
-            rezult = rezult.slice(0 , rezult.length - 1)
-            if(rezult[rezult.length-1] === ','){
-                rezult = rezult.slice(0 , rezult.length - 1)
-            }
+
             return(rezult)
         }
         return ''
