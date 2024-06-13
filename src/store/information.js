@@ -52,17 +52,17 @@ export const fetchMyOrders = createAsyncThunk(
     let tasks = []
     let task = await axios.get('https://back-birga.ywa.su/advertisement/findByUser' , {
       params : {
-         userId :   window.Telegram.WebApp.initDataUnsafe.user.id
+         userId :   2144832745
       }
     })
 
-    const urlToObject= async(image)=> {
-      const response = await fetch(image);
-      // here image is url/location of image
-      const blob = await response.blob();
-      const file = new File([blob], image, {type: blob.type});
-      return file
-    }
+    // const urlToObject= async(image)=> {
+    //   const response = await fetch(image);
+    //   // here image is url/location of image
+    //   const blob = await response.blob();
+    //   const file = new File([blob], image, {type: blob.type});
+    //   return file
+    // }
 
     if (task.data.length === 0){
       return []
@@ -70,13 +70,33 @@ export const fetchMyOrders = createAsyncThunk(
     else{
 
       for (let order of task.data) {
-        // let filePhotos =  []
-        // if (order.photos){
+        let files =  []
 
-        //   for (let photo of order.photos){
-        //     await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
-        //   }
-        // }
+
+
+
+
+        let buffers = await axios.get('https://back-birga.ywa.su/advertisement/getPhotos', {
+          params : {
+            id : order.id
+          }
+        })
+
+
+
+
+
+          for (let photo of buffers.data){
+            console.log(photo)
+            let uintArray = new Uint8Array(photo.data);
+            let blob = new Blob([uintArray], { type: 'image/png' });
+            let imageUrl = URL.createObjectURL(blob);
+            let fileName = 'photo.jpg';
+            let file = new File([blob], fileName, { type: 'image/png' });
+            console.log(file)
+            files.push(file)
+          }
+        
 
         tasks.push({
           id : order.id,
@@ -85,7 +105,7 @@ export const fetchMyOrders = createAsyncThunk(
           time : {start : new Date(order.startTime) , end : new Date(order.endTime)},
           tonValue : order.price,
           taskDescription : order.description,
-          photos : order.photos || [],
+          photos : files ,
           rate : '5',
           isActive : true,
           creationTime : order.createdAt,
@@ -110,27 +130,23 @@ export const fetchTasksInformation = createAsyncThunk(
         }
 
         let tasks = []
-        let task = await axios.get('https://back-birga.ywa.su/advertisement/findAll')
+        let task = await axios.get('https://back-birga.ywa.su/advertisement/getAllPhotos')
+        
+        console.log(task)
+
         if (task.data.length === 0){
           return []
         }
         else{
   
           for (let order of task.data) {
-            
+          
 
-            // let filePhotos =  []
-            // if (order.photos){
-
-            //   if (order.photos.length !== 0){
-            //     for (let photo of order.photos){
-            //       await urlToObject('https://back-birga.ywa.su/'+ photo).then(  (file) => filePhotos.push(file))
-            //     }
-            //   }
-            // }
+            console.log('приве')
+            console.log('приве')
             let one = new Date(order.startTime)
 
-
+            console.log('приве')
             let two;
             if (order.endTime){
                two = new Date(order.endTime)
@@ -138,40 +154,25 @@ export const fetchTasksInformation = createAsyncThunk(
             else{
                two = ""
             }
-            let orderPhotos = await axios.get('https://back-birga.ywa.su/advertisement/getPhotos' , 
-              {
-                params : {
-                  id : order.id
-                }
+            let orderPhotos = []
+
+            console.log('приве')
+            let files = [];
+            
+            if (order.files){
+              console.log(order.files)
+              for (let photo of order.files){
+                console.log(photo)
+                let uintArray = new Uint8Array(photo.data);
+                let blob = new Blob([uintArray], { type: 'image/png' });
+                let imageUrl = URL.createObjectURL(blob);
+                let fileName = 'photo.jpg';
+                let file = new File([blob], fileName, { type: 'image/png' });
+                console.log(file)
+                files.push(file)
               }
-            )
-
-
-            const array = orderPhotos[0].data; // массив чисел данных изображения
-            console.log(orderPhotos.data)
-
-            // Создаем типизированный массив Uint8Array
-            const uintArray = new Uint8Array(array);
-            
-            // Создаем Blob из массива данных
-            const blob = new Blob([uintArray], { type: 'image/jpeg' });
-            
-            // Создаем URL для объекта Blob
-            const imageUrl = URL.createObjectURL(blob);
-            
-            // Создаем новый элемент <img> для отображения изображения
-            const img = document.createElement('img');
-            img.src = imageUrl;
-            document.body.appendChild(img);
-            
-            // Теперь изображение отображается на странице
-            
-            // Если нужно сохранить файл на диск, то можно воспользоватся объектом File
-            const fileName = 'photo.jpg';
-            const file = new File([blob], fileName, { type: 'image/jpeg' });
-
-            console.log(file)
-
+            }
+            console.log(order)
 
             tasks.push({
               taskName : order.title,
@@ -179,7 +180,7 @@ export const fetchTasksInformation = createAsyncThunk(
               time : {start : one , end : two},
               tonValue : order.price,
               taskDescription : order.description,
-              photos : [file] || [],
+              photos : files,
               customerName : order.user.fl,
               userPhoto : order.user.photo || "",
               rate : '5',
@@ -190,6 +191,7 @@ export const fetchTasksInformation = createAsyncThunk(
               
             })
           }
+          console.log('привет')
   
           return tasks
         }
@@ -354,7 +356,20 @@ const information = createSlice( {
         changeMyAds(state, action) {
           state.myAdsArray = action.payload
         },
+        putMyAds(state, action){
+          let changedAd = action.payload
+          state.myAdsArray = state.myAdsArray.map(myAd => {
+              if(changedAd.id === myAd.id){
+                myAd.taskName = changedAd.taskName
+                myAd.taskDescription = changedAd.taskDescription
+                myAd.tonValue = changedAd.tonValue
+                myAd.time = {start : changedAd.time.start, end : changedAd.time.end}
+              }
+              return myAd
+          })
+        },
         addMyAds(state, action) {
+          let myAd = action.payload
           state.myAdsArray.push(action.payload)
         }
     },
@@ -383,5 +398,5 @@ const information = createSlice( {
 
 
 })
-export const {changeTaskInformation , changeMyAds, addMyAds} = information.actions;
+export const {changeTaskInformation , changeMyAds, addMyAds, putMyAds} = information.actions;
 export default information.reducer;

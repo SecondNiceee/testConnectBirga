@@ -8,7 +8,7 @@ import Top from "./Top";
 import BackButton from "../../../constants/BackButton";
 import axios from "axios";
 // import { initPopup } from "@tma.js/sdk";
-import { fetchMyOrders, putMyTask } from "../../../store/information";
+import { fetchMyOrders, putMyAds, putMyTask } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
 
 let changed = false;
@@ -38,8 +38,8 @@ const MyAdOne = ({
   });
 
   useEffect(() => {
-    if (putStatus === "complete") {
-      dispatch(fetchMyOrders());
+    if (putStatus === "error") {
+      alert('ничего не сохранилось')
     }
   }, [putStatus]);
 
@@ -60,8 +60,17 @@ const MyAdOne = ({
             setDetailsActive(false);
           }
           if (buttonId === "save") {
+
             if (checkMistakes(changingTaskVar)) {
               let myFormData = new FormData();
+              myFormData.append('id' , changingTaskVar.id)
+              myFormData.append('title' , changingTaskVar.taskName)
+              myFormData.append('description' , changingTaskVar.taskDescription)
+              myFormData.append("deadline" , 1)
+              myFormData.append("price" ,changingTaskVar.tonValue )
+              myAdsArray.append("startTime" , changingTaskVar.time.start)
+              myAdsArray.append("endTime" , changingTaskVar.time.end)
+        
               let answer = {
                 id: changingTaskVar.id,
                 title: changingTaskVar.taskName,
@@ -77,18 +86,10 @@ const MyAdOne = ({
                   myFormData.append("photos", file);
                 }
               }
-              putTask(answer);
 
-              // axios.put(
-              //   "https://back-birga.ywa.su/advertisement",
-              //   answer,
-              //   {
-              //     headers: {
-              //       "Content-Type": "application/json",
-              //       "Access-Control-Allow-Origin": "*"
-              //     },
-              //   }
-              // );
+              putTask(answer);
+              
+
             }
 
             setDetailsActive(false);
@@ -124,8 +125,9 @@ const MyAdOne = ({
     return Object.values(rezult).every((value) => value === false);
   }
 
-  async function putTask(answer) {
+  function putTask(answer) {
     dispatch(putMyTask(answer))
+    dispatch(putMyAds(changingTaskVar))
     setDetailsActive(false);
   }
 

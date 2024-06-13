@@ -101,10 +101,7 @@ const MyAds = () => {
 
   const [isClosed , setClosed] = useState(true)
   
-  useEffect( () => {
-    
-    dispatch(fetchMyOrders())
-  }, [])
+
 
   useEffect( () => {
    

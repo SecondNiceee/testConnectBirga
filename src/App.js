@@ -1,6 +1,6 @@
 import { lazy, useEffect, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -16,7 +16,7 @@ import FirstMenu from "./pages/FirstMenu/FirstMenu";
 
 import { fetchTon } from "./store/ton";
 import { fetchUserInfo } from "./store/telegramUserInfo";
-import { fetchTasksInformation } from "./store/information";
+import { fetchMyOrders, fetchTasksInformation } from "./store/information";
 import { Triangle } from "react-loader-spinner";
 import axios from "axios";
 import { getCategorys, getSubCategorys } from "./store/categorys";
@@ -54,12 +54,21 @@ const MyLoader = () => {
 const AnimatedSwitch = () => {
   const location = useLocation();
   const isMenuActive = useSelector((state) => state.menu.value);
+  const navigate = useNavigate()
+  useEffect(() => {
+
+    navigate('/MyAds')
+    navigate('/')
+  }, []
+
+  )
   return (
     <div className="container">
       <div
         style={isMenuActive ? { opacity: "0.6" } : { maxWidth: "0px" }}
         className="black"
       ></div>
+      
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route
@@ -124,6 +133,8 @@ function App() {
   const categorys = useSelector((state) => state.categorys.category);
   const subCategory = useSelector((state) => state.categorys.subCategory)
   
+
+  
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getCategorys())
@@ -145,11 +156,10 @@ function App() {
     });
   }
 
-
-
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
+    dispatch(fetchMyOrders())
   }, []);
 
   return (

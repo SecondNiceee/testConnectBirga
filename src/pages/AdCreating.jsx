@@ -6,6 +6,7 @@ import AdCreatingTwo from "./ADCreatingTwo/AdCreatingTwo/AddCreatingTwo";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addMyAds,
   changeTaskInformation,
   postInformation,
   postMyTask,
@@ -134,9 +135,21 @@ const AdCreating = () => {
     }, 310);
   }
 
-  async function finish() {
-    await post(taskInformation);
+  function finish() {
+    let taskInformationCopy = {...taskInformation}
+    console.log(taskInformationCopy)
+    if (document.getElementById("dateSwapper").style.transform) {
+      taskInformationCopy.time = {start : taskInformation.startTime , end : taskInformation.endTime}
+      // setTaskInformation({...taskInformation , time : {start : taskInformation.startTime , end : taskInformation.endTime} })
+    } else {
+      taskInformationCopy.time = {start : taskInformation.startTime , end : ''}
+
+    }
+
+    post(taskInformation);
+    dispatch(addMyAds(taskInformationCopy))
     navigate("/MyAds");
+    
     MainButton.hide();
     spet = 0;
   }
