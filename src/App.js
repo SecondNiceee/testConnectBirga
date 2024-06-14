@@ -134,7 +134,16 @@ function App() {
   const categorys = useSelector((state) => state.categorys.category);
   const subCategory = useSelector((state) => state.categorys.subCategory)
   
-
+  useEffect( () => {
+    document.documentElement.style.marginTop = '150px'
+    window.scrollTo({
+      top : 150,
+      behavior : 'auto'
+    })
+    
+     document.documentElement.style.overflow = 'clip'
+    document.querySelector('.MainContainer').style.overflowY = 'hidden'
+  } , [] )
   
   const dispatch = useDispatch()
   useEffect(() => {

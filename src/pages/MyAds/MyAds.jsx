@@ -114,14 +114,14 @@ const MyAds = () => {
     setTimeout( () => {
       setClosed(true)
     } , 400 )
-
+    
+    
     document.documentElement.style.marginTop = '150px'
-
     window.scrollTo({
       top : 150,
       behavior : 'auto'
     })
-
+    
      document.documentElement.style.overflow = 'clip'
     document.querySelector('.MainContainer').style.overflowY = 'hidden'
 
@@ -269,6 +269,11 @@ const MyAds = () => {
   // alert(myAdsArray.photos)
 
   return (
+    <>
+    {myAdsArray[0] === null ? 
+      <>
+      </>
+      :
     <motion.div
       style={{
         transform: "translate3d(" + stationNow.toString() + "% , 0 , 0)",
@@ -341,6 +346,8 @@ const MyAds = () => {
       
 
     </motion.div>
+}
+    </>
   );
 };
 

@@ -176,6 +176,42 @@ const MyAdOne = ({
         position : 'absolute',
         zIndex : '999'
       }} onClick={() => {
+
+
+
+        if (checkMistakes(changingTaskVar)) {
+          let myFormData = new FormData();
+          myFormData.append('title' , changingTaskVar.taskName)
+          myFormData.append('description' , changingTaskVar.taskDescription)
+          myFormData.append("deadline" , 1)
+          myFormData.append("price" ,changingTaskVar.tonValue )
+          myFormData.append("startTime" , changingTaskVar.time.start)
+          myFormData.append("endTime" , changingTaskVar.time.end)
+          myFormData.append("photos" , changingTaskVar.photos)
+          alert(myFormData)
+          let answer = {
+            id: changingTaskVar.id,
+            title: changingTaskVar.taskName,
+            description: changingTaskVar.taskDescription,
+            deadline: 1,
+            price: changingTaskVar.tonValue,
+            startTime: changingTaskVar.time.start,
+            endTime: changingTaskVar.time.end,
+          };
+
+          if (changingTask.photos.length !== 0) {
+            for (let file of changingTask.photos) {
+              myFormData.append("photos", file);
+            }
+          }
+          alert('привет')
+          alert(myFormData)
+          dispatch(putMyTask(myFormData, changingTaskVar.id))
+          // putTask(myFormData);
+          
+
+        }
+
       }}>Save</button>
 
       <MyAdsBlock deals={1} finishedDeals={"70%"} />

@@ -5,21 +5,27 @@ import axios from 'axios';
 export const putMyTask = createAsyncThunk(
   'inforation/putMyTask' , 
   async function(data,id){
-    let a = await axios.put(
-      "https://back-birga.ywa.su/advertisement",
-      data,
-      {
-        params : {
-          id : id
-        },
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*"
-        },
-      }
-    );
+    alert('капец')
+    try{
+
+      let a = await axios.put(
+        "https://back-birga.ywa.su/advertisement",
+        data,
+        {
+          params : {
+            id : id.toString()
+          },
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+          },
+        }
+      );
+    }
+    catch(e){
+      console.log(e)
+    }
     console.log('------------------------------------------------')
-    console.log(a)
     
 
     return true
@@ -269,85 +275,7 @@ const information = createSlice( {
             userPhoto : ""
           }  ],
 
-          myAdsArray : [
-            {
-              taskName: "ЯЯЯ нее знаааааю название ... этооо первое заданиееее",
-              executionPlace: "Можно выполнить удаленно",
-              photos : [],
-              time : {start: 'Начать 28 февраля, 00:00' , end : 'Воскресенье, 10 марта 2024 23:59'} ,
-              tonValue: 261,
-              taskDescription : "Необходимо разработать логотип для магазина! Пример стиля, и пример лого, от которого отталкиваться - предоставлю.",
-              rate : '5',
-              customerName : 'YourName',
-              isActive : true,
-              creationTime : 'Создано когда-то , ..timing',
-              viewsNumber : '51'
-            },
-            {
-              taskName: "А это второе заданиеее поменяй названиеее , чтобы понятььь что оно меняется ",
-              executionPlace: "Можно выполнить удаленно",
-              photos : [],
-              time : {start: 'Начать 28 февраля, 00:00' , end : 'Воскресенье, 10 марта 2024 23:59'} ,
-              tonValue: 261,
-              taskDescription : "Необходимо разработать логотип для магазина! Пример стиля, и пример лого, от которого отталкиваться - предоставлю.",
-              rate : '5',
-              customerName : 'YourName',
-              isActive : true,
-              creationTime : 'Создано когда-то , ..timing',
-              viewsNumber : '51'
-            },
-            {
-              taskName: "Третье заданиеее",
-              executionPlace: "Можно выполнить удаленно",
-              photos : [],
-              time : {start: 'Начать 28 февраля, 00:00' , end : 'Воскресенье, 10 марта 2024 23:59'} ,
-              tonValue: 261,
-              taskDescription : "Необходимо разработать логотип для магазина! Пример стиля, и пример лого, от которого отталкиваться - предоставлю.",
-              rate : '5',
-              customerName : 'YourName',
-              isActive : true,
-              creationTime : 'Создано когда-то , ..timing',
-              viewsNumber : '51'
-            } ,
-            {
-              taskName: "ЯЯЯ нее знаааааю название ... этооо первое заданиееее",
-              executionPlace: "Можно выполнить удаленно",
-              photos : [],
-              time : {start: 'Начать 28 февраля, 00:00' , end : 'Воскресенье, 10 марта 2024 23:59'} ,
-              tonValue: 261,
-              taskDescription : "Необходимо разработать логотип для магазина! Пример стиля, и пример лого, от которого отталкиваться - предоставлю.",
-              rate : '5',
-              customerName : 'YourName',
-              isActive : true,
-              creationTime : 'Создано когда-то , ..timing',
-              viewsNumber : '51'
-            },
-            {
-              taskName: "ЯЯЯ нее знаааааю название ... этооо первое заданиееее",
-              executionPlace: "Можно выполнить удаленно",
-              photos : [],
-              time : {start: 'Начать 28 февраля, 00:00' , end : 'Воскресенье, 10 марта 2024 23:59'} ,
-              tonValue: 261,
-              taskDescription : "Необходимо разработать логотип для магазина! Пример стиля, и пример лого, от которого отталкиваться - предоставлю.",
-              rate : '5',
-              customerName : 'YourName',
-              isActive : true,
-              creationTime : 'Создано когда-то , ..timing',
-              viewsNumber : '51'
-            },
-            {
-              taskName: "ЯЯЯ нее знаааааю название ... этооо первое заданиееее",
-              executionPlace: "Можно выполнить удаленно",
-              photos : [],
-              time : {start: 'Начать 28 февраля, 00:00' , end : 'Воскресенье, 10 марта 2024 23:59'} ,
-              tonValue: 261,
-              taskDescription : "Необходимо разработать логотип для магазина! Пример стиля, и пример лого, от которого отталкиваться - предоставлю.",
-              rate : '5',
-              customerName : 'YourName',
-              isActive : true,
-              creationTime : 'Создано когда-то , ..timing',
-              viewsNumber : '51'
-            },
+          myAdsArray : [null
 
           ]
           }    
