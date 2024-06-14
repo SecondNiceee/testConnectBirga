@@ -5,8 +5,6 @@ import axios from 'axios';
 export const putMyTask = createAsyncThunk(
   'inforation/putMyTask' , 
   async function(data,id){
-    console.log(data)
-    console.log(id)
     try{
 
       let a = await axios.put(

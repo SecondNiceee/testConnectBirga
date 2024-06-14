@@ -147,12 +147,18 @@ input {
             border-bottom-right-radius: calc(30px * $width) ;
         }
     }
+    .compact-block{
+        margin-top: 23px;
+    }
+    .profile-case{
+        margin-top: 8px;
+    }
     .profile__about-me{
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 7.3px;
         margin-top: 29px;
-        margin-left: 16px;
+        
         p{
             color: rgb(255, 255, 255);
             font-family: "SF Pro Display 600";
@@ -161,6 +167,7 @@ input {
             line-height: 25px;
             letter-spacing: 0%;
             text-align: left;
+            margin-left: 16px;
         }
         .ur__town{
             display: flex;
@@ -250,7 +257,7 @@ input {
         display: flex;
         margin-bottom: calc(67px * $width);
         gap: 12px;
-        margin-top: 30px;
+        margin-top: 23px;
         flex-direction: column;
 
         .veryfication{

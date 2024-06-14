@@ -7,7 +7,6 @@ import Dimond from "../../images/icons/Dimond.svg";
 import ArrowRight from "../../images/icons/rightArrow.svg";
 import Pencel from "../../components/UI/Pencel/Pencel";
 
-
 import orangeWallet from "../../images/icons/OrangeWallet.svg";
 import Subtract from "../../images/icons/SubtractWhite.svg";
 import greyArrowRight from "../../images/icons/greyArrowRight.svg";
@@ -17,14 +16,17 @@ import BackButton from "../../constants/BackButton";
 import AboutMe from "../../components/UI/AboutMe/AboutMe";
 import TextAboutMe from "../../components/UI/AboutMeText/TextAboutMe";
 
-
-import balanceIcon from '../../images/profileIcons/balance.svg';
-import notificationIcon from '../../images/profileIcons/notifications.svg';
-import shablonsIcon from '../../images/profileIcons/shablons.svg';
-import subsctibeIcon from '../../images/profileIcons/subscribe.svg';
-import tarifIconIcon from '../../images/profileIcons/tarif.svg';
-import workExamplesIcon from '../../images/profileIcons/workExamples.svg'
-
+import balanceIcon from "../../images/profileIcons/balance.svg";
+import notificationIcon from "../../images/profileIcons/notifications.svg";
+import shablonsIcon from "../../images/profileIcons/shablons.svg";
+import subsctibeIcon from "../../images/profileIcons/subscribe.svg";
+import tarifIconIcon from "../../images/profileIcons/tarif.svg";
+import workExamplesIcon from "../../images/profileIcons/workExamples.svg";
+import SmallTextarea from "../../components/UI/SmallTextarea/SmallTextarea";
+import Compact from "../../components/UI/Compact/Compact";
+import SmallInput from "../../components/UI/SmallInput/SmallInput";
+import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
+import Case from "./components/Case/Case";
 
 let scrollTo = 0;
 const variants = {
@@ -42,14 +44,16 @@ const Profile = () => {
 
   const [name, setName] = useState("Твое имя");
 
-  const [aboutU, setAboutU] = useState("18,Москва");
+  const [aboutU, setAboutU] = useState({
+    about: "Просто чувачок",
+    stage: 87,
+  });
 
   const navigate = useNavigate();
 
   const inputRef = useRef(null);
 
   const [aboutMeModal, setAboutMeModal] = useState(false);
-
 
   // useEffect(  () => {
   //   if (inputRef.current){
@@ -68,10 +72,6 @@ const Profile = () => {
   });
   // setTimeout(window.scrollTo(0,0),100);
 
-
-
-
-
   const zInd = useMemo(() => {
     return aboutMeModal ? "2" : "-1";
   }, [aboutMeModal]);
@@ -79,7 +79,7 @@ const Profile = () => {
     return aboutMeModal ? "0.8" : "0";
   }, [aboutMeModal]);
 
-  const userInfo = useSelector(state => state.telegramUserInfo)
+  const userInfo = useSelector((state) => state.telegramUserInfo);
   return (
     <motion.div
       className="profile__container"
@@ -99,7 +99,6 @@ const Profile = () => {
         className="urName"
         id="Name"
       >
-
         {userInfo.lastName
           ? userInfo.firstName + " " + userInfo.lastName
           : userInfo.firstName}
@@ -158,7 +157,40 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="profile__about-me">
+      <Compact title={"О себе"} className={"compact-block"}>
+        <SmallTextarea
+          value={aboutU.about}
+          setValue={(e) => {
+            setAboutU({ ...aboutU, about: e });
+          }}
+        />
+      </Compact>
+
+
+      <Compact title={"Стаж работы"} className={"compact-block"}>
+        <SmallInput
+          value={aboutU.stage}
+          setValue={(e) => {
+            setAboutU({ ...aboutU, stage: e });
+          }}
+        />
+      </Compact>
+
+
+      <Compact title={"Примеры работ"} className={"compact-block"}>
+        <AdCreateFunc style = {{
+          marginTop : '0px'
+        }} text={'Добавить кейс'} />
+      </Compact>
+
+      <Case className={'profile-case'} />
+
+
+      
+
+      
+
+      {/* <div className="profile__about-me">
         <div className="aboutMeTitle">
           <p>О себе</p>
 
@@ -179,20 +211,19 @@ const Profile = () => {
                 }
               }}
             >
-
               <Pencel className="pencel" />
-              
             </div>
           </label>
         </div>
-        <TextAboutMe aboutU={aboutU} />
-      </div>
 
-      <div className="profile__works">
+        <TextAboutMe aboutU={aboutU} />
+      </div> */}
+
+      {/* <div className="profile__works">
         <p>Выполняемые работы</p>
         <p>Дизайн</p>
         <p>Пока нет выполненых работ</p>
-      </div>
+      </div> */}
 
       <div className="profile__veryfication">
         <p className="veryfication">Верификация</p>

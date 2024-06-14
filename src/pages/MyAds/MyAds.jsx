@@ -100,6 +100,19 @@ const MyAds = () => {
   const [openAboutReaction , setOpenAboutReaction] = useState(false)
 
   const [isClosed , setClosed] = useState(true)
+
+  useEffect( () => {
+    
+    document.documentElement.style.marginTop = '150px'
+    
+    document.documentElement.scrollTo({
+      top : 150,
+      behavior : 'auto'
+    })
+
+     document.documentElement.style.overflow = 'clip'
+      document.querySelector('.MainContainer').style.overflowY = 'hidden'
+  } , [] )
   
 
 
@@ -116,14 +129,14 @@ const MyAds = () => {
     } , 400 )
     
     
-    document.documentElement.style.marginTop = '150px'
-    window.scrollTo({
-      top : 150,
-      behavior : 'auto'
-    })
+    // document.documentElement.style.marginTop = '150px'
+    // window.scrollTo({
+    //   top : 150,
+    //   behavior : 'auto'
+    // })
     
-     document.documentElement.style.overflow = 'clip'
-    document.querySelector('.MainContainer').style.overflowY = 'hidden'
+    //  document.documentElement.style.overflow = 'clip'
+    // document.querySelector('.MainContainer').style.overflowY = 'hidden'
 
     
   

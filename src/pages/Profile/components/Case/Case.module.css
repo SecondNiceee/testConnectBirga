@@ -1,0 +1,61 @@
+.case{
+    border-radius: 10px;
+    background-color:  #20303f;
+    display: flex;
+    flex-direction: column;
+}
+.caseTop{
+    display: flex;
+    margin: 4px 4px 0px 4px;
+    gap: 4px;
+    overflow-x: scroll;
+    max-width: 100%;
+}
+.caseTop img{
+    border-radius: 7px;
+    width: 183px;
+    height: 133px;
+}
+.caseBottom{
+    display: flex;
+    margin-top: 17px;
+    margin-bottom: 19px;
+    margin-left: 17px;
+    margin-right: 19px;
+    justify-content: space-between;
+}
+.caseLeft{
+    display: flex;
+    flex-direction: column;
+}
+.caseLeft h4{
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    color: white;
+}
+.caseLeft p{
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 107%;
+    color: #95979e;
+}
+.caseRight{
+    display: flex;
+    gap: 7px;
+}
+.circle{
+    width: 28px;
+    height: 28px;
+    background: rgb(34, 61, 82);
+    border-radius: 50%;
+    position: relative;
+}
+.circle svg{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
