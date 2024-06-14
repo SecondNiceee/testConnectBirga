@@ -4,17 +4,23 @@ import axios from 'axios';
 
 export const putMyTask = createAsyncThunk(
   'inforation/putMyTask' , 
-  async function(data){
-    await axios.put(
+  async function(data,id){
+    let a = await axios.put(
       "https://back-birga.ywa.su/advertisement",
       data,
       {
+        params : {
+          id : id
+        },
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*"
         },
       }
     );
+    console.log('------------------------------------------------')
+    console.log(a)
+    
 
     return true
   }
