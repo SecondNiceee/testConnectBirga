@@ -4,9 +4,16 @@ const SmallTextarea = ({ value, setValue, className }) => {
     const textAreaRef = useRef(null)
     useEffect( () => {
         let len = value.split(/\r\n|\r|\n/).length
-        textAreaRef.current.style.height = (12 + 11 + 17.6*len).toString() + 'px'
+        // textAreaRef.current.style.height = (12 + 11 + 17.6*len).toString() + 'px'
+        console.log(textAreaRef.current.scrollHeight)
+        console.log(textAreaRef.current.offsetHeight)
+        if (textAreaRef.current.scrollHeight > textAreaRef.current.offsetHeight ){
+            textAreaRef.current.style.height = (textAreaRef.current.scrollHeight).toString() + 'px'
+        }
+
     } , [value] )
   return (
+    <>
     <textarea
     ref={textAreaRef}
         className = {className ? [className, cl.textArea].join(' ') : cl.textArea}
@@ -22,6 +29,7 @@ const SmallTextarea = ({ value, setValue, className }) => {
     //     setValue(stringWithoutEmptyLines)
     //   }}
     />
+    </>
   );
 };
 
