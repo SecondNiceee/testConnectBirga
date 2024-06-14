@@ -1,8 +1,8 @@
 import React from 'react';
 import cl from './SmallInput.module.css'
-const SmallInput = ({value , setValue}) => {
+const SmallInput = ({value , setValue , ...props}) => {
     return (
-        <input placeholder='Укажите свой стаж работы в годах' className={cl.smallInput} type="number" value={value} onChange={(e) => {
+        <input {...props}  placeholder='Укажите свой стаж работы в годах' className={cl.smallInput}  value={value} onChange={(e) => {
             setValue(e.target.value)
         }} />
     );

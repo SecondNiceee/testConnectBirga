@@ -169,6 +169,8 @@ const Profile = () => {
 
       <Compact title={"Стаж работы"} className={"compact-block"}>
         <SmallInput
+          inputMode = "numeric"
+          type = "number"
           value={aboutU.stage}
           setValue={(e) => {
             setAboutU({ ...aboutU, stage: e });
