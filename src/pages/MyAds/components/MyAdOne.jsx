@@ -60,26 +60,25 @@ const MyAdOne = ({
             setDetailsActive(false);
           }
           if (buttonId === "save") {
-
+            console.log('привет')
             if (checkMistakes(changingTaskVar)) {
               let myFormData = new FormData();
               myFormData.append('title' , String(changingTaskVar.taskName))
               myFormData.append('description' , String(changingTaskVar.taskDescription))
               myFormData.append("deadline" , String(1))
               myFormData.append("price" , String(changingTaskVar.tonValue) )
-              myAdsArray.append("startTime" , String(changingTaskVar.time.start))
-              myAdsArray.append("endTime" , String(changingTaskVar.time.end))
-              myAdsArray.append("photos" , String(changingTaskVar.photos))
-              alert(myFormData)
-              let answer = {
-                id: changingTaskVar.id,
-                title: changingTaskVar.taskName,
-                description: changingTaskVar.taskDescription,
-                deadline: 1,
-                price: changingTaskVar.tonValue,
-                startTime: changingTaskVar.time.start,
-                endTime: changingTaskVar.time.end,
-              };
+              myFormData.append("startTime" , String(changingTaskVar.time.start))
+              myFormData.append("endTime" , String(changingTaskVar.time.end))
+              myFormData.append("photos" , String(changingTaskVar.photos))
+              // let answer = {
+              //   id: changingTaskVar.id,
+              //   title: changingTaskVar.taskName,
+              //   description: changingTaskVar.taskDescription,
+              //   deadline: 1,
+              //   price: changingTaskVar.tonValue,
+              //   startTime: changingTaskVar.time.start,
+              //   endTime: changingTaskVar.time.end,
+              // };
 
               if (changingTask.photos.length !== 0) {
                 for (let file of changingTask.photos) {
