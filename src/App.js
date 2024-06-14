@@ -20,12 +20,11 @@ import { fetchMyOrders, fetchTasksInformation } from "./store/information";
 import { Triangle } from "react-loader-spinner";
 import axios from "axios";
 import { getCategorys, getSubCategorys } from "./store/categorys";
-import MyAds from "./pages/MyAds/MyAds";
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
 const Balance = lazy(() => import("./pages/Balance"));
-// const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
+const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
 const Shablon = lazy(() => import("./pages/Shablon/Shablon"));
 
 const MyLoader = () => {
@@ -120,9 +119,9 @@ const AnimatedSwitch = () => {
           <Route
             path="/MyAds"
             element={
- 
+              <Suspense fallback={<MyLoader />}>
                 <MyAds />
-
+              </Suspense>
             }
           />
         </Routes>

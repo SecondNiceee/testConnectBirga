@@ -63,13 +63,13 @@ const MyAdOne = ({
 
             if (checkMistakes(changingTaskVar)) {
               let myFormData = new FormData();
-              myFormData.append('title' , changingTaskVar.taskName)
-              myFormData.append('description' , changingTaskVar.taskDescription)
-              myFormData.append("deadline" , 1)
-              myFormData.append("price" ,changingTaskVar.tonValue )
-              myAdsArray.append("startTime" , changingTaskVar.time.start)
-              myAdsArray.append("endTime" , changingTaskVar.time.end)
-              myAdsArray.append("photos" , changingTaskVar.photos)
+              myFormData.append('title' , String(changingTaskVar.taskName))
+              myFormData.append('description' , String(changingTaskVar.taskDescription))
+              myFormData.append("deadline" , String(1))
+              myFormData.append("price" , String(changingTaskVar.tonValue) )
+              myAdsArray.append("startTime" , String(changingTaskVar.time.start))
+              myAdsArray.append("endTime" , String(changingTaskVar.time.end))
+              myAdsArray.append("photos" , String(changingTaskVar.photos))
               alert(myFormData)
               let answer = {
                 id: changingTaskVar.id,
@@ -89,8 +89,6 @@ const MyAdOne = ({
               alert('привет')
               alert(myFormData)
               dispatch(putMyTask(myFormData, changingTaskVar.id))
-              // putTask(myFormData);
-              
 
             }
 
