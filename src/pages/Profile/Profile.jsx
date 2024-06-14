@@ -44,10 +44,33 @@ const Profile = () => {
 
   const [name, setName] = useState("Твое имя");
 
+  
   const [aboutU, setAboutU] = useState({
     about: "Просто чувачок",
-    stage: 87,
+    stage: "87",
   });
+
+  useEffect( () => {
+    let numb = aboutU.stage.slice(0,1)
+
+    if ( Number(aboutU.stage) > 10 && Number(aboutU.stage) < 20){
+      setAboutU({...aboutU , stage : aboutU.stage + ' лет'})
+    }
+    else{
+
+        if (numb > 1 && numb < 5){
+          setAboutU({...aboutU , stage : aboutU.stage + ' года'})
+        }
+        else{
+          if(numb === 1){
+            setAboutU({...aboutU , stage : aboutU.stage + ' год'})
+          }
+          else{
+            setAboutU({...aboutU , stage : aboutU.stage + ' лет'}) 
+          }
+        }
+      }
+  },[] )
 
   const navigate = useNavigate();
 
@@ -169,11 +192,48 @@ const Profile = () => {
 
       <Compact title={"Стаж работы"} className={"compact-block"}>
         <SmallInput
+         maxLength = {2}
+          onBlur = {(e) => {
+            let numb = Number(e.target.value.slice(e.target.value.length - 1 , e.target.value.length))
+            console.log(numb)
+            if ( Number(e.target.value) > 10 && Number(e.target.value) < 20){
+              e.target.value += ' лет'
+            }
+            else{
+
+                if (numb > 1 && numb < 5){
+                  e.target.value += ' года'
+                }
+                else{
+                  if(numb === 1){
+                    e.target.value += ' год'
+                  }
+                  else{
+                    e.target.value += ' лет'  
+                  }
+                }
+              }
+            
+          }}
+          onFocus = {(e) => {
+            e.target.value = aboutU.stage
+          }}
           inputMode = "numeric"
-          type = "number"
+          // type = "number"
           value={aboutU.stage}
           setValue={(e) => {
-            setAboutU({ ...aboutU, stage: e });
+            if (e.slice(0,1) !== '0'){
+
+              setAboutU({ ...aboutU, stage: e });
+            }
+            else{
+              if(e !== '00'){
+                setAboutU({...aboutU , stage : e.slice(1,2)})
+              }
+              else{
+                setAboutU({...aboutU , stage : '0'})
+              }
+            }
           }}
         />
       </Compact>
