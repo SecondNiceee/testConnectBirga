@@ -16,7 +16,7 @@
 .textAreaHidden{
     opacity: 0;
     border-radius: 10px;
-    width: 100%;
+    width: calc(100% - 28px);
     height: 42px;
     background-color: #20303f;
     padding: 12px 17px 11px 16px;
