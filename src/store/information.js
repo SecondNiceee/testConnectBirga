@@ -64,7 +64,7 @@ export const fetchMyOrders = createAsyncThunk(
     let tasks = []
     let task = await axios.get('https://back-birga.ywa.su/advertisement/findByUser' , {
       params : {
-         userId :   2144832745
+         userId :   window.Telegram.WebApp.initDataUnsafe.user.id
       }
     })
 

@@ -137,18 +137,17 @@ function App() {
   useEffect( () => {
 
 
-    document.documentElement.style.overflow = 'scroll'
 
-    window.scrollTo({
+    
+    document.documentElement.style.marginTop = '150px'
+    
+    document.documentElement.scrollTo({
       top : 150,
       behavior : 'auto'
     })
 
-    document.documentElement.style.marginTop = '150px'
-    
-
      document.documentElement.style.overflow = 'clip'
-    document.querySelector('.MainContainer').style.overflowY = 'hidden'
+      document.querySelector('.MainContainer').style.overflowY = 'hidden'
   } , [] )
   
   const dispatch = useDispatch()
