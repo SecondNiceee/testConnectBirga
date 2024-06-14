@@ -5,7 +5,7 @@ import axios from 'axios';
 export const putMyTask = createAsyncThunk(
   'inforation/putMyTask' , 
   async function(data,id){
-    alert('капец')
+    console.log(id)
     try{
 
       let a = await axios.put(
@@ -13,7 +13,7 @@ export const putMyTask = createAsyncThunk(
         data,
         {
           params : {
-            id : id.toString()
+            id : String(id)
           },
           headers: {
             "Content-Type": "application/json",
@@ -64,7 +64,7 @@ export const fetchMyOrders = createAsyncThunk(
     let tasks = []
     let task = await axios.get('https://back-birga.ywa.su/advertisement/findByUser' , {
       params : {
-         userId :   window.Telegram.WebApp.initDataUnsafe.user.id
+         userId : window.Telegram.WebApp.initDataUnsafe.user.id 
       }
     })
 
