@@ -141,9 +141,9 @@ const AdCreating = () => {
     if (document.getElementById("dateSwapper").style.transform) {
       taskInformationCopy.time = {start : taskInformation.startTime , end : taskInformation.endTime}
       // setTaskInformation({...taskInformation , time : {start : taskInformation.startTime , end : taskInformation.endTime} })
-    } else {
-      taskInformationCopy.time = {start : taskInformation.startTime , end : ''}
 
+    } else {
+      taskInformationCopy.time = {start : taskInformation.singleTime , end : ''}
     }
 
     post(taskInformation);
@@ -156,6 +156,7 @@ const AdCreating = () => {
   async function post(el) {
     let myFormData = new FormData();
     myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id );
+    //  myFormData.append("userId", 2144832745 );
     myFormData.append("title", el.taskName);
     myFormData.append("description", el.taskDescription);
     myFormData.append("deadline", 1);
