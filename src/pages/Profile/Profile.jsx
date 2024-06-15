@@ -216,7 +216,7 @@ const Profile = () => {
             
           }}
           onFocus = {(e) => {
-            e.target.value = aboutU.stage
+            e.target.value = aboutU.stage.slice(0,2)
           }}
           inputMode = "numeric"
           // type = "number"
