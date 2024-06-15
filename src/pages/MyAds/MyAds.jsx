@@ -311,7 +311,6 @@ const MyAds = () => {
       </div>
 
   
-
         <AboutReaction
             
             aboutReaction = {aboutReaction}

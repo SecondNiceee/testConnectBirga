@@ -6,7 +6,7 @@ import GreyText from "../../../components/UI/GreyText/GreyText";
 import './CatchDate.css'
 
 let errorDate = new Date(0)
-const CatchDate = ({ className , whichOne , state, setState,errors,  ...props }) => {
+const CatchDate = ({ className , whichOne , state, setState,errors, isMyInformation,  ...props }) => {
   const ref1 = useRef(null);
   const ref2 = useRef(null);
   const [widthOfDocument, setWidthOfDocument] = useState(
@@ -69,8 +69,13 @@ return (
       </label>
 
       <div ref={ref2} className={'PeriodInput'} >
+        {isMyInformation ? 
 
-        <GreyText className={'myAdsGreyText'}> НАЧАТЬ:  </GreyText>
+            <GreyText className={'myAdsGreyText'}> НАЧАТЬ:  </GreyText> 
+            :
+            <></>
+        }
+
 
         <div 
               onClick = {() => {
@@ -87,8 +92,12 @@ return (
         </div>
 
 
-
-        <GreyText className={ 'myAdsGreyTextTwo'} > ЗАКОНЧИТЬ:  </GreyText>
+        {isMyInformation ? 
+        <GreyText className={ 'myAdsGreyTextTwo'} > ЗАКОНЧИТЬ:  </GreyText> 
+        :
+        <>
+        </>
+      }
         <div className={'DateTimePicker'}
                       onClick = {() => {
                         setState({...state, isOpen : true , isEndOpen : true})

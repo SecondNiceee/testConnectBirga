@@ -288,6 +288,7 @@ const AdCreatingOne = ({
             state={state}
             setState={setState}
             errors={{}}
+            isMyInformation={true}
             
           />
         </>

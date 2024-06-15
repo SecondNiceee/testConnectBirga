@@ -29,13 +29,13 @@ const FullPicker = ({values , keys , nowKey , setNowKey, className , GreyIntWidt
                                 setNowKey(keys[0]) 
                             } 
                             } >
-                            Как
+                            Начать
                     </p>
                 <p style={{zIndex : 10}}   className={cl.value} onClick={(e) => {
                             setNowKey(keys[1]) 
                         } 
                         } >
-                        Дела
+                        Период выполнения
                 </p>
         </div>
     );
