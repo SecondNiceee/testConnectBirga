@@ -85,8 +85,7 @@ const MyAdOne = ({
                   myFormData.append("photos", file);
                 }
               }
-              alert('привет')
-              alert(myFormData)
+
               dispatch(putMyTask(myFormData, changingTaskVar.id))
 
             }
@@ -185,7 +184,6 @@ const MyAdOne = ({
           myFormData.append("startTime" , changingTaskVar.time.start)
           myFormData.append("endTime" , changingTaskVar.time.end)
           myFormData.append("photos" , changingTaskVar.photos)
-          alert(myFormData)
           let answer = {
             id: changingTaskVar.id,
             title: changingTaskVar.taskName,
@@ -201,9 +199,8 @@ const MyAdOne = ({
               myFormData.append("photos", file);
             }
           }
-          alert('привет')
-          alert(myFormData)
           dispatch(putMyTask(myFormData, changingTaskVar.id))
+          dispatch(putMyAds(changingTaskVar))
           // putTask(myFormData);
           
 

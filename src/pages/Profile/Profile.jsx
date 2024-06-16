@@ -44,11 +44,21 @@ const Profile = () => {
 
   const [name, setName] = useState("Твое имя");
 
+  const [errors , setErrors] = useState({
+    stageError : false
+  })
+
   
   const [aboutU, setAboutU] = useState({
     about: "Просто чувачок",
     stage: "87",
   });
+
+  useEffect( () => {
+    if (Number(aboutU.stage) > 40 ){
+      setErrors({stageError : true})
+    }
+  } , aboutU.stage )
 
   useEffect( () => {
     let numb = aboutU.stage.slice(0,1)
@@ -195,7 +205,12 @@ const Profile = () => {
          maxLength = {2}
           onBlur = {(e) => {
             let numb = Number(e.target.value.slice(e.target.value.length - 1 , e.target.value.length))
-            console.log(numb)
+
+            if (e.target.value === ''){
+              setAboutU({...aboutU , stage : '0 лет'})
+
+            }
+
             if ( Number(e.target.value) > 10 && Number(e.target.value) < 20){
               e.target.value += ' лет'
             }
@@ -216,7 +231,7 @@ const Profile = () => {
             
           }}
           onFocus = {(e) => {
-            e.target.value = aboutU.stage.slice(0,2)
+            e.target.value = aboutU.stage.split(' ')[0]
           }}
           inputMode = "numeric"
           // type = "number"
@@ -316,13 +331,13 @@ const Profile = () => {
           opacity: opac,
         }}
       ></div>
-      <AboutMe
+      {/* <AboutMe
         scrollTo={scrollTo}
         aboutMeModal={aboutMeModal}
         setAboutMeModal={setAboutMeModal}
         aboutU={aboutU}
         setAboutU={setAboutU}
-      />
+      /> */}
     </motion.div>
   );
 };
