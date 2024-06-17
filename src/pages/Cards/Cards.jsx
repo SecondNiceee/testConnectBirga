@@ -18,6 +18,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
         dribbbleLink : '',
         dropfileLink : ''
     })
+    console.log(cardsSetting)
     const dispatch = useDispatch()
     const [errors, setErrors] = useState({
         nameError : false
