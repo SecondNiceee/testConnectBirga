@@ -21,13 +21,13 @@ const profileSlice = createSlice({
     },
     reducers : {
         changeProfile(state , action){
-            state.profile = action
+            state.profile = action.payload
         },
         addCard(state, action){
-            state.profile.cards.push(action)
+            state.profile.cards.push(action.payload)
         },
         changeCards(state, action){
-            state.profile.cards[action.id] = action.card
+            state.profile.cards[action.id] = action.payload.card
         }
     }
 })
