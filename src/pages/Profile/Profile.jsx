@@ -94,6 +94,9 @@ const Profile = () => {
 
   }, []  )
 
+  console.log(aboutMe)
+  console.log(aboutU)
+
   useEffect( () => {
     function save(){
         dispatch(changeProfile(aboutU))
