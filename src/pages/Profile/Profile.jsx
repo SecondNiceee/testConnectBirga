@@ -26,6 +26,7 @@ import MainButton from "../../constants/MainButton";
 import { changeProfile } from "../../store/profile";
 import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";
+import ChangeCards from "../ChangeCard/ChangeCard";
 
 let scrollTo = 0;
 const variants = {
@@ -33,6 +34,8 @@ const variants = {
   animate: { opacity: 1 },
   transition: { duration: 0.1 },
 };
+
+let index = 0
 const Profile = () => {
   const aboutMe = useSelector( state => state.profile.profile  )
 
@@ -52,6 +55,8 @@ const Profile = () => {
   const navigate = useNavigate();
 
   const [cardsActive , setCardsActive] = useState(false)
+
+  const [changeActive , setChangeActive] = useState(false)
 
   
   const [aboutU, setAboutU] = useState({
@@ -272,7 +277,10 @@ const Profile = () => {
       {aboutU.cards.length !== 0 ? aboutU.cards.map((e, i) => {
         console.log(e)
         return (
-          <Case key = {i} className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos} />
+          <Case changeFunction={() => {
+            setChangeActive(true)
+            index = i
+          }}  key = {i} className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos} />
         )
       })
     :
@@ -310,6 +318,20 @@ const Profile = () => {
 
             <Cards aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
         </CSSTransition>
+
+
+
+        <CSSTransition
+        mountOnEnter
+        unmountOnExit
+        classNames={'cardsModal'}
+        in = {changeActive}
+        timeout={0}
+        >
+
+            <ChangeCards index={index}   aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
+        </CSSTransition>
+        
     </motion.div>
   );
 };

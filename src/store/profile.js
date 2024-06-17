@@ -25,8 +25,11 @@ const profileSlice = createSlice({
         },
         addCard(state, action){
             state.profile.cards.push(action)
+        },
+        changeCards(state, action){
+            state.profile.cards[action.id] = action.card
         }
     }
 })
 export default profileSlice.reducer
-export const {changeProfile, addCard} = profileSlice.actions
+export const {changeProfile, addCard, changeCards} = profileSlice.actions

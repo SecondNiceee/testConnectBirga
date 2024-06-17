@@ -7,16 +7,16 @@ import dropfileIcon from '../../images/icons/Dropfile.svg';
 import BackButton from '../../constants/BackButton';
 import MainButton from '../../constants/MainButton';
 import { useDispatch } from 'react-redux';
-import { addCard } from '../../store/profile';
+import { addCard, changeCards } from '../../store/profile';
 
-const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
+const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
     const [cardsSetting , setCardsSetting] = useState({
-        title : '',
-        description : '',
-        photos : [],
-        behanceLink : '',
-        dribbbleLink : '',
-        dropfileLink : ''
+        title : card.title,
+        description : card.description,
+        photos : card.photos,
+        behanceLink : card.behanceLink,
+        dribbbleLink : card.dribbbleLink,
+        dropfileLink : card.dropfileLink
     })
     const dispatch = useDispatch()
     const [errors, setErrors] = useState({
@@ -33,8 +33,8 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
         function backFunc(){
             window.Telegram.WebApp
             .showPopup({
-              title: "Создать?",
-              message: "Вы хотите создать этот кейс?",
+              title: "Сохранить?",
+              message: "Сохранить изменения перед выходом?",
               buttons: [
                 { id: "save", type: "default", text: "Да" },
                 { id: "delete", type: "destructive", text: "Нет" },
@@ -49,8 +49,16 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
                     setErrors({nameError : true})
                 }
                 else{
-                    setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
-                    dispatch(addCard(cardsSetting))
+                    setAboutU({...aboutU, cards : [...aboutU.cards.map((e, i) => {
+                        if (i === index){
+                            return cardsSetting
+                        }
+                        else{
+                            return e
+                        }
+                    })] })
+                    dispatch(changeCards({id : index , card : cardsSetting}))
+
                     document.documentElement.style.overflow = 'auto'
                     setCardsOpen(false)
                 }
@@ -67,14 +75,21 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
                     setErrors({nameError : true})
                 }
                 else{
-                    setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
-                    dispatch(addCard(cardsSetting))
+                    setAboutU({...aboutU, cards : [...aboutU.cards.map((e, i) => {
+                        if (i === index){
+                            return cardsSetting
+                        }
+                        else{
+                            return e
+                        }
+                    })] })
+                    dispatch(changeCards({id : index , card : cardsSetting}))
                     document.documentElement.style.overflow = 'auto'
                     setCardsOpen(false)
                 }
         }
         MainButton.show()
-        MainButton.setText('Добавить кейс')
+        MainButton.setText('Изменить кейс')
         MainButton.onClick(saveFunc)
         BackButton.show()
         BackButton.onClick(backFunc)
@@ -87,7 +102,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
         <div className='cards'>
 
 
-            <h3 className='cards-title'>Новый кейс</h3>
+            <h3 className='cards-title'>{cardsSetting.title}</h3>
 
             <button onClick={() => {
                                 setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
@@ -96,7 +111,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
 
             }}>Сохранить</button>
             <TaskName 
-            placeholder={'Придумайте название для нового кейса'}
+            placeholder={'Придумайте название для  кейса'}
             className={'cards-taskName'}
             title={'НАЗВАНИЕ КЕЙСА'}
             text={cardsSetting.name}
@@ -148,4 +163,4 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
     );
 };
 
-export default Cards;
+export default ChangeCards;

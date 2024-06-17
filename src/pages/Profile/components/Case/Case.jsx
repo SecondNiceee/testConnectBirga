@@ -1,7 +1,7 @@
 import React from "react";
 import cl from "./Case.module.css";
 import photo from "../../../../images/nonUsed/photo.png";
-const Case = ({ className, title , description , photos,  ...props }) => {
+const Case = ({ className, title , description , photos, changeFunction,  ...props }) => {
   return (
     <div
       {...props}
@@ -40,7 +40,7 @@ const Case = ({ className, title , description , photos,  ...props }) => {
               />
             </svg>
           </div>
-          <div className={cl.circle}>
+          <div className={cl.circle} onClick={changeFunction}>
             <svg
               width="14"
               height="14"
