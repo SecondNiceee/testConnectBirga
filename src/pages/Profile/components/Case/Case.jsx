@@ -1,19 +1,28 @@
 import React from "react";
 import cl from "./Case.module.css";
 import photo from "../../../../images/nonUsed/photo.png";
-const Case = ({ className, ...props }) => {
+const Case = ({ className, title , description , photos,  ...props }) => {
   return (
     <div
       {...props}
       className={className ? [cl.case, className].join(" ") : cl.case}
     >
-      <div className={cl.caseTop}>
-        <img src={photo} alt="" />
-        <img src={photo} alt="" />
-      </div>
+      {photos.length > 0 ?
+            <div className={cl.caseTop}>
+            {photos.map(e => {
+              let url = URL.createObjectURL(e)
+              return (
+                <img src={url} alt="" />
+              )
+            })}
+          </div> 
+          :
+          <></>
+      }
+
       <div className={cl.caseBottom}>
         <div className={cl.caseLeft}>
-          <h4>Лендинг «Северсталь»</h4>
+          <h4>{title}</h4>
           <p>Категория: Дизайн</p>
         </div>
         <div className={cl.caseRight}>

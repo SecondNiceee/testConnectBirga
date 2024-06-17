@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import { motion } from "framer-motion";
 
-import Dimond from "../../images/icons/Dimond.svg";
-import ArrowRight from "../../images/icons/rightArrow.svg";
-import Pencel from "../../components/UI/Pencel/Pencel";
+import { CSSTransition } from "react-transition-group";
+
+
 
 import orangeWallet from "../../images/icons/OrangeWallet.svg";
 import Subtract from "../../images/icons/SubtractWhite.svg";
@@ -16,12 +16,7 @@ import BackButton from "../../constants/BackButton";
 import AboutMe from "../../components/UI/AboutMe/AboutMe";
 import TextAboutMe from "../../components/UI/AboutMeText/TextAboutMe";
 
-import balanceIcon from "../../images/profileIcons/balance.svg";
-import notificationIcon from "../../images/profileIcons/notifications.svg";
-import shablonsIcon from "../../images/profileIcons/shablons.svg";
-import subsctibeIcon from "../../images/profileIcons/subscribe.svg";
-import tarifIconIcon from "../../images/profileIcons/tarif.svg";
-import workExamplesIcon from "../../images/profileIcons/workExamples.svg";
+
 import SmallTextarea from "../../components/UI/SmallTextarea/SmallTextarea";
 import Compact from "../../components/UI/Compact/Compact";
 import SmallInput from "../../components/UI/SmallInput/SmallInput";
@@ -29,6 +24,8 @@ import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import Case from "./components/Case/Case";
 import MainButton from "../../constants/MainButton";
 import { changeProfile } from "../../store/profile";
+import Cards from "../Cards/Cards";
+import Options from "./components/Options/Options";
 
 let scrollTo = 0;
 const variants = {
@@ -41,27 +38,30 @@ const Profile = () => {
 
   const dispatch = useDispatch();
   
-
-
   const setMenuActive = (arg) => {
     dispatch(changeMenuActive(arg));
   };
 
-  const [name, setName] = useState("Твое имя");
+
+  const userInfo = useSelector((state) => state.telegramUserInfo);
 
   const [errors , setErrors] = useState({
     stageError : false
   })
 
+  const navigate = useNavigate();
+
+  const [cardsActive , setCardsActive] = useState(false)
+
   
   const [aboutU, setAboutU] = useState({
     about: "Просто чувачок",
     stage: 87,
+    cards : []
   });
 
 
   useEffect(  () => {
-    console.log(aboutMe)
     setAboutU(aboutMe)
 
     let numb = String(aboutMe.stage).slice(1,2)
@@ -118,15 +118,6 @@ const Profile = () => {
   } , [aboutU] )
 
 
-  const navigate = useNavigate();
-
-  const inputRef = useRef(null);
-
-  console.log(inputRef)
-
-  const [aboutMeModal, setAboutMeModal] = useState(false);
-
-
   useEffect(() => {
     function goBack() {
       navigate(-1);
@@ -137,14 +128,7 @@ const Profile = () => {
     };
   });
 
-  const zInd = useMemo(() => {
-    return aboutMeModal ? "2" : "-1";
-  }, [aboutMeModal]);
-  const opac = useMemo(() => {
-    return aboutMeModal ? "0.8" : "0";
-  }, [aboutMeModal]);
-
-  const userInfo = useSelector((state) => state.telegramUserInfo);
+  
 
   
 
@@ -211,7 +195,6 @@ const Profile = () => {
       <img src={userInfo.photo} className="profile__icon icon" alt="" />
 
       <p
-        onChange={(e) => setName(e.target.value)}
         className="urName"
         id="Name"
       >
@@ -219,59 +202,10 @@ const Profile = () => {
           ? userInfo.firstName + " " + userInfo.lastName
           : userInfo.firstName}
       </p>
-      <div className="profile__options">
-        <Link to="/Balance" className="option__balance">
-          <div className="option__left">
-            <img src={balanceIcon} className="orangeWallet" alt="" />
-            <p>Баланс</p>
-          </div>
 
-          <div className="option__balance-block">
-            <p className="tonPrice">1 TON</p>
-            <img className="Dymond" src={Dimond} alt="" />
-            <div className="option__money">
-              <p>~</p>
-              <p>250₽</p>
-            </div>
-          </div>
-          <img className="arrowRight" src={ArrowRight} alt="" />
-        </Link>
-        <div className="option">
-          <div className="option__left">
-            <img src={tarifIconIcon} className="orangeWallet" alt="" />
-            <p>Тарифы</p>
-          </div>
-          <img src={ArrowRight} className="arrowRight" alt="" />
-        </div>
-        <div className="option">
-          <div className="option__left">
-            <img src={notificationIcon} className="orangeWallet" alt="" />
-            <p>Уведомления</p>
-          </div>
-          <img className="arrowRight" src={ArrowRight} alt="" />
-        </div>
-        <div className="option">
-          <div className="option__left">
-            <img src={workExamplesIcon} className="orangeWallet" alt="" />
-            <p>О себе и примеры работ</p>
-          </div>
-          <img className="arrowRight" src={ArrowRight} alt="" />
-        </div>
-        <div className="option">
-          <div className="option__left">
-            <img src={subsctibeIcon} className="orangeWallet" alt="" />
-            <p>Подписка за задания</p>
-          </div>
-          <img className="arrowRight" src={ArrowRight} alt="" />
-        </div>
-        <div className="option">
-          <div className="option__left">
-            <img src={shablonsIcon} className="orangeWallet" alt="" />
-            <p>Шаблоны откликов</p>
-          </div>
-          <img className="arrowRight" src={ArrowRight} alt="" />
-        </div>
-      </div>
+
+      <Options />
+
 
       <Compact title={"О себе"} className={"compact-block"}>
         <SmallTextarea
@@ -282,7 +216,6 @@ const Profile = () => {
           }}
         />
       </Compact>
-
 
       <Compact title={"Стаж работы"} className={"compact-block"}>
         <SmallInput
@@ -301,12 +234,27 @@ const Profile = () => {
 
 
       <Compact title={"Примеры работ"} className={"compact-block"}>
-        <AdCreateFunc style = {{
+        <AdCreateFunc
+        func={(e) => {
+          document.documentElement.style.overflow = 'hidden'
+          setCardsActive(true)
+        }}
+         style = {{
           marginTop : '0px'
         }} text={'Добавить кейс'} />
       </Compact>
 
-      <Case className={'profile-case'} />
+      {aboutMe.cards.length !== 0 ? aboutMe.cards.map((e) => {
+        console.log(e)
+        return (
+          <Case aboutU = {aboutU} setAboutU = {setAboutU} className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos} />
+        )
+      })
+    :
+    <></>
+    }
+
+      {/* <Case className={'profile-case'} /> */}
 
 
       <div className="profile__veryfication">
@@ -325,26 +273,18 @@ const Profile = () => {
           <img src={greyArrowRight} className="greyArrow" alt="" />
         </div>
       </div>
-      <div
-        className="black"
-        style={{
-          position: "absolute",
-          zIndex: zInd,
-          background: "black",
-          width: "100%",
-          height: "100%",
-          left: "0",
-          top: "0",
-          opacity: opac,
-        }}
-      ></div>
-      {/* <AboutMe
-        scrollTo={scrollTo}
-        aboutMeModal={aboutMeModal}
-        setAboutMeModal={setAboutMeModal}
-        aboutU={aboutU}
-        setAboutU={setAboutU}
-      /> */}
+
+
+        <CSSTransition
+        mountOnEnter
+        unmountOnExit
+        classNames={'cardsModal'}
+        in = {cardsActive}
+        timeout={0}
+        >
+
+            <Cards setCardsOpen={setCardsActive} />
+        </CSSTransition>
     </motion.div>
   );
 };

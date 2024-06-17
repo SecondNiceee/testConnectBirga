@@ -2,14 +2,14 @@ import React from 'react';
 import cl from './TaskName.module.css'
 import GreyText from '../GreyText/GreyText';
 import CreateInput from '../CreateInput/CreateInput';
-const TaskName = ({className , text , title , setText , errorValue , underText,  ...props}) => {
+const TaskName = ({className , text , title , setText , errorValue , underText, placeholder,  ...props}) => {
     return (
         <div {...props} className = { className ? [ cl.TaskName, className].join(' ') : cl.TaskName}>
             <GreyText className={cl.GreyText} > {title} </GreyText>
             <CreateInput style = {errorValue
                 ? {border : 'solid 1px red'}
                 : {}
-            } value={text} setValue={ setText } className={cl.CreateInput} placeholder = "Что нужно сделать?" />
+            } value={text} setValue={ setText } className={cl.CreateInput} placeholder = {placeholder} />
             <p style={errorValue ? {color : 'red',
                 fontFamily : "SF Pro Display 400"
             } : {}}>

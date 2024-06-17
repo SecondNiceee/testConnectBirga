@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cl from './Compact.module.css'
 const Compact = ({ title, children, className}) => {
     return (
@@ -11,4 +11,4 @@ const Compact = ({ title, children, className}) => {
     );
 };
 
-export default Compact;
+export default memo(Compact);
