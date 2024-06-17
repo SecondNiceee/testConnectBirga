@@ -97,7 +97,7 @@ const Profile = () => {
   useEffect( () => {
     function save(){
         dispatch(changeProfile(aboutU))
-        setAboutU(aboutMe)
+        MainButton.hide()
         // Еще одна функция , чтобы занести данные на сервер
 
     }
