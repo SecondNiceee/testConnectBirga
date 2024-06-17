@@ -68,7 +68,12 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
 
             <h3 className='cards-title'>Новый кейс</h3>
 
-
+            <button onClick={() => {
+                                setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
+                                dispatch(addCard(cardsSetting))
+                                setCardsOpen(false)
+                                document.documentElement.style.overflow = 'auto'
+            }}>Сохранить</button>
             <TaskName 
             placeholder={'Придумайте название для нового кейса'}
             className={'cards-taskName'}
@@ -76,7 +81,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
             text={cardsSetting.name}
             description = {cardsSetting.description}
             setText={(e) => {
-                setCardsSetting({...cardsSetting , name : e.target.value})
+                setCardsSetting({...cardsSetting , title : e})
             }}
             errorValue={errors.nameError}
             underText={''}

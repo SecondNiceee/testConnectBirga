@@ -13,7 +13,8 @@
 }
 .caseTop img{
     border-radius: 7px;
-    width: 183px;
+    object-fit: cover;
+    min-width: 183px;
     height: 133px;
 }
 .caseBottom{

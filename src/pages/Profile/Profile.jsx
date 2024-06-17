@@ -244,10 +244,10 @@ const Profile = () => {
         }} text={'Добавить кейс'} />
       </Compact>
 
-      {aboutMe.cards.length !== 0 ? aboutMe.cards.map((e) => {
+      {aboutU.cards.length !== 0 ? aboutU.cards.map((e) => {
         console.log(e)
         return (
-          <Case aboutU = {aboutU} setAboutU = {setAboutU} className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos} />
+          <Case className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos} />
         )
       })
     :
@@ -283,7 +283,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <Cards setCardsOpen={setCardsActive} />
+            <Cards aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
         </CSSTransition>
     </motion.div>
   );

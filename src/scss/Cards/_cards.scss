@@ -8,6 +8,8 @@
     padding-top: 23px;
     padding-left: 14px;
     padding-right: 14px;
+    padding-bottom: 20px;
+    overflow-y: scroll;
     .cards-title{
         margin-left: 16px;
         font-family: "SF Pro Display 600";
@@ -48,7 +50,7 @@
         border-radius: 10px;
         background-color:  #20303f;
         img{
-            width: 30px;
+            min-width: 30px;
             height: 30px;
         }
         p{

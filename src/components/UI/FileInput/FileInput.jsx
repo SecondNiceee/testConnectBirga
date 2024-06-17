@@ -41,7 +41,7 @@ const FileInput = ({ className, files, setFiles }) => {
         );
       })}
       <label
-        style={images.length === 5 ? { display: "none" } : {}}
+        style={images.length === 10 ? { display: "none" } : {}}
         className={images.length !== 0 ? cl.ActiveMainLabel : cl.MainLabel}
         htmlFor="file"
       >
@@ -49,16 +49,20 @@ const FileInput = ({ className, files, setFiles }) => {
           ref={myRef}
           onChange={(event) => {
             if (event.target.files && event.target.files[0]) {
-              let newFiles = [];
-              for (let photo of event.target.files) {
-                newFiles.push(photo);
+              if (event.target.files.length > 10){
+                window.Telegram.WebApp.showAlert('Максимум 10 файлов')
               }
-              setFiles([...files, ...newFiles]);
+              else{
+                let newFiles = [];
+                for (let photo of event.target.files) {
+                  newFiles.push(photo);
+                }
+                setFiles([...files, ...newFiles]);
+              }
             }
           }}
           type="file"
-          // multiple={device.includes("android") ? false : true}
-          multiple = {false}
+          multiple={device.includes("android") ? false : true}
           name="file"
           id="file"
           accept="image/*"
