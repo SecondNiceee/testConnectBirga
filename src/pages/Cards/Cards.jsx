@@ -60,7 +60,6 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
 
 
 
-            setCardsOpen(false)
         }
         function saveFunc(){
                 if (cardsSetting.title.length < 3){

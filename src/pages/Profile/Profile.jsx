@@ -96,6 +96,8 @@ const Profile = () => {
         // Еще одна функция , чтобы занести данные на сервер
 
     }
+    if (!cardsActive){
+      
       if (JSON.stringify(aboutMe) !== JSON.stringify(aboutU)){
           MainButton.show()
           MainButton.setText('Cохранить')
@@ -123,7 +125,12 @@ const Profile = () => {
           text_color : '#000000'
         })
       }
-  } , [aboutU] )
+
+    }
+    else{
+      MainButton.offClick(save)
+    }
+  } , [aboutU, cardsActive] )
 
 
   useEffect(() => {
