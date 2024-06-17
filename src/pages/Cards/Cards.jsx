@@ -99,7 +99,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
             placeholder={'Придумайте название для нового кейса'}
             className={'cards-taskName'}
             title={'НАЗВАНИЕ КЕЙСА'}
-            text={cardsSetting.name}
+            text={cardsSetting.title}
             description = {cardsSetting.description}
             setText={(e) => {
                 setCardsSetting({...cardsSetting , title : e})
