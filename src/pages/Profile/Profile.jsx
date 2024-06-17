@@ -106,8 +106,8 @@ const Profile = () => {
         MainButton.offClick(save)
       }
       if (aboutU.stage >= 40){
-        setErrors({...errors , stageError : true})
         MainButton.disable()
+        setErrors({...errors , stageError : true})
       }
       else{
         if (errors.stageError){
@@ -127,12 +127,6 @@ const Profile = () => {
   const [aboutMeModal, setAboutMeModal] = useState(false);
 
 
-  // useEffect(  () => {
-  //   if (inputRef.current){
-  //     inputRef.current.setSelectionRange(inputRef.current.value.length, inputRef.current.value.length);
-  //   }
-  // }, [isReadOnly]  )
-
   useEffect(() => {
     function goBack() {
       navigate(-1);
@@ -142,7 +136,6 @@ const Profile = () => {
       BackButton.offClick(goBack);
     };
   });
-  // setTimeout(window.scrollTo(0,0),100);
 
   const zInd = useMemo(() => {
     return aboutMeModal ? "2" : "-1";
@@ -315,45 +308,6 @@ const Profile = () => {
 
       <Case className={'profile-case'} />
 
-
-      
-
-      
-
-      {/* <div className="profile__about-me">
-        <div className="aboutMeTitle">
-          <p>О себе</p>
-
-          <label htmlFor="aboutYou">
-            <div
-              className="pencel__wrapper"
-              onClick={() => {
-                setAboutMeModal(true);
-                document.documentElement.style.overflow = "clip";
-                if (window.scrollY >= 0 && window.scrollY <= 50) {
-                  scrollTo = window.scrollY;
-                  document.documentElement.style.overflow = "clip";
-                  document.documentElement.style.marginTop = "200px";
-                  window.scrollTo({
-                    top: 200 + scrollTo,
-                    behavior: "auto",
-                  });
-                }
-              }}
-            >
-              <Pencel className="pencel" />
-            </div>
-          </label>
-        </div>
-
-        <TextAboutMe aboutU={aboutU} />
-      </div> */}
-
-      {/* <div className="profile__works">
-        <p>Выполняемые работы</p>
-        <p>Дизайн</p>
-        <p>Пока нет выполненых работ</p>
-      </div> */}
 
       <div className="profile__veryfication">
         <p className="veryfication">Верификация</p>

@@ -10,7 +10,9 @@ const TaskName = ({className , text , title , setText , errorValue , underText, 
                 ? {border : 'solid 1px red'}
                 : {}
             } value={text} setValue={ setText } className={cl.CreateInput} placeholder = "Что нужно сделать?" />
-            <p style={errorValue ? {color : 'red'} : {}}>
+            <p style={errorValue ? {color : 'red',
+                fontFamily : "SF Pro Display 400"
+            } : {}}>
                 {errorValue ?  'Название слишком маленькое' :  underText}
             </p>
         </div>
