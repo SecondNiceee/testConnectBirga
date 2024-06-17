@@ -22,6 +22,13 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
     const [errors, setErrors] = useState({
         nameError : false
     })
+    useEffect( () => {
+            if (errors.nameError){
+                if (cardsSetting.title > 3){
+                    setErrors({nameError : false})
+                }
+            }
+    }, [cardsSetting.title]  )
     useEffect(  () => {
         function backFunc(){
             window.Telegram.WebApp
@@ -37,8 +44,15 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
               if (buttonId === "delete" || buttonId === null) {
               }
               if (buttonId === "save") {
-                setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
-                dispatch(addCard(cardsSetting))
+                if (cardsSetting.title.length < 3){
+                    setErrors({nameError : true})
+                }
+                else{
+                    setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
+                    dispatch(addCard(cardsSetting))
+                    document.documentElement.style.overflow = 'auto'
+                    setCardsOpen(false)
+                }
               }
     
     
@@ -49,8 +63,15 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
             setCardsOpen(false)
         }
         function saveFunc(){
-            setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
-            dispatch(addCard(cardsSetting))
+                if (cardsSetting.title.length < 3){
+                    setErrors({nameError : true})
+                }
+                else{
+                    setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
+                    dispatch(addCard(cardsSetting))
+                    document.documentElement.style.overflow = 'auto'
+                    setCardsOpen(false)
+                }
         }
         MainButton.show()
         MainButton.setText('Сохранить')
@@ -72,7 +93,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
                                 setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
                                 dispatch(addCard(cardsSetting))
                                 setCardsOpen(false)
-                                document.documentElement.style.overflow = 'auto'
+
             }}>Сохранить</button>
             <TaskName 
             placeholder={'Придумайте название для нового кейса'}
@@ -84,6 +105,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
                 setCardsSetting({...cardsSetting , title : e})
             }}
             errorValue={errors.nameError}
+            
             underText={''}
              />
 
