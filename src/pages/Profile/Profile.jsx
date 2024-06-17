@@ -117,7 +117,7 @@ const Profile = () => {
         MainButton.setParams({
           
           color : '#2f2f2f',
-          text_color : '#000000'
+          text_color : '#606060'
         })
         setErrors({...errors , stageError : true})
       }
@@ -128,7 +128,8 @@ const Profile = () => {
         }
         MainButton.setParams({
           color : '#2ea5ff',
-          text_color : '#606060'
+          text_color : '#000000'
+          
         })
       }
 
