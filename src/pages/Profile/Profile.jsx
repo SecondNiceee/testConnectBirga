@@ -115,7 +115,8 @@ const Profile = () => {
       if (aboutU.stage >= 40){
         MainButton.disable()
         MainButton.setParams({
-          color : '#2ea5ff',
+          
+          color : '#2f2f2f',
           text_color : '#000000'
         })
         setErrors({...errors , stageError : true})
@@ -126,7 +127,7 @@ const Profile = () => {
           setErrors({...errors , stageError : false})
         }
         MainButton.setParams({
-          color : '#2f2f2f',
+          color : '#2ea5ff',
           text_color : '#606060'
         })
       }
