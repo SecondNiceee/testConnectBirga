@@ -130,7 +130,13 @@ const Profile = () => {
     function goBack() {
       navigate(-1);
     }
-    BackButton.onClick(goBack);
+    if (cardsActive){
+      BackButton.offClick(goBack)
+    }
+    else{
+
+      BackButton.onClick(goBack);
+    }
     return () => {
       BackButton.offClick(goBack);
     };

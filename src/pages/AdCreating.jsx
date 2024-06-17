@@ -290,6 +290,7 @@ const AdCreating = () => {
   useEffect(() => {
     MainButton.onClick(goForward);
     BackButton.onClick(goBack);
+  
     return () => {
       BackButton.offClick(goBack);
       MainButton.offClick(goForward);
