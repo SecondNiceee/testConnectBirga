@@ -24,7 +24,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
     })
     useEffect( () => {
             if (errors.nameError){
-                if (cardsSetting.title > 3){
+                if (cardsSetting.title.length > 3){
                     setErrors({nameError : false})
                 }
             }
@@ -73,7 +73,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
                 }
         }
         MainButton.show()
-        MainButton.setText('Сохранить')
+        MainButton.setText('Добавить кейс')
         MainButton.onClick(saveFunc)
         BackButton.show()
         BackButton.onClick(backFunc)

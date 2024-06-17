@@ -56,7 +56,7 @@ const Profile = () => {
   
   const [aboutU, setAboutU] = useState({
     about: "Просто чувачок",
-    stage: 87,
+    stage: 0,
     cards : []
   });
 
@@ -110,7 +110,7 @@ const Profile = () => {
       if (aboutU.stage >= 40){
         MainButton.disable()
         MainButton.setParams({
-          color : '#808080',
+          color : '#2ea5ff',
           text_color : '#000000'
         })
         setErrors({...errors , stageError : true})
@@ -121,14 +121,18 @@ const Profile = () => {
           setErrors({...errors , stageError : false})
         }
         MainButton.setParams({
-          color : '#ffffff',
-          text_color : '#000000'
+          color : '#2f2f2f',
+          text_color : '#606060'
         })
       }
 
     }
     else{
       MainButton.offClick(save)
+      MainButton.setParams({
+        color : '#2ea5ff',
+        text_color : '#000000'
+      })
     }
   } , [aboutU, cardsActive] )
 
