@@ -59,11 +59,6 @@ const Profile = () => {
     stage: 87,
   });
 
-  useEffect( () => {
-    if (Number(aboutU.stage) > 40 ){
-      setErrors({stageError : true})
-    }
-  } , [aboutU.stage])
 
   useEffect(  () => {
     console.log(aboutMe)
@@ -97,24 +92,28 @@ const Profile = () => {
   useEffect( () => {
     function save(){
         dispatch(changeProfile(aboutU))
-    }
-      if (JSON.stringify(aboutMe) !== JSON.stringify(aboutU) && aboutU.stage <= 40){
-        if (aboutU.stage <= 40){
 
+        // Еще одна функция , чтобы занести данные на сервер
+
+    }
+      if (JSON.stringify(aboutMe) !== JSON.stringify(aboutU)){
           MainButton.show()
           MainButton.setText('Cохранить')
           MainButton.onClick(save)
-        }
-        else{
-          setErrors({
-            stageError : true
-          })
-          
-        }
       }
       else{
         MainButton.hide()
         MainButton.offClick(save)
+      }
+      if (aboutU.stage >= 40){
+        setErrors({...errors , stageError : true})
+        MainButton.disable()
+      }
+      else{
+        if (errors.stageError){
+          MainButton.enable()
+          setErrors({...errors , stageError : false})
+        }
       }
   } , [aboutU] )
 
@@ -294,6 +293,8 @@ const Profile = () => {
 
       <Compact title={"Стаж работы"} className={"compact-block"}>
         <SmallInput
+        mistakeText={'Стаж должен быть меньше 40 лет!'}
+        mistake={errors.stageError}
          id = 'numberInput'
          maxLength = {2}
           onBlur = {onBlurFunc}
