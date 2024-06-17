@@ -3,8 +3,8 @@ import classes from "./OneInput.module.css";
 const OneInput = ({ setInputValue, inputValue, className, ...props }) => {
   return (
     <input
-      spellcheck="false"
-      autocomplete="off"
+      spellCheck="false"
+      autoComplete="off"
       value={inputValue}
       onChange={(e) => {
         setInputValue(e.target.value);

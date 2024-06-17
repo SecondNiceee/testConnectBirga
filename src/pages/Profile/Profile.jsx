@@ -108,7 +108,8 @@ const Profile = () => {
       if (aboutU.stage >= 40){
         MainButton.disable()
         MainButton.setParams({
-          color : '#B5B8B1'
+          color : 'grey',
+          text_color : 'white'
         })
         setErrors({...errors , stageError : true})
       }
@@ -117,6 +118,10 @@ const Profile = () => {
           MainButton.enable()
           setErrors({...errors , stageError : false})
         }
+        MainButton.setParams({
+          color : 'black',
+          text_color : 'white'
+        })
       }
   } , [aboutU] )
 
@@ -247,10 +252,10 @@ const Profile = () => {
         }} text={'Добавить кейс'} />
       </Compact>
 
-      {aboutU.cards.length !== 0 ? aboutU.cards.map((e) => {
+      {aboutU.cards.length !== 0 ? aboutU.cards.map((e, i) => {
         console.log(e)
         return (
-          <Case className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos} />
+          <Case key = {i} className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos} />
         )
       })
     :

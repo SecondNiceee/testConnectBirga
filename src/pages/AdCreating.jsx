@@ -63,7 +63,7 @@ const AdCreating = () => {
     let endError = false;
     let singleError = false;
     if (spet === 0) {
-      if (error.name && taskInformation.taskName.length > 5) {
+      if (error.name && taskInformation.taskName.length > 3) {
         setError({ ...error, name: false });
       }
     }
@@ -200,7 +200,7 @@ const AdCreating = () => {
     let endError = false;
     switch (spet) {
       case 0: {
-        if (taskInformation.taskName.length < 5) {
+        if (taskInformation.taskName.length < 3) {
           taskName = true;
         }
         setError({ ...error, name: taskName });

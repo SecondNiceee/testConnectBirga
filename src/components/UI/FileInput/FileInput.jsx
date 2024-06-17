@@ -21,9 +21,9 @@ const FileInput = ({ className, files, setFiles }) => {
       style={images.length === 0 ? { display: "flex" } : {}}
       className={className ? [cl.FileInput, className].join(" ") : cl.FileInput}
     >
-      {images.map((e) => {
+      {images.map((e, i) => {
         return (
-          <div className={cl.imageFeetContainer}>
+          <div key={i} className={cl.imageFeetContainer}>
             <div
               onClick={() => {
                 setFiles(
