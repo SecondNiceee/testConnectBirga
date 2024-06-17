@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import { motion } from "framer-motion";
@@ -11,7 +11,7 @@ import orangeWallet from "../../images/icons/OrangeWallet.svg";
 import Subtract from "../../images/icons/SubtractWhite.svg";
 import greyArrowRight from "../../images/icons/greyArrowRight.svg";
 import Burger from "../../components/UI/Burger/Burger";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, json, useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
 import AboutMe from "../../components/UI/AboutMe/AboutMe";
 import TextAboutMe from "../../components/UI/AboutMeText/TextAboutMe";
@@ -27,6 +27,8 @@ import Compact from "../../components/UI/Compact/Compact";
 import SmallInput from "../../components/UI/SmallInput/SmallInput";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import Case from "./components/Case/Case";
+import MainButton from "../../constants/MainButton";
+import { changeProfile } from "../../store/profile";
 
 let scrollTo = 0;
 const variants = {
@@ -34,9 +36,12 @@ const variants = {
   animate: { opacity: 1 },
   transition: { duration: 0.1 },
 };
-
 const Profile = () => {
+  const aboutMe = useSelector( state => state.profile.profile  )
+
   const dispatch = useDispatch();
+  
+
 
   const setMenuActive = (arg) => {
     dispatch(changeMenuActive(arg));
@@ -51,42 +56,77 @@ const Profile = () => {
   
   const [aboutU, setAboutU] = useState({
     about: "Просто чувачок",
-    stage: "87",
+    stage: 87,
   });
 
   useEffect( () => {
     if (Number(aboutU.stage) > 40 ){
       setErrors({stageError : true})
     }
-  } , aboutU.stage )
+  } , [aboutU.stage])
 
-  useEffect( () => {
-    let numb = aboutU.stage.slice(0,1)
+  useEffect(  () => {
+    console.log(aboutMe)
+    setAboutU(aboutMe)
 
-    if ( Number(aboutU.stage) > 10 && Number(aboutU.stage) < 20){
-      setAboutU({...aboutU , stage : aboutU.stage + ' лет'})
+    let numb = String(aboutMe.stage).slice(1,2)
+
+    const numberInput = document.getElementById('numberInput')
+
+    if ( Number(aboutMe.stage) > 10 && Number(aboutMe.stage) < 20){
+      numberInput.value += ' лет'
     }
     else{
 
         if (numb > 1 && numb < 5){
-          setAboutU({...aboutU , stage : aboutU.stage + ' года'})
-        }
+          numberInput.value += ' года'
+        } 
         else{
           if(numb === 1){
-            setAboutU({...aboutU , stage : aboutU.stage + ' год'})
+            numberInput.value += ' год'
           }
           else{
-            setAboutU({...aboutU , stage : aboutU.stage + ' лет'}) 
+            numberInput.value += ' лет'
           }
         }
       }
-  },[] )
+
+
+  }, []  )
+
+  useEffect( () => {
+    function save(){
+        dispatch(changeProfile(aboutU))
+    }
+      if (JSON.stringify(aboutMe) !== JSON.stringify(aboutU) && aboutU.stage <= 40){
+        if (aboutU.stage <= 40){
+
+          MainButton.show()
+          MainButton.setText('Cохранить')
+          MainButton.onClick(save)
+        }
+        else{
+          setErrors({
+            stageError : true
+          })
+          
+        }
+      }
+      else{
+        MainButton.hide()
+        MainButton.offClick(save)
+      }
+  } , [aboutU] )
+
 
   const navigate = useNavigate();
 
   const inputRef = useRef(null);
 
+  console.log(inputRef)
+
   const [aboutMeModal, setAboutMeModal] = useState(false);
+
 
   // useEffect(  () => {
   //   if (inputRef.current){
@@ -113,6 +153,58 @@ const Profile = () => {
   }, [aboutMeModal]);
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
+
+  
+
+
+  const onBlurFunc = useCallback( (e) => {
+    let numb = Number(e.target.value.slice(e.target.value.length - 1 , e.target.value.length))
+
+    if (e.target.value === ''){
+      setAboutU({...aboutU , stage : '0 лет'})
+
+    }
+
+    if ( Number(e.target.value) > 10 && Number(e.target.value) < 20){
+      e.target.value += ' лет'
+    }
+    else{
+
+        if (numb > 1 && numb < 5){
+          e.target.value += ' года'
+        }
+        else{
+          if(numb === 1){
+            e.target.value += ' год'
+          }
+          else{
+            e.target.value += ' лет'  
+          }
+        }
+      }
+    
+  } , [aboutU.stage] )
+
+  const onFocusFunc = useCallback( (e) => {
+    e.target.value = String(aboutU.stage).split(' ')[0]
+  } , [aboutU.stage] )
+
+  const setValueFunc = useCallback(  (e) => {
+    if (e.slice(0,1) !== '0'){
+
+      setAboutU({ ...aboutU, stage: Number(e) });
+    }
+    else{
+      if(e !== '00'){
+        setAboutU({...aboutU , stage : Number(e.slice(1,2))})
+      }
+      else{
+        setAboutU({...aboutU , stage : 0})
+      }
+    }
+  } , [aboutU.stage]  )
+
+
   return (
     <motion.div
       className="profile__container"
@@ -127,7 +219,6 @@ const Profile = () => {
       <img src={userInfo.photo} className="profile__icon icon" alt="" />
 
       <p
-        ref={inputRef}
         onChange={(e) => setName(e.target.value)}
         className="urName"
         id="Name"
@@ -192,6 +283,7 @@ const Profile = () => {
 
       <Compact title={"О себе"} className={"compact-block"}>
         <SmallTextarea
+          
           value={aboutU.about}
           setValue={(e) => {
             setAboutU({ ...aboutU, about: e });
@@ -202,54 +294,14 @@ const Profile = () => {
 
       <Compact title={"Стаж работы"} className={"compact-block"}>
         <SmallInput
+         id = 'numberInput'
          maxLength = {2}
-          onBlur = {(e) => {
-            let numb = Number(e.target.value.slice(e.target.value.length - 1 , e.target.value.length))
-
-            if (e.target.value === ''){
-              setAboutU({...aboutU , stage : '0 лет'})
-
-            }
-
-            if ( Number(e.target.value) > 10 && Number(e.target.value) < 20){
-              e.target.value += ' лет'
-            }
-            else{
-
-                if (numb > 1 && numb < 5){
-                  e.target.value += ' года'
-                }
-                else{
-                  if(numb === 1){
-                    e.target.value += ' год'
-                  }
-                  else{
-                    e.target.value += ' лет'  
-                  }
-                }
-              }
-            
-          }}
-          onFocus = {(e) => {
-            e.target.value = aboutU.stage.split(' ')[0]
-          }}
+          onBlur = {onBlurFunc}
+          onFocus = {onFocusFunc}
           inputMode = "numeric"
           // type = "number"
           value={aboutU.stage}
-          setValue={(e) => {
-            if (e.slice(0,1) !== '0'){
-
-              setAboutU({ ...aboutU, stage: e });
-            }
-            else{
-              if(e !== '00'){
-                setAboutU({...aboutU , stage : e.slice(1,2)})
-              }
-              else{
-                setAboutU({...aboutU , stage : '0'})
-              }
-            }
-          }}
+          setValue={setValueFunc}
         />
       </Compact>
 
