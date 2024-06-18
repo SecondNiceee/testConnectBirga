@@ -16,7 +16,8 @@ const FileInput = ({ className, files, setFiles , fileError }) => {
 
   var device = navigator.userAgent.toLowerCase();
 
-
+  console.log(files)
+  
   const photoStyle = useMemo( () => {
     if (fileError){
       return ({
@@ -80,6 +81,7 @@ const FileInput = ({ className, files, setFiles , fileError }) => {
                 setFiles([...files, ...newFiles]);
               }
             }
+            
             event.target.onblur()
           }}
           type="file"

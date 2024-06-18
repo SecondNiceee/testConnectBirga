@@ -52,44 +52,45 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
             console.log('я тут')
             
     }
-    useEffect(  () => {
-        function backFunc(){
-            window.Telegram.WebApp
-            .showPopup({
-              title: "Создать?",
-              message: "Вы хотите создать этот кейс?",
-              buttons: [
-                { id: "save", type: "default", text: "Да" },
-                { id: "delete", type: "destructive", text: "Нет" },
-              ],
-            } , (buttonId) => {
-    
-              if (buttonId === "delete" || buttonId === null) {
+
+    MainButton.show()
+    MainButton.setText('Добавить кейс')
+    MainButton.onClick(saveFunc)
+    BackButton.show()
+    BackButton.onClick(backFunc)
+
+
+    function backFunc(){
+        window.Telegram.WebApp
+        .showPopup({
+          title: "Создать?",
+          message: "Вы хотите создать этот кейс?",
+          buttons: [
+            { id: "save", type: "default", text: "Да" },
+            { id: "delete", type: "destructive", text: "Нет" },
+          ],
+        } , (buttonId) => {
+
+          if (buttonId === "delete" || buttonId === null) {
+            setCardsOpen(false)
+          }
+          if (buttonId === "save") {
+            if (!checkMistakes()){
+                setAboutU({...aboutU, cards : [...aboutU.cards , localCardSetting] })
+                dispatch(addCard(localCardSetting))
+                document.documentElement.style.overflow = 'auto'
                 setCardsOpen(false)
-              }
-              if (buttonId === "save") {
-                if (!checkMistakes()){
-                    setAboutU({...aboutU, cards : [...aboutU.cards , localCardSetting] })
-                    dispatch(addCard(localCardSetting))
-                    document.documentElement.style.overflow = 'auto'
-                    setCardsOpen(false)
-                }
+            }
+        
             
-                
-              }
-    
-    
-            } )
+          }
 
 
+        } )
 
-        }
+    }
 
-        MainButton.show()
-        MainButton.setText('Добавить кейс')
-        MainButton.onClick(saveFunc)
-        BackButton.show()
-        BackButton.onClick(backFunc)
+    useEffect(  () => {
         return () => {
             MainButton.hide()
             BackButton.offClick(backFunc)
