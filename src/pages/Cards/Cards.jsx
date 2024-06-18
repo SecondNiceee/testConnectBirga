@@ -58,22 +58,22 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU }) => {
 
     return Object.values(localErrors).every((value) => value === false);
   }
+
+
+
+
   function saveFunc() {
     if (checkMistakes()) {
       console.log("попал сюда..");
       setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
-      dispatch(addCard(localCardSetting));
+    //   dispatch(addCard(localCardSetting));
       document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
     }
     console.log("я тут");
   }
 
-  MainButton.show();
-  MainButton.setText("Добавить кейс");
-  MainButton.onClick(saveFunc);
-  BackButton.show();
-  BackButton.onClick(backFunc);
+
 
   function backFunc() {
 
@@ -88,12 +88,18 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU }) => {
       }
   }
 
-  useEffect(() => {
+  useEffect( () => {
+    MainButton.show();
+    MainButton.setText("Добавить кейс");
+    MainButton.onClick(saveFunc);
+    BackButton.show();
+    BackButton.onClick(backFunc);
     return () => {
-      MainButton.hide();
-      BackButton.offClick(backFunc);
-    };
-  }, []);
+        MainButton.hide();
+        BackButton.offClick(backFunc);
+      };
+  } )
+
   return (
     <div className="cards">
       <h3 className="cards-title">Новый кейс</h3>
