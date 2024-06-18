@@ -287,8 +287,9 @@ const Profile = () => {
     function goBack() {
       navigate(-1);
     }
-    if (cardsActive){
+    if (cardsActive || changeActive){
       BackButton.offClick(goBack)
+      
     }
     else{
 
@@ -296,7 +297,7 @@ const Profile = () => {
     }
     return () => {
       BackButton.offClick(goBack);
-    };
+    }; 
   });
 
   
