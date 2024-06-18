@@ -103,9 +103,10 @@ const Profile = () => {
   
 
   const save = useCallback( () => {
+    console.log(aboutMeLocal)
     dispatch(changeProfile(aboutMeLocal))
     MainButton.hide()
-  } , [] )
+  } , [aboutU] )
 
   useEffect( () => {
     if (!cardsActive){
