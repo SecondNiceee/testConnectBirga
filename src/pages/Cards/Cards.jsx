@@ -8,6 +8,7 @@ import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch } from "react-redux";
 import { addCard } from "../../store/profile";
+import { color } from "framer-motion";
 let localCardSetting;
 const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
   const [cardsSetting, setCardsSetting] = useState({
@@ -38,6 +39,22 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
       if (JSON.stringify({ localErrors }) !== JSON.stringify(errors)) {
         setErrors(localErrors);
       }
+
+      if (Object.values(localErrors).every(value => value === false))
+        {
+            MainButton.setParams({
+                color : "#2f2f2f",
+                text_color : "#606060"
+            })
+        }
+      else{
+        MainButton.setParams({
+            color : "#2EA6FF",
+            text_color : "#ffffff"
+        })
+      }
+    
+
     }
   }, [cardsSetting.title, cardsSetting.photos]);
 

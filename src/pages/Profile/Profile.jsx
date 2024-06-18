@@ -160,6 +160,7 @@ function deepCompare () {
 
 
 const Profile = () => {
+
   const aboutMe = useSelector( state => state.profile.profile  )
 
   const dispatch = useDispatch();
@@ -194,7 +195,9 @@ const Profile = () => {
 
 
   useEffect(  () => {
+    
     console.log(aboutMe)
+
     setAboutU(aboutMe)
 
     let numb = String(aboutMe.stage).slice(1,2)
@@ -267,7 +270,7 @@ const Profile = () => {
         }
         MainButton.setParams({
           color : '#2ea5ff',
-          text_color : '#000000'
+          text_color : '#ffffff'
           
         })
       }
@@ -277,10 +280,13 @@ const Profile = () => {
       MainButton.offClick(save)
       MainButton.setParams({
         color : '#2ea5ff',
-        text_color : '#000000'
+        text_color : '#ffffff'
       })
     }
   }, [aboutU , changeActive]  )
+
+
+  
 
 
   useEffect(() => {
@@ -300,6 +306,8 @@ const Profile = () => {
     }; 
   });
 
+
+  
   
 
   
