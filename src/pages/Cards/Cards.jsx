@@ -39,20 +39,29 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
         setErrors(localErrors);
       }
       console.log(Object.values(localErrors).every(value => value === false))
+
+
+
+
+      function showMistakes(){
+        setErrors(localErrors);
+      }
       
-      if (Object.values(localErrors).every(value => value === false))
+      if (!Object.values(localErrors).every(value => value === false))
         {
             console.log('хай хай')
             MainButton.setParams({
                 color : "#2f2f2f",
                 text_color : "#606060"
             })
+            MainButton.offClick(showMistakes)
         }
       else{
         MainButton.setParams({
             color : "#2EA6FF",
             text_color : "#ffffff"
         })
+        MainButton.onClick(showMistakes)
       }
     
 
