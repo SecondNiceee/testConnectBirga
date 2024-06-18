@@ -80,6 +80,7 @@ const FileInput = ({ className, files, setFiles , fileError }) => {
                 setFiles([...files, ...newFiles]);
               }
             }
+            event.target.onblur()
           }}
           type="file"
           multiple={device.includes("android") ? false : true}
