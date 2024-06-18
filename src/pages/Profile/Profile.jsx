@@ -108,7 +108,7 @@ const Profile = () => {
     }
     if (!cardsActive){
       
-      if (JSON.stringify(aboutMe) !== JSON.stringify(aboutU)){
+      if (JSON.stringify(aboutMe) !== JSON.stringify(aboutU) && aboutMe.cards.split('') === aboutU.cards.split('')){
           MainButton.show()
           MainButton.setText('Cохранить')
           MainButton.onClick(save)
