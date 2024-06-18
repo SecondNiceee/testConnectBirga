@@ -106,14 +106,11 @@ const Profile = () => {
         // Еще одна функция , чтобы занести данные на сервер
 
     }
-    if (aboutMe.cards.join('') !== aboutU.cards.join('')){
-      MainButton.show()
-      MainButton.setText('Cохранить')
-      MainButton.onClick(save)
-    }
     if (!cardsActive){
-      
-      if (JSON.stringify(aboutMe) !== JSON.stringify(aboutU)){
+        console.log(aboutMe.cards.join(''))
+        console.log(aboutU.cards.join(''))
+        console.log(aboutU.cards.join('') === aboutMe.cards.join(''))
+      if (JSON.stringify(aboutMe) !== JSON.stringify(aboutU) || aboutMe.cards.join('') !== aboutU.cards.join('')){
           MainButton.show()
           MainButton.setText('Cохранить')
           MainButton.onClick(save)
