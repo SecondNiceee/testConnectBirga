@@ -39,7 +39,9 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
         return Object.values(localErrors).every(value => value === false)
     }
     function saveFunc(){
+            console.log('вызов saveFunc')
             if (checkMistakes()){
+                console.log('попал сюда..')
                 setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
                 dispatch(addCard(cardsSetting))
                 document.documentElement.style.overflow = 'auto'
@@ -79,6 +81,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
 
 
         }
+
         MainButton.show()
         MainButton.setText('Добавить кейс')
         MainButton.onClick(saveFunc)
