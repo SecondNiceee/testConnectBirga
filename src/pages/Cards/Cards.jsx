@@ -26,7 +26,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
   });
 
   useEffect(() => {
-    if (!Object.values(errors).every((value) => value === false)) {
       let photos = false;
       let title = false;
       if (cardsSetting.title.length < 3) {
@@ -57,7 +56,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
       }
     
 
-    }
+    
   }, [cardsSetting.title, cardsSetting.photos]);
 
   localCardSetting = cardsSetting;
