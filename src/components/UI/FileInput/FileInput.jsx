@@ -50,7 +50,7 @@ const FileInput = ({ className, files, setFiles , fileError }) => {
                     return files.indexOf(obj) !== images.indexOf(e);
                   })
                 );
-                setImages([...images].filter((m) => m != e));
+                // setImages([...images].filter((m) => m != e));
               }}
               className={[cl.removeIcon, "_icon-trash"].join(" ")}
             />
