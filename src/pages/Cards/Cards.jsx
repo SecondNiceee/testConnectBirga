@@ -42,7 +42,6 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
         return Object.values(localErrors).every(value => value === false)
     }
     function saveFunc(){
-            console.log('вызов saveFunc')
             if (checkMistakes()){
                 console.log('попал сюда..')
                 setAboutU({...aboutU, cards : [...aboutU.cards , localCardSetting] })
@@ -50,6 +49,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
                 document.documentElement.style.overflow = 'auto'
                 setCardsOpen(false)
             }
+            console.log('я тут')
             
     }
     useEffect(  () => {
