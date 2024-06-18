@@ -95,7 +95,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU }) => {
     BackButton.show();
     BackButton.onClick(backFunc);
     return () => {
-        MainButton.hide();
+            
         BackButton.offClick(backFunc);
       };
   } )
