@@ -31,6 +31,17 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
                 }
             }
     }, [cardsSetting.title]  )
+    function saveFunc(){
+            if (cardsSetting.title.length < 3){
+                setErrors({nameError : true})
+            }
+            else{
+                setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
+                dispatch(addCard(cardsSetting))
+                document.documentElement.style.overflow = 'auto'
+                setCardsOpen(false)
+            }
+    }
     useEffect(  () => {
         function backFunc(){
             window.Telegram.WebApp
@@ -63,17 +74,6 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
 
 
 
-        }
-        function saveFunc(){
-                if (cardsSetting.title.length < 3){
-                    setErrors({nameError : true})
-                }
-                else{
-                    setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
-                    dispatch(addCard(cardsSetting))
-                    document.documentElement.style.overflow = 'auto'
-                    setCardsOpen(false)
-                }
         }
         MainButton.show()
         MainButton.setText('Добавить кейс')
@@ -129,6 +129,8 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
                 textTitle={'ОПИСАНИЕ КЕЙСА'}
                 filesTitle={''}            
             />
+            <button 
+            onClick={saveFunc}>Сохранить</button>
             <p className='cards-underText'>Расскажите о себе и своем опыте работы
 Прикрепите релевантные примеры</p>
 
