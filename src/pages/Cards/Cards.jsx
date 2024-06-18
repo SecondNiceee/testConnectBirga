@@ -39,7 +39,8 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
       if (JSON.stringify({ localErrors }) !== JSON.stringify(errors)) {
         setErrors(localErrors);
       }
-
+      console.log(Object.values(localErrors).every(value => value === false))
+      
       if (Object.values(localErrors).every(value => value === false))
         {
             console.log('хай хай')
