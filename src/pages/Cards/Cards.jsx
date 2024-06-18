@@ -17,8 +17,9 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
         behanceLink : '',
         dribbbleLink : '',
         dropfileLink : ''
-    })
+    })ы
     console.log(cardsSetting)
+    console.log('-------------')
     const dispatch = useDispatch()
     const [errors, setErrors] = useState({
         nameError : false
