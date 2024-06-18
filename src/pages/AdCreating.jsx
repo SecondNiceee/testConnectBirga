@@ -137,7 +137,6 @@ const AdCreating = () => {
 
   function finish() {
     let taskInformationCopy = {...taskInformation}
-    console.log(taskInformationCopy)
     if (document.getElementById("dateSwapper").style.transform) {
       taskInformationCopy.time = {start : taskInformation.startTime , end : taskInformation.endTime}
       // setTaskInformation({...taskInformation , time : {start : taskInformation.startTime , end : taskInformation.endTime} })

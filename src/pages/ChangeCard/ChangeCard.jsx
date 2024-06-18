@@ -20,21 +20,71 @@ const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
     })
     const dispatch = useDispatch()
     const [errors, setErrors] = useState({
-        nameError : false
+        nameError : false,
+        fileError : false
     })
+
+
     useEffect( () => {
-            if (errors.nameError){
-                if (cardsSetting.title.length > 3){
-                    setErrors({nameError : false})
-                }
+        if (!Object.values(errors).every(value => value === false)){
+            let photos = false
+            let title = false
+            if (cardsSetting.title.length < 3){
+                title = true
             }
-    }, [cardsSetting.title]  )
+            if (cardsSetting.photos.length < 1){
+                photos = true
+            }
+            let localErrors = {nameError : title , fileError : photos}
+            if (JSON.stringify({localErrors}) !== JSON.stringify(errors)  ){
+                setErrors(localErrors)
+            }
+        }
+}, [cardsSetting.title, cardsSetting.photos]  )
+
+
+
+    function checkMistakes(){
+        let fileError = false
+        let titleError = false
+        if (cardsSetting.title.length < 3){
+            titleError = true
+        }
+        if (cardsSetting.photos.length < 1){
+            fileError = true
+        }
+        setErrors({fileError : fileError , nameError : titleError})
+        let localErrors = {fileError : fileError , nameError : titleError}
+        return Object.values(localErrors).every(value => value === false)
+    }
+
+
+    function saveFunc(){
+        if (checkMistakes()){
+            setAboutU({...aboutU, cards : [...aboutU.cards.map((e, i) => {
+                if (i === index){
+                    return cardsSetting
+                }
+                else{
+                    return e
+                }
+            })] })
+            dispatch(changeCards({id : index , card : cardsSetting}))
+            document.documentElement.style.overflow = 'auto'
+            setCardsOpen(false)
+        }
+        
+        
+}
+
+
+
     useEffect(  () => {
         function backFunc(){
             window.Telegram.WebApp
             .showPopup({
               title: "Сохранить?",
-              message: "Сохранить изменения перед выходом?",
+              message: "Сохранить изменения кейса перед выходом?",
               buttons: [
                 { id: "save", type: "default", text: "Да" },
                 { id: "delete", type: "destructive", text: "Нет" },
@@ -45,10 +95,7 @@ const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
                 setCardsOpen(false)
               }
               if (buttonId === "save") {
-                if (cardsSetting.title.length < 3){
-                    setErrors({nameError : true})
-                }
-                else{
+                if (checkMistakes()){
                     setAboutU({...aboutU, cards : [...aboutU.cards.map((e, i) => {
                         if (i === index){
                             return cardsSetting
@@ -62,6 +109,7 @@ const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
                     document.documentElement.style.overflow = 'auto'
                     setCardsOpen(false)
                 }
+                
               }
     
     
@@ -70,24 +118,7 @@ const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
 
 
         }
-        function saveFunc(){
-                if (cardsSetting.title.length < 3){
-                    setErrors({nameError : true})
-                }
-                else{
-                    setAboutU({...aboutU, cards : [...aboutU.cards.map((e, i) => {
-                        if (i === index){
-                            return cardsSetting
-                        }
-                        else{
-                            return e
-                        }
-                    })] })
-                    dispatch(changeCards({id : index , card : cardsSetting}))
-                    document.documentElement.style.overflow = 'auto'
-                    setCardsOpen(false)
-                }
-        }
+
         MainButton.show()
         MainButton.setText('Изменить кейс')
         MainButton.onClick(saveFunc)
@@ -105,16 +136,14 @@ const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
             <h3 className='cards-title'>{cardsSetting.title}</h3>
 
             <button onClick={() => {
-                                setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
-                                dispatch(addCard(cardsSetting))
-                                setCardsOpen(false)
+                saveFunc()
 
             }}>Сохранить</button>
             <TaskName 
             placeholder={'Придумайте название для  кейса'}
             className={'cards-taskName'}
             title={'НАЗВАНИЕ КЕЙСА'}
-            text={cardsSetting.name}
+            text={cardsSetting.title}
             description = {cardsSetting.description}
             setText={(e) => {
                 setCardsSetting({...cardsSetting , title : e})
@@ -140,7 +169,8 @@ const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
                 photos={cardsSetting.photos}
                 MyInformation={false}
                 textTitle={'ОПИСАНИЕ КЕЙСА'}
-                filesTitle={''}            
+                filesTitle={''}       
+                fileError={errors.fileError}     
             />
             <p className='cards-underText'>Расскажите о себе и своем опыте работы
 Прикрепите релевантные примеры</p>

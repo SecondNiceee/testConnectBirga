@@ -6,8 +6,6 @@ const SmallTextarea = ({ value, setValue, className }) => {
     useEffect( () => {
         let len = value.split(/\r\n|\r|\n/).length
         // textAreaRef.current.style.height = (12 + 11 + 17.6*len).toString() + 'px'
-        console.log(textAreaRef.current.scrollHeight)
-        console.log(textAreaRef.current.offsetHeight)
         textAreaRef.current.style.height = (refTwo.current.scrollHeight).toString() + 'px'
         
 

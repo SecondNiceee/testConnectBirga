@@ -23,7 +23,7 @@ import SmallInput from "../../components/UI/SmallInput/SmallInput";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import Case from "./components/Case/Case";
 import MainButton from "../../constants/MainButton";
-import { changeProfile } from "../../store/profile";
+import { changeProfile, deleteCard } from "../../store/profile";
 import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
@@ -67,6 +67,7 @@ const Profile = () => {
 
 
   useEffect(  () => {
+    console.log(aboutMe)
     setAboutU(aboutMe)
 
     let numb = String(aboutMe.stage).slice(1,2)
@@ -93,9 +94,6 @@ const Profile = () => {
 
 
   }, []  )
-
-  console.log(aboutMe)
-  console.log(aboutU)
 
   useEffect( () => {
     function save(){
@@ -216,6 +214,7 @@ const Profile = () => {
   } , [aboutU.stage]  )
 
 
+
   return (
     <motion.div
       className="profile__container"
@@ -280,12 +279,24 @@ const Profile = () => {
       </Compact>
 
       {aboutU.cards.length !== 0 ? aboutU.cards.map((e, i) => {
-        console.log(e)
         return (
-          <Case changeFunction={() => {
+          <Case 
+
+          deleteFunction = {() => {
+            index = i
+            setAboutU({...aboutU , cards : [...aboutU.cards.filter((e , i) => {
+              return i !== index
+            })]})
+            dispatch(deleteCard(index))
+            
+          }}
+
+          changeFunction={() => {
             setChangeActive(true)
             index = i
-          }}  key = {i} className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos} />
+          }}  key = {i} className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos}
+          
+          />
         )
       })
     :
@@ -334,7 +345,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <ChangeCards index={index}   aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
+            <ChangeCards index={index}  card={aboutU.cards[index]}  aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
         </CSSTransition>
         
     </motion.div>

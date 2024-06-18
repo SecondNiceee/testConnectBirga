@@ -1,7 +1,7 @@
 import React from "react";
 import cl from "./Case.module.css";
 import photo from "../../../../images/nonUsed/photo.png";
-const Case = ({ className, title , description , photos, changeFunction,  ...props }) => {
+const Case = ({ className, title , description , photos, changeFunction, deleteFunction,  ...props }) => {
   return (
     <div
       {...props}
@@ -12,7 +12,11 @@ const Case = ({ className, title , description , photos, changeFunction,  ...pro
             {photos.map(e => {
               let url = URL.createObjectURL(e)
               return (
-                <img src={url} alt="" />
+                <img style={photos.length === 1 ? 
+                  {minWidth : '100%'} 
+                  :
+                  {}
+                } src={url} alt="" />
               )
             })}
           </div> 
@@ -25,7 +29,9 @@ const Case = ({ className, title , description , photos, changeFunction,  ...pro
           <h4>{title}</h4>
           <p>Категория: Дизайн</p>
         </div>
-        <div className={cl.caseRight}>
+        <div className={cl.caseRight}
+        onClick={deleteFunction}
+        >
           <div className={cl.circle}>
             <svg
               width="15"

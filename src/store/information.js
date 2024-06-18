@@ -22,9 +22,9 @@ export const putMyTask = createAsyncThunk(
       );
     }
     catch(e){
-      console.log(e)
+
     }
-    console.log('------------------------------------------------')
+
     
 
     return true
@@ -99,13 +99,13 @@ export const fetchMyOrders = createAsyncThunk(
 
 
           for (let photo of buffers.data){
-            console.log(photo)
+
             let uintArray = new Uint8Array(photo.data);
             let blob = new Blob([uintArray], { type: 'image/png' });
             let imageUrl = URL.createObjectURL(blob);
             let fileName = 'photo.jpg';
             let file = new File([blob], fileName, { type: 'image/png' });
-            console.log(file)
+
             files.push(file)
           }
         
@@ -144,7 +144,7 @@ export const fetchTasksInformation = createAsyncThunk(
         let tasks = []
         let task = await axios.get('https://back-birga.ywa.su/advertisement/getAllPhotos')
         
-        console.log(task)
+
 
         if (task.data.length === 0){
           return []
@@ -154,11 +154,8 @@ export const fetchTasksInformation = createAsyncThunk(
           for (let order of task.data) {
           
 
-            console.log('приве')
-            console.log('приве')
             let one = new Date(order.startTime)
 
-            console.log('приве')
             let two;
             if (order.endTime){
                two = new Date(order.endTime)
@@ -168,23 +165,19 @@ export const fetchTasksInformation = createAsyncThunk(
             }
             let orderPhotos = []
 
-            console.log('приве')
+
             let files = [];
             
             if (order.files){
-              console.log(order.files)
               for (let photo of order.files){
-                console.log(photo)
                 let uintArray = new Uint8Array(photo.data);
                 let blob = new Blob([uintArray], { type: 'image/png' });
                 let imageUrl = URL.createObjectURL(blob);
                 let fileName = 'photo.jpg';
                 let file = new File([blob], fileName, { type: 'image/png' });
-                console.log(file)
                 files.push(file)
               }
             }
-            console.log(order)
 
             tasks.push({
               taskName : order.title,
@@ -203,7 +196,6 @@ export const fetchTasksInformation = createAsyncThunk(
               
             })
           }
-          console.log('привет')
   
           return tasks
         }

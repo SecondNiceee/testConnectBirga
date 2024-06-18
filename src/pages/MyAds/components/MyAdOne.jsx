@@ -60,7 +60,6 @@ const MyAdOne = ({
             setDetailsActive(false);
           }
           if (buttonId === "save") {
-            console.log('привет')
             if (checkMistakes(changingTaskVar)) {
               let myFormData = new FormData();
               myFormData.append('title' , String(changingTaskVar.taskName))

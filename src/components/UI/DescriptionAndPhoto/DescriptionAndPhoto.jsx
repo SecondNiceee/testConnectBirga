@@ -13,8 +13,11 @@ const DescriptionAndPhoto = ({
   MyInformation,
   textTitle,
   filesTitle,
-  textPlaceholder
+  textPlaceholder,
+  fileError,
+  fileErrorText
 }) => {
+
 
   return (
     <div
@@ -38,7 +41,7 @@ const DescriptionAndPhoto = ({
       </div>
       
       {MyInformation ? (<GreyText className={cl.SecondGreyText}>{filesTitle}</GreyText>) : ''}
-      <FileInput setFiles={setPhotos} files = {photos}  className={MyInformation ? [cl.FileInput , cl.marginTop].join(' ') :  cl.FileInput} />
+      <FileInput fileError = {fileError}  setFiles={setPhotos} files = {photos}  className={MyInformation ? [cl.FileInput , cl.marginTop].join(' ') :  cl.FileInput} />
     </div>
   );
 };

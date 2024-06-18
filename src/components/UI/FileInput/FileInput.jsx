@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 import trash from "../../../images/icons/trash.svg";
-const FileInput = ({ className, files, setFiles }) => {
+const FileInput = ({ className, files, setFiles , fileError }) => {
   const [images, setImages] = useState([]);
   useEffect(() => {
     setImages(files.map((event) => URL.createObjectURL(event)));
@@ -15,10 +15,29 @@ const FileInput = ({ className, files, setFiles }) => {
   }, [myRef.files]);
 
   var device = navigator.userAgent.toLowerCase();
+
+
+  const photoStyle = useMemo( () => {
+    if (fileError){
+      return ({
+        display : 'flex',
+        border : '1px solid red'
+      })
+    }
+    if (images.length === 0){
+      return {
+        display : 'flex'
+      }
+    }
+    return {}
+  }  , [fileError, images] )
+
   return (
+    <>
     <label
+
       htmlFor="file"
-      style={images.length === 0 ? { display: "flex" } : {}}
+      style={photoStyle}
       className={className ? [cl.FileInput, className].join(" ") : cl.FileInput}
     >
       {images.map((e, i) => {
@@ -40,6 +59,7 @@ const FileInput = ({ className, files, setFiles }) => {
           </div>
         );
       })}
+
       <label
         style={images.length === 10 ? { display: "none" } : {}}
         className={images.length !== 0 ? cl.ActiveMainLabel : cl.MainLabel}
@@ -74,7 +94,16 @@ const FileInput = ({ className, files, setFiles }) => {
         </div>
         <p>Добавить фото</p>
       </label>
+      
     </label>
+    {fileError ? 
+      <p className={cl.fileError}>Добавьте хотя бы один пример работы</p>
+      :
+      <> </>
+    }
+
+    </>
+
   );
 };
 

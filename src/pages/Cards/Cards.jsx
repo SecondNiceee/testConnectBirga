@@ -18,29 +18,34 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
         dribbbleLink : '',
         dropfileLink : ''
     })
-    console.log(cardsSetting)
-    console.log('-------------')
     const dispatch = useDispatch()
     const [errors, setErrors] = useState({
-        nameError : false
+        nameError : false,
+        fileError : false
     })
-    useEffect( () => {
-            if (errors.nameError){
-                if (cardsSetting.title.length > 3){
-                    setErrors({nameError : false})
-                }
-            }
-    }, [cardsSetting.title]  )
+
+    function checkMistakes(){
+        let fileError = false
+        let titleError = false
+        if (cardsSetting.title.length < 3){
+            titleError = true
+        }
+        if (cardsSetting.photos.length < 1){
+            fileError = true
+        }
+        setErrors({fileError : fileError , nameError : titleError})
+        let localErrors = {fileError : fileError , nameError : titleError}
+
+        return Object.values(localErrors).every(value => value === false)
+    }
     function saveFunc(){
-            if (cardsSetting.title.length < 3){
-                setErrors({nameError : true})
-            }
-            else{
+            if (checkMistakes()){
                 setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
                 dispatch(addCard(cardsSetting))
                 document.documentElement.style.overflow = 'auto'
                 setCardsOpen(false)
             }
+            
     }
     useEffect(  () => {
         function backFunc(){
@@ -58,15 +63,14 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
                 setCardsOpen(false)
               }
               if (buttonId === "save") {
-                if (cardsSetting.title.length < 3){
-                    setErrors({nameError : true})
-                }
-                else{
+                if (!checkMistakes()){
                     setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
                     dispatch(addCard(cardsSetting))
                     document.documentElement.style.overflow = 'auto'
                     setCardsOpen(false)
                 }
+            
+                
               }
     
     
@@ -91,12 +95,12 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
 
             <h3 className='cards-title'>Новый кейс</h3>
 
-            <button onClick={() => {
+            {/* <button onClick={() => {
                                 setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
                                 dispatch(addCard(cardsSetting))
                                 setCardsOpen(false)
 
-            }}>Сохранить</button>
+            }}>Сохранить</button> */}
             <TaskName 
             placeholder={'Придумайте название для нового кейса'}
             className={'cards-taskName'}
@@ -115,6 +119,7 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
 
 
             <DescriptionAndPhoto
+                fileError={errors.fileError}
                 className={'cards-descriptionAndPhoto'}
                 text={cardsSetting.description}
                 textPlaceholder={'Опишите в чем особенность ваших работ'}
