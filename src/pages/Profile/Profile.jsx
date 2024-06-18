@@ -147,6 +147,7 @@ const Profile = () => {
           MainButton.setParams({
             text : 'Сохранить'
           })
+          MainButton.onClick(save)
           MainButton.show()
       }
       else{
