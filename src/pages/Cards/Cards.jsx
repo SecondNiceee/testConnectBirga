@@ -9,7 +9,7 @@ import MainButton from "../../constants/MainButton";
 import { useDispatch } from "react-redux";
 import { addCard } from "../../store/profile";
 let localCardSetting;
-const Cards = ({ setCardsOpen, setAboutU, aboutU }) => {
+const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
   const [cardsSetting, setCardsSetting] = useState({
     title: "",
     description: "",
@@ -96,8 +96,11 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU }) => {
     BackButton.show();
     BackButton.onClick(backFunc);
     return () => {
-            
+        MainButton.offClick(saveFunc)
+        MainButton.onClick(save)
+        MainButton.setText('Сохранить')
         BackButton.offClick(backFunc);
+        
       };
   } )
 

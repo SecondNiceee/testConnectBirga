@@ -99,12 +99,12 @@ const Profile = () => {
 
   }, []  )
 
+  const save = useCallback( () => {
+    dispatch(changeProfile(aboutU))
+    MainButton.hide()
+  } , [] )
+
   useEffect( () => {
-    function save(){
-        dispatch(changeProfile(aboutU))
-        MainButton.hide()
-        // Еще одна функция , чтобы занести данные на сервер
-    }
     if (!cardsActive){
         console.log(aboutMe.cards.join(''))
         console.log(aboutU.cards.join(''))
@@ -339,7 +339,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <Cards aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
+            <Cards save = {save} aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
         </CSSTransition>
 
 
