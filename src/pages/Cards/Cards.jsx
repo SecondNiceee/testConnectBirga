@@ -42,6 +42,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
 
       if (Object.values(localErrors).every(value => value === false))
         {
+            console.log('хай хай')
             MainButton.setParams({
                 color : "#2f2f2f",
                 text_color : "#606060"
