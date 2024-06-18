@@ -240,7 +240,7 @@ const Profile = () => {
         console.log(aboutU.cards.join('') === aboutMe.cards.join(''))
         let isIt = require('lodash')
 
-      if ( !isIt(aboutMe, aboutU) ){
+      if ( !isIt.isEqual(aboutMe, aboutU) ){
           console.log('я тут')
           MainButton.setParams({
             text : 'Сохранить'
