@@ -149,7 +149,7 @@ const Profile = () => {
         text_color : '#000000'
       })
     }
-  } , [aboutU, cardsActive] )
+  }  )
 
 
   useEffect(() => {
