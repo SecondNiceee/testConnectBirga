@@ -110,7 +110,8 @@ const Profile = () => {
         console.log(aboutMe.cards.join(''))
         console.log(aboutU.cards.join(''))
         console.log(aboutU.cards.join('') === aboutMe.cards.join(''))
-      if (JSON.stringify(aboutMe) !== JSON.stringify(aboutU) || aboutMe.cards.join('') !== aboutU.cards.join('')){
+      if ( (JSON.stringify(aboutMe) !== JSON.stringify(aboutU)) || (aboutMe.cards.join('') !== aboutU.cards.join('')) ){
+          console.log('я тут')
           MainButton.show()
           MainButton.setText('Cохранить')
           MainButton.onClick(save)
