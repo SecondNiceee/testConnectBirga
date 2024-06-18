@@ -8,7 +8,7 @@ import BackButton from '../../constants/BackButton';
 import MainButton from '../../constants/MainButton';
 import { useDispatch } from 'react-redux';
 import { addCard } from '../../store/profile';
-
+let localCardSetting
 const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
     const [cardsSetting , setCardsSetting] = useState({
         title : '',
@@ -23,14 +23,17 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
         nameError : false,
         fileError : false
     })
+    localCardSetting = cardsSetting
 
     function checkMistakes(){
         let fileError = false
         let titleError = false
-        if (cardsSetting.title.length < 3){
+
+        
+        if (localCardSetting.title.length < 3){
             titleError = true
         }
-        if (cardsSetting.photos.length < 1){
+        if (localCardSetting.photos.length < 1){
             fileError = true
         }
         setErrors({fileError : fileError , nameError : titleError})
