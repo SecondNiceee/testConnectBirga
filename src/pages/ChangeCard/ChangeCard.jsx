@@ -82,44 +82,10 @@ const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
 
     useEffect(  () => {
         function backFunc(){
-            window.Telegram.WebApp
-            .showPopup({
-              title: "Сохранить?",
-              message: "Сохранить изменения кейса перед выходом?",
-              buttons: [
-                { id: "save", type: "default", text: "Да" },
-                { id: "delete", type: "destructive", text: "Нет" },
-              ],
-            } , (buttonId) => {
-    
-              if (buttonId === "delete" || buttonId === null) {
-                setCardsOpen(false)
-              }
-              if (buttonId === "save") {
-                if (checkMistakes()){
-                    setAboutU({...aboutU, cards : [...aboutU.cards.map((e, i) => {
-                        if (i === index){
-                            return cardsSetting
-                        }
-                        else{
-                            return e
-                        }
-                    })] })
-                    dispatch(changeCards({id : index , card : cardsSetting}))
-
-                    document.documentElement.style.overflow = 'auto'
-                    setCardsOpen(false)
-                }
-                
-              }
-    
-    
-            } )
-
-
-
+            document.documentElement.style.overflow = 'auto'
+            setCardsOpen(false)
         }
-
+        
         MainButton.show()
         MainButton.setText('Изменить кейс')
         MainButton.onClick(saveFunc)
@@ -129,7 +95,7 @@ const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
             MainButton.hide()
             BackButton.offClick(backFunc)
         }
-    } , [] )
+    } , )
     return (
         <div className='cards'>
 

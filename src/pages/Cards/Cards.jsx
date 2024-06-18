@@ -77,6 +77,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
 
 
   function backFunc() {
+      document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
   }
 
