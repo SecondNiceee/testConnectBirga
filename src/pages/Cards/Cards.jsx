@@ -77,16 +77,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
 
 
   function backFunc() {
-
-    if (!checkMistakes()) {
-        setAboutU({
-          ...aboutU,
-          cards: [...aboutU.cards, localCardSetting],
-        });
-        // dispatch(addCard(localCardSetting));
-        document.documentElement.style.overflow = "auto";
-        setCardsOpen(false);
-      }
+      setCardsOpen(false);
   }
 
   useEffect( () => {
