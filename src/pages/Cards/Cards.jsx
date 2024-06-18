@@ -45,8 +45,8 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
             console.log('вызов saveFunc')
             if (checkMistakes()){
                 console.log('попал сюда..')
-                setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
-                dispatch(addCard(cardsSetting))
+                setAboutU({...aboutU, cards : [...aboutU.cards , localCardSetting] })
+                dispatch(addCard(localCardSetting))
                 document.documentElement.style.overflow = 'auto'
                 setCardsOpen(false)
             }
