@@ -69,8 +69,8 @@ const Cards = ({setCardsOpen, setAboutU , aboutU}) => {
               }
               if (buttonId === "save") {
                 if (!checkMistakes()){
-                    setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
-                    dispatch(addCard(cardsSetting))
+                    setAboutU({...aboutU, cards : [...aboutU.cards , localCardSetting] })
+                    dispatch(addCard(localCardSetting))
                     document.documentElement.style.overflow = 'auto'
                     setCardsOpen(false)
                 }
