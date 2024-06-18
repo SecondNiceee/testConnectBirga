@@ -45,6 +45,7 @@ const Profile = () => {
   const setMenuActive = (arg) => {
     dispatch(changeMenuActive(arg));
   };
+  
 
   
 
@@ -66,9 +67,9 @@ const Profile = () => {
     stage: 0,
     cards : []
   });
+  aboutMeLocal = aboutU
 
 
-  console.log(aboutU)
 
   useEffect(  () => {
     console.log(aboutMe)
@@ -99,8 +100,10 @@ const Profile = () => {
 
   }, []  )
 
+  
+
   const save = useCallback( () => {
-    dispatch(changeProfile(aboutU))
+    dispatch(changeProfile(aboutMeLocal))
     MainButton.hide()
   } , [] )
 
