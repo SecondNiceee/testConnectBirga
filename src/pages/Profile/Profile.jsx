@@ -104,7 +104,6 @@ const Profile = () => {
         dispatch(changeProfile(aboutU))
         MainButton.hide()
         // Еще одна функция , чтобы занести данные на сервер
-
     }
     if (!cardsActive){
         console.log(aboutMe.cards.join(''))
@@ -112,9 +111,10 @@ const Profile = () => {
         console.log(aboutU.cards.join('') === aboutMe.cards.join(''))
       if ( (JSON.stringify(aboutMe) !== JSON.stringify(aboutU)) || (aboutMe.cards.join('') !== aboutU.cards.join('')) ){
           console.log('я тут')
+          MainButton.setParams({
+            text : 'Сохранить'
+          })
           MainButton.show()
-          MainButton.setText('Cохранить')
-          MainButton.onClick(save)
       }
       else{
         MainButton.hide()
@@ -149,7 +149,7 @@ const Profile = () => {
         text_color : '#000000'
       })
     }
-  }  )
+  }, [aboutU , changeActive]  )
 
 
   useEffect(() => {
