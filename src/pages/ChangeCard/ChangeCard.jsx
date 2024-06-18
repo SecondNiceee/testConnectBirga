@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { addCard, changeCards } from '../../store/profile';
 
 const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
+    console.log(index)
     const [cardsSetting , setCardsSetting] = useState({
         title : card.title,
         description : card.description,

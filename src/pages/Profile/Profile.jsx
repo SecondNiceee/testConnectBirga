@@ -36,6 +36,7 @@ const variants = {
 };
 
 let index = 0
+let aboutMeLocal = null
 const Profile = () => {
   const aboutMe = useSelector( state => state.profile.profile  )
 
@@ -45,6 +46,7 @@ const Profile = () => {
     dispatch(changeMenuActive(arg));
   };
 
+  
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
 
@@ -65,6 +67,8 @@ const Profile = () => {
     cards : []
   });
 
+
+  console.log(aboutU)
 
   useEffect(  () => {
     console.log(aboutMe)

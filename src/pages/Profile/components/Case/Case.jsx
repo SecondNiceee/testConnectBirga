@@ -30,9 +30,9 @@ const Case = ({ className, title , description , photos, changeFunction, deleteF
           <p>Категория: Дизайн</p>
         </div>
         <div className={cl.caseRight}
-        onClick={deleteFunction}
+
         >
-          <div className={cl.circle}>
+          <div onClick={deleteFunction} className={cl.circle}>
             <svg
               width="15"
               height="16"
