@@ -291,7 +291,7 @@ const Profile = () => {
             setAboutU({...aboutU , cards : [...aboutU.cards.filter((e , i) => {
               return i !== index
             })]})
-            dispatch(deleteCard(index))
+            // dispatch(deleteCard(index))
             
           }}
 
