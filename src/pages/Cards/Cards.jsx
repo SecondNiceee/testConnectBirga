@@ -69,6 +69,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU }) => {
     //   dispatch(addCard(localCardSetting));
       document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
+      setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
     }
     console.log("я тут");
   }
