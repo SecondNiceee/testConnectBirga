@@ -391,7 +391,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <ChangeCards index={index}  card={aboutU.cards[index]}  aboutU={aboutULocal} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
+            <ChangeCards save={save} index={index}  card={aboutU.cards[index]}  aboutU={aboutULocal} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
         </CSSTransition>
         
     </motion.div>

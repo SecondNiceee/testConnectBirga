@@ -16,7 +16,7 @@ let mainLocalErrors;
 let inputObject = {
   text: "",
 };
-const ChangeCards = ({ setCardsOpen, setAboutU, index, card, aboutU }) => {
+const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   const [cardsSetting, setCardsSetting] = useState({
     title: card.title,
     description: card.description,
@@ -109,6 +109,10 @@ const ChangeCards = ({ setCardsOpen, setAboutU, index, card, aboutU }) => {
     document.documentElement.style.overflow = "auto";
     setCardsOpen(false);
   }
+
+
+
+
   useEffect(() => {
       
     MainButton.show();
@@ -117,8 +121,11 @@ const ChangeCards = ({ setCardsOpen, setAboutU, index, card, aboutU }) => {
     MainButton.onClick(saveFunc);
     BackButton.onClick(backFunc);
     return () => {
-        MainButton.hide();
+        MainButton.offClick(saveFunc)
         BackButton.offClick(backFunc);
+        MainButton.onClick(save)
+        MainButton.setText('Сохранить')
+
     };
 }, []);
   return (
