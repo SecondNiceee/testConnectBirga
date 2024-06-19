@@ -164,7 +164,7 @@ const Profile = () => {
 
         console.log(aboutMeLocal)
         console.log(aboutU)
-        console.log(compare2Objects(aboutMe, aboutU))
+        console.log(compare2Objects(aboutMeLocal, aboutULocal))
 
       if ( compare2Objects(aboutMeLocal, aboutULocal) === false ){
           console.log('я тут')
