@@ -133,72 +133,86 @@ export const fetchTasksInformation = createAsyncThunk(
   'information/fetchTasksInformation' , 
   async function (par){
 
-        const urlToObject= async(image)=> {
-          const response = await fetch(image);
-          // here image is url/location of image
-          const blob = await response.blob();
-          const file = new File([blob], image, {type: blob.type});
-          return file
+        // const urlToObject= async(image)=> {
+        //   const response = await fetch(image);
+        //   // here image is url/location of image
+        //   const blob = await response.blob();
+        //   const file = new File([blob], image, {type: blob.type});
+        //   return file
+        // }
+        console.log('вызывали')
+        let tasks = []
+        let task;
+        try{
+
+           task = await axios.get('https://back-birga.ywa.su/advertisement/getAllPhotos')
+        }
+        catch (e){
+          console.log(e)
         }
 
-        let tasks = []
-        let task = await axios.get('https://back-birga.ywa.su/advertisement/getAllPhotos')
-        
-
+        console.warn(task.data)
 
         if (task.data.length === 0){
           return []
         }
         else{
-  
-          for (let order of task.data) {
-          
+          try{
 
-            let one = new Date(order.startTime)
-
-            let two;
-            if (order.endTime){
-               two = new Date(order.endTime)
-            }
-            else{
-               two = ""
-            }
-            let orderPhotos = []
-
-
-            let files = [];
+            for (let order of task.data) {
             
-            if (order.files){
-              for (let photo of order.files){
-                let uintArray = new Uint8Array(photo.data);
-                let blob = new Blob([uintArray], { type: 'image/png' });
-                let imageUrl = URL.createObjectURL(blob);
-                let fileName = 'photo.jpg';
-                let file = new File([blob], fileName, { type: 'image/png' });
-                files.push(file)
-              }
-            }
-
-            tasks.push({
-              taskName : order.title,
-              executionPlace: "Можно выполнить удаленно",
-              time : {start : one , end : two},
-              tonValue : order.price,
-              taskDescription : order.description,
-              photos : files,
-              customerName : order.user.fl,
-              userPhoto : order.user.photo || "",
-              rate : '5',
-              customerName : order.user.fl,
-              isActive : true,
-              creationTime : order.createdAt,
-              viewsNumber : '50',
-              
-            })
-          }
   
+              let one = new Date(order.startTime)
+  
+              let two;
+              if (order.endTime){
+                 two = new Date(order.endTime)
+              }
+              else{
+                 two = ""
+              }
+              let orderPhotos = []
+  
+  
+              let files = [];
+              
+              if (order.files){
+                for (let photo of order.files){
+                  let uintArray = new Uint8Array(photo.data);
+                  let blob = new Blob([uintArray], { type: 'image/png' });
+                  let imageUrl = URL.createObjectURL(blob);
+                  let fileName = 'photo.jpg';
+                  let file = new File([blob], fileName, { type: 'image/png' });
+                  files.push(file)
+                }
+              }
+  
+              tasks.push({
+                taskName : order.title,
+                executionPlace: "Можно выполнить удаленно",
+                time : {start : one , end : two},
+                tonValue : order.price,
+                taskDescription : order.description,
+                photos : files,
+                customerName : order.user.fl,
+                userPhoto : order.user.photo || "",
+                rate : '5',
+                customerName : order.user.fl,
+                isActive : true,
+                creationTime : order.createdAt,
+                viewsNumber : '50',
+                
+              })
+            }
+    
+
+          }
+          catch (e) {
+              console.warn(e)
+          }
           return tasks
         }
+        return false
   }
  )
 const information = createSlice( {
