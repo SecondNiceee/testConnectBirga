@@ -119,6 +119,29 @@ const Profile = () => {
 
 
   useEffect( () => {
+
+
+    function compare2Objects (x, y) {
+      if (JSON.stringify(x) !== JSON.stringify(y)){
+        return false
+      }
+      if (x.cards.length !== y.cards.length){
+        return false
+      }
+      else{
+        for (let xCard of x.cards){
+          for (let yCard of y.cards){
+            if (JSON.stringify(xCard) !== JSON.stringify(yCard)){
+              return false
+            }
+          }
+        }
+      }
+      return true;
+    }
+
+
+
     if (!cardsActive && !changeActive){
 
 
@@ -128,15 +151,12 @@ const Profile = () => {
 
 
 
-        let isIt = require('deep-equal')
 
         console.log(aboutMeLocal)
         console.log(aboutU)
-        console.log(isIt(aboutMe, aboutU))
+        console.log(compare2Objects(aboutMe, aboutU))
 
-
-
-      if ( isIt(aboutMeLocal, aboutULocal) === false ){
+      if ( compare2Objects(aboutMeLocal, aboutULocal) === false ){
           console.log('я тут')
           MainButton.setParams({
             text : 'Сохранить',
