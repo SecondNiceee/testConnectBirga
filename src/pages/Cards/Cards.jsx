@@ -71,6 +71,9 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
     
   }, [cardsSetting.title, cardsSetting.photos]);
 
+
+
+
   localCardSetting = cardsSetting;
 
   function checkMistakes() {
@@ -126,7 +129,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
         BackButton.offClick(backFunc);
         
       };
-  } )
+  }, [] )
 
   return (
     <div className="cards">
