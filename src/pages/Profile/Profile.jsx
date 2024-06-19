@@ -72,11 +72,7 @@ const Profile = () => {
   const [update , setUpdate] = useState(false)
 
   
-  const [aboutU, setAboutU] = useState({
-    about: "Просто чувачок",
-    stage: 0,
-    cards : []
-  });
+  const [aboutU, setAboutU] = useState(aboutMe);
 
 
   aboutULocal = aboutU
@@ -86,10 +82,6 @@ const Profile = () => {
 
   useEffect(  () => {
     
-    console.log(aboutMe)
-
-    setAboutU(aboutMe)
-
     let numb = String(aboutMe.stage).slice(1,2)
 
     const numberInput = document.getElementById('numberInput')
@@ -127,7 +119,7 @@ const Profile = () => {
 
 
   useEffect( () => {
-    if (!cardsActive){
+    if (!cardsActive && !changeActive){
 
 
         console.log(aboutMe.cards.join(''))

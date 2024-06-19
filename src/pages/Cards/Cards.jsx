@@ -132,9 +132,9 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
     BackButton.onClick(backFunc);
     return () => {
         MainButton.offClick(saveFunc)
+        BackButton.offClick(backFunc);
         MainButton.onClick(save)
         MainButton.setText('Сохранить')
-        BackButton.offClick(backFunc);
         
       };
   }, [] )
@@ -195,7 +195,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
                 console.log(this.text)
                 setCardsSetting({...cardsSetting , behanceLink : e})
               },
-              placeholder : 'Введите ссылку на behance',
+              placeholder : 'Введите ссылку на Behance',
             }
             setModalActive(true)
           }
@@ -206,12 +206,11 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
         <div className="behans-link cards-link" onClick={
           () => {
             inputObject = {
-              text : cardsSetting.behanceLink,
+              text : cardsSetting.dribbbleLink,
               setText : function(e){
-                console.log(this.text)
                 setCardsSetting({...cardsSetting , dribbbleLink : e})
               },
-              placeholder : 'Введите ссылку на Behance',
+              placeholder : 'Введите ссылку на Dribble',
             }
             setModalActive(true)
           }
@@ -222,12 +221,12 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
         <div className="behans-link cards-link" onClick={
           () => {
             inputObject = {
-              text : cardsSetting.behanceLink,
+              text : cardsSetting.dropfileLink,
               setText : function(e){
                 console.log(this.text)
                 setCardsSetting({...cardsSetting , dropfileLink : e})
               },
-              placeholder : 'Введите ссылку на Dribbble',
+              placeholder : 'Введите ссылку на Dropfile',
             }
             setModalActive(true)
           }
