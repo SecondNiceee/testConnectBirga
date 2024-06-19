@@ -69,6 +69,8 @@ const Profile = () => {
 
   const [changeActive , setChangeActive] = useState(false)
 
+  const [update , setUpdate] = useState(false)
+
   
   const [aboutU, setAboutU] = useState({
     about: "Просто чувачок",
@@ -119,7 +121,7 @@ const Profile = () => {
   const save = useCallback( () => {
     console.log(aboutULocal)
     dispatch(changeProfile(aboutULocal))
-    setAboutU(...aboutULocal)
+    setUpdate(!update)
   } , [aboutU] )
 
 
@@ -188,7 +190,7 @@ const Profile = () => {
         text_color : '#ffffff'
       })
     }
-  }, [aboutU , changeActive]  )
+  }, [aboutU , changeActive, update]  )
 
 
   
