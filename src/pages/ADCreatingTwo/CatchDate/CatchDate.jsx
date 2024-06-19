@@ -56,7 +56,7 @@ return (
         setState({...state, isOpen : true , isSingleOpen : true})
       }} 
         htmlFor="startOnly" ref={ref1} className={['DateTimePicker' , 'flexStart'].join(' ')} 
-        style={errors.singleError ? {border : '1px solid red'} : {}}
+        style={errors.singleError ? {border : '1px solid #FF6767'} : {}}
         >
         <div className={'left'}>
           <img className={'leftImage'} src={dateIcon} alt="" />
@@ -81,7 +81,7 @@ return (
               onClick = {() => {
                 setState({...state, isOpen : true , isStartOpen : true})
               }} 
-         className={'DateTimePicker'}   style={errors.startError ? {border : '1px solid red'} : {}} >
+         className={'DateTimePicker'}   style={errors.startError ? {border : '1px solid #FF6767'} : {}} >
           <div className={'left'}>
             <img className={'leftImage'} src={dateIcon} alt="" />
             <p className={'text'}>
@@ -102,7 +102,7 @@ return (
                       onClick = {() => {
                         setState({...state, isOpen : true , isEndOpen : true})
                       }} 
-                      style={errors.endError ? {border : '1px solid red'} : {}}
+                      style={errors.endError ? {border : '1px solid #FF6767'} : {}}
         >
           
           <div className={'left'}>

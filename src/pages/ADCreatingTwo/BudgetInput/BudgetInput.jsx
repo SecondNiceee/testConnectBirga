@@ -95,7 +95,7 @@ const BudgetInput = ({
       )
       :
           <div className={cl.bottomTextContainer}>
-            <p className={cl.text} style={{color : 'red'}}>
+            <p className={cl.text} style={{color : '#FF6767'}}>
               Сумма должна быть больше 0.5 тонн
               </p>
           </div>

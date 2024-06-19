@@ -6,7 +6,7 @@ const StartOn = ({className , text, title , mistakes,  props}) => {
     return (
         <div {...props} className={className ? [cl.startOnContainer , className].join(' ') : cl.startOnContainer}>
             <p className={cl.greyText}>{title}</p>
-        <div style={mistakes.timeError ? {border : '1px solid red'} : {}} className={cl.startOn}>
+        <div style={mistakes.timeError ? {border : '1px solid #FF6767'} : {}} className={cl.startOn}>
             <div className={cl.startOnLeft}>
                 <img className={cl.dateIcon} src={DateIcon} alt="" />
                 <p className={cl.startText}>{text}</p>

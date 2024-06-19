@@ -17,12 +17,12 @@ const FileInput = ({ className, files, setFiles , fileError }) => {
   var device = navigator.userAgent.toLowerCase();
 
   console.log(files)
-  
+
   const photoStyle = useMemo( () => {
     if (fileError){
       return ({
         display : 'flex',
-        border : '1px solid red'
+        border : '1px solid #FF6767'
       })
     }
     if (images.length === 0){

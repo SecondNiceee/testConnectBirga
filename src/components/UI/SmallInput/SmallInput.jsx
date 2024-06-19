@@ -4,7 +4,7 @@ const SmallInput = ({value , setValue,  mistake, mistakeText,  ...props}) => {
     return (
         <>
             <input style={mistake ? {
-                border : '1px solid red'
+                border : '1px solid #FF6767'
             } :
             {}
         }  {...props}   placeholder='Укажите свой стаж работы в годах' className={cl.smallInput}  value={value} onChange={(e) => {
