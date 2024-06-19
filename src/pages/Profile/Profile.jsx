@@ -128,7 +128,7 @@ const Profile = () => {
 
 
 
-        let isIt = require('lodash')
+        let isIt = require('deep-equal')
 
         console.log(aboutMeLocal)
         console.log(aboutU)
@@ -136,7 +136,7 @@ const Profile = () => {
 
 
 
-      if ( isIt.isEqual(aboutMeLocal, aboutULocal) === false ){
+      if ( isIt(aboutMeLocal, aboutULocal) === false ){
           console.log('я тут')
           MainButton.setParams({
             text : 'Сохранить',
