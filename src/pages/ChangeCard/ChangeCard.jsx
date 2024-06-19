@@ -126,7 +126,7 @@ function checkMistakes() {
             MainButton.hide()
             BackButton.offClick(backFunc)
         }
-    }  )
+    } , [] )
     return (
         <div className='cards'>
 
