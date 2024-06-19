@@ -10,6 +10,7 @@ import { useDispatch } from "react-redux";
 import { addCard } from "../../store/profile";
 import { color } from "framer-motion";
 let localCardSetting;
+let mainLocalErrors ;
 const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
   const [cardsSetting, setCardsSetting] = useState({
     title: "",
@@ -24,6 +25,8 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
     nameError: false,
     fileError: false,
   });
+  mainLocalErrors = errors
+  
 
   useEffect(() => {
       let photos = false;
@@ -39,13 +42,17 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
     //     setErrors(localErrors);
     //   }
 
-
+      if (Object.values(mainLocalErrors).includes(true)){
+        setErrors(localErrors)
+      }
 
 
 
       function showMistakes(){
         setErrors(localErrors);
       }
+
+
       
       if (!Object.values(localErrors).every(value => value === false))
         {
