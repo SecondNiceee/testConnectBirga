@@ -132,7 +132,7 @@ const Profile = () => {
 
         console.log(aboutMeLocal)
         console.log(aboutU)
-        console.log(isIt.isEqual(aboutMe, aboutU))
+        console.log(isIt(aboutMe, aboutU))
 
 
 
