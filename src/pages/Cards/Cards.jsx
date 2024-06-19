@@ -47,9 +47,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
 
 
 
-      function showMistakes(){
-        setErrors(localErrors);
-      }
 
 
       
@@ -60,14 +57,12 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
                 color : "#2f2f2f",
                 text_color : "#606060"
             })
-            MainButton.offClick(showMistakes)
         }
       else{
         MainButton.setParams({
             color : "#2EA6FF",
             text_color : "#ffffff"
         })
-        MainButton.onClick(showMistakes)
       }
     
 
@@ -117,7 +112,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
   useEffect(() => {
     MainButton.show();
     BackButton.show()
-  } , [])
+  } )
   useEffect( () => {
     MainButton.setText("Добавить кейс");
     MainButton.onClick(saveFunc);
