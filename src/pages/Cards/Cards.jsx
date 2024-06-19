@@ -160,7 +160,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     <div className="cards">
       <h3 className="cards-title">Новый кейс</h3>
 
-      <Categories className={'cards-categorys'} categoryOnly={true}  taskInformation={localCardSetting} setCatagoryChoiceOpen={setCatagoryChoiceOpen}  />
+      <Categories className='cards-categorys' categoryOnly={true}  taskInformation={localCardSetting} setCatagoryChoiceOpen={setCatagoryChoiceOpen}  />
 
 
 
