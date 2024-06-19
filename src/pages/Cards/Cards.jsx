@@ -38,10 +38,9 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
         photos = true;
       }
       let localErrors = { nameError: title, fileError: photos };
-    //   if (JSON.stringify({ localErrors }) !== JSON.stringify(errors)) {
-    //     setErrors(localErrors);
-    //   }
 
+      console.log(Object.values(mainLocalErrors))
+      console.log(Object.values(mainLocalErrors).includes(true))
       if (Object.values(mainLocalErrors).includes(true)){
         setErrors(localErrors)
       }
