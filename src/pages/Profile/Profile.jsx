@@ -271,23 +271,23 @@ const Profile = () => {
   } , [aboutU.stage] )
 
   const onFocusFunc = useCallback( (e) => {
-    e.target.value = String(aboutU.stage).split(' ')[0]
+    e.target.value = String(aboutULocal.stage).split(' ')[0]
   } , [aboutU.stage] )
 
   const setValueFunc = useCallback(  (e) => {
     if (e.slice(0,1) !== '0'){
 
-      setAboutU({ ...aboutU, stage: Number(e) });
+      setAboutU({ ...aboutULocal, stage: Number(e) });
     }
     else{
       if(e !== '00'){
-        setAboutU({...aboutU , stage : Number(e.slice(1,2))})
+        setAboutU({...aboutULocal , stage : Number(e.slice(1,2))})
       }
       else{
-        setAboutU({...aboutU , stage : 0})
+        setAboutU({...aboutULocal , stage : 0})
       }
     }
-  } , [aboutU.stage]  )
+  } , [aboutU.stage , aboutU.about]  )
 
 
   console.log(aboutULocal)
@@ -325,7 +325,7 @@ const Profile = () => {
           
           value={aboutULocal.about}
           setValue={(e) => {
-            setAboutU({ ...aboutU, about: e });
+            setAboutU({ ...aboutULocal, about: e });
           }}
         />
       </Compact>
