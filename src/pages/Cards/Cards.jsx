@@ -9,8 +9,13 @@ import MainButton from "../../constants/MainButton";
 import { useDispatch } from "react-redux";
 import { addCard } from "../../store/profile";
 import { color } from "framer-motion";
+import { CSSTransition } from "react-transition-group";
+import ModalInput from "../../components/UI/ModalInput/ModalInput";
 let localCardSetting;
 let mainLocalErrors ;
+let inputObject = {
+  text : ''
+}
 const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
   const [cardsSetting, setCardsSetting] = useState({
     title: "",
@@ -20,11 +25,14 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
     dribbbleLink: "",
     dropfileLink: "",
   });
-  const dispatch = useDispatch();
+
+  const [update , setUpdate] = useState(null)
+
   const [errors, setErrors] = useState({
     nameError: false,
     fileError: false,
   });
+  const [modalActive , setModalActive] = useState(false)
   mainLocalErrors = errors
   
 
@@ -131,6 +139,9 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
       };
   }, [] )
 
+
+  console.log('рендер')
+
   return (
     <div className="cards">
       <h3 className="cards-title">Новый кейс</h3>
@@ -176,20 +187,68 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
       </p>
 
       <div className="cards-links">
-        <div className="behans-link cards-link">
+        <div className="behans-link cards-link" onClick={
+          () => {
+            inputObject = {
+              text : cardsSetting.behanceLink,
+              setText : function(e){
+                console.log(this.text)
+                setCardsSetting({...cardsSetting , behanceLink : e})
+              },
+              placeholder : 'Введите ссылку на behance',
+            }
+            setModalActive(true)
+          }
+        }>
           <img src={behanceIcon} alt="" />
-          <p>Ссылка на Behance</p>
+          <p>{localCardSetting.behanceLink.length > 0 ? localCardSetting.behanceLink : 'Ссылка на Behance'}</p>
         </div>
-        <div className="behans-link cards-link">
+        <div className="behans-link cards-link" onClick={
+          () => {
+            inputObject = {
+              text : cardsSetting.behanceLink,
+              setText : function(e){
+                console.log(this.text)
+                setCardsSetting({...cardsSetting , dribbbleLink : e})
+              },
+              placeholder : 'Введите ссылку на Behance',
+            }
+            setModalActive(true)
+          }
+        }>
           <img src={dripleIcon} alt="" />
-          <p>Ссылка на Dribbble</p>
+          <p>{localCardSetting.dribbbleLink.length > 0 ? localCardSetting.dribbbleLink : 'Ссылка на Dribbble'}</p>
         </div>
-        <div className="behans-link cards-link">
+        <div className="behans-link cards-link" onClick={
+          () => {
+            inputObject = {
+              text : cardsSetting.behanceLink,
+              setText : function(e){
+                console.log(this.text)
+                setCardsSetting({...cardsSetting , dropfileLink : e})
+              },
+              placeholder : 'Введите ссылку на Dribbble',
+            }
+            setModalActive(true)
+          }
+        }>
           <img src={dropfileIcon} alt="" />
-          <p>Ссылка на Dropfile</p>
+          <p>{cardsSetting.dropfileLink.length > 0 ? cardsSetting.dropfileLink : 'Ссылка на Dprofile'}</p>
         </div>
       </div>
+
+      <CSSTransition
+              mountOnEnter
+              unmountOnExit
+              classNames={'cardsModal'}
+              in = {modalActive}
+              timeout={0}
+      >
+        <ModalInput setModal={setModalActive} setting={inputObject} />
+      </CSSTransition>
     </div>
+
+    
   );
 };
 
