@@ -55,13 +55,15 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
             console.log('хай хай')
             MainButton.setParams({
                 color : "#2f2f2f",
-                text_color : "#606060"
+                text_color : "#606060",
+                is_visible : true
             })
         }
       else{
         MainButton.setParams({
             color : "#2EA6FF",
-            text_color : "#ffffff"
+            text_color : "#ffffff",
+            is_visible : true
         })
       }
     

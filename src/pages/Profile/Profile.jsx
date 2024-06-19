@@ -145,7 +145,8 @@ const Profile = () => {
       if ( !isIt.isEqual(aboutMeLocal, aboutU) ){
           console.log('я тут')
           MainButton.setParams({
-            text : 'Сохранить'
+            text : 'Сохранить',
+            is_visible : true
           })
           MainButton.onClick(save)
           MainButton.show()
@@ -159,7 +160,8 @@ const Profile = () => {
         MainButton.setParams({
           
           color : '#2f2f2f',
-          text_color : '#606060'
+          text_color : '#606060',
+          is_visible : true
         })
         setErrors({...errors , stageError : true})
       }
@@ -169,6 +171,7 @@ const Profile = () => {
           setErrors({...errors , stageError : false})
         }
         MainButton.setParams({
+          is_visible : true,
           color : '#2ea5ff',
           text_color : '#ffffff'
           
