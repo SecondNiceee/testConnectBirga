@@ -386,7 +386,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <Cards save = {save} aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
+            <Cards save = {save} aboutU={aboutMeLocal} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
         </CSSTransition>
 
 
@@ -399,7 +399,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <ChangeCards index={index}  card={aboutU.cards[index]}  aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
+            <ChangeCards index={index}  card={aboutU.cards[index]}  aboutU={aboutULocal} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
         </CSSTransition>
         
     </motion.div>

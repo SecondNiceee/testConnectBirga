@@ -92,7 +92,7 @@ const ChangeCards = ({ setCardsOpen, setAboutU, index, card, aboutU }) => {
         cards: [
           ...aboutU.cards.map((e, i) => {
             if (i === index) {
-              return cardsSetting;
+              return localCardSetting;
             } else {
               return e;
             }
@@ -114,13 +114,13 @@ const ChangeCards = ({ setCardsOpen, setAboutU, index, card, aboutU }) => {
     MainButton.show();
     MainButton.setText("Изменить кейс");
     BackButton.show();
+    MainButton.onClick(saveFunc);
+    BackButton.onClick(backFunc);
     return () => {
         MainButton.hide();
         BackButton.offClick(backFunc);
     };
 }, []);
-    MainButton.onClick(saveFunc);
-    BackButton.onClick(backFunc);
   return (
     <div className="cards">
       <h3 className="cards-title">{cardsSetting.title}</h3>
