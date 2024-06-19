@@ -323,7 +323,7 @@ const Profile = () => {
       <Compact title={"О себе"} className={"compact-block"}>
         <SmallTextarea
           
-          value={aboutU.about}
+          value={aboutULocal.about}
           setValue={(e) => {
             setAboutU({ ...aboutU, about: e });
           }}
@@ -340,7 +340,7 @@ const Profile = () => {
           onFocus = {onFocusFunc}
           inputMode = "numeric"
           // type = "number"
-          value={aboutU.stage}
+          value={aboutULocal.stage}
           setValue={setValueFunc}
         />
       </Compact>
