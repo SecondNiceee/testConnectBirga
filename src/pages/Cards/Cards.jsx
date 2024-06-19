@@ -114,11 +114,13 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
       setCardsOpen(false);
   }
 
-  useEffect( () => {
+  useEffect(() => {
     MainButton.show();
+    BackButton.show()
+  } , [])
+  useEffect( () => {
     MainButton.setText("Добавить кейс");
     MainButton.onClick(saveFunc);
-    BackButton.show();
     BackButton.onClick(backFunc);
     return () => {
         MainButton.offClick(saveFunc)
