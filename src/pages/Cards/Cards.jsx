@@ -6,17 +6,26 @@ import dripleIcon from "../../images/icons/Dribble.svg";
 import dropfileIcon from "../../images/icons/Dropfile.svg";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCard } from "../../store/profile";
 import { color } from "framer-motion";
 import { CSSTransition } from "react-transition-group";
 import ModalInput from "../../components/UI/ModalInput/ModalInput";
+import Categories from "../AdCreatingOne/Categories/Categories";
+import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
 let localCardSetting;
 let mainLocalErrors ;
 let inputObject = {
   text : ''
 }
-const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
+const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
+
+  
+  const categorys = useSelector((state) => state.categorys.category);
+
+  const subCategorys = useSelector((state) => state.categorys.subCategory);
+
+
   const [cardsSetting, setCardsSetting] = useState({
     title: "",
     description: "",
@@ -24,6 +33,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
     behanceLink: "",
     dribbbleLink: "",
     dropfileLink: "",
+    category : categorys.find((e) => e.category === "Другое")
   });
 
   const [update , setUpdate] = useState(null)
@@ -33,6 +43,10 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
     fileError: false,
   });
   const [modalActive , setModalActive] = useState(false)
+
+  const [isCategoryChoiceOpen, setCatagoryChoiceOpen] = useState(false);
+
+
   mainLocalErrors = errors
   
 
@@ -110,7 +124,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
     //   dispatch(addCard(localCardSetting));
       document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
-      setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
     }
     console.log("я тут");
   }
@@ -141,10 +154,15 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
 
 
   console.log('рендер')
+  console.log(localCardSetting)
 
   return (
     <div className="cards">
       <h3 className="cards-title">Новый кейс</h3>
+
+      <Categories className={'cards-categorys'} categoryOnly={true}  taskInformation={localCardSetting} setCatagoryChoiceOpen={setCatagoryChoiceOpen}  />
+
+
 
       {/* <button onClick={() => {
                                 setAboutU({...aboutU, cards : [...aboutU.cards , cardsSetting] })
@@ -245,6 +263,25 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save }) => {
       >
         <ModalInput setModal={setModalActive} setting={inputObject} />
       </CSSTransition>
+
+
+      <CSSTransition
+        classNames={"modal"}
+        in={isCategoryChoiceOpen}
+        timeout={0}
+        mountOnEnter
+        unmountOnExit
+      >
+          <ChoiceCategory
+            taskInformation={localCardSetting}
+            setTaskInformation={setCardsSetting}
+            setCatagoryChoiceOpen={setCatagoryChoiceOpen}
+            categorys = {categorys}
+            subCategorys={subCategorys}
+          />
+      </CSSTransition>
+
+
     </div>
 
     

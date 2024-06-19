@@ -33,6 +33,8 @@ const FileInput = ({ className, files, setFiles , fileError }) => {
     return {}
   }  , [fileError, images] )
 
+  
+
   return (
     <>
     <label
@@ -82,7 +84,6 @@ const FileInput = ({ className, files, setFiles , fileError }) => {
               }
             }
             
-            event.target.onblur()
           }}
           type="file"
           multiple={device.includes("android") ? false : true}

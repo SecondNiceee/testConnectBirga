@@ -6,10 +6,12 @@ import dripleIcon from "../../images/icons/Dribble.svg";
 import dropfileIcon from "../../images/icons/Dropfile.svg";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCard, changeCards } from "../../store/profile";
 import { CSSTransition } from "react-transition-group";
 import ModalInput from "../../components/UI/ModalInput/ModalInput";
+import Categories from "../AdCreatingOne/Categories/Categories";
+import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
 
 let localCardSetting;
 let mainLocalErrors;
@@ -17,14 +19,7 @@ let inputObject = {
   text: "",
 };
 const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
-  const [cardsSetting, setCardsSetting] = useState({
-    title: card.title,
-    description: card.description,
-    photos: card.photos,
-    behanceLink: card.behanceLink,
-    dribbbleLink: card.dribbbleLink,
-    dropfileLink: card.dropfileLink,
-  });
+  const [cardsSetting, setCardsSetting] = useState(card);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({
     nameError: false,
@@ -32,6 +27,12 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   });
 
   const [modalActive, setModalActive] = useState(false);
+
+  const [isCategoryChoiceOpen, setCatagoryChoiceOpen] = useState(false);
+
+  const subCategorys = useSelector((state) => state.categorys.subCategory);
+
+  const categorys = useSelector((state) => state.categorys.category);
 
   localCardSetting = cardsSetting;
   mainLocalErrors = errors;
@@ -128,9 +129,12 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
     };
 }, []);
+  console.log(localCardSetting)
   return (
     <div className="cards">
       <h3 className="cards-title">{cardsSetting.title}</h3>
+
+       <Categories className={'cards-categorys'} categoryOnly={true}  taskInformation={localCardSetting} setCatagoryChoiceOpen={setCatagoryChoiceOpen}  />
 
       <button
         onClick={() => {
@@ -243,6 +247,23 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       >
         <ModalInput setModal={setModalActive} setting={inputObject} />
       </CSSTransition>
+
+      <CSSTransition
+        classNames={"modal"}
+        in={isCategoryChoiceOpen}
+        timeout={0}
+        mountOnEnter
+        unmountOnExit
+      >
+          <ChoiceCategory
+            taskInformation={localCardSetting}
+            setTaskInformation={setCardsSetting}
+            setCatagoryChoiceOpen={setCatagoryChoiceOpen}
+            categorys = {categorys}
+            subCategorys={subCategorys}
+          />
+      </CSSTransition>
+
     </div>
   );
 };

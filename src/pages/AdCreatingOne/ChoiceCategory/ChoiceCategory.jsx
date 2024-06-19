@@ -9,7 +9,8 @@ const ChoiceCategory = ({
   taskInformation,
   setCatagoryChoiceOpen,
   categorys,
-  subCategorys
+  subCategorys,
+  categoryOnly 
 
 }) => {
   

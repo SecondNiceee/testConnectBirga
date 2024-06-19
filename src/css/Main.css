@@ -2514,7 +2514,7 @@ input {
   background-color: #20303f;
 }
 .cards .cards-link img {
-  min-width: 30px;
+  width: 30px;
   height: 30px;
 }
 .cards .cards-link p {
@@ -2524,6 +2524,9 @@ input {
   line-height: 110%;
   letter-spacing: 0.01em;
   color: #daf5fe;
+}
+.cards .cards-categorys {
+  margin-top: 18px;
 }
 
 * {

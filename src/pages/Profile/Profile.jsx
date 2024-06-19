@@ -27,6 +27,7 @@ import { changeProfile, deleteCard } from "../../store/profile";
 import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
+import Categories from "../AdCreatingOne/Categories/Categories";
 
 let scrollTo = 0;
 const variants = {
@@ -87,19 +88,28 @@ const Profile = () => {
     const numberInput = document.getElementById('numberInput')
 
     if ( Number(aboutMe.stage) > 10 && Number(aboutMe.stage) < 20){
-      numberInput.value += ' лет'
+      if (!numberInput.value.includes('лет')){
+        numberInput.value += ' лет'
+      }
     }
     else{
 
         if (numb > 1 && numb < 5){
-          numberInput.value += ' года'
+          if (!numberInput.value.includes('года')){
+            numberInput.value += ' года'
+          }
+
         } 
         else{
           if(numb === 1){
-            numberInput.value += ' год'
+            if (!numberInput.value.includes('год')){
+              numberInput.value += ' год'
+            }
           }
           else{
-            numberInput.value += ' лет'
+            if (!numberInput.value.includes('лет')){
+              numberInput.value += ' лет'
+            }
           }
         }
       }
@@ -280,7 +290,7 @@ const Profile = () => {
   } , [aboutU.stage]  )
 
 
-
+  console.log(aboutULocal)
   return (
     <motion.div
       className="profile__container"
@@ -290,6 +300,9 @@ const Profile = () => {
       exit="exit"
       transition="transition"
     >
+
+      
+
       <Burger onClick={() => setMenuActive(true)} />
 
       <img src={userInfo.photo} className="profile__icon icon" alt="" />
@@ -358,6 +371,7 @@ const Profile = () => {
           }}
 
           changeFunction={() => {
+            document.documentElement.style.overflow = 'hidden'
             setChangeActive(true)
             index = i
           }}  key = {i} className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos}
@@ -398,7 +412,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <Cards save = {save} aboutU={aboutMeLocal} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
+            <Cards  save = {save} aboutU={aboutMeLocal} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
         </CSSTransition>
 
 
@@ -411,8 +425,11 @@ const Profile = () => {
         timeout={0}
         >
 
-            <ChangeCards save={save} index={index}  card={aboutU.cards[index]}  aboutU={aboutULocal} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
+            <ChangeCards save={save} index={index}  card={aboutULocal.cards[index]}  aboutU={aboutULocal} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
         </CSSTransition>
+
+
+
         
     </motion.div>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from './Categories.module.css'
 import upDown from '../../../images/icons/UpDown.svg'
-const Categories = ({className , taskInformation, setCatagoryChoiceOpen , setSubcategoryChoiceOpen, categorys, subCategorys }) => {
+const Categories = ({className , taskInformation, setCatagoryChoiceOpen , setSubcategoryChoiceOpen, categorys, subCategorys, categoryOnly  }) => {
     function format(arg){
         if(arg){
 
@@ -31,13 +31,18 @@ const Categories = ({className , taskInformation, setCatagoryChoiceOpen , setSub
                 <p>Категория</p>
                 <p  onClick={(e) => {setCatagoryChoiceOpen(true)}} className = {[cl.Category__linkk , cl.quest].join(' ')} href="">{taskInformation.category.category ? taskInformation.category.category : ''}</p>
             </div>
+            {categoryOnly ? <></> :
+            <>
             <hr className={cl.line} />
+
             <div className={cl.Categories__block}>
                 <p>Подкатегория</p>
                 <p  onClick={() => {setSubcategoryChoiceOpen(true)}} className={cl.Category__link} href="">{taskInformation.subCategory.subCategory ? format(taskInformation.subCategory.subCategory) : ''}
                 {/* {taskInformation.subCategory=== 'Выбрать' ? '' : '.'} */}
                 </p>
             </div>
+            </>
+            }
         </div>
     );
 };

@@ -39,6 +39,8 @@ const AdCreatingOne = ({
 
   const [isSubcategoryChoiceOpen, setSubcategoryChoiceOpen] = useState(false);
 
+  
+
   const navigate = useNavigate();
 
 
@@ -339,6 +341,9 @@ const AdCreatingOne = ({
           taskInformation={taskInformation}
         ></ChoiceSubCategory>
       </CSSTransition>
+
+
+
     </div>
   );
 };
