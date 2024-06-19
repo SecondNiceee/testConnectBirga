@@ -9,8 +9,9 @@ import MainButton from '../../constants/MainButton';
 import { useDispatch } from 'react-redux';
 import { addCard, changeCards } from '../../store/profile';
 
+let localCardSetting;
+let mainLocalErrors;
 const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
-    console.log(index)
     const [cardsSetting , setCardsSetting] = useState({
         title : card.title,
         description : card.description,
@@ -24,40 +25,70 @@ const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
         nameError : false,
         fileError : false
     })
+    localCardSetting = cardsSetting
+    mainLocalErrors = errors
 
 
-    useEffect( () => {
-        if (!Object.values(errors).every(value => value === false)){
-            let photos = false
-            let title = false
-            if (cardsSetting.title.length < 3){
-                title = true
-            }
-            if (cardsSetting.photos.length < 1){
-                photos = true
-            }
-            let localErrors = {nameError : title , fileError : photos}
-            if (JSON.stringify({localErrors}) !== JSON.stringify(errors)  ){
-                setErrors(localErrors)
-            }
+    useEffect(() => {
+        let photos = false;
+        let title = false;
+        if (cardsSetting.title.length < 3) {
+          title = true;
         }
-}, [cardsSetting.title, cardsSetting.photos]  )
-
-
-
-    function checkMistakes(){
-        let fileError = false
-        let titleError = false
-        if (cardsSetting.title.length < 3){
-            titleError = true
+        if (cardsSetting.photos.length < 1) {
+          photos = true;
         }
-        if (cardsSetting.photos.length < 1){
-            fileError = true
+        let localErrors = { nameError: title, fileError: photos };
+  
+        console.log(Object.values(mainLocalErrors))
+        console.log(Object.values(mainLocalErrors).includes(true))
+        if (Object.values(mainLocalErrors).includes(true)){
+          setErrors(localErrors)
         }
-        setErrors({fileError : fileError , nameError : titleError})
-        let localErrors = {fileError : fileError , nameError : titleError}
-        return Object.values(localErrors).every(value => value === false)
+  
+  
+  
+  
+  
+        
+        if (!Object.values(localErrors).every(value => value === false))
+          {
+              console.log('хай хай')
+              MainButton.setParams({
+                  color : "#2f2f2f",
+                  text_color : "#606060",
+                  is_visible : true
+              })
+          }
+        else{
+          MainButton.setParams({
+              color : "#2EA6FF",
+              text_color : "#ffffff",
+              is_visible : true
+          })
+        }
+      
+  
+      
+    }, [cardsSetting.title, cardsSetting.photos]);
+
+
+
+function checkMistakes() {
+    let fileError = false;
+    let titleError = false;
+
+    if (localCardSetting.title.length < 3) {
+      titleError = true;
     }
+    if (localCardSetting.photos.length < 1) {
+      fileError = true;
+    }
+    setErrors({ fileError: fileError, nameError: titleError });
+    let localErrors = { fileError: fileError, nameError: titleError };
+
+    return Object.values(localErrors).every((value) => value === false);
+  }
 
 
     function saveFunc(){
@@ -85,7 +116,7 @@ const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
             document.documentElement.style.overflow = 'auto'
             setCardsOpen(false)
         }
-        
+
         MainButton.show()
         MainButton.setText('Изменить кейс')
         MainButton.onClick(saveFunc)
@@ -95,7 +126,7 @@ const ChangeCards = ({setCardsOpen, setAboutU , index, card, aboutU}) => {
             MainButton.hide()
             BackButton.offClick(backFunc)
         }
-    } , )
+    }  )
     return (
         <div className='cards'>
 
