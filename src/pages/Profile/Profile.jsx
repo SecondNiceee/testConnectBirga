@@ -119,7 +119,6 @@ const Profile = () => {
   const save = useCallback( () => {
     console.log(aboutULocal)
     dispatch(changeProfile(aboutULocal))
-    MainButton.hide()
   } , [aboutU] )
 
 
