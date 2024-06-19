@@ -141,7 +141,7 @@ const Profile = () => {
 
 
 
-      if ( !isIt.isEqual(aboutMeLocal, aboutU) ){
+      if ( !isIt.isEqual(aboutMeLocal, aboutULocal) ){
           console.log('я тут')
           MainButton.setParams({
             text : 'Сохранить',
