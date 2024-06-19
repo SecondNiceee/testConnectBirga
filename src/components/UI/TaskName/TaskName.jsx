@@ -7,7 +7,7 @@ const TaskName = ({className , text , title , setText , errorValue , underText, 
         <div {...props} className = { className ? [ cl.TaskName, className].join(' ') : cl.TaskName}>
             <GreyText className={cl.GreyText} > {title} </GreyText>
             <CreateInput style = {errorValue
-                ? {border : 'solid 1px red'}
+                ? {border : 'solid 1px #FF6767'}
                 : {}
             } value={text} setValue={ setText } className={cl.CreateInput} placeholder = {placeholder} />
             <p style={errorValue ? {color : '#FF6767',

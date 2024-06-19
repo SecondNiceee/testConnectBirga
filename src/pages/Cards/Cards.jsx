@@ -125,9 +125,15 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
     }
+    else{
+      MainButton.setParams({
+        color : "#2f2f2f",
+        text_color : "#606060",
+        is_visible : true
+    })
+    }
     console.log("я тут");
   }
-
 
 
   function backFunc() {
@@ -135,14 +141,21 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       setCardsOpen(false);
   }
 
-  useEffect(() => {
-    MainButton.show();
-    BackButton.show()
-  } )
+  // useEffect(() => {
+  //   MainButton.show();
+  //   BackButton.show()
+  // } )
   useEffect( () => {
     MainButton.setText("Добавить кейс");
-    MainButton.onClick(saveFunc);
-    BackButton.onClick(backFunc);
+    if (!modalActive){
+      MainButton.show()
+      MainButton.onClick(saveFunc);
+      BackButton.onClick(backFunc);
+    }
+    else{
+      MainButton.hide()
+      BackButton.offClick(saveFunc)
+    }
     return () => {
         MainButton.offClick(saveFunc)
         BackButton.offClick(backFunc);
@@ -150,7 +163,9 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         MainButton.setText('Сохранить')
         
       };
-  }, [] )
+  }, [modalActive] )
+
+
 
 
   console.log('рендер')
@@ -204,7 +219,27 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         Расскажите о себе и своем опыте работы Прикрепите релевантные примеры
       </p>
 
+
+
+
+
       <div className="cards-links">
+      <div className="behans-link cards-link" onClick={
+          () => {
+            inputObject = {
+              text : cardsSetting.dropfileLink,
+              setText : function(e){
+                console.log(this.text)
+                setCardsSetting({...cardsSetting , dropfileLink : e})
+              },
+              placeholder : 'Введите ссылку на кейс в Dropfile',
+            }
+            setModalActive(true)
+          }
+        }>
+          <img src={dropfileIcon} alt="" />
+          <p>{cardsSetting.dropfileLink.length > 0 ? cardsSetting.dropfileLink : 'Ссылка на Dprofile'}</p>
+        </div>
         <div className="behans-link cards-link" onClick={
           () => {
             inputObject = {
@@ -213,7 +248,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
                 console.log(this.text)
                 setCardsSetting({...cardsSetting , behanceLink : e})
               },
-              placeholder : 'Введите ссылку на Behance',
+              placeholder : 'Введите ссылку на кейс в Behance',
             }
             setModalActive(true)
           }
@@ -228,7 +263,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
               setText : function(e){
                 setCardsSetting({...cardsSetting , dribbbleLink : e})
               },
-              placeholder : 'Введите ссылку на Dribble',
+              placeholder : 'Введите ссылку на кейс в Dribble',
             }
             setModalActive(true)
           }
@@ -236,22 +271,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
           <img src={dripleIcon} alt="" />
           <p>{localCardSetting.dribbbleLink.length > 0 ? localCardSetting.dribbbleLink : 'Ссылка на Dribbble'}</p>
         </div>
-        <div className="behans-link cards-link" onClick={
-          () => {
-            inputObject = {
-              text : cardsSetting.dropfileLink,
-              setText : function(e){
-                console.log(this.text)
-                setCardsSetting({...cardsSetting , dropfileLink : e})
-              },
-              placeholder : 'Введите ссылку на Dropfile',
-            }
-            setModalActive(true)
-          }
-        }>
-          <img src={dropfileIcon} alt="" />
-          <p>{cardsSetting.dropfileLink.length > 0 ? cardsSetting.dropfileLink : 'Ссылка на Dprofile'}</p>
-        </div>
+
       </div>
 
       <CSSTransition

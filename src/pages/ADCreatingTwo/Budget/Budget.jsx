@@ -18,7 +18,7 @@ const Budget = ({
       <GreyText className={cl.GreyText + ' animut'}> Ваш бюджет </GreyText>
       <BudgetInput
       style = {errorTon
-        ? {color : 'red'}
+        ? {color : '#FF6767'}
         : {}
       }
             

@@ -207,10 +207,10 @@ const Profile = () => {
     }
     else{
       MainButton.offClick(save)
-      MainButton.setParams({
-        color : '#2ea5ff',
-        text_color : '#ffffff'
-      })
+      // MainButton.setParams({
+      //   color : '#2ea5ff',
+      //   text_color : '#ffffff'
+      // })
     }
   }, [aboutU , changeActive, update]  )
 

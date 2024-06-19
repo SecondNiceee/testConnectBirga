@@ -118,9 +118,15 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       
     MainButton.show();
     MainButton.setText("Изменить кейс");
-    BackButton.show();
-    MainButton.onClick(saveFunc);
-    BackButton.onClick(backFunc);
+    if (!modalActive){
+      MainButton.show()
+      MainButton.onClick(saveFunc);
+      BackButton.onClick(backFunc);
+    }
+    else{
+      MainButton.hide()
+      BackButton.offClick(saveFunc)
+    }
     return () => {
         MainButton.offClick(saveFunc)
         BackButton.offClick(backFunc);
@@ -176,7 +182,34 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         Расскажите о себе и своем опыте работы Прикрепите релевантные примеры
       </p>
 
+
+
+
+
+
       <div className="cards-links">
+
+      <div
+          className="behans-link cards-link"
+          onClick={() => {
+            inputObject = {
+              text: cardsSetting.dropfileLink,
+              setText: function (e) {
+                setCardsSetting({ ...cardsSetting, dropfileLink: e });
+              },
+              placeholder: "Введите ссылку на Dropfile",
+            };
+            setModalActive(true);
+          }}
+        >
+          <img src={dropfileIcon} alt="" />
+          <p>
+            {cardsSetting.dropfileLink.length > 0
+              ? cardsSetting.dropfileLink
+              : "Введите ссылку на кейс в Dropfile"}
+          </p>
+      </div>
+
         <div
           className="behans-link cards-link"
           onClick={() => {
@@ -185,7 +218,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
               setText: function (e) {
                 setCardsSetting({ ...cardsSetting, behanceLink: e });
               },
-              placeholder: "Введите ссылку на behance",
+              placeholder: "Введите ссылку на кейс в Behance",
             };
             setModalActive(true);
           }}
@@ -205,7 +238,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
               setText: function (e) {
                 setCardsSetting({ ...cardsSetting, dribbbleLink: e });
               },
-              placeholder: "Ссылка на Dribbble",
+              placeholder: "Введите ссылку на кейс в Dribble",
             };
             setModalActive(true);
           }}
@@ -217,26 +250,9 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
               : "Ссылка на Dribbble"}
           </p>
         </div>
-        <div
-          className="behans-link cards-link"
-          onClick={() => {
-            inputObject = {
-              text: cardsSetting.dropfileLink,
-              setText: function (e) {
-                setCardsSetting({ ...cardsSetting, dropfileLink: e });
-              },
-              placeholder: "Введите ссылку на Dropfile",
-            };
-            setModalActive(true);
-          }}
-        >
-          <img src={dropfileIcon} alt="" />
-          <p>
-            {cardsSetting.dropfileLink.length > 0
-              ? cardsSetting.dropfileLink
-              : "Ссылка на Dprofile"}
-          </p>
-        </div>
+
+
+
       </div>
       <CSSTransition
         mountOnEnter
