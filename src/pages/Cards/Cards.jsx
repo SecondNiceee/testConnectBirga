@@ -147,6 +147,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
   // } )
   useEffect( () => {
     MainButton.setText("Добавить кейс");
+    BackButton.show()
     if (!modalActive){
       MainButton.show()
       MainButton.onClick(saveFunc);

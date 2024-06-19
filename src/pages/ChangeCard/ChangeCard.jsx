@@ -117,6 +117,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   useEffect(() => {
       
     MainButton.show();
+    BackButton.show()
     MainButton.setText("Изменить кейс");
     if (!modalActive){
       MainButton.show()
@@ -134,7 +135,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         MainButton.setText('Сохранить')
 
     };
-}, []);
+}, [modalActive]);
   console.log(localCardSetting)
   return (
     <div className="cards">
