@@ -55,6 +55,7 @@ const AnimatedSwitch = () => {
   const location = useLocation();
   const isMenuActive = useSelector((state) => state.menu.value);
   const navigate = useNavigate()
+  console.log('a')
   useEffect(() => {
 
     navigate('/MyAds')
