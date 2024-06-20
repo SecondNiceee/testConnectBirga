@@ -207,7 +207,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
           <p>
             {cardsSetting.dropfileLink.length > 0
               ? cardsSetting.dropfileLink
-              : "Введите ссылку на кейс в Dropfile"}
+              : "Вставте ссылку на кейс в Dropfile"}
           </p>
       </div>
 
@@ -219,7 +219,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
               setText: function (e) {
                 setCardsSetting({ ...cardsSetting, behanceLink: e });
               },
-              placeholder: "Введите ссылку на кейс в Behance",
+              placeholder: "Вставте ссылку на кейс в Behance",
             };
             setModalActive(true);
           }}
@@ -239,7 +239,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
               setText: function (e) {
                 setCardsSetting({ ...cardsSetting, dribbbleLink: e });
               },
-              placeholder: "Введите ссылку на кейс в Dribble",
+              placeholder: "Вставте ссылку на кейс в Dribble",
             };
             setModalActive(true);
           }}

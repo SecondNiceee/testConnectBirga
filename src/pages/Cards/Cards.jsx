@@ -233,7 +233,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
                 console.log(this.text)
                 setCardsSetting({...cardsSetting , dropfileLink : e})
               },
-              placeholder : 'Введите ссылку на кейс в Dropfile',
+              placeholder : 'Вставте ссылку на кейс в Dropfile',
             }
             setModalActive(true)
           }
@@ -249,7 +249,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
                 console.log(this.text)
                 setCardsSetting({...cardsSetting , behanceLink : e})
               },
-              placeholder : 'Введите ссылку на кейс в Behance',
+              placeholder : 'Вставте ссылку на кейс в Behance',
             }
             setModalActive(true)
           }
@@ -264,7 +264,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
               setText : function(e){
                 setCardsSetting({...cardsSetting , dribbbleLink : e})
               },
-              placeholder : 'Введите ссылку на кейс в Dribble',
+              placeholder : 'Вставте ссылку на кейс в Dribble',
             }
             setModalActive(true)
           }
