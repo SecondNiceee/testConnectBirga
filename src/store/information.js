@@ -12,7 +12,7 @@ export const putMyTask = createAsyncThunk(
         data,
         {
           params : {
-            id : 1
+            id : 2144832745
           },
           headers: {
             "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export const putMyTask = createAsyncThunk(
       );
     }
     catch(e){
-
+      console.warn(e)
     }
 
     
@@ -63,8 +63,8 @@ export const fetchMyOrders = createAsyncThunk(
     let tasks = []
     let task = await axios.get('https://back-birga.ywa.su/advertisement/findByUser' , {
       params : {
-          userId : window.Telegram.WebApp.initDataUnsafe.user.id 
-        // userId : 2144832745
+          // userId : window.Telegram.WebApp.initDataUnsafe.user.id 
+        userId : 2144832745
       }
     })
 
@@ -88,21 +88,21 @@ export const fetchMyOrders = createAsyncThunk(
 
 
 
-        let buffers = await axios.get('https://back-birga.ywa.su/advertisement/getPhotos', {
-          params : {
-            id : order.id
-          }
-        })
+        // let buffers = await axios.get('https://back-birga.ywa.su/advertisement/getPhotos', {
+        //   params : {
+        //     id : order.id
+        //   }
+        // })
 
 
 
+        
 
+          for (let i = 0 ; i < order.files.length; i++){
 
-          for (let photo of buffers.data){
-
-            let uintArray = new Uint8Array(photo.data);
+            let uintArray = new Uint8Array(order.files[i].data);
             let blob = new Blob([uintArray], { type: 'image/png' });
-            let fileName = 'photo.jpg';
+            let fileName =  order.photos[i]  ;
             let file = new File([blob], fileName, { type: 'image/png' });
 
             files.push(file)
@@ -117,6 +117,7 @@ export const fetchMyOrders = createAsyncThunk(
           tonValue : order.price,
           taskDescription : order.description,
           photos : files ,
+          photosName : order.photos,
           rate : '5',
           isActive : true,
           creationTime : order.createdAt,
@@ -180,7 +181,8 @@ export const fetchTasksInformation = createAsyncThunk(
                   files.push(file)
                 }
               }
-  
+              
+              
               tasks.push({
                 taskName : order.title,
                 executionPlace: "Можно выполнить удаленно",
@@ -188,6 +190,7 @@ export const fetchTasksInformation = createAsyncThunk(
                 tonValue : order.price,
                 taskDescription : order.description,
                 photos : files,
+                photosName : order.photos,
                 customerName : order.user.fl,
                 userPhoto : order.user.photo || "",
                 rate : '5',
