@@ -7,7 +7,7 @@ export const putMyTask = createAsyncThunk(
   async function(data,id){
     try{
 
-      let a = await axios.put(
+      await axios.put(
         "https://back-birga.ywa.su/advertisement",
         data,
         {
@@ -36,7 +36,7 @@ export const postMyTask = createAsyncThunk(
   async function(data){
     try{
 
-      let a = await axios.post(
+      await axios.post(
         "https://back-birga.ywa.su/advertisement",
         data,
         {
@@ -102,7 +102,6 @@ export const fetchMyOrders = createAsyncThunk(
 
             let uintArray = new Uint8Array(photo.data);
             let blob = new Blob([uintArray], { type: 'image/png' });
-            let imageUrl = URL.createObjectURL(blob);
             let fileName = 'photo.jpg';
             let file = new File([blob], fileName, { type: 'image/png' });
 
@@ -140,7 +139,6 @@ export const fetchTasksInformation = createAsyncThunk(
         //   const file = new File([blob], image, {type: blob.type});
         //   return file
         // }
-        console.log('вызывали')
         let tasks = []
         let task;
         try{
@@ -151,7 +149,6 @@ export const fetchTasksInformation = createAsyncThunk(
           console.log(e)
         }
 
-        console.warn(task.data)
 
         if (task.data.length === 0){
           return []
@@ -171,8 +168,6 @@ export const fetchTasksInformation = createAsyncThunk(
               else{
                  two = ""
               }
-              let orderPhotos = []
-  
   
               let files = [];
               
@@ -180,7 +175,6 @@ export const fetchTasksInformation = createAsyncThunk(
                 for (let photo of order.files){
                   let uintArray = new Uint8Array(photo.data);
                   let blob = new Blob([uintArray], { type: 'image/png' });
-                  let imageUrl = URL.createObjectURL(blob);
                   let fileName = 'photo.jpg';
                   let file = new File([blob], fileName, { type: 'image/png' });
                   files.push(file)
@@ -197,7 +191,6 @@ export const fetchTasksInformation = createAsyncThunk(
                 customerName : order.user.fl,
                 userPhoto : order.user.photo || "",
                 rate : '5',
-                customerName : order.user.fl,
                 isActive : true,
                 creationTime : order.createdAt,
                 viewsNumber : '50',
@@ -212,7 +205,6 @@ export const fetchTasksInformation = createAsyncThunk(
           }
           return tasks
         }
-        return false
   }
  )
 const information = createSlice( {
@@ -309,7 +301,6 @@ const information = createSlice( {
           })
         },
         addMyAds(state, action) {
-          let myAd = action.payload
           state.myAdsArray.push(action.payload)
         }
     },

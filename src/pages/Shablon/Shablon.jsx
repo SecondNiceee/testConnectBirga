@@ -29,7 +29,7 @@ const Shablon = () => {
       BackButton.offClick(goBack)
       MainButton.hide()
     }
-  }, [])
+  }, [navigate])
   return (
     <div className="shablon-wrapper">
       <h3 className="shablon-title">Новый шаблон</h3>

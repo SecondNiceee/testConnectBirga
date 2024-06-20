@@ -48,14 +48,12 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     }
     let localErrors = { nameError: title, fileError: photos };
 
-    console.log(Object.values(mainLocalErrors));
-    console.log(Object.values(mainLocalErrors).includes(true));
     if (Object.values(mainLocalErrors).includes(true)) {
       setErrors(localErrors);
     }
 
     if (!Object.values(localErrors).every((value) => value === false)) {
-      console.log("хай хай");
+
       MainButton.setParams({
         color: "#2f2f2f",
         text_color: "#606060",
@@ -106,16 +104,16 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     }
   }
 
-  function backFunc() {
-    document.documentElement.style.overflow = "auto";
-    setCardsOpen(false);
-  }
-
-
-
-
+  
+  
+  
+  
   useEffect(() => {
-      
+    
+    function backFunc() {
+      document.documentElement.style.overflow = "auto";
+      setCardsOpen(false);
+    }
     MainButton.show();
     BackButton.show()
     MainButton.setText("Изменить кейс");
@@ -136,7 +134,6 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
     };
 }, [modalActive]);
-  console.log(localCardSetting)
   return (
     <div className="cards">
       <h3 className="cards-title">{cardsSetting.title}</h3>

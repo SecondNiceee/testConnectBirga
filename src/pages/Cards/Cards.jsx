@@ -61,8 +61,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       }
       let localErrors = { nameError: title, fileError: photos };
 
-      console.log(Object.values(mainLocalErrors))
-      console.log(Object.values(mainLocalErrors).includes(true))
+
       if (Object.values(mainLocalErrors).includes(true)){
         setErrors(localErrors)
       }
@@ -74,7 +73,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       
       if (!Object.values(localErrors).every(value => value === false))
         {
-            console.log('хай хай')
             MainButton.setParams({
                 color : "#2f2f2f",
                 text_color : "#606060",
@@ -119,7 +117,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
   function saveFunc() {
     if (checkMistakes()) {
-      console.log("попал сюда..");
       setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
     //   dispatch(addCard(localCardSetting));
       document.documentElement.style.overflow = "auto";
@@ -132,7 +129,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         is_visible : true
     })
     }
-    console.log("я тут");
   }
 
 
@@ -169,8 +165,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
 
 
-  console.log('рендер')
-  console.log(localCardSetting)
+
 
   return (
     <div className="cards">
@@ -230,7 +225,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
             inputObject = {
               text : cardsSetting.dropfileLink,
               setText : function(e){
-                console.log(this.text)
                 setCardsSetting({...cardsSetting , dropfileLink : e})
               },
               placeholder : 'Вставте ссылку на кейс в Dropfile',
@@ -246,7 +240,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
             inputObject = {
               text : cardsSetting.behanceLink,
               setText : function(e){
-                console.log(this.text)
+
                 setCardsSetting({...cardsSetting , behanceLink : e})
               },
               placeholder : 'Вставте ссылку на кейс в Behance',

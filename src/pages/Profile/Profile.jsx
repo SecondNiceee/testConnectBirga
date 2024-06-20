@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect,  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import { motion } from "framer-motion";
@@ -7,14 +7,11 @@ import { CSSTransition } from "react-transition-group";
 
 
 
-import orangeWallet from "../../images/icons/OrangeWallet.svg";
 import Subtract from "../../images/icons/SubtractWhite.svg";
 import greyArrowRight from "../../images/icons/greyArrowRight.svg";
 import Burger from "../../components/UI/Burger/Burger";
-import { Link, json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
-import AboutMe from "../../components/UI/AboutMe/AboutMe";
-import TextAboutMe from "../../components/UI/AboutMeText/TextAboutMe";
 
 
 import SmallTextarea from "../../components/UI/SmallTextarea/SmallTextarea";
@@ -23,13 +20,12 @@ import SmallInput from "../../components/UI/SmallInput/SmallInput";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import Case from "./components/Case/Case";
 import MainButton from "../../constants/MainButton";
-import { changeProfile, deleteCard } from "../../store/profile";
+import { changeProfile } from "../../store/profile";
 import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
-import Categories from "../AdCreatingOne/Categories/Categories";
 
-let scrollTo = 0;
+
 const variants = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
@@ -81,8 +77,10 @@ const Profile = () => {
 
 
 
+
+
+
   useEffect(  () => {
-    
     let numb = String(aboutMe.stage).slice(1,2)
 
     const numberInput = document.getElementById('numberInput')
@@ -113,18 +111,16 @@ const Profile = () => {
           }
         }
       }
-
-
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []  )
 
 
   
 
   const save = useCallback( () => {
-    console.log(aboutULocal)
     dispatch(changeProfile(aboutULocal))
     setUpdate(new Date())
-  } , [aboutU] )
+  } , [dispatch] )
 
 
 
@@ -154,20 +150,7 @@ const Profile = () => {
 
     if (!cardsActive && !changeActive){
 
-
-        console.log(aboutMe.cards.join(''))
-        console.log(aboutU.cards.join(''))
-        console.log(aboutU.cards.join('') === aboutMe.cards.join(''))
-
-
-
-
-        console.log(aboutMeLocal)
-        console.log(aboutU)
-        console.log(compare2Objects(aboutMeLocal, aboutULocal))
-
       if ( compare2Objects(aboutMeLocal, aboutULocal) === false ){
-          console.log('я тут')
           MainButton.setParams({
             text : 'Сохранить',
             is_visible : true
@@ -189,12 +172,12 @@ const Profile = () => {
           color : '#2f2f2f',
           text_color : '#606060',
         })
-        setErrors({...errors , stageError : true})
+        setErrors( value =>  ({...value , stageError : true} ) )
       }
       else{
         if (errors.stageError){
           MainButton.enable()
-          setErrors({...errors , stageError : false})
+          setErrors(value => ({...value , stageError : false}))
         }
         MainButton.setParams({
 
@@ -211,8 +194,11 @@ const Profile = () => {
       //   color : '#2ea5ff',
       //   text_color : '#ffffff'
       // })
+
+       
     }
-  }, [aboutU , changeActive, update]  )
+
+  }, [aboutU , changeActive, update, cardsActive, aboutMe.cards, save, errors.stageError ]  )
 
 
   
@@ -246,7 +232,7 @@ const Profile = () => {
     let numb = Number(e.target.value.slice(e.target.value.length - 1 , e.target.value.length))
 
     if (e.target.value === ''){
-      setAboutU({...aboutU , stage : '0 лет'})
+      setAboutU(value => ({...value , stage : '0 лет'}))
 
     }
 
@@ -268,11 +254,11 @@ const Profile = () => {
         }
       }
     
-  } , [aboutU.stage] )
+  } , [] )
 
   const onFocusFunc = useCallback( (e) => {
     e.target.value = String(aboutULocal.stage).split(' ')[0]
-  } , [aboutU.stage] )
+  } , [] )
 
   const setValueFunc = useCallback(  (e) => {
     if (e.slice(0,1) !== '0'){
@@ -287,10 +273,9 @@ const Profile = () => {
         setAboutU({...aboutULocal , stage : 0})
       }
     }
-  } , [aboutU.stage ]  )
+  } , []  )
 
 
-  console.log(aboutULocal)
   return (
     <motion.div
       className="profile__container"

@@ -16,7 +16,7 @@ const FileInput = ({ className, files, setFiles , fileError }) => {
 
   var device = navigator.userAgent.toLowerCase();
 
-  console.log(files)
+
 
   const photoStyle = useMemo( () => {
     if (fileError){

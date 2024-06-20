@@ -1,6 +1,6 @@
 import React from "react";
 import cl from "./Case.module.css";
-import photo from "../../../../images/nonUsed/photo.png";
+
 const Case = ({ className, title , description , photos, changeFunction, deleteFunction,  ...props }) => {
   return (
     <div

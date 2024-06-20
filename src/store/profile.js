@@ -23,10 +23,9 @@ const profileSlice = createSlice({
         },
         deleteCard(state , action){
             state.profile.cards = state.profile.cards.filter((e, i) => {
-                console.log(i !== action.payload)
                 return i !== action.payload
             })
-            console.log(state.profile.cards)
+
         }
     }
 })
