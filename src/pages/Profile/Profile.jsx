@@ -287,7 +287,7 @@ const Profile = () => {
         setAboutU({...aboutULocal , stage : 0})
       }
     }
-  } , [aboutU.stage , aboutU.about]  )
+  } , [aboutU.stage ]  )
 
 
   console.log(aboutULocal)
