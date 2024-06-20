@@ -104,7 +104,7 @@ export const fetchMyOrders = createAsyncThunk(
             let blob = new Blob([uintArray], { type: 'image/png' });
             let fileName =  order.photos[i]  ;
             let file = new File([blob], fileName, { type: 'image/png' });
-
+            
             files.push(file)
           }
         
