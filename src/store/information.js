@@ -5,6 +5,7 @@ import axios from 'axios';
 export const putMyTask = createAsyncThunk(
   'inforation/putMyTask' , 
   async function(data,id){
+
     try{
 
       await axios.put(
@@ -33,12 +34,14 @@ export const putMyTask = createAsyncThunk(
 
 export const postMyTask = createAsyncThunk(
   "information/postMytask" , 
-  async function(data){
+  async function(arr){
+    let files = arr[1]
+    console.log(files)
     try{
 
       let b = await axios.post(
         "https://back-birga.ywa.su/advertisement",
-        data,
+        arr[0],
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -58,21 +61,18 @@ export const postMyTask = createAsyncThunk(
          two = ""
       }
 
+      if (files.length > 0){
 
-      let files =  []
-  
-      if (b.data.files){
+        for (let i = 0 ; i < files.length; i++){
 
-        for (let i = 0 ; i < b.data.files.length; i++){
-
-          let uintArray = new Uint8Array(b.data.files[i].data);
-          let blob = new Blob([uintArray], { type: 'image/png' });
-          let fileName =  b.data.photos[i]  ;
-          let file = new File([blob], fileName, { type: 'image/png' });
+          let file = files[i];
+          let blob = file.slice(0, file.size, 'image/png');
+          let newFile = new File([blob], b.data.photos[i], {type: 'image/png'});
           files.push(file)
 
         }
       }
+      
 
       localTask = {
         taskName : b.data.title,
@@ -89,6 +89,7 @@ export const postMyTask = createAsyncThunk(
         creationTime : b.data.createdAt,
         viewsNumber : 50
       }
+      console.log(localTask)
       return localTask
     }
     catch(e){
@@ -171,6 +172,7 @@ export const fetchMyOrders = createAsyncThunk(
       }
     }
     catch (e){
+      alert(e)
       console.warn(e)
     }
   }
