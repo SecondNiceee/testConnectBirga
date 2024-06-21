@@ -100,10 +100,10 @@ const MyAdOne = ({
           if (buttonId === "save") {
             if (checkMistakes(changingTaskVar)) {
               let myFormData = new FormData();
-              myFormData.append('title' , String(changingTaskVar.taskName))
-              myFormData.append('description' , String(changingTaskVar.taskDescription))
-              myFormData.append("deadline" , String(1))
-              myFormData.append("price" , String(changingTaskVar.tonValue) )
+              myFormData.append('title' , changingTaskVar.taskName)
+              myFormData.append('description' , changingTaskVar.taskDescription)
+              myFormData.append("deadline" , 1)
+              myFormData.append("price" , changingTaskVar.tonValue )
               myFormData.append("startTime" , changingTaskVar.time.start)
               myFormData.append("endTime" , changingTaskVar.time.end)
               if (filesValues.removedFiles.length > 0){
@@ -200,41 +200,29 @@ const MyAdOne = ({
         position : 'absolute',
         zIndex : '999'
       }} onClick={() => {
+        let myFormData = new FormData();
+              myFormData.append('title' , changingTaskVar.taskName)
+              myFormData.append('description' , changingTaskVar.taskDescription)
+              myFormData.append("deadline" , 1)
+              myFormData.append("price" , changingTaskVar.tonValue )
+              myFormData.append("startTime" , changingTaskVar.time.start)
+              myFormData.append("endTime" , changingTaskVar.time.end)
+              if (filesValues.removedFiles.length > 0){
+                myFormData.append("deleteFiles" , filesValues.removedFiles)
+              }
+              if(filesValues.addedFiles.length > 0)
+                {
+                  myFormData.append("addFiles" , filesValues.addedFiles)
+                }
 
+              dispatch(putMyTask([myFormData, changingTaskVar.id]))
 
-
-        if (checkMistakes(changingTaskVar)) {
-          let myFormData = new FormData();
-          myFormData.append('title' , changingTaskVar.taskName)
-          myFormData.append('description' , changingTaskVar.taskDescription)
-          myFormData.append("deadline" , 1)
-          myFormData.append("price" ,changingTaskVar.tonValue )
-          myFormData.append("startTime" , changingTaskVar.time.start)
-          myFormData.append("endTime" , changingTaskVar.time.end)
-          myFormData.append("photos" , changingTaskVar.photos)
-          let answer = {
-            id: changingTaskVar.id,
-            title: changingTaskVar.taskName,
-            description: changingTaskVar.taskDescription,
-            deadline: 1,
-            price: changingTaskVar.tonValue,
-            startTime: changingTaskVar.time.start,
-            endTime: changingTaskVar.time.end,
-          };
-
-          if (changingTask.photos.length !== 0) {
-            for (let file of changingTask.photos) {
-              myFormData.append("photos", file);
-            }
-          }
-          dispatch(putMyTask(myFormData, changingTaskVar.id))
-          dispatch(putMyAds(changingTaskVar))
-          // putTask(myFormData);
+            
           
 
         }
 
-      }}>Save</button>
+      }>Save</button>
 
       <MyAdsBlock deals={1} finishedDeals={"70%"} />
       <PickerContent

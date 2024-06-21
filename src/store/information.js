@@ -7,7 +7,7 @@ export const putMyTask = createAsyncThunk(
   async function(data){
 
     try{
-
+      console.log(data[0] , data[1])
       await axios.put(
         "https://back-birga.ywa.su/advertisement",
         data[0],
