@@ -13,7 +13,7 @@ export const putMyTask = createAsyncThunk(
         data[0],
         {
           params : {
-            id : data[1]
+            id : String(data[1])
           },
           headers: {
             "Content-Type": "application/json",

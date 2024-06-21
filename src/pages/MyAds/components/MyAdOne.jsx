@@ -105,8 +105,8 @@ const MyAdOne = ({
               myFormData.append('description' , String(changingTaskVar.taskDescription))
               myFormData.append("deadline" , String(1))
               myFormData.append("price" , String(changingTaskVar.tonValue) )
-              myFormData.append("startTime" , String(changingTaskVar.time.start))
-              myFormData.append("endTime" , String(changingTaskVar.time.end))
+              myFormData.append("startTime" , changingTaskVar.time.start)
+              myFormData.append("endTime" , changingTaskVar.time.end)
               if (filesValues.removedFiles.length > 0){
                 myFormData.append("deleteFiles" , filesValues.removedFiles)
               }
