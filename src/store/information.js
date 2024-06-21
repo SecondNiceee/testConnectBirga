@@ -46,6 +46,50 @@ export const postMyTask = createAsyncThunk(
           },
         }
       );
+      let localTask;
+
+      let one = new Date(b.data.startTime)
+  
+      let two;
+      if (b.data.endTime){
+         two = new Date(b.data.endTime)
+      }
+      else{
+         two = ""
+      }
+
+
+      let files =  []
+  
+      if (b.data.files){
+
+        for (let i = 0 ; i < b.data.files.length; i++){
+
+          let uintArray = new Uint8Array(b.data.files[i].data);
+          let blob = new Blob([uintArray], { type: 'image/png' });
+          let fileName =  b.data.photos[i]  ;
+          let file = new File([blob], fileName, { type: 'image/png' });
+          files.push(file)
+
+        }
+      }
+
+      localTask = {
+        taskName : b.data.title,
+        executionPlace : 'Можно выполнить удаленно',
+        time : {start : one , end : two},
+        tonValue : b.data.price,
+        taskDescription : b.data.description,
+        photos : files,
+        photosName : b.data.photos,
+        customerName : b.data.fl,
+        userPhoto : b.data.photo || "",
+        rate : '5',
+        isActive : true ,
+        creationTime : b.data.createdAt,
+        viewsNumber : 50
+      }
+      return localTask
     }
     catch(e){
         console.log(e)
@@ -87,18 +131,6 @@ export const fetchMyOrders = createAsyncThunk(
   
         for (let order of task.data) {
           let files =  []
-  
-  
-  
-  
-  
-          // let buffers = await axios.get('https://back-birga.ywa.su/advertisement/getPhotos', {
-          //   params : {
-          //     id : order.id
-          //   }
-          // })
-  
-  
   
           if (order.files){
 
@@ -318,6 +350,10 @@ const information = createSlice( {
           })
         },
         addMyAds(state, action) {
+          alert('я вообще - то вызвал ')
+          console.log('---------')
+          console.warn(action.payload)
+          console.log('-------------')
           state.myAdsArray.push(action.payload)
         }
     },
@@ -337,7 +373,9 @@ const information = createSlice( {
         alert()
         } )  )
         builder.addCase(  postMyTask.pending , (   (state ) => {state.postTaskStatus = 'pending'}   )  )
-        builder.addCase(  postMyTask.fulfilled , (   (state ) => {state.postTaskStatus = 'complete'}   )  )
+        builder.addCase(  postMyTask.fulfilled , (   (state, action ) => {state.postTaskStatus = 'complete'
+          state.myAdsArray.push(action.payload)
+        }   )  )
         builder.addCase(  postMyTask.rejected , (   (state ) => {state.postTaskStatus = 'error'}   )  )
 
         builder.addCase(  putMyTask.pending , (   (state ) => {state.putTaskStatus = 'pending'}   )  )
