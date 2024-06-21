@@ -110,12 +110,6 @@ const MyAdOne = ({
               myFormData.append("deleteFiles" , filesValues.removedFiles)
               myFormData.append("addFiles" , filesValues.addedFiles)
 
-              if (changingTask.photos.length !== 0) {
-                for (let file of changingTask.photos) {
-                  myFormData.append("photos", file);
-                }
-              }
-
               dispatch(putMyTask(myFormData, changingTaskVar.id))
 
             }

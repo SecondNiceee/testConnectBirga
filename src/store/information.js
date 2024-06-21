@@ -4,7 +4,7 @@ import axios from 'axios';
 
 export const putMyTask = createAsyncThunk(
   'inforation/putMyTask' , 
-  async function(data,id){
+  async function(data){
 
     try{
 
