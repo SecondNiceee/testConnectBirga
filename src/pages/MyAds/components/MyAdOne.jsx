@@ -15,6 +15,7 @@ let changed = false;
 // const popup = initPopup();
 let changingTaskVar = {};
 let photosCopy = []
+let filesArrayVar;
 const MyAdOne = ({
   myAdsArray,
   setTask,
@@ -41,6 +42,7 @@ const MyAdOne = ({
     addedFiles : [],
     removedFiles : []
   } )
+  filesArrayVar = filesValues;
 
   console.log(filesValues)
 
@@ -107,6 +109,7 @@ const MyAdOne = ({
               myFormData.append("startTime" , changingTaskVar.time.start)
               myFormData.append("endTime" , changingTaskVar.time.end)
               if (filesValues.removedFiles.length > 0){
+                console.log('я тут')
                 myFormData.append("deleteFiles" , filesValues.removedFiles)
               }
               if(filesValues.addedFiles.length > 0)
@@ -208,11 +211,12 @@ const MyAdOne = ({
               myFormData.append("startTime" , changingTaskVar.time.start)
               myFormData.append("endTime" , changingTaskVar.time.end)
               if (filesValues.removedFiles.length > 0){
-                myFormData.append("deleteFiles" , filesValues.removedFiles)
+                console.log('я тут')
+                myFormData.append("deleteFiles" , filesArrayVar.removedFiles)
               }
               if(filesValues.addedFiles.length > 0)
                 {
-                  myFormData.append("addFiles" , filesValues.addedFiles)
+                  myFormData.append("addFiles" , filesArrayVar.addedFiles)
                 }
 
               dispatch(putMyTask([myFormData, changingTaskVar.id]))
