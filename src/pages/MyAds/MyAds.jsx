@@ -71,6 +71,7 @@ const MyAds = () => {
 
   const [changingTask , setChangingTask] = useState(
     {
+      id : '',
       taskName : '',
       taskDescription : '',
       deadline : 1,

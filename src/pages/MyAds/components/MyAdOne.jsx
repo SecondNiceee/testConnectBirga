@@ -40,7 +40,6 @@ const MyAdOne = ({
   const [filesValues , setFilesValues] = useState({
     addedFiles : [],
     removedFiles : []
-
   } )
 
   console.log(filesValues)

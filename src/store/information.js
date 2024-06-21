@@ -76,6 +76,7 @@ export const postMyTask = createAsyncThunk(
       
 
       localTask = {
+        id : b.data.id,
         taskName : b.data.title,
         executionPlace : 'Можно выполнить удаленно',
         time : {start : one , end : two},
