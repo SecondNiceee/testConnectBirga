@@ -10,10 +10,10 @@ export const putMyTask = createAsyncThunk(
 
       await axios.put(
         "https://back-birga.ywa.su/advertisement",
-        data,
+        data[0],
         {
           params : {
-            id : 2144832745
+            id : data[1]
           },
           headers: {
             "Content-Type": "application/json",

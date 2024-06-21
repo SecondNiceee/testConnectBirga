@@ -110,7 +110,7 @@ const MyAdOne = ({
               myFormData.append("deleteFiles" , filesValues.removedFiles)
               myFormData.append("addFiles" , filesValues.addedFiles)
 
-              dispatch(putMyTask(myFormData, changingTaskVar.id))
+              dispatch(putMyTask([myFormData, changingTaskVar.id]))
 
             }
 
