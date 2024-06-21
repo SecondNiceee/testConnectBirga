@@ -107,8 +107,13 @@ const MyAdOne = ({
               myFormData.append("price" , String(changingTaskVar.tonValue) )
               myFormData.append("startTime" , String(changingTaskVar.time.start))
               myFormData.append("endTime" , String(changingTaskVar.time.end))
-              myFormData.append("deleteFiles" , filesValues.removedFiles)
-              myFormData.append("addFiles" , filesValues.addedFiles)
+              if (filesValues.removedFiles.length > 0){
+                myFormData.append("deleteFiles" , filesValues.removedFiles)
+              }
+              if(filesValues.addedFiles.length > 0)
+                {
+                  myFormData.append("addFiles" , filesValues.addedFiles)
+                }
 
               dispatch(putMyTask([myFormData, changingTaskVar.id]))
 
