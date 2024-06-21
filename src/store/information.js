@@ -49,6 +49,7 @@ export const postMyTask = createAsyncThunk(
           },
         }
       );
+      console.log('дошел до сюда')
       let localTask;
 
       let one = new Date(b.data.startTime)
@@ -60,7 +61,7 @@ export const postMyTask = createAsyncThunk(
       else{
          two = ""
       }
-
+      let changedFiles = []
       if (files.length > 0){
 
         for (let i = 0 ; i < files.length; i++){
@@ -68,7 +69,7 @@ export const postMyTask = createAsyncThunk(
           let file = files[i];
           let blob = file.slice(0, file.size, 'image/png');
           let newFile = new File([blob], b.data.photos[i], {type: 'image/png'});
-          files.push(file)
+          changedFiles.push(newFile)
 
         }
       }
@@ -80,7 +81,7 @@ export const postMyTask = createAsyncThunk(
         time : {start : one , end : two},
         tonValue : b.data.price,
         taskDescription : b.data.description,
-        photos : files,
+        photos : changedFiles,
         photosName : b.data.photos,
         customerName : b.data.fl,
         userPhoto : b.data.photo || "",
@@ -172,7 +173,7 @@ export const fetchMyOrders = createAsyncThunk(
       }
     }
     catch (e){
-      alert(e)
+      alert('ввфыв')
       console.warn(e)
     }
   }

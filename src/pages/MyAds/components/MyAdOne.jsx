@@ -50,10 +50,10 @@ const MyAdOne = ({
     let addedFilesLocal = []
     console.warn(changingTaskVar.photos)
     console.warn(photosCopy)
-    if (changingTaskVar.photos.length > photosCopy.length){
+    if (changingTaskVar.photos.length > photosCopy.length ){
       console.log('я попал сюда')
       for (let photo of changingTaskVar.photos){
-        if (!(photosCopy.includes(photo))){
+        if (!(photosCopy.includes(photo)) && photo.name.includes('nick')){
           addedFilesLocal.push(photo)
         }
       }
@@ -63,10 +63,12 @@ const MyAdOne = ({
       for (let photo of photosCopy){
         if (!(changingTaskVar.photos.includes(photo))){
           if (photo.name.includes('nick')){
-            console.log('мы просрали свой файт')
+            setFilesValues({...filesValues, addedFiles : filesValues.addedFiles.filter(
+              file => file.name !== photo.name
+            )})
           }
           else{
-            console.log('мы потяряли файт Арсена')
+            setFilesValues({...filesValues , removedFiles : [...filesValues.removedFiles , photo.name]})
           }
         }
       }
@@ -105,16 +107,8 @@ const MyAdOne = ({
               myFormData.append("price" , String(changingTaskVar.tonValue) )
               myFormData.append("startTime" , String(changingTaskVar.time.start))
               myFormData.append("endTime" , String(changingTaskVar.time.end))
-              myFormData.append("photos" , String(changingTaskVar.photos))
-              // let answer = {
-              //   id: changingTaskVar.id,
-              //   title: changingTaskVar.taskName,
-              //   description: changingTaskVar.taskDescription,
-              //   deadline: 1,
-              //   price: changingTaskVar.tonValue,
-              //   startTime: changingTaskVar.time.start,
-              //   endTime: changingTaskVar.time.end,
-              // };
+              myFormData.append("deleteFiles" , filesValues.removedFiles)
+              myFormData.append("addFiles" , filesValues.addedFiles)
 
               if (changingTask.photos.length !== 0) {
                 for (let file of changingTask.photos) {
