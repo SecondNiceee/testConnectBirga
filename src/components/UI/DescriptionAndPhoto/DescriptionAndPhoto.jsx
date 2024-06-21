@@ -15,12 +15,6 @@ const DescriptionAndPhoto = ({
   filesTitle,
   textPlaceholder,
   fileError,
-  photosNames,
-  fileErrorText,
-  setAddedFiles,
-  setRemovedFiles,
-  addedFiles,
-  removedFiles,
 }) => {
   return (
     <div
@@ -52,23 +46,7 @@ const DescriptionAndPhoto = ({
       ) : (
         ""
       )}
-      {addedFiles ? (
-        <FileInput
-          addedFiles={addedFiles}
-          removedFiles={removedFiles}
-          setAddedFiles={setAddedFiles}
-          setRemovedFiles={setRemovedFiles}
-          photosNames={photosNames}
-          fileError={fileError}
-          setFiles={setPhotos}
-          files={photos}
-          className={
-            MyInformation
-              ? [cl.FileInput, cl.marginTop].join(" ")
-              : cl.FileInput
-          }
-        />
-      ) : (
+    
         <FileInput
           fileError={fileError}
           setFiles={setPhotos}
@@ -79,7 +57,6 @@ const DescriptionAndPhoto = ({
               : cl.FileInput
           }
         />
-      )}
     </div>
   );
 };

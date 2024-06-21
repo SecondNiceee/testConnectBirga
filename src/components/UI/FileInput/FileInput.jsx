@@ -2,7 +2,8 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 import trash from "../../../images/icons/trash.svg";
-const FileInput = ({ className, files, setFiles , fileError, photosNames, setRemovedFiles, setAddedFiles, addedFiles , removedFiles  }) => {
+let counter = 0;
+const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);
   useEffect(() => {
     setImages(files.map((event) => URL.createObjectURL(event)));
@@ -55,23 +56,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames, setRem
                   })
                 );
                 
-                if (photosNames){
-                    if (files[i].name.includes('nick') ){
-                      setAddedFiles([...removedFiles.filter(
-                        file => file.name !== files[i].name
-                      )])
-                    }
-                    else{
-                       setRemovedFiles([...removedFiles , files[i].name])
-                       setFiles(
-                        [...files].filter((obj) => {
-                          return files.indexOf(obj) !== images.indexOf(e);
-                        })
-                      );
-                      
-                    }
-                    console.log('да, в этом случае')
-                }
 
               }}
               className={[cl.removeIcon, "_icon-trash"].join(" ")}
@@ -98,12 +82,13 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames, setRem
                 let newFiles = [];
                 for (let i = 0; i < event.target.files.length; i++) {
                   let photo = event.target.files[i]
-                  photo.name = 'nick' + String(i)
-                  newFiles.push(photo);
+                  let blob = photo.slice(0 , photo.size , 'image/png')
+                  let newFile = new File([blob], 'nick' + String(counter) + '.png', {type: 'image/png'});
+                  counter += 1
+                  newFiles.push(newFile);
                 }
                 setFiles([...files, ...newFiles]);
-                // setAddedFiles(e => ([...e ,  ...newFiles]))
-                setAddedFiles([...addedFiles , ...newFiles])
+
               }
             }
             

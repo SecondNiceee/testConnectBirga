@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 let changed = false;
 // const popup = initPopup();
 let changingTaskVar = {};
+let photosCopy = []
 const MyAdOne = ({
   myAdsArray,
   setTask,
@@ -36,6 +37,42 @@ const MyAdOne = ({
     taskName: false,
     timeError: false,
   });
+  const [filesValues , setFilesValues] = useState({
+    addedFiles : [],
+    removedFiles : []
+
+  } )
+
+  console.log(filesValues)
+
+  useEffect(  () => {
+    console.log('я сработал')
+    let addedFilesLocal = []
+    console.warn(changingTaskVar.photos)
+    console.warn(photosCopy)
+    if (changingTaskVar.photos.length > photosCopy.length){
+      console.log('я попал сюда')
+      for (let photo of changingTaskVar.photos){
+        if (!(photosCopy.includes(photo))){
+          addedFilesLocal.push(photo)
+        }
+      }
+      setFilesValues({...filesValues , addedFiles : [...filesValues.addedFiles, ...addedFilesLocal]})
+    }
+    else{
+      for (let photo of photosCopy){
+        if (!(changingTaskVar.photos.includes(photo))){
+          if (photo.name.includes('nick')){
+            console.log('мы просрали свой файт')
+          }
+          else{
+            console.log('мы потяряли файт Арсена')
+          }
+        }
+      }
+    }
+    photosCopy = changingTaskVar.photos
+  } , [changingTask.photos] )
 
   useEffect(() => {
     if (putStatus === "error") {
