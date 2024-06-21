@@ -29,9 +29,8 @@ const AdCreatingOne = ({
   mistakes,
   isDetailsActive,
   categorys,
-  subCategorys
+  subCategorys,
 }) => {
-
 
 
 
@@ -258,7 +257,18 @@ const AdCreatingOne = ({
           setTaskInformation({...taskInformation , taskName : e})
         }}
       />
+
+      {taskInformation.addedFiles ? 
+
       <DescriptionAndPhoto
+      addedFiles={taskInformation.addedFiles}
+      removedFiles={taskInformation.removedFiles}
+        setAddedFiles={(e) => {
+          setTaskInformation({...taskInformation, addedFiles : e})
+        }}
+        setRemovedFiles={ (e) => {
+          setTaskInformation({...taskInformation , removedFiles : e})
+        } }
         MyInformation={MyInformation}
         taskInformation={taskInformation}
         setTaskInformation={setTaskInformation}
@@ -271,6 +281,7 @@ const AdCreatingOne = ({
           setTaskInformation({...taskInformation , taskDescription : e })
         }}
         photos={taskInformation.photos}
+        photosNames = {taskInformation.photosNames}
         setPhotos={ (e)  => {  
           if (!e) {
             alert('ошибка фото!!')
@@ -282,6 +293,33 @@ const AdCreatingOne = ({
           }  }
 
       />
+      :
+      <DescriptionAndPhoto
+      MyInformation={MyInformation}
+      taskInformation={taskInformation}
+      setTaskInformation={setTaskInformation}
+      className={cl.DescriptionAndPhoto}
+      textTitle={"Описание"}
+      filesTitle={"ИЗОБРАЖЕНИЯ"}
+      textPlaceholder={"Дайте подробное тз..."}
+      text = {taskInformation.taskDescription}
+      setText={(e) => {
+        setTaskInformation({...taskInformation , taskDescription : e })
+      }}
+      photos={taskInformation.photos}
+      photosNames = {taskInformation.photosNames}
+      setPhotos={ (e)  => {  
+        if (!e) {
+          alert('ошибка фото!!')
+        }
+        else{
+          setTaskInformation(  {...taskInformation , photos : e }  )  
+        }
+
+        }  }
+
+    />
+      }
       {MyInformation ? (
         <>
           <CatchDate

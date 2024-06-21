@@ -15,10 +15,13 @@ const DescriptionAndPhoto = ({
   filesTitle,
   textPlaceholder,
   fileError,
-  fileErrorText
+  photosNames,
+  fileErrorText,
+  setAddedFiles,
+  setRemovedFiles,
+  addedFiles,
+  removedFiles,
 }) => {
-
-
   return (
     <div
       className={
@@ -29,19 +32,54 @@ const DescriptionAndPhoto = ({
     >
       <GreyText className={cl.GreyText}>{textTitle}</GreyText>
       <div className={cl.InputContainer}>
-        <p className={cl.inputCounter} style={ text.length < 500 ? {} : {color : '#8a0303'}}>{text.length} / 500</p>
-        <TextArea 
-          onFocus = { (e) => {
-          }}
+        <p
+          className={cl.inputCounter}
+          style={text.length < 500 ? {} : { color: "#8a0303" }}
+        >
+          {text.length} / 500
+        </p>
+        <TextArea
+          onFocus={(e) => {}}
           value={text}
           className={cl.DescriptionInput}
           placeholder={textPlaceholder}
-          setValue = {setText} 
+          setValue={setText}
         ></TextArea>
       </div>
-      
-      {MyInformation ? (<GreyText className={cl.SecondGreyText}>{filesTitle}</GreyText>) : ''}
-      <FileInput fileError = {fileError}  setFiles={setPhotos} files = {photos}  className={MyInformation ? [cl.FileInput , cl.marginTop].join(' ') :  cl.FileInput} />
+
+      {MyInformation ? (
+        <GreyText className={cl.SecondGreyText}>{filesTitle}</GreyText>
+      ) : (
+        ""
+      )}
+      {addedFiles ? (
+        <FileInput
+          addedFiles={addedFiles}
+          removedFiles={removedFiles}
+          setAddedFiles={setAddedFiles}
+          setRemovedFiles={setRemovedFiles}
+          photosNames={photosNames}
+          fileError={fileError}
+          setFiles={setPhotos}
+          files={photos}
+          className={
+            MyInformation
+              ? [cl.FileInput, cl.marginTop].join(" ")
+              : cl.FileInput
+          }
+        />
+      ) : (
+        <FileInput
+          fileError={fileError}
+          setFiles={setPhotos}
+          files={photos}
+          className={
+            MyInformation
+              ? [cl.FileInput, cl.marginTop].join(" ")
+              : cl.FileInput
+          }
+        />
+      )}
     </div>
   );
 };

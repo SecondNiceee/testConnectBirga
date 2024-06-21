@@ -137,7 +137,7 @@ const MyAdOne = ({
       changed = true;
       setChangingTask(myAdsArray[index]);
     }
-  }, [isDetailsActive, changingTask]);
+  }, [isDetailsActive]);
 
   useEffect( () => {
     
@@ -216,7 +216,7 @@ const MyAdOne = ({
         setIndex={setIndex}
       />
 
-      <CSSTransition classNames="details" in={isDetailsActive} timeout={0}
+      <CSSTransition classNames="details" in={isDetailsActive} timeout={300}
       mountOnEnter unmountOnExit>
         <AdCreatingOne
           mistakes={mistakes}
@@ -225,6 +225,13 @@ const MyAdOne = ({
           setTaskInformation={setChangingTask}
           MyInformation={true}
           isDetailsActive={isDetailsActive}
+          setAddedFiles={(e) => {
+            console.log(e)
+            setChangingTask(value => ({...value, addedFiles : e}))
+          }}
+          setRemovedFiles={(e) => {
+            setChangingTask(value => ({...value , removedFiles : e}))
+          }}
         />
       </CSSTransition>
     </div>

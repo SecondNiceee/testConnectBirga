@@ -12,7 +12,7 @@ export const putMyTask = createAsyncThunk(
         data,
         {
           params : {
-            id : 2144832745
+            id : window.Telegram.WebApp.initDataUnsafe.user.id 
           },
           headers: {
             "Content-Type": "application/json",
@@ -59,73 +59,87 @@ export const postMyTask = createAsyncThunk(
 
 export const fetchMyOrders = createAsyncThunk(
   "information/fetchMyOrders" , 
+
   async function (){
-    let tasks = []
-    let task = await axios.get('https://back-birga.ywa.su/advertisement/findByUser' , {
-      params : {
-          // userId : window.Telegram.WebApp.initDataUnsafe.user.id 
-        userId : 2144832745
+
+    try {
+
+      let tasks = []
+      let task = await axios.get('https://back-birga.ywa.su/advertisement/findByUser' , {
+        params : {
+            userId : window.Telegram.WebApp.initDataUnsafe.user.id 
+          // userId : 2144832745
+        }
+      })
+  
+      // const urlToObject= async(image)=> {
+      //   const response = await fetch(image);
+      //   // here image is url/location of image
+      //   const blob = await response.blob();
+      //   const file = new File([blob], image, {type: blob.type});
+      //   return file
+      // }
+  
+      if (task.data.length === 0){
+        return []
       }
-    })
+      else{
+  
+        for (let order of task.data) {
+          let files =  []
+  
+  
+  
+  
+  
+          // let buffers = await axios.get('https://back-birga.ywa.su/advertisement/getPhotos', {
+          //   params : {
+          //     id : order.id
+          //   }
+          // })
+  
+  
+  
+          if (order.files){
 
-    // const urlToObject= async(image)=> {
-    //   const response = await fetch(image);
-    //   // here image is url/location of image
-    //   const blob = await response.blob();
-    //   const file = new File([blob], image, {type: blob.type});
-    //   return file
-    // }
-
-    if (task.data.length === 0){
-      return []
-    }
-    else{
-
-      for (let order of task.data) {
-        let files =  []
-
-
-
-
-
-        // let buffers = await axios.get('https://back-birga.ywa.su/advertisement/getPhotos', {
-        //   params : {
-        //     id : order.id
-        //   }
-        // })
-
-
-
-        
-
-          for (let i = 0 ; i < order.files.length; i++){
-
-            let uintArray = new Uint8Array(order.files[i].data);
-            let blob = new Blob([uintArray], { type: 'image/png' });
-            let fileName =  order.photos[i]  ;
-            let file = new File([blob], fileName, { type: 'image/png' });
-            
-            files.push(file)
+            for (let i = 0 ; i < order.files.length; i++){
+  
+              let uintArray = new Uint8Array(order.files[i].data);
+              let blob = new Blob([uintArray], { type: 'image/png' });
+              let fileName =  order.photos[i]  ;
+              let file = new File([blob], fileName, { type: 'image/png' });
+              files.push(file)
+  
+            }
           }
-        
-
-        tasks.push({
-          id : order.id,
-          taskName : order.title,
-          executionPlace: "Можно выполнить удаленно",
-          time : {start : new Date(order.startTime) , end : new Date(order.endTime)},
-          tonValue : order.price,
-          taskDescription : order.description,
-          photos : files ,
-          photosName : order.photos,
-          rate : '5',
-          isActive : true,
-          creationTime : order.createdAt,
-          viewsNumber : '51', 
+  
           
-        })
+  
+          tasks.push({
+            id : order.id,
+            taskName : order.title,
+            executionPlace: "Можно выполнить удаленно",
+            time : {start : new Date(order.startTime) , end : new Date(order.endTime)},
+            tonValue : order.price,
+            taskDescription : order.description,
+            photos : files ,
+            photosNames : order.photos,
+            rate : '5',
+            isActive : true,
+            creationTime : order.createdAt,
+            viewsNumber : '51', 
+            removedFiles : [],
+            addedFiles : []
+            
+          })
+        }
+        console.log(tasks)
+  
+        return tasks
       }
-      return tasks
+    }
+    catch (e){
+      console.warn(e)
     }
   }
 )
@@ -318,7 +332,8 @@ const information = createSlice( {
         builder.addCase( fetchMyOrders.fulfilled, ((state , action) => {state.myOrderStatus = 'complete'  
         state.myAdsArray = action.payload
        }  ) )
-        builder.addCase( fetchMyOrders.rejected , ( (state , action) => {state.myOrderStatus = 'error' 
+        builder.addCase( fetchMyOrders.rejected , ( (state , action) => {state.myOrderStatus = 'error'  
+    
         alert()
         } )  )
         builder.addCase(  postMyTask.pending , (   (state ) => {state.postTaskStatus = 'pending'}   )  )

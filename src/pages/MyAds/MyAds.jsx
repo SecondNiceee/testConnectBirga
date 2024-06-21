@@ -38,6 +38,8 @@ const MyAds = () => {
 
   const [isDetailsActive, setDetailsActive] = useState(false);
 
+
+
     useEffect(() => {
       if (spet == 2 && !isDetailsActive){
         BackButton.hide()
@@ -76,9 +78,12 @@ const MyAds = () => {
       subCategory : 1,
       price : 2000,
       time : {start : '' , end : ''},
-      photos : []
+      photos : [],
+      photosNames : []
     }
   )
+
+  console.log(changingTask)
 
   const isMenuActive = useSelector((state) => state.menu.value);
 

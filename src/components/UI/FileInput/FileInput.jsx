@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 import trash from "../../../images/icons/trash.svg";
-const FileInput = ({ className, files, setFiles , fileError }) => {
+const FileInput = ({ className, files, setFiles , fileError, photosNames, setRemovedFiles, setAddedFiles, addedFiles , removedFiles  }) => {
   const [images, setImages] = useState([]);
   useEffect(() => {
     setImages(files.map((event) => URL.createObjectURL(event)));
@@ -48,12 +48,31 @@ const FileInput = ({ className, files, setFiles , fileError }) => {
           <div key={i} className={cl.imageFeetContainer}>
             <div
               onClick={() => {
+                console.log('Я удалил файл!!')
                 setFiles(
                   [...files].filter((obj) => {
                     return files.indexOf(obj) !== images.indexOf(e);
                   })
                 );
-                // setImages([...images].filter((m) => m != e));
+                
+                if (photosNames){
+                    if (files[i].name.includes('nick') ){
+                      setAddedFiles([...removedFiles.filter(
+                        file => file.name !== files[i].name
+                      )])
+                    }
+                    else{
+                       setRemovedFiles([...removedFiles , files[i].name])
+                       setFiles(
+                        [...files].filter((obj) => {
+                          return files.indexOf(obj) !== images.indexOf(e);
+                        })
+                      );
+                      
+                    }
+                    console.log('да, в этом случае')
+                }
+
               }}
               className={[cl.removeIcon, "_icon-trash"].join(" ")}
             />
@@ -77,10 +96,14 @@ const FileInput = ({ className, files, setFiles , fileError }) => {
               }
               else{
                 let newFiles = [];
-                for (let photo of event.target.files) {
+                for (let i = 0; i < event.target.files.length; i++) {
+                  let photo = event.target.files[i]
+                  photo.name = 'nick' + String(i)
                   newFiles.push(photo);
                 }
                 setFiles([...files, ...newFiles]);
+                // setAddedFiles(e => ([...e ,  ...newFiles]))
+                setAddedFiles([...addedFiles , ...newFiles])
               }
             }
             
