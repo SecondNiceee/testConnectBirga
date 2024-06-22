@@ -109,8 +109,8 @@ const MyAdOne = ({
               myFormData.append("startTime" , changingTaskVar.time.start)
               myFormData.append("endTime" , changingTaskVar.time.end)
               if (filesArrayVar.removedFiles.length > 0){
-                for (let photo of filesArrayVar.removedFiles){
-                  myFormData.append("deleteFiles" , photo)
+                for (let i = 0; i <  filesArrayVar.removedFiles.length; i++){
+                  myFormData.append(`deleteFiles[${i}]` , filesArrayVar.removedFiles[i])
                 }
               }
               if(filesArrayVar.addedFiles.length > 0)
