@@ -282,7 +282,7 @@
 
 }
 .aboutOne-exit-active{
-    transform: translateX(0%);
+    transform: translateX(100%);
     transition:  transform .3s;
 }
 .aboutOne-exit-done{
@@ -647,13 +647,13 @@
     bottom: 0%;
 }
 .last-ads-exit{
-    bottom: 100%;
+    bottom: -100%;
 }
 .last-ads-exit-active{
-    bottom: 100%;
+    bottom: -100%;
 }
 .last-ads-exit-done{
-    bottom: 100%;
+    bottom: -100%;
 }
 
 .open{

@@ -96,8 +96,8 @@ const MyAds = () => {
 
   useEffect( () => {
     function goBack(){
-      if (localAboutReaction){
-
+      if (!localAboutReaction){
+  
           if (localIsOpen){
             setOpen(false)
           }
@@ -150,13 +150,14 @@ const MyAds = () => {
       className="MyAdsContainer"
     >
 
-      <button style={{
+      {/* <button style={{
         position : 'fixed',
-        left : '200%',
-        zIndex : 999
+        left : '50%',
+        zIndex : 1500
       }} onClick={() => {
+        goBack()
       }}>НАЗАД</button>
-
+ */}
 
 
 
@@ -188,7 +189,7 @@ const MyAds = () => {
         </CSSTransition>
 
 
-        <CSSTransition classNames="aboutReaction" in={openAboutReaction} timeout={400}
+        <CSSTransition classNames="aboutReaction" in={openAboutReaction} timeout={0}
         mountOnEnter unmountOnExit>
                     <AboutReaction
                         aboutReaction = {aboutReaction}
