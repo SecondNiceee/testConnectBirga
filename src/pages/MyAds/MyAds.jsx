@@ -49,7 +49,7 @@ const MyAds = () => {
   const [isOpen , setOpen] = useState(false)
 
 
-  localAboutReaction = aboutReaction
+  localAboutReaction = openAboutReaction
   localIsOpen = isOpen
   localSecondPage = secondPage
 

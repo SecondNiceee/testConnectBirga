@@ -24,7 +24,20 @@ export const putMyTask = createAsyncThunk(
       console.log(answ)
       let localTask = data[2]
       
-      let changedTask = []
+
+      let changedFiles = []
+
+
+
+        for (let i = 0 ; i < localTask.photos.length; i++){
+
+          let file = localTask.photos[i];
+          let blob = file.slice(0, file.size, 'image/png');
+          let newFile = new File([blob], answ.data.photos[i], {type: 'image/png'});
+          changedFiles.push(newFile)
+
+        }
+      
       
 
 

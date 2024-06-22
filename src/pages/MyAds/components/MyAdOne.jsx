@@ -213,7 +213,7 @@ const MyAdOne = ({
           }
           for (let i = 0; i < filesArrayVar.addedFiles.length ; i++){
             console.log(filesArrayVar.addedFiles[i])
-            myFormData.append(`addFiles[${i}]` , filesArrayVar.addedFiles[i] )
+            myFormData.append(`addFiles[${i}]` , filesValues.addedFiles[i] )
           }
 
         dispatch(putMyTask([myFormData, changingTaskVar.id , changingTaskVar]))
