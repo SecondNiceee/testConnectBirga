@@ -89,23 +89,29 @@ const MyAds = () => {
 
   useEffect( () => {
     function goBack(){
-      if (isOpen){
-        setOpen(false)
+      if (!openAboutReaction){
+
+          if (isOpen){
+            setOpen(false)
+          }
+          else{
+            if (secondPage){
+              setSecondPage(false)
+            }
+            else{
+              navigate(-1)
+            }
+          }
       }
       else{
-        if (secondPage){
-          setSecondPage(false)
-        }
-        else{
-          navigate(-1)
-        }
+        setOpenAboutReaction(false)
       }
       
     }
     BackButton.show()
     BackButton.onClick(goBack)
     
-  },[] )
+  },[secondPage, openAboutReaction , isDetailsActive , isOpen] )
 
 
 
@@ -171,14 +177,18 @@ const MyAds = () => {
 
         <CSSTransition classNames="last-ads" in={isOpen} timeout={400}
         mountOnEnter unmountOnExit>
-              <LastAds openAboutReaction = {openAboutReaction}  isOpen={isOpen} setOpen = {setOpen} aboutReaction={aboutReaction} />
+              <LastAds openAboutReactionFunc={setOpenAboutReaction} openAboutReaction = {openAboutReaction}  isOpen={isOpen} setOpen = {setOpen} aboutReaction={aboutReaction} />
         </CSSTransition>
 
 
-          {/* 
+        <CSSTransition classNames="aboutReaction" in={openAboutReaction} timeout={400}
+        mountOnEnter unmountOnExit>
                     <AboutReaction
                         aboutReaction = {aboutReaction}
-                    />  */}
+                    /> 
+        </CSSTransition>
+
+
       
  
 

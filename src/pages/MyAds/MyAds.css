@@ -296,6 +296,13 @@
     align-items: center;
     justify-content: center;    */
     background: rgb(24, 34, 45);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1001;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
 
     padding-left: 16px;
     padding-right: 16px;
@@ -306,8 +313,7 @@
     height: 100vh;
     overflow-y: scroll;
     flex-direction: column;
-    position: relative;
-    will-change: z-index , visibility;
+    will-change:  visibility;
 
 }
 .about__top{
@@ -614,6 +620,7 @@
 .last-ads{
     position: absolute;
     left: 0;
+    z-index: 1000;
     bottom: -100%;
     height: calc(100vh - 68px);
     border-top-left-radius:17px ;
@@ -626,7 +633,6 @@
     left: 0;
     /* top: 70px; */
     padding: 0px 16px; 
-    z-index: 250;
     background-color: #20303f;
     will-change:  transform  , transition;
     transition: 0.4s;

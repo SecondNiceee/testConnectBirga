@@ -6,7 +6,7 @@ import { memo } from 'react';
 const LastTop = ({openAboutReactionFunc}) => {
     return (
         <div onClick = {() => {
-            openAboutReactionFunc()
+            openAboutReactionFunc(true)
         }} className="last-top">
             <img src={icon} alt="" className="icon" />
             <LastTopCenter />
