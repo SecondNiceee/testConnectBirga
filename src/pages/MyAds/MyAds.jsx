@@ -103,8 +103,9 @@ const MyAds = () => {
       
     }
     BackButton.show()
+    BackButton.onClick(goBack)
     
-  } )
+  },[] )
 
 
 
