@@ -186,7 +186,6 @@ const MyAdOne = ({
       BackButton.onClick(save);
     } else {
       changed = false;
-      BackButton.hide();
     }
     return () => {
       BackButton.offClick(save);

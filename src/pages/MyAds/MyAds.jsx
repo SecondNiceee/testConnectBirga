@@ -114,8 +114,14 @@ const MyAds = () => {
         setOpenAboutReaction(false)
       }
       
+      
     }
-    BackButton.show()
+    if (!localSecondPage){
+      BackButton.hide()
+    }
+    else{
+      BackButton.show()
+    }
     BackButton.onClick(goBack)
     
   } )
