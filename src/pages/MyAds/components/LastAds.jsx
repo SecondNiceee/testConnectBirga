@@ -19,8 +19,8 @@ const LastAds = ({aboutReaction , isOpen , setOpen , openAboutReactionFunc , ope
 
         window.scrollTo(0 ,150)
         return () => {
-            window.scrollTo(0 ,5)
-            document.documentElement.style.marginTop = '5px'
+            window.scrollTo(0 ,8)
+            document.documentElement.style.marginTop = '8px'
             document.documentElement.style.overflow = 'auto';
             start = 0
             move = 0

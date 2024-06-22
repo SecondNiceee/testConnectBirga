@@ -149,7 +149,7 @@ const AdCreating = () => {
     // dispatch(addMyAds(taskInformationCopy))
     navigate("/MyAds");
     
-    MainButton.hide();
+    // MainButton.hide();
     spet = 0;
   }
   async function post(el) {
