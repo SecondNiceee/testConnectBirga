@@ -83,7 +83,24 @@ const MyAds = () => {
 
 
 
-
+  useEffect( () => {
+    function goBack(){
+      if (isOpen){
+        setOpen(false)
+      }
+      else{
+        if (secondPage){
+          setSecondPage(false)
+        }
+        else{
+          navigate(-1)
+        }
+      }
+      
+    }
+    BackButton.show()
+    
+  } )
 
 
 
