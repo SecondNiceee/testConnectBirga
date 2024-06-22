@@ -96,6 +96,7 @@ const MyAds = () => {
 
   useEffect( () => {
     function goBack(){
+      console.log(localAboutReaction)
       if (!localAboutReaction){
   
           if (localIsOpen){
