@@ -16,8 +16,11 @@ const LastAds = ({aboutReaction , isOpen , setOpen , openAboutReactionFunc , ope
     useEffect( () => {
         document.documentElement.style.overflow = 'clip';
         document.documentElement.style.marginTop = '150px'
+
         window.scrollTo(0 ,150)
         return () => {
+            window.scrollTo(0 ,0)
+            document.documentElement.style.marginTop = '0px'
             document.documentElement.style.overflow = 'auto';
             start = 0
             move = 0
