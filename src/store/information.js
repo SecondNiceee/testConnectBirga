@@ -8,7 +8,7 @@ export const putMyTask = createAsyncThunk(
 
     try{
       console.log(data[0] , data[1])
-      await axios.put(
+      let answ = await axios.put(
         "https://back-birga.ywa.su/advertisement",
         data[0],
         {
@@ -21,10 +21,19 @@ export const putMyTask = createAsyncThunk(
           },
         }
       );
+      console.log(answ)
+      let localTask = data[2]
+      
+      let changedTask = []
+      
+
+
+
     }
     catch(e){
       console.warn(e)
     }
+
 
     
 
