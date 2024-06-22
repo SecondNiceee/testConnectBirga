@@ -111,7 +111,7 @@ const MyAds = () => {
     BackButton.show()
     BackButton.onClick(goBack)
     
-  },[secondPage, openAboutReaction , isDetailsActive , isOpen] )
+  } )
 
 
 
