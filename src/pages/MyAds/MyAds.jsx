@@ -83,8 +83,8 @@ const MyAds = () => {
 
   useEffect( () => {
     document.documentElement.style.overflowY = 'clip'
-    document.documentElement.style.marginTop = '10px'
-    window.scrollTo(0 , 10)
+    document.documentElement.style.marginTop = '5px'
+    window.scrollTo(0 , 5)
   },[] )
 
   useEffect( () => {
