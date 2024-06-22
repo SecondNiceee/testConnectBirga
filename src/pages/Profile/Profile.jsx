@@ -71,11 +71,13 @@ const Profile = () => {
   
   const [aboutU, setAboutU] = useState(aboutMe);
 
+  
 
   aboutULocal = aboutU
   aboutMeLocal = aboutMe
 
 
+  console.log(aboutULocal)
 
 
 
@@ -348,7 +350,7 @@ const Profile = () => {
 
           deleteFunction = {() => {
             index = i
-            setAboutU({...aboutU , cards : [...aboutU.cards.filter((e , i) => {
+            setAboutU({...aboutULocal , cards : [...aboutU.cards.filter((e , i) => {
               return i !== index
             })]})
             // dispatch(deleteCard(index))
@@ -397,7 +399,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <Cards  save = {save} aboutU={aboutMeLocal} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
+            <Cards  save = {save} aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
         </CSSTransition>
 
 
@@ -410,7 +412,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <ChangeCards save={save} index={index}  card={aboutULocal.cards[index]}  aboutU={aboutULocal} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
+            <ChangeCards save={save} index={index}  card={aboutULocal.cards[index]}  aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
         </CSSTransition>
 
 
