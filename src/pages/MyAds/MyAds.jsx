@@ -31,10 +31,10 @@ const aboutReaction = `Доброго времени суток!
   Гарантирую достойный результат!
     
   Опыт работы 8 лет в сфере типографического дизайна, без трудностей поможет мне выполнить Ваш заказ любой сложности с: растровыми изображениями и векторной графикой, разработкой макетов полиграфической продукции (визитки, листовки, буклеты, евробуклеты и т.д.), рекламной продукции (ручки, пакеты, футболки и т.д.), наружной рекламы, разработкой логотипов и фирменого стиля`
-// let localDetailsActive;
-// let localAboutReaction;
-// let localSecondPage;
-// let localIsOpen;
+let localDetailsActive;
+let localAboutReaction;
+let localSecondPage;
+let localIsOpen;
 const MyAds = () => {
 
   const isMenuActive = useSelector((state) => state.menu.value);
@@ -48,6 +48,10 @@ const MyAds = () => {
 
   const [isOpen , setOpen] = useState(false)
 
+
+  localAboutReaction = aboutReaction
+  localIsOpen = isOpen
+  localSecondPage = secondPage
 
 
 
@@ -92,13 +96,13 @@ const MyAds = () => {
 
   useEffect( () => {
     function goBack(){
-      if (!aboutReaction){
+      if (localAboutReaction){
 
-          if (!isOpen){
+          if (localIsOpen){
             setOpen(false)
           }
           else{
-            if (!secondPage){
+            if (localSecondPage){
               setSecondPage(false)
             }
             else{
