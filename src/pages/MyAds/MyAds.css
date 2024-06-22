@@ -258,9 +258,9 @@
     padding-top: 20px;
     min-width: 100vw;
     height: 100vh;
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
     position: relative;
-    z-index: 20;
+    z-index: 999;
     position: absolute;
     left: 0;
     top: 0;
