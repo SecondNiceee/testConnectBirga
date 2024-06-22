@@ -1,7 +1,7 @@
 import React from "react";
 import upDown from "../../../images/icons/UpDown.svg";
 import Reaction from './Reaction';
-const ReactionBlock = ({goForward , setClosed}) => {
+const ReactionBlock = ({goForward , setOpen}) => {
   return (
     <div className="reactions__block">
 
@@ -13,11 +13,11 @@ const ReactionBlock = ({goForward , setClosed}) => {
             </div>
         </div>
 
-        <Reaction setClosed={setClosed} goForward = {goForward} />
+        <Reaction setOpen={setOpen} goForward = {goForward} />
 
-        <Reaction setClosed={setClosed}  goForward = {goForward}  />
+        <Reaction setOpen={setOpen}  goForward = {goForward}  />
 
-        <Reaction setClosed={setClosed} goForward = {goForward}  />
+        <Reaction setOpen={setOpen} goForward = {goForward}  />
     </div>
   );
 };

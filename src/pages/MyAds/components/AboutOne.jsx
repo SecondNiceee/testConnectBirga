@@ -5,11 +5,10 @@ import { memo } from 'react';
 import Top from './Top';
 import ReactionBlock from './ReactionBlock';
 import LastAds from './LastAds';
-const AboutOne = ({task, setMenuActive, goForward, setClosed }) => {
+const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
   
     return (
         <div className="aboutOne" style={{
-          position : 'relative'
         }}>
           
           <Top name={'Мои задания'} setMenuActive={setMenuActive}/>
@@ -21,7 +20,7 @@ const AboutOne = ({task, setMenuActive, goForward, setClosed }) => {
       }
           
  
-          <ReactionBlock setClosed={setClosed} goForward = {goForward} />
+          <ReactionBlock setOpen={setOpen} goForward = {goForward} />
 
           
 

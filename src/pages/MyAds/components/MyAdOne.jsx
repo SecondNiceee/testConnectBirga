@@ -19,29 +19,34 @@ let filesArrayVar;
 const MyAdOne = ({
   myAdsArray,
   setTask,
-  goForward,
   setDetailsActive,
-  setMyAdsArray,
   isDetailsActive,
   setMenuActive,
   changingTask,
   setChangingTask,
+  setSecondPage
 }) => {
+
+
   const dispatch = useDispatch();
+
   let putStatus = useSelector((state) => state.information.putTaskStatus);
-  let getStatus = useSelector((state) => state.information.myOrderStatus);
 
-  changingTaskVar = changingTask;
+  changingTaskVar = changingTask; // переприсваивание для работы телеграма
 
-  const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0);  // index для определения taskDetails
+
+
   const [mistakes, setMistakes] = useState({
     taskName: false,
     timeError: false,
-  });
+  }); // контролер ошибок
   const [filesValues , setFilesValues] = useState({
     addedFiles : [],
     removedFiles : []
-  } )
+  } ) // массивы для пута (удаленное и добавленные)
+
+
   filesArrayVar = filesValues;
 
   console.log(filesValues)
@@ -75,13 +80,16 @@ const MyAdOne = ({
       }
     }
     photosCopy = changingTaskVar.photos
-  } , [changingTask.photos] )
+  } , [changingTask.photos] )   // логика пута
+
+
+
 
   useEffect(() => {
     if (putStatus === "error") {
       alert('ничего не сохранилось')
     }
-  }, [putStatus]);
+  }, [putStatus]); // проверка на то, что все работает
 
 
   const save = () =>  {
@@ -113,7 +121,7 @@ const MyAdOne = ({
                   myFormData.append(`deleteFiles[${i}]` , filesArrayVar.removedFiles[i])
                 }
                 for (let i = 0; i < filesArrayVar.addedFiles.length ; i++){
-                  myFormData.append(`addFiles[${i}]` , filesArrayVar.addedFiles[i] )
+                  myFormData.append(`addFiles` , changingTask.photos[i] )
                 }
 
               dispatch(putMyTask([myFormData, changingTaskVar.id , changingTaskVar]))
@@ -135,7 +143,7 @@ const MyAdOne = ({
     } else {
       setDetailsActive(false);
     }
-  }
+  }  // функция сохранения , а также модалка телеграма
 
 
 
@@ -157,13 +165,8 @@ const MyAdOne = ({
 
     setMistakes(rezult);
     return Object.values(rezult).every((value) => value === false);
-  }
+  } // логика провероки ошибок
 
-  function putTask(answer) {
-    dispatch(putMyTask(answer))
-    dispatch(putMyAds(changingTaskVar))
-    setDetailsActive(false);
-  }
 
 
 
@@ -174,7 +177,7 @@ const MyAdOne = ({
       changed = true;
       setChangingTask(myAdsArray[index]);
     }
-  }, [isDetailsActive]);
+  }, [isDetailsActive]); // логика внесения changingTask
 
   useEffect( () => {
     
@@ -188,18 +191,8 @@ const MyAdOne = ({
     return () => {
       BackButton.offClick(save);
     }
-  } , [isDetailsActive])
+  } , [isDetailsActive]) // логика кнопок
 
-  function setMyArray(par) {
-    setMyAdsArray(
-      [...myAdsArray].map((e, i) => {
-        if (i === index) {
-          return par;
-        }
-        return e;
-      })
-    );
-  }
 
   return (
     <div className="my-ad-one">
@@ -241,7 +234,7 @@ const MyAdOne = ({
       <PickerContent
         myAdsArray={myAdsArray}
         setTask={setTask}
-        goForward={goForward}
+        setSecondPage = {setSecondPage}
         setDetailsActive={setDetailsActive}
         setIndex={setIndex}
       />

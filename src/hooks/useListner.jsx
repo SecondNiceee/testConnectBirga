@@ -1,6 +1,6 @@
 import  { useEffect } from 'react';
 
-const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetailsActive , isClosed} ) => {
+const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetailsActive , isOpen} ) => {
     return (  useEffect(() => {
         let startTouchX = 0;
         let endTouchX = 0;
@@ -16,7 +16,7 @@ const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetails
           
           endTouchY = e.changedTouches[0].pageY;
 
-          if (isClosed){
+          if (!isOpen){
 
               if (
                 endTouchX - startTouchX > 200 &&
@@ -54,7 +54,7 @@ const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetails
           document.removeEventListener('touchstart' , listnerFunctionOne)
           document.removeEventListener('touchend' , listnerFunctionTwo)
         }
-      }, [isMenuActive , isDetailsActive , isClosed , setDetailsActive , setMenuActive])   )    ;  ;
+      }, [isMenuActive , isDetailsActive , isOpen , setDetailsActive , setMenuActive])   )    ;  ;
 };
 
 export default useListner;

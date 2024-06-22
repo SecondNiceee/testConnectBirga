@@ -15,6 +15,7 @@ import LastAds from "./components/LastAds";
 import MyAdOne from "./components/MyAdOne";
 import AboutReaction from "./components/AboutReaction";
 import AboutOne from "./components/AboutOne";
+import { CSSTransition } from "react-transition-group";
 
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
@@ -33,38 +34,17 @@ const aboutReaction = `Доброго времени суток!
 
 const MyAds = () => {
 
+  const isMenuActive = useSelector((state) => state.menu.value);
 
-  const [reactionVisibility , setReactionVisibility] = useState('hidden')
 
   const [isDetailsActive, setDetailsActive] = useState(false);
 
+  const [openAboutReaction , setOpenAboutReaction] = useState(false)
 
+  const [secondPage , setSecondPage] = useState(false)
 
-    useEffect(() => {
-      if (spet == 2 && !isDetailsActive){
-        BackButton.hide()
-      }
-      else{
-        BackButton.show()
-      }
-      if (!isDetailsActive){
-        BackButton.onClick(goBack);
-      }
-      else{
-        BackButton.offClick(goBack);
-      }
-      return () => {
-        BackButton.offClick(goBack);
-      };  
-    } , [spet, isDetailsActive]);  
-  
+  const [isOpen , setOpen] = useState(false)
 
-    // myFormData.append("title", el.taskName);
-    // myFormData.append("description", el.taskDescription);
-    // myFormData.append("deadline", 1);
-    // myFormData.append("category", 1);
-    // myFormData.append("subCategory", 1);
-    // myFormData.append("price", el.tonValue);
 
 
 
@@ -84,81 +64,27 @@ const MyAds = () => {
     }
   )
 
-  console.log(changingTask)
+  const myAdsArray =  useSelector((state) => state.information.myAdsArray)
 
-  const isMenuActive = useSelector((state) => state.menu.value);
+  const [task, setTask] = useState(myAdsArray[0]);
+
+
+
+  console.log(changingTask)
 
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
-  const myAdsArray =  useSelector((state) => state.information.myAdsArray)
-
-  function setMyAdsArray(arr){
-    
-  }
-
-  const [task, setTask] = useState(myAdsArray[0]);
 
 
-  const [stationNow, setStationNow] = useState(-200);
-  
-  const [openAboutReaction , setOpenAboutReaction] = useState(false)
-
-  const [isClosed , setClosed] = useState(true)
-
-  useEffect( () => {
-    
-    document.documentElement.style.marginTop = '150px'
-    
-    document.documentElement.scrollTo({
-      top : 150,
-      behavior : 'auto'
-    })
-
-     document.documentElement.style.overflow = 'clip'
-      document.querySelector('.MainContainer').style.overflowY = 'hidden'
-  } , [] )
-  
 
 
-  useEffect( () => {
-   
-    setClosed(false)
-    setTimeout( () => {
-      setClosed(true)
-    } , 400 )
-
-    setClosed(false)
-    setTimeout( () => {
-      setClosed(true)
-    } , 400 )
-    
-    
-    // document.documentElement.style.marginTop = '150px'
-    // window.scrollTo({
-    //   top : 150,
-    //   behavior : 'auto'
-    // })
-    
-    //  document.documentElement.style.overflow = 'clip'
-    // document.querySelector('.MainContainer').style.overflowY = 'hidden'
-
-    
-  
-
-    return () => {
-      // document.documentElement.scrollTo({
-      //   top : 0,
-      //   behavior : 'auto'
-      // })
-      document.documentElement.style.overflowY = 'unset'
-      document.documentElement.style.marginTop = '0px'
-      document.querySelector('.MainContainer').style.overflowY = 'unset'
-    }
 
 
-  } , [] )
+
+
+
 
 
 
@@ -167,125 +93,14 @@ const MyAds = () => {
   } , [dispatch]  )
 
 
-
-  function goBack() {
-    if (isDetailsActive) {
-      setDetailsActive(false);
-      dispatch(changeMyAds(myAdsArray));
-    } else {
-      if (openAboutReaction){
-        closeAboutReactionFunc()
-      }
-      else{
-        if (spet === 2){
-          navigate(-1);
-        }
-        else{
-          if(!isClosed){
-            setClosed(true)
-          }
-          else{
-            setReactionVisibility('hidden')
-            spet += 1
-            animte()
-          }
-        }
-      }
-    }
-  }
-  
-  const goForward = useCallback( () => {
-    
-    spet -= 1;
-    if (spet === 1){
-      setTimeout(() => {
-        setReactionVisibility('visible')
-      } , 320)
-    }
-
-    animte();
-  } , [] )
-  
-  function animte() {
-    setStationNow(spet * -100);
-  }
-
-
-
   useListner({
     isMenuActive,
     setMenuActive,
     setDetailsActive,
     isDetailsActive,
-    isClosed
+    isOpen
   });  
 
-
-  // const userInfo = useSelector(state => state.telegramUserInfo)
-
-
-
-
-  function closeAboutReactionFunc(){
-    spet -= 1
-    animte()
-    setOpenAboutReaction(false)
-  }
-
-  const openAboutReactionFunc = useCallback( () => {
-   
-    spet += 1
-    animte()
-    setOpenAboutReaction(true)
-  } , [] )
-
-  
-  const stylesAboutReaction = useMemo( () => {
-    if (openAboutReaction || spet === 1){
-      return {
-        zIndex : 100,
-        visibility : reactionVisibility
-      }
-    }
-    else{
-      return{
-        zIndex : -1,
-        visibility : reactionVisibility
-      }
-    }
-  } , [openAboutReaction , spet] )
-
-  const blackStyle = useMemo(() => {
-    if (!isClosed){
-      return {
-        bottom : 0,
-        top : 0,
-        left : '100%',
-        right : 0,
-        backgroundColor : 'black',
-        zIndex : 200,
-        position : 'fixed',
-        width : '100vw',
-        height : '100vh',
-        opacity : '0.8',
-        transition : '0.4s',
-      }
-    }
-    return {
-      opacity : '0',
-      left : '100%',
-      top : 0,
-      width : '100vw',
-      height : '100vh',
-      backgroundColor : 'black',
-      zIndex : -1,
-      position : 'fixed',
-      transition : '0.4s'
-
-    }
-  } , [isClosed] )
-
-  // alert(myAdsArray.photos)
 
   return (
     <>
@@ -294,10 +109,6 @@ const MyAds = () => {
       </>
       :
     <motion.div
-      style={{
-        transform: "translate3d(" + stationNow.toString() + "% , 0 , 0)",
-        
-      }}
       initial={{ opacity: 0,  }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.1 }}
@@ -309,45 +120,18 @@ const MyAds = () => {
         left : '200%',
         zIndex : 999
       }} onClick={() => {
-        goBack()
       }}>НАЗАД</button>
 
-      <div className="blackBack" style={blackStyle}>
-
-      </div>
-
-  
-        <AboutReaction
-            
-            aboutReaction = {aboutReaction}
-            style = {
-              stylesAboutReaction
-            }
-
-        />
 
 
 
 
-          <AboutOne setClosed = {setClosed} goForward={goForward} task={task} setMenuActive={setMenuActive}  />
-
-
-
-
-
-        <LastAds openAboutReaction = {openAboutReaction} openAboutReactionFunc = {openAboutReactionFunc} isClosed={isClosed} setClosed = {setClosed} aboutReaction={aboutReaction} />
- 
-
-
-
-
-
-              <MyAdOne
+      <MyAdOne
                 {...{
                   myAdsArray,
                   setTask,
-                  goForward,
-                  setMyAdsArray,
+                  setSecondPage,
+                  setOpenAboutReaction,
                   setDetailsActive,
                   isDetailsActive,
                   setMenuActive,
@@ -355,6 +139,32 @@ const MyAds = () => {
                   setChangingTask
                 }}
               />
+
+
+        <CSSTransition classNames="aboutOne" in={secondPage} timeout={300}
+        mountOnEnter unmountOnExit>
+            <AboutOne setOpen = {setOpen}  task={task} setMenuActive={setMenuActive}  />
+        </CSSTransition>
+
+
+        <CSSTransition classNames="last-ads" in={isOpen} timeout={400}
+        mountOnEnter unmountOnExit>
+              <LastAds openAboutReaction = {openAboutReaction}  isOpen={isOpen} setOpen = {setOpen} aboutReaction={aboutReaction} />
+        </CSSTransition>
+
+
+          {/* 
+                    <AboutReaction
+                        aboutReaction = {aboutReaction}
+                    />  */}
+      
+ 
+
+
+
+
+
+
 
 
 

@@ -6,7 +6,7 @@ import star from '../../../images/icons/Star.svg'
 import photo from '../../../images/nonUsed/photo_2024-03-02 03.14.svg'
 import icon from '../../../images/icons/icon.svg'
 import './../MyAds.css'
-const Reaction = ({goForward , setClosed}) => {
+const Reaction = ({goForward , setOpen}) => {
     return (
         <>
                 
@@ -38,7 +38,7 @@ const Reaction = ({goForward , setClosed}) => {
                     </div>
                     <div className="reactions__bottom">
                             <button onClick={() => {
-                                setClosed(false)
+                                setOpen(true)
                             }} 
                              className="bottom__one" >подробнее</button>
                             <button className="bottom__two">выбрать</button>

@@ -11,20 +11,27 @@ import LastImages from './LastImages';
 import LastSertificates from './LastSertificates';
 let start;
 let move;
-const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc , openAboutReaction}) => {
+const LastAds = ({aboutReaction , isOpen , setOpen , openAboutReactionFunc , openAboutReaction}) => {
 
-
+    useEffect( () => {
+        document.documentElement.style.overflow = 'clip';
+        return () => {
+            document.documentElement.style.overflow = 'auto';
+            start = 0
+            move = 0
+        }
+    } , [] )
 
     const [transform, setTransform] = useState(0)
     const [transition , setTransition] = useState('0.4s')
     function startHandler(e){   
-        if (!isClosed && e.target.closest('.bottom__one') === null){
+        if (isOpen && e.target.closest('.bottom__one') === null){
             setTransition('0s')
             start = e.touches[0].pageY;
         }
     }
     function moveHandler(e){
-            if (!isClosed && e.target.closest('.bottom__one') === null && e.target.closest('.last-images') === null && e.target.closest('.last-sertificates') === null ){
+            if (isOpen && e.target.closest('.bottom__one') === null && e.target.closest('.last-images') === null && e.target.closest('.last-sertificates') === null ){
 
                 move = e.touches[0].pageY;
     
@@ -39,13 +46,13 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
             }
     }
     function endHandler(e){
-        if (!isClosed && e.target.closest('.bottom__one') === null  && e.target.closest('.last-images') === null && e.target.closest('.last-sertificates') === null){
+        if (isOpen && e.target.closest('.bottom__one') === null  && e.target.closest('.last-images') === null && e.target.closest('.last-sertificates') === null){
 
             setTransition('0.3s')
             if (!openAboutReaction){
 
                 if (move - start > 80){
-                    setClosed(true)
+                    setOpen(false)
                 }
                 else{
                     
@@ -74,35 +81,25 @@ const LastAds = ({aboutReaction , isClosed , setClosed , openAboutReactionFunc ,
     // }, [isClosed] )
 
     
-    useEffect(  () => {
-        
-        if (isClosed){
-            document.querySelector('.aboutOne').style.overflowY = 'scroll'
-            setTransform('100%')
-        }
-        else{
-            document.querySelector('.aboutOne').style.overflowY = 'hidden'
-            setTransform(0)
-        }
-    } , [isClosed ]  )
+
 
     const style = useMemo( () => {
         
-        if (isClosed) {
+        if (!isOpen) {
             return {  
-                transform : 'translate3d(100% , 100% , 0)',
-                transition : 'transform 0.4s'
+                transform : 'translate3d(0% , 0 , 0)',
+                transition : 'transform 0.4s bottom 0.4s'
             }
         }
         return {
-            transform : 'translate3d(100% , ' + transform.toString() + 'px , 0)' ,
-            transition :  'transform ' + transition 
+            transform : 'translate3d(0% , ' + transform.toString() + 'px , 0)' ,
+            transition :  'transform' + transition + 'bottom 0.4s'
         }
-    }, [ isClosed , transform  ])
+    }, [ isOpen , transform  ])
     return (
 
 
-        <div className={isClosed ? "last-ads" : "last-ads open"} 
+        <div className={"last-ads"} 
         style={style} 
         onTouchMove={moveHandler}
         onTouchEnd={endHandler}
