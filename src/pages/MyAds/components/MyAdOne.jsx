@@ -108,13 +108,13 @@ const MyAdOne = ({
               myFormData.append("price" , changingTaskVar.tonValue )
               myFormData.append("startTime" , changingTaskVar.time.start)
               myFormData.append("endTime" , changingTaskVar.time.end)
-              if (filesValues.removedFiles.length > 0){
+              if (filesArrayVar.removedFiles.length > 0){
                 console.log('я тут')
-                myFormData.append("deleteFiles" , filesValues.removedFiles)
+                myFormData.append("deleteFiles" , filesArrayVar.removedFiles)
               }
-              if(filesValues.addedFiles.length > 0)
+              if(filesArrayVar.addedFiles.length > 0)
                 {
-                  myFormData.append("addFiles" , filesValues.addedFiles)
+                  myFormData.append("addFiles" , filesArrayVar.addedFiles)
                 }
 
               dispatch(putMyTask([myFormData, changingTaskVar.id]))
