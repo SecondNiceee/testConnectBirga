@@ -71,7 +71,7 @@ const Profile = () => {
 
   
   const [aboutU, setAboutU] = useState({...userInfo.profile , 
-    stage : userInfo.profile.stage === null ? '0' : userInfo.profile.stage
+    stage : userInfo.profile.stage
   });
 
   
@@ -86,7 +86,7 @@ const Profile = () => {
 
 
   useEffect(  () => {
-    let stage = userInfoLocal.profile.stage === null ? "0" : userInfoLocal.profile.stage
+    let stage = userInfoLocal.profile.stage
     let numb = String(stage).slice(stage.length - 1,stage.length)
 
     const numberInput = document.getElementById('numberInput')

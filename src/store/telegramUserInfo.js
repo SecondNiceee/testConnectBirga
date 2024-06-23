@@ -90,7 +90,7 @@ const telegramUserInfo = createSlice({
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
       state.photo = action.payload.photo;
-      state.profile = {...state.profile , about : action.payload.about, stage : action.payload.stage}
+      state.profile = {...state.profile , about : action.payload.about, stage : action.payload.stage === null ? '0' : action.payload.stage}
     });
     builder.addCase(fetchUserInfo.rejected, (state) => {
       state.status = "error";
