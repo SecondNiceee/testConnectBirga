@@ -7,11 +7,11 @@ import dropfileIcon from "../../images/icons/Dropfile.svg";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
-import { addCard } from "../../store/profile";
 import { CSSTransition } from "react-transition-group";
 import ModalInput from "../../components/UI/ModalInput/ModalInput";
 import Categories from "../AdCreatingOne/Categories/Categories";
 import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
+import { addCard } from "../../store/telegramUserInfo";
 let localCardSetting;
 let mainLocalErrors ;
 let inputObject = {
@@ -135,7 +135,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     })
     }
   } , [dispatch, setCardsOpen, aboutU, setAboutU] )
-  useEffect( () => {
+  useEffect( () => {            
     MainButton.setText("Добавить кейс");
     BackButton.show()
     if (!modalActive){

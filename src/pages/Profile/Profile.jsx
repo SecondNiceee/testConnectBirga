@@ -20,10 +20,10 @@ import SmallInput from "../../components/UI/SmallInput/SmallInput";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import Case from "./components/Case/Case";
 import MainButton from "../../constants/MainButton";
-import { changeProfile, deleteCard } from "../../store/profile";
 import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
+import { changeProfile, deleteCard } from "../../store/telegramUserInfo";
 
 
 const variants = {
@@ -35,7 +35,7 @@ const variants = {
 let index = 0
 let aboutULocal = null
 
-let aboutMeLocal = null
+let userInfoLocal = null
 
 
 
@@ -43,7 +43,7 @@ let aboutMeLocal = null
 
 const Profile = () => {
 
-  const aboutMe = useSelector( state => state.profile.profile  )
+
 
   const dispatch = useDispatch();
   
@@ -55,6 +55,7 @@ const Profile = () => {
   
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
+  console.log(userInfo)
 
   const [errors , setErrors] = useState({
     stageError : false
@@ -69,12 +70,12 @@ const Profile = () => {
   const [update , setUpdate] = useState(false)
 
   
-  const [aboutU, setAboutU] = useState(aboutMe);
+  const [aboutU, setAboutU] = useState(userInfo.profile);
 
   
 
   aboutULocal = aboutU
-  aboutMeLocal = aboutMe
+  userInfoLocal = userInfo
 
 
   console.log(aboutULocal)
@@ -83,11 +84,11 @@ const Profile = () => {
 
 
   useEffect(  () => {
-    let numb = String(aboutMe.stage).slice(1,2)
+    let numb = String(userInfoLocal.profile.stage).slice(1,2)
 
     const numberInput = document.getElementById('numberInput')
 
-    if ( Number(aboutMe.stage) > 10 && Number(aboutMe.stage) < 20){
+    if ( Number(userInfoLocal.profile.stage) > 10 && Number(userInfoLocal.profile.stage) < 20){
       if (!numberInput.value.includes('лет')){
         numberInput.value += ' лет'
       }
@@ -152,7 +153,7 @@ const Profile = () => {
 
     if (!cardsActive && !changeActive){
 
-      if ( compare2Objects(aboutMeLocal, aboutULocal) === false ){
+      if ( compare2Objects(userInfoLocal.profile, aboutULocal) === false ){
           MainButton.setParams({
             text : 'Сохранить',
             is_visible : true
@@ -200,7 +201,7 @@ const Profile = () => {
        
     }
 
-  }, [aboutU , changeActive, update, cardsActive, aboutMe.cards, save, errors.stageError ]  )
+  }, [aboutU , changeActive, update, cardsActive, save, errors.stageError ]  )
 
 
   
@@ -257,6 +258,7 @@ const Profile = () => {
       }
     
   } , [] )
+  console.log(aboutULocal.stage)
 
   const onFocusFunc = useCallback( (e) => {
     e.target.value = String(aboutULocal.stage).split(' ')[0]
@@ -327,7 +329,7 @@ const Profile = () => {
           onFocus = {onFocusFunc}
           inputMode = "numeric"
           // type = "number"
-          value={aboutULocal.stage}
+          value={aboutULocal.stage === null ? '0' : aboutULocal.stage}
           setValue={setValueFunc}
         />
       </Compact>
