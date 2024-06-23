@@ -20,7 +20,7 @@ import SmallInput from "../../components/UI/SmallInput/SmallInput";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import Case from "./components/Case/Case";
 import MainButton from "../../constants/MainButton";
-import { changeProfile } from "../../store/profile";
+import { changeProfile, deleteCard } from "../../store/profile";
 import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
@@ -353,7 +353,7 @@ const Profile = () => {
             setAboutU({...aboutULocal , cards : [...aboutU.cards.filter((e , i) => {
               return i !== index
             })]})
-            // dispatch(deleteCard(index))
+            dispatch(deleteCard(index))
             
           }}
 

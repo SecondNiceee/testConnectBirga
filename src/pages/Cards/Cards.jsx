@@ -122,7 +122,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
   const saveFunc = useCallback( () => {
     if (checkMistakes()) {
-      // setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
+      setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
       dispatch(addCard(localCardSetting));
       document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
@@ -134,7 +134,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         is_visible : true
     })
     }
-  } , [dispatch, setCardsOpen] )
+  } , [dispatch, setCardsOpen, aboutU, setAboutU] )
   useEffect( () => {
     MainButton.setText("Добавить кейс");
     BackButton.show()

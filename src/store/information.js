@@ -22,7 +22,7 @@ export const putMyTask = createAsyncThunk(
       );
       let localTask = data[2]
       
-
+      console.log(answ.data)
       let changedFiles = []
 
 
@@ -36,6 +36,7 @@ export const putMyTask = createAsyncThunk(
 
         }
         localTask.photos = changedFiles
+        localTask.photosNames = answ.data.photos
       
       
 
