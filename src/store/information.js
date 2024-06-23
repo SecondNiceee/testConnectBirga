@@ -102,7 +102,7 @@ export const postMyTask = createAsyncThunk(
         tonValue : b.data.price,
         taskDescription : b.data.description,
         photos : changedFiles,
-        photosName : b.data.photos,
+        photosNames : b.data.photos,
         customerName : b.data.fl,
         userPhoto : b.data.photo || "",
         rate : '5',
