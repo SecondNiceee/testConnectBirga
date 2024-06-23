@@ -2,15 +2,70 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 
+
+export const deleteServerCard = createAsyncThunk(
+    "telegramUserInfo/putCard",
+    async function (data){
+        try{
+            await axios.delete("https://back-birga.ywa.su/card" , {
+                params : data
+            }
+            )
+            return true
+        }
+        catch(e){
+            console.warn(e)
+        }
+    }
+)
+
+export const putCard = createAsyncThunk(
+    "telegramUserInfo/putCard",
+    async function (data){
+        try{
+            let im = await axios.put("https://back-birga.ywa.su/card" , data[0] , 
+                {
+                    params : {
+                        id : data[1]
+                    },
+                    headers: {
+                        "Content-Type" :'multipart/form-data',
+                        "Access-Contrsol-Allow-Origin": "*"
+                      },
+                }
+            )
+            let photos = []
+            data[2].photos.forEach((e, i) => {
+                let blob = e.slice(0 , e.size, "image/png")
+                let newFile = new File([blob], im.data.photos[i], {type: 'image/png'});
+                photos.push(newFile)
+             })
+             let localCard = {
+                ...data[2],
+                photosNames : data[2].photos,
+                photos : photos,
+                id : im.data.id
+            }
+            return localCard
+        }
+        catch(a){
+            console.warn(a)
+        }
+    }
+)
 export const postCard = createAsyncThunk(
-    "telegramUserInfo/putUserInfo",
+    "telegramUserInfo/postUserInfo",
     async function (data){
         try{
             let im = await axios.post("https://back-birga.ywa.su/card" , data[0] , 
                 {
                     params : {
                         userId : data[1]
-                    }
+                    },
+                    headers: {
+                        "Content-Type" :'multipart/form-data',
+                        "Access-Control-Allow-Origin": "*"
+                      },
                 }
              )
              let photos = []
@@ -168,6 +223,17 @@ const telegramUserInfo = createSlice({
 
     builder.addCase(postCard.fulfilled , (state , action) => {
         state.profile.cards.push(action.payload)
+    });
+    builder.addCase(putCard.fulfilled , (state , action) => {
+        state.profile.cards = state.profile.cards.map( (e) => {
+            if (e.id === action.payload.id){
+                return action.payload
+            }
+            else{
+                return e
+            }
+        }
+        )
     })
   },
 });

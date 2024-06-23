@@ -11,7 +11,7 @@ import { CSSTransition } from "react-transition-group";
 import ModalInput from "../../components/UI/ModalInput/ModalInput";
 import Categories from "../AdCreatingOne/Categories/Categories";
 import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
-import { addCard, postCard } from "../../store/telegramUserInfo";
+import {  postCard } from "../../store/telegramUserInfo";
 let localCardSetting;
 let mainLocalErrors ;
 let inputObject = {
@@ -123,7 +123,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
   const saveFunc = useCallback( () => {
     if (checkMistakes()) {
       setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
-      dispatch(addCard(localCardSetting));
+      // dispatch(addCard(localCardSetting));
 
 
       let myFormData = new FormData()

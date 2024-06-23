@@ -23,7 +23,7 @@ import MainButton from "../../constants/MainButton";
 import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
-import { changeProfile, deleteCard, putUserInfo } from "../../store/telegramUserInfo";
+import { changeProfile, deleteCard, deleteServerCard, putUserInfo } from "../../store/telegramUserInfo";
 
 
 const variants = {
@@ -370,6 +370,7 @@ const Profile = () => {
               return i !== index
             })]})
             dispatch(deleteCard(index))
+            dispatch(deleteServerCard(e.id))
             
           }}
 

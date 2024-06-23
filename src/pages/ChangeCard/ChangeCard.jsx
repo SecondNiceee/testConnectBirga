@@ -11,7 +11,8 @@ import { CSSTransition } from "react-transition-group";
 import ModalInput from "../../components/UI/ModalInput/ModalInput";
 import Categories from "../AdCreatingOne/Categories/Categories";
 import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
-import { changeCards } from "../../store/telegramUserInfo";
+import { changeCards, putCard } from "../../store/telegramUserInfo";
+import sortFiles from "../../functions/sortFiles";
 
 let localCardSetting;
 let mainLocalErrors;
@@ -98,7 +99,31 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
           }),
         ],
       });
-      dispatch(changeCards({ id: index, card: localCardSetting }));
+
+      
+      let myFormData = new FormData()
+      myFormData.append("categoryId", localCardSetting.category.id)
+      myFormData.append("title" , localCardSetting.title)
+      myFormData.append("description" , localCardSetting.description)
+      myFormData.append("behance" , localCardSetting.behanceLink)
+      myFormData.append("dribble" , localCardSetting.dribbbleLink)
+      myFormData.append("dropFile" , localCardSetting.dropfileLink)
+      
+      let files = sortFiles(localCardSetting.photosNames , localCardSetting.photos)
+
+      files.addedArr.forEach((e,i) => {
+        myFormData.append(`addFiles${i}` , e)
+      })
+      files.removedArr.forEach( (e, i )  => {
+        myFormData.append(`deleteFiles${i}` , e)
+      })
+      
+      dispatch(putCard([myFormData, localCardSetting.id, localCardSetting]))
+      // localCardSetting.photos.forEach(e => {
+      //   myFormData.append('photos' , e)
+      // })
+
+      // dispatch(changeCards({ id: index, card: localCardSetting }));
       document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
     }

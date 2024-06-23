@@ -10,6 +10,7 @@ import BackButton from "../../../constants/BackButton";
 // import { initPopup } from "@tma.js/sdk";
 import {  putMyTask } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
+import sortFiles from "../../../functions/sortFiles";
 let renderConunter = 0
 // const popup = initPopup();
 let detailsVar;
@@ -223,29 +224,31 @@ const MyAdOne = ({
           myFormData.append("startTime" , detailsVar.task.time.start)
           myFormData.append("endTime" , detailsVar.task.time.end)
 
-          let removedArr = []
-          let addedArr = []
-          console.log(detailsVar)
-          for (let fileName of detailsVar.task.photosNames ){
-              if (!detailsVar.task.photos.find(e => e.name === fileName)){
-                removedArr.push(fileName)
-              }
-          }
-          for (let file of detailsVar.task.photos){
-            console.log('я был тут!')
-            if (file.name.includes('nick')){
-              addedArr.push(file)
-            }
-          }
+          let files = sortFiles(detailsVar.task.photosNames ,  detailsVar.task.photos)
+
+          // let removedArr = []
+          // let addedArr = []
+          // console.log(detailsVar)
+          // for (let fileName of detailsVar.task.photosNames ){
+          //     if (!detailsVar.task.photos.find(e => e.name === fileName)){
+          //       removedArr.push(fileName)
+          //     }
+          // }
+          // for (let file of detailsVar.task.photos){
+          //   console.log('я был тут!')
+          //   if (file.name.includes('nick')){
+          //     addedArr.push(file)
+          //   }
+          // }
 
 
-            for (let i = 0; i <  removedArr.length; i++){
-              myFormData.append(`deleteFiles[${i}]` , removedArr[i])
+            for (let i = 0; i <  files.removedArr.length; i++){
+              myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
             }
-            for (let i = 0; i < addedArr.length ; i++){
-              myFormData.append(`addFiles[${i}]` , addedArr[i] )
+            for (let i = 0; i < files.addedArr.length ; i++){
+              myFormData.append(`addFiles[${i}]` , files.addedArr[i] )
             }
-          console.log(addedArr)
+          console.log(files.addedArr)
 
           dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
 
