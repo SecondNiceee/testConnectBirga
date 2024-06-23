@@ -70,7 +70,9 @@ const Profile = () => {
   const [update , setUpdate] = useState(false)
 
   
-  const [aboutU, setAboutU] = useState(userInfo.profile);
+  const [aboutU, setAboutU] = useState({...userInfo.profile , 
+    stage : userInfo.profile.stage === null ? '0' : userInfo.profile.stage
+  });
 
   
 
@@ -84,11 +86,13 @@ const Profile = () => {
 
 
   useEffect(  () => {
-    let numb = String(userInfoLocal.profile.stage).slice(1,2)
+    let stage = userInfoLocal.profile.stage === null ? "0" : userInfoLocal.profile.stage
+    let numb = String(stage).slice(stage.length - 1,stage.length)
 
     const numberInput = document.getElementById('numberInput')
 
-    if ( Number(userInfoLocal.profile.stage) > 10 && Number(userInfoLocal.profile.stage) < 20){
+
+    if ( Number(stage) > 10 && Number(stage) < 20){
       if (!numberInput.value.includes('лет')){
         numberInput.value += ' лет'
       }
@@ -265,17 +269,19 @@ const Profile = () => {
   } , [] )
 
   const setValueFunc = useCallback(  (e) => {
-    if (e.slice(0,1) !== '0'){
-
-      setAboutU({ ...aboutULocal, stage: Number(e) });
-    }
-    else{
-      if(e !== '00'){
-        setAboutU({...aboutULocal , stage : Number(e.slice(1,2))})
-      }
-      else{
-        setAboutU({...aboutULocal , stage : 0})
-      }
+    if (!isNaN(e)){
+        if (e.slice(0,1) !== '0'){
+    
+          setAboutU({ ...aboutULocal, stage: Number(e) });
+        }
+        else{
+          if(e !== '00'){
+            setAboutU({...aboutULocal , stage : Number(e.slice(1,2))})
+          }
+          else{
+            setAboutU({...aboutULocal , stage : 0})
+          }
+        }
     }
   } , []  )
 
