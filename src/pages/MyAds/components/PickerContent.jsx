@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 import AdCreateFunc from '../../../components/UI/AdCreateFunc/AdCreateFunc';
-const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setIndex, setTask}) => {
+const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setDetails}) => {
     return (
     <div className="PickerContent">
         <div className="picler__block">
@@ -20,7 +20,7 @@ const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setInde
                   className="block"
                   onClick={(e) => {
                     if (e.target.closest('.FirstMain__bottom-right') === null){
-                       setTask(e);
+                      //  setTask(e);
                       setSecondPage(true);
                     }
                   }}
@@ -29,8 +29,12 @@ const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setInde
                     key={i}
                     isButton={true}
                     setDetailsActive={() => {
-                      setDetailsActive(true);
-                      setIndex(i);
+                      setDetails({
+                        isActive : true,
+                        task : myAdsArray[i],
+                        index : i
+                      })
+
                     }}
                     {...e}
                   />

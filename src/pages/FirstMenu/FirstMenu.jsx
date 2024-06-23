@@ -26,16 +26,16 @@ const FirstMenu = () => {
 
             <Close isMenuActive = {isMenuActive} setMenuActive = {setMenuActive}  />
 
-            <Link onClick={() => {setMenuActive(false)}} to={'/Profile'} className="FirstMenu__top">
+            <Link onClick={() => {setMenuActive(false)}} to='/Profile' className="FirstMenu__top">
                 <div>
                     <img className='icon' src= {userInfo.photo} alt="" />
                 </div>
                 <div className="FirstMenu__top-right">
                     <p className='MenuName'>{userInfo.firstName}</p>
-                    <Link onClick={() => {setMenuActive(false)}} to={'/Profile'} className='MenuProfile'>
+                    <div onClick={() => {setMenuActive(false)}} className='MenuProfile'>
                         <p className='MenuProfileLink'>Профиль</p>
 
-                    </Link>
+                    </div>
                 </div>
             </Link>
 

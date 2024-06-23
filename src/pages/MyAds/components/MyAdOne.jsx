@@ -10,32 +10,42 @@ import axios from "axios";
 // import { initPopup } from "@tma.js/sdk";
 import { fetchMyOrders, putMyAds, putMyTask } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
-
+let renderConunter = 0
 let changed = false;
 // const popup = initPopup();
-let changingTaskVar = {};
+let detailsVar;;
 let photosCopy = []
 let filesArrayVar;
 const MyAdOne = ({
   myAdsArray,
-  setTask,
-  setDetailsActive,
-  isDetailsActive,
   setMenuActive,
-  changingTask,
-  setChangingTask,
-  setSecondPage
+  setSecondPage,
+  details,
+  setDetails
 }) => {
+  console.log(renderConunter)
+  renderConunter += 1
+
+
+
+  function setDetailsActive( value ){
+    setDetails({...details , isActive : value})
+  }
+
+  function setChangingTask( value ){
+    setDetails({...details , task : value})
+  }
+
+
+
+  
 
 
   const dispatch = useDispatch();
 
   let putStatus = useSelector((state) => state.information.putTaskStatus);
 
-  changingTaskVar = changingTask; // переприсваивание для работы телеграма
-
-  const [index, setIndex] = useState(0);  // index для определения taskDetails
-
+  detailsVar = details; // переприсваивание для работы телеграма
 
   const [mistakes, setMistakes] = useState({
     taskName: false,
@@ -49,38 +59,35 @@ const MyAdOne = ({
 
   filesArrayVar = filesValues;
 
-  console.log(filesValues)
 
-  useEffect(  () => {
-    console.log('я сработал')
-    let addedFilesLocal = []
-    console.warn(changingTaskVar.photos)
-    console.warn(photosCopy)
-    if (changingTaskVar.photos.length > photosCopy.length ){
-      console.log('я попал сюда')
-      for (let photo of changingTaskVar.photos){
-        if (!(photosCopy.includes(photo)) && photo.name.includes('nick')){
-          addedFilesLocal.push(photo)
-        }
-      }
-      setFilesValues({...filesValues , addedFiles : [...filesValues.addedFiles, ...addedFilesLocal]})
-    }
-    else{
-      for (let photo of photosCopy){
-        if (!(changingTaskVar.photos.includes(photo))){
-          if (photo.name.includes('nick')){
-            setFilesValues({...filesValues, addedFiles : filesValues.addedFiles.filter(
-              file => file.name !== photo.name
-            )})
-          }
-          else{
-            setFilesValues({...filesValues , removedFiles : [...filesValues.removedFiles , photo.name]})
-          }
-        }
-      }
-    }
-    photosCopy = changingTaskVar.photos
-  } , [changingTask.photos] )   // логика пута
+  // useEffect(  () => {
+
+  //   let addedFilesLocal = []
+  //   if (detailsVar.task.photos.length > photosCopy.length ){
+
+  //     for (let photo of detailsVar.task.photos){
+  //       if (!(photosCopy.includes(photo)) && photo.name.includes('nick')){
+  //         addedFilesLocal.push(photo)
+  //       }
+  //     }
+  //     setFilesValues({...filesValues , addedFiles : [...filesValues.addedFiles, ...addedFilesLocal]})
+  //   }
+  //   else{
+  //     for (let photo of photosCopy){
+  //       if (!(detailsVar.task.photos.includes(photo))){
+  //         if (photo.name.includes('nick')){
+  //           setFilesValues({...filesValues, addedFiles : filesValues.addedFiles.filter(
+  //             file => file.name !== photo.name
+  //           )})
+  //         }
+  //         else{
+  //           setFilesValues({...filesValues , removedFiles : [...filesValues.removedFiles , photo.name]})
+  //         }
+  //       }
+  //     }
+  //   }
+  //   photosCopy = detailsVar.task.photos
+  // } , [details.task.photos] )   // логика пута
 
 
 
@@ -93,7 +100,7 @@ const MyAdOne = ({
 
 
   const save = () =>  {
-    if (changingTaskVar !== myAdsArray[index]) {
+    if (detailsVar.task !== myAdsArray[details.index]) {
       window.Telegram.WebApp
         .showPopup({
           title: "Сохранить?",
@@ -108,33 +115,51 @@ const MyAdOne = ({
             setDetailsActive(false);
           }
           if (buttonId === "save") {
-            if (checkMistakes(changingTaskVar)) {
+            if (checkMistakes(detailsVar.task)) {
               let myFormData = new FormData();
-              myFormData.append('title' , changingTaskVar.taskName)
-              myFormData.append('description' , changingTaskVar.taskDescription)
+              myFormData.append('title' , detailsVar.task.taskName)
+              myFormData.append('description' , detailsVar.task.taskDescription)
               myFormData.append("deadline" , 1)
-              myFormData.append("price" , changingTaskVar.tonValue )
-              myFormData.append("startTime" , changingTaskVar.time.start)
-              myFormData.append("endTime" , changingTaskVar.time.end)
+              myFormData.append("price" , detailsVar.task.tonValue )
+              myFormData.append("startTime" , detailsVar.task.time.start)
+              myFormData.append("endTime" , detailsVar.task.time.end)
 
-                for (let i = 0; i <  filesArrayVar.removedFiles.length; i++){
-                  myFormData.append(`deleteFiles[${i}]` , filesArrayVar.removedFiles[i])
+              let removedArr = []
+              let addedArr = []
+              console.log(detailsVar)
+              for (let fileName of detailsVar.task.filesNames ){
+                  if (!detailsVar.task.photos.find(e => e.name === fileName)){
+                    removedArr.push(fileName)
+                  }
+              }
+              for (let file of detailsVar.task.photos){
+                if (file.name.includes('nick')){
+                  addedArr.push(file)
                 }
-                for (let i = 0; i < filesArrayVar.addedFiles.length ; i++){
-                  myFormData.append(`addFiles` , changingTask.photos[i] )
+              }
+
+
+                for (let i = 0; i <  removedArr; i++){
+                  myFormData.append(`deleteFiles[${i}]` , removedArr[i])
+                }
+                for (let i = 0; i < addedArr ; i++){
+                  myFormData.append(`addFiles[${i}]` , addedArr[i] )
                 }
 
-              dispatch(putMyTask([myFormData, changingTaskVar.id , changingTaskVar]))
+              dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
 
               
               setFilesValues({
                 addedFiles : [],
                 removedFiles : []
               })
+              
+              setDetails( {...details,
+                isActive : false,
+              } )
+
               filesArrayVar = []
             }
-
-            setDetailsActive(false);
           }
 
 
@@ -170,18 +195,18 @@ const MyAdOne = ({
 
 
 
-  useEffect(() => {
+  // useEffect(() => {
 
 
-    if (isDetailsActive && changed === false) {
-      changed = true;
-      setChangingTask(myAdsArray[index]);
-    }
-  }, [isDetailsActive]); // логика внесения changingTask
+  //   if (details.isActive && changed === false) {
+  //     changed = true;
+  //     setChangingTask(myAdsArray[index]);
+  //   }
+  // }, [details.isActive]); // логика внесения changingTask
 
   useEffect( () => {
     
-    if (isDetailsActive) {
+    if (details.isActive) {
       BackButton.show();
       BackButton.onClick(save);
     } else {
@@ -190,7 +215,7 @@ const MyAdOne = ({
     return () => {
       BackButton.offClick(save);
     }
-  } , [isDetailsActive]) // логика кнопок
+  } , [details.isActive]) // логика кнопок
 
 
   return (
@@ -201,29 +226,24 @@ const MyAdOne = ({
         zIndex : '999'
       }} onClick={() => {
         let myFormData = new FormData();
-        myFormData.append('title' , changingTaskVar.taskName)
-        myFormData.append('description' , changingTaskVar.taskDescription)
+        myFormData.append('title' , detailsVar.task.taskName)
+        myFormData.append('description' , detailsVar.task.taskDescription)
         myFormData.append("deadline" , 1)
-        myFormData.append("price" , changingTaskVar.tonValue )
-        myFormData.append("startTime" , changingTaskVar.time.start)
-        myFormData.append("endTime" , changingTaskVar.time.end)
+        myFormData.append("price" , detailsVar.task.tonValue )
+        myFormData.append("startTime" , detailsVar.task.time.start)
+        myFormData.append("endTime" , detailsVar.task.time.end)
+        console.log(detailsVar.task)
+          // for (let i = 0; i <  filesArrayVar.removedFiles.length; i++){
+          //   myFormData.append(`deleteFiles[${i}]` , filesArrayVar.removedFiles[i])
+          // }
+          // for (let i = 0; i < filesArrayVar.addedFiles.length ; i++){
+  
+          //   myFormData.append(`addFiles[${i}]` , filesArrayVar.addedFiles[i])
+          // }
 
-          for (let i = 0; i <  filesArrayVar.removedFiles.length; i++){
-            myFormData.append(`deleteFiles[${i}]` , filesArrayVar.removedFiles[i])
-          }
-          for (let i = 0; i < filesArrayVar.addedFiles.length ; i++){
-            console.log(filesArrayVar.addedFiles[i])
-            myFormData.append(`addFiles[${i}]` , filesValues.addedFiles[i] )
-          }
+        dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
 
-        dispatch(putMyTask([myFormData, changingTaskVar.id , changingTaskVar]))
 
-        
-        // setFilesValues({
-        //   addedFiles : [],
-        //   removedFiles : []
-        // })
-        // filesArrayVar = []
 
         }
 
@@ -232,23 +252,22 @@ const MyAdOne = ({
       <MyAdsBlock deals={1} finishedDeals={"70%"} />
       <PickerContent
         myAdsArray={myAdsArray}
-        setTask={setTask}
+        setDetails = {setDetails}
         setSecondPage = {setSecondPage}
         setDetailsActive={setDetailsActive}
-        setIndex={setIndex}
       />
+      
 
-      <CSSTransition classNames="details" in={isDetailsActive} timeout={300}
+      <CSSTransition classNames="details" in={details.isActive} timeout={300}
       mountOnEnter unmountOnExit>
         <AdCreatingOne
           mistakes={mistakes}
           className="AdCreatingMy"
-          taskInformation={changingTask}
+          taskInformation={detailsVar.task}
           setTaskInformation={setChangingTask}
           MyInformation={true}
-          isDetailsActive={isDetailsActive}
+          isDetailsActive={details.isActive}
           setAddedFiles={(e) => {
-            console.log(e)
             setChangingTask(value => ({...value, addedFiles : e}))
           }}
           setRemovedFiles={(e) => {

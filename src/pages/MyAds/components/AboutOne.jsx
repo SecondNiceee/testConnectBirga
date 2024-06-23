@@ -6,7 +6,6 @@ import Top from './Top';
 import ReactionBlock from './ReactionBlock';
 import LastAds from './LastAds';
 const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
-  
     return (
         <div className="aboutOne" style={{
         }}>

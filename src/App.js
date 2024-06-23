@@ -129,17 +129,13 @@ const AnimatedSwitch = () => {
     </div>
   );
 };
+
+let conunter = 0
 function App() {
-  const categorys = useSelector((state) => state.categorys.category);
-  const subCategory = useSelector((state) => state.categorys.subCategory)
-  
+
 
   
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getCategorys())
-    dispatch(getSubCategorys())
-  }, []);
 
   window.Telegram.WebApp.expand();
 
@@ -154,12 +150,17 @@ function App() {
     });
   }
 
+  
+
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
     dispatch(fetchMyOrders())
+    dispatch(getCategorys())
+    dispatch(getSubCategorys())
+    dispatch(getCategorys())
+    dispatch(getSubCategorys())
   }, []);
-
   return (
     <BrowserRouter>
       <div className="UperContainer">

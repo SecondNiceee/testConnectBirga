@@ -316,9 +316,6 @@ const AdCreating = () => {
     };
   }, []);
 
-  // console.log(taskInformation.category.id)
-  // console.log(taskInformation.subCategory.id)
-
   return (
     <motion.div
       className="AdCreating__container"

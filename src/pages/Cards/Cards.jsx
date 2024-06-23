@@ -25,8 +25,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);
 
-  console.log(aboutU)
-
 
   const [cardsSetting, setCardsSetting] = useState({
     title: "",
@@ -119,7 +117,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
   function saveFunc() {
     if (checkMistakes()) {
-      console.log(aboutU)
       setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
     //   dispatch(addCard(localCardSetting));
       document.documentElement.style.overflow = "auto";

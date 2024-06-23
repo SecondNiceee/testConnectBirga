@@ -49,7 +49,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
           <div key={i} className={cl.imageFeetContainer}>
             <div
               onClick={() => {
-                console.log('Я удалил файл!!')
                 setFiles(
                   [...files].filter((obj) => {
                     return files.indexOf(obj) !== images.indexOf(e);

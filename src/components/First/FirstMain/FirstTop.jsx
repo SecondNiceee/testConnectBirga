@@ -12,7 +12,7 @@ const FirstTop = ({ setFilterBy, setMenuActive , userInfo ,  ...props }) => {
 
   const [inputValue, setInputValue] = useState("");
   return (
-    <div props className="FirstTop">
+    <div  {...props} className="FirstTop">
       <Burger
         onClick={() => {
           setMenuActive(true);

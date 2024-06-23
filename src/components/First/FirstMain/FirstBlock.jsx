@@ -22,8 +22,8 @@ const FirstBlock = ({ className, taskName, executionPlace, time, tonValue , setD
                      <div className={ className ? ["First__block" , className].join(' ') : "First__block" }>
                      {photos.length ? (<div className='first__photos'> 
      
-                         {photos.map( (e) => {
-                             return <img src={URL.createObjectURL(e)}
+                         {photos.map( (e, i) => {
+                             return <img key={i} src={URL.createObjectURL(e)}
                              style={photos.length === 1 ? {
                                  width : 'calc(100% - 3.67px)'
                              }

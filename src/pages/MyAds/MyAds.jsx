@@ -40,7 +40,23 @@ const MyAds = () => {
   const isMenuActive = useSelector((state) => state.menu.value);
 
 
-  const [isDetailsActive, setDetailsActive] = useState(false);
+  const [details, setDetails] = useState({
+    isActive : false,
+    task : {
+      
+        id : '',
+        taskName : '',
+        taskDescription : '',
+        deadline : 1,
+        category : 1,
+        subCategory : 1,
+        price : 2000,
+        time : {start : '' , end : ''},
+        photos : [],
+        photosNames : []
+      
+    }
+  });
 
   const [openAboutReaction , setOpenAboutReaction] = useState(false)
 
@@ -54,22 +70,8 @@ const MyAds = () => {
   localSecondPage = secondPage
 
 
+  
 
-
-  const [changingTask , setChangingTask] = useState(
-    {
-      id : '',
-      taskName : '',
-      taskDescription : '',
-      deadline : 1,
-      category : 1,
-      subCategory : 1,
-      price : 2000,
-      time : {start : '' , end : ''},
-      photos : [],
-      photosNames : []
-    }
-  )
 
   const myAdsArray =  useSelector((state) => state.information.myAdsArray)
 
@@ -77,7 +79,6 @@ const MyAds = () => {
 
 
 
-  console.log(changingTask)
 
   const navigate = useNavigate();
 
@@ -96,7 +97,7 @@ const MyAds = () => {
 
   useEffect( () => {
     function goBack(){
-      console.log(localAboutReaction)
+
       if (!localAboutReaction){
   
           if (localIsOpen){
@@ -127,6 +128,8 @@ const MyAds = () => {
     
   } )
 
+  console.log(task)
+
 
 
 
@@ -134,14 +137,20 @@ const MyAds = () => {
     dispatch(changeMenuActive(arg));
   } , [dispatch]  )
 
+  function setDetailsActive(value){
+    setDetails({...details, isActive : value})
+  }
 
-  useListner({
+
+  useListner(
+    {
     isMenuActive,
     setMenuActive,
     setDetailsActive,
-    isDetailsActive,
+    isDetailsActive : details.isActive,
     isOpen
-  });  
+  }
+);  
 
 
   return (
@@ -170,17 +179,16 @@ const MyAds = () => {
 
 
       <MyAdOne
-                {...{
-                  myAdsArray,
-                  setTask,
-                  setSecondPage,
-                  setOpenAboutReaction,
-                  setDetailsActive,
-                  isDetailsActive,
-                  setMenuActive,
-                  changingTask,
-                  setChangingTask
-                }}
+                
+                  
+                  myAdsArray = {myAdsArray} 
+                  setTask = {setTask}
+                  setSecondPage = {setSecondPage} 
+                  setOpenAboutReaction = {setOpenAboutReaction}
+                  details = {details}
+                  setDetails = {setDetails}
+                  setMenuActive = {setMenuActive}
+                
               />
 
 

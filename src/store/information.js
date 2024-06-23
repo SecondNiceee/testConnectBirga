@@ -7,7 +7,6 @@ export const putMyTask = createAsyncThunk(
   async function(data){
 
     try{
-      console.log(data[0] , data[1])
       let answ = await axios.put(
         "https://back-birga.ywa.su/advertisement",
         data[0],
@@ -16,12 +15,11 @@ export const putMyTask = createAsyncThunk(
             id : String(data[1])
           },
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type" :'multipart/form-data',
             "Access-Control-Allow-Origin": "*"
           },
         }
       );
-      console.log(answ)
       let localTask = data[2]
       
 
@@ -37,6 +35,7 @@ export const putMyTask = createAsyncThunk(
           changedFiles.push(newFile)
 
         }
+        localTask.photos = changedFiles
       
       
 
@@ -58,7 +57,6 @@ export const postMyTask = createAsyncThunk(
   "information/postMytask" , 
   async function(arr){
     let files = arr[1]
-    console.log(files)
     try{
 
       let b = await axios.post(
@@ -71,7 +69,6 @@ export const postMyTask = createAsyncThunk(
           },
         }
       );
-      console.log('дошел до сюда')
       let localTask;
 
       let one = new Date(b.data.startTime)
@@ -113,7 +110,6 @@ export const postMyTask = createAsyncThunk(
         creationTime : b.data.createdAt,
         viewsNumber : 50
       }
-      console.log(localTask)
       return localTask
     }
     catch(e){
@@ -148,6 +144,7 @@ export const fetchMyOrders = createAsyncThunk(
       //   const file = new File([blob], image, {type: blob.type});
       //   return file
       // }
+
   
       if (task.data.length === 0){
         return []
@@ -190,13 +187,11 @@ export const fetchMyOrders = createAsyncThunk(
             
           })
         }
-        console.log(tasks)
   
         return tasks
       }
     }
     catch (e){
-      alert('ввфыв')
       console.warn(e)
     }
   }
@@ -376,10 +371,7 @@ const information = createSlice( {
           })
         },
         addMyAds(state, action) {
-          alert('я вообще - то вызвал ')
-          console.log('---------')
-          console.warn(action.payload)
-          console.log('-------------')
+
           state.myAdsArray.push(action.payload)
         }
     },
