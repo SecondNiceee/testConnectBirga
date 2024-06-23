@@ -127,7 +127,7 @@ const MyAdOne = ({
               let removedArr = []
               let addedArr = []
               console.log(detailsVar)
-              for (let fileName of detailsVar.task.filesNames ){
+              for (let fileName of detailsVar.task.photosNames ){
                   if (!detailsVar.task.photos.find(e => e.name === fileName)){
                     removedArr.push(fileName)
                   }
@@ -148,11 +148,6 @@ const MyAdOne = ({
 
               dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
 
-              
-              setFilesValues({
-                addedFiles : [],
-                removedFiles : []
-              })
               
               setDetails( {...details,
                 isActive : false,
@@ -225,25 +220,47 @@ const MyAdOne = ({
         position : 'absolute',
         zIndex : '999'
       }} onClick={() => {
-        let myFormData = new FormData();
-        myFormData.append('title' , detailsVar.task.taskName)
-        myFormData.append('description' , detailsVar.task.taskDescription)
-        myFormData.append("deadline" , 1)
-        myFormData.append("price" , detailsVar.task.tonValue )
-        myFormData.append("startTime" , detailsVar.task.time.start)
-        myFormData.append("endTime" , detailsVar.task.time.end)
-        console.log(detailsVar.task)
-          // for (let i = 0; i <  filesArrayVar.removedFiles.length; i++){
-          //   myFormData.append(`deleteFiles[${i}]` , filesArrayVar.removedFiles[i])
-          // }
-          // for (let i = 0; i < filesArrayVar.addedFiles.length ; i++){
-  
-          //   myFormData.append(`addFiles[${i}]` , filesArrayVar.addedFiles[i])
-          // }
+        if (checkMistakes(detailsVar.task)) {
+          let myFormData = new FormData();
+          myFormData.append('title' , detailsVar.task.taskName)
+          myFormData.append('description' , detailsVar.task.taskDescription)
+          myFormData.append("deadline" , 1)
+          myFormData.append("price" , detailsVar.task.tonValue )
+          myFormData.append("startTime" , detailsVar.task.time.start)
+          myFormData.append("endTime" , detailsVar.task.time.end)
 
-        dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
+          let removedArr = []
+          let addedArr = []
+          console.log(detailsVar)
+          for (let fileName of detailsVar.task.photosNames ){
+              if (!detailsVar.task.photos.find(e => e.name === fileName)){
+                removedArr.push(fileName)
+              }
+          }
+          for (let file of detailsVar.task.photos){
+            if (file.name.includes('nick')){
+              addedArr.push(file)
+            }
+          }
 
 
+            for (let i = 0; i <  removedArr; i++){
+              myFormData.append(`deleteFiles[${i}]` , removedArr[i])
+            }
+            for (let i = 0; i < addedArr ; i++){
+              myFormData.append(`addFiles` , addedArr[i] )
+            }
+          console.log(addedArr)
+
+          dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
+
+          
+          setDetails( {...details,
+            isActive : false,
+          } )
+
+          filesArrayVar = []
+        }
 
         }
 
