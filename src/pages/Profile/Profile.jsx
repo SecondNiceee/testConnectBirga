@@ -72,7 +72,7 @@ const Profile = () => {
   
   const [aboutU, setAboutU] = useState({...userInfo.profile , 
     stage : userInfo.profile.stage,
-    userId : userInfo.id
+    userId : userInfo.id 
   });
 
   
@@ -163,7 +163,8 @@ const Profile = () => {
 
 
     if (!cardsActive && !changeActive){
-
+      console.log(userInfoLocal.profile)
+      console.log(aboutULocal)
       if ( compare2Objects(userInfoLocal.profile, aboutULocal) === false ){
           MainButton.setParams({
             text : 'Сохранить',
