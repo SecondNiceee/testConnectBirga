@@ -243,7 +243,7 @@ const MyAdOne = ({
               myFormData.append(`deleteFiles[${i}]` , removedArr[i])
             }
             for (let i = 0; i < addedArr.length ; i++){
-              myFormData.append(`addFiles` , addedArr[i] )
+              myFormData.append(`addFiles[${i}]` , addedArr[i] )
             }
           console.log(addedArr)
 
