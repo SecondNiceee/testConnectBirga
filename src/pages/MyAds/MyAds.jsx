@@ -1,11 +1,10 @@
-import React, { Suspense, lazy, useCallback, useEffect, useMemo, useState } from "react";
+import React, {  useCallback, useEffect, useState } from "react";
 
 
 // import myImage from '../../images/desccription.png'
 import { useDispatch, useSelector } from "react-redux";
 import BackButton from "../../constants/BackButton";
 import {  useNavigate } from "react-router-dom";
-import { changeMyAds, fetchMyOrders, fetchTasksInformation } from "../../store/information";
 import { changeMenuActive } from "../../store/menuSlice";
 import useListner from "../../hooks/useListner";
 import "./MyAds.css";
@@ -24,14 +23,12 @@ import { CSSTransition } from "react-transition-group";
 // const AboutReaction = lazy( () => import ("./components/AboutReaction") )
 
 
-let spet = 2;
 const aboutReaction = `Доброго времени суток!
   Работа выполняется до полного согласования, пока результат Вас полностью не устроит.
   Фиксированная стоимость, независимо от количества предложенных вариантов.
   Гарантирую достойный результат!
     
   Опыт работы 8 лет в сфере типографического дизайна, без трудностей поможет мне выполнить Ваш заказ любой сложности с: растровыми изображениями и векторной графикой, разработкой макетов полиграфической продукции (визитки, листовки, буклеты, евробуклеты и т.д.), рекламной продукции (ручки, пакеты, футболки и т.д.), наружной рекламы, разработкой логотипов и фирменого стиля`
-let localDetailsActive;
 let localAboutReaction;
 let localSecondPage;
 let localIsOpen;

@@ -1,21 +1,18 @@
-import React, { useState, memo, useEffect, useMemo, useCallback } from "react";
-import Burger from "../../../components/UI/Burger/Burger";
+import React, { useState, memo, useEffect, useCallback} from "react";
+
 import MyAdsBlock from "./MyAdsBlock";
 import PickerContent from "./PickerContent";
 import AdCreatingOne from "../../AdCreatingOne/AdCreatingOne/AdCreatingOne";
 import { CSSTransition } from "react-transition-group";
 import Top from "./Top";
 import BackButton from "../../../constants/BackButton";
-import axios from "axios";
+
 // import { initPopup } from "@tma.js/sdk";
-import { fetchMyOrders, putMyAds, putMyTask } from "../../../store/information";
+import {  putMyTask } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
 let renderConunter = 0
-let changed = false;
 // const popup = initPopup();
-let detailsVar;;
-let photosCopy = []
-let filesArrayVar;
+let detailsVar;
 const MyAdOne = ({
   myAdsArray,
   setMenuActive,
@@ -28,11 +25,16 @@ const MyAdOne = ({
 
 
 
-  function setDetailsActive( value ){
-    setDetails({...details , isActive : value})
-  }
+
+  const setDetailsActive = useCallback( (value) => {
+    setDetails( e =>  ({...e , isActive : value}))
+  } , [ setDetails] )
+
+  console.log(details)
 
   function setChangingTask( value ){
+    console.log('Вызов этой функции')
+    console.log(value)
     setDetails({...details , task : value})
   }
 
@@ -51,13 +53,7 @@ const MyAdOne = ({
     taskName: false,
     timeError: false,
   }); // контролер ошибок
-  const [filesValues , setFilesValues] = useState({
-    addedFiles : [],
-    removedFiles : []
-  } ) // массивы для пута (удаленное и добавленные)
 
-
-  filesArrayVar = filesValues;
 
 
   // useEffect(  () => {
@@ -99,7 +95,7 @@ const MyAdOne = ({
   }, [putStatus]); // проверка на то, что все работает
 
 
-  const save = () =>  {
+  const save = useCallback( () => {
     if (detailsVar.task !== myAdsArray[details.index]) {
       window.Telegram.WebApp
         .showPopup({
@@ -127,7 +123,7 @@ const MyAdOne = ({
               let removedArr = []
               let addedArr = []
               console.log(detailsVar)
-              for (let fileName of detailsVar.task.photosNames ){
+              for (let fileName of detailsVar.task.photosName ){
                   if (!detailsVar.task.photos.find(e => e.name === fileName)){
                     removedArr.push(fileName)
                   }
@@ -153,7 +149,6 @@ const MyAdOne = ({
                 isActive : false,
               } )
 
-              filesArrayVar = []
             }
           }
 
@@ -163,7 +158,7 @@ const MyAdOne = ({
     } else {
       setDetailsActive(false);
     }
-  }  // функция сохранения , а также модалка телеграма
+  }, [details , dispatch , myAdsArray , setDetails , setDetailsActive  ] ) // функция сохранения , а также модалка телеграма
 
 
 
@@ -204,13 +199,11 @@ const MyAdOne = ({
     if (details.isActive) {
       BackButton.show();
       BackButton.onClick(save);
-    } else {
-      changed = false;
-    }
+    } 
     return () => {
       BackButton.offClick(save);
     }
-  } , [details.isActive]) // логика кнопок
+  } , [details.isActive,save]) // логика кнопок
 
 
   return (
@@ -238,16 +231,17 @@ const MyAdOne = ({
               }
           }
           for (let file of detailsVar.task.photos){
+            console.log('я был тут!')
             if (file.name.includes('nick')){
               addedArr.push(file)
             }
           }
 
 
-            for (let i = 0; i <  removedArr; i++){
+            for (let i = 0; i <  removedArr.length; i++){
               myFormData.append(`deleteFiles[${i}]` , removedArr[i])
             }
-            for (let i = 0; i < addedArr ; i++){
+            for (let i = 0; i < addedArr.length ; i++){
               myFormData.append(`addFiles` , addedArr[i] )
             }
           console.log(addedArr)
@@ -259,7 +253,6 @@ const MyAdOne = ({
             isActive : false,
           } )
 
-          filesArrayVar = []
         }
 
         }

@@ -40,7 +40,7 @@ export const putMyTask = createAsyncThunk(
       
 
 
-
+        return localTask
     }
     catch(e){
       console.warn(e)
@@ -49,7 +49,7 @@ export const putMyTask = createAsyncThunk(
 
     
 
-    return true
+    return false
   }
 )
 
@@ -397,7 +397,16 @@ const information = createSlice( {
         builder.addCase(  postMyTask.rejected , (   (state ) => {state.postTaskStatus = 'error'}   )  )
 
         builder.addCase(  putMyTask.pending , (   (state ) => {state.putTaskStatus = 'pending'}   )  )
-        builder.addCase(  putMyTask.fulfilled , (   (state ) => {state.putTaskStatus = 'complete'}   )  )
+        builder.addCase(  putMyTask.fulfilled , (   (state, action ) => {state.putTaskStatus = 'complete'
+          state.myAdsArray.map((e) => {
+            if (e.id === action.payload.id){
+              return action.payload
+            }
+            else{
+              return e
+            }
+          })
+        }   )  )
         builder.addCase(  putMyTask.rejected , (   (state ) => {state.putTaskStatus = 'error'}   )  )
     },
 

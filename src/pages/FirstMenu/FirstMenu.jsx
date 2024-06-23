@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { changeMenuActive } from '../../store/menuSlice';
 import {Link} from 'react-router-dom'
 
-import HumanIcon from '../../images//icons/icon.svg'
 import Close from '../../components/UI/Close';
 import SmallDimond from '../../components/UI/SmallDimond/SmallDimond';
 import UpArr from '../../components/UI/UpArr/UpArr';

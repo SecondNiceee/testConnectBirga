@@ -7,7 +7,7 @@ import dropfileIcon from "../../images/icons/Dropfile.svg";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
-import { addCard, changeCards } from "../../store/profile";
+import {  changeCards } from "../../store/profile";
 import { CSSTransition } from "react-transition-group";
 import ModalInput from "../../components/UI/ModalInput/ModalInput";
 import Categories from "../AdCreatingOne/Categories/Categories";
@@ -133,6 +133,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         MainButton.setText('Сохранить')
 
     };
+    // eslint-disable-next-line
 }, [modalActive]);
   return (
     <div className="cards">

@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState , memo} from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 
 
@@ -100,7 +100,7 @@ const LastAds = ({aboutReaction , isOpen , setOpen , openAboutReactionFunc , ope
             transform : 'translate3d(0% , ' + transform.toString() + 'px , 0)' ,
             transition :  'transform' + transition + 'bottom 0.4s'
         }
-    }, [ isOpen , transform  ])
+    }, [ isOpen , transform, transition  ])
     return (
 
 

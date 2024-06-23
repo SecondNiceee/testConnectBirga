@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 import AdCreateFunc from '../../../components/UI/AdCreateFunc/AdCreateFunc';

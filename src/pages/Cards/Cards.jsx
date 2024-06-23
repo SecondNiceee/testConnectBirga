@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import TaskName from "../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import behanceIcon from "../../images/icons/behance.svg";
@@ -8,7 +8,6 @@ import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
 import { addCard } from "../../store/profile";
-import { color } from "framer-motion";
 import { CSSTransition } from "react-transition-group";
 import ModalInput from "../../components/UI/ModalInput/ModalInput";
 import Categories from "../AdCreatingOne/Categories/Categories";
@@ -25,6 +24,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);
 
+  const dispatch = useDispatch()
 
   const [cardsSetting, setCardsSetting] = useState({
     title: "",
@@ -36,7 +36,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     category : categorys.find((e) => e.category === "Другое")
   });
 
-  const [update , setUpdate] = useState(null)
 
   const [errors, setErrors] = useState({
     nameError: false,
@@ -115,10 +114,16 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
 
 
-  function saveFunc() {
+
+  const backFunc = useCallback( () => {
+    document.documentElement.style.overflow = "auto";
+    setCardsOpen(false);
+  } , [setCardsOpen] )
+
+  const saveFunc = useCallback( () => {
     if (checkMistakes()) {
-      setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
-    //   dispatch(addCard(localCardSetting));
+      // setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
+      dispatch(addCard(localCardSetting));
       document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
     }
@@ -129,18 +134,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         is_visible : true
     })
     }
-  }
-
-
-  function backFunc() {
-      document.documentElement.style.overflow = "auto";
-      setCardsOpen(false);
-  }
-
-  // useEffect(() => {
-  //   MainButton.show();
-  //   BackButton.show()
-  // } )
+  } , [dispatch, setCardsOpen] )
   useEffect( () => {
     MainButton.setText("Добавить кейс");
     BackButton.show()
@@ -160,7 +154,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         MainButton.setText('Сохранить')
         
       };
-  }, [modalActive] )
+  }, [modalActive, backFunc, save, saveFunc] )
 
 
 
