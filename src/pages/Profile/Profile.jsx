@@ -127,7 +127,7 @@ const Profile = () => {
   const save = useCallback( () => {
     dispatch(changeProfile(aboutULocal))
     dispatch(putUserInfo([
-      {'stage' : aboutULocal.stage,
+      {'stage' : Number(aboutULocal.stage),
         'about' : aboutULocal.about
       },
       userInfoLocal.id
