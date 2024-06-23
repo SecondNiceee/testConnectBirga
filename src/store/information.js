@@ -398,14 +398,17 @@ const information = createSlice( {
 
         builder.addCase(  putMyTask.pending , (   (state ) => {state.putTaskStatus = 'pending'}   )  )
         builder.addCase(  putMyTask.fulfilled , (   (state, action ) => {state.putTaskStatus = 'complete'
-          state.myAdsArray.map((e) => {
+          console.log(action.payload)
+          state.myAdsArray = state.myAdsArray.map((e) => {
             if (e.id === action.payload.id){
+              console.log('хай')
               return action.payload
             }
             else{
               return e
             }
           })
+          console.log(state.myAdsArray)
         }   )  )
         builder.addCase(  putMyTask.rejected , (   (state ) => {state.putTaskStatus = 'error'}   )  )
     },
