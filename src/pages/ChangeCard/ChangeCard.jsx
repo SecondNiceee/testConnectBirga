@@ -102,7 +102,6 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
       
       let myFormData = new FormData()
-      myFormData.append("categoryId", localCardSetting.category.id)
       myFormData.append("title" , localCardSetting.title)
       myFormData.append("description" , localCardSetting.description)
       myFormData.append("behance" , localCardSetting.behanceLink)
@@ -164,7 +163,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     <div className="cards">
       <h3 className="cards-title">{cardsSetting.title}</h3>
 
-       <Categories className={'cards-categorys'} categoryOnly={true}  taskInformation={localCardSetting} setCatagoryChoiceOpen={setCatagoryChoiceOpen}  />
+    
 
       <button
         onClick={() => {
@@ -221,7 +220,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
               setText: function (e) {
                 setCardsSetting({ ...cardsSetting, dropfileLink: e });
               },
-              placeholder: "Введите ссылку на Dropfile",
+              placeholder: "Вставьте ссылку на Dropfile",
             };
             setModalActive(true);
           }}
@@ -230,7 +229,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
           <p>
             {cardsSetting.dropfileLink.length > 0
               ? cardsSetting.dropfileLink
-              : "Вставте ссылку на кейс в Dropfile"}
+              : "Ccылка на Dropfile"}
           </p>
       </div>
 
