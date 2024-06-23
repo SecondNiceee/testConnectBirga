@@ -1,13 +1,50 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
+export const postCard = createAsyncThunk(
+    "telegramUserInfo/putUserInfo",
+    async function (data){
+        try{
+            let im = await axios.post("https://back-birga.ywa.su/card" , data[0] , 
+                {
+                    params : {
+                        userId : data[1]
+                    }
+                }
+             )
+             let photos = []
+             data[2].photos.forEach((e, i) => {
+                let blob = e.slice(0 , e.size, "image/png")
+                let newFile = new File([blob], im.data.photos[i], {type: 'image/png'});
+                photos.push(newFile)
+
+             })
+            console.log(im)
+            let localCard = {
+                ...data[2],
+                photosNames : data[2].photos,
+                photos : photos,
+                id : im.data.id
+            }
+            return localCard
+        }
+        catch(e){
+            console.warn(e)
+        }
+    }
+)
 export const putUserInfo = createAsyncThunk(
     "telegramUserInfo/putUserInfo",
     async function (data){
         try{
             await axios.put('https://back-birga.ywa.su/user' , data[0] , {
                 params : {
-                    userId : data[1]
+                    userId : data[1],
+                    headers: {
+                        "Content-Type" :'multipart/form-data',
+                        "Access-Control-Allow-Origin": "*"
+                      },
                 }
             })
             return true
@@ -38,14 +75,35 @@ export const fetchUserInfo = createAsyncThunk(
             id: UserId,
           },
         });
-        return {
+
+        let localCards = []
+
+        let allCards = await axios.get("https://back-birga.ywa.su/card/findByUser" , {
+            params : {
+                userId : UserId
+            }
+        })
+        allCards.data.forEach(e => 
+            localCards.push({
+                id : e.id,
+                title : e.title,
+                description : e.description,
+                behanceLink : e.behance,
+                dribbbleLink : e.dribble,
+                dropfileLink : e.dropFile,
+                photosNames : e.photos,
+                photos : e.files
+            })
+        )
+        return ( {
             firstName: firstName,
             lastName: lastName,
             id: UserId,
             photo: user.data.photo,
             about : user.data.about,
             stage : user.data.stage,
-          };
+            cards : localCards
+          } );
     }
     catch (e){
         console.log(e)
@@ -100,11 +158,16 @@ const telegramUserInfo = createSlice({
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
       state.photo = action.payload.photo;
-      state.profile = {...state.profile , about : action.payload.about, stage : action.payload.stage === null ? '0' : action.payload.stage}
+      state.profile = {...state.profile , about : action.payload.about, stage : action.payload.stage === null ? '0' : action.payload.stage};
+      state.profile.cards = action.payload.cards
     });
     builder.addCase(fetchUserInfo.rejected, (state) => {
       state.status = "error";
     });
+
+    builder.addCase(postCard.fulfilled , (state , action) => {
+        state.profile.cards.push(action.payload)
+    })
   },
 });
 

@@ -11,7 +11,7 @@ import { CSSTransition } from "react-transition-group";
 import ModalInput from "../../components/UI/ModalInput/ModalInput";
 import Categories from "../AdCreatingOne/Categories/Categories";
 import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
-import { addCard } from "../../store/telegramUserInfo";
+import { addCard, postCard } from "../../store/telegramUserInfo";
 let localCardSetting;
 let mainLocalErrors ;
 let inputObject = {
@@ -124,6 +124,22 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     if (checkMistakes()) {
       setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
       dispatch(addCard(localCardSetting));
+
+
+      let myFormData = new FormData()
+      myFormData.append("categoryId", localCardSetting.category.id)
+      myFormData.append("title" , localCardSetting.title)
+      myFormData.append("description" , localCardSetting.description)
+      myFormData.append("behance" , localCardSetting.behanceLink)
+      myFormData.append("dribble" , localCardSetting.dribbbleLink)
+      myFormData.append("dropFile" , localCardSetting.dropfileLink)
+
+      localCardSetting.photos.forEach(e => {
+        myFormData.append('photos' , e)
+      })
+
+
+      dispatch( postCard([myFormData , aboutU.userId, localCardSetting] ))
       document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
     }

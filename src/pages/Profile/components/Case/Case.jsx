@@ -4,15 +4,15 @@ import cl from "./Case.module.css";
 const Case = ({ className, title , description , photos, changeFunction, deleteFunction,  ...props }) => {
   return (
     <div
-      {...props}
+      {...props} 
       className={className ? [cl.case, className].join(" ") : cl.case}
     >
       {photos.length > 0 ?
             <div className={cl.caseTop}>
-            {photos.map(e => {
+            {photos.map((e , i) => {
               let url = URL.createObjectURL(e)
               return (
-                <img style={photos.length === 1 ? 
+                <img key={i} style={photos.length === 1 ? 
                   {minWidth : '100%'} 
                   :
                   {}
