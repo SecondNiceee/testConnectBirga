@@ -31,6 +31,7 @@ const MyAdOne = ({
   } , [ setDetails] )
 
   console.log(details)
+  console.log('hi')
 
   function setChangingTask( value ){
     console.log('Вызов этой функции')
@@ -256,6 +257,7 @@ const MyAdOne = ({
         }
 
         }
+        
 
       }>Save</button>
 
