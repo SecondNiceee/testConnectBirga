@@ -1,12 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-// export const putUserInfo = createAsyncThunk(
-//     "telegramUserInfo/putUserInfo",
-//     async function (){
-        
-//     }
-// )
+export const putUserInfo = createAsyncThunk(
+    "telegramUserInfo/putUserInfo",
+    async function (data){
+        try{
+            await axios.put('https://back-birga.ywa.su/user' , data[0] , {
+                params : {
+                    userId : data[1]
+                }
+            })
+            return true
+        }
+        catch(e){
+            console.warn(e)
+        }
+    }
+)
 export const fetchUserInfo = createAsyncThunk(
   "telegramUserInfo/fetchUserInfo",
   async function () {

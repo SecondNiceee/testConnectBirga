@@ -23,7 +23,7 @@ import MainButton from "../../constants/MainButton";
 import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
-import { changeProfile, deleteCard } from "../../store/telegramUserInfo";
+import { changeProfile, deleteCard, putUserInfo } from "../../store/telegramUserInfo";
 
 
 const variants = {
@@ -126,6 +126,12 @@ const Profile = () => {
 
   const save = useCallback( () => {
     dispatch(changeProfile(aboutULocal))
+    dispatch(putUserInfo([
+      {'stage' : userInfoLocal.profile.stage,
+        'about' : userInfoLocal.profile.about
+      },
+      userInfoLocal.id
+    ]))
     setUpdate(new Date())
   } , [dispatch] )
 
