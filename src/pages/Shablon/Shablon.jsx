@@ -12,7 +12,7 @@ const Shablon = ({shablon, setShablon}) => {
       navigate(-1)
     }
     function forward(){
-      alert('Арсен еще не сделал')
+      alert('я делаю')
     }
     BackButton.show()
     MainButton.show()
