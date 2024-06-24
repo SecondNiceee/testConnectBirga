@@ -1,11 +1,12 @@
 import React from 'react';
 import icon from '../../../images/icons/icon.svg'
-import Burger from '../../../components/UI/Burger/Burger';
+import Burger from '../Burger/Burger';
 import { useSelector } from 'react-redux';
-const Top = ({setMenuActive , name}) => {
+import cl from './Top.module.css'
+const Top = ({setMenuActive , name , ...props}) => {
     const userInfo = useSelector(state => state.telegramUserInfo)
     return (
-        <div className="top">
+        <div {...props} className={cl.top}>
             <Burger
                 style = {
                     {
@@ -16,8 +17,8 @@ const Top = ({setMenuActive , name}) => {
                 setMenuActive(true);
                 }}
             />
-            <p className="MyAds">{name}</p>
-            <img className="topIcon" src={userInfo.photo} alt="" />
+            <p className={cl.MyAds}>{name}</p>
+            <img className={cl.topIcon} src={userInfo.photo} alt="" />
 
         </div>
     );

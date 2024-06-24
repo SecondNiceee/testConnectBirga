@@ -1,0 +1,22 @@
+
+.all-shablon-wrapper{
+    min-width: 100vw;
+    width: 100%;
+    height: 100vh;
+    padding-top: 23px;
+    padding-left: 16px;
+    padding-right: 16px;
+    left: 0;
+    top: 0;
+    overflow-y: scroll;
+    .all-shablons-func{
+        margin-top: 26px;
+    }
+    .shablon-wrapper-grey{
+        margin-top: 30px;
+        margin-left: 17px;
+    }
+    .shablons-wrap{
+        margin-top: 8px;
+    }
+}

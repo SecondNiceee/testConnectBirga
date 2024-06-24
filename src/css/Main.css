@@ -2419,9 +2419,17 @@ input {
 
 .shablon-wrapper {
   min-width: 100vw;
+  width: 100%;
+  height: 100vh;
   padding-top: 23px;
   padding-left: 16px;
   padding-right: 16px;
+  left: 0;
+  top: 0;
+  position: absolute;
+  overflow-y: scroll;
+  z-index: 200;
+  background: rgb(24, 34, 45);
 }
 .shablon-wrapper .shablon-name {
   margin-top: 18px;
@@ -2450,6 +2458,9 @@ input {
 }
 .shablon-wrapper .shablon-description {
   margin-top: 18px;
+}
+.shablon-wrapper .shablons-wrap {
+  margin-top: 8px;
 }
 
 .cards {
@@ -2527,6 +2538,28 @@ input {
 }
 .cards .cards-categorys {
   margin-top: 18px;
+}
+
+.all-shablon-wrapper {
+  min-width: 100vw;
+  width: 100%;
+  height: 100vh;
+  padding-top: 23px;
+  padding-left: 16px;
+  padding-right: 16px;
+  left: 0;
+  top: 0;
+  overflow-y: scroll;
+}
+.all-shablon-wrapper .all-shablons-func {
+  margin-top: 26px;
+}
+.all-shablon-wrapper .shablon-wrapper-grey {
+  margin-top: 30px;
+  margin-left: 17px;
+}
+.all-shablon-wrapper .shablons-wrap {
+  margin-top: 8px;
 }
 
 * {

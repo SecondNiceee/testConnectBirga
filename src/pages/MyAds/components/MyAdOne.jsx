@@ -4,7 +4,7 @@ import MyAdsBlock from "./MyAdsBlock";
 import PickerContent from "./PickerContent";
 import AdCreatingOne from "../../AdCreatingOne/AdCreatingOne/AdCreatingOne";
 import { CSSTransition } from "react-transition-group";
-import Top from "./Top";
+import Top from "../../../components/UI/Top/Top";
 import BackButton from "../../../constants/BackButton";
 
 // import { initPopup } from "@tma.js/sdk";

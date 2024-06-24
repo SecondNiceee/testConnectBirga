@@ -5,12 +5,7 @@ import BackButton from "../../constants/BackButton";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../../constants/MainButton";
 
-const Shablon = () => {
-  const [shablon, setShablon] = useState({
-    title: "",
-    text: "",
-    photos: [],
-  });
+const Shablon = ({shablon, setShablon}) => {
   const navigate = useNavigate()
   useEffect( () => {
     function goBack(){
@@ -30,6 +25,26 @@ const Shablon = () => {
       MainButton.hide()
     }
   }, [navigate])
+
+  useEffect( () => {
+    if (shablon.name.length < 3 || shablon.text.length < 5){
+      MainButton.setParams({
+
+        color : '#2ea5ff',
+        text_color : '#ffffff'
+        
+      })
+    }
+    else{
+      MainButton.setParams({
+          
+        color : '#2f2f2f',
+        text_color : '#606060',
+      })
+    }
+  } , [shablon.name , shablon.text] )
+
+
   return (
     <div className="shablon-wrapper">
       <h3 className="shablon-title">Новый шаблон</h3>
@@ -38,7 +53,7 @@ const Shablon = () => {
         title={"НАЗВАНИЕ ШАБЛОНА"}
         text={shablon.title}
         setText={(e) => {
-          setShablon({ ...shablon, title: e });
+          setShablon({ ...shablon, name: e });
         }}
         errorValue={false}
         underText={""}

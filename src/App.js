@@ -20,12 +20,13 @@ import { fetchMyOrders, fetchTasksInformation } from "./store/information";
 import { Triangle } from "react-loader-spinner";
 import axios from "axios";
 import { getCategorys, getSubCategorys } from "./store/categorys";
+import { fetchAllShablons } from "./store/shablon";
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
 const Balance = lazy(() => import("./pages/Balance"));
 const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
-const Shablon = lazy(() => import("./pages/Shablon/Shablon"));
+const AllShablons = lazy( () => import("./pages/AllShablons/AllShablons") )
 
 const MyLoader = () => {
   return (
@@ -71,23 +72,16 @@ const AnimatedSwitch = () => {
       
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
-          <Route
+          {/* <Route
             path="/"
             element={
               <Suspense fallback={<MyLoader />}>
                 <First />
               </Suspense>
             }
-          />
+          /> */}
 
-          <Route
-            path="/Shablon"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <Shablon />
-              </Suspense>
-            }
-          />
+
 
           <Route
             path="/AdCreating"
@@ -121,6 +115,15 @@ const AnimatedSwitch = () => {
             element={
               <Suspense fallback={<MyLoader />}>
                 <MyAds />
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<MyLoader />}>
+                <AllShablons />
               </Suspense>
             }
           />
@@ -160,6 +163,7 @@ function App() {
     dispatch(getSubCategorys())
     dispatch(getCategorys())
     dispatch(getSubCategorys())
+    dispatch(fetchAllShablons())
   }, []);
   return (
     <BrowserRouter>

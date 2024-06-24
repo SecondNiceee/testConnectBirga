@@ -4,6 +4,7 @@ import ton from './ton';
 import menuSlice from './menuSlice'
 import telegramUserInfo from './telegramUserInfo';
 import categorys from './categorys';
+import shablon from './shablon';
 export default configureStore( {
     reducer : {
         information : information,
@@ -11,6 +12,7 @@ export default configureStore( {
         menu : menuSlice,
         telegramUserInfo : telegramUserInfo,
         categorys : categorys,
+        shablon : shablon
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

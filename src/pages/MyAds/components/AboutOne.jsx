@@ -2,7 +2,7 @@ import React from 'react';
 
 import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 import { memo } from 'react';
-import Top from './Top';
+import Top from '../../../components/UI/Top/Top';
 import ReactionBlock from './ReactionBlock';
 const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
     return (
