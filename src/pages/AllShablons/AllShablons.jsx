@@ -7,6 +7,7 @@ import { changeMenuActive } from "../../store/menuSlice";
 import ShablonsWrap from "./components/ShablonsWrap/ShablonsWrap";
 import { CSSTransition } from "react-transition-group";
 import Shablon from "../Shablon/Shablon";
+import { deleteShablon } from "../../store/shablon";
 
 const AllShablons = () => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const AllShablons = () => {
       photos: [],
       photosNames: [],
     },
+    put : false
   });
 
   function clickOnFunc() {
@@ -43,6 +45,7 @@ const AllShablons = () => {
         photos: [],
         photosNames: [],
       },
+      put : false
     });
   }
 
@@ -51,6 +54,35 @@ const AllShablons = () => {
         ...shablon , shablon : e
     })
   }
+
+  const putFunction = useCallback((e) => {
+    setShablon({
+        isActive : true ,
+        shablon : e,
+        put : true
+    })
+  } , [shablon, setShablon])
+
+  const deleteFunction = useCallback((e) => {
+    window.Telegram.WebApp
+    .showPopup({
+      title: "Удалить?",
+      message: "Вы хотите удалить этот шаблон?",
+      buttons: [
+        { id: "save", type: "default", text: "Да" },
+        { id: "delete", type: "destructive", text: "Нет" },
+      ],
+    } , (buttonId) => {
+
+      if (buttonId === "delete" || buttonId === null) {
+        // setShablon({...shablon , isActive : false})
+      }
+      if (buttonId === "save") {
+
+        dispatch(deleteShablon(e.id))
+    } })
+    
+  })
 
   console.log(shablonsArr);
   return (
@@ -71,7 +103,7 @@ const AllShablons = () => {
         <></>
       )}
 
-      <ShablonsWrap className={"shablons-wrap"} shablonsArr={shablonsArr} />
+      <ShablonsWrap deleteFunction = {deleteFunction} className={"shablons-wrap"} shablonsArr={shablonsArr} putFunction = {putFunction}  />
 
       <CSSTransition
         in={shablon.isActive}
@@ -80,7 +112,7 @@ const AllShablons = () => {
         unmountOnExit
         timeout={300}
       >
-        <Shablon shablon={shablon.shablon} setShablon={setShablonFunc} />
+        <Shablon shablon={shablon.shablon} setShablon={setShablonFunc} put = {shablon.put} />
       </CSSTransition>
     </div>
   );

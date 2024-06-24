@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import makeFile from "../functions/makeFile";
 
 
 
@@ -8,12 +9,17 @@ export const deleteServerCard = createAsyncThunk(
     async function (data){
         try{
             await axios.delete("https://back-birga.ywa.su/card" , {
-                params : data
+                params : {
+                    id : data
+                }
             }
             )
+            console.log('по приколу тут')
+            console.log(data)
             return true
         }
         catch(e){
+            alert(JSON.stringify(e))
             console.warn(e)
         }
     }
@@ -42,7 +48,7 @@ export const putCard = createAsyncThunk(
              })
              let localCard = {
                 ...data[2],
-                photosNames : data[2].photos,
+                photosNames : im.data.photos,
                 photos : photos,
                 id : im.data.id
             }
@@ -138,7 +144,8 @@ export const fetchUserInfo = createAsyncThunk(
                 userId : UserId
             }
         })
-        allCards.data.forEach(e => 
+        allCards.data.forEach(e => {
+            let files = makeFile(e.files , e.photos)
             localCards.push({
                 id : e.id,
                 title : e.title,
@@ -147,8 +154,9 @@ export const fetchUserInfo = createAsyncThunk(
                 dribbbleLink : e.dribble,
                 dropfileLink : e.dropFile,
                 photosNames : e.photos,
-                photos : e.files
+                photos : files
             })
+        }
         )
         return ( {
             firstName: firstName,

@@ -1,6 +1,6 @@
 import React from "react";
 import cl from './Shablon.module.css'
-const Shablon = ({ shablon }) => {
+const Shablon = ({ shablon , putFunction, deleteFunction }) => {
   return (
     <div className={cl.shablon}>
        {shablon.photos.length > 0 ? 
@@ -14,7 +14,7 @@ const Shablon = ({ shablon }) => {
       <div className={cl.shablonBottom}>
         <p className={cl.shablonBottomLeft}>{shablon.name}</p>
         <div className={cl.shablonBottomRight}>
-          <div className={cl.circle}>
+          <div className={cl.circle} onClick={deleteFunction}>
             <svg
               width="14"
               height="16"
@@ -28,7 +28,7 @@ const Shablon = ({ shablon }) => {
               />
             </svg>
           </div>
-          <div className={cl.circle}>
+          <div className={cl.circle} onClick={putFunction}  >
             <svg
               width="13"
               height="14"

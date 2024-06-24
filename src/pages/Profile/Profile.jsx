@@ -67,13 +67,14 @@ const Profile = () => {
 
   const [changeActive , setChangeActive] = useState(false)
 
-  const [update , setUpdate] = useState(false)
 
   
   const [aboutU, setAboutU] = useState({...userInfo.profile , 
     stage : userInfo.profile.stage,
     userId : userInfo.id 
   });
+
+  const cards = useSelector(state => state.telegramUserInfo.profile.cards)
 
   
 
@@ -133,7 +134,7 @@ const Profile = () => {
       },
       userInfoLocal.id
     ]))
-    setUpdate(new Date())
+
   } , [dispatch] )
 
 
@@ -213,7 +214,7 @@ const Profile = () => {
        
     }
 
-  }, [aboutU , changeActive, update, cardsActive, save, errors.stageError ]  )
+  }, [aboutU , changeActive, cardsActive, save, errors.stageError ]  )
 
 
   
@@ -294,6 +295,31 @@ const Profile = () => {
   } , []  )
 
 
+  function deleteFunction(index, e){
+
+    window.Telegram.WebApp
+    .showPopup({
+      title: "Удалить?",
+      message: "Вы хотите удалить этот кейс?",
+      buttons: [
+        { id: "save", type: "default", text: "Да" },
+        { id: "delete", type: "destructive", text: "Нет" },
+      ],
+    } , (buttonId) => {
+
+      if (buttonId === "delete" || buttonId === null) {
+        
+      }
+      if (buttonId === "save") {
+        dispatch(deleteServerCard(e.id))
+      }
+
+
+    } )
+    
+  }
+
+
   return (
     <motion.div
       className="profile__container"
@@ -360,17 +386,19 @@ const Profile = () => {
         }} text={'Добавить кейс'} />
       </Compact>
 
-      {aboutU.cards.length !== 0 ? aboutU.cards.map((e, i) => {
+      {cards.length !== 0 ? cards.map((e, i) => {
         return (
           <Case 
 
           deleteFunction = {() => {
-            index = i
-            setAboutU({...aboutULocal , cards : [...aboutU.cards.filter((e , i) => {
-              return i !== index
-            })]})
-            dispatch(deleteCard(index))
-            dispatch(deleteServerCard(e.id))
+            deleteFunction(i, e)
+
+            // index = i
+            // setAboutU({...aboutULocal , cards : [...aboutU.cards.filter((e , i) => {
+            //   return i !== index
+            // })]})
+            // dispatch(deleteCard(index))
+            // dispatch(deleteServerCard(e.id))
             
           }}
 

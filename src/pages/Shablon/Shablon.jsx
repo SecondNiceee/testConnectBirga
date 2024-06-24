@@ -4,19 +4,46 @@ import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/Descrip
 import BackButton from "../../constants/BackButton";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../../constants/MainButton";
+import { useDispatch } from "react-redux";
+import { postShablon, putShablon } from "../../store/shablon";
+import sortFiles from "../../functions/sortFiles";
 
-const Shablon = ({shablon, setShablon}) => {
+const Shablon = ({shablon, setShablon, put}) => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   useEffect( () => {
     function goBack(){
-      navigate(-1)
+      setShablon({...shablon , isActive : false})
     }
     function forward(){
-      alert('я делаю')
+      let myFormData = new FormData()
+      myFormData.append("userId" ,  2144832745)
+      myFormData.append("name" , shablon.name )
+      myFormData.append("text" , shablon.text)
+      if (put){
+        let filesArr = sortFiles(shablon.photosNames, shablon.photos)
+        filesArr.addedArr.forEach((e, i) => {
+          myFormData.append(`addFiles${i}` , e)
+        })
+        filesArr.removedArr.forEach((e, i) => {
+          myFormData.append(`deleteFiles${i}` , e)
+        })
+        dispatch(putShablon([myFormData , shablon.id, shablon]))
+      }
+      else{
+        myFormData.append("photos" , shablon.photos)
+        dispatch(postShablon([myFormData, shablon]))
+      }
+      setShablon({...shablon, isActive : false})
     }
     BackButton.show()
     MainButton.show()
-    MainButton.setText('Добавить шаблон')
+    if (put){
+      MainButton.setText('Изменить шаблон')
+    }
+    else{
+      MainButton.setText('Добавить шаблон')
+    }
     BackButton.onClick(goBack)
     MainButton.onClick(forward)
     return () => {
@@ -24,12 +51,12 @@ const Shablon = ({shablon, setShablon}) => {
       BackButton.offClick(goBack)
       MainButton.hide()
     }
-  }, [navigate])
+  }, [navigate, dispatch, put, setShablon, shablon])
 
   useEffect( () => {
     if (shablon.name.length < 3 || shablon.text.length < 5){
       MainButton.setParams({
-          
+        is_enable : false, //неизвесетно
         color : '#2f2f2f',
         text_color : '#606060',
       })
@@ -37,7 +64,7 @@ const Shablon = ({shablon, setShablon}) => {
     }
     else{
       MainButton.setParams({
-
+        is_enable : true, //неизвесетно
         color : '#2ea5ff',
         text_color : '#ffffff'
         
@@ -48,7 +75,7 @@ const Shablon = ({shablon, setShablon}) => {
 
   return (
     <div className="shablon-wrapper">
-      <h3 className="shablon-title">Новый шаблон</h3>
+      <h3 className="shablon-title">{put ? shablon.name : "Новый шаблон"}</h3>
       <TaskName
         className={"shablon-name"}
         title={"НАЗВАНИЕ ШАБЛОНА"}
