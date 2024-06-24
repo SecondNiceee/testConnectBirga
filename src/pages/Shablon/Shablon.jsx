@@ -29,17 +29,18 @@ const Shablon = ({shablon, setShablon}) => {
   useEffect( () => {
     if (shablon.name.length < 3 || shablon.text.length < 5){
       MainButton.setParams({
+          
+        color : '#2f2f2f',
+        text_color : '#606060',
+      })
+
+    }
+    else{
+      MainButton.setParams({
 
         color : '#2ea5ff',
         text_color : '#ffffff'
         
-      })
-    }
-    else{
-      MainButton.setParams({
-          
-        color : '#2f2f2f',
-        text_color : '#606060',
       })
     }
   } , [shablon.name , shablon.text] )
@@ -57,6 +58,7 @@ const Shablon = ({shablon, setShablon}) => {
         }}
         errorValue={false}
         underText={""}
+        placeholder={"Введите название шаблона"}
       />
       <DescriptionAndPhoto
       className={'shablon-description'}
