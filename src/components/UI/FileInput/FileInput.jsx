@@ -90,6 +90,8 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
 
               }
             }
+            myRef.current.blur()
+            console.log(myRef.current)
             
           }}
           type="file"
