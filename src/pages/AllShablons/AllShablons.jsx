@@ -84,7 +84,7 @@ const AllShablons = () => {
     
   })
 
-  console.log(shablonsArr);
+  console.log(shablon);
   return (
     <div className="all-shablon-wrapper">
       <Top setMenuActive={setMenuActive} name={"Шаблоны откликов"} />
