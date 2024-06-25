@@ -56,13 +56,13 @@ const Options = () => {
           </div>
           <img className="arrowRight" src={ArrowRight} alt="" />
         </div>
-        <div className="option">
+        <Link to = {"/AllShablons"} className="option">
           <div className="option__left">
             <img src={shablonsIcon} className="orangeWallet" alt="" />
             <p>Шаблоны откликов</p>
           </div>
           <img className="arrowRight" src={ArrowRight} alt="" />
-        </div>
+        </Link>
       </div>
 
     );

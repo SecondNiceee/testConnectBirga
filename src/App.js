@@ -56,13 +56,13 @@ const AnimatedSwitch = () => {
   const location = useLocation();
   const isMenuActive = useSelector((state) => state.menu.value);
   const navigate = useNavigate()
-  useEffect(() => {
+  // useEffect(() => {
 
-    navigate('/MyAds')
-    navigate('/')
-  }, []
+  //   // navigate('/MyAds')
+  //   // navigate('/')
+  // }, []
 
-  )
+  // )
   return (
     <div className="container">
       <div
@@ -72,14 +72,14 @@ const AnimatedSwitch = () => {
       
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
-          {/* <Route
+          <Route
             path="/"
             element={
               <Suspense fallback={<MyLoader />}>
                 <First />
               </Suspense>
             }
-          /> */}
+          />
 
 
 
@@ -120,7 +120,7 @@ const AnimatedSwitch = () => {
           />
 
           <Route
-            path="/"
+            path="/AllShablons"
             element={
               <Suspense fallback={<MyLoader />}>
                 <AllShablons />
