@@ -13,7 +13,9 @@ const Shablon = ({shablon, setShablon, put}) => {
   const dispatch = useDispatch()
   useEffect( () => {
     function goBack(){
+      console.log('Мы тебя вызвали')
       setShablon({...shablon , isActive : false})
+
     }
     function forward(){
       let myFormData = new FormData()
@@ -56,7 +58,7 @@ const Shablon = ({shablon, setShablon, put}) => {
   useEffect( () => {
     if (shablon.name.length < 3 || shablon.text.length < 5){
       MainButton.setParams({
-        is_enable : false, //неизвесетно
+        is_active : false, //неизвесетно
         color : '#2f2f2f',
         text_color : '#606060',
       })
@@ -64,7 +66,7 @@ const Shablon = ({shablon, setShablon, put}) => {
     }
     else{
       MainButton.setParams({
-        is_enable : true, //неизвесетно
+        is_active : true, //неизвесетно
         color : '#2ea5ff',
         text_color : '#ffffff'
         
