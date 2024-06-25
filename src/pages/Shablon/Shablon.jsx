@@ -12,12 +12,6 @@ const Shablon = ({shablon, setShablon, setActive, put}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   useEffect( () => {
-    function goBack(){
-      console.log('Мы тебя вызвали')
-      setActive(false)
-    
-
-    }
     function forward(){
       let myFormData = new FormData()
       myFormData.append("userId" ,  2144832745)
@@ -39,6 +33,10 @@ const Shablon = ({shablon, setShablon, setActive, put}) => {
       }
       setActive(false)
     }
+
+    
+
+
     BackButton.show()
     MainButton.show()
     if (put){
@@ -47,14 +45,17 @@ const Shablon = ({shablon, setShablon, setActive, put}) => {
     else{
       MainButton.setText('Добавить шаблон')
     }
-    BackButton.onClick(goBack)
+
     MainButton.onClick(forward)
     return () => {
       MainButton.offClick(forward)
-      BackButton.offClick(goBack)
       MainButton.hide()
     }
   }, [navigate, dispatch, put, setShablon, shablon])
+
+
+
+
 
   useEffect( () => {
     if (shablon.name.length < 3 || shablon.text.length < 5){

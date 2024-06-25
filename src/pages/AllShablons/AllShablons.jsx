@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Top from "../../components/UI/Top/Top";
 import { useDispatch, useSelector } from "react-redux";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
@@ -8,9 +8,12 @@ import ShablonsWrap from "./components/ShablonsWrap/ShablonsWrap";
 import { CSSTransition } from "react-transition-group";
 import Shablon from "../Shablon/Shablon";
 import { deleteShablon } from "../../store/shablon";
+import { useNavigate } from "react-router-dom";
+import BackButton from "../../constants/BackButton";
 
 const AllShablons = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const isMenuActive = useSelector((state) => state.menu.value);
 
@@ -83,7 +86,22 @@ const AllShablons = () => {
     
   })
 
-  console.log(shablon);
+
+  useEffect( () => {
+    function back(){
+      if (shablon.isActive){
+          setShablon({...shablon , isActive : false})
+      }
+      else{
+        navigate(-1)
+      }
+    }
+    BackButton.onClick(back)
+    return () => {
+      BackButton.offClick(back)
+    }
+  } , [shablon.isActive] )
+
   return (
     <div className="all-shablon-wrapper">
       <Top setMenuActive={setMenuActive} name={"Шаблоны откликов"} />
