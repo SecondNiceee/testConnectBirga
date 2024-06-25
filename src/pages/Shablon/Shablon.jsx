@@ -8,13 +8,14 @@ import { useDispatch } from "react-redux";
 import { postShablon, putShablon } from "../../store/shablon";
 import sortFiles from "../../functions/sortFiles";
 
-const Shablon = ({shablon, setShablon, put}) => {
+const Shablon = ({shablon, setShablon, setActive, put}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   useEffect( () => {
     function goBack(){
       console.log('Мы тебя вызвали')
-      setShablon({...shablon , isActive : false})
+      setActive(false)
+    
 
     }
     function forward(){
@@ -36,7 +37,7 @@ const Shablon = ({shablon, setShablon, put}) => {
         myFormData.append("photos" , shablon.photos)
         dispatch(postShablon([myFormData, shablon]))
       }
-      setShablon({...shablon, isActive : false})
+      setActive(false)
     }
     BackButton.show()
     MainButton.show()

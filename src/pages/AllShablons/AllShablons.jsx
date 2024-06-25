@@ -57,7 +57,6 @@ const AllShablons = () => {
 
   const putFunction = useCallback((e) => {
     setShablon({
-        isActive : true ,
         shablon : e,
         put : true
     })
@@ -112,7 +111,9 @@ const AllShablons = () => {
         unmountOnExit
         timeout={300}
       >
-        <Shablon shablon={shablon.shablon} setShablon={setShablonFunc} put = {shablon.put} />
+        <Shablon shablon={shablon.shablon} setActive={(e) => {
+          setShablon({...shablon , isActive : e})
+        }} setShablon={setShablonFunc} put = {shablon.put} />
       </CSSTransition>
     </div>
   );
