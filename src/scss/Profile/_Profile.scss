@@ -6,12 +6,15 @@ input {
     padding: 0;
     outline:none;}
 .profile__container{
+    height: 100vh;
     position: relative;
     display: flex;
     flex-direction: column;
     padding-top: 27px;
     padding-left: 14px;
     padding-right: 14px;
+    overflow-y: scroll;
+    
     .pofile__icon{
         width: calc(94px);
         height: calc(94px)
@@ -351,9 +354,9 @@ input {
     top: 0;
     background-color: rgb(24, 34, 45);;
 }
-.profile__container{
-    overflow-y: hidden;
-}
+// .profile__container{
+//     overflow-y: hidden;
+// }
 .aboutMeTitle{
     display: flex;  
     gap: 5px;

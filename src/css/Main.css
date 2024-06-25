@@ -49,7 +49,8 @@
   padding-right: 16px;
   padding-top: 18px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  overflow-y: scroll;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   padding-bottom: 18px;
@@ -1232,6 +1233,7 @@ input {
 }
 
 .profile__container {
+  height: 100vh;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1243,6 +1245,7 @@ input {
   padding-top: 27px;
   padding-left: 14px;
   padding-right: 14px;
+  overflow-y: scroll;
 }
 .profile__container .pofile__icon {
   width: 94px;
@@ -1652,10 +1655,6 @@ input {
   left: 0;
   top: 0;
   background-color: rgb(24, 34, 45);
-}
-
-.profile__container {
-  overflow-y: hidden;
 }
 
 .aboutMeTitle {
