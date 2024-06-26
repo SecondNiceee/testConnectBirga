@@ -11,28 +11,31 @@ import sortFiles from "../../functions/sortFiles";
 const Shablon = ({shablon, setShablon, setActive, put}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  useEffect( () => {
-    function forward(){
-      let myFormData = new FormData()
-      myFormData.append("userId" ,  2144832745)
-      myFormData.append("name" , shablon.name )
-      myFormData.append("text" , shablon.text)
-      if (put){
-        let filesArr = sortFiles(shablon.photosNames, shablon.photos)
-        filesArr.addedArr.forEach((e, i) => {
-          myFormData.append(`addFiles${i}` , e)
-        })
-        filesArr.removedArr.forEach((e, i) => {
-          myFormData.append(`deleteFiles${i}` , e)
-        })
-        dispatch(putShablon([myFormData , shablon.id, shablon]))
-      }
-      else{
-        myFormData.append("photos" , shablon.photos)
-        dispatch(postShablon([myFormData, shablon]))
-      }
-      setActive(false)
+  function forward(){
+    let myFormData = new FormData()
+    myFormData.append("userId" ,  2144832745)
+    myFormData.append("name" , shablon.name )
+    myFormData.append("text" , shablon.text)
+    if (put){
+      let filesArr = sortFiles(shablon.photosNames, shablon.photos)
+      filesArr.addedArr.forEach((e, i) => {
+        myFormData.append(`addFiles${i}` , e)
+      })
+      filesArr.removedArr.forEach((e, i) => {
+        myFormData.append(`deleteFiles${i}` , e)
+      })
+      dispatch(putShablon([myFormData , shablon.id, shablon]))
     }
+    else{
+      shablon.photos.forEach((e,i) => {
+        myFormData.append("photos" , e)
+      })
+      // myFormData.append("photos" , shablon.photos)
+      dispatch(postShablon([myFormData, shablon]))
+    }
+    setActive(false)
+  }
+  useEffect( () => {
 
     
 
@@ -80,6 +83,7 @@ const Shablon = ({shablon, setShablon, setActive, put}) => {
   return (
     <div className="shablon-wrapper">
       <h3 className="shablon-title">{put ? shablon.name : "Новый шаблон"}</h3>
+      <button onClick={forward}>Сделать!</button>
       <TaskName
         className={"shablon-name"}
         title={"НАЗВАНИЕ ШАБЛОНА"}

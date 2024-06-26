@@ -5,8 +5,11 @@ const Shablon = ({ shablon , putFunction, deleteFunction }) => {
     <div className={cl.shablon}>
        {shablon.photos.length > 0 ? 
       <div className={cl.shablonTop}>
-        <img src="" alt="" />
-        <img src="" alt="" />
+        {shablon.photos.map((e, i) => {
+          return (
+            <img key={i} src={URL.createObjectURL(e)}  alt=""/>
+          )
+        })}
       </div>
       :
       <></>

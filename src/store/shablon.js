@@ -67,7 +67,7 @@ export const postShablon = createAsyncThunk(
 
     }
     catch(e){
-
+      console.warn(e)
     }
   }
 )
