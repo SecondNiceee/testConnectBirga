@@ -148,7 +148,7 @@ const shablon = createSlice({
     })
     builder.addCase(deleteShablon.fulfilled, (state , action) => {
       state.shablonsArr = state.shablonsArr.filter(e => 
-          e.id !== action.payload.id
+          e.id !== action.payload
       )
     } ) 
   }
