@@ -151,9 +151,10 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       BackButton.offClick(saveFunc)
     }
     return () => {
+        MainButton.hide()
         MainButton.offClick(saveFunc)
         BackButton.offClick(backFunc);
-        MainButton.onClick(save)
+        // MainButton.onClick(save)
         MainButton.setText('Сохранить')
 
     };
