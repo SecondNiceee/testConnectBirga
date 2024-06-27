@@ -139,8 +139,8 @@ function App() {
 
   useEffect( () => {
     document.documentElement.style.overflowY = 'clip'
-    document.documentElement.style.marginTop = '8px'
-    window.scrollTo(0 , 8)
+    document.documentElement.style.marginTop = '15px'
+    window.scrollTo(0 , 15)
   },[] )
 
 
