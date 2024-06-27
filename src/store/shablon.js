@@ -22,7 +22,7 @@ export const putShablon = createAsyncThunk(
   "shablon/putShablon" ,
   async function(data){
     try{
-      let im = await axios.put("https://back-birga.ywa.su/template" , data[1] , 
+      let im = await axios.put("https://back-birga.ywa.su/template" , data[0] , 
         {
           params : {
             id : data[1]
@@ -39,7 +39,8 @@ export const putShablon = createAsyncThunk(
 
     }
     catch(e){
-
+      alert('!')
+        console.log(e)
     }
   }
 )

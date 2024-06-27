@@ -13,7 +13,8 @@ const Shablon = ({shablon, setShablon, setActive, put}) => {
   const dispatch = useDispatch()
   function forward(){
     let myFormData = new FormData()
-    myFormData.append("userId" ,  2144832745)
+    // myFormData.append("userId" ,  2144832745)
+    console.log(shablon.name)
     myFormData.append("name" , shablon.name )
     myFormData.append("text" , shablon.text)
     if (put){
@@ -24,6 +25,7 @@ const Shablon = ({shablon, setShablon, setActive, put}) => {
       filesArr.removedArr.forEach((e, i) => {
         myFormData.append(`deleteFiles${i}` , e)
       })
+      console.log(shablon)
       dispatch(putShablon([myFormData , shablon.id, shablon]))
     }
     else{
@@ -87,7 +89,7 @@ const Shablon = ({shablon, setShablon, setActive, put}) => {
       <TaskName
         className={"shablon-name"}
         title={"НАЗВАНИЕ ШАБЛОНА"}
-        text={shablon.title}
+        text={shablon.name}
         setText={(e) => {
           setShablon({ ...shablon, name: e });
         }}

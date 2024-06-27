@@ -59,7 +59,9 @@ const AllShablons = () => {
   }
 
   const putFunction = useCallback((e) => {
+    console.log(e)
     setShablon({
+        isActive : true,
         shablon : e,
         put : true
     })
