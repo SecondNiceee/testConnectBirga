@@ -144,22 +144,28 @@ const Profile = () => {
 
 
     function compare2Objects (x, y) {
-      if (JSON.stringify(x) !== JSON.stringify(y)){
-        return false
-      }
-      if (x.cards.length !== y.cards.length){
-        return false
+      if (x.about === y.about && x.stage === y.stage){
+        return true
       }
       else{
-        for (let xCard of x.cards){
-          for (let yCard of y.cards){
-            if (JSON.stringify(xCard) !== JSON.stringify(yCard)){
-              return false
-            }
-          }
-        }
+        return false
       }
-      return true;
+      // if (JSON.stringify(x) !== JSON.stringify(y)){
+      //   return false
+      // }
+      // if (x.cards.length !== y.cards.length){
+      //   return false
+      // }
+      // else{
+      //   for (let xCard of x.cards){
+      //     for (let yCard of y.cards){
+      //       if (JSON.stringify(xCard) !== JSON.stringify(yCard)){
+      //         return false
+      //       }
+      //     }
+      //   }
+      // }
+      // return true;
     }
 
 
@@ -313,6 +319,7 @@ const Profile = () => {
       }
       if (buttonId === "save") {
         dispatch(deleteServerCard(e.id))
+        dispatch(deleteCard(index))
       }
 
 

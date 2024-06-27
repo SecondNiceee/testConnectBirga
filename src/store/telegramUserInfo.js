@@ -16,7 +16,7 @@ export const deleteServerCard = createAsyncThunk(
             )
             console.log('по приколу тут')
             console.log(data)
-            return true
+            return data
         }
         catch(e){
             alert(JSON.stringify(e))

@@ -264,7 +264,7 @@ const MyAdOne = ({
 
       }>Save</button>
 
-      <MyAdsBlock deals={1} finishedDeals={"70%"} />
+      <MyAdsBlock deals={1} finishedDeals={"0%"} />
       <PickerContent
         myAdsArray={myAdsArray}
         setDetails = {setDetails}
