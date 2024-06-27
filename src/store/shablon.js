@@ -78,7 +78,7 @@ export const fetchAllShablons = createAsyncThunk(
         let im = await axios.get("https://back-birga.ywa.su/template/findByUser" , 
             {
                 params : {
-                    userId : "2144832745"
+                    userId : 2144832745
                     // userId : window.Telegram.WebApp.initDataUnsafe.user.id 
                 }
             }
