@@ -83,12 +83,16 @@ export const fetchAllShablons = createAsyncThunk(
                 }
             }
         )
+      
         let localShablons = []
         let servShablons = im.data
-        
+      
         servShablons.forEach((e,i) => 
           {
-              let files = makeFile(e.files)
+            let files = []
+            if (e.files){
+               files = makeFile(e.files, e.photos)
+            }
                 localShablons.push({
                     id : e.id,
                     name : e.name,
@@ -96,6 +100,7 @@ export const fetchAllShablons = createAsyncThunk(
                     photos : files, // photos - это файлы
                     photosNames : e.photos // photosNames - это фотки
                 })
+            
             }
         ) 
       
