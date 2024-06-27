@@ -145,9 +145,11 @@ const Profile = () => {
 
     function compare2Objects (x, y) {
       if (x.about === y.about && x.stage === y.stage){
+        alert('вернул тру')
         return true
       }
       else{
+        alert('вернул false')
         console.log(x.about , y.about)
         console.log(x.stage, y.stage)
         return false
