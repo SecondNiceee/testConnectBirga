@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import Responce from "./Responce";
 
-let varStep = 0
+let varStep = 0;
 let isDetailsActiveVar = false;
 
 const First = () => {
@@ -18,82 +18,75 @@ const First = () => {
 
   const [step, setStep] = useState(varStep);
 
+  const [isActive, setActive] = useState(false);
+
   const [isDetailsActive, setDetailsActive] = useState({
     id: 0,
     isOpen: isDetailsActiveVar,
   });
 
-
-  useEffect( () => {
+  useEffect(() => {
     // setStep(varStep)
     // setDetailsActive({...isDetailsActive , isOpen : isDetailsActiveVar})
-    if(isDetailsActive.isOpen){
-      BackButton.show()
+    if (isDetailsActive.isOpen) {
+      BackButton.show();
     }
-  } , [isDetailsActive ])
+  }, [isDetailsActive]);
 
-  
-
-  isDetailsActiveVar = isDetailsActive.isOpen
-  varStep = step
+  isDetailsActiveVar = isDetailsActive.isOpen;
+  varStep = step;
 
   function closeDetails() {
     setDetailsActive({ ...isDetailsActive, isOpen: false });
   }
 
-
-  useEffect( () => {
-      function forward() {
-        if (varStep === 0) {
-          setStep(step + 1);
-          varStep = step
-        }
-      }
-    
-    
-      function back(){
-        if (step === 1){
-          setStep(step - 1)
-        }
-        if (step === 0){
-          closeDetails()
-        }
-      }
-        
-    
-      MainButton.onClick(forward);
-      BackButton.onClick(back);
-      if (isDetailsActive.isOpen){
-        BackButton.show()
+  function forward() {
+    if (varStep === 0) {
+      setStep(step + 1);
+      varStep = step;
+    }
+  }
+  useEffect(() => {
+    function back() {
+      if (isActive){
+        setActive(false)
       }
       else{
-        BackButton.hide()
-        MainButton.hide()
+        if (step === 1) {
+          setStep(step - 1);
+        }
+        if (step === 0) {
+          closeDetails();
+        }
       }
-      return () => {
-        MainButton.offClick(forward)
-        BackButton.offClick(back)
+    }
 
-      }
-     
-    }, )
-
-
-    BackButton.hide();
-    MainButton.hide();
+    MainButton.onClick(forward);
+    BackButton.onClick(back);
     if (isDetailsActive.isOpen) {
       BackButton.show();
-      MainButton.show();
-
+    } else {
+      BackButton.hide();
+      MainButton.hide();
     }
-    if (step === 0) {
-      MainButton.setText("ОТКЛИКНУТЬСЯ");
-    }
-    if (step === 1) {
-      MainButton.setText("Далее");
-    }
+    return () => {
+      MainButton.offClick(forward);
+      BackButton.offClick(back);
+    };
+  });
 
-
+  BackButton.hide();
+  MainButton.hide();
+  if (isDetailsActive.isOpen) {
+    BackButton.show();
+    MainButton.show();
+  }
+  if (step === 0) {
+    MainButton.setText("ОТКЛИКНУТЬСЯ");
+  }
+  if (step === 1) {
+    MainButton.setText("ОТКЛИКНУТЬСЯ");
+  }
 
   const isMenuActive = useSelector((state) => state.menu.value);
 
@@ -142,6 +135,17 @@ const First = () => {
       transition={{ duration: 0.1, duration: 0 }}
     >
       <div className="first-wrapper" style={style}>
+        <button
+          onClick={forward}
+          style={{
+            zIndex: "1000",
+            position: "fixed",
+            left: 20,
+            top: 20,
+          }}
+        >
+          ДАЛЕЕ
+        </button>
         <AllTasks
           ordersInformation={ordersInformation}
           isDetailsActive={isDetailsActive}
@@ -150,7 +154,11 @@ const First = () => {
           isMenuActive={isMenuActive}
         />
 
-        <Responce orderInformation={ordersInformation[isDetailsActive.id]} />
+        <Responce
+          isActive={isActive}
+          setActive={setActive}
+          orderInformation={ordersInformation[isDetailsActive.id]}
+        />
       </div>
     </motion.div>
   );

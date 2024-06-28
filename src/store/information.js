@@ -2,6 +2,24 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 
 
+
+export const deleteAd = createAsyncThunk(
+  "information/deleteMyAd" , 
+  async function(id){
+    try{
+      await axios.delete("https://back-birga.ywa.su/advertisement" , {
+        params : {
+          id : id
+        }
+      })
+      return id
+    }
+    catch(e){
+      alert(e)
+      console.warn(e)
+    }
+  }
+)
 export const putMyTask = createAsyncThunk(
   'inforation/putMyTask' , 
   async function(data){
@@ -416,6 +434,11 @@ const information = createSlice( {
           console.log(state.myAdsArray)
         }   )  )
         builder.addCase(  putMyTask.rejected , (   (state ) => {state.putTaskStatus = 'error'}   )  )
+        builder.addCase( deleteAd.fulfilled, ((state , action) => {
+            state.myAdsArray = state.myAdsArray.filter(e => 
+              e.id !== action.payload
+            )
+        }) )
     },
 
 

@@ -121,6 +121,52 @@
   border-radius: 10px;
   background: rgb(32, 48, 63);
 }
+.First__block .myAds__top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-left: 17px;
+  padding-right: 19px;
+}
+.First__block .myAds__top-left {
+  font-family: "SF Pro Display";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  color: #30d158;
+  margin-top: 16px;
+}
+.First__block .myAds__top-right {
+  gap: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 18px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.First__block .myAds__top-right .one {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.First__block .myAds__top-right .two {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3px;
+}
 .First__block .first__photos {
   margin-top: 3.67px;
   display: -webkit-box;
@@ -271,13 +317,15 @@
       -ms-transform: translateY(2px);
           transform: translateY(2px);
   margin-right: 4px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .First__block .FirstMain__bottom-right .tie {
   -ms-flex-item-align: center;
       align-self: center;
   line-height: 0;
 }
-
 .FirstMenu {
   background-color: rgb(24, 34, 45);
   z-index: 11;
@@ -493,6 +541,24 @@
   top: -20px;
   left: -14px;
   z-index: 20;
+}
+
+.dropdown-modal {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  opacity: 0;
+}
+
+.dropdown-modal-enter-active {
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.dropdown-modal-enter-done {
+  opacity: 1;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .TaskDetails {

@@ -56,36 +56,8 @@ const MyAdOne = ({
     timeError: false,
   }); // контролер ошибок
 
+  
 
-
-  // useEffect(  () => {
-
-  //   let addedFilesLocal = []
-  //   if (detailsVar.task.photos.length > photosCopy.length ){
-
-  //     for (let photo of detailsVar.task.photos){
-  //       if (!(photosCopy.includes(photo)) && photo.name.includes('nick')){
-  //         addedFilesLocal.push(photo)
-  //       }
-  //     }
-  //     setFilesValues({...filesValues , addedFiles : [...filesValues.addedFiles, ...addedFilesLocal]})
-  //   }
-  //   else{
-  //     for (let photo of photosCopy){
-  //       if (!(detailsVar.task.photos.includes(photo))){
-  //         if (photo.name.includes('nick')){
-  //           setFilesValues({...filesValues, addedFiles : filesValues.addedFiles.filter(
-  //             file => file.name !== photo.name
-  //           )})
-  //         }
-  //         else{
-  //           setFilesValues({...filesValues , removedFiles : [...filesValues.removedFiles , photo.name]})
-  //         }
-  //       }
-  //     }
-  //   }
-  //   photosCopy = detailsVar.task.photos
-  // } , [details.task.photos] )   // логика пута
 
 
 
@@ -266,6 +238,7 @@ const MyAdOne = ({
 
       <MyAdsBlock deals={1} finishedDeals={"0%"} />
       <PickerContent
+      dispatch={dispatch}
         myAdsArray={myAdsArray}
         setDetails = {setDetails}
         setSecondPage = {setSecondPage}

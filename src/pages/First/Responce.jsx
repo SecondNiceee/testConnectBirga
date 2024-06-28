@@ -4,9 +4,13 @@ import Shablon from "./components/Shablon";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
+import { useSelector } from "react-redux";
+import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 let varShablon = false
-const Responce = ({ orderInformation }) => {
+const Responce = ({ orderInformation , isActive , setActive }) => {
   const [shablon, setShablon] = useState(varShablon);
+  const shablonsArr = useSelector(state => state.shablon.shablonsArr)
+  console.log(shablonsArr)
   const [responce, setResponce] = useState({
     text: "",
     photos: [],
@@ -27,7 +31,7 @@ const Responce = ({ orderInformation }) => {
         className={"responce-make-private"}
       />
       {shablon ? (
-        <AdCreateFunc text={"Создать шаблон"} link={"/Shablon"}  />
+       <ShablinBlock isActive={isActive} setActive={setActive} shablonsArr={shablonsArr.map(e => e.name)} />
       ) : (
         <div>
           <DescriptionAndPhoto

@@ -80,6 +80,38 @@
 //   padding: 19px 19px 12px 17px;
   border-radius: 10px;
   background: rgb(32, 48, 63);
+
+  .myAds__top{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 17px;
+    padding-right: 19px;
+  }
+  .myAds__top-left{
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    color: #30d158;
+    margin-top: 16px;
+  }
+
+  .myAds__top-right{
+    gap: 8px;
+    display: flex;
+    margin-top: 18px;
+    align-items: center;
+    .one{
+        display: flex;
+        gap: 3px;
+        align-items: center;
+    }
+    .two{
+        align-items: center;
+        display: flex;
+        gap: 3px;
+    }
+  }
     .first__photos{
         margin-top: 3.67px;
         display: flex;
@@ -200,10 +232,14 @@
         gap: calc(13px);
         transform: translateY(2px);
         margin-right: 4px;
+        align-items: center;
         .tie{
             align-self: center;
             line-height: 0;
         }
+    }
+    .my-trash{
+    //    transform: translateX(3px);
     }
 }
 .FirstMenu{
@@ -387,4 +423,22 @@
     }
 
 
+
+
+}
+
+
+
+.dropdown-modal{
+    transition: 0.30s;
+    opacity: 0;
+}
+
+.dropdown-modal-enter-active{
+    opacity: 1;
+    transition: 0.30s;
+}
+.dropdown-modal-enter-done{
+    opacity: 1;
+    transition: 0.30s;
 }
