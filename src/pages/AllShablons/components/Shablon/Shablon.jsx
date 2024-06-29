@@ -7,7 +7,10 @@ const Shablon = ({ shablon , putFunction, deleteFunction }) => {
       <div className={cl.shablonTop}>
         {shablon.photos.map((e, i) => {
           return (
-            <img key={i} src={URL.createObjectURL(e)}  alt=""/>
+            <img style={shablon.photos.length === 1 ? 
+              {width : '100%'} :
+              {}
+            } key={i} src={URL.createObjectURL(e)}  alt=""/>
           )
         })}
       </div>

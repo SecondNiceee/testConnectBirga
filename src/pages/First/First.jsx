@@ -155,6 +155,7 @@ const First = () => {
         />
 
         <Responce
+          MainButton={MainButton}
           isActive={isActive}
           setActive={setActive}
           orderInformation={ordersInformation[isDetailsActive.id]}

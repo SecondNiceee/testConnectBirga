@@ -87,18 +87,18 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
   function saveFunc() {
     if (checkMistakes()) {
-      // setAboutU({
-      //   ...aboutU,
-      //   cards: [
-      //     ...aboutU.cards.map((e, i) => {
-      //       if (i === index) {
-      //         return localCardSetting;
-      //       } else {
-      //         return e;
-      //       }
-      //     }),
-      //   ],
-      // });
+      setAboutU({
+        ...aboutU,
+        cards: [
+          ...aboutU.cards.map((e, i) => {
+            if (i === index) {
+              return localCardSetting;
+            } else {
+              return e;
+            }
+          }),
+        ],
+      });
 
       
       let myFormData = new FormData()
