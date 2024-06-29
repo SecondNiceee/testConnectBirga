@@ -5,20 +5,22 @@ import { memo } from 'react';
 import Top from '../../../components/UI/Top/Top';
 import ReactionBlock from './ReactionBlock';
 const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
+  console.log(task)
+  console.log(task)
     return (
         <div className="aboutOne" style={{
         }}>
           
-          <Top name={'Мои задания'} setMenuActive={setMenuActive}/>
+          <Top name={'Отклики'} setMenuActive={setMenuActive}/>
 
         {task ? 
-        <FirstBlock  className={'FirstAdsBlock'}  {...task} />
+        <FirstBlock isMyAds={true}  className={'FirstAdsBlock'}  {...task} />
       :
       ""
       }
           
  
-          <ReactionBlock setOpen={setOpen} goForward = {goForward} />
+          <ReactionBlock responces = {task.responces} setOpen={setOpen} goForward = {goForward} />
 
           
 

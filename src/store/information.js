@@ -206,7 +206,8 @@ export const fetchMyOrders = createAsyncThunk(
             creationTime : order.createdAt,
             viewsNumber : '51', 
             removedFiles : [],
-            addedFiles : []
+            addedFiles : [],
+            responces : order.responses
             
           })
         }
@@ -274,6 +275,7 @@ export const fetchTasksInformation = createAsyncThunk(
               
               
               tasks.push({
+                id : order.id,
                 taskName : order.title,
                 executionPlace: "Можно выполнить удаленно",
                 time : {start : one , end : two},

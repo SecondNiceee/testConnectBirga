@@ -59,7 +59,10 @@ const MyAds = () => {
 
   const [secondPage , setSecondPage] = useState(false)
 
-  const [isOpen , setOpen] = useState(false)
+  const [isOpen , setOpen] = useState({isActive : false , responce : {
+
+  }
+  })
 
 
   localAboutReaction = openAboutReaction
@@ -191,7 +194,7 @@ const MyAds = () => {
         </CSSTransition>
 
 
-        <CSSTransition classNames="last-ads" in={isOpen} timeout={400}
+        <CSSTransition classNames="last-ads" in={isOpen.isActive} timeout={400}
         mountOnEnter unmountOnExit>
               <LastAds openAboutReactionFunc={setOpenAboutReaction} openAboutReaction = {openAboutReaction}  isOpen={isOpen} setOpen = {setOpen} aboutReaction={aboutReaction} />
         </CSSTransition>

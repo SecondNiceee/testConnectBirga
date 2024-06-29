@@ -21,15 +21,20 @@ const Responce = ({ orderInformation , isActive , setActive, MainButton }) => {
 
   async function postResponce(advertismetId , userId){
     let myFormData = new FormData()
+    console.log(responce)
     myFormData.append("information" , responce.text)
+
+    myFormData.append("userId" , userId)
+    myFormData.append("advertismentId" , advertismetId)
+
     responce.photos.forEach((e, i) => {
       myFormData.append(`photos[${i}]` , e)
     })
     try{
-      let im = await axios.post("https://back-birga.ywa.su/responce" , myFormData , {
+      let im = await axios.post("https://back-birga.ywa.su/response" , myFormData , {
         params : {
           "userId" : userId,
-          "advertismentId" : advertismetId
+          "advertisementId" : advertismetId
         }
       })
     }
@@ -41,7 +46,7 @@ const Responce = ({ orderInformation , isActive , setActive, MainButton }) => {
 
   const forwardFunction = useCallback( () => {
     postResponce(orderInformation.id , 2144832745 )
-  } , [] )
+  } , [responce] )
 
   useEffect( () => {
     MainButton.onClick(forwardFunction)
