@@ -188,31 +188,37 @@ const Profile = () => {
 
             MainButton.show()
           }
+
+
+
+          if (aboutU.stage >= 40){
+            MainButton.disable()
+            MainButton.setParams({
+              
+              color : '#2f2f2f',
+              text_color : '#606060',
+            })
+            setErrors( value =>  ({...value , stageError : true} ) )
+          }
+          else{
+            if (errors.stageError){
+              MainButton.enable()
+              setErrors(value => ({...value , stageError : false}))
+            }
+            MainButton.setParams({
+    
+              color : '#2ea5ff',
+              text_color : '#ffffff'
+              
+            })
+          }
+
+          console.log('я в шляпе')
       }
       else{
+        console.log('я тут')
         MainButton.hide()
         MainButton.offClick(save)
-      }
-      if (aboutU.stage >= 40){
-        MainButton.disable()
-        MainButton.setParams({
-          
-          color : '#2f2f2f',
-          text_color : '#606060',
-        })
-        setErrors( value =>  ({...value , stageError : true} ) )
-      }
-      else{
-        if (errors.stageError){
-          MainButton.enable()
-          setErrors(value => ({...value , stageError : false}))
-        }
-        MainButton.setParams({
-
-          color : '#2ea5ff',
-          text_color : '#ffffff'
-          
-        })
       }
 
     }
