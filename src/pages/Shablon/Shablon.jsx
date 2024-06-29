@@ -37,6 +37,8 @@ const Shablon = ({shablon, setShablon, setActive, put}) => {
     }
     setActive(false)
   }
+
+
   useEffect( () => {
 
     
@@ -56,7 +58,7 @@ const Shablon = ({shablon, setShablon, setActive, put}) => {
       MainButton.offClick(forward)
       MainButton.hide()
     }
-  }, [navigate, dispatch, put, setShablon, shablon])
+  }, [])
 
 
 
@@ -76,7 +78,6 @@ const Shablon = ({shablon, setShablon, setActive, put}) => {
         is_active : true, //неизвесетно
         color : '#2ea5ff',
         text_color : '#ffffff'
-        
       })
     }
   } , [shablon.name , shablon.text] )
