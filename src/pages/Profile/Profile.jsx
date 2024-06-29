@@ -223,6 +223,7 @@ const Profile = () => {
 
     }
     else{
+      
       MainButton.offClick(save)
       MainButton.hide()
       // MainButton.setParams({
@@ -233,7 +234,7 @@ const Profile = () => {
        
     }
 
-  }, [aboutU , changeActive, cardsActive, save, errors.stageError ]  )
+  }, [aboutU , changeActive, cardsActive, save, errors.stageError , userInfo.profile, userInfoLocal.profile ]  )
 
 
   
