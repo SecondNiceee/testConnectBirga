@@ -78,21 +78,28 @@ const MyAds = () => {
 
   useEffect(() => {
     function goBack() {
-      if (!localAboutReaction) {
-        if (localIsOpen) {
-          setOpen(false);
-        } else {
-          if (localSecondPage) {
-            setSecondPage(false);
+      if (!details.isActive){
+
+        if (!localAboutReaction) {
+          if (localIsOpen) {
+            setOpen(false);
           } else {
-            navigate(-1);
+            if (localSecondPage) {
+              setSecondPage(false);
+            } else {
+              navigate(-1);
+            }
           }
+        } else {
+          setOpenAboutReaction(false);
         }
-      } else {
-        setOpenAboutReaction(false);
       }
+      else{
+        setDetails({...details, isActive : false})
+      }
+
     }
-    if (!localSecondPage) {
+    if (!localSecondPage && !details.isActive) {
       BackButton.hide();
     } else {
       BackButton.show();

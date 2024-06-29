@@ -7,16 +7,19 @@ import photo from "../../../images/nonUsed/photo_2024-03-02 03.14.svg";
 import icon from "../../../images/icons/icon.svg";
 import "./../MyAds.css";
 const Reaction = ({ goForward, setOpen, name, stage, photos, photo }) => {
+    console.log(photos)
   return (
     <>
       <div className="reaction">
         {photos.length > 0 ? (
           <div className="reactions__images">
-            {photos.map((e) => (
+            {photos.map((e, i) => (
+                
               <img
                 style={photos.length === 1 ? { width: "100%" } : {}}
-                src={e}
+                src={URL.createObjectURL(e)}
                 alt=""
+                key={i}
               />
             ))}
           </div>

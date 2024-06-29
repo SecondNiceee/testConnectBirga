@@ -190,15 +190,21 @@ export const fetchMyOrders = createAsyncThunk(
   
             }
           }
-
-          let localResponces = []
-          order.responses.forEach((e,i) => {
-            let files = makeFile(e.photos, ["random"*e.photos.length])
-            e.photos = files
-            localResponces.push(e)
+          let responces = await axios.get("https://back-birga.ywa.su/response/findByAdvertisement" , {
+            params : {
+              advertisementId : order.id
+            }
           })
-          console.log(localResponces)
-  
+          let allResponces = order.responses
+          responces.forEach( (e , i) => {
+            let ResFiles = []
+            if (e.files && e.files.length > 0){
+              ResFiles = makeFile(e.files, Array(e.files.length))
+            }
+            allResponces[i].photos = ResFiles
+    
+          } )
+          console.log(allResponces)
           
   
           tasks.push({
