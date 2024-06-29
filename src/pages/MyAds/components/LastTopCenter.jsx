@@ -13,7 +13,7 @@ const LastTopCenter = ({
         </div>
         
         <div className="top-characters">
-          <img src={star} className="last-star" alt="" />
+          {/* <img src={star} className="last-star" alt="" /> */}
           <div className="characters-bl">
             <p>Стаж {stage === null ? "0" : stage} лет</p>
           </div>

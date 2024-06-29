@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
+import makeFile from "../functions/makeFile";
 
 
 
@@ -189,6 +190,14 @@ export const fetchMyOrders = createAsyncThunk(
   
             }
           }
+
+          let localResponces = []
+          order.responses.forEach((e,i) => {
+            let files = makeFile(e.photos, ["random"*e.photos.length])
+            e.photos = files
+            localResponces.push(e)
+          })
+          console.log(localResponces)
   
           
   

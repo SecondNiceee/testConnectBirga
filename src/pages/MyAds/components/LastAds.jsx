@@ -118,7 +118,7 @@ const LastAds = ({
 
       <LastImages />
 
-      <LastSertificates />
+      {/* <LastSertificates /> */}
 
       <textarea className="last-textarea" name="" id="" value={aboutReaction} />
     </div>
