@@ -190,22 +190,6 @@ export const fetchMyOrders = createAsyncThunk(
   
             }
           }
-          let responces = await axios.get("https://back-birga.ywa.su/response/findByAdvertisement" , {
-            params : {
-              advertisementId : order.id
-            }
-          })
-          let allResponces = order.responses
-          responces.forEach( (e , i) => {
-            let ResFiles = []
-            if (e.files && e.files.length > 0){
-              ResFiles = makeFile(e.files, Array(e.files.length))
-            }
-            allResponces[i].photos = ResFiles
-    
-          } )
-          console.log(allResponces)
-          
   
           tasks.push({
             id : order.id,
@@ -222,7 +206,6 @@ export const fetchMyOrders = createAsyncThunk(
             viewsNumber : '51', 
             removedFiles : [],
             addedFiles : [],
-            responces : order.responses
             
           })
         }

@@ -47,10 +47,18 @@ const MyAds = () => {
       photosNames: [],
     },
   });
+  
+  const myAdsArray = useSelector((state) => state.information.myAdsArray);
+  
 
+  
+  const [secondPage, setSecondPage] = useState({
+    isActive : false,
+    task : myAdsArray[0]
+  }
+  );
   const [openAboutReaction, setOpenAboutReaction] = useState(false);
 
-  const [secondPage, setSecondPage] = useState(false);
 
   const [isOpen, setOpen] = useState({ isActive: false, responce: {
     information: "",
@@ -68,7 +76,7 @@ const MyAds = () => {
   localIsOpen = isOpen;
   localSecondPage = secondPage;
 
-  const myAdsArray = useSelector((state) => state.information.myAdsArray);
+
 
   const [task, setTask] = useState(myAdsArray[0]);
 
@@ -128,7 +136,7 @@ const MyAds = () => {
     isOpen,
   });
 
-  console.log(isOpen);
+  console.log(secondPage);
   return (
     <>
       {myAdsArray[0] === null ? (
@@ -161,14 +169,14 @@ const MyAds = () => {
 
           <CSSTransition
             classNames="aboutOne"
-            in={secondPage}
+            in={secondPage.isActive}
             timeout={300}
             mountOnEnter
             unmountOnExit
           >
             <AboutOne
               setOpen={setOpen}
-              task={task}
+              task={secondPage.task}
               setMenuActive={setMenuActive}
             />
           </CSSTransition>

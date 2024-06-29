@@ -4,6 +4,7 @@ import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 import AdCreateFunc from '../../../components/UI/AdCreateFunc/AdCreateFunc';
 import { useDispatch } from 'react-redux';
 import { deleteAd } from '../../../store/information';
+import axios from 'axios';
 const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setDetails, dispatch}) => {
 
 
@@ -28,6 +29,14 @@ const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setDeta
   
       } )
     }, [dispatch] )
+    async function getIt(id){
+      let im = await axios.get("https://back-birga.ywa.su/response/findByAdvertisement" , {
+        params : {
+          advertisementId : id
+        }
+      })
+      return im.data
+  }
     return (
     <div className="PickerContent">
         <div className="picler__block">
@@ -42,10 +51,10 @@ const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setDeta
               return (
                 <div key={i}
                   className="block"
-                  onClick={(e) => {
-                    if (e.target.closest('.FirstMain__bottom-right') === null){
+                  onClick={(p) => {
+                    if (p.target.closest('.FirstMain__bottom-right') === null){
                       //  setTask(e);
-                      setSecondPage(true);
+                      setSecondPage({isActive : true , task : e});
                     }
                   }}
                 >
