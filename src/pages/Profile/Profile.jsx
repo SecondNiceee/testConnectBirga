@@ -84,6 +84,7 @@ const Profile = () => {
 
 
   console.log(aboutULocal)
+  console.log(userInfoLocal.profile)
 
 
 
@@ -137,6 +138,8 @@ const Profile = () => {
     ]))
 
   } , [dispatch] )
+
+  
 
 
 
