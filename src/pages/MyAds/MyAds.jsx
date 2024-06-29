@@ -148,7 +148,7 @@ const MyAds = () => {
   }
 );  
 
-
+  console.log(isOpen)
   return (
     <>
     {myAdsArray[0] === null ? 
@@ -194,7 +194,7 @@ const MyAds = () => {
         </CSSTransition>
 
 
-        <CSSTransition classNames="last-ads" in={isOpen.isActive} timeout={400}
+        <CSSTransition classNames="last-ads"  in={isOpen.isActive} timeout={400}
         mountOnEnter unmountOnExit>
               <LastAds openAboutReactionFunc={setOpenAboutReaction} openAboutReaction = {openAboutReaction}  isOpen={isOpen} setOpen = {setOpen} aboutReaction={aboutReaction} />
         </CSSTransition>
