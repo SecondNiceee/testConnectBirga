@@ -6,7 +6,6 @@ import Top from '../../../components/UI/Top/Top';
 import ReactionBlock from './ReactionBlock';
 const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
   console.log(task)
-  console.log(task)
     return (
         <div className="aboutOne" style={{
         }}>
