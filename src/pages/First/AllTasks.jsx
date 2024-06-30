@@ -8,10 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import { fetchTasksInformation } from "../../store/information";
 import { CSSTransition } from "react-transition-group";
-
+// let count = 0
 const AllTasks = ({isDetailsActive , setDetailsActive ,isMenuActive, setMenuActive, ordersInformation}) => {
-
-
+  // count += 1
+  // console.warn('РЕНДЕР' + count )
     const dispatch = useDispatch();
     useEffect( () => {
       dispatch ( fetchTasksInformation('getOrders') )

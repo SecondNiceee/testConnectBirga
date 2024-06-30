@@ -22,9 +22,13 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
       return im.data
   }
 
+  console.log(responces)
+
   getIt(task.id).then( (resp) => {
+    console.log(resp)
     setResponces(resp)
   } )
+
   } , []  )
     return (
         <div className="aboutOne" style={{
@@ -41,7 +45,7 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
           {responces === null ? 
           <MyLoader />
           :
-<ReactionBlock responces = {task.responces} setOpen={setOpen} goForward = {goForward} />
+<ReactionBlock responces = {responces} setOpen={setOpen} goForward = {goForward} />
           }
       
           

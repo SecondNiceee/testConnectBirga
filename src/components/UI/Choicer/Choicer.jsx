@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import cl from "./Choicer.module.css";
 import { CSSTransition } from "react-transition-group";
 import ChoicerModal from "../ChoicerModal/ChoicerModal";
-const Choicer = ({ className, text, arr, isActive, setActive  }) => {
+const Choicer = ({ className, text, arr, isActive, setActive, onChoice  }) => {
 
   return (
     <>
@@ -40,7 +40,7 @@ const Choicer = ({ className, text, arr, isActive, setActive  }) => {
       classNames={"dropdown-modal"}
       timeout={300}
       >
-          <ChoicerModal className={'dropdown-modal'} arr={arr} setOpen={setActive}/>
+          <ChoicerModal onChoice={onChoice} className={'dropdown-modal'} arr={arr} setOpen={setActive}/>
       </CSSTransition>
     </>
   );

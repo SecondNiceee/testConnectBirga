@@ -18,11 +18,20 @@ const First = () => {
 
   const [step, setStep] = useState(varStep);
 
-  const [isActive, setActive] = useState(false);
 
   const [isDetailsActive, setDetailsActive] = useState({
     id: 0,
     isOpen: isDetailsActiveVar,
+  });
+
+  const [responce, setResponce] = useState({
+    text: "",
+    photos: [],
+    name: "привет",
+    isShablonModalActive: false,
+    shablonIndex: 0,
+    isShablon: false,
+    shablonMaker : false,
   });
 
   useEffect(() => {
@@ -48,15 +57,21 @@ const First = () => {
   }
   useEffect(() => {
     function back() {
-      if (isActive){
-        setActive(false)
+      if (responce.isShablonModalActive){
+        setResponce({...responce, isShablonModalActive : false})
       }
       else{
-        if (step === 1) {
-          setStep(step - 1);
+        if (responce.shablonMaker){
+          setResponce({...responce , shablonMaker : false})
         }
-        if (step === 0) {
-          closeDetails();
+        else{
+
+          if (step === 1) {
+            setStep(step - 1);
+          }
+          if (step === 0) {
+            closeDetails();
+          }
         }
       }
     }
@@ -155,9 +170,9 @@ const First = () => {
         />
 
         <Responce
+          responce = {responce}
+          setResponce = {setResponce}
           MainButton={MainButton}
-          isActive={isActive}
-          setActive={setActive}
           orderInformation={ordersInformation[isDetailsActive.id]}
         />
       </div>

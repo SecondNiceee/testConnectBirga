@@ -29,14 +29,7 @@ const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setDeta
   
       } )
     }, [dispatch] )
-    async function getIt(id){
-      let im = await axios.get("https://back-birga.ywa.su/response/findByAdvertisement" , {
-        params : {
-          advertisementId : id
-        }
-      })
-      return im.data
-  }
+
     return (
     <div className="PickerContent">
         <div className="picler__block">

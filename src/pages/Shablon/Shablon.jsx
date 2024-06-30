@@ -8,9 +8,10 @@ import { useDispatch } from "react-redux";
 import { postShablon, putShablon } from "../../store/shablon";
 import sortFiles from "../../functions/sortFiles";
 
-const Shablon = ({shablon, setShablon, setActive, put}) => {
+const Shablon = ({shablon, setShablon, setActive, put, ...props}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  console.log(shablon )
   function forward(){
     let myFormData = new FormData()
     // myFormData.append("userId" ,  2144832745)
@@ -84,7 +85,7 @@ const Shablon = ({shablon, setShablon, setActive, put}) => {
 
 
   return (
-    <div className="shablon-wrapper">
+    <div {...props} className="shablon-wrapper">
       <h3 className="shablon-title">{put ? shablon.name : "Новый шаблон"}</h3>
       <button onClick={forward}>Сделать!</button>
       <TaskName

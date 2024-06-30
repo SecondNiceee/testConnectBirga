@@ -7,71 +7,83 @@ import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import { useDispatch, useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 import axios from "axios";
-let varShablon = false
-const Responce = ({ orderInformation , isActive , setActive, MainButton }) => {
-  const [shablon, setShablon] = useState(varShablon);
-  const shablonsArr = useSelector(state => state.shablon.shablonsArr)
-  const dispatch = useDispatch()
-  const [responce, setResponce] = useState({
-    text: "",
-    photos: [],
-  });
+const Responce = ({ orderInformation, MainButton, responce, setResponce }) => {
+  const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
+  const dispatch = useDispatch();
 
-  varShablon = shablon;
 
-  async function postResponce(advertismetId , userId){
-    let myFormData = new FormData()
-    console.log(responce)
-    myFormData.append("information" , responce.text)
 
-    myFormData.append("userId" , userId)
-    myFormData.append("advertismentId" , advertismetId)
+  async function postResponce(advertismetId, userId) {
+    let myFormData = new FormData();
+    console.log(responce);
+    myFormData.append("information", responce.text);
+
+    myFormData.append("userId", userId);
+    myFormData.append("advertismentId", advertismetId);
 
     responce.photos.forEach((e, i) => {
-      myFormData.append(`photos[${i}]` , e)
-    })
-    try{
-      let im = await axios.post("https://back-birga.ywa.su/response" , myFormData , {
-        params : {
-          "userId" : userId,
-          "advertisementId" : advertismetId
+      myFormData.append(`photos`, e);
+    });
+    try {
+      let im = await axios.post(
+        "https://back-birga.ywa.su/response",
+        myFormData,
+        {
+          params: {
+            userId: userId,
+            advertisementId: advertismetId,
+          },
         }
-      })
-    }
-    catch(e){
-      alert('ничего не вышло')
-      console.warn(e)
+      );
+    } catch (e) {
+      alert("ничего не вышло");
+      console.warn(e);
     }
   }
 
-  const forwardFunction = useCallback( () => {
-    postResponce(orderInformation.id , 2144832745 )
-  } , [responce] )
+  console.log(shablonsArr)
 
-  useEffect( () => {
-    MainButton.onClick(forwardFunction)
+  const forwardFunction = useCallback(() => {
+    postResponce(orderInformation.id, 2144832745);
+  }, [responce]);
+
+  useEffect(() => {
+    MainButton.onClick(forwardFunction);
     return () => {
-      MainButton.offClick(forwardFunction)
-    }
-  } , [] )
-
+      MainButton.offClick(forwardFunction);
+    };
+  }, []);
 
   return (
     <div className="responce-wrapper">
-      <button onClick={() => {
-        forwardFunction()
-      }}>Отослать</button>
+      <button
+        onClick={() => {
+          forwardFunction();
+        }}
+      >
+        Отослать
+      </button>
       <FirstBlock {...orderInformation} />
       <MakePrivate
-        isPrivate={shablon}
-        setPrivate={() => {
-          setShablon(!shablon);
+        isPrivate={responce.isShablon}
+        setPrivate={(value) => {
+          setResponce({
+            ...responce,
+            isShablon: value,
+            text: shablonsArr.length > 0 ?  shablonsArr[responce.shablonIndex].text : "",
+            photos: shablonsArr.length > 0 ? shablonsArr[responce.shablonIndex].photos : [],
+            name : shablonsArr.length > 0 ? shablonsArr[responce.shablonIndex].name : ""
+          });
         }}
         text={"Использовать шаблон"}
         className={"responce-make-private"}
       />
-      {shablon ? (
-       <ShablinBlock isActive={isActive} setActive={setActive} shablonsArr={shablonsArr.map(e => e.name)} />
+      {responce.isShablon ? (
+        <ShablinBlock
+          responce={responce}
+          setResponce={setResponce}
+          shablonsArr={shablonsArr}
+        />
       ) : (
         <div>
           <DescriptionAndPhoto

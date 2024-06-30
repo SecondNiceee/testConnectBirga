@@ -1,7 +1,9 @@
 import React from "react";
 import upDown from "../../../images/icons/UpDown.svg";
 import Reaction from './Reaction';
-const ReactionBlock = ({goForward , setOpen , responces}) => {
+import axios from "axios";
+const ReactionBlock = ({goForward , setOpen, responces }) => {
+
   return (
     <div className="reactions__block">
 
@@ -22,7 +24,7 @@ const ReactionBlock = ({goForward , setOpen , responces}) => {
             photos={e.photos}
             photo={e.user.photo}
              setOpen={() => {
-              console.log('Вызов этой функции')
+              
                   setOpen({
                     isActive : true, 
                     responce : e
