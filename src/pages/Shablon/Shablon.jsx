@@ -60,7 +60,7 @@ const Shablon = ({shablon, setShablon, setActive, put, ...props}) => {
       MainButton.offClick(forward)
       MainButton.hide()
     }
-  }, [])
+  }, [shablon])
 
 
 
