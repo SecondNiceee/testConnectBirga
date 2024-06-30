@@ -12,12 +12,13 @@ const Shablon = ({shablon, setShablon, setActive, put, ...props}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   console.log(shablon )
+  let localShablon = shablon
   function forward(){
     let myFormData = new FormData()
     // myFormData.append("userId" ,  2144832745)
     console.log(shablon.name)
-    myFormData.append("name" , shablon.name )
-    myFormData.append("text" , shablon.text)
+    myFormData.append("name" , localShablon.name )
+    myFormData.append("text" , localShablon.text)
     if (put){
       let filesArr = sortFiles(shablon.photosNames, shablon.photos)
       filesArr.addedArr.forEach((e, i) => {
