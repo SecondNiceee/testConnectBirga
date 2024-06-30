@@ -21,6 +21,7 @@ const ShablinBlock = ({
             photos : []
         }
     )
+    let localShablonSetting = shablonSetting
   return (
     <div className={className ? [cl.main, className].join(" ") : cl.main}>
       {shablonsArr.length > 0 ? (
@@ -61,7 +62,7 @@ const ShablinBlock = ({
                     name : shablonSetting.name,
                     photos : shablonSetting.photos
                 })
-            }} style = {{left : "100%"}} shablon={shablonSetting} setShablon={setShablonSetting} />
+            }} style = {{left : "100%"}} shablon={localShablonSetting} setShablon={setShablonSetting} />
       </CSSTransition>
     </div>
   );
