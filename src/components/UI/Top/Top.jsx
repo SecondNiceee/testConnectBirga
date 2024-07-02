@@ -3,10 +3,10 @@ import icon from '../../../images/icons/icon.svg'
 import Burger from '../Burger/Burger';
 import { useSelector } from 'react-redux';
 import cl from './Top.module.css'
-const Top = ({setMenuActive , name , ...props}) => {
+const Top = ({setMenuActive , name , className, ...props}) => {
     const userInfo = useSelector(state => state.telegramUserInfo)
     return (
-        <div {...props} className={cl.top}>
+        <div {...props} className={className ? [cl.top , className].join(' ') : cl.top}>
             <Burger
                 style = {
                     {

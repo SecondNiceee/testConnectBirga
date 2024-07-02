@@ -31,6 +31,12 @@ let localSecondPage;
 let localIsOpen;
 const MyAds = () => {
   const isMenuActive = useSelector((state) => state.menu.value);
+  const setMenuActive = useCallback(
+    (arg) => {
+      dispatch(changeMenuActive(arg));
+    },
+    [dispatch]
+  );
 
   const [details, setDetails] = useState({
     isActive: false,
@@ -57,7 +63,10 @@ const MyAds = () => {
     task : myAdsArray[0]
   }
   );
-  const [openAboutReaction, setOpenAboutReaction] = useState(false);
+  const [openAboutReaction, setOpenAboutReaction] = useState({
+    isActive : false,
+    responce : null
+  });
 
 
   const [isOpen, setOpen] = useState({ isActive: false, responce: {
@@ -117,12 +126,6 @@ const MyAds = () => {
 
   console.log(task);
 
-  const setMenuActive = useCallback(
-    (arg) => {
-      dispatch(changeMenuActive(arg));
-    },
-    [dispatch]
-  );
 
   function setDetailsActive(value) {
     setDetails({ ...details, isActive: value });
@@ -189,11 +192,7 @@ const MyAds = () => {
             unmountOnExit
           >
             <LastAds
-              text={isOpen.responce.information}
-              stage={isOpen.responce.user.stage}
-              photo={isOpen.responce.user.photo}
-              images={isOpen.responce.photos}
-              name = {isOpen.responce.user.fl}
+            responce = {isOpen.responce}
               openAboutReactionFunc={setOpenAboutReaction}
               openAboutReaction={openAboutReaction}
               isOpen={isOpen}
@@ -204,12 +203,12 @@ const MyAds = () => {
 
           <CSSTransition
             classNames="aboutReaction"
-            in={openAboutReaction}
+            in={openAboutReaction.isActive}
             timeout={0}
             mountOnEnter
             unmountOnExit
           >
-            <AboutReaction aboutReaction={aboutReaction} />
+            <AboutReaction responce = {isOpen.responce}   />
           </CSSTransition>
         </motion.div>
       )}

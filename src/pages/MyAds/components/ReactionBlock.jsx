@@ -18,11 +18,7 @@ const ReactionBlock = ({goForward , setOpen, responces }) => {
         {responces.map((e, i) => {
           return (
             <Reaction 
-
-            name={e.user.fl}
-            stage={e.user.stage}
-            photos={e.photos}
-            photo={e.user.photo}
+            responce = {e}
              setOpen={() => {
               
                   setOpen({

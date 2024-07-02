@@ -6,6 +6,7 @@ import Top from '../../../components/UI/Top/Top';
 import ReactionBlock from './ReactionBlock';
 import axios from 'axios';
 import MyLoader from '../../../components/UI/MyLoader/MyLoader';
+import makeFile from '../../../functions/makeFile';
 
 
 
@@ -19,7 +20,20 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
           advertisementId : id
         }
       })
-      return im.data
+      let responces = im.data
+      responces.forEach((e, i) => {
+        let photos = []
+        if (e.files){
+          let photos = makeFile(e.files, Array(e.files.length))
+        }
+        responces[i].photos = photos
+      })
+
+
+      
+      
+      console.log(responces)
+      return responces
   }
 
   console.log(responces)
@@ -37,15 +51,21 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
           <Top name={'Отклики'} setMenuActive={setMenuActive}/>
 
         {task ? 
-        <FirstBlock isMyAds={true}  className={'FirstAdsBlock'}  {...task} />
+        <FirstBlock isButton={true} isMyAds={true}  className={'FirstAdsBlock'}  {...task} />
       :
       ""
       }
           
           {responces === null ? 
-          <MyLoader />
+          <MyLoader style = {
+            {
+              height : "calc(100vh - 456px)",
+              position : "fixed",
+              left : 0
+            }
+          } />
           :
-<ReactionBlock responces = {responces} setOpen={setOpen} goForward = {goForward} />
+          <ReactionBlock responces = {responces} setOpen={setOpen} goForward = {goForward} />
           }
       
           

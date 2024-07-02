@@ -1,15 +1,10 @@
 import { Triangle } from "react-loader-spinner";
-
-const MyLoader = () => {
+import cl from "./MyLoader.module.css"
+const MyLoader = ({...props}) => {
     return (
       <div
-        style={{
-          width: "100vw",
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+       {...props}
+        className={cl.main}
       >
         <Triangle
           visible={true}

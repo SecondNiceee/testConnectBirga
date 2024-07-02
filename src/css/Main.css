@@ -158,6 +158,13 @@
       -ms-flex-align: center;
           align-items: center;
 }
+.First__block .myAds__top-right .one p {
+  font-family: "SF Pro Display";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  color: #b5ced9;
+}
 .First__block .myAds__top-right .two {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -166,6 +173,13 @@
   display: -ms-flexbox;
   display: flex;
   gap: 3px;
+}
+.First__block .myAds__top-right .two p {
+  font-family: "SF Pro Display";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  color: #b5ced9;
 }
 .First__block .first__photos {
   margin-top: 3.67px;
@@ -185,7 +199,7 @@
      object-fit: cover;
 }
 .First__block .FirstMain__top {
-  margin-top: 19.33px;
+  margin-top: 16px;
   padding-left: 17px;
   padding-right: 19px;
   -webkit-box-align: center;
@@ -1728,6 +1742,8 @@ input {
   display: -ms-flexbox;
   display: flex;
   gap: 5px;
+  margin-bottom: 8px;
+  margin-left: 16px;
 }
 
 .also {
@@ -2289,6 +2305,10 @@ input {
 .MyAdsContainer .details-exit-done {
   -webkit-transition: 0.35s;
   transition: 0.35s;
+}
+
+.stage-compact {
+  margin-top: 23px;
 }
 
 .MyAds {

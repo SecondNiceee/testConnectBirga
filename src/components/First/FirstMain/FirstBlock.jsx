@@ -147,7 +147,7 @@ const FirstBlock = ({
                 style={isButton ? {} : { display: "none" }}
                 onClick={(e) => setDetailsActive(true)}
               >
-                Подробнее
+                Изменить
               </MyButton>
             </div>
           </div>

@@ -105,11 +105,28 @@
         display: flex;
         gap: 3px;
         align-items: center;
+        p{
+            font-family: "SF Pro Display";
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 120%;
+            color: #b5ced9;
+            
+        }
+        
     }
     .two{
         align-items: center;
         display: flex;
         gap: 3px;
+        p{
+            font-family: "SF Pro Display";
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 120%;
+            color: #b5ced9;
+            
+        }
     }
   }
     .first__photos{
@@ -127,7 +144,7 @@
         }
     }
     .FirstMain__top {
-        margin-top: 19.33px;
+        margin-top: 16px;
         padding-left: 17px;
         padding-right: 19px;
         align-items: center;

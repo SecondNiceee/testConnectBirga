@@ -1,25 +1,23 @@
 import React from "react";
 import submit from "../../../images/icons/Subtract.svg";
 import star from "../../../images/icons/Star.svg";
-const AboutInfo = () => {
+const AboutInfo = ({responce}) => {
   return (
     <div className="aboutInfo">
       <div className="name">
-        <p>Александр.П</p>
-        <img src={submit} alt="" />
+        <p>{responce.user.fl}</p>
       </div>
-      <div className="rates">
-        <div className="rates__block">
-          <img src={star} alt="" />
-          <p>4</p>
+      <div className="aboutDown">
+        <div className="block">
+          <p>0</p>
+          <p>Заданий создано</p>
         </div>
-        <p>◦</p>
-        <p>158 отзывов</p>
+        <div className="block">
+          <p>0</p>
+          <p>Заданий выполено</p>
+        </div>
       </div>
-      <div className="documentAccess">
-        <img src={submit} alt="" />
-        <p>Документы подтвержены</p>
-      </div>
+
     </div>
   );
 };

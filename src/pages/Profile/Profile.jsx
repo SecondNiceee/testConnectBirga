@@ -18,7 +18,7 @@ import SmallTextarea from "../../components/UI/SmallTextarea/SmallTextarea";
 import Compact from "../../components/UI/Compact/Compact";
 import SmallInput from "../../components/UI/SmallInput/SmallInput";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
-import Case from "./components/Case/Case";
+import Case from "../../components/UI/Case/Case";
 import MainButton from "../../constants/MainButton";
 import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";

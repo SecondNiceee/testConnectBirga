@@ -1,52 +1,50 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './TextAboutMe.css'
-const TextAboutMe = ( { aboutU , darkSide, ...props } ) => {
-    const [hideAboutMe, setHideAboutMe] = useState(true)
+const TextAboutMe = ( { aboutU , darkSide, className, ...props } ) => {
+    const [hideAboutMe, setHideAboutMe] = useState({
+      isActive : false,
+      show : false
+    })
     const areaRef = useRef(null)
-    useEffect( () => {
-        if (!darkSide){
-          if (areaRef.current){
-            if ((aboutU.split(/\r\n|\r|\n/).length) === 1){
-              areaRef.current.style.height = '18.3px'
-            }
-            else{
-              if (hideAboutMe){
-                areaRef.current.style.height = '41px'
-              }
-              else{
-                areaRef.current.style.height = 'auto'
-                areaRef.current.style.height = areaRef.current.scrollHeight  + 'px'
-              }
-            }
-          }
-        } 
-        else{
-            if (areaRef.current){
-              if ((aboutU.split(/\r\n|\r|\n/).length) === 1){
-                areaRef.current.style.height = '18.3px'
-              }
-              else{
-                if (hideAboutMe){
-                  if (areaRef.current.scrollHeight <= 278){
-                    areaRef.current.style.height = areaRef.current.scrollHeight  + 'px'
-                  }
-                  else{
-                    areaRef.current.style.height = '278px'
-                  }
-                }
-                else{
-                  areaRef.current.style.height = 'auto'
-                  areaRef.current.style.height = areaRef.current.scrollHeight  + 'px'
-                }
-              }
-          }
+    const refTwo = useRef(null)
+
+
+
+
+  useEffect( () => {
+    refTwo.current.value = aboutU
+    if (refTwo.current.scrollHeight > 140){
+      console.log("я тут")
+      if (!hideAboutMe.show){
+
+        setHideAboutMe({...hideAboutMe, isActive : true})
+        areaRef.current.style.height = "136px"
+        let localAboutMe = aboutU;
+        while (refTwo.current.scrollHeight > 140){
+          
+          let localAboutMeArr = localAboutMe.split(' ')
+          localAboutMe = localAboutMeArr.slice(0 , localAboutMeArr.length - 1).join(' ')
+          refTwo.current.value = localAboutMe
+        
         }
-     } , [aboutU, hideAboutMe] )
+        areaRef.current.value = localAboutMe + '...'
+      }
+      else{
+        refTwo.current.value = aboutU
+        areaRef.current.value = aboutU
 
-
+      }
+    }
+    else{
+      areaRef.current.style.borderRadius = "10px"
+      areaRef.current.value = aboutU
+    }
+    areaRef.current.style.height = (refTwo.current.scrollHeight).toString() + 'px'
+  } , [hideAboutMe.show] )
 
     return (
         <div {...props} className="ur__town">
+          
           {darkSide 
           ? <div className="background" style={hideAboutMe 
             ? {display : 'block'}
@@ -54,25 +52,45 @@ const TextAboutMe = ( { aboutU , darkSide, ...props } ) => {
           }></div> 
           : "" }
 
+
+          
+<textarea
+            ref={refTwo}
+
+            readOnly={true}
+            spellCheck={false}
+            style={{
+              height : "42.8px",
+              width : "100%",
+              overflowY : "scroll",
+              position : 'absolute',
+              opacity : '0',
+              left : 0,
+              top : 0
+            }}
+            className="about__u-text"
+          />
+
           <textarea
             ref={areaRef}
 
             readOnly={true}
             spellCheck={false}
-            value={aboutU}
             className="about__u-text"
           />
 
-          <div style={(aboutU.split(/\r\n|\r|\n/).length) > 2 
+          
+
+          <div style={hideAboutMe.isActive 
         ? {display : 'flex'}
         : {display : 'none'}} 
           className="also" 
           onClick={() => {  
 
-            setHideAboutMe(!hideAboutMe)
+                    setHideAboutMe({...hideAboutMe, show : !hideAboutMe.show})
           }}>
             <p>
-              {hideAboutMe ? 'Читать далее' : 'Скрыть'}
+              {hideAboutMe.show ? 'Скрыть' : 'Развернуть'}
             </p>
           </div>
         </div>

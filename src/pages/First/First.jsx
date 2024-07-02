@@ -90,8 +90,6 @@ const First = () => {
     };
   });
 
-  BackButton.hide();
-  MainButton.hide();
   if (isDetailsActive.isOpen) {
     BackButton.show();
     MainButton.show();

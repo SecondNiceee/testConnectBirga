@@ -6,17 +6,16 @@ import star from "../../../images/icons/Star.svg";
 import photo from "../../../images/nonUsed/photo_2024-03-02 03.14.svg";
 import icon from "../../../images/icons/icon.svg";
 import "./../MyAds.css";
-const Reaction = ({ goForward, setOpen, name, stage, photos, photo }) => {
-    console.log(photos)
+const Reaction = ({ setOpen, put, openAboutReactionFunc, responce }) => {
+  console.log(responce.photos);
   return (
     <>
       <div className="reaction">
-        {photos.length > 0 ? (
+        {responce.photos.length > 0 ? (
           <div className="reactions__images">
-            {photos.map((e, i) => (
-                
+            {responce.photos.map((e, i) => (
               <img
-                style={photos.length === 1 ? { width: "100%" } : {}}
+                style={responce.photos.length === 1 ? { width: "100%" } : {}}
                 src={URL.createObjectURL(e)}
                 alt=""
                 key={i}
@@ -28,9 +27,17 @@ const Reaction = ({ goForward, setOpen, name, stage, photos, photo }) => {
         )}
 
         <div className="reaction__middle">
-          <img className="icon" src={photo} alt="" />
-          <div className="reaction__middle-midle">
-            <p className="reaction__userName">{name}</p>
+          <img onClick={() => {
+            openAboutReactionFunc({isActive : true,
+              responce : responce
+            })
+          }} className="icon" src={responce.user.photo} alt="" />
+          <div onClick={() => {
+            openAboutReactionFunc({isActive : true, 
+              responce : responce
+            })
+          }} className="reaction__middle-midle">
+            <p className="reaction__userName">{responce.user.name}</p>
             <div className="reaction__rates">
               {/* <img src={star} alt="" /> */}
               <div className="rates__text">
@@ -38,26 +45,43 @@ const Reaction = ({ goForward, setOpen, name, stage, photos, photo }) => {
                                   <p>◦</p>
                                   <p>158 отзывов</p>
                                   <p>◦</p> */}
-                <p>Стаж {stage === null ? "0" : stage} лет</p>
+                <p>Стаж {responce.user.stage === null ? "0" : responce.user.stage} лет</p>
               </div>
             </div>
           </div>
-          <div className="circle">
-            <img className="shareImage" src={share} alt="" />
-          </div>
+          {put ? (
+            <div className="right">
+              <div className="circle">
+                <img className="shareImage" src={share} alt="" />
+              </div>
+              <img className="tie" src={tie} alt="" />
+            </div>
+          ) : (
+            <div className="circle">
+              <img className="shareImage" src={share} alt="" />
+            </div>
+          )}
         </div>
-        <div className="reactions__bottom">
-          <button
-            onClick={() => {
-              setOpen();
-            }}
-            className="bottom__one"
-          >
-            подробнее
-          </button>
-          <button className="bottom__two">выбрать</button>
-          <img className="tie" src={tie} alt="" />
-        </div>
+        {put ? 
+        <div style={{
+          marginBottom : "18px"
+        }}></div>
+      :
+      <div className="reactions__bottom">
+          
+      <button
+        onClick={() => {
+          setOpen();
+        }}
+        className="bottom__one"
+      >
+        подробнее
+      </button>
+      <button className="bottom__two">выбрать</button>
+      <img className="tie" src={tie} alt="" />
+    </div>
+      }
+
       </div>
     </>
   );
