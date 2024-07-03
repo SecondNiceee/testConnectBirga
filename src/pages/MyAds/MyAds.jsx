@@ -186,6 +186,7 @@ const MyAds = () => {
             <AboutOne
             setDetails={setDetails}
               secondPage = {secondPage}
+              setSecondPage={setSecondPage}
             setDetailsActive={setDetailsActive}
               setOpen={setOpen}
               task={myAdsArray[secondPage.index]}

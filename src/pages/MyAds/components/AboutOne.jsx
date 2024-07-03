@@ -13,7 +13,7 @@ import { useDispatch } from 'react-redux';
 
 
 
-const AboutOne = ({task, setMenuActive, goForward, setOpen, setDetailsActive, setDetails }) => {
+const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDetailsActive, setDetails }) => {
   const [responces , setResponces] = useState(null)
   const dispatch = useDispatch()
   useEffect( () => {
@@ -66,6 +66,7 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setDetailsActive, se
       }
       if (buttonId === "save") {
         dispatch(deleteAd(e.id))
+        setSecondPage( (value) => ({...value, isActive : false}) )
       }
 
 
