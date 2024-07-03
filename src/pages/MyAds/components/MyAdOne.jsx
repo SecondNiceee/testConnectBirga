@@ -72,6 +72,8 @@ const MyAdOne = ({
   console.log(details)
 
   const save = useCallback( () => {
+
+     alert(checkMistakes(details.task))
     if (detailsVar.task !== myAdsArray[secondPage.index]) {
       window.Telegram.WebApp
         .showPopup({
@@ -87,7 +89,9 @@ const MyAdOne = ({
             setDetailsActive(false);
           }
           if (buttonId === "save") {
+            console.log(checkMistakes(detailsVar.task))
             if (checkMistakes(detailsVar.task)) {
+              alert("Я тут")
               let myFormData = new FormData();
               myFormData.append('title' , detailsVar.task.taskName)
               myFormData.append('description' , detailsVar.task.taskDescription)
@@ -158,6 +162,8 @@ const MyAdOne = ({
     return Object.values(rezult).every((value) => value === false);
   } // логика провероки ошибок
 
+  // console.log(checkMistakes(details.task))
+
 
 
 
@@ -227,6 +233,7 @@ const MyAdOne = ({
           dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
 
           
+          console.log(checkMistakes(details.task))
           setDetails( {...details,
             isActive : false,
           } )
