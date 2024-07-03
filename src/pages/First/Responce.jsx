@@ -7,7 +7,7 @@ import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import { useDispatch, useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 import axios from "axios";
-const Responce = ({ orderInformation, MainButton, responce, setResponce }) => {
+const Responce = ({ orderInformation, MainButton, responce, setResponce , step }) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
   const dispatch = useDispatch();
 
@@ -44,7 +44,9 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce }) => {
   console.log(shablonsArr)
 
   const forwardFunction = useCallback(() => {
-    postResponce(orderInformation.id, 2144832745);
+    if (step !== 0){
+      postResponce(orderInformation.id, 2144832745);
+    }
   }, [responce]);
 
   useEffect(() => {

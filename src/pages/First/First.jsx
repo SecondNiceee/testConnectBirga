@@ -99,7 +99,12 @@ const First = () => {
   }
   if (step === 1) {
     MainButton.setText("ОТКЛИКНУТЬСЯ");
+    
   }
+
+
+
+  
 
   const isMenuActive = useSelector((state) => state.menu.value);
 
@@ -169,6 +174,7 @@ const First = () => {
         />
 
         <Responce
+          step={step}
           responce = {responce}
           setResponce = {setResponce}
           MainButton={MainButton}

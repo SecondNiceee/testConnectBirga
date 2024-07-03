@@ -89,32 +89,32 @@ const MyAdOne = ({
             setDetailsActive(false);
           }
           if (buttonId === "save") {
-            let myFormData = new FormData();
-            myFormData.append('title' , detailsVar.task.taskName)
-            myFormData.append('description' , detailsVar.task.taskDescription)
-            myFormData.append("deadline" , 1)
-            myFormData.append("price" , detailsVar.task.tonValue )
-            myFormData.append("startTime" , detailsVar.task.time.start)
-            myFormData.append("endTime" , detailsVar.task.time.end)
-  
-            let files = sortFiles(detailsVar.task.photosNames ,  detailsVar.task.photos)
-  
-  
-              for (let i = 0; i <  files.removedArr.length; i++){
-                myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
-              }
-              for (let i = 0; i < files.addedArr.length ; i++){
-                myFormData.append(`addFiles[${i}]` , files.addedArr[i] )
-              }
-            console.log(files.addedArr)
-  
-            dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
-  
-            
-            console.log(checkMistakes(details.task))
-            setDetails( {...details,
-              isActive : false,
-            } )
+          let myFormData = new FormData();
+          myFormData.append('title' , detailsVar.task.taskName)
+          myFormData.append('description' , detailsVar.task.taskDescription)
+          myFormData.append("deadline" , 1)
+          myFormData.append("price" , detailsVar.task.tonValue )
+          myFormData.append("startTime" , detailsVar.task.time.start)
+          myFormData.append("endTime" , detailsVar.task.time.end)
+
+          let files = sortFiles(detailsVar.task.photosNames ,  detailsVar.task.photos)
+
+
+            for (let i = 0; i <  files.removedArr.length; i++){
+              myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
+            }
+            for (let i = 0; i < files.addedArr.length ; i++){
+              myFormData.append(`addFiles[${i}]` , files.addedArr[i] )
+            }
+          console.log(files.addedArr)
+
+          dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
+
+          
+          console.log(checkMistakes(details.task))
+          setDetails( {...details,
+            isActive : false,
+          } )
           }
 
 

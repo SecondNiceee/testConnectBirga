@@ -82,7 +82,7 @@ const Reaction = ({ setOpen, put, openAboutReactionFunc, responce }) => {
       >
         подробнее
       </button>
-      <button className="bottom__two">выбрать</button>
+      <button className="bottom__two">Написать</button>
       <svg style={{
                 strokeWidth : "1.67px",
                 stroke : "#2ea5ff"
