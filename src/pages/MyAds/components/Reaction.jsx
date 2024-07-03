@@ -83,7 +83,7 @@ const Reaction = ({ setOpen, put, openAboutReactionFunc, responce }) => {
         подробнее
       </button>
       <button className="bottom__two" onClick = {() => {
-        window.Telegram.WebApp.openTelegramLink("@" + responce.user.link)
+        window.Telegram.WebApp.openTelegramLink("https://t.me/" + responce.user.link)
         console.log("@" + responce.user.link)
       }}>Написать</button>
       <svg style={{
