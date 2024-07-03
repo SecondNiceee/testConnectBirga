@@ -6,8 +6,8 @@
     margin-top: 23.33px;
     z-index: 100;
     background: rgb(24, 34, 45);
-    height: 100vh;
-    overflow-y: scroll;
+    /* height: 100vh;
+    overflow-y: scroll; */
 }
 .upTextContainer{
     display: flex;

@@ -28,9 +28,9 @@
     padding-left: 14px;
     padding-right: 14px;
     padding-bottom: calc(70px * 0.32);
-
+/* 
     height: 100vh;
-    overflow-y: scroll;
+    overflow-y: scroll; */
 }
 .Cap {
     margin-top: 23.27px;
