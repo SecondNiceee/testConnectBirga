@@ -1312,7 +1312,6 @@ input {
 }
 
 .profile__container {
-  height: 100vh;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1324,7 +1323,6 @@ input {
   padding-top: 27px;
   padding-left: 14px;
   padding-right: 14px;
-  overflow-y: scroll;
 }
 .profile__container .pofile__icon {
   width: 94px;

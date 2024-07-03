@@ -75,6 +75,14 @@ const MyAds = () => {
   });
 
 
+
+    useEffect( () => {
+    document.documentElement.style.overflowY = 'hidden'
+    document.documentElement.style.marginTop = '15px'
+    window.scrollTo(0 , 15)
+  },[] )
+
+
   const [isOpen, setOpen] = useState({ isActive: false, responce: {
     information: "",
     photos: [],

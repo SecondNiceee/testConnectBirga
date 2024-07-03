@@ -137,11 +137,11 @@ let conunter = 0
 function App() {
 
 
-  useEffect( () => {
-    document.documentElement.style.overflowY = 'hidden'
-    document.documentElement.style.marginTop = '15px'
-    window.scrollTo(0 , 15)
-  },[] )
+  // useEffect( () => {
+  //   document.documentElement.style.overflowY = 'hidden'
+  //   document.documentElement.style.marginTop = '15px'
+  //   window.scrollTo(0 , 15)
+  // },[] )
 
 
   
