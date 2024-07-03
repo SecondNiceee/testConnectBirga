@@ -2256,8 +2256,8 @@ input {
   left: 0;
   top: 0;
   z-index: 2000;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
@@ -2293,16 +2293,16 @@ input {
   transition: 0.35s;
 }
 .MyAdsContainer .details-exit {
-  -webkit-transform: translateX(200%);
-      -ms-transform: translateX(200%);
-          transform: translateX(200%);
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
   -webkit-transition: 0.35s;
   transition: 0.35s;
 }
 .MyAdsContainer .details-exit-active {
-  -webkit-transform: translateX(300%);
-      -ms-transform: translateX(300%);
-          transform: translateX(300%);
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
   -webkit-transition: 0.35s;
   transition: 0.35s;
   transition: 0.35s;
@@ -2497,6 +2497,8 @@ input {
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .responce-make-private {
