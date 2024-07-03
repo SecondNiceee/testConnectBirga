@@ -31,6 +31,9 @@ let localSecondPage;
 let localIsOpen;
 const MyAds = () => {
   const isMenuActive = useSelector((state) => state.menu.value);
+
+  const dispatch = useDispatch()
+
   const setMenuActive = useCallback(
     (arg) => {
       dispatch(changeMenuActive(arg));
@@ -91,7 +94,6 @@ const MyAds = () => {
 
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
 
   useEffect(() => {
     function goBack() {
