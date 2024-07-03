@@ -2498,7 +2498,6 @@ input {
   padding-left: 16px;
   padding-right: 16px;
   height: 150vh;
-  overflow-y: scroll;
 }
 
 .responce-make-private {
