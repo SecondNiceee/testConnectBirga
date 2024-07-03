@@ -2255,7 +2255,7 @@ input {
           flex-direction: column;
   left: 0;
   top: 0;
-  z-index: 10;
+  z-index: 2000;
   -webkit-transition: 0.5s;
   transition: 0.5s;
   -webkit-transform: translateX(100%);

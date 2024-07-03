@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 import { memo } from 'react';
@@ -7,12 +7,15 @@ import ReactionBlock from './ReactionBlock';
 import axios from 'axios';
 import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 import makeFile from '../../../functions/makeFile';
+import { deleteAd } from '../../../store/information';
+import { useDispatch } from 'react-redux';
 
 
 
 
-const AboutOne = ({task, setMenuActive, goForward, setOpen, setDetailsActive }) => {
+const AboutOne = ({task, setMenuActive, goForward, setOpen, setDetailsActive, setDetails }) => {
   const [responces , setResponces] = useState(null)
+  const dispatch = useDispatch()
   useEffect( () => {
     async function getIt(id){
       let im = await axios.get("https://back-birga.ywa.su/response/findByAdvertisement" , {
@@ -45,6 +48,30 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setDetailsActive }) 
   } )
 
   } , []  )
+
+
+  const deleteFunction = useCallback( (e) => {
+    window.Telegram.WebApp
+    .showPopup({
+      title: "Удалить?",
+      message: "Вы хотите удалить это задание?",
+      buttons: [
+        { id: "save", type: "default", text: "Да" },
+        { id: "delete", type: "destructive", text: "Нет" },
+      ],
+    } , (buttonId) => {
+
+      if (buttonId === "delete" || buttonId === null) {
+        
+      }
+      if (buttonId === "save") {
+        dispatch(deleteAd(e.id))
+      }
+
+
+    } )
+  }, [dispatch] )
+
     return (
         <div className="aboutOne" style={{
         }}>
@@ -52,8 +79,12 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setDetailsActive }) 
           <Top name={'Отклики'} setMenuActive={setMenuActive}/>
 
         {task ? 
-        <FirstBlock setDetailsActive={(value) => {
-          setDetailsActive({
+        <FirstBlock
+        deleteFunction={() => {
+          deleteFunction(task)
+        }}
+         setDetailsActive={(value) => {
+          setDetails({
             isActive : true,
             task : task
           })

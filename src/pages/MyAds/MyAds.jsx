@@ -180,6 +180,7 @@ const MyAds = () => {
             unmountOnExit
           >
             <AboutOne
+            setDetails={setDetails}
             setDetailsActive={setDetailsActive}
               setOpen={setOpen}
               task={secondPage.task}

@@ -103,7 +103,10 @@ const FirstBlock = ({
             <></>
           )}
 
-          <div className="FirstMain__top">
+          <div className="FirstMain__top" style={isMyAds ? 
+            {marginTop : "13px" } :
+            {}
+          }>
             <Pallete />
             <p>{taskName}</p>
             <ShareIcon className="share__icon" />
@@ -144,6 +147,17 @@ const FirstBlock = ({
                 <>
                 </>
               )}
+
+              {!isMyAds && !isResponce ? 
+                              <MyButton
+                              style={isButton ? {} : { display: "none" }}
+                              onClick={(e) => setDetailsActive(true)}
+                            >
+                              Подробнее
+                            </MyButton>
+                            :
+                            <></>
+              }
 
               {isResponce ? 
               <>
