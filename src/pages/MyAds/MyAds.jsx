@@ -29,6 +29,7 @@ const aboutReaction = `Доброго времени суток!
 let localAboutReaction;
 let localSecondPage;
 let localIsOpen;
+let localDetails;
 const MyAds = () => {
   const isMenuActive = useSelector((state) => state.menu.value);
 
@@ -87,6 +88,7 @@ const MyAds = () => {
   localAboutReaction = openAboutReaction;
   localIsOpen = isOpen;
   localSecondPage = secondPage;
+  localDetails = details
 
 
 
@@ -97,7 +99,7 @@ const MyAds = () => {
 
   useEffect(() => {
     function goBack() {
-      if (!details.isActive){
+      if (localDetails.isActive){
 
         if (!localAboutReaction.isActive) {
           if (localIsOpen.isActive) {
