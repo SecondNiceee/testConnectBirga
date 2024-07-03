@@ -2497,9 +2497,7 @@ input {
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;
-  height: -webkit-fit-content;
-  height: -moz-fit-content;
-  height: fit-content;
+  height: 150vh;
   overflow-y: scroll;
 }
 
