@@ -99,18 +99,18 @@ const MyAds = () => {
     function goBack() {
       if (!details.isActive){
 
-        if (!localAboutReaction) {
-          if (localIsOpen) {
-            setOpen(false);
+        if (!localAboutReaction.isActive) {
+          if (localIsOpen.isActive) {
+            setOpen({...isOpen, isActive : false});
           } else {
-            if (localSecondPage) {
-              setSecondPage(false);
+            if (localSecondPage.isActive) {
+              setSecondPage({...secondPage , isActive : false});
             } else {
               navigate(-1);
             }
           }
         } else {
-          setOpenAboutReaction(false);
+          setOpenAboutReaction({...openAboutReaction , isActive : false});
         }
       }
       else{
@@ -118,7 +118,7 @@ const MyAds = () => {
       }
 
     }
-    if (!localSecondPage && !details.isActive) {
+    if (!localSecondPage.isActive && !details.isActive) {
       BackButton.hide();
     } else {
       BackButton.show();
@@ -180,6 +180,7 @@ const MyAds = () => {
             unmountOnExit
           >
             <AboutOne
+            setDetailsActive={setDetailsActive}
               setOpen={setOpen}
               task={secondPage.task}
               setMenuActive={setMenuActive}

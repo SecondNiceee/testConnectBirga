@@ -11,7 +11,7 @@ import makeFile from '../../../functions/makeFile';
 
 
 
-const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
+const AboutOne = ({task, setMenuActive, goForward, setOpen, setDetailsActive }) => {
   const [responces , setResponces] = useState(null)
   useEffect( () => {
     async function getIt(id){
@@ -52,7 +52,12 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
           <Top name={'Отклики'} setMenuActive={setMenuActive}/>
 
         {task ? 
-        <FirstBlock isButton={true} isMyAds={true}  className={'FirstAdsBlock'}  {...task} />
+        <FirstBlock setDetailsActive={(value) => {
+          setDetailsActive({
+            isActive : true,
+            task : task
+          })
+        }} isResponce={true} isButton={true}   className={'FirstAdsBlock'}  {...task} />
       :
       ""
       }

@@ -52,6 +52,9 @@ const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setDeta
                   }}
                 >
                   <FirstBlock
+                  myAdsFunc = {(value) => {
+                      setSecondPage({isActive : true, task : e})
+                  }}
                   isMyAds={true}
                   deleteFunction={() => {
                     deleteFunction(e)

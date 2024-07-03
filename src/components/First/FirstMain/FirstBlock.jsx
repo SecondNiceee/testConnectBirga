@@ -17,6 +17,9 @@ const FirstBlock = ({
   photos,
   isMyAds,
   deleteFunction,
+  myAdsFunc,
+  isResponce,
+
 }) => {
   const tonConstant = useSelector((state) => state.ton.value);
   var options = {
@@ -60,7 +63,7 @@ const FirstBlock = ({
             ""
           )}
 
-          {isMyAds ? (
+          {isMyAds || isResponce ? (
             <div className="myAds__top">
               <p className="myAds__top-left">Активно</p>
               <div className="myAds__top-right">
@@ -125,7 +128,26 @@ const FirstBlock = ({
             </div>
             <div className="FirstMain__bottom-right">
               {isMyAds ? (
-                <svg
+                <>
+
+                <MyButton
+                style={isButton ? {} : { display: "none" }}
+                onClick={(e) => myAdsFunc(true)}
+              >
+                Подробнее
+              </MyButton>
+
+                </>
+
+                
+              ) : (
+                <>
+                </>
+              )}
+
+              {isResponce ? 
+              <>
+                              <svg
                   id = "myTrash"
                   onClick={deleteFunction}
                   className="my-trash"
@@ -140,15 +162,23 @@ const FirstBlock = ({
                     fill="#F83D3D"
                   />
                 </svg>
-              ) : (
-                <FalseTie className={"tie"} />
-              )}
-              <MyButton
-                style={isButton ? {} : { display: "none" }}
-                onClick={(e) => setDetailsActive(true)}
-              >
-                Изменить
-              </MyButton>
+                             <MyButton
+                             style={isButton ? {} : { display: "none" }}
+                             onClick={(e) => setDetailsActive(true)}
+                           >
+                             Изменить
+                           </MyButton> 
+              </>
+                           :
+                           <>
+                           </>
+              }
+              
+              {!isResponce ? <FalseTie className={"tie"} /> :
+              <></>
+                }
+
+
             </div>
           </div>
         </div>

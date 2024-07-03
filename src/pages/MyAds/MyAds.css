@@ -9,23 +9,23 @@
 .AdCreactingFunction{
     transition: 0.2s;
 }
-.tie{
+/* .tie{
     width: 25.67px;
     height: 25.67px;
     margin-left: auto;
-}
+} */
 .right{
     margin-left: auto;
     gap: 14px;
     display: flex;
     align-items: center;
 }
-.reaction .reaction__middle .tie{
+/* .reaction .reaction__middle .tie{
     width: 25.67px;
     height: 25.67px;
     margin-left: auto;
 
-}
+} */
 .reactions__block{
     display: flex;
     flex-direction: column;
@@ -180,7 +180,7 @@
     align-items: center;
     margin-bottom: 17px;
     padding-left: 17.33px;
-    padding-right: 20.33px;
+    padding-right: 23.5px;
     margin-top: 16.87px;
 }
 .bottom__one{
@@ -228,11 +228,11 @@
     margin-left: 7.67px;
     
 }
-.tie{
+/* .tie{
     width: 25.67px;
     height: 25.67px;
     margin-left: auto;
-}
+} */
 .reactions__block{
     transition:  0.3s;
 

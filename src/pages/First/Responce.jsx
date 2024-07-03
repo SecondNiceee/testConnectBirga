@@ -38,7 +38,7 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce }) => {
     } catch (e) {
       alert("ничего не вышло");
       console.warn(e);
-    }
+    } 
   }
 
   console.log(shablonsArr)

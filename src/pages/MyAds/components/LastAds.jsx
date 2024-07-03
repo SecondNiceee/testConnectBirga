@@ -137,7 +137,7 @@ const LastAds = ({
       
 
       {/* <LastSertificates /> */}
-      <TextAboutMe style = {
+      <TextAboutMe textareaClassName={"new-textarea"} style = {
         {
           marginTop : "8px"
         }

@@ -1,5 +1,6 @@
-.FalseTie{
-
+.falseTie{
+    stroke-width: 1.67px;
+    stroke: #2ea5ff;
 }
 .FalseTie img{
     width: calc(22px);

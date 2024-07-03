@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './TextAboutMe.css'
-const TextAboutMe = ( { aboutU , darkSide, className, ...props } ) => {
+const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...props } ) => {
     const [hideAboutMe, setHideAboutMe] = useState({
       isActive : false,
       show : false
@@ -68,7 +68,7 @@ const TextAboutMe = ( { aboutU , darkSide, className, ...props } ) => {
               left : 0,
               top : 0
             }}
-            className="about__u-text"
+            className= {textareaClassName ? ["about__u-text" , textareaClassName].join(' ') : "about__u-text"}
           />
 
           <textarea
@@ -76,7 +76,7 @@ const TextAboutMe = ( { aboutU , darkSide, className, ...props } ) => {
 
             readOnly={true}
             spellCheck={false}
-            className="about__u-text"
+            className={textareaClassName ? ["about__u-text" , textareaClassName].join(' ') : "about__u-text"}
           />
 
           
