@@ -52,7 +52,7 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce }) => {
     return () => {
       MainButton.offClick(forwardFunction);
     };
-  }, []);
+  }, [responce]);
 
   return (
     <div className="responce-wrapper">
