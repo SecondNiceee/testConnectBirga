@@ -174,7 +174,7 @@ const FirstBlock = ({
                            </>
               }
               
-              {!isResponce ? <FalseTie className={"tie"} /> :
+              {!isResponce && !isMyAds ? <FalseTie className={"tie"} /> :
               <></>
                 }
 
