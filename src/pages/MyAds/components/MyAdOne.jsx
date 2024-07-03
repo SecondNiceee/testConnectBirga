@@ -107,11 +107,13 @@ const MyAdOne = ({
                   if (!detailsVar.task.photos.find(e => e.name === fileName)){
                     removedArr.push(fileName)
                   }
+                  console.log('Этап один')
               }
               for (let file of detailsVar.task.photos){
                 if (file.name.includes('nick')){
                   addedArr.push(file)
                 }
+                console.log("Этап два")
               }
 
 
@@ -124,7 +126,7 @@ const MyAdOne = ({
 
               dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
 
-              
+              console.log("Даже этап три")
               setDetails( {...details,
                 isActive : false,
               } )
