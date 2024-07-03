@@ -80,6 +80,11 @@ const MyAds = () => {
     document.documentElement.style.overflowY = 'hidden'
     document.documentElement.style.marginTop = '15px'
     window.scrollTo(0 , 15)
+    return () => {
+      document.documentElement.style.overflowY = 'unset'
+      document.documentElement.style.marginTop = '0px'
+      window.scrollTo(0 , 0)
+    }
   },[] )
 
 
