@@ -69,6 +69,7 @@ const MyAdOne = ({
     }
   }, [putStatus]); // проверка на то, что все работает
 
+  console.log(details)
 
   const save = useCallback( () => {
     if (detailsVar.task !== myAdsArray[secondPage.index]) {
@@ -186,7 +187,7 @@ const MyAdOne = ({
       <Top name={"Мои задания"} setMenuActive={setMenuActive} />
       <button style={{
         position : 'absolute',
-        zIndex : '999'
+        zIndex : '3000'
       }} onClick={() => {
         if (checkMistakes(detailsVar.task)) {
           let myFormData = new FormData();
