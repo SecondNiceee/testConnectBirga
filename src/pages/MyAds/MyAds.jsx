@@ -188,7 +188,7 @@ const MyAds = () => {
               secondPage = {secondPage}
             setDetailsActive={setDetailsActive}
               setOpen={setOpen}
-              task={secondPage.task}
+              task={myAdsArray[secondPage.index]}
               setMenuActive={setMenuActive}
             />
           </CSSTransition>
