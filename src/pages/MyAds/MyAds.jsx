@@ -64,7 +64,8 @@ const MyAds = () => {
   
   const [secondPage, setSecondPage] = useState({
     isActive : false,
-    task : myAdsArray[0]
+    task : myAdsArray[0],
+    index : 0
   }
   );
   const [openAboutReaction, setOpenAboutReaction] = useState({
@@ -172,6 +173,7 @@ const MyAds = () => {
             details={details}
             setDetails={setDetails}
             setMenuActive={setMenuActive}
+            secondPage={secondPage}
           />
 
           <CSSTransition

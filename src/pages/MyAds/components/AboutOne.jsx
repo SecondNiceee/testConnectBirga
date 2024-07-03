@@ -86,7 +86,8 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setDetailsActive, se
          setDetailsActive={(value) => {
           setDetails({
             isActive : true,
-            task : task
+            task : task,
+            index : task.index
           })
         }} isResponce={true} isButton={true}   className={'FirstAdsBlock'}  {...task} />
       :
