@@ -45,6 +45,22 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step }
 
   const forwardFunction = useCallback(() => {
     if (step !== 0){
+      window.Telegram.WebApp
+      .showPopup({
+        title: "Откликнуться?",
+        message: "Вы действительно хотите откликнуться?",
+        buttons: [
+          { id: "save", type: "default", text: "Да" },
+          { id: "delete", type: "destructive", text: "Нет" },
+        ],
+      } , (buttonId) => {
+  
+        if (buttonId === "delete" || buttonId === null) {
+          // setShablon({...shablon , isActive : false})
+        }
+        if (buttonId === "save") {
+          postResponce(orderInformation.id, 2144832745);
+      } })
       postResponce(orderInformation.id, 2144832745);
     }
   }, [responce]);

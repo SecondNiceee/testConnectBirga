@@ -11,9 +11,8 @@ const AboutInfo = ({responce}) => {
       <div onClick={() => {
         window.Telegram.WebApp.openTelegramLink("https://t.me/" + responce.user.link)
       }} className="userLink">
-        <p className="telegramLink"> Открыть в телеграме </p>
-        
-        <div className="blueLine"></div>
+        <p className="telegramLink"> Открыть в Telegram </p>
+
         
       </div>
       <div className="aboutDown">

@@ -2502,14 +2502,16 @@ input {
 }
 
 .telegramLink {
+  font-family: "SF Pro Display";
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 120%;
+  text-decoration: underline;
+  -webkit-text-decoration-skip-ink: none;
+          text-decoration-skip-ink: none;
+  text-align: center;
+  text-underline-offset: 10px;
   color: #2ea5ff;
-  font-family: "SF Pro Display 400";
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17.67px;
-  letter-spacing: 0%;
-  text-align: left;
-  margin-top: 12px;
 }
 
 .blueLine {

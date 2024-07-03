@@ -146,6 +146,10 @@ const MyAds = () => {
 
     if (isOpen.isActive){
       MainButton.show()
+      MainButton.setParams({
+        color : '#2ea5ff',
+        text_color : '#ffffff'
+      })
       MainButton.setText("Написать")
       MainButton.onClick(writeFucntion)
     }
