@@ -301,15 +301,7 @@ const AdCreating = () => {
     BackButton.show();
     MainButton.setText("Далее");
 
-    document.documentElement.style.marginTop = "5px";
 
-    window.scrollTo({
-      top: 5,
-      behavior: "auto",
-    });
-
-    document.documentElement.style.overflow = "clip";
-    document.querySelector(".MainContainer").style.overflowY = "hidden";
 
     return () => {
       MainButton.hide();
