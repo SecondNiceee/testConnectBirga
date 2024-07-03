@@ -114,7 +114,7 @@ const MyAds = () => {
         }
       }
       else{
-        setDetails({...details, isActive : false})
+        
       }
 
     }
@@ -181,6 +181,7 @@ const MyAds = () => {
           >
             <AboutOne
             setDetails={setDetails}
+            
             setDetailsActive={setDetailsActive}
               setOpen={setOpen}
               task={secondPage.task}
