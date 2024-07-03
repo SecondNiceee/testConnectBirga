@@ -1,36 +1,46 @@
 import React, { useMemo } from 'react';
 import cl from "./Stage.module.css"
-const Stage = ({className,number}) => {
+const Stage = ({className,numberB}) => {
     const kk = useMemo(() => {
-        
-        let numb = Number(number.slice(number.length - 1 , number.length))
+      if (numberB === null){
+        return "null"
+      }
+      else{
 
-        if ( Number(number) > 10 && Number(number) < 20){
-            return " Лет"
-          }
-          else{
-      
-              if (numb > 1 && numb < 5){
-                return " Года"
-              }
-              else{
-                if(numb === 1){
-                  return " Год"
+        let number = toString(numberB)
+          let numb = Number(number.slice(number.length - 1 , number.length))
+          if ( Number(number) > 10 && Number(number) < 20){
+              return " Лет"
+            }
+            else{
+        
+                if (numb > 1 && numb < 5){
+                  return " Года"
                 }
                 else{
-                  return " Лет"
+                  if(numb === 1){
+                    return " Год"
+                  }
+                  else{
+                    return " Лет"
+                  }
                 }
               }
-            }
+      }
     } , [])
     return (
         <div className={ className ? [cl.main, className].join(' ') : cl.main}>
                 <div className={cl.one}>
-                    <p>{number}</p>
+                    <p>{numberB}</p>
                 </div>
+                {numberB === "null" ? 
+                <>
+                </>
+    :
                 <div className={cl.two}>
                     <p>{kk}</p>
                 </div>
+                }
         </div>
     );
 };

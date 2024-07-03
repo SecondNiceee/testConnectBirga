@@ -21,10 +21,11 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
         }
       })
       let responces = im.data
+      console.log(responces)
       responces.forEach((e, i) => {
         let photos = []
         if (e.files){
-          let photos = makeFile(e.files, Array(e.files.length))
+          photos = makeFile(e.files, Array(e.files.length))
         }
         responces[i].photos = photos
       })
@@ -32,7 +33,7 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen }) => {
 
       
       
-      console.log(responces)
+
       return responces
   }
 

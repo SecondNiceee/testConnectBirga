@@ -82,7 +82,7 @@ const AboutReaction = ({ responce ,   ...props}) => {
       <AboutMain aboutU = {responce.user.about}  />
 
       <Compact className={"stage-compact"} title = {"Стаж работы"}>
-        <Stage number={String(responce.user.stage)} />
+        <Stage number={responce.user.stage} />
       </Compact>
 
 

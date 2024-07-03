@@ -37,7 +37,7 @@ const Reaction = ({ setOpen, put, openAboutReactionFunc, responce }) => {
               responce : responce
             })
           }} className="reaction__middle-midle">
-            <p className="reaction__userName">{responce.user.name}</p>
+            <p className="reaction__userName">{responce.user.fl}</p>
             <div className="reaction__rates">
               {/* <img src={star} alt="" /> */}
               <div className="rates__text">
