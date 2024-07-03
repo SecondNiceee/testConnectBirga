@@ -14,6 +14,7 @@ import MyAdOne from "./components/MyAdOne";
 import AboutReaction from "./components/AboutReaction";
 import AboutOne from "./components/AboutOne";
 import { CSSTransition } from "react-transition-group";
+import MainButton from "../../constants/MainButton";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -96,7 +97,10 @@ const MyAds = () => {
   const [task, setTask] = useState(myAdsArray[0]);
 
   const navigate = useNavigate();
-
+  
+  function writeFucntion(){
+    window.Telegram.WebApp.openTelegramLink("https://t.me/" + isOpen.responce.user.link)
+  }
 
   useEffect(() => {
     function goBack() {
@@ -126,8 +130,19 @@ const MyAds = () => {
     } else {
       BackButton.show();
     }
+
+    if (isOpen.isActive){
+      MainButton.show()
+      MainButton.setText("Написать")
+      MainButton.onClick(writeFucntion)
+    }
+    else{
+      MainButton.hide()
+      MainButton.offClick(writeFucntion)
+    
+    }
     BackButton.onClick(goBack);
-  });
+  } );
 
   console.log(task);
 
