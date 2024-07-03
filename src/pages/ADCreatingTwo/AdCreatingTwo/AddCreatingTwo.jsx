@@ -115,11 +115,11 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
 
         if (state.isOpen){
           appear()
-          document.documentElement.style.overflow = 'hidden'
+
         }
         else{
           disappear()
-          document.documentElement.style.overflow = 'visible'
+
         }
       }
       
@@ -135,12 +135,6 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
 
 
     function appear(){
-      document.documentElement.style.overflow = 'hidden'
-      document.documentElement.style.marginTop = '400px'
-      window.scrollTo({
-        top : 400,
-        behavior : 'auto'
-      })
 
       dateObject.style.zIndex = '100'
       dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'
@@ -150,13 +144,13 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
     }
     function disappear(){
 
-      document.documentElement.style.marginTop = '0px'
+
       MainButton.show()
       dateObject.style.backgroundColor = 'unset'
       dateObject.style.display = 'block'
       datePickerObject.style.transform = 'translateY(100%)'
 
-      document.documentElement.style.overflow = 'visible'
+
       
       window.scrollTo({
         top : 0,
