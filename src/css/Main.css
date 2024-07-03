@@ -2500,7 +2500,7 @@ input {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  overflow-y: scroll;
+  overflow-y: 150vh;
 }
 
 .responce-make-private {
