@@ -99,7 +99,7 @@ const MyAds = () => {
 
   useEffect(() => {
     function goBack() {
-      if (localDetails.isActive){
+      if (!localDetails.isActive){
 
         if (!localAboutReaction.isActive) {
           if (localIsOpen.isActive) {
