@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from 'axios';
 import makeFile from "../functions/makeFile";
+import makeNewFile from "../functions/newMakeFile";
 
 
 
@@ -176,20 +177,22 @@ export const fetchMyOrders = createAsyncThunk(
       else{
   
         for (let order of task.data) {
-          let files =  []
+          let files =  await makeNewFile(order.folder, order.photos)
   
-          if (order.files){
 
-            for (let i = 0 ; i < order.files.length; i++){
+            // for (let i = 0 ; i < order.photos.length; i++){
+            //   let file = await urlToObject("https://back-birga.ywa.su/" + order.folder + '/' + order.photos[i])
+            //   console.log("https://back-birga.ywa.su/" + order.folder + '/' + order.photos[i])
+            //   console.log(file)
+            //   // let uintArray = new Uint8Array(order.files[i].data);
+            //   // let blob = new Blob([uintArray], { type: 'image/png' });
+            //   // let fileName =  order.photos[i]  ;
+            //   // let file = new File([blob], fileName, { type: 'image/png' });
+            //   files.push(file)
   
-              let uintArray = new Uint8Array(order.files[i].data);
-              let blob = new Blob([uintArray], { type: 'image/png' });
-              let fileName =  order.photos[i]  ;
-              let file = new File([blob], fileName, { type: 'image/png' });
-              files.push(file)
-  
-            }
-          }
+            // }
+            // console.log(files)
+          
   
           tasks.push({
             id : order.id,
@@ -209,8 +212,9 @@ export const fetchMyOrders = createAsyncThunk(
             
           })
         }
+        console.log(tasks)
   
-        return tasks
+        return tasks 
       }
     }
     catch (e){
@@ -259,17 +263,17 @@ export const fetchTasksInformation = createAsyncThunk(
                  two = ""
               }
   
-              let files = [];
+              let files = await makeNewFile(order.folder, order.photos);
               
-              if (order.files){
-                for (let photo of order.files){
-                  let uintArray = new Uint8Array(photo.data);
-                  let blob = new Blob([uintArray], { type: 'image/png' });
-                  let fileName = 'photo.jpg';
-                  let file = new File([blob], fileName, { type: 'image/png' });
-                  files.push(file)
-                }
-              }
+              // if (order.files){
+              //   for (let photo of order.files){
+              //     let uintArray = new Uint8Array(photo.data);
+              //     let blob = new Blob([uintArray], { type: 'image/png' });
+              //     let fileName = 'photo.jpg';
+              //     let file = new File([blob], fileName, { type: 'image/png' });
+              //     files.push(file)
+              //   }
+              // }
               
               
               tasks.push({

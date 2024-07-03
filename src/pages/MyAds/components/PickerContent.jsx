@@ -47,7 +47,7 @@ const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setDeta
                   onClick={(p) => {
                     if (p.target.closest('.FirstMain__bottom-right') === null){
                       //  setTask(e);
-                      setSecondPage({isActive : true , task : e});
+                      setSecondPage({isActive : true , task : e, index : i});
                     }
                   }}
                 >

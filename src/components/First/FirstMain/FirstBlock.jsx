@@ -178,7 +178,8 @@ const FirstBlock = ({
                 </svg>
                              <MyButton
                              style={isButton ? {} : { display: "none" }}
-                             onClick={(e) => setDetailsActive(true)}
+                             onClick={(e) => 
+                              setDetailsActive(true)}
                            >
                              Изменить
                            </MyButton> 

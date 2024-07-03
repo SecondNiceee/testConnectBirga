@@ -133,6 +133,7 @@ const First = () => {
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
   );
+  console.log(ordersInformation)
 
   return (
     <motion.div

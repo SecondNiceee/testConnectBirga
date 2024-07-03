@@ -35,11 +35,11 @@ const MyAdOne = ({
   console.log(details)
   console.log('hi')
 
-  // function setChangingTask( value ){
-  //   console.log('Вызов этой функции')
-  //   console.log(value)
-  //   setDetails({...details , task : value})
-  // }
+  function setChangingTask( value ){
+    console.log('Вызов этой функции')
+    console.log(value)
+    setDetails({...details , task : value})
+  }
 
 
 
@@ -238,7 +238,7 @@ const MyAdOne = ({
       }>Save</button>
 
       <MyAdsBlock deals={1} finishedDeals={"0%"} />
-      <PickerContent 
+      <PickerContent
       dispatch={dispatch}
         myAdsArray={myAdsArray}
         setDetails = {setDetails}
@@ -247,7 +247,23 @@ const MyAdOne = ({
       />
       
 
-
+      <CSSTransition classNames="details" in={details.isActive} timeout={300}
+      mountOnEnter unmountOnExit>
+        <AdCreatingOne
+          mistakes={mistakes}
+          className="AdCreatingMy"
+          taskInformation={detailsVar.task}
+          setTaskInformation={setChangingTask}
+          MyInformation={true}
+          isDetailsActive={details.isActive}
+          setAddedFiles={(e) => {
+            setChangingTask(value => ({...value, addedFiles : e}))
+          }}
+          setRemovedFiles={(e) => {
+            setChangingTask(value => ({...value , removedFiles : e}))
+          }}
+        />
+      </CSSTransition>
     </div>
   );
 };
