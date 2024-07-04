@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import MyButton from "../../UI/MyButton/MyButton";
 import Pallete from "../../UI/Pallete/Pallete";
 import ShareIcon from "../../UI/ShareIcon/ShareIcon";
@@ -6,6 +6,7 @@ import SmallDimond from "../../UI/SmallDimond/SmallDimond";
 import FalseTie from "../../UI/FalseTie/FalseTie";
 import { useSelector } from "react-redux";
 
+let counter = 0
 const FirstBlock = ({
   className,
   taskName,
@@ -21,6 +22,9 @@ const FirstBlock = ({
   isResponce,
 
 }) => {
+  console.log("render" + counter)
+  counter += 1
+  console.log(executionPlace , taskName, tonValue)
   const tonConstant = useSelector((state) => state.ton.value);
   var options = {
     year: "numeric",
@@ -204,4 +208,4 @@ const FirstBlock = ({
   );
 };
 
-export default FirstBlock;
+export default memo(FirstBlock);

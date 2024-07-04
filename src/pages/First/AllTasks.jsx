@@ -20,6 +20,12 @@ const AllTasks = ({isDetailsActive , setDetailsActive ,isMenuActive, setMenuActi
     const orderStatus = useSelector(
       (state) => state.information.orderStatus
     )
+
+
+
+
+  
+
   
   
 
@@ -40,25 +46,25 @@ const AllTasks = ({isDetailsActive , setDetailsActive ,isMenuActive, setMenuActi
         style={isMenuActive ? { opacity: "0.5" } : {}}
         setMenuActive={setMenuActive}
         setFilterBy={setFilterBy}
-        userInfo={userInfo}
+        userInfo={userInfo} 
       />
 
       {orderStatus === "complete" ? (
         <>
           <FirstMain
-            style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
+            // style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
             setDetailsActive={setDetailsActive}
             ordersInformation={filteredArr}
           />
 
-          {/* <CSSTransition
+          <CSSTransition
             in={isDetailsActive.isOpen}
             
             timeout={200}
             classNames="left-right"
             mountOnEnter
             unmountOnExit
-          > */}
+          >
             <FirstDetails
               className={isDetailsActive.isOpen === true ? "active" : ""}
               setDetailsActive={setDetailsActive}
@@ -66,7 +72,7 @@ const AllTasks = ({isDetailsActive , setDetailsActive ,isMenuActive, setMenuActi
               orderInformation={ordersInformation[isDetailsActive.id]}
               similarAds={ordersInformation}
             />
-          {/* </CSSTransition> */}
+          </CSSTransition>
         </>
       ) : (
         <FirstLoader />
