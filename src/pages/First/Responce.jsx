@@ -87,7 +87,7 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
         if (buttonId === "save") {
           postResponce(orderInformation.id, 2144832745 );
           setStep(0)
-          setDetailsActive((value) => ({...value , isActive : false}))
+          setDetailsActive((value) => ({...value , isOpen : false}))
       } })
       postResponce(orderInformation.id, 2144832745 );
     }
