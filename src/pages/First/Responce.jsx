@@ -7,6 +7,9 @@ import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import { useDispatch, useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 import axios from "axios";
+
+
+let localResponce ;
 const Responce = ({ orderInformation, MainButton, responce, setResponce , step, setStep , setDetailsActive }) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
   const dispatch = useDispatch();
@@ -42,9 +45,10 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
   }
 
   console.log(shablonsArr)
-
+  localResponce = responce;
   useEffect(() => {
-      if (responce.text.length < 3 && step === 1){
+    console.log(localResponce.text.length)
+      if (localResponce.text.length < 3 && step === 1){
         MainButton.setParams({
           is_active : false, //неизвесетно
           color : '#2f2f2f',
