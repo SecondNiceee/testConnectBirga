@@ -67,7 +67,7 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
           })
         }
       }
-  } , [responce.tex, step]) 
+  } , [responce.text, step]) 
 
   const forwardFunction = useCallback(() => {
     if (step !== 0){
