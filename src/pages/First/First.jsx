@@ -55,7 +55,7 @@ const First = () => {
       }
     }
     return false
-  },[ordersInformation, isDetailsActive.is] )
+  },[ordersInformation, isDetailsActive.id] )
 
   useEffect(() => {
     // setStep(varStep)
