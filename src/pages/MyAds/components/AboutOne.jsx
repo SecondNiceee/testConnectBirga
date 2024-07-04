@@ -25,13 +25,30 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
       })
       let responces = im.data
       console.log(responces)
-      responces.forEach((e, i) => {
+      for (let i = 0; i < responces.length; i++){
+
         let photos = []
-        if (e.files){
-          photos = makeFile(e.files, Array(e.files.length))
+        if (responces[i].files){
+          photos = makeFile(responces[i].files, Array(responces[i].files.length))
         }
         responces[i].photos = photos
-      })
+        try{
+
+          let imTwo = await axios.get("https://back-birga.ywa.su/advertisement/findCount" , {
+            params : {
+              userId : responces[i].user.id
+            }
+          })
+          console.log(imTwo.data)
+          alert(imTwo.data)
+          responces[i].createNumber = imTwo.data
+        }
+        catch(e){
+          alert(e)
+          console.log(e)
+        }
+      }
+
 
 
       

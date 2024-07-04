@@ -21,6 +21,8 @@ import { Triangle } from "react-loader-spinner";
 import axios from "axios";
 import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
+import Swiper from "./components/UI/Swiper/Swiper";
+import SwiperComponent from "./components/UI/Swiper/Swiper";
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
@@ -181,6 +183,7 @@ function App() {
         </div>
       </div>
     </BrowserRouter>
+    // <SwiperComponent />
   );
 }
 

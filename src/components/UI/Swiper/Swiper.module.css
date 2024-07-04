@@ -1,0 +1,47 @@
+.main{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    
+}
+.slideWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+}
+.sliderPhoto{
+    width: 100%;
+
+}
+.blackArea{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0.3;
+}
+.navigationBlock{
+    z-index: 500;
+    display: flex;
+    width: 100vw;
+    padding: 0 20px;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+}
+.nextArrow , .prevArrow{
+    color: white ;
+    font-size: 40px;
+    width: 55px;
+
+}
+.prevArrow{
+    transform: rotate(180deg);
+}

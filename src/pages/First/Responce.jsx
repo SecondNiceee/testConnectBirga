@@ -59,9 +59,9 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step }
           // setShablon({...shablon , isActive : false})
         }
         if (buttonId === "save") {
-          postResponce(orderInformation.id, 2144832745);
+          postResponce(orderInformation.id, window.Telegram.WebApp.initDataUnsafe.user.id );
       } })
-      postResponce(orderInformation.id, 2144832745);
+      postResponce(orderInformation.id, window.Telegram.WebApp.initDataUnsafe.user.id );
     }
   }, [responce]);
 

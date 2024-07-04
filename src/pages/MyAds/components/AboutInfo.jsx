@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useMemo } from "react";
 import submit from "../../../images/icons/Subtract.svg";
 import star from "../../../images/icons/Star.svg";
 const AboutInfo = ({responce}) => {
+  const counter = useMemo(() => {
+    if (Number(responce.createNumber) === 1){
+      return "Задание создано"
+    } 
+    else{
+      if (Number(responce.createNumber) > 1 && Number(responce.createNumber) < 5){
+        return "Задания создано"
+      }
+      else{
+        return "Заданий создано"
+      }
+    }
+
+  })
   return (
     <div className="aboutInfo">
       <div className="name">
@@ -17,8 +31,9 @@ const AboutInfo = ({responce}) => {
       </div>
       <div className="aboutDown">
         <div className="block">
-          <p>0</p>
-          <p>Заданий создано</p>
+          <p>{responce.createNumber}</p>
+          <p>{counter}</p>
+          
         </div>
         <div className="block">
           <p>0</p>

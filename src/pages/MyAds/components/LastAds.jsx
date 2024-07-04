@@ -13,6 +13,7 @@ import AboutMain from "./AboutMain";
 import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../../store/menuSlice";
+import options from "../../../constants/options";
 let start;
 let move;
 const LastAds = ({
@@ -123,6 +124,7 @@ const LastAds = ({
   //   };
   // }, [isOpen, transform, transition]);
 
+
   return (
     <div
       className={"last-ads"}
@@ -142,6 +144,10 @@ const LastAds = ({
           marginTop : "8px"
         }
       } aboutU={responce.information} />
+
+      <p className="creationTime">{ "Создано " + new Date(responce.createdAt).toLocaleString("ru", options)}</p>
+
+      
 {/* 
       <textarea className="last-textarea" name="" id="" value={text} /> */}
     </div>
