@@ -44,7 +44,7 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
   console.log(shablonsArr)
 
   useEffect(() => {
-      if (responce.text.length < 3){
+      if (responce.text.length < 3 && step === 1){
         MainButton.setParams({
           is_active : false,
           color : '#2ea5ff',
@@ -53,13 +53,16 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
         })
       }
       else{
-        MainButton.setParams({
-    
-          color : '#2ea5ff',
-          text_color : '#ffffff',
-          is_active : true
-          
-        })
+        if (step === 1){
+
+          MainButton.setParams({
+      
+            color : '#2ea5ff',
+            text_color : '#ffffff',
+            is_active : true
+            
+          })
+        }
       }
   } , [responce.text]) 
 

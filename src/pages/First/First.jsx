@@ -93,7 +93,7 @@ const First = () => {
   if (isDetailsActive.isOpen) {
     if (step === 0){
       MainButton.setParams({
-    
+        is_active : true,
         color : '#2ea5ff',
         text_color : '#ffffff'
         
