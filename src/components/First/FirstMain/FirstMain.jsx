@@ -7,7 +7,6 @@ const FirstMain = ({ ordersInformation, setDetailsActive , ...props}) => {
   const watchedArr = useSelector(state => state.watchedAds.watchedAds)
   console.log(watchedArr)
   const dispatch = useDispatch()
-  console.log('РЕНДЕР')
   const setDetailsActiveF = useCallback( (e,i) => {
     setDetailsActive({isOpen : true , id : i})
     dispatch(addWatch(e.id))

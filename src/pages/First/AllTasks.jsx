@@ -60,13 +60,13 @@ const AllTasks = ({isDetailsActive , setDetailsActive ,isMenuActive, setMenuActi
           <CSSTransition
             in={isDetailsActive.isOpen}
             
-            timeout={200}
+            timeout={400}
             classNames="left-right"
             mountOnEnter
             unmountOnExit
           >
             <FirstDetails
-              className={isDetailsActive.isOpen === true ? "active" : ""}
+              // className={}
               setDetailsActive={setDetailsActive}
               isDetailsActive={isDetailsActive}
               orderInformation={ordersInformation[isDetailsActive.id]}
