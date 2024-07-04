@@ -36,7 +36,21 @@ const First = () => {
     shablonMaker : false,
   });
 
+  const gotIt = useMemo( () => {
+    if (ordersInformation[isDetailsActive.id]){
 
+      if (ordersInformation[isDetailsActive.id].responces){
+        console.log(ordersInformation[isDetailsActive.id].responces)
+        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === "2144832745")){
+          return true
+        }
+        else{
+          return false
+        }
+      }
+    }
+    return false
+  },[ordersInformation, isDetailsActive.is] )
 
   useEffect(() => {
     // setStep(varStep)
@@ -54,6 +68,12 @@ const First = () => {
   }
 
   function forward() {
+    if (gotIt){
+      window.Telegram.WebApp.showPopup({
+        title : "Ошибка",
+        message : "Вы уже откликнулись на это задание. Заказчик обязательно увидит ваш отклик."
+      })
+    }
     if (varStep === 0) {
       setStep(step + 1);
       varStep = step;
@@ -158,21 +178,7 @@ const First = () => {
   );
   console.log(ordersInformation)
 
-  const gotIt = useMemo( () => {
-    if (ordersInformation[isDetailsActive.id]){
 
-      if (ordersInformation[isDetailsActive.id].responces){
-        console.log(ordersInformation[isDetailsActive.id].responces)
-        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === "2144832745")){
-          return true
-        }
-        else{
-          return false
-        }
-      }
-    }
-    return false
-  },[ordersInformation, isDetailsActive.is] )
   console.log(gotIt)
 
 
