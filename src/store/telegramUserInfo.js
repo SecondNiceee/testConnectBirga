@@ -130,7 +130,7 @@ export const fetchUserInfo = createAsyncThunk(
         if (lastName.length > 15) {
           lastName = lastName.slice(0, 15) + "..";
         }
-        let UserId = "window.Telegram.WebApp.initDataUnsafe.user.id " ;
+        let UserId = "2144832745 " ;
         let user = await axios.get("https://back-birga.ywa.su/user/findOne", {
           params: {
             id: UserId,

@@ -7,7 +7,7 @@ import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import { useDispatch, useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 import axios from "axios";
-const Responce = ({ orderInformation, MainButton, responce, setResponce , step }) => {
+const Responce = ({ orderInformation, MainButton, responce, setResponce , step, setStep , setDetailsActive }) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
   const dispatch = useDispatch();
 
@@ -43,6 +43,26 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step }
 
   console.log(shablonsArr)
 
+  useEffect(() => {
+      if (responce.text.length < 3){
+        MainButton.setParams({
+          is_active : false,
+          color : '#2ea5ff',
+          text_color : '#ffffff',
+          
+        })
+      }
+      else{
+        MainButton.setParams({
+    
+          color : '#2ea5ff',
+          text_color : '#ffffff',
+          is_active : true
+          
+        })
+      }
+  } , [responce.text]) 
+
   const forwardFunction = useCallback(() => {
     if (step !== 0){
       window.Telegram.WebApp
@@ -59,9 +79,11 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step }
           // setShablon({...shablon , isActive : false})
         }
         if (buttonId === "save") {
-          postResponce(orderInformation.id, window.Telegram.WebApp.initDataUnsafe.user.id );
+          postResponce(orderInformation.id, 2144832745 );
+          setStep(0)
+          setDetailsActive((value) => ({...value , isActive : false}))
       } })
-      postResponce(orderInformation.id, window.Telegram.WebApp.initDataUnsafe.user.id );
+      postResponce(orderInformation.id, 2144832745 );
     }
   }, [responce]);
 

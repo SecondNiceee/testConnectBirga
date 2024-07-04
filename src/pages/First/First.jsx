@@ -91,6 +91,14 @@ const First = () => {
   });
 
   if (isDetailsActive.isOpen) {
+    if (step === 0){
+      MainButton.setParams({
+    
+        color : '#2ea5ff',
+        text_color : '#ffffff'
+        
+      })
+    }
     BackButton.show();
     MainButton.show();
   }
@@ -174,6 +182,8 @@ const First = () => {
         />
 
         <Responce
+          setStep = {setStep}
+          setDetailsActive = {setDetailsActive}
           step={step}
           responce = {responce}
           setResponce = {setResponce}
