@@ -291,6 +291,7 @@ export const fetchTasksInformation = createAsyncThunk(
                 isActive : true,
                 creationTime : order.createdAt,
                 viewsNumber : '50',
+                responces : order.responses
                 
               })
             }

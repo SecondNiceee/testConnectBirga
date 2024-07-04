@@ -19,10 +19,9 @@ const FirstMain = ({ ordersInformation, setDetailsActive , ...props}) => {
       ) : (
         ordersInformation.map((e,i) => {
           return <FirstBlock
+          index = {i}
             isWatched={watchedArr.includes(e.id) ? true : false}
-           key={i} setDetailsActive={() => {
-            setDetailsActiveF(e, i)
-          }}   {...e} isButton = {true} />;
+           key={i} setDetailsActive={setDetailsActive}   {...e} isButton = {true} />;
         })
       )}
 

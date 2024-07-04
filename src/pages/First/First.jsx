@@ -23,6 +23,8 @@ const First = () => {
     id: 0,
     isOpen: isDetailsActiveVar,
   });
+  
+  console.log(isDetailsActive)
 
   const [responce, setResponce] = useState({
     text: "",
@@ -33,6 +35,8 @@ const First = () => {
     isShablon: false,
     shablonMaker : false,
   });
+
+
 
   useEffect(() => {
     // setStep(varStep)
@@ -80,6 +84,12 @@ const First = () => {
     BackButton.onClick(back);
     if (isDetailsActive.isOpen) {
       BackButton.show();
+      if (gotIt){
+        MainButton.setParams({//неизвесетно
+          color : '#2f2f2f',
+          text_color : '#606060',
+        })
+      }
     } else {
       BackButton.hide();
       MainButton.hide();
@@ -146,6 +156,22 @@ const First = () => {
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
   );
+  console.log(ordersInformation)
+
+  const gotIt = useMemo( () => {
+    if (ordersInformation[isDetailsActive.id].responces){
+
+      if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === 2144832745)){
+        return true
+      }
+      else{
+        return false
+      }
+    }
+    return false
+  },[ordersInformation] )
+
+
   console.log(ordersInformation)
 
   return (

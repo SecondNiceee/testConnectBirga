@@ -39,7 +39,7 @@ const AllTasks = ({isDetailsActive , setDetailsActive ,isMenuActive, setMenuActi
 
 
 
-
+    console.log(isDetailsActive)
   return (
     <div className="AllTasks">
       <FirstTop
@@ -59,8 +59,7 @@ const AllTasks = ({isDetailsActive , setDetailsActive ,isMenuActive, setMenuActi
 
           <CSSTransition
             in={isDetailsActive.isOpen}
-            
-            timeout={400}
+            timeout={400} 
             classNames="left-right"
             mountOnEnter
             unmountOnExit

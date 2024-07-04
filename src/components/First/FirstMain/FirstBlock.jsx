@@ -14,7 +14,6 @@ const FirstBlock = ({
   executionPlace,
   time,
   tonValue,
-  id,
   setDetailsActive,
   isButton,
   photos,
@@ -22,7 +21,8 @@ const FirstBlock = ({
   deleteFunction,
   myAdsFunc,
   isResponce,
-  isWatched
+  isWatched,
+  index
 
 
 }) => {
@@ -160,7 +160,7 @@ const FirstBlock = ({
               {!isMyAds && !isResponce ? 
                               <MyButton
                               style={isButton ? {} : { display: "none" }}
-                              onClick={(e) => {setDetailsActive({isOpen : true, id : id})
+                              onClick={(e) => {setDetailsActive({isOpen : true, id : index})
                               dispatch(addWatch(e.id))
               }
                             }
