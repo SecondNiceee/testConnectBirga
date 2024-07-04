@@ -22,7 +22,8 @@ const FirstBlock = ({
   myAdsFunc,
   isResponce,
   isWatched,
-  index
+  index,
+  id
 
 
 }) => {
@@ -161,7 +162,7 @@ const FirstBlock = ({
                               <MyButton
                               style={isButton ? {} : { display: "none" }}
                               onClick={(e) => {setDetailsActive({isOpen : true, id : index})
-                              dispatch(addWatch(e.id))
+                              dispatch(addWatch(id))
               }
                             }
                             >

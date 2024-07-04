@@ -162,8 +162,8 @@ const First = () => {
     if (ordersInformation[isDetailsActive.id]){
 
       if (ordersInformation[isDetailsActive.id].responces){
-  
-        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === 2144832745)){
+        console.log(ordersInformation[isDetailsActive.id].responces)
+        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === "2144832745")){
           return true
         }
         else{
@@ -172,7 +172,8 @@ const First = () => {
       }
     }
     return false
-  },[ordersInformation] )
+  },[ordersInformation, isDetailsActive.is] )
+  console.log(gotIt)
 
 
   console.log(ordersInformation)
