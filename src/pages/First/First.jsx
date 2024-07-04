@@ -36,6 +36,10 @@ const First = () => {
     shablonMaker : false,
   });
 
+  const ordersInformation = useSelector(
+    (state) => state.information.orderInformations
+  );
+
   const gotIt = useMemo( () => {
     if (ordersInformation[isDetailsActive.id]){
 
@@ -173,9 +177,7 @@ const First = () => {
     isDetailsActive,
   });
 
-  const ordersInformation = useSelector(
-    (state) => state.information.orderInformations
-  );
+
   console.log(ordersInformation)
 
 
