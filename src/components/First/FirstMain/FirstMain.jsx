@@ -5,6 +5,7 @@ import { addWatch } from "../../../store/watchedAds";
 
 const FirstMain = ({ ordersInformation, setDetailsActive , ...props}) => {
   const watchedArr = useSelector(state => state.watchedAds.watchedAds)
+  console.log(watchedArr)
   const dispatch = useDispatch()
   console.log('РЕНДЕР')
   const setDetailsActiveF = useCallback( (e,i) => {
@@ -18,7 +19,9 @@ const FirstMain = ({ ordersInformation, setDetailsActive , ...props}) => {
         <h1 className="EmptyText"> Нет таких предложений </h1>
       ) : (
         ordersInformation.map((e,i) => {
-          return <FirstBlock key={i} setDetailsActive={() => {
+          return <FirstBlock
+            isWatched={watchedArr.includes(e.id) ? true : false}
+           key={i} setDetailsActive={() => {
             setDetailsActiveF(e, i)
           }}   {...e} isButton = {true} />;
         })

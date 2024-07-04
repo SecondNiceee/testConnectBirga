@@ -4,7 +4,8 @@ import Pallete from "../../UI/Pallete/Pallete";
 import ShareIcon from "../../UI/ShareIcon/ShareIcon";
 import SmallDimond from "../../UI/SmallDimond/SmallDimond";
 import FalseTie from "../../UI/FalseTie/FalseTie";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addWatch } from "../../../store/watchedAds";
 
 let counter = 0
 const FirstBlock = ({
@@ -13,6 +14,7 @@ const FirstBlock = ({
   executionPlace,
   time,
   tonValue,
+  id,
   setDetailsActive,
   isButton,
   photos,
@@ -20,8 +22,11 @@ const FirstBlock = ({
   deleteFunction,
   myAdsFunc,
   isResponce,
+  isWatched
+
 
 }) => {
+  const dispatch = useDispatch()
   console.log("render" + counter)
   counter += 1
   console.log(executionPlace , taskName, tonValue)
@@ -112,7 +117,7 @@ const FirstBlock = ({
             {}
           }>
             <Pallete />
-            <p>{taskName}</p>
+            <p className= { isWatched ? "watchedTask" : ""}>{taskName}</p>
             <ShareIcon className="share__icon" />
           </div>
           <div className="FirstMain__middle">
@@ -155,7 +160,10 @@ const FirstBlock = ({
               {!isMyAds && !isResponce ? 
                               <MyButton
                               style={isButton ? {} : { display: "none" }}
-                              onClick={(e) => setDetailsActive(true)}
+                              onClick={(e) => {setDetailsActive({isOpen : true, id : id})
+                              dispatch(addWatch(e.id))
+              }
+                            }
                             >
                               Подробнее
                             </MyButton>

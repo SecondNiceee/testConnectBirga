@@ -35,6 +35,14 @@
   width: 100vw;
 }
 
+.watchedTask {
+  font-family: "SF Pro Display";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  color: #95979e;
+}
+
 .AllTasks {
   display: -webkit-box;
   display: -ms-flexbox;
