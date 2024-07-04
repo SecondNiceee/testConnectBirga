@@ -14,7 +14,6 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
   useEffect( () => {
     refTwo.current.value = aboutU
     if (refTwo.current.scrollHeight > 140){
-      console.log("я тут")
       if (!hideAboutMe.show){
 
         setHideAboutMe({...hideAboutMe, isActive : true})

@@ -161,7 +161,6 @@ const MyAds = () => {
     BackButton.onClick(goBack);
   } );
 
-  console.log(task);
 
 
   function setDetailsActive(value) {
@@ -176,7 +175,6 @@ const MyAds = () => {
     isOpen,
   });
 
-  console.log(secondPage);
   return (
     <>
       {myAdsArray[0] === null ? (

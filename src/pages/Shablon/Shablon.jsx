@@ -11,12 +11,10 @@ import sortFiles from "../../functions/sortFiles";
 const Shablon = ({shablon, setShablon, setActive, put, ...props}) => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  console.log(shablon )
   let localShablon = shablon
   function forward(){
     let myFormData = new FormData()
     // myFormData.append("userId" ,  window.Telegram.WebApp.initDataUnsafe.user.id )
-    console.log(shablon.name)
     myFormData.append("name" , localShablon.name )
     myFormData.append("text" , localShablon.text)
     if (put){
@@ -27,7 +25,6 @@ const Shablon = ({shablon, setShablon, setActive, put, ...props}) => {
       filesArr.removedArr.forEach((e, i) => {
         myFormData.append(`deleteFiles${i}` , e)
       })
-      console.log(shablon)
       dispatch(putShablon([myFormData , shablon.id, shablon]))
     }
     else{

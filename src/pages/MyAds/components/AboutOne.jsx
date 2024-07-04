@@ -24,7 +24,6 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
         }
       })
       let responces = im.data
-      console.log(responces)
       for (let i = 0; i < responces.length; i++){
 
         let photos = []
@@ -39,13 +38,12 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
               userId : responces[i].user.id
             }
           })
-          console.log(imTwo.data)
           alert(imTwo.data)
           responces[i].createNumber = imTwo.data
         }
         catch(e){
           alert(e)
-          console.log(e)
+
         }
       }
 
@@ -57,10 +55,9 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
       return responces
   }
 
-  console.log(responces)
+
 
   getIt(task.id).then( (resp) => {
-    console.log(resp)
     setResponces(resp)
   } )
 

@@ -56,7 +56,6 @@ const Profile = () => {
   
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
-  console.log(userInfo)
 
   const [errors , setErrors] = useState({
     stageError : false
@@ -83,8 +82,7 @@ const Profile = () => {
   userInfoLocal = userInfo
 
 
-  console.log(aboutULocal)
-  console.log(userInfoLocal.profile)
+
 
 
 
@@ -151,8 +149,6 @@ const Profile = () => {
         return true
       }
       else{
-        console.log(x.about , y.about)
-        console.log(x.stage, y.stage)
         return false
       }
       // if (JSON.stringify(x) !== JSON.stringify(y)){
@@ -176,8 +172,6 @@ const Profile = () => {
 
 
     if (!cardsActive && !changeActive){
-      console.log(userInfoLocal.profile)
-      console.log(aboutULocal)
       if ( compare2Objects(userInfoLocal.profile, aboutULocal) === false ){
           MainButton.setParams({
             text : 'Сохранить',
@@ -213,10 +207,8 @@ const Profile = () => {
             })
           }
 
-          console.log('я в шляпе')
       }
       else{
-        console.log('я тут')
         MainButton.hide()
         MainButton.offClick(save)
       }

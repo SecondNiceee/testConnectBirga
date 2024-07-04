@@ -18,7 +18,6 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
 
   async function postResponce(advertismetId, userId) {
     let myFormData = new FormData();
-    console.log(responce);
     myFormData.append("information", responce.text);
 
     myFormData.append("userId", userId);
@@ -44,10 +43,8 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
     } 
   }
 
-  console.log(shablonsArr)
   localResponce = responce;
   useEffect(() => {
-    console.log(localResponce.text.length)
       if (localResponce.text.length < 3 && step === 1){
         MainButton.setParams({
           is_active : false, //неизвесетно

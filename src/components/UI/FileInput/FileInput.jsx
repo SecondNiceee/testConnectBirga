@@ -104,7 +104,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
             }
             myRef.current.blur()
             // hideKeyboard(myRef.current)
-            console.log(myRef.current)
             
           }}
           type="file"

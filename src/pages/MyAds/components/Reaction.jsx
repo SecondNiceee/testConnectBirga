@@ -7,7 +7,6 @@ import photo from "../../../images/nonUsed/photo_2024-03-02 03.14.svg";
 import icon from "../../../images/icons/icon.svg";
 import "./../MyAds.css";
 const Reaction = ({ setOpen, put, openAboutReactionFunc, responce }) => {
-  console.log(responce.photos);
   return (
     <>
       <div className="reaction">
@@ -84,7 +83,6 @@ const Reaction = ({ setOpen, put, openAboutReactionFunc, responce }) => {
       </button>
       <button className="bottom__two" onClick = {() => {
         window.Telegram.WebApp.openTelegramLink("https://t.me/" + responce.user.link)
-        console.log("@" + responce.user.link)
       }}>Написать</button>
       <svg style={{
                 strokeWidth : "1.67px",

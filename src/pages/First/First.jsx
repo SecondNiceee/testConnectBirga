@@ -24,7 +24,6 @@ const First = () => {
     isOpen: isDetailsActiveVar,
   });
   
-  console.log(isDetailsActive)
 
   const [responce, setResponce] = useState({
     text: "",
@@ -44,7 +43,7 @@ const First = () => {
     if (ordersInformation[isDetailsActive.id]){
 
       if (ordersInformation[isDetailsActive.id].responces){
-        console.log(ordersInformation[isDetailsActive.id].responces)
+
         if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === "2144832745")){
           return true
         }
@@ -78,9 +77,11 @@ const First = () => {
         message : "Вы уже откликнулись на это задание. Заказчик обязательно увидит ваш отклик."
       })
     }
-    if (varStep === 0) {
-      setStep(step + 1);
-      varStep = step;
+    else{
+      if (varStep === 0) {
+        setStep(step + 1);
+        varStep = step;
+      }
     }
   }
   useEffect(() => {
@@ -177,14 +178,6 @@ const First = () => {
     isDetailsActive,
   });
 
-
-  console.log(ordersInformation)
-
-
-  console.log(gotIt)
-
-
-  console.log(ordersInformation)
 
   return (
     <motion.div

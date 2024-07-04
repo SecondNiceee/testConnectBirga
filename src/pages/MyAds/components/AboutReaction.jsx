@@ -39,7 +39,7 @@ const AboutReaction = ({ responce ,   ...props}) => {
 
         allCards.data.forEach(e => {
           let files = makeFile(e.files , e.photos)
-          console.log(files)
+  
           localCards.push({
               id : e.id,
               title : e.title,
@@ -57,14 +57,12 @@ const AboutReaction = ({ responce ,   ...props}) => {
       }
       catch(e){
         alert(e)
-        console.log()
       }
 
 
 
     }
     getAllCards().then((value) => {
-      console.log(value)
       setCards(value)
     })
   } , [])

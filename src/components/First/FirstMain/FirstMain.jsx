@@ -5,7 +5,6 @@ import { addWatch } from "../../../store/watchedAds";
 
 const FirstMain = ({ ordersInformation, setDetailsActive , ...props}) => {
   const watchedArr = useSelector(state => state.watchedAds.watchedAds)
-  console.log(watchedArr)
   const dispatch = useDispatch()
   const setDetailsActiveF = useCallback( (e,i) => {
     setDetailsActive({isOpen : true , id : i})

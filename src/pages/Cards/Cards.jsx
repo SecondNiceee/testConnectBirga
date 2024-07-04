@@ -127,7 +127,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
 
       let myFormData = new FormData()
-      console.log(localCardSetting)
       myFormData.append("categoryId", localCardSetting.category.id)
       myFormData.append("title" , localCardSetting.title)
       myFormData.append("description" , localCardSetting.description)

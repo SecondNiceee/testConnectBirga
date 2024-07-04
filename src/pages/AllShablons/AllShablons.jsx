@@ -25,7 +25,7 @@ const AllShablons = () => {
   );
 
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
-  console.log(shablonsArr)
+
   const [shablon, setShablon] = useState({
     isActive: false,
     shablon: {
@@ -59,7 +59,7 @@ const AllShablons = () => {
   }
 
   const putFunction = useCallback((e) => {
-    console.log(e)
+
     setShablon({
         isActive : true,
         shablon : e,

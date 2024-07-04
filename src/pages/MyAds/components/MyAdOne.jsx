@@ -32,12 +32,7 @@ const MyAdOne = ({
     setDetails( e =>  ({...e , isActive : value}))
   } , [ setDetails] )
 
-  console.log(details)
-  console.log('hi')
-
   function setChangingTask( value ){
-    console.log('Вызов этой функции')
-    console.log(value)
     setDetails({...details , task : value})
   }
 
@@ -69,7 +64,6 @@ const MyAdOne = ({
     }
   }, [putStatus]); // проверка на то, что все работает
 
-  console.log(details)
 
   const save = useCallback( () => {
 
@@ -106,12 +100,10 @@ const MyAdOne = ({
             for (let i = 0; i < files.addedArr.length ; i++){
               myFormData.append(`addFiles[${i}]` , files.addedArr[i] )
             }
-          console.log(files.addedArr)
 
           dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
 
           
-          console.log(checkMistakes(details.task))
           setDetails( {...details,
             isActive : false,
           } )
@@ -198,12 +190,10 @@ const MyAdOne = ({
             for (let i = 0; i < files.addedArr.length ; i++){
               myFormData.append(`addFiles[${i}]` , files.addedArr[i] )
             }
-          console.log(files.addedArr)
 
           dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
 
           
-          console.log(checkMistakes(details.task))
           setDetails( {...details,
             isActive : false,
           } )

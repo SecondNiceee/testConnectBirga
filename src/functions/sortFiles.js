@@ -8,7 +8,6 @@ function sortFiles(photosNames , files){
         }
     }
     for (let file of files){
-      console.log('я был тут!')
       if (file.name.includes('nick')){
         addedArr.push(file)
       }
