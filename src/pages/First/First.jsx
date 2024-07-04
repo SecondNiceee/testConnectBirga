@@ -39,6 +39,8 @@ const First = () => {
     (state) => state.information.orderInformations
   );
 
+  console.log(ordersInformation)
+
   const gotIt = useMemo( () => {
     if (ordersInformation[isDetailsActive.id]){
 

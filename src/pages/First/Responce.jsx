@@ -7,6 +7,7 @@ import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import { useDispatch, useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 import axios from "axios";
+import { addResponce } from "../../store/information";
 
 
 let localResponce ;
@@ -37,6 +38,7 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
           },
         }
       );
+      dispatch(addResponce([responce.id , responce]))
     } catch (e) {
       alert("ничего не вышло");
       console.warn(e);

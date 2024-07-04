@@ -380,6 +380,15 @@ const information = createSlice( {
 
 
     reducers : {
+        addResponce(state , action){
+          state.orderInformations = state.orderInformations.map((e) => {
+            if (e.id === action.payload[0]){
+                e.responces.push(action.payload[1])
+            }
+            return e
+          })
+          console.log(state.orderInformations)
+        },
         changeTaskInformation(state , action) {
             state.taskInformation = action.payload
         },
@@ -448,5 +457,5 @@ const information = createSlice( {
 
 
 })
-export const {changeTaskInformation , changeMyAds, addMyAds, putMyAds} = information.actions;
+export const {changeTaskInformation , changeMyAds, addMyAds, putMyAds, addResponce} = information.actions;
 export default information.reducer;
