@@ -15,7 +15,7 @@ const Shablon = ({shablon, setShablon, setActive, put, ...props}) => {
   let localShablon = shablon
   function forward(){
     let myFormData = new FormData()
-    // myFormData.append("userId" ,  2144832745 )
+    // myFormData.append("userId" ,  window.Telegram.WebApp.initDataUnsafe.user.id )
     console.log(shablon.name)
     myFormData.append("name" , localShablon.name )
     myFormData.append("text" , localShablon.text)

@@ -46,10 +46,9 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
   useEffect(() => {
       if (responce.text.length < 3 && step === 1){
         MainButton.setParams({
-          is_active : false,
-          color : '#2ea5ff',
-          text_color : '#ffffff',
-          
+          is_active : false, //неизвесетно
+          color : '#2f2f2f',
+          text_color : '#606060',
         })
       }
       else{
@@ -64,7 +63,7 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
           })
         }
       }
-  } , [responce.text]) 
+  } , [responce.tex, step]) 
 
   const forwardFunction = useCallback(() => {
     if (step !== 0){
