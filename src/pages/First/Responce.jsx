@@ -38,7 +38,7 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
           },
         }
       );
-      dispatch(addResponce([responce.id , responce]))
+      dispatch(addResponce([orderInformation.id , responce]))
     } catch (e) {
       alert("ничего не вышло");
       console.warn(e);

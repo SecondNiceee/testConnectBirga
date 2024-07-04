@@ -382,6 +382,7 @@ const information = createSlice( {
     reducers : {
         addResponce(state , action){
           state.orderInformations = state.orderInformations.map((e) => {
+            console.log(action.payload[0] , e.id )
             if (e.id === action.payload[0]){
               console.log("Тут")
                 e.responces.push(action.payload[1])
