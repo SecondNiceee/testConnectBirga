@@ -159,13 +159,16 @@ const First = () => {
   console.log(ordersInformation)
 
   const gotIt = useMemo( () => {
-    if (ordersInformation[isDetailsActive.id].responces){
+    if (ordersInformation[isDetailsActive.id]){
 
-      if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === 2144832745)){
-        return true
-      }
-      else{
-        return false
+      if (ordersInformation[isDetailsActive.id].responces){
+  
+        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === 2144832745)){
+          return true
+        }
+        else{
+          return false
+        }
       }
     }
     return false
