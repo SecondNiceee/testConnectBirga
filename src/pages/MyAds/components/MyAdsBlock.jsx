@@ -4,7 +4,7 @@ import FullPicker from "../../../components/UI/FullPicker/FullPicker";
 const values = ["Я испольнитель", "Я заказчик"];
 const keys = ["freelancer", "customer"];
 
-const MyAdsBlock = ({deals , finishedDeals  }) => {
+const MyAdsBlock = ({deals , finishedDeals , greyWidth , greyIntWidth }) => {
 
     const [nowValue , setNowKey] = useState('freelancer')
 
@@ -29,6 +29,8 @@ const MyAdsBlock = ({deals , finishedDeals  }) => {
       </div>
       <div className="pick">
         <FullPicker
+        GreyIntWidth={greyIntWidth}
+        GreyWidth={greyWidth}
           className={"MyAds__FullPicker"}
           values={values}
           nowKey={nowValue}

@@ -5,7 +5,7 @@ import 'swiper/css/bundle';
 import photo from '../../../images/nonUsed/photo.png';
 import leftArrow from '../../../images/Swiper/leftArrow.svg'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-const SwiperComponent = ({photos, index}) => {
+const SwiperComponent = ({photos, index, setClose}) => {
 
     const sliderRef = useRef(null);
     const handlePrev = useCallback(() => {
@@ -20,32 +20,38 @@ const SwiperComponent = ({photos, index}) => {
 
   return (
     <div className={cl.main} >
-        <div className={cl.blackArea}>
+        <div className={cl.blackArea} onClick={setClose} >
 
         </div>
       <Swiper
       style={{
-        width : "100vw"
+        width : "100vw",
+        lineHeight : 0
       }}
        ref={sliderRef}
        modules={[Navigation, Pagination, Scrollbar, A11y]}
         spaceBetween={50}
         slidesPerView={1}
-        initialSlide={1}
+        initialSlide={index}
         onSlideChange={() => console.log("slide change")}
         onSwiper={(swiper) => console.log(swiper)}
+
       >
+        {photos.map((e, i) => {
+          return (
+
+        <SwiperSlide style={{
+          lineHeight : 0
+        }} key={i} >
+            <div style={{
+              lineHeight : 0
+            }} className={cl.slideWrapper}>
+                <img className={cl.sliderPhoto} src={URL.createObjectURL(e)} alt="" />
+            </div>
+        </SwiperSlide>
+          )
+        })}
         
-        <SwiperSlide >
-            <div className={cl.slideWrapper}>
-                <img className={cl.sliderPhoto} src={photo} alt="" />
-            </div>
-        </SwiperSlide>
-        <SwiperSlide >
-        <div className={cl.slideWrapper}>
-                <img className={cl.sliderPhoto} src={photo} alt="" />
-            </div>
-        </SwiperSlide>
         
         {/* <SwiperSlide>Slide 3</SwiperSlide>
         <SwiperSlide>Slide 4</SwiperSlide> */}

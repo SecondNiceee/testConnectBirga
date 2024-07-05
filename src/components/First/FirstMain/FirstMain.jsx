@@ -3,7 +3,7 @@ import FirstBlock from "./FirstBlock";
 import { useDispatch, useSelector } from "react-redux";
 import { addWatch } from "../../../store/watchedAds";
 
-const FirstMain = ({ ordersInformation, setDetailsActive , ...props}) => {
+const FirstMain = ({ ordersInformation, setDetailsActive , setSliderActive, ...props}) => {
   const watchedArr = useSelector(state => state.watchedAds.watchedAds)
   const dispatch = useDispatch()
   const setDetailsActiveF = useCallback( (e,i) => {
@@ -18,6 +18,7 @@ const FirstMain = ({ ordersInformation, setDetailsActive , ...props}) => {
       ) : (
         ordersInformation.map((e,i) => {
           return <FirstBlock
+          setSlideActive={setSliderActive}
           index = {i}
             isWatched={watchedArr.includes(e.id) ? true : false}
            key={i} setDetailsActive={setDetailsActive}   {...e} isButton = {true} />;

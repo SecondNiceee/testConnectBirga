@@ -9,6 +9,9 @@ import AllTasks from "./AllTasks";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import Responce from "./Responce";
+import { CSSTransition } from "react-transition-group";
+import SwiperComponent from "../../components/UI/Swiper/Swiper";
+import SliderMain from "../../components/UI/Swiper/SliderMain";
 
 let varStep = 0;
 let isDetailsActiveVar = false;
@@ -40,6 +43,12 @@ const First = () => {
   );
 
   console.log(ordersInformation)
+
+  const [sliderActive , setSliderActive ] = useState({
+    isActive : false,
+    index : 0,
+    photos : []
+  })
 
   const gotIt = useMemo( () => {
     if (ordersInformation[isDetailsActive.id]){
@@ -88,22 +97,29 @@ const First = () => {
   }
   useEffect(() => {
     function back() {
-      if (responce.isShablonModalActive){
-        setResponce({...responce, isShablonModalActive : false})
+      if (sliderActive.isActive){
+        setSliderActive({...sliderActive, isActive : false})
       }
       else{
-        if (responce.shablonMaker){
-          setResponce({...responce , shablonMaker : false})
+
+        if (responce.isShablonModalActive){
+          setResponce({...responce, isShablonModalActive : false})
         }
         else{
-
-          if (step === 1) {
-            setStep(step - 1);
+          if (responce.shablonMaker){
+            setResponce({...responce , shablonMaker : false})
           }
-          if (step === 0) {
-            closeDetails();
+          else{
+  
+            if (step === 1) {
+              setStep(step - 1);
+            }
+            if (step === 0) {
+              closeDetails();
+            }
           }
         }
+
       }
     }
 
@@ -146,6 +162,8 @@ const First = () => {
     MainButton.setText("ОТКЛИКНУТЬСЯ");
     
   }
+
+  console.log(sliderActive)
 
 
 
@@ -207,6 +225,7 @@ const First = () => {
           ДАЛЕЕ
         </button>
         <AllTasks
+          setSliderActive = {setSliderActive}
           ordersInformation={ordersInformation}
           isDetailsActive={isDetailsActive}
           setDetailsActive={setDetailsActive}
@@ -224,6 +243,8 @@ const First = () => {
           orderInformation={ordersInformation[isDetailsActive.id]}
         />
       </div>
+
+     <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
     </motion.div>
   );
 };

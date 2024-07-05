@@ -5,9 +5,9 @@ import AdCreateFunc from '../../../components/UI/AdCreateFunc/AdCreateFunc';
 import { useDispatch } from 'react-redux';
 import { deleteAd } from '../../../store/information';
 import axios from 'axios';
-const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setDetails, dispatch}) => {
+const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setDetails, dispatch, setSliderAcitve}) => {
 
-
+    console.log(setSliderAcitve)
     const deleteFunction = useCallback( (e) => {
       window.Telegram.WebApp
       .showPopup({
@@ -45,13 +45,14 @@ const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setDeta
                 <div key={i}
                   className="block"
                   onClick={(p) => {
-                    if (p.target.closest('.FirstMain__bottom-right') === null){
+                    if (p.target.closest('.FirstMain__bottom-right') === null && (p.target.closest('.first__photos') === null ) ){
                       //  setTask(e);
                       setSecondPage({isActive : true , task : e, index : i});
                     }
                   }}
                 >
                   <FirstBlock
+                  setSlideActive={setSliderAcitve}
                   myAdsFunc = {(value) => {
                       setSecondPage({isActive : true, task : e, index : i})
                   }}
@@ -61,15 +62,15 @@ const PickerContent = ({myAdsArray  , setSecondPage , setDetailsActive , setDeta
                   }}
                     key={i}
                     isButton={true}
-                    setDetailsActive={() => {
-                      setDetails({
-                        isActive : true,
-                        task : myAdsArray[i],
-                        index : i
-                      })
+                    // setDetailsActive={() => {
+                    //   setDetails({
+                    //     isActive : true,
+                    //     task : myAdsArray[i],
+                    //     index : i
+                    //   })
                       
 
-                    }}
+                    // }}
                     {...e}
                   />
                 </div>

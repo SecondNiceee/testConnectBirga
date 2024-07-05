@@ -1,4 +1,4 @@
-import React, { useState, memo, useEffect, useCallback} from "react";
+import React, { useState, memo, useEffect, useCallback, useMemo} from "react";
 
 import MyAdsBlock from "./MyAdsBlock";
 import PickerContent from "./PickerContent";
@@ -20,8 +20,10 @@ const MyAdOne = ({
   setSecondPage,
   details,
   setDetails,
-  secondPage
+  secondPage,
+  setSliderActive
 }) => {
+  console.log(setSliderActive)
   console.log(renderConunter)
   renderConunter += 1
 
@@ -164,6 +166,14 @@ const MyAdOne = ({
     }
   } , [details.isActive,save]) // логика кнопок
 
+  const GreyIntWidth = useMemo(() => {
+    return (document.documentElement.clientWidth - 36) / 2;
+  }, []);
+  const GreyWidth = useMemo(() => {
+    return GreyIntWidth.toString() + "px";
+  }, []);
+
+
 
   return (
     <div className="my-ad-one">
@@ -205,8 +215,9 @@ const MyAdOne = ({
 
       }>Save</button>
 
-      <MyAdsBlock deals={1} finishedDeals={"0%"} />
+      <MyAdsBlock greyIntWidth={GreyIntWidth} greyWidth={GreyWidth} deals={1} finishedDeals={"0%"} />
       <PickerContent
+      setSliderAcitve={setSliderActive}
       dispatch={dispatch}
         myAdsArray={myAdsArray}
         setDetails = {setDetails}

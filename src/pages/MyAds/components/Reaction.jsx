@@ -6,7 +6,7 @@ import star from "../../../images/icons/Star.svg";
 import photo from "../../../images/nonUsed/photo_2024-03-02 03.14.svg";
 import icon from "../../../images/icons/icon.svg";
 import "./../MyAds.css";
-const Reaction = ({ setOpen, put, openAboutReactionFunc, responce }) => {
+const Reaction = ({ setOpen, put, openAboutReactionFunc, responce, setSliderActive }) => {
   return (
     <>
       <div className="reaction">
@@ -14,6 +14,13 @@ const Reaction = ({ setOpen, put, openAboutReactionFunc, responce }) => {
           <div className="reactions__images">
             {responce.photos.map((e, i) => (
               <img
+                 onClick = {() => {
+                  setSliderActive({
+                    isActive : true,
+                    index : i,
+                    photos : responce.photos
+                  })
+                 }}
                 style={responce.photos.length === 1 ? { width: "100%" } : {}}
                 src={URL.createObjectURL(e)}
                 alt=""

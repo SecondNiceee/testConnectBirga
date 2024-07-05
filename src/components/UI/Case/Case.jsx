@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useCallback } from "react";
 import cl from "./Case.module.css";
 
-const Case = ({ className, title , description , photos, changeFunction, deleteFunction,  ...props }) => {
+const Case = ({ className, title , description , photos, changeFunction, deleteFunction, setSliderActive,  ...props }) => {
+  const setSlider = useCallback( () => {
+    
+  } , [] )
   return (
     <div
       {...props} 
@@ -12,7 +15,14 @@ const Case = ({ className, title , description , photos, changeFunction, deleteF
             {photos.map((e , i) => {
               let url = URL.createObjectURL(e)
               return (
-                <img key={i} style={photos.length === 1 ? 
+                <img onClick = { () => {
+                         setSliderActive( {
+                          isActive : true ,
+                          photos : photos,
+                          index : i
+                         } )
+                        }
+                } key={i} style={photos.length === 1 ? 
                   {minWidth : '100%'} 
                   :
                   {}

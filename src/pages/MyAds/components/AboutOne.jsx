@@ -14,7 +14,7 @@ import makeNewFile from '../../../functions/newMakeFile';
 
 
 
-const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDetailsActive, setDetails }) => {
+const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDetailsActive, setDetails, setSliderAcitve }) => {
   const [responces , setResponces] = useState(null)
   const dispatch = useDispatch()
   useEffect( () => {
@@ -100,6 +100,8 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
 
         {task ? 
         <FirstBlock
+        
+        setSlideActive={setSliderAcitve}
         deleteFunction={() => {
           deleteFunction(task)
         }}
@@ -122,7 +124,7 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
             }
           } />
           :
-          <ReactionBlock responces = {responces} setOpen={setOpen} goForward = {goForward} />
+          <ReactionBlock setSliderActive = {setSliderAcitve} responces = {responces} setOpen={setOpen} goForward = {goForward} />
           }
       
           

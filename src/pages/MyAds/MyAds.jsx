@@ -15,6 +15,7 @@ import AboutReaction from "./components/AboutReaction";
 import AboutOne from "./components/AboutOne";
 import { CSSTransition } from "react-transition-group";
 import MainButton from "../../constants/MainButton";
+import SliderMain from "../../components/UI/Swiper/SliderMain";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -117,24 +118,31 @@ const MyAds = () => {
 
   useEffect(() => {
     function goBack() {
-      if (!localDetails.isActive){
 
-        if (!localAboutReaction.isActive) {
-          if (localIsOpen.isActive) {
-            setOpen({...isOpen, isActive : false});
-          } else {
-            if (localSecondPage.isActive) {
-              setSecondPage({...secondPage , isActive : false});
+      if (!sliderActive){
+
+        if (!localDetails.isActive){
+  
+          if (!localAboutReaction.isActive) {
+            if (localIsOpen.isActive) {
+              setOpen({...isOpen, isActive : false});
             } else {
-              navigate(-1);
+              if (localSecondPage.isActive) {
+                setSecondPage({...secondPage , isActive : false});
+              } else {
+                navigate(-1);
+              }
             }
+          } else {
+            setOpenAboutReaction({...openAboutReaction , isActive : false});
           }
-        } else {
-          setOpenAboutReaction({...openAboutReaction , isActive : false});
+        }
+        else{
+          
         }
       }
       else{
-        
+        setSliderActive({...sliderActive , isActive : false})
       }
 
     }
@@ -175,6 +183,15 @@ const MyAds = () => {
     isOpen,
   });
 
+  
+  const [sliderActive , setSliderActive] = useState({
+    isActive : false,
+    photos : [],
+    index : 0
+  })
+
+
+
   return (
     <>
       {myAdsArray[0] === null ? (
@@ -196,6 +213,7 @@ const MyAds = () => {
  */}
 
           <MyAdOne
+            setSliderActive = {setSliderActive}
             myAdsArray={myAdsArray}
             setTask={setTask}
             setSecondPage={setSecondPage}
@@ -214,6 +232,7 @@ const MyAds = () => {
             unmountOnExit
           >
             <AboutOne
+            setSliderAcitve={setSliderActive}
             setDetails={setDetails}
               secondPage = {secondPage}
               setSecondPage={setSecondPage}
@@ -250,6 +269,7 @@ const MyAds = () => {
           >
             <AboutReaction responce = {isOpen.responce}   />
           </CSSTransition>
+          <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
         </motion.div>
       )}
     </>
