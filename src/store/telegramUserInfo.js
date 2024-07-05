@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import makeFile from "../functions/makeFile";
+import makeNewFile from "../functions/newMakeFile";
 
 
 
@@ -144,20 +145,23 @@ export const fetchUserInfo = createAsyncThunk(
                 userId : UserId
             }
         })
-        allCards.data.forEach(e => {
-            let files = makeFile(e.files , e.photos)
-            localCards.push({
-                id : e.id,
-                title : e.title,
-                description : e.description,
-                behanceLink : e.behance,
-                dribbbleLink : e.dribble,
-                dropfileLink : e.dropFile,
-                photosNames : e.photos,
-                photos : files
-            })
-        }
-        )
+        for (let e of allCards)
+            {
+
+                let files =  await makeNewFile(e.folder, e.photos)
+                localCards.push({
+                    id : e.id,
+                    title : e.title,
+                    description : e.description,
+                    behanceLink : e.behance,
+                    dribbbleLink : e.dribble,
+                    dropfileLink : e.dropFile,
+                    photosNames : e.photos,
+                    photos : files
+                })
+            }
+        
+        
         return ( {
             firstName: firstName,
             lastName: lastName,

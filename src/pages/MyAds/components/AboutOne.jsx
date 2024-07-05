@@ -9,6 +9,7 @@ import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 import makeFile from '../../../functions/makeFile';
 import { deleteAd } from '../../../store/information';
 import { useDispatch } from 'react-redux';
+import makeNewFile from '../../../functions/newMakeFile';
 
 
 
@@ -28,9 +29,11 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
 
         let photos = []
         if (responces[i].files){
-          photos = makeFile(responces[i].files, Array(responces[i].files.length))
+           photos =  await makeNewFile(responces[i].folder, responces[i].photos)
         }
+
         responces[i].photos = photos
+
         try{
 
           let imTwo = await axios.get("https://back-birga.ywa.su/advertisement/findCount" , {

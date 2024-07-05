@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import makeFile from "../functions/makeFile";
 import makeNameFiles from "../functions/makeNameFiles";
+import makeNewFile from "../functions/newMakeFile";
 export const deleteShablon = createAsyncThunk(
   "shablon/deleteShablon",
   async function(id){
@@ -87,22 +88,24 @@ export const fetchAllShablons = createAsyncThunk(
         let localShablons = []
         let servShablons = im.data
       
-        servShablons.forEach((e,i) => 
-          {
-            let files = []
-            if (e.files){
-               files = makeFile(e.files, e.photos)
-            }
-                localShablons.push({
-                    id : e.id,
-                    name : e.name,
-                    text : e.text,
-                    photos : files, // photos - это файлы
-                    photosNames : e.photos // photosNames - это фотки
-                })
+        for (let e of servShablons){
+          
+          let files = []
+          if (e.files){
+             files = await makeNewFile(e.folder, e.photos)
+          }
+              localShablons.push({
+                  id : e.id,
+                  name : e.name,
+                  text : e.text,
+                  photos : files, // photos - это файлы
+                  photosNames : e.photos // photosNames - это фотки
+          })
+        }
+          
             
-            }
-        ) 
+            
+        
       
         console.log(localShablons)
         
