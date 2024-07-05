@@ -28,7 +28,9 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
       for (let i = 0; i < responces.length; i++){
 
         let photos = []
-        if (responces[i].files){
+
+        if (responces[i].photos){
+
            photos =  await makeNewFile(responces[i].folder, responces[i].photos)
         }
 

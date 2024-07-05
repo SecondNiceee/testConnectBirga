@@ -52,7 +52,7 @@ export const postShablon = createAsyncThunk(
         let im = await axios.post("https://back-birga.ywa.su/template" , data[0] , 
         {
           params : {
-            userId : "2144832745 "
+            userId : "2144832745"
           }
         }
         )
@@ -91,7 +91,7 @@ export const fetchAllShablons = createAsyncThunk(
         for (let e of servShablons){
           
           let files = []
-          if (e.files){
+          if (e.photos){
              files = await makeNewFile(e.folder, e.photos)
           }
               localShablons.push({

@@ -87,7 +87,8 @@
     border-radius: 6.67px;
 }
 .reaction .reactions__images img{
-    width: 183.33px;
+    min-width: 183.33px;
+    object-fit: cover;
     height: 133.67px;
     border-radius: 6.67px;
 }
