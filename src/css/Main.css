@@ -2711,6 +2711,28 @@ input {
   margin-top: 8px;
 }
 
+.saved-wraper {
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.saved-top-wrapper {
+  margin-bottom: 20px;
+}
+
+.hamster {
+  margin-top: 96px;
+}
+
 * {
   -webkit-tap-highlight-color: transparent;
 }

@@ -204,8 +204,6 @@ const First = () => {
     isDetailsActive,
   });
 
-  const orderStatus = useSelector((state) => state.information.orderStatus);
-
 
   return (
     <motion.div

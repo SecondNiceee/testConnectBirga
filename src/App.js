@@ -25,7 +25,8 @@ const AdCreating = lazy(() => import("./pages/AdCreating"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
 const Balance = lazy(() => import("./pages/Balance"));
 const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
-const AllShablons = lazy( () => import("./pages/AllShablons/AllShablons") )
+const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
+const SavedPage = lazy( () => import("./pages/SavedPage/SavedPage") )
 
 const MyLoader = () => {
   return (
@@ -67,7 +68,7 @@ const AnimatedSwitch = () => {
         style={isMenuActive ? { opacity: "0.6" } : { maxWidth: "0px" }}
         className="black"
       ></div>
-      
+
       <AnimatePresence>
         <Routes location={location} key={location.pathname}>
           <Route
@@ -79,7 +80,14 @@ const AnimatedSwitch = () => {
             }
           />
 
-
+          <Route
+            path="/savedPage"
+            element={
+              <Suspense fallback={<MyLoader />}>
+                  <SavedPage />
+              </Suspense>
+            }
+          />
 
           <Route
             path="/AdCreating"
@@ -132,8 +140,6 @@ const AnimatedSwitch = () => {
 };
 
 function App() {
-
-
   // useEffect( () => {
   //   document.documentElement.style.overflowY = 'hidden'
   //   document.documentElement.style.marginTop = '15px'
@@ -141,24 +147,38 @@ function App() {
   // },[] )
 
 
-  
-  const dispatch = useDispatch()
+  window.Telegram.WebApp
+  .showPopup({
+    title: "Мое окно из улицы",
+    message: "даааааааа",
+    buttons: [
+      { id: "save", type: "default", text: "Да" },
+      { id: "delete", type: "destructive", text: "Нет" },
+      {id : "jj" , type : "default", text : "Отмена"},
+    ],
+  } , (buttonId) => {
+
+    if (buttonId === "delete" || buttonId === null) {
+      // setShablon({...shablon , isActive : false})
+    }
+    if (buttonId === "save") {
+
+      dispatch(deleteShablon(e.id))
+  } })
+
+  const dispatch = useDispatch();
 
   window.Telegram.WebApp.expand();
-
-
-
-  
 
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
-    dispatch(fetchMyOrders())
-    dispatch(getCategorys())
-    dispatch(getSubCategorys())
-    dispatch(getCategorys())
-    dispatch(getSubCategorys())
-    dispatch(fetchAllShablons())
+    dispatch(fetchMyOrders());
+    dispatch(getCategorys());
+    dispatch(getSubCategorys());
+    dispatch(getCategorys());
+    dispatch(getSubCategorys());
+    dispatch(fetchAllShablons());
   }, [dispatch]);
   return (
     <BrowserRouter>

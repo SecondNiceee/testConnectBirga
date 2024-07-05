@@ -26,45 +26,40 @@ const FullPicker = ({
         style={{ width: GreyWidth, transform: myTransform }}
         className={cl.greyBlock}
       ></div>
-      {nowKey === keys[0] ? (
-        <p
-          className={cl.bigValue}
-          onClick={(e) => {
-            setNowKey(keys[0]);
-          }}
-        >
-          {values[0]}
-        </p>
-      ) : (
-        <p
-          className={cl.value}
-          onClick={(e) => {
-            setNowKey(keys[0]);
-          }}
-        >
-          {values[0]}
-        </p>
-      )}
 
-      {nowKey === keys[1] ? (
-        <p
-          className={cl.bigValue}
-          onClick={(e) => {
-            setNowKey(keys[1]);
-          }}
-        >
-          {values[1]}
-        </p>
-      ) : (
-        <p
-          className={cl.value}
-          onClick={(e) => {
-            setNowKey(keys[1]);
-          }}
-        >
-          {values[1]}
-        </p>
-      )}
+      {keys.map((e, i) => {
+        return (
+          <>
+            {nowKey === keys[i] ? (
+              <p key={i}
+                className={cl.bigValue}
+                onClick={(e) => {
+                  setNowKey(keys[i]);
+                }}
+              >
+                {values[i]}
+              </p>
+            ) : (
+              <p key={i}
+                className={cl.value}
+                onClick={(e) => {
+                  setNowKey(keys[i]);
+                }}
+              >
+                {values[i]}
+              </p>
+            )}
+          </>
+        )
+      })}
+
+
+
+
+
+
+
+
     </div>
   );
 };
