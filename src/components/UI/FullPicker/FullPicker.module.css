@@ -22,6 +22,22 @@
     text-align: center;
     z-index: 10;
 }
+.bigValue{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+
+    color: rgb(255, 255, 255);
+    font-family: "SF Pro Text 600";
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16.7px;
+    letter-spacing: -0.08px;
+    text-align: center;
+    z-index: 10;
+}
 .greyBlock{
     position: absolute;
     border: 0.52px solid rgba(0, 0, 0, 0.04);
