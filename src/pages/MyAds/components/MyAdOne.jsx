@@ -174,6 +174,9 @@ const MyAdOne = ({
   }, []);
 
 
+  const [nowValue , setNowKey] = useState('customer')
+
+
 
   return (
     <div className="my-ad-one">
@@ -215,8 +218,9 @@ const MyAdOne = ({
 
       }>Save</button>
 
-      <MyAdsBlock greyIntWidth={GreyIntWidth} greyWidth={GreyWidth} deals={1} finishedDeals={"0%"} />
+      <MyAdsBlock setNowKey={setNowKey} nowValue = {nowValue} greyIntWidth={GreyIntWidth} greyWidth={GreyWidth} deals={1} finishedDeals={"0%"} />
       <PickerContent
+      nowValue={nowValue}
       setSliderAcitve={setSliderActive}
       dispatch={dispatch}
         myAdsArray={myAdsArray}

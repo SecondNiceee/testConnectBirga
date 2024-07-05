@@ -119,7 +119,7 @@ const MyAds = () => {
   useEffect(() => {
     function goBack() {
 
-      if (!sliderActive){
+      if (!sliderActive.isActive){
 
         if (!localDetails.isActive){
   

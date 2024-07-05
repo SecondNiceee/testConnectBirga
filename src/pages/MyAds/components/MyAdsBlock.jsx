@@ -4,9 +4,9 @@ import FullPicker from "../../../components/UI/FullPicker/FullPicker";
 const values = ["Я испольнитель", "Я заказчик"];
 const keys = ["freelancer", "customer"];
 
-const MyAdsBlock = ({deals , finishedDeals , greyWidth , greyIntWidth }) => {
+const MyAdsBlock = ({deals , nowValue, setNowKey, finishedDeals , greyWidth , greyIntWidth }) => {
 
-    const [nowValue , setNowKey] = useState('freelancer')
+
 
   return (
     <div className="MyAdsBlock">

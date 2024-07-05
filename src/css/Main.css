@@ -2536,6 +2536,21 @@ input {
   margin-top: 8px;
 }
 
+.PickerContent {
+  min-width: calc(200vw - 32px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 16px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  padding-right: 16px;
+}
+
+.picker__block {
+  width: 50%;
+}
+
 .responce-wrapper {
   min-width: 100vw;
   padding-top: 18px;

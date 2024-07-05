@@ -136,6 +136,12 @@ const First = () => {
     } else {
       BackButton.hide();
       MainButton.hide();
+      MainButton.setParams({
+        is_active : true,
+        color : '#2ea5ff',
+        text_color : '#ffffff'
+        
+      })
     }
     return () => {
       MainButton.offClick(forward);
@@ -213,7 +219,7 @@ const First = () => {
       transition={{ duration: 0.1, duration: 0 }}
     >
       <div className="first-wrapper" style={style}>
-        <button
+        {/* <button
           onClick={forward}
           style={{
             zIndex: "1000",
@@ -223,7 +229,7 @@ const First = () => {
           }}
         >
           ДАЛЕЕ
-        </button>
+        </button> */}
         <AllTasks
           setSliderActive = {setSliderActive}
           ordersInformation={ordersInformation}

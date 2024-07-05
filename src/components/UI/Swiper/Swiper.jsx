@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import cl from './Swiper.module.css'
 import 'swiper/css/bundle';
@@ -17,9 +17,26 @@ const SwiperComponent = ({photos, index, setClose}) => {
       sliderRef.current.swiper.slideNext();
     }, []);
 
+    useEffect( () => {
+      setTimeout( () => {
+        document.addEventListener('click' , check)
+      }, 500 )
+      function check(e){
+        if (!Array.from(e.target.classList).includes('nick') && !Array.from(e.target.classList).includes('arrow')){
+          setClose()
+        }
+      }
+      
+      return () => {
+        document.removeEventListener('click' , check)
+      }
+
+    } , [] )
+
+
 
   return (
-    <div className={cl.main} >
+    <div className={cl.main}  >
         <div className={cl.blackArea} onClick={setClose} >
 
         </div>
@@ -40,13 +57,17 @@ const SwiperComponent = ({photos, index, setClose}) => {
         {photos.map((e, i) => {
           return (
 
-        <SwiperSlide style={{
-          lineHeight : 0
+        <SwiperSlide
+        className={cl.slide}
+         style={{
+          lineHeight : 0,
+          height : "fit-content",
+          marginTop : "auto"
         }} key={i} >
             <div style={{
               lineHeight : 0
             }} className={cl.slideWrapper}>
-                <img className={cl.sliderPhoto} src={URL.createObjectURL(e)} alt="" />
+                <img className={[cl.sliderPhoto, "nick"].join(' ')} src={URL.createObjectURL(e)} alt="" />
             </div>
         </SwiperSlide>
           )
@@ -58,8 +79,8 @@ const SwiperComponent = ({photos, index, setClose}) => {
         ...
       </Swiper>
       <div className={cl.navigationBlock}>
-        <img className={cl.nextArrow}onClick={handlePrev} src= {leftArrow} alt="" />
-        <img className={cl.prevArrow} onClick={handleNext} src={leftArrow} alt="" />
+        <img  className={[cl.nextArrow , "arrow"].join(' ')}onClick={handlePrev} src= {leftArrow} alt="" />
+        <img  className={[cl.prevArrow, "arrow"].join(' ')} onClick={handleNext} src={leftArrow} alt="" />
       </div>
     </div>
   );

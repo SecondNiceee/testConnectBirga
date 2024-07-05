@@ -230,3 +230,14 @@
     color: #95979e;
     margin-top: 8px;
 }
+
+.PickerContent{
+    min-width: calc(200vw - 32px);
+    display: flex;
+     gap: 16px;
+    transition: 0.3s;
+    padding-right: 16px;
+}
+.picker__block{
+    width: 50%;
+}
