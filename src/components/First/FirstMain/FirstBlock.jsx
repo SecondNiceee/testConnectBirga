@@ -30,7 +30,6 @@ const FirstBlock = ({
   const dispatch = useDispatch()
   console.log("render" + counter)
   counter += 1
-  console.log(executionPlace , taskName, tonValue)
   const tonConstant = useSelector((state) => state.ton.value);
   var options = {
     year: "numeric",
