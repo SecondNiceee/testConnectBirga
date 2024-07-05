@@ -163,7 +163,6 @@ function App() {
     }
     if (buttonId === "save") {
 
-      dispatch(deleteShablon(e.id))
   } })
 
   const dispatch = useDispatch();
