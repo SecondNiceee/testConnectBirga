@@ -12,7 +12,7 @@ const ChoicerInfo = ({text}) => {
             justifyContent : "center",
             marginLeft : "auto",
             marginRight : "auto",
-            width : "230px"
+            width : "260    px"
         }
         
       };

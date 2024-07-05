@@ -149,13 +149,12 @@ function App() {
   console.log('приыет')
   window.Telegram.WebApp
   .showPopup({
-    title: "Мое окно из улицы",
-    message: "даааааааа",
+    title: "Удалить?",
+    message: "Вы хотите удалить этот шаблон?",
     buttons: [
       { id: "save", type: "default", text: "Да" },
       { id: "delete", type: "destructive", text: "Нет" },
-      {id : "jj" , type : "cancel"},
-      {id : "jjss" , type : "close"}
+      {id : "dss" , type : "cancel"}
     ],
   } , (buttonId) => {
 
@@ -164,6 +163,7 @@ function App() {
     }
     if (buttonId === "save") {
 
+      // dispatch(deleteShablon(e.id))
   } })
 
   const dispatch = useDispatch();
