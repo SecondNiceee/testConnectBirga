@@ -15,8 +15,9 @@ import Stage from "../../../components/UI/Stage/Stage";
 import Compact from "../../../components/UI/Compact/Compact";
 import { useDispatch } from "react-redux";
 import { changeMenuActive } from "../../../store/menuSlice";
+import makeNewFile from "../../../functions/newMakeFile";
 
-const AboutReaction = ({ responce ,   ...props}) => {
+const AboutReaction = ({ responce , setSliderActive,   ...props}) => {
   const dispatch = useDispatch()
   const setMenuActive = useCallback(
     (arg) => {
@@ -37,9 +38,11 @@ const AboutReaction = ({ responce ,   ...props}) => {
             }
         })
 
-        allCards.data.forEach(e => {
-          let files = makeFile(e.files , e.photos)
-  
+        
+        for (let e of allCards.data){
+
+          let files = await makeNewFile(e.folder , e.photos)
+          console.log(files)
           localCards.push({
               id : e.id,
               title : e.title,
@@ -50,19 +53,22 @@ const AboutReaction = ({ responce ,   ...props}) => {
               photosNames : e.photos,
               photos : files
           })
-      })
+        }
+    
       return localCards
 
 
       }
       catch(e){
         alert(e)
+        console.log()
       }
 
 
 
     }
     getAllCards().then((value) => {
+      console.log(value)
       setCards(value)
     })
   } , [])
@@ -85,7 +91,7 @@ const AboutReaction = ({ responce ,   ...props}) => {
 
 
       {cards === null ? <MyLoader/> :
-      <ExampleWorks cards={cards}/>}
+      <ExampleWorks setSliderActive = {setSliderActive} cards={cards}/>}
 
 
 

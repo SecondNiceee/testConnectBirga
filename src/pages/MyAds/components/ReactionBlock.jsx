@@ -2,7 +2,7 @@ import React from "react";
 import upDown from "../../../images/icons/UpDown.svg";
 import Reaction from './Reaction';
 import axios from "axios";
-const ReactionBlock = ({goForward , setOpen, responces,setSliderActive }) => {
+const ReactionBlock = ({goForward , setOpen, responces,setSliderActive,openAboutReactionFunc }) => {
 
   return (
     <div className="reactions__block">
@@ -18,6 +18,7 @@ const ReactionBlock = ({goForward , setOpen, responces,setSliderActive }) => {
         {responces.map((e, i) => {
           return (
             <Reaction 
+            openAboutReactionFunc={openAboutReactionFunc}
             setSliderActive = {setSliderActive}
             responce = {e}
              setOpen={() => {

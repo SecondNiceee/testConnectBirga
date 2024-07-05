@@ -17,6 +17,8 @@ import options from "../../../constants/options";
 let start;
 let move;
 const LastAds = ({
+  setSliderActive,
+  sliderActive,
   aboutReaction,
   isOpen,
   setOpen,
@@ -133,7 +135,7 @@ const LastAds = ({
 
       {/* <LastTop name = {name} photo = {photo} stage = {stage} openAboutReactionFunc={openAboutReactionFunc} /> */}
 
-      <Reaction openAboutReactionFunc = {openAboutReactionFunc} put={true} responce={responce} />
+      <Reaction setSliderActive={setSliderActive}  openAboutReactionFunc = {openAboutReactionFunc} put={true} responce={responce} />
       
       {/* <LastImages images = {images} /> */}
       

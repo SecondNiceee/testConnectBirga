@@ -112,11 +112,12 @@ const MyAds = () => {
 
   const navigate = useNavigate();
   
-  function writeFucntion(){
-    window.Telegram.WebApp.openTelegramLink("https://t.me/" + isOpen.responce.user.link)
-  }
+
 
   useEffect(() => {
+    function writeFucntion(){
+      window.Telegram.WebApp.openTelegramLink("https://t.me/" + isOpen.responce.user.link)
+    }
     function goBack() {
 
       if (!sliderActive.isActive){
@@ -167,7 +168,11 @@ const MyAds = () => {
     
     }
     BackButton.onClick(goBack);
-  } );
+    return () => {
+      MainButton.offClick(writeFucntion)
+    }
+    
+  }, [isOpen.isActive , sliderActive.isActive, openAboutReaction.isActive, sliderActive.isActive, details.isActive] );
 
 
 
@@ -189,6 +194,8 @@ const MyAds = () => {
     photos : [],
     index : 0
   })
+
+  
 
 
 
@@ -240,6 +247,7 @@ const MyAds = () => {
               setOpen={setOpen}
               task={myAdsArray[secondPage.index]}
               setMenuActive={setMenuActive}
+              openAboutReactionFunc={setOpenAboutReaction}
             />
           </CSSTransition>
 
@@ -251,6 +259,8 @@ const MyAds = () => {
             unmountOnExit
           >
             <LastAds
+            setSliderActive = {setSliderActive}
+            sliderActive = {sliderActive}
             responce = {isOpen.responce}
               openAboutReactionFunc={setOpenAboutReaction}
               openAboutReaction={openAboutReaction}
@@ -267,7 +277,7 @@ const MyAds = () => {
             mountOnEnter
             unmountOnExit
           >
-            <AboutReaction responce = {isOpen.responce}   />
+            <AboutReaction setSliderActive={setSliderActive} responce = {openAboutReaction.responce}   />
           </CSSTransition>
           <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
         </motion.div>

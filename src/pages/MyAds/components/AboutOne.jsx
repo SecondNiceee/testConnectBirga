@@ -14,7 +14,7 @@ import makeNewFile from '../../../functions/newMakeFile';
 
 
 
-const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDetailsActive, setDetails, setSliderAcitve }) => {
+const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDetailsActive, setDetails, setSliderAcitve, openAboutReactionFunc }) => {
   const [responces , setResponces] = useState(null)
   const dispatch = useDispatch()
   useEffect( () => {
@@ -43,7 +43,6 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
               userId : responces[i].user.id
             }
           })
-          alert(imTwo.data)
           responces[i].createNumber = imTwo.data
         }
         catch(e){
@@ -124,7 +123,7 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
             }
           } />
           :
-          <ReactionBlock setSliderActive = {setSliderAcitve} responces = {responces} setOpen={setOpen} goForward = {goForward} />
+          <ReactionBlock openAboutReactionFunc = {openAboutReactionFunc}  setSliderActive = {setSliderAcitve} responces = {responces} setOpen={setOpen} goForward = {goForward} />
           }
       
           
