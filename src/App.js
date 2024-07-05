@@ -152,7 +152,7 @@ function App() {
     title: "Удалить?",
     message: "Вы хотите удалить этот шаблон?",
     buttons: [
-      { id: "save", type: "default", text: "Да" },
+      { id: "save", type: "ok", text: "Да" },
       { id: "delete", type: "destructive", text: "Нет" },
       {id : "dss" , type : "cancel"}
     ],
