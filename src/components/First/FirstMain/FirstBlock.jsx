@@ -165,6 +165,10 @@ const FirstBlock = ({
                 </>
               )}
 
+{!isResponce && !isMyAds ? <FalseTie className={"tie"} /> :
+              <></>
+                }
+
               {!isMyAds && !isResponce ? 
                               <MyButton
                               style={isButton ? {} : { display: "none" }}
@@ -209,9 +213,7 @@ const FirstBlock = ({
                            </>
               }
               
-              {!isResponce && !isMyAds ? <FalseTie className={"tie"} /> :
-              <></>
-                }
+
 
 
             </div>
