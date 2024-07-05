@@ -56,7 +56,6 @@ export const postShablon = createAsyncThunk(
         }
         )
 
-        let localShablon = data[1]
         let files = makeNameFiles(data[1].photos, im.data.photos)
         return {
           ...data[1],
