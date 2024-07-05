@@ -111,6 +111,13 @@ const MyAds = () => {
   const [task, setTask] = useState(myAdsArray[0]);
 
   const navigate = useNavigate();
+
+  const [sliderActive , setSliderActive] = useState({
+    isActive : false,
+    photos : [],
+    index : 0
+  })
+
   
 
 
@@ -189,11 +196,6 @@ const MyAds = () => {
   });
 
   
-  const [sliderActive , setSliderActive] = useState({
-    isActive : false,
-    photos : [],
-    index : 0
-  })
 
   
 
