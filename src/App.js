@@ -154,7 +154,7 @@ function App() {
     buttons: [
       { id: "save", type: "default", text: "Да" },
       { id: "delete", type: "destructive", text: "Нет" },
-      {id : "jj" , type : "default", text : "Отмена"},
+      {id : "jj" , type : "cancel", text : "Отмена"},
     ],
   } , (buttonId) => {
 
