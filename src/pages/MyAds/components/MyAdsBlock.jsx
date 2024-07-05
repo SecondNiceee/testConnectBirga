@@ -1,9 +1,8 @@
 import React from "react";
 import upDown from "../../../images/icons/UpDown.svg";
 import FullPicker from "../../../components/UI/FullPicker/FullPicker";
-const values = ["Я испольнитель", "Я заказчик"];
+const values = ["Я исполнитель", "Я заказчик"];
 const keys = ["freelancer", "customer"];
-
 const MyAdsBlock = ({deals , nowValue, setNowKey, finishedDeals , greyWidth , greyIntWidth }) => {
 
 
