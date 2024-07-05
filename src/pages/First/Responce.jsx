@@ -16,7 +16,6 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
   const dispatch = useDispatch();
 
 
-
   async function postResponce(advertismetId, userId) {
     let myFormData = new FormData();
     myFormData.append("information", responce.text);
@@ -88,16 +87,15 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
           setStep(0)
           setDetailsActive((value) => ({...value , isOpen : false}))
       } })
-      postResponce(orderInformation.id, 2144832745 );
     }
-  }, [responce]);
+  }, [responce, step]);
 
   useEffect(() => {
     MainButton.onClick(forwardFunction);
     return () => {
       MainButton.offClick(forwardFunction);
     };
-  }, [responce]);
+  }, [responce, step]);
 
   return (
     <div className="responce-wrapper">
