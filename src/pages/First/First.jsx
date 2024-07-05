@@ -239,6 +239,7 @@ const First = () => {
           isMenuActive={isMenuActive}
         />
 
+        {ordersInformation === "complete" ? 
         <Responce
           setStep = {setStep}
           setDetailsActive = {setDetailsActive}
@@ -248,6 +249,9 @@ const First = () => {
           MainButton={MainButton}
           orderInformation={ordersInformation[isDetailsActive.id]}
         />
+        :
+        <></>
+        }
       </div>
 
      <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
