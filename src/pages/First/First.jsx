@@ -241,7 +241,7 @@ const First = () => {
           isMenuActive={isMenuActive}
         />
 
-        {orderStatus === "complete" ? 
+        {ordersInformation[isDetailsActive.id]  ? 
         <Responce
           setStep = {setStep}
           setDetailsActive = {setDetailsActive}
