@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import upDown from "../../../images/icons/UpDown.svg";
 import FullPicker from "../../../components/UI/FullPicker/FullPicker";
 const values = ["Я испольнитель", "Я заказчик"];

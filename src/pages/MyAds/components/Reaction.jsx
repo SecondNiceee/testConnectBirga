@@ -1,10 +1,7 @@
 import React from "react";
-import tie from "../../../images/icons/Tie.svg";
-import share from "../../../images/icons/Share.svg";
-import star from "../../../images/icons/Star.svg";
 
-import photo from "../../../images/nonUsed/photo_2024-03-02 03.14.svg";
-import icon from "../../../images/icons/icon.svg";
+import share from "../../../images/icons/Share.svg";
+
 import "./../MyAds.css";
 const Reaction = ({ setOpen, put, openAboutReactionFunc, responce, setSliderActive }) => {
   return (

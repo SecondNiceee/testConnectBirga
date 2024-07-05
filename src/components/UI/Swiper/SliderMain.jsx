@@ -5,7 +5,7 @@ import SwiperComponent from './Swiper';
 const SliderMain = ({sliderActive, setSliderActive}) => {
     const setClose = useCallback( () => {
             setSliderActive({...sliderActive , isActive : false })
-    } , [sliderActive])
+    } , [sliderActive, setSliderActive])
     return (
         <CSSTransition
         in = {sliderActive.isActive}

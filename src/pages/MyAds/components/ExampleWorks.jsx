@@ -1,5 +1,4 @@
 import React from "react";
-import photo from "../../../images/nonUsed/photo_2024-03-02 03.14.svg";
 import Case from "../../../components/UI/Case/Case";
 
 const ExampleWorks = ({cards , setSliderActive}) => {

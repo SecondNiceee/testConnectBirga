@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import cl from './Swiper.module.css'
 import 'swiper/css/bundle';
-import photo from '../../../images/nonUsed/photo.png';
 import leftArrow from '../../../images/Swiper/leftArrow.svg'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
 const SwiperComponent = ({photos, index, setClose}) => {
@@ -31,7 +30,7 @@ const SwiperComponent = ({photos, index, setClose}) => {
         document.removeEventListener('click' , check)
       }
 
-    } , [] )
+    } , [setClose] )
 
 
 

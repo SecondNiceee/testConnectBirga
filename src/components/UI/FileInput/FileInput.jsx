@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
-import trash from "../../../images/icons/trash.svg";
 let counter = 0;
 const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);

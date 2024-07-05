@@ -1,15 +1,10 @@
-import React, { memo, useCallback } from "react";
+import React, { memo } from "react";
 import FirstBlock from "./FirstBlock";
-import { useDispatch, useSelector } from "react-redux";
-import { addWatch } from "../../../store/watchedAds";
+import {  useSelector } from "react-redux";
 
 const FirstMain = ({ ordersInformation, setDetailsActive , setSliderActive, ...props}) => {
   const watchedArr = useSelector(state => state.watchedAds.watchedAds)
-  const dispatch = useDispatch()
-  const setDetailsActiveF = useCallback( (e,i) => {
-    setDetailsActive({isOpen : true , id : i})
-    dispatch(addWatch(e.id))
-  } , [] )
+
   return (
     <div {...props} className="FirstMain">
 

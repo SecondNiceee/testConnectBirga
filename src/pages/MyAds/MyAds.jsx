@@ -108,7 +108,7 @@ const MyAds = () => {
 
 
 
-  const [task, setTask] = useState(myAdsArray[0]);
+
 
   const navigate = useNavigate();
 
@@ -178,8 +178,9 @@ const MyAds = () => {
     return () => {
       MainButton.offClick(writeFucntion)
     }
-    
-  }, [isOpen.isActive , sliderActive.isActive, openAboutReaction.isActive, sliderActive.isActive, details.isActive] );
+
+    // eslint-disable-next-line
+  }, [isOpen.isActive , sliderActive.isActive, openAboutReaction.isActive, sliderActive.isActive, details.isActive, isOpen, navigate] );
 
 
 
@@ -224,7 +225,6 @@ const MyAds = () => {
           <MyAdOne
             setSliderActive = {setSliderActive}
             myAdsArray={myAdsArray}
-            setTask={setTask}
             setSecondPage={setSecondPage}
             setOpenAboutReaction={setOpenAboutReaction}
             details={details}

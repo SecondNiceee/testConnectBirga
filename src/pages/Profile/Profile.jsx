@@ -24,7 +24,6 @@ import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
 import { changeProfile, deleteCard, deleteServerCard, putUserInfo } from "../../store/telegramUserInfo";
-import shablon from "../../store/shablon";
 import SliderMain from "../../components/UI/Swiper/SliderMain";
 
 
@@ -234,7 +233,7 @@ const Profile = () => {
        
     }
 
-  }, [aboutU , changeActive, cardsActive, save, errors.stageError , userInfo.profile, userInfoLocal.profile ]  )
+  }, [aboutU , changeActive, cardsActive, save, errors.stageError , userInfo.profile ]  )
 
 
   

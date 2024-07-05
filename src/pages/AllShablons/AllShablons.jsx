@@ -15,7 +15,7 @@ const AllShablons = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-  const isMenuActive = useSelector((state) => state.menu.value);
+
 
   const setMenuActive = useCallback(
     (arg) => {
@@ -65,7 +65,7 @@ const AllShablons = () => {
         shablon : e,
         put : true
     })
-  } , [shablon, setShablon])
+  } , [ setShablon])
 
   const deleteFunction = useCallback((e) => {
     window.Telegram.WebApp
@@ -86,13 +86,13 @@ const AllShablons = () => {
         dispatch(deleteShablon(e.id))
     } })
     
-  })
+  }, [dispatch])
 
 
   useEffect( () => {
     function back(){
       if (shablon.isActive){
-          setShablon({...shablon , isActive : false})
+          setShablon( (value) =>  ({...value , isActive : false})   )      
       }
       else{
         navigate(-1)
@@ -102,7 +102,7 @@ const AllShablons = () => {
     return () => {
       BackButton.offClick(back)
     }
-  } , [shablon.isActive] )
+  } , [shablon.isActive, navigate] )
 
   return (
     <div className="all-shablon-wrapper">

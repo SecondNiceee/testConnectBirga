@@ -117,7 +117,7 @@ const MyAdOne = ({
     } else {
       setDetailsActive(false);
     }
-  }, [details , dispatch , myAdsArray , setDetails , setDetailsActive  ] ) // функция сохранения , а также модалка телеграма
+  }, [details , dispatch , myAdsArray , setDetails , setDetailsActive, secondPage.index  ] ) // функция сохранения , а также модалка телеграма
 
 
 
@@ -171,7 +171,7 @@ const MyAdOne = ({
   }, []);
   const GreyWidth = useMemo(() => {
     return GreyIntWidth.toString() + "px";
-  }, []);
+  }, [GreyIntWidth]);
 
 
   const [nowValue , setNowKey] = useState('customer')

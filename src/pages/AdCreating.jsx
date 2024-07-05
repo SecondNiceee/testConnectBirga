@@ -6,15 +6,11 @@ import AdCreatingTwo from "./ADCreatingTwo/AdCreatingTwo/AddCreatingTwo";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addMyAds,
-  changeTaskInformation,
-  postInformation,
   postMyTask,
 } from "../store/information";
 import BackButton from "../constants/BackButton";
 import MainButton from "../constants/MainButton";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import PostLoader from "../loaders/PostLoader";
 
 let spet = 0;
@@ -41,11 +37,12 @@ const AdCreating = () => {
 
   useEffect(() => {
     if (categorys && subCategorys) {
-      setTaskInformation({
-        ...taskInformation,
+      setTaskInformation(
+        (value) => ({...value,
         category: categorys.find((e) => e.category === "Другое"),
         subCategory: subCategorys.find((e) => e.subCategory === "Нет"),
-      });
+      })
+      );
     }
   }, [categorys, subCategorys]);
 
@@ -248,6 +245,10 @@ const AdCreating = () => {
       case 2: {
         return true;
       }
+      default: {
+        alert('Error (что - то не так пошло..')
+        return false
+      }
     }
   }
 
@@ -286,7 +287,7 @@ const AdCreating = () => {
   }, []);
   const GreyWidth = useMemo(() => {
     return GreyIntWidth.toString() + "px";
-  }, []);
+  }, [GreyIntWidth]);
 
   useEffect(() => {
     MainButton.onClick(goForward);

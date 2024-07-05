@@ -1,10 +1,7 @@
-import React, { useCallback } from "react";
+import React from "react";
 import cl from "./Case.module.css";
 
 const Case = ({ className, title , description , photos, changeFunction, deleteFunction, setSliderActive,  ...props }) => {
-  const setSlider = useCallback( () => {
-    
-  } , [] )
   return (
     <div
       {...props} 

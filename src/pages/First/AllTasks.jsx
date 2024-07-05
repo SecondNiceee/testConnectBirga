@@ -1,11 +1,10 @@
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import FirstMain from "../../components/First/FirstMain/FirstMain";
 import FirstTop from "../../components/First/FirstMain/FirstTop";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import FirstLoader from "../../loaders/FirstLoader";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
 import { useDispatch, useSelector } from "react-redux";
-import { changeMenuActive } from "../../store/menuSlice";
 import { fetchTasksInformation } from "../../store/information";
 import { CSSTransition } from "react-transition-group";
 // let count = 0
@@ -22,7 +21,7 @@ const AllTasks = ({
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTasksInformation("getOrders"));
-  }, []);
+  }, [dispatch]);
 
   const orderStatus = useSelector((state) => state.information.orderStatus);
 

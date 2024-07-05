@@ -1,21 +1,11 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback } from "react";
 
-import WhiteBlock from "./WhiteBlock";
-
-import LastTop from "./LastTop";
-import LastImages from "./LastImages";
-import LastSertificates from "./LastSertificates";
-import Cap from "../../../components/UI/Cap/Cap";
 import Top from "../../../components/UI/Top/Top";
-import ReactionBlock from "./ReactionBlock";
 import Reaction from "./Reaction";
-import AboutMain from "./AboutMain";
 import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeMenuActive } from "../../../store/menuSlice";
 import options from "../../../constants/options";
-let start;
-let move;
 const LastAds = ({
   setSliderActive,
   sliderActive,

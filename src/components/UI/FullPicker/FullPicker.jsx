@@ -1,16 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, {  useMemo} from 'react';
 import cl from './FullPicker.module.css'
 const FullPicker = ({values , keys , nowKey , setNowKey, className , GreyIntWidth, GreyWidth }) => {
 
-    const  MyValues = values.map((e, i) => (
-        <p key = {i} className={cl.value} onClick={(e) => {
-            setNowKey(keys[i]) 
 
-        } 
-        } >
-        {e}
-         </p>
-    ))
 
     const myTransform = useMemo( () => {
         for (let i = 0; i < keys.length ; i++ ){
@@ -21,7 +13,7 @@ const FullPicker = ({values , keys , nowKey , setNowKey, className , GreyIntWidt
                 return 'translateX(' + ((GreyIntWidth*i) + 2).toString() + 'px)'
             }
         }
-    } , [nowKey ] )
+    } , [nowKey, GreyIntWidth, keys ] )
     return (
         <div   className={className ? [cl.track , className].join(' ') : cl.track}>
             <div style={{width : GreyWidth, transform : myTransform}} className={cl.greyBlock}></div>

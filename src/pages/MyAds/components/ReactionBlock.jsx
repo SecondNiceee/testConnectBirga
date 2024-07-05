@@ -1,7 +1,7 @@
 import React from "react";
 import upDown from "../../../images/icons/UpDown.svg";
 import Reaction from './Reaction';
-import axios from "axios";
+
 const ReactionBlock = ({goForward , setOpen, responces,setSliderActive,openAboutReactionFunc }) => {
 
   return (

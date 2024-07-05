@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
-import submit from "../../../images/icons/Subtract.svg";
-import star from "../../../images/icons/Star.svg";
+
 const AboutInfo = ({responce}) => {
   const counter = useMemo(() => {
     if (Number(responce.createNumber) === 1){
@@ -14,8 +13,8 @@ const AboutInfo = ({responce}) => {
         return "Заданий создано"
       }
     }
-
-  })
+// eslint-disable-next-line
+  }, [])
   return (
     <div className="aboutInfo">
       <div className="name">

@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import MyButton from "../../UI/MyButton/MyButton";
 import Pallete from "../../UI/Pallete/Pallete";
 import ShareIcon from "../../UI/ShareIcon/ShareIcon";
@@ -6,8 +6,6 @@ import SmallDimond from "../../UI/SmallDimond/SmallDimond";
 import FalseTie from "../../UI/FalseTie/FalseTie";
 import { useDispatch, useSelector } from "react-redux";
 import { addWatch } from "../../../store/watchedAds";
-import SwiperComponent from "../../UI/Swiper/Swiper";
-import { CSSTransition } from "react-transition-group";
 
 let counter = 0
 const FirstBlock = ({

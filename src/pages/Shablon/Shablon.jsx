@@ -1,44 +1,43 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import TaskName from "../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import BackButton from "../../constants/BackButton";
-import { useNavigate } from "react-router-dom";
 import MainButton from "../../constants/MainButton";
 import { useDispatch } from "react-redux";
 import { postShablon, putShablon } from "../../store/shablon";
 import sortFiles from "../../functions/sortFiles";
 
 const Shablon = ({shablon, setShablon, setActive, put, ...props}) => {
-  const navigate = useNavigate()
   const dispatch = useDispatch()
   let localShablon = shablon
-  function forward(){
-    let myFormData = new FormData()
-    // myFormData.append("userId" ,  window.Telegram.WebApp.initDataUnsafe.user.id )
-    myFormData.append("name" , localShablon.name )
-    myFormData.append("text" , localShablon.text)
-    if (put){
-      let filesArr = sortFiles(shablon.photosNames, shablon.photos)
-      filesArr.addedArr.forEach((e, i) => {
-        myFormData.append(`addFiles${i}` , e)
-      })
-      filesArr.removedArr.forEach((e, i) => {
-        myFormData.append(`deleteFiles${i}` , e)
-      })
-      dispatch(putShablon([myFormData , shablon.id, shablon]))
-    }
-    else{
-      shablon.photos.forEach((e,i) => {
-        myFormData.append("photos" , e)
-      })
-      // myFormData.append("photos" , shablon.photos)
-      dispatch(postShablon([myFormData, shablon]))
-    }
-    setActive(false)
-  }
+
 
 
   useEffect( () => {
+    function forward(){
+      let myFormData = new FormData()
+      // myFormData.append("userId" ,  window.Telegram.WebApp.initDataUnsafe.user.id )
+      myFormData.append("name" , localShablon.name )
+      myFormData.append("text" , localShablon.text)
+      if (put){
+        let filesArr = sortFiles(shablon.photosNames, shablon.photos)
+        filesArr.addedArr.forEach((e, i) => {
+          myFormData.append(`addFiles${i}` , e)
+        })
+        filesArr.removedArr.forEach((e, i) => {
+          myFormData.append(`deleteFiles${i}` , e)
+        })
+        dispatch(putShablon([myFormData , shablon.id, shablon]))
+      }
+      else{
+        shablon.photos.forEach((e,i) => {
+          myFormData.append("photos" , e)
+        })
+        // myFormData.append("photos" , shablon.photos)
+        dispatch(postShablon([myFormData, shablon]))
+      }
+      setActive(false)
+    }
 
     
 
@@ -57,7 +56,7 @@ const Shablon = ({shablon, setShablon, setActive, put, ...props}) => {
       MainButton.offClick(forward)
       MainButton.hide()
     }
-  }, [shablon])
+  }, [shablon, dispatch, localShablon.name, localShablon.text, put, setActive])
 
 
 
@@ -85,7 +84,7 @@ const Shablon = ({shablon, setShablon, setActive, put, ...props}) => {
   return (
     <div {...props} className="shablon-wrapper">
       <h3 className="shablon-title">{put ? shablon.name : "Новый шаблон"}</h3>
-      <button onClick={forward}>Сделать!</button>
+      {/* <button onClick={forward}>Сделать!</button> */}
       <TaskName
         className={"shablon-name"}
         title={"НАЗВАНИЕ ШАБЛОНА"}

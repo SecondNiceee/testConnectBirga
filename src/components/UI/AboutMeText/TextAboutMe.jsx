@@ -16,7 +16,7 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
     if (refTwo.current.scrollHeight > 140){
       if (!hideAboutMe.show){
 
-        setHideAboutMe({...hideAboutMe, isActive : true})
+        setHideAboutMe((value) => ({...value, isActive : true}) )
         areaRef.current.style.height = "136px"
         let localAboutMe = aboutU;
         while (refTwo.current.scrollHeight > 140){
@@ -39,7 +39,7 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
       areaRef.current.value = aboutU
     }
     areaRef.current.style.height = (refTwo.current.scrollHeight).toString() + 'px'
-  } , [hideAboutMe.show] )
+  } , [hideAboutMe.show, aboutU ] )
 
     return (
         <div {...props} className="ur__town">

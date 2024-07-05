@@ -2,10 +2,7 @@ import React, { useCallback } from "react";
 
 import FirstBlock from "../../../components/First/FirstMain/FirstBlock";
 import AdCreateFunc from "../../../components/UI/AdCreateFunc/AdCreateFunc";
-import { useDispatch } from "react-redux";
 import { deleteAd } from "../../../store/information";
-import axios from "axios";
-import { transform } from "framer-motion";
 const PickerContent = ({
   myAdsArray,
   nowValue,

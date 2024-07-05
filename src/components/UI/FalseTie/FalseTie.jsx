@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import cl from './FalseTie.module.css'
-import FalseTieImg from './../../../images/icons/Tie.svg'
 const FalseTie = ({className}) => {
     const [active, setActive] = useState(false)
     // const tieRef = useRef(null)

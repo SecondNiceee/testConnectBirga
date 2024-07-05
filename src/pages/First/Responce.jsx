@@ -1,9 +1,7 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import FirstBlock from "../../components/First/FirstMain/FirstBlock";
-import Shablon from "./components/Shablon";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
-import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import { useDispatch, useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 import axios from "axios";
@@ -16,33 +14,7 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
   const dispatch = useDispatch();
 
 
-  async function postResponce(advertismetId, userId) {
-    let myFormData = new FormData();
-    myFormData.append("information", responce.text);
 
-    myFormData.append("userId", userId);
-    myFormData.append("advertismentId", advertismetId);
-
-    responce.photos.forEach((e, i) => {
-      myFormData.append(`photos`, e);
-    });
-    try {
-      let im = await axios.post(
-        "https://back-birga.ywa.su/response",
-        myFormData,
-        {
-          params: {
-            userId: userId,
-            advertisementId: advertismetId,
-          },
-        }
-      );
-      dispatch(addResponce([orderInformation.id , im.data]))
-    } catch (e) {
-      alert("ничего не вышло");
-      console.warn(e);
-    } 
-  }
 
   localResponce = responce;
   useEffect(() => {
@@ -65,9 +37,38 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
           })
         }
       }
-  } , [responce.text, step]) 
+  } , [responce.text, step, MainButton]) 
 
   const forwardFunction = useCallback(() => {
+    async function postResponce(advertismetId, userId) {
+      let myFormData = new FormData();
+      myFormData.append("information", responce.text);
+  
+      myFormData.append("userId", userId);
+      myFormData.append("advertismentId", advertismetId);
+  
+      responce.photos.forEach((e, i) => {
+        myFormData.append(`photos`, e);
+      });
+      try {
+        let im = await axios.post(
+          "https://back-birga.ywa.su/response",
+          myFormData,
+          {
+            params: {
+              userId: userId,
+              advertisementId: advertismetId,
+            },
+          }
+        );
+        dispatch(addResponce([orderInformation.id , im.data]))
+      } catch (e) {
+        alert("ничего не вышло");
+        console.warn(e);
+      } 
+    }
+
+
     if (step !== 0){
       window.Telegram.WebApp
       .showPopup({
@@ -88,14 +89,14 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
           setDetailsActive((value) => ({...value , isOpen : false}))
       } })
     }
-  }, [responce, step]);
+  }, [responce, step, orderInformation.id, setDetailsActive, setStep, dispatch]);
 
   useEffect(() => {
     MainButton.onClick(forwardFunction);
     return () => {
       MainButton.offClick(forwardFunction);
     };
-  }, [responce, step]);
+  }, [responce, step, MainButton, forwardFunction]);
 
   return (
     <div className="responce-wrapper">

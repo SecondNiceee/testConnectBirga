@@ -9,7 +9,6 @@ import ExampleWorks from "./ExampleWorks";
 import { memo } from "react";
 import Top from "../../../components/UI/Top/Top";
 import axios from "axios";
-import makeFile from "../../../functions/makeFile";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import Stage from "../../../components/UI/Stage/Stage";
 import Compact from "../../../components/UI/Compact/Compact";
@@ -71,6 +70,7 @@ const AboutReaction = ({ responce , setSliderActive,   ...props}) => {
       console.log(value)
       setCards(value)
     })
+    // eslint-disable-next-line
   } , [])
 
   return (

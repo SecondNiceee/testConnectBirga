@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 
 import BackButton from "../../constants/BackButton";
 
@@ -9,8 +9,6 @@ import AllTasks from "./AllTasks";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import Responce from "./Responce";
-import { CSSTransition } from "react-transition-group";
-import SwiperComponent from "../../components/UI/Swiper/Swiper";
 import SliderMain from "../../components/UI/Swiper/SliderMain";
 
 let varStep = 0;
@@ -194,6 +192,8 @@ const First = () => {
         return {
           transform: "translateX(-100%)",
         };
+      default : 
+        return ""
     }
   }, [step]);
 
@@ -216,7 +216,7 @@ const First = () => {
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.1, duration: 0 }}
+      transition={{ duration: 0.1 }}
     >
       <div className="first-wrapper" style={style}>
         {/* <button

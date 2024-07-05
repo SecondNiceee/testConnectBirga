@@ -6,7 +6,6 @@ import Top from '../../../components/UI/Top/Top';
 import ReactionBlock from './ReactionBlock';
 import axios from 'axios';
 import MyLoader from '../../../components/UI/MyLoader/MyLoader';
-import makeFile from '../../../functions/makeFile';
 import { deleteAd } from '../../../store/information';
 import { useDispatch } from 'react-redux';
 import makeNewFile from '../../../functions/newMakeFile';
@@ -64,7 +63,7 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
   getIt(task.id).then( (resp) => {
     setResponces(resp)
   } )
-
+// eslint-disable-next-line
   } , []  )
 
 
@@ -89,7 +88,7 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
 
 
     } )
-  }, [dispatch] )
+  }, [dispatch, setSecondPage] )
 
     return (
         <div className="aboutOne" style={{

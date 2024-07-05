@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import makeFile from "../functions/makeFile";
 import makeNameFiles from "../functions/makeNameFiles";
 import makeNewFile from "../functions/newMakeFile";
 export const deleteShablon = createAsyncThunk(

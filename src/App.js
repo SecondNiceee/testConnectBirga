@@ -1,6 +1,6 @@
 import { lazy, useEffect, Suspense } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -16,13 +16,10 @@ import FirstMenu from "./pages/FirstMenu/FirstMenu";
 
 import { fetchTon } from "./store/ton";
 import { fetchUserInfo } from "./store/telegramUserInfo";
-import { fetchMyOrders, fetchTasksInformation } from "./store/information";
+import { fetchMyOrders } from "./store/information";
 import { Triangle } from "react-loader-spinner";
-import axios from "axios";
 import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
-import Swiper from "./components/UI/Swiper/Swiper";
-import SwiperComponent from "./components/UI/Swiper/Swiper";
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
@@ -57,7 +54,6 @@ const MyLoader = () => {
 const AnimatedSwitch = () => {
   const location = useLocation();
   const isMenuActive = useSelector((state) => state.menu.value);
-  const navigate = useNavigate()
   // useEffect(() => {
 
   //   // navigate('/MyAds')
@@ -135,7 +131,6 @@ const AnimatedSwitch = () => {
   );
 };
 
-let conunter = 0
 function App() {
 
 
@@ -151,16 +146,7 @@ function App() {
 
   window.Telegram.WebApp.expand();
 
-  async function start() {
-    axios.post("https://back-birga.ywa.su/category/category", {
-      category: "Дизайн",
-      id: 1,
-    });
-    axios.post("https://back-birga.ywa.su/category/subCategory", {
-      subCategory: "Подкатегория",
-      categoryId: 1,
-    });
-  }
+
 
   
 
@@ -173,7 +159,7 @@ function App() {
     dispatch(getCategorys())
     dispatch(getSubCategorys())
     dispatch(fetchAllShablons())
-  }, []);
+  }, [dispatch]);
   return (
     <BrowserRouter>
       <div className="UperContainer">
