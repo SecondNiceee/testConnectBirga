@@ -204,6 +204,8 @@ const First = () => {
     isDetailsActive,
   });
 
+  const orderStatus = useSelector((state) => state.information.orderStatus);
+
 
   return (
     <motion.div
@@ -239,7 +241,7 @@ const First = () => {
           isMenuActive={isMenuActive}
         />
 
-        {ordersInformation === "complete" ? 
+        {orderStatus === "complete" ? 
         <Responce
           setStep = {setStep}
           setDetailsActive = {setDetailsActive}
