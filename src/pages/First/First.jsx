@@ -17,11 +17,7 @@ let isDetailsActiveVar = false;
 const First = () => {
 
   const tupler = document.getElementsByClassName('placement-bottom')[0]
-  React.useEffect( ( ) => {
-      if (tupler){
-          tupler[0].style.transform = "none"
-      }
-  } , [tupler] )
+  tupler[0].style.transform = "none"
 
   const dispatch = useDispatch();
 
