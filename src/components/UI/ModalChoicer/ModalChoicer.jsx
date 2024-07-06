@@ -1,6 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { Select as BaseSelect, selectClasses } from '@mui/base/Select';
+import { Select as BaseSelect } from '@mui/base/Select';
 import { Option as BaseOption, optionClasses } from '@mui/base/Option';
 import { styled } from '@mui/system';
 import { CssTransition } from '@mui/base/Transitions';
@@ -19,7 +19,7 @@ const Select = React.forwardRef(function Select(props, ref) {
 
 export default function ModalChoicer({values, names, setValue, defaultValue}) {
   return (
-    <Select onChange = {(...  newValue) => {
+    <Select onChange = {(...newValue) => {
         setValue(newValue[1])
     }}  defaultValue={defaultValue} >
         {values.map((e , i) => {

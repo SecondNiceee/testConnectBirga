@@ -13,7 +13,7 @@ const ModalInput = ( {setting , setModal, ...props} ) => {
         return () => {
             BackButton.offClick(back)
         }
-    } , [] )
+    } , [setModal] )
     return (
         <div id = 'modalInput' className={cl.modalInput}>
             <div onTouchEnd={() => {

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef } from "react";
+import React, { memo, useRef } from "react";
 import cl from "./BudgetInput.module.css";
 import Info from "../../../images/icons/info.svg";
 

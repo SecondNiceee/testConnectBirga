@@ -27,7 +27,7 @@ const Stage = ({className,numberB}) => {
                 }
               }
       }
-    } , [])
+    } , [numberB])
     return (
         <div className={ className ? [cl.main, className].join(' ') : cl.main}>
                 <div className={cl.one}>

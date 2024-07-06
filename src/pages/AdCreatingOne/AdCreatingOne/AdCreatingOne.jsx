@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
-import React, { memo, useEffect, useState } from "react";
+
+import React, {  useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
 import Cap from "../../../components/UI/Cap/Cap";
@@ -11,10 +11,9 @@ import ChoiceSubCategory from "../ChoiceSubCategory";
 import DatePicker from "react-mobile-datepicker";
 import cl from "./AdCreatingOne.module.css";
 import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
-import BackButton from "../../../constants/BackButton";
 import '../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css'
-let transform = [{ opacity: 0 }, { opacity: 1 }];
 
+// eslint-disable-next-line
 Date.prototype.addHours = function(h) {
   this.setTime(this.getTime() + (h*60*60*1000));
   return this;
@@ -40,28 +39,12 @@ const AdCreatingOne = ({
 
   
 
-  const navigate = useNavigate();
 
 
 
-  var options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    timezone: "UTC",
-  };
 
-  function goForward() {
-    transform = [{ x: "-100%" }, { x: 0 }];
-    navigate("/AdCreatingTwo");
-  }
 
-  function goBack() {
-    transform = [{ opacity: 0 }, { opacity: 1 }];
-    navigate(-1);
-  }
+
 
   const monthMap = {
     1: "Янв",
@@ -109,11 +92,8 @@ const AdCreatingOne = ({
     isEndOpen: false,
   });
   useEffect( () => {
-     setState({...state , startTime : taskInformation.time.start , endTime : taskInformation.time.end})
+     setState( (value) =>  ({...value , startTime : taskInformation.time.start , endTime : taskInformation.time.end}))
   }, [isDetailsActive, taskInformation.time.start ,  taskInformation.time.end ] )  
-  function handleClick() {
-    setState({ ...state, isOpen: true });
-  }
   function handleSelect(time) {
     if (state.isStartOpen) {
       setState({
@@ -171,15 +151,35 @@ const AdCreatingOne = ({
     dateObject.style.transition = "0.3s";
     datePickerObject.style.transition = "0.3s";
   }
-  useState(() => {
-    function backHandler(){
-      if (state.isOpen){
-          setState({...state, isOpen : false})
-      }
-    }
-    BackButton.onClick( )
-  } )
   useEffect(() => {
+
+    function appear(){
+      document.documentElement.style.overflow = "hidden";
+      document.documentElement.style.marginTop = "400px";
+      window.scrollTo({
+        top: 400,
+        behavior: "auto",
+      });
+  
+      dateObject.style.zIndex = "100";
+      dateObject.style.backgroundColor = "rgba(0, 0, 0, .6)";
+      datePickerObject.style.transform = "translateY(0%)";
+    }
+    function disappear() {
+      document.documentElement.style.marginTop = "0px";
+      dateObject.style.backgroundColor = "unset";
+      dateObject.style.display = "block";
+      datePickerObject.style.transform = "translateY(100%)";
+  
+      document.documentElement.style.overflow = "visible";
+  
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+    }
+
+
     if (dateObject && datePickerObject) {
       if (state.isOpen) {
         appear();
@@ -189,33 +189,9 @@ const AdCreatingOne = ({
         document.documentElement.style.overflow = "visible";
       }
     }
-  }, [state.isOpen]);
+  }, [state.isOpen , dateObject , datePickerObject]);
 
-  function appear() {
-    document.documentElement.style.overflow = "hidden";
-    document.documentElement.style.marginTop = "400px";
-    window.scrollTo({
-      top: 400,
-      behavior: "auto",
-    });
 
-    dateObject.style.zIndex = "100";
-    dateObject.style.backgroundColor = "rgba(0, 0, 0, .6)";
-    datePickerObject.style.transform = "translateY(0%)";
-  }
-  function disappear() {
-    document.documentElement.style.marginTop = "0px";
-    dateObject.style.backgroundColor = "unset";
-    dateObject.style.display = "block";
-    datePickerObject.style.transform = "translateY(100%)";
-
-    document.documentElement.style.overflow = "visible";
-
-    window.scrollTo({
-      top: 0,
-      behavior: "auto",
-    });
-  }
 
   return (
     <div

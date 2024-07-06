@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo } from 'react';
 import cl from './SmallInput.module.css'
 const SmallInput = ({value , setValue,  mistake, mistakeText,  ...props}) => {
     return (

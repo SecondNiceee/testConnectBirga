@@ -1,16 +1,7 @@
-import React, { useEffect, useState } from "react";
-import { ProgressBar, ThreeDots, ThreeCircles, Triangle } from "react-loader-spinner";
+import React from "react";
+import {Triangle } from "react-loader-spinner";
 import "./loaders.css";
 const FirstLoader = () => {
-  let [dotStyles, setDotStyles] = useState({
-    display: "none",
-  });
-  let [dotStylesTwo, setDotStylesTwo] = useState({
-    display: "none",
-  });
-  let [dotStylesThree, setDotStylesThree] = useState({
-    display: "none",
-  });
   return (
     <div className="firstLoader">
         <Triangle

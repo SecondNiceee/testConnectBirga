@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
-import FirstBlock from '../FirstMain/FirstBlock';
+import React from 'react';
 import TaskDetailsContainer from './TaskDetailsContainer';
 import TimeAndWatches from './TimeAndWatches';
 import SimilarAds from './SimilarAds';
 
 const FirstDetails = ({  orderInformation , similarAds , isDetailsActive, setDetailsActive , className}) => {
-    const BackButton = window.Telegram.WebApp.BackButton;
 
 
 

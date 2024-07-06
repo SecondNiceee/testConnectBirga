@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import cl from "./Choicer.module.css";
 import { CSSTransition } from "react-transition-group";
 import ChoicerModal from "../ChoicerModal/ChoicerModal";

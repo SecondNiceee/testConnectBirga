@@ -1,5 +1,5 @@
 import React from "react";
-import { Triangle, ThreeDots } from 'react-loader-spinner';
+import { Triangle } from 'react-loader-spinner';
 import './loaders.css'
 const PostLoader = () => {
   return (

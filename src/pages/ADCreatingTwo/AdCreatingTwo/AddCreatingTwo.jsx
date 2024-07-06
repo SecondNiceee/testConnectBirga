@@ -1,13 +1,9 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { changeTaskInformation } from '../../../store/information';
-import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import React, { useEffect, useRef, useState } from 'react';
+
+import React, { useEffect, useState } from 'react';
 
 import Cap from '../../../components/UI/Cap/Cap';
 import Budget from '../Budget/Budget'
 import MyDatePicker from '../DatePicker/DatePicker';
-import BackButton from '../../../constants/BackButton';
 import DatePicker from 'react-mobile-datepicker';
 
 
@@ -15,7 +11,7 @@ import cl from './SecondAddCreating.module.css'
 import MainButton from '../../../constants/MainButton';
 
 
-
+// eslint-disable-next-line
 Date.prototype.addHours = function(h) {
   this.setTime(this.getTime() + (h*60*60*1000));
   return this;
@@ -69,9 +65,6 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
         isStartOpen : false,
         isEndOpen : false
       });
-      function handleClick(){
-        setState({...state, isOpen : true})
-      }
       function handleSelect(time){
         if (state.isStartOpen){
 
@@ -102,38 +95,10 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       dateObject.style.transition = '0.3s'
       datePickerObject.style.transition = '0.3s'
     }
-    useState(() => {
-      function backHandler(){
-        if (state.isOpen){
-            setState({...state, isOpen : false})
-        }
-      }
-      BackButton.onClick( )
-    } )
     useEffect( () => {
-      if(dateObject && datePickerObject){
 
-        if (state.isOpen){
-          appear()
 
-        }
-        else{
-          disappear()
-
-        }
-      }
       
-    } , [state.isOpen] )
-
-
-
-
-
-
-
-
-
-
     function appear(){
 
       dateObject.style.zIndex = '100'
@@ -158,6 +123,31 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       })
 
     }
+
+
+      if(dateObject && datePickerObject){
+
+        if (state.isOpen){
+          appear()
+
+        }
+        else{
+          disappear()
+
+        }
+      }
+      
+    } , [state.isOpen , dateObject , datePickerObject] )
+
+
+
+
+
+
+
+
+
+
 
     return (
       <div className = {cl.SecondAddCreating} 

@@ -1,5 +1,4 @@
 import React from 'react';
-import icon from '../../../images/icons/icon.svg'
 import Burger from '../Burger/Burger';
 import { useSelector } from 'react-redux';
 import cl from './Top.module.css'

@@ -1,6 +1,5 @@
 import React, { memo } from 'react';
 import cl from './Switcher.module.css'
-import circle from '../../../images/icons/Circle.svg'
 const Switcher = ({className , isEnable, setEnable}) => {
     return (
         <div onClick={() => setEnable(!isEnable)} className = { [className ? [cl.Switcher , className].join(' ') : cl.Switcher , isEnable ? cl.active : '' ].join(' ')} >

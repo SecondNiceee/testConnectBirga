@@ -1,7 +1,6 @@
 import React from "react";
 import cl from "./DescriptionAndPhoto.module.css";
 import GreyText from "../../../components/UI/GreyText/GreyText";
-import CreateInput from "../CreateInput/CreateInput";
 import FileInput from "../../../components/UI/FileInput/FileInput";
 import TextArea from "../../../components/UI/TextArea/TextArea";
 const DescriptionAndPhoto = ({
