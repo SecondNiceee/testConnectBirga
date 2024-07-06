@@ -22,7 +22,7 @@ const MyAdOne = ({
   secondPage,
   setSliderActive
 }) => {
-
+  console.log('dsa')
 
 
   const setDetailsActive = useCallback( (value) => {
