@@ -31,7 +31,6 @@ const Reaction = ({ setOpen, put, openAboutReactionFunc, responce, setSliderActi
 
         <div className="reaction__middle">
           <img onClick={() => {
-            console.log(responce)
             openAboutReactionFunc({isActive : true,
               responce : responce
             })

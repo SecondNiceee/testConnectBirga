@@ -146,7 +146,6 @@ function App() {
   //   window.scrollTo(0 , 15)
   // },[] )
 
-  console.log('приыет')
   // window.Telegram.WebApp
   // .showPopup({
   //   title: "Удалить?",

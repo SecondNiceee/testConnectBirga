@@ -41,7 +41,6 @@ const AboutReaction = ({ responce , setSliderActive,   ...props}) => {
         for (let e of allCards.data){
 
           let files = await makeNewFile(e.folder , e.photos)
-          console.log(files)
           localCards.push({
               id : e.id,
               title : e.title,
@@ -60,14 +59,13 @@ const AboutReaction = ({ responce , setSliderActive,   ...props}) => {
       }
       catch(e){
         alert(e)
-        console.log()
+        console.log(e)
       }
 
 
 
     }
     getAllCards().then((value) => {
-      console.log(value)
       setCards(value)
     })
     // eslint-disable-next-line

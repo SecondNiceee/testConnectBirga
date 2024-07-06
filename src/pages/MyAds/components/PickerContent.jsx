@@ -12,7 +12,6 @@ const PickerContent = ({
   dispatch,
   setSliderAcitve,
 }) => {
-  console.log(setSliderAcitve);
   const deleteFunction = useCallback(
     (e) => {
       window.Telegram.WebApp.showPopup(
@@ -36,7 +35,6 @@ const PickerContent = ({
     [dispatch]
   );
 
-  console.log(nowValue);
 
   return (
     <div

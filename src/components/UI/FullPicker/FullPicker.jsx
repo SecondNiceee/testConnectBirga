@@ -9,7 +9,6 @@ const FullPicker = ({
   GreyIntWidth,
   GreyWidth,
 }) => {
-  console.log(nowKey, keys);
   const myTransform = useMemo(() => {
     for (let i = 0; i < keys.length; i++) {
       if (nowKey === keys[0]) {

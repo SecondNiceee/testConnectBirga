@@ -11,7 +11,6 @@ import BackButton from "../../../constants/BackButton";
 import {  putMyTask } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
 import sortFiles from "../../../functions/sortFiles";
-let renderConunter = 0
 // const popup = initPopup();
 let detailsVar;
 const MyAdOne = ({
@@ -23,10 +22,6 @@ const MyAdOne = ({
   secondPage,
   setSliderActive
 }) => {
-  console.log(setSliderActive)
-  console.log(renderConunter)
-  renderConunter += 1
-
 
 
 

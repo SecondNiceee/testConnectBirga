@@ -40,7 +40,6 @@ const First = () => {
     (state) => state.information.orderInformations
   );
 
-  console.log(ordersInformation)
 
   const [sliderActive , setSliderActive ] = useState({
     isActive : false,
@@ -167,7 +166,6 @@ const First = () => {
     
   }
 
-  console.log(sliderActive)
 
 
 

@@ -30,7 +30,6 @@ const AllTasks = ({
   const filteredArr = useFilteredArr(ordersInformation, filterBy);
   const userInfo = useSelector((state) => state.telegramUserInfo);
 
-  console.log(isDetailsActive);
   return (
     <div className="AllTasks">
       <FirstTop

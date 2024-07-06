@@ -41,8 +41,6 @@ export const putMyTask = createAsyncThunk(
         }
       );
       let localTask = data[2]
-      
-      console.log(answ.data)
       let changedFiles = []
 
 
@@ -212,7 +210,6 @@ export const fetchMyOrders = createAsyncThunk(
             
           })
         }
-        console.log(tasks)
   
         return tasks 
       }
@@ -382,15 +379,13 @@ const information = createSlice( {
     reducers : {
         addResponce(state , action){
           state.orderInformations = state.orderInformations.map((e) => {
-            console.log(action.payload[0] , e.id )
             if (e.id === action.payload[0]){
-              console.log("Тут")
+
                 e.responces.push(action.payload[1])
             }
             console.log(e)
             return e
           })
-          console.log(state.orderInformations)
         },
         changeTaskInformation(state , action) {
             state.taskInformation = action.payload
@@ -438,10 +433,10 @@ const information = createSlice( {
 
         builder.addCase(  putMyTask.pending , (   (state ) => {state.putTaskStatus = 'pending'}   )  )
         builder.addCase(  putMyTask.fulfilled , (   (state, action ) => {state.putTaskStatus = 'complete'
-          console.log(action.payload)
+
           state.myAdsArray = state.myAdsArray.map((e) => {
             if (e.id === action.payload.id){
-              console.log('хай')
+                       
               return action.payload
             }
             else{

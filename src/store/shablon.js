@@ -106,7 +106,7 @@ export const fetchAllShablons = createAsyncThunk(
             
         
       
-        console.log(localShablons)
+          
         
         return localShablons
         
