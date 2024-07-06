@@ -6,6 +6,9 @@ import { styled } from '@mui/system';
 import { CssTransition } from '@mui/base/Transitions';
 import { PopupContext } from '@mui/base/Unstable_Popup';
 
+
+
+
 const Select = React.forwardRef(function Select(props, ref) {
   const slots = {
     root: CustomButton,
@@ -18,7 +21,10 @@ const Select = React.forwardRef(function Select(props, ref) {
 });
 
 export default function ModalChoicer({values, names, setValue, defaultValue}) {
+    console.log(document.getElementsByClassName('placement-bottom'))
+    document.getElementsByClassName('placement-bottom').style.transform = "unset"
   return (
+
     <Select onChange = {(...newValue) => {
         setValue(newValue[1])
     }}  defaultValue={defaultValue} >
