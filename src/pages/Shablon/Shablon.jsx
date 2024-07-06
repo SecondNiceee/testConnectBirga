@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { postShablon, putShablon } from "../../store/shablon";
 import sortFiles from "../../functions/sortFiles";
 
-const Shablon = ({shablon, setShablon, setActive, put, ...props}) => {
+const Shablon = ({shablon, setShablon, setActive, put, isExitShow, ...props}) => {
   const dispatch = useDispatch()
   let localShablon = shablon
 
@@ -54,7 +54,9 @@ const Shablon = ({shablon, setShablon, setActive, put, ...props}) => {
     MainButton.onClick(forward)
     return () => {
       MainButton.offClick(forward)
-      MainButton.hide()
+      if (!isExitShow){
+        MainButton.hide()
+      }
     }
   }, [shablon, dispatch, localShablon.name, localShablon.text, put, setActive])
 
