@@ -18,8 +18,7 @@ const First = () => {
   const tupler = document.getElementsByClassName('placement-bottom')[0]
   console.log(tupler)
   if (tupler){
-    console.log(tupler[0])
-    tupler[0].style.transform = "none"
+    tupler.style.transform = "none"
   }
 
   const dispatch = useDispatch();
