@@ -102,12 +102,10 @@ const Listbox = styled('ul')(
   border-radius: 12px;
   overflow: auto;
   outline: 0px;
-  background: ${theme.palette.mode === 'dark' ? grey[900] : '#fff'};
-  border: 1px solid ${theme.palette.mode === 'dark' ? grey[700] : grey[200]};
-  color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
-  box-shadow: 0px 2px 4px ${
-    theme.palette.mode === 'dark' ? 'rgba(0,0,0, 0.5)' : 'rgba(0,0,0, 0.05)'
-  };
+  background: ${grey[900]};
+  border: 1px solid ${grey[700]};
+  color: ${grey[300]};
+  box-shadow: 0px 2px 4px rgba(0,0,0, 0.5);
   .closed & {
     opacity: 0;
     transform: scale(0.95, 0.8);
@@ -172,31 +170,31 @@ const Option = styled(BaseOption)(
   }
 
   &.${optionClasses.selected} {
-    background-color: ${theme.palette.mode === 'dark' ? blue[900] : blue[100]};
-    color: ${theme.palette.mode === 'dark' ? blue[100] : blue[900]};
+    background-color: ${blue[900]};
+    color: ${ blue[100] };
   }
 
   &.${optionClasses.highlighted} {
-    background-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[100]};
-    color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
+    background-color: ${grey[800]};
+    color: ${grey[300]};
   }
 
   &:focus-visible {
-    outline: 3px solid ${theme.palette.mode === 'dark' ? blue[600] : blue[200]};
+    outline: 3px solid ${blue[600]};
   }
 
   &.${optionClasses.highlighted}.${optionClasses.selected} {
-    background-color: ${theme.palette.mode === 'dark' ? blue[900] : blue[100]};
-    color: ${theme.palette.mode === 'dark' ? blue[100] : blue[900]};
+    background-color: ${blue[900]};
+    color: ${blue[100] };
   }
 
   &.${optionClasses.disabled} {
-    color: ${theme.palette.mode === 'dark' ? grey[700] : grey[400]};
+    color: ${grey[700] };
   }
 
   &:hover:not(.${optionClasses.disabled}) {
-    background-color: ${theme.palette.mode === 'dark' ? grey[800] : grey[100]};
-    color: ${theme.palette.mode === 'dark' ? grey[300] : grey[900]};
+    background-color: ${ grey[800] };
+    color: ${grey[300]};
   }
   `,
 );
