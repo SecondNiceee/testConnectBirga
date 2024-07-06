@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import cl from "./ShablonBlock.module.css";
 import Component from "../../../../components/UI/Component/Component";
 import AdCreateFunc from "../../../../components/UI/AdCreateFunc/AdCreateFunc";
-import Choicer from "../../../../components/UI/Choicer/Choicer";
 import { CSSTransition } from "react-transition-group";
 import Shablon from "../../../Shablon/Shablon";
 import ModalChoicer from "../../../../components/UI/ModalChoicer/ModalChoicer";
@@ -48,9 +47,9 @@ const ShablinBlock = ({
             values={shablonsArr.map((e) => e.id)}
             setValue={(index) => {
               setResponce({
-                name: shablonsArr[index].name,
-                text: shablonsArr[index].text,
-                photos: shablonsArr[index].photos,
+                name: shablonsArr[index - 1].name,
+                text: shablonsArr[index - 1].text,
+                photos: shablonsArr[index - 1].photos,
                 isShablonModalActive: false,
                 shablonIndex: index,
                 isShablon: true,

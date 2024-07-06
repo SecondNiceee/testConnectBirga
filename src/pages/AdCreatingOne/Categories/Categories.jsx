@@ -1,6 +1,6 @@
 import React from 'react';
 import cl from './Categories.module.css'
-import upDown from '../../../images/icons/UpDown.svg'
+
 const Categories = ({className , taskInformation, setCatagoryChoiceOpen , setSubcategoryChoiceOpen, categorys, subCategorys, categoryOnly  }) => {
     function format(arg){
         if(arg){

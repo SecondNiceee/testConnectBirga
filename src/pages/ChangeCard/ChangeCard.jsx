@@ -9,9 +9,8 @@ import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import ModalInput from "../../components/UI/ModalInput/ModalInput";
-import Categories from "../AdCreatingOne/Categories/Categories";
 import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
-import { changeCards, putCard } from "../../store/telegramUserInfo";
+import { putCard } from "../../store/telegramUserInfo";
 import sortFiles from "../../functions/sortFiles";
 
 let localCardSetting;

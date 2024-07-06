@@ -16,15 +16,15 @@ const ChoiceCategory = ({
   
   const [inputValue, setInputValue] = useState("");
 
-  function closeCategory(){
-    setCatagoryChoiceOpen(false)
-  }
   useEffect( () => {
+    function closeCategory(){
+      setCatagoryChoiceOpen(false)
+    }
     BackButton.onClick( closeCategory )
     return () => {
       BackButton.offClick( closeCategory )
     }
-  }, []  )
+  }, [setCatagoryChoiceOpen]  )
   return (
     <div className={cl.ChoiceCategory}>
       <OneInput

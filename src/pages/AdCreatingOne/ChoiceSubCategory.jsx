@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import rightArrow from '../../images/icons/rightArrow.svg'
 import OneInput from '../../components/UI/OneInput/OneInput';
@@ -9,9 +9,6 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
     let subCategorys = subCategorysPar.filter(e => e.category.id === taskInformation.category.id && e.subCategory !== 'Другое')
     subCategorys.push(subCategorysPar.find(e => taskInformation.category.id && e.subCategory === 'Другое'))
 
-    let k = taskInformation.category.value
-
-    const subCategory = subCategorys[k]
 
     const [inputValue , setInputValue] = useState('')
 
