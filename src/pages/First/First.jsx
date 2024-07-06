@@ -14,8 +14,8 @@ import SliderMain from "../../components/UI/Swiper/SliderMain";
 let varStep = 0;
 let isDetailsActiveVar = false;
 
-const tupler = document.getElementsByClassName('placement-bottom')[0]
 const First = () => {
+  const tupler = document.getElementsByClassName('placement-bottom')[0]
   if (tupler){
     tupler[0].style.transform = "none"
   }
