@@ -22,7 +22,6 @@ const Select = React.forwardRef(function Select(props, ref) {
 
 export default function ModalChoicer({values, names, setValue, defaultValue}) {
     console.log(document.getElementsByClassName('placement-bottom'))
-    document.getElementsByClassName('placement-bottom').style.transform = "unset"
   return (
 
     <Select onChange = {(...newValue) => {
