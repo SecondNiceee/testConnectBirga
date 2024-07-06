@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeMenuActive } from '../../store/menuSlice';
 import {Link} from 'react-router-dom'
-import UpArr from '../../components/UI/UpArr/UpArr'
 import Close from '../../components/UI/Close';
 import Human from '../../components/UI/Human/Human'
 import SmallDimond from '../../components/UI/SmallDimond/SmallDimond';

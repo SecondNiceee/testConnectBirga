@@ -20,6 +20,7 @@ import { fetchMyOrders } from "./store/information";
 import { Triangle } from "react-loader-spinner";
 import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
+import ModalChoicer from "./components/UI/ModalChoicer/ModalChoicer";
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
@@ -186,6 +187,7 @@ function App() {
         <FirstMenu />
         <div className="MainContainer">
           <AnimatedSwitch />
+          {/* <ModalChoicer /> */}
         </div>
       </div>
     </BrowserRouter>
