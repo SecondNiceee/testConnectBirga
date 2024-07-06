@@ -75,6 +75,7 @@ const ShablinBlock = ({
         mountOnEnter
       >
         <Shablon
+          exitText = "ОТКЛИКНУТЬСЯ"
           isExitShow = {true}
           setActive={() => {
             setResponce({
