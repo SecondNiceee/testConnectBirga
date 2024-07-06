@@ -12,7 +12,7 @@ const ChoicerInfo = ({text}) => {
             justifyContent : "center",
             marginLeft : "auto",
             marginRight : "auto",
-            width : "260px"
+            width : "250px"
         }
         
       };
@@ -20,7 +20,9 @@ const ChoicerInfo = ({text}) => {
       const { View } = useLottie(options);
     return (
     <div className={cl.choicerBlock}>
-        <div className='hamster'>{View}</div>
+        <div onClick={() => {
+             window.Telegram.WebApp.openTelegramLink("https://t.me/addstickers/DonutTheDog")
+        }} className='hamster'>{View}</div>
         <p className={cl.text}>{text}</p>
     </div>
     );

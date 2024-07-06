@@ -8,6 +8,11 @@
     
 }
 .choicerBlock{
+    flex-direction: column;
+    display: flex;
+    height: calc(100vh - 100px);
+    justify-content: center;
+    align-items: center;
     
     width: calc(100vw - 32px);
 }
@@ -17,7 +22,7 @@
     font-size: 23px;
     text-align: center;
     color: #daf5fe;
-    margin-top: 100px;
+    margin-top: 75px;
     max-width: 260px;
     margin-left: auto;
     margin-right: auto;
