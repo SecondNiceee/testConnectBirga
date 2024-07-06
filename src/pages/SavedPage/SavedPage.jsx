@@ -20,7 +20,7 @@ const SavedPage = () => {
 
 
     const GreyIntWidth = useMemo(() => {
-        return (document.documentElement.clientWidth - 36) / 3;
+        return (document.documentElement.clientWidth - 36 ) / 3;
       }, []);
       const GreyWidth = useMemo(() => {
         return GreyIntWidth.toString() + "px";

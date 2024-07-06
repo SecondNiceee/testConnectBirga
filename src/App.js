@@ -147,24 +147,24 @@ function App() {
   // },[] )
 
   console.log('приыет')
-  window.Telegram.WebApp
-  .showPopup({
-    title: "Удалить?",
-    message: "Вы хотите удалить этот шаблон?",
-    buttons: [
-      { id: "save", type: "ok", text: "Да" },
-      { id: "delete", type: "destructive", text: "Нет" },
-      {id : "dss" , type : "cancel"}
-    ],
-  } , (buttonId) => {
+  // window.Telegram.WebApp
+  // .showPopup({
+  //   title: "Удалить?",
+  //   message: "Вы хотите удалить этот шаблон?",
+  //   buttons: [
+  //     { id: "save", type: "ok", text: "Да" },
+  //     { id: "delete", type: "destructive", text: "Нет" },
+  //     {id : "dss" , type : "cancel"}
+  //   ],
+  // } , (buttonId) => {
 
-    if (buttonId === "delete" || buttonId === null) {
-      // setShablon({...shablon , isActive : false})
-    }
-    if (buttonId === "save") {
+  //   if (buttonId === "delete" || buttonId === null) {
+  //     // setShablon({...shablon , isActive : false})
+  //   }
+  //   if (buttonId === "save") {
 
-      // dispatch(deleteShablon(e.id))
-  } })
+  //     // dispatch(deleteShablon(e.id))
+  // } })
 
   const dispatch = useDispatch();
 

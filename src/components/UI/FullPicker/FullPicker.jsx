@@ -49,6 +49,8 @@ const FullPicker = ({
                 {values[i]}
               </p>
             )}
+            <div className={cl.loup} style={i === keys.length - 1 ? {display : "none"} : {}}></div>
+
           </>
         )
       })}
