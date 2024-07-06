@@ -15,11 +15,7 @@ let varStep = 0;
 let isDetailsActiveVar = false;
 
 const First = () => {
-  const tupler = document.getElementsByClassName('placement-bottom')[0]
-  console.log(tupler)
-  if (tupler){
-    tupler.style.transform = "none"
-  }
+
 
   const dispatch = useDispatch();
 

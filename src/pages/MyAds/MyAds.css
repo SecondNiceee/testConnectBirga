@@ -39,6 +39,9 @@
     justify-content: space-between;
     align-items: center;
 }
+.MyAdsContainer .open{
+    transform: translate3d(100% , 0% , 0px) rotate(360deg);
+}
 .sortBy{
     color: rgb(132, 137, 143);
     font-family: "SF Pro Display 400";
@@ -717,9 +720,7 @@
     left:100%;
 }
 
-.open{
-    transform: translate3d(100% , 0% , 0px) rotate(360deg);
-}
+
 .white-block{
     border-radius: 19px;
     width: 53px;
