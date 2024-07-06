@@ -20,11 +20,11 @@ const Select = React.forwardRef(function Select(props, ref) {
   return <BaseSelect {...props} ref={ref} slots={slots} />;
 });
 
-export default function ModalChoicer({values, names, setValue, defaultValue}) {
+export default function ModalChoicer({values, className, names, setValue, defaultValue}) {
 
   return (
 
-    <Select onChange = {(...newValue) => {
+    <Select className = {className} onChange = {(...newValue) => {
         setValue(newValue[1])
     }}  defaultValue={defaultValue} >
         {values.map((e , i) => {

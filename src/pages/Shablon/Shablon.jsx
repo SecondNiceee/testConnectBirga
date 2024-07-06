@@ -62,7 +62,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
         MainButton.setText(exitText)
       }
     }
-  }, [shablon, dispatch, localShablon.name, localShablon.text, put, setActive])
+  }, [shablon, dispatch, localShablon.name, localShablon.text, put, setActive , isExitShow , exitText])
 
 
 

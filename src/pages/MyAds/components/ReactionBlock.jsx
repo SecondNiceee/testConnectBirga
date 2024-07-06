@@ -1,5 +1,5 @@
 import React from "react";
-import upDown from "../../../images/icons/UpDown.svg";
+
 import Reaction from './Reaction';
 import ModalChoicer from '../../../components/UI/ModalChoicer/ModalChoicer'
 
@@ -7,7 +7,7 @@ import ModalChoicer from '../../../components/UI/ModalChoicer/ModalChoicer'
 const values = ["activity", "stage"]
 const names = ["По дате" , "По стажу работы"]
 
-const ReactionBlock = ({goForward , setOpen, responces,setSliderActive,openAboutReactionFunc }) => {
+const ReactionBlock = ({goForward , setFilterBy, setOpen, responces,setSliderActive,openAboutReactionFunc }) => {
 
   return (
     <div className="reactions__block">
@@ -20,7 +20,9 @@ const ReactionBlock = ({goForward , setOpen, responces,setSliderActive,openAbout
             </div>
         </div> */}
 
-        <ModalChoicer values={values} names={names} defaultValue={values[0]} />
+        <ModalChoicer setValue={(value) => {
+          setFilterBy(value)
+        }}  className={"MyAds-choicer"}  values={values} names={names} defaultValue={values[0]} />
 
         {responces.map((e, i) => {
           return (

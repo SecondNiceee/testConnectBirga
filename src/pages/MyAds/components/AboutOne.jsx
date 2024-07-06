@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 
 import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 import { memo } from 'react';
@@ -90,6 +90,22 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
     } )
   }, [dispatch, setSecondPage] )
 
+  const [filterBy,  setFilterBy] = useState("activity")
+
+
+  const filteredArray = useMemo( () => {
+      if (responces !== null){
+        if (filterBy === "activity"){
+          return responces
+        }
+        if (filterBy === "stage"){
+          return responces.sort((a, b) => Number(b.user.stage) - Number(a.user.stage))
+        }
+      }
+      return null
+      
+  } , [responces , filterBy] )
+
     return (
         <div className="aboutOne" style={{
         }}>
@@ -122,7 +138,7 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
             }
           } />
           :
-          <ReactionBlock openAboutReactionFunc = {openAboutReactionFunc}  setSliderActive = {setSliderAcitve} responces = {responces} setOpen={setOpen} goForward = {goForward} />
+          <ReactionBlock setFilterBy = {setFilterBy} openAboutReactionFunc = {openAboutReactionFunc}  setSliderActive = {setSliderAcitve} responces = {filteredArray} setOpen={setOpen} goForward = {goForward} />
           }
       
           
