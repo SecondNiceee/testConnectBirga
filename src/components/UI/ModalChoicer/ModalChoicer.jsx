@@ -21,12 +21,7 @@ const Select = React.forwardRef(function Select(props, ref) {
 });
 
 export default function ModalChoicer({values, names, setValue, defaultValue}) {
-    const tupler = document.getElementsByClassName('placement-bottom')[0]
-    React.useEffect( ( ) => {
-        if (tupler){
-            tupler[0].style.transform = "none"
-        }
-    } , [tupler] )
+
   return (
 
     <Select onChange = {(...newValue) => {

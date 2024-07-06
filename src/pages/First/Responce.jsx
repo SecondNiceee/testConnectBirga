@@ -9,7 +9,7 @@ import { addResponce } from "../../store/information";
 
 
 let localResponce ;
-const Responce = ({ orderInformation, MainButton, responce, setResponce , step, setStep , setDetailsActive }) => {
+const Responce = ({ orderInformation, MainButton, responce, setResponce , step, setStep , setDetailsActive  }) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
   const dispatch = useDispatch();
 
@@ -41,6 +41,7 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
 
   const forwardFunction = useCallback(() => {
     async function postResponce(advertismetId, userId) {
+         
       let myFormData = new FormData();
       myFormData.append("information", responce.text);
   
@@ -69,7 +70,7 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
     }
 
 
-    if (step !== 0){
+    if (step !== 0 && !responce.shablonMaker){
       window.Telegram.WebApp
       .showPopup({
         title: "Откликнуться?",
