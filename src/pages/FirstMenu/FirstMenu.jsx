@@ -46,8 +46,8 @@ const FirstMenu = () => {
             <div className='MenuList'>
                 <Link className='menuLink'  onClick={() => {setMenuActive(false)}}  to="/AdCreating" >Создать задание</Link>
                 <Link onClick={ () => {setMenuActive(false)}} className='menuLink' to = '/'>Найти задания</Link>
-                <Link onClick={ () => {setMenuActive(false)}} className='menuLink'  to='/savedPage'>Избранное</Link>
                 <Link onClick={ () => {setMenuActive(false)}} className='menuLink'  to='/MyAds'>Мои задания</Link>
+                <Link onClick={ () => {setMenuActive(false)}} className='menuLink'  to='/savedPage'>Избранное</Link>
                 <p className='menuLink'  >Уведомления</p>
                 <p className='menuLink' onClick={() => {
                     window.Telegram.WebApp.openTelegramLink("https://t.me/connect_work_news")
