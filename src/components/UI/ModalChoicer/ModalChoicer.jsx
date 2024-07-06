@@ -22,7 +22,7 @@ const Select = React.forwardRef(function Select(props, ref) {
 
 export default function ModalChoicer({values, names, setValue, defaultValue}) {
     if (document.getElementsByClassName('placement-bottom')[0]){
-        document.getElementsByClassName('placement-bottom')[0].style.transform = "unset"
+        document.getElementsByClassName('placement-bottom')[0].style.transform = "none"
     }
   return (
 
