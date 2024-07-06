@@ -57,7 +57,7 @@ const ShablinBlock = ({
               });
             }}
             names={shablonsArr.map((e) => e.name) }
-            defaultValue={shablonsArr[0].name}
+            defaultValue={shablonsArr[0].id}
           />
         </Component>
       ) : (

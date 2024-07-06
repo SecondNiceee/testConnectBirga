@@ -21,10 +21,12 @@ export default function ModalChoicer({values, names, setValue, defaultValue}) {
   return (
     <Select onChange = {(...  newValue) => {
         setValue(newValue[1])
-    }}  defaultValue={10} >
-      <Option value={10}>Ten</Option>
-      <Option value={20}>Twenty</Option>
-      <Option value={30}>Thirty</Option>
+    }}  defaultValue={defaultValue} >
+        {values.map((e , i) => {
+            return (
+                <Option key={i} value={e}>{names[i]}</Option>
+            )
+        })}
     </Select>
   );
 }
