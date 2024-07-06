@@ -17,14 +17,11 @@ const Select = React.forwardRef(function Select(props, ref) {
   return <BaseSelect {...props} ref={ref} slots={slots} />;
 });
 
-export default function ModalChoicer() {
-  const refOne = React.useRef(null)
-  const [value , setValue] = React.useState(false)
-  console.log(value)
+export default function ModalChoicer({values, names, setValue, defaultValue}) {
   return (
     <Select onChange = {(...  newValue) => {
         setValue(newValue[1])
-    }} ref={refOne} defaultValue={10} >
+    }}  defaultValue={10} >
       <Option value={10}>Ten</Option>
       <Option value={20}>Twenty</Option>
       <Option value={30}>Thirty</Option>

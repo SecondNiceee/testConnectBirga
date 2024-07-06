@@ -1,5 +1,5 @@
 import React from 'react';
-import Lottie, { useLottie } from "lottie-react";
+import  { useLottie } from "lottie-react";
 import sleeping from "../../../animation/tired.json";
 import cl from "./Choicer.module.css"
 const ChoicerInfo = ({text}) => {
