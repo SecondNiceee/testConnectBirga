@@ -15,6 +15,14 @@ let varStep = 0;
 let isDetailsActiveVar = false;
 
 const First = () => {
+
+  const tupler = document.getElementsByClassName('placement-bottom')[0]
+  React.useEffect( ( ) => {
+      if (tupler){
+          tupler[0].style.transform = "none"
+      }
+  } , [tupler] )
+
   const dispatch = useDispatch();
 
   const [step, setStep] = useState(varStep);
