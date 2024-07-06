@@ -16,7 +16,7 @@ let isDetailsActiveVar = false;
 
 const tupler = document.getElementsByClassName('placement-bottom')[0]
 const First = () => {
-  if (tupler[0]){
+  if (tupler){
     tupler[0].style.transform = "none"
   }
 
