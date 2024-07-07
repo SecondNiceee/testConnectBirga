@@ -252,7 +252,7 @@ const First = () => {
           setMenuActive={setMenuActive}
         />
 
-        {ordersInformation !== null  ? 
+        {ordersInformation !== null   ? 
         <Responce
           setStep = {setStep}
           setDetailsActive = {setDetailsActive}
@@ -260,7 +260,7 @@ const First = () => {
           responce = {responce}
           setResponce = {setResponce}
           MainButton={MainButton}
-          orderInformation={ordersInformation[isDetailsActive.id]}
+          orderInformation={ordersInformation[isDetailsActive.id] ? ordersInformation[isDetailsActive.id] : "he"}
         />
         // <>
         // </>
