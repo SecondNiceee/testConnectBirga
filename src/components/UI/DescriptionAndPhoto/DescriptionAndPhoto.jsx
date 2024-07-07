@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import cl from "./DescriptionAndPhoto.module.css";
 import GreyText from "../../../components/UI/GreyText/GreyText";
 import FileInput from "../../../components/UI/FileInput/FileInput";
@@ -60,4 +60,4 @@ const DescriptionAndPhoto = ({
   );
 };
 
-export default DescriptionAndPhoto;
+export default memo(DescriptionAndPhoto);

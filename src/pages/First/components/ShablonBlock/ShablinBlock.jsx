@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import cl from "./ShablonBlock.module.css";
 import Component from "../../../../components/UI/Component/Component";
 import AdCreateFunc from "../../../../components/UI/AdCreateFunc/AdCreateFunc";
@@ -95,4 +95,4 @@ const ShablinBlock = ({
   );
 };
 
-export default ShablinBlock;
+export default memo(ShablinBlock);

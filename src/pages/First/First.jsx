@@ -57,7 +57,7 @@ const First = () => {
   })
 
   const gotIt = useMemo( () => {
-    if (ordersInformation !== null){
+    if (ordersInformation !== null && ordersInformation.length > 0){
 
       if (ordersInformation[isDetailsActive.id].responces){
 
@@ -278,10 +278,8 @@ const First = () => {
           >
             <FirstDetails
               // className={}
-              setDetailsActive={setDetailsActive}
-              isDetailsActive={isDetailsActive}
               orderInformation={ordersInformation === null ? "" : ordersInformation[isDetailsActive.id]  }
-              similarAds={ordersInformation}
+
             />
           </CSSTransition>
 

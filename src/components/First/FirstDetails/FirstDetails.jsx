@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { memo } from 'react';
 import TaskDetailsContainer from './TaskDetailsContainer';
 import TimeAndWatches from './TimeAndWatches';
 import SimilarAds from './SimilarAds';
 
-const FirstDetails = ({  orderInformation , similarAds , isDetailsActive, setDetailsActive , className}) => {
+const FirstDetails = ({  orderInformation , className}) => {
 
 
-
+    console.log('рендер детаилса')
 
 
     return (
@@ -32,4 +32,4 @@ const FirstDetails = ({  orderInformation , similarAds , isDetailsActive, setDet
     );
 };
 
-export default FirstDetails;
+export default memo(FirstDetails);
