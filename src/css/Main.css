@@ -1041,6 +1041,42 @@
             transform: translateY(0%);
   }
 }
+@-webkit-keyframes stepOne {
+  0% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  50% {
+    -webkit-transform: translateX(calc(-100vw - 10px));
+            transform: translateX(calc(-100vw - 10px));
+  }
+  75% {
+    -webkit-transform: translateX(calc(-100vw + 5px));
+            transform: translateX(calc(-100vw + 5px));
+  }
+  100% {
+    -webkit-transform: translateX(-100vw);
+            transform: translateX(-100vw);
+  }
+}
+@keyframes stepOne {
+  0% {
+    -webkit-transform: translateX(0%);
+            transform: translateX(0%);
+  }
+  50% {
+    -webkit-transform: translateX(calc(-100vw - 10px));
+            transform: translateX(calc(-100vw - 10px));
+  }
+  75% {
+    -webkit-transform: translateX(calc(-100vw + 5px));
+            transform: translateX(calc(-100vw + 5px));
+  }
+  100% {
+    -webkit-transform: translateX(-100vw);
+            transform: translateX(-100vw);
+  }
+}
 .AdCreating {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1148,6 +1184,18 @@
 
 .ad-createTwo-exit-done {
   opacity: 0;
+}
+
+.AdCreating__container {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.stepOne {
+  -webkit-animation: stepOne 0.55s;
+          animation: stepOne 0.55s;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
 }
 
 .modal {

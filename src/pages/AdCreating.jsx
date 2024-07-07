@@ -210,7 +210,7 @@ const AdCreating = () => {
     //   }
     // );
   }
-
+  const mainRef = useRef(null)
   function checking() {
     let taskName = false;
     let ton = false;
@@ -278,9 +278,12 @@ const AdCreating = () => {
       blurRef.current.focus();
     }
     if (checking()) {
+      if (spet === 0){
+          mainRef.current.classList.add('stepOne')
+      }
       if (spet !== 2) {
         spet += 1;
-        animte()
+        // animte()
         if (spet === 2) {
           MainButton.setText("ЗАХОЛДИРОВАТЬ");
         } else {
@@ -346,11 +349,12 @@ const AdCreating = () => {
   } , [error] )
   return (
     <motion.div
+      ref={mainRef}
       className="AdCreating__container"
-      style={{
-        transform: "translateX(" + stationNow.toString() + "%)",
-        transition: "0.3s",
-      }}
+      // style={{
+      //   transform: "translateX(" + stationNow.toString() + "%)",
+      //   transition: "0.3s",
+      // }}
     >
       {status === "pending" ? (
         <>
