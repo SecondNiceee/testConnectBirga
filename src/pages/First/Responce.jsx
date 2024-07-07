@@ -68,10 +68,10 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
         await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
           params : {
             "chatId" : im.data.user.chatId,
-            "text" : "На ваше задани " + orderInformation.taskName + " откликнулся(сь) " +  im.data.user.fl
+            "text" : "📣 Вы получили отклик на задачу  " + orderInformation.taskName.bold() + " от" +  im.data.user.fl 
           }
         })
-        dispatch(addResponce([orderInformation.id , im.data]))
+        dispatch(addResponce([orderInformation.id , im.data]))  
       } catch (e) {
         alert("ничего не вышло");
         console.warn(e);
