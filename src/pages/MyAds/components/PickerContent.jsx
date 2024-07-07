@@ -1,17 +1,17 @@
-import React, { useCallback } from "react";
+import React, { memo, useCallback } from "react";
 
 import FirstBlock from "../../../components/First/FirstMain/FirstBlock";
 import AdCreateFunc from "../../../components/UI/AdCreateFunc/AdCreateFunc";
 import { deleteAd } from "../../../store/information";
+import { useDispatch } from "react-redux";
 const PickerContent = ({
   myAdsArray,
   nowValue,
   setSecondPage,
-  setDetailsActive,
-  setDetails,
-  dispatch,
   setSliderAcitve,
 }) => {
+  const dispatch = useDispatch()
+  console.log('рендер ферста')
   const deleteFunction = useCallback(
     (e) => {
       window.Telegram.WebApp.showPopup(
@@ -48,6 +48,8 @@ const PickerContent = ({
       <div className="picker__block">
         <p>привет</p>
       </div>
+
+      
 
       <div className="picker__block">
         <AdCreateFunc text={"Создать объявление"} link={"/AdCreating"} />
@@ -101,4 +103,4 @@ const PickerContent = ({
   );
 };
 
-export default PickerContent;
+export default memo(PickerContent);

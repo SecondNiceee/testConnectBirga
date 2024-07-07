@@ -57,7 +57,7 @@ const First = () => {
   })
 
   const gotIt = useMemo( () => {
-    if (ordersInformation !== null && ordersInformation.length > 0){
+    if (ordersInformation !== null && ordersInformation.length > 0 && ordersInformation[isDetailsActive.id]){
 
       if (ordersInformation[isDetailsActive.id].responces){
 

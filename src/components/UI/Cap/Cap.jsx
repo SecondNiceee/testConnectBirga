@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cl from './Cap.module.css';
 const Cap = ({className , step , ...props}) => {
     return (
@@ -9,4 +9,4 @@ const Cap = ({className , step , ...props}) => {
     );
 };
 
-export default Cap;
+export default memo(Cap);

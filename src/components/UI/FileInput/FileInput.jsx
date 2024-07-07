@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { memo, useEffect, useMemo, useRef, useState } from "react";
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 let counter = 0;
@@ -106,7 +106,8 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
             
           }}
           type="file"
-          multiple={device.includes("android") ? false : true}
+          // multiple={device.includes("android") ? false : true}
+          multiple = {true}
           name="file"
           id="file"
           accept="image/*"
@@ -131,4 +132,4 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
   );
 };
 
-export default FileInput;
+export default memo(FileInput);

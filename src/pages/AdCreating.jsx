@@ -258,13 +258,19 @@ const AdCreating = () => {
     }
     if (checking()) {
       if (spet !== 2) {
+        if (spet === 0){
+          // добавить класс one
+        }
+        if (spet === 1){
+          // добавить класс two
+        }
         spet += 1;
         if (spet === 2) {
           MainButton.setText("ЗАХОЛДИРОВАТЬ");
         } else {
           MainButton.setText("Далее");
         }
-        animte();
+        
       } else {
         finish();
       }
@@ -274,6 +280,12 @@ const AdCreating = () => {
     if (spet === 0) {
       navigate(-1);
     } else {
+      if (spet === 2){
+        // убрать класс two
+      }
+      if (spet === 1){
+        // убрать класс one
+      }
       spet -= 1;
       backAnimte();
 
@@ -310,6 +322,7 @@ const AdCreating = () => {
       MainButton.hide();
     };
   }, []);
+  
 
   return (
     <motion.div

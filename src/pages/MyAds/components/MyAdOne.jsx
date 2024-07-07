@@ -216,12 +216,9 @@ const MyAdOne = ({
       <MyAdsBlock setNowKey={setNowKey} nowValue = {nowValue} greyIntWidth={GreyIntWidth} greyWidth={GreyWidth} deals={1} finishedDeals={"0%"} />
       <PickerContent
       nowValue={nowValue}
-      setSliderAcitve={setSliderActive}
-      dispatch={dispatch}
+       setSliderAcitve={setSliderActive}
         myAdsArray={myAdsArray}
-        setDetails = {setDetails}
         setSecondPage = {setSecondPage}
-        setDetailsActive={setDetailsActive}
       />
       
 
