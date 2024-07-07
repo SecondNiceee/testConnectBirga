@@ -2414,9 +2414,6 @@ input {
   display: -ms-flexbox;
   display: flex;
   gap: 4px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 .YourAds .sortByPar {
   color: rgb(46, 165, 255);
