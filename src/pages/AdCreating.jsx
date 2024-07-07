@@ -309,9 +309,11 @@ const AdCreating = () => {
       
       if (spet === 1){
         mainRef.current.classList.remove('stepOne')
+        mainRef.current.classList.remove('stepTwo')
         mainRef.current.classList.add('oneBack')
       }
       if (spet === 2){
+        mainRef.current.classList.remove('stepTwo')
         mainRef.current.classList.remove('stepTwo')
         mainRef.current.classList.add('twoBack')
       }
