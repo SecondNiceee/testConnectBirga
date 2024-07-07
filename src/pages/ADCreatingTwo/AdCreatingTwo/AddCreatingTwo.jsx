@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 import Cap from '../../../components/UI/Cap/Cap';
 import Budget from '../Budget/Budget'
@@ -16,10 +16,11 @@ Date.prototype.addHours = function(h) {
   this.setTime(this.getTime() + (h*60*60*1000));
   return this;
 }
-
+let count = 0
 const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , GreyWidth , GreyIntWidth , errors}) => {
 
-
+  console.log('рендер вторго ' + count)
+  count += 1
 
       const monthMap = {
         '1': 'Янв',
@@ -178,4 +179,4 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
     );
 };
 
-export default SecondAddCreating;
+export default memo(SecondAddCreating);

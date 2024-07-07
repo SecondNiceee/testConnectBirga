@@ -15,9 +15,29 @@ import PostLoader from "../loaders/PostLoader";
 
 let spet = 0;
 const AdCreating = () => {
-  const [taskInformation, setTaskInformation] = useState(
-    useSelector((state) => state.information.taskInformation)
-  );
+  // const [taskInformation, setTaskInformation] = useState(
+  //   useSelector((state) => state.information.taskInformation)
+  // );
+
+  const [firstPage , setFirstPage] = useState({
+    category: { name: "", value: "" },
+    subCategory: "Выбрать",
+    taskName: "",
+    taskDescription: "",
+    photos: [],
+    time : {start : "" , end : ""}
+  })
+
+  const [secondPage , setSecondPage] = useState({
+    budget: 0,
+    tonValue: 0,
+    startTime : "",
+    endTime : "",
+    singleTime : "",
+    isPrivate : false,
+    time : {start : null , end : null}
+  })
+
 
   const tonConstant = useSelector((state) => state.ton.value);
 
@@ -37,7 +57,7 @@ const AdCreating = () => {
 
   useEffect(() => {
     if (categorys && subCategorys) {
-      setTaskInformation(
+      setFirstPage(
         (value) => ({...value,
         category: categorys.find((e) => e.category === "Другое"),
         subCategory: subCategorys.find((e) => e.subCategory === "Нет"),
@@ -60,27 +80,27 @@ const AdCreating = () => {
     let endError = false;
     let singleError = false;
     if (spet === 0) {
-      if (error.name && taskInformation.taskName.length > 3) {
+      if (error.name && firstPage.taskName.length > 3) {
         setError({ ...error, name: false });
       }
     }
     if (spet === 1) {
-      if (error.ton && taskInformation.tonValue > 0.5) {
+      if (error.ton && secondPage.tonValue > 0.5) {
         setError({ ...error, ton: false });
       }
       if (document.getElementById("dateSwapper").style.transform) {
-        if (taskInformation.startTime.length === 0) {
+        if (secondPage.startTime.length === 0) {
           startError = true;
         }
-        if (taskInformation.endTime.length === 0) {
+        if (secondPage.endTime.length === 0) {
           endError = true;
         }
-        if (taskInformation.endTime <= taskInformation.startTime) {
+        if (secondPage.endTime <= secondPage.startTime) {
           endError = true;
           startError = true;
         }
       } else {
-        if (taskInformation.singleTime.length === 0) {
+        if (secondPage.singleTime.length === 0) {
           singleError = true;
         }
       }
@@ -106,11 +126,11 @@ const AdCreating = () => {
     }
   }, [
     error,
-    taskInformation.taskName,
-    taskInformation.tonValue,
-    taskInformation.startTime,
-    taskInformation.endTime,
-    taskInformation.singleTime,
+    firstPage.taskName,
+    firstPage.tonValue,
+    secondPage.startTime,
+    secondPage.endTime,
+    secondPage.singleTime,
   ]);
 
   function animte() {
@@ -133,16 +153,17 @@ const AdCreating = () => {
   }
 
   function finish() {
-    let taskInformationCopy = {...taskInformation}
+    let secondPageCopy = {...secondPage}
     if (document.getElementById("dateSwapper").style.transform) {
-      taskInformationCopy.time = {start : taskInformation.startTime , end : taskInformation.endTime}
+      secondPageCopy.time = {start : secondPageCopy.startTime , end : secondPageCopy.endTime}
       // setTaskInformation({...taskInformation , time : {start : taskInformation.startTime , end : taskInformation.endTime} })
 
     } else {
-      taskInformationCopy.time = {start : taskInformation.singleTime , end : ''}
+      secondPageCopy.time = {start : secondPageCopy.singleTime , end : ''}
     }
+    let localTaskInformation = {...secondPageCopy , ...firstPage}
 
-    post(taskInformation);
+    post(localTaskInformation);
     // dispatch(addMyAds(taskInformationCopy))
 
     
@@ -158,8 +179,8 @@ const AdCreating = () => {
     myFormData.append("title", el.taskName);
     myFormData.append("description", el.taskDescription);
     myFormData.append("deadline", 1);
-    myFormData.append("category", taskInformation.category.id);
-    myFormData.append("subCategory", taskInformation.subCategory.id);
+    myFormData.append("category", el.category.id);
+    myFormData.append("subCategory", el.subCategory.id);
     myFormData.append("price", el.tonValue);
     if (document.getElementById("dateSwapper").style.transform) {
       myFormData.append("startTime", el.startTime);
@@ -198,7 +219,7 @@ const AdCreating = () => {
     let endError = false;
     switch (spet) {
       case 0: {
-        if (taskInformation.taskName.length < 3) {
+        if (firstPage.taskName.length < 3) {
           taskName = true;
         }
         setError({ ...error, name: taskName });
@@ -207,22 +228,22 @@ const AdCreating = () => {
         );
       }
       case 1: {
-        if (taskInformation.tonValue < 0.5) {
+        if (secondPage.tonValue < 0.5) {
           ton = true;
         }
         if (document.getElementById("dateSwapper").style.transform) {
-          if (taskInformation.startTime.length === 0) {
+          if (secondPage.startTime.length === 0) {
             startError = true;
           }
-          if (taskInformation.endTime.length === 0) {
+          if (secondPage.endTime.length === 0) {
             endError = true;
           }
-          if (taskInformation.endTime <= taskInformation.startTime) {
+          if (secondPage.endTime <= secondPage.startTime) {
             endError = true;
             startError = true;
           }
         } else {
-          if (taskInformation.singleTime.length === 0) {
+          if (secondPage.singleTime.length === 0) {
             singleError = true;
           }
         }
@@ -258,13 +279,8 @@ const AdCreating = () => {
     }
     if (checking()) {
       if (spet !== 2) {
-        if (spet === 0){
-          // добавить класс one
-        }
-        if (spet === 1){
-          // добавить класс two
-        }
         spet += 1;
+        animte()
         if (spet === 2) {
           MainButton.setText("ЗАХОЛДИРОВАТЬ");
         } else {
@@ -280,12 +296,7 @@ const AdCreating = () => {
     if (spet === 0) {
       navigate(-1);
     } else {
-      if (spet === 2){
-        // убрать класс two
-      }
-      if (spet === 1){
-        // убрать класс one
-      }
+
       spet -= 1;
       backAnimte();
 
@@ -323,7 +334,16 @@ const AdCreating = () => {
     };
   }, []);
   
-
+  const twoPages = useMemo( () => {
+    return (
+      {
+        ton: error.ton,
+        singleError: error.singleError,
+        startError: error.startError,
+        endError: error.endError,
+      }
+    )
+  } , [error] )
   return (
     <motion.div
       className="AdCreating__container"
@@ -341,27 +361,22 @@ const AdCreating = () => {
           <AdCreatingOne
             className={"adCreatingOne"}
             errorName={error.name}
-            setTaskInformation={setTaskInformation}
-            taskInformation={taskInformation}
+            setTaskInformation={setFirstPage}
+            taskInformation={firstPage}
             MyInformation={false}
             mistakes={{ timeError: false, taskName: false }}
             categorys={categorys}
             subCategorys={subCategorys}
           />
           <AdCreatingTwo
-            errors={{
-              ton: error.ton,
-              singleError: error.singleError,
-              startError: error.startError,
-              endError: error.endError,
-            }}
+            errors={twoPages}
             GreyIntWidth={GreyIntWidth}
             GreyWidth={GreyWidth}
-            setTaskInformation={setTaskInformation}
-            taskInformation={taskInformation}
+            setTaskInformation={setSecondPage}
+            taskInformation={secondPage}
             tonConstant={tonConstant}
           />
-          <AdCreatingThree taskInformation={taskInformation} />
+          <AdCreatingThree taskInformation={secondPage} />
         </>
       )}
       <button
