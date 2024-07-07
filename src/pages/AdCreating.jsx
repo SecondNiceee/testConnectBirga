@@ -289,7 +289,6 @@ const AdCreating = () => {
 
       spet += 1;
       
-      if (spet !== 3) {
         // spet += 1;
         // animte()
         if (spet === 2) {
@@ -297,10 +296,10 @@ const AdCreating = () => {
         } else {
           MainButton.setText("Далее");
         }
-        
-      } else {
-        finish();
-      }
+        if (spet === 3){
+          finish();
+        }
+      
     }
   }
   function goBack() {

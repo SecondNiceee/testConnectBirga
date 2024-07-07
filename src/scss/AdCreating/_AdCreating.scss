@@ -64,10 +64,10 @@
     transform: translateX(-200vw);
   }
   50%{
-    transform: translateX(calc(100vw + 10px));
+    transform: translateX(calc(-100vw + 10px));
   }
   100%{
-    transform: translateX(100vw);
+    transform: translateX(-100vw);
   }
 }
 
