@@ -1,45 +1,49 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import FirstMain from "../../components/First/FirstMain/FirstMain";
 import FirstTop from "../../components/First/FirstMain/FirstTop";
-import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import FirstLoader from "../../loaders/FirstLoader";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTasksInformation } from "../../store/information";
-import { CSSTransition } from "react-transition-group";
 // let count = 0
 const AllTasks = ({
-  isDetailsActive,
   setDetailsActive,
-  isMenuActive,
   setMenuActive,
-  ordersInformation,
   setSliderActive
 }) => {
   // count += 1
   // console.warn('РЕНДЕР' + count )
+
+  console.log('Рендер allTask')
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchTasksInformation("getOrders"));
   }, [dispatch]);
+  const ordersInformation = useSelector(
+    (state) => state.information.orderInformations
+  );
+  // const orderStatus = useSelector((state) => state.information.orderStatus);
 
-  const orderStatus = useSelector((state) => state.information.orderStatus);
+
 
   const [filterBy, setFilterBy] = useState("");
 
   const filteredArr = useFilteredArr(ordersInformation, filterBy);
   const userInfo = useSelector((state) => state.telegramUserInfo);
 
+
+
+
   return (
     <div className="AllTasks">
       <FirstTop
-        style={isMenuActive ? { opacity: "0.5" } : {}}
+        filteredBy={filterBy}
         setMenuActive={setMenuActive}
         setFilterBy={setFilterBy}
         userInfo={userInfo}
       />
 
-      {orderStatus === "complete" ? (
+      {filteredArr !== null ? (
         <>
           <FirstMain
             // style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
@@ -48,21 +52,7 @@ const AllTasks = ({
             setSliderActive = {setSliderActive}
           />
 
-          <CSSTransition
-            in={isDetailsActive.isOpen}
-            timeout={400}
-            classNames="left-right"
-            mountOnEnter
-            unmountOnExit
-          >
-            <FirstDetails
-              // className={}
-              setDetailsActive={setDetailsActive}
-              isDetailsActive={isDetailsActive}
-              orderInformation={ordersInformation[isDetailsActive.id]}
-              similarAds={ordersInformation}
-            />
-          </CSSTransition>
+
         </>
       ) : (
         <FirstLoader />

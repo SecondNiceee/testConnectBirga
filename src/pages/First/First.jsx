@@ -10,11 +10,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import Responce from "./Responce";
 import SliderMain from "../../components/UI/Swiper/SliderMain";
+import { CSSTransition } from "react-transition-group";
+import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 
 let varStep = 0;
 let isDetailsActiveVar = false;
 
 const First = () => {
+
+  console.log('Рендер ферста')
 
 
   const dispatch = useDispatch();
@@ -43,6 +47,9 @@ const First = () => {
   );
 
 
+  const isMenuActive = useSelector((state) => state.menu.value);
+
+
   const [sliderActive , setSliderActive ] = useState({
     isActive : false,
     index : 0,
@@ -50,7 +57,7 @@ const First = () => {
   })
 
   const gotIt = useMemo( () => {
-    if (ordersInformation[isDetailsActive.id]){
+    if (ordersInformation !== null){
 
       if (ordersInformation[isDetailsActive.id].responces){
 
@@ -94,6 +101,7 @@ const First = () => {
       }
     }
   }
+
   useEffect(() => {
     function back() {
       if (sliderActive.isActive){
@@ -148,32 +156,37 @@ const First = () => {
     };
   });
 
-  if (isDetailsActive.isOpen) {
-    if (step === 0){
-      MainButton.setParams({
-        is_active : true,
-        color : '#2ea5ff',
-        text_color : '#ffffff'
-        
-      })
+
+  useEffect( () => {
+    if (isDetailsActive.isOpen) {
+      if (step === 0){
+        MainButton.setParams({
+          is_active : true,
+          color : '#2ea5ff',
+          text_color : '#ffffff'
+          
+        })
+      }
+      BackButton.show();
+      MainButton.show();
     }
-    BackButton.show();
-    MainButton.show();
-  }
-  if (step === 0) {
-    MainButton.setText("ОТКЛИКНУТЬСЯ");
-  }
-  if (step === 1) {
-    MainButton.setText("ОТКЛИКНУТЬСЯ");
-    
-  }
+    if (step === 0) {
+      MainButton.setText("ОТКЛИКНУТЬСЯ");
+    }
+    if (step === 1) {
+      MainButton.setText("ОТКЛИКНУТЬСЯ");
+      
+    }
+  
+  } , [step , isDetailsActive.isOpen]   )
+
 
 
 
 
   
 
-  const isMenuActive = useSelector((state) => state.menu.value);
+
 
   const setMenuActive = useCallback(
     (set) => {
@@ -205,15 +218,17 @@ const First = () => {
   });
 
 
+  const closeMenu = useCallback( () => {
+    if (isMenuActive) {
+      setMenuActive(false);
+    }
+  } , [isMenuActive, setMenuActive] )
+
   return (
     <motion.div
       style={isMenuActive ? { opacity: "0.3" } : {}}
       className="First"
-      onClick={() => {
-        if (isMenuActive) {
-          setMenuActive(false);
-        }
-      }}
+      onClick={closeMenu}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.1 }}
@@ -232,14 +247,12 @@ const First = () => {
         </button> */}
         <AllTasks
           setSliderActive = {setSliderActive}
-          ordersInformation={ordersInformation}
-          isDetailsActive={isDetailsActive}
+
           setDetailsActive={setDetailsActive}
           setMenuActive={setMenuActive}
-          isMenuActive={isMenuActive}
         />
 
-        {ordersInformation[isDetailsActive.id]  ? 
+        {ordersInformation !== null  ? 
         <Responce
           setStep = {setStep}
           setDetailsActive = {setDetailsActive}
@@ -249,12 +262,31 @@ const First = () => {
           MainButton={MainButton}
           orderInformation={ordersInformation[isDetailsActive.id]}
         />
+        // <>
+        // </>
         :
         <></>
         }
       </div>
 
+      <CSSTransition
+            in={isDetailsActive.isOpen}
+            timeout={400}
+            classNames="left-right"
+            mountOnEnter
+            unmountOnExit
+          >
+            <FirstDetails
+              // className={}
+              setDetailsActive={setDetailsActive}
+              isDetailsActive={isDetailsActive}
+              orderInformation={ordersInformation === null ? "" : ordersInformation[isDetailsActive.id]  }
+              similarAds={ordersInformation}
+            />
+          </CSSTransition>
+
      <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
+
     </motion.div>
   );
 };

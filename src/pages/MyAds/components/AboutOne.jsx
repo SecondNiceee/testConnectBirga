@@ -94,9 +94,10 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
 
 
   const filteredArray = useMemo( () => {
+    console.log(filterBy)
       if (responces !== null){
         if (filterBy === "activity"){
-          return responces
+          return responces.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
         }
         if (filterBy === "stage"){
           return responces.sort((a, b) => Number(b.user.stage) - Number(a.user.stage))
@@ -105,6 +106,19 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
       return null
       
   } , [responces , filterBy] )
+
+  const deleteCallback = useCallback( () => {
+      deleteFunction(task)
+    // eslint-disable-next-line 
+  } , [] )
+
+  const setDetailsCallback = useCallback( () => {
+    setDetails({
+      isActive : true,
+      task : task,
+    })
+    // eslint-disable-next-line 
+  }, [] )
 
     return (
         <div className="aboutOne" style={{
@@ -116,17 +130,10 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
         <FirstBlock
         
         setSlideActive={setSliderAcitve}
-        deleteFunction={() => {
-          deleteFunction(task)
-        }}
-         setDetailsActive={(value) => {
-          setDetails({
-            isActive : true,
-            task : task,
-          })
-        }} isResponce={true} isButton={true}   className={'FirstAdsBlock'}  {...task} />
+        deleteFunction={deleteCallback}
+         setDetailsActive={setDetailsCallback} isResponce={true} isButton={true}   className={'FirstAdsBlock'}  {...task} />
       :
-      ""
+      <></>
       }
           
           {responces === null ? 

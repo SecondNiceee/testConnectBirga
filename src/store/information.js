@@ -325,48 +325,7 @@ const information = createSlice( {
             time : {start : null , end : null}
           } ,
 
-          orderInformations :   [  {
-            taskName: "UX/UI-дизайнер для разработки прототипа интернет-магазина",
-            executionPlace: "Можно выполнить удаленно",
-            photos : [],
-            time : {start: 'Начать 28 февраля, 00:00' , end : 'Воскресенье, 10 марта 2024 23:59'} ,
-            tonValue: 261,
-            taskDescription : "Необходимо разработать логотип для магазина! Пример стиля, и пример лого, от которого отталкиваться - предоставлю.",
-            rate : '5',
-            customerName : 'YourName',
-            isActive : true,
-            creationTime : 'Создано когда-то , ..timing',
-            viewsNumber : '51',
-            userPhoto : ""
-          },
-          {
-            taskName: "UX/UI-дизайнер для разработки прототипа интернет-магазина",
-            executionPlace: "Можно выполнить удаленно",
-            photos : [],
-            time : {start: 'Начать 28 февраля, 00:00' , end : 'Воскресенье, 10 марта 2024 23:59'} ,
-            tonValue: 261,
-            taskDescription : "Необходимо разработать логотип для магазина! Пример стиля, и пример лого, от которого отталкиваться - предоставлю.",
-            rate : '5',
-            customerName : 'YourName',
-            isActive : true,
-            creationTime : 'Создано когда-то , ..timing',
-            viewsNumber : '51',
-            userPhoto : ""
-          },
-          {
-            taskName: "UX/UI-дизайнер для разработки прототипа интернет-магазина",
-            executionPlace: "Можно выполнить удаленно",
-            photos : [],
-            time : {start: 'Начать 28 февраля, 00:00' , end : 'Воскресенье, 10 марта 2024 23:59'} ,
-            tonValue: 261,
-            taskDescription : "Необходимо разработать логотип для магазина! Пример стиля, и пример лого, от которого отталкиваться - предоставлю.",
-            rate : '5',
-            customerName : 'YourName',
-            isActive : true,
-            creationTime : 'Создано когда-то , ..timing',
-            viewsNumber : '51',
-            userPhoto : ""
-          }  ],
+          orderInformations :  null,
 
           myAdsArray : [null
 

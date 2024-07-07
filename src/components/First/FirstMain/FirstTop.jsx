@@ -6,11 +6,10 @@ import OneInput from "../../UI/OneInput/OneInput";
 import { Link } from "react-router-dom";
 
 
-const FirstTop = ({ setFilterBy, setMenuActive , userInfo ,  ...props }) => {
+const FirstTop = ({ setFilterBy, filteredBy, setMenuActive , userInfo ,  ...props }) => {
 
   
 
-  const [inputValue, setInputValue] = useState("");
   return (
     <div  {...props} className="FirstTop">
       <Burger
@@ -19,9 +18,8 @@ const FirstTop = ({ setFilterBy, setMenuActive , userInfo ,  ...props }) => {
         }}
       />
       <OneInput
-        value={inputValue}
+        value={filteredBy}
         onChange={(e) => {
-          setInputValue(e.target.value);
           setFilterBy(e.target.value);
         }}
         placeholder="Поиск по заданиям..."
