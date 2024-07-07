@@ -108,11 +108,14 @@ const AllShablons = () => {
     <div className="all-shablon-wrapper">
       <Top setMenuActive={setMenuActive} name={"Шаблоны откликов"} />
 
+      {shablonsArr.length === 6 ?  <></>
+      :
       <AdCreateFunc
         className="all-shablons-func"
         text={"Создать новый шаблон"}
         func={clickOnFunc}
       />
+      }
 
       {shablonsArr.length > 0 ? (
         <GreyText className={"shablon-wrapper-grey"}>

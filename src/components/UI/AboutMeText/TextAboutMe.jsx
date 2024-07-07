@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { memo, useEffect, useRef, useState } from 'react';
 import './TextAboutMe.css'
 const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...props } ) => {
     const [hideAboutMe, setHideAboutMe] = useState({
@@ -96,4 +96,4 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
     );
 };
 
-export default TextAboutMe;
+export default memo(TextAboutMe);

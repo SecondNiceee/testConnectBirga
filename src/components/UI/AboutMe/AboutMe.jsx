@@ -137,4 +137,4 @@ const AboutMe = ({ setAboutMeModal, setAboutU, aboutU, aboutMeModal , scrollTo }
     </div>
   );
 };
-export default AboutMe;
+export default memo(AboutMe);
