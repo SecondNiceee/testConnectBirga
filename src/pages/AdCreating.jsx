@@ -278,11 +278,19 @@ const AdCreating = () => {
       blurRef.current.focus();
     }
     if (checking()) {
+      mainRef.current.classList.remove('oneBack')
+      mainRef.current.classList.remove('twoBack')
       if (spet === 0){
           mainRef.current.classList.add('stepOne')
       }
-      if (spet !== 2) {
-        spet += 1;
+      if (spet === 1){
+        mainRef.current.classList.add('stepTwo')
+      }
+
+      spet += 1;
+      
+      if (spet !== 3) {
+        // spet += 1;
         // animte()
         if (spet === 2) {
           MainButton.setText("ЗАХОЛДИРОВАТЬ");
@@ -299,9 +307,17 @@ const AdCreating = () => {
     if (spet === 0) {
       navigate(-1);
     } else {
-
+      
+      if (spet === 1){
+        mainRef.current.classList.remove('stepOne')
+        mainRef.current.classList.add('oneBack')
+      }
+      if (spet === 2){
+        mainRef.current.classList.remove('stepTwo')
+        mainRef.current.classList.add('twoBack')
+      }
       spet -= 1;
-      backAnimte();
+      // backAnimte();
 
       if (stationNow === -100) {
       }

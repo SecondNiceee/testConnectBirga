@@ -31,14 +31,66 @@
   50%{
     transform: translateX(calc(-100vw - 10px));
   }
-  75%{
-    transform: translateX(calc(-100vw + 5px));
-  }
-  
   100%{
     transform: translateX(-100vw);
   }
 }
+@keyframes stepTwo{
+  0%{
+    transform: translateX(-100vw);
+  }
+  50%{
+    transform: translateX(calc(-200vw - 10px));
+  }
+  100%{
+    transform: translateX(-200vw);
+  }
+}
+
+@keyframes oneBack{
+  0%{
+    transform: translateX(-100vw);
+  }
+  50%{
+    transform: translateX(calc(10px));
+  }
+  100%{
+    transform: translateX(0);
+  }
+}
+
+@keyframes twoBack{
+  0%{
+    transform: translateX(-200vw);
+  }
+  50%{
+    transform: translateX(calc(100vw + 10px));
+  }
+  100%{
+    transform: translateX(100vw);
+  }
+}
+
+.twoBack{
+  animation: twoBack 0.55s  ;
+  animation-fill-mode: both;
+}
+.oneBack{
+  animation: oneBack 0.55s  ;
+  animation-fill-mode: both;
+}
+.stepOne{
+  animation: stepOne 0.55s  ;
+  animation-fill-mode: both;
+}
+
+.stepTwo{
+  animation: stepTwo 0.55s  ;
+  animation-fill-mode: both;
+}
+
+
+
 .AdCreating{
     display: flex;
     flex-direction: column;
@@ -133,10 +185,6 @@
 
   .AdCreating__container{
     transition: 0.3s;
-  }
-  .stepOne{
-    animation: stepOne 0.55s  ;
-    animation-fill-mode: both;
   }
 
 
