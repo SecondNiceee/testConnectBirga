@@ -43,7 +43,7 @@ body { width: 100%; height: auto; background: rgb(24, 34, 45); }
 
 }
 .left-right-enter{
-   transform: translateX(100%);
+   transform: translateX(0%);
    transition: 0.35s;
 }
 .left-right-enter-active{

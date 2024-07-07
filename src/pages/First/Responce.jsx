@@ -17,6 +17,9 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
 
 
   localResponce = responce;
+
+  
+
   useEffect(() => {
       if (localResponce.text.length < 3 && step === 1){
         MainButton.setParams({

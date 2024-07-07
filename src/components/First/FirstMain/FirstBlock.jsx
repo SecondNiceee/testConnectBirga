@@ -24,14 +24,15 @@ const FirstBlock = ({
   isWatched,
   index,
   id,
-  setSlideActive
+  setSlideActive,
+   tonConstant 
 
 
 }) => {
   const dispatch = useDispatch()
   console.log("render" + counter)
   counter += 1
-  const tonConstant = useSelector((state) => state.ton.value);
+
   var options = {
     year: "numeric",
     month: "long",

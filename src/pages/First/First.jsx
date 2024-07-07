@@ -227,18 +227,18 @@ const First = () => {
   const tonConstant = useSelector((state) => state.ton.value);
   return (
     <motion.div
-      style={isMenuActive ? { opacity: "0.3" } : {}}
+      style={style}
       className="First"
       onClick={closeMenu}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.1 }}
     >
-      <div className="first-wrapper" style={style}>
+      <div className="first-wrapper" >
         {/* <button
           onClick={forward}
           style={{
-            zIndex: "1000",
+            zIndex: "10000",
             position: "fixed",
             left: 20,
             top: 20,
