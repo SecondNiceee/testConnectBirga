@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 import BackButton from "../../constants/BackButton";
@@ -13,7 +13,7 @@ import SliderMain from "../../components/UI/Swiper/SliderMain";
 import { CSSTransition } from "react-transition-group";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 
-let varStep = 0;
+let step = 0;
 let isDetailsActiveVar = false;
 
 const First = () => {
@@ -23,7 +23,7 @@ const First = () => {
 
   const dispatch = useDispatch();
 
-  const [step, setStep] = useState(varStep);
+
 
 
   const [isDetailsActive, setDetailsActive] = useState({
@@ -56,6 +56,8 @@ const First = () => {
     photos : []
   })
 
+  const mainRef = useRef(null)
+
   const gotIt = useMemo( () => {
     if (ordersInformation !== null && ordersInformation.length > 0 && ordersInformation[isDetailsActive.id]){
 
@@ -81,7 +83,6 @@ const First = () => {
   }, [isDetailsActive]);
 
   isDetailsActiveVar = isDetailsActive.isOpen;
-  varStep = step;
 
   function closeDetails() {
     setDetailsActive({ ...isDetailsActive, isOpen: false });
@@ -95,9 +96,9 @@ const First = () => {
       })
     }
     else{
-      if (varStep === 0) {
-        setStep(step + 1);
-        varStep = step;
+      if (step === 0) {
+        mainRef.current.classList.add('secondStep')
+        step += 1
       }
     }
   }
@@ -119,10 +120,13 @@ const First = () => {
           else{
   
             if (step === 1) {
-              setStep(step - 1);
+              step -= 1
+              mainRef.current.classList.remove('secondStep')
             }
-            if (step === 0) {
-              closeDetails();
+            else{
+              if (step === 0) {
+                closeDetails();
+              }
             }
           }
         }
@@ -195,20 +199,7 @@ const First = () => {
     [dispatch]
   );
 
-  const style = useMemo(() => {
-    switch (step) {
-      case 0:
-        return {
-          transform: "translateX(0%)",
-        };
-      case 1:
-        return {
-          transform: "translateX(-100%)",
-        };
-      default : 
-        return ""
-    }
-  }, [step]);
+
 
   useListner({
     isMenuActive,
@@ -227,7 +218,8 @@ const First = () => {
   const tonConstant = useSelector((state) => state.ton.value);
   return (
     <motion.div
-      style={style}
+      // style={style}
+      ref={mainRef}
       className="First"
       onClick={closeMenu}
       initial={{ opacity: 0 }}
@@ -235,7 +227,7 @@ const First = () => {
       transition={{ duration: 0.1 }}
     >
       <div className="first-wrapper" >
-        {/* <button
+        <button
           onClick={forward}
           style={{
             zIndex: "10000",
@@ -245,7 +237,7 @@ const First = () => {
           }}
         >
           ДАЛЕЕ
-        </button> */}
+        </button>
         <AllTasks
           setSliderActive = {setSliderActive}
 
@@ -255,7 +247,7 @@ const First = () => {
 
         {ordersInformation !== null && tonConstant !== 0   ? 
         <Responce
-          setStep = {setStep}
+          mainRef={mainRef}
           setDetailsActive = {setDetailsActive}
           step={step}
           responce = {responce}
@@ -265,7 +257,7 @@ const First = () => {
         />
         // <>
         // </>
-        :
+        :                                     
         <></>
         }
       </div>

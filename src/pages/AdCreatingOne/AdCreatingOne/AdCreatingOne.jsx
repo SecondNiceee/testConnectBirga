@@ -1,5 +1,5 @@
 
-import React, {  useEffect, useState } from "react";
+import React, {  memo, useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
 import Cap from "../../../components/UI/Cap/Cap";
@@ -327,4 +327,4 @@ const AdCreatingOne = ({
   );
 };
 
-export default AdCreatingOne;
+export default memo(AdCreatingOne);

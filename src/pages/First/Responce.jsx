@@ -9,11 +9,9 @@ import { addResponce } from "../../store/information";
 
 
 let localResponce ;
-const Responce = ({ orderInformation, MainButton, responce, setResponce , step, setStep , setDetailsActive  }) => {
+const Responce = ({ orderInformation, MainButton, responce, setResponce , step , mainRef, setDetailsActive  }) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
   const dispatch = useDispatch();
-
-
 
 
   localResponce = responce;
@@ -95,11 +93,11 @@ const Responce = ({ orderInformation, MainButton, responce, setResponce , step, 
         }
         if (buttonId === "save") {
           postResponce(orderInformation.id, 2144832745 );
-          setStep(0)
+          mainRef.current.classList.remove('secondStep')
           setDetailsActive((value) => ({...value , isOpen : false}))
       } })
     }
-  }, [responce, step, orderInformation.id, setDetailsActive, setStep, dispatch]);
+  }, [responce, step, orderInformation.id, setDetailsActive, dispatch]);
 
   useEffect(() => {
     MainButton.onClick(forwardFunction);

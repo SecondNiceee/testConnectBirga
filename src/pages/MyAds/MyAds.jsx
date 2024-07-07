@@ -176,6 +176,7 @@ const MyAds = () => {
     }
     BackButton.onClick(goBack);
     return () => {
+      BackButton.offClick(goBack);
       MainButton.offClick(writeFucntion)
     }
 

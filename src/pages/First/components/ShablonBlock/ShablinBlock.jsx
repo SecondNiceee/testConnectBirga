@@ -70,11 +70,13 @@ const ShablinBlock = ({
 
       <CSSTransition
         in={responce.shablonMaker}
+        timeout={400}
         classNames={"shablon"}
         unmountOnExit
         mountOnEnter
       >
         <Shablon
+        
           exitText = "ОТКЛИКНУТЬСЯ"
           isExitShow = {true}
           setActive={() => {

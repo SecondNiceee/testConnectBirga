@@ -9,6 +9,10 @@
   will-change: transform;
 }
 
+.secondStep{
+    transform: translateX(-100%);
+}
+
 .first-wrapper{
     display: flex;
     transform: translateX(0%);
