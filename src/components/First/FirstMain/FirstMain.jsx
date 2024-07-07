@@ -4,7 +4,7 @@ import {  useSelector } from "react-redux";
 
 const FirstMain = ({ ordersInformation, setDetailsActive , setSliderActive, ...props}) => {
   const watchedArr = useSelector(state => state.watchedAds.watchedAds)
-
+  const tonConstant = useSelector((state) => state.ton.value);
   return (
     <div {...props} className="FirstMain">
 

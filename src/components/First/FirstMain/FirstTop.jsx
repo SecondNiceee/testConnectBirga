@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo, useState } from "react";
 import Burger from "../../UI/Burger/Burger";
 import OneInput from "../../UI/OneInput/OneInput";
 
@@ -31,4 +31,4 @@ const FirstTop = ({ setFilterBy, filteredBy, setMenuActive , userInfo ,  ...prop
   );
 };
 
-export default FirstTop;
+export default memo(FirstTop);

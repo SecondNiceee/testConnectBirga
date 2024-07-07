@@ -223,7 +223,8 @@ const First = () => {
       setMenuActive(false);
     }
   } , [isMenuActive, setMenuActive] )
-
+  
+  const tonConstant = useSelector((state) => state.ton.value);
   return (
     <motion.div
       style={isMenuActive ? { opacity: "0.3" } : {}}
@@ -252,7 +253,7 @@ const First = () => {
           setMenuActive={setMenuActive}
         />
 
-        {ordersInformation !== null   ? 
+        {ordersInformation !== null && tonConstant !== 0   ? 
         <Responce
           setStep = {setStep}
           setDetailsActive = {setDetailsActive}

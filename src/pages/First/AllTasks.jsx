@@ -32,7 +32,7 @@ const AllTasks = ({
   const userInfo = useSelector((state) => state.telegramUserInfo);
 
 
-
+  const tonConstant = useSelector((state) => state.ton.value);
 
   return (
     <div className="AllTasks">
@@ -43,7 +43,7 @@ const AllTasks = ({
         userInfo={userInfo}
       />
 
-      {filteredArr !== null ? (
+      {filteredArr !== null && tonConstant !== 0 ? (
         <>
           <FirstMain
             // style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
