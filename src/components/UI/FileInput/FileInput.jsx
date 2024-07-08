@@ -5,8 +5,13 @@ let counter = 0;
 const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);
   useEffect(() => {
-    setImages(files.map((event) => URL.createObjectURL(event)));
-    alert(images.toString())
+    setImages(files.map((event) => {
+
+      let url = (window.URL || window.webkitURL || window || {}).createObjectURL(event);
+      alert(url)
+      return url
+
+    }))
   }, [files]);
   const myRef = useRef(null);
   useEffect(() => {
