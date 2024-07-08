@@ -85,6 +85,8 @@ const Profile = () => {
 
   const textRef = useRef(null)
 
+  const numbRef = useRef(null)
+
 
 
   const cards = useSelector(state => state.telegramUserInfo.profile.cards)
@@ -92,6 +94,7 @@ const Profile = () => {
   useEffect( () => {
     console.log(userInfo)
     textRef.current.value = userInfo.profile.about
+    numbRef.current.value = userInfo.profile.stage
   },[] )
 
   
@@ -145,15 +148,17 @@ const Profile = () => {
   
 
   const save = useCallback( () => {
+    console.log(aboutULocal)
     dispatch(changeProfile(aboutULocal))
+    
     dispatch(putUserInfo([
-      {'stage' : Number(aboutULocal.stage),
+      {'stage' : Number(numbRef.current.value.split(' ')[0]),
         'about' : textRef.current.value
       },
       userInfoLocal.id
     ]))
 
-  } , [dispatch, textRef.current.value] )
+  } , [dispatch, textRef] )
 
   
 
@@ -169,28 +174,13 @@ const Profile = () => {
       else{
         return false
       }
-      // if (JSON.stringify(x) !== JSON.stringify(y)){
-      //   return false
-      // }
-      // if (x.cards.length !== y.cards.length){
-      //   return false
-      // }
-      // else{
-      //   for (let xCard of x.cards){
-      //     for (let yCard of y.cards){
-      //       if (JSON.stringify(xCard) !== JSON.stringify(yCard)){
-      //         return false
-      //       }
-      //     }
-      //   }
-      // }
-      // return true;
+
     }
 
 
 
     if (!cardsActive && !changeActive){
-      if ( compare2Objects(userInfoLocal.profile, aboutULocal) === false || textRef.current.value !== userInfoLocal.profile.about ){
+      if ( numbRef.current.value !== userInfoLocal.profile.stage || textRef.current.value !== userInfoLocal.profile.about ){
           MainButton.setParams({
             text : 'Сохранить',
             is_visible : true
@@ -277,8 +267,8 @@ const Profile = () => {
   const onBlurFunc = useCallback( (e) => {
     let numb = Number(e.target.value.slice(e.target.value.length - 1 , e.target.value.length))
 
-    if (e.target.value === ''){
-      setAboutU(value => ({...value , stage : '0 лет'}))
+    if (e.target.value === '' || numb === 0){
+      e.target.value = "0 лет"
 
     }
 
@@ -304,21 +294,20 @@ const Profile = () => {
   console.log(aboutULocal.stage)
 
   const onFocusFunc = useCallback( (e) => {
-    e.target.value = String(aboutULocal.stage).split(' ')[0]
+    e.target.value = String(e.target.value).split(' ')[0]
   } , [] )
 
   const setValueFunc = useCallback(  (e) => {
     if (!isNaN(e)){
         if (e.slice(0,1) !== '0'){
-    
-          setAboutU({ ...aboutULocal, stage: Number(e) });
+          numbRef.current.value = e
         }
         else{
           if(e !== '00'){
-            setAboutU({...aboutULocal , stage : Number(e.slice(1,2))})
+            numbRef.current.value = e.slice(1,2)
           }
           else{
-            setAboutU({...aboutULocal , stage : 0})
+            numbRef.current.value = e.slice(1,2)
           }
         }
     }
@@ -392,6 +381,7 @@ const Profile = () => {
 
       <Compact title={"Стаж работы"} className={"compact-block"}>
         <SmallInput
+        ref={numbRef}
         mistakeText={'Стаж должен быть меньше 40 лет!'}
         mistake={errors.stageError}
          id = 'numberInput'
@@ -400,7 +390,7 @@ const Profile = () => {
           onFocus = {onFocusFunc}
           inputMode = "numeric"
           // type = "number"
-          value={aboutULocal.stage === null ? '0' : aboutULocal.stage}
+          // value={aboutULocal.stage === null ? '0' : aboutULocal.stage}
           setValue={setValueFunc}
         />
       </Compact>
