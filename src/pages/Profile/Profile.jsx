@@ -25,6 +25,7 @@ import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
 import { changeProfile, deleteCard, deleteServerCard, putUserInfo } from "../../store/telegramUserInfo";
 import SliderMain from "../../components/UI/Swiper/SliderMain";
+import Veryfication from "../../components/Profile/Veryfycation/Veryfication";
 
 
 const variants = {
@@ -449,23 +450,7 @@ const Profile = () => {
       {/* <Case className={'profile-case'} /> */}
 
 
-      <div className="profile__veryfication">
-        <p className="veryfication">Верификация</p>
-        <div className="veryfication__block">
-          <div className="Okey">
-            <img className="Subtract" src={Subtract} alt="" />
-          </div>
-
-          <div className="veryfication__block-text">
-            <p>Пройти KYC верификацию</p>
-            <p>
-              Подтвердите свою личность <br />и получайте на 20% больше откликов
-            </p>
-          </div>
-          <img src={greyArrowRight} className="greyArrow" alt="" />
-        </div>
-      </div>
-
+      {/* <Veryfication /> */}
 
         <CSSTransition
         mountOnEnter

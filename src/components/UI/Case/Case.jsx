@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import cl from "./Case.module.css";
 
 const Case = ({ className, title , description , photos, changeFunction, deleteFunction, setSliderActive,  ...props }) => {
@@ -87,4 +87,4 @@ const Case = ({ className, title , description , photos, changeFunction, deleteF
     </div>
   );
 };
-export default Case;
+export default memo(Case);
