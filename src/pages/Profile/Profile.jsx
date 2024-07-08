@@ -77,10 +77,10 @@ const Profile = () => {
 
 
   
-  const [aboutU, setAboutU] = useState({...userInfo.profile , 
-    stage : userInfo.profile.stage,
-    userId : userInfo.id 
-  });
+  // const [aboutU, setAboutU] = useState({...userInfo.profile , 
+  //   stage : userInfo.profile.stage,
+  //   userId : userInfo.id 
+  // });
   
 
   const textRef = useRef(null)
@@ -99,7 +99,6 @@ const Profile = () => {
 
   
 
-  aboutULocal = aboutU
   userInfoLocal = userInfo
 
 
@@ -148,8 +147,7 @@ const Profile = () => {
   
 
   const save = useCallback( () => {
-    console.log(aboutULocal)
-    dispatch(changeProfile(aboutULocal))
+    dispatch(changeProfile( [Number(numbRef.current.value.split(' ')[0]) , textRef.current.value ]  ))
     
     dispatch(putUserInfo([
       {'stage' : Number(numbRef.current.value.split(' ')[0]),
@@ -180,7 +178,7 @@ const Profile = () => {
 
 
     if (!cardsActive && !changeActive){
-      if ( numbRef.current.value !== userInfoLocal.profile.stage || textRef.current.value !== userInfoLocal.profile.about ){
+      if ( Number(numbRef.current.value.split(' ')[0]) !== Number(userInfoLocal.profile.stage) || textRef.current.value !== userInfoLocal.profile.about ){
           MainButton.setParams({
             text : 'Сохранить',
             is_visible : true
@@ -193,7 +191,7 @@ const Profile = () => {
 
 
 
-          if (aboutU.stage >= 40){
+          if (Number(numbRef.current.split(' ')[0]) >= 40){
             MainButton.disable()
             MainButton.setParams({
               
@@ -234,7 +232,7 @@ const Profile = () => {
        
     }
 
-  }, [aboutU , changeActive, cardsActive, save, errors.stageError , userInfo.profile,  textRef ]  )
+  }, [  changeActive, cardsActive, save, errors.stageError , userInfo.profile,  textRef ]  )
 
 
   
@@ -450,7 +448,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <Cards   save = {save} aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
+            <Cards   save = {save} aboutU={userInfo.profile} setCardsOpen={setCardsActive} />
         </CSSTransition>
 
 
@@ -463,7 +461,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <ChangeCards save={save} index={index}  card={aboutULocal.cards[index]}  aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
+            <ChangeCards save={save} index={index}  card={aboutULocal.cards[index]}  aboutU={userInfo.profile}  setCardsOpen={setChangeActive} />
         </CSSTransition>
 
         <SliderMain sliderActive={isSliderAcitve} setSliderActive={setSliderActive} />

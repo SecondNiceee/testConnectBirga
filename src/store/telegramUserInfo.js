@@ -199,7 +199,8 @@ const telegramUserInfo = createSlice({
   },
   reducers : {
     changeProfile(state , action){
-        state.profile = action.payload
+        state.profile.stage = action.payload[0]
+        state.profile.about = action.payload[1]
     },
     addCard(state, action){
         state.profile.cards.push(action.payload)

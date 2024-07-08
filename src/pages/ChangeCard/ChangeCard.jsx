@@ -18,7 +18,7 @@ let mainLocalErrors;
 let inputObject = {
   text: "",
 };
-const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
+const ChangeCards = ({save, setCardsOpen, index, card, aboutU }) => {
   const [cardsSetting, setCardsSetting] = useState(card);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({
@@ -86,18 +86,18 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
   function saveFunc() {
     if (checkMistakes()) {
-      setAboutU({
-        ...aboutU,
-        cards: [
-          ...aboutU.cards.map((e, i) => {
-            if (i === index) {
-              return localCardSetting;
-            } else {
-              return e;
-            }
-          }),
-        ],
-      });
+      // setAboutU({
+      //   ...aboutU,
+      //   cards: [
+      //     ...aboutU.cards.map((e, i) => {
+      //       if (i === index) {
+      //         return localCardSetting;
+      //       } else {
+      //         return e;
+      //       }
+      //     }),
+      //   ],
+      // });
 
       
       let myFormData = new FormData()

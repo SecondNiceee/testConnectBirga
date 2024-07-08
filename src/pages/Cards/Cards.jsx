@@ -17,7 +17,7 @@ let mainLocalErrors ;
 let inputObject = {
   text : ''
 }
-const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
+const Cards = ({ setCardsOpen, aboutU , save  }) => {
 
   
   const categorys = useSelector((state) => state.categorys.category);
@@ -122,7 +122,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
   const saveFunc = useCallback( () => {
     if (checkMistakes()) {
-      setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
+      // setAboutU({ ...aboutU, cards: [...aboutU.cards, localCardSetting] });
       // dispatch(addCard(localCardSetting));
 
 
@@ -150,7 +150,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         is_visible : true
     })
     }
-  } , [dispatch, setCardsOpen, aboutU, setAboutU] )
+  } , [dispatch, setCardsOpen, aboutU] )
   useEffect( () => {            
     MainButton.setText("Добавить кейс");
     BackButton.show()
