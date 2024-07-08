@@ -23,14 +23,13 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         // Создаем изображение и устанавливаем в него src base64 кодирование
         console.log(base64)
         setImages([...images, base64])
-        return base64
         // Добавляем изображение на страницу
       }
 
 
 
 
-      resizeImage(event, 200, 200, 0.6).then((value) => {
+      resizeImage(event, 500, 500, 0.6).then((value) => {
         reader.readAsDataURL(value);
       })
     })
