@@ -17,6 +17,7 @@ import { changeMenuActive } from "../../../store/menuSlice";
 import makeNewFile from "../../../functions/newMakeFile";
 
 const AboutReaction = ({ responce , setSliderActive,   ...props}) => {
+  console.log('Рендер Эбаута')
   const dispatch = useDispatch()
   const setMenuActive = useCallback(
     (arg) => {

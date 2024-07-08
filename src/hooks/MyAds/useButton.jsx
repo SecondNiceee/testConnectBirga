@@ -49,7 +49,7 @@ export const useButton = ({
         setSliderActive({ ...sliderActive, isActive: false });
       }
     }
-    if (!localSecondPage.isActive && !details.isActive) {
+    if (!localSecondPage.isActive && !secondPage.isActive) {
       BackButton.hide();
     } else {
       BackButton.show();

@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 
 // import myImage from '../../images/desccription.png'
 import { useDispatch, useSelector } from "react-redux";
-import BackButton from "../../constants/BackButton";
 import { useNavigate } from "react-router-dom";
 import { changeMenuActive } from "../../store/menuSlice";
 import useListner from "../../hooks/useListner";
@@ -14,7 +13,6 @@ import MyAdOne from "./components/MyAdOne";
 import AboutReaction from "./components/AboutReaction";
 import AboutOne from "./components/AboutOne";
 import { CSSTransition } from "react-transition-group";
-import MainButton from "../../constants/MainButton";
 import SliderMain from "../../components/UI/Swiper/SliderMain";
 import sortFiles from "../../functions/sortFiles";
 import { putMyTask } from "../../store/information";
@@ -27,12 +25,7 @@ import { useSave } from "../../hooks/MyAds/useSave";
 // const AboutOne = lazy( () => import ("./components/AboutOne") )
 // const AboutReaction = lazy( () => import ("./components/AboutReaction") )
 
-const aboutReaction = `Доброго времени суток!
-  Работа выполняется до полного согласования, пока результат Вас полностью не устроит.
-  Фиксированная стоимость, независимо от количества предложенных вариантов.
-  Гарантирую достойный результат!
-    
-  Опыт работы 8 лет в сфере типографического дизайна, без трудностей поможет мне выполнить Ваш заказ любой сложности с: растровыми изображениями и векторной графикой, разработкой макетов полиграфической продукции (визитки, листовки, буклеты, евробуклеты и т.д.), рекламной продукции (ручки, пакеты, футболки и т.д.), наружной рекламы, разработкой логотипов и фирменого стиля`;
+
 let localAboutReaction;
 let localSecondPage;
 let localIsOpen;
@@ -265,11 +258,9 @@ const MyAds = () => {
             <AboutOne
             setSliderAcitve={setSliderActive}
             setDetails={setDetails}
-              secondPage = {secondPage}
               setSecondPage={setSecondPage}
-            setDetailsActive={setDetailsActive}
               setOpen={setOpen}
-              task={myAdsArray[secondPage.index]}
+              task={secondPage.task}
               setMenuActive={setMenuActive}
               openAboutReactionFunc={setOpenAboutReaction}
             />
@@ -286,13 +277,9 @@ const MyAds = () => {
           >
             <LastAds
             setSliderActive = {setSliderActive}
-            sliderActive = {sliderActive}
             responce = {isOpen.responce}
               openAboutReactionFunc={setOpenAboutReaction}
-              openAboutReaction={openAboutReaction}
-              isOpen={isOpen}
-              setOpen={setOpen}
-              aboutReaction={aboutReaction}
+
             />
           </CSSTransition>
 

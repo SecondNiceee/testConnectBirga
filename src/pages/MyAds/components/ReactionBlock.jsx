@@ -7,7 +7,7 @@ import ModalChoicer from '../../../components/UI/ModalChoicer/ModalChoicer'
 const values = ["activity", "stage"]
 const names = ["По дате" , "По стажу работы"]
 
-const ReactionBlock = ({goForward , setFilterBy, setOpen, responces,setSliderActive,openAboutReactionFunc }) => {
+const ReactionBlock = ({ setFilterBy, setOpen, responces,setSliderActive,openAboutReactionFunc }) => {
 
   return (
     <div className="reactions__block">
@@ -36,7 +36,7 @@ const ReactionBlock = ({goForward , setFilterBy, setOpen, responces,setSliderAct
                     isActive : true, 
                     responce : e
                   })              
-            }} goForward = {goForward} /> 
+            }}  /> 
           )
         })}
     </div>

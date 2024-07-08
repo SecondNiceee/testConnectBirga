@@ -2,21 +2,6 @@ import { useCallback } from "react";
 
 export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sortFiles, dispatch, putMyTask, setDetails, details }) =>{
     const save = useCallback( () => {
-        console.log(details.task)
-        console.log(myAdsArray[secondPage.index])
-        function checkOut(){
-            if (JSON.stringify(details.task) === JSON.stringify(myAdsArray[secondPage.index])){
-                if (JSON.stringify(details.task.time) === JSON.stringify(myAdsArray[secondPage.index].task.time)){
-                    return true
-                }
-                else{
-                    return false
-                }
-            }
-            else{
-                return false
-            }
-        }
         if (details.task !== myAdsArray[secondPage.index] && checkMistakes(detailsVar.task)) {
           window.Telegram.WebApp
             .showPopup({
@@ -62,6 +47,8 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
         } else {
           setDetails((value) => ({...value , isActive : false}))
         }
-      }, [details , dispatch , myAdsArray , setDetails , secondPage.index  ] ) 
+         // eslint-disable-next-line
+      }, [details , dispatch , myAdsArray , setDetails , secondPage.index, checkMistakes, putMyTask, sortFiles  ] ) 
+
       return save
 }
