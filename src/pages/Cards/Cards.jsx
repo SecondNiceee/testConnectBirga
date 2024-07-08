@@ -177,7 +177,7 @@ const Cards = ({ setCardsOpen, aboutU , save  }) => {
 
 
 
-
+  
   return (
     <div className="cards">
       <h3 className="cards-title">Новый кейс</h3>
