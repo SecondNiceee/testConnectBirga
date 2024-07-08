@@ -166,11 +166,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         <input
           ref={myRef}
           onChange={(event) => {
-            if (device.includes("android")){
-              myRef.current.blur()
-              textRef.current.focus()
-              textRef.current.blur()
-            }
             event.preventDefault()
             if (event.target.files && event.target.files[0]) {
               if (event.target.files.length + files.length > 10){
