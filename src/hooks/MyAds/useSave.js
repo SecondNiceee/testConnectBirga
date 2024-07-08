@@ -1,0 +1,52 @@
+import { useCallback } from "react";
+
+export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sortFiles, dispatch, putMyTask, setDetails, details }) =>{
+    const save = useCallback( () => {
+        if (detailsVar.task !== myAdsArray[secondPage.index] && checkMistakes(detailsVar.task)) {
+          window.Telegram.WebApp
+            .showPopup({
+              title: "Сохранить?",
+              message: "Сохранить изменения перед выходом?",
+              buttons: [
+                { id: "save", type: "default", text: "Да" },
+                { id: "delete", type: "destructive", text: "Нет" },
+              ],
+            } , (buttonId) => {
+    
+              if (buttonId === "delete" || buttonId === null) {
+                setDetails((value) => ({...value , isActive : false}))
+              }
+              if (buttonId === "save") {
+              let myFormData = new FormData();
+              myFormData.append('title' , detailsVar.task.taskName)
+              myFormData.append('description' , detailsVar.task.taskDescription)
+              myFormData.append("deadline" , 1)
+              myFormData.append("price" , detailsVar.task.tonValue )
+              myFormData.append("startTime" , detailsVar.task.time.start)
+              myFormData.append("endTime" , detailsVar.task.time.end)
+    
+              let files = sortFiles(detailsVar.task.photosNames ,  detailsVar.task.photos)
+    
+    
+                for (let i = 0; i <  files.removedArr.length; i++){
+                  myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
+                }
+                for (let i = 0; i < files.addedArr.length ; i++){
+                  myFormData.append(`addFiles[${i}]` , files.addedArr[i] )
+                }
+    
+              dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
+    
+              
+              setDetails((value) => ({...value , isActive : false}))
+              }
+    
+    
+            } )
+            
+        } else {
+          setDetails((value) => ({...value , isActive : false}))
+        }
+      }, [details , dispatch , myAdsArray , setDetails , secondPage.index  ] ) 
+      return save
+}

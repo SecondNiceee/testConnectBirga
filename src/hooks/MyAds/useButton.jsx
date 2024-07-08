@@ -16,7 +16,8 @@ export const useButton = ({
   isOpen,
   localSecondPage,
   details,
-  secondPage
+  secondPage,
+  save
 
 }) => {
   useEffect(() => {
@@ -42,6 +43,7 @@ export const useButton = ({
             setOpenAboutReaction({ ...openAboutReaction, isActive: false });
           }
         } else {
+            save()
         }
       } else {
         setSliderActive({ ...sliderActive, isActive: false });

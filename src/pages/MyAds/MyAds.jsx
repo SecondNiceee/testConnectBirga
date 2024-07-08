@@ -20,6 +20,7 @@ import sortFiles from "../../functions/sortFiles";
 import { putMyTask } from "../../store/information";
 import AdCreatingOne from "../AdCreatingOne/AdCreatingOne/AdCreatingOne";
 import { useButton } from "../../hooks/MyAds/useButton";
+import { useSave } from "../../hooks/MyAds/useSave";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -144,7 +145,19 @@ const MyAds = () => {
     index : 0
   })
 
-  
+  const save = useSave({
+    detailsVar,
+    myAdsArray,
+    secondPage,
+    checkMistakes,
+    sortFiles,
+    dispatch,
+    putMyTask,
+    setDetails,
+    details
+  })// функция сохранения , а также модалка телеграма
+
+
   useButton({
     sliderActive : sliderActive,
     localDetails : localDetails,
@@ -159,7 +172,9 @@ const MyAds = () => {
     isOpen : isOpen,
     details : details,
     secondPage : secondPage,
-    localSecondPage : localSecondPage
+    localSecondPage : localSecondPage,
+    setDetails : setDetails,
+    save : save
   })
 
   // useEffect(() => {
@@ -254,55 +269,7 @@ const MyAds = () => {
 
 
 
-  const save = useCallback( () => {
-    if (detailsVar.task !== myAdsArray[secondPage.index] && checkMistakes(detailsVar.task)) {
-      window.Telegram.WebApp
-        .showPopup({
-          title: "Сохранить?",
-          message: "Сохранить изменения перед выходом?",
-          buttons: [
-            { id: "save", type: "default", text: "Да" },
-            { id: "delete", type: "destructive", text: "Нет" },
-          ],
-        } , (buttonId) => {
 
-          if (buttonId === "delete" || buttonId === null) {
-            setDetailsActive(false);
-          }
-          if (buttonId === "save") {
-          let myFormData = new FormData();
-          myFormData.append('title' , detailsVar.task.taskName)
-          myFormData.append('description' , detailsVar.task.taskDescription)
-          myFormData.append("deadline" , 1)
-          myFormData.append("price" , detailsVar.task.tonValue )
-          myFormData.append("startTime" , detailsVar.task.time.start)
-          myFormData.append("endTime" , detailsVar.task.time.end)
-
-          let files = sortFiles(detailsVar.task.photosNames ,  detailsVar.task.photos)
-
-
-            for (let i = 0; i <  files.removedArr.length; i++){
-              myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
-            }
-            for (let i = 0; i < files.addedArr.length ; i++){
-              myFormData.append(`addFiles[${i}]` , files.addedArr[i] )
-            }
-
-          dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
-
-          
-          setDetails( {...details,
-            isActive : false,
-          } )
-          }
-
-
-        } )
-        
-    } else {
-      setDetailsActive(false);
-    }
-  }, [details , dispatch , myAdsArray , setDetails , setDetailsActive, secondPage.index  ] ) // функция сохранения , а также модалка телеграма
 
 
 
