@@ -9,6 +9,8 @@
     padding-left: 14px;
     padding-right: 14px;
     padding-bottom: 20px;
+    transform: translate(100%);
+    transition: 0.3s;
     overflow-y: scroll;
     .cards-title{
         margin-left: 16px;
@@ -65,6 +67,29 @@
     .cards-categorys{
         margin-top: 18px;
     }
+
+
+}
+
+.cardsModal-enter{
+    transform: translateX(0%);
+}
+.cardsModal-enter-active{
+    transform: translateX(0%);
+}
+.cardsModal-enter-done{
+    transform: translateX(0%);
+}
+
+.cardsModal-exit{
+    transform: translateX(100%);
+}
+.cardsModal-exit-active{
+    transform: translateX(100%);
+}
+
+.cardsModal-exit-done{
+    transform: translateX(100%);
 }
 
 // .cardsModal-active{

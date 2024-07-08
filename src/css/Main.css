@@ -2782,6 +2782,11 @@ input {
   padding-left: 14px;
   padding-right: 14px;
   padding-bottom: 20px;
+  -webkit-transform: translate(100%);
+      -ms-transform: translate(100%);
+          transform: translate(100%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   overflow-y: scroll;
 }
 .cards .cards-title {
@@ -2846,6 +2851,42 @@ input {
 }
 .cards .cards-categorys {
   margin-top: 18px;
+}
+
+.cardsModal-enter {
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.cardsModal-enter-active {
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.cardsModal-enter-done {
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.cardsModal-exit {
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.cardsModal-exit-active {
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
+}
+
+.cardsModal-exit-done {
+  -webkit-transform: translateX(100%);
+      -ms-transform: translateX(100%);
+          transform: translateX(100%);
 }
 
 .all-shablon-wrapper {

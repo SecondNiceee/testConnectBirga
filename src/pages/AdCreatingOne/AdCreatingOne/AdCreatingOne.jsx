@@ -1,5 +1,5 @@
 
-import React, {  memo, useEffect, useState } from "react";
+import React, {  memo, useCallback, useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
 import Cap from "../../../components/UI/Cap/Cap";
@@ -12,12 +12,50 @@ import DatePicker from "react-mobile-datepicker";
 import cl from "./AdCreatingOne.module.css";
 import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
 import '../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css'
+import MyDatePicker from "../../../components/AdCreating/MyDatePicker/MyDatePicker";
 
 // eslint-disable-next-line
 Date.prototype.addHours = function(h) {
   this.setTime(this.getTime() + (h*60*60*1000));
   return this;
 }
+
+const monthMap = {
+  1: "Янв",
+  2: "Фев",
+  3: "Март",
+  4: "Апр",
+  5: "Май",
+  6: "Июнь",
+  7: "Июль",
+  8: "Авг",
+  9: "Сен",
+  10: "Окт",
+  11: "Ноя",
+  12: "Дек",
+};
+
+
+const dateConfig = {
+  month: {
+    format: (value) => monthMap[value.getMonth() + 1],
+    caption: "Мес",
+    step: 1,
+  },
+  date: {
+    format: "DD",
+    caption: "День",
+    step: 1,
+  },
+  hour: {
+    format: "hh",
+    caption: "Час",
+    step: 1,
+  },
+};
+
+const min = new Date(new Date().addHours(1) + 1)
+
 
 const AdCreatingOne = ({
   taskInformation,
@@ -46,37 +84,6 @@ const AdCreatingOne = ({
 
 
 
-  const monthMap = {
-    1: "Янв",
-    2: "Фев",
-    3: "Март",
-    4: "Апр",
-    5: "Май",
-    6: "Июнь",
-    7: "Июль",
-    8: "Авг",
-    9: "Сен",
-    10: "Окт",
-    11: "Ноя",
-    12: "Дек",
-  };
-  const dateConfig = {
-    month: {
-      format: (value) => monthMap[value.getMonth() + 1],
-      caption: "Мес",
-      step: 1,
-    },
-    date: {
-      format: "DD",
-      caption: "День",
-      step: 1,
-    },
-    hour: {
-      format: "hh",
-      caption: "Час",
-      step: 1,
-    },
-  };
 
   
 
@@ -94,20 +101,20 @@ const AdCreatingOne = ({
   useEffect( () => {
      setState( (value) =>  ({...value , startTime : taskInformation.time.start , endTime : taskInformation.time.end}))
   }, [isDetailsActive, taskInformation.time.start ,  taskInformation.time.end ] )  
-  function handleSelect(time) {
+  const handleSelect = useCallback( (time) => {
     if (state.isStartOpen) {
-      setState({
-        ...state,
+      setState((value) => ({
+        ...value,
         time: time,
         isOpen: false,
         isStartOpen: false,
         startTime: time,
-      });
+      }));
       if (taskInformation.time){
-        setTaskInformation({ ...taskInformation, time: {...taskInformation.time , start : time} });
+        setTaskInformation( (value) =>  ({ ...value, time: {...taskInformation.time , start : time} }));
       }
       else{
-        setTaskInformation({ ...taskInformation, startTime: time });
+        setTaskInformation( (value) =>  ({ ...value, startTime: time }));
       }
     }
     if (state.isSingleOpen) {
@@ -118,7 +125,7 @@ const AdCreatingOne = ({
         isSingleOpen: false,
         singleTime: time,
       });
-      setTaskInformation({ ...taskInformation, singleTime: time });
+      setTaskInformation( (value) =>  ({ ...value, singleTime: time }) );
     }
     if (state.isEndOpen) {
       setState({
@@ -129,17 +136,19 @@ const AdCreatingOne = ({
         endTime: time,
       });
       if (taskInformation.time){
-        setTaskInformation({ ...taskInformation, time: {...taskInformation.time , end : time} });
+        setTaskInformation( (value) =>  ({ ...value, time: {...taskInformation.time , end : time}  })  );
       }
       else{
-        setTaskInformation({ ...taskInformation, endTime: time });
+        setTaskInformation( (value) => ({ ...value, endTime: time }));
       }
       
     }
-  }
-  function handleCancel() {
-    setState({ ...state, isOpen: false });
-  }
+  }, [setTaskInformation, state, taskInformation.time] )
+
+  const handleCancel = useCallback( () => {
+    setState( (value) => ({ ...value, isOpen: false }));
+  } , [setState] )
+
 
   let dateObject = document.querySelectorAll(".datepicker-modal")[0];
   let datePickerObject = document.querySelectorAll(".datepicker")[0];
@@ -277,7 +286,7 @@ const AdCreatingOne = ({
         ""
       )}
 
-      <DatePicker
+      <MyDatePicker
         confirmText="Сохранить"
         cancelText="Отмена"
         theme="ios"
@@ -287,7 +296,7 @@ const AdCreatingOne = ({
         isOpen={true}
         onSelect={handleSelect}
         onCancel={handleCancel}
-        min={new Date(new Date().addHours(1) + 1)}
+        min={min}
       />
 
       <CSSTransition

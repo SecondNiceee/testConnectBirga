@@ -462,7 +462,7 @@ const Profile = () => {
         unmountOnExit
         classNames={'cardsModal'}
         in = {cardsActive}
-        timeout={0}
+        timeout={300}
         >
 
             <Cards   save = {save} aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
@@ -475,7 +475,7 @@ const Profile = () => {
         unmountOnExit
         classNames={'cardsModal'}
         in = {changeActive}
-        timeout={0}
+        timeout={300}
         >
 
             <ChangeCards save={save} index={index}  card={aboutULocal.cards[index]}  aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
