@@ -2,39 +2,38 @@ import React, { memo, useEffect, useMemo, useRef, useState } from "react";
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 let counter = 0;
+let imgaes = []
 const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);
   useEffect(() => {
 
-    function encodeFileToBase64(file) {
-      return new Promise((resolve, reject) => {
-          var reader = new FileReader();
-          reader.onload = function() {
-              var base64Data = reader.result.split(",")[1];
-              resolve(base64Data);
-          };
-          reader.onerror = function(error) {
-              reject(error);
-          };
-          reader.readAsDataURL(file);
-      });
-  }
 
 
-    setImages(files.map((event) => {
-
-      var file = event;
-      encodeFileToBase64(file)
-      .then((base64Data) => {
-        return base64Data
-      })
-      .catch((error) => {
-          console.error(error);
-      });
 
 
-    }))
+    files.forEach((event) => {
+
+      var reader = new FileReader();
+  
+      // Обработчик загрузки файла
+      reader.onload = function () {
+        // Получаем base64 кодирование файла
+        var base64 = reader.result;
+        
+        // Создаем изображение и устанавливаем в него src base64 кодирование
+        console.log(base64)
+        setImages([...images, base64])
+        return base64
+        // Добавляем изображение на страницу
+      }
+
+
+      reader.readAsDataURL(event);
+    })
   }, [files]);
+
+  console.log(images)
+
   const myRef = useRef(null);
 
   var device = navigator.userAgent.toLowerCase();
@@ -84,7 +83,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       style={photoStyle}
       className={className ? [cl.FileInput, className].join(" ") : cl.FileInput}
     >
-      {files.map((e, i) => {
+      {images.map((e, i) => {
         return (
           <div key={i} className={cl.imageFeetContainer}>
             <div
@@ -100,7 +99,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
               className={[cl.removeIcon, "_icon-trash"].join(" ")}
             />
 
-            <img className={cl.imageFeet} src={URL.createObjectURL(e)} alt="" />
+            <img className={cl.imageFeet} src={e} alt="" />
           </div>
         );
       })}
