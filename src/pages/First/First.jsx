@@ -12,10 +12,12 @@ import Responce from "./Responce";
 import SliderMain from "../../components/UI/Swiper/SliderMain";
 import { CSSTransition } from "react-transition-group";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
+import axios from "axios";
+import { addResponce } from "../../store/information";
 
 let step = 0;
 let isDetailsActiveVar = false;
-
+let localResponce;
 const First = () => {
 
   console.log('Рендер ферста')
@@ -216,6 +218,95 @@ const First = () => {
   } , [isMenuActive, setMenuActive] )
   
   const tonConstant = useSelector((state) => state.ton.value);
+  localResponce = responce
+  useEffect(() => {
+    if (localResponce.text.length < 3 && step === 1){
+      MainButton.setParams({
+        is_active : false, //неизвесетно
+        color : '#2f2f2f',
+        text_color : '#606060',
+      })
+    }
+    else{
+      if (step === 1){
+
+        MainButton.setParams({
+    
+          color : '#2ea5ff',
+          text_color : '#ffffff',
+          is_active : true
+          
+        })
+      }
+    }
+} , [responce.text, step, MainButton]) 
+
+const forwardFunction = useCallback(() => {
+  async function postResponce(advertismetId, userId) {
+       
+    let myFormData = new FormData();
+    myFormData.append("information", responce.text);
+
+    myFormData.append("userId", userId);
+    myFormData.append("advertismentId", advertismetId);
+
+    responce.photos.forEach((e, i) => {
+      myFormData.append(`photos`, e);
+    });
+    try {
+      let im = await axios.post(
+        "https://back-birga.ywa.su/response",
+        myFormData,
+        {
+          params: {
+            userId: userId,
+            advertisementId: advertismetId,
+          },
+        }
+      );
+      await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
+        params : {
+          "chatId" : im.data.user.chatId,
+          "text" : '📣 Вы получили отклик на задачу "' + ordersInformation[isDetailsActive.id].taskName.bold() + '" от' +  im.data.user.fl 
+        }
+      })
+      dispatch(addResponce([ordersInformation[isDetailsActive.id].id , im.data]))  
+    } catch (e) {
+      alert("ничего не вышло");
+      console.warn(e);
+    } 
+  }
+
+
+  if (step !== 0 && !responce.shablonMaker){
+    window.Telegram.WebApp
+    .showPopup({
+      title: "Откликнуться?",
+      message: "Вы действительно хотите откликнуться?",
+      buttons: [
+        { id: "save", type: "default", text: "Да" },
+        { id: "delete", type: "destructive", text: "Нет" },
+      ],
+    } , (buttonId) => {
+
+      if (buttonId === "delete" || buttonId === null) {
+        // setShablon({...shablon , isActive : false})
+      }
+      if (buttonId === "save") {
+        postResponce(ordersInformation[isDetailsActive.id].id, 2144832745 );
+        mainRef.current.classList.remove('secondStep')
+        setDetailsActive((value) => ({...value , isOpen : false}))
+    } })
+  }
+}, [responce, step, ordersInformation, setDetailsActive, dispatch]);
+
+useEffect(() => {
+  MainButton.onClick(forwardFunction);
+  return () => {
+    MainButton.offClick(forwardFunction);
+  };
+}, [responce, MainButton, forwardFunction]);
+
   return (
     <motion.div
       // style={style}
@@ -247,12 +338,9 @@ const First = () => {
 
         {ordersInformation !== null && tonConstant !== 0   ? 
         <Responce
-          mainRef={mainRef}
-          setDetailsActive = {setDetailsActive}
-          step={step}
           responce = {responce}
           setResponce = {setResponce}
-          MainButton={MainButton}
+
           orderInformation={ordersInformation[isDetailsActive.id] ? ordersInformation[isDetailsActive.id] : "he"}
         />
         // <>
