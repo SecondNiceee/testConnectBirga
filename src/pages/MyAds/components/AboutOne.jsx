@@ -113,6 +113,7 @@ const AboutOne = ({task, setMenuActive, goForward, setOpen, setSecondPage, setDe
   } , [] )
 
   const setDetailsCallback = useCallback( () => {
+    console.log(task)
     setDetails({
       isActive : true,
       task : task,

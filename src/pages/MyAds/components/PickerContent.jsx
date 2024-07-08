@@ -85,11 +85,11 @@ const PickerContent = ({
                   key={i}
                   isButton={true}
                   // setDetailsActive={() => {
-                  //   setDetails({
-                  //     isActive : true,
-                  //     task : myAdsArray[i],
-                  //     index : i
-                  //   })
+                  //   // setDetails({
+                  //   //   isActive : true,
+                  //   //   task : myAdsArray[i],
+                  //   //   index : i
+                  //   // })
 
                   // }}
                   {...e}

@@ -263,8 +263,8 @@ const MyAds = () => {
 
 
 
-  const setChangingTask = useCallback( () => {
-    setDetails( (value) =>  ({...value , task : value}))
+  const setChangingTask = useCallback( (e) => {
+    setDetails( (value) =>  ({...value , task : e}))
   }, [setDetails] ) 
 
 
@@ -294,13 +294,12 @@ const MyAds = () => {
  */}
 
           <MyAdOne
+            
             setSliderActive = {setSliderActive}
             myAdsArray={myAdsArray}
             setSecondPage={setSecondPage}
-            setOpenAboutReaction={setOpenAboutReaction}
             setDetails={setDetails}
             setMenuActive={setMenuActive}
-            secondPage={secondPage}
           />
 
 
@@ -316,12 +315,6 @@ const MyAds = () => {
               setTaskInformation={setChangingTask}
               MyInformation={true}
               isDetailsActive={details.isActive}
-              setAddedFiles={(e) => {
-                setChangingTask(value => ({...value, addedFiles : e}))
-              }}
-              setRemovedFiles={(e) => {
-                setChangingTask(value => ({...value , removedFiles : e}))
-              }}
             />
           </CSSTransition>
 
@@ -369,7 +362,7 @@ const MyAds = () => {
           <CSSTransition
             classNames="aboutReaction"
             in={openAboutReaction.isActive}
-            timeout={0}
+            timeout={400}
             mountOnEnter
             unmountOnExit
           >

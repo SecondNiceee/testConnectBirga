@@ -17,21 +17,16 @@ const MyAdOne = ({
   myAdsArray,
   setMenuActive,
   setSecondPage,
-  setDetails,
-  secondPage,
-  setSliderActive
+  setSliderActive,
 }) => {
   console.log('dsa')
 
 
-  const setDetailsActive = useCallback( (value) => {
-    setDetails( e =>  ({...e , isActive : value}))
-  } , [ setDetails] )
+
 
   
 
 
-  const dispatch = useDispatch();
 
   let putStatus = useSelector((state) => state.information.putTaskStatus);
 
