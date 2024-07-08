@@ -260,7 +260,7 @@ const MyAds = () => {
             setDetails={setDetails}
               setSecondPage={setSecondPage}
               setOpen={setOpen}
-              task={secondPage.task}
+              task={myAdsArray[secondPage.index]}
               setMenuActive={setMenuActive}
               openAboutReactionFunc={setOpenAboutReaction}
             />
