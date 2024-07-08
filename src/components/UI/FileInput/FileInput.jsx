@@ -36,7 +36,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         localImages.push(URL.createObjectURL(value))
         if (localImages.length === newFiles.length){
           setImages([...images, ...localImages])
-          alert('о да')
         }
       })
     })
@@ -167,6 +166,11 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         <input
           ref={myRef}
           onChange={(event) => {
+            if (device.includes("android")){
+              myRef.current.blur()
+              textRef.current.focus()
+              textRef.current.blur()
+            }
             event.preventDefault()
             if (event.target.files && event.target.files[0]) {
               if (event.target.files.length + files.length > 10){
@@ -186,12 +190,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
 
               }
             }
-            if (device.includes("android")){
 
-              myRef.current.blur()
-              textRef.current.focus()
-              textRef.current.blur()
-            }
             // hideKeyboard(myRef.current)
             
           }}
@@ -210,9 +209,9 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       </label>
       
     </label>
-    {images.map( (e, i) => {
+    {/* {images.map( (e, i) => {
       return <p>{e}</p>
-    }) }
+    }) } */}
     {fileError ? 
       <p className={cl.fileError}>Добавьте хотя бы один пример работы</p>
       :
