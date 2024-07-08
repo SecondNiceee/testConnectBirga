@@ -28,9 +28,55 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       }
 
 
-      reader.readAsDataURL(event);
+
+
+      resizeImage(event, 200, 200, 0.6).then((value) => {
+        reader.readAsDataURL(value);
+      })
     })
   }, [files]);
+
+  function resizeImage(file, maxWidth, maxHeight, quality) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+                let width = img.width;
+                let height = img.height;
+
+                if (width > maxWidth) {
+                    height *= maxWidth / width;
+                    width = maxWidth;
+                }
+
+                if (height > maxHeight) {
+                    width *= maxHeight / height;
+                    height = maxHeight;
+                }
+
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                canvas.toBlob((blob) => {
+                    resolve(new File([blob], file.name, { type: 'image/jpeg', lastModified: new Date().getTime() }, quality));
+                }, 'image/jpeg', quality);
+            };
+            img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    });
+}
+
+//Usage
+  // const file = document.querySelector('input[type="file"]').files[0];
+  // resizeImage(file, 800, 600, 0.8).then((resizedFile) => {
+  //     console.log(resizedFile);
+  // });
 
   console.log(images)
 
