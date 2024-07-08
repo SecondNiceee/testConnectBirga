@@ -6,6 +6,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
   const [images, setImages] = useState([]);
   useEffect(() => {
     setImages(files.map((event) => URL.createObjectURL(event)));
+    alert(images.toString())
   }, [files]);
   const myRef = useRef(null);
   useEffect(() => {
@@ -46,7 +47,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
 // }
   
   const textRef = useRef(null)
-  alert(files.join(' ') , images.join(' '))
   
   return (
     <>
