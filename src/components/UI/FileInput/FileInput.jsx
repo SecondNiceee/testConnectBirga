@@ -109,8 +109,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
             
           }}
           type="file"
-          // multiple={device.includes("android") ? false : true}
-          multiple = {true}
+          multiple={device.includes("android") ? false : true}
           name="file"
           id="file"
           accept="image/*"
