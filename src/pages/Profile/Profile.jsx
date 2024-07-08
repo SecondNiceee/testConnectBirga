@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect,  useRef,  useState } from "react";
+import React, { useCallback, useEffect,  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import { motion } from "framer-motion";
@@ -25,7 +25,6 @@ import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
 import { changeProfile, deleteCard, deleteServerCard, putUserInfo } from "../../store/telegramUserInfo";
 import SliderMain from "../../components/UI/Swiper/SliderMain";
-import Veryfication from "../../components/Profile/Veryfycation/Veryfication";
 
 
 const variants = {
@@ -77,28 +76,16 @@ const Profile = () => {
 
 
   
-  // const [aboutU, setAboutU] = useState({...userInfo.profile , 
-  //   stage : userInfo.profile.stage,
-  //   userId : userInfo.id 
-  // });
-  
-
-  const textRef = useRef(null)
-
-  const numbRef = useRef(null)
-
-
+  const [aboutU, setAboutU] = useState({...userInfo.profile , 
+    stage : userInfo.profile.stage,
+    userId : userInfo.id 
+  });
 
   const cards = useSelector(state => state.telegramUserInfo.profile.cards)
-  
-  useEffect( () => {
-    console.log(userInfo)
-    textRef.current.value = userInfo.profile.about
-    numbRef.current.value = userInfo.profile.stage
-  },[] )
 
   
 
+  aboutULocal = aboutU
   userInfoLocal = userInfo
 
 
@@ -147,16 +134,15 @@ const Profile = () => {
   
 
   const save = useCallback( () => {
-    dispatch(changeProfile( [Number(numbRef.current.value.split(' ')[0]) , textRef.current.value ]  ))
-    
+    dispatch(changeProfile(aboutULocal))
     dispatch(putUserInfo([
-      {'stage' : Number(numbRef.current.value.split(' ')[0]),
-        'about' : textRef.current.value
+      {'stage' : Number(aboutULocal.stage),
+        'about' : aboutULocal.about
       },
       userInfoLocal.id
     ]))
 
-  } , [dispatch, textRef] )
+  } , [dispatch] )
 
   
 
@@ -172,13 +158,28 @@ const Profile = () => {
       else{
         return false
       }
-
+      // if (JSON.stringify(x) !== JSON.stringify(y)){
+      //   return false
+      // }
+      // if (x.cards.length !== y.cards.length){
+      //   return false
+      // }
+      // else{
+      //   for (let xCard of x.cards){
+      //     for (let yCard of y.cards){
+      //       if (JSON.stringify(xCard) !== JSON.stringify(yCard)){
+      //         return false
+      //       }
+      //     }
+      //   }
+      // }
+      // return true;
     }
 
 
 
     if (!cardsActive && !changeActive){
-      if ( Number(numbRef.current.value.split(' ')[0]) !== Number(userInfoLocal.profile.stage) || textRef.current.value !== userInfoLocal.profile.about ){
+      if ( compare2Objects(userInfoLocal.profile, aboutULocal) === false ){
           MainButton.setParams({
             text : 'Сохранить',
             is_visible : true
@@ -191,7 +192,7 @@ const Profile = () => {
 
 
 
-          if (Number(numbRef.current.split(' ')[0]) >= 40){
+          if (aboutU.stage >= 40){
             MainButton.disable()
             MainButton.setParams({
               
@@ -232,7 +233,7 @@ const Profile = () => {
        
     }
 
-  }, [  changeActive, cardsActive, save, errors.stageError , userInfo.profile,  textRef ]  )
+  }, [aboutU , changeActive, cardsActive, save, errors.stageError , userInfo.profile ]  )
 
 
   
@@ -265,8 +266,8 @@ const Profile = () => {
   const onBlurFunc = useCallback( (e) => {
     let numb = Number(e.target.value.slice(e.target.value.length - 1 , e.target.value.length))
 
-    if (e.target.value === '' || numb === 0){
-      e.target.value = "0 лет"
+    if (e.target.value === ''){
+      setAboutU(value => ({...value , stage : '0 лет'}))
 
     }
 
@@ -289,22 +290,24 @@ const Profile = () => {
       }
     
   } , [] )
+  console.log(aboutULocal.stage)
 
   const onFocusFunc = useCallback( (e) => {
-    e.target.value = String(e.target.value).split(' ')[0]
+    e.target.value = String(aboutULocal.stage).split(' ')[0]
   } , [] )
 
   const setValueFunc = useCallback(  (e) => {
     if (!isNaN(e)){
         if (e.slice(0,1) !== '0'){
-          numbRef.current.value = e
+    
+          setAboutU({ ...aboutULocal, stage: Number(e) });
         }
         else{
           if(e !== '00'){
-            numbRef.current.value = e.slice(1,2)
+            setAboutU({...aboutULocal , stage : Number(e.slice(1,2))})
           }
           else{
-            numbRef.current.value = e.slice(1,2)
+            setAboutU({...aboutULocal , stage : 0})
           }
         }
     }
@@ -368,17 +371,16 @@ const Profile = () => {
 
       <Compact title={"О себе"} className={"compact-block"}>
         <SmallTextarea
-           ref={textRef}
-          // value={aboutULocal.about}
-          // setValue={(e) => {
-          //   setAboutU({ ...aboutULocal, about: e });
-          // }}
+          
+          value={aboutULocal.about}
+          setValue={(e) => {
+            setAboutU({ ...aboutULocal, about: e });
+          }}
         />
       </Compact>
 
       <Compact title={"Стаж работы"} className={"compact-block"}>
         <SmallInput
-        ref={numbRef}
         mistakeText={'Стаж должен быть меньше 40 лет!'}
         mistake={errors.stageError}
          id = 'numberInput'
@@ -387,7 +389,7 @@ const Profile = () => {
           onFocus = {onFocusFunc}
           inputMode = "numeric"
           // type = "number"
-          // value={aboutULocal.stage === null ? '0' : aboutULocal.stage}
+          value={aboutULocal.stage === null ? '0' : aboutULocal.stage}
           setValue={setValueFunc}
         />
       </Compact>
@@ -437,7 +439,23 @@ const Profile = () => {
       {/* <Case className={'profile-case'} /> */}
 
 
-      {/* <Veryfication /> */}
+      <div className="profile__veryfication">
+        <p className="veryfication">Верификация</p>
+        <div className="veryfication__block">
+          <div className="Okey">
+            <img className="Subtract" src={Subtract} alt="" />
+          </div>
+
+          <div className="veryfication__block-text">
+            <p>Пройти KYC верификацию</p>
+            <p>
+              Подтвердите свою личность <br />и получайте на 20% больше откликов
+            </p>
+          </div>
+          <img src={greyArrowRight} className="greyArrow" alt="" />
+        </div>
+      </div>
+
 
         <CSSTransition
         mountOnEnter
@@ -447,7 +465,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <Cards   save = {save} aboutU={userInfo.profile} setCardsOpen={setCardsActive} />
+            <Cards   save = {save} aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
         </CSSTransition>
 
 
@@ -460,7 +478,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <ChangeCards save={save} index={index}  card={cards[index]}  aboutU={userInfo.profile}  setCardsOpen={setChangeActive} />
+            <ChangeCards save={save} index={index}  card={aboutULocal.cards[index]}  aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
         </CSSTransition>
 
         <SliderMain sliderActive={isSliderAcitve} setSliderActive={setSliderActive} />

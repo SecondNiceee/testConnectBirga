@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import classes from "./Burger.module.css"
 const Burger = (props, style) => {
     return (
@@ -16,4 +16,4 @@ const Burger = (props, style) => {
     );
 };
 
-export default memo(Burger);
+export default Burger;

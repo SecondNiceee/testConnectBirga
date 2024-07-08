@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import cl from "./AdCreateFunc.module.css";
 import plus from "../../../images/icons/plus-circle.svg";
@@ -33,4 +33,4 @@ const AdCreateFunc = ({ link, text, func, className, ...props }) => {
   );
 };
 
-export default memo(AdCreateFunc);
+export default AdCreateFunc;

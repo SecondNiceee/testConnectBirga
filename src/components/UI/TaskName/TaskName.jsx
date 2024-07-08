@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import cl from './TaskName.module.css'
 import GreyText from '../GreyText/GreyText';
 import CreateInput from '../CreateInput/CreateInput';
@@ -19,4 +19,4 @@ const TaskName = ({className , text , title , setText , errorValue , underText, 
     );
 };
 
-export default memo(TaskName);
+export default TaskName;

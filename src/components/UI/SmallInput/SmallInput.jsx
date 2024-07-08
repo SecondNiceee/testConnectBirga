@@ -1,9 +1,9 @@
-import React, { forwardRef, memo } from 'react';
+import React, { memo } from 'react';
 import cl from './SmallInput.module.css'
-const SmallInput = forwardRef(({value , setValue,  mistake, mistakeText,  ...props} , ref) => {
+const SmallInput = ({value , setValue,  mistake, mistakeText,  ...props}) => {
     return (
         <>
-            <input ref={ref} style={mistake ? {
+            <input style={mistake ? {
                 border : '1px solid #FF6767'
             } :
             {}
@@ -19,6 +19,6 @@ const SmallInput = forwardRef(({value , setValue,  mistake, mistakeText,  ...pro
             }
         </>
     );
-} );
+};
 
 export default memo(SmallInput);

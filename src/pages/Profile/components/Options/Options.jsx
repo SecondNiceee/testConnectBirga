@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React from 'react';
 import balanceIcon from "../../../../images/profileIcons/balance.svg";
 import notificationIcon from "../../../../images/profileIcons/notifications.svg";
 import shablonsIcon from "../../../../images/profileIcons/shablons.svg";
@@ -67,4 +67,4 @@ const Options = () => {
     );
 };
 
-export default memo(Options);
+export default Options;
