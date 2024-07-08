@@ -269,9 +269,9 @@ const MyAds = () => {
 
 
           <CSSTransition
-            classNames="last-ads"
+            classNames="last-ad"
             in={isOpen.isActive}
-            timeout={400}
+            timeout={0}
             mountOnEnter
             unmountOnExit
           >
@@ -286,7 +286,7 @@ const MyAds = () => {
           <CSSTransition
             classNames="aboutReaction"
             in={openAboutReaction.isActive}
-            timeout={400}
+            timeout={0}
             mountOnEnter
             unmountOnExit
           >

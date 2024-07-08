@@ -701,25 +701,6 @@
 .last-top{
     margin-bottom: 20px;
 }
-.last-ads-enter{
-   left: 0;
-}
-.last-ads-enter-active{
-    left: 0;
-}
-.last-ads-enter-done{
-    left: 0;
-}
-.last-ads-exit{
-    left: 100%;
-}
-.last-ads-exit-active{
-    left: 100%;
-}
-.last-ads-exit-done{
-    left:100%;
-}
-
 
 .white-block{
     border-radius: 19px;
