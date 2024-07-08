@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from "react";
+import React, { forwardRef, memo, useEffect, useRef } from "react";
 import cl from "./SmallTextarea.module.css";
-const SmallTextarea = ({ value, setValue, className }) => {
-    const textAreaRef = useRef(null)
+
+
+const SmallTextarea = forwardRef(({ value, setValue, className } , textAreaRef) => {
+  console.log("я рендаэрюсь - я клоун")
     const refTwo = useRef(null)
     useEffect( () => {
         // textAreaRef.current.style.height = (12 + 11 + 17.6*len).toString() + 'px'
@@ -35,9 +37,10 @@ const SmallTextarea = ({ value, setValue, className }) => {
         className = {className ? [className, cl.textArea].join(' ') : cl.textArea}
       placeholder="Опишите свой опыт и подход к работе"
       value={value}
-      onChange={(e) => {
+
+      onChange={setValue ? (e) => {
         setValue(e.target.value)
-      }}
+      } : () => {}}
       name=""
       id=""
     //   onBlur={(e) => {
@@ -47,6 +50,6 @@ const SmallTextarea = ({ value, setValue, className }) => {
     />
     </>
   );
-};
+});
 
-export default SmallTextarea;
+export default memo(SmallTextarea);

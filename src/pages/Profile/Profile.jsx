@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect,  useState } from "react";
+import React, { useCallback, useEffect,  useRef,  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import { motion } from "framer-motion";
@@ -80,8 +80,18 @@ const Profile = () => {
     stage : userInfo.profile.stage,
     userId : userInfo.id 
   });
+  
+
+  const textRef = useRef(null)
+
+
 
   const cards = useSelector(state => state.telegramUserInfo.profile.cards)
+  
+  useEffect( () => {
+    console.log(userInfo)
+    textRef.current.value = userInfo.profile.about
+  },[] )
 
   
 
@@ -137,7 +147,7 @@ const Profile = () => {
     dispatch(changeProfile(aboutULocal))
     dispatch(putUserInfo([
       {'stage' : Number(aboutULocal.stage),
-        'about' : aboutULocal.about
+        'about' : textRef.current
       },
       userInfoLocal.id
     ]))
@@ -179,7 +189,7 @@ const Profile = () => {
 
 
     if (!cardsActive && !changeActive){
-      if ( compare2Objects(userInfoLocal.profile, aboutULocal) === false ){
+      if ( compare2Objects(userInfoLocal.profile, aboutULocal) === false || textRef.current !== userInfoLocal.profile.about ){
           MainButton.setParams({
             text : 'Сохранить',
             is_visible : true
@@ -233,7 +243,7 @@ const Profile = () => {
        
     }
 
-  }, [aboutU , changeActive, cardsActive, save, errors.stageError , userInfo.profile ]  )
+  }, [aboutU , changeActive, cardsActive, save, errors.stageError , userInfo.profile,  textRef ]  )
 
 
   
@@ -371,11 +381,11 @@ const Profile = () => {
 
       <Compact title={"О себе"} className={"compact-block"}>
         <SmallTextarea
-          
-          value={aboutULocal.about}
-          setValue={(e) => {
-            setAboutU({ ...aboutULocal, about: e });
-          }}
+           ref={textRef}
+          // value={aboutULocal.about}
+          // setValue={(e) => {
+          //   setAboutU({ ...aboutULocal, about: e });
+          // }}
         />
       </Compact>
 
