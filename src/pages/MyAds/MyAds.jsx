@@ -16,6 +16,10 @@ import AboutOne from "./components/AboutOne";
 import { CSSTransition } from "react-transition-group";
 import MainButton from "../../constants/MainButton";
 import SliderMain from "../../components/UI/Swiper/SliderMain";
+import sortFiles from "../../functions/sortFiles";
+import { putMyTask } from "../../store/information";
+import AdCreatingOne from "../AdCreatingOne/AdCreatingOne/AdCreatingOne";
+import { useButton } from "../../hooks/MyAds/useButton";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -32,6 +36,7 @@ let localAboutReaction;
 let localSecondPage;
 let localIsOpen;
 let localDetails;
+let detailsVar;
 const MyAds = () => {
   const isMenuActive = useSelector((state) => state.menu.value);
 
@@ -59,10 +64,11 @@ const MyAds = () => {
       photosNames: [],
     },
   });
+
+  detailsVar = details;
   
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
   
-
   
   const [secondPage, setSecondPage] = useState({
     isActive : false,
@@ -87,6 +93,26 @@ const MyAds = () => {
       window.scrollTo(0 , 0)
     }
   },[] )
+
+  function checkMistakes(changingTask) {
+    let taskName = false;
+    let timeError = false;
+    if (changingTask.taskName.length < 5) {
+      taskName = true;
+    }
+
+    if (changingTask.time.end.length > 0) {
+      if (changingTask.time.end < changingTask.time.start) {
+        timeError = true;
+      }
+    }
+    let rezult = { taskName: taskName, timeError: timeError };
+
+
+    setMistakes(rezult);
+    return Object.values(rezult).every((value) => value === false);
+  } 
+
 
 
   const [isOpen, setOpen] = useState({ isActive: false, responce: {
@@ -119,69 +145,83 @@ const MyAds = () => {
   })
 
   
+  useButton({
+    sliderActive : sliderActive,
+    localDetails : localDetails,
+    localAboutReaction : localAboutReaction,
+    localIsOpen : localIsOpen,
+    setOpen : setOpen,
+    setSecondPage : setSecondPage,
+    navigate : navigate,
+    setOpenAboutReaction : setOpenAboutReaction,
+    setSliderActive : setSliderActive,
+    openAboutReaction : openAboutReaction,
+    isOpen : isOpen,
+    details : details,
+    secondPage : secondPage
+  })
 
+  // useEffect(() => {
+  //   function writeFucntion(){
+  //     window.Telegram.WebApp.openTelegramLink("https://t.me/" + isOpen.responce.user.link)
+  //   }
+  //   function goBack() {
 
-  useEffect(() => {
-    function writeFucntion(){
-      window.Telegram.WebApp.openTelegramLink("https://t.me/" + isOpen.responce.user.link)
-    }
-    function goBack() {
+  //     if (!sliderActive.isActive){
 
-      if (!sliderActive.isActive){
-
-        if (!localDetails.isActive){
+  //       if (!localDetails.isActive){
   
-          if (!localAboutReaction.isActive) {
-            if (localIsOpen.isActive) {
-              setOpen({...isOpen, isActive : false});
-            } else {
-              if (localSecondPage.isActive) {
-                setSecondPage({...secondPage , isActive : false});
-              } else {
-                navigate(-1);
-              }
-            }
-          } else {
-            setOpenAboutReaction({...openAboutReaction , isActive : false});
-          }
-        }
-        else{
+  //         if (!localAboutReaction.isActive) {
+  //           if (localIsOpen.isActive) {
+  //             setOpen({...isOpen, isActive : false});
+  //           } else {
+  //             if (localSecondPage.isActive) {
+  //               setSecondPage({...secondPage , isActive : false});
+  //             } else {
+  //               navigate(-1);
+  //             }
+  //           }
+  //         } else {
+  //           setOpenAboutReaction({...openAboutReaction , isActive : false});
+  //         }
+  //       }
+  //       else{
           
-        }
-      }
-      else{
-        setSliderActive({...sliderActive , isActive : false})
-      }
+  //       }
+  //     }
+  //     else{
+  //       setSliderActive({...sliderActive , isActive : false})
+  //     }
 
-    }
-    if (!localSecondPage.isActive && !details.isActive) {
-      BackButton.hide();
-    } else {
-      BackButton.show();
-    }
+  //   }
+  //   if (!localSecondPage.isActive && !details.isActive) {
+  //     BackButton.hide();
+  //   } else {
+  //     BackButton.show();
+  //   }
 
-    if (isOpen.isActive){
-      MainButton.show()
-      MainButton.setParams({
-        color : '#2ea5ff',
-        text_color : '#ffffff'
-      })
-      MainButton.setText("Написать")
-      MainButton.onClick(writeFucntion)
-    }
-    else{
-      MainButton.hide()
-      MainButton.offClick(writeFucntion)
+  //   if (isOpen.isActive){
+  //     MainButton.show()
+  //     MainButton.setParams({
+  //       color : '#2ea5ff',
+  //       text_color : '#ffffff'
+  //     })
+  //     MainButton.setText("Написать")
+  //     MainButton.onClick(writeFucntion)
+  //   }
+  //   else{
+  //     MainButton.hide()
+  //     MainButton.offClick(writeFucntion)
     
-    }
-    BackButton.onClick(goBack);
-    return () => {
-      BackButton.offClick(goBack);
-      MainButton.offClick(writeFucntion)
-    }
+  //   }
+  //   BackButton.onClick(goBack);
+  //   return () => {
+  //     BackButton.offClick(goBack);
+  //     MainButton.offClick(writeFucntion)
+  //   }
 
-    // eslint-disable-next-line
-  }, [isOpen.isActive , sliderActive.isActive, openAboutReaction.isActive, sliderActive.isActive, details.isActive, isOpen, navigate] );
+  //   // eslint-disable-next-line
+  // }, [isOpen.isActive , sliderActive.isActive, openAboutReaction.isActive, sliderActive.isActive, details.isActive, isOpen, navigate] );
 
 
 
@@ -197,9 +237,71 @@ const MyAds = () => {
     isOpen,
   });
 
-  
+
+  const [mistakes, setMistakes] = useState({
+    taskName: false,
+    timeError: false,
+  }); // контролер ошибок
 
   
+
+
+
+  const setChangingTask = useCallback( () => {
+    setDetails( (value) =>  ({...value , task : value}))
+  }, [setDetails] ) 
+
+
+
+  const save = useCallback( () => {
+    if (detailsVar.task !== myAdsArray[secondPage.index] && checkMistakes(detailsVar.task)) {
+      window.Telegram.WebApp
+        .showPopup({
+          title: "Сохранить?",
+          message: "Сохранить изменения перед выходом?",
+          buttons: [
+            { id: "save", type: "default", text: "Да" },
+            { id: "delete", type: "destructive", text: "Нет" },
+          ],
+        } , (buttonId) => {
+
+          if (buttonId === "delete" || buttonId === null) {
+            setDetailsActive(false);
+          }
+          if (buttonId === "save") {
+          let myFormData = new FormData();
+          myFormData.append('title' , detailsVar.task.taskName)
+          myFormData.append('description' , detailsVar.task.taskDescription)
+          myFormData.append("deadline" , 1)
+          myFormData.append("price" , detailsVar.task.tonValue )
+          myFormData.append("startTime" , detailsVar.task.time.start)
+          myFormData.append("endTime" , detailsVar.task.time.end)
+
+          let files = sortFiles(detailsVar.task.photosNames ,  detailsVar.task.photos)
+
+
+            for (let i = 0; i <  files.removedArr.length; i++){
+              myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
+            }
+            for (let i = 0; i < files.addedArr.length ; i++){
+              myFormData.append(`addFiles[${i}]` , files.addedArr[i] )
+            }
+
+          dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
+
+          
+          setDetails( {...details,
+            isActive : false,
+          } )
+          }
+
+
+        } )
+        
+    } else {
+      setDetailsActive(false);
+    }
+  }, [details , dispatch , myAdsArray , setDetails , setDetailsActive, secondPage.index  ] ) // функция сохранения , а также модалка телеграма
 
 
 
@@ -228,11 +330,32 @@ const MyAds = () => {
             myAdsArray={myAdsArray}
             setSecondPage={setSecondPage}
             setOpenAboutReaction={setOpenAboutReaction}
-            details={details}
             setDetails={setDetails}
             setMenuActive={setMenuActive}
             secondPage={secondPage}
           />
+
+
+
+
+
+        <CSSTransition classNames="details" in={details.isActive} timeout={300}
+          mountOnEnter unmountOnExit>
+            <AdCreatingOne
+              mistakes={mistakes}
+              className="AdCreatingMy"
+              taskInformation={details.task}
+              setTaskInformation={setChangingTask}
+              MyInformation={true}
+              isDetailsActive={details.isActive}
+              setAddedFiles={(e) => {
+                setChangingTask(value => ({...value, addedFiles : e}))
+              }}
+              setRemovedFiles={(e) => {
+                setChangingTask(value => ({...value , removedFiles : e}))
+              }}
+            />
+          </CSSTransition>
 
           <CSSTransition
             classNames="aboutOne"
@@ -253,6 +376,8 @@ const MyAds = () => {
               openAboutReactionFunc={setOpenAboutReaction}
             />
           </CSSTransition>
+
+
 
           <CSSTransition
             classNames="last-ads"

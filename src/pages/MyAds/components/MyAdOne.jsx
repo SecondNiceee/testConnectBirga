@@ -17,7 +17,6 @@ const MyAdOne = ({
   myAdsArray,
   setMenuActive,
   setSecondPage,
-  details,
   setDetails,
   secondPage,
   setSliderActive
@@ -29,12 +28,6 @@ const MyAdOne = ({
     setDetails( e =>  ({...e , isActive : value}))
   } , [ setDetails] )
 
-  function setChangingTask( value ){
-    setDetails({...details , task : value})
-  }
-
-
-
   
 
 
@@ -42,12 +35,7 @@ const MyAdOne = ({
 
   let putStatus = useSelector((state) => state.information.putTaskStatus);
 
-  detailsVar = details; // переприсваивание для работы телеграма
 
-  const [mistakes, setMistakes] = useState({
-    taskName: false,
-    timeError: false,
-  }); // контролер ошибок
 
   
 
@@ -62,104 +50,20 @@ const MyAdOne = ({
   }, [putStatus]); // проверка на то, что все работает
 
 
-  const save = useCallback( () => {
-
-     alert(checkMistakes(details.task))
-    if (detailsVar.task !== myAdsArray[secondPage.index]) {
-      window.Telegram.WebApp
-        .showPopup({
-          title: "Сохранить?",
-          message: "Сохранить изменения перед выходом?",
-          buttons: [
-            { id: "save", type: "default", text: "Да" },
-            { id: "delete", type: "destructive", text: "Нет" },
-          ],
-        } , (buttonId) => {
-
-          if (buttonId === "delete" || buttonId === null) {
-            setDetailsActive(false);
-          }
-          if (buttonId === "save") {
-          let myFormData = new FormData();
-          myFormData.append('title' , detailsVar.task.taskName)
-          myFormData.append('description' , detailsVar.task.taskDescription)
-          myFormData.append("deadline" , 1)
-          myFormData.append("price" , detailsVar.task.tonValue )
-          myFormData.append("startTime" , detailsVar.task.time.start)
-          myFormData.append("endTime" , detailsVar.task.time.end)
-
-          let files = sortFiles(detailsVar.task.photosNames ,  detailsVar.task.photos)
-
-
-            for (let i = 0; i <  files.removedArr.length; i++){
-              myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
-            }
-            for (let i = 0; i < files.addedArr.length ; i++){
-              myFormData.append(`addFiles[${i}]` , files.addedArr[i] )
-            }
-
-          dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
-
-          
-          setDetails( {...details,
-            isActive : false,
-          } )
-          }
-
-
-        } )
-        
-    } else {
-      setDetailsActive(false);
-    }
-  }, [details , dispatch , myAdsArray , setDetails , setDetailsActive, secondPage.index  ] ) // функция сохранения , а также модалка телеграма
 
 
 
 
-  function checkMistakes(changingTask) {
-    let taskName = false;
-    let timeError = false;
-    if (changingTask.taskName.length < 5) {
-      taskName = true;
-    }
-
-    if (changingTask.time.end.length > 0) {
-      if (changingTask.time.end < changingTask.time.start) {
-        timeError = true;
-      }
-    }
-    let rezult = { taskName: taskName, timeError: timeError };
-
-
-    setMistakes(rezult);
-    return Object.values(rezult).every((value) => value === false);
-  } // логика провероки ошибок
-
-  // console.log(checkMistakes(details.task))
-
-
-
-
-  // useEffect(() => {
-
-
-  //   if (details.isActive && changed === false) {
-  //     changed = true;
-  //     setChangingTask(myAdsArray[index]);
-  //   }
-  // }, [details.isActive]); // логика внесения changingTask
-
-  useEffect( () => {
+  // useEffect( () => {
     
-    if (details.isActive) {
-      BackButton.show();
-      BackButton.onClick(save);
-    } 
-    return () => {
-      BackButton.offClick(save);
-    }
-  } , [details.isActive,save]) // логика кнопок
+  //   if (details.isActive) {
+  //     BackButton.show();
+  //     BackButton.onClick(save);
+  //   } 
+  //   return () => {
+  //     BackButton.offClick(save);
+  //   }
+  // } , [details.isActive,save]) // логика кнопок
 
   const GreyIntWidth = useMemo(() => {
     return (document.documentElement.clientWidth - 36) / 2;
@@ -176,7 +80,7 @@ const MyAdOne = ({
   return (
     <div className="my-ad-one">
       <Top name={"Мои задания"} setMenuActive={setMenuActive} />
-      <button style={{
+      {/* <button style={{
         position : 'absolute',
         zIndex : '3000'
       }} onClick={() => {
@@ -211,7 +115,7 @@ const MyAdOne = ({
         }
         
 
-      }>Save</button>
+      }>Save</button> */}
 
       <MyAdsBlock setNowKey={setNowKey} nowValue = {nowValue} greyIntWidth={GreyIntWidth} greyWidth={GreyWidth} deals={1} finishedDeals={"0%"} />
       <PickerContent
@@ -222,23 +126,7 @@ const MyAdOne = ({
       />
       
 
-      <CSSTransition classNames="details" in={details.isActive} timeout={300}
-      mountOnEnter unmountOnExit>
-        <AdCreatingOne
-          mistakes={mistakes}
-          className="AdCreatingMy"
-          taskInformation={detailsVar.task}
-          setTaskInformation={setChangingTask}
-          MyInformation={true}
-          isDetailsActive={details.isActive}
-          setAddedFiles={(e) => {
-            setChangingTask(value => ({...value, addedFiles : e}))
-          }}
-          setRemovedFiles={(e) => {
-            setChangingTask(value => ({...value , removedFiles : e}))
-          }}
-        />
-      </CSSTransition>
+
     </div>
   );
 };
