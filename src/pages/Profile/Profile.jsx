@@ -148,12 +148,12 @@ const Profile = () => {
     dispatch(changeProfile(aboutULocal))
     dispatch(putUserInfo([
       {'stage' : Number(aboutULocal.stage),
-        'about' : textRef.current
+        'about' : textRef.current.value
       },
       userInfoLocal.id
     ]))
 
-  } , [dispatch] )
+  } , [dispatch, textRef.current.value] )
 
   
 
@@ -190,7 +190,7 @@ const Profile = () => {
 
 
     if (!cardsActive && !changeActive){
-      if ( compare2Objects(userInfoLocal.profile, aboutULocal) === false || textRef.current !== userInfoLocal.profile.about ){
+      if ( compare2Objects(userInfoLocal.profile, aboutULocal) === false || textRef.current.value !== userInfoLocal.profile.about ){
           MainButton.setParams({
             text : 'Сохранить',
             is_visible : true
