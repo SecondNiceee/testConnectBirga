@@ -144,7 +144,7 @@ const MyAds = () => {
     photos : [],
     index : 0
   })
-
+  console.log(details)
   const save = useSave({
     detailsVar,
     myAdsArray,
@@ -176,69 +176,6 @@ const MyAds = () => {
     setDetails : setDetails,
     save : save
   })
-
-  // useEffect(() => {
-  //   function writeFucntion(){
-  //     window.Telegram.WebApp.openTelegramLink("https://t.me/" + isOpen.responce.user.link)
-  //   }
-  //   function goBack() {
-
-  //     if (!sliderActive.isActive){
-
-  //       if (!localDetails.isActive){
-  
-  //         if (!localAboutReaction.isActive) {
-  //           if (localIsOpen.isActive) {
-  //             setOpen({...isOpen, isActive : false});
-  //           } else {
-  //             if (localSecondPage.isActive) {
-  //               setSecondPage({...secondPage , isActive : false});
-  //             } else {
-  //               navigate(-1);
-  //             }
-  //           }
-  //         } else {
-  //           setOpenAboutReaction({...openAboutReaction , isActive : false});
-  //         }
-  //       }
-  //       else{
-          
-  //       }
-  //     }
-  //     else{
-  //       setSliderActive({...sliderActive , isActive : false})
-  //     }
-
-  //   }
-  //   if (!localSecondPage.isActive && !details.isActive) {
-  //     BackButton.hide();
-  //   } else {
-  //     BackButton.show();
-  //   }
-
-  //   if (isOpen.isActive){
-  //     MainButton.show()
-  //     MainButton.setParams({
-  //       color : '#2ea5ff',
-  //       text_color : '#ffffff'
-  //     })
-  //     MainButton.setText("Написать")
-  //     MainButton.onClick(writeFucntion)
-  //   }
-  //   else{
-  //     MainButton.hide()
-  //     MainButton.offClick(writeFucntion)
-    
-  //   }
-  //   BackButton.onClick(goBack);
-  //   return () => {
-  //     BackButton.offClick(goBack);
-  //     MainButton.offClick(writeFucntion)
-  //   }
-
-  //   // eslint-disable-next-line
-  // }, [isOpen.isActive , sliderActive.isActive, openAboutReaction.isActive, sliderActive.isActive, details.isActive, isOpen, navigate] );
-
 
 
   function setDetailsActive(value) {
@@ -284,14 +221,14 @@ const MyAds = () => {
           transition={{ duration: 0.1 }}
           className="MyAdsContainer"
         >
-          {/* <button style={{
+          <button  style={{
         position : 'fixed',
         left : '50%',
         zIndex : 1500
       }} onClick={() => {
-        goBack()
-      }}>НАЗАД</button>
- */}
+       save()
+      }}>SAVE</button>
+
 
           <MyAdOne
             
