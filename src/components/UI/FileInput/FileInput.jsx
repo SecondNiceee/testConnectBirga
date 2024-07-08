@@ -23,6 +23,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         localImages.push(base64)
         if (localImages.length === newFiles.length){
           setImages([...images, ...localImages])
+          alert('о да')
         }
         // Добавляем изображение на страницу
       }
@@ -30,8 +31,13 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
 
 
 
-      resizeImage(event, 500, 500, 0.6).then((value) => {
-        reader.readAsDataURL(value);
+      resizeImage(event, 400, 400, 0.6).then((value) => {
+        // reader.readAsDataURL(value);
+        localImages.push(URL.createObjectURL(value))
+        if (localImages.length === newFiles.length){
+          setImages([...images, ...localImages])
+          alert('о да')
+        }
       })
     })
   } , [files , images] )
@@ -161,6 +167,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         <input
           ref={myRef}
           onChange={(event) => {
+            event.preventDefault()
             if (event.target.files && event.target.files[0]) {
               if (event.target.files.length + files.length > 10){
                 window.Telegram.WebApp.showAlert('Максимум 10 файлов')
