@@ -49,7 +49,12 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
   const textRef = useRef(null)
   return (
     <>
-    <input value={"привет"} ref={textRef} type="text" />
+    <input style={{
+      position : 'absolute',
+      bottom : '0',
+      left : '0',
+      opacity : '0'
+    }} value={"привет"} ref={textRef} type="text" />
     <label
 
       htmlFor="file"
