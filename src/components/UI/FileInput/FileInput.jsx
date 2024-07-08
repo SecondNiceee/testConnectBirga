@@ -68,7 +68,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       style={photoStyle}
       className={className ? [cl.FileInput, className].join(" ") : cl.FileInput}
     >
-      {images.map((e, i) => {
+      {files.map((e, i) => {
         return (
           <div key={i} className={cl.imageFeetContainer}>
             <div
@@ -84,7 +84,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
               className={[cl.removeIcon, "_icon-trash"].join(" ")}
             />
 
-            <img className={cl.imageFeet} src={e} alt="" />
+            <img className={cl.imageFeet} src={URL.createObjectURL(e)} alt="" />
           </div>
         );
       })}
