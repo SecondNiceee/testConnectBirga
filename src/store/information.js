@@ -132,6 +132,7 @@ export const postMyTask = createAsyncThunk(
       return localTask
     }
     catch(e){
+        alert(JSON.stringify(e))
         console.log(e)
     }
 
