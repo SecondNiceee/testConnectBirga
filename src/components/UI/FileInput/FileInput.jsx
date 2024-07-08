@@ -1,17 +1,15 @@
-import React, { memo, useEffect, useMemo, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 let counter = 0;
 let imgaes = []
 const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);
-  useEffect(() => {
 
 
-
-
-
-    files.forEach((event) => {
+  const addFiles = useCallback( (newFiles) => {
+    let localImages = []
+    newFiles.forEach((event) => {
 
       var reader = new FileReader();
   
@@ -22,7 +20,10 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         
         // Создаем изображение и устанавливаем в него src base64 кодирование
         console.log(base64)
-        setImages([...images, base64])
+        localImages.push(base64)
+        if (localImages.length === newFiles.length){
+          setImages([...images, ...localImages])
+        }
         // Добавляем изображение на страницу
       }
 
@@ -33,7 +34,10 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         reader.readAsDataURL(value);
       })
     })
-  }, [files]);
+  } , [files , images] )
+
+
+
 
   function resizeImage(file, maxWidth, maxHeight, quality) {
     return new Promise((resolve, reject) => {
@@ -62,8 +66,8 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
                 ctx.drawImage(img, 0, 0, width, height);
 
                 canvas.toBlob((blob) => {
-                    resolve(new File([blob], file.name, { type: 'image/jpeg', lastModified: new Date().getTime() }, quality));
-                }, 'image/jpeg', quality);
+                    resolve(new File([blob], file.name, { type: 'image/png', lastModified: new Date().getTime() }));
+                }, 'image/png', quality);
             };
             img.src = event.target.result;
         };
@@ -171,6 +175,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
                   newFiles.push(newFile);
                 }
                 setFiles([...files, ...newFiles]);
+                addFiles(newFiles)
 
               }
             }
