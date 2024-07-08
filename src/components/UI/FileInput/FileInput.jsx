@@ -46,9 +46,10 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
 //     }, 100);
 // }
   
-
+  const textRef = useRef(null)
   return (
     <>
+    <input value={"привет"} ref={textRef} type="text" />
     <label
 
       htmlFor="file"
@@ -102,6 +103,8 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
               }
             }
             myRef.current.blur()
+            textRef.current.focus()
+            textRef.current.blur()
             // hideKeyboard(myRef.current)
             
           }}
