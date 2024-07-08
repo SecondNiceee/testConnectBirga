@@ -8,6 +8,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
     setImages(files.map((event) => {
 
       let url = (window.URL || window.webkitURL || window || {}).createObjectURL(event);
+      console.log(url)
       alert(url)
       return url
 
@@ -137,6 +138,9 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       </label>
       
     </label>
+    {images.map( (e, i) => {
+      return <p>{e}</p>
+    }) }
     {fileError ? 
       <p className={cl.fileError}>Добавьте хотя бы один пример работы</p>
       :
