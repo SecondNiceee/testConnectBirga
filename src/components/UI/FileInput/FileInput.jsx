@@ -17,7 +17,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
   var device = navigator.userAgent.toLowerCase();
 
 
-
   const photoStyle = useMemo( () => {
     if (fileError){
       return ({
@@ -47,6 +46,8 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
 // }
   
   const textRef = useRef(null)
+  alert(files.join(' ') , images.join(' '))
+  
   return (
     <>
     <input style={{
@@ -107,9 +108,12 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
 
               }
             }
-            myRef.current.blur()
-            textRef.current.focus()
-            textRef.current.blur()
+            if (device.includes("android")){
+
+              myRef.current.blur()
+              textRef.current.focus()
+              textRef.current.blur()
+            }
             // hideKeyboard(myRef.current)
             
           }}
