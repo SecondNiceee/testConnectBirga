@@ -5,21 +5,37 @@ let counter = 0;
 const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);
   useEffect(() => {
+
+    function encodeFileToBase64(file) {
+      return new Promise((resolve, reject) => {
+          var reader = new FileReader();
+          reader.onload = function() {
+              var base64Data = reader.result.split(",")[1];
+              resolve(base64Data);
+          };
+          reader.onerror = function(error) {
+              reject(error);
+          };
+          reader.readAsDataURL(file);
+      });
+  }
+
+
     setImages(files.map((event) => {
 
-      let url = (window.URL || window.webkitURL || window || {}).createObjectURL(event);
-      console.log(url)
-      alert(url)
-      return url
+      var file = event;
+      encodeFileToBase64(file)
+      .then((base64Data) => {
+        return base64Data
+      })
+      .catch((error) => {
+          console.error(error);
+      });
+
 
     }))
   }, [files]);
   const myRef = useRef(null);
-  useEffect(() => {
-    if (myRef) {
-      // alert(myRef.files)
-    }
-  }, [myRef.files]);
 
   var device = navigator.userAgent.toLowerCase();
 
