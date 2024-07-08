@@ -158,7 +158,8 @@ const MyAds = () => {
     openAboutReaction : openAboutReaction,
     isOpen : isOpen,
     details : details,
-    secondPage : secondPage
+    secondPage : secondPage,
+    localSecondPage : localSecondPage
   })
 
   // useEffect(() => {
