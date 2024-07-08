@@ -289,7 +289,6 @@ const Profile = () => {
       }
     
   } , [] )
-  console.log(aboutULocal.stage)
 
   const onFocusFunc = useCallback( (e) => {
     e.target.value = String(e.target.value).split(' ')[0]
@@ -461,7 +460,7 @@ const Profile = () => {
         timeout={0}
         >
 
-            <ChangeCards save={save} index={index}  card={aboutULocal.cards[index]}  aboutU={userInfo.profile}  setCardsOpen={setChangeActive} />
+            <ChangeCards save={save} index={index}  card={cards[index]}  aboutU={userInfo.profile}  setCardsOpen={setChangeActive} />
         </CSSTransition>
 
         <SliderMain sliderActive={isSliderAcitve} setSliderActive={setSliderActive} />
