@@ -54,6 +54,7 @@ const BudgetInput = ({
       <input 
          style={style}
         value={budget}
+        
         onChange={(e) => {
           setBudget(
             KisInteger(e.target.value)
@@ -67,6 +68,7 @@ const BudgetInput = ({
         name="budget"
         type="text"
         onFocus={(e) => {
+          window.scrollTo(0, 0)
           setBudget(e.target.value === "0" ? "" : e.target.value);
         }}
         onBlur={(e) => {
