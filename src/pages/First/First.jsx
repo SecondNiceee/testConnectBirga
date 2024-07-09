@@ -174,7 +174,7 @@ const First = () => {
   useEffect( () => {
     console.log('Вызов этого useEffect')
     if (isDetailsActive.isOpen) {
-      if (step === 0){
+      if (localStep === 0){
         MainButton.setParams({
           is_active : true,
           color : '#2ea5ff',
@@ -239,7 +239,7 @@ const First = () => {
       })
     }
     else{
-      if (step === 0){
+      if (localStep === 0){
         console.warn('я тут')
         MainButton.setParams({
           color : '#2ea5ff',
