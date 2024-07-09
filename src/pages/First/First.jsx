@@ -227,6 +227,7 @@ const First = () => {
   const tonConstant = useSelector((state) => state.ton.value);
   localResponce = responce
   useEffect(() => {
+    console.log(localResponce.text)
     if (localResponce.text.length < 3 && step === 1){
       MainButton.setParams({
         is_active : false, //неизвесетно
@@ -236,7 +237,7 @@ const First = () => {
     }
     else{
       if (step === 0){
-
+        console.warn('я тут')
         MainButton.setParams({
     
           color : '#2ea5ff',
