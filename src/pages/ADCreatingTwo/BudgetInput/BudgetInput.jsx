@@ -68,7 +68,7 @@ const BudgetInput = ({
         name="budget"
         type="text"
         onFocus={(e) => {
-          window.scrollTo(0, 0)
+          document.documentElement.style.overflowY = 'hidden'
           setBudget(e.target.value === "0" ? "" : e.target.value);
         }}
         onBlur={(e) => {
