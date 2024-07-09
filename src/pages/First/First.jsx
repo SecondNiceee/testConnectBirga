@@ -239,7 +239,6 @@ const First = () => {
       })
     }
     else{
-      if (localStep === 0){
         console.warn('я тут')
         MainButton.setParams({
           color : '#2ea5ff',
@@ -247,7 +246,7 @@ const First = () => {
           is_active : true
           
         })
-      }
+      
     }
 } , [responce.text, step, MainButton]) 
 
