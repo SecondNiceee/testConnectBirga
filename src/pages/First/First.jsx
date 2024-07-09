@@ -106,7 +106,7 @@ const First = () => {
       else{
         if (step === 0) {
           mainRef.current.classList.add('secondStep')
-          step += 1
+          setStep(1)
         }
       }
     }
@@ -128,7 +128,7 @@ const First = () => {
           else{
   
             if (step === 1) {
-              step -= 1
+              setStep(0)
               mainRef.current.classList.remove('secondStep')
             }
             else{
@@ -166,7 +166,7 @@ const First = () => {
       MainButton.offClick(forward);
       BackButton.offClick(back);
     };
-  });
+  } , [isDetailsActive.isOpen]);
 
 
   useEffect( () => {
