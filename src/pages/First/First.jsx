@@ -90,22 +90,27 @@ const First = () => {
     setDetailsActive({ ...isDetailsActive, isOpen: false });
   }
 
-  function forward() {
-    if (gotIt){
-      window.Telegram.WebApp.showPopup({
-        title : "Ошибка",
-        message : "Вы уже откликнулись на это задание. Заказчик обязательно увидит ваш отклик."
-      })
-    }
-    else{
-      if (step === 0) {
-        mainRef.current.classList.add('secondStep')
-        step += 1
-      }
-    }
-  }
+
 
   useEffect(() => {
+
+
+    function forward() {
+      if (gotIt){
+        window.Telegram.WebApp.showPopup({
+          title : "Ошибка",
+          message : "Вы уже откликнулись на это задание. Заказчик обязательно увидит ваш отклик."
+        })
+      }
+      else{
+        if (step === 0) {
+          mainRef.current.classList.add('secondStep')
+          step += 1
+        }
+      }
+    }
+
+
     function back() {
       if (sliderActive.isActive){
         setSliderActive({...sliderActive, isActive : false})
@@ -164,6 +169,7 @@ const First = () => {
 
 
   useEffect( () => {
+    console.log('Вызов этого useEffect')
     if (isDetailsActive.isOpen) {
       if (step === 0){
         MainButton.setParams({
@@ -228,7 +234,7 @@ const First = () => {
       })
     }
     else{
-      if (step === 1){
+      if (step === 0){
 
         MainButton.setParams({
     
@@ -318,7 +324,7 @@ useEffect(() => {
       transition={{ duration: 0.1 }}
     >
       <div className="first-wrapper" >
-        <button
+        {/* <button
           onClick={forward}
           style={{
             zIndex: "10000",
@@ -328,7 +334,7 @@ useEffect(() => {
           }}
         >
           ДАЛЕЕ
-        </button>
+        </button> */}
         <AllTasks
           setSliderActive = {setSliderActive}
 

@@ -69,6 +69,9 @@ const BudgetInput = ({
         type="text"
         onFocus={(e) => {
           document.documentElement.style.overflowY = 'hidden'
+          setTimeout( () => {
+              document.documentElement.style.overflowY = 'visible'
+          } , 1000 )
           setBudget(e.target.value === "0" ? "" : e.target.value);
         }}
         onBlur={(e) => {
