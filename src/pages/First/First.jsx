@@ -17,10 +17,12 @@ import { addResponce } from "../../store/information";
 
 let isDetailsActiveVar = false;
 let localResponce;
+let localStep;
 const First = () => {
 
 
   const [step , setStep] = useState(0)
+  localStep = step
   console.log('Рендер ферста')
 
 
@@ -228,7 +230,7 @@ const First = () => {
   localResponce = responce
   useEffect(() => {
     console.log(localResponce.text)
-    if (localResponce.text.length < 3 && step === 1){
+    if (localResponce.text.length < 3 && localStep === 1){
       MainButton.setParams({
         is_active : false, //неизвесетно
         color : '#2f2f2f',
@@ -239,7 +241,6 @@ const First = () => {
       if (step === 0){
         console.warn('я тут')
         MainButton.setParams({
-    
           color : '#2ea5ff',
           text_color : '#ffffff',
           is_active : true
