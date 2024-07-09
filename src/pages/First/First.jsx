@@ -155,6 +155,7 @@ const First = () => {
         })
       }
     } else {
+      console.log('Я даун')
       BackButton.hide();
       MainButton.hide();
       MainButton.setParams({
