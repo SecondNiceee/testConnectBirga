@@ -146,7 +146,7 @@ const First = () => {
 
     MainButton.onClick(forward);
     BackButton.onClick(back);
-    if (isDetailsActiveVar.isOpen) {
+    if (isDetailsActiveVar) {
       BackButton.show();
       if (gotIt){
         MainButton.setParams({//неизвесетно
