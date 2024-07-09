@@ -169,7 +169,7 @@ const First = () => {
       MainButton.offClick(forward);
       BackButton.offClick(back);
     };
-  } , [isDetailsActive.isOpen]);
+  } , [isDetailsActive.isOpen, step]);
 
 
   useEffect( () => {
