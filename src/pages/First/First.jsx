@@ -230,6 +230,7 @@ const First = () => {
   localResponce = responce
   useEffect(() => {
     console.log(localResponce.text)
+    console.log(localStep)
     if (localResponce.text.length < 3 && localStep === 1){
       MainButton.setParams({
         is_active : false, //неизвесетно
