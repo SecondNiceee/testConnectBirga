@@ -72,7 +72,7 @@ export const putMyTask = createAsyncThunk(
   }
 )
 
-export const postMyTask = createAsyncThunk(
+export const  postMyTask = createAsyncThunk(
   "information/postMytask" , 
   async function(arr){
     let files = arr[1]
@@ -84,10 +84,12 @@ export const postMyTask = createAsyncThunk(
         {
           headers: {
             "Content-Type": "multipart/form-data",
-            "Access-Control-Allow-Origin": "*"
+            // "Access-Control-Allow-Origin": "*"
           },
         }
       );
+
+
       let localTask;
 
       let one = new Date(b.data.startTime)
