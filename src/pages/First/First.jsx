@@ -15,11 +15,12 @@ import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import axios from "axios";
 import { addResponce } from "../../store/information";
 
-let step = 0;
 let isDetailsActiveVar = false;
 let localResponce;
 const First = () => {
 
+
+  const [step , setStep] = useState(0)
   console.log('Рендер ферста')
 
 
