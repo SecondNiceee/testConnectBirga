@@ -26,6 +26,10 @@ const AllTasks = ({
 
   const dispatch = useDispatch();
 
+  useEffect( () => {
+    dispatch(fetchTasksInformation())
+  } ,[] )
+
 
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
