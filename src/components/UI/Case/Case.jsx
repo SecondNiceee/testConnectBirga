@@ -3,7 +3,7 @@ import cl from "./Case.module.css";
 import FalseTie from "../FalseTie/FalseTie";
 import Share from '../../../images/icons/Share.svg'
 
-const Case = ({ className, task,  title , description , photos, changeFunction, deleteFunction, setSliderActive, watchOnly,  ...props }) => {
+const Case = ({ className, task,  title , description , photos, changeFunction, deleteFunction, setSliderActive, watchOnly, agree = false,  ...props }) => {
   return (
     <div
       {...props} 
@@ -46,7 +46,7 @@ const Case = ({ className, task,  title , description , photos, changeFunction, 
         <div style={{
           gap : "13px"
         }} className={cl.caseRight}>
-          <FalseTie id={task.id} task={task} navigate={"card"} />
+          <FalseTie agree = {agree} id={task.id} task={task} navigate={"card"} />
           <div className={cl.circle}>
           <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M3.27412 14.1889C3.65286 9.80024 7.77571 7.3393 9.89984 7.09514C10.0827 7.07412 10.2305 6.92578 10.2305 6.74169V4.83951C10.2305 4.54329 10.588 4.39423 10.7985 4.60272L16.108 9.86313C16.2435 9.99739 16.239 10.2178 16.098 10.3463L10.7884 15.1859C10.5744 15.3809 10.2305 15.2291 10.2305 14.9395V12.5912C10.2305 12.4071 10.0814 12.2571 9.89748 12.2661C7.59634 12.3781 5.14118 13.6115 3.78758 14.477C3.558 14.6238 3.2507 14.4604 3.27412 14.1889Z" fill="#2EA5FF" />

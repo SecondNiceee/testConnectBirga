@@ -26,7 +26,8 @@ const FirstBlock = ({
   id,
   setSlideActive,
    tonConstant ,
-   task
+   task,
+   agree = false
    
 
 
@@ -168,7 +169,7 @@ const FirstBlock = ({
                 </>
               )}
 
-{!isResponce && !isMyAds ? <FalseTie id={id} task={task}
+{!isResponce && !isMyAds ? <FalseTie agree = {agree}  navigate={"advertisement"} id={id} task={task}
 
  className={"tie"} /> :
               <></>

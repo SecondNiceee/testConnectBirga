@@ -27,3 +27,15 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.firstBlock{
+    width: 100%;
+}
+.blocksWrapper{
+    align-self: flex-start;
+    width: calc(100vw - 32px);
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+}

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import cl from './FalseTie.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { addAdvertisment, addCard, addResponce, deleteAdvertisement, deleteCard, deleteResponce } from '../../../store/saves';
-const FalseTie = ({className, id, task, navigate}) => {
+const FalseTie = ({className, id, task, navigate, agree}) => {
     const [active, setActive] = useState(false)
 
     // const tieRef = useRef(null)
@@ -13,39 +13,137 @@ const FalseTie = ({className, id, task, navigate}) => {
     console.log(savedTasks)
     useEffect( () => {
         switch (navigate){
-            case "advertisement":
+            case "advertisement":{
                 savedTasks.forEach( (e, i) => {
                     if (e.id === id){
                         setActive(true)
                     }
                 } )
-            case "responce":
+            }
+            case "responce":{
                 savedResponces.forEach( (e, i) => {
                     if (e.id === id){
                         setActive(true)
                     }
                 } )
-            case "card":
+            }
+            case "card":{
+
                 savedCards.forEach( (e,i ) => {
                     if (e.id === id){
                         setActive(true)
                     }
                 } )
+            }
                 
 
         }
         
 
     } , [] )
+
+
+    console.log(navigate)
+
+
+    const deleteCardFunction = useCallback( () => {
+        if (agree){
+
+            window.Telegram.WebApp
+            .showPopup({
+              title: "Удалить?",
+              message: "Удалить из избранного?",
+              buttons: [
+                { id: "save", type: "default", text: "Да" },
+                { id: "delete", type: "destructive", text: "Нет" },
+              ],
+            } , (buttonId) => {
+        
+              if (buttonId === "delete" || buttonId === null) {
+                
+              }
+              if (buttonId === "save") {
+                dispatch(deleteCard(id))
+              }
+        
+        
+            } )
+        }
+        else{
+            dispatch(deleteCard(id))
+        }
+    }  , [id, task , agree] )
+
+
+    const deleteResponce = useCallback( () => {
+        if (agree){
+
+            window.Telegram.WebApp
+            .showPopup({
+              title: "Удалить?",
+              message: "Удалить из избранного?",
+              buttons: [
+                { id: "save", type: "default", text: "Да" },
+                { id: "delete", type: "destructive", text: "Нет" },
+              ],
+            } , (buttonId) => {
+        
+              if (buttonId === "delete" || buttonId === null) {
+                
+              }
+              if (buttonId === "save") {
+                dispatch(deleteResponce(id))
+              }
+        
+        
+            } )
+        }
+        else{
+            dispatch(deleteResponce(id))
+        }
+    } , [id, task , agree] )
+    const deleteAdFunction = useCallback(() => {
+        if (agree){
+
+            window.Telegram.WebApp
+            .showPopup({
+              title: "Удалить?",
+              message: "Удалить из избранного?",
+              buttons: [
+                { id: "save", type: "default", text: "Да" },
+                { id: "delete", type: "destructive", text: "Нет" },
+              ],
+            } , (buttonId) => {
+        
+              if (buttonId === "delete" || buttonId === null) {
+                
+              }
+              if (buttonId === "save") {
+                dispatch(deleteAdvertisement(id))
+              }
+        
+        
+            } )
+        }
+        else{
+            dispatch(deleteAdvertisement(id))
+        }
+    } , [id, task , agree] )
+
+
+
     return (
         <div  onClick={(e) => {
             if (!active){
                 switch (navigate){
-                    case "advertisement":
+                    case ("advertisement"):
                         dispatch(addAdvertisment([id , task]))
-                    case "responce":
+                        break
+                    case ("responce"):
+                        console.log(navigate)
                         dispatch(addResponce([id, task]))
-                    case "card":
+                        break
+                    case ("card"):
                         dispatch(addCard([id, task]))
                 }
                 setActive(true)
@@ -53,11 +151,11 @@ const FalseTie = ({className, id, task, navigate}) => {
             }
             else{
                 switch (navigate){
-                    case "advertisement":
+                    case ("advertisement"):
                         dispatch(deleteAdvertisement(id))
-                    case "responce":
+                    case ("responce"):
                         dispatch(deleteResponce(id))
-                    case "card":
+                    case ("card"):
                         dispatch(deleteCard(id))
                 }
                 setActive(false)

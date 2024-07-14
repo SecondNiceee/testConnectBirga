@@ -167,7 +167,7 @@ export const fetchAllValues = createAsyncThunk(
 
 
 
-        for (let i = 0; i < imTwo.data.savedResponses; i++) {
+        for (let i = 0; i < imTwo.data.savedResponses.length; i++) {
             let photos = [];
     
             if (responces[i].photos) {
@@ -177,15 +177,15 @@ export const fetchAllValues = createAsyncThunk(
             responces[i].photos = photos;
     
             try {
-              let imTwo = await axios.get(
+              let luo = await axios.get(
                 "https://back-birga.ywa.su/advertisement/findCount",
                 {
                   params: {
-                    userId: responces[i].user.id,
+                    userId: imTwo.data.id,
                   },
                 }
               );
-              responces[i].createNumber = imTwo.data;
+              responces[i].createNumber = luo.data;
 
               responces[i].user = {
                 "id" : imTwo.data.id,
@@ -198,6 +198,7 @@ export const fetchAllValues = createAsyncThunk(
                 "roles" : imTwo.data.roles
                 
               }
+              console.log(responces[i])
             } catch (e) {
               alert(e);
             }
@@ -230,7 +231,7 @@ export const fetchAllValues = createAsyncThunk(
                     photos : files
                 })
             }
-
+        console.log(responces)
         return [trueAdvertisements, responces, localCards]
     }
     catch (e){
