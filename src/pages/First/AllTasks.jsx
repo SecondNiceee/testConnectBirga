@@ -14,7 +14,7 @@ const AllTasks = ({
   // count += 1
   // console.warn('РЕНДЕР' + count )
 
-  const [page , setPage] = useState(1)
+  const [page , setPage] = useState(2)
   const [hasMore , setHasMore] = useState(true)
   const elementRef = useRef(null)
 
@@ -44,6 +44,7 @@ const AllTasks = ({
       console.warn('вызов меня')
       const firtEntry = entries[0]
       console.log(orderStatus)
+      console.log(firtEntry.isIntersecting)
       if (firtEntry.isIntersecting && orderStatus !== 'all'){
         console.warn(orderStatus)
         getMore()
@@ -62,15 +63,18 @@ const AllTasks = ({
         // dispatch(changeStatus(null))
         observer.disconnect()
       }
-  } , [ordersInformation] )
+  } , [ordersInformation , elementRef.current] )
 
   useEffect( () => {
+    dispatch(fetchTasksInformation(1))
       return () => {
         dispatch(changeStatus(null))
   }
   } , [] )
 
   console.log(orderStatus)
+
+
 
 
 
@@ -94,7 +98,7 @@ const AllTasks = ({
         userInfo={userInfo}
       />
 
-      {orderStatus === 'complete' || orderStatus === 'all' && tonConstant !== 0 ? (
+      { (orderStatus === 'complete' || orderStatus === 'all') && tonConstant !== 0 ? (
         <>
           <FirstMain
             // style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
@@ -108,14 +112,17 @@ const AllTasks = ({
       ) : (
         <FirstLoader />
       )}
-      
-      <div ref={elementRef} className="block" style={
-        {
-          bottom : "30px",
-          width : "30px",
-          height : "30px"
-        }
-      }></div>
+      {orderStatus === null ? <></> :
+            <div  ref={elementRef} className="block" style={
+              {
+                position : "relative",
+                bottom : "50px",
+                width : "30px",
+                height : "30px"
+              }
+            }></div>
+      }
+
     </div>
   );
 };
