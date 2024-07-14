@@ -154,9 +154,9 @@ const FalseTie = ({className, id, task, navigate, agree}) => {
                     case ("advertisement"):
                         deleteAdFunction()
                     case ("responce"):
-                        deleteResponce()
+                        deleteResponceFunc()
                     case ("card"):
-                        deleteCard()
+                        deleteCardFunction()
                 }
                 setActive(false)
                 
