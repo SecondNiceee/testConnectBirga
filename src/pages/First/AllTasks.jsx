@@ -4,7 +4,7 @@ import FirstTop from "../../components/First/FirstMain/FirstTop";
 import FirstLoader from "../../loaders/FirstLoader";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTasksInformation } from "../../store/information";
+import { changeStatus, fetchTasksInformation } from "../../store/information";
 // let count = 0
 const AllTasks = ({
   setDetailsActive,
@@ -26,9 +26,7 @@ const AllTasks = ({
 
   const dispatch = useDispatch();
 
-  useEffect( () => {
-    dispatch(fetchTasksInformation(1))
-  } ,[] )
+  
 
 
   const ordersInformation = useSelector(
@@ -61,9 +59,16 @@ const AllTasks = ({
     
       }
       return () => {
+        // dispatch(changeStatus(null))
         observer.disconnect()
       }
   } , [ordersInformation] )
+
+  useEffect( () => {
+      return () => {
+        dispatch(changeStatus(null))
+  }
+  } , [] )
 
   console.log(orderStatus)
 

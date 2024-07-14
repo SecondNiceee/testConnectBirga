@@ -222,6 +222,8 @@ export const fetchMyOrders = createAsyncThunk(
     }
   }
 )
+
+
 export const fetchTasksInformation = createAsyncThunk( 
   'information/fetchTasksInformation' , 
   async function (par){
@@ -335,6 +337,10 @@ const information = createSlice( {
 
 
     reducers : {
+      changeStatus(state, action){
+          state.orderStatus = action.payload
+          state.orderInformations = []
+      },
         addResponce(state , action){
           state.orderInformations = state.orderInformations.map((e) => {
             if (e.id === action.payload[0]){
@@ -346,6 +352,7 @@ const information = createSlice( {
           })
         },
         changeTaskInformation(state , action) {
+            
             state.taskInformation = action.payload
         },
         changeMyAds(state, action) {
@@ -426,5 +433,5 @@ const information = createSlice( {
 
 
 })
-export const {changeTaskInformation , changeMyAds, addMyAds, putMyAds, addResponce} = information.actions;
+export const {changeTaskInformation , changeMyAds, addMyAds, putMyAds, addResponce, changeStatus} = information.actions;
 export default information.reducer;
