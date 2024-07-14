@@ -27,7 +27,7 @@ const AllTasks = ({
   const dispatch = useDispatch();
 
   useEffect( () => {
-    dispatch(fetchTasksInformation())
+    dispatch(fetchTasksInformation(1))
   } ,[] )
 
 
