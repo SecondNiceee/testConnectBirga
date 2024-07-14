@@ -75,7 +75,7 @@ const FalseTie = ({className, id, task, navigate, agree}) => {
     }  , [id, task , agree] )
 
 
-    const deleteResponce = useCallback( () => {
+    const deleteResponceFunc = useCallback( () => {
         if (agree){
 
             window.Telegram.WebApp
@@ -152,11 +152,11 @@ const FalseTie = ({className, id, task, navigate, agree}) => {
             else{
                 switch (navigate){
                     case ("advertisement"):
-                        dispatch(deleteAdvertisement(id))
+                        deleteAdFunction()
                     case ("responce"):
-                        dispatch(deleteResponce(id))
+                        deleteResponce()
                     case ("card"):
-                        dispatch(deleteCard(id))
+                        deleteCard()
                 }
                 setActive(false)
                 
