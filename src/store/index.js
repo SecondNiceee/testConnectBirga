@@ -6,6 +6,7 @@ import telegramUserInfo from './telegramUserInfo';
 import categorys from './categorys';
 import shablon from './shablon';
 import  watchedAds  from './watchedAds';
+import saves from './saves';
 export default configureStore( {
     reducer : {
         information : information,
@@ -14,7 +15,8 @@ export default configureStore( {
         telegramUserInfo : telegramUserInfo,
         categorys : categorys,
         shablon : shablon,
-        watchedAds : watchedAds
+        watchedAds : watchedAds,
+        saves : saves
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

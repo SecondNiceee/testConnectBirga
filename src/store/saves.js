@@ -1,0 +1,286 @@
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import axios from "axios";
+import makeNewFile from "../functions/newMakeFile";
+
+export const deleteCard = createAsyncThunk(
+    "deleteCard" ,
+    async function(id){
+        try{
+            await axios.delete("https://back-birga.ywa.su/user/savedCard", {
+                params:{
+                    "userId" : 2144832745,
+                    "cardId" : id
+                }
+
+            } )
+            return id
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+)
+
+export const addCard = createAsyncThunk(
+    "addCard" ,
+    async function (par){
+        try{
+            await axios.post('https://back-birga.ywa.su/card/save' , {
+                "userId" : 2144832745,
+                "cardId" : par[0]
+            })
+            return par[1]
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+)
+
+export const deleteResponce = createAsyncThunk(
+    "deleteReponce",
+    async function(id){
+        try{
+            await axios.delete("https://back-birga.ywa.su/user/savedResponse" , { params : {
+                "responseId" : id,
+                "userId" : 2144832745
+            } })
+            return id
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+)
+
+export const addResponce = createAsyncThunk(
+    "addResponce",
+    async function(par){
+        try{
+            await axios.post('https://back-birga.ywa.su/response/save', {
+                    "responseId" : par[0],
+                    "userId" : 2144832745
+            })
+            return par[1]
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+)
+
+
+export const deleteAdvertisement = createAsyncThunk(
+    "deleteAdvertisement" , 
+    async function(id){
+        try{
+            await axios.delete("https://back-birga.ywa.su/user/savedAdvertisement" , {
+                params : {
+                    "advertisementId" : id,
+                    "userId" : 2144832745
+                }
+            })
+            return id
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+)
+export const addAdvertisment = createAsyncThunk(
+    "addAdvertisement",
+    async function(par){
+        try{
+            let im = await axios.post('https://back-birga.ywa.su/advertisement/save' , {
+                "advertisementId" : par[0],
+                "userId" : 2144832745
+            })
+            console.log(im.data)
+            
+
+            return par[1]
+            
+        }
+        catch(e){
+            console.log(e)
+        }
+    }
+)
+
+export const fetchAllValues = createAsyncThunk(
+    "fetchhAllValues",
+    async function() {
+        try{
+
+        
+        let im = await axios.get('https://back-birga.ywa.su/advertisement/saved' , {
+            params : {
+                "userId" : "2144832745"
+            }
+        })
+        let advertisements = im.data.savedAdvertisements
+        let trueAdvertisements = []
+
+        for (let order of advertisements){
+
+        
+            let one = new Date(order.startTime)
+  
+            let two;
+            if (order.endTime){
+               two = new Date(order.endTime)
+            }
+            else{
+               two = ""
+            }
+
+            let files = await makeNewFile(order.folder, order.photos);
+            
+            trueAdvertisements.push(
+                {
+                    id : order.id,
+                    taskName : order.title,
+                    executionPlace: "Можно выполнить удаленно",
+                    time : {start : one , end : two},
+                    tonValue : order.price,
+                    taskDescription : order.description,
+                    photos : files,
+                    photosName : order.photos,
+                    customerName : im.data.fl,
+                    userPhoto : im.data.photo || "",
+                    rate : '5',
+                    isActive : true,
+                    creationTime : order.createdAt,
+                    viewsNumber : '50',
+                    responces : order.responses
+                }
+            )
+        }
+
+        let imTwo = await axios.get('https://back-birga.ywa.su/response/saved' , {
+            params : {
+                "userId" : 2144832745
+            }
+        })
+
+        let responces = imTwo.data.savedResponses
+
+
+
+        for (let i = 0; i < imTwo.data.savedResponses; i++) {
+            let photos = [];
+    
+            if (responces[i].photos) {
+              photos = await makeNewFile(responces[i].folder, responces[i].photos);
+            }
+    
+            responces[i].photos = photos;
+    
+            try {
+              let imTwo = await axios.get(
+                "https://back-birga.ywa.su/advertisement/findCount",
+                {
+                  params: {
+                    userId: responces[i].user.id,
+                  },
+                }
+              );
+              responces[i].createNumber = imTwo.data;
+
+              responces[i].user = {
+                "id" : imTwo.data.id,
+                "fl" : imTwo.data.fl,
+                "link" : imTwo.data.link,
+                "photo" : imTwo.data.photo,
+                "about" : imTwo.data.about,
+                "stage" : imTwo.data.stage,
+                "chatId" : imTwo.data.chatId,
+                "roles" : imTwo.data.roles
+                
+              }
+            } catch (e) {
+              alert(e);
+            }
+          }
+        
+
+        im = await axios.get('https://back-birga.ywa.su/card/saved' , {
+            params : {
+                "userId" : "2144832745"
+            }
+        })
+
+        console.log(im.data)
+
+         let cards = im.data.savedCards
+         let localCards = []
+
+         for (let e of cards)
+            {
+
+                let files =  await makeNewFile(e.folder, e.photos)
+                localCards.push({
+                    id : e.id,
+                    title : e.title,
+                    description : e.description,
+                    behanceLink : e.behance,
+                    dribbbleLink : e.dribble,
+                    dropfileLink : e.dropFile,
+                    photosNames : e.photos,
+                    photos : files
+                })
+            }
+
+        return [trueAdvertisements, responces, localCards]
+    }
+    catch (e){
+        console.log(e)
+    }
+    }
+
+)
+const saves = createSlice({
+    name : 'saves',
+    initialState : {
+        responces : [],
+        cards : [],
+        tasks : []
+    },
+    reducers : {
+
+    },
+    extraReducers : builder => {
+        builder.addCase(deleteCard.fulfilled, ((state, action) => {
+            state.cards = state.cards.filter((e,i) => {
+                return e.id !== action.payload
+            })
+        }))
+        builder.addCase(addCard.fulfilled , ((state, action) => {
+            state.cards.push(action.payload)
+        }))
+        builder.addCase(deleteResponce.fulfilled, ((state, action) => {
+            state.responces = state.responces.filter( (e, i) => {
+                return e.id !== action.payload
+            } )
+        }))
+        builder.addCase(addResponce.fulfilled , ((state, action) => {
+            state.responces.push(action.payload)
+        }))
+        builder.addCase(deleteAdvertisement.fulfilled, ((state , action) => {
+            state.tasks = state.tasks.filter((e , i) => {
+                return e.id !== action.payload
+            })
+        }))
+        builder.addCase(fetchAllValues.fulfilled, ( (state, action) => {
+            state.tasks = action.payload[0]
+            state.responces = action.payload[1]
+            state.cards = action.payload[2]
+        } ))
+        builder.addCase(addAdvertisment.fulfilled, ( (state ,action) => {
+            state.tasks.push(action.payload)
+        } ))
+    }
+
+}
+)
+export default saves.reducer

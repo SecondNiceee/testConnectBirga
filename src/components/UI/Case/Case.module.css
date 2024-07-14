@@ -47,6 +47,7 @@
 .caseRight{
     display: flex;
     gap: 7px;
+    align-items: center;
 }
 .circle{
     width: 28px;

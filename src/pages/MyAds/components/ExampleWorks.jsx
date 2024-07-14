@@ -8,7 +8,7 @@ const ExampleWorks = ({cards , setSliderActive}) => {
       <div className="cards__wraaper">
         {cards.map((e) => {
           return (
-            <Case setSliderActive={setSliderActive} title = {e.title} description={e.description} photos={e.photos} />
+            <Case  task = {e} setSliderActive={setSliderActive} title = {e.title} description={e.description} photos={e.photos} watchOnly={true} />
           )
         })}
       </div>

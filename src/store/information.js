@@ -237,7 +237,12 @@ export const fetchTasksInformation = createAsyncThunk(
         let task;
         try{
 
-           task = await axios.get('https://back-birga.ywa.su/advertisement/findAll')
+           task = await axios.get('https://back-birga.ywa.su/advertisement/findAll' , {
+            params : {
+              "limit" : 6,
+              "page" : par
+            }
+           })
         }
         catch (e){
           console.log(e)
@@ -265,15 +270,6 @@ export const fetchTasksInformation = createAsyncThunk(
   
               let files = await makeNewFile(order.folder, order.photos);
               
-              // if (order.files){
-              //   for (let photo of order.files){
-              //     let uintArray = new Uint8Array(photo.data);
-              //     let blob = new Blob([uintArray], { type: 'image/png' });
-              //     let fileName = 'photo.jpg';
-              //     let file = new File([blob], fileName, { type: 'image/png' });
-              //     files.push(file)
-              //   }
-              // }
               
               
               tasks.push({
@@ -328,7 +324,7 @@ const information = createSlice( {
             time : {start : null , end : null}
           } ,
 
-          orderInformations :  null,
+          orderInformations :  [],
 
           myAdsArray : [null
 
@@ -374,9 +370,22 @@ const information = createSlice( {
     },
     extraReducers : builder => {
 
-      builder.addCase( fetchTasksInformation.pending, (state => {state.orderStatus = 'loading'} )  )
-      builder.addCase( fetchTasksInformation.fulfilled, ((state , action) => {state.orderStatus = 'complete'  
-      state.orderInformations = action.payload }  ) )
+      builder.addCase( fetchTasksInformation.pending, ( (state) => {
+        if (state.orderInformations.length > 0){
+          state.orderStatus = 'complete'
+        }
+        else{
+          state.orderStatus = 'loading'}         
+        
+      } ) )
+      
+      builder.addCase( fetchTasksInformation.fulfilled, ((state , action) => {
+        state.orderStatus = 'complete'
+        if (action.payload.length < 6){
+          console.log('я тут')
+          state.orderStatus = 'all'
+        } 
+      state.orderInformations.push(...action.payload) }  ) )
       builder.addCase( fetchTasksInformation.rejected , ( (state , action) => {state.orderStatus = 'error'} )  )
       
         builder.addCase( fetchMyOrders.pending, (state => {state.myOrderStatus = 'loading'} )  )

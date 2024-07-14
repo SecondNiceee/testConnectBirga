@@ -1,15 +1,67 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cl from './FalseTie.module.css'
-const FalseTie = ({className}) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { addAdvertisment, addCard, addResponce, deleteAdvertisement, deleteCard, deleteResponce } from '../../../store/saves';
+const FalseTie = ({className, id, task, navigate}) => {
     const [active, setActive] = useState(false)
+
     // const tieRef = useRef(null)
+    const savedTasks = useSelector(state => state.saves.tasks)
+    const savedResponces = useSelector(state => state.saves.responces)
+    const savedCards = useSelector(state => state.saves.cards)
+    const dispatch = useDispatch()
+    console.log(savedTasks)
+    useEffect( () => {
+        switch (navigate){
+            case "advertisement":
+                savedTasks.forEach( (e, i) => {
+                    if (e.id === id){
+                        setActive(true)
+                    }
+                } )
+            case "responce":
+                savedResponces.forEach( (e, i) => {
+                    if (e.id === id){
+                        setActive(true)
+                    }
+                } )
+            case "card":
+                savedCards.forEach( (e,i ) => {
+                    if (e.id === id){
+                        setActive(true)
+                    }
+                } )
+                
+
+        }
+        
+
+    } , [] )
     return (
         <div  onClick={(e) => {
             if (!active){
+                switch (navigate){
+                    case "advertisement":
+                        dispatch(addAdvertisment([id , task]))
+                    case "responce":
+                        dispatch(addResponce([id, task]))
+                    case "card":
+                        dispatch(addCard([id, task]))
+                }
                 setActive(true)
+                
             }
             else{
+                switch (navigate){
+                    case "advertisement":
+                        dispatch(deleteAdvertisement(id))
+                    case "responce":
+                        dispatch(deleteResponce(id))
+                    case "card":
+                        dispatch(deleteCard(id))
+                }
                 setActive(false)
+                
             }
         }} className = {className ? [cl.FalseTie , className].join(' ') : cl.FalseTie}>
             <svg className={active ? [cl.falseTie, cl.animationClass].join(' ') : cl.falseTie} width="18" height="21" viewBox="0 0 18 21" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -13,6 +13,9 @@
         fill: #2ea5ff;
     }
 }
+.FalseTie{
+    line-height: 0;
+}
 .falseTie{
     stroke-width: 1.67px;
     stroke: #2ea5ff;
