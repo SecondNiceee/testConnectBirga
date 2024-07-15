@@ -8,7 +8,7 @@ import ModalChoicer from "../../../../components/UI/ModalChoicer/ModalChoicer";
 
 const ShablinBlock = ({
   shablonsArr,
-
+  left = "100%",
   className,
   setResponce,
   responce,
@@ -19,6 +19,7 @@ const ShablinBlock = ({
     photos: [],
   });
   let localShablonSetting = shablonSetting;
+  console.log(responce)
   return (
     <div className={className ? [cl.main, className].join(" ") : cl.main}>
       {shablonsArr.length > 0 ? (
@@ -63,7 +64,8 @@ const ShablinBlock = ({
         <AdCreateFunc
           text={"Создать шаблон"}
           func={() => {
-            setResponce({ ...responce, shablonMaker: true });
+            console.log('Вызов этой поганой функции')
+            setResponce((value) =>  ({ ...value , shablonMaker: true }));
           }}
         />
       )}
@@ -88,7 +90,7 @@ const ShablinBlock = ({
               photos: shablonSetting.photos,
             });
           }}
-          style={{ left: "100%" }}
+          style={{ left: left }}
           shablon={localShablonSetting}
           setShablon={setShablonSetting}
         />

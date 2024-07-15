@@ -293,9 +293,10 @@ const forwardFunction = useCallback(() => {
               <FirstDetails orderInformation={savedTasks[details.id]} />
             </CSSTransition>
 
-            <CSSTransition in = {responce.isOpen} timeout={400} classNames={"left-right"} unmountOnExit mountOnEnter >
+            <CSSTransition in = {true} timeout={400} classNames={"left-right"} unmountOnExit mountOnEnter >
               <div className="response-block">
               <Responce
+              left='0%'
           responce = {responce}
           setResponce = {setResponce}
 

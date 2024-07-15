@@ -7,7 +7,7 @@ import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 
 
 let localResponce ;
-const Responce = ({ orderInformation, responce, setResponce   }) => {
+const Responce = ({ orderInformation, responce, setResponce , left = "100%"   }) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
   const dispatch = useDispatch();
 
@@ -46,6 +46,7 @@ const Responce = ({ orderInformation, responce, setResponce   }) => {
       />
       {responce.isShablon ? (
         <ShablinBlock
+          left={left}
           responce={responce}
           setResponce={setResponce}
           shablonsArr={shablonsArr}
