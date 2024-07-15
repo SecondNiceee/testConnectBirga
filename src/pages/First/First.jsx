@@ -148,11 +148,22 @@ const First = () => {
     BackButton.onClick(back);
     if (isDetailsActiveVar) {
       BackButton.show();
+      MainButton.show()
       if (gotIt){
         MainButton.setParams({//неизвесетно
           color : '#2f2f2f',
           text_color : '#606060',
         })
+      }
+      else{
+        if (localStep === 0){
+          MainButton.setParams({
+            is_active : true,
+            color : '#2ea5ff',
+            text_color : '#ffffff'
+            
+          })
+        }
       }
     } else {
       console.log('Я даун')
