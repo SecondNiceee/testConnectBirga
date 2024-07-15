@@ -60,9 +60,9 @@ const SavedPage = () => {
 
     const gotIt = useMemo( () => {
       if (savedTasks !== null && savedTasks.length > 0 && savedTasks[details.id]){
-  
+        console.log(savedTasks[details.id])
         if (savedTasks[details.id].responces){
-  
+          console.log('ХАААААААААААа')
           if (savedTasks[details.id].responces.find(e => e.user.id === "2144832745")){
             return true
           }

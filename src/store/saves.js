@@ -135,7 +135,7 @@ export const fetchAllValues = createAsyncThunk(
             }
 
             let files = await makeNewFile(order.folder, order.photos);
-            
+            console.log(order)
             trueAdvertisements.push(
                 {
                     id : order.id,
@@ -216,6 +216,7 @@ export const fetchAllValues = createAsyncThunk(
          let cards = im.data.savedCards
          let localCards = []
 
+
          for (let e of cards)
             {
 
@@ -231,7 +232,7 @@ export const fetchAllValues = createAsyncThunk(
                     photos : files
                 })
             }
-        console.log(responces)
+        console.log(trueAdvertisements)
         return [trueAdvertisements, responces, localCards]
     }
     catch (e){
