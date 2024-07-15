@@ -9,6 +9,14 @@
 .saved-top-wrapper{
     margin-bottom: 20px;
 }
-.hamster{
+.response-block{
 
+}
+.hamster{
+    position : "absolute";
+    left : '0';
+    top : "0";
+    background-color : "#18222d";
+    z-index : "2000";
+    height: "100vh";
 }

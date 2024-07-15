@@ -148,6 +148,17 @@ const SavedPage = () => {
           text_color : '#606060',
         })
       }
+      else{
+        console.log('Я БЫЛ ТУТ')
+        if (!responce.isOpen){
+          MainButton.setParams({
+            is_active : true,
+            color : '#2ea5ff',
+            text_color : '#ffffff'
+            
+          })
+        }
+      }
     } else {
       console.log('Я даун')
       BackButton.hide();
@@ -283,14 +294,7 @@ const forwardFunction = useCallback(() => {
             </CSSTransition>
 
             <CSSTransition in = {responce.isOpen} timeout={400} classNames={"left-right"} unmountOnExit mountOnEnter >
-              <div className="response-block" style={{
-                position : "absolute",
-                left : '0',
-                top : "0",
-                backgroundColor : "#18222d",
-                zIndex : "2000",
-                height: "100vh"
-              }}>
+              <div className="response-block">
               <Responce
           responce = {responce}
           setResponce = {setResponce}
