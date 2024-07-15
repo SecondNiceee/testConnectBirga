@@ -5,7 +5,6 @@ import ResponseBlock from '../ResponseBlock';
 import MyReaction from '../MyReaction';
 import Customer from '../Customer/Customer';
 const ShowMyResponse = ({response}) => {
-    console.log(response)
     return (
         <div className={cl.wrapper}>
             <Top  name={"Мой отклик"}  />
