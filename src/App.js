@@ -188,7 +188,6 @@ function App() {
 
   useEffect( () => {
     if (me.id !== ""){
-      console.log(me)
       dispatch(fetchResponses(me))
     }
   } , [dispatch, me] )
