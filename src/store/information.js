@@ -389,7 +389,6 @@ const information = createSlice( {
       
       builder.addCase( fetchTasksInformation.fulfilled, ((state , action) => {
         state.orderStatus = 'complete'
-        alert(action.payload)
         if (action.payload.length < 6){
           console.log('я тут')
           state.orderStatus = 'all'

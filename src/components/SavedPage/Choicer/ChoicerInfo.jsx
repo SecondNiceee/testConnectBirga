@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import Reaction from '../../../pages/MyAds/components/Reaction';
 import Case from '../../UI/Case/Case';
 
-const ChoicerInfo = ({text , arr, navigate}) => {
+const ChoicerInfo = ({text , arr, navigate ,setDetails}) => {
     const options = {
         animationData: sleeping,
         loop: true,
@@ -29,7 +29,7 @@ const ChoicerInfo = ({text , arr, navigate}) => {
         if (navigate === 'task'){
             return arr.map((e,i) => {
                 console.log(e)
-                return <FirstBlock agree ={true} isButton={true} className={cl.firstBlock}  task={e} id={e.id}  {...e} />
+                return <FirstBlock index={i} setDetailsActive={setDetails} agree ={true} isButton={true} className={cl.firstBlock}  task={e} id={e.id}  {...e} />
              }) 
         }
         if (navigate === 'response'){

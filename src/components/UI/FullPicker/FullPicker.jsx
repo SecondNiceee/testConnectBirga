@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
 import cl from "./FullPicker.module.css";
 const FullPicker = ({
   values,
@@ -55,6 +55,8 @@ const FullPicker = ({
       })}
 
 
+      
+
 
 
 
@@ -65,4 +67,4 @@ const FullPicker = ({
   );
 };
 
-export default FullPicker;
+export default memo(FullPicker);

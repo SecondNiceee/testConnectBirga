@@ -166,6 +166,7 @@ export const fetchUserInfo = createAsyncThunk(
             firstName: firstName,
             lastName: lastName,
             id: UserId,
+            link : user.data.link,
             photo: user.data.photo,
             about : user.data.about,
             stage : user.data.stage,
@@ -188,6 +189,7 @@ const telegramUserInfo = createSlice({
     state: null,
     id: "",
     photo: "",
+    link : "",
     firstName: "неверный ферст нэйм",
     lastName: "",
     profile : {

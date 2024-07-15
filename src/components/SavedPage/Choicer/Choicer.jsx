@@ -1,9 +1,9 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import cl from './Choicer.module.css'
 
 import ChoicerInfo from './ChoicerInfo';
 import { useSelector } from 'react-redux';
-const Choicer = ({nowKey , keys}) => {
+const Choicer = ({nowKey , keys, setDetails}) => {
 
     const savedTasks = useSelector(state => state.saves.tasks)
     const savedResponces = useSelector(state => state.saves.responces)
@@ -31,11 +31,11 @@ const Choicer = ({nowKey , keys}) => {
     } , [keys, nowKey])
     return (
         <div style={style} className={cl.main}>
-                <ChoicerInfo navigate={"task"} arr={savedTasks} text = {"У вас нет сохраненных заказов"}  />
+                <ChoicerInfo setDetails = {setDetails} navigate={"task"} arr={savedTasks} text = {"У вас нет сохраненных заказов"}  />
                 <ChoicerInfo navigate={"response"} arr={savedResponces} text = {"У вас нет сохраненных откликов"} />
                 <ChoicerInfo navigate={"card"} arr={savedCards} text = {"У вас нет сохраненных кейсов"} />
         </div>
     );
 };
 
-export default Choicer;
+export default memo(Choicer);

@@ -3,7 +3,9 @@ import React, { memo, useCallback } from "react";
 import FirstBlock from "../../../components/First/FirstMain/FirstBlock";
 import AdCreateFunc from "../../../components/UI/AdCreateFunc/AdCreateFunc";
 import { deleteAd } from "../../../store/information";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import ResponseBlock from "../../../components/MyAds/ResponseBlock";
+import ShowMyResponse from "../../../components/MyAds/ShowMyResponse/ShowMyResponse";
 const PickerContent = ({
   myAdsArray,
   nowValue,
@@ -35,7 +37,8 @@ const PickerContent = ({
     [dispatch]
   );
 
-
+  const responsesArr = useSelector(state => state.responses.responses)
+  console.log(responsesArr)
   return (
     <div
       className="PickerContent"
@@ -46,7 +49,11 @@ const PickerContent = ({
       }
     >
       <div className="picker__block">
-        <p>привет</p>
+        <div className="AdsContainer">
+          {responsesArr.map((e , i) => {
+            return <ResponseBlock task={e}  {...e.advertisement} />
+          })}
+        </div>
       </div>
 
       
@@ -99,6 +106,9 @@ const PickerContent = ({
           })}
         </div>
       </div>
+
+      <ShowMyResponse response={responsesArr[0]} />
+      
     </div>
   );
 };

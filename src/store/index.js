@@ -7,6 +7,7 @@ import categorys from './categorys';
 import shablon from './shablon';
 import  watchedAds  from './watchedAds';
 import saves from './saves';
+import responses from './responses';
 export default configureStore( {
     reducer : {
         information : information,
@@ -16,7 +17,8 @@ export default configureStore( {
         categorys : categorys,
         shablon : shablon,
         watchedAds : watchedAds,
-        saves : saves
+        saves : saves,
+        responses : responses
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

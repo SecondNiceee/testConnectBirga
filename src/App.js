@@ -22,6 +22,7 @@ import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
 import MyComponent from "./components/MyComponent";
 import { fetchAllValues } from "./store/saves";
+import { fetchResponses } from "./store/responses";
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
@@ -171,6 +172,8 @@ function App() {
 
   window.Telegram.WebApp.expand();
 
+  const me = useSelector(state => state.telegramUserInfo)
+
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
@@ -180,8 +183,15 @@ function App() {
     dispatch(getCategorys());
     dispatch(getSubCategorys());
     dispatch(fetchAllShablons());
-    dispatch(fetchAllValues())
+    dispatch(fetchAllValues());
   }, [dispatch]);
+
+  useEffect( () => {
+    if (me.id !== ""){
+      console.log(me)
+      dispatch(fetchResponses(me))
+    }
+  } , [dispatch, me] )
   return (
     <BrowserRouter>
       <div className="UperContainer">

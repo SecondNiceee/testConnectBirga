@@ -4,9 +4,6 @@ import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/Descrip
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
 import { useDispatch, useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
-import axios from "axios";
-import { addResponce } from "../../store/information";
-import MainButton from "../../constants/MainButton";
 
 
 let localResponce ;

@@ -44,6 +44,16 @@
   width: 100vw;
 }
 
+.status {
+  font-family: "SF Pro Display";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 120%;
+  color: #2ea5ff;
+  margin-top: 16px;
+  margin-left: 17px;
+}
+
 .First__block .FirstMain__top .watchedTask {
   font-family: "SF Pro Display";
   font-weight: 500;
@@ -299,7 +309,7 @@
           align-items: center;
   padding-left: 17px;
   padding-right: 19px;
-  margin-bottom: 13px;
+  margin-bottom: 11px;
 }
 .First__block .FirstMain__bottom-left {
   display: -webkit-box;
@@ -2704,6 +2714,7 @@ input {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   padding-right: 16px;
+  z-index: 200;
 }
 
 .picker__block {

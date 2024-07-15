@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Burger from '../Burger/Burger';
 import { useSelector } from 'react-redux';
 import cl from './Top.module.css'
@@ -23,4 +23,4 @@ const Top = ({setMenuActive , name , className, ...props}) => {
     );
 };
 
-export default Top;
+export default memo(Top);

@@ -174,18 +174,18 @@ const First = () => {
 
   useEffect( () => {
     console.log('Вызов этого useEffect')
-    if (isDetailsActive.isOpen) {
-      if (localStep === 0){
-        MainButton.setParams({
-          is_active : true,
-          color : '#2ea5ff',
-          text_color : '#ffffff'
+    // if (isDetailsActive.isOpen) {
+    //   if (localStep === 0){
+    //     MainButton.setParams({
+    //       is_active : true,
+    //       color : '#2ea5ff',
+    //       text_color : '#ffffff'
           
-        })
-      }
-      BackButton.show();
-      MainButton.show();
-    }
+    //     })
+    //   }
+    //   BackButton.show();
+    //   MainButton.show();
+    // }
     if (step === 0) {
       MainButton.setText("ОТКЛИКНУТЬСЯ");
     }
@@ -229,6 +229,8 @@ const First = () => {
   
   const tonConstant = useSelector((state) => state.ton.value);
   localResponce = responce
+
+
   useEffect(() => {
     console.log(localResponce.text)
     console.log(localStep)
@@ -240,6 +242,8 @@ const First = () => {
       })
     }
     else{
+      if (localStep === 1){
+
         console.warn('я тут')
         MainButton.setParams({
           color : '#2ea5ff',
@@ -247,6 +251,7 @@ const First = () => {
           is_active : true
           
         })
+      }
       
     }
 } , [responce.text, step, MainButton]) 

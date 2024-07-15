@@ -1,0 +1,31 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: -16px;
+
+    top: -248px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 27px;
+    background-color: #18222d;
+    gap: 8px;
+    width: 100vw;
+    z-index: 200;
+    height: 100vh;
+
+    
+}
+.response{
+    margin-top: 18px;
+}
+.dateObject{
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 107%;
+    text-align: center;
+    color: #95979e;
+    margin-left: auto;
+    margin-right: auto;
+}

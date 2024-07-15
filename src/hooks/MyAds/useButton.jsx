@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 
@@ -22,9 +22,7 @@ export const useButton = ({
 }) => {
   useEffect(() => {
     function writeFucntion() {
-      window.Telegram.WebApp.openTelegramLink(
-        "https://t.me/" + isOpen.responce.user.link
-      );
+      
     }
     function goBack() {
       if (!sliderActive.isActive) {
@@ -61,7 +59,7 @@ export const useButton = ({
         color: "#2ea5ff",
         text_color: "#ffffff",
       });
-      MainButton.setText("Написать");
+      MainButton.setText("ВЫБРАТЬ");
       MainButton.onClick(writeFucntion);
     } else {
       MainButton.hide();
