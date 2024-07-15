@@ -54,6 +54,13 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
     MainButton.onClick(forward)
     return () => {
       MainButton.offClick(forward)
+
+    }
+  }, [shablon, dispatch, localShablon.name, localShablon.text, put, setActive , isExitShow , exitText])
+
+  useEffect( () => {
+    return () => {
+      MainButton.setText(exitText)
       if (!isExitShow){
         MainButton.hide()
         
@@ -62,7 +69,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
         MainButton.setText(exitText)
       }
     }
-  }, [shablon, dispatch, localShablon.name, localShablon.text, put, setActive , isExitShow , exitText])
+  } , [exitText, isExitShow] )
 
 
 

@@ -141,7 +141,7 @@ const SavedPage = () => {
     if (details.isOpen) {
       BackButton.show();
       MainButton.show()
-      MainButton.setText('ОТКЛИКНУТЬСЯ')
+      
       if (gotIt){
         MainButton.setParams({//неизвесетно
           color : '#2f2f2f',
@@ -175,6 +175,12 @@ const SavedPage = () => {
       BackButton.offClick(back);
     };
   } , [details.isOpen, responce.isOpen , gotIt, responce.isShablonModalActive, responce.shablonMaker]);
+
+  useEffect( () => {
+      if (details.isOpen){
+        MainButton.setText("ОТКЛИКНУТЬСЯ")
+      }
+  } , [details.isOpen] )
 
 
 
