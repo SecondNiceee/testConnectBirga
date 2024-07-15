@@ -287,6 +287,9 @@ const forwardFunction = useCallback(() => {
                 position : "absolute",
                 left : '0',
                 top : "0",
+                backgroundColor : "#18222d",
+                zIndex : "2000",
+                height: "100vh"
               }}>
               <Responce
           responce = {responce}
