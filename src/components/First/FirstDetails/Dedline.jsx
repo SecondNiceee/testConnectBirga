@@ -1,23 +1,16 @@
 import React from 'react';
+import formatDate from '../../../functions/makeDate';
 
 const Dedline = ({dedline}) => {
     
-  var options = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour : 'numeric',
-    minute : 'numeric',
-    timezone: 'UTC'
-  };
 
 
     return (
         <div className='DeadlineContainer'>
             <p>Дедлайн</p>
-            <p>Начать : {dedline.start.toLocaleString("ru", options)}</p> 
+            <p>Начать : {formatDate(dedline.start)}</p> 
             {dedline.end !== "" ? 
-            <p>Закончить : {dedline.end.toLocaleString("ru", options)} </p>
+            <p>Закончить : {formatDate(dedline.end)} </p>
             :
             ""
             }

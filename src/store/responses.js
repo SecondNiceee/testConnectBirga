@@ -48,6 +48,7 @@ export const fetchResponses = createAsyncThunk(
               isActive : true,
               creationTime : localResponses[i].advertisement.createdAt,
               viewsNumber : '50',
+              user : localResponses[i].advertisement.user
               
             }
 
@@ -71,7 +72,6 @@ export const fetchResponses = createAsyncThunk(
                 "stage" : me.profile.stage,
                 
               }
-              alert(localResponses[i])
               console.log(localResponses[i])
             } catch (e) {
               alert(e);

@@ -8,7 +8,7 @@ import Customer from './Customer'
 const TaskDetailsContainer = ({orderInformation}) => {
   return (
     <div className="Task__container-one">
-      <FirstBlock {...orderInformation} isButton = {false} />
+      <FirstBlock task={orderInformation} {...orderInformation} isButton = {false} />
       <FullDescription fullDescription={orderInformation.taskDescription} />
       <Dedline dedline={orderInformation.time} />
       <div className="TaskDetails-row">

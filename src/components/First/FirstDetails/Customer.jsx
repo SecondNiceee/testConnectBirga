@@ -19,14 +19,14 @@ const Customer = ({customerName, rate, userPhoto}) => {
                         <img src= {galks} alt="" />
                     </div>
                     <div className="customer__information-right-rate">
-                        <div className="customer__information-right-rate-images">
+                        {/* <div className="customer__information-right-rate-images">
                                 <img src={Star} alt="" />
                                 <img src={Star} alt="" />
                                 <img src={Star} alt="" />
                                 <img src={Star} alt="" />
                                 <img src={Star} alt="" />
-                        </div>
-                        <p className='rate'>{rate}</p>
+                        </div> */}
+                        <p className='rate'>Нет рейтинга</p>
                     </div>
                 </div>
             </div>

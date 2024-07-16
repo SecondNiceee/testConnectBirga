@@ -4,14 +4,16 @@ import Top from '../../UI/Top/Top';
 import ResponseBlock from '../ResponseBlock';
 import MyReaction from '../MyReaction';
 import Customer from '../Customer/Customer';
-const ShowMyResponse = ({response}) => {
+import options from '../../../constants/options';
+const ShowMyResponse = ({response , openDetails, index}) => {
+    console.log(response)
     return (
         <div className={cl.wrapper}>
             <Top  name={"Мой отклик"}  />
-            <ResponseBlock className={cl.response} buttonText={"Подробнее"} {...response.advertisement} task={response.advertisement}   />
+            <ResponseBlock index={index} func={openDetails} className={cl.response} buttonText={"Подробнее"} {...response.advertisement} task={response.advertisement}   />
             <MyReaction responce={response} />
-            <Customer  />
-            <p className={cl.dateObject}>Создано когда - то</p>
+            <Customer fl={response.advertisement.user.fl} photo={response.advertisement.user.photo} link={response.advertisement.user.link}  />
+            <p className={cl.dateObject}>Создано {new Date(response.advertisement.creationTime).toLocaleString('ru' , options)}</p>
         </div>
     );
 };

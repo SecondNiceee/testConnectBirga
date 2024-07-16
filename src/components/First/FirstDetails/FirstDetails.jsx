@@ -3,7 +3,7 @@ import TaskDetailsContainer from './TaskDetailsContainer';
 import TimeAndWatches from './TimeAndWatches';
 import SimilarAds from './SimilarAds';
 
-const FirstDetails = ({  orderInformation , className}) => {
+const FirstDetails = ({  orderInformation , className , ...props}) => {
 
 
     console.log('рендер детаилса')
@@ -14,7 +14,7 @@ const FirstDetails = ({  orderInformation , className}) => {
         {orderInformation 
             ? 
             (
-            <div className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
+            <div {...props} className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
     
                 <TaskDetailsContainer  orderInformation = {orderInformation} />
     

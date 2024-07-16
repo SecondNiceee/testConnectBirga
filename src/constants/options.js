@@ -1,6 +1,6 @@
 
 var options = {
-    year: "numeric",
+    // year: "numeric",
     month: "long",
     day: "numeric",
     hour: "numeric",

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import cl from './FalseTie.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { addAdvertisment, addCard, addResponce, deleteAdvertisement, deleteCard, deleteResponce } from '../../../store/saves';
-const FalseTie = ({className, id, task, navigate, agree}) => {
+const FalseTie = ({className, id, task, navigate, agree, ...props}) => {
     const [active, setActive] = useState(false)
 
     // const tieRef = useRef(null)
@@ -133,7 +133,7 @@ const FalseTie = ({className, id, task, navigate, agree}) => {
 
 
     return (
-        <div  onClick={(e) => {
+        <div {...props}  onClick={(e) => {
             if (!active){
                 switch (navigate){
                     case ("advertisement"):

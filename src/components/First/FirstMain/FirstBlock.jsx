@@ -6,14 +6,15 @@ import SmallDimond from "../../UI/SmallDimond/SmallDimond";
 import FalseTie from "../../UI/FalseTie/FalseTie";
 import { useDispatch, useSelector } from "react-redux";
 import { addWatch } from "../../../store/watchedAds";
+import options from "../../../constants/options";
+import formatDate from "../../../functions/makeDate";
 
 let counter = 0
 const FirstBlock = ({
   className,
   taskName,
-  executionPlace,
   time,
-  tonValue,
+
   setDetailsActive,
   isButton,
   photos,
@@ -25,7 +26,7 @@ const FirstBlock = ({
   index,
   id,
   setSlideActive,
-   tonConstant ,
+   tonValue,
    task,
    agree = false
    
@@ -33,17 +34,10 @@ const FirstBlock = ({
 
 }) => {
   const dispatch = useDispatch()
+  const tonConstant = useSelector(state => state.ton.value)
   console.log("render" + counter)
   counter += 1
 
-  var options = {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-    hour: "numeric",
-    minute: "numeric",
-    timezone: "UTC",
-  };
   return (
     <>
       {photos !== undefined ? (
@@ -134,7 +128,7 @@ const FirstBlock = ({
           </div>
           <div className="FirstMain__middle">
             {/* <p>{executionPlace}</p> */}
-            <p> {"Начать: " + time.start.toLocaleString("ru", options)}</p>
+            <p> {"Начать: " + formatDate(time.start)}</p>
           </div>
           <div className="FirstMain__bottom">
             <div className="FirstMain__bottom-left">
@@ -171,7 +165,7 @@ const FirstBlock = ({
 
 {!isResponce && !isMyAds ? <FalseTie agree = {agree}  navigate={"advertisement"} id={id} task={task}
 
- className={"tie"} /> :
+ className={"tie"}  style = {isButton ? {} : {marginRight : '4px'}} /> :
               <></>
                 }
 

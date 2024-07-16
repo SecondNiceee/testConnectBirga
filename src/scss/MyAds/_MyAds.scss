@@ -7,6 +7,12 @@
         margin-left: auto;
         margin-right: 17px;
     }
+    .center{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
+    }
     .AdCreatingMy{
         position: fixed;
         width: 100%;
@@ -234,14 +240,19 @@
 }
 
 .PickerContent{
-    min-width: calc(200vw - 32px);
+    min-width: calc(200vw);
     display: flex;
-     gap: 16px;
+    gap: 16px;
     transition: 0.3s;
-    padding-right: 16px;
+
+    padding-right: 32px;
+
     z-index: 200;
     
 }
 .picker__block{
     width: 50%;
+}
+.picker__block:nth-child(2){
+    padding-left: 16px;
 }

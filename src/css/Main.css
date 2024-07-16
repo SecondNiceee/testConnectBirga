@@ -775,6 +775,9 @@
           flex-direction: column;
   padding: 15px 17px;
   border-radius: 10px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   /* Cards */
   background: rgb(32, 48, 63);
 }
@@ -788,6 +791,11 @@
   letter-spacing: 0%;
   text-align: left;
 }
+.Task__container-one .StatusContainer p:nth-child(3) {
+  text-decoration: underline;
+  color: rgb(149, 151, 158);
+  text-underline-offset: 2px;
+}
 .Task__container-one .StatusContainer .TrueActive {
   /* Default text */
   color: rgb(42, 207, 88);
@@ -797,7 +805,6 @@
   line-height: 17.67px;
   letter-spacing: 0%;
   text-align: left;
-  margin-top: 2.67px;
 }
 .Task__container-one .StatusContainer a {
   margin-top: 9.33px;
@@ -867,7 +874,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 2.67px;
+  gap: 5px;
 }
 .Task__container-one .customerContainer .customer__up {
   color: rgb(149, 151, 158);
@@ -2416,6 +2423,14 @@ input {
   margin-left: auto;
   margin-right: 17px;
 }
+.MyAdsContainer .center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
 .MyAdsContainer .AdCreatingMy {
   position: fixed;
   width: 100%;
@@ -2706,19 +2721,23 @@ input {
 }
 
 .PickerContent {
-  min-width: calc(200vw - 32px);
+  min-width: 200vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 16px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-  padding-right: 16px;
+  padding-right: 32px;
   z-index: 200;
 }
 
 .picker__block {
   width: 50%;
+}
+
+.picker__block:nth-child(2) {
+  padding-left: 16px;
 }
 
 .responce-wrapper {
@@ -2950,6 +2969,7 @@ input {
   background-color: #18222d;
   z-index: 2000;
   height: 100vh;
+  width: 100vw;
 }
 
 * {
@@ -2993,41 +3013,41 @@ body {
 }
 
 .left-right-enter {
-  -webkit-transform: translateX(0%);
-      -ms-transform: translateX(0%);
-          transform: translateX(0%);
+  -webkit-transform: translateX(0%) !important;
+      -ms-transform: translateX(0%) !important;
+          transform: translateX(0%) !important;
   -webkit-transition: 0.35s;
   transition: 0.35s;
 }
 
 .left-right-enter-active {
-  -webkit-transform: translateX(0%);
-      -ms-transform: translateX(0%);
-          transform: translateX(0%);
+  -webkit-transform: translateX(0%) !important;
+      -ms-transform: translateX(0%) !important;
+          transform: translateX(0%) !important;
   -webkit-transition: 0.35s;
   transition: 0.35s;
 }
 
 .left-right-enter-done {
-  -webkit-transform: translateX(0%);
-      -ms-transform: translateX(0%);
-          transform: translateX(0%);
+  -webkit-transform: translateX(0%) !important;
+      -ms-transform: translateX(0%) !important;
+          transform: translateX(0%) !important;
   -webkit-transition: 0.35s;
   transition: 0.35s;
 }
 
 .left-right-exit {
-  -webkit-transform: translateX(0%);
-      -ms-transform: translateX(0%);
-          transform: translateX(0%);
+  -webkit-transform: translateX(0%) !important;
+      -ms-transform: translateX(0%) !important;
+          transform: translateX(0%) !important;
   -webkit-transition: 0.35s;
   transition: 0.35s;
 }
 
 .left-right-exit-active {
-  -webkit-transform: translateX(100%);
-      -ms-transform: translateX(100%);
-          transform: translateX(100%);
+  -webkit-transform: translateX(100%) !important;
+      -ms-transform: translateX(100%) !important;
+          transform: translateX(100%) !important;
   -webkit-transition: 0.35s;
   transition: 0.35s;
 }

@@ -13,6 +13,8 @@
     width: 100vw;
     z-index: 200;
     height: 100vh;
+    transform: translateX(100%);
+    transition: 0.35s;
 
     
 }

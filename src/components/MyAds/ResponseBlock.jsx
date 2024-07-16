@@ -27,13 +27,15 @@ const ResponseBlock = ({
   buttonText,
   task,
   id,
-tonConstant ,
+index ,
 isWatched = false,
 
 
 }) => {
   console.log("render" + counter)
   counter += 1
+
+  const tonConstant = useSelector(state => state.ton.value)
 
   const watchingValue = useMemo( () => {
     if (isWatched){
@@ -118,7 +120,9 @@ isWatched = false,
             <div className="FirstMain__bottom-right">
 
             <FalseTie task={task} id={id} navigate={'advertisement'}  />
-            <MyButton  onClick = {func} >
+            <MyButton  onClick = {() => {
+              func(index)
+            }} >
                 {buttonText}
             </MyButton>
 

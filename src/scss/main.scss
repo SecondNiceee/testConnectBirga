@@ -22,7 +22,7 @@
   // }
 
 
-html { position: absolute; left: 0; top: 0; right: 0; bottom: 0; 
+html { position: absolute; left: 0; top: 0; right: 0; bottom: 0;
  }
 body { width: 100%; height: auto; background: rgb(24, 34, 45); }
 #app { width: 100%; height: auto; }
@@ -44,23 +44,23 @@ body { width: 100%; height: auto; background: rgb(24, 34, 45); }
 
 }
 .left-right-enter{
-   transform: translateX(0%);
+   transform: translateX(0%) !important;
    transition: 0.35s;
 }
 .left-right-enter-active{
-  transform: translateX(0%);
+  transform: translateX(0%) !important;
   transition: 0.35s;
 }
 .left-right-enter-done{
-  transform: translateX(0%);
+  transform: translateX(0%) !important;
   transition: 0.35s;
 }
 .left-right-exit{
-  transform: translateX(0%);
+  transform: translateX(0%) !important;
   transition: 0.35s;
 }
 .left-right-exit-active{
-  transform: translateX(100%);
+  transform: translateX(100%) !important;
   transition: 0.35s;
 }
 *::-webkit-scrollbar {display:none;}

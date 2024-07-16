@@ -1,7 +1,8 @@
 import React from 'react';
 import cl from './Customer.module.css'
 import MyButton from '../../UI/MyButton/MyButton';
-const Customer = ({fl , photo, chatId}) => {
+const Customer = ({fl , photo, link}) => {
+    console.log(link)
     return (
         <div className={cl.wrapper}>
             <img className={cl.userPhoto} src={photo} alt="" />
@@ -9,7 +10,11 @@ const Customer = ({fl , photo, chatId}) => {
                 <p>{fl}</p>
                 <p>Заказчик</p>
             </div>
-            <MyButton className = {cl.MyButton}>
+            <MyButton onClick = {() => {
+                      window.Telegram.WebApp.openTelegramLink(
+                        "https://t.me/" + link
+                      );
+              }}  style = {{marginLeft : "auto"}}>
                 НАПИСАТЬ
             </MyButton>
         </div>

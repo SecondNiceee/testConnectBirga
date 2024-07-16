@@ -1,21 +1,15 @@
 import React from "react";
+import formatDate from "../../../functions/makeDate";
 
 const TimeAndWatches = ({time , watches}) => {
 
-  var options = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour : 'numeric',
-    minute : 'numeric',
-    timezone: 'UTC'
-  };
+
 
   
   return (
     <div className="timeAndWatches">
-      <p className="time">{time.toLocaleString("ru", options)}</p>
-      <p className="watches">{watches}</p>
+      <p className="time">Создано {formatDate(new Date(time))}</p>
+      {/* <p className="watches">{watches}</p> */}
     </div>
   );
 };
