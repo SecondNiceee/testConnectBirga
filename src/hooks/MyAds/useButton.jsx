@@ -44,7 +44,7 @@ export const useButton = ({
                 // else{
                 //   navigate(-1)
                 // }
-                navigate('/First')
+                navigate('/')
               }
             }
           } else {
