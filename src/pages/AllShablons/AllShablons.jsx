@@ -10,12 +10,17 @@ import Shablon from "../Shablon/Shablon";
 import { deleteShablon } from "../../store/shablon";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
+import pagesHistory from "../../constants/pagesHistory";
 
 const AllShablons = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
 
-
+  useEffect( () => {
+    return () => {
+      pagesHistory.push('/AllShablons')
+    }
+  } , [] )
 
   const setMenuActive = useCallback(
     (arg) => {

@@ -1,6 +1,7 @@
-import { useCallback, useEffect } from "react";
+import {  useEffect } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
+import { useLocation } from "react-router-dom";
 
 export const useButton = ({
   sliderActive,
@@ -20,6 +21,8 @@ export const useButton = ({
   save
 
 }) => {
+  const history = useLocation()
+  console.log(history)
   useEffect(() => {
     function writeFucntion() {
       
@@ -34,7 +37,14 @@ export const useButton = ({
               if (localSecondPage.isActive) {
                 setSecondPage({ ...secondPage, isActive: false });
               } else {
-                navigate(-1);
+                // if (history[history.length - 1] === '/AdCreating'){
+
+                //   navigate();
+                // }
+                // else{
+                //   navigate(-1)
+                // }
+                navigate('/First')
               }
             }
           } else {
@@ -47,11 +57,9 @@ export const useButton = ({
         setSliderActive({ ...sliderActive, isActive: false });
       }
     }
-    if (!localSecondPage.isActive && !secondPage.isActive) {
-      BackButton.hide();
-    } else {
-      BackButton.show();
-    }
+
+    BackButton.show();
+    
 
     if (isOpen.isActive) {
       MainButton.show();

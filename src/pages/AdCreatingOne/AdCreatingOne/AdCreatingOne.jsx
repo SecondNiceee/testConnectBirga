@@ -8,7 +8,6 @@ import TaskName from "../../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import ChoiceCategory from "../ChoiceCategory/ChoiceCategory";
 import ChoiceSubCategory from "../ChoiceSubCategory";
-import DatePicker from "react-mobile-datepicker";
 import cl from "./AdCreatingOne.module.css";
 import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
 import '../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css'
@@ -238,6 +237,7 @@ const AdCreatingOne = ({
         underText={MyInformation ? "" : "Например, разработать дизайн"}
         errorValue = {mistakes.taskName || errorName ? true : false}
         text={taskInformation.taskName}
+        placeholder={"Введите название задания"}
         setText={(e) => {
           setTaskInformation({...taskInformation , taskName : e})
         }}

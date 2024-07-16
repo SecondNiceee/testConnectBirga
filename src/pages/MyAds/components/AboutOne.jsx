@@ -3,14 +3,11 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import FirstBlock from "../../../components/First/FirstMain/FirstBlock";
 import { memo } from "react";
 import Top from "../../../components/UI/Top/Top";
-import ReactionBlock from "./ReactionBlock";
 import axios from "axios";
-import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import { deleteAd } from "../../../store/information";
 import { useDispatch } from "react-redux";
 import makeNewFile from "../../../functions/newMakeFile";
 import AllReactions from "./AllReactions";
-import MyAnimation from "./MyAnimation";
 
 const AboutOne = ({
   task,
@@ -143,9 +140,7 @@ const AboutOne = ({
         <></>
       )}
 
-      {filteredArray.length === 0 ? (
-        <MyAnimation />
-      ) : (
+
         <AllReactions
           filteredArray={filteredArray}
           setFilterBy={setFilterBy}
@@ -153,7 +148,8 @@ const AboutOne = ({
           setSliderAcitve={setSliderAcitve}
           setOpen={setOpen}
         />
-      )}
+      
+
     </div>
   );
 };

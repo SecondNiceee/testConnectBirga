@@ -25,6 +25,7 @@ import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
 import { changeProfile, deleteCard, deleteServerCard, putUserInfo } from "../../store/telegramUserInfo";
 import SliderMain from "../../components/UI/Swiper/SliderMain";
+import pagesHistory from "../../constants/pagesHistory";
 
 
 const variants = {
@@ -44,7 +45,11 @@ let userInfoLocal = null
 
 const Profile = () => {
 
-
+  useEffect( () => {
+    return () => {
+      pagesHistory.push('/Profile')
+    }
+  } , [] )
 
   const dispatch = useDispatch();
 
@@ -240,8 +245,9 @@ const Profile = () => {
 
 
   useEffect(() => {
+    BackButton.show()
     function goBack() {
-      navigate(-1);
+      navigate("/First");
     }
     if (cardsActive || changeActive){
       BackButton.offClick(goBack)

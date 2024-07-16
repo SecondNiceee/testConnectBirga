@@ -23,6 +23,7 @@ import { fetchAllShablons } from "./store/shablon";
 import MyComponent from "./components/MyComponent";
 import { fetchAllValues } from "./store/saves";
 import { fetchResponses } from "./store/responses";
+
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));

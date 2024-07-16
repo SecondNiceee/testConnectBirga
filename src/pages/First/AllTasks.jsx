@@ -15,7 +15,6 @@ const AllTasks = ({
   // console.warn('РЕНДЕР' + count )
 
   const [page , setPage] = useState(2)
-  const [hasMore , setHasMore] = useState(true)
   const elementRef = useRef(null)
 
   const orderStatus = useSelector((state) => state.information.orderStatus)
@@ -63,14 +62,15 @@ const AllTasks = ({
         // dispatch(changeStatus(null))
         observer.disconnect()
       }
-  } , [ordersInformation , elementRef.current] )
+      // eslint-disable-next-line
+  } , [ordersInformation ] )
 
   useEffect( () => {
     dispatch(fetchTasksInformation(1))
       return () => {
         dispatch(changeStatus(null))
   }
-  } , [] )
+  } , [dispatch] )
 
   console.log(orderStatus)
 

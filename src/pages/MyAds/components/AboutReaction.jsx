@@ -87,7 +87,7 @@ const AboutReaction = ({ responce , setSliderActive,   ...props}) => {
       <Compact className={"stage-compact"} title = {"Стаж работы"}>
         <Stage number={responce.user.stage} />
       </Compact>
-
+    
 
       {cards === null ? <MyLoader/> :
       <ExampleWorks setSliderActive = {setSliderActive} cards={cards}/>}

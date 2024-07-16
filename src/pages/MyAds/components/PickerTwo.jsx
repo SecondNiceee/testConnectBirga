@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo } from 'react';
 import AdCreateFunc from '../../../components/UI/AdCreateFunc/AdCreateFunc';
 import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 

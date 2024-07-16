@@ -30,7 +30,7 @@ const Stage = ({className,numberB}) => {
     } , [numberB])
     return (
         <div className={ className ? [cl.main, className].join(' ') : cl.main}>
-                <div className={cl.one}>
+                <div style={!numberB ? {opacity : 0.5} : numberB} className={cl.one}>
                     <p>{!numberB ? "Не указан" : numberB}</p>
                 </div>
                 {!numberB ? 

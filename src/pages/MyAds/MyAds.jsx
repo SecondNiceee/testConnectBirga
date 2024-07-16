@@ -19,6 +19,7 @@ import { putMyTask } from "../../store/information";
 import AdCreatingOne from "../AdCreatingOne/AdCreatingOne/AdCreatingOne";
 import { useButton } from "../../hooks/MyAds/useButton";
 import { useSave } from "../../hooks/MyAds/useSave";
+import pagesHistory from "../../constants/pagesHistory";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -34,6 +35,11 @@ let detailsVar;
 const MyAds = () => {
   const isMenuActive = useSelector((state) => state.menu.value);
 
+  useEffect( () => {
+    return () => {
+      pagesHistory.push('/MyAds')
+    }
+  } , [] )
   const dispatch = useDispatch()
 
   const setMenuActive = useCallback(
@@ -135,7 +141,7 @@ const MyAds = () => {
 
 
 
-
+  console.log(pagesHistory)
 
   const navigate = useNavigate();
 

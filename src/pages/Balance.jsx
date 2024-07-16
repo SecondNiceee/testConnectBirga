@@ -10,6 +10,7 @@ import white_dymond from '../images/icons/whiteDymond.svg'
 import download from '../images/icons/download.svg'
 import BackButton from '../constants/BackButton';
 import { useNavigate } from 'react-router-dom';
+import pagesHistory from '../constants/pagesHistory';
 
 const Balance = () => {
     const ref1 = useRef(null)
@@ -21,6 +22,12 @@ const Balance = () => {
     function goBack(){
         navigate(-1)
     }
+
+    useEffect( () => {
+        return () => {
+          pagesHistory.push('/Balance')
+        }
+      } , [] )
 
     useEffect( () => {
         BackButton.show()

@@ -14,6 +14,7 @@ import { CSSTransition } from "react-transition-group";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import axios from "axios";
 import { addResponce } from "../../store/information";
+import pagesHistory from "../../constants/pagesHistory";
 
 let isDetailsActiveVar = false;
 let localResponce;
@@ -29,7 +30,11 @@ const First = () => {
   const dispatch = useDispatch();
 
 
-
+  useEffect( () => {
+    return () => {
+      pagesHistory.push('/First')
+    }
+  } , [] )
 
   const [isDetailsActive, setDetailsActive] = useState({
     id: 0,
@@ -89,14 +94,14 @@ const First = () => {
 
   isDetailsActiveVar = isDetailsActive.isOpen;
 
-  function closeDetails() {
-    setDetailsActive({ ...isDetailsActive, isOpen: false });
-  }
-
-
-
+  
+  
+  
   useEffect(() => {
-
+    
+    function closeDetails() {
+      setDetailsActive( (value) => ({ ...value, isOpen: false }));
+    }
 
     function forward() {
       if (gotIt){
@@ -116,16 +121,16 @@ const First = () => {
 
     function back() {
       if (sliderActive.isActive){
-        setSliderActive({...sliderActive, isActive : false})
+        setSliderActive((value) => ({...value, isActive : false}))
       }
       else{
 
         if (responce.isShablonModalActive){
-          setResponce({...responce, isShablonModalActive : false})
+          setResponce( (value) =>  ({...value, isShablonModalActive : false}))
         }
         else{
           if (responce.shablonMaker){
-            setResponce({...responce , shablonMaker : false})
+            setResponce( (value) => ({...value , shablonMaker : false}))
           }
           else{
   
@@ -180,7 +185,7 @@ const First = () => {
       MainButton.offClick(forward);
       BackButton.offClick(back);
     };
-  } , [isDetailsActive.isOpen, step]);
+  } , [isDetailsActive.isOpen, step , gotIt, responce.isShablonModalActive, responce.shablonMaker, sliderActive.isActive]);
 
 
   useEffect( () => {
@@ -265,7 +270,7 @@ const First = () => {
       }
       
     }
-} , [responce.text, step, MainButton]) 
+} , [responce.text, step]) 
 
 const forwardFunction = useCallback(() => {
   async function postResponce(advertismetId, userId) {
@@ -324,14 +329,14 @@ const forwardFunction = useCallback(() => {
         setDetailsActive((value) => ({...value , isOpen : false}))
     } })
   }
-}, [responce, step, ordersInformation, setDetailsActive, dispatch]);
+}, [responce, step, ordersInformation, isDetailsActive.id, setDetailsActive, dispatch]);
 
 useEffect(() => {
   MainButton.onClick(forwardFunction);
   return () => {
     MainButton.offClick(forwardFunction);
   };
-}, [responce, MainButton, forwardFunction]);
+}, [responce, forwardFunction]);
 
   return (
     <motion.div

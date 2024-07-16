@@ -1,10 +1,7 @@
 import React, { memo, useCallback, useEffect, useState } from "react";
 
-import FirstBlock from "../../../components/First/FirstMain/FirstBlock";
-import AdCreateFunc from "../../../components/UI/AdCreateFunc/AdCreateFunc";
 import { deleteAd } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
-import ResponseBlock from "../../../components/MyAds/ResponseBlock";
 import ShowMyResponse from "../../../components/MyAds/ShowMyResponse/ShowMyResponse";
 import { CSSTransition } from "react-transition-group";
 import BackButton from "../../../constants/BackButton";

@@ -4,7 +4,12 @@ import Case from "../../../components/UI/Case/Case";
 const ExampleWorks = ({cards , setSliderActive}) => {
   return (
     <div className="examplesWork">
+      {cards.length === 0 ? 
+      <p className="exampleWork-text">Нет примеров работ</p>
+      :
       <p className="exampleWork-text">Примеры работ</p>
+      }
+      
       <div className="cards__wraaper">
         {cards.map((e) => {
           return (

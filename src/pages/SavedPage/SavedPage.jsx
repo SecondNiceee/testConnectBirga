@@ -12,12 +12,19 @@ import MainButton from '../../constants/MainButton';
 import BackButton from '../../constants/BackButton';
 import axios from 'axios';
 import { addResponce } from '../../store/information';
+import pagesHistory from '../../constants/pagesHistory';
 
 
 
 const values = ["Заказы" , "Отклики", "Кейсы"]
 const keys = ["advertisment", "responces" , "cards"]
 const SavedPage = () => {
+
+  useEffect( () => {
+    return () => {
+      pagesHistory.push('/SavedPage')
+    }
+  } , [] )
 
   const [responce, setResponce] = useState({
     isOpen : false,
@@ -269,7 +276,7 @@ const forwardFunction = useCallback(() => {
         setDetails((value) => ({...value , isOpen : false}))
     } })
   }
-}, [responce, responce.isOpen, savedTasks, details.isOpen, dispatch]);
+}, [responce,  savedTasks, details.id, dispatch]);
 
 
 

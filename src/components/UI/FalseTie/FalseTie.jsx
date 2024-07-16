@@ -35,6 +35,9 @@ const FalseTie = ({className, id, task, navigate, agree, ...props}) => {
                     }
                 } )
             }
+            default : {
+                alert('что-то пошло не так')
+            }
                 
 
         }
@@ -145,6 +148,8 @@ const FalseTie = ({className, id, task, navigate, agree, ...props}) => {
                         break
                     case ("card"):
                         dispatch(addCard([id, task]))
+                    default : 
+                        alert("Что-то не то")
                 }
                 setActive(true)
                 
@@ -153,10 +158,15 @@ const FalseTie = ({className, id, task, navigate, agree, ...props}) => {
                 switch (navigate){
                     case ("advertisement"):
                         deleteAdFunction()
+                        break;
                     case ("responce"):
                         deleteResponceFunc()
+                        break;
                     case ("card"):
                         deleteCardFunction()
+                        break;
+                    default :
+                        alert('Что - то пошло не так')
                 }
                 setActive(false)
                 

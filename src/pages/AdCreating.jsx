@@ -12,6 +12,7 @@ import BackButton from "../constants/BackButton";
 import MainButton from "../constants/MainButton";
 import { useNavigate } from "react-router-dom";
 import PostLoader from "../loaders/PostLoader";
+import pagesHistory from "../constants/pagesHistory";
 
 let spet = 0;
 const AdCreating = () => {
@@ -41,7 +42,6 @@ const AdCreating = () => {
 
   const tonConstant = useSelector((state) => state.ton.value);
 
-  const [stationNow, setStationNow] = useState(0);
 
   const navigate = useNavigate();
 
@@ -131,26 +131,9 @@ const AdCreating = () => {
     secondPage.startTime,
     secondPage.endTime,
     secondPage.singleTime,
+    secondPage.tonValue
   ]);
 
-  function animte() {
-    let localSpet = spet;
-    setStationNow(spet * -100 - 5);
-    setTimeout(() => {
-      if (localSpet === spet) {
-        setStationNow(spet * -100);
-      }
-    }, 310);
-  }
-  function backAnimte() {
-    let localSpet = spet;
-    setStationNow(spet * -100 + 5);
-    setTimeout(() => {
-      if (localSpet === spet) {
-        setStationNow(spet * -100);
-      }
-    }, 310);
-  }
 
   function finish() {
     let secondPageCopy = {...secondPage}
@@ -210,6 +193,12 @@ const AdCreating = () => {
     //   }
     // );
   }
+
+  useEffect( () => {
+    return () => {
+      pagesHistory.push('/AdCreating')
+    }
+  } , [] )
   const mainRef = useRef(null)
   function checking() {
     let taskName = false;
@@ -320,8 +309,6 @@ const AdCreating = () => {
       spet -= 1;
       // backAnimte();
 
-      if (stationNow === -100) {
-      }
     }
   }
 
@@ -368,10 +355,6 @@ const AdCreating = () => {
     <motion.div
       ref={mainRef}
       className="AdCreating__container"
-      // style={{
-      //   transform: "translateX(" + stationNow.toString() + "%)",
-      //   transition: "0.3s",
-      // }}
     >
       {status === "pending" ? (
         <>

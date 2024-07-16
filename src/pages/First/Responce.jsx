@@ -1,18 +1,15 @@
-import React, { memo, useCallback, useEffect } from "react";
+import React, { memo } from "react";
 import FirstBlock from "../../components/First/FirstMain/FirstBlock";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 
 
-let localResponce ;
 const Responce = ({ orderInformation, responce, setResponce , left = "100%"   }) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
-  const dispatch = useDispatch();
 
 
-  localResponce = responce;
 
   
 

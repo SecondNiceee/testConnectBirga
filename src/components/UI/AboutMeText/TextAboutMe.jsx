@@ -5,10 +5,11 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
       isActive : false,
       show : false
     })
+    const [empty , setEmpy] = useState(false)
     const areaRef = useRef(null)
     const refTwo = useRef(null)
 
-
+    console.log(aboutU)
 
 
   useEffect( () => {
@@ -30,13 +31,25 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
       }
       else{
         refTwo.current.value = aboutU
-        areaRef.current.value = aboutU
+        if (aboutU === ''){
+          areaRef.current.value = "Пользователь ничего не написал о себе"
+          setEmpy(true)
+        }
+        else{
+          areaRef.current.value = aboutU
+        }
 
       }
     }
     else{
       areaRef.current.style.borderRadius = "10px"
-      areaRef.current.value = aboutU
+      if (aboutU === ''){
+        setEmpy(true)
+        areaRef.current.value = "Пользователь ничего не написал о себе"
+      }
+      else{
+        areaRef.current.value = aboutU
+      }
     }
     areaRef.current.style.height = (refTwo.current.scrollHeight).toString() + 'px'
   } , [hideAboutMe.show, aboutU ] )
@@ -72,7 +85,7 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
 
           <textarea
             ref={areaRef}
-
+            style={empty ? {opacity : 0.5} : {}}
             readOnly={true}
             spellCheck={false}
             className={textareaClassName ? ["about__u-text" , textareaClassName].join(' ') : "about__u-text"}
