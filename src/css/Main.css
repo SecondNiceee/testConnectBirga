@@ -2739,7 +2739,7 @@ input {
   padding-right: 8px;
 }
 .picker__block:nth-child(2) {
-  padding-left: 16px;
+  padding-left: 8px;
 }
 
 .animation-block {
@@ -2763,7 +2763,7 @@ input {
   text-align: center;
   color: #daf5fe;
   margin-top: 20px;
-  max-width: 260px;
+  max-width: 230px;
   margin-left: auto;
   margin-right: auto;
 }

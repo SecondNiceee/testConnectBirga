@@ -14,7 +14,7 @@ const MyAnimation = ({
       justifyContent: "center",
       marginLeft: "auto",
       marginRight: "auto",
-      width: "150px",
+      width: "200px",
     },
   };
 
