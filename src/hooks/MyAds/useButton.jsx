@@ -29,7 +29,7 @@ export const useButton = ({
       window.Telegram.WebApp
       .showPopup({
         title: "Внимание",
-        message: "Перед выбором исполнителя ознакомьтесь с FAQ Биржи.",
+        message: "Перед выбором исполнителя \n ознакомьтесь с FAQ Биржи.",
         buttons: [
           { id: "delete", type: "default", text: "Продолжить" },
           { id: "save", type: "destructive", text: "Прочитать" },
