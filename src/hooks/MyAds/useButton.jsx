@@ -39,9 +39,9 @@ export const useButton = ({
         if (buttonId === "delete" ) {
           window.Telegram.WebApp.showPopup({
             title : "Выбрать?",
-            message : "Вы уверены, что хотите выбрать этого исполнителя?",
+            message : "Вы уверены, что хотите выбрать\n этого исполнителя?",
             buttons : [
-              { id: "save", type: "ok", text: "Да" },
+              { id: "save", type: "default", text: "Да" },
               { id: "delete", type: "destructive", text: "Нет" },
             ]
           } , (buttonId) => {
