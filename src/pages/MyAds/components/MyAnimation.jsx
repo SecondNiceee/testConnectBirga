@@ -20,9 +20,12 @@ const MyAnimation = ({
 
   const { View } = useLottie(options);
   return (
-    <div
+    <div 
         {...props}
       className="animation-block"
+      onClick={() => {
+        window.Telegram.WebApp.openTelegramLink("https://t.me/addstickers/DonutTheDog")
+      }}
     >
       {View}
       <p className="animation-text">{text}</p>
