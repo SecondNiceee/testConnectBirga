@@ -31,7 +31,7 @@ export const useButton = ({
         title: "Внимание",
         message: "Перед выбором исполнителя ознакомьтесь с FAQ Биржи.",
         buttons: [
-          { id: "save", type: "ok", text: "Ознакомиться" },
+          { id: "save", type: "default", text: "Ознакомиться" },
           { id: "delete", type: "default", text: "Продолжить" },
         ],
       } , (buttonId) => {
@@ -41,7 +41,7 @@ export const useButton = ({
             title : "Выбрать?",
             message : "Вы уверены, что хотите выбрать этого исполнителя?",
             buttons : [
-              { id: "save", type: "ok", text: "Да" },
+              { id: "save", type: "default", text: "Да" },
               { id: "delete", type: "default", text: "Нет" },
             ]
           } , (buttonId) => {
