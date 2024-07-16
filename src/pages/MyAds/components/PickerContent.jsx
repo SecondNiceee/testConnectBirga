@@ -173,7 +173,7 @@ const PickerContent = ({
                 width : "100vw"
               }}
               // className={}
-              orderInformation={responsesArr[details.id].advertisement  }
+              orderInformation={responsesArr[details.id] ? responsesArr[details.id].advertisement : ""  }
 
             />
         </CSSTransition>

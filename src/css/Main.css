@@ -2737,7 +2737,7 @@ input {
 }
 
 .picker__block:nth-child(2) {
-  padding-left: 16px;
+  padding-left: 8px;
 }
 
 .responce-wrapper {
