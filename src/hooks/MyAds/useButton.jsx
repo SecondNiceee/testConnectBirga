@@ -25,7 +25,37 @@ export const useButton = ({
   console.log(history)
   useEffect(() => {
     function writeFucntion() {
-      
+      window.Telegram.WebApp
+      .showPopup({
+        title: "Внимание",
+        message: "Перед выбором исполнителя ознакомьтесь с FAQ Биржи.",
+        buttons: [
+          { id: "save", type: "OK", text: "Ознакомиться" },
+          { id: "delete", type: "default", text: "Продолжить" },
+        ],
+      } , (buttonId) => {
+  
+        if (buttonId === "delete" || buttonId === null) {
+          window.Telegram.WebApp.showPopup({
+            title : "Выбрать?",
+            message : "Вы уверены, что хотите выбрать этого исполнителя?",
+            buttons : [
+              { id: "save", type: "OK", text: "Да" },
+              { id: "delete", type: "default", text: "Нет" },
+            ]
+          } , (buttonId) => {
+            if (buttonId === 'save'){
+
+            }
+            else{
+
+            }
+          })
+
+        }
+        if (buttonId === "save") {
+          window.Telegram.WebApp.openLink('https://walletru.helpscoutdocs.com/')
+      } })
     }
     function goBack() {
       if (!sliderActive.isActive) {
