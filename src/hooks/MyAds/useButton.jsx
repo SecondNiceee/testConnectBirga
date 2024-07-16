@@ -36,13 +36,13 @@ export const useButton = ({
         ],
       } , (buttonId) => {
   
-        if (buttonId === "delete") {
+        if (buttonId === "delete" ) {
           window.Telegram.WebApp.showPopup({
             title : "Выбрать?",
             message : "Вы уверены, что хотите выбрать этого исполнителя?",
             buttons : [
               { id: "save", type: "ok", text: "Да" },
-              { id: "delete", type: "default", text: "Нет" },
+              { id: "delete", type: "destructive", text: "Нет" },
             ]
           } , (buttonId) => {
             if (buttonId === 'save'){
