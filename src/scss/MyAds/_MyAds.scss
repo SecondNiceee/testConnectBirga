@@ -256,3 +256,20 @@
 .picker__block:nth-child(2){
     padding-left: 8px;
 }
+.animation-block{
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 252px);
+    justify-content: center;
+}
+.animation-text{
+    font-family: "SF Compact Rounded";
+    font-weight: 500;
+    font-size: 23px;
+    text-align: center;
+    color: #daf5fe;
+    margin-top: 20px;
+    max-width: 260px;
+    margin-left: auto;
+    margin-right: auto;
+}

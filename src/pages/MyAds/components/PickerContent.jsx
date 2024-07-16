@@ -9,6 +9,8 @@ import ShowMyResponse from "../../../components/MyAds/ShowMyResponse/ShowMyRespo
 import { CSSTransition } from "react-transition-group";
 import BackButton from "../../../constants/BackButton";
 import FirstDetails from "../../../components/First/FirstDetails/FirstDetails";
+import PickerTwo from "./PickerTwo";
+import PickerOne from "./PickerOne";
 const PickerContent = ({
   myAdsArray,
   nowValue,
@@ -90,62 +92,11 @@ const PickerContent = ({
           : { transform: "translateX(0%)" }
       }
     >
-      <div className="picker__block">
-        <div className="AdsContainer">
-          {responsesArr.map((e, i) => {
-            return <ResponseBlock  func={buttonFunction} index={i}  buttonText={"МОЙ ОТКЛИК"} task={e} {...e.advertisement} />;
-          })}
-        </div>
-      </div>
+      
 
-      <div className="picker__block">
-        <AdCreateFunc text={"Создать объявление"} link={"/AdCreating"} />
-        {/* <Link to="/AdCreating" className="AdCreactingFunction">
-            <img src={plus} alt="" />
-            <p>Создать объявление</p>
-          </Link> */}
-        <div className="AdsContainer">
-          {myAdsArray.map((e, i) => {
-            return (
-              <div
-                key={i}
-                className="block"
-                onClick={(p) => {
-                  if (
-                    p.target.closest(".FirstMain__bottom-right") === null &&
-                    p.target.closest(".first__photos") === null
-                  ) {
-                    //  setTask(e);
-                    setSecondPage({ isActive: true, task: e, index: i });
-                  }
-                }}
-              >
-                <FirstBlock
-                  setSlideActive={setSliderAcitve}
-                  myAdsFunc={(value) => {
-                    setSecondPage({ isActive: true, task: e, index: i });
-                  }}
-                  isMyAds={true}
-                  deleteFunction={() => {
-                    deleteFunction(e);
-                  }}
-                  key={i}
-                  isButton={true}
-                  // setDetailsActive={() => {
-                  //   // setDetails({
-                  //   //   isActive : true,
-                  //   //   task : myAdsArray[i],
-                  //   //   index : i
-                  //   // })
+      <PickerOne responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
 
-                  // }}
-                  {...e}
-                />
-              </div>
-            );
-          })}
-        </div>
-      </div>
+      <PickerTwo myAdsArray={myAdsArray} setSecondPage = {setSecondPage} setSliderAcitve = {setSliderAcitve} deleteFunction = {deleteFunction} />
 
       <CSSTransition
         in={myResponse.isOpen}

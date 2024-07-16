@@ -9,6 +9,8 @@ import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import { deleteAd } from "../../../store/information";
 import { useDispatch } from "react-redux";
 import makeNewFile from "../../../functions/newMakeFile";
+import AllReactions from "./AllReactions";
+import MyAnimation from "./MyAnimation";
 
 const AboutOne = ({
   task,
@@ -141,20 +143,14 @@ const AboutOne = ({
         <></>
       )}
 
-      {responces === null ? (
-        <MyLoader
-          style={{
-            height: "calc(100vh - 456px)",
-            position: "fixed",
-            left: 0,
-          }}
-        />
+      {filteredArray.length === 0 ? (
+        <MyAnimation />
       ) : (
-        <ReactionBlock
+        <AllReactions
+          filteredArray={filteredArray}
           setFilterBy={setFilterBy}
           openAboutReactionFunc={openAboutReactionFunc}
-          setSliderActive={setSliderAcitve}
-          responces={filteredArray}
+          setSliderAcitve={setSliderAcitve}
           setOpen={setOpen}
         />
       )}
