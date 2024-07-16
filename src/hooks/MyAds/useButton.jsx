@@ -25,6 +25,7 @@ export const useButton = ({
   console.log(history)
   useEffect(() => {
     function writeFucntion() {
+      console.log('я тут прием')
       window.Telegram.WebApp
       .showPopup({
         title: "Внимание",
@@ -106,7 +107,7 @@ export const useButton = ({
     BackButton.onClick(goBack);
     return () => {
       BackButton.offClick(goBack);
-      MainButton.offClick(writeFucntion);
+      // MainButton.offClick(writeFucntion);
     };
 
     // eslint-disable-next-line
