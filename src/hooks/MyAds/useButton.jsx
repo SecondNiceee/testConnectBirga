@@ -31,8 +31,8 @@ export const useButton = ({
         title: "Внимание",
         message: "Перед выбором исполнителя ознакомьтесь с FAQ Биржи.",
         buttons: [
-          { id: "save", type: "default", text: "Ознакомиться" },
           { id: "delete", type: "default", text: "Продолжить" },
+          { id: "save", type: "destructive", text: "Прочитать" },
         ],
       } , (buttonId) => {
   
