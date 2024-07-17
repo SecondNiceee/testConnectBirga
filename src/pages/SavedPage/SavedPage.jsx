@@ -28,6 +28,19 @@ const SavedPage = () => {
     };
   }, []);
 
+  const [card, setCard] = useState({
+    isOpen: false,
+    card: {
+      behanceLink : "",
+      description : "",
+      dribbbleLink : "",
+      id : 0,
+      photos : [],
+      photosNames : [],
+      title : ""
+    },
+  });
+
   const [myResponse, setMyResponse] = useState({
     responce: {},
     isActive: false,
@@ -302,18 +315,7 @@ const SavedPage = () => {
       MainButton.offClick(forwardFunction);
     };
   }, [forwardFunction]);
-  const [card, setCard] = useState({
-    isOpen: false,
-    card: {
-      behanceLink : "",
-      description : "",
-      dribbbleLink : "",
-      id : 0,
-      photos : [],
-      photosNames : [],
-      title : ""
-    },
-  });
+
 
   const openCard = useCallback(
     (card) => {
