@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { changeMenuActive } from "../../../store/menuSlice";
 import makeNewFile from "../../../functions/newMakeFile";
 
-const AboutReaction = ({ responce , setSliderActive,   ...props}) => {
+const AboutReaction = ({ responce , setSliderActive, setOneCard,   ...props}) => {
   console.log('Рендер Эбаута')
   const dispatch = useDispatch()
   const setMenuActive = useCallback(
@@ -72,6 +72,10 @@ const AboutReaction = ({ responce , setSliderActive,   ...props}) => {
     // eslint-disable-next-line
   } , [])
 
+  const openFunc = useCallback( (par) => {
+    setOneCard({isOpen : true, card : par})
+  } , [])
+
   return (
     <div className="aboutReaction" {...props}>
 
@@ -90,7 +94,7 @@ const AboutReaction = ({ responce , setSliderActive,   ...props}) => {
     
 
       {cards === null ? <MyLoader/> :
-      <ExampleWorks setSliderActive = {setSliderActive} cards={cards}/>}
+      <ExampleWorks openFunc={openFunc}  setSliderActive = {setSliderActive} cards={cards}/>}
 
 
 

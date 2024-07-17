@@ -13,7 +13,7 @@ const ExampleWorks = ({cards , openFunc, setSliderActive}) => {
       <div className="cards__wraaper">
         {cards.map((e) => {
           return (
-            <Case card = {e} openFunc = {openFunc}  task = {e} setSliderActive={setSliderActive} title = {e.title} description={e.description} photos={e.photos} watchOnly={true} />
+            <Case  card = {e} openFunc = {openFunc}  task = {e} setSliderActive={setSliderActive} title = {e.title} description={e.description} photos={e.photos} watchOnly={true} />
           )
         })}
       </div>

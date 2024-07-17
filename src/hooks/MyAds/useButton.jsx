@@ -18,7 +18,9 @@ export const useButton = ({
   localSecondPage,
   details,
   secondPage,
-  save
+  save,
+  oneCards,
+  setOneCard
 
 }) => {
   const history = useLocation()
@@ -61,25 +63,32 @@ export const useButton = ({
     function goBack() {
       if (!sliderActive.isActive) {
         if (!localDetails.isActive) {
-          if (!localAboutReaction.isActive) {
-            if (localIsOpen.isActive) {
-              setOpen({ ...isOpen, isActive: false });
-            } else {
-              if (localSecondPage.isActive) {
-                setSecondPage({ ...secondPage, isActive: false });
-              } else {
-                // if (history[history.length - 1] === '/AdCreating'){
+          if (oneCards.isOpen){
+            setOneCard((value) => ({...value , isOpen : false}))
+          }
+          else{
 
-                //   navigate();
-                // }
-                // else{
-                //   navigate(-1)
-                // }
-                navigate('/')
+            if (!localAboutReaction.isActive) {
+              if (localIsOpen.isActive) {
+                setOpen({ ...isOpen, isActive: false });
+              } else {
+                if (localSecondPage.isActive) {
+                  setSecondPage({ ...secondPage, isActive: false });
+                } else {
+                  // if (history[history.length - 1] === '/AdCreating'){
+  
+                  //   navigate();
+                  // }
+                  // else{
+                  //   navigate(-1)
+                  // }
+                  navigate('/')
+                }
               }
+            } else {
+              setOpenAboutReaction({ ...openAboutReaction, isActive: false });
             }
-          } else {
-            setOpenAboutReaction({ ...openAboutReaction, isActive: false });
+
           }
         } else {
             save()
@@ -119,7 +128,9 @@ export const useButton = ({
     details.isActive,
     isOpen,
     navigate,
-    save
+    save,
+    setOneCard,
+    oneCards.isOpen
   ]);
 };
 

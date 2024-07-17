@@ -226,6 +226,7 @@ const SavedPage = () => {
       if (myResponse.isActive){
         console.log("Я тут!")
         BackButton.onClick(backFunction)
+        BackButton.show()
       }
       else{
         BackButton.hide()

@@ -20,6 +20,7 @@ import AdCreatingOne from "../AdCreatingOne/AdCreatingOne/AdCreatingOne";
 import { useButton } from "../../hooks/MyAds/useButton";
 import { useSave } from "../../hooks/MyAds/useSave";
 import pagesHistory from "../../constants/pagesHistory";
+import CardPage from "../CardPage/CardPage";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -81,6 +82,10 @@ const MyAds = () => {
     responce : null
   });
 
+  const [oneCards, setOneCard] = useState({
+    isOpen : false,
+    card : {}
+  })
 
 
     useEffect( () => {
@@ -165,6 +170,7 @@ const MyAds = () => {
 
 
   useButton({
+    oneCards : oneCards,
     sliderActive : sliderActive,
     localDetails : localDetails,
     localAboutReaction : localAboutReaction,
@@ -180,7 +186,8 @@ const MyAds = () => {
     secondPage : secondPage,
     localSecondPage : localSecondPage,
     setDetails : setDetails,
-    save : save
+    save : save,
+    setOneCard : setOneCard
   })
 
 
@@ -209,6 +216,8 @@ const MyAds = () => {
   const setChangingTask = useCallback( (e) => {
     setDetails( (value) =>  ({...value , task : e}))
   }, [setDetails] ) 
+
+
 
 
 
@@ -282,9 +291,9 @@ const MyAds = () => {
 
 
           <CSSTransition
-            classNames="last-ad"
+            classNames="left-right"
             in={isOpen.isActive}
-            timeout={0}
+            timeout={400}
             mountOnEnter
             unmountOnExit
           >
@@ -295,6 +304,16 @@ const MyAds = () => {
 
             />
           </CSSTransition>
+          <CSSTransition
+            classNames="left-right"
+            in={oneCards.isOpen }
+            timeout={400}
+            mountOnEnter
+            unmountOnExit
+          >
+           <CardPage card={oneCards.card} />
+          </CSSTransition>
+
 
           <CSSTransition
             classNames="aboutReaction"
@@ -303,7 +322,7 @@ const MyAds = () => {
             mountOnEnter
             unmountOnExit
           >
-            <AboutReaction setSliderActive={setSliderActive} responce = {openAboutReaction.responce}   />
+            <AboutReaction setOneCard = {setOneCard} setSliderActive={setSliderActive} responce = {openAboutReaction.responce}   />
           </CSSTransition>
           <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
         </motion.div>
