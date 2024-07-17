@@ -197,16 +197,16 @@ const SavedPage = () => {
 
   useEffect( () => {
       function backFunction(){
-          if (myResponse.isActive){
-            setMyResponse((value) => ({...value , isActive : false}))
+          if (card.isActive){
+            setCard((value) => ({...value , isOpen : false}))
           }
           else{
             if (isProfileOpen){
               setProfileOpen(false)
             }
             else{
-              if (card.isOpen){
-                setCard((value) => ({...value , isOpen : false}))
+              if (myResponse.isOpen){
+                setMyResponse((value) => ({...value , isActive : false}))
               }
             }
           }
