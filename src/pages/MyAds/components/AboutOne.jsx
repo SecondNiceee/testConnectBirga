@@ -40,6 +40,7 @@ const AboutOne = ({
         }
 
         responces[i].photos = photos;
+        responces[i].advertisement = task
 
         try {
           let imTwo = await axios.get(

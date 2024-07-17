@@ -16,6 +16,7 @@ const Reaction = ({
 }) => {
   return (
     <>
+    
       <div className="reaction">
         {responce.photos.length > 0 ? (
           <div className="reactions__images">

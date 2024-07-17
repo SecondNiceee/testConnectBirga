@@ -2,7 +2,7 @@ import React, { memo, useMemo } from "react";
 import cl from "./CardPage.module.css";
 import InnerCase from "../../components/CardPage/InnerCase/InnerCase";
 import FullDescription from "../../components/First/FirstDetails/FullDescription";
-import LinkComp from "../../components/CardPage/LinkComp/LinkComp";
+import LinkComp from "../../components/CardPage/Link/LinkComp";
 const CardPage = ({ card }) => {
     console.log(card)
     const linksComponents = useMemo( () => {
