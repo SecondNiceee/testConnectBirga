@@ -233,7 +233,7 @@ const SavedPage = () => {
         BackButton.hide()
         BackButton.offClick(backFunction)
       }
-  } , [myResponse.isActive, isProfileOpen, card.isOpen, setMyResponse, setProfileOpen, setCard] )
+  } , [myResponse.isActive, isProfileOpen, card.isOpen, setMyResponse, setProfileOpen, extraDetails.isOpen, setCard] )
 
   useEffect(() => {
     if (details.isOpen) {
