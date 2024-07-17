@@ -76,6 +76,8 @@ const AboutReaction = ({ responce , setSliderActive, setOneCard,   ...props}) =>
     setOneCard({isOpen : true, card : par})
   } , [])
 
+  console.log(responce)
+
   return (
     <div className="aboutReaction" {...props}>
 
@@ -89,7 +91,7 @@ const AboutReaction = ({ responce , setSliderActive, setOneCard,   ...props}) =>
       <AboutMain aboutU = {responce.user.about}  />
 
       <Compact className={"stage-compact"} title = {"Стаж работы"}>
-        <Stage number={responce.user.stage} />
+        <Stage numberB={responce.user.stage} />
       </Compact>
     
 

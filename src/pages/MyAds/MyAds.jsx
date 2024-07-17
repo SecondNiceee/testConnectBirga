@@ -316,7 +316,7 @@ const MyAds = () => {
 
 
           <CSSTransition
-            classNames="aboutReaction"
+            classNames="left-right"
             in={openAboutReaction.isActive}
             timeout={0}
             mountOnEnter

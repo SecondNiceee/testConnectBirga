@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
 import cl from "./Stage.module.css"
-const Stage = ({className,numberB}) => {
+const Stage = ({className, numberB}) => {
     const kk = useMemo(() => {
-      if (!numberB){
+      if (!numberB || numberB === null){
         return "Не указан"
       }
       else{
 
-        let number = toString(numberB)
+        let number = String(numberB)
           let numb = Number(number.slice(number.length - 1 , number.length))
           if ( Number(number) > 10 && Number(number) < 20){
               return " Лет"
@@ -30,7 +30,7 @@ const Stage = ({className,numberB}) => {
     } , [numberB])
     return (
         <div className={ className ? [cl.main, className].join(' ') : cl.main}>
-                <div style={!numberB ? {opacity : 0.5} : numberB} className={cl.one}>
+                <div style={!numberB ? {opacity : 0.5} : {}} className={cl.one}>
                     <p>{!numberB ? "Не указан" : numberB}</p>
                 </div>
                 {!numberB ? 

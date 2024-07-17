@@ -15,7 +15,7 @@ const CardPage = ({ card }) => {
             }
 
             {card.dribbbleLink.length > 0 ? 
-                <LinkComp navigate={"driple"} link={card.dribbleLink}  />
+                <LinkComp navigate={"driple"} link={card.dribbbleLink}  />
                 :
                 <></>
             }

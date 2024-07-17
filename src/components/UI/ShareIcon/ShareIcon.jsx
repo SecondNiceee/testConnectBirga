@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Share from '../../../images/icons/Share.svg'
 import cl from './ShareIcon.module.css'
-const ShareIcon = ({className}) => {
+const ShareIcon = ({className , ...props}) => {
     return (
         <div className = {className ? [cl.ShareIcon , className].join(' ') : cl.ShareIcon}>
             <img src={Share} alt="" />
@@ -9,4 +9,4 @@ const ShareIcon = ({className}) => {
     );
 };
 
-export default ShareIcon;
+export default memo(ShareIcon);

@@ -318,6 +318,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;    */
+    transform: translateX(100%);
     background: rgb(24, 34, 45);
     position: absolute;
     left: 0;
@@ -682,6 +683,7 @@
     left: 0;
     z-index: 1000;
     left: 100%;
+    transform: translateX(100%);
     height: calc(100vh - 68px);
     position: absolute;
     width: 100vw;

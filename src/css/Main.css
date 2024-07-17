@@ -3089,6 +3089,10 @@ body {
   position: relative;
 }
 
+.low-opacity {
+  opacity: 0.5;
+}
+
 .aboutInfo__text {
   font-family: "SF Pro Display";
   font-weight: 500;

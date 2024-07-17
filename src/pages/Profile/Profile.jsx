@@ -100,7 +100,7 @@ const Profile = () => {
 
 
   useEffect(  () => {
-    let stage = userInfoLocal.profile.stage
+    let stage = String(userInfoLocal.profile.stage)
     let numb = String(stage).slice(stage.length - 1,stage.length)
 
     const numberInput = document.getElementById('numberInput')

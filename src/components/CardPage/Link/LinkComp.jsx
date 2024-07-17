@@ -34,7 +34,7 @@ const LinkComp = ({navigate, link}) => {
             
           }
           if (buttonId === "save") {
-            alert("тут переход по ссылке")
+            window.Telegram.WebApp.openLink(link)
           }
     
     

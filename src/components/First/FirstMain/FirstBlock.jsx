@@ -14,6 +14,7 @@ const FirstBlock = ({
   className,
   taskName,
   time,
+  end = false,
 
   setDetailsActive,
   isButton,
@@ -124,7 +125,7 @@ const FirstBlock = ({
           }>
             <Pallete />
             <p className= { isWatched ? "watchedTask" : ""}>{taskName}</p>
-            <ShareIcon className="share__icon" />
+            <ShareIcon style = {end ? {opacity : 0.5} : {}} className="share__icon" />
           </div>
           <div className="FirstMain__middle">
             {/* <p>{executionPlace}</p> */}
@@ -163,9 +164,9 @@ const FirstBlock = ({
                 </>
               )}
 
-{!isResponce && !isMyAds ? <FalseTie agree = {agree}  navigate={"advertisement"} id={id} task={task}
+{!isResponce && !isMyAds ? <FalseTie   agree = {agree}  navigate={"advertisement"} id={id} task={task}
 
- className={"tie"}  style = {isButton ? {} : {marginRight : '4px'}} /> :
+ className={end ? "tie low-opacity" : "tie"}  style = {isButton ? {} : {marginRight : '4px'}} /> :
               <></>
                 }
 

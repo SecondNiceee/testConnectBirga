@@ -5,10 +5,10 @@ import Dedline from './Dedline'
 import Status from './Status'
 import Customer from './Customer'
 
-const TaskDetailsContainer = ({orderInformation}) => {
+const TaskDetailsContainer = ({orderInformation , end = false}) => {
   return (
     <div className="Task__container-one">
-      <FirstBlock task={orderInformation} {...orderInformation} isButton = {false} />
+      <FirstBlock end = {end} task={orderInformation} {...orderInformation} isButton = {false} />
       <FullDescription fullDescription={orderInformation.taskDescription} />
       <Dedline dedline={orderInformation.time} />
       <div className="TaskDetails-row">

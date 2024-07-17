@@ -13,6 +13,7 @@ import MainButton from "../constants/MainButton";
 import { useNavigate } from "react-router-dom";
 import PostLoader from "../loaders/PostLoader";
 import pagesHistory from "../constants/pagesHistory";
+import FirstDetails from "../components/First/FirstDetails/FirstDetails";
 
 let spet = 0;
 const AdCreating = () => {
@@ -20,13 +21,21 @@ const AdCreating = () => {
   //   useSelector((state) => state.information.taskInformation)
   // );
 
+  
+  const me = useSelector(state => state.telegramUserInfo)
+
   const [firstPage , setFirstPage] = useState({
     category: { name: "", value: "" },
     subCategory: "Выбрать",
     taskName: "",
     taskDescription: "",
     photos: [],
-    time : {start : "" , end : ""}
+    customerName : me.firstName,
+    creationTime : new Date(),
+    userPhoto : me.photo,
+    time : {start : new Date() , end : new Date(),
+
+    }
   })
 
   const [secondPage , setSecondPage] = useState({
@@ -36,7 +45,7 @@ const AdCreating = () => {
     endTime : "",
     singleTime : "",
     isPrivate : false,
-    time : {start : null , end : null}
+    time : {start : new Date() , end : new Date()}
   })
 
 
@@ -281,9 +290,9 @@ const AdCreating = () => {
         // spet += 1;
         // animte()
         if (spet === 2) {
-          MainButton.setText("ЗАХОЛДИРОВАТЬ");
+          MainButton.setText("СОЗДАТЬ ЗАДАНИЕ");
         } else {
-          MainButton.setText("Далее");
+          MainButton.setText("ДАЛЕЕ");
         }
         if (spet === 3){
           finish();
@@ -307,6 +316,7 @@ const AdCreating = () => {
         mainRef.current.classList.add('twoBack')
       }
       spet -= 1;
+      MainButton.setText("ДАЛЕЕ")
       // backAnimte();
 
     }
@@ -332,7 +342,7 @@ const AdCreating = () => {
   useEffect(() => {
     MainButton.show();
     BackButton.show();
-    MainButton.setText("Далее");
+    MainButton.setText("ДАЛЕЕ");
 
 
 
@@ -380,7 +390,8 @@ const AdCreating = () => {
             taskInformation={secondPage}
             tonConstant={tonConstant}
           />
-          <AdCreatingThree taskInformation={secondPage} />
+          <FirstDetails  style = {{position : "static" , minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage}} />
+          {/* <AdCreatingThree taskInformation={secondPage} /> */}
         </>
       )}
       <button
