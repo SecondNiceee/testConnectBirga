@@ -86,7 +86,9 @@ isWatched = false,
             ""
           )}
 
-          <div className="status">{watchingValue}</div>
+          <div style={{
+            color : "#95979E"
+          }} className="status">{watchingValue}</div>
 
           
 

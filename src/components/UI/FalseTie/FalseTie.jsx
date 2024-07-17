@@ -19,13 +19,16 @@ const FalseTie = ({className, id, task, navigate, agree, ...props}) => {
                         setActive(true)
                     }
                 } )
+                break
             }
-            case "responce":{
+            case ("responce"):{
                 savedResponces.forEach( (e, i) => {
                     if (e.id === id){
+                        console.log(e.id, id)
                         setActive(true)
                     }
                 } )
+                break
             }
             case "card":{
 
@@ -34,6 +37,7 @@ const FalseTie = ({className, id, task, navigate, agree, ...props}) => {
                         setActive(true)
                     }
                 } )
+                break
             }
             default : {
                 alert('что-то пошло не так')
@@ -43,7 +47,7 @@ const FalseTie = ({className, id, task, navigate, agree, ...props}) => {
         }
         
 
-    } , [] )
+    } , [navigate] )
 
 
     console.log(navigate)
@@ -148,6 +152,7 @@ const FalseTie = ({className, id, task, navigate, agree, ...props}) => {
                         break
                     case ("card"):
                         dispatch(addCard([id, task]))
+                        break
                     default : 
                         alert("Что-то не то")
                 }

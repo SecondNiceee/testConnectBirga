@@ -1,10 +1,10 @@
 import React from "react";
 import imageDescription from "../../../images/icons/fullDescription.svg";
-const FullDescription = ({ fullDescription }) => {
+const FullDescription = ({ fullDescription, ...props }) => {
   return (
     <>
       {fullDescription.length > 0 ? (
-        <div className="FullDescription">
+        <div {...props}  className="FullDescription">
           <div className="FullDescription-top">
             <p>Описание</p>
             <img src={imageDescription} alt="" />

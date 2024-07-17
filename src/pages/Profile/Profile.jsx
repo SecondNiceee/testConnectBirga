@@ -429,8 +429,7 @@ const Profile = () => {
           }}
 
           changeFunction={() => {
-            document.documentElement.sty
-            .le.overflow = 'hidden'
+            document.documentElement.style.overflow = 'hidden'
             setChangeActive(true)
             index = i
           }}  key = {i} className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos}

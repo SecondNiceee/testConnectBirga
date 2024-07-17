@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import  { useLottie } from "lottie-react";
 import sleeping from "../../../animation/tired.json";
 import cl from "./Choicer.module.css"
@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import Reaction from '../../../pages/MyAds/components/Reaction';
 import Case from '../../UI/Case/Case';
 
-const ChoicerInfo = ({text , arr, navigate ,setDetails}) => {
+const ChoicerInfo = ({text , arr, navigate ,setDetails , setResponce}) => {
     const options = {
         animationData: sleeping,
         loop: true,
@@ -35,7 +35,7 @@ const ChoicerInfo = ({text , arr, navigate ,setDetails}) => {
         if (navigate === 'response'){
             return arr.map((e,i) => {
                 console.log(e)
-                return <Reaction agree = {true} responce={e} />
+                return <Reaction setOpen={setResponce} agree = {true} responce={e} />
              }) 
         }
         if (navigate === 'card')
@@ -67,4 +67,4 @@ const ChoicerInfo = ({text , arr, navigate ,setDetails}) => {
     );
 };
 
-export default ChoicerInfo;
+export default memo(ChoicerInfo);

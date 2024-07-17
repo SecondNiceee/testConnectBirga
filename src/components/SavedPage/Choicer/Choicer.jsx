@@ -3,7 +3,7 @@ import cl from './Choicer.module.css'
 
 import ChoicerInfo from './ChoicerInfo';
 import { useSelector } from 'react-redux';
-const Choicer = ({nowKey , keys, setDetails}) => {
+const Choicer = ({nowKey , keys, setDetails, setResponce}) => {
 
     const savedTasks = useSelector(state => state.saves.tasks)
     const savedResponces = useSelector(state => state.saves.responces)
@@ -32,7 +32,7 @@ const Choicer = ({nowKey , keys, setDetails}) => {
     return (
         <div style={style} className={cl.main}>
                 <ChoicerInfo setDetails = {setDetails} navigate={"task"} arr={savedTasks} text = {"У вас нет сохраненных заказов"}  />
-                <ChoicerInfo navigate={"response"} arr={savedResponces} text = {"У вас нет сохраненных откликов"} />
+                <ChoicerInfo setResponce = {setResponce} navigate={"response"} arr={savedResponces} text = {"У вас нет сохраненных откликов"} />
                 <ChoicerInfo navigate={"card"} arr={savedCards} text = {"У вас нет сохраненных кейсов"} />
         </div>
     );

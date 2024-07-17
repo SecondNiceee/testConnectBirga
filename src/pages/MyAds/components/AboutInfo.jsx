@@ -31,12 +31,12 @@ const AboutInfo = ({responce}) => {
       <div className="aboutDown">
         <div className="block">
           <p>{responce.createNumber}</p>
-          <p>{counter}</p>
+          <p className="aboutInfo__text">{counter}</p>
           
         </div>
         <div className="block">
           <p>0</p>
-          <p>Заданий выполено</p>
+          <p className="aboutInfo__text">Заданий выполено</p>
         </div>
       </div>
 

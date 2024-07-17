@@ -6,6 +6,7 @@ import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
 import { useDispatch } from "react-redux";
 import { changeMenuActive } from "../../../store/menuSlice";
 import options from "../../../constants/options";
+import formatDate from "../../../functions/makeDate";
 const LastAds = ({
   setSliderActive,
 
@@ -45,7 +46,7 @@ const LastAds = ({
         }
       } aboutU={responce.information} />
 
-      <p className="creationTime">{ "Создано " + new Date(responce.createdAt).toLocaleString("ru", options)}</p>
+      <p className="creationTime">{ "Создано " + formatDate(new Date(responce.createdAt)) }</p>
 
       
 {/* 

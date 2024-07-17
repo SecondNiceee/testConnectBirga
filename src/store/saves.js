@@ -175,6 +175,36 @@ export const fetchAllValues = createAsyncThunk(
             }
     
             responces[i].photos = photos;
+
+                    
+            let one = new Date(responces[i].advertisement.startTime)
+  
+            let two;
+            if (responces[i].advertisement.endTime){
+               two = new Date(responces[i].advertisement.endTime)
+            }
+            else{
+               two = ""
+            }
+
+            let files = await makeNewFile(responces[i].advertisement.folder, responces[i].advertisement.photos);
+
+            responces[i].advertisement = {
+                id : responces[i].advertisement.id,
+                taskName : responces[i].advertisement.title,
+                executionPlace: "Можно выполнить удаленно",
+                time : {start : one , end : two},
+                tonValue : responces[i].advertisement.price,
+                taskDescription : responces[i].advertisement.description,
+                photos : files,
+                photosName : responces[i].advertisement.photos,
+                customerName : responces[i].advertisement.user.fl,
+                userPhoto : responces[i].advertisement.user.photo || "",
+                rate : '5',
+                isActive : true,
+                creationTime : responces[i].advertisement.createdAt,
+                viewsNumber : '50',
+            }
     
             try {
               let luo = await axios.get(
@@ -232,7 +262,8 @@ export const fetchAllValues = createAsyncThunk(
                     photos : files
                 })
             }
-        console.log(trueAdvertisements)
+        
+            console.log(responces)
         return [trueAdvertisements, responces, localCards]
     }
     catch (e){

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { memo } from "react";
 import Case from "../../../components/UI/Case/Case";
 
-const ExampleWorks = ({cards , setSliderActive}) => {
+const ExampleWorks = ({cards , openFunc, setSliderActive}) => {
   return (
     <div className="examplesWork">
       {cards.length === 0 ? 
@@ -13,7 +13,7 @@ const ExampleWorks = ({cards , setSliderActive}) => {
       <div className="cards__wraaper">
         {cards.map((e) => {
           return (
-            <Case  task = {e} setSliderActive={setSliderActive} title = {e.title} description={e.description} photos={e.photos} watchOnly={true} />
+            <Case card = {e} openFunc = {openFunc}  task = {e} setSliderActive={setSliderActive} title = {e.title} description={e.description} photos={e.photos} watchOnly={true} />
           )
         })}
       </div>
@@ -21,4 +21,4 @@ const ExampleWorks = ({cards , setSliderActive}) => {
   );
 };
 
-export default ExampleWorks;
+export default memo(ExampleWorks);
