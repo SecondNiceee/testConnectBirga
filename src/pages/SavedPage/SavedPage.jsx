@@ -74,6 +74,10 @@ const SavedPage = () => {
     isOpen: false,
     id: 0,
   });
+  const [extraDetails, setExtraDetails] = useState({
+    isOpen : false,
+    id : 0
+    })
   const setMenuActive = useCallback(
     (set) => {
       dispatch(changeMenuActive(set));
@@ -197,25 +201,35 @@ const SavedPage = () => {
 
   useEffect( () => {
       function backFunction(){
-          if (card.isActive){
+          if (card.isOpen){
+            console.log("Я закрыл карточки")
             setCard((value) => ({...value , isOpen : false}))
           }
           else{
+            
             if (isProfileOpen){
+              console.log("Я закрыл профиль")
               setProfileOpen(false)
             }
             else{
-              if (myResponse.isOpen){
-                setMyResponse((value) => ({...value , isActive : false}))
+              if (extraDetails.isOpen){
+                setExtraDetails((value) => ({...value , isOpen : false}))
+              }
+              else{
+                if (myResponse.isActive){
+                  setMyResponse((value) => ({...value , isActive : false}))
+                }
               }
             }
           }
       }
       if (myResponse.isActive){
         BackButton.show()
+        console.log("Я тут!")
         BackButton.onClick(backFunction)
       }
       else{
+        console.log("Я вообще - то тут((!")
         BackButton.hide()
         BackButton.offClick(backFunction)
       }
@@ -357,7 +371,7 @@ const SavedPage = () => {
         mountOnEnter
         classNames={"left-right"}
       >
-        <SavedResponse setProfileOpen = {setProfileOpen} response={myResponse.responce} />
+        <SavedResponse setDetails = {setExtraDetails} setProfileOpen = {setProfileOpen} response={myResponse.responce} />
       </CSSTransition>
       
       <CSSTransition
@@ -371,7 +385,17 @@ const SavedPage = () => {
       </CSSTransition>
       
 
-
+      <CSSTransition
+        in={extraDetails.isOpen}
+        timeout={400}
+        classNames={"left-right"}
+        unmountOnExit
+        mountOnEnter
+      >
+        <FirstDetails style = {{
+          zIndex : '2002'
+        }}  orderInformation={myResponse.responce.advertisement} />
+      </CSSTransition>
 
       <CSSTransition
         in={details.isOpen}
