@@ -73,7 +73,7 @@ const Case = ({ className, card, openFunc, task,  title , description , photos, 
 
           </div>
         :
-        <div className={cl.caseRight}>
+        <div style={!watchOnly ? {flexDirection : "row"} : {}} className={cl.caseRight}>
           <div onClick={deleteFunction} className={cl.circle}>
             <svg
               width="15"

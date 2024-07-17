@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 import  { useLottie } from "lottie-react";
 import sleeping from "../../../animation/tired.json";
 import cl from "./Choicer.module.css"
@@ -6,8 +6,9 @@ import FirstBlock from '../../First/FirstMain/FirstBlock';
 import { useSelector } from 'react-redux';
 import Reaction from '../../../pages/MyAds/components/Reaction';
 import Case from '../../UI/Case/Case';
+import InnerCase from '../../CardPage/InnerCase/InnerCase';
 
-const ChoicerInfo = ({text , arr, navigate ,setDetails , setResponce}) => {
+const ChoicerInfo = ({text , arr, navigate ,setDetails , setResponce, setCard}) => {
     const options = {
         animationData: sleeping,
         loop: true,
@@ -22,6 +23,10 @@ const ChoicerInfo = ({text , arr, navigate ,setDetails , setResponce}) => {
         
       };
 
+      const openFunc = useCallback( (card) => {
+        setCard({isOpen : true , card : card})
+      } , [setCard] )
+
       const { View } = useLottie(options)
       ;
 
@@ -35,13 +40,13 @@ const ChoicerInfo = ({text , arr, navigate ,setDetails , setResponce}) => {
         if (navigate === 'response'){
             return arr.map((e,i) => {
                 console.log(e)
-                return <Reaction setOpen={setResponce} agree = {true} responce={e} />
+                return <Reaction  setOpen={setResponce} agree = {true} responce={e} />
              }) 
         }
         if (navigate === 'card')
             return arr.map((e,i) => {
                 console.log(e)
-                return <Case agree = {true} task={e} title={e.title} description={e.description} photos={e.photos} watchOnly={true} />
+                return <Case  card={e} openFunc={openFunc}  agree = {true} task={e} title={e.title} description={e.description} photos={e.photos} watchOnly={true} />
              }) 
         
       } , [arr, navigate])

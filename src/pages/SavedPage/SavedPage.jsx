@@ -224,16 +224,39 @@ const SavedPage = () => {
           }
       }
       if (myResponse.isActive){
-        BackButton.show()
         console.log("Я тут!")
         BackButton.onClick(backFunction)
       }
       else{
-        console.log("Я вообще - то тут((!")
         BackButton.hide()
         BackButton.offClick(backFunction)
       }
+      return () => {
+        BackButton.offClick(backFunction)
+          BackButton.hide()
+        
+      }
   } , [myResponse.isActive, isProfileOpen, card.isOpen, setMyResponse, setProfileOpen, extraDetails.isOpen, setCard] )
+
+
+
+  useEffect( () => {
+    function backFunction(){
+      if (card.isOpen){
+        setCard((value) => ({...value , isOpen : false}))
+      }
+    }
+    if (card.isOpen){
+      BackButton.show()
+      BackButton.onClick(backFunction)
+    }
+    else{
+      if (!myResponse.isActive){
+        BackButton.hide()
+      }
+      BackButton.offClick(backFunction)
+    }
+  } , [setCard, card.isOpen, myResponse.isActive] )
 
   useEffect(() => {
     if (details.isOpen) {
@@ -362,7 +385,7 @@ const SavedPage = () => {
 
       />
 
-      <Choicer setResponce = {setMyResponse} setDetails={setDetails} keys={keys} nowKey={nowKey} />
+      <Choicer setCard = {setCard} setResponce = {setMyResponse} setDetails={setDetails} keys={keys} nowKey={nowKey} />
 
       <CSSTransition
         in={myResponse.isActive}
