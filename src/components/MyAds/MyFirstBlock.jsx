@@ -31,8 +31,10 @@ const MyFirstBlock = ({
 
 
   const textStatus = useMemo( () => {
+    console.log(status)
     switch (status){
         case "active":
+            
             return "Активно"
         case "inProcess":
             return "В работе"
@@ -42,6 +44,8 @@ const MyFirstBlock = ({
             console.log("Странная тема")
     }
   } , [status] )
+
+  console.log(textStatus)
 
   const style = useMemo( () => {
     switch (status){
@@ -55,6 +59,7 @@ const MyFirstBlock = ({
             console.log("Странная тема")
     } 
   } , [status] )
+  
 
 
   return (

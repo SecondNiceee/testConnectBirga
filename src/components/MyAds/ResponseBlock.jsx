@@ -46,7 +46,7 @@ isWatched,
     if (isWatched === "watched"){
         return "Просмотрено"
     }
-    if (isWatched === "chosen"){
+    if (isWatched === "inProcess"){
       return "В работе"
     }
     if (isWatched === "completed"){
@@ -117,7 +117,7 @@ isWatched,
             {}
           }>
             <Pallete />
-            <p className= { isWatched ? "watchedTask" : ""}>{taskName}</p>
+            <p >{taskName}</p>
             <ShareIcon className="share__icon" />
           </div>
           <div className="FirstMain__middle">
