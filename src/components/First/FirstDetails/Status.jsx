@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 
-const Status = (isActive) => {
-    return (
-        <div className='StatusContainer'>
+const Status = ({isActive , text}) => {
+    const clickHandler = () => {
+        window.Telegram.WebApp.showAlert(text)
+    }
+    return ( 
+        <div onClick={clickHandler} className='StatusContainer'>
             <p>Статус</p>
             {isActive ? 
                 <p className='TrueActive'>Активен</p>

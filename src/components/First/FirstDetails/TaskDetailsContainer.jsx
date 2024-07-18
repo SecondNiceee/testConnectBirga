@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import FirstBlock from "../FirstMain/FirstBlock";
 import FullDescription from "./FullDescription"
 import Dedline from './Dedline'
@@ -6,6 +6,19 @@ import Status from './Status'
 import Customer from './Customer'
 
 const TaskDetailsContainer = ({orderInformation , end = false}) => {
+  const text = useMemo(() => {
+    if (end){
+      return "Вы еще не создали задание, поэтому оно неактивно"
+    }
+    switch (orderInformation.status){
+      case "active":
+        return "Заказчик еще не выбрал исполнителя, вы можете им стать"
+      case "inProcess":
+        return "Заказчик уже выбрал исполнителя"
+      case "completed":
+        return "Задание уже выполнено"
+    }
+  }, [])
   return (
     <div className="Task__container-one">
       <FirstBlock end = {end} task={orderInformation} {...orderInformation} isButton = {false} />
@@ -13,7 +26,7 @@ const TaskDetailsContainer = ({orderInformation , end = false}) => {
       <Dedline dedline={orderInformation.time} />
       <div className="TaskDetails-row">
         <Customer userPhoto = {orderInformation.userPhoto} rate={orderInformation.rate} customerName={orderInformation.customerName} />
-        <Status isActive={orderInformation.isActive} />
+        <Status text={text} isActive={!end && orderInformation.status === "active"} />
       </div>
     </div>
   );

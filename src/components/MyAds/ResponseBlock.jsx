@@ -5,6 +5,7 @@ import SmallDimond from "../UI/SmallDimond/SmallDimond";
 import FalseTie from "../UI/FalseTie/FalseTie";
 import { useDispatch, useSelector } from "react-redux";
 import MyButton from "../UI/MyButton/MyButton";
+import formatDate from "../../functions/makeDate";
 
 var options = {
     year: "numeric",
@@ -28,7 +29,7 @@ const ResponseBlock = ({
   task,
   id,
 index ,
-isWatched = false,
+isWatched,
 
 
 }) => {
@@ -38,12 +39,32 @@ isWatched = false,
   const tonConstant = useSelector(state => state.ton.value)
 
   const watchingValue = useMemo( () => {
-    if (isWatched){
-        return "Просмотрено"
-    }
-    if (!isWatched){
+    console.log(isWatched)
+    if (isWatched === ""){
         return "Не просмотрено"
     }
+    if (isWatched === "watched"){
+        return "Просмотрено"
+    }
+    if (isWatched === "chosen"){
+      return "В работе"
+    }
+    if (isWatched === "completed"){
+      return "Завершено"
+    }
+  } , [isWatched] )
+
+  const style = useMemo( () => {
+      switch (isWatched){
+        case "":
+          return {color : "#95979E"}
+        case "watched":
+          return {color : "#2ea5ff"}
+        case "chosen":
+          return {color : "#30d158"}
+        case "completed":
+          return {color : "purple"}
+      }
   } , [isWatched] )
 
   return (
@@ -86,9 +107,7 @@ isWatched = false,
             ""
           )}
 
-          <div style={{
-            color : "#95979E"
-          }} className="status">{watchingValue}</div>
+          <div style={style} className="status">{watchingValue}</div>
 
           
 
@@ -103,7 +122,7 @@ isWatched = false,
           </div>
           <div className="FirstMain__middle">
             {/* <p>{executionPlace}</p> */}
-            <p> {"Начать: " + time.start.toLocaleString("ru", options)}</p>
+            <p> {"Начать: " + formatDate(time.start)}</p>
           </div>
           <div className="FirstMain__bottom">
             <div className="FirstMain__bottom-left">

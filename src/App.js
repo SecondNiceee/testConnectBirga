@@ -187,11 +187,11 @@ function App() {
     dispatch(fetchAllValues());
   }, [dispatch]);
 
-  useEffect( () => {
-    if (me.id !== ""){
-      dispatch(fetchResponses(me))
-    }
-  } , [dispatch, me] )
+  // useEffect( () => {
+  //   if (me.id !== ""){
+  //     dispatch(fetchResponses(me))
+  //   }
+  // } , [dispatch, me] )
   return (
     <BrowserRouter>
       <div className="UperContainer">

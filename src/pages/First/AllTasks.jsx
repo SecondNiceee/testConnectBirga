@@ -59,7 +59,6 @@ const AllTasks = ({
     
       }
       return () => {
-        // dispatch(changeStatus(null))
         observer.disconnect()
       }
       // eslint-disable-next-line

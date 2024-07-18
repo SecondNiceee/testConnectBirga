@@ -1,8 +1,8 @@
 
-import React from "react";
+import React, { forwardRef } from "react";
 
 import ResponseBlock from "../../../components/MyAds/ResponseBlock";
-const MyResponses = ({responsesArr, buttonFunction}) => {
+const MyResponses = forwardRef( ({responsesArr, buttonFunction} , ref) => {
 
 
   return (
@@ -14,12 +14,16 @@ const MyResponses = ({responsesArr, buttonFunction}) => {
             index={i}
             buttonText={"МОЙ ОТКЛИК"}
             task={e}
+            isWatched={e.isWatched}
             {...e.advertisement}
           />
         );
       })}
+      <div ref={ref} className="intersaction-block">
+
+      </div>
     </div>
   );
-};
+} );
 
 export default MyResponses;

@@ -168,8 +168,8 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
           onChange={(event) => {
             event.preventDefault()
             if (event.target.files && event.target.files[0]) {
-              if (event.target.files.length + files.length > 10){
-                window.Telegram.WebApp.showAlert('Максимум 10 файлов')
+              if (event.target.files.length + files.length > 5){
+                window.Telegram.WebApp.showAlert('Максимум 5 файлов')
               }
               else{
                 let newFiles = [];

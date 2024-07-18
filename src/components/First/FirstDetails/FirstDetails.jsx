@@ -8,7 +8,6 @@ const FirstDetails = ({  orderInformation , className , end = false, ...props}) 
 
     console.log('рендер детаилса')
 
-
     return (
         <>
         {orderInformation 

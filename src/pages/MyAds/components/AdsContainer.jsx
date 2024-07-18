@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
+import MyFirstBlock from '../../../components/MyAds/MyFirstBlock';
 
 const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunction}) => {
     return (
@@ -19,14 +20,11 @@ const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunctio
                   }
                 }}
               >
-                <FirstBlock
+                <MyFirstBlock
+
                   setSlideActive={setSliderAcitve}
                   myAdsFunc={(value) => {
                     setSecondPage({ isActive: true, task: e, index: i });
-                  }}
-                  isMyAds={true}
-                  deleteFunction={() => {
-                    deleteFunction(e);
                   }}
                   key={i}
                   isButton={true}

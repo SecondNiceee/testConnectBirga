@@ -129,7 +129,8 @@ export const  postMyTask = createAsyncThunk(
         rate : '5',
         isActive : true ,
         creationTime : b.data.createdAt,
-        viewsNumber : 50
+        viewsNumber : 50,
+        status : "active"
       }
       return localTask
     }
@@ -141,6 +142,26 @@ export const  postMyTask = createAsyncThunk(
     return true
 
 
+  }
+)
+
+export const setStartTask = createAsyncThunk(
+  "information/setStartTask",
+  async function(id){
+    try{
+      let myData = new FormData()
+      myData.append("status" , "inProcess")
+      await axios.put("https://back-birga.ywa.su/advertisement" , myData,{
+        params : {
+          id : id
+        }
+      })
+      return id
+    }
+    catch(e){
+      alert("Ошибка!")
+      console.log(e)
+    }
   }
 )
 
@@ -210,6 +231,7 @@ export const fetchMyOrders = createAsyncThunk(
             viewsNumber : '51', 
             removedFiles : [],
             addedFiles : [],
+            status : order.status
             
           })
         }
@@ -290,7 +312,8 @@ export const fetchTasksInformation = createAsyncThunk(
                 isActive : true,
                 creationTime : order.createdAt,
                 viewsNumber : '50',
-                responces : order.responses
+                responces : order.responses,
+                status : order.status
                 
               })
             }
@@ -386,6 +409,17 @@ const information = createSlice( {
           state.orderStatus = 'loading'}         
         
       } ) )
+
+      builder.addCase(setStartTask.fulfilled, ((state , action) => {
+        state.myAdsArray = state.myAdsArray.map( (e) => {
+          if (e.id === action.payload){
+            let copy = e
+            copy.status = "inProcess"
+            return copy
+          }
+          return e
+        } )
+      }))
       
       builder.addCase( fetchTasksInformation.fulfilled, ((state , action) => {
         state.orderStatus = 'complete'

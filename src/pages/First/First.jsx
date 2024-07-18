@@ -29,7 +29,6 @@ const First = () => {
 
   const dispatch = useDispatch();
 
-
   useEffect( () => {
     return () => {
       pagesHistory.push('/First')

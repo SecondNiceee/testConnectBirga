@@ -46,6 +46,12 @@ body { width: 100%; height: auto; background: rgb(24, 34, 45); }
 .low-opacity{
   opacity: 0.5;
 }
+.intersaction-block{
+  position: relative;
+  bottom: 50px;
+  width: 30px;
+  height: 30px;
+}
 .aboutInfo__text{
   font-family: "SF Pro Display";
   font-weight: 500;

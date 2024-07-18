@@ -2,6 +2,42 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import makeNewFile from "../functions/newMakeFile";
+export const setStartResponse = createAsyncThunk(
+    "setStartResponse",
+    async function(id){
+        let myData = new FormData()
+        myData.append("isWatched" , "inProcess")
+        try{
+            let im = await axios.put("https://back-birga.ywa.su/response" , myData, {
+                params : {
+                    id : id
+                }
+            } )
+            console.log(im)
+        }
+        catch(e){
+            alert(e)
+        }
+    }
+)
+export const postResponse = createAsyncThunk(
+    "postResponse" , 
+    async function(id){
+        let myData = new FormData()
+        myData.append("isWatched" , "watched")
+        try{
+            let im = await axios.put("https://back-birga.ywa.su/response" , myData, {
+                params : {
+                    id : id
+                }
+            } )
+            console.log(im)
+        }
+        catch(e){
+            alert(e)
+        }
+    }
+)
 export const fetchResponses = createAsyncThunk(
     "fetchResponses",
     async function (par){
@@ -10,12 +46,14 @@ export const fetchResponses = createAsyncThunk(
         
         let im = await axios.get('https://back-birga.ywa.su/response/findByUser' , {
             params : {
-                "userId" : 2144832745
+                "userId" : 2144832745,
+                "page" : par[1],
+                "limit" : 6
             }
         })
         let localResponses = im.data
 
-        let me = par
+        let me = par[0]
         
 
         for (let i = 0; i < localResponses.length; i++){
@@ -79,6 +117,7 @@ export const fetchResponses = createAsyncThunk(
 
 
         }
+        console.log(localResponses)
         return localResponses
     }
     catch(e){
@@ -94,12 +133,26 @@ const responses = createSlice({
         status : null,
         responses : []
     },
+    reducers :{
+        clearResponses(state,action){
+            state.status = null
+            state.responses = []
+        }
+    },
     extraReducers : builder => {
+        builder.addCase(fetchResponses.pending , ((state , action) => {
+            state.status = "pending"
+        }  ))
         builder.addCase(fetchResponses.fulfilled , ((state , action) => {
-            state.responses = action.payload
-            state.status = "complete"
+            state.responses = [...state.responses, ...action.payload]
+            if (action.payload.length < 6){
+                state.status = "all"
+            }
+            else{
+                state.status = "complete"
+            }
         }))
     }
 })
-
+export const {clearResponses} = responses.actions
 export default responses.reducer

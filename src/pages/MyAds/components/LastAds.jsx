@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from "react";
+import React, { memo, useCallback, useEffect } from "react";
 
 import Top from "../../../components/UI/Top/Top";
 import Reaction from "./Reaction";
@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { changeMenuActive } from "../../../store/menuSlice";
 import options from "../../../constants/options";
 import formatDate from "../../../functions/makeDate";
+import { postResponse } from "../../../store/responses";
 const LastAds = ({
   setSliderActive,
 
@@ -23,6 +24,11 @@ const LastAds = ({
     },
     [dispatch]
   );
+  useEffect( () => {
+    if (responce.isWatched !== "watched"){
+      dispatch(postResponse(responce.id))
+    }
+  } , [] )
 
 
 

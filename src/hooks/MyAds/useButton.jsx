@@ -2,6 +2,9 @@ import {  useEffect } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useLocation } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setStartTask } from "../../store/information";
+import { setStartResponse } from "../../store/responses";
 
 export const useButton = ({
   sliderActive,
@@ -25,6 +28,7 @@ export const useButton = ({
 }) => {
   const history = useLocation()
   console.log(history)
+  const dispatch = useDispatch()
   useEffect(() => {
     function writeFucntion() {
       console.log('я тут прием')
@@ -48,6 +52,10 @@ export const useButton = ({
             ]
           } , (buttonId) => {
             if (buttonId === 'save'){
+              dispatch(setStartTask(secondPage.task.id))
+              dispatch(setStartResponse(isOpen.responce))
+              setOpen({ ...isOpen, isActive: false });
+              setSecondPage({ ...secondPage, isActive: false });
 
             }
             else{

@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 
 import { deleteAd } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import BackButton from "../../../constants/BackButton";
 import FirstDetails from "../../../components/First/FirstDetails/FirstDetails";
 import PickerTwo from "./PickerTwo";
 import PickerOne from "./PickerOne";
+import { clearResponses, fetchResponses } from "../../../store/responses";
 const PickerContent = ({
   myAdsArray,
   nowValue,
@@ -80,6 +81,55 @@ const PickerContent = ({
   const openDetails = useCallback( (index) => {
     setDetails({isOpen : true, id : index})
   } , [] )
+
+  const me = useSelector(state => state.telegramUserInfo)
+
+  const interRef = useRef(null)
+  console.log(interRef)
+
+  const [page, setPage] = useState(1)
+
+  // useEffect( () => {
+  //   if (nowValue === "freelancer" ){
+  //     dispatch(fetchResponses(me))
+  //   }
+  // } , [nowValue] )
+
+
+  const responsesStatus = useSelector(state => state.responses.status)
+
+
+  useEffect( () => {
+    if (nowValue=== "freelancer"){
+      dispatch(clearResponses())
+    }
+  } , [nowValue] )
+
+  const  getMore = useCallback( async () => {
+    dispatch(fetchResponses([me,page]))
+    setPage(page + 1)
+}, [page, setPage , dispatch] )
+
+const onIntersaction = useCallback( (entries) => {
+    const firtEntry = entries[0]
+    if (firtEntry.isIntersecting && responsesStatus !== 'all'){
+      getMore()
+    } 
+}, [responsesStatus, getMore] )
+
+
+
+  useEffect( () => {
+    const observer = new IntersectionObserver(onIntersaction)
+    if (observer && interRef.current){
+      observer.observe(interRef.current)
+    }
+    return () => {
+      observer.disconnect()
+    }
+  } , [responsesArr])
+
+
   return (
     <div
       className="PickerContent"
@@ -91,7 +141,7 @@ const PickerContent = ({
     >
       
 
-      <PickerOne responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
+      <PickerOne status = {responsesStatus}  ref={interRef} responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
 
       <PickerTwo myAdsArray={myAdsArray} setSecondPage = {setSecondPage} setSliderAcitve = {setSliderAcitve} deleteFunction = {deleteFunction} />
 

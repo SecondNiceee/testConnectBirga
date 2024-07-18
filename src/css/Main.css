@@ -3093,6 +3093,13 @@ body {
   opacity: 0.5;
 }
 
+.intersaction-block {
+  position: relative;
+  bottom: 50px;
+  width: 30px;
+  height: 30px;
+}
+
 .aboutInfo__text {
   font-family: "SF Pro Display";
   font-weight: 500;
