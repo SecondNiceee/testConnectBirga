@@ -87,7 +87,7 @@ const PickerContent = ({
   const interRef = useRef(null)
   console.log(interRef)
 
-  const [page, setPage] = useState(1)
+  const [page, setPage] = useState(2)
 
   // useEffect( () => {
   //   if (nowValue === "freelancer" ){
@@ -100,8 +100,8 @@ const PickerContent = ({
 
 
   useEffect( () => {
-    if (nowValue!== "freelancer"){
-      dispatch(clearResponses())
+    if (nowValue === "freelancer"){
+      dispatch(fetchResponses([me,1]))
     }
   } , [nowValue] )
 
@@ -112,7 +112,7 @@ const PickerContent = ({
 
 const onIntersaction = useCallback( (entries) => {
     const firtEntry = entries[0]
-    if (firtEntry.isIntersecting && responsesStatus !== 'all'){
+    if (firtEntry.isIntersecting && responsesStatus !== 'all' && responsesStatus !== 'pending'){
       getMore()
     } 
 }, [responsesStatus, getMore] )
