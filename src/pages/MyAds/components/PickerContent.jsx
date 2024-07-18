@@ -101,6 +101,7 @@ const PickerContent = ({
 
   useEffect( () => {
     if (nowValue === "freelancer"){
+      dispatch(clearResponses())
       dispatch(fetchResponses([me,1]))
     }
   } , [nowValue] )
