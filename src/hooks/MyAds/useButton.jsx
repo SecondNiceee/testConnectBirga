@@ -53,7 +53,7 @@ export const useButton = ({
           } , (buttonId) => {
             if (buttonId === 'save'){
               dispatch(setStartTask(secondPage.task.id))
-              dispatch(setStartResponse(isOpen.responce))
+              dispatch(setStartResponse(isOpen.responce.id))
               setOpen({ ...isOpen, isActive: false });
               setSecondPage({ ...secondPage, isActive: false });
 
