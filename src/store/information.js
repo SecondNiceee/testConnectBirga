@@ -247,7 +247,7 @@ export const fetchMyOrders = createAsyncThunk(
             rate : '5',
             isActive : true,
             creationTime : order.createdAt,
-            viewsNumber : '51', 
+            viewsNumber : order.views, 
             removedFiles : [],
             addedFiles : [],
             status : order.status
@@ -330,7 +330,7 @@ export const fetchTasksInformation = createAsyncThunk(
                 rate : '5',
                 isActive : true,
                 creationTime : order.createdAt,
-                viewsNumber : '50',
+                viewsNumber : order.views,
                 responces : order.responses,
                 status : order.status
                 
