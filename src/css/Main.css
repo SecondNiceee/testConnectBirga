@@ -2733,6 +2733,8 @@ input {
 }
 
 .picker__block {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
   width: 50%;
 }
 

@@ -71,6 +71,9 @@ isWatched,
     <>
       {photos !== undefined ? (
         <div
+        style={{
+          marginRight : "8px"
+        }}
           className={
             className ? ["First__block", className].join(" ") : "First__block"
           }

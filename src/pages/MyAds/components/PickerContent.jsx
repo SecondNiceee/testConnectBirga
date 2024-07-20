@@ -49,7 +49,6 @@ const PickerContent = ({
     isOpen : false,
     id : 0
   })
-  console.log(responsesArr);
 
   const buttonFunction = useCallback( (index) => {
       setMyResponse({isOpen : true , id : index})
@@ -82,53 +81,7 @@ const PickerContent = ({
     setDetails({isOpen : true, id : index})
   } , [] )
 
-  const me = useSelector(state => state.telegramUserInfo)
 
-  const interRef = useRef(null)
-  console.log(interRef)
-
-  const [page, setPage] = useState(2)
-
-  // useEffect( () => {
-  //   if (nowValue === "freelancer" ){
-  //     dispatch(fetchResponses(me))
-  //   }
-  // } , [nowValue] )
-
-
-  const responsesStatus = useSelector(state => state.responses.status)
-
-
-  useEffect( () => {
-    if (nowValue === "freelancer"){
-      dispatch(clearResponses())
-      dispatch(fetchResponses([me,1]))
-    }
-  } , [nowValue] )
-
-  const  getMore = useCallback( async () => {
-    dispatch(fetchResponses([me,page]))
-    setPage(page + 1)
-}, [page, setPage , dispatch] )
-
-const onIntersaction = useCallback( (entries) => {
-    const firtEntry = entries[0]
-    if (firtEntry.isIntersecting && responsesStatus !== 'all' && responsesStatus !== 'pending'){
-      getMore()
-    } 
-}, [responsesStatus, getMore] )
-
-
-
-  useEffect( () => {
-    const observer = new IntersectionObserver(onIntersaction)
-    if (observer && interRef.current){
-      observer.observe(interRef.current)
-    }
-    return () => {
-      observer.disconnect()
-    }
-  } , [responsesArr])
 
 
   return (
@@ -142,7 +95,7 @@ const onIntersaction = useCallback( (entries) => {
     >
       
 
-      <PickerOne status = {responsesStatus}  ref={interRef} responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
+      <PickerOne nowValue = {nowValue}  responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
 
       <PickerTwo myAdsArray={myAdsArray} setSecondPage = {setSecondPage} setSliderAcitve = {setSliderAcitve} deleteFunction = {deleteFunction} />
 

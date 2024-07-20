@@ -1,12 +1,15 @@
 import React, { memo } from 'react';
 import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 import MyFirstBlock from '../../../components/MyAds/MyFirstBlock';
+import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
+import LazyLoad from 'react-lazy-load';
 
 const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunction}) => {
     return (
         <div className="AdsContainer">
           {myAdsArray.map((e, i) => {
             return (
+              <LazyLoad height={176.66} offset = {100} >
               <div
                 key={i}
                 className="block"
@@ -31,6 +34,7 @@ const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunctio
                   {...e}
                 />
               </div>
+              </LazyLoad>
             );
           })}
         </div>
