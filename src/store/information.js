@@ -4,7 +4,26 @@ import axios from 'axios';
 import makeNewFile from "../functions/newMakeFile";
 
 
+export const addWatch = createAsyncThunk(
+  "information/addWatch" , 
+  async function(advertisement){
+    console.log(advertisement)
+    try{
+      let myData = new FormData()
+      myData.append("views" , advertisement.viewsNumber + 1) 
+      await axios.put("https://back-birga.ywa.su/advertisement" , myData, {
+        params : {
+          id : String(advertisement.id)
+        }
+      })
 
+    }
+    catch(e){
+      alert(e)
+      console.warn(e)
+    }
+  }
+)
 export const deleteAd = createAsyncThunk(
   "information/deleteMyAd" , 
   async function(id){
@@ -129,7 +148,7 @@ export const  postMyTask = createAsyncThunk(
         rate : '5',
         isActive : true ,
         creationTime : b.data.createdAt,
-        viewsNumber : 50,
+        viewsNumber : b.data.views,
         status : "active"
       }
       return localTask

@@ -36,6 +36,9 @@
     font-size: 14px;
     line-height: 120%;
     color: #95979e;
+
+    gap: calc(35px * 0.4767);
+
 }
 .AllTasks{  
     display: flex;
@@ -94,6 +97,9 @@
   display: flex;
   flex-direction: column;
   gap: calc(8px);
+  border-radius: 10px;
+  overflow: scroll;
+  min-height: calc(100vh - 65px);
 }
 
 .First__block {
