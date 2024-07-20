@@ -12,7 +12,10 @@ const FirstDetails = ({  orderInformation , className , end = false, ...props}) 
     console.log('рендер детаилса')
     const disatch = useDispatch()
     useEffect( () => {
-        disatch(addWatch(orderInformation))
+        if (!end){
+
+            disatch(addWatch(orderInformation))
+        }
     } , [] )
 
     return (
