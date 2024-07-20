@@ -312,7 +312,7 @@ const forwardFunction = useCallback(() => {
         "about" : me.profile.about,
         "stage" : me.profile.stage,
       }
-      dispatch(addResponse([im.data , gibrid]))  
+      dispatch(addResponse([myFormData, gibrid]))  
     } catch (e) {
       alert("ничего не вышло");
       console.warn(e);

@@ -41,6 +41,7 @@ const PickerContent = ({
   );
 
   const responsesArr = useSelector((state) => state.responses.responses);
+  console.log(responsesArr)
   const [myResponse, setMyResponse] = useState({
     isOpen: false,
     id: 0,
