@@ -29,7 +29,6 @@ const FirstBlock = ({
   setSlideActive,
    tonValue,
    task,
-   viewsNumber,
    agree = false
    
 
@@ -88,7 +87,7 @@ const FirstBlock = ({
               <p className="myAds__top-left">Активно</p>
               <div className="myAds__top-right">
                 <div className="one">
-                  <p>{viewsNumber}</p>
+                  <p>0</p>
                   <svg
                     width="16"
                     height="13"

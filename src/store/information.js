@@ -10,11 +10,11 @@ export const addWatch = createAsyncThunk(
     console.log(advertisement)
     try{
       let myData = new FormData()
-      myData.append("views" , advertisement.viewsNumber + 1) 
+      myData.append("views" , String(Number(advertisement.viewsNumber) + 1)) 
       await axios.put("https://back-birga.ywa.su/advertisement" , myData, {
         params : {
           id : String(advertisement.id)
-        }
+        } 
       })
 
     }

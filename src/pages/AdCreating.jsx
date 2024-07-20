@@ -171,6 +171,7 @@ const AdCreating = () => {
     myFormData.append("title", el.taskName);
     myFormData.append("description", el.taskDescription);
     myFormData.append("deadline", 1);
+    myFormData.append("views", 0);
     myFormData.append("category", el.category.id);
     myFormData.append("subCategory", el.subCategory.id);
     myFormData.append("price", el.tonValue);
