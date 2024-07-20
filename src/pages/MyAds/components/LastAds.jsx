@@ -25,7 +25,7 @@ const LastAds = ({
     [dispatch]
   );
   useEffect( () => {
-    if (responce.isWatched !== "watched"){
+    if (responce.isWatched !== "watched" && responce.isWatched !== "inProcess"){
       dispatch(postResponse(responce.id))
     }
   } , [] )
