@@ -20,6 +20,25 @@ export const setStartResponse = createAsyncThunk(
         }
     }
 )
+export const addResponse = createAsyncThunk(
+    "addResponse" , 
+    async function (par){
+        try{
+
+            await axios.post("https://back-birga.ywa.su/response" , par[0], {
+                params : {
+                    advertisementId : par[1].advertisement.id,
+                    userId : par[1].user.id
+                }
+            })
+            return par[1]
+        }
+        catch(e){
+            alert(e)
+        }
+        
+    }
+)
 export const postResponse = createAsyncThunk(
     "postResponse" , 
     async function(id){
@@ -47,13 +66,11 @@ export const fetchResponses = createAsyncThunk(
         let im = await axios.get('https://back-birga.ywa.su/response/findByUser' , {
             params : {
                 "userId" : 2144832745,
-                "page" : par[1],
-                "limit" : 6
             }
         })
         let localResponses = im.data
 
-        let me = par[0]
+        let me = par
         
 
         for (let i = 0; i < localResponses.length; i++){

@@ -13,8 +13,8 @@ import SliderMain from "../../components/UI/Swiper/SliderMain";
 import { CSSTransition } from "react-transition-group";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import axios from "axios";
-import { addResponce } from "../../store/information";
 import pagesHistory from "../../constants/pagesHistory";
+import { addResponse } from "../../store/responses";
 
 let isDetailsActiveVar = false;
 let localResponce;
@@ -271,6 +271,8 @@ const First = () => {
     }
 } , [responce.text, step]) 
 
+const me = useSelector(state => state.telegramUserInfo)
+
 const forwardFunction = useCallback(() => {
   async function postResponce(advertismetId, userId) {
        
@@ -300,7 +302,17 @@ const forwardFunction = useCallback(() => {
           "text" : '📣 Вы получили отклик на задачу "' + ordersInformation[isDetailsActive.id].taskName.bold() + '" от' +  im.data.user.fl 
         }
       })
-      dispatch(addResponce([ordersInformation[isDetailsActive.id].id , im.data]))  
+      let gibrid = {...responce}
+      gibrid.advertisement = ordersInformation[isDetailsActive.id].id
+      gibrid.user = {
+        "id" : me.id,
+        "fl" : me.firstName,
+        "link" : me.link,
+        "photo" : me.photo,
+        "about" : me.profile.about,
+        "stage" : me.profile.stage,
+      }
+      dispatch(addResponse([im.data , gibrid]))  
     } catch (e) {
       alert("ничего не вышло");
       console.warn(e);

@@ -30,6 +30,7 @@ const ResponseBlock = ({
   id,
 index ,
 isWatched,
+...props
 
 
 }) => {
@@ -71,9 +72,7 @@ isWatched,
     <>
       {photos !== undefined ? (
         <div
-        style={{
-          marginRight : "8px"
-        }}
+        {...props}
           className={
             className ? ["First__block", className].join(" ") : "First__block"
           }

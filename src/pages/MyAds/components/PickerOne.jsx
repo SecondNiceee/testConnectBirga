@@ -27,36 +27,36 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction, nowValue} , ref) =>
     const responsesStatus = useSelector(state => state.responses.status)
   
   
-    useEffect( () => {
-      if (nowValue === "freelancer"){
-        dispatch(clearResponses())
-        dispatch(fetchResponses([me,1]))
-      }
-    } , [nowValue] )
+  //   useEffect( () => {
+  //     if (nowValue === "freelancer"){
+  //       dispatch(clearResponses())
+  //       dispatch(fetchResponses([me,1]))
+  //     }
+  //   } , [nowValue] )
   
-    const  getMore = useCallback( async () => {
-      dispatch(fetchResponses([me,page]))
-      setPage(page + 1)
-  }, [page, setPage , dispatch] )
+  //   const  getMore = useCallback( async () => {
+  //     dispatch(fetchResponses([me,page]))
+  //     setPage(page + 1)
+  // }, [page, setPage , dispatch] )
   
-  const onIntersaction = useCallback( (entries) => {
-      const firtEntry = entries[0]
-      if (firtEntry.isIntersecting && responsesStatus !== 'all' && responsesStatus !== 'pending'){
-        getMore()
-      } 
-  }, [responsesStatus, getMore] )
+  // const onIntersaction = useCallback( (entries) => {
+  //     const firtEntry = entries[0]
+  //     if (firtEntry.isIntersecting && responsesStatus !== 'all' && responsesStatus !== 'pending'){
+  //       getMore()
+  //     } 
+  // }, [responsesStatus, getMore] )
   
   
   
-    useEffect( () => {
-      const observer = new IntersectionObserver(onIntersaction)
-      if (observer && interRef.current){
-        observer.observe(interRef.current)
-      }
-      return () => {
-        observer.disconnect()
-      }
-    } , [responsesArr])
+  //   useEffect( () => {
+  //     const observer = new IntersectionObserver(onIntersaction)
+  //     if (observer && interRef.current){
+  //       observer.observe(interRef.current)
+  //     }
+  //     return () => {
+  //       observer.disconnect()
+  //     }
+  //   } , [responsesArr])
   
 
     return (

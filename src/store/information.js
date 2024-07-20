@@ -332,7 +332,8 @@ export const fetchTasksInformation = createAsyncThunk(
                 creationTime : order.createdAt,
                 viewsNumber : order.views,
                 responces : order.responses,
-                status : order.status
+                status : order.status,
+                user :  order.user
                 
               })
             }
@@ -396,7 +397,7 @@ const information = createSlice( {
         },
         changeTaskInformation(state , action) {
             
-            state.taskInformation = action.payload
+            state.taskInformation = action.payload 
         },
         changeMyAds(state, action) {
           state.myAdsArray = action.payload
