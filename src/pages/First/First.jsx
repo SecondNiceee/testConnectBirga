@@ -303,7 +303,7 @@ const forwardFunction = useCallback(() => {
         }
       })
       let gibrid = {...responce}
-      gibrid.advertisement = ordersInformation[isDetailsActive.id].id
+      gibrid.advertisement = ordersInformation[isDetailsActive.id]
       gibrid.user = {
         "id" : me.id,
         "fl" : me.firstName,

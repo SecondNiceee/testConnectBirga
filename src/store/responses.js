@@ -34,6 +34,7 @@ export const addResponse = createAsyncThunk(
             return par[1]
         }
         catch(e){
+            console.log(e)
             alert(e)
         }
         
