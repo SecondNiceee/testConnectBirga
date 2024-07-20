@@ -158,8 +158,8 @@ const responses = createSlice({
         }
     },
     extraReducers : builder => {
-        builder.addCase(addResponse.fulfilled, ( (state , response) => {
-            state.responses.push(response)
+        builder.addCase(addResponse.fulfilled, ( (state , action) => {
+            state.responses.push(action.payload)
         }))
         builder.addCase(fetchResponses.pending , ((state , action) => {
             state.status = "pending"
