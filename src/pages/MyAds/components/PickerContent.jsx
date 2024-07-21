@@ -44,7 +44,7 @@ const PickerContent = ({
 
   const filteredResponses = useMemo( () => {
       return responsesArr.sort((a,b) => {
-        let order = {"inProcess" : 1 , "watched" : 2 , "" : 3, "completed" :}
+        let order = {"inProcess" : 1 , "watched" : 2 , "" : 3, "completed" : 4}
         return order[a.isWatched] - order[b.isWatched]
       })
   } , [responsesArr] )
