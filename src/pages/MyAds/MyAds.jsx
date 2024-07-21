@@ -71,7 +71,8 @@ const MyAds = () => {
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
 
   const filteredArray = useMemo( () => {
-    return myAdsArray.sort( (a , b) => {
+    let copy = [...myAdsArray]
+    return copy.sort( (a , b) => {
       let order = {"inProcess" : 0 , "active" : 1, "completed" : 2 }
       return order[a.status] - order[b.status]
     } )

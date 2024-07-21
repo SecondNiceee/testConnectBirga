@@ -43,7 +43,8 @@ const PickerContent = ({
   const responsesArr = useSelector((state) => state.responses.responses);
 
   const filteredResponses = useMemo( () => {
-      return responsesArr.sort((a,b) => {
+    let copy = [...responsesArr]
+      return copy.sort((a,b) => {
         let order = {"inProcess" : 1 , "watched" : 2 , "" : 3, "completed" : 4}
         return order[a.isWatched] - order[b.isWatched]
       })
