@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 // import myImage from '../../images/desccription.png'
 import { useDispatch, useSelector } from "react-redux";
@@ -69,6 +69,15 @@ const MyAds = () => {
   detailsVar = details;
   
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
+
+  const filteredArray = useMemo( () => {
+    return myAdsArray.sort( (a , b) => {
+      let order = {"inProcess" : 0 , "active" : 1, "completed" : 2 }
+      return order[a.status] - order[b.status]
+    } )
+  } , [myAdsArray] )
+
+  console.log(filteredArray)
   
   
   const [secondPage, setSecondPage] = useState({
@@ -248,7 +257,7 @@ const MyAds = () => {
           <MyAdOne
             
             setSliderActive = {setSliderActive}
-            myAdsArray={myAdsArray}
+            myAdsArray={filteredArray}
             setSecondPage={setSecondPage}
             setDetails={setDetails}
             setMenuActive={setMenuActive}

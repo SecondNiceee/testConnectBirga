@@ -68,6 +68,8 @@ isWatched,
       }
   } , [isWatched] )
 
+  console.log(isWatched)
+
   return (
     <>
       {photos !== undefined ? (

@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { deleteAd } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
@@ -41,6 +41,14 @@ const PickerContent = ({
   );
 
   const responsesArr = useSelector((state) => state.responses.responses);
+
+  const filteredResponses = useMemo( () => {
+      return responsesArr.sort((a,b) => {
+        let order = {"inProcess" : 1 , "watched" : 2 , "" : 3, "completed" :}
+        return order[a.isWatched] - order[b.isWatched]
+      })
+  } , [responsesArr] )
+  
   console.log(responsesArr)
   const [myResponse, setMyResponse] = useState({
     isOpen: false,
@@ -96,7 +104,7 @@ const PickerContent = ({
     >
       
 
-      <PickerOne nowValue = {nowValue}  responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
+      <PickerOne nowValue = {nowValue}  responsesArr = {filteredResponses} buttonFunction = {buttonFunction} />
 
       <PickerTwo myAdsArray={myAdsArray} setSecondPage = {setSecondPage} setSliderAcitve = {setSliderAcitve} deleteFunction = {deleteFunction} />
 

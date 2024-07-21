@@ -12,6 +12,7 @@ const FirstMain = ({ ordersInformation, setDetailsActive , setSliderActive, ...p
         <h1 className="EmptyText"> Нет таких предложений </h1>
       ) : (
         ordersInformation.map((e,i) => {
+
           return <FirstBlock 
           
           setSlideActive={setSliderActive}

@@ -11,7 +11,7 @@ const ShowMyResponse = ({response , openDetails, index}) => {
     return (
         <div className={cl.wrapper}>
             <Top  name={"Мой отклик"}  />
-            <ResponseBlock index={index} func={openDetails} className={cl.response} buttonText={"Подробнее"} {...response.advertisement} task={response.advertisement}   />
+            <ResponseBlock isWatched={response.isWatched} index={index} func={openDetails} className={cl.response} buttonText={"Подробнее"} {...response.advertisement} task={response.advertisement}   />
             <MyReaction responce={response} />
             <Customer fl={response.advertisement.user.fl} photo={response.advertisement.user.photo} link={response.advertisement.user.link}  />
             <p className={cl.dateObject}>Создано { formatDate(new Date(response.advertisement.creationTime))}</p>
