@@ -191,6 +191,8 @@ const AdCreating = () => {
       }
     }
 
+    dispatch(postMyTask([myFormData, el.photos]));
+
 
     
     //   let state = await axios.post(
