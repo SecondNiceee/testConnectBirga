@@ -23,7 +23,11 @@ export const useButton = ({
   secondPage,
   save,
   oneCards,
-  setOneCard
+  setOneCard,
+  detailsTwo,
+  setDetailsTwo,
+  myResponse,
+  setMyResponse
 
 }) => {
   const history = useLocation()
@@ -90,7 +94,20 @@ export const useButton = ({
                   // else{
                   //   navigate(-1)
                   // }
-                  navigate('/')
+                  if (myResponse.isOpen){
+                    setMyResponse( (value) => ({...value, isOpen : false}) )
+                  }
+                  else{
+                    
+                    if (detailsTwo.isOpen){
+                      setDetailsTwo((value) => ({...value, isOpen : false}))
+                    }
+                    else{
+                      navigate('/')
+                    }
+
+                  }
+
                 }
               }
             } else {
@@ -138,7 +155,11 @@ export const useButton = ({
     navigate,
     save,
     setOneCard,
-    oneCards.isOpen
+    oneCards.isOpen,
+    detailsTwo.isOpen,
+    setDetailsTwo,
+    myResponse.isOpen,
+    setMyResponse
   ]);
 };
 

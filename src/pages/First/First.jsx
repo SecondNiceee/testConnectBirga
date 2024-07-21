@@ -15,6 +15,7 @@ import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import axios from "axios";
 import pagesHistory from "../../constants/pagesHistory";
 import { addResponse } from "../../store/responses";
+import { useFilteredArr } from "../../hooks/useFilteredArr";
 
 let isDetailsActiveVar = false;
 let localResponce;
@@ -273,6 +274,10 @@ const First = () => {
 
 const me = useSelector(state => state.telegramUserInfo)
 
+const [filterBy, setFilterBy] = useState("");
+
+const filteredArr = useFilteredArr(ordersInformation, filterBy);
+
 const forwardFunction = useCallback(() => {
   async function postResponce(advertismetId, userId) {
        
@@ -318,7 +323,9 @@ const forwardFunction = useCallback(() => {
       alert("ничего не вышло");
       console.warn(e);
     } 
+  
   }
+
 
 
   if (step !== 0 && !responce.shablonMaker){
@@ -373,8 +380,10 @@ useEffect(() => {
           ДАЛЕЕ
         </button> */}
         <AllTasks
+        filterBy = {filterBy}
+        setFilterBy = {setFilterBy}
           setSliderActive = {setSliderActive}
-
+          ordersInformation={filteredArr}
           setDetailsActive={setDetailsActive}
           setMenuActive={setMenuActive}
         />
@@ -384,7 +393,7 @@ useEffect(() => {
           responce = {responce}
           setResponce = {setResponce}
 
-          orderInformation={ordersInformation[isDetailsActive.id] ? ordersInformation[isDetailsActive.id] : "he"}
+          orderInformation={filteredArr[isDetailsActive.id] ? filteredArr[isDetailsActive.id] : "he"}
         />
         // <>
         // </>

@@ -9,7 +9,7 @@ const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunctio
         <div className="AdsContainer">
           {myAdsArray.map((e, i) => {
             return (
-              <LazyLoad height={176.66} offset = {100} >
+              <LazyLoad height={176.66} threshold={0.01}  >
               <div
                 key={i}
                 className="block"

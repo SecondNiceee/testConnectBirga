@@ -14,6 +14,13 @@ const PickerContent = ({
   nowValue,
   setSecondPage,
   setSliderAcitve,
+  valueTwo,
+  valueOne,
+  myResponse,
+  setMyResponse,
+  details,
+  setDetails,
+  responsesArr
 }) => {
   const dispatch = useDispatch();
   console.log("рендер ферста");
@@ -40,25 +47,9 @@ const PickerContent = ({
     [dispatch]
   );
 
-  const responsesArr = useSelector((state) => state.responses.responses);
 
-  const filteredResponses = useMemo( () => {
-    let copy = [...responsesArr]
-      return copy.sort((a,b) => {
-        let order = {"inProcess" : 1 , "watched" : 2 , "" : 3, "completed" : 4}
-        return order[a.isWatched] - order[b.isWatched]
-      })
-  } , [responsesArr] )
   
   console.log(responsesArr)
-  const [myResponse, setMyResponse] = useState({
-    isOpen: false,
-    id: 0,
-  });
-  const [details, setDetails] = useState({
-    isOpen : false,
-    id : 0
-  })
 
   const buttonFunction = useCallback( (index) => {
       setMyResponse({isOpen : true , id : index})
@@ -87,9 +78,38 @@ const PickerContent = ({
   
   } , [myResponse.isOpen, details.isOpen] )
 
-  const openDetails = useCallback( (index) => {
-    setDetails({isOpen : true, id : index})
-  } , [] )
+
+
+  const containerOne = useRef(null)
+  const containerTwo = useRef(null)
+  
+  useEffect( () => {
+    const MainContainer = document.documentElement.querySelector(".my-ad-one")
+    const containerHeight = Math.min(containerOne.current.offsetHeight , containerTwo.current.offsetHeight)
+    const a = containerHeight + 253 - window.innerHeight
+    const clickFunction = () => {
+      if (containerOne.current.offsetHeight < containerTwo.current.offsetHeight){
+        if (nowValue === "freelancer"){
+          if (MainContainer.scrollTop > a){
+            MainContainer.scrollTop = a
+          }
+        }
+      }
+      else{
+        if (nowValue === "customer"){
+          if (MainContainer.scrollTop > a){
+            MainContainer.scrollTop = a
+          }
+        }
+      }
+    }
+    MainContainer.addEventListener("scroll" , clickFunction)
+    return () => {
+      MainContainer.removeEventListener("scroll" , clickFunction)
+    }
+  }  , [nowValue, responsesArr, myAdsArray] )
+  
+
 
 
 
@@ -105,40 +125,11 @@ const PickerContent = ({
     >
       
 
-      <PickerOne nowValue = {nowValue}  responsesArr = {filteredResponses} buttonFunction = {buttonFunction} />
+      <PickerOne ref={containerOne} oneValue = {valueOne} nowValue = {nowValue}  responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
 
-      <PickerTwo myAdsArray={myAdsArray} setSecondPage = {setSecondPage} setSliderAcitve = {setSliderAcitve} deleteFunction = {deleteFunction} />
-
-      <CSSTransition
-        in={myResponse.isOpen}
-        timeout={400}
-        classNames={"left-right"}
-        unmountOnExit
-        mountOnEnter
-  
-      >
-        <ShowMyResponse index={myResponse.id} openDetails = {openDetails} response={responsesArr[myResponse.id]} />
-      </CSSTransition>
+      <PickerTwo ref={containerTwo} valueTwo = {valueTwo} myAdsArray={myAdsArray} setSecondPage = {setSecondPage} setSliderAcitve = {setSliderAcitve} deleteFunction = {deleteFunction} />
 
 
-      <CSSTransition
-            in={details.isOpen}
-            timeout={400}
-            classNames="left-right"
-            mountOnEnter
-            unmountOnExit
-          >
-            <FirstDetails
-              style = {{
-                left : "-16px",
-                top : "-248px",
-                width : "100vw"
-              }}
-              // className={}
-              orderInformation={responsesArr[details.id] ? responsesArr[details.id].advertisement : ""  }
-
-            />
-        </CSSTransition>
 
 
 

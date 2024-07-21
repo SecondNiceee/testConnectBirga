@@ -113,6 +113,7 @@
     margin-top: 7.67px;
 }
 .YourAds{
+    align-items: center;
     margin-top: 30px;
     display: flex;
     justify-content: space-between;
@@ -240,6 +241,7 @@
 }
 
 .PickerContent{
+    position: static;
     min-width: calc(200vw);
     display: flex;
     gap: 16px;

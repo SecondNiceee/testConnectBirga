@@ -21,6 +21,8 @@ import { useButton } from "../../hooks/MyAds/useButton";
 import { useSave } from "../../hooks/MyAds/useSave";
 import pagesHistory from "../../constants/pagesHistory";
 import CardPage from "../CardPage/CardPage";
+import ShowMyResponse from "../../components/MyAds/ShowMyResponse/ShowMyResponse";
+import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -34,6 +36,44 @@ let localIsOpen;
 let localDetails;
 let detailsVar;
 const MyAds = () => {
+
+
+
+  
+  const [valueOne , setValueOne] = useState("all")
+
+  const [valueTwo , setValueTwo] = useState("all")
+
+
+
+  const responsesArr = useSelector((state) => state.responses.responses);
+
+  const sortedResponses = useMemo( () => {
+    let copy = [...responsesArr]
+      return copy.sort((a,b) => {
+        let order = {"inProcess" : 1 , "watched" : 2 , "" : 3, "completed" : 4}
+        return order[a.isWatched] - order[b.isWatched]
+      })
+  } , [responsesArr] )
+
+  const filteredResponses = useMemo( () => {
+    switch (valueOne){
+      case "all":
+        return sortedResponses
+      case "inProcess":
+        return sortedResponses.filter(e => e.isWatched === "inProcess")
+      case "watched": 
+        return sortedResponses.filter(e => e.isWatched === "watched")
+      case "unWatched":
+        return sortedResponses.filter(e => e.isWatched === "")
+      case "completed":
+        return sortedResponses.filter(e => e.isWatched === "completed")
+    }
+  } , [sortedResponses , valueOne]  )
+
+
+
+
   const isMenuActive = useSelector((state) => state.menu.value);
 
   useEffect( () => {
@@ -49,6 +89,8 @@ const MyAds = () => {
     },
     [dispatch]
   );
+  
+
 
   const [details, setDetails] = useState({
     isActive: false,
@@ -70,15 +112,7 @@ const MyAds = () => {
   
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
 
-  const filteredArray = useMemo( () => {
-    let copy = [...myAdsArray]
-    return copy.sort( (a , b) => {
-      let order = {"inProcess" : 0 , "active" : 1, "completed" : 2 }
-      return order[a.status] - order[b.status]
-    } )
-  } , [myAdsArray] )
 
-  console.log(filteredArray)
   
   
   const [secondPage, setSecondPage] = useState({
@@ -179,7 +213,26 @@ const MyAds = () => {
   })// функция сохранения , а также модалка телеграма
 
 
+
+  const [myResponse, setMyResponse] = useState({
+    isOpen: false,
+    id: 0,
+  });
+  const [detailsTwo, setDetailsTwo] = useState({
+    isOpen : false,
+    id : 0
+  })
+
+  const openDetails = useCallback( (index) => {
+    setDetailsTwo({isOpen : true, id : index})
+  } , [] )
+
+
   useButton({
+    setMyResponse : setMyResponse,
+    myResponse : myResponse,
+    setDetailsTwo : setDetailsTwo,
+    detailsTwo : detailsTwo, 
     oneCards : oneCards,
     sliderActive : sliderActive,
     localDetails : localDetails,
@@ -226,6 +279,41 @@ const MyAds = () => {
   const setChangingTask = useCallback( (e) => {
     setDetails( (value) =>  ({...value , task : e}))
   }, [setDetails] ) 
+  const [nowValue , setNowKey] = useState('customer')
+
+
+
+  const sortedArray = useMemo( () => {
+    let copy = [...myAdsArray]
+
+      return copy.sort( (a , b) => {
+        let order = {"inProcess" : 0 , "active" : 1, "completed" : 2 }
+        return order[a.status] - order[b.status]
+      } )
+    
+  } , [myAdsArray , nowValue] )
+
+  const filteredArray = useMemo( () => {
+    switch (valueTwo){
+      case "all":
+        return sortedArray
+      case "active":
+        return sortedArray.filter((e, i) => {
+          return e.status === "active"
+        })
+      case "inProcess":
+        return sortedArray.filter(e => e.status === "inProcess")
+      case "completed":
+        return sortedArray.filter(e => e.status === "completed")
+    }
+  } , [sortedArray , valueTwo] )
+
+  
+
+
+  
+
+
 
 
 
@@ -256,11 +344,20 @@ const MyAds = () => {
 
 
           <MyAdOne
-            
+          responsesArr = {filteredResponses}
+          myResponse = {myResponse}
+          setMyResponse = {setMyResponse}
+          details = {detailsTwo}
+            setOneValue = {setValueOne}
+            setTwoValue = {setValueTwo}
+            nowValue={nowValue}
+            valueTwo={valueTwo}
+            valueOne = {valueOne}
+            setNowKey={setNowKey}
             setSliderActive = {setSliderActive}
             myAdsArray={filteredArray}
             setSecondPage={setSecondPage}
-            setDetails={setDetails}
+            setDetails={setDetailsTwo}
             setMenuActive={setMenuActive}
           />
 
@@ -292,7 +389,7 @@ const MyAds = () => {
             setDetails={setDetails}
               setSecondPage={setSecondPage}
               setOpen={setOpen}
-              task={myAdsArray[secondPage.index]}
+              task={filteredArray[secondPage.index]}
               setMenuActive={setMenuActive}
               openAboutReactionFunc={setOpenAboutReaction}
             />
@@ -334,6 +431,38 @@ const MyAds = () => {
           >
             <AboutReaction setOneCard = {setOneCard} setSliderActive={setSliderActive} responce = {openAboutReaction.responce}   />
           </CSSTransition>
+
+
+
+          <CSSTransition
+        in={myResponse.isOpen}
+        timeout={400}
+        classNames={"left-right"}
+        unmountOnExit
+        mountOnEnter
+  
+      >
+        <ShowMyResponse index={myResponse.id} openDetails = {openDetails} response={responsesArr[myResponse.id]} />
+      </CSSTransition>
+
+
+      <CSSTransition
+            in={detailsTwo.isOpen}
+            timeout={400}
+            classNames="left-right"
+            mountOnEnter
+            unmountOnExit
+          >
+            <FirstDetails
+              // className={}
+              orderInformation={responsesArr[detailsTwo.id] ? responsesArr[detailsTwo.id].advertisement : ""  }
+
+            />
+        </CSSTransition>
+
+
+
+
           <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
         </motion.div>
       )}

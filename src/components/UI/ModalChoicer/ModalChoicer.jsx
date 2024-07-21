@@ -20,16 +20,16 @@ const Select = React.forwardRef(function Select(props, ref) {
   return <BaseSelect {...props} ref={ref} slots={slots} />;
 });
 
-export default function ModalChoicer({values, className, names, setValue, defaultValue}) {
+export default function ModalChoicer({values, className, names, setValue, defaultValue , ...props}) {
 
   return (
 
-    <Select className = {className} onChange = {(...newValue) => {
+    <Select {...props} className = {className} onChange = {(...newValue) => {
         setValue(newValue[1])
     }}  defaultValue={defaultValue} >
         {values.map((e , i) => {
             return (
-                <Option key={i} value={e}>{names[i]}</Option>
+                <Option  key={i} value={e}>{names[i]}</Option>
             )
         })}
     </Select>
@@ -83,6 +83,7 @@ const StyledButton = styled('button', { shouldForwardProp: () => true })(
     align-items : center;
     display : flex;
     gap : 7px;
+    padding : 0px;
     font-family: "SF Pro Display 400";
     font-weight: 400;
     font-size: 16px;

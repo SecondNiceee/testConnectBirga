@@ -9,7 +9,10 @@ import { changeStatus, fetchTasksInformation } from "../../store/information";
 const AllTasks = ({
   setDetailsActive,
   setMenuActive,
-  setSliderActive
+  setSliderActive,
+  ordersInformation,
+  filterBy,
+  setFilterBy
 }) => {
   // count += 1
   // console.warn('РЕНДЕР' + count )
@@ -27,10 +30,6 @@ const AllTasks = ({
 
   
 
-
-  const ordersInformation = useSelector(
-    (state) => state.information.orderInformations
-  );
   // const orderStatus = useSelector((state) => state.information.orderStatus);
 
   const  getMore = useCallback( async () => {
@@ -78,9 +77,9 @@ const AllTasks = ({
 
 
 
-  const [filterBy, setFilterBy] = useState("");
 
-  const filteredArr = useFilteredArr(ordersInformation, filterBy);
+
+
   const userInfo = useSelector((state) => state.telegramUserInfo);
 
 
@@ -102,7 +101,7 @@ const AllTasks = ({
           <FirstMain
             // style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
             setDetailsActive={setDetailsActive}
-            ordersInformation={filteredArr}
+            ordersInformation={ordersInformation}
             setSliderActive = {setSliderActive}
           />
 

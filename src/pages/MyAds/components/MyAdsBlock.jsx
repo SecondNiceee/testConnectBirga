@@ -1,10 +1,10 @@
-import React from "react";
+import React, { memo } from "react";
 import upDown from "../../../images/icons/UpDown.svg";
 import FullPicker from "../../../components/UI/FullPicker/FullPicker";
+import ModalChoicer from "../../../components/UI/ModalChoicer/ModalChoicer";
 const values = ["Я исполнитель", "Я заказчик"];
 const keys = ["freelancer", "customer"];
-const MyAdsBlock = ({deals , nowValue, setNowKey, finishedDeals , greyWidth , greyIntWidth }) => {
-
+const MyAdsBlock = ({deals , nowValue, setNowKey, finishedDeals , greyWidth , greyIntWidth, setOneValue, setTwoValue  }) => {
 
 
   return (
@@ -21,10 +21,10 @@ const MyAdsBlock = ({deals , nowValue, setNowKey, finishedDeals , greyWidth , gr
       </div>
       <div className="YourAds">
         <p>Ваши объявления</p>
-        <div className="sortBy">
-          <p className="sortByPar">Активный</p>
-          <img className="upDown" src={upDown} alt="" />
-        </div>
+        <ModalChoicer style = {nowValue === "customer" ? {display : "none"} : {}} values={["all" , "inProcess" , "watched" , "unWatched", "completed"]} names={["Все", "В работе", "Просмотренные", "Непросмотренные", "Завершенные"]} setValue={setOneValue} defaultValue={"all"} />
+        
+        <ModalChoicer style = {nowValue === "customer" ? {} : {display : "none"}} values={["all" , "active", "inProcess" , "completed"]} names={["Все" , "Активные" , "В работе" , "Завершенные"]} setValue={setTwoValue} defaultValue={"all"} />
+        
       </div>
       <div className="pick">
         <FullPicker
@@ -41,4 +41,4 @@ const MyAdsBlock = ({deals , nowValue, setNowKey, finishedDeals , greyWidth , gr
   );
 };
 
-export default MyAdsBlock;
+export default memo(MyAdsBlock);
