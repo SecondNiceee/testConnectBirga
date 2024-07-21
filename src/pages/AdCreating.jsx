@@ -191,24 +191,7 @@ const AdCreating = () => {
       }
     }
 
-    window.Telegram.WebApp.showPopup({
-      title: "Создать?",
-      message: `За создание бессмысленных заданий вы будете забанены. \nСоздать задание?`,
-      buttons: [
-        { id: "save", type: "default", text: "Да" },
-        { id: "delete", type: "destructive", text: "Нет" },
-      ],
-    } , (buttonId) => {
 
-      if (buttonId === "delete" || buttonId === null) {
-        
-      }
-      if (buttonId === "save") {
-        dispatch(postMyTask([myFormData, el.photos]));
-      }
-
-
-    } )
     
     //   let state = await axios.post(
     //   "https://back-birga.ywa.su/advertisement",
@@ -314,7 +297,22 @@ const AdCreating = () => {
           MainButton.setText("ДАЛЕЕ");
         }
         if (spet === 3){
-          finish();
+          window.Telegram.WebApp.showPopup({
+            title: "Создать?",
+            message: `За создание бессмысленных заданий вы будете забанены. \nСоздать задание?`,
+            buttons: [
+              { id: "save", type: "default", text: "Да" },
+              { id: "delete", type: "destructive", text: "Нет" },
+            ],
+          } , (buttonId) => {
+      
+            if (buttonId === "delete" || buttonId === null) {
+              
+            }
+            if (buttonId === "save") {
+              finish();
+            }
+          } )
         }
       
     }

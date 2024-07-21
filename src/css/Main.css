@@ -127,6 +127,7 @@
 }
 
 .FirstMain {
+  width: calc(100vw - 32px);
   margin-top: 18.33px;
   display: -webkit-box;
   display: -ms-flexbox;

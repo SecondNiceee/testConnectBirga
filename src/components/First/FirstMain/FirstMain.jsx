@@ -3,7 +3,7 @@ import FirstBlock from "./FirstBlock";
 import {  useSelector } from "react-redux";
 import MyLoader from "../../UI/MyLoader/MyLoader";
 
-const FirstMain = forwardRef(({ ordersInformation, setDetailsActive , setSliderActive, ...props}, ref) => {
+const FirstMain = forwardRef(({ ordersInformation, setDetailsActive , setSliderActive, orderStatus, ...props}, ref) => {
   const watchedArr = useSelector(state => state.watchedAds.watchedAds)
 
   return (
@@ -23,14 +23,14 @@ const FirstMain = forwardRef(({ ordersInformation, setDetailsActive , setSliderA
         })
       )}
 
-<MyLoader ref={ref}    className="block" style={
+        {orderStatus !== "all" && <MyLoader ref={ref}    className="block" style={
               {
                 bottom : "50px",
                 transform : "translateX(-16px)",
                 width : "100vw",
                 height : "300px"
               }
-            }></MyLoader>
+            }></MyLoader> }  
 
     </div>
   );
