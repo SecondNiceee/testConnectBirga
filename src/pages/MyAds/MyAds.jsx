@@ -133,9 +133,9 @@ const MyAds = () => {
 
 
     useEffect( () => {
-      document.documentElement.style.marginTop = '15px'
+      document.documentElement.style.marginTop = '20px'
       window.scrollTo({
-        top: 15,
+        top: 20,
         behavior: "auto",
       });
       document.documentElement.style.overflowY = 'hidden'
@@ -143,7 +143,7 @@ const MyAds = () => {
       document.documentElement.style.overflowY = 'unset'
       document.documentElement.style.marginTop = '15px'
       window.scrollTo({
-        top: 15,
+        top: 20,
         behavior: "auto",
       });
 

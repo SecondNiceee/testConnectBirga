@@ -10,9 +10,6 @@ const MyResponses = forwardRef( ({responsesArr, buttonFunction} , ref) => {
       {responsesArr.map((e, i) => {
         return (
           <ResponseBlock
-            style = { {
-              marginRight : "8px"
-            }}
             func={buttonFunction}
             index={i}
             buttonText={"МОЙ ОТКЛИК"}
