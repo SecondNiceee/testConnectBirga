@@ -86,7 +86,7 @@ const PickerContent = ({
   useEffect( () => {
     const MainContainer = document.documentElement.querySelector(".my-ad-one")
     const containerHeight = Math.min(containerOne.current.offsetHeight , containerTwo.current.offsetHeight)
-    const a = containerHeight + 253 - window.innerHeight
+    const a = containerHeight + 270 - window.innerHeight
     const clickFunction = () => {
       if (containerOne.current.offsetHeight < containerTwo.current.offsetHeight){
         if (nowValue === "freelancer"){
@@ -104,7 +104,9 @@ const PickerContent = ({
       }
     }
     MainContainer.addEventListener("scroll" , clickFunction)
+    MainContainer.addEventListener("touchmove" , clickFunction)
     return () => {
+      MainContainer.removeEventListener("touchmove" , clickFunction)
       MainContainer.removeEventListener("scroll" , clickFunction)
     }
   }  , [nowValue, responsesArr, myAdsArray] )
