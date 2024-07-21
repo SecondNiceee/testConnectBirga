@@ -82,34 +82,38 @@ const PickerContent = ({
 
   const containerOne = useRef(null)
   const containerTwo = useRef(null)
+  const pickerRef = useRef(null)
   
-  // useEffect( () => {
-  //   const MainContainer = document.documentElement.querySelector(".my-ad-one")
-  //   const containerHeight = Math.min(containerOne.current.offsetHeight , containerTwo.current.offsetHeight)
-  //   const a = containerHeight + 270 - window.innerHeight
-  //   const clickFunction = () => {
-  //     if (containerOne.current.offsetHeight < containerTwo.current.offsetHeight){
-  //       if (nowValue === "freelancer"){
-  //         if (MainContainer.scrollTop > a){
-  //           MainContainer.scrollTop = a
-  //         }
-  //       }
-  //     }
-  //     else{
-  //       if (nowValue === "customer"){
-  //         if (MainContainer.scrollTop > a){
-  //           MainContainer.scrollTop = a
-  //         }
-  //       }
-  //     }
-  //   }
-  //   MainContainer.addEventListener("scroll" , clickFunction)
-  //   MainContainer.addEventListener("touchmove" , clickFunction)
-  //   return () => {
-  //     MainContainer.removeEventListener("touchmove" , clickFunction)
-  //     MainContainer.removeEventListener("scroll" , clickFunction)
-  //   }
-  // }  , [nowValue, responsesArr, myAdsArray] )
+  useEffect( () => {
+      if (containerOne.current.offsetHeight < containerTwo.current.offsetHeight){
+        if (nowValue === "freelancer"){
+          pickerRef.current.style.overflowY = "hidden"
+          pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight) + "px"
+          
+        }
+        else{
+          pickerRef.current.style.overflowY = "hidden"
+          pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight) + "px"
+        }
+      }
+      else{
+        if (nowValue === "customer"){
+            pickerRef.current.style.overflowY = "hidden"
+            pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight) + "px"
+          
+        }
+        else{
+            pickerRef.current.style.overflowY = "hidden"
+            pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight) + "px"
+        }
+      }
+
+    
+
+    return () => {
+
+    }
+  }  , [nowValue, responsesArr, myAdsArray] )
   
 
 
@@ -118,6 +122,7 @@ const PickerContent = ({
 
   return (
     <div
+    ref={pickerRef}
       className="PickerContent"
       style={
         nowValue === "customer"

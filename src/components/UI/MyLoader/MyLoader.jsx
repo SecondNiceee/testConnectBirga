@@ -1,8 +1,10 @@
 import { Triangle } from "react-loader-spinner";
 import cl from "./MyLoader.module.css"
-const MyLoader = ({...props}) => {
+import { forwardRef } from "react";
+const MyLoader = forwardRef(({...props}, ref) => {
     return (
       <div
+      ref={ref}
        {...props}
         className={cl.main}
       >
@@ -17,5 +19,5 @@ const MyLoader = ({...props}) => {
         />
       </div>
     );
-  };
+  } );
   export default MyLoader

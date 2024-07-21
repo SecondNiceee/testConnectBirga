@@ -31,6 +31,14 @@ export const addResponse = createAsyncThunk(
                     userId : par[1].user.id
                 }
             })
+
+            await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
+                params : {
+                  "chatId" : par[1].advertisement.user.chatId,
+                  "text" : '📣 Вы получили отклик на задачу "' + par[1].advertisement.taskName.bold() + '" от ' +  par[1].user.fl 
+                }
+              })
+
             return par[1]
         }
         catch(e){

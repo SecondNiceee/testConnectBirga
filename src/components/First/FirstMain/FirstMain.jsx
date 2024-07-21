@@ -1,8 +1,9 @@
-import React, { memo, useState } from "react";
+import React, { forwardRef, memo, useState } from "react";
 import FirstBlock from "./FirstBlock";
 import {  useSelector } from "react-redux";
+import MyLoader from "../../UI/MyLoader/MyLoader";
 
-const FirstMain = ({ ordersInformation, setDetailsActive , setSliderActive, ...props}) => {
+const FirstMain = forwardRef(({ ordersInformation, setDetailsActive , setSliderActive, ...props}, ref) => {
   const watchedArr = useSelector(state => state.watchedAds.watchedAds)
 
   return (
@@ -22,8 +23,17 @@ const FirstMain = ({ ordersInformation, setDetailsActive , setSliderActive, ...p
         })
       )}
 
+<MyLoader ref={ref}    className="block" style={
+              {
+                bottom : "50px",
+                transform : "translateX(-16px)",
+                width : "100vw",
+                height : "300px"
+              }
+            }></MyLoader>
+
     </div>
   );
-};
+});
 
 export default memo(FirstMain);

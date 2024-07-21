@@ -99,6 +99,7 @@ const AllTasks = ({
       { (orderStatus === 'complete' || orderStatus === 'all') && tonConstant !== 0 ? (
         <>
           <FirstMain
+          ref={elementRef}
             // style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
             setDetailsActive={setDetailsActive}
             ordersInformation={ordersInformation}
@@ -110,16 +111,6 @@ const AllTasks = ({
       ) : (
         <FirstLoader />
       )}
-      {orderStatus === null ? <></> :
-            <div  ref={elementRef} className="block" style={
-              {
-                position : "relative",
-                bottom : "50px",
-                width : "30px",
-                height : "30px"
-              }
-            }></div>
-      }
 
     </div>
   );

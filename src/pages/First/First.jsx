@@ -26,7 +26,25 @@ const First = () => {
   const [step , setStep] = useState(0)
   localStep = step
   console.log('Рендер ферста')
+  
 
+  useEffect( () => {
+    document.documentElement.style.marginTop = '40px'
+    window.scrollTo({
+      top: 40,
+      behavior: "auto",
+    });
+    document.documentElement.style.overflowY = 'hidden'
+  return () => {
+    document.documentElement.style.overflowY = 'unset'
+    document.documentElement.style.marginTop = '40px'
+    window.scrollTo({
+      top: 40,
+      behavior: "auto",
+    });
+
+  }
+},[] )
 
   const dispatch = useDispatch();
 
@@ -291,22 +309,7 @@ const forwardFunction = useCallback(() => {
       myFormData.append(`photos`, e);
     });
     try {
-      let im = await axios.post(
-        "https://back-birga.ywa.su/response",
-        myFormData,
-        {
-          params: {
-            userId: userId,
-            advertisementId: advertismetId,
-          },
-        }
-      );
-      await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
-        params : {
-          "chatId" : im.data.user.chatId,
-          "text" : '📣 Вы получили отклик на задачу "' + ordersInformation[isDetailsActive.id].taskName.bold() + '" от' +  im.data.user.fl 
-        }
-      })
+
       let gibrid = {...responce}
       gibrid.isWatched = ""
       gibrid.advertisement = ordersInformation[isDetailsActive.id]
