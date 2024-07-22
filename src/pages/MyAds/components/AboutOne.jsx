@@ -5,9 +5,10 @@ import { memo } from "react";
 import Top from "../../../components/UI/Top/Top";
 import axios from "axios";
 import { deleteAd } from "../../../store/information";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import makeNewFile from "../../../functions/newMakeFile";
 import AllReactions from "./AllReactions";
+import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 
 const AboutOne = ({
   task,
@@ -123,7 +124,14 @@ const AboutOne = ({
     // eslint-disable-next-line
   }, []);
 
+  const status = useSelector(state => state.information.myOrderStatus)
+
   return (
+    <>
+    {status === "loading" ? 
+      <MyLoader />
+      :
+
     <div className="aboutOne" style={{}}>
       <Top name={"Отклики"} setMenuActive={setMenuActive} />
 
@@ -152,6 +160,8 @@ const AboutOne = ({
       
 
     </div>
+    }
+    </>
   );
 };
 

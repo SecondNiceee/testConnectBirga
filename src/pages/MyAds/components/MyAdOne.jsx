@@ -4,6 +4,7 @@ import MyAdsBlock from "./MyAdsBlock";
 import PickerContent from "./PickerContent";
 import Top from "../../../components/UI/Top/Top";
 import { useSelector } from "react-redux";
+import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 
 // const popup = initPopup();
 const MyAdOne = ({
@@ -61,9 +62,13 @@ const MyAdOne = ({
 
 
 
-
+  const status = useSelector(state => state.information.myOrderStatus)
 
   return (
+    <>
+        {status === "loading" ? 
+      <MyLoader />
+      :
     <div className="my-ad-one">
       <Top name={"Мои задания"} setMenuActive={setMenuActive} />
 
@@ -87,6 +92,8 @@ const MyAdOne = ({
 
 
     </div>
+}
+    </>
   );
 };
 
