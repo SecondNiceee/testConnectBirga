@@ -104,7 +104,7 @@ const MyAds = () => {
 
   detailsVar = details;
   
-  const myAdsArray = [useSelector((state) => state.information.myAdsArray)];
+  const myAdsArray = useSelector((state) => state.information.myPaginationArray);
 
 
   

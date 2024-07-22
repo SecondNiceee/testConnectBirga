@@ -61,9 +61,7 @@ const MyFirstBlock = ({
   } , [status] )
   
 
-  const { ref, inView } = useInView({
-    threshold: 0, // порог видимости (0 - 1)
-  });
+  console.warn(photos)
   return (
     <>
       {photos !== undefined ? (

@@ -13,13 +13,13 @@ const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
           }
         
     } , [setSecondPage]) 
-
+    console.warn(e)
     return (
         <>
           <div 
-            style={{
-              minHeight : 177
-            }}
+            // style={{
+            //   minHeight : 177
+            // }}
               className="block"
               onClick={(p) => {
                     clickHandler(p)
@@ -27,13 +27,12 @@ const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
             >
               <MyFirstBlock
     
+                {...e}
                 setSlideActive={setSliderAcitve}
                 myAdsFunc={(value) => {
                   setSecondPage({ isActive: true, task: e, index: i });
                 }}
-                key={i}
                 isButton={true}
-                {...e}
               />
             </div>
            

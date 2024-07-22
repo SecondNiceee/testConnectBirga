@@ -9,7 +9,8 @@ import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMoreMyAds } from '../../../store/information';
 const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunction}) => {
-    console.log(myAdsArray)
+
+
     return (
         <div className="AdsContainer">
           {myAdsArray.map((e, i) => {
@@ -18,6 +19,7 @@ const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunctio
 
             );
           })}
+          
         </div>
     );
 };

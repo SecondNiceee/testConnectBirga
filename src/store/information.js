@@ -398,6 +398,7 @@ const information = createSlice( {
 
     reducers : {
       getMoreMyAds(state,action){
+        alert(action.payload)
         for (let i = action.payload*6 ; i < action.payload*6 + 6; i++ ){
             console.warn(state.myAdsArray[i])
             if (state.myAdsArray[i]){
@@ -406,6 +407,7 @@ const information = createSlice( {
               state.myPaginationArray.push(state.myAdsArray[i])
             }
             else{
+              alert("Я брейкнулся")
               state.myOrderStatus = "all"
               break;
             }
