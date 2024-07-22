@@ -37,7 +37,6 @@ const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
             </div>
            
 
-      <div className="block"></div>
     </>
 
     );
