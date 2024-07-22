@@ -122,7 +122,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       // })
 
       // dispatch(changeCards({ id: index, card: localCardSetting }));
-      document.documentElement.style.overflow = "auto";
+      // document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
     }
   }
@@ -134,7 +134,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   useEffect(() => {
     
     function backFunc() {
-      document.documentElement.style.overflow = "auto";
+      // document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
     }
     MainButton.show();

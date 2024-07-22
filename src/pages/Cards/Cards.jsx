@@ -116,7 +116,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
 
   const backFunc = useCallback( () => {
-    document.documentElement.style.overflow = "auto";
+    // document.documentElement.style.overflow = "auto";
     setCardsOpen(false);
   } , [setCardsOpen] )
 

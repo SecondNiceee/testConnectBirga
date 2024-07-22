@@ -46,6 +46,7 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue} , ref) =
             alignSelf : "flex-start"
         }} className="picker__block">
             {responsesArr.length === 0 ? 
+            
                 <MyAnimation text={text}/> 
             :
                 <MyResponses   responsesArr = {responsesArr} buttonFunction = {buttonFunction} />

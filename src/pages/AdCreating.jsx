@@ -207,21 +207,21 @@ const AdCreating = () => {
     // );
   }
 
-  useEffect( () => {
-    return () => {
-      if (pagesHistory[pagesHistory.length-1] === "/" || pagesHistory[pagesHistory.length-1] === "/MyAds" ){
-        window.scrollTo({
-          top: 40,
-          behavior: "auto",
-        });
-        document.documentElement.style.overflowY = "hidden"
-      }
-      else{
-        document.documentElement.style.overflowY = "unset"
-      }
-      pagesHistory.push('/AdCreating')
-    }
-  } , [] )
+  // useEffect( () => {
+  //   return () => {
+  //     if (pagesHistory[pagesHistory.length-1] === "/" || pagesHistory[pagesHistory.length-1] === "/MyAds" ){
+  //       window.scrollTo({
+  //         top: 40,
+  //         behavior: "auto",
+  //       });
+  //       document.documentElement.style.overflowY = "hidden"
+  //     }
+  //     else{
+  //       document.documentElement.style.overflowY = "unset"
+  //     }
+  //     pagesHistory.push('/AdCreating')
+  //   }
+  // } , [] )
   const mainRef = useRef(null)
   function checking() {
     let taskName = false;
