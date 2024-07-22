@@ -179,7 +179,7 @@ const AdCreatingOne = ({
       dateObject.style.display = "block";
       datePickerObject.style.transform = "translateY(100%)";
   
-      document.documentElement.style.overflow = "visible";
+      document.documentElement.style.overflow = "unset";
   
       window.scrollTo({
         top: 0,
@@ -191,11 +191,14 @@ const AdCreatingOne = ({
     if (dateObject && datePickerObject) {
       if (state.isOpen) {
         appear();
-        document.documentElement.style.overflow = "hidden";
+        // document.documentElement.style.overflow = "hidden";
       } else {
         disappear();
-        document.documentElement.style.overflow = "visible";
+        // document.documentElement.style.overflow = "visible";
       }
+    }
+    return () => {
+      document.documentElement.style.overflow = "unset";
     }
   }, [state.isOpen , dateObject , datePickerObject]);
 

@@ -49,6 +49,7 @@ const First = () => {
 
   }
 },[] )
+  console.warn(window.scrollY)
 
   const dispatch = useDispatch();
 
