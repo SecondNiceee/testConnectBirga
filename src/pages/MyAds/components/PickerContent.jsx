@@ -85,6 +85,8 @@ const PickerContent = ({
   const pickerRef = useRef(null)
   
   useEffect( () => {
+    if (containerOne.current && containerTwo.current){
+
       if (containerOne.current.offsetHeight < containerTwo.current.offsetHeight){
         if (nowValue === "freelancer"){
           pickerRef.current.style.overflowY = "hidden"
@@ -107,6 +109,7 @@ const PickerContent = ({
             pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight) + "px"
         }
       }
+    }
 
     
 
