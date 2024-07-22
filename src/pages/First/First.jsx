@@ -37,6 +37,7 @@ const First = () => {
         behavior: "auto",
       });
     }
+    console.warn(window.scrollY)
     document.documentElement.style.overflowY = 'hidden'
   return () => {
     document.documentElement.style.overflowY = 'unset'
