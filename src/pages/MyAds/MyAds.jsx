@@ -75,12 +75,6 @@ const MyAds = () => {
 
 
   const isMenuActive = useSelector((state) => state.menu.value);
-
-  useEffect( () => {
-    return () => {
-      pagesHistory.push('/MyAds')
-    }
-  } , [] )
   const dispatch = useDispatch()
 
   const setMenuActive = useCallback(
@@ -140,13 +134,17 @@ const MyAds = () => {
       });
       document.documentElement.style.overflowY = 'hidden'
     return () => {
-      document.documentElement.style.overflowY = 'unset'
-      document.documentElement.style.marginTop = '0px'
-      window.scrollTo({
-        top: 0,
-        behavior: "auto",
-      });
-
+      if (pagesHistory[pagesHistory.length-1] === "/" || pagesHistory[pagesHistory.length-1] === "/MyAds" ){
+        window.scrollTo({
+          top: 40,
+          behavior: "auto",
+        });
+        document.documentElement.style.overflowY = "hidden"
+      }
+      else{
+        document.documentElement.style.overflowY = "unset"
+      }
+      pagesHistory.push('/MyAds')
     }
   },[] )
 
