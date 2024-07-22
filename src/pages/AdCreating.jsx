@@ -326,7 +326,7 @@ const AdCreating = () => {
   function goBack() {
     if (spet === 0) {
       console.log(pagesHistory)
-      navigate(pagesHistory[pagesHistory.length-2]);
+      navigate(pagesHistory[pagesHistory.length-1]);
     } else {
       
       if (spet === 1){

@@ -5,7 +5,7 @@ import ShareIcon from "../UI/ShareIcon/ShareIcon";
 import SmallDimond from "../UI/SmallDimond/SmallDimond";
 import { useDispatch, useSelector } from "react-redux";
 import formatDate from "../../functions/makeDate";
-
+import { useInView } from 'react-intersection-observer';
 let counter = 0
 const MyFirstBlock = ({
   className,
@@ -62,11 +62,14 @@ const MyFirstBlock = ({
   } , [status] )
   
 
-
+  const { ref, inView } = useInView({
+    threshold: 0, // порог видимости (0 - 1)
+  });
   return (
     <>
       {photos !== undefined ? (
         <div
+          
           className={
             className ? ["First__block", className].join(" ") : "First__block"
           }

@@ -50,7 +50,7 @@ const First = () => {
 
   useEffect( () => {
     return () => {
-      pagesHistory.push('/First')
+      pagesHistory.push('/')
     }
   } , [] )
 
