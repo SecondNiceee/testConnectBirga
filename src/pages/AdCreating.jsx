@@ -209,6 +209,12 @@ const AdCreating = () => {
 
   useEffect( () => {
     return () => {
+      if (pagesHistory[pagesHistory.length-1] === "/" || pagesHistory[pagesHistory.length-1] === "/MyAds" ){
+        document.documentElement.style.overflowY = "hidden"
+      }
+      else{
+        document.documentElement.style.overflowY = "unset"
+      }
       pagesHistory.push('/AdCreating')
     }
   } , [] )
