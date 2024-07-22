@@ -97,19 +97,30 @@ export const  postMyTask = createAsyncThunk(
     let files = arr[1]
     try{
       let b;
-      for (let i = 0; i < 100 ; i++){
+      // for (let i = 0; i < 100 ; i++){
 
-         b = await axios.post(
-          "https://back-birga.ywa.su/advertisement",
-          arr[0],
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              // "Access-Control-Allow-Origin": "*"
-            },
-          }
-        );
-      }
+      //    b = await axios.post(
+      //     "https://back-birga.ywa.su/advertisement",
+      //     arr[0],
+      //     {
+      //       headers: {
+      //         "Content-Type": "multipart/form-data",
+      //         // "Access-Control-Allow-Origin": "*"
+      //       },
+      //     }
+      //   );
+      // }
+
+      b = await axios.post(
+        "https://back-birga.ywa.su/advertisement",
+        arr[0],
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            // "Access-Control-Allow-Origin": "*"
+          },
+        }
+      );
 
 
 
