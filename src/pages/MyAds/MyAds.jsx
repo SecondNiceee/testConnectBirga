@@ -126,27 +126,27 @@ const MyAds = () => {
   })
 
 
-    useEffect( () => {
-      document.documentElement.style.marginTop = '40px'
-      window.scrollTo({
-        top: 40,
-        behavior: "auto",
-      });
-      document.documentElement.style.overflowY = 'hidden'
-    return () => {
-      if (pagesHistory[pagesHistory.length-1] === "/" || pagesHistory[pagesHistory.length-1] === "/MyAds" ){
-        window.scrollTo({
-          top: 40,
-          behavior: "auto",
-        });
-        document.documentElement.style.overflowY = "hidden"
-      }
-      else{
-        document.documentElement.style.overflowY = "unset"
-      }
-      pagesHistory.push('/MyAds')
-    }
-  },[] )
+  //   useEffect( () => {
+  //     document.documentElement.style.marginTop = '40px'
+  //     window.scrollTo({
+  //       top: 40,
+  //       behavior: "auto",
+  //     });
+  //     document.documentElement.style.overflowY = 'hidden'
+  //   return () => {
+  //     if (pagesHistory[pagesHistory.length-1] === "/" || pagesHistory[pagesHistory.length-1] === "/MyAds" ){
+  //       window.scrollTo({
+  //         top: 40,
+  //         behavior: "auto",
+  //       });
+  //       document.documentElement.style.overflowY = "hidden"
+  //     }
+  //     else{
+  //       document.documentElement.style.overflowY = "unset"
+  //     }
+  //     pagesHistory.push('/MyAds')
+  //   }
+  // },[] )
 
   function checkMistakes(changingTask) {
     let taskName = false;
