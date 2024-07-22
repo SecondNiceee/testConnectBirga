@@ -30,10 +30,13 @@ const First = () => {
 
   useEffect( () => {
     document.documentElement.style.marginTop = '40px'
-    window.scrollTo({
-      top: 40,
-      behavior: "auto",
-    });
+    while(window.scrollY !== 40){
+      console.warn("Попытка")
+      window.scrollTo({
+        top: 40,
+        behavior: "auto",
+      });
+    }
     document.documentElement.style.overflowY = 'hidden'
   return () => {
     document.documentElement.style.overflowY = 'unset'
