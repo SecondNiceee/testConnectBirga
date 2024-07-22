@@ -30,7 +30,8 @@ const First = () => {
 
   useEffect( () => {
     document.documentElement.style.marginTop = '40px'
-    while(window.scrollY !== 40){
+   
+    if (window.scrollY !== 40){
       console.warn("Попытка")
       window.scrollTo({
         top: 40,
