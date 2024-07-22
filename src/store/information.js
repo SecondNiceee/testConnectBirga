@@ -378,13 +378,28 @@ const information = createSlice( {
 
           myAdsArray : [null
 
-          ]
+          ],
+          myPaginationArray : []
           }    
 ,
 
 
 
     reducers : {
+      getMoreMyAds(state,action){
+        for (let i = action.payload*6 ; i < action.payload*6 + 6; i++ ){
+            console.warn(state.myAdsArray[i])
+            if (state.myAdsArray[i]){
+              console.log(state.myAdsArray[i])
+              console.warn("Хээллоу")
+              state.myPaginationArray.push(state.myAdsArray[i])
+            }
+            else{
+              state.myOrderStatus = "all"
+              break;
+            }
+        }
+      },
       changeStatus(state, action){
           state.orderStatus = action.payload
           state.orderInformations = []
@@ -492,5 +507,5 @@ const information = createSlice( {
 
 
 })
-export const {changeTaskInformation , changeMyAds, addMyAds, putMyAds, addResponce, changeStatus} = information.actions;
+export const {changeTaskInformation , changeMyAds, addMyAds, putMyAds, addResponce, changeStatus, getMoreMyAds} = information.actions;
 export default information.reducer;

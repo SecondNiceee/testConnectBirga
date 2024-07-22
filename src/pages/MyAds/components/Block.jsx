@@ -13,6 +13,7 @@ const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
           }
         
     } , [setSecondPage]) 
+
     return (
         <>
           <div 
@@ -35,6 +36,9 @@ const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
                 {...e}
               />
             </div>
+           
+
+      <div className="block"></div>
     </>
 
     );

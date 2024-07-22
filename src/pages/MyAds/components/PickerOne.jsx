@@ -4,13 +4,16 @@ import MyResponses from './MyResponses';
 import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 import { useDispatch, useSelector } from 'react-redux';
 import { clearResponses, fetchResponses } from '../../../store/responses';
+import { useInView } from 'react-intersection-observer';
 
 const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue} , ref) => {
 
 
 
 
-    
+
+
+
 
     const interRef = useRef(null)
     console.log(interRef)
