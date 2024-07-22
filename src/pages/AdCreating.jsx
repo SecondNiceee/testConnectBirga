@@ -293,12 +293,14 @@ const AdCreating = () => {
       
         // spet += 1;
         // animte()
-        if (spet === 2) {
+        if (spet === 2 || spet === 3) {
           MainButton.setText("СОЗДАТЬ ЗАДАНИЕ");
         } else {
           MainButton.setText("ДАЛЕЕ");
         }
         if (spet === 3){
+
+
           window.Telegram.WebApp.showPopup({
             title: "Создать?",
             message: `За создание бессмысленных заданий вы будете забанены. \nСоздать задание?`,
@@ -309,18 +311,21 @@ const AdCreating = () => {
           } , (buttonId) => {
       
             if (buttonId === "delete" || buttonId === null) {
-              
+              spet -= 1
             }
             if (buttonId === "save") {
               finish();
             }
           } )
+
+
         }
       
     }
   }
   function goBack() {
     if (spet === 0) {
+      console.log(pagesHistory)
       navigate(pagesHistory[pagesHistory.length-2]);
     } else {
       
