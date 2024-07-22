@@ -24,7 +24,6 @@ const MyFirstBlock = ({
 
 
 }) => {
-  const dispatch = useDispatch()
   const tonConstant = useSelector(state => state.ton.value)
   console.log("render" + counter)
   counter += 1
