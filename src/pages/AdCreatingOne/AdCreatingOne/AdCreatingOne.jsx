@@ -162,7 +162,7 @@ const AdCreatingOne = ({
   useEffect(() => {
 
     function appear(){
-      document.documentElement.style.overflow = "hidden";
+      document.documentElement.style.overflowY = "hidden";
       document.documentElement.style.marginTop = "400px";
       window.scrollTo({
         top: 400,
@@ -179,7 +179,7 @@ const AdCreatingOne = ({
       dateObject.style.display = "block";
       datePickerObject.style.transform = "translateY(100%)";
   
-      document.documentElement.style.overflow = "unset";
+      document.documentElement.style.overflowY = "unset";
   
       window.scrollTo({
         top: 0,
@@ -198,7 +198,7 @@ const AdCreatingOne = ({
       }
     }
     return () => {
-      document.documentElement.style.overflow = "unset";
+      document.documentElement.style.overflowY = "unset";
     }
   }, [state.isOpen , dateObject , datePickerObject]);
 
