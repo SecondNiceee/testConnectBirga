@@ -4,39 +4,14 @@ import MyFirstBlock from '../../../components/MyAds/MyFirstBlock';
 import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
 import LazyLoad from 'react-lazy-load';
 import { useInView } from 'react-intersection-observer';
+import Block from './Block';
 const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunction}) => {
 
     return (
         <div className="AdsContainer">
           {myAdsArray.map((e, i) => {
             return (
-              <div
-              style={{
-                minHeight : 177
-              }}
-                key={i}
-                className="block"
-                onClick={(p) => {
-                  if (
-                    p.target.closest(".FirstMain__bottom-right") === null &&
-                    p.target.closest(".first__photos") === null
-                  ) {
-                    //  setTask(e);
-                    setSecondPage({ isActive: true, task: e, index: i });
-                  }
-                }}
-              >
-                <MyFirstBlock
-
-                  setSlideActive={setSliderAcitve}
-                  myAdsFunc={(value) => {
-                    setSecondPage({ isActive: true, task: e, index: i });
-                  }}
-                  key={i}
-                  isButton={true}
-                  {...e}
-                />
-              </div>
+                <Block key={i} e={e} i={i} setSecondPage={setSecondPage} setSliderAcitve={setSliderAcitve} />
             );
           })}
         </div>

@@ -66,6 +66,9 @@ const AnimatedSwitch = () => {
   // }, []
 
   // )
+
+
+
   return (
     <div className="container">
       <div
@@ -168,6 +171,8 @@ function App() {
 
   //     // dispatch(deleteShablon(e.id))
   // } })
+
+
 
   const dispatch = useDispatch();
 

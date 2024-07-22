@@ -27,7 +27,7 @@ const MyAnimation = ({
         window.Telegram.WebApp.openTelegramLink("https://t.me/addstickers/DonutTheDog")
       }}
     >
-      {View}
+      {/* {View} */}
       <p className="animation-text">{text}</p>
     </div>
   );

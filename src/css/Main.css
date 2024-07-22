@@ -64,6 +64,7 @@
 }
 
 .AllTasks {
+  overflow-y: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -139,6 +140,7 @@
   gap: 8px;
   border-radius: 10px;
   overflow: scroll;
+  overflow-x: hidden;
   min-height: calc(100vh - 65px);
 }
 

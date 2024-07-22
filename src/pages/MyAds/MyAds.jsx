@@ -141,9 +141,9 @@ const MyAds = () => {
       document.documentElement.style.overflowY = 'hidden'
     return () => {
       document.documentElement.style.overflowY = 'unset'
-      document.documentElement.style.marginTop = '40px'
+      document.documentElement.style.marginTop = '0px'
       window.scrollTo({
-        top: 40,
+        top: 0,
         behavior: "auto",
       });
 
