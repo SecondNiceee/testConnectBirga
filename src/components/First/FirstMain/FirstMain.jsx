@@ -56,12 +56,7 @@ const FirstMain = forwardRef(
       // eslint-disable-next-line
     }, [ordersInformation]);
 
-    useEffect(() => {
-      dispatch(fetchTasksInformation(1));
-      return () => {
-        dispatch(changeStatus(null));
-      };
-    }, [dispatch]);
+
 
     return (
       <div {...props} className="FirstMain">

@@ -46,7 +46,7 @@ const AllTasks = ({
 
   const tonConstant = useSelector((state) => state.ton.value);
 
-  console.log(ordersInformation)
+  console.log(ordersInformation, orderStatus)
   const dispatch = useDispatch()
 
   useEffect(() => {
