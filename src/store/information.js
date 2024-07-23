@@ -97,7 +97,7 @@ export const  postMyTask = createAsyncThunk(
     let files = arr[1]
     try{
       let b;
-      for (let i = 0; i < 200 ; i++){
+      for (let i = 0; i < 10 ; i++){
 
          b = await axios.post(
           "https://back-birga.ywa.su/advertisement",

@@ -98,12 +98,18 @@ const AboutOne = ({
     if (responces !== null) {
       if (filterBy === "activity") {
         return responces.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+          (a, b) => {
+            if (a.isWatched === "completed") return -1
+            if (b.isWatched === "completed") return 1
+            return new Date(b.createdAt) - new Date(a.createdAt)}
         );
       }
       if (filterBy === "stage") {
         return responces.sort(
-          (a, b) => Number(b.user.stage) - Number(a.user.stage)
+          (a, b) => {
+            if (a.isWatched === "completed") return -1
+            if (b.isWatched === "completed") return 1
+            return Number(b.user.stage) - Number(a.user.stage)}
         );
       }
     }
@@ -124,13 +130,11 @@ const AboutOne = ({
     // eslint-disable-next-line
   }, []);
 
-  const status = useSelector(state => state.information.myOrderStatus)
+ 
 
   return (
     <>
-    {status === "loading" ? 
-      <MyLoader />
-      :
+
 
     <div className="aboutOne" style={{}}>
       <Top name={"Отклики"} setMenuActive={setMenuActive} />
@@ -160,7 +164,7 @@ const AboutOne = ({
       
 
     </div>
-    }
+    
     </>
   );
 };

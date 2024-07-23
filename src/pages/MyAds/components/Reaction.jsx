@@ -17,7 +17,7 @@ const Reaction = ({
   return (
     <>
     
-      <div className="reaction">
+      <div className="reaction" style={responce.isWatched === "chosen" ? {border: "1.67px solid #2ea5ff;"} : {}}>
         {responce.photos.length > 0 ? (
           <div className="reactions__images">
             {responce.photos.map((e, i) => (
