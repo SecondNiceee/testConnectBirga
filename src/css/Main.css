@@ -127,6 +127,10 @@
   z-index: 12;
 }
 
+.responce-descriprion {
+  margin-bottom: 8px;
+}
+
 .FirstMain {
   width: calc(100vw - 32px);
   margin-top: 18.33px;

@@ -2,6 +2,24 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import makeNewFile from "../functions/newMakeFile";
+
+export const deleteResponse = createAsyncThunk(
+    "deleteResponse",
+    async function(id){
+        try{
+
+            await axios.delete("https://back-birga.ywa.su/response/delete", {
+                params : {
+                    id : id
+                }
+            })
+            return id
+        }
+        catch(e){
+            alert(e)
+        }
+    }
+)
 export const setStartResponse = createAsyncThunk(
     "setStartResponse",
     async function(id){
@@ -169,6 +187,9 @@ const responses = createSlice({
         }
     },
     extraReducers : builder => {
+        builder.addCase(deleteResponse.fulfilled, ((state , action) => {
+            state.responses = state.responses.filter((e , i ) => e.id !== action.id)
+        }))
         builder.addCase(addResponse.fulfilled, ( (state , action) => {
             state.responses.push(action.payload)
         }))
