@@ -161,6 +161,15 @@ const First = () => {
   
             if (step === 1) {
               setStep(0)
+              setResponce({
+                text: "",
+                photos: [],
+                name: "привет",
+                isShablonModalActive: false,
+                shablonIndex: 0,
+                isShablon: false,
+                shablonMaker : false,
+              })
               mainRef.current.classList.remove('secondStep')
             }
             else{
@@ -356,9 +365,10 @@ const forwardFunction = useCallback(() => {
         postResponce(ordersInformation[isDetailsActive.id].id, 2144832745 );
         mainRef.current.classList.remove('secondStep')
         setDetailsActive((value) => ({...value , isOpen : false}))
+        setStep(0)
     } })
   }
-}, [responce, step, ordersInformation, isDetailsActive.id, setDetailsActive, dispatch]);
+}, [responce, step, ordersInformation, isDetailsActive.id, setDetailsActive, dispatch, setStep]);
 
 useEffect(() => {
   MainButton.onClick(forwardFunction);
