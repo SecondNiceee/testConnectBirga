@@ -161,19 +161,20 @@ const First = () => {
   
             if (step === 1) {
               setStep(0)
-              setResponce({
-                text: "",
-                photos: [],
-                name: "привет",
-                isShablonModalActive: false,
-                shablonIndex: 0,
-                isShablon: false,
-                shablonMaker : false,
-              })
+
               mainRef.current.classList.remove('secondStep')
             }
             else{
               if (step === 0) {
+                setResponce({
+                  text: "",
+                  photos: [],
+                  name: "привет",
+                  isShablonModalActive: false,
+                  shablonIndex: 0,
+                  isShablon: false,
+                  shablonMaker : false,
+                })
                 closeDetails();
               }
             }
