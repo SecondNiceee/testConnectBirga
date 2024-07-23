@@ -367,6 +367,15 @@ const forwardFunction = useCallback(() => {
         mainRef.current.classList.remove('secondStep')
         setDetailsActive((value) => ({...value , isOpen : false}))
         setStep(0)
+        setResponce({
+          text: "",
+          photos: [],
+          name: "привет",
+          isShablonModalActive: false,
+          shablonIndex: 0,
+          isShablon: false,
+          shablonMaker : false,
+        })
     } })
   }
 }, [responce, step, ordersInformation, isDetailsActive.id, setDetailsActive, dispatch, setStep]);

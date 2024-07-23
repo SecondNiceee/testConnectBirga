@@ -23,6 +23,7 @@ import pagesHistory from "../../constants/pagesHistory";
 import CardPage from "../CardPage/CardPage";
 import ShowMyResponse from "../../components/MyAds/ShowMyResponse/ShowMyResponse";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
+import { deleteResponse } from "../../store/responses";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -302,6 +303,10 @@ const MyAds = () => {
 
 
 
+  const deleteFunction = useCallback( (index) => {
+    setMyResponse((value) => ({...value , isOpen : true}))
+    dispatch(deleteResponse(index))
+} , [setMyResponse])
 
 
   return (
@@ -422,8 +427,8 @@ const MyAds = () => {
         unmountOnExit
         mountOnEnter
   
-      >
-        <ShowMyResponse index={myResponse.id} openDetails = {openDetails} response={responsesArr[myResponse.id]} />
+      > 
+        <ShowMyResponse deleteFunction = {deleteFunction}  index={myResponse.id} openDetails = {openDetails} response={responsesArr[myResponse.id]} />
       </CSSTransition>
 
 

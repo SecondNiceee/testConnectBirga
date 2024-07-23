@@ -189,7 +189,7 @@ const responses = createSlice({
     },
     extraReducers : builder => {
         builder.addCase(deleteResponse.fulfilled, ((state , action) => {
-            state.responses = state.responses.filter((e , i ) => e.id !== action.id)
+            state.responses = state.responses.filter((e , i ) => e.id !== action.payload)
         }))
         builder.addCase(addResponse.fulfilled, ( (state , action) => {
             state.responses.push(action.payload)

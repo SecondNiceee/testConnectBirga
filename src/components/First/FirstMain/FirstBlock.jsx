@@ -74,11 +74,11 @@ const FirstBlock = ({
   } , [setVisible , inView] )
 
   return (
-    <div ref={ref} style={!isVisible ? {minHeight : "200px"} : {}} className="wrapper">
+    <div ref={ref} style={!isVisible ? {minHeight : "320px"} : {}} className="wrapper">
       {
         isVisible && (
                 <Suspense fallback = {
-                  <div style={{minHeight : "200px"}} className="First__block">
+                  <div style={{minHeight : "320px"}} className="First__block">
                     
                   </div>
                 }>
