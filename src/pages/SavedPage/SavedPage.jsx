@@ -20,7 +20,7 @@ import CardPage from "../CardPage/CardPage";
 const values = ["Заказы", "Отклики", "Кейсы"];
 const keys = ["advertisment", "responces", "cards"];
 const SavedPage = () => {
-  const savedResponces = useSelector((state) => state.saves.responces);
+
 
   useEffect(() => {
     return () => {
