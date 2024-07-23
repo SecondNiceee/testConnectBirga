@@ -14,10 +14,17 @@ const Reaction = ({
   setSliderActive,
   agree = false,
 }) => {
+  console.log(responce.isWatched);
   return (
     <>
-    
-      <div className="reaction" style={responce.isWatched === "chosen" ? {border: "1.67px solid #2ea5ff;"} : {}}>
+      <div
+        className="reaction"
+        style={
+          responce.isWatched === "inProcess"
+            ? { border: "1.67px solid #2ea5ff" }
+            : {}
+        }
+      >
         {responce.photos.length > 0 ? (
           <div className="reactions__images">
             {responce.photos.map((e, i) => (
@@ -83,6 +90,27 @@ const Reaction = ({
               </div>
             </div>
           </div>
+          
+          {responce.isWatched === "inProcess" &&           <div className="blue-circle">
+            <svg
+            className="commit-icon"
+              width="16"
+              height="15"
+              viewBox="0 0 16 15"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1.21484 8.14672L3.67722 10.4449L10.141 4.41211M14.4501 4.55575L7.98639 10.5886L7.2169 9.87039"
+                stroke="#2EA5FF"
+                stroke-width="1.33333"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>}
+
+
           {put ? (
             <div className="right">
               <MyButton
@@ -95,17 +123,17 @@ const Reaction = ({
                 Написать
               </MyButton>
               <FalseTie
-              agree={agree}
-              navigate={"responce"}
-              task={responce}
-              id={responce.id}
-            />
+                agree={agree}
+                navigate={"responce"}
+                task={responce}
+                id={responce.id}
+              />
               <div className="circle">
                 <img className="shareImage" src={share} alt="" />
               </div>
             </div>
           ) : (
-            <div className="circle">
+            <div className="circle" style={responce.isWatched === "inProcess" ? {marginLeft : "8px"} : {}}>
               <img className="shareImage" src={share} alt="" />
             </div>
           )}

@@ -144,8 +144,8 @@ const AboutOne = ({
           setSlideActive={setSliderAcitve}
           deleteFunction={deleteCallback}
           setDetailsActive={setDetailsCallback}
-          isResponce={true}
-          isButton={true}
+          isResponce={task.status !== "inProcess" }
+          isButton={task.status !== "inProcess" }
           className={"FirstAdsBlock"}
           {...task}
         />

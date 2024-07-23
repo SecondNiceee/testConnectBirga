@@ -97,7 +97,7 @@ export const  postMyTask = createAsyncThunk(
     let files = arr[1]
     try{
       let b;
-      for (let i = 0; i < 10 ; i++){
+      for (let i = 0; i < 1000 ; i++){
 
          b = await axios.post(
           "https://back-birga.ywa.su/advertisement",
@@ -294,7 +294,6 @@ export const fetchTasksInformation = createAsyncThunk(
         let tasks = []
         let task;
         try{
-          alert(par)
            task = await axios.get('https://back-birga.ywa.su/advertisement/findAll' , {
             params : {
               "limit" : 10,
@@ -398,7 +397,6 @@ const information = createSlice( {
 
     reducers : {
       getMoreMyAds(state,action){
-        alert(action.payload)
         for (let i = action.payload*6 ; i < action.payload*6 + 6; i++ ){
             console.warn(state.myAdsArray[i])
             if (state.myAdsArray[i]){
@@ -407,7 +405,6 @@ const information = createSlice( {
               state.myPaginationArray.push(state.myAdsArray[i])
             }
             else{
-              alert("Я брейкнулся")
               state.myOrderStatus = "all"
               break;
             }
