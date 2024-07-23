@@ -17,9 +17,6 @@ const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
     return (
         <>
           <div 
-            // style={{
-            //   minHeight : 177
-            // }}
               className="block"
               onClick={(p) => {
                     clickHandler(p)
@@ -34,6 +31,8 @@ const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
                 }}
                 isButton={true}
               />
+
+
             </div>
            
 

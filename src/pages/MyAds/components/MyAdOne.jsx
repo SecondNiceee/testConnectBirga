@@ -64,9 +64,11 @@ const MyAdOne = ({
 
   const status = useSelector(state => state.information.myOrderStatus)
 
+  const responseStatus = useSelector(state => state.responses.status)
+
   return (
     <>
-        {status === "loading" ? 
+        {status === "loading" || responseStatus === "pending" ? 
       <MyLoader />
       :
     <div className="my-ad-one">

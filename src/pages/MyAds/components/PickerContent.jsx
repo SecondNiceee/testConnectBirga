@@ -86,7 +86,7 @@ const PickerContent = ({
   
   useEffect( () => {
     if (containerOne.current && containerTwo.current){
-
+      console.warn("Я здесь")
       if (containerOne.current.offsetHeight < containerTwo.current.offsetHeight){
         if (nowValue === "freelancer"){
           pickerRef.current.style.overflowY = "hidden"

@@ -97,30 +97,30 @@ export const  postMyTask = createAsyncThunk(
     let files = arr[1]
     try{
       let b;
-      for (let i = 0; i < 20 ; i++){
+      // for (let i = 0; i < 20 ; i++){
 
-         b = await axios.post(
-          "https://back-birga.ywa.su/advertisement",
-          arr[0],
-          {
-            headers: {
-              "Content-Type": "multipart/form-data",
-              // "Access-Control-Allow-Origin": "*"
-            },
-          }
-        );
-      }
+      //    b = await axios.post(
+      //     "https://back-birga.ywa.su/advertisement",
+      //     arr[0],
+      //     {
+      //       headers: {
+      //         "Content-Type": "multipart/form-data",
+      //         // "Access-Control-Allow-Origin": "*"
+      //       },
+      //     }
+      //   );
+      // }
 
-      // b = await axios.post(
-      //   "https://back-birga.ywa.su/advertisement",
-      //   arr[0],
-      //   {
-      //     headers: {
-      //       "Content-Type": "multipart/form-data",
-      //       // "Access-Control-Allow-Origin": "*"
-      //     },
-      //   }
-      // );
+      b = await axios.post(
+        "https://back-birga.ywa.su/advertisement",
+        arr[0],
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            // "Access-Control-Allow-Origin": "*"
+          },
+        }
+      );
 
 
 
@@ -296,7 +296,7 @@ export const fetchTasksInformation = createAsyncThunk(
         try{
            task = await axios.get('https://back-birga.ywa.su/advertisement/findAll' , {
             params : {
-              "limit" : 10,
+              "limit" : 6,
               "page" : par
             }
            })

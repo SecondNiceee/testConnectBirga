@@ -1,10 +1,9 @@
-import React, { forwardRef, memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { forwardRef, memo, useMemo,  } from 'react';
 import AdCreateFunc from '../../../components/UI/AdCreateFunc/AdCreateFunc';
 import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 import MyAnimation from './MyAnimation';
 import AdsContainer from './AdsContainer';
-import { useDispatch, useSelector } from 'react-redux';
-import { getMoreMyAds } from '../../../store/information';
+import { useSelector } from 'react-redux';
 import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 
 const PickerTwo = forwardRef(({setSecondPage , deleteFunction, setSliderAcitve , myAdsArray, valueTwo} , ref) => {
@@ -23,28 +22,7 @@ const PickerTwo = forwardRef(({setSecondPage , deleteFunction, setSliderAcitve ,
   } , [valueTwo] )
 
 
-  const [page , setPage] = useState(0)
-  const blockRef = useRef(null)
   const status = useSelector(state => state.information.myOrderStatus)
-  const dispatch = useDispatch()
-  console.warn(page)
-  const onObserve = useCallback( (entries) => {
-      const firstEntry = entries[0]
-      if (firstEntry.isIntersecting && status !=="all"){
-          console.warn("Вызов этоу")
-          dispatch(getMoreMyAds(page))
-          setPage(page + 1)
-      }
-  } , [page, setPage] )
-  useEffect( () => {
-      const observer = new IntersectionObserver(onObserve)
-      if (blockRef.current && observer){
-          observer.observe(blockRef.current)
-      }
-    return () => {
-      observer.disconnect()
-    }
-} , [myAdsArray, onObserve] )
     return (
         <div className="picker__block" ref={ref}>
         <AdCreateFunc text={"Создать объявление"} link={"/AdCreating"} />
@@ -55,13 +33,7 @@ const PickerTwo = forwardRef(({setSecondPage , deleteFunction, setSliderAcitve ,
         }
 
 
-        <MyLoader style={
-              {
-                bottom : "50px",
-                transform : "translateX(-16px)",
-                width : "100vw",
-                height : "300px"
-              }} ref={blockRef}  />
+
 
 
       </div>
