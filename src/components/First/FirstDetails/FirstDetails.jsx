@@ -18,6 +18,13 @@ const FirstDetails = ({  orderInformation , className , end = false, ...props}) 
         }
     } , [] )
 
+    useEffect( () => {
+        document.documentElement.style.overflowY = "auto"
+        return () => {
+            document.documentElement.style.overflowY = "hidden"
+        }
+    } , [])
+
     return (
         <>
         {orderInformation 
