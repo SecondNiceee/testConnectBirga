@@ -19,11 +19,17 @@ const FirstDetails = ({  orderInformation , className , end = false, ...props}) 
     } , [] )
 
     useEffect( () => {
-        document.documentElement.style.overflowY = "auto"
+        document.documentElement.style.overflowY = "unset"
+        document.documentElement.style.marginTop = "40px"
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
         return () => {
+            document.documentElement.style.marginTop = "40px"
             window.scrollTo({
-                top: 0,
-                behavior: "auto",
+                top: 40,
+                behavior: "smooth",
               });
             document.documentElement.style.overflowY = "hidden"
         }
