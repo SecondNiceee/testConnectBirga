@@ -20,7 +20,7 @@ const FirstDetails = ({  orderInformation , className , end = false, ...props}) 
 
     useEffect( () => {
         document.documentElement.style.overflowY = "unset"
-        document.documentElement.style.marginTop = "40px"
+        document.documentElement.style.marginTop = "0px"
         window.scrollTo({
             top: 0,
             behavior: "smooth",
