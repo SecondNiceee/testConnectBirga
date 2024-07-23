@@ -1,8 +1,7 @@
-import React, { memo, useCallback, useEffect, useRef, useState } from "react";
+import React, { memo, useEffect} from "react";
 import FirstMain from "../../components/First/FirstMain/FirstMain";
 import FirstTop from "../../components/First/FirstMain/FirstTop";
 import FirstLoader from "../../loaders/FirstLoader";
-import { useFilteredArr } from "../../hooks/useFilteredArr";
 import { useDispatch, useSelector } from "react-redux";
 import { changeStatus, fetchTasksInformation } from "../../store/information";
 // let count = 0
