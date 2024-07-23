@@ -45,6 +45,7 @@ export const deleteResponce = createAsyncThunk(
                 "responseId" : id,
                 "userId" : 2144832745
             } })
+            alert("Все прошло успешно")
             return id
         }
         catch(e){

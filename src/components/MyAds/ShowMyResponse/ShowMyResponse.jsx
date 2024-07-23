@@ -7,12 +7,12 @@ import Customer from '../Customer/Customer';
 import options from '../../../constants/options';
 import formatDate from '../../../functions/makeDate';
 import { useDispatch } from 'react-redux';
-import { deleteResponce } from '../../../store/saves';
+import { deleteResponse } from '../../../store/responses';
 const ShowMyResponse = ({response , openDetails, index}) => {
     console.log(response)
     const dispatch = useDispatch()
     const deleteFunction = useCallback( (index) => {
-        dispatch(deleteResponce(response.id))
+        dispatch(deleteResponse(response.id))
     } , [])
     return (
         <div className={cl.wrapper}>

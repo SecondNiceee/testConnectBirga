@@ -8,7 +8,7 @@ export const deleteResponse = createAsyncThunk(
     async function(id){
         try{
 
-            await axios.delete("https://back-birga.ywa.su/response/delete", {
+            await axios.delete("https://back-birga.ywa.su/response", {
                 params : {
                     id : id
                 }
@@ -16,6 +16,7 @@ export const deleteResponse = createAsyncThunk(
             return id
         }
         catch(e){
+            console.log(e)
             alert(e)
         }
     }

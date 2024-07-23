@@ -21,6 +21,10 @@ const FirstDetails = ({  orderInformation , className , end = false, ...props}) 
     useEffect( () => {
         document.documentElement.style.overflowY = "auto"
         return () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "auto",
+              });
             document.documentElement.style.overflowY = "hidden"
         }
     } , [])

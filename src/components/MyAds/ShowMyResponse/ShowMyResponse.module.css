@@ -12,6 +12,8 @@
     height: 100vh;
     transform: translateX(100%);
     transition: 0.35s;
+    overflow-y: scroll;
+    padding-bottom: 20px;
 
     
 }
