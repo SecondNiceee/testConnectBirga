@@ -285,6 +285,10 @@ const MyAds = () => {
     }
   } , [sortedArray , valueTwo] )
 
+  useEffect( () => {
+    document.documentElement.style.overflowY = "hidden"
+  } , [] )
+
   
 
 

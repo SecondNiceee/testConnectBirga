@@ -1,17 +1,22 @@
-import React, { memo } from "react";
+import React, { memo, useMemo } from "react";
 import upDown from "../../../images/icons/UpDown.svg";
 import FullPicker from "../../../components/UI/FullPicker/FullPicker";
 import ModalChoicer from "../../../components/UI/ModalChoicer/ModalChoicer";
+import { useSelector } from "react-redux";
 const values = ["Я исполнитель", "Я заказчик"];
 const keys = ["freelancer", "customer"];
-const MyAdsBlock = ({deals , nowValue, setNowKey, finishedDeals , greyWidth , greyIntWidth, setOneValue, setTwoValue  }) => {
-
-
+const MyAdsBlock = ({  nowValue, setNowKey,  greyWidth , greyIntWidth, setOneValue, setTwoValue  }) => {
+  const me = useSelector(state => state.telegramUserInfo)
+  const responses = useSelector(state => state.responses.responses)
+  const advertisements = useSelector(state => state.information.myAdsArray)
+  const finishedDeals = useMemo( () => {
+    return ( (me.deals + me.completedTasks) / (advertisements.length + responses.length)) * 100 
+  } , [advertisements,responses] )
   return (
     <div className="MyAdsBlock">
       <div className="counter__block">
         <div className="number-of-transactions">
-          <p>{deals}</p>
+          <p>{me.deals}</p>
           <p>Количество сделок</p>
         </div>
         <div className="number-of-transactions">

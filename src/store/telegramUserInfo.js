@@ -160,6 +160,7 @@ export const fetchUserInfo = createAsyncThunk(
                     photos : files
                 })
             }
+        console.log(user.data)
         
         
         return ( {
@@ -170,6 +171,8 @@ export const fetchUserInfo = createAsyncThunk(
             photo: user.data.photo,
             about : user.data.about,
             stage : user.data.stage,
+            deals : user.data.deals,
+            completedTasks : user.data.completedTasks,
             cards : localCards
           } );
     }
