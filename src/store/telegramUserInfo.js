@@ -152,6 +152,7 @@ export const fetchUserInfo = createAsyncThunk(
                 localCards.push({
                     id : e.id,
                     title : e.title,
+                    
                     description : e.description,
                     behanceLink : e.behance,
                     dribbbleLink : e.dribble,
@@ -172,7 +173,7 @@ export const fetchUserInfo = createAsyncThunk(
             about : user.data.about,
             stage : user.data.stage,
             deals : user.data.deals,
-            completedTasks : user.data.completedTasks,
+            completedTasks : user.data.completedAdvertisements,
             cards : localCards
           } );
     }
@@ -195,6 +196,8 @@ const telegramUserInfo = createSlice({
     link : "",
     firstName: "неверный ферст нэйм",
     lastName: "",
+    completedTasks : [],
+    deals : 0,
     profile : {
         about : 'Я Коля привет',
         stage : 29,
@@ -233,6 +236,8 @@ const telegramUserInfo = createSlice({
       state.profile = {...state.profile , about : action.payload.about, stage : action.payload.stage === null ? '0' : action.payload.stage};
       state.profile.cards = action.payload.cards;
       state.profile.userId = action.payload.id
+      state.completedTasks = action.payload.completedTasks
+      state.deals = action.payload.deals
     });
     builder.addCase(fetchUserInfo.rejected, (state) => {
       state.status = "error";

@@ -14,6 +14,18 @@ const FirstChoiceCategory = ({
 
 }) => {
 
+  useEffect( () => {
+    function closeFunction(){
+      setCatagoryChoiceOpen(false)
+    }
+    BackButton.show()
+    BackButton.onClick(closeFunction)
+    return () => {
+      BackButton.offClick(closeFunction)
+      BackButton.hide()
+    }
+  } , [] )
+
    const myCategorys = useMemo( () => {
     let copy = [...categorys.filter(e => e.category !== "Другое")]
     copy.push({id : -1, category : "Все"})

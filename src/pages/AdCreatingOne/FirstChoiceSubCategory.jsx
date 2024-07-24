@@ -4,6 +4,23 @@ import rightArrow from '../../images/icons/rightArrow.svg'
 import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
 const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
+
+
+    useEffect( () => {
+        function closeFunction(){
+          setSubcategoryChoiceOpen(false)
+        }
+        BackButton.show()
+        BackButton.onClick(closeFunction)
+        return () => {
+          BackButton.offClick(closeFunction)
+          BackButton.hide()
+        }
+      } , [] )
+
+
+
+
     console.log(subCategorysPar)
     let subCategorys = useMemo(() => {
         return subCategorysPar.filter(e => e.category.id === taskInformation.category.id && e.subCategory !== "Другое")

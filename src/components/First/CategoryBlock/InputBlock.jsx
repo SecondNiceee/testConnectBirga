@@ -37,7 +37,7 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
   }, [convertedValue, setFocus]);
 
   return (
-    <label htmlFor="myInput" onClick={func} {...props} className={cl.wrapper}>
+    <label htmlFor="myInput" style={{width : "110px"}} onClick={func} {...props} className={cl.wrapper}>
       <div className={cl.left}>
         <p className={cl.name}>{"Сумма от"}</p>
         <p ref={textRef} className={cl.hiddenText}>

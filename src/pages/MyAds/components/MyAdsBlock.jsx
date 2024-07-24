@@ -7,10 +7,11 @@ const values = ["Я исполнитель", "Я заказчик"];
 const keys = ["freelancer", "customer"];
 const MyAdsBlock = ({  nowValue, setNowKey,  greyWidth , greyIntWidth, setOneValue, setTwoValue  }) => {
   const me = useSelector(state => state.telegramUserInfo)
+  console.log(me)
   const responses = useSelector(state => state.responses.responses)
   const advertisements = useSelector(state => state.information.myAdsArray)
   const finishedDeals = useMemo( () => {
-    return ( (me.deals + me.completedTasks) / (advertisements.length + responses.length)) * 100 
+    return ( String((me.deals + me.completedTasks.length) / (advertisements.length + responses.length)) * 100 ) + "%"
   } , [advertisements,responses] )
   return (
     <div className="MyAdsBlock">

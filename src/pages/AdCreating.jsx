@@ -144,6 +144,12 @@ const AdCreating = () => {
   ]);
 
 
+  
+  const [isCategoryChoiceOpen, setCatagoryChoiceOpen] = useState(false);
+
+  const [isSubcategoryChoiceOpen, setSubcategoryChoiceOpen] = useState(false);
+
+
   function finish() {
     let secondPageCopy = {...secondPage}
     if (document.getElementById("dateSwapper").style.transform) {
@@ -333,26 +339,39 @@ const AdCreating = () => {
       
     }
   }
-  function goBack() {
-    if (spet === 0) {
-      console.log(pagesHistory)
-      navigate(pagesHistory[pagesHistory.length-1]);
-    } else {
-      
-      if (spet === 1){
-        mainRef.current.classList.remove('stepOne')
-        mainRef.current.classList.remove('stepTwo')
-        mainRef.current.classList.add('oneBack')
-      }
-      if (spet === 2){
-        mainRef.current.classList.remove('stepTwo')
-        mainRef.current.classList.remove('stepOne')
-        mainRef.current.classList.add('twoBack')
-      }
-      spet -= 1;
-      MainButton.setText("ДАЛЕЕ")
-      // backAnimte();
 
+
+
+  function goBack() {
+    if (isCategoryChoiceOpen || isSubcategoryChoiceOpen){
+      if (isCategoryChoiceOpen){
+        setCatagoryChoiceOpen(false)
+      }
+      else{
+        setSubcategoryChoiceOpen(false)
+      }
+    }
+    else{
+
+      if (spet === 0) {
+        navigate(pagesHistory[pagesHistory.length-1]);
+      } else {
+        
+        if (spet === 1){
+          mainRef.current.classList.remove('stepOne')
+          mainRef.current.classList.remove('stepTwo')
+          mainRef.current.classList.add('oneBack')
+        }
+        if (spet === 2){
+          mainRef.current.classList.remove('stepTwo')
+          mainRef.current.classList.remove('stepOne')
+          mainRef.current.classList.add('twoBack')
+        }
+        spet -= 1;
+        MainButton.setText("ДАЛЕЕ")
+        // backAnimte();
+  
+      }
     }
   }
 
@@ -415,6 +434,10 @@ const AdCreating = () => {
             mistakes={{ timeError: false, taskName: false }}
             categorys={categorys}
             subCategorys={subCategorys}
+            isCategoryChoiceOpen={isCategoryChoiceOpen}
+            setCatagoryChoiceOpen={setCatagoryChoiceOpen}
+            isSubcategoryChoiceOpen={isSubcategoryChoiceOpen}
+            setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
           />
           <AdCreatingTwo
             errors={twoPages}
