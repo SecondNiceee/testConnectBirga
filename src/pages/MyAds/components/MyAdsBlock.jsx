@@ -11,7 +11,9 @@ const MyAdsBlock = ({  nowValue, setNowKey,  greyWidth , greyIntWidth, setOneVal
   const responses = useSelector(state => state.responses.responses)
   const advertisements = useSelector(state => state.information.myAdsArray)
   const finishedDeals = useMemo( () => {
-    return ( String((me.deals + me.completedTasks.length) / (advertisements.length + responses.length)) * 100 ) + "%"
+    let rezult = ( String((me.deals + me.completedTasks.length) / (advertisements.length + responses.length)) * 100 ) 
+    return rezult === NaN ? "0%" : rezult
+
   } , [advertisements,responses] )
   return (
     <div className="MyAdsBlock">

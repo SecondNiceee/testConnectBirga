@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import AdCreatingOne from "./AdCreatingOne/AdCreatingOne/AdCreatingOne";
 import AdCreatingThree from "./AdCreatingThree/AdCreatingThree";
 import AdCreatingTwo from "./ADCreatingTwo/AdCreatingTwo/AddCreatingTwo";
@@ -291,7 +291,7 @@ const AdCreating = () => {
     }
   }
 
-  function goForward() {
+  const goForward = useCallback(() => {
     if (blurRef.current) {
       blurRef.current.focus();
     }
@@ -338,11 +338,11 @@ const AdCreating = () => {
         }
       
     }
-  }
+  } , [] )
 
 
 
-  function goBack() {
+  const goBack = useCallback(() => {
     if (isCategoryChoiceOpen || isSubcategoryChoiceOpen){
       if (isCategoryChoiceOpen){
         setCatagoryChoiceOpen(false)
@@ -373,7 +373,7 @@ const AdCreating = () => {
   
       }
     }
-  }
+  } , [isCategoryChoiceOpen , isSubcategoryChoiceOpen, spet,setCatagoryChoiceOpen,setSubcategoryChoiceOpen ])
 
   const GreyIntWidth = useMemo(() => {
     return (document.documentElement.clientWidth - 36) / 2;
@@ -390,7 +390,7 @@ const AdCreating = () => {
       BackButton.offClick(goBack);
       MainButton.offClick(goForward);
     };
-  });
+  } , [goBack,goForward ]);
 
   useEffect(() => {
     MainButton.show();
