@@ -15,6 +15,18 @@ const ChoiceCategory = ({
 }) => {
   
   const [inputValue, setInputValue] = useState("");
+  
+  useEffect( () => {
+    function closeFunction(){
+      setCatagoryChoiceOpen(false)
+    }
+    BackButton.show()
+    BackButton.onClick(closeFunction)
+    return () => {
+      BackButton.offClick(closeFunction)
+      BackButton.hide()
+    }
+  } , [] )
 
   useEffect( () => {
     function closeCategory(){

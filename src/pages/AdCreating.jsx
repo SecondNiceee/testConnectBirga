@@ -354,19 +354,24 @@ const AdCreating = () => {
     else{
 
       if (spet === 0) {
-        navigate(pagesHistory[pagesHistory.length-1]);
+        if (!isCategoryChoiceOpen && !isSubcategoryChoiceOpen){
+          navigate(pagesHistory[pagesHistory.length-1]);
+        }
       } else {
         
         if (spet === 1){
-          mainRef.current.classList.remove('stepOne')
-          mainRef.current.classList.remove('stepTwo')
-          mainRef.current.classList.add('oneBack')
+            mainRef.current.classList.remove('stepOne')
+            mainRef.current.classList.remove('stepTwo')
+            mainRef.current.classList.add('oneBack')
+          
         }
         if (spet === 2){
-          mainRef.current.classList.remove('stepTwo')
-          mainRef.current.classList.remove('stepOne')
-          mainRef.current.classList.add('twoBack')
+            mainRef.current.classList.remove('stepTwo')
+            mainRef.current.classList.remove('stepOne')
+            mainRef.current.classList.add('twoBack')
+          
         }
+      
         spet -= 1;
         MainButton.setText("ДАЛЕЕ")
         // backAnimte();

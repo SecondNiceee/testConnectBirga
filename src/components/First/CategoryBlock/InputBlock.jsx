@@ -28,6 +28,7 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
   }, [convertedValue]);
 
   const unFocusHandler = useCallback(() => {
+    document.documentElement.style.overflow = "unset"
     if (convertedValue === "") {
       inputRef.current.value = "0";
       inputRef.current.style.width = "8px";
@@ -48,6 +49,7 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
             id="myInput"
             inputMode="numeric"
             onFocus={(e) => {
+              document.documentElement.style.overflow = "hidden"
               setFocus(true);
             }}
             onBlur={unFocusHandler}

@@ -6,6 +6,19 @@ import BackButton from '../../constants/BackButton';
 const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
 
 
+
+    useEffect( () => {
+        function closeFunction(){
+          setSubcategoryChoiceOpen(false)
+        }
+        BackButton.show()
+        BackButton.onClick(closeFunction)
+        return () => {
+          BackButton.offClick(closeFunction)
+          BackButton.hide()
+        }
+      } , [] )
+
     const subCategorys = useMemo( () => {
         let subCategorysCopy = []
         if (taskInformation.category.category !== "Другое"){
