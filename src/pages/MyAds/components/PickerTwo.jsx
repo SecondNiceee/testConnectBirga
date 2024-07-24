@@ -4,7 +4,6 @@ import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 import MyAnimation from './MyAnimation';
 import AdsContainer from './AdsContainer';
 import { useSelector } from 'react-redux';
-import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 
 const PickerTwo = forwardRef(({setSecondPage , deleteFunction, setSliderAcitve , myAdsArray, valueTwo} , ref) => {
   const text = useMemo( () => {
@@ -23,6 +22,7 @@ const PickerTwo = forwardRef(({setSecondPage , deleteFunction, setSliderAcitve ,
 
 
   const status = useSelector(state => state.information.myOrderStatus)
+
     return (
         <div className="picker__block" ref={ref}>
         <AdCreateFunc text={"Создать объявление"} link={"/AdCreating"} />
