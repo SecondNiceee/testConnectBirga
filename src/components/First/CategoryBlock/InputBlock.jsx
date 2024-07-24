@@ -13,9 +13,9 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
   const [isFocus, setFocus] = useState(false);
   const convertedValue = useMemo(() => {
     if (value === "0") {
-      if (isFocus) {
+      
         return "";
-      }
+      
     }
     return new Intl.NumberFormat("ru-RU").format(value);
   }, [value, isFocus]);
@@ -28,11 +28,11 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
   }, [convertedValue]);
 
   const unFocusHandler = useCallback(() => {
-    if (convertedValue === "") {
-      inputRef.current.value = "0";
-      inputRef.current.style.width = "8px";
-      rubRef.current.style.display = "block";
-    }
+    // if (convertedValue === "") {
+    //   inputRef.current.value = "0";
+    //   inputRef.current.style.width = "8px";
+    //   rubRef.current.style.display = "block";
+    // }
     setFocus(false);
   }, [convertedValue, setFocus]);
 
