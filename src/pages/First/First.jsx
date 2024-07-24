@@ -321,12 +321,35 @@ const [subCategory, setSubCategory] = useState(false)
 
 const [filters, setFilters] = useState({
   category : {id : -1 , category : "Все"},
-  subCategory : {id : -1 , subCategory : "Все"}
+  subCategory : {id : -1 , subCategory : "Все"},
+  price : 0
 })
 
 console.log(filters)
 
 const filteredArr = useFilteredArr(ordersInformation, filterBy);
+
+
+const secFilteredArray = useMemo( () => {
+    let copy = [...filteredArr]
+    if (filters.category.id !== -1){
+      if (filters.subCategory.id !== -1){
+        return copy.filter((e) => {
+          return e.category === filters.category.id && e.subCategory === filters.subCategory.id && (e.tonValue * tonConstant) >= filters.price
+        })
+      }
+      else{
+        return copy.filter((e) => {
+          return e.category === filters.category.id && (e.tonValue * tonConstant) >= filters.price
+        })
+      }
+    }
+    else{
+      return copy.filter((e) => {
+        return (e.tonValue * tonConstant) >= filters.price
+      })
+    }
+} , [filteredArr, filters] )
 
 const forwardFunction = useCallback(() => {
   async function postResponce(advertismetId, userId) {
@@ -435,13 +458,14 @@ useEffect(() => {
 
 
         <AllTasks
+        setFilters={setFilters}
         setSubCategory = {setSubCategory}
         filters = {filters}
         setCategoryOpen = {setCategoryOpen}
         filterBy = {filterBy}
         setFilterBy = {setFilterBy}
           setSliderActive = {setSliderActive}
-          ordersInformation={filteredArr}
+          ordersInformation={secFilteredArray}
           setDetailsActive={setDetailsActive}
           setMenuActive={setMenuActive}
         />
@@ -473,7 +497,7 @@ useEffect(() => {
 
             />
           </CSSTransition>
-      <CSSTransition in = {categoryOpen} timeout={400} 
+      <CSSTransition in = {categoryOpen} timeout={0} 
       mountOnEnter unmountOnExit
       >
         <FirstChoiceCategory subCategorys={subCategorys} categorys={categorys} setCatagoryChoiceOpen={setCategoryOpen} taskInformation={filters} setTaskInformation={setFilters}   />
@@ -481,7 +505,7 @@ useEffect(() => {
 
 
 
-      <CSSTransition in = {subCategory} timeout={400} 
+      <CSSTransition in = {subCategory} timeout={0} 
       mountOnEnter unmountOnExit
       >
         <FirstChoiceSubCategory setSubcategoryChoiceOpen={setSubCategory} subCategorysPar={subCategorys}  taskInformation={filters} setTaskInformation={setFilters}   />

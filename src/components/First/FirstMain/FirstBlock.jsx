@@ -9,6 +9,9 @@ import { addWatch } from "../../../store/watchedAds";
 import options from "../../../constants/options";
 import formatDate from "../../../functions/makeDate";
 import { useInView } from "react-intersection-observer";
+import MyLoader from "../../UI/MyLoader/MyLoader";
+import { ThreeCircles } from "react-loader-spinner";
+import BlockSpinner from "../../UI/BlockSpinner/BlockSpinner";
 
 const Block = lazy(() => import('../Block'));
 
@@ -74,13 +77,11 @@ const FirstBlock = ({
   } , [setVisible , inView] )
 
   return (
-    <div ref={ref} style={!isVisible ? {minHeight : "320px"} : {}} className="wrapper">
+    <div ref={ref} style={!isVisible ? {minHeight : "282px"} : {}} className="wrapper">
       {
         isVisible && (
                 <Suspense fallback = {
-                  <div style={{minHeight : "320px"}} className="First__block">
-                    
-                  </div>
+                    <BlockSpinner />
                 }>
                   <Block {...props}  />
                 </Suspense>

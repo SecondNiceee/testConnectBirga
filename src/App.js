@@ -180,6 +180,21 @@ function App() {
 
   const me = useSelector(state => state.telegramUserInfo)
 
+//   useEffect( () => {
+//     document.documentElement.style.marginTop = '40px'
+   
+//     if (window.scrollY !== 40){
+//       window.scrollTo({
+//         top: 40,
+//         behavior: "auto",
+//       });
+//     }
+//     console.warn(window.scrollY)
+    
+//     document.documentElement.style.overflowY = 'hidden'
+//   return () => {
+//   }
+// },[] )
 
   useEffect(() => {
     dispatch(fetchTon());

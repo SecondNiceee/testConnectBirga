@@ -1,10 +1,11 @@
-import React, { memo, useCallback, useEffect} from "react";
+import React, { memo, useCallback, useEffect, useMemo} from "react";
 import FirstMain from "../../components/First/FirstMain/FirstMain";
 import FirstTop from "../../components/First/FirstMain/FirstTop";
 import FirstLoader from "../../loaders/FirstLoader";
 import { useDispatch, useSelector } from "react-redux";
 import { changeStatus, fetchTasksInformation } from "../../store/information";
 import CategoryBlock from "../../components/First/CategoryBlock/CategoryBlock";
+import InputBlock from "../../components/First/CategoryBlock/InputBlock";
 // let count = 0
 const AllTasks = ({
   setDetailsActive,
@@ -15,6 +16,7 @@ const AllTasks = ({
   setFilterBy,
   setCategoryOpen,
   filters,
+  setFilters,
   setSubCategory
 }) => {
   // count += 1
@@ -46,6 +48,8 @@ const AllTasks = ({
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
 
+  
+
 
   const tonConstant = useSelector((state) => state.ton.value);
 
@@ -67,6 +71,20 @@ const AllTasks = ({
     setSubCategory(true)
   } , [] )
 
+  const setValueFunc = useCallback( (value) => {
+    let copy = value
+
+
+      if (value[0] === "0"){
+        copy = copy.slice(1)
+      }
+      copy = copy.replace(/\s+/g, '');
+      if (!isNaN(copy) && copy.length < 5){
+        setFilters((value) => ({...value , price : Number(copy)}))
+      }
+    
+  }, [setFilters] )
+
   console.warn(filters)
 
   return (
@@ -80,6 +98,7 @@ const AllTasks = ({
               <div className="filtration-container">
           <CategoryBlock func={openCategoryFunc} name={"Категория"} value={filters.category.category}/>
           <CategoryBlock func={openSubCategoryFunc} name={"Подкатегория"}  value={filters.subCategory.subCategory}/>
+          <InputBlock setValue={setValueFunc} value={String(filters.price)} />
         </div>
 
       { (orderStatus === 'complete' || orderStatus === 'all') && tonConstant !== 0 ? (

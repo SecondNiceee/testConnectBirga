@@ -15,7 +15,7 @@ const FirstChoiceCategory = ({
 }) => {
 
    const myCategorys = useMemo( () => {
-    let copy = [...categorys]
+    let copy = [...categorys.filter(e => e.category !== "Другое")]
     copy.push({id : -1, category : "Все"})
     return copy
    }, [categorys] )
@@ -43,14 +43,8 @@ const FirstChoiceCategory = ({
           return (
             <div
               onClick={() => {
-                if(e.category === 'Другое'){
-                    setTaskInformation({ ...taskInformation, category: e , subCategory : subCategorys.find(e => e.subCategory === 'Нет')});
-                }
-                else{
-                  let sortedCategorys = subCategorys.filter(el => el.category.id === e.id)
-                  setTaskInformation({ ...taskInformation, category: e , subCategory : sortedCategorys.find(e => e.subCategory === 'Другое')});
-                }
-                setCatagoryChoiceOpen(false);
+setTaskInformation({ ...taskInformation, category: e , subCategory : {subCategory : "Все" , id : -1}});
+setCatagoryChoiceOpen(false)
               }}
               className={cl.wrap}
             >

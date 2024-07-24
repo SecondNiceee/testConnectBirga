@@ -5,13 +5,23 @@ import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
 const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
 
-    let subCategorys = useMemo(() => {
-        subCategorysPar.filter(e => e.category.id === taskInformation.category.id && e.subCategory !== 'Другое')
-    }, [])
-    useEffect( () => {
-        subCategorys.push(subCategorysPar.find(e => taskInformation.category.id && e.subCategory === 'Другое'))
 
-    } , [] )
+    const subCategorys = useMemo( () => {
+        let subCategorysCopy = []
+        if (taskInformation.category.category !== "Другое"){
+    
+            subCategorysCopy = [...subCategorysPar].filter(e => e.category.id === taskInformation.category.id && e.subCategory !== 'Другое')
+            subCategorysCopy.push(subCategorysPar.find(e => taskInformation.category.id === e.category.id && e.subCategory === 'Другое'))
+        }
+        else{
+
+            subCategorysCopy.push(subCategorysPar.find(e => taskInformation.category.id === e.category.id && e.subCategory === 'Нет'))
+
+        }
+        return subCategorysCopy
+    } , [subCategorysPar, taskInformation] )
+
+    console.log(subCategorys)
 
 
     const [inputValue , setInputValue] = useState('')

@@ -267,8 +267,6 @@
     margin-bottom: 18.33px;
     min-width: 100vw;
     display: flex;
-    height: 100vh;
-    overflow-y: scroll;
     flex-direction: column;
     position: relative;
 }
