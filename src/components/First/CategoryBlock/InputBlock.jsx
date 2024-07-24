@@ -23,7 +23,7 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
     if (inputRef.current.value === "") {
       inputRef.current.style.width = "66px";
     } else {
-      inputRef.current.style.width = String(textRef.current.offsetWidth) + "px";
+      inputRef.current.style.width = String(textRef.current.offsetWidth + 6) + "px";
     }
   }, [convertedValue]);
 

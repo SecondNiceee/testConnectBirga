@@ -79,7 +79,7 @@ const AllTasks = ({
         copy = copy.slice(1)
       }
       copy = copy.replace(/\s+/g, '');
-      if (!isNaN(copy) && copy.length < 5){
+      if (!isNaN(copy) && copy.length < 7){
         setFilters((value) => ({...value , price : Number(copy)}))
       }
     

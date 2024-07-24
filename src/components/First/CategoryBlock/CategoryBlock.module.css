@@ -43,7 +43,7 @@
 }
 .inputBlock{
     display: flex;
-    gap: 5px;
+    align-items: baseline;
 }
 .input::placeholder{
     font-family: "SF Pro Display";
