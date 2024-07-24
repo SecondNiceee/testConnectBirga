@@ -35,6 +35,7 @@
     letter-spacing: 0.01em;
     color: #fff;
     background-color: transparent;
+    caret-color: #2ea6ff;;
 }
 .hiddenText{
     position: absolute;
