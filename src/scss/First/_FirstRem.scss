@@ -9,6 +9,12 @@
   will-change: transform;
 }
 
+.filtration-container{
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+}
+
 .secondStep{
     transform: translateX(-100%);
 }

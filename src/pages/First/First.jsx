@@ -16,6 +16,10 @@ import axios from "axios";
 import pagesHistory from "../../constants/pagesHistory";
 import { addResponse } from "../../store/responses";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
+import CategoryBlock from "../../components/First/CategoryBlock/CategoryBlock";
+import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
+import FirstChoiceCategory from "../AdCreatingOne/ChoiceCategory/FirstChoiceCategory";
+import FirstChoiceSubCategory from "../AdCreatingOne/FirstChoiceSubCategory";
 
 let isDetailsActiveVar = false;
 let localResponce;
@@ -311,6 +315,17 @@ const me = useSelector(state => state.telegramUserInfo)
 
 const [filterBy, setFilterBy] = useState("");
 
+const [categoryOpen , setCategoryOpen] = useState(false)
+
+const [subCategory, setSubCategory] = useState(false)
+
+const [filters, setFilters] = useState({
+  category : {id : -1 , category : "Все"},
+  subCategory : {id : -1 , subCategory : "Все"}
+})
+
+console.log(filters)
+
 const filteredArr = useFilteredArr(ordersInformation, filterBy);
 
 const forwardFunction = useCallback(() => {
@@ -380,6 +395,14 @@ const forwardFunction = useCallback(() => {
   }
 }, [responce, step, ordersInformation, isDetailsActive.id, setDetailsActive, dispatch, setStep]);
 
+
+
+const categorys = useSelector((state) => state.categorys.category);
+
+const subCategorys = useSelector((state) => state.categorys.subCategory);
+
+console.log(subCategorys)
+
 useEffect(() => {
   MainButton.onClick(forwardFunction);
   return () => {
@@ -409,7 +432,12 @@ useEffect(() => {
         >
           ДАЛЕЕ
         </button> */}
+
+
         <AllTasks
+        setSubCategory = {setSubCategory}
+        filters = {filters}
+        setCategoryOpen = {setCategoryOpen}
         filterBy = {filterBy}
         setFilterBy = {setFilterBy}
           setSliderActive = {setSliderActive}
@@ -445,6 +473,19 @@ useEffect(() => {
 
             />
           </CSSTransition>
+      <CSSTransition in = {categoryOpen} timeout={400} 
+      mountOnEnter unmountOnExit
+      >
+        <FirstChoiceCategory subCategorys={subCategorys} categorys={categorys} setCatagoryChoiceOpen={setCategoryOpen} taskInformation={filters} setTaskInformation={setFilters}   />
+      </CSSTransition>
+
+
+
+      <CSSTransition in = {subCategory} timeout={400} 
+      mountOnEnter unmountOnExit
+      >
+        <FirstChoiceSubCategory setSubcategoryChoiceOpen={setSubCategory} subCategorysPar={subCategorys}  taskInformation={filters} setTaskInformation={setFilters}   />
+      </CSSTransition>
 
      <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
 

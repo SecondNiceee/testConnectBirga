@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import cl from './ShowMyResponse.module.css'
 import Top from '../../UI/Top/Top';
 import ResponseBlock from '../ResponseBlock';
@@ -9,10 +9,25 @@ import formatDate from '../../../functions/makeDate';
 import { useDispatch } from 'react-redux';
 import { deleteResponse } from '../../../store/responses';
 import MyLoader from '../../UI/MyLoader/MyLoader';
+import MainButton from '../../../constants/MainButton';
 const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
     console.log(response)
     const dispatch = useDispatch()
-
+    useEffect( () => {
+        function clickHandler(){
+            console.log("Привет")
+        }
+        if (response.isWatched === "inProcess"){
+            MainButton.show()
+            MainButton.setText("ВЫПОЛНИЛ")
+            MainButton.onClick(clickHandler)
+        }
+        return () => {
+            MainButton.hide()
+            MainButton.offClick(clickHandler)
+        }
+        
+    } , [] )
     return (
         <>
         { response ? <MyLoader style = {{width : "100vw" , height : "100vh" }}/> :

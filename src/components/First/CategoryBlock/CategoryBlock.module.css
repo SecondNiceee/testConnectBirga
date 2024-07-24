@@ -1,0 +1,29 @@
+.wrapper{
+    background: #2e3640;
+    border-radius: 9px;
+    padding: 7px 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-items: center;
+}
+.left{
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+.name{
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 107%;
+    color: #969a9f;
+}
+.value{
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 126%;
+    letter-spacing: 0.01em;
+    color: #fff;
+}

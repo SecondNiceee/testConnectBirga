@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import rightArrow from '../../images/icons/rightArrow.svg'
 import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
-const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
+const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
 
     let subCategorys = useMemo(() => {
         subCategorysPar.filter(e => e.category.id === taskInformation.category.id && e.subCategory !== 'Другое')
@@ -63,4 +63,4 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
     );
 };
 
-export default ChoiceSubCategory;
+export default FirstChoiceSubCategory;

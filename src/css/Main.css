@@ -23,6 +23,14 @@
   will-change: transform;
 }
 
+.filtration-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 8px;
+  margin-top: 18px;
+}
+
 .secondStep {
   -webkit-transform: translateX(-100%);
       -ms-transform: translateX(-100%);
