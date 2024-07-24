@@ -1,6 +1,7 @@
 import React, { lazy, memo, Suspense, useCallback, useEffect, useRef, useState } from 'react';
 
 import Block from "./Block"
+import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 
 const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunction}) => {
 
@@ -13,7 +14,7 @@ const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunctio
 
             );
           })}
-          
+          <MyLoader style = {{ height : "90px" , marginLeft : "-16px"}} />
         </div>
     );
 };

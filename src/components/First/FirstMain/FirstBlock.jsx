@@ -77,7 +77,7 @@ const FirstBlock = ({
   } , [setVisible , inView] )
 
   return (
-    <div ref={ref} style={!isVisible ? {minHeight : "282px"} : {}} className="wrapper">
+    <div ref={ref} style={!isVisible ? {minHeight : "144px"} : {}} className="wrapper">
       {
         isVisible && (
                 <Suspense fallback = {

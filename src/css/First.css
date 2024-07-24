@@ -35,6 +35,7 @@
     margin-top: calc(55px * 0.4767);
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     gap: calc(35px * 0.4767);
     min-height: calc(100vh - 68px);
     border-radius: 10px;
