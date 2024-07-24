@@ -291,7 +291,7 @@ const AdCreating = () => {
     }
   }
 
-  const goForward = useCallback(() => {
+  const goForward = () => {
     if (blurRef.current) {
       blurRef.current.focus();
     }
@@ -338,7 +338,7 @@ const AdCreating = () => {
         }
       
     }
-  } , [] )
+  } 
 
 
 
@@ -360,6 +360,7 @@ const AdCreating = () => {
       } else {
         
         if (spet === 1){
+
             mainRef.current.classList.remove('stepOne')
             mainRef.current.classList.remove('stepTwo')
             mainRef.current.classList.add('oneBack')
