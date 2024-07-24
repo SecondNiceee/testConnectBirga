@@ -67,6 +67,8 @@ const AllTasks = ({
     setSubCategory(true)
   } , [] )
 
+  console.warn(filters)
+
   return (
     <div className="AllTasks">
       <FirstTop

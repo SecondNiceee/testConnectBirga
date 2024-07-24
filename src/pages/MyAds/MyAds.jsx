@@ -286,10 +286,22 @@ const MyAds = () => {
     }
   } , [sortedArray , valueTwo] )
 
-  useEffect( () => {
-    document.documentElement.style.overflowY = "hidden"
-  } , [] )
 
+  useEffect( () => {
+    document.documentElement.style.overflowY = 'unset'
+   
+    if (window.scrollY !== 40){
+      window.scrollTo({
+        top: 40,
+        behavior: "auto",
+      });
+    }
+    console.warn(window.scrollY)
+    
+    document.documentElement.style.overflowY = 'hidden'
+  return () => {
+  }
+},[] )
   
 
 
