@@ -3106,7 +3106,6 @@ body {
   -webkit-transition: 0.5s;
   transition: 0.5s;
   height: auto;
-  overflow-y: scroll;
   overflow-x: hidden;
   position: relative;
 }
