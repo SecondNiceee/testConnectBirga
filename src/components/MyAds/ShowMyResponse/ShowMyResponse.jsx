@@ -10,12 +10,18 @@ import { useDispatch } from 'react-redux';
 import { deleteResponse } from '../../../store/responses';
 import MyLoader from '../../UI/MyLoader/MyLoader';
 import MainButton from '../../../constants/MainButton';
+import axios from 'axios';
 const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
     console.log(response)
     const dispatch = useDispatch()
     useEffect( () => {
-        function clickHandler(){
-            console.log("Привет")
+        async function clickHandler(){
+            await axios.get("https://back-birga.ywa.su/bot/notification" , {
+                params : {
+                    chatId : response.advertisement.user.chatId,
+                    advertisementId : response.advertisement.user.id
+                }
+            })
         }
         if (response.isWatched === "inProcess"){
             MainButton.show()
