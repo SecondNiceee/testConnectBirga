@@ -1,6 +1,5 @@
 import React, { forwardRef, memo, useMemo,  } from 'react';
 import AdCreateFunc from '../../../components/UI/AdCreateFunc/AdCreateFunc';
-import FirstBlock from '../../../components/First/FirstMain/FirstBlock';
 import MyAnimation from './MyAnimation';
 import AdsContainer from './AdsContainer';
 import { useSelector } from 'react-redux';
