@@ -135,8 +135,10 @@ export const useButton = ({
       MainButton.setText("ВЫБРАТЬ");
       MainButton.onClick(writeFucntion);
     } else {
-      MainButton.hide();
       MainButton.offClick(writeFucntion);
+      if (!myResponse.isOpen){
+        MainButton.hide();
+      }
     }
     BackButton.onClick(goBack);
     return () => {

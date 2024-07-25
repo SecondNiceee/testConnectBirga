@@ -8,6 +8,7 @@ import { changeMenuActive } from "../../../store/menuSlice";
 import options from "../../../constants/options";
 import formatDate from "../../../functions/makeDate";
 import { postResponse } from "../../../store/responses";
+import MainButton from "../../../constants/MainButton";
 const LastAds = ({
   setSliderActive,
 
@@ -29,6 +30,7 @@ const LastAds = ({
       dispatch(postResponse(responce.id))
     }
   } , [] )
+
 
 
 
