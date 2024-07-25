@@ -1,9 +1,9 @@
 import React from 'react';
 import { ThreeCircles } from 'react-loader-spinner';
 
-const BlockSpinner = () => {
+const BlockSpinner = ({isPhotos = false}) => {
     return (
-    <div style={{minHeight : "145px" , display : "flex" , alignItems : "center", justifyContent : "center"
+    <div style={  {minHeight : "144px" , display : "flex" , alignItems : "center", justifyContent : "center"
     }} className="First__block">
         <ThreeCircles
             visible={true}

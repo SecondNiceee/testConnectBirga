@@ -66,13 +66,14 @@ const AdCreatingOne = ({
   isDetailsActive,
   categorys,
   subCategorys,
+  isCategoryChoiceOpen,
+  setCatagoryChoiceOpen,
+  isSubcategoryChoiceOpen,
+  setSubcategoryChoiceOpen
 }) => {
 
 
 
-  const [isCategoryChoiceOpen, setCatagoryChoiceOpen] = useState(false);
-
-  const [isSubcategoryChoiceOpen, setSubcategoryChoiceOpen] = useState(false);
 
   
 

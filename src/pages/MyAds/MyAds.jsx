@@ -261,47 +261,45 @@ const MyAds = () => {
 
 
 
-  const sortedArray = useMemo( () => {
-    let copy = [...myAdsArray]
+  // const sortedArray = useMemo( () => {
+  //   let copy = [...myAdsArray]
 
-      return copy.sort( (a , b) => {
-        let order = {"inProcess" : 0 , "active" : 1, "completed" : 2 }
-        return order[a.status] - order[b.status]
-      } )
+  //     return copy.sort( (a , b) => {
+  //       let order = {"inProcess" : 0 , "active" : 1, "completed" : 2 }
+  //       return order[a.status] - order[b.status]
+  //     } )
     
-  } , [myAdsArray , nowValue] )
+  // } , [myAdsArray , nowValue] )
 
   const filteredArray = useMemo( () => {
     switch (valueTwo){
       case "all":
-        return sortedArray
+        return myAdsArray
       case "active":
-        return sortedArray.filter((e, i) => {
+        return myAdsArray.filter((e, i) => {
           return e.status === "active"
         })
       case "inProcess":
-        return sortedArray.filter(e => e.status === "inProcess")
+        return myAdsArray.filter(e => e.status === "inProcess")
       case "completed":
-        return sortedArray.filter(e => e.status === "completed")
+        return myAdsArray.filter(e => e.status === "completed")
     }
-  } , [sortedArray , valueTwo] )
+  } , [myAdsArray , valueTwo] )
 
+  useEffect( () => {
+    document.documentElement.style.overflowY = 'scroll'
+    document.documentElement.style.marginTop = '40px'
+    setTimeout( () => {
 
-//   useEffect( () => {
-//     document.documentElement.style.overflowY = 'unset'
-   
-//     if (window.scrollY !== 40){
-//       window.scrollTo({
-//         top: 40,
-//         behavior: "auto",
-//       });
-//     }
-//     console.warn(window.scrollY)
-    
-//     document.documentElement.style.overflowY = 'hidden'
-//   return () => {
-//   }
-// },[] )
+      window.scrollTo({
+        top: 40,
+        behavior: "smooth",
+      });
+       document.documentElement.style.overflowY = 'hidden'
+    }, 400 )
+
+},[] )
+
   
 
 
@@ -319,6 +317,9 @@ const MyAds = () => {
     setMyResponse((value) => ({...value , isOpen : true}))
     dispatch(deleteResponse(index))
 } , [setMyResponse])
+
+
+  console.log(myResponse)
 
 
   return (

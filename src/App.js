@@ -199,7 +199,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
-    dispatch(fetchMyOrders());
+    dispatch(fetchMyOrders(1));
     dispatch(getCategorys());
     dispatch(getSubCategorys());
     dispatch(getCategorys());
@@ -210,7 +210,7 @@ function App() {
 
   useEffect( () => {
     if (me.id !== "" && me){
-      dispatch(fetchResponses(me))
+      dispatch(fetchResponses([me, 1]))
     }
   } , [dispatch, me] )
   

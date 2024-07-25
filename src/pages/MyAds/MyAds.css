@@ -20,7 +20,7 @@
     border-radius: 50%;
     width: 28px;
     height: 28px;
-    border: 2px solid #2ea5ff;
+    border: 1.33px solid #2ea5ff;
     margin-left: auto;
 }
 .blue-circle .commit-icon{
@@ -266,6 +266,8 @@
     padding-top: 20px;
     margin-bottom: 18.33px;
     min-width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     position: relative;

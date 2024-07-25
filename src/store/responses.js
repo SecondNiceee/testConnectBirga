@@ -97,11 +97,14 @@ export const fetchResponses = createAsyncThunk(
         let im = await axios.get('https://back-birga.ywa.su/response/findByUser' , {
             params : {
                 "userId" : 2144832745,
+                page : par[1],
+                limit : 6
+                
             }
         })
         let localResponses = im.data
 
-        let me = par
+        let me = par[0]
         
 
         for (let i = 0; i < localResponses.length; i++){
@@ -195,10 +198,15 @@ const responses = createSlice({
             state.responses.push(action.payload)
         }))
         builder.addCase(fetchResponses.pending , ((state , action) => {
-            state.status = "pending"
+            if (state.responses.length === 0){
+                state.status = "pending"
+            }
+            else{
+                state.status = "complete"
+            }
         }  ))
         builder.addCase(fetchResponses.fulfilled , ((state , action) => {
-            state.responses = [...state.responses, ...action.payload]
+            state.responses.push(...action.payload)
             if (action.payload.length < 6){
                 state.status = "all"
             }

@@ -30,7 +30,7 @@ const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
     } , [] )
     return (
         <>
-        { response ? <MyLoader style = {{width : "100vw" , height : "100vh" }}/> :
+        { !response ? <MyLoader style = {{width : "100vw" , height : "100vh" }}/> :
         <div className={cl.wrapper}>
             <Top  name={"Мой отклик"}  />
             <ResponseBlock isWatched={response.isWatched} index={index} func={openDetails} className={cl.response} buttonText={"Подробнее"} {...response.advertisement} task={response.advertisement}   />

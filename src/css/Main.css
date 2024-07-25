@@ -3086,6 +3086,7 @@ html {
 body {
   width: 100%;
   height: auto;
+  overflow: auto;
   background: rgb(24, 34, 45);
 }
 
