@@ -1,13 +1,11 @@
-import React, { memo, useCallback, useEffect } from 'react';
+import React, { memo, useEffect } from 'react';
 import cl from './ShowMyResponse.module.css'
 import Top from '../../UI/Top/Top';
 import ResponseBlock from '../ResponseBlock';
 import MyReaction from '../MyReaction';
 import Customer from '../Customer/Customer';
-import options from '../../../constants/options';
 import formatDate from '../../../functions/makeDate';
 import { useDispatch } from 'react-redux';
-import { deleteResponse } from '../../../store/responses';
 import MyLoader from '../../UI/MyLoader/MyLoader';
 import MainButton from '../../../constants/MainButton';
 import axios from 'axios';
