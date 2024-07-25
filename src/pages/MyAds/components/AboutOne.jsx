@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import makeNewFile from "../../../functions/newMakeFile";
 import AllReactions from "./AllReactions";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
+import MyFirstBlock from "../../../components/MyAds/MyFirstBlock";
+import SuspenseBlock from "../../../components/MyAds/SuspenseBlock";
 
 const AboutOne = ({
   task,
@@ -140,13 +142,14 @@ const AboutOne = ({
       <Top name={"Отклики"} setMenuActive={setMenuActive} />
 
       {task ? (
-        <FirstBlock
+        <MyFirstBlock
           setSlideActive={setSliderAcitve}
           deleteFunction={deleteCallback}
           setDetailsActive={setDetailsCallback}
           isResponce={task.status !== "inProcess" }
           isButton={task.status !== "inProcess" }
           className={"FirstAdsBlock"}
+        
           {...task}
         />
       ) : (

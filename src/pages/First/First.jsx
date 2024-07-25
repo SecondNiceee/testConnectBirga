@@ -165,7 +165,6 @@ const First = () => {
   
             if (step === 1) {
               setStep(0)
-
               mainRef.current.classList.remove('secondStep')
             }
             else{
@@ -200,7 +199,7 @@ const First = () => {
         })
       }
       else{
-        if (localStep === 0){
+        if (localStep === 1){
           MainButton.setParams({
             is_active : true,
             color : '#2ea5ff',
