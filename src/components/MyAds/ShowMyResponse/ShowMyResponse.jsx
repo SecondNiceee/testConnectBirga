@@ -16,12 +16,19 @@ const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
     const dispatch = useDispatch()
     useEffect( () => {
         async function clickHandler(){
-            await axios.get("https://back-birga.ywa.su/bot/notification" , {
-                params : {
-                    chatId : response.advertisement.user.chatId,
-                    advertisementId : response.advertisement.user.id
-                }
-            })
+            try{
+
+                await axios.get("https://back-birga.ywa.su/bot/notification" , {
+                
+                    params : {
+                        "chatId" : response.advertisement.user.chatId,
+                        "advertisementId" : response.advertisement.id
+                    }
+                })
+            }
+            catch(e){
+                console.log(e)
+            }
         }
         if (response.isWatched === "inProcess"){
             MainButton.show()
