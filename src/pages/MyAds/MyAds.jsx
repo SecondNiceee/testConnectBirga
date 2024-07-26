@@ -296,7 +296,7 @@ const MyAds = () => {
         behavior: "smooth",
       });
        document.documentElement.style.overflowY = 'hidden'
-    }, 400 )
+    }, 350 )
 
 },[] )
 
