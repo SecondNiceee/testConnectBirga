@@ -282,7 +282,24 @@ const First = () => {
   } , [isMenuActive, setMenuActive] )
   
   const tonConstant = useSelector((state) => state.ton.value);
+  
   localResponce = responce
+
+
+
+  useEffect( () => {
+    document.documentElement.style.overflowY = 'scroll'
+    document.documentElement.style.marginTop = '40px'
+    setTimeout( () => {
+
+      window.scrollTo({
+        top: 40,
+        behavior: "smooth",
+      });
+       document.documentElement.style.overflowY = 'hidden'
+    }, 400 )
+
+},[] )
 
 
   useEffect(() => {

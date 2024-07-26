@@ -346,6 +346,12 @@ const Profile = () => {
   }
 
 
+  useEffect( () => {
+    document.documentElement.style.overflowY = 'auto'
+
+},[] )
+
+
   return (
     <motion.div
       className="profile__container"
