@@ -47,63 +47,65 @@ const FirstBlock = ({
 
   const [badPhotos, setBadPhotos] = useState([])
   useEffect(() => {
-    function resizeImage(file, maxWidth, maxHeight, quality) {
-      return new Promise((resolve, reject) => {
-        const reader = new FileReader();
-        reader.onload = (event) => {
-          const img = new Image();
-          img.onload = () => {
-            let width = img.width;
-            let height = img.height;
+    if (end){
 
-            if (width > maxWidth) {
-              height *= maxWidth / width;
-              width = maxWidth;
-            }
-
-            if (height > maxHeight) {
-              width *= maxHeight / height;
-              height = maxHeight;
-            }
-
-            const canvas = document.createElement("canvas");
-            canvas.width = width;
-            canvas.height = height;
-
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0, width, height);
-
-            canvas.toBlob(
-              (blob) => {
-                resolve(
-                  new File([blob], file.name, {
-                    type: "image/png",
-                    lastModified: new Date().getTime(),
-                  })
-                );
-              },
-              "image/png",
-              quality
-            );
+      function resizeImage(file, maxWidth, maxHeight, quality) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+              let width = img.width;
+              let height = img.height;
+  
+              if (width > maxWidth) {
+                height *= maxWidth / width;
+                width = maxWidth;
+              }
+  
+              if (height > maxHeight) {
+                width *= maxHeight / height;
+                height = maxHeight;
+              }
+  
+              const canvas = document.createElement("canvas");
+              canvas.width = width;
+              canvas.height = height;
+  
+              const ctx = canvas.getContext("2d");
+              ctx.drawImage(img, 0, 0, width, height);
+  
+              canvas.toBlob(
+                (blob) => {
+                  resolve(
+                    new File([blob], file.name, {
+                      type: "image/png",
+                      lastModified: new Date().getTime(),
+                    })
+                  );
+                },
+                "image/png",
+                quality
+              );
+            };
+            img.src = event.target.result;
           };
-          img.src = event.target.result;
-        };
-        reader.readAsDataURL(file);
-      });
-    }
-    let newPhotos = []
-    for (let event of photos){
-       resizeImage(event, 500 , 500, 0.8).then((value) => {
-        newPhotos.push(value)
-        if (newPhotos.length === photos.length){
-            setBadPhotos(newPhotos)
-        }
-      })
+          reader.readAsDataURL(file);
+        });
+      }
+      let newPhotos = []
+      for (let event of photos){
+         resizeImage(event, 500 , 500, 0.8).then((value) => {
+          newPhotos.push(value)
+          if (newPhotos.length === photos.length){
+              setBadPhotos(newPhotos)
+          }
+        })
+      }
     }
 
   }, [photos]);
 
-  console.warn(badPhotos)
 
   const props = {
     className: className,
@@ -146,7 +148,7 @@ const FirstBlock = ({
     >
       {isVisible && (
         <Suspense fallback={<BlockSpinner />}>
-          <Block {...props} photos={badPhotos} />
+          <Block {...props} photos={ end ? badPhotos : photos} />
         </Suspense>
       )}
     </div>
