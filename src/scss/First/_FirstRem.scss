@@ -10,6 +10,11 @@
   height: 100vh;
   overflow-y: scroll;
   overflow-x: hidden;
+  min-width: 100vw;
+}
+
+.first-container{
+    display: flex;
 }
 
 .filtration-container{

@@ -455,10 +455,9 @@ useEffect(() => {
 }, [responce, forwardFunction]);
 
   return (
-    <>
+    <div ref={mainRef} className="first-container">
     <motion.div
       // style={style}
-      ref={mainRef}
       className="First"
       onClick={closeMenu}
       initial={{ opacity: 0 }}
@@ -492,18 +491,7 @@ useEffect(() => {
           setMenuActive={setMenuActive}
         />
 
-        {ordersInformation !== null && tonConstant !== 0   ? 
-        <Responce
-          responce = {responce}
-          setResponce = {setResponce}
 
-          orderInformation={filteredArr[isDetailsActive.id] ? filteredArr[isDetailsActive.id] : "he"}
-        />
-        // <>
-        // </>
-        :                                     
-        <></>
-        }
       </div>
 
 
@@ -525,6 +513,19 @@ useEffect(() => {
 
     </motion.div>
 
+    {ordersInformation !== null && tonConstant !== 0   ? 
+        <Responce
+          responce = {responce}
+          setResponce = {setResponce}
+
+          orderInformation={filteredArr[isDetailsActive.id] ? filteredArr[isDetailsActive.id] : "he"}
+        />
+        // <>
+        // </>
+        :                                     
+        <></>
+        }
+
     <CSSTransition
             in={isDetailsActive.isOpen}
             timeout={400}
@@ -538,7 +539,7 @@ useEffect(() => {
 
             />
           </CSSTransition>
-    </>
+    </div>
   );
 };
 
