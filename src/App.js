@@ -146,6 +146,9 @@ const AnimatedSwitch = () => {
   );
 };
 
+
+window.Telegram.WebApp.disableVerticalSwipes()
+
 function App() {
   // useEffect( () => {
   //   document.documentElement.style.overflowY = 'hidden'
