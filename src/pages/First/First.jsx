@@ -291,8 +291,6 @@ const First = () => {
     document.documentElement.style.overflowY = 'scroll'
     document.documentElement.style.marginTop = '40px'
     const MainContainer = document.querySelector(".MainContainer")
-    MainContainer.style.overflowY = "scroll"
-    MainContainer.style.height = "100vh"
     setTimeout( () => {
 
       window.scrollTo({
@@ -303,8 +301,6 @@ const First = () => {
     }, 350 )
     return () => {
 
-          MainContainer.style.overflowY = "auto"
-          MainContainer.style.height = "unset"
 
     }
 

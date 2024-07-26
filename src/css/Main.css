@@ -21,6 +21,9 @@
   -webkit-transition: 0.35s;
   transition: 0.35s;
   will-change: transform;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .filtration-container {
@@ -38,6 +41,9 @@
 }
 
 .first-wrapper {
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

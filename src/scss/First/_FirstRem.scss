@@ -7,6 +7,9 @@
   display: flex;
   transition: 0.35s;
   will-change: transform;
+  height: 100vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .filtration-container{
@@ -20,6 +23,7 @@
 }
 
 .first-wrapper{
+    height: max-content;
     display: flex;
     transform: translateX(0%);
     transition: transform 0.4s;

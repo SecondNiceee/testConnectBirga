@@ -71,7 +71,7 @@ const BudgetInput = ({
           document.documentElement.style.overflowY = 'hidden'
           setTimeout( () => {
               document.documentElement.style.overflowY = 'visible'
-          } , 300 )
+          } , 2000)
           setBudget(e.target.value === "0" ? "" : e.target.value);
         }}
         onBlur={(e) => {
