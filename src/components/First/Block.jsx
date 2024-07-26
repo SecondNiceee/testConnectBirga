@@ -64,6 +64,8 @@ const Block = ({
                         photos.length === 1
                           ? {
                               width: "calc(100% - 3.67px)",
+                              marginLeft : "auto",
+                              marginRight : "auto"
                             }
                           : {}
                       }

@@ -10,27 +10,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
   const addFiles = useCallback( (newFiles) => {
     let localImages = []
     newFiles.forEach((event) => {
-
-      var reader = new FileReader();
-  
-      // Обработчик загрузки файла
-      reader.onload = function () {
-        // Получаем base64 кодирование файла
-        var base64 = reader.result;
-        
-        // Создаем изображение и устанавливаем в него src base64 кодирование
-        console.log(base64)
-        localImages.push(base64)
-        if (localImages.length === newFiles.length){
-          setImages([...images, ...localImages])
-          alert('о да')
-        }
-        // Добавляем изображение на страницу
-      }
-
-
-
-
       resizeImage(event, 400, 400, 0.6).then((value) => {
         // reader.readAsDataURL(value);
         localImages.push(URL.createObjectURL(value))
@@ -131,7 +110,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       left : '0',
       opacity : '0'
     }} value={"привет"} ref={textRef} type="text" />
-    <label
+    <div
 
       htmlFor="file"
       style={photoStyle}
@@ -147,6 +126,11 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
                     return files.indexOf(obj) !== images.indexOf(e);
                   })
                 );
+                setImages(
+                  [...images].filter((obj) => {
+                    return images.indexOf(obj) !== images.indexOf(e);
+                  })
+                );
                 
 
               }}
@@ -159,7 +143,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       })}
 
       <label
-        style={images.length === 10 ? { display: "none" } : {}}
+        style={images.length === 5 ? { display: "none" } : {}}
         className={images.length !== 0 ? cl.ActiveMainLabel : cl.MainLabel}
         htmlFor="file"
       >
@@ -203,7 +187,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         <p>Добавить фото</p>
       </label>
       
-    </label>
+    </div>
     {/* {images.map( (e, i) => {
       return <p>{e}</p>
     }) } */}
