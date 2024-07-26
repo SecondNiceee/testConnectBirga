@@ -70,7 +70,7 @@ const BudgetInput = ({
         onFocus={(e) => {
           document.documentElement.style.overflowY = 'hidden'
           setTimeout( () => {
-              document.documentElement.style.overflowY = 'visible'
+              document.documentElement.style.overflowY = 'unset'
           } , 2000)
           setBudget(e.target.value === "0" ? "" : e.target.value);
         }}

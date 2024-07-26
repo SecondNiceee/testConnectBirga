@@ -455,6 +455,7 @@ useEffect(() => {
 }, [responce, forwardFunction]);
 
   return (
+    <>
     <motion.div
       // style={style}
       ref={mainRef}
@@ -505,19 +506,7 @@ useEffect(() => {
         }
       </div>
 
-      <CSSTransition
-            in={isDetailsActive.isOpen}
-            timeout={400}
-            classNames="left-right"
-            mountOnEnter
-            unmountOnExit
-          >
-            <FirstDetails
-              // className={}
-              orderInformation={ordersInformation === null ? "" : ordersInformation[isDetailsActive.id]  }
 
-            />
-          </CSSTransition>
       <CSSTransition in = {categoryOpen} timeout={0} 
       mountOnEnter unmountOnExit
       >
@@ -535,6 +524,21 @@ useEffect(() => {
      <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
 
     </motion.div>
+
+    <CSSTransition
+            in={isDetailsActive.isOpen}
+            timeout={400}
+            classNames="left-right"
+            mountOnEnter
+            unmountOnExit
+          >
+            <FirstDetails
+              // className={}
+              orderInformation={ordersInformation === null ? "" : ordersInformation[isDetailsActive.id]  }
+
+            />
+          </CSSTransition>
+    </>
   );
 };
 
