@@ -293,16 +293,8 @@ const First = () => {
 
 
   useEffect( () => {
-    document.documentElement.style.overflowY = 'scroll'
-    document.documentElement.style.marginTop = '40px'
-    setTimeout( () => {
-
-      window.scrollTo({
-        top: 40,
-        behavior: "smooth",
-      });
+       window.Telegram.WebApp.disableVerticalSwipes()
        document.documentElement.style.overflowY = 'hidden'
-    }, 350 )
     return () => {
 
 
