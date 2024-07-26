@@ -165,6 +165,11 @@ const First = () => {
   
             if (step === 1) {
               setStep(0)
+              MainButton.setParams({
+                      is_active : true,
+                      color : '#2ea5ff',
+                      text_color : '#ffffff'})
+                      
               mainRef.current.classList.remove('secondStep')
             }
             else{
@@ -290,7 +295,6 @@ const First = () => {
   useEffect( () => {
     document.documentElement.style.overflowY = 'scroll'
     document.documentElement.style.marginTop = '40px'
-    const MainContainer = document.querySelector(".MainContainer")
     setTimeout( () => {
 
       window.scrollTo({
