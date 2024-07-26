@@ -28,6 +28,8 @@
 }
 
 .first-container {
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
