@@ -221,7 +221,7 @@ useEffect( () => {
     document.documentElement.scrollTop = 40
     alert("Привет")
   }
-  BackButton.onClick(hh)
+  BackButton.onClick(hhTwo)
   window.Telegram.WebApp.onEvent("viewportChanged", hh)
 
 },[] )
