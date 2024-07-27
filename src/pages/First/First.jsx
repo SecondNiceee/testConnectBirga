@@ -102,7 +102,7 @@ const First = () => {
 
       if (ordersInformation[isDetailsActive.id].responces){
 
-        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === "2144832745")){
+        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === "window.Telegram.WebApp.initDataUnsafe.user.id")){
           return true
         }
         else{
@@ -421,7 +421,7 @@ const forwardFunction = useCallback(() => {
         // setShablon({...shablon , isActive : false})
       }
       if (buttonId === "save") {
-        postResponce(ordersInformation[isDetailsActive.id].id, 2144832745 );
+        postResponce(ordersInformation[isDetailsActive.id].id, window.Telegram.WebApp.initDataUnsafe.user.id );
         mainRef.current.classList.remove('secondStep')
         setDetailsActive((value) => ({...value , isOpen : false}))
         setStep(0)
@@ -447,6 +447,12 @@ const subCategorys = useSelector((state) => state.categorys.subCategory);
 console.log(subCategorys)
 
 useEffect( () => {
+
+  document.documentElement.style.overflowY = 'scroll'
+  document.documentElement.style.marginTop = "20px"
+  document.documentElement.scrollTop = 20
+  document.documentElement.style.overflowY = 'hidden'
+
   function hh(){
     document.documentElement.scrollTop = 20
   }

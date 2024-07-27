@@ -19,6 +19,8 @@
 
 }
 .InputContainer{
+    border-radius: 9.97px;
+    background: rgb(32, 48, 63);
     position: relative;
 }
 .GreyText{
