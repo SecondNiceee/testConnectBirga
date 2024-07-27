@@ -3114,6 +3114,8 @@ body {
   position: relative;
   height: auto;
   width: 100%;
+  position: absolute;
+  top: -40px;
 }
 
 .MainContainer {

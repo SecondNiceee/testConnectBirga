@@ -292,19 +292,18 @@ const First = () => {
 
 
 
-  useEffect( () => {
-       window.Telegram.WebApp.disableVerticalSwipes()
+//   useEffect( () => {
+//        window.Telegram.WebApp.disableVerticalSwipes()
         
 
-        document.documentElement.style.marginTop = '40px'
-        window.scrollTo(0 , 40) 
-         document.documentElement.style.overflowY = 'clip'
-    return () => {
+//         document.documentElement.style.marginTop = '40px'
+//          document.documentElement.style.overflowY = 'clip'
+//     return () => {
 
 
-    }
+//     }
 
-},[] )
+// },[] )
 
 
   useEffect(() => {

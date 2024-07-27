@@ -32,7 +32,6 @@ const DescriptionAndPhoto = ({
           {text.length} / 500
         </p>
         <TextArea
-          onFocus={(e) => {}}
           value={text}
           className={cl.DescriptionInput}
           placeholder={textPlaceholder}
