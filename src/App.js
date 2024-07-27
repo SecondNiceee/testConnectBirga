@@ -150,11 +150,6 @@ const AnimatedSwitch = () => {
 window.Telegram.WebApp.disableVerticalSwipes()
 
 function App() {
-  useEffect( () => {
-    window.scrollTo(0 , 20)
-    document.documentElement.style.overflowY = 'hidden'
-    document.documentElement.style.height = 'calc(100vh + 20px)'
-  },[] )
 
   // window.Telegram.WebApp
   // .showPopup({

@@ -294,7 +294,11 @@ const First = () => {
 
   useEffect( () => {
        window.Telegram.WebApp.disableVerticalSwipes()
-       document.documentElement.style.overflowY = 'hidden'
+        
+
+        document.documentElement.style.marginTop = '40px'
+        window.scrollTo(0 , 40) 
+         document.documentElement.style.overflowY = 'clip'
     return () => {
 
 
