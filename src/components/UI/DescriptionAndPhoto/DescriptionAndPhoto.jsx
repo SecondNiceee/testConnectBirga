@@ -16,16 +16,6 @@ const DescriptionAndPhoto = ({
   fileError,
 }) => {
 
-  const focuseHandelr = useCallback( () => {
-    document.documentElement.style.overflowY = "auto"
-    document.documentElement.style.marginTop = "0px"
-} , [] )
-const unfocusHandler = useCallback( () => {
-    
-        document.documentElement.style.marginTop = "40px"
-        window.scrollTo(0,40)
-        document.documentElement.style.overflowY = "hidden"
-} , [] )
   return (
     <div
       className={

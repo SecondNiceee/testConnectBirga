@@ -13,7 +13,7 @@ const FirstDetails = ({  orderInformation , className , end = false, ...props}) 
     } , [] )
     const unfocusHandler = useCallback( () => {
         
-            document.documentElement.style.marginTop = "40px"
+            document.documentElement.style.marginTop = "20px"
             window.scrollTo(0,40)
             document.documentElement.style.overflowY = "hidden"
     } , [] )
