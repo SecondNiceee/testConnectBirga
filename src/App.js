@@ -216,6 +216,7 @@ useEffect( () => {
   function hh(){
     document.documentElement.scrollTop = 40
   }
+  Telegram.WebApp.onEvent("viewportChanged", hh)
   document.addEventListener("scroll" , hh)
 
 },[] )
