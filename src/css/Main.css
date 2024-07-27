@@ -3091,12 +3091,18 @@ input {
 }
 
 html {
-  overflow: hidden;
+  overflow: auto;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
 body {
   width: 100%;
   height: auto;
+  overflow: auto;
   background: rgb(24, 34, 45);
 }
 
@@ -3109,7 +3115,6 @@ body {
   position: relative;
   height: auto;
   width: 100%;
-  position: fixed;
   overflow: auto;
 }
 

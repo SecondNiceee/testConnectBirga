@@ -208,21 +208,13 @@ function App() {
 //   }
 // },[] )
 
+useEffect( () => {
+  document.documentElement.style.overflowY = 'scroll'
+  document.documentElement.style.marginTop = '40px'
+  document.documentElement.scrollTop = 40
+  document.documentElement.style.overflowY = 'hidden'
 
-  useEffect( () => {
-    function scroll(e){
-      e.preventDefault()
-    }
-    document.addEventListener("wheel" , scroll)
-  }  , [] )
-
-  useEffect( () => {
-    function scroll(e){
-      e.preventDefault()
-    }
-    document.addEventListener("scroll" , scroll)
-  }  , [] )
-
+},[] )
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
