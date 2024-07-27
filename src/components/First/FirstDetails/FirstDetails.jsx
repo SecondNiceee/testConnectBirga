@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import TaskDetailsContainer from './TaskDetailsContainer';
 import TimeAndWatches from './TimeAndWatches';
 import SimilarAds from './SimilarAds';
@@ -7,7 +7,23 @@ import { useDispatch } from 'react-redux';
 import { addWatch } from '../../../store/information';
 
 const FirstDetails = ({  orderInformation , className , end = false, ...props}) => {
-
+    const focuseHandelr = useCallback( () => {
+        document.documentElement.style.overflowY = "auto"
+        document.documentElement.style.marginTop = "0px"
+    } , [] )
+    const unfocusHandler = useCallback( () => {
+        
+            document.documentElement.style.marginTop = "40px"
+            window.scrollTo(0,40)
+            document.documentElement.style.overflowY = "hidden"
+    } , [] )
+    
+    useEffect( () => {
+        focuseHandelr()
+        return () => {
+            unfocusHandler()
+        }
+    } , [focuseHandelr, unfocusHandler] )
 
     console.log('рендер детаилса')
     const disatch = useDispatch()

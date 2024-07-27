@@ -61,8 +61,7 @@ const unfocusHandler = useCallback( () => {
       )}
     
         <FileInput
-        focuseHandlr={focuseHandelr}
-        unFocusHandler={unfocusHandler}
+
           fileError={fileError}
           setFiles={setPhotos}
           files={photos}

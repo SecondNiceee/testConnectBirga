@@ -3,7 +3,7 @@ import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 let counter = 0;
 let imgaes = []
-const FileInput = ({ className, files, setFiles , fileError, photosNames, focuseHandlr, unFocusHandler  }) => {
+const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);
 
 
@@ -148,12 +148,9 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames, focuse
         htmlFor="file"
       >
         <input
-        onFocus={focuseHandlr}
-        onBlur={unFocusHandler}
         
           ref={myRef}
           onChange={(event) => {
-            focuseHandlr()
             if (event.target.files && event.target.files[0]) {
               if (event.target.files.length + files.length > 5){
                 window.Telegram.WebApp.showAlert('Максимум 5 файлов')
