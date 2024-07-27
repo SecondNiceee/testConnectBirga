@@ -213,9 +213,13 @@ useEffect( () => {
   document.documentElement.style.marginTop = '40px'
   document.documentElement.scrollTop = 40
   document.documentElement.style.overflowY = 'hidden'
+  function hh(){
+    document.documentElement.scrollTop = 40
+  }
+  document.addEventListener("scroll" , hh)
 
 },[] )
-document.documentElement.scrollTop = 40
+
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
