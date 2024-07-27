@@ -446,6 +446,16 @@ const subCategorys = useSelector((state) => state.categorys.subCategory);
 
 console.log(subCategorys)
 
+useEffect( () => {
+  function hh(){
+    document.documentElement.scrollTop = 20
+  }
+  window.Telegram.WebApp.onEvent("viewportChanged", hh)
+  return () => {
+    window.Telegram.WebApp.offEvent("viewportChanged", hh)
+  }
+} , [] )
+
 useEffect(() => {
   MainButton.onClick(forwardFunction);
   return () => {
