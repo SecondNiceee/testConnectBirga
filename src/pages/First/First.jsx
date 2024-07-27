@@ -102,7 +102,7 @@ const First = () => {
 
       if (ordersInformation[isDetailsActive.id].responces){
 
-        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === "window.Telegram.WebApp.initDataUnsafe.user.id")){
+        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === window.Telegram.WebApp.initDataUnsafe.user.id)){
           return true
         }
         else{

@@ -116,7 +116,7 @@ export const fetchAllValues = createAsyncThunk(
         
         let im = await axios.get('https://back-birga.ywa.su/advertisement/saved' , {
             params : {
-                "userId" : "window.Telegram.WebApp.initDataUnsafe.user.id"
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             }
         })
         let advertisements = im.data.savedAdvertisements
@@ -238,7 +238,7 @@ export const fetchAllValues = createAsyncThunk(
 
         im = await axios.get('https://back-birga.ywa.su/card/saved' , {
             params : {
-                "userId" : "window.Telegram.WebApp.initDataUnsafe.user.id"
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             }
         })
 
