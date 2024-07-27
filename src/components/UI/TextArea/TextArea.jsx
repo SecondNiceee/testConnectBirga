@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react';
 import cl from './TextArea.module.css'
-const TextArea = ({className , value , setValue , focuseHandelr, unfocusHandler, ...props}) => {
+const TextArea = ({className , value , setValue , ...props}) => {
 
     return (
-        <textarea onFocus={focuseHandelr} onBlur={unfocusHandler}  spellCheck="false"  autoComplete="off" value={value} onChange = {(e) => {setValue(e.target.value)}} className = {className ? [cl.TextArea , className].join(' ') : cl.TextArea} {...props}></textarea>
+        <textarea  spellCheck="false"  autoComplete="off" value={value} onChange = {(e) => {setValue(e.target.value)}} className = {className ? [cl.TextArea , className].join(' ') : cl.TextArea} {...props}></textarea>
     );
 };
 

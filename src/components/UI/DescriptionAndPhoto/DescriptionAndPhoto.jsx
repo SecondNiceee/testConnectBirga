@@ -22,11 +22,9 @@ const DescriptionAndPhoto = ({
 } , [] )
 const unfocusHandler = useCallback( () => {
     
-    setTimeout( () => {
         document.documentElement.style.marginTop = "40px"
         window.scrollTo(0,40)
         document.documentElement.style.overflowY = "hidden"
-    }, 350 )
 } , [] )
   return (
     <div
@@ -45,8 +43,6 @@ const unfocusHandler = useCallback( () => {
           {text.length} / 500
         </p>
         <TextArea
-        focuseHandelr={focuseHandelr}
-        unfocusHandler={unfocusHandler}
           value={text}
           className={cl.DescriptionInput}
           placeholder={textPlaceholder}
