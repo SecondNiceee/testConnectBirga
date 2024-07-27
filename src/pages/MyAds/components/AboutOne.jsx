@@ -142,7 +142,7 @@ const AboutOne = ({
       <Top name={"Отклики"} setMenuActive={setMenuActive} />
 
       {task ? (
-        <MyFirstBlock
+        <FirstBlock
           setSlideActive={setSliderAcitve}
           deleteFunction={deleteCallback}
           setDetailsActive={setDetailsCallback}
