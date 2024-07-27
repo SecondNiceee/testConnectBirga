@@ -215,10 +215,10 @@ useEffect( () => {
   document.documentElement.scrollTop = 20
   document.documentElement.style.overflowY = 'hidden'
   function hh(){
-    document.documentElement.scrollTop = 40
+    document.documentElement.scrollTop = 20
   }
   function hhTwo(){
-    document.documentElement.scrollTop = 40
+    document.documentElement.scrollTop = 20
     alert("Привет")
   }
   BackButton.onClick(hhTwo)

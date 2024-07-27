@@ -199,7 +199,9 @@ const AdCreatingOne = ({
       }
     }
     return () => {
-      // document.documentElement.style.overflowY = "unset";
+      document.documentElement.style.marginTop = "20px";
+      document.documentElement.scrollTop = 20
+      document.documentElement.style.overflowY = "hidden";
     }
   }, [state.isOpen , dateObject , datePickerObject]);
 

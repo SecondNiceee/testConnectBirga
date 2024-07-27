@@ -286,19 +286,19 @@ const MyAds = () => {
     }
   } , [myAdsArray , valueTwo] )
 
-  useEffect( () => {
-    document.documentElement.style.overflowY = 'scroll'
-    document.documentElement.style.marginTop = '40px'
-    setTimeout( () => {
+//   useEffect( () => {
+//     document.documentElement.style.overflowY = 'scroll'
+//     document.documentElement.style.marginTop = '40px'
+//     setTimeout( () => {
 
-      window.scrollTo({
-        top: 40,
-        behavior: "smooth",
-      });
-       document.documentElement.style.overflowY = 'hidden'
-    }, 350 )
+//       window.scrollTo({
+//         top: 40,
+//         behavior: "smooth",
+//       });
+//        document.documentElement.style.overflowY = 'hidden'
+//     }, 350 )
 
-},[] )
+// },[] )
 
   
 
