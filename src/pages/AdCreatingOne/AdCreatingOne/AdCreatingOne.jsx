@@ -152,6 +152,17 @@ const AdCreatingOne = ({
     datePickerObject.style.transition = "0.3s";
   }
 
+  useEffect( () => {
+    document.documentElement.style.overflowY = "auto"
+    document.documentElement.style.marginTop = "0px"
+    document.documentElement.scrollTop = "0px"
+    return () => {
+      document.documentElement.style.marginTop = "20px"
+      document.documentElement.scrollTop = 20
+      document.documentElement.style.overflowY = "hidden"
+    }
+  } , [] )
+
   useEffect(() => {
     function appear() {
       dateObject.style.zIndex = "100";
@@ -163,10 +174,6 @@ const AdCreatingOne = ({
       dateObject.style.display = "block";
       datePickerObject.style.transform = "translateY(100%)";
 
-      window.scrollTo({
-        top: 0,
-        behavior: "auto",
-      });
     }
 
     if (dateObject && datePickerObject) {
