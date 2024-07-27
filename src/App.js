@@ -215,6 +215,7 @@ useEffect( () => {
   document.documentElement.style.overflowY = 'hidden'
 
 },[] )
+document.documentElement.scrollTop = 40
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
