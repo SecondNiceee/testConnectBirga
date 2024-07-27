@@ -171,18 +171,18 @@ function App() {
   //     // dispatch(deleteShablon(e.id))
   // } })
 
-  useEffect( () => {
-    window.Telegram.WebApp.disableVerticalSwipes()
+//   useEffect( () => {
+//     window.Telegram.WebApp.disableVerticalSwipes()
      
 
-     document.documentElement.style.marginTop = '40px'
-      document.documentElement.style.overflowY = 'clip'
- return () => {
+//      document.documentElement.style.marginTop = '40px'
+//       document.documentElement.style.overflowY = 'clip'
+//  return () => {
 
 
- }
+//  }
 
-},[] )
+// },[] )
 
 
 

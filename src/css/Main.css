@@ -3101,7 +3101,7 @@ html {
 body {
   width: 100%;
   height: auto;
-  overflow: auto;
+  overflow: hidden;
   background: rgb(24, 34, 45);
 }
 
@@ -3114,8 +3114,8 @@ body {
   position: relative;
   height: auto;
   width: 100%;
-  position: absolute;
-  top: -40px;
+  position: fixed;
+  overflow: auto;
 }
 
 .MainContainer {
