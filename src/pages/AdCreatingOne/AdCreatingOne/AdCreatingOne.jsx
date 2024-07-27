@@ -160,27 +160,8 @@ const AdCreatingOne = ({
     dateObject.style.transition = "0.3s";
     datePickerObject.style.transition = "0.3s";
   }
-  useEffect(() => {
-    function disappear() {
-      document.documentElement.style.marginTop = "0px";
-      dateObject.style.backgroundColor = "unset";
-      dateObject.style.display = "block";
-      datePickerObject.style.transform = "translateY(100%)";
+
   
-      document.documentElement.style.overflowY = "unset";
-  
-      window.scrollTo({
-        top: 0,
-        behavior: "auto",
-      });
-    }
-    disappear()
-    return () => {
-      document.documentElement.style.marginTop = "20px";
-      document.documentElement.scrollTop = 20
-      document.documentElement.style.overflowY = "hidden";
-    }
-  }, [state.isOpen , dateObject , datePickerObject]);
 
 
 
