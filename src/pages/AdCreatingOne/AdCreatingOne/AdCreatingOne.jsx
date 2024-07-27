@@ -1,5 +1,4 @@
-
-import React, {  memo, useCallback, useEffect, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 
 import Cap from "../../../components/UI/Cap/Cap";
@@ -10,14 +9,15 @@ import ChoiceCategory from "../ChoiceCategory/ChoiceCategory";
 import ChoiceSubCategory from "../ChoiceSubCategory";
 import cl from "./AdCreatingOne.module.css";
 import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
-import '../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css'
+import "../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css";
 import MyDatePicker from "../../../components/AdCreating/MyDatePicker/MyDatePicker";
+import MainButton from "../../../constants/MainButton";
 
 // eslint-disable-next-line
-Date.prototype.addHours = function(h) {
-  this.setTime(this.getTime() + (h*60*60*1000));
+Date.prototype.addHours = function (h) {
+  this.setTime(this.getTime() + h * 60 * 60 * 1000);
   return this;
-}
+};
 
 const monthMap = {
   1: "Янв",
@@ -33,7 +33,6 @@ const monthMap = {
   11: "Ноя",
   12: "Дек",
 };
-
 
 const dateConfig = {
   month: {
@@ -53,8 +52,7 @@ const dateConfig = {
   },
 };
 
-const min = new Date(new Date().addHours(1) + 1)
-
+const min = new Date(new Date().addHours(1) + 1);
 
 const AdCreatingOne = ({
   taskInformation,
@@ -69,86 +67,79 @@ const AdCreatingOne = ({
   isCategoryChoiceOpen,
   setCatagoryChoiceOpen,
   isSubcategoryChoiceOpen,
-  setSubcategoryChoiceOpen
+  setSubcategoryChoiceOpen,
 }) => {
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
   const [state, setState] = useState({
     time: new Date().addHours(1),
     isOpen: false,
     isPicked: false,
     singleOpen: null,
     startTime: taskInformation.time ? taskInformation.time.end : new Date(),
-    endTime: taskInformation.time ? taskInformation.time.end  : new Date(),
+    endTime: taskInformation.time ? taskInformation.time.end : new Date(),
     isSingleOpen: false,
     isStartOpen: false,
     isEndOpen: false,
   });
-  useEffect( () => {
-     setState( (value) =>  ({...value , startTime : taskInformation.time.start , endTime : taskInformation.time.end}))
-  }, [isDetailsActive, taskInformation.time.start ,  taskInformation.time.end ] )  
-  const handleSelect = useCallback( (time) => {
-    if (state.isStartOpen) {
-      setState((value) => ({
-        ...value,
-        time: time,
-        isOpen: false,
-        isStartOpen: false,
-        startTime: time,
-      }));
-      if (taskInformation.time){
-        setTaskInformation( (value) =>  ({ ...value, time: {...taskInformation.time , start : time} }));
+  useEffect(() => {
+    setState((value) => ({
+      ...value,
+      startTime: taskInformation.time.start,
+      endTime: taskInformation.time.end,
+    }));
+  }, [isDetailsActive, taskInformation.time.start, taskInformation.time.end]);
+  const handleSelect = useCallback(
+    (time) => {
+      if (state.isStartOpen) {
+        setState((value) => ({
+          ...value,
+          time: time,
+          isOpen: false,
+          isStartOpen: false,
+          startTime: time,
+        }));
+        if (taskInformation.time) {
+          setTaskInformation((value) => ({
+            ...value,
+            time: { ...taskInformation.time, start: time },
+          }));
+        } else {
+          setTaskInformation((value) => ({ ...value, startTime: time }));
+        }
       }
-      else{
-        setTaskInformation( (value) =>  ({ ...value, startTime: time }));
+      if (state.isSingleOpen) {
+        setState({
+          ...state,
+          time: time,
+          isOpen: false,
+          isSingleOpen: false,
+          singleTime: time,
+        });
+        setTaskInformation((value) => ({ ...value, singleTime: time }));
       }
-    }
-    if (state.isSingleOpen) {
-      setState({
-        ...state,
-        time: time,
-        isOpen: false,
-        isSingleOpen: false,
-        singleTime: time,
-      });
-      setTaskInformation( (value) =>  ({ ...value, singleTime: time }) );
-    }
-    if (state.isEndOpen) {
-      setState({
-        ...state,
-        time: time,
-        isOpen: false,
-        isEndOpen: false,
-        endTime: time,
-      });
-      if (taskInformation.time){
-        setTaskInformation( (value) =>  ({ ...value, time: {...taskInformation.time , end : time}  })  );
+      if (state.isEndOpen) {
+        setState({
+          ...state,
+          time: time,
+          isOpen: false,
+          isEndOpen: false,
+          endTime: time,
+        });
+        if (taskInformation.time) {
+          setTaskInformation((value) => ({
+            ...value,
+            time: { ...taskInformation.time, end: time },
+          }));
+        } else {
+          setTaskInformation((value) => ({ ...value, endTime: time }));
+        }
       }
-      else{
-        setTaskInformation( (value) => ({ ...value, endTime: time }));
-      }
-      
-    }
-  }, [setTaskInformation, state, taskInformation.time] )
+    },
+    [setTaskInformation, state, taskInformation.time]
+  );
 
-  const handleCancel = useCallback( () => {
-    setState( (value) => ({ ...value, isOpen: false }));
-  } , [setState] )
-
+  const handleCancel = useCallback(() => {
+    setState((value) => ({ ...value, isOpen: false }));
+  }, [setState]);
 
   let dateObject = document.querySelectorAll(".datepicker-modal")[0];
   let datePickerObject = document.querySelectorAll(".datepicker")[0];
@@ -161,9 +152,31 @@ const AdCreatingOne = ({
     datePickerObject.style.transition = "0.3s";
   }
 
-  
+  useEffect(() => {
+    function appear() {
+      dateObject.style.zIndex = "100";
+      dateObject.style.backgroundColor = "rgba(0, 0, 0, .6)";
+      datePickerObject.style.transform = "translateY(0%)";
+    }
+    function disappear() {
+      dateObject.style.backgroundColor = "unset";
+      dateObject.style.display = "block";
+      datePickerObject.style.transform = "translateY(100%)";
 
+      window.scrollTo({
+        top: 0,
+        behavior: "auto",
+      });
+    }
 
+    if (dateObject && datePickerObject) {
+      if (state.isOpen) {
+        appear();
+      } else {
+        disappear();
+      }
+    }
+  }, [state.isOpen, dateObject, datePickerObject]);
 
   return (
     <div
@@ -190,60 +203,55 @@ const AdCreatingOne = ({
           taskInformation={taskInformation}
           setCatagoryChoiceOpen={setCatagoryChoiceOpen}
           setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
-          categorys = {categorys}
-          subCategorys = {subCategorys}
+          categorys={categorys}
+          subCategorys={subCategorys}
         />
       )}
 
       <TaskName
         // style = {mistakes.taskName ? {border : '1px solid red'} : {}}
-        title = "Название задания "
+        title="Название задания "
         underText={MyInformation ? "" : "Например, разработать дизайн"}
-        errorValue = {mistakes.taskName || errorName ? true : false}
+        errorValue={mistakes.taskName || errorName ? true : false}
         text={taskInformation.taskName}
         placeholder={"Введите название задания"}
         setText={(e) => {
-          setTaskInformation({...taskInformation , taskName : e})
+          setTaskInformation({ ...taskInformation, taskName: e });
         }}
       />
 
-    
       <DescriptionAndPhoto
-      MyInformation={MyInformation}
-      taskInformation={taskInformation}
-      setTaskInformation={setTaskInformation}
-      className={cl.DescriptionAndPhoto}
-      textTitle={"Описание"}
-      filesTitle={"ИЗОБРАЖЕНИЯ"}
-      textPlaceholder={"Дайте подробное тз..."}
-      text = {taskInformation.taskDescription}
-      setText={(e) => {
-        setTaskInformation({...taskInformation , taskDescription : e })
-      }}
-      photos={taskInformation.photos}
-      photosNames = {taskInformation.photosNames}
-      setPhotos={ (e)  => {  
-        if (!e) {
-          alert('ошибка фото!!')
-        }
-        else{
-          setTaskInformation(  {...taskInformation , photos : e }  )  
-        }
+        MyInformation={MyInformation}
+        taskInformation={taskInformation}
+        setTaskInformation={setTaskInformation}
+        className={cl.DescriptionAndPhoto}
+        textTitle={"Описание"}
+        filesTitle={"ИЗОБРАЖЕНИЯ"}
+        textPlaceholder={"Дайте подробное тз..."}
+        text={taskInformation.taskDescription}
+        setText={(e) => {
+          setTaskInformation({ ...taskInformation, taskDescription: e });
+        }}
+        photos={taskInformation.photos}
+        photosNames={taskInformation.photosNames}
+        setPhotos={(e) => {
+          if (!e) {
+            alert("ошибка фото!!");
+          } else {
+            setTaskInformation({ ...taskInformation, photos: e });
+          }
+        }}
+      />
 
-        }  }
-
-    />
-      
       {MyInformation ? (
         <>
           <CatchDate
             className={cl.myCatchDate}
-            whichOne={'startAndEnd'}
+            whichOne={"startAndEnd"}
             state={state}
             setState={setState}
             errors={{}}
             isMyInformation={true}
-            
           />
         </>
       ) : (
@@ -274,7 +282,7 @@ const AdCreatingOne = ({
           taskInformation={taskInformation}
           setTaskInformation={setTaskInformation}
           setCatagoryChoiceOpen={setCatagoryChoiceOpen}
-          categorys = {categorys}
+          categorys={categorys}
           subCategorys={subCategorys}
         />
       </CSSTransition>
@@ -287,15 +295,12 @@ const AdCreatingOne = ({
         mountOnEnter
       >
         <ChoiceSubCategory
-          subCategorysPar = {subCategorys}
+          subCategorysPar={subCategorys}
           setTaskInformation={setTaskInformation}
           setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
           taskInformation={taskInformation}
         ></ChoiceSubCategory>
       </CSSTransition>
-
-
-
     </div>
   );
 };
