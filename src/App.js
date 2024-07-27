@@ -23,6 +23,7 @@ import { fetchAllShablons } from "./store/shablon";
 import MyComponent from "./components/MyComponent";
 import { fetchAllValues } from "./store/saves";
 import { fetchResponses } from "./store/responses";
+import BackButton from "./constants/BackButton";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -216,8 +217,12 @@ useEffect( () => {
   function hh(){
     document.documentElement.scrollTop = 40
   }
+  function hhTwo(){
+    document.documentElement.scrollTop = 40
+    alert("Привет")
+  }
+  BackButton.onClick(hh)
   window.Telegram.WebApp.onEvent("viewportChanged", hh)
-  document.addEventListener("scroll" , hh)
 
 },[] )
 
