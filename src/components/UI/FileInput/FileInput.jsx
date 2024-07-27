@@ -3,7 +3,7 @@ import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 let counter = 0;
 let imgaes = []
-const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
+const FileInput = ({ className, files, setFiles , fileError, photosNames, focuseHandlr, unFocusHandler  }) => {
   const [images, setImages] = useState([]);
 
 
@@ -148,6 +148,8 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         htmlFor="file"
       >
         <input
+        onFocus={focuseHandlr}
+        onBlur={unFocusHandler}
           ref={myRef}
           onChange={(event) => {
             event.preventDefault()
