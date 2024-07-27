@@ -16,6 +16,8 @@ const PickerTwo = forwardRef(({setSecondPage , deleteFunction, setSliderAcitve ,
         return "У вас нет заданий в работе"
       case "completed":
         return "У вас нет завершенных заданий"
+      default :
+        
     }
   } , [valueTwo] )
 
