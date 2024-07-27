@@ -208,6 +208,21 @@ function App() {
 //   }
 // },[] )
 
+
+  useEffect( () => {
+    function scroll(e){
+      e.preventDefault()
+    }
+    document.addEventListener("wheel" , scroll)
+  }  , [] )
+
+  useEffect( () => {
+    function scroll(e){
+      e.preventDefault()
+    }
+    document.addEventListener("scroll" , scroll)
+  }  , [] )
+
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
