@@ -214,10 +214,10 @@ useEffect( () => {
   document.documentElement.style.marginTop = "20px"
   document.documentElement.scrollTop = 20
   document.documentElement.style.overflowY = 'hidden'
-  function hh(){
-    document.documentElement.scrollTop = 20
-  }
-  window.Telegram.WebApp.onEvent("viewportChanged", hh)
+  // function hh(){
+  //   document.documentElement.scrollTop = 20
+  // }
+  // window.Telegram.WebApp.onEvent("viewportChanged", hh)
 
 },[] )
 
