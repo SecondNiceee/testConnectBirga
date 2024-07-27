@@ -161,19 +161,6 @@ const AdCreatingOne = ({
     datePickerObject.style.transition = "0.3s";
   }
   useEffect(() => {
-
-    function appear(){
-      document.documentElement.style.overflowY = "hidden";
-      document.documentElement.style.marginTop = "400px";
-      window.scrollTo({
-        top: 400,
-        behavior: "auto",
-      });
-  
-      dateObject.style.zIndex = "100";
-      dateObject.style.backgroundColor = "rgba(0, 0, 0, .6)";
-      datePickerObject.style.transform = "translateY(0%)";
-    }
     function disappear() {
       document.documentElement.style.marginTop = "0px";
       dateObject.style.backgroundColor = "unset";
@@ -187,17 +174,7 @@ const AdCreatingOne = ({
         behavior: "auto",
       });
     }
-
-
-    if (dateObject && datePickerObject) {
-      if (state.isOpen) {
-        appear();
-        // document.documentElement.style.overflow = "hidden";
-      } else {
-        disappear();
-        // document.documentElement.style.overflow = "visible";
-      }
-    }
+    disappear()
     return () => {
       document.documentElement.style.marginTop = "20px";
       document.documentElement.scrollTop = 20
