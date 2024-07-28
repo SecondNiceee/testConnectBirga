@@ -115,7 +115,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       description = true
     }
     setErrors({ fileError: fileError, nameError: titleError, description : description });
-    let localErrors = { fileError: fileError, nameError: titleError };
+    let localErrors = { fileError: fileError, nameError: titleError, description : description };
 
     return Object.values(localErrors).every((value) => value === false);
   }
