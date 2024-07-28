@@ -82,7 +82,12 @@ export const postMyTask = createAsyncThunk(
   async function (arr) {
     let files = arr[1];
     try {
-      let b;
+      let b = await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
+        headers: {
+          "Content-Type" :'multipart/form-data',
+          "Access-Control-Allow-Origin": "*"
+        },
+      });
       // for (let i = 0; i < 20 ; i++){
 
       //    b = await axios.post(
@@ -97,7 +102,7 @@ export const postMyTask = createAsyncThunk(
       //   );
       // }
 
-      let postCounter = 0
+      let postCounter = 2;
       while (!(b.status >= 200 && b.status <= 300)){
         try{
 
@@ -161,6 +166,7 @@ export const postMyTask = createAsyncThunk(
       };
       return localTask;
     } catch (e) {
+      alert(e)
       alert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже");
       console.log(e);
     }
