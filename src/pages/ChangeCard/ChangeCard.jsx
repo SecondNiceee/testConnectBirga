@@ -213,7 +213,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
     };
     // eslint-disable-next-line
-}, [modalActive, saveFunc , isCategoryChoiceOpen, cardsSetting, aboutU]);
+}, [modalActive , isCategoryChoiceOpen, cardsSetting, aboutU]);
   return (
     <div ref={mainRef} className="cards">
       <h3 className="cards-title">{cardsSetting.title}</h3>
