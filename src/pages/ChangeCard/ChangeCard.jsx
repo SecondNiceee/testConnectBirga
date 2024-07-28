@@ -115,7 +115,8 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       }
       setErrors({ fileError: fileError, nameError: titleError, descriptionError : descriptionError });
       let localErrors = { fileError: fileError, nameError: titleError, descriptionError : descriptionError };
-      alert()
+      console.warn(localCardSetting, cardsSetting)
+      alert( Object.values(localErrors).every((value) => value === false))
       return Object.values(localErrors).every((value) => value === false);
     }
 
