@@ -40,6 +40,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
   const [errors, setErrors] = useState({
     nameError: false,
     fileError: false,
+    description : false,
   });
   const [modalActive , setModalActive] = useState(false)
 
@@ -52,13 +53,17 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
   useEffect(() => {
       let photos = false;
       let title = false;
+      let description = false;
       if (cardsSetting.title.length < 3) {
         title = true;
       }
       if (cardsSetting.photos.length < 1) {
         photos = true;
       }
-      let localErrors = { nameError: title, fileError: photos };
+      if (cardsSetting.description.length > 500){
+        description = true
+      }
+      let localErrors = { nameError: title, fileError: photos, description : description };
 
 
       if (Object.values(mainLocalErrors).includes(true)){
@@ -98,6 +103,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
   function checkMistakes() {
     let fileError = false;
     let titleError = false;
+    let description = false
 
     if (localCardSetting.title.length < 3) {
       titleError = true;
@@ -105,7 +111,10 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     if (localCardSetting.photos.length < 1) {
       fileError = true;
     }
-    setErrors({ fileError: fileError, nameError: titleError });
+    if (localCardSetting.description > 500){
+      description = true
+    }
+    setErrors({ fileError: fileError, nameError: titleError, description : description });
     let localErrors = { fileError: fileError, nameError: titleError };
 
     return Object.values(localErrors).every((value) => value === false);
@@ -151,8 +160,11 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     })
     }
   } , [dispatch, setCardsOpen, aboutU, setAboutU] )
+
+
   useEffect( () => {            
     MainButton.setText("Добавить кейс");
+    MainButton.show()
     BackButton.show()
     if (!modalActive){
       MainButton.show()
