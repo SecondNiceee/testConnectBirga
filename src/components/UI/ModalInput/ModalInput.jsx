@@ -15,7 +15,7 @@ const ModalInput = ( {setting , setModal, ...props} ) => {
         }
     } , [setModal] )
     return (
-        <div id = 'modalInput' className={cl.modalInput}>
+        <div {...props} id = 'modalInput' className={cl.modalInput}>
             <div onTouchEnd={() => {
                 setModal(false)
             }} onClick={() => {

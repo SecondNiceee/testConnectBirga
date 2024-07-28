@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import TaskName from "../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import behanceIcon from "../../images/icons/behance.svg";
@@ -198,7 +198,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
 
 
-
   return (
     <div className="cards" ref={mainRef}>
       <h3 className="cards-title">Новый кейс</h3>
@@ -308,7 +307,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
               in = {modalActive}
               timeout={0}
       >
-        <ModalInput setModal={setModalActive} setting={inputObject} />
+        <ModalInput style = {mainRef.current && {top : String(mainRef.current.scrollTop) + "px"}}  setModal={setModalActive} setting={inputObject} />
       </CSSTransition>
 
 
