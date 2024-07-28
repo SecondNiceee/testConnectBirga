@@ -158,7 +158,25 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     
     function backFunc() {
       // document.documentElement.style.overflow = "auto";
-      setCardsOpen(false);
+      window.Telegram.WebApp
+      .showPopup({
+        title: "Сохранить?",
+        message: `Сохранить новый кейс?`,
+        buttons: [
+          { id: "save", type: "default", text: "Да" },
+          { id: "delete", type: "destructive", text: "Нет" },
+        ],
+      } , (buttonId) => {
+  
+        if (buttonId === "delete" || buttonId === null) {
+          setCardsOpen(false);
+        }
+        if (buttonId === "save") {
+          saveFunc()
+        }
+  
+  
+      } )
     }
     MainButton.show();
     BackButton.show()
