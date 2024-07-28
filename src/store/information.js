@@ -82,12 +82,7 @@ export const postMyTask = createAsyncThunk(
   async function (arr) {
     let files = arr[1];
     try {
-      let b = await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
-        headers: {
-          "Content-Type" :'multipart/form-data',
-          "Access-Control-Allow-Origin": "*"
-        },
-      });
+      let b = {status : 400}
       // for (let i = 0; i < 20 ; i++){
 
       //    b = await axios.post(
@@ -117,6 +112,7 @@ export const postMyTask = createAsyncThunk(
         catch(e){
           alert("Попытка")
         }
+        alert(postCounter)
         postCounter += 1
         if (postCounter > 15){
           break
