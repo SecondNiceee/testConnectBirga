@@ -221,7 +221,7 @@ const Profile = () => {
 
       }
       else{
-        // MainButton.hide()
+        MainButton.hide()
         MainButton.offClick(save)
       }
 
@@ -229,7 +229,7 @@ const Profile = () => {
     else{
       
       MainButton.offClick(save)
-      MainButton.hide()
+      // MainButton.hide()
       // MainButton.setParams({
       //   color : '#2ea5ff',
       //   text_color : '#ffffff'
