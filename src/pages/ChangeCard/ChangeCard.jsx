@@ -124,18 +124,18 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     
   function saveFunc() {
     if (checkMistakes()) {
-      setAboutU({
-        ...aboutU,
-        cards: [
-          ...aboutU.cards.map((e, i) => {
-            if (i === index) {
-              return localCardSetting;
-            } else {
-              return e;
-            }
-          }),
-        ],
-      });
+      // setAboutU({
+      //   ...aboutU,
+      //   cards: [
+      //     ...aboutU.cards.map((e, i) => {
+      //       if (i === index) {
+      //         return localCardSetting;
+      //       } else {
+      //         return e;
+      //       }
+      //     }),
+      //   ],
+      // });
 
       
       let myFormData = new FormData()
@@ -214,7 +214,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
     };
     // eslint-disable-next-line
-}, [modalActive , isCategoryChoiceOpen, cardsSetting, aboutU]);
+}, [modalActive , isCategoryChoiceOpen, cardsSetting]);
   return (
     <div ref={mainRef} className="cards">
       <h3 className="cards-title">{cardsSetting.title}</h3>
