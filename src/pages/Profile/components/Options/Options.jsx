@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 const Options = () => {
     return (
         <div className="profile__options">
-        <Link to="/Balance" className="option__balance">
+        {/* <Link to="/Balance" className="option__balance">
           <div className="option__left">
             <img src={balanceIcon} className="orangeWallet" alt="" />
             <p>Баланс</p>
@@ -41,21 +41,16 @@ const Options = () => {
           </div>
           <img className="arrowRight" src={ArrowRight} alt="" />
         </div>
-        {/* <div className="option">
-          <div className="option__left">
-            <img src={workExamplesIcon} className="orangeWallet" alt="" />
-            <p>О себе и примеры работ</p>
-          </div>
-          <img className="arrowRight" src={ArrowRight} alt="" />
-        </div> */}
         <div className="option">
           <div className="option__left">
             <img src={subsctibeIcon} className="orangeWallet" alt="" />
             <p>Подписка за задания</p>
           </div>
           <img className="arrowRight" src={ArrowRight} alt="" />
-        </div>
-        <Link to = {"/AllShablons"} className="option">
+        </div> */}
+        <Link style={{
+          borderRadius : "9.6px"
+        }} to = {"/AllShablons"} className="option">
           <div className="option__left">
             <img src={shablonsIcon} className="orangeWallet" alt="" />
             <p>Шаблоны откликов</p>

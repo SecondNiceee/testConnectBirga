@@ -461,7 +461,7 @@ const Profile = () => {
 
       {/* <Case className={'profile-case'} /> */}
 
-
+{/* 
       <div className="profile__veryfication">
         <p className="veryfication">Верификация</p>
         <div className="veryfication__block">
@@ -477,7 +477,7 @@ const Profile = () => {
           </div>
           <img src={greyArrowRight} className="greyArrow" alt="" />
         </div>
-      </div>
+      </div> */}
 
 
         <CSSTransition
