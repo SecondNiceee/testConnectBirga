@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from "react";
+import React, { memo, useCallback, useEffect, useReducer, useRef } from "react";
 import cl from "./DescriptionAndPhoto.module.css";
 import GreyText from "../../../components/UI/GreyText/GreyText";
 import FileInput from "../../../components/UI/FileInput/FileInput";
@@ -16,6 +16,16 @@ const DescriptionAndPhoto = ({
   fileError,
 }) => {
 
+  const hiddenRef = useRef(null)
+  const myRef = useRef(null)
+
+  useEffect( () => {
+    // textAreaRef.current.style.height = (12 + 11 + 17.6*len).toString() + 'px'
+    myRef.current.style.height = (hiddenRef.current.scrollHeight).toString() + 'px'
+    
+
+} , [text] )
+
   return (
     <div
       className={
@@ -26,18 +36,25 @@ const DescriptionAndPhoto = ({
     >
       <GreyText className={cl.GreyText}>{textTitle}</GreyText>
       <div className={cl.InputContainer}>
-        <p
-          className={cl.inputCounter}
-          style={text.length < 500 ? {} : { color: "#8a0303" }}
-        >
-          {text.length} / 500
-        </p>
+        
+        <textarea ref={hiddenRef} value={text} className={cl.hiddenText}/>
+
         <TextArea
+        ref={myRef}
           value={text}
           className={cl.DescriptionInput}
           placeholder={textPlaceholder}
           setValue={setText}
         ></TextArea>
+
+<p
+          className={cl.inputCounter}
+          style={text.length < 500 ? {} : { color: "#8a0303" }}
+        >
+          {text.length} / 500
+        </p>
+
+
       </div>
 
       {MyInformation ? (
