@@ -2881,6 +2881,7 @@ input {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   overflow-y: scroll;
+  will-change: transform;
 }
 .cards .cards-title {
   margin-left: 16px;

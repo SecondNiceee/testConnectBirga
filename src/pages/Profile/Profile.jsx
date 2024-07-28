@@ -491,7 +491,7 @@ const Profile = () => {
         timeout={300}
         >
 
-            <ChangeCards save={save} index={index}  card={aboutULocal.cards[index]}  aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
+            <ChangeCards save={save} index={index}  card={cards[index]}  aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
         </CSSTransition>
 
         <SliderMain sliderActive={isSliderAcitve} setSliderActive={setSliderActive} />

@@ -12,6 +12,7 @@
     transform: translate(100%);
     transition: 0.3s;
     overflow-y: scroll;
+    will-change: transform;
     .cards-title{
         margin-left: 16px;
         font-family: "SF Pro Display 600";
