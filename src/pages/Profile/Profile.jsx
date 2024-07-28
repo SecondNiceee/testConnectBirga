@@ -26,6 +26,7 @@ import ChangeCards from "../ChangeCard/ChangeCard";
 import { changeProfile, deleteCard, deleteServerCard, putUserInfo } from "../../store/telegramUserInfo";
 import SliderMain from "../../components/UI/Swiper/SliderMain";
 import pagesHistory from "../../constants/pagesHistory";
+import MyLoader from "../../components/UI/MyLoader/MyLoader";
 
 
 const variants = {
@@ -69,6 +70,8 @@ const Profile = () => {
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
 
+  
+
   const [errors , setErrors] = useState({
     stageError : false
   })
@@ -105,33 +108,35 @@ const Profile = () => {
 
     const numberInput = document.getElementById('numberInput')
 
+    if (numberInput){
 
-    if ( Number(stage) > 10 && Number(stage) < 20){
-      if (!numberInput.value.includes('лет')){
-        numberInput.value += ' лет'
+      if ( Number(stage) > 10 && Number(stage) < 20){
+        if (!numberInput.value.includes('лет')){
+          numberInput.value += ' лет'
+        }
       }
-    }
-    else{
-
-        if (numb > 1 && numb < 5){
-          if (!numberInput.value.includes('года')){
-            numberInput.value += ' года'
-          }
-
-        } 
-        else{
-          if(numb === 1){
-            if (!numberInput.value.includes('год')){
-              numberInput.value += ' год'
+      else{
+  
+          if (numb > 1 && numb < 5){
+            if (!numberInput.value.includes('года')){
+              numberInput.value += ' года'
             }
-          }
+  
+          } 
           else{
-            if (!numberInput.value.includes('лет')){
-              numberInput.value += ' лет'
+            if(numb === 1){
+              if (!numberInput.value.includes('год')){
+                numberInput.value += ' год'
+              }
+            }
+            else{
+              if (!numberInput.value.includes('лет')){
+                numberInput.value += ' лет'
+              }
             }
           }
         }
-      }
+    }
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []  )
 
@@ -355,6 +360,10 @@ const Profile = () => {
 
 
   return (
+    <>
+    {userInfo.status !== "yes" ? <MyLoader/> :
+
+    
     <motion.div
       className="profile__container"
       variants={variants}
@@ -363,6 +372,7 @@ const Profile = () => {
       exit="exit"
       transition="transition"
     >
+
 
       
 
@@ -500,6 +510,9 @@ const Profile = () => {
 
         
     </motion.div>
+}
+
+    </>
   );
 };
 

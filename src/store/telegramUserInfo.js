@@ -199,8 +199,8 @@ const telegramUserInfo = createSlice({
     completedTasks : [],
     deals : 0,
     profile : {
-        about : 'Я Коля привет',
-        stage : 29,
+        about : '',
+        stage : 0,
         cards : [
         ]
     },
