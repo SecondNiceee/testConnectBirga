@@ -412,7 +412,7 @@ const Profile = () => {
       <Compact title={"Примеры работ"} className={"compact-block"}>
         <AdCreateFunc
         func={(e) => {
-          document.documentElement.style.overflow = 'hidden'
+        
           setCardsActive(true)
         }}
          style = {{

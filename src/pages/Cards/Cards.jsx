@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import TaskName from "../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import behanceIcon from "../../images/icons/behance.svg";
@@ -18,6 +18,13 @@ let inputObject = {
   text : ''
 }
 const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
+
+  useEffect( () => {
+    document.documentElement.style.overflow = 'hidden'
+    return () => {
+       document.documentElement.style.overflow = 'auto'
+    }
+  } , [] )
 
   
   const categorys = useSelector((state) => state.categorys.category);
@@ -161,7 +168,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     }
   } , [dispatch, setCardsOpen, aboutU, setAboutU , cardsSetting] )
 
-
+  const mainRef = useRef()
   useEffect( () => {            
     MainButton.setText("Добавить кейс");
     MainButton.show()
@@ -170,8 +177,10 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       MainButton.show()
       MainButton.onClick(saveFunc);
       BackButton.onClick(backFunc);
+      mainRef.current.style.overflow = "scroll"
     }
     else{
+      mainRef.current.style.overflow = "hidden"
       MainButton.hide()
       BackButton.offClick(saveFunc)
     }
@@ -191,7 +200,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
 
   return (
-    <div className="cards">
+    <div className="cards" ref={mainRef}>
       <h3 className="cards-title">Новый кейс</h3>
 
       <Categories className='cards-categorys' categoryOnly={true}  taskInformation={localCardSetting} setCatagoryChoiceOpen={setCatagoryChoiceOpen}  />

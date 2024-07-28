@@ -19,6 +19,17 @@ let inputObject = {
   text: "",
 };
 const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
+
+
+  useEffect( () => {
+    document.documentElement.style.overflow = 'hidden'
+    return () => {
+       document.documentElement.style.overflow = 'auto'
+    }
+  } , [] )
+
+
+  
   const [cardsSetting, setCardsSetting] = useState(card);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({
