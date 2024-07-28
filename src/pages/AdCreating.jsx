@@ -291,6 +291,23 @@ const AdCreating = () => {
     }
   }
 
+  useEffect( () => {
+      if (firstPage.taskDescription.length > 500){
+        MainButton.setParams({
+          is_active : false, //неизвесетно
+          color : '#2f2f2f',
+          text_color : '#606060',
+        })
+      }
+      else{
+        MainButton.setParams({
+          color : '#2ea5ff',
+          text_color : '#ffffff',
+          is_active : true
+        })
+      }
+  } , [firstPage.taskDescription] )
+
   const goForward = () => {
     if (blurRef.current) {
       blurRef.current.focus();
@@ -343,6 +360,11 @@ const AdCreating = () => {
 
 
   const goBack = useCallback(() => {
+    setError({    name: false,
+      ton: false,
+      singleError: false,
+      startError: false,
+      endError: false})
     if (isCategoryChoiceOpen || isSubcategoryChoiceOpen){
       if (isCategoryChoiceOpen){
         setCatagoryChoiceOpen(false)
