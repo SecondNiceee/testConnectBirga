@@ -52,7 +52,11 @@ export const postShablon = createAsyncThunk(
         {
           params : {
             userId : 2144832745
-          }
+          },
+          headers: {
+            "Content-Type" :'multipart/form-data',
+            "Access-Control-Allow-Origin": "*"
+          },
         }
         )
 

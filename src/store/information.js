@@ -99,8 +99,8 @@ export const postMyTask = createAsyncThunk(
 
       b = await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
         headers: {
-          "Content-Type": "multipart/form-data",
-          // "Access-Control-Allow-Origin": "*"
+          "Content-Type" :'multipart/form-data',
+          "Access-Control-Allow-Origin": "*"
         },
       });
 
