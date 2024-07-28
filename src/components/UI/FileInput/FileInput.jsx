@@ -5,8 +5,8 @@ let counter = 0;
 let imgaes = []
 const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);
-
-
+  
+  
   const addFiles = useCallback( (newFiles) => {
     let localImages = []
     newFiles.forEach((event) => {
@@ -19,7 +19,10 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       })
     })
   } , [files , images] )
-
+  
+  useEffect( () => {
+    addFiles(files)
+  } , [] )
 
 
 

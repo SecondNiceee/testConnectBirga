@@ -20,7 +20,7 @@ let inputObject = {
 };
 const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
-
+  console.warn(card)
   useEffect( () => {
     document.documentElement.style.overflow = 'hidden'
     return () => {
@@ -164,8 +164,8 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       // document.documentElement.style.overflow = "auto";
       window.Telegram.WebApp
       .showPopup({
-        title: "Сохранить?",
-        message: `Сохранить новый кейс?`,
+        title: "Изменить?",
+        message: `Изменить этот кейс?`,
         buttons: [
           { id: "save", type: "default", text: "Да" },
           { id: "delete", type: "destructive", text: "Нет" },
@@ -173,7 +173,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       } , (buttonId) => {
   
         if (buttonId === "delete" || buttonId === null) {
-          setCardsOpen(false);
+          setCardsOpen(false);                                                                                            
         }
         if (buttonId === "save") {
           saveFunc()
