@@ -144,10 +144,10 @@ export const fetchUserInfo = createAsyncThunk(
                 userId : UserId
             }
         })
-    
+        console.log(allCards)
         for (let e of allCards.data)
             {
-
+                
                 let files =  await makeNewFile(e.folder, e.photos)
                 localCards.push({
                     id : e.id,

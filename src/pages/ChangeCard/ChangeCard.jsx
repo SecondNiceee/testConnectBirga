@@ -29,12 +29,13 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   } , [] )
 
 
-  
+
   const [cardsSetting, setCardsSetting] = useState(card);
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({
     nameError: false,
     fileError: false,
+    descriptionError : false
   });
 
   const [modalActive, setModalActive] = useState(false);
@@ -51,37 +52,45 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   useEffect(() => {
     let photos = false;
     let title = false;
+    let description = false
     if (cardsSetting.title.length < 3) {
       title = true;
     }
     if (cardsSetting.photos.length < 1) {
       photos = true;
     }
-    let localErrors = { nameError: title, fileError: photos };
+    if (cardsSetting.description.length > 500){
+      description = true
+    }
+    let localErrors = { nameError: title, fileError: photos , descriptionError : description };
 
     if (Object.values(mainLocalErrors).includes(true)) {
       setErrors(localErrors);
     }
 
     if (!Object.values(localErrors).every((value) => value === false)) {
-
-      MainButton.setParams({
-        color: "#2f2f2f",
-        text_color: "#606060",
-        is_visible: true,
-      });
+      if (!modalActive){
+        MainButton.setParams({
+          color: "#2f2f2f",
+          text_color: "#606060",
+          is_visible: true,
+        });
+      }
     } else {
-      MainButton.setParams({
-        color: "#2EA6FF",
-        text_color: "#ffffff",
-        is_visible: true,
-      });
+      if(!modalActive){
+        MainButton.setParams({
+          color: "#2EA6FF",
+          text_color: "#ffffff",
+          is_visible: true,
+        });
+      }
     }
-  }, [cardsSetting.title, cardsSetting.photos]);
+  }, [cardsSetting.title, cardsSetting.photos, cardsSetting.description, modalActive]);
 
   function checkMistakes() {
     let fileError = false;
     let titleError = false;
+    let descriptionError = false;
 
     if (localCardSetting.title.length < 3) {
       titleError = true;
@@ -89,8 +98,11 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     if (localCardSetting.photos.length < 1) {
       fileError = true;
     }
-    setErrors({ fileError: fileError, nameError: titleError });
-    let localErrors = { fileError: fileError, nameError: titleError };
+    if (localCardSetting.description.length > 500){
+      descriptionError = true
+    }
+    setErrors({ fileError: fileError, nameError: titleError, descriptionError : descriptionError });
+    let localErrors = { fileError: fileError, nameError: titleError, descriptionError : descriptionError };
 
     return Object.values(localErrors).every((value) => value === false);
   }

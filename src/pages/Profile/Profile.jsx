@@ -89,7 +89,7 @@ const Profile = () => {
   const cards = useSelector(state => state.telegramUserInfo.profile.cards)
 
   
-
+  console.warn(cards)
   aboutULocal = aboutU
   userInfoLocal = userInfo
 
