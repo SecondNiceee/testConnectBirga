@@ -2803,6 +2803,23 @@ input {
   margin-right: auto;
 }
 
+.shablonIcon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border-radius: 6.67px;
+  background-color: #5E5CE6;
+}
+
+.shablonIcon__inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+      -ms-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+
 .responce-wrapper {
   min-width: 100vw;
   padding-top: 18px;
@@ -2821,14 +2838,12 @@ input {
 .shablon-wrapper {
   min-width: 100vw;
   width: 100%;
-  height: 100vh;
   padding-top: 23px;
   padding-left: 16px;
   padding-right: 16px;
   left: 0;
   top: 0;
   position: absolute;
-  overflow-y: scroll;
   z-index: 200;
   background: rgb(24, 34, 45);
   padding-bottom: 20px;
@@ -2863,6 +2878,21 @@ input {
 }
 .shablon-wrapper .shablons-wrap {
   margin-top: 8px;
+}
+.shablon-wrapper .shablonIcon {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border-radius: 6.67px;
+  background-color: #5E5CE6;
+}
+.shablon-wrapper .shablonIcon__inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translateX(-50%) translateY(-50);
+      -ms-transform: translateX(-50%) translateY(-50);
+          transform: translateX(-50%) translateY(-50);
 }
 
 .cards {
