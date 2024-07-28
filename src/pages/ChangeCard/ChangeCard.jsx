@@ -161,10 +161,10 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
       // dispatch(changeCards({ id: index, card: localCardSetting }));
       // document.documentElement.style.overflow = "auto";
+      alert("Щас должен закрыться")
       setCardsOpen(false);
     }
-  }
-
+  }                                      
   
     
     function backFunc() {
