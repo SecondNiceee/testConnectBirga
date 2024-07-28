@@ -346,6 +346,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         unmountOnExit
       >
           <ChoiceCategory
+            isBackHide = {false}
             taskInformation={localCardSetting}
             setTaskInformation={setCardsSetting}
             setCatagoryChoiceOpen={setCatagoryChoiceOpen}

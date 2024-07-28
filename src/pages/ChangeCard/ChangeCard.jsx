@@ -69,7 +69,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     }
 
     if (!Object.values(localErrors).every((value) => value === false)) {
-      if (!modalActive){
+      if (!modalActive && !isCategoryChoiceOpen){
         MainButton.setParams({
           color: "#2f2f2f",
           text_color: "#606060",
@@ -77,7 +77,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         });
       }
     } else {
-      if(!modalActive){
+      if(!modalActive && !isCategoryChoiceOpen){
         MainButton.setParams({
           color: "#2EA6FF",
           text_color: "#ffffff",
@@ -85,7 +85,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         });
       }
     }
-  }, [cardsSetting.title, cardsSetting.photos, cardsSetting.description, modalActive]);
+  }, [cardsSetting.title, cardsSetting.photos, cardsSetting.description, modalActive, isCategoryChoiceOpen]);
 
   function checkMistakes() {
     let fileError = false;
@@ -187,7 +187,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     MainButton.show();
     BackButton.show()
     MainButton.setText("Изменить кейс");
-    if (!modalActive){
+    if (!modalActive && !isCategoryChoiceOpen){
       mainRef.current.style.overflow = "scroll"
       MainButton.show()
       MainButton.onClick(saveFunc);
@@ -207,7 +207,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
     };
     // eslint-disable-next-line
-}, [modalActive]);
+}, [modalActive, saveFunc , isCategoryChoiceOpen]);
   return (
     <div ref={mainRef} className="cards">
       <h3 className="cards-title">{cardsSetting.title}</h3>
@@ -344,6 +344,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         unmountOnExit
       >
           <ChoiceCategory
+            isBackHide = {false}
             taskInformation={localCardSetting}
             setTaskInformation={setCardsSetting}
             setCatagoryChoiceOpen={setCatagoryChoiceOpen}

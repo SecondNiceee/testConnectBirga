@@ -10,7 +10,8 @@ const ChoiceCategory = ({
   setCatagoryChoiceOpen,
   categorys,
   subCategorys,
-  categoryOnly 
+  categoryOnly ,
+  isBackHide = true
 
 }) => {
   
@@ -24,7 +25,9 @@ const ChoiceCategory = ({
     BackButton.onClick(closeFunction)
     return () => {
       BackButton.offClick(closeFunction)
-      BackButton.hide()
+      if (isBackHide){
+        BackButton.hide()
+      }
     }
   } , [] )
 
