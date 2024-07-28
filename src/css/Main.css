@@ -2831,6 +2831,7 @@ input {
   overflow-y: scroll;
   z-index: 200;
   background: rgb(24, 34, 45);
+  padding-bottom: 20px;
 }
 .shablon-wrapper .shablon-name {
   margin-top: 18px;
