@@ -93,7 +93,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     
 
     
-  }, [cardsSetting.title, cardsSetting.photos]);
+  }, [cardsSetting.title, cardsSetting.photos, cardsSetting.description]);
 
 
 
@@ -159,7 +159,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         is_visible : true
     })
     }
-  } , [dispatch, setCardsOpen, aboutU, setAboutU] )
+  } , [dispatch, setCardsOpen, aboutU, setAboutU , cardsSetting] )
 
 
   useEffect( () => {            
