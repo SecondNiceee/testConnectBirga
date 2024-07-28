@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import TaskName from "../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import behanceIcon from "../../images/icons/behance.svg";
@@ -154,6 +154,10 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   
   
   
+
+  const mainRef = useRef(null)
+
+
   useEffect(() => {
     
     function backFunc() {
@@ -178,15 +182,19 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   
       } )
     }
+
+    
     MainButton.show();
     BackButton.show()
     MainButton.setText("Изменить кейс");
     if (!modalActive){
+      mainRef.current.style.overflow = "scroll"
       MainButton.show()
       MainButton.onClick(saveFunc);
       BackButton.onClick(backFunc);
     }
     else{
+      mainRef.current.style.overflow = "hidden"
       MainButton.hide()
       BackButton.offClick(saveFunc)
     }
@@ -201,7 +209,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     // eslint-disable-next-line
 }, [modalActive]);
   return (
-    <div className="cards">
+    <div ref={mainRef} className="cards">
       <h3 className="cards-title">{cardsSetting.title}</h3>
 
     
@@ -325,7 +333,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         in={modalActive}
         timeout={0}
       >
-        <ModalInput setModal={setModalActive} setting={inputObject} />
+        <ModalInput style = {mainRef.current && {top : String(mainRef.current.scrollTop) + "px"}}  setModal={setModalActive} setting={inputObject} />
       </CSSTransition>
 
       <CSSTransition
