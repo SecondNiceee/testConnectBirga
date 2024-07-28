@@ -97,12 +97,28 @@ export const postMyTask = createAsyncThunk(
       //   );
       // }
 
-      b = await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
-        headers: {
-          "Content-Type" :'multipart/form-data',
-          "Access-Control-Allow-Origin": "*"
-        },
-      });
+      let postCounter = 0
+      while (!(b.status >= 200 && b.status <= 300)){
+        try{
+
+          b = await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
+            headers: {
+              "Content-Type" :'multipart/form-data',
+              "Access-Control-Allow-Origin": "*"
+            },
+          });
+
+        }
+        catch(e){
+          alert("Попытка")
+        }
+        postCounter += 1
+        if (postCounter > 15){
+          break
+        }
+      }
+
+      console.log(b)
 
       let localTask;
 
@@ -145,7 +161,7 @@ export const postMyTask = createAsyncThunk(
       };
       return localTask;
     } catch (e) {
-      alert(JSON.stringify(e));
+      alert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже");
       console.log(e);
     }
 

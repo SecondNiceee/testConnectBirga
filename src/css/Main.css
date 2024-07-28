@@ -2847,6 +2847,7 @@ input {
   z-index: 200;
   background: rgb(24, 34, 45);
   padding-bottom: 20px;
+  min-height: 100vh;
 }
 .shablon-wrapper .shablon-name {
   margin-top: 18px;
@@ -2878,21 +2879,6 @@ input {
 }
 .shablon-wrapper .shablons-wrap {
   margin-top: 8px;
-}
-.shablon-wrapper .shablonIcon {
-  width: 30px;
-  height: 30px;
-  position: relative;
-  border-radius: 6.67px;
-  background-color: #5E5CE6;
-}
-.shablon-wrapper .shablonIcon__inner {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translateX(-50%) translateY(-50);
-      -ms-transform: translateX(-50%) translateY(-50);
-          transform: translateX(-50%) translateY(-50);
 }
 
 .cards {
