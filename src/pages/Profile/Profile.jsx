@@ -221,7 +221,7 @@ const Profile = () => {
 
       }
       else{
-        MainButton.hide()
+        // MainButton.hide()
         MainButton.offClick(save)
       }
 
