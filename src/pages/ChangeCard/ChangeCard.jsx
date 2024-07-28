@@ -136,7 +136,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       //     }),
       //   ],
       // });
-
+      alert("Я попал сюда")
       
       let myFormData = new FormData()
       myFormData.append("title" , localCardSetting.title)
@@ -153,7 +153,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       files.removedArr.forEach( (e, i )  => {
         myFormData.append(`deleteFiles${i}` , e)
       })
-      
+      alert("Дошел до сида")
       dispatch(putCard([myFormData, localCardSetting.id, localCardSetting]))
       // localCardSetting.photos.forEach(e => {
       //   myFormData.append('photos' , e)
