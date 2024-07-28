@@ -84,7 +84,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       
       if (!Object.values(localErrors).every(value => value === false))
         {
-          if (!modalActive){
+          if (!modalActive && !isCategoryChoiceOpen){
 
             MainButton.setParams({
                 color : "#2f2f2f",
@@ -94,7 +94,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
           }
         }
       else{
-        if (!modalActive){
+        if (!modalActive && !isCategoryChoiceOpen){
 
           MainButton.setParams({
               color : "#2EA6FF",
@@ -106,7 +106,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     
 
     
-  }, [cardsSetting.title, cardsSetting.photos, cardsSetting.description]);
+  }, [cardsSetting.title, cardsSetting.photos, cardsSetting.description, isCategoryChoiceOpen, modalActive]);
 
 
 
@@ -196,11 +196,11 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     } )
   } , [setCardsOpen] )
 
-  const mainRef = useRef()
+  const mainRef = useRef(null)
   useEffect( () => {            
     MainButton.setText("Добавить кейс");
     BackButton.show()
-    if (!modalActive){
+    if (!modalActive && !isCategoryChoiceOpen){
       MainButton.show()
       MainButton.onClick(saveFunc);
       BackButton.onClick(backFunc);
@@ -219,7 +219,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         MainButton.setText('Сохранить')
         
       };
-  }, [modalActive, backFunc, save, saveFunc] )
+  }, [modalActive, backFunc, save, saveFunc, isCategoryChoiceOpen] )
 
 
 
