@@ -185,7 +185,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       ],
     } , (buttonId) => {
 
-      if (buttonId === "delete" || buttonId === null) {
+      if (buttonId === "delete") {
         setCardsOpen(false);
       }
       if (buttonId === "save") {

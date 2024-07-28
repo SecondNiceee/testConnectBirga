@@ -87,26 +87,40 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     }
   }, [cardsSetting.title, cardsSetting.photos, cardsSetting.description, modalActive, isCategoryChoiceOpen]);
 
-  function checkMistakes() {
-    let fileError = false;
-    let titleError = false;
-    let descriptionError = false;
 
-    if (localCardSetting.title.length < 3) {
-      titleError = true;
-    }
-    if (localCardSetting.photos.length < 1) {
-      fileError = true;
-    }
-    if (localCardSetting.description.length > 500){
-      descriptionError = true
-    }
-    setErrors({ fileError: fileError, nameError: titleError, descriptionError : descriptionError });
-    let localErrors = { fileError: fileError, nameError: titleError, descriptionError : descriptionError };
 
-    return Object.values(localErrors).every((value) => value === false);
-  }
+  
+  
+  
 
+  const mainRef = useRef(null)
+
+
+  useEffect(() => {
+
+
+    function checkMistakes() {
+      let fileError = false;
+      let titleError = false;
+      let descriptionError = false;
+  
+      if (localCardSetting.title.length < 3) {
+        titleError = true;
+      }
+      if (localCardSetting.photos.length < 1) {
+        fileError = true;
+      }
+      if (localCardSetting.description.length > 500){
+        descriptionError = true
+      }
+      setErrors({ fileError: fileError, nameError: titleError, descriptionError : descriptionError });
+      let localErrors = { fileError: fileError, nameError: titleError, descriptionError : descriptionError };
+      alert()
+      return Object.values(localErrors).every((value) => value === false);
+    }
+
+
+    
   function saveFunc() {
     if (checkMistakes()) {
       setAboutU({
@@ -151,14 +165,6 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   }
 
   
-  
-  
-  
-
-  const mainRef = useRef(null)
-
-
-  useEffect(() => {
     
     function backFunc() {
       // document.documentElement.style.overflow = "auto";
@@ -172,7 +178,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         ],
       } , (buttonId) => {
   
-        if (buttonId === "delete" || buttonId === null) {
+        if (buttonId === "delete" ) {
           setCardsOpen(false);                                                                                            
         }
         if (buttonId === "save") {
@@ -207,7 +213,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
     };
     // eslint-disable-next-line
-}, [modalActive, saveFunc , isCategoryChoiceOpen]);
+}, [modalActive, saveFunc , isCategoryChoiceOpen, cardsSetting, aboutU]);
   return (
     <div ref={mainRef} className="cards">
       <h3 className="cards-title">{cardsSetting.title}</h3>
@@ -215,9 +221,6 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     
 
       <button
-        onClick={() => {
-          saveFunc();
-        }}
       >
         Сохранить
       </button>
