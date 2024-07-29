@@ -19,6 +19,9 @@ const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
                 await axios.get("https://back-birga.ywa.su/bot/notification" , {
                 
                     params : {
+                        "executorId" : response.user.id,
+                        "consumerId" : response.advertisement.id,
+                        "responseId" : response.id,
                         "chatId" : response.advertisement.user.chatId,
                         "advertisementId" : response.advertisement.id
                     }
