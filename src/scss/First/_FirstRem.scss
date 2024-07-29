@@ -315,7 +315,7 @@
     z-index: 11;
     position: absolute;
     height: 100%;
-    left: 0px;
+    left: -301px;
     bottom: 0;
     display: flex;
     flex-direction: column;
@@ -327,10 +327,10 @@
         width: 53.33px;
         height: 53.33px;
     }
-    &.hidden{
-        left: -301px;
-        transform: translateX(0%);
-    }
+    // &.hidden{
+    //     left: -301px;
+    //     transform: translateX(0%);
+    // }
     .FirstMenu__top{
         display: flex;
         align-items: center;

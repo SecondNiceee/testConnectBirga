@@ -403,7 +403,7 @@
   z-index: 11;
   position: absolute;
   height: 100%;
-  left: 0px;
+  left: -301px;
   bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -420,12 +420,6 @@
 .FirstMenu .icon {
   width: 53.33px;
   height: 53.33px;
-}
-.FirstMenu.hidden {
-  left: -301px;
-  -webkit-transform: translateX(0%);
-      -ms-transform: translateX(0%);
-          transform: translateX(0%);
 }
 .FirstMenu .FirstMenu__top {
   display: -webkit-box;
