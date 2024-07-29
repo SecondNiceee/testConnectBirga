@@ -404,7 +404,7 @@
   position: absolute;
   height: 100vh;
   left: 0px;
-  bottom: 0;
+  top: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -420,6 +420,12 @@
 .FirstMenu .icon {
   width: 53.33px;
   height: 53.33px;
+}
+.FirstMenu.hidden {
+  left: -301px;
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
 }
 .FirstMenu .FirstMenu__top {
   display: -webkit-box;
