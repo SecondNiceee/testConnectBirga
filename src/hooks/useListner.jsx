@@ -2,13 +2,21 @@ import  { useEffect } from 'react';
 
 const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetailsActive , isOpen} ) => {
     return (  useEffect(() => {
+        const menu = document.documentElement.querySelector(".FirstMenu")
         let startTouchX = 0;
         let endTouchX = 0;
         let startTouchY = 0;
         let endTouchY = 0;
         function listnerFunctionOne(e) {
+          menu.style.transition = "0s"
           startTouchX = e.changedTouches[0].pageX;
           startTouchY = e.changedTouches[0].pageY;
+        }
+
+        function moveHandler(e){
+          
+          console.log("translateX(" + (-e.changedTouches[0].pageY + startTouchY) +"px)")
+          menu.style.transform = "translateX(" + (e.changedTouches[0].pageX - startTouchX) +"px)"
         }
         
         function listnerFunctionTwo(e) {
@@ -47,10 +55,13 @@ const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetails
         }
         document.removeEventListener('touchstart' , listnerFunctionOne)
         document.removeEventListener('touchend' , listnerFunctionTwo)
+        document.removeEventListener("touchmove", moveHandler)
         document.addEventListener("touchstart", listnerFunctionOne);
+        document.addEventListener("touchmove", moveHandler)
         document.addEventListener("touchend", listnerFunctionTwo);
     
         return () => {
+          document.removeEventListener("touchmove", moveHandler)
           document.removeEventListener('touchstart' , listnerFunctionOne)
           document.removeEventListener('touchend' , listnerFunctionTwo)
         }

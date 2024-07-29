@@ -403,7 +403,7 @@
   z-index: 11;
   position: absolute;
   height: 100%;
-  left: 0px;
+  left: -301px;
   bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -422,9 +422,9 @@
   height: 53.33px;
 }
 .FirstMenu.hidden {
-  -webkit-transform: translateX(-100%);
-      -ms-transform: translateX(-100%);
-          transform: translateX(-100%);
+  -webkit-transform: translateX(0%);
+      -ms-transform: translateX(0%);
+          transform: translateX(0%);
 }
 .FirstMenu .FirstMenu__top {
   display: -webkit-box;

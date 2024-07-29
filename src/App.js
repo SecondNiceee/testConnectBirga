@@ -246,8 +246,8 @@ useEffect( () => {
 
   return (
     <BrowserRouter>
+      <FirstMenu />
       <div className="UperContainer">
-        <FirstMenu />
         <div className="MainContainer">
           <AnimatedSwitch />
           {/* <ModalChoicer /> */}
