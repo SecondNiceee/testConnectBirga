@@ -402,8 +402,8 @@
   background-color: rgb(24, 34, 45);
   z-index: 11;
   position: absolute;
-  height: 100%;
-  left: -301px;
+  height: 100vh;
+  left: 0px;
   bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;

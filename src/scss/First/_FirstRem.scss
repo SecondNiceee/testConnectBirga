@@ -314,8 +314,13 @@
     background-color: rgba(24, 34, 45, 1.00);
     z-index: 11;
     position: absolute;
+<<<<<<< HEAD
     height: 100%;
     left: -301px;
+=======
+    height: 100vh;
+    left: 0px;
+>>>>>>> 66643f4 (das)
     bottom: 0;
     display: flex;
     flex-direction: column;
