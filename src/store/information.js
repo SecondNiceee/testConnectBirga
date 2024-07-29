@@ -110,6 +110,7 @@ export const postMyTask = createAsyncThunk(
 
         }
         catch(e){
+          alert(e)
           alert("Попытка")
         }
         alert(postCounter)
