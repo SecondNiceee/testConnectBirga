@@ -243,7 +243,6 @@ const MyAds = () => {
     setMenuActive,
     setDetailsActive,
     isDetailsActive: details.isActive,
-    isOpen,
   });
 
 
@@ -318,8 +317,27 @@ const MyAds = () => {
 
 
   const deleteFunction = useCallback( (index) => {
-    setMyResponse((value) => ({...value , isOpen : true}))
-    dispatch(deleteResponse(index))
+    window.Telegram.WebApp
+    .showPopup({
+      title: "Удалить?",
+      message: `Вы уверены, что хотите удалить этот отклик?`,
+      buttons: [
+        { id: "save", type: "default", text: "Да" },
+        { id: "delete", type: "destructive", text: "Нет" },
+      ],
+    } , (buttonId) => {
+
+      if (buttonId === "delete" || buttonId === null) {
+        
+      }
+      if (buttonId === "save") {
+        setMyResponse((value) => ({...value , isOpen : true}))
+        dispatch(deleteResponse(index))
+      }
+
+
+    } )
+
 } , [setMyResponse , dispatch])
 
 
