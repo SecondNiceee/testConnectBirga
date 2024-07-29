@@ -55,7 +55,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
 
                 canvas.toBlob((blob) => {
                     resolve(new File([blob], file.name, { type: 'image/png', lastModified: new Date().getTime() }));
-                }, 'image/png', quality);
+                }, 'image/png');
             };
             img.src = event.target.result;
         };
