@@ -4,7 +4,7 @@ import FalseTie from "../FalseTie/FalseTie";
 import Share from '../../../images/icons/Share.svg'
 import MyButton from "../MyButton/MyButton";
 
-const Case = ({ className, card, openFunc, task,  title , description , photos, changeFunction, deleteFunction, setSliderActive, watchOnly, agree = false,  ...props }) => {
+const Case = ({ className, card, category, openFunc, task,  title , description , photos, changeFunction, deleteFunction, setSliderActive, watchOnly, agree = false,  ...props }) => {
   return (
     <div
       {...props} 

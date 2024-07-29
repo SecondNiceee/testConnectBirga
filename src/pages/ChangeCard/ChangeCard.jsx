@@ -164,7 +164,8 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       alert("Щас должен закрыться")
       setCardsOpen(false);
     }
-  }                                      
+  }
+                                      
   
     
     function backFunc() {
