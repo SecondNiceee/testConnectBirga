@@ -1,14 +1,13 @@
 import React from 'react';
 import { ThreeCircles } from 'react-loader-spinner';
 
-const BlockSpinner = ({isPhotos = false}) => {
+const BlockSpinner = ({...props}) => {
     return (
-    <div style={  {minHeight : "144px" , display : "flex" , alignItems : "center", justifyContent : "center"
-    }} className="First__block">
+    <div {...props} className="First__block loaderBlock">
         <ThreeCircles
             visible={true}
-            height="35"
-            width="35"
+            height="50"
+            width="50"
             color="white"
             ariaLabel="three-circles-loading"
             wrapperStyle={{}}

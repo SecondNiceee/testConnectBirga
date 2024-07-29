@@ -6,6 +6,8 @@ import AdCreatingTwo from "./ADCreatingTwo/AdCreatingTwo/AddCreatingTwo";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  changeMyAds,
+  fetchMyOrders,
   postMyTask,
 } from "../store/information";
 import BackButton from "../constants/BackButton";
@@ -198,6 +200,8 @@ const AdCreating = () => {
     }
 
     dispatch(postMyTask([myFormData, el.photos]));
+    dispatch(changeMyAds([]))
+    dispatch(fetchMyOrders(1))
 
 
     

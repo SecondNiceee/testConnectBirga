@@ -15,15 +15,22 @@ const SuspenseBlock = ({i , e, setSecondPage, setSliderActive}) => {
     } , [inView] )
     const style = useMemo( () =>{
         if (e.photos.length > 0){
-            return {minHeight : "314px"}
+            return {minHeight : "314px" , position : "relative"}
         }
         else{
-            return {minHeight : "178px"}
+            return {minHeight : "178px", position : "relative"}
         }
     } , [e.photos] )
     return (
-        <div ref={ref} style={!isVisible ? style : {}} >
-            {isVisible &&  <Suspense fallback = {<BlockSpinner />}>
+        <div className='First__block' style={!isVisible ? style : {}} >
+            <div ref={ref} style={{
+                width : "200px",
+                height : "200px",
+                position : "absolute",
+                top : "-200px",
+                opacity : "0"
+            }} className="catch_block"></div>
+            {isVisible &&  <Suspense fallback = {<BlockSpinner style = {e.photos.length > 0 ? {height : "313px"} : {height : "144px"}}   />}>
                         <Block e={e} i={i} setSecondPage={setSecondPage} setSliderAcitve={setSliderActive} />
                 </Suspense>
                 }

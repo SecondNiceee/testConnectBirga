@@ -3257,6 +3257,18 @@ body {
   border-radius: 50%;
 }
 
+.loaderBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 @-webkit-keyframes anime {
   0% {
     -webkit-transform: translateX(20px);

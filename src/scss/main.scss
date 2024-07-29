@@ -113,6 +113,12 @@ body { width: 100%; height: auto; overflow: auto; background: rgb(24, 34, 45); }
   border-radius: 50%;
 }
 
+.loaderBlock{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
 

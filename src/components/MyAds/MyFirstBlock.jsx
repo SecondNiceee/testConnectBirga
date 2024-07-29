@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from "react";
+import React, { memo, useEffect, useMemo, useState } from "react";
 import MyButton from "../UI/MyButton/MyButton";
 import Pallete from "../UI/Pallete/Pallete";
 import ShareIcon from "../UI/ShareIcon/ShareIcon";
@@ -6,6 +6,8 @@ import SmallDimond from "../UI/SmallDimond/SmallDimond";
 import { useDispatch, useSelector } from "react-redux";
 import formatDate from "../../functions/makeDate";
 import { useInView } from 'react-intersection-observer';
+import MyLoader from "../UI/MyLoader/MyLoader";
+import BlockSpinner from "../UI/BlockSpinner/BlockSpinner";
 let counter = 0
 const MyFirstBlock = ({
   className,
@@ -27,6 +29,8 @@ const MyFirstBlock = ({
   const tonConstant = useSelector(state => state.ton.value)
   console.log("render" + counter)
   counter += 1
+
+
 
 
 
@@ -64,7 +68,7 @@ const MyFirstBlock = ({
   console.warn(photos)
   return (
     <>
-      {photos !== undefined ? (
+      {photos !== undefined  ? (
         <div
           
           className={
@@ -190,7 +194,7 @@ const MyFirstBlock = ({
           </div>
         </div>
       ) : (
-        <div></div>
+         <BlockSpinner style = {photos.length > 0 ? {height : "313px"} : {height : "144px"}}  />
       )}
 
 
