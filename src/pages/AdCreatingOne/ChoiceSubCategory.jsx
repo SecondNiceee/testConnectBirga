@@ -17,6 +17,7 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
           BackButton.offClick(closeFunction)
           BackButton.hide()
         }
+        // eslint-disable-next-line
       } , [] )
 
     const subCategorys = useMemo( () => {

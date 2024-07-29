@@ -1,10 +1,9 @@
-import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { forwardRef,  useMemo, useRef } from 'react';
 import MyAnimation from './MyAnimation';
 import MyResponses from './MyResponses';
 import MyLoader from '../../../components/UI/MyLoader/MyLoader';
-import { useDispatch, useSelector } from 'react-redux';
-import { clearResponses, fetchResponses } from '../../../store/responses';
-import { useInView } from 'react-intersection-observer';
+import {  useSelector } from 'react-redux';
+
 
 const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue} , ref) => {
 
@@ -35,6 +34,8 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue} , ref) =
                 return "У вас нет непросмотренных задани"
             case "completed":
                 return "У вас нет завершенных заказов"
+            default : 
+                alert("Что - то не то в PickerOne")
         }
     }  , [oneValue])
 

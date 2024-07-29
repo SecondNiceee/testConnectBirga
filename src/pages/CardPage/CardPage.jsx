@@ -32,7 +32,7 @@ const CardPage = ({ card }) => {
             
             </div>
         )
-    } , [card.dropfileLink, card.dribbleLink, card.behanceLink] )
+    } , [card.dropfileLink, card.behanceLink , card.dribbbleLink] )
 
   return (
     <div className={cl.wrapper}>

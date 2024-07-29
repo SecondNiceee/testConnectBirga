@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import TaskName from "../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import behanceIcon from "../../images/icons/behance.svg";
@@ -169,6 +169,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         is_visible : true
     })
     }
+    // eslint-disable-next-line
   } , [dispatch, setCardsOpen, aboutU, setAboutU , cardsSetting] )
 
 
@@ -194,7 +195,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
 
     } )
-  } , [setCardsOpen] )
+  } , [setCardsOpen, saveFunc] )
 
   const mainRef = useRef(null)
   useEffect( () => {            

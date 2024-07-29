@@ -29,6 +29,7 @@ const ChoiceCategory = ({
         BackButton.hide()
       }
     }
+    // eslint-disable-next-line
   } , [] )
 
   useEffect( () => {

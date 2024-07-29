@@ -8,7 +8,7 @@ const SmallTextarea = ({ value, setValue, className }) => {
         textAreaRef.current.style.height = (refTwo.current.scrollHeight).toString() + 'px'
         
 
-    } , [value] )
+    } , [value ,textAreaRef] )
   return (
     <>
 

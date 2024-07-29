@@ -1,7 +1,6 @@
 
 import React, { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 
-import ResponseBlock from "../../../components/MyAds/ResponseBlock";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ResponseSuspense from "./ResponseSuspense";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,7 +17,7 @@ const MyResponses = forwardRef( ({responsesArr, buttonFunction} , ref) => {
   const getMore = useCallback(async () => {
     dispatch(fetchResponses([me,page]));
     setPage(page + 1);
-  }, [page, setPage, dispatch]);
+  }, [page, setPage, dispatch, me]);
 
   const onIntersaction = useCallback(
     (entries) => {

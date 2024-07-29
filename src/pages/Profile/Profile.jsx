@@ -7,8 +7,6 @@ import { CSSTransition } from "react-transition-group";
 
 
 
-import Subtract from "../../images/icons/SubtractWhite.svg";
-import greyArrowRight from "../../images/icons/greyArrowRight.svg";
 import Burger from "../../components/UI/Burger/Burger";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";

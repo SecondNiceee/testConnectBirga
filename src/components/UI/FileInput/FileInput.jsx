@@ -2,7 +2,6 @@ import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from "
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 let counter = 0;
-let imgaes = []
 const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);
   
@@ -18,10 +17,12 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         }
       })
     })
-  } , [files , images] )
+    // eslint-disable-next-line
+  } , [ files] )
   
   useEffect( () => {
     addFiles(files)
+    // eslint-disable-next-line
   } , [] )
 
 

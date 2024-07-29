@@ -1,5 +1,4 @@
 import React, { memo, useMemo } from "react";
-import upDown from "../../../images/icons/UpDown.svg";
 import FullPicker from "../../../components/UI/FullPicker/FullPicker";
 import ModalChoicer from "../../../components/UI/ModalChoicer/ModalChoicer";
 import { useSelector } from "react-redux";
@@ -12,9 +11,9 @@ const MyAdsBlock = ({  nowValue, setNowKey,  greyWidth , greyIntWidth, setOneVal
   const advertisements = useSelector(state => state.information.myAdsArray)
   const finishedDeals = useMemo( () => {
     let rezult = ( String((me.deals + me.completedTasks.length) / (advertisements.length + responses.length)) * 100 ) 
-    return rezult === NaN ? "0%" : rezult
+    return isNaN(rezult) ? "0%" : rezult
 
-  } , [advertisements,responses] )
+  } , [advertisements,responses, me.completedTasks.length, me.deals] )
   return (
     <div className="MyAdsBlock">
       <div className="counter__block">

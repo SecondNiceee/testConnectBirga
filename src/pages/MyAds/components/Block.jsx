@@ -1,6 +1,5 @@
 import React, { memo, useCallback } from 'react';
 import MyFirstBlock from '../../../components/MyAds/MyFirstBlock';
-import { useInView } from 'react-intersection-observer';
 
 const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
     const clickHandler = useCallback( (p) => {
@@ -12,7 +11,7 @@ const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
             setSecondPage({ isActive: true, task: e, index: i });
           }
         
-    } , [setSecondPage]) 
+    } , [setSecondPage, e, i]) 
     console.warn(e)
     return (
         <>

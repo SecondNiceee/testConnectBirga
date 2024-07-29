@@ -5,10 +5,8 @@ import Reaction from "./Reaction";
 import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
 import { useDispatch } from "react-redux";
 import { changeMenuActive } from "../../../store/menuSlice";
-import options from "../../../constants/options";
 import formatDate from "../../../functions/makeDate";
 import { postResponse } from "../../../store/responses";
-import MainButton from "../../../constants/MainButton";
 const LastAds = ({
   setSliderActive,
 
@@ -29,6 +27,7 @@ const LastAds = ({
     if (responce.isWatched !== "watched" && responce.isWatched !== "inProcess"){
       dispatch(postResponse(responce.id))
     }
+    // eslint-disable-next-line
   } , [] )
 
 

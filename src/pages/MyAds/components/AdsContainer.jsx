@@ -1,6 +1,4 @@
-import React, { lazy, memo, Suspense, useCallback, useEffect, useRef, useState } from 'react';
-
-import Block from "./Block"
+import React, {  memo,  useCallback, useEffect, useRef, useState } from 'react';
 import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 import SuspenseBlock from '../../../components/MyAds/SuspenseBlock';
 import { useDispatch, useSelector } from 'react-redux';

@@ -11,7 +11,6 @@ import cl from "./AdCreatingOne.module.css";
 import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
 import "../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css";
 import MyDatePicker from "../../../components/AdCreating/MyDatePicker/MyDatePicker";
-import MainButton from "../../../constants/MainButton";
 
 // eslint-disable-next-line
 Date.prototype.addHours = function (h) {

@@ -1,10 +1,4 @@
 import React from "react";
-import balanceIcon from "../../../../images/profileIcons/balance.svg";
-import notificationIcon from "../../../../images/profileIcons/notifications.svg";
-import shablonsIcon from "../../../../images/profileIcons/shablons.svg";
-import subsctibeIcon from "../../../../images/profileIcons/subscribe.svg";
-import tarifIconIcon from "../../../../images/profileIcons/tarif.svg";
-import Dimond from "../../../../images/icons/Dimond.svg";
 import ArrowRight from "../../../../images/icons/rightArrow.svg";
 // import Pencel from "../../components/UI/Pencel/Pencel";
 import { Link } from "react-router-dom";

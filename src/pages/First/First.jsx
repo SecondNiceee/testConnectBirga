@@ -12,12 +12,9 @@ import Responce from "./Responce";
 import SliderMain from "../../components/UI/Swiper/SliderMain";
 import { CSSTransition } from "react-transition-group";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
-import axios from "axios";
 import pagesHistory from "../../constants/pagesHistory";
 import { addResponse } from "../../store/responses";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
-import CategoryBlock from "../../components/First/CategoryBlock/CategoryBlock";
-import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
 import FirstChoiceCategory from "../AdCreatingOne/ChoiceCategory/FirstChoiceCategory";
 import FirstChoiceSubCategory from "../AdCreatingOne/FirstChoiceSubCategory";
 
@@ -369,7 +366,7 @@ const secFilteredArray = useMemo( () => {
         return (e.tonValue * tonConstant) >= filters.price
       })
     }
-} , [filteredArr, filters] )
+} , [filteredArr, filters, tonConstant] )
 
 const forwardFunction = useCallback(() => {
   async function postResponce(advertismetId, userId) {
@@ -436,7 +433,7 @@ const forwardFunction = useCallback(() => {
         })
     } })
   }
-}, [responce, step, ordersInformation, isDetailsActive.id, setDetailsActive, dispatch, setStep]);
+}, [responce, step, ordersInformation, isDetailsActive.id, setDetailsActive, dispatch, setStep, me]);
 
 
 

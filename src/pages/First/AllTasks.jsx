@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useMemo} from "react";
+import React, { memo, useCallback, useEffect} from "react";
 import FirstMain from "../../components/First/FirstMain/FirstMain";
 import FirstTop from "../../components/First/FirstMain/FirstTop";
 import FirstLoader from "../../loaders/FirstLoader";
@@ -65,11 +65,11 @@ const AllTasks = ({
 
   const openCategoryFunc = useCallback( () => {
     setCategoryOpen(true)
-  } , [] )
+  } , [setCategoryOpen] )
 
   const openSubCategoryFunc = useCallback( () => {
     setSubCategory(true)
-  } , [] )
+  } , [setSubCategory] )
 
   const setValueFunc = useCallback( (value) => {
     let copy = value

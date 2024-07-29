@@ -5,12 +5,9 @@ import { memo } from "react";
 import Top from "../../../components/UI/Top/Top";
 import axios from "axios";
 import { deleteAd } from "../../../store/information";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import makeNewFile from "../../../functions/newMakeFile";
 import AllReactions from "./AllReactions";
-import MyLoader from "../../../components/UI/MyLoader/MyLoader";
-import MyFirstBlock from "../../../components/MyAds/MyFirstBlock";
-import SuspenseBlock from "../../../components/MyAds/SuspenseBlock";
 
 const AboutOne = ({
   task,

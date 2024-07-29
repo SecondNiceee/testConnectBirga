@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 // import myImage from '../../images/desccription.png'
 import { useDispatch, useSelector } from "react-redux";
@@ -69,6 +69,8 @@ const MyAds = () => {
         return sortedResponses.filter(e => e.isWatched === "")
       case "completed":
         return sortedResponses.filter(e => e.isWatched === "completed")
+      default : 
+        alert("Что - то пошло не так MyAds")
     }
   } , [sortedResponses , valueOne]  )
 
@@ -283,6 +285,8 @@ const MyAds = () => {
         return myAdsArray.filter(e => e.status === "inProcess")
       case "completed":
         return myAdsArray.filter(e => e.status === "completed")
+      default : 
+        alert("Что - то пошло не так MyAds второй")
     }
   } , [myAdsArray , valueTwo] )
 
@@ -316,7 +320,7 @@ const MyAds = () => {
   const deleteFunction = useCallback( (index) => {
     setMyResponse((value) => ({...value , isOpen : true}))
     dispatch(deleteResponse(index))
-} , [setMyResponse])
+} , [setMyResponse , dispatch])
 
 
   console.log(myResponse)

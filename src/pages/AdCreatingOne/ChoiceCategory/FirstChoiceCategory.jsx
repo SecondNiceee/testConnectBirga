@@ -24,6 +24,7 @@ const FirstChoiceCategory = ({
       BackButton.offClick(closeFunction)
       BackButton.hide()
     }
+    // eslint-disable-next-line
   } , [] )
 
    const myCategorys = useMemo( () => {

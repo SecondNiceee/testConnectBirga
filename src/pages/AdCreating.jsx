@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import AdCreatingOne from "./AdCreatingOne/AdCreatingOne/AdCreatingOne";
-import AdCreatingThree from "./AdCreatingThree/AdCreatingThree";
 import AdCreatingTwo from "./ADCreatingTwo/AdCreatingTwo/AddCreatingTwo";
 
 import { motion } from "framer-motion";
@@ -310,8 +309,10 @@ const AdCreating = () => {
           is_active : true
         })
       }
-  } , [firstPage.taskDescription] )
+  } , [firstPage.taskDescription, navigate] )
 
+
+  // eslint-disable-next-line
   const goForward = () => {
     if (blurRef.current) {
       blurRef.current.focus();
@@ -405,7 +406,7 @@ const AdCreating = () => {
   
       }
     }
-  } , [isCategoryChoiceOpen , isSubcategoryChoiceOpen, spet,setCatagoryChoiceOpen,setSubcategoryChoiceOpen ])
+  } , [isCategoryChoiceOpen , isSubcategoryChoiceOpen,setCatagoryChoiceOpen,setSubcategoryChoiceOpen, navigate ])
 
   const GreyIntWidth = useMemo(() => {
     return (document.documentElement.clientWidth - 36) / 2;
@@ -422,6 +423,7 @@ const AdCreating = () => {
       BackButton.offClick(goBack);
       MainButton.offClick(goForward);
     };
+    // eslint-disable-next-line
   } , [goBack,goForward ]);
 
   useEffect(() => {

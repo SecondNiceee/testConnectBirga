@@ -1,14 +1,10 @@
-import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect,  useRef,  } from "react";
 
 import { deleteAd } from "../../../store/information";
-import { useDispatch, useSelector } from "react-redux";
-import ShowMyResponse from "../../../components/MyAds/ShowMyResponse/ShowMyResponse";
-import { CSSTransition } from "react-transition-group";
+import { useDispatch,  } from "react-redux";
 import BackButton from "../../../constants/BackButton";
-import FirstDetails from "../../../components/First/FirstDetails/FirstDetails";
 import PickerTwo from "./PickerTwo";
 import PickerOne from "./PickerOne";
-import { clearResponses, fetchResponses } from "../../../store/responses";
 const PickerContent = ({
   myAdsArray,
   nowValue,
@@ -76,7 +72,7 @@ const PickerContent = ({
       BackButton.offClick(goBack)
     }
   
-  } , [myResponse.isOpen, details.isOpen] )
+  } , [myResponse.isOpen, details.isOpen, setDetails , setMyResponse] )
 
 
 

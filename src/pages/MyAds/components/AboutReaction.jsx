@@ -74,7 +74,7 @@ const AboutReaction = ({ responce , setSliderActive, setOneCard,   ...props}) =>
 
   const openFunc = useCallback( (par) => {
     setOneCard({isOpen : true, card : par})
-  } , [])
+  } , [setOneCard])
 
   console.log(responce)
 
