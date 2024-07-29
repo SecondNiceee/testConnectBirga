@@ -8,7 +8,7 @@ export const deleteCard = createAsyncThunk(
         try{
             await axios.delete("https://back-birga.ywa.su/user/savedCard", {
                 params:{
-                    "userId" : 2144832745,
+                    "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
                     "cardId" : id
                 }
 
@@ -26,7 +26,7 @@ export const addCard = createAsyncThunk(
     async function (par){
         try{
             await axios.post('https://back-birga.ywa.su/card/save' , {
-                "userId" : 2144832745,
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
                 "cardId" : par[0]
             })
             return par[1]
@@ -43,7 +43,7 @@ export const deleteResponce = createAsyncThunk(
         try{
             await axios.delete("https://back-birga.ywa.su/user/savedResponse" , { params : {
                 "responseId" : id,
-                "userId" : 2144832745
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             } })
 
             return id
@@ -60,7 +60,7 @@ export const addResponce = createAsyncThunk(
         try{
             await axios.post('https://back-birga.ywa.su/response/save', {
                     "responseId" : par[0],
-                    "userId" : 2144832745
+                    "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             })
             return par[1]
         }
@@ -78,7 +78,7 @@ export const deleteAdvertisement = createAsyncThunk(
             await axios.delete("https://back-birga.ywa.su/user/savedAdvertisement" , {
                 params : {
                     "advertisementId" : id,
-                    "userId" : 2144832745
+                    "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
                 }
             })
             return id
@@ -94,7 +94,7 @@ export const addAdvertisment = createAsyncThunk(
         try{
             let im = await axios.post('https://back-birga.ywa.su/advertisement/save' , {
                 "advertisementId" : par[0],
-                "userId" : 2144832745
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             })
             console.log(im.data)
             
@@ -116,7 +116,7 @@ export const fetchAllValues = createAsyncThunk(
         
         let im = await axios.get('https://back-birga.ywa.su/advertisement/saved' , {
             params : {
-                "userId" : 2144832745
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             }
         })
         let advertisements = im.data.savedAdvertisements
@@ -160,7 +160,7 @@ export const fetchAllValues = createAsyncThunk(
 
         let imTwo = await axios.get('https://back-birga.ywa.su/response/saved' , {
             params : {
-                "userId" : 2144832745
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             }
         })
 
@@ -238,7 +238,7 @@ export const fetchAllValues = createAsyncThunk(
 
         im = await axios.get('https://back-birga.ywa.su/card/saved' , {
             params : {
-                "userId" : 2144832745
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             }
         })
 
