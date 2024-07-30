@@ -91,7 +91,6 @@
  }
  .imageFeetContainer{
     position: relative;
-    height: fit-content;
     line-height: 0;
 }
 .fileImageContainer{
