@@ -4,10 +4,17 @@ import { forwardRef } from "react";
 const MyLoader = forwardRef(({...props}, ref) => {
     return (
       <div
-      ref={ref}
        {...props}
         className={cl.main}
       >
+
+            <div ref={ref} style={{
+                width : "280px",
+                height : "1000px",
+                position : "absolute",
+                top : "-1000px",
+                opacity : "0"
+            }} className="catch_block"></div>
         <Triangle
           visible={true}
           height="80"
