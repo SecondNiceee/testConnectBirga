@@ -122,6 +122,13 @@ const First = () => {
 
   isDetailsActiveVar = isDetailsActive.isOpen;
 
+  const [isProfile , setProfile] = useState(false)
+
+  const [isCardOpen , setCardOpen] = useState({
+    isOpen : false,
+    card : {}
+  })
+
   
   
   
@@ -350,7 +357,7 @@ const [categoryOpen , setCategoryOpen] = useState(false)
 
 const [subCategory, setSubCategory] = useState(false)
 
-const [isProfile , setProfile] = useState(false)
+
 
 const [filters, setFilters] = useState({
   category : {id : -1 , category : "Все"},
@@ -358,10 +365,7 @@ const [filters, setFilters] = useState({
   price : 0
 })
 
-const [isCardOpen , setCardOpen] = useState({
-  isOpen : false,
-  card : {}
-})
+
 
 console.log(filters)
 
