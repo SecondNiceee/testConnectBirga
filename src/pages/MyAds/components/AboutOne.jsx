@@ -8,6 +8,7 @@ import { deleteAd } from "../../../store/information";
 import { useDispatch } from "react-redux";
 import makeNewFile from "../../../functions/newMakeFile";
 import AllReactions from "./AllReactions";
+import Block from "../../../components/First/Block";
 
 const AboutOne = ({
   task,
@@ -139,7 +140,7 @@ const AboutOne = ({
       <Top name={"Отклики"} setMenuActive={setMenuActive} />
 
       {task ? (
-        <FirstBlock
+        <Block
           setSlideActive={setSliderAcitve}
           deleteFunction={deleteCallback}
           setDetailsActive={setDetailsCallback}

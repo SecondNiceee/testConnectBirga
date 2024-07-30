@@ -13,7 +13,8 @@ const MyLoader = forwardRef(({...props}, ref) => {
                 height : "2000px",
                 position : "absolute",
                 top : "-2000px",
-                opacity : "0"
+                opacity : "0",
+                zIndex : -1,
             }} className="catch_block"></div>
         <Triangle
           visible={true}

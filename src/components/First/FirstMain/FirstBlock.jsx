@@ -151,12 +151,16 @@ const FirstBlock = ({
         </Suspense>
       )}
 
+
+      
+
 <div ref={ref} style={{
                 width : "280px",
                 height : "900px",
                 position : "absolute",
                 top : "-900px",
-                opacity : "0"
+                opacity : "0",
+                zIndex : -1
             }} className="catch_block"></div>
     </div>
   );
