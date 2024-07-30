@@ -29,7 +29,8 @@ const Block = ({
     setSlideActive,
      tonValue,
      task,
-     agree = false
+     agree = false,
+     responseCounter
 }) => {
 
     const dispatch = useDispatch()
@@ -85,7 +86,7 @@ const Block = ({
                 <p className="myAds__top-left">Активно</p>
                 <div className="myAds__top-right">
                   <div className="one">
-                    <p>0</p>
+                    <p>{responseCounter}</p>
                     <svg
                       width="16"
                       height="13"

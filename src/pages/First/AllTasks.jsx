@@ -111,6 +111,8 @@ const AllTasks = ({
             setSliderActive = {setSliderActive}
           />
 
+          
+                                                                                
         </>
       ) : (
         <FirstLoader />

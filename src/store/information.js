@@ -84,7 +84,7 @@ export const postMyTask = createAsyncThunk(
     try {
       let b;
 
-      for (let i = 0 ; i < 20; i++){
+      for (let i = 0 ; i < 1; i++){
 
         b = await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
           headers: {
@@ -200,21 +200,11 @@ export const fetchMyOrders = createAsyncThunk(
       } else {
         for (let order of task.data) {
           let files = await makeNewFile(order.folder, order.photos);
-
-          // for (let i = 0 ; i < order.photos.length; i++){
-          //   let file = await urlToObject("https://back-birga.ywa.su/" + order.folder + '/' + order.photos[i])
-          //   console.log("https://back-birga.ywa.su/" + order.folder + '/' + order.photos[i])
-          //   console.log(file)
-          //   // let uintArray = new Uint8Array(order.files[i].data);
-          //   // let blob = new Blob([uintArray], { type: 'image/png' });
-          //   // let fileName =  order.photos[i]  ;
-          //   // let file = new File([blob], fileName, { type: 'image/png' });
-          //   files.push(file)
-
-          // }
-          // console.log(files)
-
-
+          let responseCounter = await axios.get("https://back-birga.ywa.su/response/countByAdvertisement" , {
+            params : {
+              "advertisementId" : order.id
+            }
+          })
           tasks.push({
             id: order.id,
             taskName: order.title,
@@ -235,6 +225,7 @@ export const fetchMyOrders = createAsyncThunk(
             addedFiles: [],
             status: order.status,
             user : order.user,
+            responseCounter : responseCounter
           });
         }
         return tasks;

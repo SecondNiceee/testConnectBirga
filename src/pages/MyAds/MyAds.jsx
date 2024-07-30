@@ -432,15 +432,7 @@ const MyAds = () => {
 
             />
           </CSSTransition>
-          <CSSTransition
-            classNames="left-right"
-            in={oneCards.isOpen }
-            timeout={400}
-            mountOnEnter
-            unmountOnExit
-          >
-           <CardPage card={oneCards.card} />
-          </CSSTransition>
+
 
 
           <CSSTransition

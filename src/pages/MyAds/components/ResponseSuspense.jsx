@@ -25,13 +25,23 @@ const ResponseSuspense = ({func , index, buttonText , task, isWatched, advertise
     } , [advertisement.photos] )
 
     return (
-        <div ref={ref} style={!isVisible ? style : {}} className="wrapper">
+        <div style={!isVisible ? style : {position : "relative"}} className="First__block">
             {
-                isVisible && <Suspense fallback = {<BlockSpinner />}>
+                isVisible && <Suspense fallback = {<BlockSpinner style = {advertisement.photos.length > 0 ? {minHeight : "315px"} : {minHeight : "178px"}} />}>
                     <ResponseBlock func={func} index={index} buttonText={buttonText} task={task} isWatched={isWatched} {...advertisement} />
                 </Suspense>
             }
-        </div>
+            <div ref={ref} style={{
+                width : "280px",
+                height : "1100px",
+                position : "absolute",
+                top : "-900px",
+                opacity : "0",
+                zIndex : -1,
+              
+            }} className="catch_block"></div>
+    </div>
+       
     );
 };
 

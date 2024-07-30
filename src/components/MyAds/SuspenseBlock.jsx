@@ -25,7 +25,7 @@ const SuspenseBlock = ({i , e, setSecondPage, setSliderActive}) => {
         <div className='First__block' style={!isVisible ? style : {}} >
             <div ref={ref} style={{
                 width : "280px",
-                height : "900px",
+                height : "1100px",
                 position : "absolute",
                 top : "-900px",
                 opacity : "0",

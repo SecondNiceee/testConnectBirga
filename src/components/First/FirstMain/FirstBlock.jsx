@@ -156,11 +156,12 @@ const FirstBlock = ({
 
 <div ref={ref} style={{
                 width : "280px",
-                height : "900px",
+                height : "1100px",
                 position : "absolute",
                 top : "-900px",
                 opacity : "0",
-                zIndex : -1
+                zIndex : -1,
+              
             }} className="catch_block"></div>
     </div>
   );
