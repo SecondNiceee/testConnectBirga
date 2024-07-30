@@ -1,7 +1,5 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import classes from "./Burger.module.css"
-import { useDispatch } from 'react-redux';
-import { changeMenuActive } from '../../../store/menuSlice';
 const Burger = ({ style, ...props}) => {
     return (
         <div {...props} style={style} className={classes.burgerMainWrapper}>
