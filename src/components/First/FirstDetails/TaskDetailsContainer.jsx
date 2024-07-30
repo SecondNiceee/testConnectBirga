@@ -5,7 +5,7 @@ import Dedline from './Dedline'
 import Status from './Status'
 import Customer from './Customer'
 
-const TaskDetailsContainer = ({orderInformation , end = false}) => {
+const TaskDetailsContainer = ({orderInformation , setProfile, end = false}) => {
   const text = useMemo(() => {
     if (end){
       return "Вы еще не создали задание, поэтому оно неактивно"
@@ -25,7 +25,7 @@ const TaskDetailsContainer = ({orderInformation , end = false}) => {
       <FullDescription fullDescription={orderInformation.taskDescription} />
       <Dedline dedline={orderInformation.time} />
       <div className="TaskDetails-row">
-        <Customer userPhoto = {orderInformation.userPhoto} rate={orderInformation.rate} customerName={orderInformation.customerName} />
+        <Customer setProfile = {setProfile} userPhoto = {orderInformation.userPhoto} rate={orderInformation.rate} customerName={orderInformation.customerName} />
         <Status text={text} isActive={!end && orderInformation.status === "active"} />
       </div>
     </div>

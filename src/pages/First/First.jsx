@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { motion } from "framer-motion";
 
 import BackButton from "../../constants/BackButton";
-
+import "../MyAds/MyAds.css"
 import MainButton from "../../constants/MainButton";
 import useListner from "../../hooks/useListner";
 import AllTasks from "./AllTasks";
@@ -17,6 +17,8 @@ import { addResponse } from "../../store/responses";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
 import FirstChoiceCategory from "../AdCreatingOne/ChoiceCategory/FirstChoiceCategory";
 import FirstChoiceSubCategory from "../AdCreatingOne/FirstChoiceSubCategory";
+import AboutReaction from "../MyAds/components/AboutReaction";
+import CardPage from "../CardPage/CardPage";
 
 let isDetailsActiveVar = false;
 let localResponce;
@@ -146,47 +148,59 @@ const First = () => {
 
 
     function back() {
-      if (sliderActive.isActive){
-        setSliderActive((value) => ({...value, isActive : false}))
+      if (isCardOpen.isOpen){
+        setCardOpen((value) => ({...value, isOpen : false}))
       }
       else{
-
-        if (responce.isShablonModalActive){
-          setResponce( (value) =>  ({...value, isShablonModalActive : false}))
+        if (isProfile){
+          setProfile(false)
         }
         else{
-          if (responce.shablonMaker){
-            setResponce( (value) => ({...value , shablonMaker : false}))
+          if (sliderActive.isActive){
+            setSliderActive((value) => ({...value, isActive : false}))
           }
           else{
-  
-            if (step === 1) {
-              setStep(0)
-              MainButton.setParams({
-                      is_active : true,
-                      color : '#2ea5ff',
-                      text_color : '#ffffff'})
-                      
-              mainRef.current.classList.remove('secondStep')
+    
+            if (responce.isShablonModalActive){
+              setResponce( (value) =>  ({...value, isShablonModalActive : false}))
             }
             else{
-              if (step === 0) {
-                setResponce({
-                  text: "",
-                  photos: [],
-                  name: "привет",
-                  isShablonModalActive: false,
-                  shablonIndex: 0,
-                  isShablon: false,
-                  shablonMaker : false,
-                })
-                closeDetails();
+              if (responce.shablonMaker){
+                setResponce( (value) => ({...value , shablonMaker : false}))
+              }
+              else{
+      
+                if (step === 1) {
+                  setStep(0)
+                  MainButton.setParams({
+                          is_active : true,
+                          color : '#2ea5ff',
+                          text_color : '#ffffff'})
+                          
+                  mainRef.current.classList.remove('secondStep')
+                }
+                else{
+                  if (step === 0) {
+                    setResponce({
+                      text: "",
+                      photos: [],
+                      name: "привет",
+                      isShablonModalActive: false,
+                      shablonIndex: 0,
+                      isShablon: false,
+                      shablonMaker : false,
+                    })
+                    closeDetails();
+                  }
+                }
               }
             }
+    
           }
         }
-
       }
+
+
     }
 
     MainButton.onClick(forward);
@@ -225,7 +239,7 @@ const First = () => {
       MainButton.offClick(forward);
       BackButton.offClick(back);
     };
-  } , [isDetailsActive.isOpen, step , gotIt, responce.isShablonModalActive, responce.shablonMaker, sliderActive.isActive]);
+  } , [isDetailsActive.isOpen, step , gotIt, responce.isShablonModalActive, responce.shablonMaker, sliderActive.isActive, isProfile, isCardOpen.isOpen , setProfile. setCardOpen]);
 
 
   useEffect( () => {
@@ -336,10 +350,17 @@ const [categoryOpen , setCategoryOpen] = useState(false)
 
 const [subCategory, setSubCategory] = useState(false)
 
+const [isProfile , setProfile] = useState(false)
+
 const [filters, setFilters] = useState({
   category : {id : -1 , category : "Все"},
   subCategory : {id : -1 , subCategory : "Все"},
   price : 0
+})
+
+const [isCardOpen , setCardOpen] = useState({
+  isOpen : false,
+  card : {}
 })
 
 console.log(filters)
@@ -466,6 +487,8 @@ useEffect(() => {
   };
 }, [responce, forwardFunction]);
 
+
+
   return (
     <div ref={mainRef} className="first-container">
     <motion.div
@@ -507,6 +530,8 @@ useEffect(() => {
       </div>
 
 
+
+
       <CSSTransition in = {categoryOpen} timeout={0} 
       mountOnEnter unmountOnExit
       >
@@ -524,6 +549,30 @@ useEffect(() => {
      <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
 
     </motion.div>
+
+
+
+    <CSSTransition
+            classNames="left-right"
+            in={isCardOpen.isOpen }
+            timeout={400}
+            mountOnEnter
+            unmountOnExit
+          >
+           <CardPage card={isCardOpen.card} />
+      </CSSTransition>
+
+
+    <CSSTransition
+            in={isProfile}
+            timeout={400}
+            classNames="left-right"
+            mountOnEnter
+            unmountOnExit
+          >
+            <AboutReaction setOneCard={setCardOpen} responce={filteredArr[isDetailsActive.id] ? { createNumber : filteredArr[isDetailsActive.id].createNumber  ,user : filteredArr[isDetailsActive.id].user} : {}}
+            />
+          </CSSTransition>
 
     {ordersInformation !== null && tonConstant !== 0   ? 
         <Responce
@@ -546,11 +595,15 @@ useEffect(() => {
             unmountOnExit
           >
             <FirstDetails
+              setProfile={setProfile}
               // className={}
               orderInformation={ordersInformation === null ? "" : ordersInformation[isDetailsActive.id]  }
 
             />
           </CSSTransition>
+
+
+        
     </div>
   );
 };

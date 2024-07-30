@@ -240,6 +240,7 @@ export const fetchMyOrders = createAsyncThunk(
           // }
           // console.log(files)
 
+
           tasks.push({
             id: order.id,
             taskName: order.title,
@@ -259,9 +260,9 @@ export const fetchMyOrders = createAsyncThunk(
             removedFiles: [],
             addedFiles: [],
             status: order.status,
+            user : order.user,
           });
         }
-
         return tasks;
       }
     } catch (e) {
@@ -313,6 +314,15 @@ export const fetchTasksInformation = createAsyncThunk(
 
           let files = await makeNewFile(order.folder, order.photos);
 
+          let imTwo = await axios.get(
+            "https://back-birga.ywa.su/advertisement/findCount",
+            {
+              params: {
+                userId: order.user.id,
+              },
+            }
+          );
+
           tasks.push({
             id: order.id,
             taskName: order.title,
@@ -331,6 +341,7 @@ export const fetchTasksInformation = createAsyncThunk(
             responces: order.responses,
             status: order.status,
             user: order.user,
+            createNumber : imTwo.data
           });
         }
       } catch (e) {

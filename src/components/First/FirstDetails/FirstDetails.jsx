@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addWatch } from '../../../store/information';
 
-const FirstDetails = ({  orderInformation , className , end = false, ...props}) => {
+const FirstDetails = ({  orderInformation , className , setProfile, end = false, ...props}) => {
     const focuseHandelr = useCallback( () => {
         document.documentElement.style.overflowY = "auto"
         document.documentElement.style.marginTop = "0px"
@@ -58,7 +58,7 @@ const FirstDetails = ({  orderInformation , className , end = false, ...props}) 
             (
             <div {...props} className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
     
-                <TaskDetailsContainer end = {end}  orderInformation = {orderInformation} />
+                <TaskDetailsContainer setProfile = {setProfile} end = {end}  orderInformation = {orderInformation} />
     
                 <TimeAndWatches time={orderInformation.creationTime} watches={orderInformation.viewsNumber} />
     
