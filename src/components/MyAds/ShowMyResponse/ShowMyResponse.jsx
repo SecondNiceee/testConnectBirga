@@ -20,7 +20,7 @@ const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
                 await axios.get("https://back-birga.ywa.su/bot/notification" , {
                     params : {
                         "executorId" : String(response.user.id),
-                        "consumerId" : String(response.advertisement.id),
+                        "consumerId" : String(response.advertisement.user.id),
                         "responseId" : String(response.id),
                         "chatId" : String(response.advertisement.user.chatId),
                         "advertisementId" : String(response.advertisement.id)
@@ -28,6 +28,7 @@ const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
                 })
             }
             catch(e){
+                alert("Баг")
                 console.log(e)
             }
         }
