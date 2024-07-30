@@ -16,8 +16,8 @@ const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
         async function clickHandler(){
             try{
 
+                console.warn(response.user.id , response.advertisement.id, response.id, response.advertisement.user.chatId, response.advertisement.id)
                 await axios.get("https://back-birga.ywa.su/bot/notification" , {
-                
                     params : {
                         "executorId" : response.user.id,
                         "consumerId" : response.advertisement.id,

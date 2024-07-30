@@ -105,8 +105,24 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
 // }
   
   const textRef = useRef(null)
+
+  const mainRef = useRef(null)
+
+  const imageRef = useRef(null)
+
+  const imageStyle = useMemo( () => {
+    if (mainRef.current !== null){
+      return {
+        height : String((mainRef.current.offsetWidth / 3)  - 16) + "px" ,
+        width : String((mainRef.current.offsetWidth / 3)  - 16) + "px" ,
+        maxHeight : String((mainRef.current.offsetWidth / 3)  - 16) + "px" ,
+        maxWidth : String((mainRef.current.offsetWidth / 3)  - 16) + "px" 
+      }
+    }
+    return {}
+  } , [files] )
   
-  return (
+  return (  
     <>
     <input style={{
       position : 'absolute',
@@ -115,7 +131,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       opacity : '0'
     }} value={"привет"} ref={textRef} type="text" />
     <div
-
+      ref={mainRef}
       htmlFor="file"
       style={photoStyle}
       className={className ? [cl.FileInput, className].join(" ") : cl.FileInput}
@@ -141,15 +157,16 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
               className={[cl.removeIcon, "_icon-trash"].join(" ")}
             />
 
-            <img className={cl.imageFeet} src={e} alt="" />
+            <img style={imageStyle} ref={imageRef}  className={cl.imageFeet} src={e} alt="" />
           </div>
         );
       })}
-
+             
       <label
-        style={images.length === 5 ? { display: "none" } : {}}
+        style={images.length === 5 ? { display: "none" } : imageStyle}
         className={images.length !== 0 ? cl.ActiveMainLabel : cl.MainLabel}
         htmlFor="file"
+
       >
         <input
         
