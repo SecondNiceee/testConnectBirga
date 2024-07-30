@@ -125,12 +125,12 @@ export const fetchUserInfo = createAsyncThunk(
         // let lastName = window.Telegram.WebApp.initDataUnsafe.user.last_name;
         let firstName = 'Коля'
         let lastName = 'Титов'
-        if (firstName.length > 15) {
-          firstName = firstName.slice(0, 15) + "..";
-        }
-        if (lastName.length > 15) {
-          lastName = lastName.slice(0, 15) + "..";
-        }
+        // if (firstName.length > 15) {
+        //   firstName = firstName.slice(0, 15) + "..";
+        // }
+        // if (lastName.length > 15) {
+        //   lastName = lastName.slice(0, 15) + "..";ы
+        // }
         let UserId = 2144832745 ;
         let user = await axios.get("https://back-birga.ywa.su/user/findOne", {
           params: {

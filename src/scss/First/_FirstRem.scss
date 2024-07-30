@@ -125,7 +125,8 @@
   min-height: calc(100vh - 65px);
 }
 
-.First__block {
+.First__block { 
+  position: relative;
   display: flex;
   flex-direction: column;
 //   padding: 19px 19px 12px 17px;

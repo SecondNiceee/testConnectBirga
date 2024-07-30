@@ -143,14 +143,22 @@ const FirstBlock = ({
   return (
     <div
       ref={ref}
-      style={!isVisible ? { minHeight: "144px" } : {}}
-      className="wrapper"
+      style={!isVisible ? { minHeight: "144px" , width : "100%" } : {}}
+      className="First__block"
     >
       {isVisible && (
-        <Suspense fallback={<BlockSpinner />}>
+        <Suspense fallback={<BlockSpinner style = { photos.length > 0 ? {minHeight : "282px"} :{minHeight : "144px"}} />}>
           <Block {...props} photos={ end ? badPhotos : photos} />
         </Suspense>
       )}
+
+<div ref={ref} style={{
+                width : "200px",
+                height : "200px",
+                position : "absolute",
+                top : "-300px",
+                opacity : "0"
+            }} className="catch_block"></div>
     </div>
   );
 };

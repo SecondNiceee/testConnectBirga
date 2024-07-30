@@ -27,7 +27,7 @@ const SuspenseBlock = ({i , e, setSecondPage, setSliderActive}) => {
                 width : "200px",
                 height : "200px",
                 position : "absolute",
-                top : "-200px",
+                top : "-250px",
                 opacity : "0"
             }} className="catch_block"></div>
             {isVisible &&  <Suspense fallback = {<BlockSpinner style = {e.photos.length > 0 ? {height : "313px"} : {height : "144px"}}   />}>

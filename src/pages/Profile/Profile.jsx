@@ -382,9 +382,7 @@ const Profile = () => {
         className="urName"
         id="Name"
       >
-        {userInfo.lastName
-          ? userInfo.firstName + " " + userInfo.lastName
-          : userInfo.firstName}
+        { userInfo.firstName.slice(0, 22) + ".." }
       </p>
 
 

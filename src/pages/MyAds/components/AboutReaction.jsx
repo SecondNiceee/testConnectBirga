@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { changeMenuActive } from "../../../store/menuSlice";
 import makeNewFile from "../../../functions/newMakeFile";
 
-const AboutReaction = ({ responce , setSliderActive, setOneCard,   ...props}) => {
+const AboutReaction = ({ responce , setSliderActive = () =>{}, setOneCard,   ...props}) => {
   console.log('Рендер Эбаута')
   const dispatch = useDispatch()
   const setMenuActive = useCallback(
