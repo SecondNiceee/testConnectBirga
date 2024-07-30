@@ -3,6 +3,47 @@ import axios from "axios";
 
 import makeNewFile from "../functions/newMakeFile";
 
+export const fetchResponseByAdvertisement = createAsyncThunk(
+    "fetchResponseByAdvertisement",
+    async function([id, task]){
+        let im = await axios.get(
+            "https://back-birga.ywa.su/response/findByAdvertisement",
+            {
+              params: {
+                advertisementId: id,
+              },
+            }
+          );
+          let responces = im.data;
+          for (let i = 0; i < responces.length; i++) {
+            let photos = [];
+    
+            if (responces[i].photos) {
+              photos = await makeNewFile(responces[i].folder, responces[i].photos);
+            }
+    
+            responces[i].photos = photos;
+            responces[i].advertisement = task
+    
+            try {
+              let imTwo = await axios.get(
+                "https://back-birga.ywa.su/advertisement/findCount",
+                {
+                  params: {
+                    userId: responces[i].user.id,
+                  },
+                }
+              );
+              responces[i].createNumber = imTwo.data;
+            } catch (e) {
+              alert(e);
+            }
+          }
+    
+          return responces;
+    }
+)
+
 export const deleteResponse = createAsyncThunk(
     "deleteResponse",
     async function(id){
@@ -182,7 +223,9 @@ const responses = createSlice({
     name : 'responses',
     initialState : {
         status : null,
-        responses : []
+        responsesByAStatus : null,
+        responses : [],
+        responsesByA : []
     },
     reducers :{
         clearResponses(state,action){
@@ -191,6 +234,16 @@ const responses = createSlice({
         }
     },
     extraReducers : builder => {
+
+        builder.addCase(fetchResponseByAdvertisement.fulfilled, ((state , action) => {
+            state.responsesByAStatus = "completed"
+            state.responsesByA = action.payload
+        }))
+
+        builder.addCase(fetchResponseByAdvertisement.pending, ((state , action) => {
+            state.responsesByAStatus = "pending"
+        }))
+
         builder.addCase(deleteResponse.fulfilled, ((state , action) => {
             state.responses = state.responses.filter((e , i ) => e.id !== action.payload)
         }))

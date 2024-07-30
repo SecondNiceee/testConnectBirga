@@ -5,10 +5,11 @@ import { memo } from "react";
 import Top from "../../../components/UI/Top/Top";
 import axios from "axios";
 import { deleteAd } from "../../../store/information";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import makeNewFile from "../../../functions/newMakeFile";
 import AllReactions from "./AllReactions";
 import Block from "../../../components/First/Block";
+import { fetchResponseByAdvertisement } from "../../../store/responses";
 
 const AboutOne = ({
   task,
@@ -19,51 +20,12 @@ const AboutOne = ({
   setSliderAcitve,
   openAboutReactionFunc,
 }) => {
-  const [responces, setResponces] = useState(null);
+  const responces = useSelector( state => state.responses.responsesByA )
   console.log("aboutOne");
   const dispatch = useDispatch();
   useEffect(() => {
-    async function getIt(id) {
-      let im = await axios.get(
-        "https://back-birga.ywa.su/response/findByAdvertisement",
-        {
-          params: {
-            advertisementId: id,
-          },
-        }
-      );
-      let responces = im.data;
-      for (let i = 0; i < responces.length; i++) {
-        let photos = [];
 
-        if (responces[i].photos) {
-          photos = await makeNewFile(responces[i].folder, responces[i].photos);
-        }
-
-        responces[i].photos = photos;
-        responces[i].advertisement = task
-
-        try {
-          let imTwo = await axios.get(
-            "https://back-birga.ywa.su/advertisement/findCount",
-            {
-              params: {
-                userId: responces[i].user.id,
-              },
-            }
-          );
-          responces[i].createNumber = imTwo.data;
-        } catch (e) {
-          alert(e);
-        }
-      }
-
-      return responces;
-    }
-
-    getIt(task.id).then((resp) => {
-      setResponces(resp);
-    });
+    dispatch(fetchResponseByAdvertisement([task.id, task]))
     // eslint-disable-next-line
   }, []);
 
