@@ -59,8 +59,9 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
             <div {...props} className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
     
                 <TaskDetailsContainer setProfile = {setProfile} end = {end}  orderInformation = {orderInformation} />
-    
-                <TimeAndWatches time={orderInformation.creationTime} watches={orderInformation.viewsNumber} />
+                
+                {end ? <></> :<TimeAndWatches time={orderInformation.creationTime} watches={orderInformation.viewsNumber} />}
+                
     
                 <SimilarAds similarAds = {[]} />
     

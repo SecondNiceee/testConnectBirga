@@ -141,40 +141,43 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
 
     return (
         <div {...props}  onClick={(e) => {
-            if (!active){
-                switch (navigate){
-                    case ("advertisement"):
-                        dispatch(addAdvertisment([id , task]))
-                        break
-                    case ("responce"):
-                        console.log(navigate)
-                        dispatch(addResponce([id, task]))
-                        break
-                    case ("card"):
-                        dispatch(addCard([id, task]))
-                        break
-                    default : 
-                        alert("Что-то не то")
+            if (!end){
+
+                if (!active){
+                    switch (navigate){
+                        case ("advertisement"):
+                            dispatch(addAdvertisment([id , task]))
+                            break
+                        case ("responce"):
+                            console.log(navigate)
+                            dispatch(addResponce([id, task]))
+                            break
+                        case ("card"):
+                            dispatch(addCard([id, task]))
+                            break
+                        default : 
+                            alert("Что-то не то")
+                    }
+                    setActive(true)
+                    
                 }
-                setActive(true)
-                
-            }
-            else{
-                switch (navigate){
-                    case ("advertisement"):
-                        deleteAdFunction()
-                        break;
-                    case ("responce"):
-                        deleteResponceFunc()
-                        break;
-                    case ("card"):
-                        deleteCardFunction()
-                        break;
-                    default :
-                        alert('Что - то пошло не так')
+                else{
+                    switch (navigate){
+                        case ("advertisement"):
+                            deleteAdFunction()
+                            break;
+                        case ("responce"):
+                            deleteResponceFunc()
+                            break;
+                        case ("card"):
+                            deleteCardFunction()
+                            break;
+                        default :
+                            alert('Что - то пошло не так')
+                    }
+                    setActive(false)
+                    
                 }
-                setActive(false)
-                
             }
         }} className = {className ? [cl.FalseTie , className].join(' ') : cl.FalseTie}>
             {!end ? 

@@ -82,42 +82,16 @@ export const postMyTask = createAsyncThunk(
   async function (arr) {
     let files = arr[1];
     try {
-      let b = {status : 400}
-      // for (let i = 0; i < 20 ; i++){
+      let b;
 
-      //    b = await axios.post(
-      //     "https://back-birga.ywa.su/advertisement",
-      //     arr[0],
-      //     {
-      //       headers: {
-      //         "Content-Type": "multipart/form-data",
-      //         // "Access-Control-Allow-Origin": "*"
-      //       },
-      //     }
-      //   );
-      // }
+      for (let i = 0 ; i < 20; i++){
 
-      let postCounter = 2;
-      while (!(b.status >= 200 && b.status <= 300)){
-        try{
-
-          b = await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
-            headers: {
-              "Content-Type" :'multipart/form-data',
-              "Access-Control-Allow-Origin": "*"
-            },
-          });
-
-        }
-        catch(e){
-          alert(e)
-          alert("Попытка")
-        }
-        alert(postCounter)
-        postCounter += 1
-        if (postCounter > 15){
-          break
-        }
+        b = await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
+          headers: {
+            "Content-Type" :'multipart/form-data',
+            "Access-Control-Allow-Origin": "*"
+          },
+        });
       }
 
       console.log(b)

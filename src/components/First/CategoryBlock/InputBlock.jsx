@@ -6,6 +6,8 @@ import React, {
   useState,
 } from "react";
 import cl from "./CategoryBlock.module.css";
+
+let selectionPosition = 0
 const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
   const inputRef = useRef(null);
   const textRef = useRef(null);
@@ -25,6 +27,8 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
     } else {
       inputRef.current.style.width = String(textRef.current.offsetWidth + 6) + "px";
     }
+    selectionPosition = inputRef.current.selectionStart
+    inputRef.current.setSelectionRange(selectionPosition, selectionPosition);
   }, [convertedValue]);
 
   const unFocusHandler = useCallback(() => {

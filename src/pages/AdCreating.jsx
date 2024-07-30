@@ -341,7 +341,7 @@ const AdCreating = () => {
 
           window.Telegram.WebApp.showPopup({
             title: "Создать?",
-            message: `За создание бессмысленных заданий вы будете забанены. \nСоздать задание?`,
+            message: `Вы уверены, что хотите создать новое задание?`,
             buttons: [
               { id: "save", type: "default", text: "Да" },
               { id: "delete", type: "destructive", text: "Нет" },
