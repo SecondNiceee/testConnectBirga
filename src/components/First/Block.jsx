@@ -165,7 +165,7 @@ const Block = ({
                   </>
                 )}
   
-  {!isResponce && !isMyAds ? <FalseTie   agree = {agree}  navigate={"advertisement"} id={id} task={task}
+  {!isResponce && !isMyAds ? <FalseTie end = {end}   agree = {agree}  navigate={"advertisement"} id={id} task={task}
   
    className={end ? "tie low-opacity" : "tie"}  style = {isButton ? {} : {marginRight : '4px'}} /> :
                 <></>
