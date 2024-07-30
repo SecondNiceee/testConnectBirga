@@ -11,6 +11,7 @@ const ReactionBlock = ({
   responces,
   setSliderActive,
   openAboutReactionFunc,
+  getMore
 }) => {
   //451
   return (
@@ -19,6 +20,7 @@ const ReactionBlock = ({
       <MyAnimation style = {height} text="Нету откликов на задание" /> : 
 
       <Responses
+        getMore = {getMore}
         setFilterBy={setFilterBy}
         values={values}
         names={names}

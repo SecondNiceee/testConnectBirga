@@ -1,6 +1,7 @@
 import React from "react";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ReactionBlock from "./ReactionBlock";
+import { useSelector } from "react-redux";
 
 const AllReactions = ({
   setFilterBy,
@@ -8,11 +9,13 @@ const AllReactions = ({
   setSliderAcitve,
   responces,
   setOpen,
-  filteredArray
+  filteredArray,
+  getMore
 }) => {
+  const status = useSelector( state => state.responses.responsesByAStatus )
   return (
     <>
-      {filteredArray === null ? (
+      {status === "pending" ? (
         <MyLoader
           style={{
             height: "calc(100vh - 456px)",
@@ -22,6 +25,7 @@ const AllReactions = ({
         />
       ) : (
         <ReactionBlock
+          getMore = {getMore}
           setFilterBy={setFilterBy}
           openAboutReactionFunc={openAboutReactionFunc}
           setSliderActive={setSliderAcitve}

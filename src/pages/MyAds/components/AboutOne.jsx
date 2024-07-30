@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import makeNewFile from "../../../functions/newMakeFile";
 import AllReactions from "./AllReactions";
 import Block from "../../../components/First/Block";
-import { fetchResponseByAdvertisement } from "../../../store/responses";
+import { fetchResponseByAdvertisement, fetchResponses } from "../../../store/responses";
 
 const AboutOne = ({
   task,
@@ -25,7 +25,7 @@ const AboutOne = ({
   const dispatch = useDispatch();
   useEffect(() => {
 
-    dispatch(fetchResponseByAdvertisement([task.id, task]))
+    dispatch(fetchResponseByAdvertisement([task.id, task , 1]))
     // eslint-disable-next-line
   }, []);
 
@@ -59,7 +59,7 @@ const AboutOne = ({
     console.log(filterBy);
     if (responces !== null) {
       if (filterBy === "activity") {
-        return responces.sort(
+        return responces.toSorted(
           (a, b) => {
             if (a.isWatched === "completed") return -1
             if (b.isWatched === "completed") return 1
@@ -67,7 +67,7 @@ const AboutOne = ({
         );
       }
       if (filterBy === "stage") {
-        return responces.sort(
+        return responces.toSorted(
           (a, b) => {
             if (a.isWatched === "completed") return -1
             if (b.isWatched === "completed") return 1
@@ -92,6 +92,11 @@ const AboutOne = ({
     // eslint-disable-next-line
   }, []);
 
+
+  const getMore = useCallback( (page, setPage) => {
+    dispatch(fetchResponseByAdvertisement([task.id , task , page]));
+    setPage(page + 1);
+  } , [dispatch, task, task.id] )
  
 
   return (
@@ -118,6 +123,7 @@ const AboutOne = ({
 
 
         <AllReactions
+          getMore = {getMore}
           filteredArray={filteredArray}
           setFilterBy={setFilterBy}
           openAboutReactionFunc={openAboutReactionFunc}

@@ -3,14 +3,18 @@ import axios from "axios";
 
 import makeNewFile from "../functions/newMakeFile";
 
+
+
 export const fetchResponseByAdvertisement = createAsyncThunk(
     "fetchResponseByAdvertisement",
-    async function([id, task]){
+    async function([id, task, page]){
         let im = await axios.get(
             "https://back-birga.ywa.su/response/findByAdvertisement",
             {
               params: {
                 advertisementId: id,
+                limit : 6,
+                page : page
               },
             }
           );
@@ -36,6 +40,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
               );
               responces[i].createNumber = imTwo.data;
             } catch (e) {
+               console.warn(e)
               alert(e);
             }
           }
@@ -237,11 +242,19 @@ const responses = createSlice({
 
         builder.addCase(fetchResponseByAdvertisement.fulfilled, ((state , action) => {
             state.responsesByAStatus = "completed"
-            state.responsesByA = action.payload
+            state.responsesByA.push(...action.payload)
+            if (action.payload.length < 6){
+                state.responsesByAStatus = "all"
+            }
         }))
 
         builder.addCase(fetchResponseByAdvertisement.pending, ((state , action) => {
-            state.responsesByAStatus = "pending"
+            if (state.responsesByA.length === 0){
+                state.responsesByAStatus = "pending"
+            }
+            else{
+                state.responsesByAStatus = "completed"
+            }
         }))
 
         builder.addCase(deleteResponse.fulfilled, ((state , action) => {
