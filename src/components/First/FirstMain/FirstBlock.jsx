@@ -142,7 +142,6 @@ const FirstBlock = ({
 
   return (
     <div
-      ref={ref}
       style={!isVisible ? { minHeight: "144px" , width : "100%" } : {}}
       className="First__block"
     >
@@ -153,10 +152,10 @@ const FirstBlock = ({
       )}
 
 <div ref={ref} style={{
-                width : "200px",
-                height : "200px",
+                width : "280px",
+                height : "900px",
                 position : "absolute",
-                top : "-300px",
+                top : "-900px",
                 opacity : "0"
             }} className="catch_block"></div>
     </div>

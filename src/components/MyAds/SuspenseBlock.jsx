@@ -24,10 +24,10 @@ const SuspenseBlock = ({i , e, setSecondPage, setSliderActive}) => {
     return (
         <div className='First__block' style={!isVisible ? style : {}} >
             <div ref={ref} style={{
-                width : "200px",
-                height : "200px",
+                width : "280px",
+                height : "900px",
                 position : "absolute",
-                top : "-250px",
+                top : "-900px",
                 opacity : "0"
             }} className="catch_block"></div>
             {isVisible &&  <Suspense fallback = {<BlockSpinner style = {e.photos.length > 0 ? {height : "313px"} : {height : "144px"}}   />}>
