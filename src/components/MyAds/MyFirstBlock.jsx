@@ -21,7 +21,8 @@ const MyFirstBlock = ({
   setSlideActive,
    tonValue,
    status,
-   viewsNumber
+   viewsNumber,
+   responseCounter = 0
    
 
 
@@ -126,7 +127,7 @@ const MyFirstBlock = ({
                   </svg>
                 </div>
                 <div className="two">
-                  <p>0</p>
+                  <p>{responseCounter}</p>
                   <svg
                     width="10"
                     height="12"

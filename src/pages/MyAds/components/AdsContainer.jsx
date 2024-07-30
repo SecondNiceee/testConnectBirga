@@ -41,6 +41,8 @@ const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunctio
       // eslint-disable-next-line
     }, [myAdsArray]);
 
+    console.warn(myAdsArray)
+
 
 
     return (

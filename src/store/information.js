@@ -225,7 +225,7 @@ export const fetchMyOrders = createAsyncThunk(
             addedFiles: [],
             status: order.status,
             user : order.user,
-            responseCounter : responseCounter
+            responseCounter : responseCounter.data
           });
         }
         return tasks;
