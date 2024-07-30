@@ -10,9 +10,9 @@ const MyLoader = forwardRef(({...props}, ref) => {
 
             <div ref={ref} style={{
                 width : "280px",
-                height : "1000px",
+                height : "700px",
                 position : "absolute",
-                top : "-1000px",
+                top : "-700px",
                 opacity : "0"
             }} className="catch_block"></div>
         <Triangle
