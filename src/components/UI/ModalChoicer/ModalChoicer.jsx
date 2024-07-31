@@ -84,6 +84,7 @@ const StyledButton = styled('button', { shouldForwardProp: () => true })(
     display : flex;
     gap : 7px;
     padding : 0px;
+    text-transform : uppercase;
     font-family: "SF Pro Display 400";
     font-weight: 400;
     font-size: 16px;

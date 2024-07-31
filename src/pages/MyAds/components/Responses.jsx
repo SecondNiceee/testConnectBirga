@@ -55,6 +55,8 @@ const Responses = ({
 
   return (
     <>
+    <div className="responses__up-block">
+      <p>Отклики</p>
       <ModalChoicer
         setValue={(value) => {
           setFilterBy(value);
@@ -64,6 +66,7 @@ const Responses = ({
         names={names}
         defaultValue={values[0]}
       />
+    </div>
 
       {responces.length > 0 ?
       <>

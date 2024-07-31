@@ -232,9 +232,18 @@ useEffect( () => {
   console.log(b)
 
 
+
   return (
     <BrowserRouter>
       <FirstMenu />
+      <button onClick={() => {
+                              window.Telegram.WebApp.openTelegramLink("https://t.me/CryptoBot/app?startapp=invoice-IVgbmQ2E1HpW");
+      }}>Кнопка  обычная</button>
+
+<button onClick={() => {
+                              window.Telegram.WebApp.openInvoice("https://t.me/CryptoBot/app?startapp=invoice-IVgbmQ2E1HpW");
+      }}>Кнопка  invoice</button>
+
       <div className="UperContainer">
         <div className="MainContainer">
           <AnimatedSwitch />

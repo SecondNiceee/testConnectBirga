@@ -79,7 +79,7 @@ const First = () => {
 
       if (ordersInformation[isDetailsActive.id].responces){
 
-        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === window.Telegram.WebApp.initDataUnsafe.user.id)){
+        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === 2144832745)){
           return true
         }
         else{
@@ -424,7 +424,7 @@ const forwardFunction = useCallback(() => {
         // setShablon({...shablon , isActive : false})
       }
       if (buttonId === "save") {
-        postResponce(ordersInformation[isDetailsActive.id].id, window.Telegram.WebApp.initDataUnsafe.user.id );
+        postResponce(ordersInformation[isDetailsActive.id].id, 2144832745 );
         mainRef.current.classList.remove('secondStep')
         setDetailsActive((value) => ({...value , isOpen : false}))
         setStep(0)
@@ -466,9 +466,9 @@ useEffect( () => {
 } , [] )
 
 
-// window.Telegram.WebApp.initDataUnsafe.user.id
+// 2144832745
 
-// window.Telegram.WebApp.initDataUnsafe.user.id
+// 2144832745
 
 useEffect(() => {
   MainButton.onClick(forwardFunction);
