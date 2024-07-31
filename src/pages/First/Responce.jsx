@@ -6,6 +6,10 @@ import {  useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 
 
+let myResponse = {
+  text : "",
+  photos : ""
+}
 const Responce = ({ orderInformation, responce, setResponce , left = "100%"   }) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
 
@@ -30,25 +34,40 @@ const Responce = ({ orderInformation, responce, setResponce , left = "100%"   })
       <MakePrivate
         isPrivate={responce.isShablon}
         setPrivate={(value) => {
-          setResponce({
-            ...responce,
-            isShablon: value,
-            text: shablonsArr.length > 0 ?  shablonsArr[responce.shablonIndex].text : "",
-            photos: shablonsArr.length > 0 ? shablonsArr[responce.shablonIndex].photos : [],
-            name : shablonsArr.length > 0 ? shablonsArr[responce.shablonIndex].name : ""
-          });
+          if (value){
+            myResponse = {
+              text : responce.text,
+              photos : responce.photos
+            }
+            setResponce({
+              ...responce,
+              isShablon: value,
+              text: shablonsArr.length > 0 ?  shablonsArr[responce.shablonIndex].text : "",
+              photos: shablonsArr.length > 0 ? shablonsArr[responce.shablonIndex].photos : [],
+              name : shablonsArr.length > 0 ? shablonsArr[responce.shablonIndex].name : ""
+            });
+
+          }
+          else{
+            setResponce({
+              ...responce,
+              isShablon : value,
+              text : myResponse.text,
+              photos : myResponse.photos,
+            })
+          }
         }}
         text={"Использовать шаблон"}
         className={"responce-make-private"}
       />
-      {responce.isShablon ? (
+      {responce.isShablon && (
         <ShablinBlock
           left={left}
           responce={responce}
           setResponce={setResponce}
           shablonsArr={shablonsArr}
         />
-      ) : (
+      ) }
         <div>
           <DescriptionAndPhoto
             className={"responce-descriprion"}
@@ -64,7 +83,7 @@ const Responce = ({ orderInformation, responce, setResponce , left = "100%"   })
             }}
           />
         </div>
-      )}
+      
     </div>
   );
 };

@@ -53,29 +53,25 @@ const AboutOne = ({
     [dispatch, setSecondPage]
   );
 
-  const [filterBy, setFilterBy] = useState("activity");
+  const [filterBy, setFilterBy] = useState("all");
 
   const filteredArray = useMemo(() => {
     console.log(filterBy);
     if (responces !== null) {
-      if (filterBy === "activity") {
-        return responces.toSorted(
-          (a, b) => {
-            if (a.isWatched === "completed") return -1
-            if (b.isWatched === "completed") return 1
-            return new Date(b.createdAt) - new Date(a.createdAt)}
-        );
+      console.log(responces)
+      if (filterBy === "all"){
+        return responces
       }
-      if (filterBy === "stage") {
-        return responces.toSorted(
-          (a, b) => {
-            if (a.isWatched === "completed") return -1
-            if (b.isWatched === "completed") return 1
-            return Number(b.user.stage) - Number(a.user.stage)}
-        );
+      if (filterBy === "withCompletedTasks"){
+        return [...responces.filter(e => e.user.completedTasks > 0)]
+      }
+      if (filterBy === "withInformation"){
+        return [...responces.filter(e => e.user.about.length > 10)]
       }
     }
-    return null;
+    else{
+      return [];
+    }
   }, [responces, filterBy]);
 
   const deleteCallback = useCallback(() => {
@@ -97,6 +93,8 @@ const AboutOne = ({
     dispatch(fetchResponseByAdvertisement([task.id , task , page]));
     setPage(page + 1);
   } , [dispatch, task, task.id] )
+
+
  
 
   return (

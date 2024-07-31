@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useReducer, useRef } from "react";
+import React, { memo, useCallback, useEffect, useReducer, useRef, useState } from "react";
 import cl from "./DescriptionAndPhoto.module.css";
 import GreyText from "../../../components/UI/GreyText/GreyText";
 import FileInput from "../../../components/UI/FileInput/FileInput";
@@ -25,6 +25,7 @@ const DescriptionAndPhoto = ({
     
 
 } , [text] )
+
 
   return (
     <div
@@ -64,7 +65,6 @@ const DescriptionAndPhoto = ({
       )}
     
         <FileInput
-
           fileError={fileError}
           setFiles={setPhotos}
           files={photos}

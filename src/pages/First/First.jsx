@@ -155,14 +155,8 @@ const First = () => {
 
 
     function back() {
-      if (isCardOpen.isOpen){
-        setCardOpen((value) => ({...value, isOpen : false}))
-      }
-      else{
-        if (isProfile){
-          setProfile(false)
-        }
-        else{
+      
+        
           if (sliderActive.isActive){
             setSliderActive((value) => ({...value, isActive : false}))
           }
@@ -187,25 +181,36 @@ const First = () => {
                   mainRef.current.classList.remove('secondStep')
                 }
                 else{
-                  if (step === 0) {
-                    setResponce({
-                      text: "",
-                      photos: [],
-                      name: "привет",
-                      isShablonModalActive: false,
-                      shablonIndex: 0,
-                      isShablon: false,
-                      shablonMaker : false,
-                    })
-                    closeDetails();
+                  if (isCardOpen.isOpen){
+                    setCardOpen((value) => ({...value, isOpen : false}))
+                  }
+                  else{
+                    if (isProfile){
+                      setProfile(false)
+                    }
+                    else{
+
+                      if (step === 0) {
+                        setResponce({
+                          text: "",
+                          photos: [],
+                          name: "привет",
+                          isShablonModalActive: false,
+                          shablonIndex: 0,
+                          isShablon: false,
+                          shablonMaker : false,
+                        })
+                        closeDetails();
+                      }
+                    }
                   }
                 }
               }
             }
     
           }
-        }
-      }
+        
+      
 
 
     }

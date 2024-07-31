@@ -2,28 +2,54 @@ import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from "
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 let counter = 0;
+let lastFiles = []
+let changed = false;
 const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);
   
   
-  const addFiles = useCallback( (newFiles) => {
+  const addFiles = useCallback( (newFiles , choice = false ) => {
     let localImages = []
     newFiles.forEach((event) => {
       resizeImage(event, 400, 400, 0.6).then((value) => {
         // reader.readAsDataURL(value);
         localImages.push(URL.createObjectURL(value))
+        console.warn(newFiles)
         if (localImages.length === newFiles.length){
-          setImages([...images, ...localImages])
+          if(!choice){
+            setImages([...images, ...localImages])
+          }
+          else{
+            setImages([...localImages])
+          }
         }
       })
     })
+    if (newFiles.length === 0){
+      setImages([])
+    }
     // eslint-disable-next-line
   } , [ files, images] )
+
   
   useEffect( () => {
-    addFiles(files)
+    if (!changed){
+      console.log(changed)
+      if (files.length > lastFiles){
+  
+        addFiles([...files].splice(lastFiles.length, files.length))
+        lastFiles = [...images]
+      }
+      else{
+        addFiles([...files], true)
+      }
+      changed = true
+    }
+    else{
+      changed = false
+    }
     // eslint-disable-next-line
-  } , [] )
+  } , [files, addFiles] )
 
 
 
@@ -120,7 +146,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       }
     }
     return {}
-  } , [files] )
+  } , [files, images] )
   
   return (  
     <>
@@ -146,11 +172,11 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
                     return files.indexOf(obj) !== images.indexOf(e);
                   })
                 );
-                setImages(
-                  [...images].filter((obj) => {
-                    return images.indexOf(obj) !== images.indexOf(e);
-                  })
-                );
+                // setImages(
+                //   [...images].filter((obj) => {
+                //     return images.indexOf(obj) !== images.indexOf(e);
+                //   })
+                // );
                 
 
               }}
@@ -186,7 +212,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
                   newFiles.push(newFile);
                 }
                 setFiles([...files, ...newFiles]);
-                addFiles(newFiles)
 
               }
             }

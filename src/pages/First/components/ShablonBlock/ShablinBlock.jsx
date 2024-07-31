@@ -52,12 +52,12 @@ const ShablinBlock = ({
                 text: shablonsArr[index - 1].text,
                 photos: shablonsArr[index - 1].photos,
                 isShablonModalActive: false,
-                shablonIndex: index,
+                shablonIndex: index - 1,
                 isShablon: true,
               });
             }}
             names={shablonsArr.map((e) => e.name) }
-            defaultValue={shablonsArr[0].id}
+            defaultValue={shablonsArr[responce.shablonIndex].id}
           />
         </Component>
       ) : (

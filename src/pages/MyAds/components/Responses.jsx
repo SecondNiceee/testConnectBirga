@@ -4,7 +4,9 @@ import ModalChoicer from "../../../components/UI/ModalChoicer/ModalChoicer";
 import { useDispatch, useSelector } from "react-redux";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ReactionSuspense from "./ReactionSuspense";
+import MyAnimation from "./MyAnimation";
 
+const height = {height : 'calc(100vh - 330px)'}
 const Responses = ({
   setFilterBy,
   responces,
@@ -21,6 +23,7 @@ const Responses = ({
   const [page , setPage] = useState(2)
   const orderStatus = useSelector(state => state.responses.responsesByAStatus)
   const elementRef = useRef(null)
+
 
   // const getMore = useCallback(async () => {
   //   dispatch(fetchResponses([me,page]));
@@ -62,6 +65,8 @@ const Responses = ({
         defaultValue={values[0]}
       />
 
+      {responces.length > 0 ?
+      <>
       {responces.map((e, i) => {
         return (
           <ReactionSuspense
@@ -72,6 +77,11 @@ const Responses = ({
           />
         );
       })}
+</>
+      :
+      <MyAnimation style = {height} text="Нету откликов на задание" />
+    }
+
 
       {orderStatus !== "all" &&  <MyLoader ref={elementRef}  style = {{ height : "90px" , marginLeft : "-16px"}} />}
     </>
