@@ -15,6 +15,7 @@ import { useNavigate } from "react-router-dom";
 import PostLoader from "../loaders/PostLoader";
 import pagesHistory from "../constants/pagesHistory";
 import FirstDetails from "../components/First/FirstDetails/FirstDetails";
+import axios from "axios";
 
 let spet = 0;
 const AdCreating = () => {
@@ -198,7 +199,16 @@ const AdCreating = () => {
       }
     }
 
-    dispatch(postMyTask([myFormData, el.photos]));
+    // dispatch(postMyTask([myFormData, el.photos]));
+    for (let i = 0 ; i < 1; i++){
+
+      let b = await axios.post("https://back-birga.ywa.su/advertisement", myFormData, {
+        headers: {
+          "Content-Type" :'multipart/form-data',
+          "Access-Control-Allow-Origin": "*"
+        },
+      });
+    }
     dispatch(changeMyAds([]))
     dispatch(fetchMyOrders(1))
 

@@ -227,12 +227,12 @@ const First = () => {
         })
       }
       else{
-        if (localStep === 1){
+        if (localStep === 0){
           MainButton.setParams({
             is_active : true,
             color : '#2ea5ff',
             text_color : '#ffffff'
-            
+          
           })
         }
       }

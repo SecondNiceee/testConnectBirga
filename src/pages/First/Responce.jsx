@@ -69,7 +69,7 @@ const Responce = ({ orderInformation, responce, setResponce , left = "100%"   })
         />
       ) }
         <div>
-          {shablonsArr.length > 0 && 
+          {shablonsArr.length > 0  || !responce.isShablon && 
                     <DescriptionAndPhoto
                     className={"responce-descriprion"}
                     text={responce.text}
