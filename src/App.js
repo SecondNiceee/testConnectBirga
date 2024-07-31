@@ -153,37 +153,6 @@ function App() {
   window.Telegram.WebApp.disableVerticalSwipes()
 
 
-  // window.Telegram.WebApp 
-  // .showPopup({
-  //   title: "Удалить?",
-  //   message: "Вы хотите удалить этот шаблон?",
-  //   buttons: [
-  //     { id: "save", type: "ok", text: "Да" },
-  //     { id: "delete", type: "destructive", text: "Нет" },
-  //     {id : "dss" , type : "cancel"}
-  //   ],
-  // } , (buttonId) => {
-
-  //   if (buttonId === "delete" || buttonId === null) {
-  //     // setShablon({...shablon , isActive : false})
-  //   }
-  //   if (buttonId === "save") {
-
-  //     // dispatch(deleteShablon(e.id))
-  // } })
-
-//   useEffect( () => {
-//     window.Telegram.WebApp.disableVerticalSwipes()
-     
-
-//      document.documentElement.style.marginTop = '40px'
-//       document.documentElement.style.overflowY = 'clip'
-//  return () => {
-
-
-//  }
-
-// },[] )
 
 
 
@@ -197,13 +166,7 @@ function App() {
 
 
 
-useEffect( () => {
-  document.documentElement.style.overflowY = 'scroll'
-  document.documentElement.style.marginTop = "20px"
-  document.documentElement.scrollTop = 20
-  document.documentElement.style.overflowY = 'hidden'
 
-},[] )
 
   useEffect(() => {
     dispatch(fetchTon());
@@ -232,11 +195,11 @@ useEffect( () => {
   console.log(b)
 
 
-  const data = JSON.stringify({ allow_vertical_swipe: false });
+//   const data = JSON.stringify({ allow_vertical_swipe: false });
 
-window
-  .TelegramWebviewProxy
-  .postEvent('web_app_setup_swipe_behavior', data);
+// window
+//   .TelegramWebviewProxy
+//   .postEvent('web_app_setup_swipe_behavior', data);
 
 
 
