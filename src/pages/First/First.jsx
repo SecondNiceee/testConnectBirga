@@ -384,6 +384,12 @@ const secFilteredArray = useMemo( () => {
     }
 } , [filteredArr, filters, tonConstant] )
 
+useEffect( () => {
+  firstRef.current.style.overflowY = "scroll"
+  firstRef.current.style.height = "120vh"
+
+}, [] )
+
 const forwardFunction = useCallback(() => {
   async function postResponce(advertismetId, userId) {
        

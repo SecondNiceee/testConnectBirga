@@ -17,6 +17,16 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
                 document.documentElement.style.overflow = "hidden"
             }
         }
+        return () => {
+            if (breakRef && mainRef ){
+                if (breakRef.current && mainRef.current){
+    
+                    breakRef.current.style.overflow = "auto"
+                    mainRef.current.style.overflow = "scroll"
+                    document.documentElement.style.overflow = "unset"
+                }
+            } 
+        }
     } , [] )
     
     // useEffect( () => {
