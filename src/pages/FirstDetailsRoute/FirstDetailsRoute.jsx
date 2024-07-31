@@ -31,6 +31,13 @@ const FirstDetails = ({   className , setProfile, end = false, ...props}) => {
         createNumber : 1
     
     }
+
+
+    let startParam = window.Telegram.WebApp.initDataUnsafe.start_param
+
+
+    alert(startParam)
+    
     const focuseHandelr = useCallback( () => {
         document.documentElement.style.overflowY = "auto"
         document.documentElement.style.marginTop = "0px"
