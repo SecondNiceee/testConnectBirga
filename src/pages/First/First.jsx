@@ -353,6 +353,16 @@ console.log(filters)
 const filteredArr = useFilteredArr(ordersInformation, filterBy);
 
 
+useEffect( () => {
+  window.Telegram.WebApp.disableVerticalSwipes()
+  const data = JSON.stringify({ allow_vertical_swipe: false });
+
+  window
+    .TelegramWebviewProxy
+    .postEvent('web_app_setup_swipe_behavior', data);
+} , [] ) 
+
+
 const secFilteredArray = useMemo( () => {
     let copy = [...filteredArr]
     if (filters.category.id !== -1){
