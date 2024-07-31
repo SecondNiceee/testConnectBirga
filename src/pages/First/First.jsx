@@ -453,17 +453,17 @@ console.log(subCategorys)
 
 const firstRef = useRef(null)
 
-useEffect( () => {
+// useEffect( () => {
 
-  document.documentElement.style.overflowY = 'scroll'
-  document.documentElement.style.marginTop = "20px"
-  document.documentElement.scrollTop = 20
-  document.documentElement.style.overflowY = 'hidden'
-  return () => {
-    // window.Telegram.WebApp.offEvent("viewportChanged", hh)
-    // firstRef.current.removeEventListner("scroll" , hh)
-  }
-} , [] )
+//   document.documentElement.style.overflowY = 'scroll'
+//   document.documentElement.style.marginTop = "20px"
+//   document.documentElement.scrollTop = 20
+//   document.documentElement.style.overflowY = 'hidden'
+//   return () => {
+//     // window.Telegram.WebApp.offEvent("viewportChanged", hh)
+//     // firstRef.current.removeEventListner("scroll" , hh)
+//   }
+// } , [] )
 
 
 // 2144832745
