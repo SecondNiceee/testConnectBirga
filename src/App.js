@@ -24,6 +24,8 @@ import MyComponent from "./components/MyComponent";
 import { fetchAllValues } from "./store/saves";
 import { fetchResponses } from "./store/responses";
 import BackButton from "./constants/BackButton";
+import FirstDetails from "./components/First/FirstDetails/FirstDetails";
+import FirstDetailsRoute from "./pages/FirstDetailsRoute/FirstDetailsRoute";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -132,6 +134,17 @@ const AnimatedSwitch = () => {
               </Suspense>
             }
           />
+
+
+          <Route
+            path="/TaskDetails"
+            element={
+              <Suspense fallback={<MyLoader />}>
+                <FirstDetailsRoute />
+              </Suspense>
+            }
+          />
+
 
           <Route
             path="/AllShablons"
