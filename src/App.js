@@ -153,7 +153,7 @@ function App() {
   window.Telegram.WebApp.disableVerticalSwipes()
 
 
-  // window.Telegram.WebApp
+  // window.Telegram.WebApp 
   // .showPopup({
   //   title: "Удалить?",
   //   message: "Вы хотите удалить этот шаблон?",
