@@ -197,13 +197,13 @@ function App() {
 
 
 
-// useEffect( () => {
-//   document.documentElement.style.overflowY = 'scroll'
-//   document.documentElement.style.marginTop = "20px"
-//   document.documentElement.scrollTop = 20
-//   document.documentElement.style.overflowY = 'hidden'
+useEffect( () => {
+  document.documentElement.style.overflowY = 'scroll'
+  document.documentElement.style.marginTop = "20px"
+  document.documentElement.scrollTop = 20
+  document.documentElement.style.overflowY = 'hidden'
 
-// },[] )
+},[] )
 
   useEffect(() => {
     dispatch(fetchTon());

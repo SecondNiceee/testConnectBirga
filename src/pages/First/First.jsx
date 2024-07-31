@@ -455,17 +455,13 @@ const firstRef = useRef(null)
 
 useEffect( () => {
 
-  document.documentElement.style.overflowY = "hidden"
-  function hh(){
-
-    window.Telegram.WebApp.expand();
-    window.Telegram.WebApp.disableVerticalSwipes()
-  }
-  window.Telegram.WebApp.onEvent("viewportChanged", hh)
-  firstRef.current.addEventListener("scroll" , hh)
+  document.documentElement.style.overflowY = 'scroll'
+  document.documentElement.style.marginTop = "20px"
+  document.documentElement.scrollTop = 20
+  document.documentElement.style.overflowY = 'hidden'
   return () => {
-    window.Telegram.WebApp.offEvent("viewportChanged", hh)
-    firstRef.current.removeEventListner("scroll" , hh)
+    // window.Telegram.WebApp.offEvent("viewportChanged", hh)
+    // firstRef.current.removeEventListner("scroll" , hh)
   }
 } , [] )
 
