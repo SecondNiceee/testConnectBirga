@@ -9,9 +9,12 @@ import { addWatch } from '../../../store/information';
 const FirstDetails = ({  orderInformation , className , setProfile, end = false, breakRef, ...props}) => {
 
     useEffect( () => {  
-        breakRef.current.style.overflow = "hidden"
-        mainRef.current.style.overflow = "scroll"
-        document.documentElement.style.overflow = "hidden"
+        if (breakRef.current && mainRef.current){
+
+            breakRef.current.style.overflow = "hidden"
+            mainRef.current.style.overflow = "scroll"
+            document.documentElement.style.overflow = "hidden"
+        }
     } , [] )
     
     // useEffect( () => {
