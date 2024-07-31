@@ -149,8 +149,8 @@ const AnimatedSwitch = () => {
 
 
 
-
 function App() {
+  window.Telegram.WebApp.disableVerticalSwipes()
 
 
   // window.Telegram.WebApp

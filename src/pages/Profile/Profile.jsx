@@ -382,7 +382,7 @@ const Profile = () => {
         className="urName"
         id="Name"
       >
-        { userInfo.firstName.slice(0, 22) + ".." }
+        { userInfo.firstName.length > 22 ? userInfo.firstName.slice(0, 22) + ".." : userInfo.firstName }
       </p>
 
 
