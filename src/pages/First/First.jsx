@@ -31,29 +31,7 @@ const First = () => {
   console.log('Рендер ферста')
   
 
-//   useEffect( () => {
-//     document.documentElement.style.marginTop = '40px'
-   
-//     if (window.scrollY !== 40){
-//       console.warn("Попытка")
-//       window.scrollTo({
-//         top: 40,
-//         behavior: "auto",
-//       });
-//     }
-//     console.warn(window.scrollY)
-    
-//     document.documentElement.style.overflowY = 'hidden'
-//   return () => {
-//     document.documentElement.style.overflowY = 'unset'
-//     document.documentElement.style.marginTop = '0px'
-//     window.scrollTo({
-//       top: 0,
-//       behavior: "auto",
-//     });
 
-//   }
-// },[] )
   console.warn(window.scrollY)
 
   const dispatch = useDispatch();
@@ -101,7 +79,7 @@ const First = () => {
 
       if (ordersInformation[isDetailsActive.id].responces){
 
-        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === window.Telegram.WebApp.initDataUnsafe.user.id)){
+        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === 2144832745)){
           return true
         }
         else{
@@ -113,8 +91,6 @@ const First = () => {
   },[ordersInformation, isDetailsActive.id] )
 
   useEffect(() => {
-    // setStep(varStep)
-    // setDetailsActive({...isDetailsActive , isOpen : isDetailsActiveVar})
     if (isDetailsActive.isOpen) {
       BackButton.show();
     }
@@ -448,7 +424,7 @@ const forwardFunction = useCallback(() => {
         // setShablon({...shablon , isActive : false})
       }
       if (buttonId === "save") {
-        postResponce(ordersInformation[isDetailsActive.id].id, window.Telegram.WebApp.initDataUnsafe.user.id );
+        postResponce(ordersInformation[isDetailsActive.id].id, 2144832745 );
         mainRef.current.classList.remove('secondStep')
         setDetailsActive((value) => ({...value , isOpen : false}))
         setStep(0)
@@ -473,19 +449,23 @@ const subCategorys = useSelector((state) => state.categorys.subCategory);
 
 console.log(subCategorys)
 
+
+
+const firstRef = useRef(null)
+
 useEffect( () => {
 
-  document.documentElement.style.overflowY = 'scroll'
-  document.documentElement.style.marginTop = "20px"
-  document.documentElement.scrollTop = 20
-  document.documentElement.style.overflowY = 'hidden'
-
+  document.documentElement.style.overflowY = "hidden"
   function hh(){
-    document.documentElement.scrollTop = 20
+
+    window.Telegram.WebApp.expand();
+    window.Telegram.WebApp.disableVerticalSwipes()
   }
   window.Telegram.WebApp.onEvent("viewportChanged", hh)
+  firstRef.current.addEventListener("scroll" , hh)
   return () => {
     window.Telegram.WebApp.offEvent("viewportChanged", hh)
+    firstRef.current.removeEventListner("scroll" , hh)
   }
 } , [] )
 
@@ -502,6 +482,7 @@ useEffect(() => {
     <div ref={mainRef} className="first-container">
     <motion.div
       // style={style}
+      ref={firstRef}
       className="First"
       onClick={closeMenu}
       initial={{ opacity: 0 }}

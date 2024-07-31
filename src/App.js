@@ -148,7 +148,7 @@ const AnimatedSwitch = () => {
 };
 
 
-window.Telegram.WebApp.disableVerticalSwipes()
+
 
 function App() {
 
@@ -187,35 +187,23 @@ function App() {
 
 
 
+  window.Telegram.WebApp.disableVerticalSwipes()
+
   const dispatch = useDispatch();
 
   window.Telegram.WebApp.expand();
 
   const me = useSelector(state => state.telegramUserInfo)
 
-//   useEffect( () => {
-//     document.documentElement.style.marginTop = '40px'
-   
-//     if (window.scrollY !== 40){
-//       window.scrollTo({
-//         top: 40,
-//         behavior: "auto",
-//       });
-//     }
-//     console.warn(window.scrollY)
-    
-//     document.documentElement.style.overflowY = 'hidden'
-//   return () => {
-//   }
+
+
+// useEffect( () => {
+//   document.documentElement.style.overflowY = 'scroll'
+//   document.documentElement.style.marginTop = "20px"
+//   document.documentElement.scrollTop = 20
+//   document.documentElement.style.overflowY = 'hidden'
+
 // },[] )
-
-useEffect( () => {
-  document.documentElement.style.overflowY = 'scroll'
-  document.documentElement.style.marginTop = "20px"
-  document.documentElement.scrollTop = 20
-  document.documentElement.style.overflowY = 'hidden'
-
-},[] )
 
   useEffect(() => {
     dispatch(fetchTon());
