@@ -158,7 +158,10 @@ function App() {
 
   window.Telegram.WebApp.disableVerticalSwipes()
 
-  window.Telegram.WebApp.onEvent('viewportChanged', () =>  window.Telegram.WebApp.expand())
+  useEffect( () => {
+
+    window.Telegram.WebApp.onEvent('viewportChanged', () =>  window.Telegram.WebApp.expand())
+  } , [])
 
   const dispatch = useDispatch();
 
