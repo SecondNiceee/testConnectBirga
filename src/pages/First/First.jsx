@@ -386,7 +386,8 @@ const secFilteredArray = useMemo( () => {
 
 useEffect( () => {
   firstRef.current.style.overflowY = "scroll"
-  firstRef.current.style.height = "120vh"
+  firstRef.current.style.height = "200vh"
+  firstRef.current.style.paddingBottom = "100vh"
 
 }, [] )
 
