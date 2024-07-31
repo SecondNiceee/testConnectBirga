@@ -117,6 +117,7 @@
   width: calc(100vw - 32px);
   margin-top: calc(18.33px);
   display: flex;
+  overflow: hidden;
   flex-direction: column;
   gap: calc(8px);
   border-radius: 10px;
