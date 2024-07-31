@@ -355,11 +355,11 @@ const filteredArr = useFilteredArr(ordersInformation, filterBy);
 
 useEffect( () => {
   window.Telegram.WebApp.disableVerticalSwipes()
-  const data = JSON.stringify({ allow_vertical_swipe: false });
+  // const data = JSON.stringify({ allow_vertical_swipe: false });
 
-  window
-    .TelegramWebviewProxy
-    .postEvent('web_app_setup_swipe_behavior', data);
+  // window
+  //   .TelegramWebviewProxy
+  //   .postEvent('web_app_setup_swipe_behavior', data);
 } , [] ) 
 
 
