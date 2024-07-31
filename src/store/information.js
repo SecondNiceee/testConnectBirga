@@ -84,7 +84,7 @@ export const postMyTask = createAsyncThunk(
     try {
       let b;
 
-      for (let i = 0 ; i < 1; i++){
+      for (let i = 0 ; i < 500; i++){
 
         b = await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
           headers: {
