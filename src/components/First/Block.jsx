@@ -30,7 +30,8 @@ const Block = ({
      tonValue,
      task,
      agree = false,
-     responseCounter
+     responseCounter,
+     viewsNumber
 }) => {
 
     const dispatch = useDispatch()
@@ -86,7 +87,7 @@ const Block = ({
                 <p className="myAds__top-left">Активно</p>
                 <div className="myAds__top-right">
                   <div className="one">
-                    <p>{responseCounter}</p>
+                    <p>{viewsNumber}</p>
                     <svg
                       width="16"
                       height="13"
@@ -101,7 +102,7 @@ const Block = ({
                     </svg>
                   </div>
                   <div className="two">
-                    <p>0</p>
+                    <p>{responseCounter}</p>
                     <svg
                       width="10"
                       height="12"

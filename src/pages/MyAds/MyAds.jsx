@@ -401,7 +401,7 @@ const MyAds = () => {
           <CSSTransition
             classNames="aboutOne"
             in={secondPage.isActive}
-            timeout={300}
+            timeout={400}
             mountOnEnter
             unmountOnExit
           >
@@ -438,7 +438,7 @@ const MyAds = () => {
           <CSSTransition
             classNames="left-right"
             in={openAboutReaction.isActive}
-            timeout={0}
+            timeout={400}
             mountOnEnter
             unmountOnExit
           >
