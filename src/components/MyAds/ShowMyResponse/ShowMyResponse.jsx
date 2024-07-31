@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from 'react';
+import React, { memo, useCallback, useEffect } from 'react';
 import cl from './ShowMyResponse.module.css'
 import Top from '../../UI/Top/Top';
 import ResponseBlock from '../ResponseBlock';
@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import MyLoader from '../../UI/MyLoader/MyLoader';
 import MainButton from '../../../constants/MainButton';
 import axios from 'axios';
+import { changeMenuActive } from '../../../store/menuSlice';
 const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
     console.log(response)
     const dispatch = useDispatch()
@@ -41,13 +42,23 @@ const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
             MainButton.hide()
             MainButton.offClick(clickHandler)
         }
+
         
     } , [] )
+
+    const setMenuActive = useCallback(
+        (arg) => {
+          dispatch(changeMenuActive(arg));
+        },
+        [dispatch]
+      );
+
+      
     return (
         <>
         { !response ? <MyLoader style = {{width : "100vw" , height : "100vh" }}/> :
         <div className={cl.wrapper}>
-            <Top  name={"Мой отклик"}  />
+            <Top setMenuActive={setMenuActive}  name={"Мой отклик"}  />
             <ResponseBlock isWatched={response.isWatched} index={index} func={openDetails} className={cl.response} buttonText={"Подробнее"} {...response.advertisement} task={response.advertisement}   />
             <MyReaction deleteFunction={deleteFunction} responce={response} />
             <Customer fl={response.advertisement.user.fl} photo={response.advertisement.user.photo} link={response.advertisement.user.link}  />

@@ -69,19 +69,22 @@ const Responce = ({ orderInformation, responce, setResponce , left = "100%"   })
         />
       ) }
         <div>
-          <DescriptionAndPhoto
-            className={"responce-descriprion"}
-            text={responce.text}
-            photos={responce.photos}
-            textPlaceholder={"Почему задание должны дать именно вам"}
-            textTitle={"ТЕКСТ ОТКЛИКА"}
-            setText={(e) => {
-              setResponce({ ...responce, text: e });
-            }}
-            setPhotos={(e) => {
-              setResponce({ ...responce, photos: e });
-            }}
-          />
+          {shablonsArr.length > 0 && 
+                    <DescriptionAndPhoto
+                    className={"responce-descriprion"}
+                    text={responce.text}
+                    photos={responce.photos}
+                    textPlaceholder={"Почему задание должны дать именно вам"}
+                    textTitle={"ТЕКСТ ОТКЛИКА"}
+                    setText={(e) => {
+                      setResponce({ ...responce, text: e });
+                    }}
+                    setPhotos={(e) => {
+                      setResponce({ ...responce, photos: e });
+                    }}
+                  />
+          }
+
         </div>
       
     </div>
