@@ -232,6 +232,13 @@ useEffect( () => {
   console.log(b)
 
 
+  const data = JSON.stringify({ allow_vertical_swipe: false });
+
+window
+  .TelegramWebviewProxy
+  .postEvent('web_app_setup_swipe_behavior', data);
+
+
 
   return (
     <BrowserRouter>
