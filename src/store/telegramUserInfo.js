@@ -121,11 +121,11 @@ export const fetchUserInfo = createAsyncThunk(
     try {
 
 
-        // let firstName = window.Telegram.WebApp.initDataUnsafe.user.first_name;
-        // let lastName = window.Telegram.WebApp.initDataUnsafe.user.last_name;
-        let firstName = 'Коля'
-        let lastName = 'Титов'
-        let UserId = 2144832745 ;
+        let firstName = window.Telegram.WebApp.initDataUnsafe.user.first_name;
+        let lastName = window.Telegram.WebApp.initDataUnsafe.user.last_name;
+        // let firstName = 'Коля'
+        // let lastName = 'Титов'
+        let UserId = window.Telegram.WebApp.initDataUnsafe.user.id ;
         let user = await axios.get("https://back-birga.ywa.su/user/findOne", {
           params: {
             id: UserId,
