@@ -2,8 +2,8 @@ import React, { memo } from "react";
 import Responses from "./Responses";
 import MyAnimation from "./MyAnimation";
 
-const values = ["all", "withCompletedTasks", "withInformation"];
-const names = ["Все", "С выполненными заданиями", "С информацией о себе"];
+const values = ["all", "withCompletedTasks", "withCards"];
+const names = ["Все", "С выполненными заданиями", "С примерами работ"];
 const height = {height : 'calc(100vh - 330px)'}
 const ReactionBlock = ({
   setFilterBy,

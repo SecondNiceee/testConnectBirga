@@ -3,18 +3,20 @@ import React, { useMemo } from "react";
 const AboutInfo = ({responce}) => {
   const counter = useMemo(() => {
     if (Number(responce.createNumber) === 1){
-      return "Задание создано"
+      return "Задание"
     } 
     else{
       if (Number(responce.createNumber) > 1 && Number(responce.createNumber) < 5){
-        return "Задания создано"
+        return "Задания"
       }
       else{
-        return "Заданий создано"
+        return "Заданий"
       }
     }
 // eslint-disable-next-line
   }, [])
+
+
   return (
     <div className="aboutInfo">
       <div className="name">
@@ -31,12 +33,12 @@ const AboutInfo = ({responce}) => {
       <div className="aboutDown">
         <div className="block">
           <p>{responce.createNumber}</p>
-          <p className="aboutInfo__text">{counter}</p>
+          <p className="aboutInfo__text">{counter} выполнено</p>
           
         </div>
         <div className="block">
-          <p>0</p>
-          <p className="aboutInfo__text">Заданий выполено</p>
+          <p>{responce.user.completedAdvertisements.length}</p>
+          <p className="aboutInfo__text">{counter} выполено</p>
         </div>
       </div>
 

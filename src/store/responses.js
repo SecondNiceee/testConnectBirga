@@ -25,9 +25,17 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
             if (responces[i].photos) {
               photos = await makeNewFile(responces[i].folder, responces[i].photos);
             }
+
+            let b = await axios.get("https://back-birga.ywa.su/card/countByUser" , {
+                params : {
+                    advertisementId: responces[i].user.id,
+                }
+            } )
     
             responces[i].photos = photos;
             responces[i].advertisement = task
+            responces[i].user.cardsNumber = b.data
+            
     
             try {
               let imTwo = await axios.get(
