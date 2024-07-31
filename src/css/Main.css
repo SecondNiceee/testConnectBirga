@@ -401,7 +401,7 @@
 .FirstMenu {
   background-color: rgb(24, 34, 45);
   z-index: 11000;
-  position: absolute;
+  position: fixed;
   height: 100vh;
   left: 0px;
   top: 0;

@@ -218,10 +218,11 @@ function App() {
 
   return (
     <BrowserRouter>
-      <FirstMenu />
+     
 
       <div className="UperContainer">
         <div className="MainContainer">
+        <FirstMenu />
           <AnimatedSwitch />
           {/* <ModalChoicer /> */}
         </div>

@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from 'react';
+import React, { memo, useCallback, useEffect, useRef } from 'react';
 import TaskDetailsContainer from './TaskDetailsContainer';
 import TimeAndWatches from './TimeAndWatches';
 import SimilarAds from './SimilarAds';
@@ -6,25 +6,22 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addWatch } from '../../../store/information';
 
-const FirstDetails = ({  orderInformation , className , setProfile, end = false, ...props}) => {
-    const focuseHandelr = useCallback( () => {
-        document.documentElement.style.overflowY = "auto"
-        document.documentElement.style.marginTop = "0px"
-    } , [] )
-    const unfocusHandler = useCallback( () => {
-        
-            document.documentElement.style.marginTop = "20px"
-            window.scrollTo(0,40)
-            document.documentElement.style.overflowY = "hidden"
+const FirstDetails = ({  orderInformation , className , setProfile, end = false, breakRef, ...props}) => {
+
+    useEffect( () => {  
+        breakRef.current.style.overflow = "hidden"
+        mainRef.current.style.overflow = "scroll"
+        document.documentElement.style.overflow = "hidden"
     } , [] )
     
-    useEffect( () => {
-        focuseHandelr()
-        return () => {
-            unfocusHandler()
-        }
-    } , [focuseHandelr, unfocusHandler] )
+    // useEffect( () => {
+    //     focuseHandelr()
+    //     return () => {
+    //         unfocusHandler()
+    //     }
+    // } , [focuseHandelr, unfocusHandler] )
 
+    const mainRef = useRef()
     console.log('рендер детаилса')
     const disatch = useDispatch()
     useEffect( () => {
@@ -56,7 +53,7 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
         {orderInformation 
             ? 
             (
-            <div {...props} className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
+            <div ref={mainRef} {...props} className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
     
                 <TaskDetailsContainer setProfile = {setProfile} end = {end}  orderInformation = {orderInformation} />
                 

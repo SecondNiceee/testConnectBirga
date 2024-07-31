@@ -452,7 +452,6 @@ const forwardFunction = useCallback(() => {
 }, [responce, step, ordersInformation, isDetailsActive.id, setDetailsActive, dispatch, setStep, me]);
 
 
-
 const categorys = useSelector((state) => state.categorys.category);
 
 const subCategorys = useSelector((state) => state.categorys.subCategory);
@@ -596,6 +595,7 @@ useEffect(() => {
             unmountOnExit
           >
             <FirstDetails
+              breakRef = {firstRef}
               setProfile={setProfile}
               // className={}
               orderInformation={ordersInformation === null ? "" : ordersInformation[isDetailsActive.id]  }
