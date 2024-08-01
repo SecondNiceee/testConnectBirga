@@ -3119,6 +3119,7 @@ input {
 html {
   overflow: auto;
   position: absolute;
+  overflow: hidden;
   left: 0;
   top: 0;
   right: 0;
