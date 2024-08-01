@@ -496,11 +496,6 @@ useEffect(() => {
 }, [responce, forwardFunction]);
 
 
-useEffect(() => {
-  window.addEventListener("scroll" , () => {
-    console.log(mainRef.current.scrollTop)
-  })
-}, []);
 
 
 
