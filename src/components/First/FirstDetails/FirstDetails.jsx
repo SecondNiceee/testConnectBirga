@@ -13,16 +13,15 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
             if (breakRef.current && mainRef.current){
 
                 breakRef.current.style.overflow = "hidden"
-                mainRef.current.style.overflow = "auto"
+                mainRef.current.style.overflow = "scroll"
             }
         }
         return () => {
             if (breakRef && mainRef ){
                 if (breakRef.current && mainRef.current){
     
-                    breakRef.current.style.overflow = "auto"
+                    breakRef.current.style.overflow = "scroll"
                     mainRef.current.style.overflow = "hidden"
-                    document.documentElement.style.overflow = "unset"
                 }
             } 
         }
