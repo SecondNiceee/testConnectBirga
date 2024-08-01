@@ -6,24 +6,21 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addWatch } from '../../../store/information';
 
-const FirstDetails = ({  orderInformation , className , setProfile, end = false, breakRef, ...props}) => {
+const FirstDetails = ({  orderInformation , className , setProfile, end = false, breakRef, isDetailsActive, ...props}) => {
 
     useEffect( () => {  
-        if (breakRef && mainRef ){
+        if (isDetailsActive ){
             if (breakRef.current && mainRef.current){
 
                 breakRef.current.style.overflow = "hidden"
                 mainRef.current.style.overflow = "scroll"
             }
         }
-        return () => {
-            if (breakRef && mainRef ){
-                if (breakRef.current){
-    
-                    breakRef.current.style.overflow = "scroll"
-                }
-            } 
+        else{
+                breakRef.current.style.overflow = "scroll"
+                mainRef.current.style.overflow = "hidden"
         }
+
     } , [] )
     
 

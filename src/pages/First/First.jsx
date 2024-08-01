@@ -611,6 +611,7 @@ useEffect(() => {
             unmountOnExit
           >
             <FirstDetails
+              isDetailsActive={isDetailsActive.isOpen}
               breakRef = {firstRef}
               setProfile={setProfile}
               // className={}
