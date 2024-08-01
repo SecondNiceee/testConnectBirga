@@ -18,21 +18,14 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
         }
         return () => {
             if (breakRef && mainRef ){
-                if (breakRef.current && mainRef.current){
+                if (breakRef.current){
     
                     breakRef.current.style.overflow = "scroll"
-                    mainRef.current.style.overflow = "hidden"
                 }
             } 
         }
     } , [] )
     
-    // useEffect( () => {
-    //     focuseHandelr()
-    //     return () => {
-    //         unfocusHandler()
-    //     }
-    // } , [focuseHandelr, unfocusHandler] )
 
     const mainRef = useRef()
     console.log('рендер детаилса')
@@ -44,22 +37,6 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
         }
     } , [] )
 
-    // useEffect( () => {
-    //     document.documentElement.style.overflowY = "unset"
-    //     document.documentElement.style.marginTop = "0px"
-    //     window.scrollTo({
-    //         top: 0,
-    //         behavior: "smooth",
-    //       });
-    //     return () => {
-    //         document.documentElement.style.marginTop = "40px"
-    //         window.scrollTo({
-    //             top: 40,
-    //             behavior: "smooth",
-    //           });
-    //         document.documentElement.style.overflowY = "hidden"
-    //     }
-    // } , [])
 
     return (
         <>
@@ -67,7 +44,7 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
             ? 
             (
             <div ref={mainRef} {...props} className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
-    
+
                 <TaskDetailsContainer setProfile = {setProfile} end = {end}  orderInformation = {orderInformation} />
                 
                 {end ? <></> :<TimeAndWatches time={orderInformation.creationTime} watches={orderInformation.viewsNumber} />}

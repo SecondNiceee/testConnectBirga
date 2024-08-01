@@ -502,6 +502,7 @@ useEffect(() => {
 
   return (
     <div ref={mainRef} className="first-container">
+
     <motion.div
 
       // style={style}
@@ -513,6 +514,8 @@ useEffect(() => {
       transition={{ duration: 0.1 }}
     >
       <div className="first-wrapper" >
+
+
         {/* <button
           onClick={forward}
           style={{
