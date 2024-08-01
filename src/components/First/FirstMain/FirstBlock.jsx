@@ -45,6 +45,7 @@ const FirstBlock = ({
   agree = false,
 }) => {
 
+    
   const [badPhotos, setBadPhotos] = useState([])
   useEffect(() => {
     if (end){

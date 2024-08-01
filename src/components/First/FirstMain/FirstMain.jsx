@@ -4,21 +4,18 @@ import { useDispatch, useSelector } from "react-redux";
 import MyLoader from "../../UI/MyLoader/MyLoader";
 import { changeStatus, fetchTasksInformation } from "../../../store/information";
 
-const FirstMain = forwardRef(
+const FirstMain = (
   (
     {
       ordersInformation,
       setDetailsActive,
       setSliderActive,
       orderStatus,
-      ...props
-    },
-    ref
+    }
   ) => {
 
     const dispatch = useDispatch()
     const watchedArr = useSelector((state) => state.watchedAds.watchedAds);
-
 
     const [page , setPage] = useState(2)
     const elementRef = useRef(null)
@@ -42,7 +39,6 @@ const FirstMain = forwardRef(
       },
       [orderStatus, getMore]
     );
-    console.log(ordersInformation.length);
     useEffect(() => {
       const observer = new IntersectionObserver(onIntersaction);
       console.log(observer, elementRef.current);
@@ -59,7 +55,7 @@ const FirstMain = forwardRef(
 
 
     return (
-      <div {...props} className="FirstMain">
+      <div  className="FirstMain">
         {ordersInformation.length === 0 ? (
           <h1 className="EmptyText"> Нет таких предложений </h1>
         ) : (

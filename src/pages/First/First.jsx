@@ -496,11 +496,19 @@ useEffect(() => {
 }, [responce, forwardFunction]);
 
 
+useEffect(() => {
+  window.addEventListener("scroll" , () => {
+    console.log(mainRef.current.scrollTop)
+  })
+}, []);
+
+
 
 
   return (
     <div ref={mainRef} className="first-container">
     <motion.div
+
       // style={style}
       ref={firstRef}
       className="First"

@@ -105,7 +105,6 @@ const AllTasks = ({
         <>
           <FirstMain
             // style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
-            orderStatus = {orderStatus}
             setDetailsActive={setDetailsActive}
             ordersInformation={ordersInformation}
             setSliderActive = {setSliderActive}
