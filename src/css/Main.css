@@ -32,6 +32,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
 }
 
 .filtration-container {

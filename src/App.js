@@ -180,7 +180,7 @@ function App() {
   const me = useSelector(state => state.telegramUserInfo)
 
 
-
+    
 
 
   useEffect(() => {
@@ -209,15 +209,10 @@ function App() {
   console.log(a)
   console.log(b)
 
-  useEffect( () => {
-    document.documentElement.style.overflowY = "hidden"
-  } , [] )
+  // useEffect( () => {
+  //   document.documentElement.style.overflowY = "hidden"
+  // } , [] )
 
-//   const data = JSON.stringify({ allow_vertical_swipe: false });
-
-// window
-//   .TelegramWebviewProxy
-//   .postEvent('web_app_setup_swipe_behavior', data);
 
 
 
