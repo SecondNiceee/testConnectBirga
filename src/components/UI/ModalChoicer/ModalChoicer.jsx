@@ -82,12 +82,12 @@ const StyledButton = styled('button', { shouldForwardProp: () => true })(
   ({ theme }) => `
     align-items : center;
     display : flex;
-    gap : 7px;
+    gap : 4px;
     padding : 0px;
     text-transform : uppercase;
     font-family: "SF Pro Display 400";
     font-weight: 400;
-    font-size: 16px;
+    font-size: 13.33px;
     letter-spacing: 0.02em;
     text-align: right;
     color: #2ea5ff;

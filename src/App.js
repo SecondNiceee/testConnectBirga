@@ -73,7 +73,9 @@ const AnimatedSwitch = () => {
 
 
   return (
-    <div className="container">
+    <div className="container" style={{
+      overflow : "hidden"
+    }}>
       <div
         style={isMenuActive ? { opacity: "0.6" } : { maxWidth: "0px" }}
         className="black"
