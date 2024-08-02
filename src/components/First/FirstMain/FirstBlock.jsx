@@ -3,26 +3,15 @@ import React, {
   memo,
   Suspense,
   useEffect,
-  useMemo,
   useState,
 } from "react";
-import MyButton from "../../UI/MyButton/MyButton";
-import Pallete from "../../UI/Pallete/Pallete";
-import ShareIcon from "../../UI/ShareIcon/ShareIcon";
-import SmallDimond from "../../UI/SmallDimond/SmallDimond";
-import FalseTie from "../../UI/FalseTie/FalseTie";
-import { useDispatch, useSelector } from "react-redux";
-import { addWatch } from "../../../store/watchedAds";
-import options from "../../../constants/options";
-import formatDate from "../../../functions/makeDate";
+
 import { useInView } from "react-intersection-observer";
-import MyLoader from "../../UI/MyLoader/MyLoader";
-import { ThreeCircles } from "react-loader-spinner";
+
 import BlockSpinner from "../../UI/BlockSpinner/BlockSpinner";
 
 const Block = lazy(() => import("../Block"));
 
-let counter = 0;
 const FirstBlock = ({
   className,
   taskName,

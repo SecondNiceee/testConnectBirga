@@ -20,12 +20,8 @@ import { fetchMyOrders } from "./store/information";
 import { Triangle } from "react-loader-spinner";
 import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
-import MyComponent from "./components/MyComponent";
 import { fetchAllValues } from "./store/saves";
 import { fetchResponses } from "./store/responses";
-import BackButton from "./constants/BackButton";
-import FirstDetails from "./components/First/FirstDetails/FirstDetails";
-import FirstDetailsRoute from "./pages/FirstDetailsRoute/FirstDetailsRoute";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -97,7 +93,7 @@ const AnimatedSwitch = () => {
             path="/FirstPage"
             element={
               <Suspense fallback={<MyLoader />}>
-                <First />
+                <First isPage = {true} />
               </Suspense>
             }
           />
@@ -147,14 +143,6 @@ const AnimatedSwitch = () => {
             }
           />
 
-          <Route
-            path="/TaskDetails"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <FirstDetailsRoute />
-              </Suspense>
-            }
-          />
 
           <Route
             path="/AllShablons"
