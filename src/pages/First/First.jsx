@@ -667,7 +667,7 @@ useEffect(() => {
         }
 
     <CSSTransition
-            in={true}
+            in={isDetailsActive.isOpen}
             timeout={400}
             classNames="left-right"
             mountOnEnter
