@@ -2833,6 +2833,13 @@ input {
   padding-right: 16px;
   position: fixed;
   left: 100%;
+  height: 100vw;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.responce-wrapper.secondStep {
+  left: 0px;
 }
 
 .responce-make-private {

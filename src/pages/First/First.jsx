@@ -232,18 +232,9 @@ const First = () => {
 
   useEffect( () => {
     console.log('Вызов этого useEffect')
-    // if (isDetailsActive.isOpen) {
-    //   if (localStep === 0){
-    //     MainButton.setParams({
-    //       is_active : true,
-    //       color : '#2ea5ff',
-    //       text_color : '#ffffff'
-          
-    //     })
-    //   }
-    //   BackButton.show();
-    //   MainButton.show();
-    // }
+
+
+
     if (step === 0) {
       MainButton.setText("ОТКЛИКНУТЬСЯ");
     }
@@ -291,18 +282,6 @@ const First = () => {
 
 
 
-//   useEffect( () => {
-//        window.Telegram.WebApp.disableVerticalSwipes()
-        
-
-//         document.documentElement.style.marginTop = '40px'
-//          document.documentElement.style.overflowY = 'clip'
-//     return () => {
-
-
-//     }
-
-// },[] )
 
 
   useEffect(() => {
@@ -501,7 +480,7 @@ useEffect(() => {
 
 
   return (
-    <div ref={mainRef} className="first-container">
+    <div className="first-container">
 
     <motion.div
 
@@ -592,6 +571,7 @@ useEffect(() => {
 
     {ordersInformation !== null && tonConstant !== 0   ? 
         <Responce
+          ref={mainRef}
           responce = {responce}
           setResponce = {setResponce}
 

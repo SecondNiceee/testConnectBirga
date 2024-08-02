@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { forwardRef, memo } from "react";
 import FirstBlock from "../../components/First/FirstMain/FirstBlock";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
@@ -10,7 +10,7 @@ let myResponse = {
   text : "",
   photos : ""
 }
-const Responce = ({ orderInformation, responce, setResponce , left = "100%"   }) => {
+const Responce = forwardRef(({ orderInformation, responce, setResponce , left = "100%"   } , ref) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
 
 
@@ -89,6 +89,6 @@ const Responce = ({ orderInformation, responce, setResponce , left = "100%"   })
       
     </div>
   );
-};
+} );
 
 export default memo(Responce);
