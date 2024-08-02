@@ -73,7 +73,7 @@ const ShablinBlock = ({
       <CSSTransition
         in={responce.shablonMaker}
         timeout={400}
-        classNames={"shablon"}
+        classNames={"left-right"}
         unmountOnExit
         mountOnEnter
       >
@@ -90,7 +90,6 @@ const ShablinBlock = ({
               photos: shablonSetting.photos,
             });
           }}
-          style={{ left: left }}
           shablon={localShablonSetting}
           setShablon={setShablonSetting}
         />
