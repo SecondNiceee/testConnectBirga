@@ -549,8 +549,11 @@ useEffect(() => {
         }
         return pageAdvertisement
       }
+      else{
+        return ordersInformation[isDetailsActive.id]
+      }
     }
-  } , [isPage , pageAdvertisement ] )
+  } , [isPage , pageAdvertisement, isDetailsActive.id ] )
 
   console.log(pageAdvertisement)
   console.log(detailsAdertisement)
