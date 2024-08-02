@@ -26,7 +26,7 @@ let isDetailsActiveVar = false;
 let pageValue = true;
 let localResponce;
 let localStep;
-const First = ({isPage = true}) => {
+const First = ({isPage = false}) => {
 
 
   const [step , setStep] = useState(0)
@@ -190,6 +190,8 @@ const First = ({isPage = true}) => {
                           shablonMaker : false,
                         })
                         closeDetails();
+                        
+                        pageValue = false
                       }
                     }
                   }
@@ -548,9 +550,6 @@ useEffect(() => {
         if (pageAdvertisement === null){
           getAdvertisement().then(value => setPageAdvertisement(value))
         }
-        else{
-          pageValue = false
-        }
 
         return pageAdvertisement
       }
@@ -688,7 +687,7 @@ useEffect(() => {
               isDetailsActive={isDetailsActive.isOpen}
               breakRef = {firstRef}
               setProfile={setProfile}
-              
+              style = {pageValue ? {transform : "translateX(0%)"} : {}}
               // className={}
               orderInformation={detailsAdertisement }
 
