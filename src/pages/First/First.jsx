@@ -26,7 +26,7 @@ let isDetailsActiveVar = false;
 let pageValue = true;
 let localResponce;
 let localStep;
-const First = ({isPage = true}) => {
+const First = ({isPage = false}) => {
 
 
   const [step , setStep] = useState(0)
@@ -488,7 +488,7 @@ useEffect(() => {
     async function getAdvertisement(){
       let advertisement = await axios.get("https://back-birga.ywa.su/advertisement/findOne" , {
         params : {
-          "id" : 1
+          "id" : window.Telegram.WebApp.initDataUnsafe.start_param
         }
       })
       let order = advertisement.data
@@ -541,6 +541,7 @@ useEffect(() => {
     }
     else{
       if (pageValue && isPage){
+        
         if (pageAdvertisement === null){
           getAdvertisement().then(value => setPageAdvertisement(value))
         }

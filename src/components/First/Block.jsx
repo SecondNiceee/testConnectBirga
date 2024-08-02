@@ -128,7 +128,12 @@ const Block = ({
             }>
               <Pallete />
               <p className= { isWatched ? "watchedTask" : ""}>{taskName}</p>
-              <ShareIcon style = {end ? {opacity : 0.5} : {}} className="share__icon" />
+              <ShareIcon onClick = {() => {
+                alert()
+                window.Telegram.WebApp.openTelegramLink(
+                  "https://t.me/share/url?text=&url=https://t.me/testbirgawebappbot/firstPage?startapp=" + String(id)
+                );
+              }} style = {end ? {opacity : 0.5} : {}} className="share__icon" />
             </div>
             <div className="FirstMain__middle">
               {/* <p>{executionPlace}</p> */}
