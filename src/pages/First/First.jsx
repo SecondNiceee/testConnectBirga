@@ -237,7 +237,7 @@ const First = ({isPage = false}) => {
       MainButton.offClick(forward);
       BackButton.offClick(back);
     };
-  } , [isDetailsActive.isOpen, step , gotIt, responce.isShablonModalActive, responce.shablonMaker, sliderActive.isActive, isProfile, isCardOpen.isOpen , setProfile. setCardOpen]);
+  } , [isDetailsActive.isOpen, step , gotIt, responce.isShablonModalActive, responce.shablonMaker, sliderActive.isActive, isProfile, isCardOpen.isOpen , setProfile, setCardOpen]);
 
 
   useEffect( () => {
