@@ -86,7 +86,7 @@ const AboutOne = ({
       task: task,
     });
     // eslint-disable-next-line
-  }, []);
+  }, [task]);
 
 
   const getMore = useCallback( (page, setPage) => {
