@@ -153,11 +153,7 @@ const AdCreatingOne = ({
 
   useEffect( () => {
     document.documentElement.style.overflowY = "auto"
-    document.documentElement.style.marginTop = "0px"
-    document.documentElement.scrollTop = 0
     return () => {
-      document.documentElement.style.marginTop = "20px"
-      document.documentElement.scrollTop = 20
       document.documentElement.style.overflowY = "hidden"
     }
   } , [] )
