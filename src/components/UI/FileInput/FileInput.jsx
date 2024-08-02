@@ -3,11 +3,10 @@ import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 let counter = 0;
 let lastFiles = []
-let changed = false;
 const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);
   
-  
+  const [changed, setChanged] = useState(false)
   const addFiles = useCallback( (newFiles , choice = false ) => {
     let localImages = []
     newFiles.forEach((event) => {
@@ -43,13 +42,13 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       else{
         addFiles([...files], true)
       }
-      changed = true
+      setCha
     }
     else{
       changed = false
     }
     // eslint-disable-next-line
-  } , [files, addFiles] )
+  } , [files, addFiles, changed, setChanged] )
 
 
 
