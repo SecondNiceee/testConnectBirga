@@ -548,15 +548,16 @@ useEffect(() => {
         else{
           pageValue = false
         }
+
         return pageAdvertisement
       }
       else{
+        /// НЕ попал сюда
         return ordersInformation[isDetailsActive.id]
       }
     }
-  } , [isPage , pageAdvertisement, isDetailsActive.id ] )
+  } , [isPage , pageAdvertisement, isDetailsActive.id , pageValue,ordersInformation] )
 
-  console.log(pageAdvertisement)
   console.log(detailsAdertisement)
 
 
