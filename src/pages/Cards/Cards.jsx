@@ -19,12 +19,6 @@ let inputObject = {
 }
 const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
-  useEffect( () => {
-    document.documentElement.style.overflow = 'hidden'
-    return () => {
-       document.documentElement.style.overflow = 'auto'
-    }
-  } , [] )
 
   
   const categorys = useSelector((state) => state.categorys.category);

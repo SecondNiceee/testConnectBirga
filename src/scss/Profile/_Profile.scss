@@ -6,12 +6,16 @@ input {
     padding: 0;
     outline:none;}
 .profile__container{
-    position: relative;
+    width: 100vw;
+    position: fixed;
+    height: 100vh;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     padding-top: 27px;
     padding-left: 14px;
     padding-right: 14px;
+    
     
     .pofile__icon{
         width: calc(94px);

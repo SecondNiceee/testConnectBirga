@@ -349,12 +349,7 @@ const Profile = () => {
   }
 
 
-  useEffect( () => {
-    document.documentElement.style.overflowY = 'auto'
-    document.documentElement.style.marginTop = "0px"
-    document.documentElement.scrollTop = 0
-
-},[] )
+  
 
 
   return (
