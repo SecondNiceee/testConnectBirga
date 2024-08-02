@@ -352,7 +352,7 @@
     justify-content: center;    */
     transform: translateX(100%);
     background: rgb(24, 34, 45);
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     z-index: 1001;

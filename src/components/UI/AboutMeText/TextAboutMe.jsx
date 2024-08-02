@@ -32,6 +32,7 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
       else{
         refTwo.current.value = aboutU
         if (aboutU === ''){
+          refTwo.current.value = "Пользователь ничего не написал о себе"
           areaRef.current.value = "Пользователь ничего не написал о себе"
           setEmpy(true)
         }
@@ -45,7 +46,8 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
       areaRef.current.style.borderRadius = "10px"
       if (aboutU === ''){
         setEmpy(true)
-        areaRef.current.value = "Пользователь ничего не написал о себе"
+          refTwo.current.value = "Пользователь ничего не написал о себе"
+          areaRef.current.value = "Пользователь ничего не написал о себе"
       }
       else{
         areaRef.current.value = aboutU

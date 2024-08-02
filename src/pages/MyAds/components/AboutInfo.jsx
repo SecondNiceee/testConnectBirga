@@ -33,12 +33,12 @@ const AboutInfo = ({responce}) => {
       <div className="aboutDown">
         <div className="block">
           <p>{responce.createNumber}</p>
-          <p className="aboutInfo__text">{counter} выполнено</p>
+          <p className="aboutInfo__text">{counter} создано</p>
           
         </div>
         <div className="block">
           <p>{responce.user.completedAdvertisements.length}</p>
-          <p className="aboutInfo__text">{counter} выполено</p>
+          <p className="aboutInfo__text">{counter} выполнено</p>
         </div>
       </div>
 

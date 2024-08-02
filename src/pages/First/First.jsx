@@ -414,7 +414,6 @@ const forwardFunction = useCallback(() => {
       }
       dispatch(addResponse([myFormData, gibrid]))  
     } catch (e) {
-      alert("ничего не вышло");
       console.warn(e);
     } 
   
@@ -687,7 +686,7 @@ useEffect(() => {
               isDetailsActive={isDetailsActive.isOpen}
               breakRef = {firstRef}
               setProfile={setProfile}
-              style = {pageValue ? {transform : "translateX(0%)"} : {}}
+              style = {pageValue && isPage ? {transform : "translateX(0%)"} : {}}
               // className={}
               orderInformation={detailsAdertisement }
 
