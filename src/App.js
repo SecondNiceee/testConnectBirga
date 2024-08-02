@@ -33,7 +33,7 @@ const Profile = lazy(() => import("./pages/Profile/Profile"));
 const Balance = lazy(() => import("./pages/Balance"));
 const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
 const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
-const SavedPage = lazy( () => import("./pages/SavedPage/SavedPage") )
+const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
 
 const MyLoader = () => {
   return (
@@ -70,12 +70,13 @@ const AnimatedSwitch = () => {
 
   // )
 
-
-
   return (
-    <div className="container" style={{
-      overflow : "hidden"
-    }}>
+    <div
+      className="container"
+      style={{
+        overflow: "hidden",
+      }}
+    >
       <div
         style={isMenuActive ? { opacity: "0.6" } : { maxWidth: "0px" }}
         className="black"
@@ -93,10 +94,19 @@ const AnimatedSwitch = () => {
           />
 
           <Route
+            path="/FirstPage"
+            element={
+              <Suspense fallback={<MyLoader />}>
+                <First />
+              </Suspense>
+            }
+          />
+
+          <Route
             path="/savedPage"
             element={
               <Suspense fallback={<MyLoader />}>
-                  <SavedPage />
+                <SavedPage />
               </Suspense>
             }
           />
@@ -137,7 +147,6 @@ const AnimatedSwitch = () => {
             }
           />
 
-
           <Route
             path="/TaskDetails"
             element={
@@ -146,7 +155,6 @@ const AnimatedSwitch = () => {
               </Suspense>
             }
           />
-
 
           <Route
             path="/AllShablons"
@@ -162,26 +170,16 @@ const AnimatedSwitch = () => {
   );
 };
 
-
-
 function App() {
-  window.Telegram.WebApp.disableVerticalSwipes()
+  window.Telegram.WebApp.disableVerticalSwipes();
 
-
-
-
-
-  window.Telegram.WebApp.disableVerticalSwipes()
+  window.Telegram.WebApp.disableVerticalSwipes();
 
   const dispatch = useDispatch();
 
   window.Telegram.WebApp.expand();
 
-  const me = useSelector(state => state.telegramUserInfo)
-
-
-    
-
+  const me = useSelector((state) => state.telegramUserInfo);
 
   useEffect(() => {
     dispatch(fetchTon());
@@ -195,34 +193,25 @@ function App() {
     dispatch(fetchAllValues());
   }, [dispatch]);
 
-  useEffect( () => {
-    if (me.id !== "" && me){
-      dispatch(fetchResponses([me, 1]))
+  useEffect(() => {
+    if (me.id !== "" && me) {
+      dispatch(fetchResponses([me, 1]));
     }
-  } , [dispatch, me] )
-  
-  const _ = require("lodash")
-  const a = { "people" : {"x" : 2} };
-  
+  }, [dispatch, me]);
+
+  const _ = require("lodash");
+  const a = { people: { x: 2 } };
+
   const b = _.cloneDeep(a);
-  b.people.x = "хай"
-  console.log(a)
-  console.log(b)
-
-  // useEffect( () => {
-  //   document.documentElement.style.overflowY = "hidden"
-  // } , [] )
-
-
-
+  b.people.x = "хай";
+  console.log(a);
+  console.log(b);
 
   return (
     <BrowserRouter>
-     
-
       <div className="UperContainer">
         <div className="MainContainer">
-        <FirstMenu />
+          <FirstMenu />
           <AnimatedSwitch />
           {/* <ModalChoicer /> */}
         </div>

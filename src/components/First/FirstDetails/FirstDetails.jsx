@@ -29,8 +29,7 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
     console.log('рендер детаилса')
     const disatch = useDispatch()
     useEffect( () => {
-        if (!end){
-
+        if (!end && orderInformation ){
             disatch(addWatch(orderInformation))
         }
     } , [] )
@@ -38,7 +37,7 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
 
     return (
         <>
-        {orderInformation 
+        {orderInformation
             ? 
             (
             

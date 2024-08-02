@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, transform } from "framer-motion";
 
 import BackButton from "../../constants/BackButton";
 import "../MyAds/MyAds.css"
@@ -19,11 +19,14 @@ import FirstChoiceCategory from "../AdCreatingOne/ChoiceCategory/FirstChoiceCate
 import FirstChoiceSubCategory from "../AdCreatingOne/FirstChoiceSubCategory";
 import AboutReaction from "../MyAds/components/AboutReaction";
 import CardPage from "../CardPage/CardPage";
+import axios from "axios";
+import makeNewFile from "../../functions/newMakeFile";
 
 let isDetailsActiveVar = false;
+let pageValue = true;
 let localResponce;
 let localStep;
-const First = () => {
+const First = ({isPage = true}) => {
 
 
   const [step , setStep] = useState(0)
@@ -44,8 +47,15 @@ const First = () => {
 
   const [isDetailsActive, setDetailsActive] = useState({
     id: 0,
-    isOpen: isDetailsActiveVar,
+    isOpen: false,
   });
+
+  useEffect( () => {
+    if (isPage){
+      setDetailsActive((value) => ({...value ,isOpen : true}))
+    }
+  }, []  )
+
   
 
   const [responce, setResponce] = useState({
@@ -444,7 +454,6 @@ const categorys = useSelector((state) => state.categorys.category);
 
 const subCategorys = useSelector((state) => state.categorys.subCategory);
 
-console.log(subCategorys)
 
 
 
@@ -474,7 +483,74 @@ useEffect(() => {
   };
 }, [responce, forwardFunction]);
 
+  const [pageAdvertisement , setPageAdvertisement] = useState(null)
+  const detailsAdertisement = useMemo( ( ) => {
+    async function getAdvertisement(){
+      let advertisement = await axios.get("https://back-birga.ywa.su/advertisement/findOne" , {
+        params : {
+          "id" : 1
+        }
+      })
+      let order = advertisement.data
+      let one = new Date(order.startTime);
 
+      let two;
+      if (order.endTime) {
+        two = new Date(order.endTime);
+      } else {
+        two = "";
+      }
+
+      let files = await makeNewFile(order.folder, order.photos);
+
+      let imTwo = await axios.get(
+        "https://back-birga.ywa.su/advertisement/findCount",
+        {
+          params: {
+            userId: order.user.id,
+          },
+        }
+      );
+
+      return({
+        id: order.id,
+        taskName: order.title,
+        executionPlace: "Можно выполнить удаленно",
+        time: { start: one, end: two },
+        tonValue: order.price,
+        taskDescription: order.description,
+        photos: files,
+        photosName: order.photos,
+        customerName: order.user.fl,
+        userPhoto: order.user.photo || "",
+        rate: "5",
+        isActive: true,
+        creationTime: order.createdAt,
+        viewsNumber: order.views,
+        responces: order.responses,
+        status: order.status,
+        user: order.user,
+        createNumber : imTwo.data
+      });
+
+    }
+
+
+    if (ordersInformation === null){
+      return ""
+    }
+    else{
+      if (pageValue && isPage){
+        if (pageAdvertisement === null){
+          getAdvertisement().then(value => setPageAdvertisement(value))
+        }
+        return pageAdvertisement
+      }
+    }
+  } , [isPage , pageAdvertisement ] )
+
+  console.log(pageAdvertisement)
+  console.log(detailsAdertisement)
 
 
 
@@ -591,7 +667,7 @@ useEffect(() => {
         }
 
     <CSSTransition
-            in={isDetailsActive.isOpen}
+            in={true}
             timeout={400}
             classNames="left-right"
             mountOnEnter
@@ -601,8 +677,9 @@ useEffect(() => {
               isDetailsActive={isDetailsActive.isOpen}
               breakRef = {firstRef}
               setProfile={setProfile}
+              style = {isDetailsActive.isOpen ? {transform : "translateX(0%)" } : {}}
               // className={}
-              orderInformation={ordersInformation === null ? "" : ordersInformation[isDetailsActive.id]  }
+              orderInformation={detailsAdertisement }
 
             />
           </CSSTransition>
