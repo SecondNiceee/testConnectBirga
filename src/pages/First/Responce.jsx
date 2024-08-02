@@ -22,7 +22,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
 
 
   return (
-    <div className="responce-wrapper">
+    <div ref={ref} className="responce-wrapper">
       {/* <button
         onClick={() => {
           forwardFunction();
