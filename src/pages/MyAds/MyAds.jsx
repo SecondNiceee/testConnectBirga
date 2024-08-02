@@ -170,6 +170,7 @@ const MyAds = () => {
 
 
 
+
   console.log(pagesHistory)
 
   const navigate = useNavigate();
@@ -314,7 +315,7 @@ const MyAds = () => {
 
 
 
-
+  console.log(myAdsArray)
 
   const deleteFunction = useCallback( (index) => {
     window.Telegram.WebApp
@@ -358,7 +359,7 @@ const MyAds = () => {
           <button  style={{
         position : 'fixed',
         left : '50%',
-        zIndex : 1500
+        zIndex : 4000000
       }} onClick={() => {
        save()
       }}>SAVE</button>

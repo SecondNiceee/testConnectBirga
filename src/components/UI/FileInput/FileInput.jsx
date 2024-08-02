@@ -83,13 +83,13 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
         border : '1px solid #FF6767'
       })
     }
-    if (images.length === 0){
+    if (files.length === 0){
       return {
         display : 'flex'
       }
     }
     return {}
-  }  , [fileError, images] )
+  }  , [fileError, images, files] )
 
 
 
@@ -120,7 +120,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
       }
     }
     return {}
-  } , [files] )
+  } , [files, images] )
   
   return (  
     <>

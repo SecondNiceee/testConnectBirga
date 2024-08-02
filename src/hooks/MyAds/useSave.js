@@ -2,21 +2,7 @@ import { useCallback } from "react";
 
 export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sortFiles, dispatch, putMyTask, setDetails, details }) =>{
     const save = useCallback( () => {
-        if (details.task !== myAdsArray[secondPage.index] && checkMistakes(detailsVar.task)) {
-          window.Telegram.WebApp
-            .showPopup({
-              title: "Сохранить?",
-              message: "Сохранить изменения перед выходом?",
-              buttons: [
-                { id: "save", type: "default", text: "Да" },
-                { id: "delete", type: "destructive", text: "Нет" },
-              ],
-            } , (buttonId) => {
-    
-              if (buttonId === "delete" || buttonId === null) {
-                setDetails((value) => ({...value , isActive : false}))
-              }
-              if (buttonId === "save") {
+
               let myFormData = new FormData();
               myFormData.append('title' , detailsVar.task.taskName)
               myFormData.append('description' , detailsVar.task.taskDescription)
@@ -42,13 +28,11 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
               }
     
     
-            } )
             
-        } else {
-          setDetails((value) => ({...value , isActive : false}))
-        }
+            
+
          // eslint-disable-next-line
-      }, [details , dispatch , myAdsArray , setDetails , secondPage.index, checkMistakes, putMyTask, sortFiles  ] ) 
+      , [details , dispatch , myAdsArray , setDetails , secondPage.index, checkMistakes, putMyTask, sortFiles  ] ) 
 
       return save
 }

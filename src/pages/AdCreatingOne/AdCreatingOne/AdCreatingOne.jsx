@@ -151,12 +151,12 @@ const AdCreatingOne = ({
     datePickerObject.style.transition = "0.3s";
   }
 
-  useEffect( () => {
-    document.documentElement.style.overflowY = "auto"
-    return () => {
-      document.documentElement.style.overflowY = "hidden"
-    }
-  } , [] )
+  // useEffect( () => {
+  //   document.documentElement.style.overflowY = "auto"
+  //   return () => {
+  //     document.documentElement.style.overflowY = "hidden"
+  //   }
+  // } , [] )
 
   useEffect(() => {
     function appear() {
