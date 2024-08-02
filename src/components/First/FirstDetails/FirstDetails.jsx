@@ -17,14 +17,12 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
             }
         }
         else{
-            if (breakRef && mainRef){
-
+            if (breakRef){
                 breakRef.current.style.overflow = "scroll"
-                mainRef.current.style.overflow = "hidden"
             }
         }
 
-    } , [] )
+    } , [isDetailsActive] )
     
 
     const mainRef = useRef()
@@ -43,6 +41,7 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
         {orderInformation 
             ? 
             (
+            
             <div ref={mainRef} {...props} className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
 
                 <TaskDetailsContainer setProfile = {setProfile} end = {end}  orderInformation = {orderInformation} />
