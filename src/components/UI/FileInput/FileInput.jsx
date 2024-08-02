@@ -7,7 +7,6 @@ let changed = false;
 const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
   const [images, setImages] = useState([]);
   
-  const changed = useState(false)
   const addFiles = useCallback( (newFiles , choice = false ) => {
     let localImages = []
     newFiles.forEach((event) => {
