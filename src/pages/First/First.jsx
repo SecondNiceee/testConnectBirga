@@ -683,7 +683,7 @@ useEffect(() => {
               isDetailsActive={isDetailsActive.isOpen}
               breakRef = {firstRef}
               setProfile={setProfile}
-              style = {isDetailsActive.isOpen ? {transform : "translateX(0%)" } : {}}
+              // style = {isDetailsActive.isOpen ? {transform : "translateX(0%)" } : {}}
               // className={}
               orderInformation={detailsAdertisement }
 
