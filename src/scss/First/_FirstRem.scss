@@ -8,14 +8,14 @@
   overflow :scroll;
   height: 100vh;
   display: flex;
-  transition: 0.35s;
+  transition: 0.4s;
   will-change: transform;
   overflow-x: hidden;
   min-width: 100vw;
 }
 
 .first-container{
-    transition: 0.35s;
+    transition: 0.4s;
     display: flex;
     overflow: hidden;
 }

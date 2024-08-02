@@ -4,12 +4,14 @@
     padding-left: 16px;
     padding-right: 16px;
     position: fixed;
-    left: 100%;
+    left: 0%;
+    transform: translateX(200%);
     height: 100vw;
+    z-index: 100000;
     transition: 0.4s;
 }
 .responce-wrapper.secondStep{
-    left: 0px;
+    transform: translateX(100%);
 }
 .responce-make-private{
     margin-top: 18px;
