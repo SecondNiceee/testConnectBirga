@@ -544,6 +544,9 @@ useEffect(() => {
         if (pageAdvertisement === null){
           getAdvertisement().then(value => setPageAdvertisement(value))
         }
+        else{
+          pageValue = false
+        }
         return pageAdvertisement
       }
     }
