@@ -26,7 +26,7 @@ let isDetailsActiveVar = false;
 let pageValue = true;
 let localResponce;
 let localStep;
-const First = ({isPage = false}) => {
+const First = ({isPage = true}) => {
 
 
   const [step , setStep] = useState(0)
@@ -52,7 +52,10 @@ const First = ({isPage = false}) => {
 
   useEffect( () => {
     if (isPage){
-      setDetailsActive((value) => ({...value ,isOpen : true}))
+      setTimeout( () => {
+
+        setDetailsActive((value) => ({...value, isOpen : true}))
+      } , 300 )
     }
   }, []  )
 
@@ -685,7 +688,7 @@ useEffect(() => {
               isDetailsActive={isDetailsActive.isOpen}
               breakRef = {firstRef}
               setProfile={setProfile}
-              // style = {isDetailsActive.isOpen ? {transform : "translateX(0%)" } : {}}
+              
               // className={}
               orderInformation={detailsAdertisement }
 
