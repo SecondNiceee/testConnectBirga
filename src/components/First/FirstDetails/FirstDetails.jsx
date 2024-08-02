@@ -17,7 +17,7 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
             }
         }
         else{
-            if (breakRef.current && mainRef.current){
+            if (breakRef && mainRef){
 
                 breakRef.current.style.overflow = "scroll"
                 mainRef.current.style.overflow = "hidden"
