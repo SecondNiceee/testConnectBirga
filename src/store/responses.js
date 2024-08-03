@@ -179,6 +179,21 @@ export const fetchResponses = createAsyncThunk(
             }
 
             let files = await makeNewFile(localResponses[i].advertisement.folder, localResponses[i].advertisement.photos);
+
+            try {
+                let imTwo = await axios.get(
+                  "https://back-birga.ywa.su/advertisement/findCount",
+                  {
+                    params: {
+                      userId: me.id,
+                    },
+                  }
+                );
+                localResponses[i].createNumber = imTwo.data;
+              } catch (e) {
+                 console.warn(e)
+                alert(e);
+              }
             
             
             
@@ -218,14 +233,17 @@ export const fetchResponses = createAsyncThunk(
                 "photo" : me.photo,
                 "about" : me.profile.about,
                 "stage" : me.profile.stage,
+                "completedAdvertisements" : me.completedTasks
                 
               }
             } catch (e) {
               alert(e);
             }
+            
 
 
         }
+        console.log(localResponses)
         return localResponses
     }
     catch(e){

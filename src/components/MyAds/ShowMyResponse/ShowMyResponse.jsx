@@ -10,7 +10,7 @@ import MyLoader from '../../UI/MyLoader/MyLoader';
 import MainButton from '../../../constants/MainButton';
 import axios from 'axios';
 import { changeMenuActive } from '../../../store/menuSlice';
-const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
+const ShowMyResponse = ({response , openDetails, index, deleteFunction, setLastAds , openAboutReaction}) => {
     const dispatch = useDispatch()
     useEffect( () => {
         async function clickHandler(){
@@ -58,7 +58,7 @@ const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
         <div className={cl.wrapper}>
             <Top setMenuActive={setMenuActive}  name={"Мой отклик"}  />
             <ResponseBlock isWatched={response.isWatched} index={index} func={openDetails} className={cl.response} buttonText={"Подробнее"} {...response.advertisement} task={response.advertisement}   />
-            <MyReaction deleteFunction={deleteFunction} responce={response} />
+            <MyReaction openAboutReactionFunc={openAboutReaction} setLastAds = {setLastAds} deleteFunction={deleteFunction} responce={response} />
             <Customer fl={response.advertisement.user.fl} photo={response.advertisement.user.photo} link={response.advertisement.user.link}  />
             <p className={cl.dateObject}>Создано { formatDate(new Date(response.advertisement.creationTime))}</p>
         </div>

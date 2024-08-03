@@ -1,12 +1,12 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 
 const AboutInfo = ({responce}) => {
-  const counter = useMemo(() => {
-    if (Number(responce.createNumber) === 1){
+  const counter = useCallback((par) => {
+    if (Number(par) === 1){
       return "Задание"
     } 
     else{
-      if (Number(responce.createNumber) > 1 && Number(responce.createNumber) < 5){
+      if (Number(par) > 1 && Number(par) < 5){
         return "Задания"
       }
       else{
@@ -15,6 +15,8 @@ const AboutInfo = ({responce}) => {
     }
 // eslint-disable-next-line
   }, [])
+
+  
 
 
   return (
@@ -33,12 +35,12 @@ const AboutInfo = ({responce}) => {
       <div className="aboutDown">
         <div className="block">
           <p>{responce.createNumber}</p>
-          <p className="aboutInfo__text">{counter} создано</p>
+          <p className="aboutInfo__text">{counter(responce.createNumber)} создано</p>
           
         </div>
         <div className="block">
           <p>{responce.user.completedAdvertisements.length}</p>
-          <p className="aboutInfo__text">{counter} выполнено</p>
+          <p className="aboutInfo__text">{counter(responce.user.completedAdvertisements.length)} выполнено</p>
         </div>
       </div>
 

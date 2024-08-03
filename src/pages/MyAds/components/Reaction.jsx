@@ -11,6 +11,7 @@ const Reaction = ({
   put,
   openAboutReactionFunc,
   responce,
+  writeButton = true,
   agree = false,
 }) => {
   return (
@@ -18,7 +19,7 @@ const Reaction = ({
       <div
         className="reaction"
         style={
-          responce.isWatched === "inProcess"
+          responce.isWatched === "inProcess" && writeButton
             ? { border: "1.67px solid #2ea5ff" }
             : {}
         }
@@ -82,7 +83,7 @@ const Reaction = ({
             </div>
           </div>
           
-          {responce.isWatched === "inProcess" &&           <div className="blue-circle">
+          { (responce.isWatched === "inProcess" && writeButton) &&           <div className="blue-circle">
             <svg
             className="commit-icon"
               width="16"
@@ -104,7 +105,9 @@ const Reaction = ({
 
           {put ? (
             <div className="right">
+
               <MyButton
+                style = {writeButton ? {} : {display : "none"}}
                 onClick={() => {
                   window.Telegram.WebApp.openTelegramLink(
                     "https://t.me/" + responce.user.link
@@ -113,6 +116,7 @@ const Reaction = ({
               >
                 Написать
               </MyButton>
+
               <FalseTie
                 agree={agree}
                 navigate={"responce"}
@@ -124,7 +128,7 @@ const Reaction = ({
               </div>
             </div>
           ) : (
-            <div className="circle" style={responce.isWatched === "inProcess" ? {marginLeft : "8px"} : {}}>
+            <div className="circle" style={responce.isWatched === "inProcess" && writeButton ? {marginLeft : "8px"} : {}}>
               <img className="shareImage" src={share} alt="" />
             </div>
           )}

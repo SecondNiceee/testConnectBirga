@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 // import myImage from '../../images/desccription.png'
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +21,8 @@ import { useSave } from "../../hooks/MyAds/useSave";
 import ShowMyResponse from "../../components/MyAds/ShowMyResponse/ShowMyResponse";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import { deleteResponse } from "../../store/responses";
+import MyLastAds from "./components/MyLastAds";
+import CardPage from "../CardPage/CardPage";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -330,6 +332,10 @@ const MyAds = () => {
 } , [setMyResponse , dispatch])
 
 
+  const [lastAdsTwo , setLastAdsTwo] = useState({
+    isOpen : false,
+    response : {},
+  })
 
 
   return (
@@ -419,6 +425,21 @@ const MyAds = () => {
           </CSSTransition>
 
 
+          <CSSTransition
+            classNames="left-right"
+            in={lastAdsTwo.isOpen}
+            timeout={400}
+            mountOnEnter
+            unmountOnExit
+          >
+            <MyLastAds
+            responce = {lastAdsTwo.response}
+              openAboutReactionFunc={setOpenAboutReaction}
+
+            />
+          </CSSTransition>
+
+
 
           <CSSTransition
             classNames="left-right"
@@ -430,6 +451,15 @@ const MyAds = () => {
             <AboutReaction setOneCard = {setOneCard} responce = {openAboutReaction.responce}   />
           </CSSTransition>
 
+          <CSSTransition
+            classNames="left-right"
+            in={oneCards.isOpen }
+            timeout={400}
+            mountOnEnter
+            unmountOnExit
+          >
+           <CardPage card={oneCards.card} />
+      </CSSTransition>
 
 
           <CSSTransition
@@ -440,7 +470,7 @@ const MyAds = () => {
         mountOnEnter
   
       > 
-        <ShowMyResponse deleteFunction = {deleteFunction}  index={myResponse.id} openDetails = {openDetails} response={responsesArr[myResponse.id]} />
+        <ShowMyResponse openAboutReaction = {setOpenAboutReaction} setLastAds = {setLastAdsTwo} deleteFunction = {deleteFunction}  index={myResponse.id} openDetails = {openDetails} response={responsesArr[myResponse.id]} />
       </CSSTransition>
 
 

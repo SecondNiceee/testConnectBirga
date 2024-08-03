@@ -1,4 +1,4 @@
-import {  useEffect } from "react";
+import { useEffect } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch } from "react-redux";
@@ -6,7 +6,6 @@ import { setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 
 export const useButton = ({
-  
   localDetails,
   localAboutReaction,
   localIsOpen,
@@ -14,7 +13,7 @@ export const useButton = ({
   setSecondPage,
   navigate,
   setOpenAboutReaction,
-  
+
   openAboutReaction,
   isOpen,
   localSecondPage,
@@ -26,62 +25,62 @@ export const useButton = ({
   detailsTwo,
   setDetailsTwo,
   myResponse,
-  setMyResponse
-
+  setMyResponse,
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   useEffect(() => {
     function writeFucntion() {
-      window.Telegram.WebApp
-      .showPopup({
-        title: "Внимание",
-        message: "Перед выбором исполнителя\n ознакомьтесь с FAQ Биржи.",
-        buttons: [
-          { id: "delete", type: "default", text: "Продолжить" },
-          { id: "save", type: "destructive", text: "Прочитать" },
-        ],
-      } , (buttonId) => {
-  
-        if (buttonId === "delete" ) {
-          window.Telegram.WebApp.showPopup({
-            title : "Выбрать?",
-            message : "Вы уверены, что хотите выбрать\n этого исполнителя?",
-            buttons : [
-              { id: "save", type: "default", text: "Да" },
-              { id: "delete", type: "destructive", text: "Нет" },
-            ]
-          } , (buttonId) => {
-            if (buttonId === 'save'){
-              dispatch(setStartTask(secondPage.task.id))
-              dispatch(setStartResponse(isOpen.responce.id))
-              setOpen({ ...isOpen, isActive: false });
-              setSecondPage({ ...secondPage, isActive: false });
-
-            }
-            else{
-
-            }
-          })
-
+      window.Telegram.WebApp.showPopup(
+        {
+          title: "Внимание",
+          message: "Перед выбором исполнителя\n ознакомьтесь с FAQ Биржи.",
+          buttons: [
+            { id: "delete", type: "default", text: "Продолжить" },
+            { id: "save", type: "destructive", text: "Прочитать" },
+          ],
+        },
+        (buttonId) => {
+          if (buttonId === "delete") {
+            window.Telegram.WebApp.showPopup(
+              {
+                title: "Выбрать?",
+                message: "Вы уверены, что хотите выбрать\n этого исполнителя?",
+                buttons: [
+                  { id: "save", type: "default", text: "Да" },
+                  { id: "delete", type: "destructive", text: "Нет" },
+                ],
+              },
+              (buttonId) => {
+                if (buttonId === "save") {
+                  dispatch(setStartTask(secondPage.task.id));
+                  dispatch(setStartResponse(isOpen.responce.id));
+                  setOpen({ ...isOpen, isActive: false });
+                  setSecondPage({ ...secondPage, isActive: false });
+                } else {
+                }
+              }
+            );
+          }
+          if (buttonId === "save") {
+            window.Telegram.WebApp.openLink(
+              "https://walletru.helpscoutdocs.com/"
+            );
+          }
         }
-        if (buttonId === "save") {
-          window.Telegram.WebApp.openLink('https://walletru.helpscoutdocs.com/')
-      } })
+      );
     }
     function goBack() {
+      if (oneCards.isOpen) {
+        setOneCard((value) => ({ ...value, isOpen: false }));
+      } 
+      else
+      {
+        
+        if (!localAboutReaction.isActive) {
         if (!localDetails.isActive) {
-                             if (detailsTwo.isOpen){
-                      setDetailsTwo((value) => ({...value, isOpen : false}))
-                    }
-          else{
-
-          
-          if (oneCards.isOpen){
-            setOneCard((value) => ({...value , isOpen : false}))
-          }
-          else{
-
-            if (!localAboutReaction.isActive) {
+        if (detailsTwo.isOpen) {
+          setDetailsTwo((value) => ({ ...value, isOpen: false }));
+        } else {
               if (localIsOpen.isActive) {
                 setOpen({ ...isOpen, isActive: false });
               } else {
@@ -89,39 +88,31 @@ export const useButton = ({
                   setSecondPage({ ...secondPage, isActive: false });
                 } else {
                   // if (history[history.length - 1] === '/AdCreating'){
-  
+
                   //   navigate();
                   // }
                   // else{
                   //   navigate(-1)
                   // }
-                  if (myResponse.isOpen){
-                    setMyResponse( (value) => ({...value, isOpen : false}) )
+                  if (myResponse.isOpen) {
+                    setMyResponse((value) => ({ ...value, isOpen: false }));
+                  } else {
+                    navigate("/");
                   }
-                  else{
-                    
- 
-                    
-                      navigate('/')
-                    
-
-                  }
-
                 }
               }
-            } else {
-              setOpenAboutReaction({ ...openAboutReaction, isActive: false });
             }
-
+            
+          } else {
+            save();
           }
-        }
         } else {
-            save()
+          setOpenAboutReaction({ ...openAboutReaction, isActive: false });
         }
+    }
     }
 
     BackButton.show();
-    
 
     if (isOpen.isActive) {
       MainButton.show();
@@ -133,7 +124,7 @@ export const useButton = ({
       MainButton.onClick(writeFucntion);
     } else {
       MainButton.offClick(writeFucntion);
-      if (!myResponse.isOpen){
+      if (!myResponse.isOpen) {
         MainButton.hide();
       }
     }
@@ -156,7 +147,6 @@ export const useButton = ({
     detailsTwo.isOpen,
     setDetailsTwo,
     myResponse.isOpen,
-    setMyResponse
+    setMyResponse,
   ]);
 };
-

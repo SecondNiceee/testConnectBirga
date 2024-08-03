@@ -2,14 +2,15 @@ import React from "react";
 
 
 import "../../pages/MyAds/MyAds.css";
+import MyButton from "../UI/MyButton/MyButton";
 
 const MyReaction = ({
   openAboutReactionFunc,
   responce,
   deleteFunction,
+  setLastAds,
   agree = false,
 }) => {
-  console.log(responce)
   return (
     <>
       <div className="reaction">
@@ -62,7 +63,13 @@ const MyReaction = ({
             </div>
           </div>
           <div className="right">
-            {responce.isWathced !== "inProcess"  && (
+            <MyButton onClick = {() => {
+              setLastAds({
+                isOpen : true,
+                response : responce
+              })
+            }}>Подробнее</MyButton>
+            {responce.isWatched !== "inProcess"  && (
               <div
                 onClick={() => {
                   deleteFunction(responce.id);
