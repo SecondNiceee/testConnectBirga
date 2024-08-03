@@ -72,19 +72,16 @@ export const useButton = ({
     function goBack() {
       if (oneCards.isOpen) {
         setOneCard((value) => ({ ...value, isOpen: false }));
-      } 
-      else
-      {
-        
-        if (!localAboutReaction.isActive) {
-        if (!localDetails.isActive) {
-        if (detailsTwo.isOpen) {
-          setDetailsTwo((value) => ({ ...value, isOpen: false }));
-        } else {
-              if (localIsOpen.isActive) {
+      } else {
+        if (!openAboutReaction.isActive) {
+          if (!details.isActive) {
+            if (detailsTwo.isOpen) {
+              setDetailsTwo((value) => ({ ...value, isOpen: false }));
+            } else {
+              if (isOpen.isActive) {
                 setOpen({ ...isOpen, isActive: false });
               } else {
-                if (localSecondPage.isActive) {
+                if (secondPage.isActive) {
                   setSecondPage({ ...secondPage, isActive: false });
                 } else {
                   // if (history[history.length - 1] === '/AdCreating'){
@@ -95,6 +92,7 @@ export const useButton = ({
                   //   navigate(-1)
                   // }
                   if (myResponse.isOpen) {
+                    alert("Привет")
                     setMyResponse((value) => ({ ...value, isOpen: false }));
                   } else {
                     navigate("/");
@@ -102,14 +100,13 @@ export const useButton = ({
                 }
               }
             }
-            
           } else {
             save();
           }
         } else {
           setOpenAboutReaction({ ...openAboutReaction, isActive: false });
         }
-    }
+      }
     }
 
     BackButton.show();
