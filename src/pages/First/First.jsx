@@ -550,13 +550,7 @@ useEffect(() => {
   return (
     <div className="first-container">
 
-      {/* <button onClick={() => {
-        setResponce( (value ) => ({...value , a}) )
-      }} style={{
-        position : "fixed",
-        left : "20px",
-        zIndex : 222222
-      }} >Привет</button> */}
+
     <motion.div
 
       // style={style}

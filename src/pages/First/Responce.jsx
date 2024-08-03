@@ -4,6 +4,7 @@ import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/Descrip
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
 import {  useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
+import Block from "../../components/First/Block";
 
 
 let myResponse = {
@@ -29,7 +30,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
       >
         Отослать
       </button> */}
-      <FirstBlock {...orderInformation} />
+      <Block {...orderInformation} />
       <MakePrivate
         isPrivate={responce.isShablon}
         setPrivate={(value) => {

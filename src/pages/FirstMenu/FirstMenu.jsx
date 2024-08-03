@@ -23,7 +23,15 @@ const FirstMenu = () => {
 
             <Close isMenuActive = {isMenuActive} setMenuActive = {setMenuActive}  />
 
-            <Link onClick={() => {setMenuActive(false)}} to='/Profile' className="FirstMenu__top">
+            <Link onClick={() => {
+                try{
+
+                    setMenuActive(false)}
+                catch(e){
+                    alert(e)
+                }
+                } } to='/Profile' className="FirstMenu__top">
+                
                 <div>
                     <img className='icon' src= {userInfo.photo} alt="" />
                 </div>

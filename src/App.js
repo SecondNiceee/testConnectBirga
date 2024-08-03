@@ -161,6 +161,8 @@ function App() {
 
   window.Telegram.WebApp.disableVerticalSwipes();
 
+  window.Telegram.WebApp.setHeaderColor("#1C1C1C")
+  window.Telegram.WebApp.setBackgroundColor("#1C1C1C")
   const dispatch = useDispatch();
 
   window.Telegram.WebApp.expand();
