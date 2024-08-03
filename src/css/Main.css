@@ -3245,6 +3245,10 @@ body {
           transform: scale(1.1);
 }
 
+.base-Popup-root {
+  z-index: 2000000;
+}
+
 .page-enter-active {
   opacity: 1;
   -webkit-transform: scale(1);

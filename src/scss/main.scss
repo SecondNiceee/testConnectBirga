@@ -86,6 +86,10 @@ body { width: 100%; height: auto;  background: rgb(24, 34, 45); }
   transform: scale(1.1);
 }
 
+.base-Popup-root{
+  z-index: 2000000;
+}
+
 .page-enter-active {
   opacity: 1;
   transform: scale(1);
