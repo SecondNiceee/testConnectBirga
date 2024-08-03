@@ -44,32 +44,7 @@ const PickerContent = ({
 
   
 
-  const buttonFunction = useCallback( (index) => {
-      setMyResponse({isOpen : true , id : index})
-  } , [setMyResponse]  )
 
-
-  useEffect( () => {
-    function goBack(){
-      if (details.isOpen){
-        setDetails( (value) => ({...value , isOpen : false}) )
-      }
-      else{
-        if (myResponse.isOpen){
-          setMyResponse( (value) => ({...value , isOpen : false}) )
-        }
-      }
-    }
-    if (myResponse.isOpen){
-      BackButton.onClick(goBack)
-      BackButton.show()
-    }
-    else{
-      BackButton.hide()
-      BackButton.offClick(goBack)
-    }
-  
-  } , [myResponse.isOpen, details.isOpen, setDetails , setMyResponse] )
 
 
 
