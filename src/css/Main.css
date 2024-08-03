@@ -3246,7 +3246,7 @@ body {
 }
 
 .base-Popup-root {
-  z-index: 2000000;
+  z-index: 2000000 !important;
 }
 
 .page-enter-active {

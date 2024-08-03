@@ -87,7 +87,7 @@ body { width: 100%; height: auto;  background: rgb(24, 34, 45); }
 }
 
 .base-Popup-root{
-  z-index: 2000000;
+  z-index: 2000000 !important;
 }
 
 .page-enter-active {

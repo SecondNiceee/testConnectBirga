@@ -111,7 +111,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
   const imageRef = useRef(null)
 
   const imageStyle = useMemo( () => {
-    if (mainRef.current !== null){
+    if (mainRef.current !== null && images.length > 0){
       return {
         height : String((mainRef.current.offsetWidth / 3)  - 16) + "px" ,
         width : String((mainRef.current.offsetWidth / 3)  - 16) + "px" ,
