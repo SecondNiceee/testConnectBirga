@@ -320,7 +320,7 @@ const MyAds = () => {
         
       }
       if (buttonId === "save") {
-        setDetailsTwo((value) => ({...value , isOpen : false}))
+        setMyResponse((value) => ({...value , isOpen : false}))
         dispatch(deleteResponse(index))
       }
 
