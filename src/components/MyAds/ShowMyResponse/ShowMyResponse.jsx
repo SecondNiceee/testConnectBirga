@@ -11,7 +11,7 @@ import MainButton from "../../../constants/MainButton";
 import axios from "axios";
 import { changeMenuActive } from "../../../store/menuSlice";
 const ShowMyResponse = ({
-  response = { advertisement: { user: {} } , id : 0 , user : {} },
+  response = { advertisement: { user: {} } , id : 0 , user : {'fuck' : 'fuck'} },
   openDetails,
   index,
   deleteFunction,
@@ -63,7 +63,7 @@ const ShowMyResponse = ({
 
   return (
     <>
-      {!response ? (
+      {!response.user.fuck ? (
         <MyLoader style={{ width: "100vw", height: "100vh" }} />
       ) : (
         <div className={cl.wrapper}>
