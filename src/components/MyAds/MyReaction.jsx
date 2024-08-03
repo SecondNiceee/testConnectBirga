@@ -9,6 +9,7 @@ const MyReaction = ({
   deleteFunction,
   agree = false,
 }) => {
+  console.log(responce)
   return (
     <>
       <div className="reaction">
@@ -61,7 +62,7 @@ const MyReaction = ({
             </div>
           </div>
           <div className="right">
-            {responce.isWathced !== "inProcess" && (
+            {responce.isWathced !== "inProcess"  && (
               <div
                 onClick={() => {
                   deleteFunction(responce.id);
