@@ -198,39 +198,39 @@
   
 
 .modal {
-    transition: 0.32s;
+    transition: 0.4s;
 }
 .modal-enter {
     transform: translateY(100%);
 }
 .modal-enter-active{
     transform: translateY(0%);
-    transition: 0.32s;
+    transition: 0.4s;
 }
 .modal-exit{
     transform: translateY(0%);
 }
 .modal-exit-active{
     transform: translateY(100%);
-    transition: 0.32s;
+    transition: 0.4s;
 }
 
 .modal-two {
-    transition: 0.32s;
+    transition: 0.4s;
 }
 .modal-two-enter {
     transform: translateY(100%);
 }
 .modal-two-enter-active{
     transform: translateY(0%);
-    transition: 0.32s;
+    transition: 0.4s;
 }
 .modal-two-exit{
     transform: translateY(0%);
 }
 .modal-two-exit-active{
     transform: translateY(100%);
-    transition: 0.32s;
+    transition: 0.4s;
 }
 .sub__wrapper{
     display: flex;

@@ -12,6 +12,6 @@
     height: 100vh;
     z-index: 2000;
     gap: 8px;
-    transition: 0.35s;
+    transition: 0.4s;
     transform: translateX(100%);
 }

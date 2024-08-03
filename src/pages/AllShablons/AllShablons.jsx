@@ -134,10 +134,10 @@ const AllShablons = () => {
 
       <CSSTransition
         in={shablon.isActive}
-        classNames={"add-shablon"}
+        classNames={"left-right"}
         mountOnEnter
         unmountOnExit
-        timeout={300}
+        timeout={400}
       >
         <Shablon shablon={shablon.shablon} setActive={(e) => {
           setShablon({...shablon , isActive : e})

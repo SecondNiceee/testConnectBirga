@@ -23,7 +23,7 @@
         left: 0;
         top: 0;
         z-index: 2000;
-        transition: 0.35s;
+        transition: 0.4s;
         transform: translateX(100%);
         height: 100vh;
         padding-bottom: 20px;
@@ -36,28 +36,28 @@
     }
     .details-enter{
         transform: translateX(0%);
-        transition:  0.35s;
+        transition:  0.4s;
     }
     .details-enter-active{
         transform: translateX(0%);
-        transition: 0.35s;        transition: 0.35s;
+        transition: 0.4s;        transition: 0.4s;
     }
     .details-enter-done{
         transform: translateX(0%);
-        transition: 0.35s;
+        transition: 0.4s;
     }
 
     .details-exit{
         transform: translateX(100%);
-        transition: 0.35s;
+        transition: 0.4s;
     }
     .details-exit-active{
         transform: translateX(100%);
-        transition: 0.35s;
-        transition: 0.35s;
+        transition: 0.4s;
+        transition: 0.4s;
     }
     .details-exit-done{
-        transition: 0.35s;
+        transition: 0.4s;
     }
 }
 .stage-compact{
@@ -245,7 +245,7 @@
     position: static;
     min-width: calc(200vw);
     display: flex;
-    transition: 0.3s;
+    transition: 0.4s;
 
     overflow-y: hidden;
     margin-left: -16px;
