@@ -13,7 +13,6 @@ import MyAdOne from "./components/MyAdOne";
 import AboutReaction from "./components/AboutReaction";
 import AboutOne from "./components/AboutOne";
 import { CSSTransition } from "react-transition-group";
-import SliderMain from "../../components/UI/Swiper/SliderMain";
 import sortFiles from "../../functions/sortFiles";
 import { putMyTask } from "../../store/information";
 import AdCreatingOne from "../AdCreatingOne/AdCreatingOne/AdCreatingOne";
@@ -172,11 +171,6 @@ const MyAds = () => {
 
   const navigate = useNavigate();
 
-  const [sliderActive , setSliderActive] = useState({
-    isActive : false,
-    photos : [],
-    index : 0
-  })
   const save = useSave({
     detailsVar,
     myAdsArray,
@@ -211,7 +205,6 @@ const MyAds = () => {
     setDetailsTwo : setDetailsTwo,
     detailsTwo : detailsTwo, 
     oneCards : oneCards,
-    sliderActive : sliderActive,
     localDetails : localDetails,
     localAboutReaction : localAboutReaction,
     localIsOpen : localIsOpen,
@@ -219,7 +212,6 @@ const MyAds = () => {
     setSecondPage : setSecondPage,
     navigate : navigate,
     setOpenAboutReaction : setOpenAboutReaction,
-    setSliderActive : setSliderActive,
     openAboutReaction : openAboutReaction,
     isOpen : isOpen,
     details : details,
@@ -371,7 +363,6 @@ const MyAds = () => {
             valueTwo={valueTwo}
             valueOne = {valueOne}
             setNowKey={setNowKey}
-            setSliderActive = {setSliderActive}
             myAdsArray={filteredArray}
             setSecondPage={setSecondPage}
             setDetails={setDetailsTwo}
@@ -402,7 +393,6 @@ const MyAds = () => {
             unmountOnExit
           >
             <AboutOne
-            setSliderAcitve={setSliderActive}
             setDetails={setDetails}
               setSecondPage={setSecondPage}
               setOpen={setOpen}
@@ -422,7 +412,6 @@ const MyAds = () => {
             unmountOnExit
           >
             <LastAds
-            setSliderActive = {setSliderActive}
             responce = {isOpen.responce}
               openAboutReactionFunc={setOpenAboutReaction}
 
@@ -438,7 +427,7 @@ const MyAds = () => {
             mountOnEnter
             unmountOnExit
           >
-            <AboutReaction setOneCard = {setOneCard} setSliderActive={setSliderActive} responce = {openAboutReaction.responce}   />
+            <AboutReaction setOneCard = {setOneCard} responce = {openAboutReaction.responce}   />
           </CSSTransition>
 
 
@@ -472,7 +461,6 @@ const MyAds = () => {
 
 
 
-          <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
         </motion.div>
       )}
     </>

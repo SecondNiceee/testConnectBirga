@@ -6,7 +6,6 @@ import "../../pages/MyAds/MyAds.css";
 const MyReaction = ({
   openAboutReactionFunc,
   responce,
-  setSliderActive,
   deleteFunction,
   agree = false,
 }) => {
@@ -17,13 +16,7 @@ const MyReaction = ({
           <div className="reactions__images">
             {responce.photos.map((e, i) => (
               <img
-                onClick={() => {
-                  setSliderActive({
-                    isActive: true,
-                    index: i,
-                    photos: responce.photos,
-                  });
-                }}
+                
                 style={responce.photos.length === 1 ? { width: "100%" } : {}}
                 src={URL.createObjectURL(e)}
                 alt=""

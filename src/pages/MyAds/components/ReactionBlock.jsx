@@ -7,7 +7,6 @@ const ReactionBlock = ({
   setFilterBy,
   setOpen,
   responces,
-  setSliderActive,
   openAboutReactionFunc,
   getMore
 }) => {
@@ -22,7 +21,6 @@ const ReactionBlock = ({
         values={values}
         names={names}
         responces={responces}
-        setSliderActive={setSliderActive}
         openAboutReactionFunc={openAboutReactionFunc}
         setOpen={setOpen}
       />

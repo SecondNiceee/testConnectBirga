@@ -4,7 +4,7 @@ import SuspenseBlock from '../../../components/MyAds/SuspenseBlock';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchMyOrders } from '../../../store/information';
 
-const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunction}) => {
+const AdsContainer = ({myAdsArray, setSecondPage,  deleteFunction}) => {
 
 
     const [page , setPage] = useState(2)
@@ -47,7 +47,7 @@ const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunctio
         <div className="AdsContainer">
           {myAdsArray.map((e, i) => {
             return (
-                <SuspenseBlock key={i} e={e} i={i} setSecondPage={setSecondPage} setSliderAcitve={setSliderAcitve} />
+                <SuspenseBlock key={i} e={e} i={i} setSecondPage={setSecondPage} />
 
             );
           })}

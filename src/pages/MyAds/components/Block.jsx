@@ -1,7 +1,7 @@
 import React, { memo, useCallback } from 'react';
 import MyFirstBlock from '../../../components/MyAds/MyFirstBlock';
 
-const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
+const Block = ({e, i, setSecondPage }) => {
     const clickHandler = useCallback( (p) => {
         if (
             p.target.closest(".FirstMain__bottom-right") === null &&
@@ -23,7 +23,7 @@ const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
               <MyFirstBlock
     
                 {...e}
-                setSlideActive={setSliderAcitve}
+  
                 myAdsFunc={(value) => {
                   setSecondPage({ isActive: true, task: e, index: i });
                 }}

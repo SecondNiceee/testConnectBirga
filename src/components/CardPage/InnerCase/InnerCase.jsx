@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import cl from './InnerCase.module.css'
-const InnerCase = ({ className, task,  title , description , photos, setSliderActive, agree = false,  ...props }) => {
+const InnerCase = ({ className, task,  title , description , photos, agree = false,  ...props }) => {
     return (
         <div
         {...props} 
@@ -11,14 +11,7 @@ const InnerCase = ({ className, task,  title , description , photos, setSliderAc
               {photos.map((e , i) => {
                 let url = URL.createObjectURL(e)
                 return (
-                  <img onClick = { () => {
-                           setSliderActive( {
-                            isActive : true ,
-                            photos : photos,
-                            index : i
-                           } )
-                          }
-                  } key={i} style={photos.length === 1 ? 
+                  <img key={i} style={photos.length === 1 ? 
                     {minWidth : '100%'} 
                     :
                     {}

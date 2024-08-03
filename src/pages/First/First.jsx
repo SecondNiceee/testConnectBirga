@@ -9,7 +9,6 @@ import AllTasks from "./AllTasks";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import Responce from "./Responce";
-import SliderMain from "../../components/UI/Swiper/SliderMain";
 import { CSSTransition } from "react-transition-group";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import pagesHistory from "../../constants/pagesHistory";
@@ -78,11 +77,6 @@ const First = ({isPage = false}) => {
   const isMenuActive = useSelector((state) => state.menu.value);
 
 
-  const [sliderActive , setSliderActive ] = useState({
-    isActive : false,
-    index : 0,
-    photos : []
-  })
 
   const mainRef = useRef(null)
 
@@ -145,10 +139,8 @@ const First = ({isPage = false}) => {
     function back() {
       
         
-          if (sliderActive.isActive){
-            setSliderActive((value) => ({...value, isActive : false}))
-          }
-          else{
+
+          
     
             if (responce.isShablonModalActive){
               setResponce( (value) =>  ({...value, isShablonModalActive : false}))
@@ -196,7 +188,7 @@ const First = ({isPage = false}) => {
                   }
                 }
               }
-            }
+            
     
           }
         
@@ -240,7 +232,7 @@ const First = ({isPage = false}) => {
       MainButton.offClick(forward);
       BackButton.offClick(back);
     };
-  } , [isDetailsActive.isOpen, step , gotIt, responce.isShablonModalActive, responce.shablonMaker, sliderActive.isActive, isProfile, isCardOpen.isOpen , setProfile, setCardOpen]);
+  } , [isDetailsActive.isOpen, step , gotIt, responce.isShablonModalActive, responce.shablonMaker, isProfile, isCardOpen.isOpen , setProfile, setCardOpen]);
 
 
   useEffect( () => {
@@ -598,7 +590,6 @@ useEffect(() => {
         setCategoryOpen = {setCategoryOpen}
         filterBy = {filterBy}
         setFilterBy = {setFilterBy}
-          setSliderActive = {setSliderActive}
           ordersInformation={secFilteredArray}
           setDetailsActive={setDetailsActive}
           setMenuActive={setMenuActive}
@@ -624,7 +615,6 @@ useEffect(() => {
         <FirstChoiceSubCategory setSubcategoryChoiceOpen={setSubCategory} subCategorysPar={subCategorys}  taskInformation={filters} setTaskInformation={setFilters}   />
       </CSSTransition>
 
-     <SliderMain setSliderActive={setSliderActive} sliderActive={sliderActive} />
 
     </motion.div>
 

@@ -11,7 +11,6 @@ const Reaction = ({
   put,
   openAboutReactionFunc,
   responce,
-  setSliderActive,
   agree = false,
 }) => {
   return (
@@ -28,13 +27,6 @@ const Reaction = ({
           <div className="reactions__images">
             {responce.photos.map((e, i) => (
               <img
-                onClick={() => {
-                  setSliderActive({
-                    isActive: true,
-                    index: i,
-                    photos: responce.photos,
-                  });
-                }}
                 style={responce.photos.length === 1 ? { width: "100%" } : {}}
                 src={URL.createObjectURL(e)}
                 alt=""

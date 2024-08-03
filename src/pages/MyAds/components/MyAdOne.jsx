@@ -11,7 +11,6 @@ const MyAdOne = ({
   myAdsArray,
   setMenuActive,
   setSecondPage,
-  setSliderActive,
   nowValue,
   setNowKey,
   setOneValue,
@@ -83,7 +82,6 @@ const MyAdOne = ({
           myResponse={myResponse}
           setMyResponse={setMyResponse}
           nowValue={nowValue}
-          setSliderAcitve={setSliderActive}
           valueOne = {valueOne}
           valueTwo = {valueTwo}
             myAdsArray={myAdsArray}

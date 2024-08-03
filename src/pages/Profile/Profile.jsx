@@ -22,7 +22,6 @@ import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";
 import ChangeCards from "../ChangeCard/ChangeCard";
 import { changeProfile, deleteCard, deleteServerCard, putUserInfo } from "../../store/telegramUserInfo";
-import SliderMain from "../../components/UI/Swiper/SliderMain";
 import pagesHistory from "../../constants/pagesHistory";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 
@@ -53,11 +52,6 @@ const Profile = () => {
   const dispatch = useDispatch();
 
 
-  const [isSliderAcitve , setSliderActive] = useState({
-    isActive : false,
-    index : 0,
-    photos : []
-  })
   
   const setMenuActive = (arg) => {
     dispatch(changeMenuActive(arg));
@@ -422,7 +416,6 @@ const Profile = () => {
       {cards.length !== 0 ? cards.map((e, i) => {
         return (
           <Case 
-          setSliderActive = {setSliderActive}
           deleteFunction = {() => {
             deleteFunction(i, e)
 
@@ -493,7 +486,7 @@ const Profile = () => {
             <ChangeCards save={save} index={index}  card={cards[index]}  aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />
         </CSSTransition>
 
-        <SliderMain sliderActive={isSliderAcitve} setSliderActive={setSliderActive} />
+
 
 
 

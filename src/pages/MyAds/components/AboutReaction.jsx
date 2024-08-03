@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { changeMenuActive } from "../../../store/menuSlice";
 import makeNewFile from "../../../functions/newMakeFile";
 
-const AboutReaction = ({ responce , setSliderActive = () =>{}, setOneCard,   ...props}) => {
+const AboutReaction = ({ responce , setOneCard,   ...props}) => {
   const dispatch = useDispatch()
   const setMenuActive = useCallback(
     (arg) => {
@@ -94,7 +94,7 @@ const AboutReaction = ({ responce , setSliderActive = () =>{}, setOneCard,   ...
     
 
       {cards === null ? <MyLoader/> :
-      <ExampleWorks openFunc={openFunc}  setSliderActive = {setSliderActive} cards={cards}/>}
+      <ExampleWorks openFunc={openFunc}   cards={cards}/>}
 
 
 

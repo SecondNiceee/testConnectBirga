@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 const AllReactions = ({
   setFilterBy,
   openAboutReactionFunc,
-  setSliderAcitve,
   responces,
   setOpen,
   filteredArray,
@@ -28,7 +27,6 @@ const AllReactions = ({
           getMore = {getMore}
           setFilterBy={setFilterBy}
           openAboutReactionFunc={openAboutReactionFunc}
-          setSliderActive={setSliderAcitve}
           responces={filteredArray}
           setOpen={setOpen}
         />

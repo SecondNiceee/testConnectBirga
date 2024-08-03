@@ -6,7 +6,7 @@ import { setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 
 export const useButton = ({
-  sliderActive,
+  
   localDetails,
   localAboutReaction,
   localIsOpen,
@@ -14,7 +14,7 @@ export const useButton = ({
   setSecondPage,
   navigate,
   setOpenAboutReaction,
-  setSliderActive,
+  
   openAboutReaction,
   isOpen,
   localSecondPage,
@@ -69,7 +69,6 @@ export const useButton = ({
       } })
     }
     function goBack() {
-      if (!sliderActive.isActive) {
         if (!localDetails.isActive) {
           if (oneCards.isOpen){
             setOneCard((value) => ({...value , isOpen : false}))
@@ -114,9 +113,6 @@ export const useButton = ({
         } else {
             save()
         }
-      } else {
-        setSliderActive({ ...sliderActive, isActive: false });
-      }
     }
 
     BackButton.show();
@@ -145,9 +141,7 @@ export const useButton = ({
     // eslint-disable-next-line
   }, [
     isOpen.isActive,
-    sliderActive.isActive,
     openAboutReaction.isActive,
-    sliderActive.isActive,
     details.isActive,
     isOpen,
     navigate,

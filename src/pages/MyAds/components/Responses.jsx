@@ -12,7 +12,6 @@ const Responses = ({
   values,
   names,
   openAboutReactionFunc,
-  setSliderActive,
   setOpen,
   getMore
 }) => {
@@ -72,7 +71,6 @@ const Responses = ({
         return (
           <ReactionSuspense
             openAboutReactionFunc={openAboutReactionFunc}
-            setSliderActive={setSliderActive}
             responce={e}
             setOpen={setOpen}
           />

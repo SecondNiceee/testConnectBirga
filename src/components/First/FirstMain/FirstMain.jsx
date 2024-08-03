@@ -9,7 +9,6 @@ const FirstMain = (
     {
       ordersInformation,
       setDetailsActive,
-      setSliderActive,
       orderStatus,
     }
   ) => {
@@ -55,7 +54,6 @@ const FirstMain = (
           ordersInformation.map((e, i) => {
             return (
               <FirstBlock
-                setSlideActive={setSliderActive}
                 index={i}
                 isWatched={watchedArr.includes(e.id) ? true : false}
                 key={i}

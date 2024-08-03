@@ -9,7 +9,6 @@ const PickerContent = ({
   myAdsArray,
   nowValue,
   setSecondPage,
-  setSliderAcitve,
   valueTwo,
   valueOne,
   myResponse,
@@ -130,7 +129,7 @@ const PickerContent = ({
 
       <PickerOne ref={containerOne} oneValue = {valueOne} nowValue = {nowValue}  responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
 
-      <PickerTwo ref={containerTwo} valueTwo = {valueTwo} myAdsArray={myAdsArray} setSecondPage = {setSecondPage} setSliderAcitve = {setSliderAcitve} deleteFunction = {deleteFunction} />
+      <PickerTwo ref={containerTwo} valueTwo = {valueTwo} myAdsArray={myAdsArray} setSecondPage = {setSecondPage}  deleteFunction = {deleteFunction} />
 
 
 

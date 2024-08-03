@@ -10,7 +10,6 @@ import InputBlock from "../../components/First/CategoryBlock/InputBlock";
 const AllTasks = ({
   setDetailsActive,
   setMenuActive,
-  setSliderActive,
   ordersInformation,
   filterBy,
   setFilterBy,
@@ -105,7 +104,6 @@ const AllTasks = ({
             orderStatus = {orderStatus}
             setDetailsActive={setDetailsActive}
             ordersInformation={ordersInformation}
-            setSliderActive = {setSliderActive}
           />
 
           

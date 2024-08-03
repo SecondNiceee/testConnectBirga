@@ -3,7 +3,7 @@ import cl from "./Case.module.css";
 import FalseTie from "../FalseTie/FalseTie";
 import MyButton from "../MyButton/MyButton";
 
-const Case = ({ className, card, category, openFunc, task,  title , description , photos, changeFunction, deleteFunction, setSliderActive, watchOnly, agree = false,  ...props }) => {
+const Case = ({ className, card, category, openFunc, task,  title , description , photos, changeFunction, deleteFunction, watchOnly, agree = false,  ...props }) => {
   return (
     <div
       {...props} 
@@ -14,14 +14,7 @@ const Case = ({ className, card, category, openFunc, task,  title , description 
             {photos.map((e , i) => {
               let url = URL.createObjectURL(e)
               return (
-                <img onClick = { () => {
-                         setSliderActive( {
-                          isActive : true ,
-                          photos : photos,
-                          index : i
-                         } )
-                        }
-                } key={i} style={photos.length === 1 ? 
+                <img  key={i} style={photos.length === 1 ? 
                   {minWidth : '100%'} 
                   :
                   {}

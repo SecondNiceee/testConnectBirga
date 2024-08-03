@@ -8,7 +8,6 @@ import { changeMenuActive } from "../../../store/menuSlice";
 import formatDate from "../../../functions/makeDate";
 import { postResponse } from "../../../store/responses";
 const LastAds = ({
-  setSliderActive,
 
   openAboutReactionFunc,
 
@@ -40,7 +39,7 @@ const LastAds = ({
 
       {/* <LastTop name = {name} photo = {photo} stage = {stage} openAboutReactionFunc={openAboutReactionFunc} /> */}
 
-      <Reaction blue = {true} setSliderActive={setSliderActive}  openAboutReactionFunc = {openAboutReactionFunc} put={true} responce={responce} />
+      <Reaction blue = {true}   openAboutReactionFunc = {openAboutReactionFunc} put={true} responce={responce} />
       
       {/* <LastImages images = {images} /> */}
       

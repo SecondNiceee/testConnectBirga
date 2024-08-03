@@ -3,7 +3,7 @@ import BlockSpinner from '../UI/BlockSpinner/BlockSpinner';
 import { useInView } from 'react-intersection-observer';
 const Block = lazy( () => import("../../pages/MyAds/components/Block") )
 
-const SuspenseBlock = ({i , e, setSecondPage, setSliderActive}) => {
+const SuspenseBlock = ({i , e, setSecondPage}) => {
     const { ref, inView } = useInView({
         threshold: 0, // Порог видимости (от 0 до 1)
       });
@@ -32,7 +32,7 @@ const SuspenseBlock = ({i , e, setSecondPage, setSliderActive}) => {
                 zIndex : -1
             }} className="catch_block"></div>
             {isVisible &&  <Suspense fallback = {<BlockSpinner style = {e.photos.length > 0 ? {height : "313px"} : {height : "144px"}}   />}>
-                        <Block e={e} i={i} setSecondPage={setSecondPage} setSliderAcitve={setSliderActive} />
+                        <Block e={e} i={i} setSecondPage={setSecondPage}/>
                 </Suspense>
                 }
         </div>

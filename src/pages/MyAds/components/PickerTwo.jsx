@@ -4,7 +4,7 @@ import MyAnimation from './MyAnimation';
 import AdsContainer from './AdsContainer';
 import { useSelector } from 'react-redux';
 
-const PickerTwo = forwardRef(({setSecondPage , deleteFunction, setSliderAcitve , myAdsArray, valueTwo} , ref) => {
+const PickerTwo = forwardRef(({setSecondPage , deleteFunction , myAdsArray, valueTwo} , ref) => {
   const text = useMemo( () => {
     switch (valueTwo){
 
@@ -30,7 +30,7 @@ const PickerTwo = forwardRef(({setSecondPage , deleteFunction, setSliderAcitve ,
         {myAdsArray.length === 0 && status === "all" ? 
         <MyAnimation style = {{height : "calc(100vh - 300px)"}} text={text}/>
         :
-        <AdsContainer myAdsArray={myAdsArray} setSecondPage={setSecondPage} setSliderAcitve={setSliderAcitve} deleteFunction={deleteFunction} />
+        <AdsContainer myAdsArray={myAdsArray} setSecondPage={setSecondPage}  deleteFunction={deleteFunction} />
         }
 
 

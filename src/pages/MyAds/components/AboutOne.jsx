@@ -13,7 +13,6 @@ const AboutOne = ({
   setOpen,
   setSecondPage,
   setDetails,
-  setSliderAcitve,
   openAboutReactionFunc,
 }) => {
   const responces = useSelector( state => state.responses.responsesByA )
@@ -98,7 +97,6 @@ const AboutOne = ({
 
       {task ? (
         <Block
-          setSlideActive={setSliderAcitve}
           deleteFunction={deleteCallback}
           setDetailsActive={setDetailsCallback}
           isResponce={task.status !== "inProcess" }
@@ -117,7 +115,6 @@ const AboutOne = ({
           filteredArray={filteredArray}
           setFilterBy={setFilterBy}
           openAboutReactionFunc={openAboutReactionFunc}
-          setSliderAcitve={setSliderAcitve}
           setOpen={setOpen}
         />
       
