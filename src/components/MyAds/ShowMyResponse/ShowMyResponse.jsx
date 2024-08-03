@@ -64,7 +64,10 @@ const ShowMyResponse = ({
   return (
     <>
       {response.user.fuck ? (
-        <MyLoader style={{ width: "100vw", height: "100vh" }} />
+        <div className={cl.wrapper}>
+
+            <MyLoader style={{ width: "100vw", height: "100vh" }} />
+        </div>
       ) : (
         <div className={cl.wrapper}>
           <Top setMenuActive={setMenuActive} name={"Мой отклик"} />
