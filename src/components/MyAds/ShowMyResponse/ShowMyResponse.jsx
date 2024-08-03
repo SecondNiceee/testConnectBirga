@@ -11,7 +11,7 @@ import MainButton from "../../../constants/MainButton";
 import axios from "axios";
 import { changeMenuActive } from "../../../store/menuSlice";
 const ShowMyResponse = ({
-  response = { advertisement: { user: {} } , id : 0 },
+  response = { advertisement: { user: {} } , id : 0 , user : {} },
   openDetails,
   index,
   deleteFunction,
