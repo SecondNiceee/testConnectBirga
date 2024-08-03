@@ -1,14 +1,11 @@
-import React, { memo, useEffect, useMemo, useState } from "react";
+import React, { memo, useMemo } from "react";
 import MyButton from "../UI/MyButton/MyButton";
 import Pallete from "../UI/Pallete/Pallete";
 import ShareIcon from "../UI/ShareIcon/ShareIcon";
 import SmallDimond from "../UI/SmallDimond/SmallDimond";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import formatDate from "../../functions/makeDate";
-import { useInView } from 'react-intersection-observer';
-import MyLoader from "../UI/MyLoader/MyLoader";
 import BlockSpinner from "../UI/BlockSpinner/BlockSpinner";
-let counter = 0
 const MyFirstBlock = ({
   className,
   taskName,
@@ -28,15 +25,12 @@ const MyFirstBlock = ({
 
 }) => {
   const tonConstant = useSelector(state => state.ton.value)
-  console.log("render" + counter)
-  counter += 1
 
 
 
 
 
   const textStatus = useMemo( () => {
-    console.log(status)
     switch (status){
         case "active":
             
@@ -50,7 +44,6 @@ const MyFirstBlock = ({
     }
   } , [status] )
 
-  console.log(textStatus)
 
   const style = useMemo( () => {
     switch (status){
@@ -66,7 +59,6 @@ const MyFirstBlock = ({
   } , [status] )
   
 
-  console.warn(photos)
   return (
     <>
       {photos !== undefined  ? (

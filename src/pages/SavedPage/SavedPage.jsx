@@ -93,9 +93,7 @@ const SavedPage = () => {
       savedTasks.length > 0 &&
       savedTasks[details.id]
     ) {
-      console.log(savedTasks[details.id]);
       if (savedTasks[details.id].responces) {
-        console.log("ХАААААААААААа");
         // if (savedTasks[details.id].responces.find(e => e.user.id === "2144832745")){
         //   return true
         // }
@@ -166,7 +164,6 @@ const SavedPage = () => {
           text_color: "#606060",
         });
       } else {
-        console.log("Я БЫЛ ТУТ");
         if (!responce.isOpen) {
           MainButton.setParams({
             is_active: true,
@@ -176,7 +173,6 @@ const SavedPage = () => {
         }
       }
     } else {
-      console.log("Я даун");
       BackButton.hide();
       MainButton.hide();
       MainButton.offClick(forward);
@@ -202,13 +198,11 @@ const SavedPage = () => {
   useEffect( () => {
       function backFunction(){
           if (card.isOpen){
-            console.log("Я закрыл карточки")
             setCard((value) => ({...value , isOpen : false}))
           }
           else{
             
             if (isProfileOpen){
-              console.log("Я закрыл профиль")
               setProfileOpen(false)
             }
             else{
@@ -224,7 +218,6 @@ const SavedPage = () => {
           }
       }
       if (myResponse.isActive){
-        console.log("Я тут!")
         BackButton.onClick(backFunction)
         BackButton.show()
       }
@@ -274,7 +267,6 @@ const SavedPage = () => {
       });
     } else {
       if (responce.isOpen) {
-        console.warn("я тут");
         MainButton.setParams({
           color: "#2ea5ff",
           text_color: "#ffffff",
@@ -368,7 +360,6 @@ const SavedPage = () => {
     // setDetailsActive,
     // isDetailsActive,
   });
-  console.log(details);
   return (
     <div className="saved-wraper">
       <Top

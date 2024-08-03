@@ -35,7 +35,6 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
         return subCategorysCopy
     } , [subCategorysPar, taskInformation] )
 
-    console.log(subCategorys)
 
 
     const [inputValue , setInputValue] = useState('')

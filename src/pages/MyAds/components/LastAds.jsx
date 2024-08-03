@@ -14,7 +14,6 @@ const LastAds = ({
 
   responce
 }) => {
-  console.log('рендер LastAds')
   const dispatch = useDispatch()
 
   const setMenuActive = useCallback(

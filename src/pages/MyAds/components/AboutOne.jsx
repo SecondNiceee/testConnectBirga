@@ -1,15 +1,11 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-
-import FirstBlock from "../../../components/First/FirstMain/FirstBlock";
 import { memo } from "react";
 import Top from "../../../components/UI/Top/Top";
-import axios from "axios";
 import { deleteAd } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
-import makeNewFile from "../../../functions/newMakeFile";
 import AllReactions from "./AllReactions";
 import Block from "../../../components/First/Block";
-import { fetchResponseByAdvertisement, fetchResponses } from "../../../store/responses";
+import { fetchResponseByAdvertisement } from "../../../store/responses";
 
 const AboutOne = ({
   task,
@@ -21,7 +17,6 @@ const AboutOne = ({
   openAboutReactionFunc,
 }) => {
   const responces = useSelector( state => state.responses.responsesByA )
-  console.log("aboutOne");
   const dispatch = useDispatch();
   useEffect(() => {
 
@@ -56,9 +51,7 @@ const AboutOne = ({
   const [filterBy, setFilterBy] = useState("all");
 
   const filteredArray = useMemo(() => {
-    console.log(filterBy);
     if (responces !== null) {
-      console.log(responces)
       if (filterBy === "all"){
         return responces
       }
@@ -80,7 +73,6 @@ const AboutOne = ({
   }, []);
 
   const setDetailsCallback = useCallback(() => {
-    console.log(task);
     setDetails({
       isActive: true,
       task: task,
@@ -92,7 +84,7 @@ const AboutOne = ({
   const getMore = useCallback( (page, setPage) => {
     dispatch(fetchResponseByAdvertisement([task.id , task , page]));
     setPage(page + 1);
-  } , [dispatch, task, task.id] )
+  } , [dispatch, task] )
 
 
  

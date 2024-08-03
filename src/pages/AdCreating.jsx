@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   changeMyAds,
   fetchMyOrders,
-  postMyTask,
 } from "../store/information";
 import BackButton from "../constants/BackButton";
 import MainButton from "../constants/MainButton";
@@ -202,7 +201,7 @@ const AdCreating = () => {
     // dispatch(postMyTask([myFormData, el.photos]));
     for (let i = 0 ; i < 1; i++){
 
-      let b = await axios.post("https://back-birga.ywa.su/advertisement", myFormData, {
+      await axios.post("https://back-birga.ywa.su/advertisement", myFormData, {
         headers: {
           "Content-Type" :'multipart/form-data',
           "Access-Control-Allow-Origin": "*"

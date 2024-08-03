@@ -15,7 +15,6 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue} , ref) =
 
 
     const interRef = useRef(null)
-    console.log(interRef)
 
   
     const responsesStatus = useSelector(state => state.responses.status)

@@ -2,7 +2,6 @@ import React from 'react';
 import cl from './Customer.module.css'
 import MyButton from '../../UI/MyButton/MyButton';
 const Customer = ({fl , photo, link}) => {
-    console.log(link)
     return (
         <div className={cl.wrapper}>
             <img className={cl.userPhoto} src={photo} alt="" />

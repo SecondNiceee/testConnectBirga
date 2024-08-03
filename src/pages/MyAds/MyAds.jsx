@@ -19,8 +19,6 @@ import { putMyTask } from "../../store/information";
 import AdCreatingOne from "../AdCreatingOne/AdCreatingOne/AdCreatingOne";
 import { useButton } from "../../hooks/MyAds/useButton";
 import { useSave } from "../../hooks/MyAds/useSave";
-import pagesHistory from "../../constants/pagesHistory";
-import CardPage from "../CardPage/CardPage";
 import ShowMyResponse from "../../components/MyAds/ShowMyResponse/ShowMyResponse";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import { deleteResponse } from "../../store/responses";
@@ -171,7 +169,6 @@ const MyAds = () => {
 
 
 
-  console.log(pagesHistory)
 
   const navigate = useNavigate();
 
@@ -180,7 +177,6 @@ const MyAds = () => {
     photos : [],
     index : 0
   })
-  console.log(details)
   const save = useSave({
     detailsVar,
     myAdsArray,
@@ -315,7 +311,7 @@ const MyAds = () => {
 
 
 
-  console.log(myAdsArray)
+
 
   const deleteFunction = useCallback( (index) => {
     window.Telegram.WebApp
@@ -342,7 +338,6 @@ const MyAds = () => {
 } , [setMyResponse , dispatch])
 
 
-  console.log(myResponse)
 
 
   return (

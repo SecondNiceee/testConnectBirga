@@ -8,13 +8,11 @@ const LinkComp = ({navigate, link}) => {
         switch (navigate){
             case "behance":
                 return behanceIcon;
-                break;
+
             case "driple":
                 return dripleIcon;
-                break;
             case "dropfile":
                 return dropfileIcon
-                break
             default:
                 alert("Что - то пошло не так")
         }
@@ -39,7 +37,7 @@ const LinkComp = ({navigate, link}) => {
     
     
         } )
-    } , [] )
+    } , [link] )
 
     
     return (

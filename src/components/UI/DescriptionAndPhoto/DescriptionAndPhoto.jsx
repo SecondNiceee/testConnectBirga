@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useReducer, useRef, useState } from "react";
+import React, { memo, useEffect,  useRef } from "react";
 import cl from "./DescriptionAndPhoto.module.css";
 import GreyText from "../../../components/UI/GreyText/GreyText";
 import FileInput from "../../../components/UI/FileInput/FileInput";

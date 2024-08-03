@@ -14,7 +14,6 @@ const Reaction = ({
   setSliderActive,
   agree = false,
 }) => {
-  console.log(responce.isWatched);
   return (
     <>
       <div

@@ -49,8 +49,6 @@ const SwiperComponent = ({photos, index, setClose}) => {
         spaceBetween={50}
         slidesPerView={1}
         initialSlide={index}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
 
       >
         {photos.map((e, i) => {

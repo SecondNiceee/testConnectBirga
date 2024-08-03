@@ -81,7 +81,6 @@ export const postCard = createAsyncThunk(
                 photos.push(newFile)
 
              })
-            console.log(im)
             let localCard = {
                 ...data[2],
                 photosNames : im.data.photos,
@@ -139,7 +138,6 @@ export const fetchUserInfo = createAsyncThunk(
                 userId : UserId
             }
         })
-        console.log(allCards)
         for (let e of allCards.data)
             {
                 
@@ -156,7 +154,6 @@ export const fetchUserInfo = createAsyncThunk(
                     photos : files
                 })
             }
-        console.log(user.data)
         
         
         return ( {

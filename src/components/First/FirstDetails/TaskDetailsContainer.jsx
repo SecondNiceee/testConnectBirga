@@ -17,8 +17,10 @@ const TaskDetailsContainer = ({orderInformation , setProfile, end = false}) => {
         return "Заказчик уже выбрал исполнителя"
       case "completed":
         return "Задание уже выполнено"
+      default :
+
     }
-  }, [])
+  }, [end , orderInformation.status])
   return (
     <div className="Task__container-one">
       <FirstBlock end = {end} task={orderInformation} {...orderInformation} isButton = {false} />

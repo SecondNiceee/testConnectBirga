@@ -6,10 +6,8 @@ import ShareIcon from "../UI/ShareIcon/ShareIcon";
 import SmallDimond from "../UI/SmallDimond/SmallDimond";
 import FalseTie from "../UI/FalseTie/FalseTie";
 import { addWatch } from "../../store/watchedAds";
-import options from "../../constants/options";
 import formatDate from "../../functions/makeDate";
 
-let counter = 0
 const Block = ({
     className,
     taskName,
@@ -36,8 +34,6 @@ const Block = ({
 
     const dispatch = useDispatch()
     const tonConstant = useSelector(state => state.ton.value)
-    console.log("render" + counter)
-    counter += 1
   
     return (
         <>

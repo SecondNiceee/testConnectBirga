@@ -19,8 +19,6 @@ const AllTasks = ({
   setFilters,
   setSubCategory
 }) => {
-  // count += 1
-  // console.warn('РЕНДЕР' + count )
 
 
 
@@ -53,7 +51,6 @@ const AllTasks = ({
 
   const tonConstant = useSelector((state) => state.ton.value);
 
-  console.log(ordersInformation, orderStatus)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -85,7 +82,7 @@ const AllTasks = ({
     
   }, [setFilters] )
 
-  console.warn(filters)
+
 
   return (
     <div className="AllTasks">

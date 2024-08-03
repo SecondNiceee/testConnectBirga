@@ -6,7 +6,6 @@ const values = ["Я исполнитель", "Я заказчик"];
 const keys = ["freelancer", "customer"];
 const MyAdsBlock = ({  nowValue, setNowKey,  greyWidth , greyIntWidth, setOneValue, setTwoValue  }) => {
   const me = useSelector(state => state.telegramUserInfo)
-  console.log(me)
   const responses = useSelector(state => state.responses.responses)
   const advertisements = useSelector(state => state.information.myAdsArray)
   const finishedDeals = useMemo( () => {

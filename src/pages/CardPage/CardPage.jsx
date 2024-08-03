@@ -4,7 +4,6 @@ import InnerCase from "../../components/CardPage/InnerCase/InnerCase";
 import FullDescription from "../../components/First/FirstDetails/FullDescription";
 import LinkComp from "../../components/CardPage/Link/LinkComp";
 const CardPage = ({ card }) => {
-    console.log(card)
     const linksComponents = useMemo( () => {
             return (
             <div className={cl.cardsLinks}>

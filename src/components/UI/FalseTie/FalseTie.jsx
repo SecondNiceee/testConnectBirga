@@ -10,7 +10,6 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
     const savedResponces = useSelector(state => state.saves.responces)
     const savedCards = useSelector(state => state.saves.cards)
     const dispatch = useDispatch()
-    console.log(savedTasks)
     useEffect( () => {
         switch (navigate){
             case "advertisement":{
@@ -24,7 +23,6 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
             case ("responce"):{
                 savedResponces.forEach( (e, i) => {
                     if (e.id === id){
-                        console.log(e.id, id)
                         setActive(true)
                     }
                 } )
@@ -46,11 +44,9 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
 
         }
         
+    } , [navigate , savedCards, id, savedTasks, savedResponces] )
 
-    } , [navigate] )
 
-
-    console.log(navigate)
 
 
     const deleteCardFunction = useCallback( () => {
@@ -79,7 +75,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
         else{
             dispatch(deleteCard(id))
         }
-    }  , [id, task , agree] )
+    }  , [id , agree , dispatch] )
 
 
     const deleteResponceFunc = useCallback( () => {
@@ -108,7 +104,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
         else{
             dispatch(deleteResponce(id))
         }
-    } , [id, task , agree] )
+    } , [id , agree , dispatch] )
     const deleteAdFunction = useCallback(() => {
         if (agree){
 
@@ -135,7 +131,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
         else{
             dispatch(deleteAdvertisement(id))
         }
-    } , [id, task , agree] )
+    } , [id , agree, dispatch] )
 
 
 
@@ -149,7 +145,6 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
                             dispatch(addAdvertisment([id , task]))
                             break
                         case ("responce"):
-                            console.log(navigate)
                             dispatch(addResponce([id, task]))
                             break
                         case ("card"):

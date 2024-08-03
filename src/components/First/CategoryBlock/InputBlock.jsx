@@ -3,7 +3,6 @@ import React, {
   useEffect,
   useMemo,
   useRef,
-  useState,
 } from "react";
 import cl from "./CategoryBlock.module.css";
 
@@ -12,7 +11,6 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
   const inputRef = useRef(null);
   const textRef = useRef(null);
   const rubRef = useRef(null);
-  const [isFocus, setFocus] = useState(false);
   const convertedValue = useMemo(() => {
     if (value === "0") {
       
@@ -20,7 +18,7 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
       
     }
     return new Intl.NumberFormat("ru-RU").format(value);
-  }, [value, isFocus]);
+  }, [value]);
   useEffect(() => {
     if (inputRef.current.value === "") {
       inputRef.current.style.width = "66px";
@@ -37,8 +35,7 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
     //   inputRef.current.style.width = "8px";
     //   rubRef.current.style.display = "block";
     // }
-    setFocus(false);
-  }, [convertedValue, setFocus]);
+  }, [ ]);
 
   return (
     <label htmlFor="myInput" style={{width : "110px"}} onClick={func} {...props} className={cl.wrapper}>
@@ -56,7 +53,6 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
               setTimeout( () => {
                 document.documentElement.style.overflow = "unset"
               } , 500 )
-              setFocus(true);
             }}
             onBlur={unFocusHandler}
             onChange={(e) => {

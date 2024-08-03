@@ -11,13 +11,11 @@ import MainButton from '../../../constants/MainButton';
 import axios from 'axios';
 import { changeMenuActive } from '../../../store/menuSlice';
 const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
-    console.log(response)
     const dispatch = useDispatch()
     useEffect( () => {
         async function clickHandler(){
             try{
 
-                console.warn(response.user.id , response.advertisement.id, response.id, response.advertisement.user.chatId, response.advertisement.id)
                 await axios.get("https://back-birga.ywa.su/bot/notification" , {
                     params : {
                         "executorId" : String(response.user.id),
@@ -44,7 +42,7 @@ const ShowMyResponse = ({response , openDetails, index, deleteFunction}) => {
         }
 
         
-    } , [] )
+    } , [response.advertisement.id,response.advertisement.user.id, response.advertisement.user.chatId, response.id, response.isWatched, response.user.id] )
 
     const setMenuActive = useCallback(
         (arg) => {

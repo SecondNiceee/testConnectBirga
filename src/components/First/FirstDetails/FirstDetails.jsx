@@ -1,8 +1,7 @@
-import React, { memo, useCallback, useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 import TaskDetailsContainer from './TaskDetailsContainer';
 import TimeAndWatches from './TimeAndWatches';
 import SimilarAds from './SimilarAds';
-import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addWatch } from '../../../store/information';
 
@@ -22,17 +21,16 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
             }
         }
 
-    } , [isDetailsActive] )
+    } , [isDetailsActive , breakRef] )
     
 
     const mainRef = useRef()
-    console.log('рендер детаилса')
     const disatch = useDispatch()
     useEffect( () => {
         if (!end && orderInformation ){
             disatch(addWatch(orderInformation))
         }
-    } , [] )
+    } , [disatch, end , orderInformation] )
 
 
     return (

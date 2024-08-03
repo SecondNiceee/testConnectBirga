@@ -12,7 +12,6 @@ const Block = ({e, i, setSecondPage, setSliderAcitve }) => {
           }
         
     } , [setSecondPage, e, i]) 
-    console.warn(e)
     return (
         <>
           <div 

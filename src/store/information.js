@@ -6,7 +6,6 @@ import makeNewFile from "../functions/newMakeFile";
 export const addWatch = createAsyncThunk(
   "information/addWatch",
   async function (advertisement) {
-    console.log(advertisement);
     try {
       let myData = new FormData();
       myData.append("views", String(Number(advertisement.viewsNumber) + 1));
@@ -94,7 +93,6 @@ export const postMyTask = createAsyncThunk(
       //   });
       // }
 
-      console.log(b)
 
       let localTask;
 
@@ -347,10 +345,7 @@ const information = createSlice({
   reducers: {
     getMoreMyAds(state, action) {
       for (let i = action.payload * 6; i < action.payload * 6 + 6; i++) {
-        console.warn(state.myAdsArray[i]);
         if (state.myAdsArray[i]) {
-          console.log(state.myAdsArray[i]);
-          console.warn("Хээллоу");
           state.myPaginationArray.push(state.myAdsArray[i]);
         } else {
           state.myOrderStatus = "all";
@@ -416,7 +411,6 @@ const information = createSlice({
     builder.addCase(fetchTasksInformation.fulfilled, (state, action) => {
       state.orderStatus = "complete";
       if (action.payload.length < 6) {
-        console.log("я тут");
         state.orderStatus = "all";
       }
       state.orderInformations.push(...action.payload);
@@ -470,7 +464,6 @@ const information = createSlice({
           return e;
         }
       });
-      console.log(state.myAdsArray);
     });
     builder.addCase(putMyTask.rejected, (state) => {
       state.putTaskStatus = "error";

@@ -1,4 +1,4 @@
-import React, { memo, useState } from "react";
+import React, { memo } from "react";
 import Burger from "../../UI/Burger/Burger";
 import OneInput from "../../UI/OneInput/OneInput";
 

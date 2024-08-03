@@ -16,11 +16,9 @@ Date.prototype.addHours = function(h) {
   this.setTime(this.getTime() + (h*60*60*1000));
   return this;
 }
-let count = 0
+
 const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , GreyWidth , GreyIntWidth , errors}) => {
 
-  console.log('рендер вторго ' + count)
-  count += 1
 
       const monthMap = {
         '1': 'Янв',

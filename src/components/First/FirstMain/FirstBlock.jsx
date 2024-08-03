@@ -93,7 +93,7 @@ const FirstBlock = ({
       }
     }
 
-  }, [photos]);
+  }, [photos , end] );
 
 
   const props = {
@@ -101,7 +101,6 @@ const FirstBlock = ({
     taskName: taskName,
     time: time,
     end: end,
-    setDetailsActive: setDetailsActive,
     isButton: isButton,
     photos: photos,
     isMyAds: isMyAds,

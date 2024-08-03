@@ -2,7 +2,6 @@ import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from "
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 let counter = 0;
-let newP = true
 const FileInput = ({ className, files, setFiles , fileError, photosNames , clear = false  }) => {
   const [images, setImages] = useState([]);
   
@@ -18,7 +17,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames , clear
           }
           else{
               setImages([...localImages])
-              newP = false
             
           }
         }
@@ -29,7 +27,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames , clear
   
   
   useEffect( () => {
-    alert("clear")
     addFiles(files , clear)
     if (clear && files.length === 0){
       setImages([])
@@ -75,13 +72,8 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames , clear
     });
 }
 
-//Usage
-  // const file = document.querySelector('input[type="file"]').files[0];
-  // resizeImage(file, 800, 600, 0.8).then((resizedFile) => {
-  //     console.log(resizedFile);
-  // });
 
-  console.log(images)
+
 
   const myRef = useRef(null);
 
@@ -101,7 +93,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames , clear
       }
     }
     return {}
-  }  , [fileError, images, files] )
+  }  , [fileError, files] )
 
 
 
@@ -132,7 +124,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames , clear
       }
     }
     return {}
-  } , [files, images] )
+  } , [files] )
   
   return (  
     <>

@@ -1,7 +1,6 @@
 import {  useEffect } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
-import { useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
@@ -30,12 +29,9 @@ export const useButton = ({
   setMyResponse
 
 }) => {
-  const history = useLocation()
-  console.log(history)
   const dispatch = useDispatch()
   useEffect(() => {
     function writeFucntion() {
-      console.log('я тут прием')
       window.Telegram.WebApp
       .showPopup({
         title: "Внимание",

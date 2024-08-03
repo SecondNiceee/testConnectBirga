@@ -96,7 +96,6 @@ export const addAdvertisment = createAsyncThunk(
                 "advertisementId" : par[0],
                 "userId" : 2144832745
             })
-            console.log(im.data)
             
 
             return par[1]
@@ -136,7 +135,6 @@ export const fetchAllValues = createAsyncThunk(
             }
 
             let files = await makeNewFile(order.folder, order.photos);
-            console.log(order)
             trueAdvertisements.push(
                 {
                     id : order.id,
@@ -229,7 +227,6 @@ export const fetchAllValues = createAsyncThunk(
                 "roles" : imTwo.data.roles
                 
               }
-              console.log(responces[i])
             } catch (e) {
               alert(e);
             }
@@ -242,7 +239,6 @@ export const fetchAllValues = createAsyncThunk(
             }
         })
 
-        console.log(im.data)
 
          let cards = im.data.savedCards
          let localCards = []
@@ -264,7 +260,6 @@ export const fetchAllValues = createAsyncThunk(
                 })
             }
         
-            console.log(responces)
         return [trueAdvertisements, responces, localCards]
     }
     catch (e){

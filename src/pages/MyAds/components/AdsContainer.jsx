@@ -13,7 +13,6 @@ const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunctio
     const dispatch = useDispatch()
 
     const getMore = useCallback(async () => {
-      console.log(page);
       dispatch(fetchMyOrders(page));
       setPage(page + 1);
     }, [page, setPage, dispatch]);
@@ -41,7 +40,6 @@ const AdsContainer = ({myAdsArray, setSecondPage, setSliderAcitve, deleteFunctio
       // eslint-disable-next-line
     }, [myAdsArray]);
 
-    console.warn(myAdsArray)
 
 
 

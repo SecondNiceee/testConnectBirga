@@ -19,7 +19,6 @@ const ShablinBlock = ({
     photos: [],
   });
   let localShablonSetting = shablonSetting;
-  console.log(responce)
   return (
     <div className={className ? [cl.main, className].join(" ") : cl.main}>
       {shablonsArr.length > 0 ? (
@@ -64,7 +63,6 @@ const ShablinBlock = ({
         <AdCreateFunc
           text={"Создать шаблон"}
           func={() => {
-            console.log('Вызов этой поганой функции')
             setResponce((value) =>  ({ ...value , shablonMaker: true }));
           }}
         />

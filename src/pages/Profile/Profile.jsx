@@ -90,7 +90,6 @@ const Profile = () => {
   const cards = useSelector(state => state.telegramUserInfo.profile.cards)
 
   
-  console.warn(cards)
   aboutULocal = aboutU
   userInfoLocal = userInfo
 
@@ -299,7 +298,6 @@ const Profile = () => {
       }
     
   } , [] )
-  console.log(aboutULocal.stage)
 
   const onFocusFunc = useCallback( (e) => {
     e.target.value = String(aboutULocal.stage).split(' ')[0]

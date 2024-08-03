@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 
 import BackButton from "../../constants/BackButton";
 import "../MyAds/MyAds.css"
@@ -31,11 +31,9 @@ const First = ({isPage = false}) => {
 
   const [step , setStep] = useState(0)
   localStep = step
-  console.log('Рендер ферста')
   
 
 
-  console.warn(window.scrollY)
 
   const dispatch = useDispatch();
 
@@ -57,6 +55,7 @@ const First = ({isPage = false}) => {
         setDetailsActive((value) => ({...value, isOpen : true}))
       } , 300 )
     }
+    // eslint-disable-next-line
   }, []  )
 
   
@@ -228,7 +227,6 @@ const First = ({isPage = false}) => {
         }
       }
     } else {
-      console.log('Я даун')
       BackButton.hide();
       MainButton.hide();
       MainButton.setParams({
@@ -246,7 +244,6 @@ const First = ({isPage = false}) => {
 
 
   useEffect( () => {
-    console.log('Вызов этого useEffect')
 
 
 
@@ -300,8 +297,6 @@ const First = ({isPage = false}) => {
 
 
   useEffect(() => {
-    console.log(localResponce.text)
-    console.log(localStep)
     if (localResponce.text.length < 3 && localStep === 1){
       MainButton.setParams({
         is_active : false, //неизвесетно
@@ -312,7 +307,6 @@ const First = ({isPage = false}) => {
     else{
       if (localStep === 1){
 
-        console.warn('я тут')
         MainButton.setParams({
           color : '#2ea5ff',
           text_color : '#ffffff',
@@ -342,7 +336,6 @@ const [filters, setFilters] = useState({
 
 
 
-console.log(filters)
 
 const filteredArr = useFilteredArr(ordersInformation, filterBy);
 
@@ -557,9 +550,7 @@ useEffect(() => {
         return ordersInformation[isDetailsActive.id]
       }
     }
-  } , [isPage , pageAdvertisement, isDetailsActive.id , pageValue,ordersInformation] )
-
-  console.log(detailsAdertisement)
+  } , [isPage , pageAdvertisement, isDetailsActive.id ,ordersInformation] )
 
 
 
@@ -567,13 +558,13 @@ useEffect(() => {
   return (
     <div className="first-container">
 
-      <button onClick={() => {
-        setDetailsActive((value) => ({...value , isOpen : false}))
+      {/* <button onClick={() => {
+        setResponce( (value ) => ({...value , a}) )
       }} style={{
         position : "fixed",
         left : "20px",
         zIndex : 222222
-      }} >Привет</button>
+      }} >Привет</button> */}
     <motion.div
 
       // style={style}

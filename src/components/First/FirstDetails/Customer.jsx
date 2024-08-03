@@ -1,10 +1,8 @@
 import React from 'react';
 import galks from '../../../images/icons/Subtract.svg'
-import Star from '../../../images/icons/Star.svg'
 const Customer = ({customerName, rate, userPhoto, setProfile}) => {
     return (
         <div onClick={() => {
-            console.log("Вообще - то был клик")
             setProfile(true)
         }} className = 'customerContainer'>
             <p className='customer__up'>Заказчик</p>

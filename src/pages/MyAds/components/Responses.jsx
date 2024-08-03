@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from "react";
-import Reaction from "./Reaction";
 import ModalChoicer from "../../../components/UI/ModalChoicer/ModalChoicer";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ReactionSuspense from "./ReactionSuspense";
 import MyAnimation from "./MyAnimation";
@@ -19,7 +18,6 @@ const Responses = ({
 }) => {
 
 
-  const me = useSelector(state => state.telegramUserInfo)
   const [page , setPage] = useState(2)
   const orderStatus = useSelector(state => state.responses.responsesByAStatus)
   const elementRef = useRef(null)

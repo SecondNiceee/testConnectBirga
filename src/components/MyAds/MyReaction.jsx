@@ -1,9 +1,8 @@
 import React from "react";
 
-import share from "../../images/icons/Share.svg";
 
 import "../../pages/MyAds/MyAds.css";
-import FalseTie from "../../components/UI/FalseTie/FalseTie";
+
 const MyReaction = ({
   openAboutReactionFunc,
   responce,

@@ -86,7 +86,6 @@ export const setStartResponse = createAsyncThunk(
                     id : id
                 }
             } )
-            console.log(im)
         }
         catch(e){
             alert(e)
@@ -108,7 +107,7 @@ export const addResponse = createAsyncThunk(
             }
 
 
-            let im = await axios.post("https://back-birga.ywa.su/response" , par[0], {
+            await axios.post("https://back-birga.ywa.su/response" , par[0], {
                 params : {
                     advertisementId : par[1].advertisement.id,
                     userId : par[1].user.id
@@ -143,7 +142,6 @@ export const postResponse = createAsyncThunk(
                     id : id
                 }
             } )
-            console.log(im)
         }
         catch(e){
             alert(e)
@@ -213,7 +211,6 @@ export const fetchResponses = createAsyncThunk(
             localResponses[i].photos = photos;
     
             try {
-             console.log(me)
               localResponses[i].user = {
                 "id" : me.id,
                 "fl" : me.firstName,
@@ -223,14 +220,12 @@ export const fetchResponses = createAsyncThunk(
                 "stage" : me.profile.stage,
                 
               }
-              console.log(localResponses[i])
             } catch (e) {
               alert(e);
             }
 
 
         }
-        console.log(localResponses)
         return localResponses
     }
     catch(e){

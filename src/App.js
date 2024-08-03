@@ -192,8 +192,7 @@ function App() {
 
   const b = _.cloneDeep(a);
   b.people.x = "хай";
-  console.log(a);
-  console.log(b);
+
 
   return (
     <BrowserRouter>

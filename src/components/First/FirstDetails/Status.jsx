@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 
 const Status = ({isActive , text}) => {
     const clickHandler = () => {

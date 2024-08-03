@@ -1,8 +1,8 @@
-import React, { forwardRef, memo, useCallback, useEffect, useRef, useState } from "react";
+import React, {  memo, useCallback, useEffect, useRef, useState } from "react";
 import FirstBlock from "./FirstBlock";
 import { useDispatch, useSelector } from "react-redux";
 import MyLoader from "../../UI/MyLoader/MyLoader";
-import { changeStatus, fetchTasksInformation } from "../../../store/information";
+import {  fetchTasksInformation } from "../../../store/information";
 
 const FirstMain = (
   (
@@ -21,19 +21,14 @@ const FirstMain = (
     const elementRef = useRef(null)
 
     const getMore = useCallback(async () => {
-      console.log(page);
       dispatch(fetchTasksInformation(page));
       setPage(page + 1);
     }, [page, setPage, dispatch]);
 
     const onIntersaction = useCallback(
       (entries) => {
-        console.warn("вызов меня");
         const firtEntry = entries[0];
-        console.log(orderStatus);
-        console.log(firtEntry.isIntersecting);
         if (firtEntry.isIntersecting && orderStatus !== "all") {
-          console.warn(orderStatus);
           getMore();
         }
       },
@@ -41,10 +36,8 @@ const FirstMain = (
     );
     useEffect(() => {
       const observer = new IntersectionObserver(onIntersaction);
-      console.log(observer, elementRef.current);
       if (observer && elementRef.current) {
         observer.observe(elementRef.current);
-        console.log("я тут");
       }
       return () => {
         observer.disconnect();

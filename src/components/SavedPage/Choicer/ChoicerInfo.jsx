@@ -3,10 +3,8 @@ import  { useLottie } from "lottie-react";
 import sleeping from "../../../animation/tired.json";
 import cl from "./Choicer.module.css"
 import FirstBlock from '../../First/FirstMain/FirstBlock';
-import { useSelector } from 'react-redux';
 import Reaction from '../../../pages/MyAds/components/Reaction';
 import Case from '../../UI/Case/Case';
-import InnerCase from '../../CardPage/InnerCase/InnerCase';
 
 const ChoicerInfo = ({text , arr, navigate ,setDetails , setResponce, setCard}) => {
     const options = {
@@ -33,23 +31,20 @@ const ChoicerInfo = ({text , arr, navigate ,setDetails , setResponce, setCard}) 
       const array = useMemo(() => {
         if (navigate === 'task'){
             return arr.map((e,i) => {
-                console.log(e)
                 return <FirstBlock index={i} setDetailsActive={setDetails} agree ={true} isButton={true} className={cl.firstBlock}  task={e} id={e.id}  {...e} />
              }) 
         }
         if (navigate === 'response'){
             return arr.map((e,i) => {
-                console.log(e)
                 return <Reaction  setOpen={setResponce} agree = {true} responce={e} />
              }) 
         }
         if (navigate === 'card')
             return arr.map((e,i) => {
-                console.log(e)
                 return <Case  card={e} openFunc={openFunc}  agree = {true} task={e} title={e.title} description={e.description} photos={e.photos} watchOnly={true} />
              }) 
         
-      } , [arr, navigate])
+      } , [arr, navigate, openFunc, setDetails, setResponce])
 
       
     return (

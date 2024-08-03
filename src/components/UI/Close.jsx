@@ -1,6 +1,4 @@
-import React, { useCallback } from 'react';
-import { changeMenuActive } from '../../store/menuSlice';
-import { useDispatch } from 'react-redux';
+import React from 'react';
 
 
 const Close = ({isMenuActive , setMenuActive}) => {

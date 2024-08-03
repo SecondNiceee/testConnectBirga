@@ -9,7 +9,6 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
     const areaRef = useRef(null)
     const refTwo = useRef(null)
 
-    console.log(aboutU)
 
 
   useEffect( () => {
