@@ -195,6 +195,18 @@ export const fetchResponses = createAsyncThunk(
                 alert(e);
               }
             
+
+            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+                params : {
+                    "id" : localResponses[i].advertisement.user.id
+                }
+            })
+
+            const advertisementCrateNumber = await axios.get("https://back-birga.ywa.su/advertisement/findCount" , {
+                params : {
+                    "userId" : localResponses[i].advertisement.user.id
+                }
+            })
             
             
             localResponses[i].advertisement = {
@@ -212,7 +224,8 @@ export const fetchResponses = createAsyncThunk(
               isActive : true,
               creationTime : localResponses[i].advertisement.createdAt,
               viewsNumber : '50',
-              user : localResponses[i].advertisement.user
+              user : advertisementUser.data,
+              createNumber : advertisementCrateNumber.data
               
             }
 

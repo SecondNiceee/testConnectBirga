@@ -61,6 +61,14 @@ const ShowMyResponse = ({
     [dispatch]
   );
 
+
+  const onImageClick = useCallback( () => {
+    openAboutReaction({
+      isActive : true , 
+      responce : {user : response.advertisement.user, createNumber : response.advertisement.createNumber}
+    })
+  } , [] )
+
   return (
     <>
       {response.user.fuck ? (
@@ -87,6 +95,7 @@ const ShowMyResponse = ({
             responce={response}
           />
           <Customer
+            onImageClick={onImageClick}
             fl={response.advertisement.user.fl}
             photo={response.advertisement.user.photo}
             link={response.advertisement.user.link}
