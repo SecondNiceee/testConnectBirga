@@ -7,11 +7,13 @@
     left: 0;
     transform: translateX(100%);
     top: 0;
-    position: absolute;
+    position: fixed;
     z-index: 200;
     background: rgb(24, 34, 45);
     padding-bottom: 20px;
     min-height: 100vh;
+    height: 100vh;
+    overflow-y: scroll;
     .shablon-name{
         margin-top: 18px;
     }

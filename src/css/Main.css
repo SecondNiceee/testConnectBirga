@@ -2830,6 +2830,7 @@ input {
 }
 
 .responce-wrapper {
+  overflow-y: scroll;
   min-width: 100vw;
   width: 100vw;
   padding-top: 18px;
@@ -2872,11 +2873,13 @@ input {
       -ms-transform: translateX(100%);
           transform: translateX(100%);
   top: 0;
-  position: absolute;
+  position: fixed;
   z-index: 200;
   background: rgb(24, 34, 45);
   padding-bottom: 20px;
   min-height: 100vh;
+  height: 100vh;
+  overflow-y: scroll;
 }
 .shablon-wrapper .shablon-name {
   margin-top: 18px;

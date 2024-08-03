@@ -32,6 +32,9 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames , clear
   useEffect( () => {
     alert("clear")
     addFiles(files , clear)
+    if (clear && files.length === 0){
+      setImages([])
+    }
     // eslint-disable-next-line
   } , [clear] )
 
