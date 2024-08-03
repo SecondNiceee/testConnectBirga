@@ -70,6 +70,12 @@ export const useButton = ({
     }
     function goBack() {
         if (!localDetails.isActive) {
+                             if (detailsTwo.isOpen){
+                      setDetailsTwo((value) => ({...value, isOpen : false}))
+                    }
+          else{
+
+          
           if (oneCards.isOpen){
             setOneCard((value) => ({...value , isOpen : false}))
           }
@@ -94,12 +100,10 @@ export const useButton = ({
                   }
                   else{
                     
-                    if (detailsTwo.isOpen){
-                      setDetailsTwo((value) => ({...value, isOpen : false}))
-                    }
-                    else{
+ 
+                    
                       navigate('/')
-                    }
+                    
 
                   }
 
@@ -110,6 +114,7 @@ export const useButton = ({
             }
 
           }
+        }
         } else {
             save()
         }
