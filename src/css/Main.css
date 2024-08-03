@@ -403,6 +403,7 @@
   line-height: 0;
 }
 .FirstMenu {
+  will-change: transform;
   background-color: rgb(24, 34, 45);
   z-index: 11000;
   position: fixed;
@@ -3143,7 +3144,6 @@ input {
 html {
   overflow: auto;
   position: absolute;
-  overflow: hidden;
   left: 0;
   top: 0;
   right: 0;
