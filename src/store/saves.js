@@ -135,6 +135,19 @@ export const fetchAllValues = createAsyncThunk(
             }
 
             let files = await makeNewFile(order.folder, order.photos);
+            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+                params : {
+                    "id" : order.user.id
+                }
+            })
+
+            const advertisementCrateNumber = await axios.get("https://back-birga.ywa.su/advertisement/findCount" , {
+                params : {
+                    "userId" : order.user.id
+                }
+            })
+
+
             trueAdvertisements.push(
                 {
                     id : order.id,
@@ -151,7 +164,9 @@ export const fetchAllValues = createAsyncThunk(
                     isActive : true,
                     creationTime : order.createdAt,
                     viewsNumber : '50',
-                    responces : order.responses
+                    responces : order.responses,
+                    user : advertisementUser.data,
+                    createNumber : advertisementCrateNumber.data
                 }
             )
         }

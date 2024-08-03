@@ -16,6 +16,7 @@ import pagesHistory from "../../constants/pagesHistory";
 import SavedResponse from "../../components/SavedPage/SavedReponse/SavedResponse";
 import SavedProfile from "../../components/SavedPage/SavedProfile/SavedProfile";
 import CardPage from "../CardPage/CardPage";
+import AboutReaction from "../MyAds/components/AboutReaction";
 
 const values = ["Заказы", "Отклики", "Кейсы"];
 const keys = ["advertisment", "responces", "cards"];
@@ -62,6 +63,8 @@ const SavedPage = () => {
   const [nowKey, setNowKey] = useState("advertisment");
 
   const [isProfileOpen , setProfileOpen] = useState(false)
+
+  const [isProfile , setProfile] = useState(false)
 
   const GreyIntWidth = useMemo(() => {
     return (document.documentElement.clientWidth - 36) / 3;
@@ -132,22 +135,34 @@ const SavedPage = () => {
       if (false) {
         // setSliderActive({...sliderActive, isActive : false})
       } else {
-        if (responce.isShablonModalActive) {
-          setResponce((responce) => ({
-            ...responce,
-            isShablonModalActive: false,
-          }));
-        } else {
-          if (responce.shablonMaker) {
-            setResponce((responce) => ({ ...responce, shablonMaker: false }));
+        if (card.isOpen){
+          setCard((value) => ({...value , isOpen : false}))
+        }
+        else{
+          if (isProfile){
+            setProfile(false)
+          }
+          else{
+          if (responce.isShablonModalActive) {
+            setResponce((responce) => ({
+              ...responce,
+              isShablonModalActive: false,
+            }));
           } else {
-            if (responce.isOpen) {
-              setResponce((value) => ({ ...value, isOpen: false }));
+            if (responce.shablonMaker) {
+              setResponce((responce) => ({ ...responce, shablonMaker: false }));
             } else {
-              setDetails((value) => ({ ...value, isOpen: false }));
+              if (responce.isOpen) {
+                setResponce((value) => ({ ...value, isOpen: false }));
+              } else {
+                setDetails((value) => ({ ...value, isOpen: false }));
+              }
             }
           }
         }
+        }
+
+
       }
     }
 
@@ -193,6 +208,10 @@ const SavedPage = () => {
     gotIt,
     responce.isShablonModalActive,
     responce.shablonMaker,
+    isProfile,
+    setProfile,
+    card.isOpen,
+    setCard
   ]);
 
   useEffect( () => {
@@ -360,6 +379,8 @@ const SavedPage = () => {
     // setDetailsActive,
     // isDetailsActive,
   });
+
+  console.log(savedTasks[details.id])
   return (
     <div className="saved-wraper">
       <Top
@@ -419,7 +440,7 @@ const SavedPage = () => {
         unmountOnExit
         mountOnEnter
       >
-        <FirstDetails orderInformation={savedTasks[details.id]} />
+        <FirstDetails setProfile={setProfile}  orderInformation={savedTasks[details.id]} />
       </CSSTransition>
 
       <CSSTransition
@@ -449,6 +470,20 @@ const SavedPage = () => {
       >
         <CardPage card={card.card} />
       </CSSTransition>
+
+
+      <CSSTransition
+            in={isProfile}
+            timeout={400}
+            classNames="left-right"
+            mountOnEnter
+            unmountOnExit
+          >
+            <AboutReaction setOneCard={setCard} responce={savedTasks[details.id] ? { createNumber : savedTasks[details.id].createNumber  , user : savedTasks[details.id].user} : {}}
+            />
+          </CSSTransition>
+
+
     </div>
   );
 };
