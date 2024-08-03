@@ -12,7 +12,7 @@ import Responce from "./Responce";
 import { CSSTransition } from "react-transition-group";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import pagesHistory from "../../constants/pagesHistory";
-import { addResponse } from "../../store/responses";
+import { addResponse, clearResponses, fetchResponses } from "../../store/responses";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
 import FirstChoiceCategory from "../AdCreatingOne/ChoiceCategory/FirstChoiceCategory";
 import FirstChoiceSubCategory from "../AdCreatingOne/FirstChoiceSubCategory";
@@ -373,6 +373,30 @@ const secFilteredArray = useMemo( () => {
 
 
 const forwardFunction = useCallback(() => {
+  async function post(par) {
+    try{
+            await axios.post("https://back-birga.ywa.su/response" , par[0], {
+                params : {
+                    advertisementId : par[1].advertisement.id,
+                    userId : par[1].user.id
+                }
+            })
+
+
+            await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
+                params : {
+                  "chatId" : par[1].advertisement.user.chatId,
+                  "text" : '📣 Вы получили отклик на задачу "' + par[1].advertisement.taskName.bold() + '" от ' +  par[1].user.fl 
+                }
+              })
+
+            return par[1]
+        }
+        catch(e){
+            console.log(e)
+            alert(e)
+        }
+  }
   async function postResponce(advertismetId, userId) {
        
     let myFormData = new FormData();
@@ -397,7 +421,9 @@ const forwardFunction = useCallback(() => {
         "about" : me.profile.about,
         "stage" : me.profile.stage,
       }
-      dispatch(addResponse([myFormData, gibrid]))  
+      await post([myFormData, gibrid])
+      dispatch(clearResponses())
+      dispatch(fetchResponses([me , 1]))
     } catch (e) {
       console.warn(e);
     } 

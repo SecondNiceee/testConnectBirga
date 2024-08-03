@@ -96,15 +96,15 @@ export const addResponse = createAsyncThunk(
     "addResponse" , 
     async function (par){
         try{
-            for (let i = 0 ; i < 20;i++){
+            // for (let i = 0 ; i < 20;i++){
 
-                await axios.post("https://back-birga.ywa.su/response" , par[0], {
-                    params : {
-                        advertisementId : par[1].advertisement.id,
-                        userId : par[1].user.id
-                    }
-                })
-            }
+            //     await axios.post("https://back-birga.ywa.su/response" , par[0], {
+            //         params : {
+            //             advertisementId : par[1].advertisement.id,
+            //             userId : par[1].user.id
+            //         }
+            //     })
+            // }
 
 
             await axios.post("https://back-birga.ywa.su/response" , par[0], {
