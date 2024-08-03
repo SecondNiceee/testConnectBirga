@@ -3,6 +3,7 @@
     height: calc(15px); 
     position: relative;
     cursor: pointer;
+    z-index: 20;
 }
 .Burger span{
     position: absolute;
