@@ -5,7 +5,7 @@ import { deleteAd } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
 import AllReactions from "./AllReactions";
 import Block from "../../../components/First/Block";
-import { fetchResponseByAdvertisement } from "../../../store/responses";
+import { clearResponsesByA, fetchResponseByAdvertisement } from "../../../store/responses";
 
 const AboutOne = ({
   task,
@@ -18,7 +18,7 @@ const AboutOne = ({
   const responces = useSelector( state => state.responses.responsesByA )
   const dispatch = useDispatch();
   useEffect(() => {
-
+    dispatch(clearResponsesByA())
     dispatch(fetchResponseByAdvertisement([task.id, task , 1]))
     // eslint-disable-next-line
   }, []);

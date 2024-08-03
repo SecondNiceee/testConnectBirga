@@ -265,6 +265,10 @@ const responses = createSlice({
         clearResponses(state,action){
             state.status = null
             state.responses = []
+        },
+        clearResponsesByA(state , action){
+            state.responsesByAStatus = "pending"
+            state.responsesByA = []
         }
     },
     extraReducers : builder => {
@@ -311,5 +315,5 @@ const responses = createSlice({
         }))
     }
 })
-export const {clearResponses} = responses.actions
+export const {clearResponses , clearResponsesByA} = responses.actions
 export default responses.reducer

@@ -1,6 +1,6 @@
 import  { useEffect } from 'react';
 
-const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetailsActive , isOpen} ) => {
+const useListner = ({isMenuActive , setMenuActive  ,   isOpen} ) => {
     return (  useEffect(() => {
         let startTouchX = 0;
         let endTouchX = 0;
@@ -22,24 +22,16 @@ const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetails
                 endTouchX - startTouchX > 100 &&
                 Math.abs(startTouchY - endTouchY) < 150
                 )
-                if (isDetailsActive) {
-                    setDetailsActive(false)
-                }
-                else{
                     setMenuActive(true);
-                }
+                
     
               if (isMenuActive) {
                 if (
                   endTouchX - startTouchX < 100 &&
                   Math.abs(startTouchY - endTouchY) < 150
                 ) {
-                    if (isDetailsActive) {
-                        setDetailsActive(false)
-                    }
-                    else{
                         setMenuActive(false);
-                    }
+                    
                 }
               }
           }
@@ -54,7 +46,7 @@ const useListner = ({isMenuActive , setMenuActive , setDetailsActive , isDetails
           document.removeEventListener('touchstart' , listnerFunctionOne)
           document.removeEventListener('touchend' , listnerFunctionTwo)
         }
-      }, [isMenuActive , isDetailsActive , isOpen , setDetailsActive , setMenuActive])   )    ;  ;
+      }, [isMenuActive  , isOpen  , setMenuActive])   )    ;  ;
 };
 
 export default useListner;
