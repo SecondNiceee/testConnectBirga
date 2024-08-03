@@ -44,6 +44,10 @@ const PickerContent = ({
 
   
 
+  const buttonFunction = useCallback( (index) => {
+      setMyResponse({isOpen : true , id : index})
+  } , [setMyResponse]  )
+
 
 
 
