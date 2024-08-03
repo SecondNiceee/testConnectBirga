@@ -315,6 +315,7 @@
     }
 }
 .FirstMenu{
+    will-change: transform;
     background-color: rgba(24, 34, 45, 1.00);
     z-index: 11000;
     position: fixed;
