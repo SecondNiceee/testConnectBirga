@@ -14,6 +14,7 @@ const DescriptionAndPhoto = ({
   filesTitle,
   textPlaceholder,
   fileError,
+  clearPhoto
 }) => {
 
   const hiddenRef = useRef(null)
@@ -65,6 +66,7 @@ const DescriptionAndPhoto = ({
       )}
     
         <FileInput
+        clear= {clearPhoto}
           fileError={fileError}
           setFiles={setPhotos}
           files={photos}

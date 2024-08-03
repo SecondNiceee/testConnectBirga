@@ -2,28 +2,38 @@ import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from "
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 let counter = 0;
-const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => {
+let newP = true
+const FileInput = ({ className, files, setFiles , fileError, photosNames , clear = false  }) => {
   const [images, setImages] = useState([]);
   
-  
-  const addFiles = useCallback( (newFiles) => {
+  const addFiles = useCallback( (newFiles , clear) => {
     let localImages = []
     newFiles.forEach((event) => {
       resizeImage(event, 400, 400, 0.6).then((value) => {
         // reader.readAsDataURL(value);
         localImages.push(URL.createObjectURL(value))
         if (localImages.length === newFiles.length){
-          setImages([...images, ...localImages])
+          if (!clear){
+            setImages([...images, ...localImages])
+          }
+          else{
+            if (newP){
+              setImages([...localImages])
+              newP = false
+            }
+          }
         }
       })
     })
     // eslint-disable-next-line
   } , [ files, images] )
   
+  
   useEffect( () => {
-    addFiles(files)
+    alert("clear")
+    addFiles(files , clear)
     // eslint-disable-next-line
-  } , [] )
+  } , [clear] )
 
 
 
@@ -111,7 +121,7 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames  }) => 
   const imageRef = useRef(null)
 
   const imageStyle = useMemo( () => {
-    if (mainRef.current !== null && images.length > 0){
+    if (mainRef.current !== null && files.length > 0){
       return {
         height : String((mainRef.current.offsetWidth / 3)  - 16) + "px" ,
         width : String((mainRef.current.offsetWidth / 3)  - 16) + "px" ,

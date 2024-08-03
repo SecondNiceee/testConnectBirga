@@ -1,4 +1,4 @@
-import React, { forwardRef, memo } from "react";
+import React, { forwardRef, memo, useState } from "react";
 import FirstBlock from "../../components/First/FirstMain/FirstBlock";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
@@ -14,9 +14,8 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
 
 
-
+  const [clearPhoto , setClearPhoto] = useState(1)
   
-
 
 
 
@@ -34,6 +33,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
       <MakePrivate
         isPrivate={responce.isShablon}
         setPrivate={(value) => {
+          
           if (value){
             myResponse = {
               text : responce.text,
@@ -56,6 +56,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
               photos : myResponse.photos,
             })
           }
+          setClearPhoto(clearPhoto + 1)
         }}
         text={"Использовать шаблон"}
         className={"responce-make-private"}
@@ -71,6 +72,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
         <div>
           {(shablonsArr.length > 0 || !responce.isShablon) && 
                     <DescriptionAndPhoto
+                    clearPhoto={clearPhoto}
                     className={"responce-descriprion"}
                     text={responce.text}
                     photos={responce.photos}
