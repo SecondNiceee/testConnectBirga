@@ -64,7 +64,6 @@ const MyReaction = ({
             {responce.isWathced !== "inProcess" && (
               <div
                 onClick={() => {
-                  alert("Привет");
                   deleteFunction(responce.id);
                 }}
                 className="circle"
