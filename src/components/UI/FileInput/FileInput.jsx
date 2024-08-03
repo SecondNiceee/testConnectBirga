@@ -6,7 +6,7 @@ let newP = true
 const FileInput = ({ className, files, setFiles , fileError, photosNames , clear = false  }) => {
   const [images, setImages] = useState([]);
   
-  const addFiles = useCallback( (newFiles , clear) => {
+  const addFiles = useCallback( (newFiles , clear = false) => {
     let localImages = []
     newFiles.forEach((event) => {
       resizeImage(event, 400, 400, 0.6).then((value) => {
@@ -17,10 +17,9 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames , clear
             setImages([...images, ...localImages])
           }
           else{
-            if (newP){
               setImages([...localImages])
               newP = false
-            }
+            
           }
         }
       })
