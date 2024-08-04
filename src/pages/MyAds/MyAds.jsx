@@ -105,8 +105,28 @@ const MyAds = () => {
   });
 
   detailsVar = details;
+
+
+  
   
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
+
+  const filteredArray = useMemo( () => {
+    switch (valueTwo){
+      case "all":
+        return myAdsArray
+      case "active":
+        return myAdsArray.filter((e, i) => {
+          return e.status === "active"
+        })
+      case "inProcess":
+        return myAdsArray.filter(e => e.status === "inProcess")
+      case "completed":
+        return myAdsArray.filter(e => e.status === "completed")
+      default : 
+        alert("Что - то пошло не так MyAds второй")
+    }
+  } , [myAdsArray , valueTwo] )
 
 
   
@@ -271,22 +291,7 @@ const MyAds = () => {
     
   // } , [myAdsArray , nowValue] )
 
-  const filteredArray = useMemo( () => {
-    switch (valueTwo){
-      case "all":
-        return myAdsArray
-      case "active":
-        return myAdsArray.filter((e, i) => {
-          return e.status === "active"
-        })
-      case "inProcess":
-        return myAdsArray.filter(e => e.status === "inProcess")
-      case "completed":
-        return myAdsArray.filter(e => e.status === "completed")
-      default : 
-        alert("Что - то пошло не так MyAds второй")
-    }
-  } , [myAdsArray , valueTwo] )
+
 
 //   useEffect( () => {
 //     document.documentElement.style.overflowY = 'scroll'
