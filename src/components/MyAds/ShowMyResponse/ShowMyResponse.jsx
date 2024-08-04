@@ -20,8 +20,30 @@ const ShowMyResponse = ({
 }) => {
   const dispatch = useDispatch();
   useEffect(() => {
+    function click(){
+      window.Telegram.WebApp.showPopup(
+        {
+          title: "Выбрать?",
+          message: "Вы выполнили это задание?",
+          buttons: [
+            { id: "save", type: "default", text: "Да" },
+            { id: "delete", type: "destructive", text: "Нет" },
+          ],
+        },
+        (buttonId) => {
+          if (buttonId === "save") {
+            clickHandler()
+          } 
+          if (buttonId === "delete" || buttonId === null){
+            console.log("Он отказался")
+          }
+          
+        }
+      );
+    }
     async function clickHandler() {
       try {
+        
         await axios.get("https://back-birga.ywa.su/bot/notification", {
           params: {
             executorId: String(response.user.id),
@@ -31,6 +53,8 @@ const ShowMyResponse = ({
             advertisementId: String(response.advertisement.id),
           },
         });
+        
+        
         window.Telegram.WebApp.showAlert("Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. ")
       } catch (e) {
         alert("Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку.");
@@ -38,14 +62,15 @@ const ShowMyResponse = ({
         console.log(e);
       }
     }
+    
     if (response.isWatched === "inProcess") {
       MainButton.show();
       MainButton.setText("ВЫПОЛНИЛ");
-      MainButton.onClick(clickHandler);
+      MainButton.onClick(click);
     }
     return () => {
       MainButton.hide();
-      MainButton.offClick(clickHandler);
+      MainButton.offClick(click);
     };
   }, [
     response.advertisement.id,
