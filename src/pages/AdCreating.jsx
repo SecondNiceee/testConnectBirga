@@ -211,6 +211,7 @@ const AdCreating = () => {
       }
       catch(e){
         alert("Задание не было создано. Попробуйте позже")
+        console.log(e)
       }
     }
     dispatch(changeMyAds([]))
