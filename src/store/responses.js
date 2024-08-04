@@ -223,13 +223,15 @@ export const fetchResponses = createAsyncThunk(
               rate : '5',
               isActive : true,
               creationTime : localResponses[i].advertisement.createdAt,
+              category : localResponses[i].advertisement.category.id,
               viewsNumber : '50',
               user : advertisementUser.data,
               createNumber : advertisementCrateNumber.data
+
               
             }
 
-
+            console.log(localResponses)
             let photos = [];
     
             if (localResponses[i].photos) {

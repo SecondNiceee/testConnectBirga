@@ -34,7 +34,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     behanceLink: "",
     dribbbleLink: "",
     dropfileLink: "",
-    category : categorys.find((e) => e.category === "Другое")
+    category : categorys.find((e) => e.category === "Дизайн")
   });
 
 
@@ -341,12 +341,14 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         unmountOnExit
       >
           <ChoiceCategory
+                    designOnly = {true}
             isBackHide = {false}
             taskInformation={localCardSetting}
             setTaskInformation={setCardsSetting}
             setCatagoryChoiceOpen={setCatagoryChoiceOpen}
             categorys = {categorys}
             subCategorys={subCategorys}
+            text="Пока что можно создать карточки только с дизайном.."
           />
       </CSSTransition>
 

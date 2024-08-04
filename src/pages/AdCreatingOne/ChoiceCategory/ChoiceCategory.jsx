@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import cl from "./ChoiceCategory.module.css";
 import OneInput from "../../../components/UI/OneInput/OneInput";
 import CategoryItem from "../CategoryItem/CategoryItem";
@@ -11,11 +11,23 @@ const ChoiceCategory = ({
   categorys,
   subCategorys,
   categoryOnly ,
-  isBackHide = true
+  isBackHide = true,
+  designOnly = false,
+  text = "Прочие категории скоро появятся.."
 
 }) => {
   
   const [inputValue, setInputValue] = useState("");
+
+  const realCategorys = useMemo( () => {
+    if (!designOnly){
+      return categorys
+    }
+    else{
+      console.log(categorys.find(e => e.id === 1))
+      return [categorys.find(e => e.id === 1)]
+    }
+  } , [designOnly] )
   
   useEffect( () => {
     function closeFunction(){
@@ -50,7 +62,8 @@ const ChoiceCategory = ({
         className={cl.OneInput}
       />
       <div className={cl.categoryContainer}>
-        {categorys.map((e) => {
+
+        {realCategorys.map((e) => {
           return (
             <div
               onClick={() => {
@@ -69,8 +82,9 @@ const ChoiceCategory = ({
             </div>
           );
         })}
+
       </div>
-      <p className={cl.anotherText}>Прочие категории скоро появятся...</p>
+      <p className={cl.anotherText}>{text}</p>
     </div>
   );
 };
