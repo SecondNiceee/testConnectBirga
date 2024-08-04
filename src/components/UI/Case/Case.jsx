@@ -126,7 +126,11 @@ const Case = ({
                 />
               </svg>
             </div>
-            <div className={cl.circle}>
+            <div className={cl.circle} onClick={() => {
+                                window.Telegram.WebApp.openTelegramLink(
+                                  "https://t.me/share/url?text=&url=https://t.me/SecondNiceeebot/profilePage?startapp=" + String(card.id)
+                                );
+              } } >
               <svg
                 width="14"
                 height="11"

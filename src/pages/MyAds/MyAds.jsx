@@ -201,6 +201,12 @@ const MyAds = () => {
   } , [] )
 
 
+  const [lastAdsTwo , setLastAdsTwo] = useState({
+    isOpen : false,
+    response : {},
+  })
+
+
   useButton({
     setMyResponse : setMyResponse,
     myResponse : myResponse,
@@ -334,10 +340,7 @@ const MyAds = () => {
 } , [setMyResponse , dispatch])
 
 
-  const [lastAdsTwo , setLastAdsTwo] = useState({
-    isOpen : false,
-    response : {},
-  })
+
 
 
   return (
