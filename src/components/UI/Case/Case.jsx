@@ -6,7 +6,6 @@ import MyButton from "../MyButton/MyButton";
 const Case = ({
   className,
   card,
-  id = 0,
   category,
   openFunc,
   task,
@@ -56,7 +55,12 @@ const Case = ({
             className={cl.caseRight}
           >
             <div className={cl.one}>
-              <div onClick={() => {}} className={cl.circle}>
+              <div onClick={() => {
+                                window.Telegram.WebApp.openTelegramLink(
+                                  "https://t.me/share/url?text=&url=https://t.me/SecondNiceeebot/profilePage?startapp=" + String(card.id)
+                                );
+              } } className={cl.circle}>
+                
                 <svg
                   width="20"
                   height="21"
