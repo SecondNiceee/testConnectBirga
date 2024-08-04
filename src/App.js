@@ -31,6 +31,8 @@ const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
 const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
 const ProfilePage = lazy( () => import("./pages/ProfilePage/ProfilePage") )
+
+console.log("Привет")
 const MyLoader = () => {
   return (
     <div
@@ -95,6 +97,7 @@ const AnimatedSwitch = () => {
               </Suspense>
             }
           />
+          
 
 
         <Route
