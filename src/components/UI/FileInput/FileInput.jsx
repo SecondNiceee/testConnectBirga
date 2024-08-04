@@ -115,16 +115,19 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames , clear
   const imageRef = useRef(null)
 
   const imageStyle = useMemo( () => {
-    if (mainRef.current !== null && files.length > 0){
+    if (files.length > 0){
       return {
-        height : String((mainRef.current.offsetWidth / 3)  - 16) + "px" ,
-        width : String((mainRef.current.offsetWidth / 3)  - 16) + "px" ,
-        maxHeight : String((mainRef.current.offsetWidth / 3)  - 16) + "px" ,
-        maxWidth : String((mainRef.current.offsetWidth / 3)  - 16) + "px" 
+        
+        height : String((document.documentElement.offsetWidth - 28 - 32 - 16) / 3) + "px" ,
+        width : String((document.documentElement.offsetWidth - 28 - 32 - 16) / 3) + "px" ,
+        maxHeight : String((document.documentElement.offsetWidth - 28 - 32 - 16) / 3) + "px" ,
+        maxWidth : String((document.documentElement.offsetWidth - 28 - 32 - 16) / 3) + "px"
       }
     }
     return {}
   } , [files] )
+
+  console.log(files)
   
   return (  
     <>

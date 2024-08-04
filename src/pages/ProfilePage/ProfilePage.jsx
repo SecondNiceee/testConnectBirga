@@ -58,7 +58,7 @@ const ProfilePage = ({ ...props }) => {
             setOneCard((value) => ({...value , isOpen : false}))
         }
         else{
-            navigate("/First")
+            navigate("/")
         }
     }
 
