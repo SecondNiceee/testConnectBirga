@@ -30,7 +30,7 @@ const Balance = lazy(() => import("./pages/Balance"));
 const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
 const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
-
+const ProfilePage = lazy( () => import("./pages/ProfilePage/ProfilePage") )
 const MyLoader = () => {
   return (
     <div
@@ -95,6 +95,17 @@ const AnimatedSwitch = () => {
               </Suspense>
             }
           />
+
+
+        <Route
+            path="/ProfilePage"
+            element={
+              <Suspense fallback={<MyLoader />}>
+                <ProfilePage />
+              </Suspense>
+            }
+          />
+          
 
           <Route
             path="/savedPage"

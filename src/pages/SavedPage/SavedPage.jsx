@@ -135,14 +135,9 @@ const SavedPage = () => {
       if (false) {
         // setSliderActive({...sliderActive, isActive : false})
       } else {
-        if (card.isOpen){
-          setCard((value) => ({...value , isOpen : false}))
-        }
-        else{
-          if (isProfile){
-            setProfile(false)
-          }
-          else{
+
+        
+
           if (responce.isShablonModalActive) {
             setResponce((responce) => ({
               ...responce,
@@ -155,11 +150,21 @@ const SavedPage = () => {
               if (responce.isOpen) {
                 setResponce((value) => ({ ...value, isOpen: false }));
               } else {
-                setDetails((value) => ({ ...value, isOpen: false }));
+                if (card.isOpen){
+                  setCard((value) => ({...value , isOpen : false}))
+                }
+                else{
+                  if (isProfile){
+                    setProfile(false)
+                  }
+                  else{
+                    setDetails((value) => ({ ...value, isOpen: false }));
+                  }
+                }
               }
-            }
+            
           }
-        }
+        
         }
 
 
@@ -380,7 +385,7 @@ const SavedPage = () => {
     // isDetailsActive,
   });
 
-  console.log(savedTasks[details.id])
+  console.log(myResponse.responce)
   return (
     <div className="saved-wraper">
       <Top
@@ -450,7 +455,6 @@ const SavedPage = () => {
         unmountOnExit
         mountOnEnter
       >
-        <div className="response-block">
           <Responce
             
             left="0%"
@@ -458,7 +462,6 @@ const SavedPage = () => {
             setResponce={setResponce}
             orderInformation={savedTasks[details.id]}
           />
-        </div>
       </CSSTransition>
 
       <CSSTransition

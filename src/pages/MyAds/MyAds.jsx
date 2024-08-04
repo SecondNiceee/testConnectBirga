@@ -221,7 +221,9 @@ const MyAds = () => {
     localSecondPage : localSecondPage,
     setDetails : setDetails,
     save : save,
-    setOneCard : setOneCard
+    setOneCard : setOneCard,
+    lastAdsTwo : lastAdsTwo,
+    setLastAdsTwo : setLastAdsTwo
   })
 
 

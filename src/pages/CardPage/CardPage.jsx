@@ -3,10 +3,10 @@ import cl from "./CardPage.module.css";
 import InnerCase from "../../components/CardPage/InnerCase/InnerCase";
 import FullDescription from "../../components/First/FirstDetails/FullDescription";
 import LinkComp from "../../components/CardPage/Link/LinkComp";
-const CardPage = ({ card }) => {
+const CardPage = ({ card , ...props }) => {
     const linksComponents = useMemo( () => {
             return (
-            <div className={cl.cardsLinks}>
+            <div  className={cl.cardsLinks}>
             {card.behanceLink.length > 0 ? 
                 <LinkComp navigate={"behance"} link={card.behanceLink}  />
                 :
@@ -34,7 +34,7 @@ const CardPage = ({ card }) => {
     } , [card.dropfileLink, card.behanceLink , card.dribbbleLink] )
 
   return (
-    <div className={cl.wrapper}>
+    <div {...props} className={cl.wrapper}>
       <InnerCase
         task={card}
         title={card.title}

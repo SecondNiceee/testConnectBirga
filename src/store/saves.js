@@ -62,7 +62,29 @@ export const addResponce = createAsyncThunk(
                     "responseId" : par[0],
                     "userId" : 2144832745
             })
-            return par[1]
+
+            const responseUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+                params : {
+                    "id" : par[1].user.id
+                }
+            })
+
+            const crateNumber = await axios.get("https://back-birga.ywa.su/advertisement/findCount" , {
+                params : {
+                    "userId" : par[1].user.id
+                }
+            })
+            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+                params : {
+                    "id" : par[1].advertisement.user.id
+                }
+            })
+
+            const rez = par[1]
+            rez.user = responseUser.data
+            rez.createNumber = crateNumber.data
+            rez.advertisement.user = advertisementUser.data
+            return rez
         }
         catch(e){
             console.log(e)
@@ -96,9 +118,24 @@ export const addAdvertisment = createAsyncThunk(
                 "advertisementId" : par[0],
                 "userId" : 2144832745
             })
-            
 
-            return par[1]
+            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+                params : {
+                    "id" : par[1].user.id
+                }
+            })
+
+            const advertisementCrateNumber = await axios.get("https://back-birga.ywa.su/advertisement/findCount" , {
+                params : {
+                    "userId" : par[1].user.id
+                }
+            })
+            const rez = par[1]
+
+            rez.user = advertisementUser.data
+            rez.createNumber = advertisementCrateNumber.data
+
+            return rez
             
         }
         catch(e){
@@ -148,6 +185,9 @@ export const fetchAllValues = createAsyncThunk(
             })
 
 
+            
+
+
             trueAdvertisements.push(
                 {
                     id : order.id,
@@ -169,7 +209,18 @@ export const fetchAllValues = createAsyncThunk(
                     createNumber : advertisementCrateNumber.data
                 }
             )
+
         }
+
+
+
+
+
+
+
+
+
+
 
         let imTwo = await axios.get('https://back-birga.ywa.su/response/saved' , {
             params : {
@@ -187,6 +238,20 @@ export const fetchAllValues = createAsyncThunk(
             if (responces[i].photos) {
               photos = await makeNewFile(responces[i].folder, responces[i].photos);
             }
+
+
+            const responseUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+                params : {
+                    "id" : 2144832745 // тут
+                }
+            })
+            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+                params : {
+                    "id" : responces[i].advertisement.user.id
+                }
+            })
+
+
     
             responces[i].photos = photos;
 
@@ -218,6 +283,7 @@ export const fetchAllValues = createAsyncThunk(
                 isActive : true,
                 creationTime : responces[i].advertisement.createdAt,
                 viewsNumber : '50',
+                user : advertisementUser.data
             }
     
             try {
@@ -231,17 +297,8 @@ export const fetchAllValues = createAsyncThunk(
               );
               responces[i].createNumber = luo.data;
 
-              responces[i].user = {
-                "id" : imTwo.data.id,
-                "fl" : imTwo.data.fl,
-                "link" : imTwo.data.link,
-                "photo" : imTwo.data.photo,
-                "about" : imTwo.data.about,
-                "stage" : imTwo.data.stage,
-                "chatId" : imTwo.data.chatId,
-                "roles" : imTwo.data.roles
-                
-              }
+              responces[i].user = responseUser.data
+
             } catch (e) {
               alert(e);
             }

@@ -3069,6 +3069,12 @@ input {
           flex-direction: column;
   height: 100vh;
 }
+.saved-wraper .new-textarea {
+  border: 1.33px solid #636267;
+  background-color: #18222d;
+  border-radius: 10px 10px 6px 6px;
+  padding: 12px 16px;
+}
 
 .saved-top-wrapper {
   margin-bottom: 20px;

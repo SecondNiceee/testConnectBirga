@@ -26,6 +26,8 @@ export const useButton = ({
   setDetailsTwo,
   myResponse,
   setMyResponse,
+  lastAdsTwo,
+  setLastAdsTwo
 }) => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -91,11 +93,16 @@ export const useButton = ({
                   // else{
                   //   navigate(-1)
                   // }
-                  if (myResponse.isOpen) {
-                    alert("Привет")
-                    setMyResponse((value) => ({ ...value, isOpen: false }));
-                  } else {
-                    navigate("/");
+                  if (lastAdsTwo.isOpen){
+                    setLastAdsTwo((value) => ({...value , isOpen : false}) )
+                  }
+                  else{
+                    if (myResponse.isOpen) {
+                      alert("Привет")
+                      setMyResponse((value) => ({ ...value, isOpen: false }));
+                    } else {
+                      navigate("/");
+                    }
                   }
                 }
               }
@@ -145,5 +152,7 @@ export const useButton = ({
     setDetailsTwo,
     myResponse.isOpen,
     setMyResponse,
+    lastAdsTwo,
+    setLastAdsTwo
   ]);
 };
