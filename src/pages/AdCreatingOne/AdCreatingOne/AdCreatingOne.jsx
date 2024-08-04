@@ -238,7 +238,7 @@ const AdCreatingOne = ({
         photosNames={taskInformation.photosNames}
         setPhotos={(e) => {
           if (!e) {
-            alert("ошибка фото!!");
+            window.Telegram.WebApp.showAlert("ошибка фото!!");
           } else {
             setTaskInformation({ ...taskInformation, photos: e });
           }

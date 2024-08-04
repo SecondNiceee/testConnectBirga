@@ -410,7 +410,7 @@ const forwardFunction = useCallback(() => {
         }
         catch(e){
             console.log(e)
-            alert(e)
+            window.Telegram.WebApp.showAlert(e)
         }
   }
   async function postResponce(advertismetId, userId) {

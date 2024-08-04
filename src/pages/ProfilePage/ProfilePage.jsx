@@ -24,7 +24,7 @@ const ProfilePage = ({ ...props }) => {
   useEffect(() => {});
 
 
-//   alert(window.Telegram.WebApp.initDataUnsafe.start_param)
+//   window.Telegram.WebApp.showAlert(window.Telegram.WebApp.initDataUnsafe.start_param)
 
 
   const dispatch = useDispatch();
@@ -136,7 +136,7 @@ const ProfilePage = ({ ...props }) => {
         };
       } catch (e) {
         
-        alert("Ссылка уже не действительна. Возможно, данные были удалены");
+        window.Telegram.WebApp.showAlert("Ссылка уже не действительна. Возможно, данные были удалены");
         navigate("/")
         console.log(e);
       }

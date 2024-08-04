@@ -58,7 +58,7 @@ const AboutReaction = ({ responce , setOneCard,   ...props}) => {
 
       }
       catch(e){
-        alert(e)
+        window.Telegram.WebApp.showAlert(e)
         console.log(e)
       }
 

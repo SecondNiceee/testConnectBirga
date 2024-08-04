@@ -38,7 +38,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
                 break
             }
             default : {
-                alert('что-то пошло не так')
+                window.Telegram.WebApp.showAlert('что-то пошло не так')
             }
                 
 
@@ -151,7 +151,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
                             dispatch(addCard([id, task]))
                             break
                         default : 
-                            alert("Что-то не то")
+                            window.Telegram.WebApp.showAlert("Что-то не то")
                     }
                     setActive(true)
                     
@@ -168,7 +168,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
                             deleteCardFunction()
                             break;
                         default :
-                            alert('Что - то пошло не так')
+                            window.Telegram.WebApp.showAlert('Что - то пошло не так')
                     }
                     setActive(false)
                     

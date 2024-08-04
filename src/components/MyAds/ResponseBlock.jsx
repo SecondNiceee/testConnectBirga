@@ -112,7 +112,11 @@ category,
           }>
             <Pallete category={category} />
             <p >{taskName}</p>
-            <ShareIcon className="share__icon" />
+            <ShareIcon onClick = {() => {
+                              window.Telegram.WebApp.openTelegramLink(
+                                "https://t.me/share/url?text=&url=https://t.me/testbirgawebappbot/firstPage?startapp=" + String(id)
+                              );
+            }} className="share__icon" />
           </div>
           <div className="FirstMain__middle">
             {/* <p>{executionPlace}</p> */}

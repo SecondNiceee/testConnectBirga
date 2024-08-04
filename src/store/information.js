@@ -15,7 +15,7 @@ export const addWatch = createAsyncThunk(
         },
       });
     } catch (e) {
-      alert(e);
+      window.Telegram.WebApp.showAlert(e);
       console.warn(e);
     }
   }
@@ -31,7 +31,7 @@ export const deleteAd = createAsyncThunk(
       });
       return id;
     } catch (e) {
-      alert(e);
+      window.Telegram.WebApp.showAlert(e);
       console.warn(e);
     }
   }
@@ -136,8 +136,8 @@ export const postMyTask = createAsyncThunk(
       };
       return localTask;
     } catch (e) {
-      alert(e)
-      alert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже");
+      window.Telegram.WebApp.showAlert(e)
+      window.Telegram.WebApp.showAlert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже");
       console.log(e);
     }
 
@@ -158,7 +158,7 @@ export const setStartTask = createAsyncThunk(
       });
       return id;
     } catch (e) {
-      alert("Ошибка!");
+      window.Telegram.WebApp.showAlert("Ошибка!");
       console.log(e);
     }
   }
@@ -259,7 +259,7 @@ export const fetchTasksInformation = createAsyncThunk(
         }
       );
     } catch (e) {
-      alert(e);
+      window.Telegram.WebApp.showAlert(e);
       console.log(e);
     }
 
@@ -443,7 +443,7 @@ const information = createSlice({
     builder.addCase(fetchMyOrders.rejected, (state, action) => {
       state.myOrderStatus = "error";
 
-      alert();
+      window.Telegram.WebApp.showAlert();
     });
     builder.addCase(postMyTask.pending, (state) => {
       state.postTaskStatus = "pending";

@@ -39,7 +39,7 @@ export const putShablon = createAsyncThunk(
 
     }
     catch(e){
-      alert('!')
+      window.Telegram.WebApp.showAlert('!')
         console.log(e)
     }
   }
@@ -71,7 +71,7 @@ export const postShablon = createAsyncThunk(
 
     }
     catch(e){
-      alert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.")
+      window.Telegram.WebApp.showAlert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.")
       console.warn(e)
     }
   }

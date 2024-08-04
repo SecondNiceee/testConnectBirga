@@ -69,7 +69,7 @@ const MyAds = () => {
       case "completed":
         return sortedResponses.filter(e => e.isWatched === "completed")
       default : 
-        alert("Что - то пошло не так MyAds")
+        window.Telegram.WebApp.showAlert("Что - то пошло не так MyAds")
     }
   } , [sortedResponses , valueOne]  )
 
@@ -124,7 +124,7 @@ const MyAds = () => {
       case "completed":
         return myAdsArray.filter(e => e.status === "completed")
       default : 
-        alert("Что - то пошло не так MyAds второй")
+        window.Telegram.WebApp.showAlert("Что - то пошло не так MyAds второй")
     }
   } , [myAdsArray , valueTwo] )
 

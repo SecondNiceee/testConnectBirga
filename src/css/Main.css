@@ -1531,6 +1531,7 @@ input {
 }
 
 .profile__container {
+  padding-bottom: 20px;
   width: 100vw;
   position: fixed;
   height: 100vh;

@@ -27,7 +27,7 @@ const FirstMenu = () => {
 
                     setMenuActive(false)}
                 catch(e){
-                    alert(e)
+                    window.Telegram.WebApp.showAlert(e)
                 }
                 } } to='/Profile' className="FirstMenu__top">
                 

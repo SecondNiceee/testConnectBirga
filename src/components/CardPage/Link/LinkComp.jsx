@@ -14,7 +14,7 @@ const LinkComp = ({navigate, link}) => {
             case "dropfile":
                 return dropfileIcon
             default:
-                alert("Что - то пошло не так")
+                window.Telegram.WebApp.showAlert("Что - то пошло не так")
         }
     } , [navigate] )
     const linkHandler = useCallback( (par) => {

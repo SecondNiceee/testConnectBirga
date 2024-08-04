@@ -49,7 +49,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
               responces[i].createNumber = imTwo.data;
             } catch (e) {
                console.warn(e)
-              alert(e);
+              window.Telegram.WebApp.showAlert(e);
             }
           }
     
@@ -71,7 +71,7 @@ export const deleteResponse = createAsyncThunk(
         }
         catch(e){
             console.log(e)
-            alert(e)
+            window.Telegram.WebApp.showAlert(e)
         }
     }
 )
@@ -88,7 +88,7 @@ export const setStartResponse = createAsyncThunk(
             } )
         }
         catch(e){
-            alert(e)
+            window.Telegram.WebApp.showAlert(e)
         }
     }
 )
@@ -126,7 +126,7 @@ export const addResponse = createAsyncThunk(
         }
         catch(e){
             console.log(e)
-            alert(e)
+            window.Telegram.WebApp.showAlert(e)
         }
         
     }
@@ -144,7 +144,7 @@ export const postResponse = createAsyncThunk(
             } )
         }
         catch(e){
-            alert(e)
+            window.Telegram.WebApp.showAlert(e)
         }
     }
 )
@@ -192,7 +192,7 @@ export const fetchResponses = createAsyncThunk(
                 localResponses[i].createNumber = imTwo.data;
               } catch (e) {
                  console.warn(e)
-                alert(e);
+                window.Telegram.WebApp.showAlert(e);
               }
             
 
@@ -251,7 +251,7 @@ export const fetchResponses = createAsyncThunk(
                 
               }
             } catch (e) {
-              alert(e);
+              window.Telegram.WebApp.showAlert(e);
             }
             
 
@@ -260,7 +260,7 @@ export const fetchResponses = createAsyncThunk(
         return localResponses
     }
     catch(e){
-        alert(e)
+        window.Telegram.WebApp.showAlert(e)
         console.log(e)
     }
     }

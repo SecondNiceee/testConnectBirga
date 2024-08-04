@@ -210,7 +210,7 @@ const AdCreating = () => {
         });
       }
       catch(e){
-        alert("Задание не было создано. Попробуйте позже")
+        window.Telegram.WebApp.showAlert("Задание не было создано. Попробуйте позже")
         console.log(e)
       }
     }
@@ -303,7 +303,7 @@ const AdCreating = () => {
         return true;
       }
       default: {
-        alert('Error (что - то не так пошло..')
+        window.Telegram.WebApp.showAlert('Error (что - то не так пошло..')
         return false
       }
     }

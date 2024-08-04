@@ -68,7 +68,7 @@ const AboutMe = ({ setAboutMeModal, setAboutU, aboutU, aboutMeModal , scrollTo }
     style={animateAboutMe}
     onTouchMove={handleTouch}
     onTouchCancel={() => {
-        alert('действие отменено!!!')
+        window.Telegram.WebApp.showAlert('действие отменено!!!')
     }}
     onTouchStart={(e) => {
         e.preventDefault()

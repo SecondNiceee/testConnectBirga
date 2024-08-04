@@ -334,7 +334,7 @@ const SavedPage = () => {
         });
         dispatch(addResponce([savedTasks[details.id].id, im.data]));
       } catch (e) {
-        alert("ничего не вышло");
+        window.Telegram.WebApp.showAlert("ничего не вышло");
         console.warn(e);
       }
     }

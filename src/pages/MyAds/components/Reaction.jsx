@@ -6,6 +6,7 @@ import "./../MyAds.css";
 import FalseTie from "../../../components/UI/FalseTie/FalseTie";
 import MyButton from "../../../components/UI/MyButton/MyButton";
 import userPhoto from "../../../images/userPhoto/user.png"
+import breakShare from "../../../functions/breakShare";
 const Reaction = ({
   blue = false,
   setOpen,
@@ -125,13 +126,13 @@ const Reaction = ({
                 task={responce}
                 id={responce.id}
               />
-              <div className="circle">
+              <div className="circle" onClick={breakShare}  style={{opacity : 0.5}}>
                 <img className="shareImage" src={share} alt="" />
               </div>
             </div>
           ) : (
-            <div className="circle" style={responce.isWatched === "inProcess" && writeButton ? {marginLeft : "8px"} : {}}>
-              <img className="shareImage" src={share} alt="" />
+            <div onClick={breakShare}  className="circle" style={responce.isWatched === "inProcess" && writeButton ? {marginLeft : "8px" , opacity : 0.5} : {opacity : 0.5}}>
+              <img  className="shareImage" src={share} alt="" />
             </div>
           )}
         </div>

@@ -76,14 +76,14 @@ export const addResponce = createAsyncThunk(
             })
             const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
                 params : {
-                    "id" : par[1].advertisement.user.id
+                    "id" : 2144832745
                 }
             })
 
-            const rez = par[1]
-            rez.user = responseUser.data
-            rez.createNumber = crateNumber.data
-            rez.advertisement.user = advertisementUser.data
+            const rez = {...par[1] , user : responseUser.data , createNumber : crateNumber.data, advertisement : {...par[1].addAdvertisment, user : advertisementUser.data} }
+            // rez.user = responseUser.data
+            // rez.createNumber = crateNumber.data
+            // rez.advertisement.user = advertisementUser.data
             return rez
         }
         catch(e){
@@ -300,7 +300,7 @@ export const fetchAllValues = createAsyncThunk(
               responces[i].user = responseUser.data
 
             } catch (e) {
-              alert(e);
+              window.Telegram.WebApp.showAlert(e);
             }
           }
         

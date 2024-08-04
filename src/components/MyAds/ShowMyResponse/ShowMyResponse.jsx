@@ -57,8 +57,8 @@ const ShowMyResponse = ({
         
         window.Telegram.WebApp.showAlert("Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. ")
       } catch (e) {
-        alert("Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку.");
-        alert(JSON.stringify(e))
+        window.Telegram.WebApp.showAlert("Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку.");
+        window.Telegram.WebApp.showAlert(JSON.stringify(e))
         console.log(e);
       }
     }

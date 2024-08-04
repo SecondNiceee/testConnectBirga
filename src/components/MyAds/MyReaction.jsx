@@ -73,6 +73,7 @@ const MyReaction = ({
             {responce.isWatched !== "inProcess"  && (
               <div
                 onClick={() => {
+                  alert('Че')
                   deleteFunction(responce.id);
                 }}
                 className="circle"

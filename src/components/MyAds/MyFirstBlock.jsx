@@ -20,7 +20,8 @@ const MyFirstBlock = ({
    status,
    viewsNumber,
    responseCounter = 0,
-   category
+   category,
+   id
    
 
 
@@ -143,7 +144,11 @@ const MyFirstBlock = ({
           }>
             <Pallete category={category} />
             <p className= { isWatched ? "watchedTask" : ""}>{taskName}</p>
-            <ShareIcon style = {end ? {opacity : 0.5} : {}} className="share__icon" />
+            <ShareIcon onClick = {() => {
+                              window.Telegram.WebApp.openTelegramLink(
+                                "https://t.me/share/url?text=&url=https://t.me/testbirgawebappbot/firstPage?startapp=" + String(id)
+                              );
+            }}  style = {end ? {opacity : 0.5} : {}} className="share__icon" />
           </div>
           <div className="FirstMain__middle">
             {/* <p>{executionPlace}</p> */}

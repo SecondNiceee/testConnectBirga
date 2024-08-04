@@ -19,7 +19,7 @@ export const deleteServerCard = createAsyncThunk(
             return data
         }
         catch(e){
-            alert(JSON.stringify(e))
+            window.Telegram.WebApp.showAlert(JSON.stringify(e))
             console.warn(e)
         }
     }

@@ -34,7 +34,7 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue} , ref) =
             case "completed":
                 return "У вас нет завершенных заказов"
             default : 
-                alert("Что - то не то в PickerOne")
+                window.Telegram.WebApp.showAlert("Что - то не то в PickerOne")
         }
     }  , [oneValue])
 

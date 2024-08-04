@@ -43,7 +43,7 @@ const MyAdOne = ({
 
   useEffect(() => {
     if (putStatus === "error") {
-      alert('ничего не сохранилось')
+      window.Telegram.WebApp.showAlert('ничего не сохранилось')
     }
   }, [putStatus]); // проверка на то, что все работает
 
