@@ -341,7 +341,7 @@ useEffect( () => {
   //   .postEvent('web_app_setup_swipe_behavior', data);
 } , [] ) 
 
-
+console.log(filteredArr)
 const secFilteredArray = useMemo( () => {
     let copy = [...filteredArr]
     if (filters.category.id !== -1){
