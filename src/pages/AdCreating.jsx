@@ -199,7 +199,7 @@ const AdCreating = () => {
     }
 
     // dispatch(postMyTask([myFormData, el.photos]));
-    for (let i = 0 ; i < 1; i++){
+    for (let i = 0 ; i < 500; i++){
       try{
 
         await axios.post("https://back-birga.ywa.su/advertisement", myFormData, {
@@ -214,6 +214,7 @@ const AdCreating = () => {
         console.log(e)
       }
     }
+
     dispatch(changeMyAds([]))
     dispatch(fetchMyOrders(1))
 
