@@ -143,7 +143,27 @@ const Reaction = ({
           ></div>
         ) : (
           <div className="reactions__bottom">
-
+            <button
+              onClick={() => {
+                setOpen({
+                  isActive: true,
+                  responce: responce,
+                });
+              }}
+              className="bottom__one"
+            >
+              подробнее
+            </button>
+            <button
+              className="bottom__two"
+              onClick={() => {
+                window.Telegram.WebApp.openTelegramLink(
+                  "https://t.me/" + responce.user.link
+                );
+              }}
+            >
+              Написать
+            </button>
             {/* <svg style={{
                 stroke-width : "1.67px",
                 stroke : "#2ea5ff"

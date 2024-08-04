@@ -212,6 +212,7 @@
 
 }
 .reactions__bottom{
+    margin-left: auto;
     display: flex;
     align-items: center;
     margin-bottom: 17px;
