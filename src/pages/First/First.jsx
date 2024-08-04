@@ -553,6 +553,7 @@ useEffect(() => {
 
     }
     catch(e){
+      pageValue = false
       alert("Ссылка уже не действительна.Возможно, данные были удалены")
       setDetailsActive({isOpen : false, id : 1})
     }
