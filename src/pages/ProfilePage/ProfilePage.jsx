@@ -17,14 +17,15 @@ import { changeMenuActive } from "../../store/menuSlice";
 import "../MyAds/MyAds.css"
 import BackButton from "../../constants/BackButton";
 import { useNavigate } from "react-router-dom";
-const parOne = 2144832745;
-const parTwo = 1;
+// const parOne = 2144832745;
+// const parTwo = 1;
 const ProfilePage = ({ ...props }) => {
   const [responce, setResponce] = useState(null);
   useEffect(() => {});
 
-  
+
   alert(window.Telegram.WebApp.initDataUnsafe.start_param)
+
 
   const dispatch = useDispatch();
   const setMenuActive = useCallback(
@@ -77,13 +78,13 @@ const ProfilePage = ({ ...props }) => {
       try {
         const user = await axios.get("https://back-birga.ywa.su/user/findOne", {
           params: {
-            id: parOne,
+            id: window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[0],
           },
         });
 
         const cardOne = await axios.get("https://back-birga.ywa.su/card/findOne" , {
             params : {
-                id : parTwo
+                id : window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1]
             }
         })
 
