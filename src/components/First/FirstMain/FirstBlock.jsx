@@ -17,7 +17,7 @@ const FirstBlock = ({
   taskName,
   time,
   end = false,
-
+  category,
   setDetailsActive,
   isButton,
   photos,
@@ -115,6 +115,7 @@ const FirstBlock = ({
     tonValue: tonValue,
     task: task,
     agree: agree,
+    category : category
   };
 
   const { ref, inView } = useInView({

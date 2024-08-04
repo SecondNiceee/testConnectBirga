@@ -430,6 +430,8 @@ const AdCreating = () => {
     return GreyIntWidth.toString() + "px";
   }, [GreyIntWidth]);
 
+  console.log(firstPage.category)
+
   useEffect(() => {
     MainButton.onClick(goForward);
     BackButton.onClick(goBack);
@@ -496,7 +498,7 @@ const AdCreating = () => {
             taskInformation={secondPage}
             tonConstant={tonConstant}
           />
-          <FirstDetails  style = {{position : "static" , minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage}} />
+          <FirstDetails  style = {{position : "static" , minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage , category : firstPage.category.id}} />
           {/* <AdCreatingThree taskInformation={secondPage} /> */}
         </>
       )}
