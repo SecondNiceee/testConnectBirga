@@ -127,7 +127,6 @@ const FileInput = ({ className, files, setFiles , fileError, photosNames , clear
     return {}
   } , [files] )
 
-  console.log(files)
   
   return (  
     <>

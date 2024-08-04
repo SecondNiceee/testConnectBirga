@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import Case from "../../../components/UI/Case/Case";
 
 const ExampleWorks = ({cards , openFunc}) => {
-  console.log(cards)
   return (
     <div className="examplesWork">
       {cards.length === 0 ? 

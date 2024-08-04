@@ -32,7 +32,7 @@ const ShowMyResponse = ({
           },
         });
       } catch (e) {
-        alert("Баг");
+        alert("Извини, подверждение не удалось отправить заказчику. Обратитесь в поддержку.");
         console.log(e);
       }
     }
@@ -67,7 +67,7 @@ const ShowMyResponse = ({
       isActive : true , 
       responce : {user : response.advertisement.user, createNumber : response.advertisement.createNumber}
     })
-  } , [] )
+  } , [openAboutReaction, response.advertisement.user, response.advertisement.createNumber] )
 
   return (
     <>

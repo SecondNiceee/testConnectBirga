@@ -12,7 +12,7 @@ import Responce from "./Responce";
 import { CSSTransition } from "react-transition-group";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import pagesHistory from "../../constants/pagesHistory";
-import { addResponse, clearResponses, fetchResponses } from "../../store/responses";
+import {  clearResponses, fetchResponses } from "../../store/responses";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
 import FirstChoiceCategory from "../AdCreatingOne/ChoiceCategory/FirstChoiceCategory";
 import FirstChoiceSubCategory from "../AdCreatingOne/FirstChoiceSubCategory";
@@ -101,7 +101,6 @@ const First = ({isPage = false}) => {
     //   .postEvent('web_app_setup_swipe_behavior', data);
   } , [] ) 
   
-  console.log(filteredArr)
   const secFilteredArray = useMemo( () => {
       let copy = [...filteredArr]
       if (filters.category.id !== -1){
@@ -133,18 +132,15 @@ const First = ({isPage = false}) => {
 
 
 
-  console.log(ordersInformation)
+
   const gotIt = useMemo( () => {
-    alert("Вызов")
     if (secFilteredArray !== null && secFilteredArray.length > 0 && secFilteredArray[isDetailsActive.id]){
 
       if (secFilteredArray[isDetailsActive.id].responces){
-        console.log(secFilteredArray[isDetailsActive.id].responces)
         if (secFilteredArray[isDetailsActive.id].responces.find((e) => 
           Number(e.user.id) === 2144832745))
 
         {
-          alert("хэй")
           return true 
         }
         else{
@@ -154,9 +150,9 @@ const First = ({isPage = false}) => {
       }
     }
     return false
+    // eslint-disable-next-line
   },[secFilteredArray, isDetailsActive.id,isDetailsActive.isOpen ] )
 
-  console.log(gotIt)
   useEffect(() => {
     if (isDetailsActive.isOpen) {
       BackButton.show();
@@ -483,7 +479,7 @@ const forwardFunction = useCallback(() => {
         })
     } })
   }
-}, [responce, step, ordersInformation, isDetailsActive.id, setDetailsActive, dispatch, setStep, me]);
+}, [responce, step, ordersInformation, isDetailsActive.id, setDetailsActive, dispatch, setStep, me , secFilteredArray]);
 
 
 const categorys = useSelector((state) => state.categorys.category);
@@ -575,7 +571,6 @@ useEffect(() => {
     }
     catch(e){
       pageValue = false
-      alert("Ссылка уже не действительна.Возможно, данные были удалены")
       setDetailsActive({isOpen : false, id : 1})
     }
   }
@@ -598,7 +593,7 @@ useEffect(() => {
         return secFilteredArray[isDetailsActive.id]
       }
     }
-  } , [isPage , pageAdvertisement, isDetailsActive.id ,ordersInformation] )
+  } , [isPage , pageAdvertisement, isDetailsActive.id ,ordersInformation, secFilteredArray] )
 
 
 

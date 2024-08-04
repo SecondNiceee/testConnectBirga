@@ -71,7 +71,7 @@ export const postShablon = createAsyncThunk(
 
     }
     catch(e){
-      alert(JSON.stringify(e))
+      alert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже.")
       console.warn(e)
     }
   }

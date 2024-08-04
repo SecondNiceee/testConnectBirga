@@ -385,7 +385,6 @@ const SavedPage = () => {
     // isDetailsActive,
   });
 
-  console.log(myResponse.responce)
   return (
     <div className="saved-wraper">
       <Top

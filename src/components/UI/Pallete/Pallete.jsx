@@ -4,7 +4,6 @@ import PalleteImg from '../../../images/icons/Palitra.png'
 import ItSvg from "../../../images/icons/IT.svg"
 import MoreSvg from "../../../images/icons/More.svg"
 const Pallete = ({className , category}) => {
-    console.log(category)
     const imageSrc = useMemo( () => {
         switch (category){
             case 1 : 

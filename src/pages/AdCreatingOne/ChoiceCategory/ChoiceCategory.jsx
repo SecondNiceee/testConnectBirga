@@ -24,10 +24,9 @@ const ChoiceCategory = ({
       return categorys
     }
     else{
-      console.log(categorys.find(e => e.id === 1))
       return [categorys.find(e => e.id === 1)]
     }
-  } , [designOnly] )
+  } , [designOnly , categorys] )
   
   useEffect( () => {
     function closeFunction(){

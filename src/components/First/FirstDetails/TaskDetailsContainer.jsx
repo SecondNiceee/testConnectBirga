@@ -21,7 +21,6 @@ const TaskDetailsContainer = ({orderInformation , setProfile, end = false}) => {
 
     }
   }, [end , orderInformation.status])
-  console.log(orderInformation)
   return (
     <div className="Task__container-one">
       <FirstBlock end = {end} task={orderInformation} {...orderInformation} isButton = {false} />

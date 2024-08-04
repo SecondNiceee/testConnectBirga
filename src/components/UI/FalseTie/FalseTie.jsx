@@ -10,7 +10,6 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
     const savedResponces = useSelector(state => state.saves.responces)
     const savedCards = useSelector(state => state.saves.cards)
     const dispatch = useDispatch()
-    console.log(savedTasks)
     useEffect( () => {
         switch (navigate){
             case "advertisement":{

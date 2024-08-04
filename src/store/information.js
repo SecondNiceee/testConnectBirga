@@ -311,7 +311,6 @@ export const fetchTasksInformation = createAsyncThunk(
             subCategory : order.subCategory[0].id
           });
         }
-        console.log(tasks)
       } catch (e) {
         console.warn(e);
       }
@@ -358,6 +357,7 @@ const information = createSlice({
         }
       }
     },
+
     changeStatus(state, action) {
       state.orderStatus = action.payload;
       state.orderInformations = [];

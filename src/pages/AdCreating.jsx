@@ -430,7 +430,6 @@ const AdCreating = () => {
     return GreyIntWidth.toString() + "px";
   }, [GreyIntWidth]);
 
-  console.log(firstPage.category)
 
   useEffect(() => {
     MainButton.onClick(goForward);

@@ -17,7 +17,6 @@ const FirstMenu = () => {
         dispatch(changeMenuActive(set))
     }
     const userInfo = useSelector(state => state.telegramUserInfo)
-    console.log(userInfo)
     return (
         <div className= {  isMenuActive ? 'FirstMenu'  :  'FirstMenu hidden'  }>
 

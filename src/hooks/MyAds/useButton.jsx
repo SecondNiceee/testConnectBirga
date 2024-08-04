@@ -98,7 +98,6 @@ export const useButton = ({
                   }
                   else{
                     if (myResponse.isOpen) {
-                      alert("Привет")
                       setMyResponse((value) => ({ ...value, isOpen: false }));
                     } else {
                       navigate("/");

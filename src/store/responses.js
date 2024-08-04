@@ -257,7 +257,6 @@ export const fetchResponses = createAsyncThunk(
 
 
         }
-        console.log(localResponses)
         return localResponses
     }
     catch(e){
