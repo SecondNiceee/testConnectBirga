@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 
 // import myImage from '../../images/desccription.png'
 import { useDispatch, useSelector } from "react-redux";
