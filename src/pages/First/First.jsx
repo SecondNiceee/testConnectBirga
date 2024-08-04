@@ -257,8 +257,10 @@ const First = ({isPage = false}) => {
     MainButton.onClick(forward);
     BackButton.onClick(back);
     if (isDetailsActiveVar) {
+      setTimeout( () => {
+        MainButton.show()
+      } , 400 ) 
       BackButton.show();
-      MainButton.show()
       if (gotIt){
         MainButton.setParams({//неизвесетно
           color : '#2f2f2f',
@@ -267,12 +269,16 @@ const First = ({isPage = false}) => {
       }
       else{
         if (localStep === 0){
-          MainButton.setParams({
-            is_active : true,
-            color : '#2ea5ff',
-            text_color : '#ffffff'
-          
-          })
+          setTimeout( () => {
+
+            MainButton.setParams({
+              is_active : true,
+              color : '#2ea5ff',
+              text_color : '#ffffff'
+            
+            })
+
+          } , 400 )
         }
       }
     } else {
@@ -391,7 +397,7 @@ const [subCategory, setSubCategory] = useState(false)
 const forwardFunction = useCallback(() => {
   async function post(par) {
     try{
-          for (let i = 0; i< 500; i++){
+          for (let i = 0; i< 20; i++){
 
             await axios.post("https://back-birga.ywa.su/response" , par[0], {
                 params : {
