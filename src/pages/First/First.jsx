@@ -134,19 +134,22 @@ const First = ({isPage = false}) => {
 
   console.log(ordersInformation)
   const gotIt = useMemo( () => {
+    alert("Вызов")
     if (secFilteredArray !== null && secFilteredArray.length > 0 && secFilteredArray[isDetailsActive.id]){
 
       if (secFilteredArray[isDetailsActive.id].responces){
         if (secFilteredArray[isDetailsActive.id].responces.find(e => Number(e.user.id) === 2144832745)){
+
           return true
         }
         else{
+
           return false
         }
       }
     }
     return false
-  },[ordersInformation, isDetailsActive.id] )
+  },[secFilteredArray, isDetailsActive.id,isDetailsActive.isOpen ] )
 
   console.log(gotIt)
   useEffect(() => {
