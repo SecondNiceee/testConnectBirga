@@ -135,7 +135,8 @@ const ProfilePage = ({ ...props }) => {
           }
         };
       } catch (e) {
-        alert(e);
+        alert("Ссылка уже не действительна. Возможно, данные были удалены");
+        navigate("/")
         console.log(e);
       }
     }

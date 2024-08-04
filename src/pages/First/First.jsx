@@ -501,6 +501,9 @@ useEffect(() => {
   const [pageAdvertisement , setPageAdvertisement] = useState(null)
   const detailsAdertisement = useMemo( ( ) => {
     async function getAdvertisement(){
+      try{
+
+      
       let advertisement = await axios.get("https://back-birga.ywa.su/advertisement/findOne" , {
         params : {
           "id" : window.Telegram.WebApp.initDataUnsafe.start_param
@@ -549,6 +552,11 @@ useEffect(() => {
       });
 
     }
+    catch(e){
+      alert("Ссылка уже не действительна.Возможно, данные были удалены")
+      setDetailsActive({isOpen : false, id : 1})
+    }
+  }
 
 
     if (ordersInformation === null){

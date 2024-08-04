@@ -200,13 +200,18 @@ const AdCreating = () => {
 
     // dispatch(postMyTask([myFormData, el.photos]));
     for (let i = 0 ; i < 1; i++){
+      try{
 
-      await axios.post("https://back-birga.ywa.su/advertisement", myFormData, {
-        headers: {
-          "Content-Type" :'multipart/form-data',
-          "Access-Control-Allow-Origin": "*"
-        },
-      });
+        await axios.post("https://back-birga.ywa.su/advertisement", myFormData, {
+          headers: {
+            "Content-Type" :'multipart/form-data',
+            "Access-Control-Allow-Origin": "*"
+          },
+        });
+      }
+      catch(e){
+        alert("Задание не было создано. Попробуйте позже")
+      }
     }
     dispatch(changeMyAds([]))
     dispatch(fetchMyOrders(1))
