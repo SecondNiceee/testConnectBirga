@@ -281,7 +281,7 @@ const AdCreatingOne = ({
         unmountOnExit
       >
         <ChoiceCategory
-          designOnly = {true}
+          
           taskInformation={taskInformation}
           setTaskInformation={setTaskInformation}
           setCatagoryChoiceOpen={setCatagoryChoiceOpen}

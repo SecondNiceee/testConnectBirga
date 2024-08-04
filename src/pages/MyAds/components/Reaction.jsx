@@ -5,6 +5,7 @@ import share from "../../../images/icons/Share.svg";
 import "./../MyAds.css";
 import FalseTie from "../../../components/UI/FalseTie/FalseTie";
 import MyButton from "../../../components/UI/MyButton/MyButton";
+import userPhoto from "../../../images/userPhoto/user.png"
 const Reaction = ({
   blue = false,
   setOpen,
@@ -41,11 +42,12 @@ const Reaction = ({
 
         <div className="reaction__middle">
           <img
+            style={{objectFit : "cover"}}
             onClick={() => {
               openAboutReactionFunc({ isActive: true, responce: responce });
             }}
             className="icon"
-            src={responce.user.photo}
+            src={responce.user.photo.length > 0 ? responce.user.photo : userPhoto}
             alt=""
           />
           <div

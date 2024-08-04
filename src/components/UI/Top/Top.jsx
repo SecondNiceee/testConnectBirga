@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import Burger from '../Burger/Burger';
 import { useSelector } from 'react-redux';
 import cl from './Top.module.css'
+import userPhoto from "../../../images/userPhoto/user.png"
 const Top = ({setMenuActive , name , className, ...props}) => {
     const userInfo = useSelector(state => state.telegramUserInfo)
     return (
@@ -17,7 +18,7 @@ const Top = ({setMenuActive , name , className, ...props}) => {
                 }}
             />
             <p className={cl.MyAds}>{name}</p>
-            <img className={cl.topIcon} src={userInfo.photo} alt="" />
+            <img style={{objectFit : "cover"}} className={cl.topIcon} src={userInfo.photo.length > 0 ? userInfo.photo : userPhoto} alt="" />
 
         </div>
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import galks from '../../../images/icons/Subtract.svg'
+import userImage from "../../../images/userPhoto/user.png"
 const Customer = ({customerName, rate, userPhoto, setProfile}) => {
     return (
         <div onClick={() => {
@@ -8,8 +9,9 @@ const Customer = ({customerName, rate, userPhoto, setProfile}) => {
             <p className='customer__up'>Заказчик</p>
             <div className="customer__information">
                 <img style={{
-                    borderRadius : '50%'
-                }} className='information-icon' src={userPhoto} alt="" />
+                    borderRadius : '50%',
+                    objectFit : "cover"
+                }} className='information-icon' src={userPhoto.length > 0 ? userPhoto : userImage} alt="" />
                 <div className="customer__information-right">
                     <div className="customer__information-right-name">
                         <p>{customerName.length > 15 ? 

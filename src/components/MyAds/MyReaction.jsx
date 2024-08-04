@@ -3,7 +3,7 @@ import React from "react";
 
 import "../../pages/MyAds/MyAds.css";
 import MyButton from "../UI/MyButton/MyButton";
-
+import userPhoto from "../../images/userPhoto/user.png"
 const MyReaction = ({
   openAboutReactionFunc,
   responce,
@@ -41,7 +41,8 @@ const MyReaction = ({
               openAboutReactionFunc({ isActive: true, responce: responce });
             }}
             className="icon"
-            src={responce.user.photo}
+            style={{objectFit : "cover"}}
+            src={responce.user.photo.length > 0 ? responce.user.photo  : userPhoto}
             alt=""
           />
           <div

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addWatch } from '../../../store/information';
 
 const FirstDetails = ({  orderInformation , className , setProfile, end = false, breakRef, isDetailsActive, ...props}) => {
-
+    
     useEffect( () => {  
         if (isDetailsActive ){
             if (breakRef.current && mainRef.current){

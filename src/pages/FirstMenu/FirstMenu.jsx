@@ -17,7 +17,7 @@ const FirstMenu = () => {
         dispatch(changeMenuActive(set))
     }
     const userInfo = useSelector(state => state.telegramUserInfo)
-
+    console.log(userInfo)
     return (
         <div className= {  isMenuActive ? 'FirstMenu'  :  'FirstMenu hidden'  }>
 
@@ -33,7 +33,7 @@ const FirstMenu = () => {
                 } } to='/Profile' className="FirstMenu__top">
                 
                 <div>
-                    <img className='icon' src= {userInfo.photo !== "NO" ? userInfo.photo : {userPhoto}} alt="" />
+                    <img className='icon' style={{objectFit : "cover"}} src= {userInfo.photo.length > 0 ? userInfo.photo : userPhoto} alt="" />
                 </div>
                 <div className="FirstMenu__top-right">
                     <p className='MenuName'>{userInfo.firstName}</p>

@@ -168,7 +168,7 @@ export const fetchUserInfo = createAsyncThunk(
             lastName: lastName,
             id: UserId,
             link : user.data.link,
-            photo: user.data.photo ? user.data.photo : "NO",
+            photo: user.data.photo,
             about : user.data.about,
             stage : user.data.stage,
             deals : user.data.deals,

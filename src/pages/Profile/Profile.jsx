@@ -10,6 +10,7 @@ import { CSSTransition } from "react-transition-group";
 import Burger from "../../components/UI/Burger/Burger";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
+import userPhoto from "../../images/userPhoto/user.png"
 
 
 import SmallTextarea from "../../components/UI/SmallTextarea/SmallTextarea";
@@ -363,7 +364,7 @@ const Profile = () => {
 
       <Burger onClick={() => setMenuActive(true)} />
 
-      <img src={userInfo.photo} className="profile__icon icon" alt="" />
+      <img style={{objectFit : "cover"}} src={userInfo.photo.length > 0 ? userInfo.photo : userPhoto} className="profile__icon icon" alt="" />
 
       <p
         className="urName"

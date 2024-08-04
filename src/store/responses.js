@@ -231,7 +231,6 @@ export const fetchResponses = createAsyncThunk(
               
             }
 
-            console.log(localResponses)
             let photos = [];
     
             if (localResponses[i].photos) {
