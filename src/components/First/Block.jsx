@@ -29,7 +29,8 @@ const Block = ({
      task,
      agree = false,
      responseCounter,
-     viewsNumber
+     viewsNumber,
+     category
 }) => {
 
     const dispatch = useDispatch()
