@@ -125,11 +125,18 @@ export const fetchUserInfo = createAsyncThunk(
         let firstName = 'Коля'
         let lastName = 'Титов'
         let UserId = 2144832745 ;
-        let user = await axios.get("https://back-birga.ywa.su/user/findOne", {
-          params: {
-            id: UserId,
-          },
-        });
+        let user;
+        try{
+
+             user = await axios.get("https://back-birga.ywa.su/user/findOne", {
+              params: {
+                id: UserId,
+              },
+            });
+        }
+        catch(e){
+
+        }
 
         let localCards = []
 
@@ -161,7 +168,7 @@ export const fetchUserInfo = createAsyncThunk(
             lastName: lastName,
             id: UserId,
             link : user.data.link,
-            photo: user.data.photo,
+            photo: user.data.photo ? user.data.photo : "NO",
             about : user.data.about,
             stage : user.data.stage,
             deals : user.data.deals,

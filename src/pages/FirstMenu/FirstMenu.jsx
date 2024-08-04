@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 import Close from '../../components/UI/Close';
 import Human from '../../components/UI/Human/Human'
 import SmallDimond from '../../components/UI/SmallDimond/SmallDimond';
-
+import userPhoto from "../../images/userPhoto/user.png"
 
 const FirstMenu = () => {
 
@@ -33,7 +33,7 @@ const FirstMenu = () => {
                 } } to='/Profile' className="FirstMenu__top">
                 
                 <div>
-                    <img className='icon' src= {userInfo.photo} alt="" />
+                    <img className='icon' src= {userInfo.photo !== "NO" ? userInfo.photo : {userPhoto}} alt="" />
                 </div>
                 <div className="FirstMenu__top-right">
                     <p className='MenuName'>{userInfo.firstName}</p>
