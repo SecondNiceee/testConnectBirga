@@ -81,7 +81,7 @@ const FirstMain = (
             ref={elementRef}
             className="block"
             style={{
-              bottom: "50px",
+            
               transform: "translateX(-16px)",
               width: "100vw",
               height: "300px",

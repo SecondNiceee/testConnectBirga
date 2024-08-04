@@ -15,7 +15,7 @@ export const addWatch = createAsyncThunk(
         },
       });
     } catch (e) {
-      window.Telegram.WebApp.showAlert(e);
+      alert(e);
       console.warn(e);
     }
   }
@@ -31,7 +31,7 @@ export const deleteAd = createAsyncThunk(
       });
       return id;
     } catch (e) {
-      window.Telegram.WebApp.showAlert(e);
+      alert(e);
       console.warn(e);
     }
   }
@@ -136,8 +136,8 @@ export const postMyTask = createAsyncThunk(
       };
       return localTask;
     } catch (e) {
-      window.Telegram.WebApp.showAlert(e)
-      window.Telegram.WebApp.showAlert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже");
+      alert(e)
+      alert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже");
       console.log(e);
     }
 
@@ -158,7 +158,7 @@ export const setStartTask = createAsyncThunk(
       });
       return id;
     } catch (e) {
-      window.Telegram.WebApp.showAlert("Ошибка!");
+      alert("Ошибка!");
       console.log(e);
     }
   }
@@ -253,13 +253,13 @@ export const fetchTasksInformation = createAsyncThunk(
         "https://back-birga.ywa.su/advertisement/findAll",
         {
           params: {
-            limit: 6,
+            limit: 1,
             page: par,
           },
         }
       );
     } catch (e) {
-      window.Telegram.WebApp.showAlert(e);
+      alert(e);
       console.log(e);
     }
 
@@ -311,6 +311,7 @@ export const fetchTasksInformation = createAsyncThunk(
             subCategory : order.subCategory[0].id
           });
         }
+
       } catch (e) {
         console.warn(e);
       }
@@ -415,7 +416,7 @@ const information = createSlice({
 
     builder.addCase(fetchTasksInformation.fulfilled, (state, action) => {
       state.orderStatus = "complete";
-      if (action.payload.length < 6) {
+      if (action.payload.length < 1) {
         state.orderStatus = "all";
       }
       state.orderInformations.push(...action.payload);
@@ -443,7 +444,7 @@ const information = createSlice({
     builder.addCase(fetchMyOrders.rejected, (state, action) => {
       state.myOrderStatus = "error";
 
-      window.Telegram.WebApp.showAlert();
+      alert();
     });
     builder.addCase(postMyTask.pending, (state) => {
       state.postTaskStatus = "pending";

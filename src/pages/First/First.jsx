@@ -519,6 +519,7 @@ useEffect(() => {
 }, [responce, forwardFunction]);
 
   const [pageAdvertisement , setPageAdvertisement] = useState(null)
+
   const detailsAdertisement = useMemo( ( ) => {
     async function getAdvertisement(){
       try{

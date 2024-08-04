@@ -1,22 +1,10 @@
 import React, { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import MyButton from "../UI/MyButton/MyButton";
-import Pallete from "../UI/Pallete/Pallete";
-import ShareIcon from "../UI/ShareIcon/ShareIcon";
-import SmallDimond from "../UI/SmallDimond/SmallDimond";
-import FalseTie from "../UI/FalseTie/FalseTie";
-import { addWatch } from "../../store/watchedAds";
-import formatDate from "../../functions/makeDate";
+
 import Photos from "./FirstMain/Photos";
 import MyAdsTop from "./FirstMain/MyAdsTop";
 import FirstMainTop from "./FirstMain/FirstMainTop";
 import FirstMainMiddle from "./FirstMain/FirstMainMiddle";
-import FirstMainBottomLeft from "./FirstMain/FirstMainBottomLeft";
-import QOne from "./FirstMain/QOne";
-import QTwo from "./FirstMain/QTwo";
-import QThree from "./FirstMain/QThree";
-import QFour from "./FirstMain/QFour";
-import MainBottomRight from "./FirstMain/MainBottomRight";
 import MainBottom from "./FirstMain/MainBottom";
 
 const Block = ({
