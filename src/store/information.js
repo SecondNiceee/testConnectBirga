@@ -416,7 +416,7 @@ const information = createSlice({
 
     builder.addCase(fetchTasksInformation.fulfilled, (state, action) => {
       state.orderStatus = "complete";
-      if (action.payload.length < 1) {
+      if (action.payload.length < 4) {
         state.orderStatus = "all";
       }
       state.orderInformations.push(...action.payload);
@@ -435,7 +435,7 @@ const information = createSlice({
     });
     builder.addCase(fetchMyOrders.fulfilled, (state, action) => {
       state.myAdsArray.push(...action.payload);
-      if (action.payload.length < 6) {
+      if (action.payload.length < 4) {
         state.myOrderStatus = "all";
       } else {
         state.myOrderStatus = "completed";

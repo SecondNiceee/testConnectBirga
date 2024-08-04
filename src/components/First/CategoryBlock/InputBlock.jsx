@@ -19,14 +19,16 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
     }
     return new Intl.NumberFormat("ru-RU").format(value);
   }, [value]);
+
+  useEffect( () =>{
+    inputRef.current.blur()
+  } , [] )
   useEffect(() => {
     if (inputRef.current.value === "") {
       inputRef.current.style.width = "66px";
     } else {
       inputRef.current.style.width = String(textRef.current.offsetWidth + 6) + "px";
     }
-    selectionPosition = inputRef.current.selectionStart
-    inputRef.current.setSelectionRange(selectionPosition, selectionPosition);
   }, [convertedValue]);
 
   const unFocusHandler = useCallback(() => {
