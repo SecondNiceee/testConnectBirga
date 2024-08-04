@@ -139,8 +139,6 @@ const First = ({isPage = false}) => {
 
       if (secFilteredArray[isDetailsActive.id].responces){
         console.log(secFilteredArray[isDetailsActive.id].responces)
-        console.log(secFilteredArray[isDetailsActive.id].responces.find((e) => 
-          Number(e.user.id) === 2144832745))
         if (secFilteredArray[isDetailsActive.id].responces.find((e) => 
           Number(e.user.id) === 2144832745))
 
