@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import cl from './Pallete.module.css'
 import PalleteImg from '../../../images/icons/Palitra.png'
 import ItSvg from "../../../images/icons/IT.svg"
+import MoreSvg from "../../../images/icons/More.svg"
 const Pallete = ({className , category}) => {
     console.log(category)
     const imageSrc = useMemo( () => {
@@ -11,6 +12,7 @@ const Pallete = ({className , category}) => {
             case 2:
                 return ItSvg
             default :
+                return MoreSvg
 
         }
     } , [category]  )

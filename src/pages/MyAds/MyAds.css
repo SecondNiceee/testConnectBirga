@@ -717,7 +717,7 @@
     left: 100%;
     transform: translateX(100%);
     height: calc(100vh - 68px);
-    position: absolute;
+    position: fixed;
     width: 100vw;
     transition: 0.4s;
     -webkit-backface-visibility: hidden;
@@ -728,6 +728,7 @@
     background-color: #18222d;
     will-change:  transform  , transition;
     transition: 0.4s;
+    overflow-y: scroll;
     /* top: 0; */
     height: 100vh;
     padding-top: 20px;

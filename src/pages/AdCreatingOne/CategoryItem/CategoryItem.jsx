@@ -3,6 +3,7 @@ import cl from './CategoryItem.module.css'
 import '../../../images/icons/Palitra.png'
 import designIcon from "../../../images/icons/Palitra.png"
 import ItIcon from "../../../images/icons/IT.svg"
+import MoreSvg from "../../../images/icons/More.svg"
 const CategoryItem = ({className , id , category  }) => {
     const imageSrc = useMemo( () => {
         switch (id){
@@ -11,7 +12,7 @@ const CategoryItem = ({className , id , category  }) => {
             case 2: 
                 return ItIcon
             default :
-                
+                return MoreSvg
         }
     }  , [id])
     return (

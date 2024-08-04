@@ -68,10 +68,59 @@ const First = ({isPage = false}) => {
     isShablon: false,
     shablonMaker : false,
   });
+  
+
+  const tonConstant = useSelector((state) => state.ton.value);
+
 
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
   );
+
+  const [filters, setFilters] = useState({
+    category : {id : -1 , category : "Все"},
+    subCategory : {id : -1 , subCategory : "Все"},
+    price : 0
+  })
+
+  const [filterBy, setFilterBy] = useState("");
+  
+  
+  
+  
+  const filteredArr = useFilteredArr(ordersInformation, filterBy);
+  
+  
+  useEffect( () => {
+    window.Telegram.WebApp.disableVerticalSwipes()
+    // const data = JSON.stringify({ allow_vertical_swipe: false });
+  
+    // window
+    //   .TelegramWebviewProxy
+    //   .postEvent('web_app_setup_swipe_behavior', data);
+  } , [] ) 
+  
+  console.log(filteredArr)
+  const secFilteredArray = useMemo( () => {
+      let copy = [...filteredArr]
+      if (filters.category.id !== -1){
+        if (filters.subCategory.id !== -1){
+          return copy.filter((e) => {
+            return e.category === filters.category.id && e.subCategory === filters.subCategory.id && (e.tonValue * tonConstant) >= filters.price
+          })
+        }
+        else{
+          return copy.filter((e) => {
+            return e.category === filters.category.id && (e.tonValue * tonConstant) >= filters.price
+          })
+        }
+      }
+      else{
+        return copy.filter((e) => {
+          return (e.tonValue * tonConstant) >= filters.price
+        })
+      }
+  } , [filteredArr, filters, tonConstant] )
 
 
   const isMenuActive = useSelector((state) => state.menu.value);
@@ -80,12 +129,15 @@ const First = ({isPage = false}) => {
 
   const mainRef = useRef(null)
 
+
+
+
+  console.log(ordersInformation)
   const gotIt = useMemo( () => {
-    if (ordersInformation !== null && ordersInformation.length > 0 && ordersInformation[isDetailsActive.id]){
+    if (secFilteredArray !== null && secFilteredArray.length > 0 && secFilteredArray[isDetailsActive.id]){
 
-      if (ordersInformation[isDetailsActive.id].responces){
-
-        if (ordersInformation[isDetailsActive.id].responces.find(e => e.user.id === 2144832745)){
+      if (secFilteredArray[isDetailsActive.id].responces){
+        if (secFilteredArray[isDetailsActive.id].responces.find(e => Number(e.user.id) === 2144832745)){
           return true
         }
         else{
@@ -96,6 +148,7 @@ const First = ({isPage = false}) => {
     return false
   },[ordersInformation, isDetailsActive.id] )
 
+  console.log(gotIt)
   useEffect(() => {
     if (isDetailsActive.isOpen) {
       BackButton.show();
@@ -280,7 +333,7 @@ const First = ({isPage = false}) => {
     }
   } , [isMenuActive, setMenuActive] )
   
-  const tonConstant = useSelector((state) => state.ton.value);
+
   
   localResponce = responce
 
@@ -312,7 +365,7 @@ const First = ({isPage = false}) => {
 
 const me = useSelector(state => state.telegramUserInfo)
 
-const [filterBy, setFilterBy] = useState("");
+
 
 const [categoryOpen , setCategoryOpen] = useState(false)
 
@@ -320,48 +373,7 @@ const [subCategory, setSubCategory] = useState(false)
 
 
 
-const [filters, setFilters] = useState({
-  category : {id : -1 , category : "Все"},
-  subCategory : {id : -1 , subCategory : "Все"},
-  price : 0
-})
 
-
-
-
-const filteredArr = useFilteredArr(ordersInformation, filterBy);
-
-
-useEffect( () => {
-  window.Telegram.WebApp.disableVerticalSwipes()
-  // const data = JSON.stringify({ allow_vertical_swipe: false });
-
-  // window
-  //   .TelegramWebviewProxy
-  //   .postEvent('web_app_setup_swipe_behavior', data);
-} , [] ) 
-
-console.log(filteredArr)
-const secFilteredArray = useMemo( () => {
-    let copy = [...filteredArr]
-    if (filters.category.id !== -1){
-      if (filters.subCategory.id !== -1){
-        return copy.filter((e) => {
-          return e.category === filters.category.id && e.subCategory === filters.subCategory.id && (e.tonValue * tonConstant) >= filters.price
-        })
-      }
-      else{
-        return copy.filter((e) => {
-          return e.category === filters.category.id && (e.tonValue * tonConstant) >= filters.price
-        })
-      }
-    }
-    else{
-      return copy.filter((e) => {
-        return (e.tonValue * tonConstant) >= filters.price
-      })
-    }
-} , [filteredArr, filters, tonConstant] )
 
 // useEffect( () => {
 //   firstRef.current.style.overflowY = "scroll"
@@ -574,7 +586,7 @@ useEffect(() => {
       }
       else{
         /// НЕ попал сюда
-        return ordersInformation[isDetailsActive.id]
+        return secFilteredArray[isDetailsActive.id]
       }
     }
   } , [isPage , pageAdvertisement, isDetailsActive.id ,ordersInformation] )
@@ -677,7 +689,7 @@ useEffect(() => {
           responce = {responce}
           setResponce = {setResponce}
 
-          orderInformation={filteredArr[isDetailsActive.id] ? filteredArr[isDetailsActive.id] : "he"}
+          orderInformation={secFilteredArray[isDetailsActive.id] ? secFilteredArray[isDetailsActive.id] : "he"}
         />
         // <>
         // </>

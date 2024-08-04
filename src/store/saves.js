@@ -130,10 +130,7 @@ export const addAdvertisment = createAsyncThunk(
                     "userId" : par[1].user.id
                 }
             })
-            const rez = par[1]
-
-            rez.user = advertisementUser.data
-            rez.createNumber = advertisementCrateNumber.data
+            const rez = {...par[1] , user : advertisementUser.data, createNumber : advertisementCrateNumber.data }
 
             return rez
             
@@ -203,10 +200,11 @@ export const fetchAllValues = createAsyncThunk(
                     rate : '5',
                     isActive : true,
                     creationTime : order.createdAt,
-                    viewsNumber : '50',
+                    viewsNumber : order.views ,
                     responces : order.responses,
                     user : advertisementUser.data,
-                    createNumber : advertisementCrateNumber.data
+                    createNumber : advertisementCrateNumber.data,
+                    status : order.status
                 }
             )
 
@@ -282,8 +280,10 @@ export const fetchAllValues = createAsyncThunk(
                 rate : '5',
                 isActive : true,
                 creationTime : responces[i].advertisement.createdAt,
-                viewsNumber : '50',
+                viewsNumber : responces[i].advertisement.views,
+                status : responces[i].advertisement.status,
                 user : advertisementUser.data
+
             }
     
             try {
