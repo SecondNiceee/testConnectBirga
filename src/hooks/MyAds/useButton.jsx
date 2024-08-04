@@ -58,8 +58,11 @@ export const useButton = ({
                   dispatch(setStartResponse(isOpen.responce.id));
                   setOpen({ ...isOpen, isActive: false });
                   setSecondPage({ ...secondPage, isActive: false });
-                } else {
+                } 
+                if (buttonId === "delete"){
+                  console.log("Он отказался")
                 }
+                
               }
             );
           }

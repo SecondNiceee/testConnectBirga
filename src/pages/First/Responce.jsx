@@ -23,13 +23,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
 
   return (
     <div ref={ref} className="responce-wrapper">
-      {/* <button
-        onClick={() => {
-          forwardFunction();
-        }}
-      >
-        Отослать
-      </button> */}
+
       <Block {...orderInformation} />
       <MakePrivate
         isPrivate={responce.isShablon}

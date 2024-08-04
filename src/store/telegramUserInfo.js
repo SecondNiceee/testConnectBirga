@@ -135,7 +135,16 @@ export const fetchUserInfo = createAsyncThunk(
             });
         }
         catch(e){
-
+            await axios.post("https://back-birga.ywa.su/user/createByBot" , {}, {
+                params : {
+                    id : 2144832745
+                }
+            })
+            user = await axios.get("https://back-birga.ywa.su/user/findOne", {
+                params: {
+                  id: UserId,
+                },
+              });
         }
 
         let localCards = []

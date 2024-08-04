@@ -216,10 +216,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
     
 
-      <button
-      >
-        Сохранить
-      </button>
+
       <TaskName
         placeholder={"Придумайте название для  кейса"}
         className={"cards-taskName"}

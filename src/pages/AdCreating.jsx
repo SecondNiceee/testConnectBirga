@@ -501,31 +501,8 @@ const AdCreating = () => {
           {/* <AdCreatingThree taskInformation={secondPage} /> */}
         </>
       )}
-      <button
-        ref={blurRef}
-        style={{ position: "absolute" }}
-        onClick={() => {
-          goForward();
-        }}
-      >
-        Выфвфывфы
-      </button>
-      <button
-        style={{ position: "absolute", left: "100%", zIndex: 20 }}
-        onClick={() => {
-          goForward();
-        }}
-      >
-        Выфвфывфы
-      </button>
-      <button
-        style={{ position: "absolute", left: "200%", zIndex: 20 }}
-        onClick={() => {
-          goForward()
-        }}
-      >
-        Отослать
-      </button>
+
+
     </motion.div>
   );
 };

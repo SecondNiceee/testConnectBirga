@@ -263,7 +263,6 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         textTitle={"ОПИСАНИЕ КЕЙСА"}
         filesTitle={""}
       />
-      <button onClick={saveFunc}>Сохранить</button>
       <p className="cards-underText">
         Расскажите о себе и своем опыте работы Прикрепите релевантные примеры
       </p>

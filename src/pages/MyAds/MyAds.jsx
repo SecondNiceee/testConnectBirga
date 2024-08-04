@@ -175,7 +175,7 @@ const MyAds = () => {
 
   const save = useSave({
     detailsVar,
-    myAdsArray,
+    myAdsArray : filteredArray,
     secondPage,
     checkMistakes,
     sortFiles,
@@ -354,13 +354,7 @@ const MyAds = () => {
           transition={{ duration: 0.1 }}
           className="MyAdsContainer"
         >
-          <button  style={{
-        position : 'fixed',
-        left : '50%',
-        zIndex : 4000000
-      }} onClick={() => {
-       save()
-      }}>SAVE</button>
+
 
 
           <MyAdOne
@@ -475,7 +469,7 @@ const MyAds = () => {
         mountOnEnter
   
       > 
-        <ShowMyResponse openAboutReaction = {setOpenAboutReaction} setLastAds = {setLastAdsTwo} deleteFunction = {deleteFunction}  index={myResponse.id} openDetails = {openDetails} response={responsesArr[myResponse.id]} />
+        <ShowMyResponse openAboutReaction = {setOpenAboutReaction} setLastAds = {setLastAdsTwo} deleteFunction = {deleteFunction}  index={myResponse.id} openDetails = {openDetails} response={filteredResponses[myResponse.id]} />
       </CSSTransition>
 
 
@@ -488,7 +482,7 @@ const MyAds = () => {
           >
             <FirstDetails
               // className={}
-              orderInformation={responsesArr[detailsTwo.id] ? responsesArr[detailsTwo.id].advertisement : ""  }
+              orderInformation={filteredResponses[detailsTwo.id] ? filteredResponses[detailsTwo.id].advertisement : ""  }
 
             />
         </CSSTransition>
