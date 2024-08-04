@@ -82,6 +82,15 @@ const ProfilePage = ({ ...props }) => {
           },
         });
 
+        let imTwo = await axios.get(
+            "https://back-birga.ywa.su/advertisement/findCount",
+            {
+              params: {
+                userId: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[0]),
+              },
+            }
+          );
+
         const cardOne = await axios.get("https://back-birga.ywa.su/card/findOne" , {
             params : {
                 id : Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1])
@@ -113,7 +122,7 @@ const ProfilePage = ({ ...props }) => {
         let newFiles = await makeNewFile(cardOne.data.folder, cardOne.data.photos);
         return {
           localCards: localCards,
-          responce: { user: user.data },
+          responce: { user: user.data, createNumber : imTwo.data },
           card : {
             id: cardOne.data.id,
             title: cardOne.data.title,
