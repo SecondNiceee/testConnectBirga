@@ -541,6 +541,7 @@
   /* Menu Text */
 }
 .FirstMenu .MenuList .menuLink {
+  cursor: pointer;
   color: rgb(149, 151, 158);
   font-family: SF Pro Display;
   font-size: 16px;
