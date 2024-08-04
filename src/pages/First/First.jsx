@@ -424,7 +424,7 @@ const forwardFunction = useCallback(() => {
 
       let gibrid = {...responce}
       gibrid.isWatched = ""
-      gibrid.advertisement = ordersInformation[isDetailsActive.id]
+      gibrid.advertisement = secFilteredArray[isDetailsActive.id]
       gibrid.user = {
         "id" : me.id,
         "fl" : me.firstName,
