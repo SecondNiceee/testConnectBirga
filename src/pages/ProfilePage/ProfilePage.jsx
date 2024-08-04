@@ -24,7 +24,7 @@ const ProfilePage = ({ ...props }) => {
   useEffect(() => {});
 
 
-  alert(window.Telegram.WebApp.initDataUnsafe.start_param)
+//   alert(window.Telegram.WebApp.initDataUnsafe.start_param)
 
 
   const dispatch = useDispatch();
@@ -78,13 +78,13 @@ const ProfilePage = ({ ...props }) => {
       try {
         const user = await axios.get("https://back-birga.ywa.su/user/findOne", {
           params: {
-            id: window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[0],
+            id: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[0]),
           },
         });
 
         const cardOne = await axios.get("https://back-birga.ywa.su/card/findOne" , {
             params : {
-                id : window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1]
+                id : Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1])
             }
         })
 
