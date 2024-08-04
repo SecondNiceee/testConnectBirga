@@ -78,7 +78,7 @@ const ProfilePage = ({ ...props }) => {
       try {
         const user = await axios.get("https://back-birga.ywa.su/user/findOne", {
           params: {
-            id: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[0]),
+            id: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1]),
           },
         });
 
@@ -86,14 +86,14 @@ const ProfilePage = ({ ...props }) => {
             "https://back-birga.ywa.su/advertisement/findCount",
             {
               params: {
-                userId: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[0]),
+                userId: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1]),
               },
             }
           );
 
         const cardOne = await axios.get("https://back-birga.ywa.su/card/findOne" , {
             params : {
-                id : Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1])
+                id : Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[0])
             }
         })
 
