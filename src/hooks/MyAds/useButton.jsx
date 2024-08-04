@@ -59,7 +59,7 @@ export const useButton = ({
                   setOpen({ ...isOpen, isActive: false });
                   setSecondPage({ ...secondPage, isActive: false });
                 } 
-                if (buttonId === "delete"){
+                if (buttonId === "delete" || buttonId === null){
                   console.log("Он отказался")
                 }
                 
@@ -70,6 +70,9 @@ export const useButton = ({
             window.Telegram.WebApp.openLink(
               "https://walletru.helpscoutdocs.com/"
             );
+          }
+          if (buttonId === null){
+            console.log("Он отказался")
           }
         }
       );
