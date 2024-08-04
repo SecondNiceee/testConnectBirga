@@ -123,7 +123,7 @@ const Block = ({
               {marginTop : "13px" } :
               {}
             }>
-              <Pallete />
+              <Pallete category={category} />
               <p className= { isWatched ? "watchedTask" : ""}>{taskName}</p>
               <ShareIcon onClick = {() => {
                 

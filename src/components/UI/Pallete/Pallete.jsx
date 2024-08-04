@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import cl from './Pallete.module.css'
 import PalleteImg from '../../../images/icons/Palitra.png'
-const Pallete = ({className}) => {
+import ItSvg from "../../../images/icons/IT.svg"
+const Pallete = ({className , category}) => {
+    const imageSrc = useMemo( () => {
+        switch (category){
+            case 1 : 
+                return PalleteImg
+            case 2:
+                return ItSvg
+            default :
+
+        }
+    } , [category]  )
     return (
         <div className = {className ? [cl.Pallete , className].join(' ') : cl.Pallete}>
-            <img src = {PalleteImg} alt="" />
+            <img src = {imageSrc} alt="" />
         </div>
     );
 };

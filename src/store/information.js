@@ -131,6 +131,7 @@ export const postMyTask = createAsyncThunk(
         isActive: true,
         creationTime: b.data.createdAt,
         viewsNumber: b.data.views,
+        category : b.data.category,
         status: "active",
       };
       return localTask;
@@ -223,7 +224,8 @@ export const fetchMyOrders = createAsyncThunk(
             addedFiles: [],
             status: order.status,
             user : order.user,
-            responseCounter : responseCounter.data
+            responseCounter : responseCounter.data,
+            category : order.category.id
           });
         }
         return tasks;
@@ -305,9 +307,10 @@ export const fetchTasksInformation = createAsyncThunk(
             status: order.status,
             user: order.user,
             createNumber : imTwo.data,
-            category : imTwo.data.category
+            category : imTwo.data.category.id
           });
         }
+        console.log(tasks)
       } catch (e) {
         console.warn(e);
       }
