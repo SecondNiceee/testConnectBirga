@@ -19,7 +19,8 @@ const MyFirstBlock = ({
    tonValue,
    status,
    viewsNumber,
-   responseCounter = 0
+   responseCounter = 0,
+   category
    
 
 
@@ -140,7 +141,7 @@ const MyFirstBlock = ({
           <div className="FirstMain__top" style={
             {marginTop : "13px" } 
           }>
-            <Pallete />
+            <Pallete category={category} />
             <p className= { isWatched ? "watchedTask" : ""}>{taskName}</p>
             <ShareIcon style = {end ? {opacity : 0.5} : {}} className="share__icon" />
           </div>

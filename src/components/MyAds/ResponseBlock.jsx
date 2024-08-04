@@ -21,6 +21,7 @@ const ResponseBlock = ({
   id,
 index ,
 isWatched,
+category,
 ...props
 
 
@@ -109,7 +110,7 @@ isWatched,
             {marginTop : "13px" } :
             {}
           }>
-            <Pallete />
+            <Pallete category={category} />
             <p >{taskName}</p>
             <ShareIcon className="share__icon" />
           </div>
