@@ -4,6 +4,7 @@ import FullDescription from "./FullDescription"
 import Dedline from './Dedline'
 import Status from './Status'
 import Customer from './Customer'
+import Block from "../Block";
 
 const TaskDetailsContainer = ({orderInformation , setProfile, end = false}) => {
   const text = useMemo(() => {
@@ -23,7 +24,7 @@ const TaskDetailsContainer = ({orderInformation , setProfile, end = false}) => {
   }, [end , orderInformation.status])
   return (
     <div className="Task__container-one">
-      <FirstBlock end = {end} task={orderInformation} {...orderInformation} isButton = {false} />
+      <Block end = {end} task={orderInformation} {...orderInformation} isButton = {false} />
       <FullDescription fullDescription={orderInformation.taskDescription} />
       <Dedline dedline={orderInformation.time} />
       <div className="TaskDetails-row">
