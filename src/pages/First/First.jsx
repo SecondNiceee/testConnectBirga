@@ -138,9 +138,15 @@ const First = ({isPage = false}) => {
     if (secFilteredArray !== null && secFilteredArray.length > 0 && secFilteredArray[isDetailsActive.id]){
 
       if (secFilteredArray[isDetailsActive.id].responces){
-        if (secFilteredArray[isDetailsActive.id].responces.find(e => Number(e.user.id) === 2144832745)){
+        console.log(secFilteredArray[isDetailsActive.id].responces)
+        console.log(secFilteredArray[isDetailsActive.id].responces.find((e) => 
+          Number(e.user.id) === 2144832745))
+        if (secFilteredArray[isDetailsActive.id].responces.find((e) => 
+          Number(e.user.id) === 2144832745))
 
-          return true
+        {
+          alert("хэй")
+          return true 
         }
         else{
 
