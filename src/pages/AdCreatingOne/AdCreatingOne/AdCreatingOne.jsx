@@ -100,7 +100,7 @@ const AdCreatingOne = ({
           startTime: time,
         }));
         if (taskInformation.time) {
-          setTaskInformation({...taskInformation, time : {...taskInformation.time, state : time}})
+          setTaskInformation({...taskInformation, time : {...taskInformation.time, start : time}})
         } else {
           setTaskInformation((value) => ({ ...value, startTime: time }));
         }
@@ -124,10 +124,7 @@ const AdCreatingOne = ({
           endTime: time,
         });
         if (taskInformation.time) {
-          setTaskInformation((value) => ({
-            ...value,
-            time: { ...taskInformation.time, end: time },
-          }));
+          setTaskInformation({...taskInformation, time : {...taskInformation.time, end : time}})
         } else {
           setTaskInformation((value) => ({ ...value, endTime: time }));
         }
