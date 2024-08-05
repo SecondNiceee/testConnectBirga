@@ -607,7 +607,7 @@ useEffect(() => {
 
 
 
-
+  alert(step)
   return (
     <div className="first-container">
 
@@ -625,17 +625,7 @@ useEffect(() => {
       <div className="first-wrapper" >
 
 
-        {/* <button
-          onClick={forward}
-          style={{
-            zIndex: "10000",
-            position: "fixed",
-            left: 20,
-            top: 20,
-          }}
-        >
-          ДАЛЕЕ
-        </button> */}
+
 
 
         <AllTasks
@@ -698,7 +688,7 @@ useEffect(() => {
           </CSSTransition>
 
         <CSSTransition
-                    in={step === 1}
+                    in={step === 1 ? true : false}
                     timeout={400}
                     classNames="left-right"
                     mountOnEnter
