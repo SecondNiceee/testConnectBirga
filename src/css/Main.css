@@ -2840,7 +2840,6 @@ input {
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;
-  position: absolute;
   left: 0;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
