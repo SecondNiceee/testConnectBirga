@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sortFiles, dispatch, putMyTask, setDetails, details }) =>{
     const save = useCallback( () => {
-        if (details.task !== myAdsArray[secondPage.index] && checkMistakes(details.task)) {
+        if (details.task !== myAdsArray[secondPage.index] ) {
           window.Telegram.WebApp
             .showPopup({
               title: "Сохранить?",
@@ -17,6 +17,7 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
                 setDetails((value) => ({...value , isActive : false}))
               }
               if (buttonId === "save") {
+              if (checkMistakes(details.task)){
               let myFormData = new FormData();
               myFormData.append('title' , detailsVar.task.taskName)
               myFormData.append('description' , detailsVar.task.taskDescription)
@@ -41,7 +42,7 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
               setDetails((value) => ({...value , isActive : false}))
               }
     
-    
+            }
             } )
             
         } else {
