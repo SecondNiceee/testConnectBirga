@@ -8,7 +8,7 @@ const Categories = ({className , taskInformation, setCatagoryChoiceOpen , setSub
             let str = arg.split(' ')
             let rezult = ''
             for (let word of str){
-                if (rezult.length < 20){
+                if (rezult.length < 15){
                     rezult+=word + ' '
                 }
                 else{

@@ -173,8 +173,8 @@ const AdCreating = () => {
   }
   async function post(el) {
     let myFormData = new FormData();
-    // myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id );
-     myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id  );
+    // myFormData.append("userId", 2144832745 );
+     myFormData.append("userId", 2144832745  );
     myFormData.append("title", el.taskName);
     myFormData.append("description", el.taskDescription);
     myFormData.append("deadline", 1);
@@ -328,6 +328,13 @@ const AdCreating = () => {
   } , [firstPage.taskDescription, navigate] )
 
 
+  function clearInput(){
+    var inputs = document.getElementsByTagName('input');
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].blur();
+    }
+  }
+
   // eslint-disable-next-line
   const goForward = () => {
     if (blurRef.current) {
@@ -337,9 +344,13 @@ const AdCreating = () => {
       mainRef.current.classList.remove('oneBack')
       mainRef.current.classList.remove('twoBack')
       if (spet === 0){
+
+
+          clearInput()
           mainRef.current.classList.add('stepOne')
       }
       if (spet === 1){
+        clearInput()
         mainRef.current.classList.add('stepTwo')
       }
 
@@ -354,7 +365,7 @@ const AdCreating = () => {
         }
         if (spet === 3){
 
-
+          clearInput()
           window.Telegram.WebApp.showPopup({
             title: "Создать?",
             message: `Вы уверены, что хотите создать новое задание?`,
@@ -388,34 +399,38 @@ const AdCreating = () => {
       endError: false})
     if (isCategoryChoiceOpen || isSubcategoryChoiceOpen){
       if (isCategoryChoiceOpen){
+        clearInput()
         setCatagoryChoiceOpen(false)
       }
       else{
+        clearInput()
         setSubcategoryChoiceOpen(false)
       }
     }
     else{
 
       if (spet === 0) {
+        clearInput()
         if (!isCategoryChoiceOpen && !isSubcategoryChoiceOpen){
           navigate(pagesHistory[pagesHistory.length-1]);
         }
       } else {
         
         if (spet === 1){
-
+          clearInput()
             mainRef.current.classList.remove('stepOne')
             mainRef.current.classList.remove('stepTwo')
             mainRef.current.classList.add('oneBack')
           
         }
         if (spet === 2){
+          clearInput()
             mainRef.current.classList.remove('stepTwo')
             mainRef.current.classList.remove('stepOne')
             mainRef.current.classList.add('twoBack')
           
         }
-      
+        clearInput()
         spet -= 1;
         MainButton.setText("ДАЛЕЕ")
         // backAnimte();
