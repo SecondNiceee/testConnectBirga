@@ -157,6 +157,7 @@ const MyAds = () => {
     }
 
     if (changingTask.time.end.length > 0) {
+      alert("Я тут")
       if (changingTask.time.end < changingTask.time.start) {
         timeError = true;
       }
