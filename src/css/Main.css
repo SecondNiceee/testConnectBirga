@@ -3155,7 +3155,7 @@ input {
 html {
   overflow: auto;
   position: absolute;
-  overflow-y: auto;
+  overflow-y: scroll;
   left: 0;
   top: 0;
   right: 0;
