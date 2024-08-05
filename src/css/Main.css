@@ -2834,7 +2834,6 @@ input {
 }
 
 .responce-wrapper {
-  overflow-y: auto;
   min-width: 100vw;
   width: 100vw;
   padding-top: 18px;
@@ -3170,6 +3169,16 @@ body {
 #app {
   width: 100%;
   height: auto;
+}
+
+button, input, li {
+  cursor: pointer;
+}
+
+p, a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .UperContainer {
