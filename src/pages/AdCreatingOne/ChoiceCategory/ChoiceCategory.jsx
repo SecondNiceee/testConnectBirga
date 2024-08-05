@@ -67,7 +67,7 @@ const ChoiceCategory = ({
             <div
               onClick={() => {
                 if(e.category === 'Другое'){
-                    setTaskInformation({ ...taskInformation, category: e , subCategory : subCategorys.find(e => e.subCategory === 'Нет')});
+                    setTaskInformation({ ...taskInformation, category: e , subCategory : subCategorys.find(e => e.subCategory === 'Другое')});
                 }
                 else{
                   let sortedCategorys = subCategorys.filter(el => el.category.id === e.id)

@@ -29,7 +29,7 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
         }
         else{
 
-            subCategorysCopy.push(subCategorysPar.find(e => taskInformation.category.id === e.category.id && e.subCategory === 'Нет'))
+            subCategorysCopy.push(subCategorysPar.find(e => taskInformation.category.id === e.category.id && e.subCategory === 'Другое'))
 
         }
         return subCategorysCopy
@@ -66,7 +66,9 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
         setInputValue={setInputValue}
         className='subCategory__oneInput'
       />
-      <div className="sub__block">
+      <div className="sub__block" style={{
+        paddingBottom : "20px"
+      }}>
             <div className="sub__wrapper">
                     {subCategorys.map((e, id) => {
                         return (

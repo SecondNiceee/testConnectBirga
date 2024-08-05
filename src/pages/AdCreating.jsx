@@ -70,7 +70,7 @@ const AdCreating = () => {
       setFirstPage(
         (value) => ({...value,
         category: categorys.find((e) => e.category === "Другое"),
-        subCategory: subCategorys.find((e) => e.subCategory === "Нет"),
+        subCategory: subCategorys.find((e) => e.subCategory === "Другое"),
       })
       );
     }
