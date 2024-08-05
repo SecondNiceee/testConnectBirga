@@ -169,7 +169,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
   const backFunc = useCallback( () => {
     // document.documentElement.style.overflow = "auto";
-    
+  
     window.Telegram.WebApp
     .showPopup({
       title: "Сохранить?",
@@ -184,7 +184,9 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         setCardsOpen(false);
       }
       if (buttonId === "save") {
-        saveFunc()
+        if (checkMistakes()){
+          saveFunc()
+        }
       }
 
 

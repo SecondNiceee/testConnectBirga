@@ -203,7 +203,10 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     
         } )
 
-        
+
+      }
+      else{
+        setCardsOpen(false);  
       }
       // document.documentElement.style.overflow = "auto";
     }
