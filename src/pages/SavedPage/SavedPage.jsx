@@ -326,9 +326,9 @@ const SavedPage = () => {
           params: {
             chatId: im.data.user.chatId,
             text:
-              '📣 Вы получили отклик на задачу "' +
+              '📣 Вы получили отклик на задачу «' +
               savedTasks[details.id].taskName.bold() +
-              '" от' +
+              '» от' +
               im.data.user.fl,
           },
         });
