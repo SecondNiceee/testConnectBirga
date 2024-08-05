@@ -2840,7 +2840,7 @@ input {
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;
-  position: fixed;
+  position: absolute;
   left: 0;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
@@ -2850,6 +2850,7 @@ input {
   -webkit-transition: 0.4s;
   transition: 0.4s;
   background-color: #18222d;
+  will-change: transform;
 }
 
 .responce-wrapper.secondStep {
@@ -3154,6 +3155,7 @@ input {
 html {
   overflow: auto;
   position: absolute;
+  overflow-y: auto;
   left: 0;
   top: 0;
   right: 0;

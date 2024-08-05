@@ -67,8 +67,8 @@ window.Telegram.WebApp.showAlert("Мы скоро добавим.")
             <div className="Menu__Helps">
                 <p className = 'menuHelp' onClick={() => {
                     window.Telegram.WebApp.openTelegramLink("https://t.me/connect_man")
-                }}  >Поддержка </p>
-                <Human className='human' />
+                }}  >Поддержка 👋🏻</p>
+               
             </div>
 
         </div>

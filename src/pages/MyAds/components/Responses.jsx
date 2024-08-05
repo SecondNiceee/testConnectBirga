@@ -78,7 +78,7 @@ const Responses = ({
       })}
 </>
       :
-      <MyAnimation style = {height} text="Нету откликов на задание" />
+      <MyAnimation style = {height} text="Нет откликов на задание" />
     }
 
 

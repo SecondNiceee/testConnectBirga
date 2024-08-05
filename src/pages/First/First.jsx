@@ -572,8 +572,9 @@ useEffect(() => {
         responces: order.responses,
         status: order.status,
         user: order.user,
-        createNumber : imTwo.data
-      });
+        createNumber : imTwo.data,
+        category : order.category.id
+        });
 
     }
     catch(e){
