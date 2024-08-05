@@ -93,7 +93,7 @@ const First = ({isPage = false}) => {
   
   
   useEffect( () => {
-    window.Telegram.WebApp.disableVerticalSwipes()
+    // window.Telegram.WebApp.disableVerticalSwipes()
     // const data = JSON.stringify({ allow_vertical_swipe: false });
   
     // window
