@@ -18,6 +18,7 @@ let mainLocalErrors;
 let inputObject = {
   text: "",
 };
+let cardStart;
 const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
   useEffect( () => {
@@ -25,6 +26,10 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     return () => {
        document.documentElement.style.overflow = 'auto'
     }
+  } , [] )
+
+  useEffect( () => {
+    cardStart = {...card}
   } , [] )
 
 
@@ -160,29 +165,47 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     }
   }
                                       
-  
+    function compareTwo(a1 ,a2){
+      if (JSON.stringify(a1) !== JSON.stringify(a2)){
+          return false 
+      }
+      if (a1.photos.length !== a2.photos.length ){
+        return false
+      }
+      for (let i = 0; i < a1.photos.length;i++){
+        if (a1.photos[i].name !== a2.photos[i].name){
+          return false
+        }
+      }
+      return true
+    }
     
     function backFunc() {
+      if (!compareTwo(card, cardStart)){
+
+        window.Telegram.WebApp
+        .showPopup({
+          title: "Изменить?",
+          message: `Изменить этот кейс?`,
+          buttons: [
+            { id: "save", type: "default", text: "Да" },
+            { id: "delete", type: "destructive", text: "Нет" },
+          ],
+        } , (buttonId) => {
+    
+          if (buttonId === "delete" ) {
+            setCardsOpen(false);                                                                                            
+          }
+          if (buttonId === "save") {
+            saveFunc()
+          }
+    
+    
+        } )
+
+        
+      }
       // document.documentElement.style.overflow = "auto";
-      window.Telegram.WebApp
-      .showPopup({
-        title: "Изменить?",
-        message: `Изменить этот кейс?`,
-        buttons: [
-          { id: "save", type: "default", text: "Да" },
-          { id: "delete", type: "destructive", text: "Нет" },
-        ],
-      } , (buttonId) => {
-  
-        if (buttonId === "delete" ) {
-          setCardsOpen(false);                                                                                            
-        }
-        if (buttonId === "save") {
-          saveFunc()
-        }
-  
-  
-      } )
     }
 
     
