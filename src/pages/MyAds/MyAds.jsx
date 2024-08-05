@@ -153,17 +153,22 @@ const MyAds = () => {
   function checkMistakes(changingTask) {
     let taskName = false;
     let timeError = false;
+    let descriptionError = false;
     if (changingTask.taskName.length < 5) {
       taskName = true;
     }
 
     if (changingTask.time.end.getTime() !== defaultDate.getTime()) {
-      alert("Я тут")
       if (changingTask.time.end < changingTask.time.start) {
         timeError = true;
+        window.Telegram.WebApp.showAlert("У вас дата начала меньше даты завершения.")
       }
     }
-    let rezult = { taskName: taskName, timeError: timeError };
+    if (changingTask.taskDescription.length > 500){
+      descriptionError = true
+      window.Telegram.WebApp.showAlert("Описание больше 500 символов")
+    }
+    let rezult = { taskName: taskName, timeError: timeError, descriptionError : descriptionError };
 
 
     setMistakes(rezult);
