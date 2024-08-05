@@ -120,6 +120,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         fileError = true;
       }
       if (localCardSetting.description.length > 500){
+        window.Telegram.WebApp.showAlert("У вашего описания более 500 символов")
         descriptionError = true
       }
       setErrors({ fileError: fileError, nameError: titleError, descriptionError : descriptionError });
@@ -202,7 +203,9 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
             setCardsOpen(false);                                                                                            
           }
           if (buttonId === "save") {
-            saveFunc()
+            if (checkMistakes()){
+              saveFunc()
+            }
           }
     
     
