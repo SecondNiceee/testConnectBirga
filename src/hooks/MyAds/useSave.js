@@ -2,7 +2,7 @@ import { useCallback } from "react";
 
 export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sortFiles, dispatch, putMyTask, setDetails, details }) =>{
     const save = useCallback( () => {
-        if (details.task !== myAdsArray[secondPage.index] && checkMistakes(detailsVar.task)) {
+        if (details.task !== myAdsArray[secondPage.index] && checkMistakes(details.task)) {
           window.Telegram.WebApp
             .showPopup({
               title: "Сохранить?",

@@ -6,9 +6,6 @@ import { setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 
 export const useButton = ({
-  localDetails,
-  localAboutReaction,
-  localIsOpen,
   setOpen,
   setSecondPage,
   navigate,
@@ -16,7 +13,7 @@ export const useButton = ({
 
   openAboutReaction,
   isOpen,
-  localSecondPage,
+  
   details,
   secondPage,
   save,

@@ -165,6 +165,7 @@ const MyAds = () => {
 
 
     setMistakes(rezult);
+    alert(Object.values(rezult).every((value) => value === false))
     return Object.values(rezult).every((value) => value === false);
   } 
 
