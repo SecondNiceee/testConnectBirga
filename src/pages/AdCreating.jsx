@@ -69,14 +69,13 @@ const AdCreating = () => {
     if (categorys && subCategorys) {
       setFirstPage(
         (value) => ({...value,
-        category: categorys.find((e) => e.category === "Другое"),
+        category: categorys.find((e) => e.category === "Другое"), 
         subCategory: subCategorys.find((e) => e.subCategory === "Другое"),
       })
       );
     }
   }, [categorys, subCategorys]);
 
-  console.log("Хай")
 
 
   const [error, setError] = useState({
