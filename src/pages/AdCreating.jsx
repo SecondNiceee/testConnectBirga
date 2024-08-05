@@ -76,7 +76,7 @@ const AdCreating = () => {
     }
   }, [categorys, subCategorys]);
 
-
+  console.log("Хай")
 
   const [error, setError] = useState({
     name: false,
