@@ -119,6 +119,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       fileError = true;
     }
     if (localCardSetting.description.length > 500){
+      window.Telegram.WebApp.showAlert("У вашего описания более 500 символов")
       description = true
     }
     setErrors({ fileError: fileError, nameError: titleError, description : description });
