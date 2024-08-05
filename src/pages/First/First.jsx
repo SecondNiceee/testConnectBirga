@@ -604,7 +604,6 @@ useEffect(() => {
 
 
 
-  alert(step)
   return (
     <div className="first-container">
 
