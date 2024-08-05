@@ -118,7 +118,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     if (localCardSetting.photos.length < 1) {
       fileError = true;
     }
-    if (localCardSetting.description > 500){
+    if (localCardSetting.description.length > 500){
       description = true
     }
     setErrors({ fileError: fileError, nameError: titleError, description : description });

@@ -29,12 +29,17 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   } , [] )
 
   useEffect( () => {
-    cardStart = {...card}
+    cardStart =  Object.assign({}, card);
   } , [] )
 
 
 
+
+
   const [cardsSetting, setCardsSetting] = useState(card);
+
+  console.log(cardsSetting)
+  console.log(card)
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({
     nameError: false,
