@@ -33,13 +33,6 @@ const AboutMe = ({ setAboutMeModal, setAboutU, aboutU, aboutMeModal , scrollTo }
     }
   };
   function exitFunction(){
-            if(document.documentElement.style.marginTop !== '0px'){
-                document.documentElement.style.marginTop = '0px'
-                window.scrollTo({
-                    top : scrollTo,
-                    behavior : 'auto'
-                })
-            }
         setAboutMeModal(false);
         setPos(80);
         setTran("0.4s");

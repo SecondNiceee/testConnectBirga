@@ -1,4 +1,4 @@
-import React, { memo, useEffect,  useRef } from "react";
+import React, { memo, useCallback, useEffect,  useRef } from "react";
 import cl from "./DescriptionAndPhoto.module.css";
 import GreyText from "../../../components/UI/GreyText/GreyText";
 import FileInput from "../../../components/UI/FileInput/FileInput";
@@ -23,10 +23,12 @@ const DescriptionAndPhoto = ({
   useEffect( () => {
     // textAreaRef.current.style.height = (12 + 11 + 17.6*len).toString() + 'px'
     myRef.current.style.height = (hiddenRef.current.scrollHeight).toString() + 'px'
-    
-
+  
 } , [text] )
 
+  const onFocusFunc = useCallback( () => {
+    myRef.current.scrollIntoView({ block: "nearest", behavior: 'smooth' })
+  } , [] )
 
   return (
     <div
@@ -42,6 +44,7 @@ const DescriptionAndPhoto = ({
         <textarea ref={hiddenRef} value={text} className={cl.hiddenText}/>
 
         <TextArea
+        onFocus = {onFocusFunc}
         ref={myRef}
           value={text}
           className={cl.DescriptionInput}

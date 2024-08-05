@@ -116,10 +116,6 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
 
 
       
-      window.scrollTo({
-        top : 0,
-        behavior : 'auto'
-      })
 
     }
 

@@ -51,7 +51,7 @@ const MyReaction = ({
             }}
             className="reaction__middle-midle"
           >
-            <p className="reaction__userName">{responce.user.fl}</p>
+            <p className="reaction__userName">{responce.user.fl.length > 12 ? responce.user.fl.slice(0,12) + "..." : responce.user.fl }</p>
             <div className="reaction__rates">
               {/* <img src={star} alt="" /> */}
               <div className="rates__text">

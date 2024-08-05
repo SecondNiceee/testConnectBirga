@@ -22,7 +22,10 @@ const useListner = ({isMenuActive , setMenuActive  ,   isOpen} ) => {
                 endTouchX - startTouchX > 100 &&
                 Math.abs(startTouchY - endTouchY) < 150
                 )
-                    setMenuActive(true);
+                    if (!e.target.closest(".first__photos")){
+
+                      setMenuActive(true);
+                    }
                 
     
               if (isMenuActive) {

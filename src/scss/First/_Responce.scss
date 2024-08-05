@@ -12,6 +12,7 @@
     z-index: 100000;
     transition: 0.4s;
     background-color: #18222d;;
+    will-change: transform;
 }
 .responce-wrapper.secondStep{
     transform: translateX(0%);
