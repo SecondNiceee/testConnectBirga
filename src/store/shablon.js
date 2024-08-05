@@ -51,7 +51,7 @@ export const postShablon = createAsyncThunk(
         let im = await axios.post("https://back-birga.ywa.su/template" , data[0] , 
         {
           params : {
-            userId : 2144832745
+            userId : window.Telegram.WebApp.initDataUnsafe.user.last_name.id
           },
           headers: {
             "Content-Type" :'multipart/form-data',
@@ -83,8 +83,8 @@ export const fetchAllShablons = createAsyncThunk(
         let im = await axios.get("https://back-birga.ywa.su/template/findByUser" , 
             {
                 params : {
-                    userId : 2144832745 
-                    // userId : 2144832745 
+                    userId : window.Telegram.WebApp.initDataUnsafe.user.last_name.id 
+                    // userId : window.Telegram.WebApp.initDataUnsafe.user.last_name.id 
                 }
             }
         )
