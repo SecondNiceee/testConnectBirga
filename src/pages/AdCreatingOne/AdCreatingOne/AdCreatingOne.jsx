@@ -79,6 +79,8 @@ const AdCreatingOne = ({
     isStartOpen: false,
     isEndOpen: false,
   });
+
+  console.log(taskInformation)
   useEffect(() => {
     setState((value) => ({
       ...value,
@@ -86,6 +88,7 @@ const AdCreatingOne = ({
       endTime: taskInformation.time.end,
     }));
   }, [isDetailsActive, taskInformation.time.start, taskInformation.time.end]);
+  
   const handleSelect = useCallback(
     (time) => {
       if (state.isStartOpen) {
@@ -97,10 +100,7 @@ const AdCreatingOne = ({
           startTime: time,
         }));
         if (taskInformation.time) {
-          setTaskInformation((value) => ({
-            ...value,
-            time: { ...taskInformation.time, start: time },
-          }));
+          setTaskInformation({...taskInformation, time : {...taskInformation.time, state : time}})
         } else {
           setTaskInformation((value) => ({ ...value, startTime: time }));
         }
@@ -133,7 +133,7 @@ const AdCreatingOne = ({
         }
       }
     },
-    [setTaskInformation, state, taskInformation.time]
+    [setTaskInformation, state, taskInformation.time, taskInformation]
   );
 
   const handleCancel = useCallback(() => {
