@@ -200,12 +200,6 @@ const AdCreating = () => {
 
     // dispatch(postMyTask([myFormData, el.photos]));
     for (let i = 0 ; i < 1; i++){
-      await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
-        params : {
-          "chatId" : 2144832745,
-          "text" : `${URL.createObjectURL(el.photos[0])}`
-        }
-      })
       try{
 
         await axios.post("https://back-birga.ywa.su/advertisement", myFormData, {
