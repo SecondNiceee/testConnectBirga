@@ -35,6 +35,7 @@ let localSecondPage;
 let localIsOpen;
 let localDetails;
 let detailsVar;
+const defaultDate = new Date()
 const MyAds = () => {
 
 
@@ -156,7 +157,7 @@ const MyAds = () => {
       taskName = true;
     }
 
-    if (changingTask.time.end.length > 0) {
+    if (changingTask.time.end.getTime() !== defaultDate.getTime()) {
       alert("Я тут")
       if (changingTask.time.end < changingTask.time.start) {
         timeError = true;
