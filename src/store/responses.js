@@ -13,7 +13,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
             {
               params: {
                 advertisementId: id,
-                limit : 6,
+                limit : 4,
                 page : page
               },
             }
@@ -158,7 +158,7 @@ export const fetchResponses = createAsyncThunk(
             params : {
                 "userId" : 2144832745,
                 page : par[1],
-                limit : 6
+                limit : 4
                 
             }
         })
@@ -289,7 +289,7 @@ const responses = createSlice({
         builder.addCase(fetchResponseByAdvertisement.fulfilled, ((state , action) => {
             state.responsesByAStatus = "completed"
             state.responsesByA.push(...action.payload)
-            if (action.payload.length < 6){
+            if (action.payload.length < 4){
                 state.responsesByAStatus = "all"
             }
         }))
@@ -319,7 +319,7 @@ const responses = createSlice({
         }  ))
         builder.addCase(fetchResponses.fulfilled , ((state , action) => {
             state.responses.push(...action.payload)
-            if (action.payload.length < 6){
+            if (action.payload.length < 4){
                 state.status = "all"
             }
             else{
