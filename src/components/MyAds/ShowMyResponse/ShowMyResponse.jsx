@@ -49,10 +49,11 @@ const ShowMyResponse = ({
             executorId: String(response.user.id),
             consumerId: String(response.advertisement.user.id),
             responseId: String(response.id),
-            chatId: String(response.advertisement.user.chatId),
+            chatId: String(response.advertisement.user.id),
             advertisementId: String(response.advertisement.id),
           },
         });
+        alert("chatId :  " + response.advertisement.user.id)
         
         
         window.Telegram.WebApp.showAlert("Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. ")
