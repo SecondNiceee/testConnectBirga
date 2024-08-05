@@ -2834,7 +2834,7 @@ input {
 }
 
 .responce-wrapper {
-  overflow-y: scroll;
+  overflow-y: auto;
   min-width: 100vw;
   width: 100vw;
   padding-top: 18px;
@@ -3155,7 +3155,7 @@ input {
 html {
   overflow: auto;
   position: absolute;
-  overflow-y: scroll;
+  overflow-y: auto;
   left: 0;
   top: 0;
   right: 0;
