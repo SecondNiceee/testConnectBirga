@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import MyAdsTopRight from "./MyAdsTopRight";
 
 const MyAdsTop = ({isMyAds, isResponce, viewsNumber, responseCounter }) => {
@@ -16,4 +16,4 @@ const MyAdsTop = ({isMyAds, isResponce, viewsNumber, responseCounter }) => {
   );
 };
 
-export default MyAdsTop;
+export default memo(MyAdsTop);

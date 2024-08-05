@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { memo, useMemo } from "react";
 
 const Photos = ({ photos }) => {
     const style = useMemo( () => {
@@ -36,4 +36,4 @@ const Photos = ({ photos }) => {
   );
 };
 
-export default Photos;
+export default memo(Photos);

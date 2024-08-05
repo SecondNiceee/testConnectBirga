@@ -253,7 +253,7 @@ export const fetchTasksInformation = createAsyncThunk(
         "https://back-birga.ywa.su/advertisement/findAll",
         {
           params: {
-            limit: 1,
+            limit: 4,
             page: par,
           },
         }
@@ -435,7 +435,7 @@ const information = createSlice({
     });
     builder.addCase(fetchMyOrders.fulfilled, (state, action) => {
       state.myAdsArray.push(...action.payload);
-      if (action.payload.length < 4) {
+      if (action.payload.length < 6) {
         state.myOrderStatus = "all";
       } else {
         state.myOrderStatus = "completed";

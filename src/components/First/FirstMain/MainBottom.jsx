@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import FirstMainBottomLeft from './FirstMainBottomLeft';
 import MainBottomRight from './MainBottomRight';
 
@@ -24,4 +24,4 @@ const MainBottom = ({tonConstant, tonValue, isMyAds, myAdsFunc, isButton, end, i
     );
 };
 
-export default MainBottom;
+export default memo(MainBottom);

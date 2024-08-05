@@ -697,19 +697,25 @@ useEffect(() => {
             />
           </CSSTransition>
 
-    {ordersInformation !== null && tonConstant !== 0   ? 
-        <Responce
-          ref={mainRef}
-          responce = {responce}
-          setResponce = {setResponce}
+        <CSSTransition
+                    in={step === 1}
+                    timeout={400}
+                    classNames="left-right"
+                    mountOnEnter
+                    unmountOnExit>
 
-          orderInformation={secFilteredArray[isDetailsActive.id] ? secFilteredArray[isDetailsActive.id] : "he"}
-        />
-        // <>
-        // </>
-        :                                     
-        <></>
-        }
+          <Responce
+            ref={mainRef}
+            responce = {responce}
+            setResponce = {setResponce}
+
+            orderInformation={secFilteredArray[isDetailsActive.id] ? secFilteredArray[isDetailsActive.id] : "he"}
+          />
+
+        </CSSTransition>
+
+
+
 
     <CSSTransition
             in={isDetailsActive.isOpen}

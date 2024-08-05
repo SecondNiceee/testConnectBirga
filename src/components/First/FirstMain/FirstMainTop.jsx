@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Pallete from "../../UI/Pallete/Pallete";
 import ShareIcon from "../../UI/ShareIcon/ShareIcon";
 
@@ -24,4 +24,4 @@ const FirstMainTop = ({isMyAds , category, isWatched, taskName, id, end}) => {
   );
 };
 
-export default FirstMainTop;
+export default memo(FirstMainTop);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import formatDate from '../../../functions/makeDate';
 
 const FirstMainMiddle = ({time}) => {
@@ -9,4 +9,4 @@ const FirstMainMiddle = ({time}) => {
     );
 };
 
-export default FirstMainMiddle;
+export default memo(FirstMainMiddle);
