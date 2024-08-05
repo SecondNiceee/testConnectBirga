@@ -114,7 +114,7 @@ category,
             <p >{taskName}</p>
             <ShareIcon onClick = {() => {
                               window.Telegram.WebApp.openTelegramLink(
-                                "https://t.me/share/url?text=&url=https://t.me/testbirgawebappbot/firstPage?startapp=" + String(id)
+                                "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/task?startapp=" + String(id)
                               );
             }} className="share__icon" />
           </div>

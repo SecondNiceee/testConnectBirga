@@ -76,7 +76,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
 
 
   useEffect( () => {
-    if (shablon.name.length < 3 || shablon.text.length < 5){
+    if (shablon.name.length < 3 || shablon.text.length < 5 || shablon.text.length > 500){
       MainButton.setParams({
         is_active : false, //неизвесетно
         color : '#2f2f2f',
