@@ -186,7 +186,7 @@ const First = ({isPage = false}) => {
       }
       else{
         if (step === 0) {
-          mainRef.current.classList.add('secondStep')
+          // mainRef.current.classList.add('secondStep')
           setStep(1)
         }
       }
@@ -215,7 +215,7 @@ const First = ({isPage = false}) => {
                           color : '#2ea5ff',
                           text_color : '#ffffff'})
                           
-                  mainRef.current.classList.remove('secondStep')
+                  // mainRef.current.classList.remove('secondStep')
                 }
                 else{
                   if (isCardOpen.isOpen){
@@ -257,9 +257,8 @@ const First = ({isPage = false}) => {
     MainButton.onClick(forward);
     BackButton.onClick(back);
     if (isDetailsActiveVar) {
-      setTimeout( () => {
-        MainButton.show()
-      } , 400 ) 
+
+      MainButton.show()
       BackButton.show();
       if (gotIt){
         MainButton.setParams({//неизвесетно
@@ -269,7 +268,6 @@ const First = ({isPage = false}) => {
       }
       else{
         if (localStep === 0){
-          setTimeout( () => {
 
             MainButton.setParams({
               is_active : true,
@@ -278,7 +276,6 @@ const First = ({isPage = false}) => {
             
             })
 
-          } , 400 )
         }
       }
     } else {
@@ -474,7 +471,7 @@ const forwardFunction = useCallback(() => {
       }
       if (buttonId === "save") {
         postResponce(ordersInformation[isDetailsActive.id].id, 2144832745 );
-        mainRef.current.classList.remove('secondStep')
+        // mainRef.current.classList.remove('secondStep')
         setDetailsActive((value) => ({...value , isOpen : false}))
         setStep(0)
         setResponce({
