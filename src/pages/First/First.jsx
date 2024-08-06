@@ -394,23 +394,27 @@ const [subCategory, setSubCategory] = useState(false)
 const forwardFunction = useCallback(() => {
   async function post(par) {
     try{
+        let im;
           for (let i = 0; i< 1; i++){
 
-            await axios.post("https://back-birga.ywa.su/response" , par[0], {
+            im = await axios.post("https://back-birga.ywa.su/response" , par[0], {
                 params : {
                     advertisementId : par[1].advertisement.id,
                     userId : par[1].user.id
                 }
             })
           }
-
+            console.log(im.data)
+            console.log(par[1].advertisement.id)
 
             await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
                 params : {
                   "chatId" : par[1].advertisement.user.chatId,
-                  "text" : '📣 Вы получили отклик на задачу «' + par[1].advertisement.taskName.bold() + '» от ' +  par[1].user.fl 
+                  "text" : '📣 Вы получили отклик на задачу «' + par[1].advertisement.taskName.bold() + '» от ' +  par[1].user.fl ,
+                  "buttonUrl" :  "t.me/SecondNiceeebot/jjj?startapp=" + `${par[1].advertisement.id}m${im.data.id}` 
                 }
               })
+            
 
             return par[1]
         }
