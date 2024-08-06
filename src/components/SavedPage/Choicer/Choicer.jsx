@@ -20,6 +20,7 @@ const Choicer = ({nowKey , keys, setDetails, setResponce, setCard}) => {
 
             if (nowKey === keys[0]){
                 pickerRef.current.style.overflowY = "hidden"
+                console.log(containerOne)
                 pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight) + "px"
             }
             if (nowKey === keys[1]){

@@ -11,7 +11,8 @@ const LastAds = ({
 
   openAboutReactionFunc,
 
-  responce
+  responce,
+  ...props
 }) => {
   const dispatch = useDispatch()
 
@@ -34,6 +35,7 @@ const LastAds = ({
   return (
     <div
       className={"last-ads"}
+      {...props}
     >
       <Top setMenuActive={setMenuActive} className={"last-top"} name={"Отклики"} />
 

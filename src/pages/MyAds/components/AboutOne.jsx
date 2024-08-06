@@ -93,7 +93,7 @@ const AboutOne = ({
     <>
 
 
-    <div className="aboutOne" {...props}>
+    <div className="aboutOne" {...props} >
       <Top name={"Отклики"} setMenuActive={setMenuActive} />
 
       {task ? (

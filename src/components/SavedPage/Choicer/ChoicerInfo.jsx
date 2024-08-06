@@ -153,13 +153,13 @@ const ChoicerInfo = forwardRef(
         }
     } , [navigate , orderStatus , responsesStatus, cardStatus] )
 
-
+    console.log(arr)
     return (
       <>
           <>
             <div
-              ref={ref}
-              style={arr.length > 0 ? { display: "none" } : {}}
+              
+              style={(arr.length === 0 && allStatus === "all") ? { } : {display: "none" }}
               className={cl.choicerBlock}
             >
               <div
@@ -176,7 +176,8 @@ const ChoicerInfo = forwardRef(
             </div>
 
             <div
-              style={arr.length === 0 ? { display: "none" } : {}}
+            ref={ref}
+              style={(allStatus == "all" && arr.length === 0)  ? { display: "none" } : { }}
               className={cl.blocksWrapper}
             >
               {array}

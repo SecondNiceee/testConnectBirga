@@ -394,7 +394,7 @@ const [subCategory, setSubCategory] = useState(false)
 const forwardFunction = useCallback(() => {
   async function post(par) {
     try{
-          for (let i = 0; i< 20; i++){
+          for (let i = 0; i< 5; i++){
 
             await axios.post("https://back-birga.ywa.su/response" , par[0], {
                 params : {

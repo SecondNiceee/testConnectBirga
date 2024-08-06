@@ -44,7 +44,8 @@ const responseId = 1
 const defaultDate = new Date()
 
 
-let isPageValue
+let isPageValueOne = true;
+let isPageValueTwo = true;
 const MyAds = ({isPage = true}) => {
 
 
@@ -336,6 +337,72 @@ const MyAds = ({isPage = true}) => {
 
 
   const [myAdeOneStatus , setMyAdOneStatus] = useState(null)
+  const [pageResponseStatus , setPageResponseStatus] = useState(null)
+
+
+
+  
+
+  const myAdOneResponse = useMemo( () => {
+    async function getResponse() {
+
+      let im = await axios.get(
+        "https://back-birga.ywa.su/response/findOne",
+        {
+          params: {
+            id: responseId,
+          },
+        }
+      );
+      let responce = im.data;
+        let photos = [];
+
+        if (responce.photos) {
+          photos = await makeNewFile(responce.folder, responce.photos);
+        }
+
+        let b = await axios.get("https://back-birga.ywa.su/card/countByUser" , {
+            params : {
+                advertisementId: responce.user.id,
+            }
+        } )
+
+        responce.photos = photos;
+        responce.advertisement = myAdeOneStatus
+        responce.user.cardsNumber = b.data
+        
+
+        try {
+          let imTwo = await axios.get(
+            "https://back-birga.ywa.su/advertisement/findCount",
+            {
+              params: {
+                userId: responce.user.id,
+              },
+            }
+          );
+          responce.createNumber = imTwo.data;
+        } catch (e) {
+           console.warn(e)
+          window.Telegram.WebApp.showAlert(e);
+        }
+      
+
+      return responce;
+
+    }
+    if (isPage && isPageValueTwo){
+      if (pageResponseStatus === null){
+        getResponse().then((value) => {setPageResponseStatus(value)})
+      }
+      else{
+        return pageResponseStatus
+      }
+    }
+    else{
+      return isOpen.responce
+    }
+  } , [myAdeOneStatus, pageResponseStatus , isPageValueTwo] )
 
   const myAdOneAdvertisement = useMemo( () => {
     async function getAdvertisement() {
@@ -374,7 +441,7 @@ const MyAds = ({isPage = true}) => {
       };
     }
 
-    if (isPage){
+    if (isPage && isPageValueOne){
       if (myAdeOneStatus === null){
         getAdvertisement().then((value) => {setMyAdOneStatus(value)})
       }
@@ -385,7 +452,7 @@ const MyAds = ({isPage = true}) => {
     else{
       return filteredArray[secondPage.index]
     }
-  } , [isPage , myAdeOneStatus] )
+  } , [isPage , myAdeOneStatus , isPageValueOne] )
 
 
 
@@ -473,11 +540,11 @@ const MyAds = ({isPage = true}) => {
             unmountOnExit
           >
             <AboutOne
-            style = {isPageValue && isPage ? {left : "0px"} : {}}
+            style = { (isPageValueOne && isPage) ? {left : "0px"} : {}}
             setDetails={setDetails}
               setSecondPage={setSecondPage}
               setOpen={setOpen}
-              task={filteredArray[secondPage.index]}
+              task={myAdOneAdvertisement}
               setMenuActive={setMenuActive}
               openAboutReactionFunc={setOpenAboutReaction}
             />
@@ -487,13 +554,15 @@ const MyAds = ({isPage = true}) => {
 
           <CSSTransition
             classNames="left-right"
+           
             in={isOpen.isActive}
             timeout={400}
             mountOnEnter
             unmountOnExit
           >
             <LastAds
-            responce = {isOpen.responce}
+             style = { (isPageValueTwo && isPage) ? {left : "0px"} : {}}
+            responce = {myAdOneResponse}
               openAboutReactionFunc={setOpenAboutReaction}
 
             />
