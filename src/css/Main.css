@@ -15,7 +15,7 @@
 }
 
 .First {
-  position: absolute;
+  position: fixed;
   overflow: scroll;
   height: 100vh;
   display: -webkit-box;
@@ -29,12 +29,12 @@
 }
 
 .first-container {
-  min-height: 200vh;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  overflow: hidden;
 }
 
 .filtration-container {
@@ -641,7 +641,7 @@
 }
 
 .TaskDetails {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   top: 0;
   z-index: 1000;
@@ -2834,16 +2834,18 @@ input {
 }
 
 .responce-wrapper {
+  overflow-y: scroll;
   min-width: 100vw;
   width: 100vw;
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;
+  position: fixed;
   left: 0;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
-  height: auto;
+  height: 100vh;
   z-index: 100000;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -3171,20 +3173,11 @@ body {
   height: auto;
 }
 
-button, input, li {
-  cursor: pointer;
-}
-
-p, a {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-}
-
 .UperContainer {
   position: relative;
   height: auto;
   width: 100%;
+  overflow: auto;
 }
 
 .MainContainer {

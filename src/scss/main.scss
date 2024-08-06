@@ -27,20 +27,11 @@ html {overflow: auto; position: absolute; overflow-y: auto ; left: 0; top: 0; ri
 body { width: 100%; height: auto;  background: rgb(24, 34, 45); }
 #app { width: 100%; height: auto; }
 
-button, input, li{
-  cursor : pointer
-}
-p , a{
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-rendering: optimizeLegibility;
-
-}
 .UperContainer{
   position: relative;
   height: auto;
   width: 100%;
-  // overflow: auto;
+  overflow: auto;
 }
 
 .MainContainer{

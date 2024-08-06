@@ -4,7 +4,7 @@
     margin-top: 2px;
 }
 .First {
-  position: absolute;
+  position: fixed;
   overflow :scroll;
   height: 100vh;
   display: flex;
@@ -15,10 +15,9 @@
 }
 
 .first-container{
-
-    min-height: 200vh;
     transition: 0.4s;
     display: flex;
+    overflow: hidden;
 }
 
 .filtration-container{

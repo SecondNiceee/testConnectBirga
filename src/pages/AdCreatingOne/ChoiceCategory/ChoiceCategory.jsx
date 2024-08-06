@@ -16,8 +16,6 @@ const ChoiceCategory = ({
   text = "Прочие категории скоро появятся.."
 
 }) => {
-
-  console.log("Воу")
   
   const [inputValue, setInputValue] = useState("");
 
@@ -63,7 +61,7 @@ const ChoiceCategory = ({
         className={cl.OneInput}
       />
       <div className={cl.categoryContainer}>
-      
+
         {realCategorys.map((e) => {
           return (
             <div

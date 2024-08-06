@@ -1,13 +1,14 @@
 .responce-wrapper{
-    // overflow-y: auto;
+    overflow-y: scroll;
     min-width: 100vw;
     width: 100vw;
     padding-top: 18px;
     padding-left: 16px;
     padding-right: 16px;
+    position: fixed;
     left: 0;
     transform: translateX(100%);
-    height: auto;
+    height: 100vh;
     z-index: 100000;
     transition: 0.4s;
     background-color: #18222d;;

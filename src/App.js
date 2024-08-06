@@ -170,9 +170,9 @@ const AnimatedSwitch = () => {
 };
 
 function App() {
-  // window.Telegram.WebApp.disableVerticalSwipes();
+  window.Telegram.WebApp.disableVerticalSwipes();
 
-  // window.Telegram.WebApp.disableVerticalSwipes();
+  window.Telegram.WebApp.disableVerticalSwipes();
 
   window.Telegram.WebApp.setHeaderColor("#18222d")
   window.Telegram.WebApp.setBackgroundColor("#18222d")
@@ -191,7 +191,7 @@ function App() {
     dispatch(getCategorys());
     dispatch(getSubCategorys());
     dispatch(fetchAllShablons());
-    // dispatch(fetchAllValues());
+    dispatch(fetchAllValues());
   }, [dispatch]);
 
   useEffect(() => {

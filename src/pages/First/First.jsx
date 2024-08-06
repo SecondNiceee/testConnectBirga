@@ -93,7 +93,7 @@ const First = ({isPage = false}) => {
   
   
   useEffect( () => {
-    // window.Telegram.WebApp.disableVerticalSwipes()
+    window.Telegram.WebApp.disableVerticalSwipes()
     // const data = JSON.stringify({ allow_vertical_swipe: false });
   
     // window
@@ -138,7 +138,7 @@ const First = ({isPage = false}) => {
 
       if (secFilteredArray[isDetailsActive.id].responces){
         if (secFilteredArray[isDetailsActive.id].responces.find((e) => 
-          Number(e.user.id) === 2144832745))
+          Number(e.user.id) === window.Telegram.WebApp.initDataUnsafe.user.id))
 
         {
           return true 
@@ -470,7 +470,7 @@ const forwardFunction = useCallback(() => {
         // setShablon({...shablon , isActive : false})
       }
       if (buttonId === "save") {
-        postResponce(ordersInformation[isDetailsActive.id].id, 2144832745 );
+        postResponce(ordersInformation[isDetailsActive.id].id, window.Telegram.WebApp.initDataUnsafe.user.id );
         // mainRef.current.classList.remove('secondStep')
         setDetailsActive((value) => ({...value , isOpen : false}))
         setStep(0)
@@ -510,9 +510,9 @@ const firstRef = useRef(null)
 // } , [] )
 
 
-// 2144832745
+// window.Telegram.WebApp.initDataUnsafe.user.id
 
-// 2144832745
+// window.Telegram.WebApp.initDataUnsafe.user.id
 
 useEffect(() => {
   MainButton.onClick(forwardFunction);
