@@ -200,11 +200,11 @@ function App() {
     }
   }, [dispatch, me]);
 
-  // const _ = require("lodash");
-  // const a = { people: { x: 2 } };
+  const _ = require("lodash");
+  const a = { people: { x: 2 } };
 
-  // const b = _.cloneDeep(a);
-  // b.people.x = "хай";
+  const b = _.cloneDeep(a);
+  b.people.x = "хай";
 
 
   return (
