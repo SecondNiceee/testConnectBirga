@@ -16,17 +16,20 @@ const Choicer = ({nowKey , keys, setDetails, setResponce, setCard}) => {
     const pickerRef = useRef(null)
 
     useEffect( () => {
-        if (nowKey === keys[0]){
-            pickerRef.current.style.overflowY = "hidden"
-            pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight) + "px"
-        }
-        if (nowKey === keys[1]){
-            pickerRef.current.style.overflowY = "hidden"
-            pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight) + "px"
-        }
-        if (nowKey === keys[2]){
-            pickerRef.current.style.overflowY = "hidden"
-            pickerRef.current.style.minHeight = String(containerThree.current.offsetHeight) + "px"
+        if (pickerRef.current && containerOne.current && containerTwo.current && containerThree.current){
+
+            if (nowKey === keys[0]){
+                pickerRef.current.style.overflowY = "hidden"
+                pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight) + "px"
+            }
+            if (nowKey === keys[1]){
+                pickerRef.current.style.overflowY = "hidden"
+                pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight) + "px"
+            }
+            if (nowKey === keys[2]){
+                pickerRef.current.style.overflowY = "hidden"
+                pickerRef.current.style.minHeight = String(containerThree.current.offsetHeight) + "px"
+            }
         }
     
         

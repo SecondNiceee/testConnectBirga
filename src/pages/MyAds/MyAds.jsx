@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 // import myImage from '../../images/desccription.png'
 import { useDispatch, useSelector } from "react-redux";
@@ -23,6 +23,8 @@ import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import { deleteResponse } from "../../store/responses";
 import MyLastAds from "./components/MyLastAds";
 import CardPage from "../CardPage/CardPage";
+import makeNewFile from "../../functions/newMakeFile";
+import axios from "axios";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -35,8 +37,15 @@ let localSecondPage;
 let localIsOpen;
 let localDetails;
 let detailsVar;
+
+
+const advertisementId = 1
+const responseId = 1
 const defaultDate = new Date()
-const MyAds = () => {
+
+
+let isPageValue
+const MyAds = ({isPage = true}) => {
 
 
 
@@ -148,6 +157,12 @@ const MyAds = () => {
     card : {}
   })
 
+
+  useEffect( () => {
+    if (isPage){
+      setSecondPage((value) => ({...value , isActive : true}))
+    }
+  } , [isPage] )
 
 
   function checkMistakes(changingTask) {
@@ -320,9 +335,57 @@ const MyAds = () => {
   
 
 
+  const [myAdeOneStatus , setMyAdOneStatus] = useState(null)
 
+  const myAdOneAdvertisement = useMemo( () => {
+    async function getAdvertisement() {
+      let im = await axios.get("https://back-birga.ywa.su/advertisement/findOne" , {
+        params : advertisementId
+      })
+      let order = im.data
+      let files = await makeNewFile(order.folder, order.photos);
+      let responseCounter = await axios.get("https://back-birga.ywa.su/response/countByAdvertisement" , {
+        params : {
+          "advertisementId" : order.id
+        }
+      })
+      return {
+        id: order.id,
+        taskName: order.title,
+        executionPlace: "Можно выполнить удаленно",
+        time: {
+          start: new Date(order.startTime),
+          end: new Date(order.endTime),
+        },
+        tonValue: order.price,
+        taskDescription: order.description,
+        photos: files,
+        photosNames: order.photos,
+        rate: "5",
+        isActive: true,
+        creationTime: order.createdAt,
+        viewsNumber: order.views,
+        removedFiles: [],
+        addedFiles: [],
+        status: order.status,
+        user : order.user,
+        responseCounter : responseCounter.data,
+        category : order.category.id
+      };
+    }
 
-
+    if (isPage){
+      if (myAdeOneStatus === null){
+        getAdvertisement().then((value) => {setMyAdOneStatus(value)})
+      }
+      else{
+        return myAdeOneStatus
+      }
+    }
+    else{
+      return filteredArray[secondPage.index]
+    }
+  } , [isPage , myAdeOneStatus] )
 
 
 
@@ -410,6 +473,7 @@ const MyAds = () => {
             unmountOnExit
           >
             <AboutOne
+            style = {isPageValue && isPage ? {left : "0px"} : {}}
             setDetails={setDetails}
               setSecondPage={setSecondPage}
               setOpen={setOpen}

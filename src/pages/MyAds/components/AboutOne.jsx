@@ -14,6 +14,7 @@ const AboutOne = ({
   setSecondPage,
   setDetails,
   openAboutReactionFunc,
+  ...props
 }) => {
   const responces = useSelector( state => state.responses.responsesByA )
   const dispatch = useDispatch();
@@ -92,7 +93,7 @@ const AboutOne = ({
     <>
 
 
-    <div className="aboutOne" style={{}}>
+    <div className="aboutOne" {...props}>
       <Top name={"Отклики"} setMenuActive={setMenuActive} />
 
       {task ? (

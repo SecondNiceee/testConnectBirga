@@ -174,8 +174,8 @@ const AdCreating = () => {
   }
   async function post(el) {
     let myFormData = new FormData();
-    // myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id );
-     myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id  );
+    // myFormData.append("userId", 2144832745 );
+     myFormData.append("userId", 2144832745  );
     myFormData.append("title", el.taskName);
     myFormData.append("description", el.taskDescription);
     myFormData.append("deadline", 1);
@@ -200,7 +200,7 @@ const AdCreating = () => {
     }
 
     // dispatch(postMyTask([myFormData, el.photos]));
-    for (let i = 0 ; i < 1; i++){
+    for (let i = 0 ; i < 20; i++){
       try{
 
         await axios.post("https://back-birga.ywa.su/advertisement", myFormData, {

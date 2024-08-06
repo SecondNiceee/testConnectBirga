@@ -136,7 +136,7 @@ const ChoicerInfo = forwardRef(
         observer.disconnect();
       };
       // eslint-disable-next-line
-    }, [myAdsArray]);
+    }, [arr]);
 
 
 
@@ -156,7 +156,6 @@ const ChoicerInfo = forwardRef(
 
     return (
       <>
-        {isReady ? (
           <>
             <div
               ref={ref}
@@ -184,9 +183,7 @@ const ChoicerInfo = forwardRef(
               {allStatus !== "all" &&  <MyLoader ref={elementRef}  style = {{ height : "90px" , marginLeft : "-16px"}} />}
             </div>
           </>
-        ) : (
-          <MyLoader  />
-        )}
+
       </>
     );
   }
