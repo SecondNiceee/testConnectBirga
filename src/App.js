@@ -30,7 +30,7 @@ const Balance = lazy(() => import("./pages/Balance"));
 const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
 const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
-const ProfilePage = lazy( () => import("./pages/ProfilePage/ProfilePage") )
+const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
 
 const MyLoader = () => {
   return (
@@ -68,10 +68,7 @@ const AnimatedSwitch = () => {
   // )
 
   return (
-    <div
-      className="container"
-    
-    >
+    <div className="container">
       <div
         style={isMenuActive ? { opacity: "0.6" } : { maxWidth: "0px" }}
         className="black"
@@ -92,14 +89,12 @@ const AnimatedSwitch = () => {
             path="/FirstPage"
             element={
               <Suspense fallback={<MyLoader />}>
-                <First isPage = {true} />
+                <First isPage={true} />
               </Suspense>
             }
           />
-          
 
-
-        <Route
+          <Route
             path="/ProfilePage"
             element={
               <Suspense fallback={<MyLoader />}>
@@ -107,7 +102,6 @@ const AnimatedSwitch = () => {
               </Suspense>
             }
           />
-          
 
           <Route
             path="/savedPage"
@@ -156,6 +150,15 @@ const AnimatedSwitch = () => {
 
 
           <Route
+            path="/ResponsePage"
+            element={
+              <Suspense fallback={<MyLoader />}>
+                <MyAds isPage = {true} />
+              </Suspense>
+            }
+          />
+
+          <Route
             path="/AllShablons"
             element={
               <Suspense fallback={<MyLoader />}>
@@ -174,8 +177,8 @@ function App() {
 
   window.Telegram.WebApp.disableVerticalSwipes();
 
-  window.Telegram.WebApp.setHeaderColor("#18222d")
-  window.Telegram.WebApp.setBackgroundColor("#18222d")
+  window.Telegram.WebApp.setHeaderColor("#18222d");
+  window.Telegram.WebApp.setBackgroundColor("#18222d");
   const dispatch = useDispatch();
 
   window.Telegram.WebApp.expand();
@@ -205,7 +208,6 @@ function App() {
 
   const b = _.cloneDeep(a);
   b.people.x = "хай";
-
 
   return (
     <BrowserRouter>

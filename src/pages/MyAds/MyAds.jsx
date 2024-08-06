@@ -25,6 +25,8 @@ import MyLastAds from "./components/MyLastAds";
 import CardPage from "../CardPage/CardPage";
 import makeNewFile from "../../functions/newMakeFile";
 import axios from "axios";
+import isPageValueTwo from "./isPageValueTwo";
+import isPageValueOne from "./isPageValueOne";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -39,17 +41,26 @@ let localDetails;
 let detailsVar;
 
 
+// const advertisementId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[0]
+// const responseId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[1]
+
 const advertisementId = 1
 const responseId = 1
+
 const defaultDate = new Date()
 
 
-let isPageValueOne = true;
-let isPageValueTwo = true;
-const MyAds = ({isPage = true}) => {
 
 
+const MyAds = ({isPage = false}) => {
 
+
+  useEffect( () => {
+    if (isPage){
+      advertisementId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[0]
+      responseId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[1]
+    }
+  } , [isPage] )
   
   const [valueOne , setValueOne] = useState("all")
 
@@ -162,6 +173,7 @@ const MyAds = ({isPage = true}) => {
   useEffect( () => {
     if (isPage){
       setSecondPage((value) => ({...value , isActive : true}))
+      setOpen((value) => ({...value, isActive : true}))
     }
   } , [isPage] )
 
@@ -345,7 +357,10 @@ const MyAds = ({isPage = true}) => {
 
   const myAdOneResponse = useMemo( () => {
     async function getResponse() {
+      let responce;
+      try{
 
+      
       let im = await axios.get(
         "https://back-birga.ywa.su/response/findOne",
         {
@@ -369,34 +384,52 @@ const MyAds = ({isPage = true}) => {
 
         responce.photos = photos;
         responce.advertisement = myAdeOneStatus
+        console.log(responce)
         responce.user.cardsNumber = b.data
         
-
+        console.log(responce)
         try {
-          let imTwo = await axios.get(
-            "https://back-birga.ywa.su/advertisement/findCount",
-            {
-              params: {
-                userId: responce.user.id,
-              },
-            }
-          );
-          responce.createNumber = imTwo.data;
+          // let imTwo = await axios.get(
+          //   "https://back-birga.ywa.su/advertisement/findCount",
+          //   {
+          //     params: {
+          //       userId: Number(responce.user.id),
+          //     },
+          //   }
+          // );
+          // responce.createNumber = imTwo.data;
         } catch (e) {
-           console.warn(e)
-          window.Telegram.WebApp.showAlert(e);
+           console.log(e)
+          // window.Telegram.WebApp.showAlert(e);
         }
+
+
+
+        return responce;
+
+      }
+      catch(e){
+        window.Telegram.WebApp.showAlert("Этот отклик был удален.")
+        isPageValueOne = false;
+        isPageValueTwo = false
+        console.log(e)
+      }
       
 
-      return responce;
 
     }
     if (isPage && isPageValueTwo){
-      if (pageResponseStatus === null){
-        getResponse().then((value) => {setPageResponseStatus(value)})
+      if (myAdeOneStatus === null || !myAdeOneStatus){
+        return null
       }
       else{
-        return pageResponseStatus
+        if (pageResponseStatus === null ){
+          getResponse().then((value) => {setPageResponseStatus(value)})
+          return null
+        }
+        else{
+          return pageResponseStatus
+        }
       }
     }
     else{
@@ -405,45 +438,60 @@ const MyAds = ({isPage = true}) => {
   } , [myAdeOneStatus, pageResponseStatus , isPageValueTwo] )
 
   const myAdOneAdvertisement = useMemo( () => {
+    
     async function getAdvertisement() {
-      let im = await axios.get("https://back-birga.ywa.su/advertisement/findOne" , {
-        params : advertisementId
-      })
-      let order = im.data
-      let files = await makeNewFile(order.folder, order.photos);
-      let responseCounter = await axios.get("https://back-birga.ywa.su/response/countByAdvertisement" , {
-        params : {
-          "advertisementId" : order.id
-        }
-      })
-      return {
-        id: order.id,
-        taskName: order.title,
-        executionPlace: "Можно выполнить удаленно",
-        time: {
-          start: new Date(order.startTime),
-          end: new Date(order.endTime),
-        },
-        tonValue: order.price,
-        taskDescription: order.description,
-        photos: files,
-        photosNames: order.photos,
-        rate: "5",
-        isActive: true,
-        creationTime: order.createdAt,
-        viewsNumber: order.views,
-        removedFiles: [],
-        addedFiles: [],
-        status: order.status,
-        user : order.user,
-        responseCounter : responseCounter.data,
-        category : order.category.id
-      };
+      try{
+
+        let im = await axios.get("https://back-birga.ywa.su/advertisement/findOne" , {
+          params : {
+            id : advertisementId
+          }
+        })
+        let order = im.data
+        let files = await makeNewFile(order.folder, order.photos);
+        let responseCounter = await axios.get("https://back-birga.ywa.su/response/countByAdvertisement" , {
+          params : {
+            "advertisementId" : order.id
+          }
+        })
+        return {
+          id: order.id,
+          taskName: order.title,
+          executionPlace: "Можно выполнить удаленно",
+          time: {
+            start: new Date(order.startTime),
+            end: new Date(order.endTime),
+          },
+          tonValue: order.price,
+          taskDescription: order.description,
+          photos: files,
+          photosNames: order.photos,
+          rate: "5",
+          isActive: true,
+          creationTime: order.createdAt,
+          viewsNumber: order.views,
+          removedFiles: [],
+          addedFiles: [],
+          status: order.status,
+          user : order.user,
+          responseCounter : responseCounter.data,
+          category : order.category.id
+        };
+      }
+      catch(e){
+        window.Telegram.WebApp.showAlert("Вы удалили уже это задание.")
+        isPageValueOne = false;
+        isPageValueTwo = false
+        console.log(e)
+      }
     }
 
     if (isPage && isPageValueOne){
       if (myAdeOneStatus === null){
-        getAdvertisement().then((value) => {setMyAdOneStatus(value)})
+        getAdvertisement().then((value) => {
+          console.log(value)
+          setMyAdOneStatus(value)})
+        return null
       }
       else{
         return myAdeOneStatus
@@ -534,7 +582,7 @@ const MyAds = ({isPage = true}) => {
 
           <CSSTransition
             classNames="aboutOne"
-            in={secondPage.isActive}
+            in={secondPage.isActive && myAdOneAdvertisement !== null}
             timeout={400}
             mountOnEnter
             unmountOnExit
@@ -555,7 +603,7 @@ const MyAds = ({isPage = true}) => {
           <CSSTransition
             classNames="left-right"
            
-            in={isOpen.isActive}
+            in={isOpen.isActive && myAdOneResponse !== null && myAdOneResponse}
             timeout={400}
             mountOnEnter
             unmountOnExit
