@@ -191,7 +191,7 @@ function App() {
     dispatch(getCategorys());
     dispatch(getSubCategorys());
     dispatch(fetchAllShablons());
-    dispatch(fetchAllValues());
+    // dispatch(fetchAllValues());
   }, [dispatch]);
 
   useEffect(() => {

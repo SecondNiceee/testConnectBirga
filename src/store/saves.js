@@ -141,6 +141,68 @@ export const addAdvertisment = createAsyncThunk(
     }
 )
 
+
+
+
+export const fetchSavedCards = createAsyncThunk(
+    "fetchSavedCards",
+    async function ([page]) {
+        let im = await axios.get('https://back-birga.ywa.su/card/saved' , {
+            params : {
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                limit : 4,
+                page : page
+            }
+        })
+        
+
+        // тут логика получения моих сохраненных карточек
+
+        let rezult = im.data
+        return rezult
+    }
+)
+
+
+
+export const fetchSavedResponses = createAsyncThunk(
+    "fetchSavedResponses",
+    async function ([page]) {
+        let im = await axios.get('https://back-birga.ywa.su/response/saved' , {
+            params : {
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                limit : 4,
+                page : page
+            }
+        })
+        
+
+        // тут логика получения моих откликов
+
+        let rezult = im.data
+        return rezult
+    }
+)
+
+export const fetchSavedAdvertisements = createAsyncThunk(
+    "fetchSavedAdvertisements",
+    async function ([page]) {
+        let im = await axios.get('https://back-birga.ywa.su/advertisement/saved' , {
+            params : {
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                limit : 4,
+                page : page
+            }
+        })
+        
+
+        // тут логика получения моих заданий
+
+        let rezult = im.data
+        return rezult
+    }
+)
+
 export const fetchAllValues = createAsyncThunk(
     "fetchhAllValues",
     async function() {
@@ -343,6 +405,9 @@ export const fetchAllValues = createAsyncThunk(
 const saves = createSlice({
     name : 'saves',
     initialState : {
+        reponsesStatus : null,
+        cardsStatus : null,
+        advertisementStatus : null,
         responces : [],
         cards : [],
         tasks : []
@@ -351,6 +416,55 @@ const saves = createSlice({
 
     },
     extraReducers : builder => {
+        builder.addCase(fetchSavedAdvertisements.fulfilled , ( (state , action) => {
+            if (action.payload.length < 4){
+                state.advertisementStatus = "all"
+            }
+            else{
+                state.advertisementStatus = "complete"
+            }
+        } ))
+        builder.addCase(fetchSavedCards.fulfilled , ( (state , action) => {
+            if (action.payload.length < 4){
+                state.cardsStatus = "all"
+            }
+            else{
+                state.cardsStatus = "complete"
+            }
+        } ))
+        builder.addCase(fetchSavedResponses.fulfilled , ( (state , action) => {
+            if (action.payload.length < 4){
+                state.reponsesStatus = "all"
+            }
+            else{
+                state.reponsesStatus = "complete"
+            }
+        } ))
+        builder.addCase(fetchSavedResponses.pending , ( (state , action) => {
+            if (state.responces.length === 0){
+                state.reponsesStatus = "pending"
+            }
+            else{
+                state.reponsesStatus = "complete"
+            }
+        } ))
+        builder.addCase(fetchSavedCards.pending , ( (state , action) => {
+            if (state.cards.length === 0){
+                state.cardsStatus = "pending"
+            }
+            else{
+                state.cardsStatus = "complete"
+            }
+        } ))
+        builder.addCase(fetchSavedAdvertisements.pending, ((state , action) => {
+            if (state.tasks.length === 0){
+                state.advertisementStatus = "pending"
+            }
+            else{
+                state.advertisementStatus = "complete"
+            }
+
+        }))
         builder.addCase(deleteCard.fulfilled, ((state, action) => {
             state.cards = state.cards.filter((e,i) => {
                 return e.id !== action.payload

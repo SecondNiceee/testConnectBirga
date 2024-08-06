@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo, useEffect, useMemo, useRef } from 'react';
 import cl from './Choicer.module.css'
 
 import ChoicerInfo from './ChoicerInfo';
@@ -8,6 +8,35 @@ const Choicer = ({nowKey , keys, setDetails, setResponce, setCard}) => {
     const savedTasks = useSelector(state => state.saves.tasks)
     const savedResponces = useSelector(state => state.saves.responces)
     const savedCards = useSelector(state => state.saves.cards)
+
+    const containerOne = useRef(null)
+    const containerTwo = useRef(null)
+    const containerThree = useRef(null)
+
+    const pickerRef = useRef(null)
+
+    useEffect( () => {
+        if (nowKey === keys[0]){
+            pickerRef.current.style.overflowY = "hidden"
+            pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight) + "px"
+        }
+        if (nowKey === keys[1]){
+            pickerRef.current.style.overflowY = "hidden"
+            pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight) + "px"
+        }
+        if (nowKey === keys[2]){
+            pickerRef.current.style.overflowY = "hidden"
+            pickerRef.current.style.minHeight = String(containerThree.current.offsetHeight) + "px"
+        }
+    
+        
+    
+        return () => {
+    
+        }
+      }  , [nowKey, keys, savedCards, savedResponces , savedTasks] )
+  
+      
 
     const style = useMemo( () => {
         switch (nowKey){
@@ -30,10 +59,10 @@ const Choicer = ({nowKey , keys, setDetails, setResponce, setCard}) => {
         }
     } , [keys, nowKey])
     return (
-        <div style={style} className={cl.main}>
-                <ChoicerInfo setDetails = {setDetails} navigate={"task"} arr={savedTasks} text = {"У вас нет сохраненных заказов"}  />
-                <ChoicerInfo setResponce = {setResponce} navigate={"response"} arr={savedResponces} text = {"У вас нет сохраненных откликов"} />
-                <ChoicerInfo setCard = {setCard} navigate={"card"} arr={savedCards} text = {"У вас нет сохраненных кейсов"} />
+        <div ref={pickerRef} style={style} className={cl.main}>
+                <ChoicerInfo ref={containerOne} setDetails = {setDetails} navigate={"task"} arr={savedTasks} text = {"У вас нет сохраненных заказов"}  />
+                <ChoicerInfo ref={containerTwo} setResponce = {setResponce} navigate={"response"} arr={savedResponces} text = {"У вас нет сохраненных откликов"} />
+                <ChoicerInfo ref={containerThree} setCard = {setCard} navigate={"card"} arr={savedCards} text = {"У вас нет сохраненных кейсов"} />
         </div>
     );
 };
