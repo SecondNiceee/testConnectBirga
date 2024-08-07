@@ -9,7 +9,7 @@ const MyButton = (props , className) => {
         setTimeout( () => {
         myRef.current.style.backgroundColor = "rgb(46, 165, 255)"
          myRef.current.style.color = "white"
-        } , 1000 )
+        } , 100 )
     }  , [])
     const clickHandler = useCallback( (e) => {
         myRef.current.style.backgroundColor = "white"
