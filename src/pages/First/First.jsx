@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, transform } from "framer-motion";
 
 import BackButton from "../../constants/BackButton";
 import "../MyAds/MyAds.css"
@@ -607,10 +607,28 @@ useEffect(() => {
     }
   } , [isPage , pageAdvertisement, isDetailsActive.id ,ordersInformation, secFilteredArray] )
 
+  const firsStyle = useMemo( () => {
+    if (step === 1){
+      return {
+        transform : "translateX(-200vw)"
+      }
+    }
+    else{
 
+      if (isDetailsActive.isOpen)
+        return {
+          transform : "translateX(-100vw)"
+      }
+      else{
+        return {
+
+        }
+      }
+    }
+  } )
 
   return (
-    <div className="first-container">
+    <div style={firsStyle} className="first-container">
 
 
     <motion.div
