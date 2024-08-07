@@ -25,8 +25,6 @@ import MyLastAds from "./components/MyLastAds";
 import CardPage from "../CardPage/CardPage";
 import makeNewFile from "../../functions/newMakeFile";
 import axios from "axios";
-import isPageValueTwo from "./isPageValueTwo";
-import isPageValueOne from "./isPageValueOne";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -55,6 +53,8 @@ const defaultDate = new Date()
 const MyAds = ({isPage = false}) => {
 
 
+  const [isPageValueOne , setPageValueOne] = useState(true)
+  const [isPageValueTwo , setPageValueTwo] = useState(true)
   useEffect( () => {
     if (isPage){
       advertisementId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[0]
@@ -409,8 +409,8 @@ const MyAds = ({isPage = false}) => {
       }
       catch(e){
         window.Telegram.WebApp.showAlert("Этот отклик был удален.")
-        isPageValueOne = false;
-        isPageValueTwo = false
+        setPageValueOne(false)
+        setPageValueTwo(false)
         console.log(e)
       }
       
@@ -434,7 +434,7 @@ const MyAds = ({isPage = false}) => {
     else{
       return isOpen.responce
     }
-  } , [myAdeOneStatus, pageResponseStatus , isOpen.responce  , isPage] )
+  } , [myAdeOneStatus, pageResponseStatus , isOpen.responce  , isPage, isPageValueTwo] )
 
   const myAdOneAdvertisement = useMemo( () => {
     
@@ -479,8 +479,8 @@ const MyAds = ({isPage = false}) => {
       }
       catch(e){
         window.Telegram.WebApp.showAlert("Вы удалили уже это задание.")
-        isPageValueOne = false;
-        isPageValueTwo = false
+        setPageValueOne(false)
+        setPageValueTwo(false)
         console.log(e)
       }
     }
@@ -499,7 +499,7 @@ const MyAds = ({isPage = false}) => {
     else{
       return filteredArray[secondPage.index]
     }
-  } , [isPage , myAdeOneStatus  , secondPage.index , filteredArray] )
+  } , [isPage , myAdeOneStatus  , secondPage.index , filteredArray , isPageValueOne] )
 
 
 
@@ -581,7 +581,7 @@ const MyAds = ({isPage = false}) => {
 
           <CSSTransition
             classNames="aboutOne"
-            in={secondPage.isActive && myAdOneAdvertisement !== null}
+            in={(secondPage.isActive && myAdOneAdvertisement !== null)}
             timeout={400}
             mountOnEnter
             unmountOnExit

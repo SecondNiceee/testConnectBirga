@@ -4,8 +4,6 @@ import MainButton from "../../constants/MainButton";
 import { useDispatch } from "react-redux";
 import { setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
-import isPageValueTwo from "../../pages/MyAds/isPageValueTwo";
-import isPageValueOne from "../../pages/MyAds/isPageValueOne";
 
 export const useButton = ({
   setOpen,
@@ -87,7 +85,7 @@ export const useButton = ({
               setDetailsTwo((value) => ({ ...value, isOpen: false }));
             } else {
               if (isOpen.isActive) {
-                isPageValueTwo = false
+                // isPageValueTwo = false
                 setOpen({ ...isOpen, isActive: false });
               } else {
                 if (secondPage.isActive) {
