@@ -62,8 +62,6 @@ const MyAds = ({isPage = false}) => {
       responseId = url.searchParams.get("response")
     }
   } , [isPage] )
-  alert(advertisementId)
-  alert(responseId)
   
   const [valueOne , setValueOne] = useState("all")
 

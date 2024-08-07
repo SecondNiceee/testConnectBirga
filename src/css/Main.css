@@ -386,6 +386,7 @@
   text-align: left;
 }
 .First__block .FirstMain__bottom-right {
+  min-width: 21px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -712,6 +713,7 @@
 }
 .Task__container-one .FullDescriptionBottom {
   /* Default text */
+  background-color: transparent;
   color: rgb(255, 255, 255);
   font-family: "SF Pro Display";
   font-size: 14.67px;

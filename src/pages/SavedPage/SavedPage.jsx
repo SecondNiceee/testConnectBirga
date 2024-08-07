@@ -330,6 +330,7 @@ const SavedPage = () => {
               savedTasks[details.id].taskName.bold() +
               '» от' +
               im.data.user.fl,
+              buttonUrl : "https://birga.ywa.su/ResponsePage?advertisemet=" + String(savedTasks[details.id].id) + "&response=" + String(im.data.id)
           },
         });
         dispatch(addResponce([savedTasks[details.id].id, im.data]));
