@@ -17,7 +17,7 @@
     cursor: pointer;
     letter-spacing: 4%; */
     z-index: 30;
-    transition: 0.2s;
+    transition: 0.1s;
     border-radius: 14px;
     background: rgb(46, 165, 255);
     color: rgb(255, 255, 255);
