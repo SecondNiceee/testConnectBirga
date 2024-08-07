@@ -64,7 +64,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
           shablonsArr={shablonsArr}
         />
       ) }
-        <div>
+       
           {(shablonsArr.length > 0 || !responce.isShablon) && 
                     <DescriptionAndPhoto
                     clearPhoto={clearPhoto}
@@ -82,7 +82,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
                   />
           }
 
-        </div>
+     
       
     </div>
   );

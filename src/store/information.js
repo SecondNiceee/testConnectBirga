@@ -186,13 +186,6 @@ export const fetchMyOrders = createAsyncThunk(
         }
       );
 
-      // const urlToObject= async(image)=> {
-      //   const response = await fetch(image);
-      //   // here image is url/location of image
-      //   const blob = await response.blob();
-      //   const file = new File([blob], image, {type: blob.type});
-      //   return file
-      // }
 
       if (task.data.length === 0) {
         return [];

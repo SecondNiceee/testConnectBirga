@@ -68,7 +68,9 @@ const AnimatedSwitch = () => {
   // )
 
   return (
-    <div className="container">
+    <div className="container" style={{
+      minHeight : "100vh"
+    }}>
       <div
         style={isMenuActive ? { opacity: "0.6" } : { maxWidth: "0px" }}
         className="black"
