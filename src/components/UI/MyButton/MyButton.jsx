@@ -5,6 +5,7 @@ const MyButton = (props , className) => {
     const clickHandler = useCallback( (e) => {
         myRef.current.style.backgroundColor = "white"
         myRef.current.style.color = "black"
+        window.navigator.vibrate(1000);
     }  , [])
     const touchEnd = useCallback( (e) => {
         myRef.current.style.backgroundColor = "rgb(46, 165, 255)"
