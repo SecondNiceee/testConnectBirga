@@ -89,7 +89,6 @@ export const useButton = ({
                 setOpen({ ...isOpen, isActive: false });
               } else {
                 if (secondPage.isActive) {
-                  alert("Я тут!!")
                   
                   setSecondPage( (value) => ({ ...value, isActive: false }));
                   // isPageValueOne = false

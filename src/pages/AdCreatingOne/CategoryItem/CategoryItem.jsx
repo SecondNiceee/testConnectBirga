@@ -8,11 +8,11 @@ const CategoryItem = ({className , id , category  }) => {
     const imageSrc = useMemo( () => {
         switch (id){
             case 1:
-                return designIcon
-            case 2: 
-                return ItIcon
-            default :
                 return MoreSvg
+            case 2: 
+                return designIcon
+            default :
+                return ItIcon
         }
     }  , [id])
     return (

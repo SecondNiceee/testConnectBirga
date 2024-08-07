@@ -7,11 +7,11 @@ const Pallete = ({className , category}) => {
     const imageSrc = useMemo( () => {
         switch (category){
             case 1 : 
-                return PalleteImg
-            case 2:
-                return ItSvg
-            default :
                 return MoreSvg
+            case 2:
+                return PalleteImg
+            default :
+                return ItSvg
 
         }
     } , [category]  )
