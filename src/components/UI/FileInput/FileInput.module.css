@@ -50,7 +50,7 @@
 
  }
 .FileInput{
-   padding: 12.63px 16.29px;
+   padding: 9px;
    border-radius: 9.97px;
 
    /* Cards */
@@ -58,7 +58,7 @@
     cursor: pointer;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 8px;
+    gap: 7.8px;
     flex-wrap: wrap;
 
     margin-top: 8px;

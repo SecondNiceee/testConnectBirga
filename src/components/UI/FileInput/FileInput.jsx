@@ -129,16 +129,16 @@ const FileInput = ({
     if (files.length > 0) {
       return {
         height:
-          String((document.documentElement.offsetWidth - 28 - 32 - 16) / 3) +
+          String((document.documentElement.offsetWidth - 28 - 18 - 15.6) / 3) +
           "px",
         width:
-          String((document.documentElement.offsetWidth - 28 - 32 - 16) / 3) +
+          String((document.documentElement.offsetWidth - 28 - 18 - 15.6) / 3) +
           "px",
         maxHeight:
-          String((document.documentElement.offsetWidth - 28 - 32 - 16) / 3) +
+          String((document.documentElement.offsetWidth - 28 - 18 - 15.6) / 3) +
           "px",
         maxWidth:
-          String((document.documentElement.offsetWidth - 28 - 32 - 16) / 3) +
+          String((document.documentElement.offsetWidth - 28 - 18 - 15.6) / 3) +
           "px",
       };
     }

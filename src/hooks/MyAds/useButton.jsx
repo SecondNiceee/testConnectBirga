@@ -30,6 +30,7 @@ export const useButton = ({
 }) => {
   const dispatch = useDispatch();
   useEffect(() => {
+    console.log(secondPage.isActive)
     function writeFucntion() {
       window.Telegram.WebApp.showPopup(
         {
@@ -90,6 +91,8 @@ export const useButton = ({
                 setOpen({ ...isOpen, isActive: false });
               } else {
                 if (secondPage.isActive) {
+                  alert("Я тут!!")
+                  
                   isPageValueOne = false
                   setSecondPage({ ...secondPage, isActive: false });
                 } else {
