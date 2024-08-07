@@ -153,6 +153,7 @@ const FileInput = ({
       setLoader(false)
     }
   } , [images, files] )
+
   return (
     <>
       <div
@@ -177,6 +178,7 @@ const FileInput = ({
             <div key={i} className={cl.imageFeetContainer}>
               <div
                 onClick={() => {
+                  myRef.current.scrollIntoView()
                   setFiles(
                     [...files].filter((obj) => {
                       return files.indexOf(obj) !== images.indexOf(e);
@@ -210,6 +212,7 @@ const FileInput = ({
           <input
             ref={myRef}
             onChange={(event) => {
+              myRef.current.scrollIntoView()
               if (event.target.files && event.target.files[0]) {
                 if (event.target.files.length + files.length > 5) {
                   window.Telegram.WebApp.showAlert("Максимум 5 файлов");
