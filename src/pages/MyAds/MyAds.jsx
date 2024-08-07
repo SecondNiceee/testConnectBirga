@@ -152,7 +152,7 @@ const MyAds = ({isPage = false}) => {
 
 
   
-  
+  console.log('В моих заданиях')
   const [secondPage, setSecondPage] = useState({
     isActive : false,
     task : myAdsArray[0],
