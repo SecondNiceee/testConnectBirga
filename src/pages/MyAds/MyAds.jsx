@@ -57,8 +57,8 @@ const MyAds = ({isPage = false}) => {
   const [isPageValueTwo , setPageValueTwo] = useState(true)
   useEffect( () => {
     if (isPage){
-      advertisementId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[0]
-      responseId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[1]
+      advertisementId = url.searchParams.get("advertisemet")
+      responseId = url.searchParams.get("response")
     }
   } , [isPage] )
   

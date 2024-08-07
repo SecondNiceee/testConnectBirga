@@ -411,8 +411,7 @@ const forwardFunction = useCallback(() => {
                 params : {
                   "chatId" : par[1].advertisement.user.chatId,
                   "text" : '📣 Вы получили отклик на задачу «' + par[1].advertisement.taskName.bold() + '» от ' +  par[1].user.fl ,
-                  // "buttonUrl" :  "https://t.me/ConnectexBot/ResponsePage?startapp=" + `${par[1].advertisement.id}m${im.data.id}` ,
-                  buttonUrl : "https://birga.ywa.su/"
+                  buttonUrl : "https://birga.ywa.su/ResponsePage?advertisemet=" + String(par[1].advertisement.id) + "&response=" + String(im.data.id)
                 }
               })
             
