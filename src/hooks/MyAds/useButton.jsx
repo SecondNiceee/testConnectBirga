@@ -30,7 +30,7 @@ export const useButton = ({
 }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(secondPage.isActive)
+    console.log(secondPage)
     function writeFucntion() {
       window.Telegram.WebApp.showPopup(
         {
@@ -87,14 +87,14 @@ export const useButton = ({
               setDetailsTwo((value) => ({ ...value, isOpen: false }));
             } else {
               if (isOpen.isActive) {
-                isPageValueTwo = false
                 setOpen({ ...isOpen, isActive: false });
+                isPageValueTwo = false
               } else {
                 if (secondPage.isActive) {
                   alert("Я тут!!")
                   
                   isPageValueOne = false
-                  setSecondPage({ ...secondPage, isActive: false });
+                  setSecondPage( (value) => ({ ...value, isActive: false }));
                 } else {
                   // if (history[history.length - 1] === '/AdCreating'){
 
