@@ -133,25 +133,27 @@ const First = ({isPage = false}) => {
 
 
 
-  const gotIt = useMemo( () => {
-    if (secFilteredArray !== null && secFilteredArray.length > 0 && secFilteredArray[isDetailsActive.id]){
+  // const gotIt = useMemo( () => {
+  //   if (secFilteredArray !== null && secFilteredArray.length > 0 && secFilteredArray[isDetailsActive.id]){
 
-      if (secFilteredArray[isDetailsActive.id].responces){
-        if (secFilteredArray[isDetailsActive.id].responces.find((e) => 
-          Number(e.user.id) === 2144832745))
+  //     if (secFilteredArray[isDetailsActive.id].responces){
+  //       if (secFilteredArray[isDetailsActive.id].responces.find((e) => 
+  //         Number(e.user.id) === 2144832745))
 
-        {
-          return true 
-        }
-        else{
+  //       {
+  //         return true 
+  //       }
+  //       else{
 
-          return false
-        }
-      }
-    }
-    return false
-    // eslint-disable-next-line
-  },[secFilteredArray, isDetailsActive.id,isDetailsActive.isOpen ] )
+  //         return false
+  //       }
+  //     }
+  //   }
+  //   return false
+  //   // eslint-disable-next-line
+  // },[secFilteredArray, isDetailsActive.id,isDetailsActive.isOpen ] )
+
+  const gotIt = false
 
   useEffect(() => {
     if (isDetailsActive.isOpen) {
