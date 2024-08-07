@@ -57,10 +57,13 @@ const MyAds = ({isPage = false}) => {
   const [isPageValueTwo , setPageValueTwo] = useState(true)
   useEffect( () => {
     if (isPage){
+      let url = new URL(window.location.href);
       advertisementId = url.searchParams.get("advertisemet")
       responseId = url.searchParams.get("response")
     }
   } , [isPage] )
+  alert(advertisementId)
+  alert(responseId)
   
   const [valueOne , setValueOne] = useState("all")
 
