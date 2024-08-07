@@ -11,7 +11,7 @@ let myResponse = {
   text : "",
   photos : ""
 }
-const Responce = forwardRef(({ orderInformation, responce, setResponce , left = "100%"   } , ref) => {
+const Responce = forwardRef(({ orderInformation, responce, setResponce , left = "100%" , ...props   } , ref) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
 
 
@@ -22,7 +22,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
 
 
   return (
-    <div ref={ref} className="responce-wrapper">
+    <div ref={ref} {...props} className="responce-wrapper">
 
       <Block {...orderInformation} />
       <MakePrivate

@@ -738,6 +738,9 @@ useEffect(() => {
                     unmountOnExit>
 
           <Responce
+            style = {{
+              transform : "translateX(0px)"
+            }}
             ref={mainRef}
             responce = {responce}
             setResponce = {setResponce}

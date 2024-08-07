@@ -51,7 +51,7 @@
  }
 .FileInput{
    padding: 12.63px 9px;
-   border-radius: 5.23px;
+   border-radius: 9.97px;
 
    /* Cards */
    background: rgb(32, 48, 63);
@@ -75,7 +75,7 @@
 .imageFeet{
     width: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 5.23px;
 
 }
 .ActiveMainLabel p {
