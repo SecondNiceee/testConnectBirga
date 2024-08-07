@@ -23,11 +23,12 @@ const DescriptionAndPhoto = ({
   useEffect( () => {
     // textAreaRef.current.style.height = (12 + 11 + 17.6*len).toString() + 'px'
     myRef.current.style.height = (hiddenRef.current.scrollHeight).toString() + 'px'
-  
 } , [text] )
 
+  const miniRef = useRef(null)
+
   const onFocusFunc = useCallback( () => {
-    myRef.current.scrollIntoView({ block: "nearest", behavior: 'smooth' })
+    miniRef.current.scrollIntoView({ block: "nearest", behavior: 'smooth' })
   } , [] )
 
   return (
@@ -45,14 +46,15 @@ const DescriptionAndPhoto = ({
 
         <TextArea
         onFocus = {onFocusFunc}
-        // ref={myRef}
+        ref={myRef}
           value={text}
           className={cl.DescriptionInput}
           placeholder={textPlaceholder}
           setValue={setText}
         ></TextArea>
 
-<p ref={myRef}
+<p 
+ref={miniRef}
           className={cl.inputCounter}
           style={text.length < 500 ? {} : { color: "#8a0303" }}
         >
