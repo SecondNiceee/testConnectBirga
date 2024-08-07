@@ -202,7 +202,7 @@ const AdCreating = () => {
     // dispatch(postMyTask([myFormData, el.photos]));
     for (let i = 0 ; i < 1; i++){
       try{
-
+        console.log("Создание задания")
         await axios.post("https://back-birga.ywa.su/advertisement", myFormData, {
           headers: {
             "Content-Type" :'multipart/form-data',
