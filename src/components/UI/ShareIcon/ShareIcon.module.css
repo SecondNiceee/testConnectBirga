@@ -6,12 +6,11 @@
     background: rgb(34, 61, 82);
     border-radius: 50%;
     position: relative;
+    user-select: none;
 }
-.ShareIcon img{
+.ShareIcon svg{
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translateX(-50%) translateY(-50%);
-    width: calc(39px * 0.32);
-    max-height: calc(35px * 0.32);
 }
