@@ -3,7 +3,9 @@ import classes from  "./MyButton.module.css"
 const MyButton = (props , className) => {
     const myRef = useRef(null)
     const vibrate = useCallback( () => {
-        window.navigator.vibrate(100);
+        window.navigator.vibrate(20);
+        myRef.current.style.backgroundColor = "white"
+        myRef.current.style.color = "black"
     }  , [])
     const clickHandler = useCallback( (e) => {
         myRef.current.style.backgroundColor = "white"
