@@ -44,8 +44,8 @@ let detailsVar;
 // const advertisementId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[0]
 // const responseId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[1]
 
-const advertisementId = 1
-const responseId = 1
+let advertisementId = 1
+let responseId = 1
 
 const defaultDate = new Date()
 
@@ -152,7 +152,6 @@ const MyAds = ({isPage = false}) => {
 
 
   
-  console.log('В моих заданиях')
   const [secondPage, setSecondPage] = useState({
     isActive : false,
     task : myAdsArray[0],
@@ -435,7 +434,7 @@ const MyAds = ({isPage = false}) => {
     else{
       return isOpen.responce
     }
-  } , [myAdeOneStatus, pageResponseStatus , isPageValueTwo] )
+  } , [myAdeOneStatus, pageResponseStatus , isOpen.responce  , isPage] )
 
   const myAdOneAdvertisement = useMemo( () => {
     
@@ -500,7 +499,7 @@ const MyAds = ({isPage = false}) => {
     else{
       return filteredArray[secondPage.index]
     }
-  } , [isPage , myAdeOneStatus , isPageValueOne] )
+  } , [isPage , myAdeOneStatus  , secondPage.index , filteredArray] )
 
 
 
