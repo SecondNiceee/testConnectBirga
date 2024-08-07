@@ -13,7 +13,7 @@ const MyButton = (props , className) => {
     }  , [])
     const clickHandler = useCallback( (e) => {
         myRef.current.style.backgroundColor = "#47A2E7"
-        myRef.current.style.color = "E6E6E7"
+        myRef.current.style.color = "#E6E6E7"
         
     }  , [])
     const touchEnd = useCallback( (e) => {
