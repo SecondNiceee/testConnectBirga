@@ -706,23 +706,7 @@ useEffect(() => {
             />
           </CSSTransition>
 
-        <CSSTransition
-                    in={step === 1 ? true : false}
-                    // in = {true}
-                    timeout={400}
-                    classNames="left-right"
-                    mountOnEnter
-                    unmountOnExit>
 
-          <Responce
-            ref={mainRef}
-            responce = {responce}
-            setResponce = {setResponce}
-
-            orderInformation={secFilteredArray[isDetailsActive.id] ? secFilteredArray[isDetailsActive.id] : "he"}
-          />
-
-        </CSSTransition>
 
 
 
@@ -744,6 +728,24 @@ useEffect(() => {
 
             />
           </CSSTransition>
+
+          <CSSTransition
+                    in={step === 1 ? true : false}
+                    // in = {true}
+                    timeout={400}
+                    classNames="left-right"
+                    mountOnEnter
+                    unmountOnExit>
+
+          <Responce
+            ref={mainRef}
+            responce = {responce}
+            setResponce = {setResponce}
+
+            orderInformation={secFilteredArray[isDetailsActive.id] ? secFilteredArray[isDetailsActive.id] : "he"}
+          />
+
+        </CSSTransition>
 
 
         
