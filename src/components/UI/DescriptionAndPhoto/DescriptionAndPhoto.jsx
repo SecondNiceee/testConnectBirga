@@ -45,14 +45,14 @@ const DescriptionAndPhoto = ({
 
         <TextArea
         onFocus = {onFocusFunc}
-        ref={myRef}
+        // ref={myRef}
           value={text}
           className={cl.DescriptionInput}
           placeholder={textPlaceholder}
           setValue={setText}
         ></TextArea>
 
-<p
+<p ref={myRef}
           className={cl.inputCounter}
           style={text.length < 500 ? {} : { color: "#8a0303" }}
         >
