@@ -21,7 +21,7 @@ const MyButton = (props , className) => {
          myRef.current.style.color = "white"
     } )
     return ( 
-        <div onClick={vibrate} onTouchEnd={touchEnd} onTouchStart={clickHandler}>
+        <div  onClick={vibrate} onTouchEnd={touchEnd} onTouchStart={clickHandler} {...props} >
             <button ref={myRef} className={ className ? [classes.MyButton, className].join(' ') : classes.MyButton } {...props}>{props.children}</button>
         </div>
     );

@@ -12,7 +12,7 @@ const QTwo = ({end, agree, id, task, isButton, isResponce, isMyAds }) => {
           id={id}
           task={task}
           className={end ? "tie low-opacity" : "tie"}
-          style={isButton ? {} : { marginRight: "4px" }}
+          style={isButton ? {} : { marginRight: "-8px" }}
         />
       ) : (
         <></>

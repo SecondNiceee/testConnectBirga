@@ -1,8 +1,29 @@
-import React from "react";
+import React, { useCallback, useRef } from "react";
 import cl from "./CategoryBlock.module.css";
 const CategoryBlock = ({ name, value , func, ...props }) => {
+
+  const myRef = useRef(null)
+  const vibrate = useCallback( () => {
+      window.navigator.vibrate(50);
+      myRef.current.style.backgroundColor = "#3D444E"
+      setTimeout( () => {
+        myRef.current.style.backgroundColor = "#2e3640"
+      } , 100 )
+  }  , [])
+  const clickHandler = useCallback( (e) => {
+    myRef.current.style.backgroundColor = "#3D444E"
+      
+  }  , [])
+  const touchEnd = useCallback( (e) => {
+      myRef.current.style.backgroundColor = "#2e3640"
+  } )
+
+
   return (
-    <div onClick={func} {...props}  className={cl.wrapper}>
+    <div ref={myRef} onTouchStart={clickHandler} onTouchEnd={touchEnd} onClick={() => {
+        vibrate()
+        func()
+    }} {...props}  className={cl.wrapper}>
       <div className={cl.left}>
         <p className={cl.name}>{name}</p>
         <p className={cl.value}>{value}</p>

@@ -655,6 +655,7 @@
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
+  position: fixed;
 }
 .TaskDetails.active {
   -webkit-transform: translateX(0%);
@@ -1606,7 +1607,6 @@ input {
           flex-direction: column;
   margin-top: 20px;
   border-radius: 10px;
-  padding-left: 16px;
   /* Cards */
   background: rgb(32, 48, 63);
 }
@@ -1699,6 +1699,8 @@ input {
 }
 
 .option {
+  padding-left: 16px;
+  border-radius: 9.6px;
   padding-top: 6.5px;
   padding-bottom: 6.5px;
   -webkit-box-align: center;
@@ -1707,12 +1709,13 @@ input {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
   background: rgb(32, 48, 63);
   border-bottom: 0.5px solid rgb(60, 61, 63);
-  padding-left: 2px;
   padding-right: 16px;
 }
 .option:last-child {

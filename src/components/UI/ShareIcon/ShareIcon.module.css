@@ -7,8 +7,10 @@
     border-radius: 50%;
     position: relative;
     user-select: none;
+    transition: 0.1s;
 }
 .ShareIcon svg{
+    transition: 0.1s;
     position: absolute;
     left: 50%;
     top: 50%;

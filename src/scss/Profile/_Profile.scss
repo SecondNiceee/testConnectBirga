@@ -66,7 +66,6 @@ input {
         flex-direction: column;
         margin-top: calc(20px);
         border-radius: calc(10px);
-        padding-left: 16px;
         /* Cards */
         background: rgb(32, 48, 63);
 
@@ -138,14 +137,17 @@ input {
         height: calc(35px * $width);
     }
     .option{
+        padding-left: 16px;
+        border-radius: 9.6px;
         padding-top: calc(6.5px);
         padding-bottom: calc(6.5px);
         align-items: center;
         display: flex;
+        transition: 0.1s;
         justify-content: space-between;
         background: rgb(32, 48, 63);
         border-bottom: 0.5px solid rgb(60, 61, 63);;
-        padding-left: 2px;
+        // padding-left: 2px;
         padding-right: 16px;
         &:last-child{
             border-bottom: none;

@@ -4,7 +4,6 @@ import cl from "./ShareIcon.module.css";
 const ShareIcon = ({ className, ...props }) => {
     const circleRef = useRef(null)
     const iconRef = useRef(null)
-    const myRef = useRef(null)
     const vibrate = useCallback( () => {
         window.navigator.vibrate(50);
         circleRef.current.style.backgroundColor = "#30475B"

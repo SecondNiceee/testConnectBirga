@@ -12,6 +12,7 @@
     left: 0;
     will-change: transform;
     transform: translateX(100%);
+    position: fixed;
     // transform: translateX(100%);
     &.active{
         transform: translateX(0%);
