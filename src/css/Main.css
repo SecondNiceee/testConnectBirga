@@ -2831,18 +2831,15 @@ input {
 }
 
 .responce-wrapper {
-  overflow-y: scroll;
   min-width: 100vw;
   width: 100vw;
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;
-  position: fixed;
   left: 0;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
-  height: 100vh;
   z-index: 100000;
   -webkit-transition: 0.4s;
   transition: 0.4s;
