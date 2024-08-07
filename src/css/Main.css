@@ -15,6 +15,9 @@
 }
 
 .First {
+  position: fixed;
+  overflow: scroll;
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

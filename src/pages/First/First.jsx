@@ -610,14 +610,14 @@ useEffect(() => {
   const firsStyle = useMemo( () => {
     if (step === 1){
       return {
-        transform : "translateX(-200vw)"
+        transform : "translateX(-100vw)"
       }
     }
     else{
 
       if (isDetailsActive.isOpen)
         return {
-          transform : "translateX(-100vw)"
+          transform : "translateX(0vw)"
       }
       else{
         return {
