@@ -179,6 +179,7 @@ function App() {
 
   window.Telegram.WebApp.setHeaderColor("#18222d");
   window.Telegram.WebApp.setBackgroundColor("#18222d");
+
   const dispatch = useDispatch();
 
   window.Telegram.WebApp.expand();
