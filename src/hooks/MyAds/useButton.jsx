@@ -87,14 +87,14 @@ export const useButton = ({
               setDetailsTwo((value) => ({ ...value, isOpen: false }));
             } else {
               if (isOpen.isActive) {
-                setOpen({ ...isOpen, isActive: false });
                 isPageValueTwo = false
+                setOpen({ ...isOpen, isActive: false });
               } else {
                 if (secondPage.isActive) {
                   alert("Я тут!!")
                   
-                  isPageValueOne = false
                   setSecondPage( (value) => ({ ...value, isActive: false }));
+                  // isPageValueOne = false
                 } else {
                   // if (history[history.length - 1] === '/AdCreating'){
 
