@@ -183,7 +183,6 @@ function App() {
   const dispatch = useDispatch();
 
   window.Telegram.WebApp.expand();
-  console.log("выф")
   const me = useSelector((state) => state.telegramUserInfo);
 
   useEffect(() => {
