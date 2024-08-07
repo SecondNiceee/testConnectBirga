@@ -7,7 +7,7 @@
   position: fixed;
   overflow :scroll;
   height: 100vh;
-  display: flex;
+  display: flex;   
   transition: 0.4s;
   will-change: transform;
   overflow-x: hidden;
@@ -265,7 +265,7 @@
         justify-content: space-between;
         align-items: center;
         padding-left: 17px;
-        padding-right: 19px;
+        padding-right: 7px;
         margin-bottom: 11px;
     }
     .FirstMain__bottom-left{
