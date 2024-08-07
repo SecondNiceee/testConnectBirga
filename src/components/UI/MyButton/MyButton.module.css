@@ -29,4 +29,5 @@
     text-align: right;
     text-transform: uppercase;
     padding: 6px 12.67px 6px 12.67px;
+    user-select:none;
 }
