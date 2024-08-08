@@ -3039,6 +3039,26 @@ input {
           transform: translateX(100%);
 }
 
+.inputModal-enter {
+  opacity: 1;
+}
+
+.inputModal-enter-active {
+  opacity: 1;
+}
+
+.inputModal-enter-done {
+  opacity: 1;
+}
+
+.inputModal-exit {
+  opacity: 0;
+}
+
+.inputModal-exit-done {
+  opacity: 0;
+}
+
 .all-shablon-wrapper {
   min-width: 100vw;
   width: 100%;

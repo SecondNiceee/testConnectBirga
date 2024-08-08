@@ -25,6 +25,7 @@ import ChangeCards from "../ChangeCard/ChangeCard";
 import { changeProfile, deleteCard, deleteServerCard, putUserInfo } from "../../store/telegramUserInfo";
 import pagesHistory from "../../constants/pagesHistory";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
+import CardsArray from "./components/CardsArray/CardsArray";
 
 
 const variants = {
@@ -343,11 +344,12 @@ const Profile = () => {
 
 
   
-
+  const postStatus = useSelector( state => state.telegramUserInfo.postState )
+  const putStatus = useSelector(state => state.telegramUserInfo.putState)
 
   return (
     <>
-    {userInfo.status !== "yes" ? <MyLoader/> :
+    {userInfo.state !== "yes" ? <MyLoader/> :
 
     
     <motion.div
@@ -413,54 +415,14 @@ const Profile = () => {
           marginTop : '0px'
         }} text={'Добавить кейс'} />
       </Compact>
+      
 
-      {cards.length !== 0 ? cards.map((e, i) => {
-        return (
-          <Case 
-          deleteFunction = {() => {
-            deleteFunction(i, e)
+      {postStatus === "pending" || putStatus === "pending" ? 
+      <MyLoader style = { {transform : "translateX(-8px)"} }/> 
+      :
+      <CardsArray deleteFunction={deleteFunction} cards={cards} setChangeActive={setChangeActive} index={index} />
+      }
 
-            // index = i
-            // setAboutU({...aboutULocal , cards : [...aboutU.cards.filter((e , i) => {
-            //   return i !== index
-            // })]})
-            // dispatch(deleteCard(index))
-            // dispatch(deleteServerCard(e.id))
-            
-          }}
-
-          changeFunction={() => {
-            document.documentElement.style.overflow = 'hidden'
-            setChangeActive(true)
-            index = i
-          }} card={e}  key = {i} className={'profile-case'} title = {e.title} description = {e.description} photos = {e.photos}
-          
-          />
-        )
-      })
-    :
-    <></>
-    }
-
-      {/* <Case className={'profile-case'} /> */}
-
-{/* 
-      <div className="profile__veryfication">
-        <p className="veryfication">Верификация</p>
-        <div className="veryfication__block">
-          <div className="Okey">
-            <img className="Subtract" src={Subtract} alt="" />
-          </div>
-
-          <div className="veryfication__block-text">
-            <p>Пройти KYC верификацию</p>
-            <p>
-              Подтвердите свою личность <br />и получайте на 20% больше откликов
-            </p>
-          </div>
-          <img src={greyArrowRight} className="greyArrow" alt="" />
-        </div>
-      </div> */}
 
 
         <CSSTransition

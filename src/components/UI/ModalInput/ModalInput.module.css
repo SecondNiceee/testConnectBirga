@@ -9,6 +9,7 @@
     padding-right: 14px;
     padding-bottom: 20px;
     z-index: 100;
+    transition: 0.2s;
 }
 .blackArea{
     position: absolute;

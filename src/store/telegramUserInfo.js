@@ -90,7 +90,7 @@ export const postCard = createAsyncThunk(
             return localCard
         }
         catch(e){
-            alert(JSON.stringify(e))
+            alert("Попробуйте позже или обратитесь в поддержку.")
             console.warn(e)
             return false
         }
@@ -201,6 +201,8 @@ const telegramUserInfo = createSlice({
   name: "telegramUserInfo",
   initialState: {
     state: null,
+    postState : null,
+    putState : null,
     id: "",
     photo: "",
     link : "",
@@ -238,7 +240,7 @@ const telegramUserInfo = createSlice({
       state.status = "loading";
     });
     builder.addCase(fetchUserInfo.fulfilled, (state, action) => {
-      state.status = "yes";
+      state.state = "yes";
       state.id = action.payload.id;
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
@@ -256,8 +258,15 @@ const telegramUserInfo = createSlice({
     builder.addCase(postCard.fulfilled , (state , action) => {
         if (action.payload){
             state.profile.cards.push(action.payload)
+
         }
     });
+    builder.addCase(postCard.pending , (state , action) => {
+        state.postState = "pending"
+    })
+    builder.addCase(putCard.pending , (state , action) => {
+        state.putState = "pending"
+    })
     builder.addCase(putCard.fulfilled , (state , action) => {
         state.profile.cards = state.profile.cards.map( (e) => {
             if (e.id === action.payload.id){

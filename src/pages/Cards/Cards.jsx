@@ -334,9 +334,9 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       <CSSTransition
               mountOnEnter
               unmountOnExit
-              classNames={'cardsModal'}
+              classNames={'inputModal'}
               in = {modalActive}
-              timeout={0}
+              timeout={200}
       >
         <ModalInput style = {mainRef.current && {top : String(mainRef.current.scrollTop) + "px"}}  setModal={setModalActive} setting={inputObject} />
       </CSSTransition>
