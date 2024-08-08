@@ -172,9 +172,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   }
                                       
     function compareTwo(a1 ,a2){
-      console.log(toString(a1) , toString(a2))
-      console.log(JSON.stringify(a1) , JSON.stringify(a2))
-      if (toString(a1) !== toString(a2)){
+      if (JSON.stringify(a1) !== JSON.stringify(a2)){
           return false 
       }
       if (a1.photos.length !== a2.photos.length ){

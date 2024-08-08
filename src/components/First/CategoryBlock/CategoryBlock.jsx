@@ -4,7 +4,7 @@ const CategoryBlock = ({ name, value , func, ...props }) => {
 
   const myRef = useRef(null)
   const vibrate = useCallback( () => {
-      window.navigator.vibrate(50);
+      window.navigator.vibrate(100);
       myRef.current.style.backgroundColor = "#3D444E"
       setTimeout( () => {
         myRef.current.style.backgroundColor = "#2e3640"

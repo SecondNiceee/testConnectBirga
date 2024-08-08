@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeMenuActive } from '../../store/menuSlice';
 import {Link} from 'react-router-dom'
@@ -17,6 +17,42 @@ const FirstMenu = () => {
         dispatch(changeMenuActive(set))
     }
     const userInfo = useSelector(state => state.telegramUserInfo)
+
+
+
+
+
+    const myRef = useRef(null)
+    const vibrate = useCallback( () => {
+        window.navigator.vibrate(100);
+        if (myRef.current){
+            myRef.current.style.backgroundColor = "#3D4855"
+        }
+        setTimeout( () => {
+            if (myRef.current){
+                myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
+            }
+        } , 100 )
+        // eslint-disable-next-line 
+    }  , [])
+    const clickHandler = useCallback( (e) => {
+      if (myRef.current){
+          myRef.current.style.backgroundColor = "#3D4855"
+      }
+      // eslint-disable-next-line 
+  }  , [])
+  const touchEnd = useCallback( (e) => {
+      if (myRef.current){
+          myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
+      }
+  }, [] )
+
+
+
+
+
+
+
     return (
         <div className= {  isMenuActive ? 'FirstMenu'  :  'FirstMenu hidden'  }>
 
@@ -43,11 +79,12 @@ const FirstMenu = () => {
                 </div>
             </Link>
 
-            <div to = "/Balance" onClick={() => {
-window.Telegram.WebApp.showAlert("Мы скоро добавим.")
+            <div ref={myRef} onTouchStart={clickHandler} onTouchEnd={touchEnd} onClick={() => {
+                    vibrate()
+                    window.Telegram.WebApp.showAlert("Мы скоро добавим.")
             }} className="MenuPrice">
                 {/* <UpArr className= 'upArr' />  */}
-                <p className='MenuTextPrice'>Скоро</p>
+                <p  className='MenuTextPrice'>Скоро</p>
                  <SmallDimond className= 'dymond' /> 
             </div>
 

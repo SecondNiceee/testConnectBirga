@@ -3,7 +3,7 @@ import classes from  "./MyButton.module.css"
 const MyButton = (props , className) => {
     const myRef = useRef(null)
     const vibrate = useCallback( () => {
-        window.navigator.vibrate(50);
+        window.navigator.vibrate(100);
         myRef.current.style.backgroundColor = "#47A2E7"
         myRef.current.style.color = "#E6E6E7"
         setTimeout( () => {

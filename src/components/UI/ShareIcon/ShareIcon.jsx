@@ -4,7 +4,7 @@ const ShareIcon = ({ className, ...props }) => {
     const circleRef = useRef(null)
     const iconRef = useRef(null)
     const vibrate = useCallback( () => {
-        window.navigator.vibrate(50);
+        window.navigator.vibrate(100);
         circleRef.current.style.backgroundColor = "#30475B"
         iconRef.current.style.fill = "#3BA4F3"
         setTimeout( () => {

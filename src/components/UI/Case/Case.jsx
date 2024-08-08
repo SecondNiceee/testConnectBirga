@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import cl from "./Case.module.css";
 import FalseTie from "../FalseTie/FalseTie";
 import MyButton from "../MyButton/MyButton";
+import Circle from "../Circle/Circle";
 
 const Case = ({
   className,
@@ -98,7 +99,8 @@ const Case = ({
             style={!watchOnly ? { flexDirection: "row" } : {}}
             className={cl.caseRight}
           >
-            <div onClick={deleteFunction} className={cl.circle}>
+            <Circle onClick={deleteFunction}>
+
               <svg
                 width="15"
                 height="16"
@@ -111,8 +113,10 @@ const Case = ({
                   fill="#F83D3D"
                 />
               </svg>
-            </div>
-            <div className={cl.circle} onClick={changeFunction}>
+
+            </Circle>
+            <Circle onClick={changeFunction}>
+
               <svg
                 width="14"
                 height="14"
@@ -125,13 +129,16 @@ const Case = ({
                   stroke="#F8DA3D"
                   stroke-width="1.24667"
                 />
+                
               </svg>
-            </div>
-            <div className={cl.circle} onClick={() => {
+          
+            </Circle>
+            <Circle  onClick={() => {
                                 window.Telegram.WebApp.openTelegramLink(
                                   "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" + String(card.id) + "m" + 2144832745
                                 );
               } } >
+            
               <svg
                 width="14"
                 height="11"
@@ -144,7 +151,8 @@ const Case = ({
                   fill="#2EA5FF"
                 />
               </svg>
-            </div>
+       
+            </Circle>
           </div>
         )}
       </div>

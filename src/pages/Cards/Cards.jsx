@@ -350,7 +350,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         unmountOnExit
       >
           <ChoiceCategory
-                    designOnly = {true}
+            designOnly = {true}
             isBackHide = {false}
             taskInformation={localCardSetting}
             setTaskInformation={setCardsSetting}
