@@ -36,7 +36,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
 
 
-  const [cardsSetting, setCardsSetting] = useState(card);
+  const [cardsSetting, setCardsSetting] = useState(Object.assign({}, card));
 
   console.log(cardsSetting)
   console.log(card)
