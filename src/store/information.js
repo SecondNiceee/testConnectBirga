@@ -79,53 +79,22 @@ export const putMyTask = createAsyncThunk(
 export const postMyTask = createAsyncThunk(
   "information/postMytask",
   async function (arr) {
-    let files = arr[1];
     try {
-      let b;
-
-
-      let localTask;
-
-      let one = new Date(b.data.startTime);
-
-      let two;
-      if (b.data.endTime) {
-        two = new Date(b.data.endTime);
-      } else {
-        two = "";
-      }
-      let changedFiles = [];
-      if (files.length > 0) {
-        for (let i = 0; i < files.length; i++) {
-          let file = files[i];
-          let blob = file.slice(0, file.size, "image/png");
-          let newFile = new File([blob], b.data.photos[i], {
-            type: "image/png",
+      for (let i = 0 ; i < 1; i++){
+        try{
+          console.log("Создание задания")
+          await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
+            headers: {
+              "Content-Type" :'multipart/form-data',
+              "Access-Control-Allow-Origin": "*"
+            },
           });
-          changedFiles.push(newFile);
+        }
+        catch(e){
+          window.Telegram.WebApp.showAlert("Задание не было создано. Попробуйте позже")
+          console.log(e)
         }
       }
-
-      localTask = {
-        id: b.data.id,
-        taskName: b.data.title,
-        executionPlace: "Можно выполнить удаленно",
-        time: { start: one, end: two },
-        tonValue: b.data.price,
-        taskDescription: b.data.description,
-        photos: changedFiles,
-        photosNames: b.data.photos,
-        customerName: b.data.fl,
-        userPhoto: b.data.photo || "",
-        rate: "5",
-        isActive: true,
-        creationTime: b.data.createdAt,
-        viewsNumber: b.data.views,
-        category : b.data.category,
-        status: "active",
-      };
-
-
 
 
 
