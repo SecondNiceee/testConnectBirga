@@ -14,7 +14,7 @@ const FirstMainTop = ({isMyAds , category, isWatched, taskName, id, end}) => {
         onClick={() => {
           window.Telegram.WebApp.openTelegramLink(
             "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/task?startapp=" +
-              String(id)
+              String(id) + "&text=Задание <b>" + `${taskName}<b> на Коннект Бирже`
           );
         }}
         style={end ? { opacity: 0.5 } : {}}

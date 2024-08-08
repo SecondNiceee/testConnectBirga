@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import AllReactions from "./AllReactions";
 import Block from "../../../components/First/Block";
 import { clearResponsesByA, fetchResponseByAdvertisement } from "../../../store/responses";
+import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 
 const AboutOne = ({
   task,
@@ -87,7 +88,7 @@ const AboutOne = ({
   } , [dispatch, task] )
 
 
- 
+  const putStatus = useSelector( state => state.information.putTaskStatus )
 
   return (
     <>
@@ -96,7 +97,7 @@ const AboutOne = ({
     <div className="aboutOne" {...props} >
       <Top name={"Отклики"} setMenuActive={setMenuActive} />
 
-      {task ? (
+      {task && (putStatus !== "pending")  ? (
         <Block
           deleteFunction={deleteCallback}
           setDetailsActive={setDetailsCallback}
@@ -107,7 +108,7 @@ const AboutOne = ({
           {...task}
         />
       ) : (
-        <></>
+        <MyLoader style = {{transform : "translateX(-8px)"}} />
       )}
 
 

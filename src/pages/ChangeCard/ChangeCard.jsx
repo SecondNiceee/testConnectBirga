@@ -155,10 +155,10 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       let files = sortFiles(localCardSetting.photosNames , localCardSetting.photos)
 
       files.addedArr.forEach((e,i) => {
-        myFormData.append(`addFiles${i}` , e)
+        myFormData.append(`addFiles[${i}]` , e)
       })
       files.removedArr.forEach( (e, i )  => {
-        myFormData.append(`deleteFiles${i}` , e)
+        myFormData.append(`deleteFiles[${i}]` , e)
       })
       dispatch(putCard([myFormData, localCardSetting.id, localCardSetting]))
       // localCardSetting.photos.forEach(e => {

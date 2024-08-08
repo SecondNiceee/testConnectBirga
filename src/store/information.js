@@ -261,6 +261,7 @@ export const fetchTasksInformation = createAsyncThunk(
     // }
     let tasks = [];
     let task;
+    
     try {
       task = await axios.get(
         "https://back-birga.ywa.su/advertisement/findAll",
