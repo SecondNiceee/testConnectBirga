@@ -534,7 +534,7 @@ const MyAds = ({isPage = false}) => {
 
 
 
-
+  console.log(postStatus)
 
   return (
     <>

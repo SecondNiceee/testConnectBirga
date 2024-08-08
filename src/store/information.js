@@ -83,16 +83,6 @@ export const postMyTask = createAsyncThunk(
     try {
       let b;
 
-      // for (let i = 0 ; i < 500; i++){
-
-      //   b = await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
-      //     headers: {
-      //       "Content-Type" :'multipart/form-data',
-      //       "Access-Control-Allow-Origin": "*"
-      //     },
-      //   });
-      // }
-
 
       let localTask;
 
@@ -134,7 +124,68 @@ export const postMyTask = createAsyncThunk(
         category : b.data.category,
         status: "active",
       };
-      return localTask;
+
+
+
+
+
+      let tasks = [];
+      let task = await axios.get(
+        "https://back-birga.ywa.su/advertisement/findByUser",
+        {
+          params: {
+            page: 1,
+            userId: 2144832745,
+            limit: 4,
+            // userId : 2144832745
+          },
+          headers: {
+            "Content-Type": "multipart/form-data",
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      );
+
+
+      if (task.data.length === 0) {
+        return [];
+      } else {
+        for (let order of task.data) {
+          let files = await makeNewFile(order.folder, order.photos);
+          let responseCounter = await axios.get("https://back-birga.ywa.su/response/countByAdvertisement" , {
+            params : {
+              "advertisementId" : order.id
+            }
+          })
+          tasks.push({
+            id: order.id,
+            taskName: order.title,
+            executionPlace: "Можно выполнить удаленно",
+            time: {
+              start: new Date(order.startTime),
+              end: new Date(order.endTime),
+            },
+            tonValue: order.price,
+            taskDescription: order.description,
+            photos: files,
+            photosNames: order.photos,
+            rate: "5",
+            isActive: true,
+            creationTime: order.createdAt,
+            viewsNumber: order.views,
+            removedFiles: [],
+            addedFiles: [],
+            status: order.status,
+            user : order.user,
+            responseCounter : responseCounter.data,
+            category : order.category.id
+          });
+        }
+        return tasks;
+      }
+
+
+
     } catch (e) {
       alert(e)
       alert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже");
@@ -444,7 +495,7 @@ const information = createSlice({
     });
     builder.addCase(postMyTask.fulfilled, (state, action) => {
       state.postTaskStatus = "complete";
-      state.myAdsArray.push(action.payload);
+      state.myAdsArray = action.payload;
     });
     builder.addCase(postMyTask.rejected, (state) => {
       state.postTaskStatus = "error";
