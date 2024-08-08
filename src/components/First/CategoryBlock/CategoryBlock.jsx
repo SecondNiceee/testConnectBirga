@@ -20,7 +20,7 @@ const CategoryBlock = ({ name, value , func, ...props }) => {
 
 
   return (
-    <div ref={myRef} onTouchStart={clickHandler} onTouchEnd={touchEnd} onClick={() => {
+    <div style={{lineHeight : 0}} ref={myRef} onTouchStart={clickHandler} onTouchEnd={touchEnd} onClick={() => {
         vibrate()
         func()
     }} {...props}  className={cl.wrapper}>
@@ -28,7 +28,7 @@ const CategoryBlock = ({ name, value , func, ...props }) => {
         <p className={cl.name}>{name}</p>
         <p className={cl.value}>{value}</p>
       </div>
-      <div className={cl.right}>
+      <div style={{lineHeight : 0}} className={cl.right}>
         <svg
           width="12"
           height="14"

@@ -172,6 +172,8 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   }
                                       
     function compareTwo(a1 ,a2){
+      console.log(toString(a1) , toString(a2))
+      console.log(JSON.stringify(a1) , JSON.stringify(a2))
       if (toString(a1) !== toString(a2)){
           return false 
       }
@@ -220,8 +222,6 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     }
 
     
-    MainButton.show();
-    BackButton.show()
     MainButton.setText("Изменить кейс");
     if (!modalActive && !isCategoryChoiceOpen){
       mainRef.current.style.overflow = "scroll"
@@ -239,11 +239,17 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         MainButton.offClick(saveFunc)
         BackButton.offClick(backFunc);
         // MainButton.onClick(save)
-        MainButton.setText('Сохранить')
+       
 
     };
     // eslint-disable-next-line
 }, [modalActive , isCategoryChoiceOpen, cardsSetting]);
+
+  useEffect( () => {
+    return () => {
+      MainButton.setText('Сохранить')
+    }
+  } , [] )
   return (
     <div ref={mainRef} className="cards">
       <h3 className="cards-title">{cardsSetting.title}</h3>
