@@ -146,7 +146,7 @@ const MyFirstBlock = ({
             <p className= { isWatched ? "watchedTask" : ""}>{taskName}</p>
             <ShareIcon onClick = {() => {
                               window.Telegram.WebApp.openTelegramLink(
-                                "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/task?startapp=" + String(id)
+                                `https://t.me/share/url?text=Задание ${taskName} на Коннект Бирже&url=https://t.me/ConnectexBot/task?startapp=` + String(id)
                               );
             }}  style = {end ? {opacity : 0.5} : {}} className="share__icon" />
           </div>
