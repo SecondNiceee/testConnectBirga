@@ -359,7 +359,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       <CSSTransition
         mountOnEnter
         unmountOnExit
-        classNames={"cardsModal"}
+        classNames={"inputModal"}
         in={modalActive}
         timeout={0}
       >
