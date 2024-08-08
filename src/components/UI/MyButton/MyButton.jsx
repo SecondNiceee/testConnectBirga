@@ -3,11 +3,8 @@ import classes from  "./MyButton.module.css"
 const MyButton = (props , className) => {
     const myRef = useRef(null)
     const vibrate = useCallback( () => {
-        window.navigator.vibrate(100);
-        window.TelegramWebviewProxy.postEvent("web_app_trigger_haptic_feedback", {
-            type : "impact",
-            impact_style : "light"
-        })
+        // window.navigator.vibrate(100);
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
         myRef.current.style.backgroundColor = "#47A2E7"
         myRef.current.style.color = "#E6E6E7"
         setTimeout( () => {
