@@ -24,7 +24,7 @@ const MyButton = (props , className) => {
     } , [] )
     useEffect( () =>{
         const element = document.documentElement.querySelector('.gg')
-        element.addEventListener(() => {
+        element.addEventListener( "click" , () => {
             window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
         })
     } , [] )
