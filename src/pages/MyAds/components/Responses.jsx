@@ -50,25 +50,25 @@ const Responses = ({
 
   return (
     <>
+      <div style={responces.length === 0 ? {display : "none"} : {}} className="responses__up-block">
+        <p>Отклики</p>
+      </div>
 
-
+      <ModalChoicer
+      style={responces.length === 0 ? {display : "none"} : {}}
+        setValue={(value) => {
+          setFilterBy(value);
+        }}
+        className={"MyAds-choicer"}
+        values={values}
+        names={names}
+        defaultValue={values[0]}
+      />
       {responces.length > 0 ? (
         <>
           {responces.map((e, i) => {
             return (
               <>
-                    <div className="responses__up-block">
-        <p>Отклики</p>
-      </div>
-                <ModalChoicer
-                  setValue={(value) => {
-                    setFilterBy(value);
-                  }}
-                  className={"MyAds-choicer"}
-                  values={values}
-                  names={names}
-                  defaultValue={values[0]}
-                />
                 <ReactionSuspense
                   openAboutReactionFunc={openAboutReactionFunc}
                   responce={e}
