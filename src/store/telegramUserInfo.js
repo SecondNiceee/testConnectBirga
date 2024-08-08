@@ -90,7 +90,9 @@ export const postCard = createAsyncThunk(
             return localCard
         }
         catch(e){
+            alert(JSON.stringify(e))
             console.warn(e)
+            return false
         }
     }
 )
@@ -252,7 +254,9 @@ const telegramUserInfo = createSlice({
     });
 
     builder.addCase(postCard.fulfilled , (state , action) => {
-        state.profile.cards.push(action.payload)
+        if (action.payload){
+            state.profile.cards.push(action.payload)
+        }
     });
     builder.addCase(putCard.fulfilled , (state , action) => {
         state.profile.cards = state.profile.cards.map( (e) => {

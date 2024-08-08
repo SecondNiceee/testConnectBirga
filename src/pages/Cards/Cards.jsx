@@ -214,10 +214,17 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         MainButton.offClick(saveFunc)
         BackButton.offClick(backFunc);
         // MainButton.onClick(save)
-        MainButton.setText('Сохранить')
+        
         
       };
   }, [modalActive, backFunc, save, saveFunc, isCategoryChoiceOpen] )
+
+
+  useEffect( () => {
+    return () => {
+      MainButton.setText('Сохранить')
+    }
+  } )
 
 
 
