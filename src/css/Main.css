@@ -2939,6 +2939,21 @@ input {
   overflow-y: scroll;
   will-change: transform;
 }
+.cards .inputModal-enter {
+  opacity: 1;
+}
+.cards .inputModal-enter-active {
+  opacity: 1;
+}
+.cards .inputModal-enter-done {
+  opacity: 1;
+}
+.cards .inputModal-exit {
+  opacity: 0;
+}
+.cards .inputModal-exit-done {
+  opacity: 0;
+}
 .cards .cards-title {
   margin-left: 16px;
   font-family: "SF Pro Display 600";
@@ -3037,26 +3052,6 @@ input {
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
-}
-
-.inputModal-enter {
-  opacity: 1;
-}
-
-.inputModal-enter-active {
-  opacity: 1;
-}
-
-.inputModal-enter-done {
-  opacity: 1;
-}
-
-.inputModal-exit {
-  opacity: 0;
-}
-
-.inputModal-exit-done {
-  opacity: 0;
 }
 
 .all-shablon-wrapper {

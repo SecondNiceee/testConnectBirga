@@ -24,7 +24,7 @@ const ChoiceCategory = ({
       return categorys
     }
     else{
-      return [categorys.find(e => e.id === 1)]
+      return [categorys.find(e => e.id === 2)]
     }
   } , [designOnly , categorys] )
   

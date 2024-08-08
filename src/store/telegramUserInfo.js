@@ -256,6 +256,7 @@ const telegramUserInfo = createSlice({
     });
 
     builder.addCase(postCard.fulfilled , (state , action) => {
+        state.postState = "complete"
         if (action.payload){
             state.profile.cards.push(action.payload)
 
@@ -268,6 +269,7 @@ const telegramUserInfo = createSlice({
         state.putState = "pending"
     })
     builder.addCase(putCard.fulfilled , (state , action) => {
+         state.putState = "complete"
         state.profile.cards = state.profile.cards.map( (e) => {
             if (e.id === action.payload.id){
                 return action.payload
