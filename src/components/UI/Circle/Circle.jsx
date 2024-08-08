@@ -28,13 +28,13 @@ const Circle = ( { children , ...props} ) => {
   }, [] )
 
   useEffect( () => {
+      function click(){
+          window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
+      }
     if (myRef.current){
         myRef.current.addEventListener("click" , click)
     }
 
-        function click(){
-            window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
-        }
         return () => {
             if (myRef.current){
                 myRef.current.removeEventListener("click" , click)

@@ -28,7 +28,6 @@ export const useButton = ({
 }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(secondPage)
     function writeFucntion() {
       window.Telegram.WebApp.showPopup(
         {

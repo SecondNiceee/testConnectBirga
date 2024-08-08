@@ -537,7 +537,7 @@ const MyAds = ({isPage = false}) => {
 
 
 
-  console.log(postStatus)
+  console.log(details.task)
 
   return (
     <>

@@ -160,6 +160,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       files.removedArr.forEach( (e, i )  => {
         myFormData.append(`deleteFiles[${i}]` , e)
       })
+      console.log(cardsSetting)
       dispatch(putCard([myFormData, localCardSetting.id, cardsSetting]))
       // localCardSetting.photos.forEach(e => {
       //   myFormData.append('photos' , e)

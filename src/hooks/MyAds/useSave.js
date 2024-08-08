@@ -27,6 +27,7 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
               myFormData.append("endTime" , detailsVar.task.time.end)
     
               let files = sortFiles(details.task.photosNames ,  details.task.photos)
+              console.warn(files)
               
               console.log(files)
                 for (let i = 0; i <  files.removedArr.length; i++){
