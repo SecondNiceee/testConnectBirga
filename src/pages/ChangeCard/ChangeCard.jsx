@@ -187,7 +187,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     }
     
     function backFunc() {
-      if (!compareTwo(card, cardStart)){
+      if (!compareTwo(cardsSetting, cardStart)){
 
         window.Telegram.WebApp
         .showPopup({
