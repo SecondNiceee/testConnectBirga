@@ -33,7 +33,7 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
                   myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
                 }
                 for (let i = 0; i < files.addedArr.length ; i++){
-                  myFormData.append(`addFiles[${i}]` , files.addedArr[i] )
+                  myFormData.append(`addFiles` , files.addedArr[i] )
                 }
     
               dispatch(putMyTask([myFormData, details.task.id , details.task]))
