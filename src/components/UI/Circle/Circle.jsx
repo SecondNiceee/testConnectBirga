@@ -29,15 +29,18 @@ const Circle = ( { children , ...props} ) => {
 
   useEffect( () => {
     if (myRef.current){
+        myRef.current.addEventListener("click" , click)
+    }
 
         function click(){
             window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
         }
-        myRef.current.addEventListener("click" , click)
         return () => {
-            myRef.current.removeEventListener("click" , click)
+            if (myRef.current){
+                myRef.current.removeEventListener("click" , click)
+            }
         }
-    }
+    
   } , [] )
     return (
         <div  {...props} ref={myRef} className={cl.circle}>

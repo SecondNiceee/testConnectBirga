@@ -4,7 +4,6 @@ const ShareIcon = ({ className, ...props }) => {
     const circleRef = useRef(null)
     const iconRef = useRef(null)
     const vibrate = useCallback( () => {
-        window.navigator.vibrate(100);
         circleRef.current.style.backgroundColor = "#30475B"
         iconRef.current.style.fill = "#3BA4F3"
         setTimeout( () => {
@@ -22,20 +21,24 @@ const ShareIcon = ({ className, ...props }) => {
         iconRef.current.style.fill = "#2EA5FF"
     } , [] )
     useEffect( () => {
-        const j = document.getElementById("hello")
         function click(){
             window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
         }
-        j.addEventListener("click" , click)
+        if (circleRef.current){
+            circleRef.current.addEventListener("click" , click)
+        }
         return () => {
-            j.removeEventListener("click" , click)
+            if (circleRef.current){
+
+                circleRef.current.removeEventListener("click" , click)
+            }
         }
     } , []  )
   return (
    
 
         <div
-        id="hello"
+       
         ref={circleRef}
         {...props}
         className={className ? [cl.ShareIcon, className].join(" ") : cl.ShareIcon} 
