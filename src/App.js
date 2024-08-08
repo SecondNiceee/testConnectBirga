@@ -66,7 +66,6 @@ const AnimatedSwitch = () => {
 
   // )
 
-  console.log("приет")
 
   
   return (
