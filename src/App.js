@@ -66,6 +66,8 @@ const AnimatedSwitch = () => {
 
   // )
 
+  console.log("приет")
+
   
   return (
     <div className="container" style={{
