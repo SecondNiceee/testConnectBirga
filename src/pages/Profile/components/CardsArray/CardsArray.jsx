@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import Case from "../../../../components/UI/Case/Case";
 
 const CardsArray = ({deleteFunction , cards ,setChangeActive , index }) => {
@@ -39,4 +39,4 @@ const CardsArray = ({deleteFunction , cards ,setChangeActive , index }) => {
   );
 };
 
-export default CardsArray;
+export default memo(CardsArray);

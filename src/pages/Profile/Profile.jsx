@@ -405,7 +405,7 @@ const Profile = () => {
       </Compact>
 
 
-      <Compact title={"Примеры работ"} className={"compact-block"}>
+      <Compact style = {cards.length > 6 ? {display : "none"} : {}} title={"Примеры работ"} className={"compact-block"}>
         <AdCreateFunc
         func={(e) => {
         
