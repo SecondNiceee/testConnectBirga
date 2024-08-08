@@ -30,8 +30,7 @@ const touchEnd = useCallback( (e) => {
   return (
     <>
       {link ? (
-        <Link onClick={vibrate} onTouchStart={clickHandler} onTouchEnd={touchEnd} ref={myRef}
-          {...props}
+        <Link {...props} onClick={vibrate} onTouchStart={clickHandler} onTouchEnd={touchEnd} ref={myRef}
           to={link}
           className={
             className

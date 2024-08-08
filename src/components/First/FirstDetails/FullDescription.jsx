@@ -4,14 +4,16 @@ const FullDescription = ({ fullDescription, ...props }) => {
   const textAreaRef = useRef(null)
   const refTwo = useRef(null)
   useEffect( () => {
-    if (textAreaRef.current && refTwo.current)
+    if (textAreaRef.current && refTwo.current) 
       textAreaRef.current.style.height = (refTwo.current.scrollHeight).toString() + 'px'
   } , [fullDescription] )
   return (
     <>
       <textarea style={{
         position : "absolute",
-        opacity : 0
+        opacity : 0,
+        height : "17.66px",
+        width : "calc(100vw - 32px)"
       }} ref={refTwo} value={fullDescription} className="FullDescriptionBottom"/>
       {fullDescription.length > 0 ? (
         <div  {...props}  className="FullDescription">

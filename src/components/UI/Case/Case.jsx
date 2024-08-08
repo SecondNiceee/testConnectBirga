@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useCallback, useRef } from "react";
 import cl from "./Case.module.css";
 import FalseTie from "../FalseTie/FalseTie";
 import MyButton from "../MyButton/MyButton";
@@ -19,10 +19,57 @@ const Case = ({
   agree = false,
   ...props
 }) => {
-  
+
+
+
+
+  const myRef = useRef(null)
+  const vibrate = useCallback( () => {
+      window.navigator.vibrate(100);
+      if (myRef.current){
+          myRef.current.style.backgroundColor = "#3D4855"
+      }
+      setTimeout( () => {
+          if (myRef.current){
+              myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
+          }
+      } , 100 )
+      // eslint-disable-next-line 
+  }  , [])
+  const clickHandler = useCallback( (e) => {
+      if (myRef.current){
+          myRef.current.style.backgroundColor = "#3D4855"
+      }
+      // eslint-disable-next-line 
+  }  , [])
+  const touchEnd = useCallback( (e) => {
+      if (myRef.current){
+          myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
+      }
+  }, [] )
+
   return (
-    <div
+
+    <div ref={myRef}
       {...props}
+      onTouchEnd={ () => {
+        if (watchOnly){
+          touchEnd()
+        }
+      } }
+      onTouchStart={() => {
+        if (watchOnly){
+          clickHandler()
+        }
+      }}
+      onClick={() => {
+        if (watchOnly){
+          openFunc(card);
+          vibrate()
+        }
+      }
+      
+    }
       className={className ? [cl.case, className].join(" ") : cl.case}
     >
       {photos.length > 0 ? (
@@ -52,46 +99,40 @@ const Case = ({
         {watchOnly ? (
           <div
             style={{
-              gap: "13px",
+              gap: "14px",
             }}
             className={cl.caseRight}
           >
-            <div className={cl.one}>
-              <div onClick={() => {
-                                window.Telegram.WebApp.openTelegramLink(
-                                  "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" + String(card.id) + "m" + 2144832745
-                                );
-              } } className={cl.circle}>
-                
-                <svg
-                  width="20"
-                  height="21"
-                  viewBox="0 0 20 21"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M3.27412 14.1889C3.65286 9.80024 7.77571 7.3393 9.89984 7.09514C10.0827 7.07412 10.2305 6.92578 10.2305 6.74169V4.83951C10.2305 4.54329 10.588 4.39423 10.7985 4.60272L16.108 9.86313C16.2435 9.99739 16.239 10.2178 16.098 10.3463L10.7884 15.1859C10.5744 15.3809 10.2305 15.2291 10.2305 14.9395V12.5912C10.2305 12.4071 10.0814 12.2571 9.89748 12.2661C7.59634 12.3781 5.14118 13.6115 3.78758 14.477C3.558 14.6238 3.2507 14.4604 3.27412 14.1889Z"
-                    fill="#2EA5FF"
-                  />
-                </svg>
-              </div>
-            </div>
+            <FalseTie
+              agree={agree}
+              id={task.id}
+              task={task}
+              navigate={"card"}
+            />
 
-            <div className={cl.two}>
-              <FalseTie
-                agree={agree}
-                id={task.id}
-                task={task}
-                navigate={"card"}
-              />
-              <MyButton
-                onClick={() => {
-                  openFunc(card);
-                }}
+            <div
+              onClick={() => {
+                window.Telegram.WebApp.openTelegramLink(
+                  "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" +
+                    String(card.id) +
+                    "m" +
+                    2144832745
+                );
+              }}
+              className={cl.circle}
+            >
+              <svg
+                width="20"
+                height="21"
+                viewBox="0 0 20 21"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                ПОДРОБНЕЕ
-              </MyButton>
+                <path
+                  d="M3.27412 14.1889C3.65286 9.80024 7.77571 7.3393 9.89984 7.09514C10.0827 7.07412 10.2305 6.92578 10.2305 6.74169V4.83951C10.2305 4.54329 10.588 4.39423 10.7985 4.60272L16.108 9.86313C16.2435 9.99739 16.239 10.2178 16.098 10.3463L10.7884 15.1859C10.5744 15.3809 10.2305 15.2291 10.2305 14.9395V12.5912C10.2305 12.4071 10.0814 12.2571 9.89748 12.2661C7.59634 12.3781 5.14118 13.6115 3.78758 14.477C3.558 14.6238 3.2507 14.4604 3.27412 14.1889Z"
+                  fill="#2EA5FF"
+                />
+              </svg>
             </div>
           </div>
         ) : (
@@ -100,7 +141,6 @@ const Case = ({
             className={cl.caseRight}
           >
             <Circle onClick={deleteFunction}>
-
               <svg
                 width="15"
                 height="16"
@@ -113,10 +153,8 @@ const Case = ({
                   fill="#F83D3D"
                 />
               </svg>
-
             </Circle>
             <Circle onClick={changeFunction}>
-
               <svg
                 width="14"
                 height="14"
@@ -129,16 +167,18 @@ const Case = ({
                   stroke="#F8DA3D"
                   stroke-width="1.24667"
                 />
-                
               </svg>
-          
             </Circle>
-            <Circle  onClick={() => {
-                                window.Telegram.WebApp.openTelegramLink(
-                                  "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" + String(card.id) + "m" + 2144832745
-                                );
-              } } >
-            
+            <Circle
+              onClick={() => {
+                window.Telegram.WebApp.openTelegramLink(
+                  "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" +
+                    String(card.id) +
+                    "m" +
+                    2144832745
+                );
+              }}
+            >
               <svg
                 width="14"
                 height="11"
@@ -151,7 +191,6 @@ const Case = ({
                   fill="#2EA5FF"
                 />
               </svg>
-       
             </Circle>
           </div>
         )}

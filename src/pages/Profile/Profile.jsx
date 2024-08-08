@@ -17,7 +17,6 @@ import SmallTextarea from "../../components/UI/SmallTextarea/SmallTextarea";
 import Compact from "../../components/UI/Compact/Compact";
 import SmallInput from "../../components/UI/SmallInput/SmallInput";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
-import Case from "../../components/UI/Case/Case";
 import MainButton from "../../constants/MainButton";
 import Cards from "../Cards/Cards";
 import Options from "./components/Options/Options";
@@ -405,15 +404,14 @@ const Profile = () => {
       </Compact>
 
 
-      <Compact style = {cards.length >= 6 ? {display : "none"} : {}} title={"Примеры работ"} className={"compact-block"}>
+      <Compact title={"Примеры работ"} className={"compact-block"}>
         <AdCreateFunc
+        text={"Добавить кейс"}
+        style = {cards.length >= 6 ? {display : "none"} : { marginTop : '0px'}} 
         func={(e) => {
         
           setCardsActive(true)
-        }}
-         style = {{
-          marginTop : '0px'
-        }} text={'Добавить кейс'} />
+        }} />
       </Compact>
       
 

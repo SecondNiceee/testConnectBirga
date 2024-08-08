@@ -714,6 +714,7 @@
       align-self: center;
 }
 .Task__container-one .FullDescriptionBottom {
+  background-color: transparent;
   /* Default text */
   background-color: transparent;
   color: rgb(255, 255, 255);
@@ -3156,6 +3157,7 @@ input {
 }
 
 .FullDescriptionBottom {
+  background-color: transparent;
   /* Default text */
   color: rgb(255, 255, 255);
   font-family: "SF Pro Display";
@@ -3400,4 +3402,15 @@ body {
 .animut {
   -webkit-animation: anime 10s;
           animation: anime 10s;
+}
+
+.cards__wraaper {
+  gap: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }

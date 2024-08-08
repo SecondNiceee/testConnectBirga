@@ -25,6 +25,7 @@ export default function ModalChoicer({values, className, names, setValue, defaul
   return (
 
     <Select {...props} className = {className} onChange = {(...newValue) => {
+      console.log(newValue)
         setValue(newValue[1])
     }}  defaultValue={defaultValue} >
         {values.map((e , i) => {

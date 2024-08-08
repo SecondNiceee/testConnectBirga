@@ -11,6 +11,7 @@ import { deleteShablon } from "../../store/shablon";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
 import pagesHistory from "../../constants/pagesHistory";
+import MyLoader from "../../components/UI/MyLoader/MyLoader";
 
 const AllShablons = () => {
   const dispatch = useDispatch();
@@ -108,9 +109,13 @@ const AllShablons = () => {
       BackButton.offClick(back)
     }
   } , [shablon.isActive, navigate] )
-
+  const postStatus = useSelector( state => state.shablon.postStatus )
+  const putStatus = useSelector(  state => state.shablon.putStatus )
   return (
     <div className="all-shablon-wrapper">
+      {postStatus === "pending" || putStatus === "pending" ? <MyLoader /> 
+      :
+      <>
       <Top setMenuActive={setMenuActive} name={"Шаблоны откликов"} />
 
       {shablonsArr.length === 6 ?  <></>
@@ -143,6 +148,8 @@ const AllShablons = () => {
           setShablon({...shablon , isActive : e})
         }} setShablon={setShablonFunc} put = {shablon.put} />
       </CSSTransition>
+      </>
+}
     </div>
   );
 };

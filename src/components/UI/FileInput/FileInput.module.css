@@ -32,7 +32,7 @@
  }
  .ActiveMainLabel{
     max-width: 100%;
-    border-radius: 10px;
+    border-radius: 5.23px;
     background: rgb(34, 61, 82);
     display : flex;
     flex-direction: column;
@@ -51,7 +51,7 @@
 
  }
 .FileInput{
-   padding: 12.63px 9px;
+   padding: 9px 9px;
    border-radius: 9.97px;
 
    /* Cards */
@@ -80,6 +80,7 @@
 
 }
 .ActiveMainLabel p {
+
     text-align: center;
  }
  .removeIcon{

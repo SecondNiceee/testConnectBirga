@@ -106,6 +106,7 @@ export const fetchAllShablons = createAsyncThunk(
                   photosNames : e.photos // photosNames - это фотки
           })
         }
+        
           
             
             
@@ -127,6 +128,8 @@ const shablon = createSlice({
   name: "shablon",
   initialState: {
     status: null,
+    postStatus : null,
+    putStatus : null,
     shablonsArr: [
       { name: "Шаблон 1", description: "Это шаблон один хахахах", photos: [] },
       { name: "Шаблон 2222", description: "Это шаблон два хахахах", photos: [] },
@@ -136,13 +139,23 @@ const shablon = createSlice({
     
   },
   extraReducers : (builder) => {
+    builder.addCase(postShablon.pending , (state , action) => {
+      state.postStatus = "pending"
+  })
+  builder.addCase(putShablon.pending , (state , action) => {
+    state.putStatus = "pending"
+  })
+
+
     builder.addCase(fetchAllShablons.fulfilled , (state , action) => {
         state.shablonsArr = action.payload
     })
     builder.addCase(postShablon.fulfilled , (state , action) => {
+       state.postStatus = "complete"
       state.shablonsArr.push(action.payload)
     })
     builder.addCase(putShablon.fulfilled , (state, action) => {
+      state.putStatus = "complete"
       state.shablonsArr = state.shablonsArr.map((e , i) => {
         if (e.id === action.payload.id){
           return action.payload

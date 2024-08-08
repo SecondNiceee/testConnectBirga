@@ -18,8 +18,6 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
   
 
 
-
-
   return (
     <div ref={ref} {...props} className="responce-wrapper">
 
@@ -27,7 +25,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
       <MakePrivate
         isPrivate={responce.isShablon}
         setPrivate={(value) => {
-          
+          setClearPhoto(clearPhoto + 1)
           if (value){
             myResponse = {
               text : responce.text,
@@ -50,13 +48,16 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
               photos : myResponse.photos,
             })
           }
-          setClearPhoto(clearPhoto + 1)
+
+
         }}
         text={"Использовать шаблон"}
         className={"responce-make-private"}
       />
       {responce.isShablon && (
         <ShablinBlock
+        clearPhoto = {clearPhoto}
+          setClearPhoto = {setClearPhoto}
           left={left}
           responce={responce}
           setResponce={setResponce}

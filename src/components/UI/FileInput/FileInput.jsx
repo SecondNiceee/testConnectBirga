@@ -41,6 +41,7 @@ const FileInput = ({
     // eslint-disable-next-line
     [files, images]
   );
+  console.log(clear)
 
   useEffect(() => {
     addFiles(files, clear);
@@ -125,6 +126,7 @@ const FileInput = ({
   const mainRef = useRef(null);
 
   const imageRef = useRef(null);
+
 
   const imageStyle = useMemo(() => {
     if (files.length > 0) {

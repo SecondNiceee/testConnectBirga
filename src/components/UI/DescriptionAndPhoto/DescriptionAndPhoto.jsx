@@ -14,7 +14,7 @@ const DescriptionAndPhoto = ({
   filesTitle,
   textPlaceholder,
   fileError,
-  clearPhoto
+  clearPhoto,
 }) => {
 
   const hiddenRef = useRef(null)

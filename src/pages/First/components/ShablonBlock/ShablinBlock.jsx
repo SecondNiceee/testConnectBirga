@@ -12,6 +12,8 @@ const ShablinBlock = ({
   className,
   setResponce,
   responce,
+  setClearPhoto,
+  clearPhoto
 }) => {
   const [shablonSetting, setShablonSetting] = useState({
     text: "",
@@ -44,19 +46,20 @@ const ShablinBlock = ({
             arr={shablonsArr.map((e) => e.name)}
           /> */}
           <ModalChoicer
-            values={shablonsArr.map((e) => e.id)}
+            values={shablonsArr.map((e , i) => i)}
             setValue={(index) => {
+              setClearPhoto(clearPhoto + 1)
               setResponce({
-                name: shablonsArr[index - 1].name,
-                text: shablonsArr[index - 1].text,
-                photos: shablonsArr[index - 1].photos,
+                name: shablonsArr[index].name,
+                text: shablonsArr[index].text,
+                photos: shablonsArr[index].photos,
                 isShablonModalActive: false,
-                shablonIndex: index - 1,
+                shablonIndex: index,
                 isShablon: true,
               });
             }}
             names={shablonsArr.map((e) => e.name) }
-            defaultValue={shablonsArr[responce.shablonIndex].id}
+            defaultValue={0}
           />
         </Component>
       ) : (
