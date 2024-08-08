@@ -1,7 +1,8 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import cl from "./Circle.module.css"
 const Circle = ( { children , ...props} ) => {
     const myRef = useRef(null)
+    
     const vibrate = useCallback( () => {
         window.navigator.vibrate(100);
         if (myRef.current){
@@ -25,8 +26,21 @@ const Circle = ( { children , ...props} ) => {
           myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
       }
   }, [] )
+
+  useEffect( () => {
+    if (myRef.current){
+
+        function click(){
+            window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
+        }
+        myRef.current.addEventListener("click" , click)
+        return () => {
+            myRef.current.removeEventListener("click" , click)
+        }
+    }
+  } , [] )
     return (
-        <div {...props} ref={myRef} className={cl.circle}>
+        <div  {...props} ref={myRef} className={cl.circle}>
             <div onClick={vibrate} onTouchEnd={touchEnd} onTouchStart={clickHandler} className={cl.wrap}>
                 {children}
             </div>

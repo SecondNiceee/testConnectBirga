@@ -1,11 +1,10 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import ArrowRight from "../../../../images/icons/rightArrow.svg";
 import { Link } from 'react-router-dom';
 const Option = ({to, index = 1, text}) => {
 
     const myRef = useRef(null)
     const vibrate = useCallback( () => {
-        window.navigator.vibrate(100);
         if (myRef.current){
             myRef.current.style.backgroundColor = "#3D4855"
         }
@@ -28,6 +27,20 @@ const Option = ({to, index = 1, text}) => {
         }
     }, [] )
 
+    useEffect( () => {
+      function click(){
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
+      }
+      if (myRef.current){
+        myRef.current.addEventListener("click" , click)
+      }
+      return () => {
+        if (myRef.current){
+          myRef.current.removeEventListener("click" , click)
+        }
+      }
+    } , [] )
+    
     
     return (
         <Link

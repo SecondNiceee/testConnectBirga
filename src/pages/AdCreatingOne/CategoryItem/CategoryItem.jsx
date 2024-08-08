@@ -6,13 +6,14 @@ import ItIcon from "../../../images/icons/IT.svg"
 import MoreSvg from "../../../images/icons/More.svg"
 const CategoryItem = ({className , id , category  }) => {
     const imageSrc = useMemo( () => {
+        console.log(id)
         switch (id){
-            case 1:
-                return MoreSvg
+            case 3:
+                return ItIcon
             case 2: 
                 return designIcon
             default :
-                return ItIcon
+                return MoreSvg
         }
     }  , [id])
     return (

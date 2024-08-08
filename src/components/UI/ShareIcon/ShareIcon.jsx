@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef } from "react";
+import React, { memo, useCallback, useEffect, useRef } from "react";
 import cl from "./ShareIcon.module.css";
 const ShareIcon = ({ className, ...props }) => {
     const circleRef = useRef(null)
@@ -21,11 +21,21 @@ const ShareIcon = ({ className, ...props }) => {
         circleRef.current.style.backgroundColor = "rgb(34, 61, 82)"
         iconRef.current.style.fill = "#2EA5FF"
     } , [] )
-
+    useEffect( () => {
+        const j = document.getElementById("hello")
+        function click(){
+            window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
+        }
+        j.addEventListener("click" , click)
+        return () => {
+            j.removeEventListener("click" , click)
+        }
+    } , []  )
   return (
    
 
         <div
+        id="hello"
         ref={circleRef}
         {...props}
         className={className ? [cl.ShareIcon, className].join(" ") : cl.ShareIcon} 

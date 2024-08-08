@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useRef } from 'react';
 import classes from  "./MyButton.module.css"
 const MyButton = (props , className) => {
     const myRef = useRef(null)
-    window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
     const vibrate = useCallback( () => {
         // window.navigator.vibrate(100);
         myRef.current.style.backgroundColor = "#47A2E7"
@@ -24,9 +23,13 @@ const MyButton = (props , className) => {
     } , [] )
     useEffect( () =>{
         const element = document.documentElement.querySelector('.gg')
-        element.addEventListener( "click" , () => {
-            window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
-        })
+        function click(){
+            window.Telegram.WebApp.HapticFeedback.notificationOccurred('success')
+        }
+        element.addEventListener( "click" , click)
+        return () => {
+            element.removeEventListener("click" , click)
+        }
     } , [] )
     return ( 
         <div className='gg'  onClick={() => {
