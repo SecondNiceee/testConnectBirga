@@ -170,6 +170,9 @@ const MyAds = ({isPage = false}) => {
     card : {}
   })
 
+  console.log(defaultDate.getTime())
+  console.log(details.task.time.end)
+
 
   useEffect( () => {
     if (isPage){
@@ -539,7 +542,7 @@ const MyAds = ({isPage = false}) => {
   return (
     <>
       {myAdsArray[0] === null || postStatus === "pending" ? (
-        <MyLoader style = { {transform : "translateX(-8px)"} } />
+        <MyLoader />
       ) : (
         <motion.div
           initial={{ opacity: 0 }}

@@ -67,7 +67,6 @@ const AnimatedSwitch = () => {
   // )
 
 
-  console.log("Привет")
   return (
     <div className="container" style={{
       minHeight : "100vh"
