@@ -6,18 +6,26 @@ const Option = ({to, index = 1, text}) => {
     const myRef = useRef(null)
     const vibrate = useCallback( () => {
         window.navigator.vibrate(50);
-        myRef.current.style.backgroundColor = "#3D4855"
+        if (myRef.current){
+            myRef.current.style.backgroundColor = "#3D4855"
+        }
         setTimeout( () => {
-          myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
+            if (myRef.current){
+                myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
+            }
         } , 100 )
         // eslint-disable-next-line 
     }  , [])
     const clickHandler = useCallback( (e) => {
-      myRef.current.style.backgroundColor = "#3D4855"
+        if (myRef.current){
+            myRef.current.style.backgroundColor = "#3D4855"
+        }
         // eslint-disable-next-line 
     }  , [])
     const touchEnd = useCallback( (e) => {
-        myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
+        if (myRef.current){
+            myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
+        }
     }, [] )
 
     
