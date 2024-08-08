@@ -35,11 +35,6 @@ const Circle = ( { children , ...props} ) => {
         myRef.current.addEventListener("click" , click)
     }
 
-        return () => {
-            if (myRef.current){
-                myRef.current.removeEventListener("click" , click)
-            }
-        }
     
   } , [] )
     return (

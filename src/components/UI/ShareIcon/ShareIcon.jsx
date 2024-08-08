@@ -27,11 +27,6 @@ const ShareIcon = ({ className, ...props }) => {
         if (circleRef.current){
             circleRef.current.addEventListener("click" , click)
         }
-        return () => {
-            if (circleRef.current){
-                circleRef.current.removeEventListener("click" , click)
-            }
-        }
     } , []  )
   return (
    
