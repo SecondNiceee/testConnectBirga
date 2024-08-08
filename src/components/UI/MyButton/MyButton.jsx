@@ -4,6 +4,10 @@ const MyButton = (props , className) => {
     const myRef = useRef(null)
     const vibrate = useCallback( () => {
         window.navigator.vibrate(100);
+        window.TelegramWebviewProxy.postEvent("web_app_trigger_haptic_feedback", {
+            type : "impact",
+            impact_style : "light"
+        })
         myRef.current.style.backgroundColor = "#47A2E7"
         myRef.current.style.color = "#E6E6E7"
         setTimeout( () => {

@@ -52,7 +52,11 @@ const Case = ({
 
     <div ref={myRef}
       {...props}
-      onTouchEnd={ () => {
+
+      className={className ? [cl.case, className].join(" ") : cl.case}
+    >
+
+      <div onTouchEnd={ () => {
         if (watchOnly){
           touchEnd()
         }
@@ -69,9 +73,9 @@ const Case = ({
         }
       }
       
-    }
-      className={className ? [cl.case, className].join(" ") : cl.case}
-    >
+    }  className={cl.area}>
+
+      </div>
       {photos.length > 0 ? (
         <div className={cl.caseTop}>
           {photos.map((e, i) => {
@@ -100,6 +104,7 @@ const Case = ({
           <div
             style={{
               gap: "14px",
+              zIndex : "20000"
             }}
             className={cl.caseRight}
           >
