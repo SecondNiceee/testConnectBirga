@@ -46,7 +46,7 @@ let detailsVar;
 let advertisementId = 1
 let responseId = 1
 
-const defaultDate = new Date()
+const defaultDate = new Date(0)
 
 
 
@@ -171,7 +171,7 @@ const MyAds = ({isPage = false}) => {
   })
 
   console.log(defaultDate.getTime())
-  console.log(details.task.time.end)
+  console.log(new Date(details.task.time.end).getTime())
 
 
   useEffect( () => {
