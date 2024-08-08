@@ -48,6 +48,8 @@ const Responses = ({
     // eslint-disable-next-line
   }, [responces]);
 
+  console.log(responces)
+
   return (
     <>
       <div style={responces.length === 0 ? {display : "none"} : {}} className="responses__up-block">
