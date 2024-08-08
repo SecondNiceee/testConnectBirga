@@ -155,12 +155,12 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       let files = sortFiles(localCardSetting.photosNames , localCardSetting.photos)
 
       files.addedArr.forEach((e,i) => {
-        myFormData.append(`addFiles[${i}]` , e)
+        myFormData.append(`addFiles` , e)
       })
       files.removedArr.forEach( (e, i )  => {
         myFormData.append(`deleteFiles[${i}]` , e)
       })
-      dispatch(putCard([myFormData, localCardSetting.id, localCardSetting]))
+      dispatch(putCard([myFormData, localCardSetting.id, cardsSetting]))
       // localCardSetting.photos.forEach(e => {
       //   myFormData.append('photos' , e)
       // })
@@ -240,8 +240,8 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
        
 
     };
-    // eslint-disable-next-line
-}, [modalActive , isCategoryChoiceOpen, cardsSetting]);
+
+}, [modalActive , isCategoryChoiceOpen, cardsSetting ,dispatch, setCardsOpen ]);
 
   useEffect( () => {
     return () => {
