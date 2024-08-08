@@ -147,6 +147,7 @@ export const useButton = ({
     // eslint-disable-next-line
   }, [
     secondPage.isActive,
+    secondPage,
     isOpen.isActive,
     openAboutReaction.isActive,
     details.isActive,
