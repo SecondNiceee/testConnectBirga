@@ -157,6 +157,8 @@ const FileInput = ({
     }
   } , [images, files] )
 
+
+  console.log(files)
   return (
     <>
       <div
@@ -175,6 +177,8 @@ const FileInput = ({
               </div>
           )
         })}
+
+      
 
         {images.map((e, i) => {
           return (

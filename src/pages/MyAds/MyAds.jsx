@@ -14,7 +14,6 @@ import AboutReaction from "./components/AboutReaction";
 import AboutOne from "./components/AboutOne";
 import { CSSTransition } from "react-transition-group";
 import sortFiles from "../../functions/sortFiles";
-import { putMyTask } from "../../store/information";
 import AdCreatingOne from "../AdCreatingOne/AdCreatingOne/AdCreatingOne";
 import { useButton } from "../../hooks/MyAds/useButton";
 import { useSave } from "../../hooks/MyAds/useSave";
@@ -239,7 +238,6 @@ const MyAds = ({isPage = false}) => {
     checkMistakes,
     sortFiles,
     dispatch,
-    putMyTask,
     setDetails,
     details
   })// функция сохранения , а также модалка телеграма

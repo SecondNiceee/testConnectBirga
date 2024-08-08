@@ -1,6 +1,7 @@
 import { useCallback } from "react";
+import { putMyTask } from "../../store/information";
 
-export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sortFiles, dispatch, putMyTask, setDetails, details }) =>{
+export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sortFiles, dispatch, setDetails, details }) =>{
     const save = useCallback( () => {
         if (details.task !== myAdsArray[secondPage.index] ) {
           window.Telegram.WebApp
@@ -50,7 +51,7 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
           setDetails((value) => ({...value , isActive : false}))
         }
          // eslint-disable-next-line
-      }, [details , dispatch , myAdsArray , setDetails , secondPage.index, checkMistakes, putMyTask, sortFiles  ] ) 
+      }, [details , dispatch , myAdsArray , setDetails , secondPage.index, checkMistakes  ] ) 
 
       return save
 }

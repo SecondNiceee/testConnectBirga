@@ -26,6 +26,7 @@ export const useButton = ({
   lastAdsTwo,
   setLastAdsTwo
 }) => {
+  
   const dispatch = useDispatch();
   useEffect(() => {
     function writeFucntion() {
