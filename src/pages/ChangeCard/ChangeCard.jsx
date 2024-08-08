@@ -149,7 +149,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       myFormData.append("dropFile" , localCardSetting.dropfileLink)
       
       let files = sortFiles(cardsSetting.photosNames , cardsSetting.photos)
-
+      console.warn(files)
       files.addedArr.forEach((e,i) => {
         myFormData.append(`addFiles` , e)
       })
