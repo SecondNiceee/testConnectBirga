@@ -26,9 +26,9 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
               myFormData.append("startTime" , detailsVar.task.time.start)
               myFormData.append("endTime" , detailsVar.task.time.end)
     
-              let files = sortFiles(detailsVar.task.photosNames ,  detailsVar.task.photos)
-    
-    
+              let files = sortFiles(details.task.photosNames ,  details.task.photos)
+              
+              console.log(files)
                 for (let i = 0; i <  files.removedArr.length; i++){
                   myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
                 }
@@ -36,7 +36,7 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
                   myFormData.append(`addFiles[${i}]` , files.addedArr[i] )
                 }
     
-              dispatch(putMyTask([myFormData, detailsVar.task.id , detailsVar.task]))
+              dispatch(putMyTask([myFormData, details.task.id , details.task]))
     
               
               setDetails((value) => ({...value , isActive : false}))

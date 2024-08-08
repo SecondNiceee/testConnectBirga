@@ -318,7 +318,7 @@ const MyAds = ({isPage = false}) => {
   }, [setDetails] ) 
   const [nowValue , setNowKey] = useState('customer')
 
-
+  console.log(details.task)
 
   // const sortedArray = useMemo( () => {
   //   let copy = [...myAdsArray]
