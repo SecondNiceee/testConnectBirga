@@ -25,6 +25,7 @@ import MyLastAds from "./components/MyLastAds";
 import CardPage from "../CardPage/CardPage";
 import makeNewFile from "../../functions/newMakeFile";
 import axios from "axios";
+import MyLoader from "../../components/UI/MyLoader/MyLoader";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -529,13 +530,16 @@ const MyAds = ({isPage = false}) => {
 } , [setMyResponse , dispatch])
 
 
+  const postStatus = useSelector( state => state.information.postTaskStatus )
+
+
 
 
 
   return (
     <>
-      {myAdsArray[0] === null ? (
-        <></>
+      {myAdsArray[0] === null || postStatus === "pending" ? (
+        <MyLoader style = { {transform : "translateX(-8px)"} } />
       ) : (
         <motion.div
           initial={{ opacity: 0 }}

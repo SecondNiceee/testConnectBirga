@@ -25,6 +25,8 @@
  .MainLabel{
     display: flex;
     gap: calc(7px);
+    margin-top: 3.5px;
+    margin-bottom: 3.5px;
     align-items: center;
     flex-grow: 1;
     line-height: 0;

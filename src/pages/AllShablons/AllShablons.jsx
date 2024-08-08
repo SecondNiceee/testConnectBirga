@@ -113,7 +113,7 @@ const AllShablons = () => {
   const putStatus = useSelector(  state => state.shablon.putStatus )
   return (
     <div className="all-shablon-wrapper">
-      {postStatus === "pending" || putStatus === "pending" ? <MyLoader /> 
+      {postStatus === "pending" || putStatus === "pending" ? <MyLoader style = {{transform : "translateX(-8px)"}} /> 
       :
       <>
       <Top setMenuActive={setMenuActive} name={"Шаблоны откликов"} />
