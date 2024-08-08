@@ -480,6 +480,8 @@ const forwardFunction = useCallback(() => {
         // mainRef.current.classList.remove('secondStep')
         setDetailsActive((value) => ({...value , isOpen : false}))
         setStep(0)
+        setProfile(false)
+        setCardOpen((value) => ({...value , isOpen : false}))
         setResponce({
           text: "",
           photos: [],

@@ -13,8 +13,8 @@ const FirstMainTop = ({isMyAds , category, isWatched, taskName, id, end}) => {
       <ShareIcon
         onClick={() => {
           window.Telegram.WebApp.openTelegramLink(
-            "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/task?startapp=" +
-              String(id) + "&text=Задание <b>" + `${taskName}<b> на Коннект Бирже`
+            "https://t.me/share/url?text=привет" + "Задание<b>" + `${taskName}<b>наКоннектБирже` + "&url=https://t.me/ConnectexBot/task?startapp=" +
+              String(id)
           );
         }}
         style={end ? { opacity: 0.5 } : {}}

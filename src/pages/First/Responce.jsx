@@ -1,9 +1,10 @@
-import React, { forwardRef, memo, useState } from "react";
+import React, { forwardRef, memo, useEffect, useState } from "react";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
 import {  useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 import Block from "../../components/First/Block";
+import MainButton from "../../constants/MainButton";
 
 
 let myResponse = {
@@ -15,7 +16,15 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
 
 
   const [clearPhoto , setClearPhoto] = useState(1)
-  
+  useEffect( () => {
+    function func(){
+      setClearPhoto(clearPhoto + 1)
+    }
+    MainButton.onClick(func)
+    return () => {
+      MainButton.offClick(func)
+    }
+  } , [clearPhoto , setClearPhoto] )
 
 
   return (

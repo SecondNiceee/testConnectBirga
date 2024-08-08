@@ -89,7 +89,7 @@ const AboutOne = ({
 
 
   const putStatus = useSelector( state => state.information.putTaskStatus )
-
+  console.log(putStatus)
   return (
     <>
 
@@ -108,7 +108,7 @@ const AboutOne = ({
           {...task}
         />
       ) : (
-        <MyLoader style = {{transform : "translateX(-8px)"}} />
+        <MyLoader style = {{transform : "translateX(-16px)" , height : "250px" }} />
       )}
 
 
