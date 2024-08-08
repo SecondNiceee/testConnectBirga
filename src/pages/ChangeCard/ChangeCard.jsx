@@ -27,14 +27,10 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
        document.documentElement.style.overflow = 'auto'
     }
   } , [] )
+  useEffect(  () => {
 
-  useEffect( () => {
     cardStart =  Object.assign({}, card);
-  } , [] )
-
-
-
-
+  } , [])
 
   const [cardsSetting, setCardsSetting] = useState(Object.assign({}, card));
 
@@ -152,7 +148,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       myFormData.append("dribble" , localCardSetting.dribbbleLink)
       myFormData.append("dropFile" , localCardSetting.dropfileLink)
       
-      let files = sortFiles(localCardSetting.photosNames , localCardSetting.photos)
+      let files = sortFiles(cardsSetting.photosNames , cardsSetting.photos)
 
       files.addedArr.forEach((e,i) => {
         myFormData.append(`addFiles` , e)
