@@ -16,9 +16,7 @@ const ModalInput = ( {setting , setModal, ...props} ) => {
     } , [setModal] )
     return (
         <div {...props} id = 'modalInput' className={cl.modalInput}>
-            <div onTouchEnd={() => {
-                setModal(false)
-            }} onClick={() => {
+            <div  onClick={() => {
                 setModal(false)
             }} className={cl.blackArea}></div>
             <TaskName
