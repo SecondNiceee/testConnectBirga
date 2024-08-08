@@ -224,7 +224,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     return () => {
       MainButton.setText('Сохранить')
     }
-  } )
+  } , [] )
 
 
 
