@@ -4,7 +4,7 @@ const MyButton = (props , className) => {
     const myRef = useRef(null)
     const vibrate = useCallback( () => {
         // window.navigator.vibrate(100);
-        window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
+        window.Telegram.WebApp.HapticFeedback.impactOccurred('medium')
         myRef.current.style.backgroundColor = "#47A2E7"
         myRef.current.style.color = "#E6E6E7"
         setTimeout( () => {
