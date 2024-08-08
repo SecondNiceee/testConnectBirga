@@ -10,14 +10,15 @@ const Option = ({to, index = 1, text}) => {
         setTimeout( () => {
           myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
         } , 100 )
+        // eslint-disable-next-line 
     }  , [])
     const clickHandler = useCallback( (e) => {
       myRef.current.style.backgroundColor = "#3D4855"
-        
+        // eslint-disable-next-line 
     }  , [])
     const touchEnd = useCallback( (e) => {
         myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
-    } )
+    }, [] )
 
     
     return (

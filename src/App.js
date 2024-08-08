@@ -20,7 +20,6 @@ import { fetchMyOrders } from "./store/information";
 import { Triangle } from "react-loader-spinner";
 import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
-import { fetchAllValues } from "./store/saves";
 import { fetchResponses } from "./store/responses";
 
 const First = lazy(() => import("./pages/First/First"));

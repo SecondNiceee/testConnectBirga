@@ -1,5 +1,4 @@
 import React, { forwardRef, memo, useState } from "react";
-import FirstBlock from "../../components/First/FirstMain/FirstBlock";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
 import {  useSelector } from "react-redux";

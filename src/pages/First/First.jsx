@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 
 import BackButton from "../../constants/BackButton";
 import "../MyAds/MyAds.css"
@@ -627,7 +627,7 @@ useEffect(() => {
         }
       }
     }
-  } )
+  } , [step, isDetailsActive.isOpen ] )
 
   return (
     <div style={firsStyle} className="first-container">

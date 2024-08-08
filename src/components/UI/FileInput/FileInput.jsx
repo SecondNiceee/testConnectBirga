@@ -38,6 +38,7 @@ const FileInput = ({
       });
       // eslint-disable-next-line
     },
+    // eslint-disable-next-line
     [files, images]
   );
 

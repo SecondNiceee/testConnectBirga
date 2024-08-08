@@ -647,33 +647,33 @@ const saves = createSlice({
 
         }))
         builder.addCase(deleteCard.fulfilled, ((state, action) => {
-            state.cards = state.cards.filter((e,i) => {
-                return e.id !== action.payload
-            })
+            // state.cards = state.cards.filter((e,i) => {
+            //     return e.id !== action.payload
+            // })
         }))
         builder.addCase(addCard.fulfilled , ((state, action) => {
-            state.cards.push(action.payload)
+            // state.cards.push(action.payload)
         }))
         builder.addCase(deleteResponce.fulfilled, ((state, action) => {
-            state.responces = state.responces.filter( (e, i) => {
-                return e.id !== action.payload
-            } )
+            // state.responces = state.responces.filter( (e, i) => {
+            //     return e.id !== action.payload
+            // } )
         }))
         builder.addCase(addResponce.fulfilled , ((state, action) => {
-            state.responces.push(action.payload)
+            // state.responces.push(action.payload)
         }))
         builder.addCase(deleteAdvertisement.fulfilled, ((state , action) => {
-            state.tasks = state.tasks.filter((e , i) => {
-                return e.id !== action.payload
-            })
+            // state.tasks = state.tasks.filter((e , i) => {
+            //     return e.id !== action.payload
+            // })
         }))
         builder.addCase(fetchAllValues.fulfilled, ( (state, action) => {
-            state.tasks = action.payload[0]
-            state.responces = action.payload[1]
-            state.cards = action.payload[2]
+            // state.tasks = action.payload[0]
+            // state.responces = action.payload[1]
+            // state.cards = action.payload[2]
         } ))
         builder.addCase(addAdvertisment.fulfilled, ( (state ,action) => {
-            state.tasks.push(action.payload)
+            // state.tasks.push(action.payload)
         } ))
     }
 

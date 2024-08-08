@@ -1,5 +1,4 @@
 import React, { memo, useCallback, useRef } from "react";
-import Share from "../../../images/icons/Share.svg";
 import cl from "./ShareIcon.module.css";
 const ShareIcon = ({ className, ...props }) => {
     const circleRef = useRef(null)
@@ -21,7 +20,7 @@ const ShareIcon = ({ className, ...props }) => {
     const touchEnd = useCallback( (e) => {
         circleRef.current.style.backgroundColor = "rgb(34, 61, 82)"
         iconRef.current.style.fill = "#2EA5FF"
-    } )
+    } , [] )
 
   return (
    

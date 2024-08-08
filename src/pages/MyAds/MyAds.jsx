@@ -357,7 +357,6 @@ const MyAds = ({isPage = false}) => {
 
   const myAdOneResponse = useMemo( () => {
     async function getResponse() {
-      let responce;
       try{
 
       

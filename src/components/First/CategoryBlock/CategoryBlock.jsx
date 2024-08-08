@@ -16,7 +16,7 @@ const CategoryBlock = ({ name, value , func, ...props }) => {
   }  , [])
   const touchEnd = useCallback( (e) => {
       myRef.current.style.backgroundColor = "#2e3640"
-  } )
+  } , [] )
 
 
   return (
