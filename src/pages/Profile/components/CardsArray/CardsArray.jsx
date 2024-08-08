@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import Case from "../../../../components/UI/Case/Case";
 
-const CardsArray = ({deleteFunction , cards ,setChangeActive , index }) => {
+const CardsArray = ({deleteFunction , cards ,setChangeActive  , setIndex }) => {
   return (
     <>
       {cards.length !== 0 ? (
@@ -21,7 +21,7 @@ const CardsArray = ({deleteFunction , cards ,setChangeActive , index }) => {
               changeFunction={() => {
                 document.documentElement.style.overflow = "hidden";
                 setChangeActive(true);
-                index = i;
+                setIndex(i);
               }}
               card={e}
               key={i}

@@ -33,8 +33,6 @@ const variants = {
   animate: { opacity: 1 },
   transition: { duration: 0.1 },
 };
-
-let index = 0
 let aboutULocal = null
 
 let userInfoLocal = null
@@ -44,6 +42,8 @@ let userInfoLocal = null
 
 
 const Profile = () => {
+
+  const [index , setIndex] = useState(1)
 
   useEffect( () => {
     return () => {
@@ -420,7 +420,7 @@ const Profile = () => {
       {postStatus === "pending" || putStatus === "pending" ? 
       <MyLoader style = { {transform : "translateX(-8px)"} }/> 
       :
-      <CardsArray deleteFunction={deleteFunction} cards={cards} setChangeActive={setChangeActive} index={index} />
+      <CardsArray deleteFunction={deleteFunction} cards={cards} setChangeActive={setChangeActive} setIndex = {setIndex} />
       }
 
 
