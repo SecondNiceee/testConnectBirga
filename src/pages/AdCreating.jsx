@@ -185,12 +185,12 @@ const AdCreating = () => {
       secondPageCopy.time = {start : secondPageCopy.singleTime , end : ''}
     }
     let localTaskInformation = {...secondPageCopy , ...firstPage}
-
+    window.Telegram.WebApp.HapticFeedback.notificationOccurred("success")
     post(localTaskInformation);
     // dispatch(addMyAds(taskInformationCopy))
 
     
-    navigate(-1);
+    navigate("/MyAds");
     
     // MainButton.hide();
     spet = 0;
@@ -437,10 +437,11 @@ const AdCreating = () => {
     else{
 
       if (spet === 0) {
-        clearInput()
-        if (!isCategoryChoiceOpen && !isSubcategoryChoiceOpen){
-          navigate(pagesHistory[pagesHistory.length-1]);
-        }
+        // clearInput()
+        // if (!isCategoryChoiceOpen && !isSubcategoryChoiceOpen){
+        //   navigate(pagesHistory[pagesHistory.length-1]);
+        // }
+        navigate(-1)
       } else {
         
         if (spet === 1){

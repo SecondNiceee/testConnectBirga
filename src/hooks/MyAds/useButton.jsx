@@ -190,7 +190,7 @@ export const useButton = ({
       MainButton.onClick(writeFucntion);
     } else {
       MainButton.offClick(writeFucntion);
-      if (!myResponse.isOpen) {
+      if (!myResponse.isOpen && !details.isActive) {
         MainButton.hide();
       }
     }
@@ -213,13 +213,15 @@ export const useButton = ({
             text_color: "#606060",
           });
         }
-        MainButton.onClick(save);
+        MainButton.onClick(putTask);
       }
       else{
         MainButton.hide()
+        MainButton.offClick(putTask)
       }
     } else {
       MainButton.hide();
+      MainButton.offClick(putTask)
       MainButton.setParams({
         color: "#2ea5ff",
         text_color: "#ffffff",
