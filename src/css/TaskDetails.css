@@ -10,6 +10,7 @@
   -webkit-transition: 0.45s;
   transition: transform 0.45s;
   will-change: transform;
+  height: 100vh;
 }
 .TaskDetails.active {
   transform: translateX(0%);
