@@ -23,17 +23,22 @@ const FileInput = ({
   const addFiles = useCallback(
     (newFiles, clear = false) => {
       let localImages = [];
+      let localFiles = []
       newFiles.forEach((event) => {
-        resizeImage(event, 400, 400, 0.6).then((value) => {
+        resizeImage(event, 100, 100, 0.6).then((value) => {
           // reader.readAsDataURL(value);
           localImages.push(URL.createObjectURL(value));
+          localFiles.push(value)
           if (localImages.length === newFiles.length) {
             if (!clear) {
+              setFiles([...files, ...localFiles])
               setImages([...images, ...localImages]);
             } else {
+              setFiles([...localFiles])
               setImages([...localImages]);
             }
           }
+          
         });
       });
       // eslint-disable-next-line
@@ -236,7 +241,7 @@ const FileInput = ({
                     counter += 1;
                     newFiles.push(newFile);
                   }
-                  setFiles([...files, ...newFiles]);
+                  // setFiles([...files, ...newFiles]);
                   addFiles(newFiles);
                 }
               }
