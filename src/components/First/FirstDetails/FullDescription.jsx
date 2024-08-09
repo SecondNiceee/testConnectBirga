@@ -14,7 +14,7 @@ const FullDescription = ({ fullDescription, ...props }) => {
         opacity : 0,
         height : "17.66px",
         width : "calc(100vw - 32px)"
-      }} ref={refTwo} value={fullDescription} className="FullDescriptionBottom"/>
+      }} ref={refTwo} readOnly value={fullDescription} className="FullDescriptionBottom"/>
       {fullDescription.length > 0 ? (
         <div  {...props}  className="FullDescription">
           <div className="FullDescription-top">

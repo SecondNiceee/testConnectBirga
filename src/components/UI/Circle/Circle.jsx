@@ -10,7 +10,7 @@ const Circle = ( { children , ...props} ) => {
         }
         setTimeout( () => {
             if (myRef.current){
-                myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
+                myRef.current.style.backgroundColor = "rgb(34, 61, 82)"
             }
         } , 100 )
         // eslint-disable-next-line 
@@ -23,7 +23,7 @@ const Circle = ( { children , ...props} ) => {
   }  , [])
   const touchEnd = useCallback( (e) => {
       if (myRef.current){
-          myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
+          myRef.current.style.backgroundColor = "rgb(34, 61, 82)"
       }
   }, [] )
 
