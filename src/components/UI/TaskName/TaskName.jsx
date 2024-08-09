@@ -13,7 +13,7 @@ const TaskName = ({className , text , title , setText , errorValue , underText, 
             <p style={errorValue ? {color : '#FF6767',
                 fontFamily : "SF Pro Display 400"
             } : {}}>
-                {errorValue ?  'Название слишком маленькое' :  underText}
+                {errorValue ?  'Название слишком короткое' :  underText}
             </p>
         </div>
     );
