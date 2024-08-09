@@ -165,7 +165,7 @@ export const useButton = ({
     }
 
     if (details.isActive) {
-      if (compareTwoObject(bedTask, details.task)) {
+      if (!compareTwoObject(bedTask, details.task)) {
         MainButton.show();
         MainButton.setText("ОБНОВИТЬ");
 
