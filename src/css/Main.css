@@ -1470,6 +1470,7 @@
 }
 
 .subCategory__container {
+  overflow-y: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
