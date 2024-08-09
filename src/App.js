@@ -21,6 +21,7 @@ import { Triangle } from "react-loader-spinner";
 import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
 import { fetchResponses } from "./store/responses";
+import { fetchAllIds } from "./store/saves";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -198,8 +199,10 @@ function App() {
     dispatch(getCategorys());
     dispatch(getSubCategorys());
     dispatch(fetchAllShablons());
+    dispatch(fetchAllIds())
     // dispatch(fetchAllValues());
   }, [dispatch]);
+
 
   useEffect(() => {
     if (me.id !== "" && me) {

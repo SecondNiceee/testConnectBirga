@@ -380,7 +380,36 @@ export const fetchSavedAdvertisements = createAsyncThunk(
         return trueAdvertisements
     }
 )
-
+export const fetchAllIds = createAsyncThunk( 
+    "fetchAllIds", 
+    async function (params) {
+        try{
+            let imOne = await axios.get("https://back-birga.ywa.su/advertisement/savedIds" , {
+                params : {
+                    "userId" : 2144832745
+                }
+            })
+            let imTwo = await axios.get("https://back-birga.ywa.su/response/savedIds" , {
+                params : {
+                    "userId" : 2144832745
+                }
+            })
+            let imThree = await axios.get("https://back-birga.ywa.su/card/savedIds" , {
+                params : {
+                    "userId" : 2144832745
+                }
+            })
+            return {
+                advertisement : imOne.data,
+                responces : imTwo.data,
+                cards : imThree.data
+            }
+        }
+        catch(e){
+            alert(JSON.stringify(e))
+        }
+    }
+)
 export const fetchAllValues = createAsyncThunk(
     "fetchhAllValues",
     async function() {
@@ -588,12 +617,26 @@ const saves = createSlice({
         advertisementStatus : null,
         responces : [],
         cards : [],
-        tasks : []
-    },
-    reducers : {
+        tasks : [],
+        responsesIds : [],
+        advertisementIds : [],
+        cardIds : []
 
     },
+    reducers : {
+        clearAll(state){
+            state.cards = []
+            state.tasks = []
+            state.responces = []
+        }
+    },
     extraReducers : builder => {
+
+        builder.addCase(fetchAllIds.fulfilled , ( (state , action) => {
+            state.advertisementIds = action.payload.advertisement
+            state.cardIds = action.payload.cards
+            state.responsesIds = action.payload.responces
+        } ))
         builder.addCase(fetchSavedAdvertisements.fulfilled , ( (state , action) => {
             state.tasks.push(...action.payload)
             if (action.payload.length < 4){
@@ -680,3 +723,4 @@ const saves = createSlice({
 }
 )
 export default saves.reducer
+export const {clearAll} = saves.actions

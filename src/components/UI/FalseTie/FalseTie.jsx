@@ -6,9 +6,9 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
     const [active, setActive] = useState(false)
 
     // const tieRef = useRef(null)
-    const savedTasks = useSelector(state => state.saves.tasks)
-    const savedResponces = useSelector(state => state.saves.responces)
-    const savedCards = useSelector(state => state.saves.cards)
+    const savedTasks = useSelector(state => state.saves.advertisementIds)
+    const savedResponces = useSelector(state => state.saves.responsesIds)
+    const savedCards = useSelector(state => state.saves.cardIds)
     const dispatch = useDispatch()
     useEffect( () => {
         switch (navigate){

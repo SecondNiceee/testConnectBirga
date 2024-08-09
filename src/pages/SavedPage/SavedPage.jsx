@@ -17,17 +17,13 @@ import SavedResponse from "../../components/SavedPage/SavedReponse/SavedResponse
 import SavedProfile from "../../components/SavedPage/SavedProfile/SavedProfile";
 import CardPage from "../CardPage/CardPage";
 import AboutReaction from "../MyAds/components/AboutReaction";
+import { clearAll } from "../../store/saves";
 
 const values = ["Заказы", "Отклики", "Кейсы"];
 const keys = ["advertisment", "responces", "cards"];
 const SavedPage = () => {
 
 
-  useEffect(() => {
-    return () => {
-      pagesHistory.push("/SavedPage");
-    };
-  }, []);
 
   const [card, setCard] = useState({
     isOpen: false,
@@ -87,6 +83,14 @@ const SavedPage = () => {
     },
     [dispatch]
   );
+
+  useEffect(() => {
+    return () => {
+      pagesHistory.push("/SavedPage");
+      dispatch(clearAll())
+      
+    };
+  }, []);
 
   const savedTasks = useSelector((state) => state.saves.tasks);
 
