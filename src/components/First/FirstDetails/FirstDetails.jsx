@@ -23,6 +23,7 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
                 breakRef.current.style.overflow = "scroll"
             }
         }
+        mainRef.current.style.top = document.documentElement.scrollTop + "px"
         return () => {
              document.documentElement.style.overflow = "auto"
         }
