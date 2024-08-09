@@ -36,7 +36,7 @@ const MyDatePicker = ({
 
       {/* <CatchDate className={cl.CatchDate} whichOne={whichOne} />  */}
       <FullPicker
-        values={["Дата начала", "Период выполнения"]}
+        values={["Дата дедлайна", "Период выполнения"]}
         keys={keys}
         nowKey={whichOne}
         setNowKey={setWhichOne}

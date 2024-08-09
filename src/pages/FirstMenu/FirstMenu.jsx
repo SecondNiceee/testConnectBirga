@@ -1,11 +1,12 @@
 import React, { useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeMenuActive } from '../../store/menuSlice';
-import {Link} from 'react-router-dom'
+import {Link, useLocation} from 'react-router-dom'
 import Close from '../../components/UI/Close';
 import Human from '../../components/UI/Human/Human'
 import SmallDimond from '../../components/UI/SmallDimond/SmallDimond';
 import userPhoto from "../../images/userPhoto/user.png"
+import { color } from 'framer-motion';
 
 const FirstMenu = () => {
 
@@ -51,7 +52,7 @@ const FirstMenu = () => {
 
 
 
-
+    const location = useLocation()
 
     return (
         <div className= {  isMenuActive ? 'FirstMenu'  :  'FirstMenu hidden'  }>
@@ -89,10 +90,10 @@ const FirstMenu = () => {
             </div>
 
             <div className='MenuList'>
-                <Link className='menuLink'  onClick={() => {setMenuActive(false)}}  to="/AdCreating" >Создать задание</Link>
-                <Link onClick={ () => {setMenuActive(false)}} className='menuLink' to = '/'>Найти задания</Link>
-                <Link onClick={ () => {setMenuActive(false)}} className='menuLink'  to='/MyAds'>Мои задания</Link>
-                <Link onClick={ () => {setMenuActive(false)}} className='menuLink'  to='/savedPage'>Избранное</Link>
+                <Link style={location.pathname === "/AdCreating" ? {color : "white"} : {}} className='menuLink'  onClick={() => {setMenuActive(false)}}  to="/AdCreating" >Создать задание</Link>
+                <Link style={location.pathname === "/" ? {color : "white"} : {}} onClick={ () => {setMenuActive(false)}} className='menuLink' to = '/'>Найти задания</Link>
+                <Link style={location.pathname === "/MyAds" ? {color : "white"} : {}} onClick={ () => {setMenuActive(false)}} className='menuLink'  to='/MyAds'>Мои задания</Link>
+                <Link style={location.pathname === "/savedPage" ? {color : "white"} : {}} onClick={ () => {setMenuActive(false)}} className='menuLink'  to='/savedPage'>Избранное</Link>
                 <p className='menuLink' onClick={() => {
                     window.Telegram.WebApp.openTelegramLink("https://t.me/connect_work_news")
                 }} style={{

@@ -20,6 +20,7 @@
     gap: 4px;
     overflow-x: scroll;
     max-width: 100%;
+    z-index: 200;
 }
 .caseTop img{
     border-radius: 7px;

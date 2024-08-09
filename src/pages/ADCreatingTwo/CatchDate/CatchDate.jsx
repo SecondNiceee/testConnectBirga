@@ -109,7 +109,7 @@ return (
             <img className={'leftImage'} src={dateIcon} alt="" />
             <p className={'text'}>
 
-            {state.endTime && String(state.endTime) !== String(errorDate) ? state.endTime.toLocaleString("ru", options) : 'Дата и время конца'  } 
+            {state.endTime && String(state.endTime) !== String(errorDate) ? state.endTime.toLocaleString("ru", options) : 'Дата и время дедлайна'  } 
             </p>
           </div>
           <img src={rightArrow} alt="" className={'arrowRight'} />
