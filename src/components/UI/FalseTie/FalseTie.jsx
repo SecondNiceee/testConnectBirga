@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import cl from './FalseTie.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { addAdvertisment, addCard, addResponce, deleteAdvertisement, deleteCard, deleteResponce } from '../../../store/saves';
@@ -133,10 +133,19 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
         }
     } , [id , agree, dispatch] )
 
+    const el = useRef(null)
+    useEffect( () => {
+        function click(){
+            window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
+        }
+        if (el.current){
+            el.current.addEventListener("click" , click)
+        }
 
+    } , [] )
 
     return (
-        <div {...props}  onClick={(e) => {
+        <div ref = {el} {...props}  onClick={(e) => {
             if (!end){
 
                 if (!active){

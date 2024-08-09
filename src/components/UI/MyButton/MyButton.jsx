@@ -21,18 +21,17 @@ const MyButton = (props , className) => {
         myRef.current.style.backgroundColor = "rgb(46, 165, 255)"
          myRef.current.style.color = "white"
     } , [] )
+    const element = useRef(null)
     useEffect( () =>{
-        const element = document.documentElement.querySelector('.gg')
         function click(){
-            window.Telegram.WebApp.HapticFeedback.notificationOccurred('success')
+            window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
         }
-        element.addEventListener( "click" , click)
-        return () => {
-            element.removeEventListener("click" , click)
+        if (element.current){
+            element.current.addEventListener( "click" , click)
         }
     } , [] )
     return ( 
-        <div className='gg'  onClick={() => {
+        <div ref={element} onClick={() => {
             vibrate()}} onTouchEnd={touchEnd} onTouchStart={clickHandler} {...props} >
             <button ref={myRef} className={ className ? [classes.MyButton, className].join(' ') : classes.MyButton } {...props}>{props.children}</button>
         </div>

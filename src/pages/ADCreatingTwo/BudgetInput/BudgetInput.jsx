@@ -91,7 +91,7 @@ const BudgetInput = ({
       ? (
         <div className={cl.bottomTextContainer}>
             <p className={cl.text}>
-              К холду <span> {tonValue} TON </span> 
+              Стоимость <span> {tonValue} USDT </span> 
               
               
                 </p>

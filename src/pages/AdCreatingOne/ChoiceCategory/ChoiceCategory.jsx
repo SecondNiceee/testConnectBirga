@@ -19,6 +19,7 @@ const ChoiceCategory = ({
   
   const [inputValue, setInputValue] = useState("");
 
+
   const realCategorys = useMemo( () => {
     if (!designOnly){
       return categorys

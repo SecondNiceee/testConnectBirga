@@ -16,7 +16,7 @@ const Pallete = ({className , category}) => {
         }
     } , [category]  )
     return (
-        <div className = {className ? [cl.Pallete , className].join(' ') : cl.Pallete}>
+        <div style={category === 2 ? {transform : "translateY(1px)"} : {}} className = {className ? [cl.Pallete , className].join(' ') : cl.Pallete}>
             <img src = {imageSrc} alt="" />
         </div>
     );

@@ -29,7 +29,7 @@ const FirstChoiceCategory = ({
 
    const myCategorys = useMemo( () => {
     let copy = [...categorys.filter(e => e.category !== "Другое")]
-    copy.push({id : -1, category : "Все"})
+    copy.unshift({id : -1, category : "Все"})
     return copy
    }, [categorys] )
   const [inputValue, setInputValue] = useState("");
@@ -52,16 +52,16 @@ const FirstChoiceCategory = ({
         className={cl.OneInput}
       />
       <div className={cl.categoryContainer}>
-        {myCategorys.map((e) => {
+        {myCategorys.map((e , i) => {
           return (
-            <div
+            <div key={i}
               onClick={() => {
 setTaskInformation({ ...taskInformation, category: e , subCategory : {subCategory : "Все" , id : -1}});
 setCatagoryChoiceOpen(false)
               }}
               className={cl.wrap}
             >
-              <CategoryItem {...e} />
+              <CategoryItem  {...e} />
             </div>
           );
         })}
