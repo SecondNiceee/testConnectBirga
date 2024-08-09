@@ -2,8 +2,9 @@ import { useEffect, useMemo } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
-import { setStartTask } from "../../store/information";
+import { putMyTask, setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
+import sortFiles from "../../functions/sortFiles";
 
 export const useButton = ({
   setOpen,
@@ -13,7 +14,7 @@ export const useButton = ({
 
   openAboutReaction,
   isOpen,
-
+  setDetails,
   details,
   secondPage,
   save,
@@ -26,6 +27,7 @@ export const useButton = ({
   lastAdsTwo,
   setLastAdsTwo,
   checkMistakes,
+  putTask
 }) => {
   const dispatch = useDispatch();
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
@@ -102,6 +104,35 @@ export const useButton = ({
       }
       return true;
     }
+
+    function putTask(){
+
+      let myFormData = new FormData();
+      myFormData.append('title' , details.task.taskName)
+      myFormData.append('description' , details.task.taskDescription)
+      myFormData.append("deadline" , 1)
+      myFormData.append("price" , details.task.tonValue )
+      myFormData.append("startTime" , details.task.time.start)
+      myFormData.append("endTime" , details.task.time.end)
+
+      let files = sortFiles(details.task.photosNames ,  details.task.photos)
+      
+      console.log(files)
+        for (let i = 0; i <  files.removedArr.length; i++){
+          myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
+        }
+        for (let i = 0; i < files.addedArr.length ; i++){
+          myFormData.append(`addFiles` , files.addedArr[i] )
+        }
+
+      dispatch(putMyTask([myFormData, details.task.id , details.task]))
+
+      
+      setDetails((value) => ({...value , isActive : false}))
+    }
+
+
+
     function goBack() {
       if (oneCards.isOpen) {
         setOneCard((value) => ({ ...value, isOpen: false }));

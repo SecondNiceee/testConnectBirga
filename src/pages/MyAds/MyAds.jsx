@@ -259,6 +259,7 @@ const MyAds = ({isPage = false}) => {
   const navigate = useNavigate();
 
   const save = useSave({
+    
     detailsVar,
     myAdsArray : filteredArray,
     secondPage,
@@ -292,6 +293,7 @@ const MyAds = ({isPage = false}) => {
 
 
   useButton({
+    setDetails : setDetails,
     checkMistakes : checkMistakes,
     setMyResponse : setMyResponse,
     myResponse : myResponse,
