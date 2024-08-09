@@ -1,7 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 
@@ -13,7 +13,7 @@ export const useButton = ({
 
   openAboutReaction,
   isOpen,
-  
+
   details,
   secondPage,
   save,
@@ -24,10 +24,14 @@ export const useButton = ({
   myResponse,
   setMyResponse,
   lastAdsTwo,
-  setLastAdsTwo
+  setLastAdsTwo,
+  checkMistakes,
 }) => {
-  
   const dispatch = useDispatch();
+  const myAdsArray = useSelector((state) => state.information.myAdsArray);
+  const bedTask = useMemo(() => {
+    return myAdsArray.find((e) => e.id === secondPage.task.id);
+  }, [myAdsArray, secondPage.task.id]);
   useEffect(() => {
     function writeFucntion() {
       window.Telegram.WebApp.showPopup(
@@ -56,11 +60,10 @@ export const useButton = ({
                   dispatch(setStartResponse(isOpen.responce.id));
                   setOpen({ ...isOpen, isActive: false });
                   setSecondPage({ ...secondPage, isActive: false });
-                } 
-                if (buttonId === "delete" || buttonId === null){
-                  console.log("Он отказался")
                 }
-                
+                if (buttonId === "delete" || buttonId === null) {
+                  console.log("Он отказался");
+                }
               }
             );
           }
@@ -69,11 +72,30 @@ export const useButton = ({
               "https://walletru.helpscoutdocs.com/"
             );
           }
-          if (buttonId === null){
-            console.log("Он отказался")
+          if (buttonId === null) {
+            console.log("Он отказался");
           }
         }
       );
+    }
+
+    function compareTwoObject(a1, a2) {
+      if (JSON.stringify(a1) !== JSON.stringify(a2)) {
+        alert("Тут");
+        return false;
+      }
+      if (JSON.stringify(a1.time) !== JSON.stringify(a2.time)) {
+        return false;
+      }
+      if (a1.photos.length !== a2.photos.length) {
+        return false;
+      }
+      for (let i = 0; i < a1.photos.length; i++) {
+        if (a1.photos[i].name !== a2.photos[i].name) {
+          return false;
+        }
+      }
+      return true;
     }
     function goBack() {
       if (oneCards.isOpen) {
@@ -89,8 +111,7 @@ export const useButton = ({
                 setOpen({ ...isOpen, isActive: false });
               } else {
                 if (secondPage.isActive) {
-                  
-                  setSecondPage( (value) => ({ ...value, isActive: false }));
+                  setSecondPage((value) => ({ ...value, isActive: false }));
                   // isPageValueOne = false
                 } else {
                   // if (history[history.length - 1] === '/AdCreating'){
@@ -100,10 +121,9 @@ export const useButton = ({
                   // else{
                   //   navigate(-1)
                   // }
-                  if (lastAdsTwo.isOpen){
-                    setLastAdsTwo((value) => ({...value , isOpen : false}) )
-                  }
-                  else{
+                  if (lastAdsTwo.isOpen) {
+                    setLastAdsTwo((value) => ({ ...value, isOpen: false }));
+                  } else {
                     if (myResponse.isOpen) {
                       setMyResponse((value) => ({ ...value, isOpen: false }));
                     } else {
@@ -138,6 +158,39 @@ export const useButton = ({
         MainButton.hide();
       }
     }
+
+    if (details.isActive) {
+      if (compareTwoObject(bedTask.secondPage.task)) {
+        MainButton.show();
+        MainButton.setText("ОБНОВИТЬ");
+
+        if (checkMistakes(details.task, false)) {
+          MainButton.setParams({
+            color: "#2ea5ff",
+            text_color: "#ffffff",
+            is_active: true,
+          });
+        } else {
+          MainButton.setParams({
+            is_active: false, //неизвесетно
+            color: "#2f2f2f",
+            text_color: "#606060",
+          });
+        }
+        MainButton.onClick(save);
+      }
+      else{
+        MainButton.hide()
+      }
+    } else {
+      MainButton.hide();
+      MainButton.setParams({
+        color: "#2ea5ff",
+        text_color: "#ffffff",
+        is_active: true,
+      });
+    }
+
     BackButton.onClick(goBack);
     return () => {
       BackButton.offClick(goBack);
@@ -162,6 +215,6 @@ export const useButton = ({
     myResponse.isOpen,
     setMyResponse,
     lastAdsTwo,
-    setLastAdsTwo
+    setLastAdsTwo,
   ]);
 };

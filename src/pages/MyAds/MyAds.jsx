@@ -181,11 +181,11 @@ const MyAds = ({isPage = false}) => {
   } , [isPage] )
 
 
-  function checkMistakes(changingTask) {
+  function checkMistakes(changingTask , isSet = true) {
     let taskName = false;
     let timeError = false;
     let descriptionError = false;
-    if (changingTask.taskName.length < 5) {
+    if (changingTask.taskName.length < 3) {
       taskName = true;
     }
 
@@ -201,8 +201,9 @@ const MyAds = ({isPage = false}) => {
     }
     let rezult = { taskName: taskName, timeError: timeError, descriptionError : descriptionError };
 
-
-    setMistakes(rezult);
+    if (isSet){
+      setMistakes(rezult);
+    }
     return Object.values(rezult).every((value) => value === false);
   } 
 
@@ -265,6 +266,7 @@ const MyAds = ({isPage = false}) => {
 
 
   useButton({
+    checkMistakes : checkMistakes,
     setMyResponse : setMyResponse,
     myResponse : myResponse,
     setDetailsTwo : setDetailsTwo,

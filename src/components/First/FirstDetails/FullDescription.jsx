@@ -21,7 +21,7 @@ const FullDescription = ({ fullDescription, ...props }) => {
             <p>Описание</p>
             <img src={imageDescription} alt="" />
           </div>
-          <textarea ref = {textAreaRef} value={fullDescription} className="FullDescriptionBottom"/>
+          <textarea readOnly ref = {textAreaRef} value={fullDescription} className="FullDescriptionBottom"/>
         </div>
       ) : (
         ""
