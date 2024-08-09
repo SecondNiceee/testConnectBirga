@@ -214,12 +214,16 @@ const MyAds = ({isPage = false}) => {
     if (changingTask.time.end.getTime() !== defaultDate.getTime()) {
       if (changingTask.time.end < changingTask.time.start) {
         timeError = true;
-        window.Telegram.WebApp.showAlert("У вас дата начала меньше даты завершения.")
+        if (isSet){
+          window.Telegram.WebApp.showAlert("У вас дата начала меньше даты завершения.")
+        }
       }
     }
     if (changingTask.taskDescription.length > 500){
       descriptionError = true
-      window.Telegram.WebApp.showAlert("Описание больше 500 символов")
+      if (isSet){
+        window.Telegram.WebApp.showAlert("Описание больше 500 символов")
+      }
     }
     let rezult = { taskName: taskName, timeError: timeError, descriptionError : descriptionError };
 

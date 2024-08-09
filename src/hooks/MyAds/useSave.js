@@ -18,6 +18,7 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
                 setDetails((value) => ({...value , isActive : false}))
               }
               if (buttonId === "save") {
+                console.log(details.task)
               if (checkMistakes(details.task)){
               let myFormData = new FormData();
               myFormData.append('title' , detailsVar.task.taskName)

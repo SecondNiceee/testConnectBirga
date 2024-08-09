@@ -208,7 +208,6 @@ export const useButton = ({
     secondPage,
     isOpen.isActive,
     openAboutReaction.isActive,
-    details.isActive,
     isOpen,
     details,
     navigate,

@@ -23,7 +23,7 @@ const FullPicker = ({
   const myRef = useRef(null)
     useEffect( () => {
       function click(){
-        window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+        window.Telegram.WebApp.HapticFeedback.selectionChanged();
       }
       myRef.current.addEventListener("click" , click)
     } , [] )

@@ -1,4 +1,4 @@
-function formatDate(date) {
+function formatDate(date , isCapitalize = false) {
     const now = new Date();
     const yesterday = new Date(now);
     yesterday.setDate(now.getDate() - 1);
@@ -14,11 +14,20 @@ function formatDate(date) {
     };
   
     if (date.toDateString() === yesterday.toDateString()) {
-      return 'вчера, ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+      if (!isCapitalize){
+        return 'вчера в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+      }
+      return 'Вчера в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
     } else if (date.toDateString() === tomorrow.toDateString()) {
-      return 'завтра, ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+      if (!isCapitalize){
+        return 'завтра в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+      }
+      return 'Завтра в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
     } else if (date.toDateString() === now.toDateString()) {
-      return 'сегодня, ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+      if (!isCapitalize){
+        return 'сегодня в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+      }
+      return 'Cегодня в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
     } else {
       return date.toLocaleString('ru-RU', options);
     }
