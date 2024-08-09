@@ -7,7 +7,7 @@ import { changeMenuActive } from "../../store/menuSlice";
 import useListner from "../../hooks/useListner";
 import "./MyAds.css";
 
-import { motion } from "framer-motion";
+import { motion, transform } from "framer-motion";
 import LastAds from "./components/LastAds";
 import MyAdOne from "./components/MyAdOne";
 import AboutReaction from "./components/AboutReaction";
@@ -613,7 +613,7 @@ const MyAds = ({isPage = false}) => {
             unmountOnExit
           >
             <LastAds
-             style = { (isPageValueTwo && isPage) ? {left : "0px" , transition : "0s"} : {left : "0px" , transition : "0s"}}
+             style = { (isPageValueTwo && isPage) ? {left : "0px" , transition : "0s", transform : "translateX(0px)"} : {left : "0px" , transition : "0s", transform : "translateX(0px)"}}
             responce = {myAdOneResponse}
               openAboutReactionFunc={setOpenAboutReaction}
 
