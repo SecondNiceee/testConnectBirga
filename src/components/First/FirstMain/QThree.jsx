@@ -8,6 +8,7 @@ const QThree = ({isMyAds , isResponce, isButton, setDetailsActive, index, dispat
     <>
       {!isMyAds && !isResponce ? (
         <MyButton
+        hard = {true}
           style={isButton ? {} : { display: "none" }}
           onClick={(e) => {
             setDetailsActive({ isOpen: true, id: index });

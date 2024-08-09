@@ -144,7 +144,8 @@ const Reaction = ({
           ></div>
         ) : (
           <div className="reactions__bottom">
-            <button
+            <MyButton
+              hard = {true}
               onClick={() => {
                 setOpen({
                   isActive: true,
@@ -154,7 +155,7 @@ const Reaction = ({
               className="bottom__one"
             >
               подробнее
-            </button>
+            </MyButton>
             <button
               className="bottom__two"
               onClick={() => {

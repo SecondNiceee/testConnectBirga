@@ -7,6 +7,7 @@ const QOne = ({isMyAds, myAdsFunc, isButton}) => {
       {isMyAds ? (
         <>
           <MyButton
+            hard = {true}
             style={isButton ? {} : { display: "none" }}
             onClick={(e) => myAdsFunc(true)}
           >

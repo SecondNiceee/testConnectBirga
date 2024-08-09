@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import classes from  "./MyButton.module.css"
-const MyButton = (props , className) => {
+const MyButton = ({ className, hard = false , children, ...props}) => {
+
     const myRef = useRef(null)
     const vibrate = useCallback( () => {
         // window.navigator.vibrate(100);
@@ -24,16 +25,21 @@ const MyButton = (props , className) => {
     const element = useRef(null)
     useEffect( () =>{
         function click(){
-            window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
+            if (hard){
+                window.Telegram.WebApp.HapticFeedback.notificationOccurred('success')
+            }
+            else{
+                window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
+            }
         }
         if (element.current){
             element.current.addEventListener( "click" , click)
         }
-    } , [] )
+    } , [hard] )
     return ( 
         <div ref={element} onClick={() => {
             vibrate()}} onTouchEnd={touchEnd} onTouchStart={clickHandler} {...props} >
-            <button ref={myRef} className={ className ? [classes.MyButton, className].join(' ') : classes.MyButton } {...props}>{props.children}</button>
+            <button ref={myRef} className={ className ? [classes.MyButton, className].join(' ') : classes.MyButton } {...props}>{children}</button>
         </div>
     );
 };

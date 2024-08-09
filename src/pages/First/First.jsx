@@ -476,6 +476,7 @@ const forwardFunction = useCallback(() => {
         // setShablon({...shablon , isActive : false})
       }
       if (buttonId === "save") {
+        window.Telegram.WebApp.HapticFeedback.notificationOccurred('success')
         postResponce(ordersInformation[isDetailsActive.id].id, 2144832745 );
         // mainRef.current.classList.remove('secondStep')
         setDetailsActive((value) => ({...value , isOpen : false}))
