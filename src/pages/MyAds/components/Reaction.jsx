@@ -157,7 +157,8 @@ const Reaction = ({
             >
               подробнее
             </MyButton>
-            <button
+            <MyButton
+              hard = {true}
               className="bottom__two"
               onClick={() => {
                 window.Telegram.WebApp.openTelegramLink(
@@ -166,7 +167,7 @@ const Reaction = ({
               }}
             >
               Написать
-            </button>
+            </MyButton>
             {/* <svg style={{
                 stroke-width : "1.67px",
                 stroke : "#2ea5ff"

@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from "react";
+import React, { memo, useEffect, useMemo, useRef } from "react";
 import cl from "./FullPicker.module.css";
 const FullPicker = ({
   values,
@@ -19,8 +19,16 @@ const FullPicker = ({
       }
     }
   }, [nowKey, GreyIntWidth, keys]);
+
+  const myRef = useRef(null)
+    useEffect( () => {
+      function click(){
+        window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+      }
+      myRef.current.addEventListener("click" , click)
+    } , [] )
   return (
-    <div className={className ? [cl.track, className].join(" ") : cl.track}>
+    <div ref={myRef} className={className ? [cl.track, className].join(" ") : cl.track}>
       <div
         style={{ width: GreyWidth, transform: myTransform }}
         className={cl.greyBlock}

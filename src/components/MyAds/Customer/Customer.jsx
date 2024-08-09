@@ -12,7 +12,7 @@ const Customer = ({fl , photo, link, onImageClick}) => {
                 <p>{fl}</p>
                 <p>Заказчик</p>
             </div>
-            <MyButton onClick = {() => {
+            <MyButton hard = {true} onClick = {() => {
                       window.Telegram.WebApp.openTelegramLink(
                         "https://t.me/" + link
                       );

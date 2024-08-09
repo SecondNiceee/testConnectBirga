@@ -41,8 +41,7 @@ const MyButton = ({
       if (hard && blue) {
         window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
       } else {
-            window.Telegram.WebApp.HapticFeedback.impactOccurred("soft");
-        
+          window.Telegram.WebApp.HapticFeedback.impactOccurred("soft");
       }
     }
     if (element.current) {
