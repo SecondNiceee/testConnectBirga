@@ -61,11 +61,16 @@
 }
 .Task__container-one .FullDescriptionBottom {
   /* Default text */
+  background-color: transparent;
+  background-color: transparent;
   color: rgb(255, 255, 255);
   font-family: "SF Pro Display";
-  font-size: 16.0336px;
+  font-size: 14.67px;
   font-weight: 500;
-  line-height: normal;
+  line-height: 17.67px;
+  flex-grow: 1;
+  width: 100%;
+  margin-right: auto;
   letter-spacing: 0%;
   text-align: left;
 }

@@ -174,6 +174,7 @@ const MyFirstBlock = ({
                 <MyButton
                 style={isButton ? {} : { display: "none" }}
                 onClick={(e) => myAdsFunc(true)}
+
               >
                 Подробнее
               </MyButton>

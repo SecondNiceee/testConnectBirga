@@ -31,7 +31,7 @@ export const deleteAd = createAsyncThunk(
       });
       return id;
     } catch (e) {
-      alert(e);
+      alert(JSON.stringify(e));
       console.warn(e);
     }
   }

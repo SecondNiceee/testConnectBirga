@@ -40,6 +40,7 @@ const AboutOne = ({
           if (buttonId === "delete" || buttonId === null) {
           }
           if (buttonId === "save") {
+            console.log(e)
             dispatch(deleteAd(e.id));
             setSecondPage((value) => ({ ...value, isActive: false }));
           }
@@ -71,7 +72,7 @@ const AboutOne = ({
   const deleteCallback = useCallback(() => {
     deleteFunction(task);
     // eslint-disable-next-line
-  }, []);
+  }, [task]);
 
   const setDetailsCallback = useCallback(() => {
     setDetails({
