@@ -11,10 +11,8 @@
     transition: 0.4s;
     left: 0;
     will-change: transform;
-    position: absolute;
-    z-index: 200;
-    height: 100vh;
     transform: translateX(100%);
+    position: fixed;
     // transform: translateX(100%);
     &.active{
         transform: translateX(0%);

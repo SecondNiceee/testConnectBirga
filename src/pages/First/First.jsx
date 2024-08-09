@@ -138,7 +138,7 @@ const First = ({isPage = false}) => {
 
   //     if (secFilteredArray[isDetailsActive.id].responces){
   //       if (secFilteredArray[isDetailsActive.id].responces.find((e) => 
-  //         Number(e.user.id) === 2144832745))
+  //         Number(e.user.id) === window.Telegram.WebApp.initDataUnsafe.user.id))
 
   //       {
   //         return true 
@@ -391,7 +391,25 @@ const [subCategory, setSubCategory] = useState(false)
 
 // }, [] )
 
-
+useEffect( () => {
+  let inputs = document.querySelectorAll("input");
+  function addH(){
+    window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+  }
+  // Добавляем обработчик события на каждый элемент input, у которого type не равен file
+  inputs.forEach(function(input) {
+    if (input.type !== "file") {
+      input.addEventListener("focus", addH);
+    }
+  });
+  return () => {
+    inputs.forEach(function(input) {
+      if (input.type !== "file") {
+        input.removeEventListener("focus", addH);
+      }
+    });
+  }
+} , [] )
 
 const forwardFunction = useCallback(() => {
   async function post(par) {
@@ -477,7 +495,7 @@ const forwardFunction = useCallback(() => {
       }
       if (buttonId === "save") {
         window.Telegram.WebApp.HapticFeedback.notificationOccurred('success')
-        postResponce(ordersInformation[isDetailsActive.id].id, 2144832745 );
+        postResponce(ordersInformation[isDetailsActive.id].id, window.Telegram.WebApp.initDataUnsafe.user.id );
         // mainRef.current.classList.remove('secondStep')
         setDetailsActive((value) => ({...value , isOpen : false}))
         setStep(0)
@@ -519,9 +537,9 @@ const firstRef = useRef(null)
 // } , [] )
 
 
-// 2144832745
+// window.Telegram.WebApp.initDataUnsafe.user.id
 
-// 2144832745
+// window.Telegram.WebApp.initDataUnsafe.user.id
 
 useEffect(() => {
   MainButton.onClick(forwardFunction);
@@ -727,7 +745,7 @@ useEffect(() => {
               isDetailsActive={isDetailsActive.isOpen}
               breakRef = {firstRef}
               setProfile={setProfile}
-              style = {pageValue && isPage ? {transform : "translateX(0%)" , top : `${document.documentElement.scrollTop}px`} : { top : `${document.documentElement.scrollTop}px`}}
+              style = {pageValue && isPage ? {transform : "translateX(0%)"} : {}}
               // className={}
               orderInformation={detailsAdertisement }
 
