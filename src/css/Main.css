@@ -652,10 +652,15 @@
   width: 100%;
   background: rgb(24, 34, 45);
   padding: 18px 16px;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+  -webkit-transition-property: -webkit-transform;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform, -webkit-transform;
+  -webkit-transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
+          transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
   left: 0;
-  will-change: transform;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
@@ -3175,9 +3180,7 @@ input {
 }
 
 html {
-  overflow: auto;
   position: absolute;
-  overflow-y: auto;
   left: 0;
   top: 0;
   right: 0;
@@ -3187,7 +3190,6 @@ html {
 body {
   width: 100%;
   height: auto;
-  overflow: auto;
   background: rgb(24, 34, 45);
 }
 
