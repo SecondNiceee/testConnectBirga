@@ -734,9 +734,9 @@ useEffect(() => {
           </CSSTransition>
 
           <CSSTransition
-                    // in={step === 1 ? true : false}
+                    in={step === 1 ? true : false}
                     
-                    in = {true}
+                    // in = {true}
                     timeout={400}
                     // classNames="left-right"
                     mountOnEnter
