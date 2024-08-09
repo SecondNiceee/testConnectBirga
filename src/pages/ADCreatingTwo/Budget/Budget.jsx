@@ -15,7 +15,7 @@ const Budget = ({
     
   return (
     <div className={className ? [className, cl.Budget].join(" ") : cl.Budget}>
-      <GreyText className={cl.GreyText + ' animut'}> Ваш бюджет </GreyText>
+      <GreyText className={cl.GreyText}> Ваш бюджет </GreyText>
       <BudgetInput
       style = {errorTon
         ? {color : '#FF6767'}

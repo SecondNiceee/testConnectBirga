@@ -22,14 +22,13 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
 
 
 
-    let subCategorys = useMemo(() => {
+    const subCategorys = useMemo(() => {
         return subCategorysPar.filter(e => e.category.id === taskInformation.category.id && e.subCategory !== "Другое")
         // eslint-disable-next-line
     }, [])
     useEffect( () => {
-
         subCategorys.push({id : -1, subCategory : "Все"})
-    } , [subCategorys] )
+    } , [] )
 
 
     const [inputValue , setInputValue] = useState('')

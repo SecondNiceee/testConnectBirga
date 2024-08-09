@@ -177,7 +177,7 @@ const AdCreating = () => {
     let myFormData = new FormData();
     // myFormData.append("userId", 2144832745 );
      myFormData.append("userId", 2144832745  );
-    myFormData.append("title", el.taskName);
+    myFormData.append("title", el.taskName.trim());
     myFormData.append("description", el.taskDescription);
     myFormData.append("deadline", 1);
     myFormData.append("views", 0);

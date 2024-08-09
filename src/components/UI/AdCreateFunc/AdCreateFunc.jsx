@@ -1,11 +1,10 @@
-import React, { useCallback, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import cl from "./AdCreateFunc.module.css";
 import plus from "../../../images/icons/plus-circle.svg";
 const AdCreateFunc = ({ link, text, func, className, ...props }) => {
   const myRef = useRef(null)
   const vibrate = useCallback( () => {
-      window.navigator.vibrate(100);
       if (myRef.current){
           myRef.current.style.backgroundColor = "#3D4855"
       }
@@ -27,8 +26,15 @@ const touchEnd = useCallback( (e) => {
         myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
     }
 }, [] )
+   useEffect( () => {
+    function click(){
+      window.Telegram.WebApp.HapticFeedback.impactOccurred('soft')
+    }
+    myRef.current.addEventListener("click" , click)
+  } , [] )
   return (
     <>
+    
       {link ? (
         <Link {...props} onClick={vibrate} onTouchStart={clickHandler} onTouchEnd={touchEnd} ref={myRef}
           to={link}
