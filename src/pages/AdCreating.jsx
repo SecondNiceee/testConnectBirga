@@ -179,14 +179,14 @@ const AdCreating = () => {
   async function post(el) {
     let myFormData = new FormData();
     // myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id );
-     myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id  );
-    myFormData.append("title", el.taskName.trim());
-    myFormData.append("description", el.taskDescription);
-    myFormData.append("deadline", 1);
-    myFormData.append("views", 0);
-    myFormData.append("category", el.category.id);
-    myFormData.append("subCategory", el.subCategory.id);
-    myFormData.append("price", el.tonValue);
+     myFormData.append("userId", String(window.Telegram.WebApp.initDataUnsafe.user.id)  );
+    myFormData.append("title", String(el.taskName.trim()));
+    myFormData.append("description", String(el.taskDescription));
+    myFormData.append("deadline", "1");
+    myFormData.append("views", "0");
+    myFormData.append("category", String(el.category.id));
+    myFormData.append("subCategory", String(el.subCategory.id));
+    myFormData.append("price", String(el.tonValue));
     if (document.getElementById("dateSwapper").style.transform) {
       myFormData.append("startTime", el.startTime);
       myFormData.append("endTime", el.endTime);
