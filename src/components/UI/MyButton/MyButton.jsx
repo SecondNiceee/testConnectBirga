@@ -8,8 +8,8 @@ const MyButton = ({ className, hard = false , children, ...props}) => {
         myRef.current.style.backgroundColor = "#47A2E7"
         myRef.current.style.color = "#E6E6E7"
         setTimeout( () => {
-            myRef.current.style.backgroundColor = "rgb(46, 165, 255)"
-             myRef.current.style.color = "white"
+            myRef.current.style.backgroundColor = "transparent"
+             myRef.current.style.color = "rgb(46, 165, 255)"
             } , 100 )
 
     }  , [])
@@ -20,12 +20,8 @@ const MyButton = ({ className, hard = false , children, ...props}) => {
         
     }  , [])
     const touchEnd = useCallback( (e) => {
-        myRef.current.style.backgroundColor = "rgb(46, 165, 255)"
-         myRef.current.style.color = "white"
-         setTimeout( () => {
-            myRef.current.style.backgroundColor = "rgb(46, 165, 255)"
-             myRef.current.style.color = "white"
-            } , 100 )
+            myRef.current.style.backgroundColor = "transparent"
+             myRef.current.style.color = "rgb(46, 165, 255)"
     } , [] )
     const element = useRef(null)
     useEffect( () =>{
