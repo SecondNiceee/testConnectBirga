@@ -64,7 +64,7 @@ const MyReaction = ({
             </div>
           </div>
           <div className="right">
-            <MyButton hard = {true} onClick = {() => {
+            <MyButton onClick = {() => {
               setLastAds({
                 isOpen : true,
                 response : responce

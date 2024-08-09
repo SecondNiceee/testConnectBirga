@@ -605,10 +605,10 @@ const MyAds = ({isPage = false}) => {
 
 
           <CSSTransition
-            classNames="left-right"
+            // classNames="left-right"
            
             in={isOpen.isActive && myAdOneResponse !== null && myAdOneResponse}
-            timeout={400}
+            timeout={0}
             mountOnEnter
             unmountOnExit
           >

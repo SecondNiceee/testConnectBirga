@@ -110,6 +110,7 @@ const Reaction = ({
             <div className="right">
 
               <MyButton
+                hard = {true}
                 style = {writeButton ? {} : {display : "none"}}
                 onClick={() => {
                   window.Telegram.WebApp.openTelegramLink(
@@ -145,7 +146,6 @@ const Reaction = ({
         ) : (
           <div className="reactions__bottom">
             <MyButton
-              hard = {true}
               onClick={() => {
                 setOpen({
                   isActive: true,
