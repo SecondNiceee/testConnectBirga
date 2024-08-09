@@ -20,7 +20,7 @@ const AboutOne = ({
   const responces = useSelector( state => state.responses.responsesByA )
   const dispatch = useDispatch();
   useEffect(() => {
-    if (task.id){
+    if (task){
       dispatch(clearResponsesByA())
       dispatch(fetchResponseByAdvertisement([task.id, task , 1]))
     }
