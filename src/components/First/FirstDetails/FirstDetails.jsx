@@ -6,8 +6,11 @@ import { useDispatch } from 'react-redux';
 import { addWatch } from '../../../store/information';
 
 const FirstDetails = ({  orderInformation , className , setProfile, end = false, breakRef, isDetailsActive, ...props}) => {
-    
+
+
+
     useEffect( () => {  
+        document.documentElement.style.overflow = "hidden"
         if (isDetailsActive ){
             if (breakRef.current && mainRef.current){
 
@@ -19,6 +22,9 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
             if (breakRef){
                 breakRef.current.style.overflow = "scroll"
             }
+        }
+        return () => {
+             document.documentElement.style.overflow = "auto"
         }
 
     } , [isDetailsActive , breakRef] )

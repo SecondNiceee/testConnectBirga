@@ -15,9 +15,6 @@
 }
 
 .First {
-  position: fixed;
-  overflow: scroll;
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -656,10 +653,12 @@
   transition: 0.4s;
   left: 0;
   will-change: transform;
+  position: absolute;
+  z-index: 200;
+  height: 100vh;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
-  position: fixed;
 }
 .TaskDetails.active {
   -webkit-transform: translateX(0%);
@@ -3175,7 +3174,6 @@ input {
 }
 
 html {
-  overflow: auto;
   position: absolute;
   overflow-y: auto;
   left: 0;

@@ -4,14 +4,11 @@
     margin-top: 2px;
 }
 .First {
-  position: fixed;
-  overflow :scroll;
-  height: 100vh;
-  display: flex;   
-  transition: 0.4s;
-  will-change: transform;
-  overflow-x: hidden;
-  min-width: 100vw;
+    display: flex;
+    transition: 0.4s;
+    will-change: transform;
+    overflow-x: hidden;
+    min-width: 100vw;
 }
 
 .first-container{
