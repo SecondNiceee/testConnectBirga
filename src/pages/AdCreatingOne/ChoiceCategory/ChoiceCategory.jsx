@@ -11,7 +11,7 @@ const ChoiceCategory = ({
   categorys,
   subCategorys,
   categoryOnly ,
-  isBackHide = true,
+  isBackHide = false,
   designOnly = false,
   text = "Прочие категории скоро появятся.."
 

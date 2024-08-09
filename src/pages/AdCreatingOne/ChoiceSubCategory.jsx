@@ -15,7 +15,6 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
         BackButton.onClick(closeFunction)
         return () => {
           BackButton.offClick(closeFunction)
-          BackButton.hide()
         }
         // eslint-disable-next-line
       } , [] )
