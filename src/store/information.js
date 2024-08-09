@@ -92,6 +92,7 @@ export const postMyTask = createAsyncThunk(
         }
         catch(e){
           window.Telegram.WebApp.showAlert("Задание не было создано. Попробуйте позже")
+          alert(JSON.stringify(e))
           console.log(e)
         }
       }
