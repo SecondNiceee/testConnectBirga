@@ -39,7 +39,7 @@ export const putShablon = createAsyncThunk(
 
     }
     catch(e){
-      window.Telegram.WebApp.showAlert('!')
+      window.Telegram.WebApp.showAlert(JSON.stringify(e))
         console.log(e)
     }
   }

@@ -22,7 +22,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
       if (put){
         let filesArr = sortFiles(shablon.photosNames, shablon.photos)
         filesArr.addedArr.forEach((e, i) => {
-          myFormData.append(`addFiles[${i}]` , e)
+          myFormData.append(`addFiles` , e)
         })
         filesArr.removedArr.forEach((e, i) => {
           myFormData.append(`deleteFiles[${i}]` , e)
