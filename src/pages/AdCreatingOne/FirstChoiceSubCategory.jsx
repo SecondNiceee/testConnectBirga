@@ -4,7 +4,12 @@ import rightArrow from '../../images/icons/rightArrow.svg'
 import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
 const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
-
+  useEffect( () => {
+    document.documentElement.style.overflowY = "hidden"
+    return () => {
+       document.documentElement.style.overflowY = "auto"
+    }
+  } , [] )
 
     useEffect( () => {
         function closeFunction(){

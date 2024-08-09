@@ -15,6 +15,13 @@ const FirstChoiceCategory = ({
 }) => {
 
   useEffect( () => {
+    document.documentElement.style.overflowY = "hidden"
+    return () => {
+       document.documentElement.style.overflowY = "auto"
+    }
+  } , [] )
+
+  useEffect( () => {
     function closeFunction(){
       setCatagoryChoiceOpen(false)
     }
