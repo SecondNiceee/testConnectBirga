@@ -15,9 +15,10 @@ const FirstChoiceCategory = ({
 }) => {
 
   useEffect( () => {
-    document.documentElement.style.overflowY = "hidden"
+    const First = document.documentElement.querySelector(".First")
+    First.style.overflowY = "hidden"
     return () => {
-       document.documentElement.style.overflowY = "auto"
+       First.style.overflowY = "scroll"
     }
   } , [] )
 

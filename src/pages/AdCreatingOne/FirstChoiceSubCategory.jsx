@@ -5,12 +5,12 @@ import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
 const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
   useEffect( () => {
-    document.documentElement.style.overflowY = "hidden"
+    const First = document.documentElement.querySelector(".First")
+    First.style.overflowY = "hidden"
     return () => {
-       document.documentElement.style.overflowY = "auto"
+       First.style.overflowY = "scroll"
     }
   } , [] )
-
     useEffect( () => {
         function closeFunction(){
           setSubcategoryChoiceOpen(false)
