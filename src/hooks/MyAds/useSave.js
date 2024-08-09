@@ -43,6 +43,9 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
               
               setDetails((value) => ({...value , isActive : false}))
               }
+              else{
+                window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+              }
     
             }
             } )

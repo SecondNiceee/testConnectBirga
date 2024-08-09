@@ -158,6 +158,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       setCardsOpen(false);
     }
     else{
+      window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
       MainButton.setParams({
         color : "#2f2f2f",
         text_color : "#606060",
@@ -187,6 +188,9 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       if (buttonId === "save") {
         if (checkMistakes()){
           saveFunc()
+        }
+        else{
+          window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
         }
       }
 

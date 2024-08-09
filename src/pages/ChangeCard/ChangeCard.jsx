@@ -166,6 +166,9 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       // document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
     }
+    else{
+      window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+    }
   }
                                       
     function compareTwo(a1 ,a2){
@@ -202,6 +205,9 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
           if (buttonId === "save") {
             if (checkMistakes()){
               saveFunc()
+            }
+            else{
+              window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
             }
           }
     

@@ -9,12 +9,12 @@ const MyButton = ({ className, hard = false , blue = true, children, ...props}) 
         myRef.current.style.color = "#E6E6E7"
         setTimeout( () => {
             if (blue){
-                 myRef.current.style.backgroundColor = "transparent"
-                 myRef.current.style.color = "rgb(46, 165, 255)"
-            }
-            else{
                 myRef.current.style.backgroundColor = "rgb(46, 165, 255)"
                 myRef.current.style.color = "white"
+            }
+            else{
+                 myRef.current.style.backgroundColor = "transparent"
+                 myRef.current.style.color = "rgb(46, 165, 255)"
             }
             } , 100 )
 
@@ -27,12 +27,12 @@ const MyButton = ({ className, hard = false , blue = true, children, ...props}) 
     }  , [])
     const touchEnd = useCallback( (e) => {
         if (blue){
-            myRef.current.style.backgroundColor = "transparent"
-            myRef.current.style.color = "rgb(46, 165, 255)"
+                                myRef.current.style.backgroundColor = "rgb(46, 165, 255)"
+                myRef.current.style.color = "white"
        }
        else{
-           myRef.current.style.backgroundColor = "rgb(46, 165, 255)"
-           myRef.current.style.color = "white"
+                 myRef.current.style.backgroundColor = "transparent"
+                 myRef.current.style.color = "rgb(46, 165, 255)"
        }
     } , [] )
     const element = useRef(null)
