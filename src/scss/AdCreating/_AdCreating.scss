@@ -257,6 +257,7 @@
     flex-grow: 0;
 }
 .subCategory__container{
+  z-index: 400;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;

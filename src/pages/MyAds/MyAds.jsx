@@ -613,7 +613,7 @@ const MyAds = ({isPage = false}) => {
             unmountOnExit
           >
             <LastAds
-             style = { (isPageValueTwo && isPage) ? {left : "0px"} : {}}
+             style = { (isPageValueTwo && isPage) ? {left : "0px" , transition : "0s"} : {left : "0px" , transition : "0s"}}
             responce = {myAdOneResponse}
               openAboutReactionFunc={setOpenAboutReaction}
 

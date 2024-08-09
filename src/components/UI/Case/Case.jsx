@@ -25,7 +25,6 @@ const Case = ({
 
   const myRef = useRef(null)
   const vibrate = useCallback( () => {
-      window.navigator.vibrate(100);
       if (myRef.current){
           myRef.current.style.backgroundColor = "#3D4855"
       }

@@ -10,6 +10,7 @@
     padding-left: calc(48px * 0.32);
     padding-right: calc(48px * 0.32);
     padding-top: calc(56px * 0.32);
+    z-index: 400;
 }
 
 .ChoiceCategory .OneInput{
