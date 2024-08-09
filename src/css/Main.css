@@ -715,6 +715,7 @@
       align-self: center;
 }
 .Task__container-one .FullDescriptionBottom {
+  padding: 0px;
   background-color: transparent;
   background-color: transparent;
   color: rgb(255, 255, 255);

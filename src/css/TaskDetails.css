@@ -60,6 +60,7 @@
       align-self: center;
 }
 .Task__container-one .FullDescriptionBottom {
+  padding: 0px;
   /* Default text */
   background-color: transparent;
   background-color: transparent;
