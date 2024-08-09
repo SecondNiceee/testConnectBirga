@@ -33,27 +33,55 @@ const Categories = ({
   }
 
   const topRef = useRef(null);
+  const topText = useRef(null);
+  const topWhiteText = useRef(null)
+  
   const bottomRef = useRef(null);
+  const bottomText = useRef(null);
+  const bottomWhiteText = useRef(null)
+
+
   const topVibrate = useCallback(() => {
     if (topRef.current) {
+    topRef.current.style.transition = "ease-in 0.1s ease 0.1s"
+    topWhiteText.current.style.transition = "ease-in 0.1s ease 0.1s"
+    topText.current.style.transition = "ease-in 0.1s ease 0.1s"
+      topWhiteText.current.style.color = "#EBEBEC"
       topRef.current.style.backgroundColor = "#3D4855";
+      topText.current.style.color = "#47A2E8"
     }
     setTimeout(() => {
       if (topRef.current) {
+        topRef.current.style.transition = "ease-out 0.2s ease 0.2s"
+        topWhiteText.current.style.transition = "ease-out 0.2s ease 0.2s"
+        topText.current.style.transition = "ease-out 0.2s ease 0.2s"
         topRef.current.style.backgroundColor = "rgb(32, 48, 63)";
+        topWhiteText.current.style.color = "white"
+        topText.current.style.color = "rgb(46, 165, 255)"
       }
     }, 100);
     // eslint-disable-next-line
   }, []);
   const topClickHandler = useCallback((e) => {
+
     if (topRef.current) {
-      topRef.current.style.backgroundColor = "#3D4855";
+        topRef.current.style.transition = "ease-in 0.1s ease 0.1s"
+        topWhiteText.current.style.transition = "ease-in 0.1s ease 0.1s"
+        topText.current.style.transition = "ease-in 0.1s ease 0.1s"
+        topWhiteText.current.style.color = "#EBEBEC" 
+        topText.current.style.color = "#47A2E8"
+        topRef.current.style.backgroundColor = "#3D4855";
     }
     // eslint-disable-next-line
   }, []);
   const topTouchEnd = useCallback((e) => {
     if (topRef.current) {
-      topRef.current.style.backgroundColor = "rgb(32, 48, 63)";
+        topRef.current.style.transition = "ease-out 0.2s"
+        topWhiteText.current.style.transition = "ease-out 0.2s"
+        topText.current.style.transition = "ease-out 0.2s"
+        topRef.current.style.backgroundColor = "rgb(32, 48, 63)";
+        topWhiteText.current.style.color = "white"
+        topText.current.style.color = "rgb(46, 165, 255)"
     }
   }, []);
 
@@ -116,8 +144,8 @@ const Categories = ({
         }}
         className={cl.Categories__block}
       >
-        <p>Категория</p>
-        <p className={[cl.Category__link, cl.quest].join(" ")} href="">
+        <p ref={topWhiteText} >Категория</p>
+        <p ref={topText} className={[cl.Category__link, cl.quest].join(" ")} href="">
           {taskInformation.category.category
             ? taskInformation.category.category
             : ""}
@@ -141,8 +169,8 @@ const Categories = ({
             }}
             className={cl.Categories__block}
           >
-            <p>Подкатегория</p>
-            <p className={cl.Category__link} href="">
+            <p ref={bottomWhiteText}>Подкатегория</p>
+            <p ref={bottomText} className={cl.Category__link} href="">
               {taskInformation.subCategory.subCategory
                 ? format(taskInformation.subCategory.subCategory)
                 : ""}
