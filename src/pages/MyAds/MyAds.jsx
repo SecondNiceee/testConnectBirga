@@ -155,7 +155,29 @@ const MyAds = ({isPage = false}) => {
   
   const [secondPage, setSecondPage] = useState({
     isActive : false,
-    task : myAdsArray[0],
+    task : {
+      id: 0,
+      taskName: "",
+      executionPlace: "Можно выполнить удаленно",
+      time: {
+        start: new Date(),
+        end: new Date(),
+      },
+      tonValue: 9,
+      taskDescription: "",
+      photos: [],
+      photosNames: [],
+      rate: "5",
+      isActive: true,
+      creationTime: new Date(),
+      viewsNumber: 2,
+      removedFiles: [],
+      addedFiles: [],
+      status: "",
+      user : "",
+      responseCounter : 2,
+      category : 1
+    },
     index : 0
   }
   );
