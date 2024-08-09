@@ -87,24 +87,45 @@ const Categories = ({
 
   const bottomVibrate = useCallback(() => {
     if (bottomRef.current) {
+        bottomRef.current.style.transition = "ease-in 0.1s ease 0.1s"
+    bottomWhiteText.current.style.transition = "ease-in 0.1s ease 0.1s"
+    bottomText.current.style.transition = "ease-in 0.1s ease 0.1s"
+    bottomWhiteText.current.style.color = "#EBEBEC"
       bottomRef.current.style.backgroundColor = "#3D4855";
+      bottomText.current.style.color = "#47A2E8"
     }
     setTimeout(() => {
       if (bottomRef.current) {
+        bottomRef.current.style.transition = "ease-out 0.2s ease 0.2s"
+        bottomWhiteText.current.style.transition = "ease-out 0.2s ease 0.2s"
+        bottomText.current.style.transition = "ease-out 0.2s ease 0.2s"
         bottomRef.current.style.backgroundColor = "rgb(32, 48, 63)";
+        bottomWhiteText.current.style.color = "white"
+        bottomText.current.style.color = "rgb(46, 165, 255)"
       }
     }, 100);
     // eslint-disable-next-line
   }, []);
   const bottomClickHandler = useCallback((e) => {
+
     if (bottomRef.current) {
-      bottomRef.current.style.backgroundColor = "#3D4855";
+        bottomRef.current.style.transition = "ease-in 0.1s ease 0.1s"
+        bottomWhiteText.current.style.transition = "ease-in 0.1s ease 0.1s"
+        bottomText.current.style.transition = "ease-in 0.1s ease 0.1s"
+        bottomWhiteText.current.style.color = "#EBEBEC" 
+        bottomText.current.style.color = "#47A2E8"
+        bottomRef.current.style.backgroundColor = "#3D4855";
     }
     // eslint-disable-next-line
   }, []);
   const bottomTouchEnd = useCallback((e) => {
     if (bottomRef.current) {
-      bottomRef.current.style.backgroundColor = "rgb(32, 48, 63)";
+        bottomRef.current.style.transition = "ease-out 0.2s"
+        bottomWhiteText.current.style.transition = "ease-out 0.2s"
+        bottomText.current.style.transition = "ease-out 0.2s"
+        bottomRef.current.style.backgroundColor = "rgb(32, 48, 63)";
+        topWhiteText.current.style.color = "white"
+        bottomText.current.style.color = "rgb(46, 165, 255)"
     }
   }, []);
 
