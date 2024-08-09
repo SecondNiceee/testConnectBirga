@@ -52,9 +52,9 @@ const Categories = ({
     }
     setTimeout(() => {
       if (topRef.current) {
-        topRef.current.style.transition = "ease-out 0.2s ease 0.2s"
-        topWhiteText.current.style.transition = "ease-out 0.2s ease 0.2s"
-        topText.current.style.transition = "ease-out 0.2s ease 0.2s"
+        topRef.current.style.transition = "ease-out 0.3s ease 0.3s"
+        topWhiteText.current.style.transition = "ease-out 0.3s ease 0.3s"
+        topText.current.style.transition = "ease-out 0.3s ease 0.3s"
         topRef.current.style.backgroundColor = "rgb(32, 48, 63)";
         topWhiteText.current.style.color = "white"
         topText.current.style.color = "rgb(46, 165, 255)"
@@ -76,9 +76,9 @@ const Categories = ({
   }, []);
   const topTouchEnd = useCallback((e) => {
     if (topRef.current) {
-        topRef.current.style.transition = "ease-out 0.2s"
-        topWhiteText.current.style.transition = "ease-out 0.2s"
-        topText.current.style.transition = "ease-out 0.2s"
+        topRef.current.style.transition = "ease-out 0.3s"
+        topWhiteText.current.style.transition = "ease-out 0.3s"
+        topText.current.style.transition = "ease-out 0.3s"
         topRef.current.style.backgroundColor = "rgb(32, 48, 63)";
         topWhiteText.current.style.color = "white"
         topText.current.style.color = "rgb(46, 165, 255)"
@@ -96,9 +96,9 @@ const Categories = ({
     }
     setTimeout(() => {
       if (bottomRef.current) {
-        bottomRef.current.style.transition = "ease-out 0.2s ease 0.2s"
-        bottomWhiteText.current.style.transition = "ease-out 0.2s ease 0.2s"
-        bottomText.current.style.transition = "ease-out 0.2s ease 0.2s"
+        bottomRef.current.style.transition = "ease-out 0.3s ease 0.3s"
+        bottomWhiteText.current.style.transition = "ease-out 0.3s ease 0.3s"
+        bottomText.current.style.transition = "ease-out 0.3s ease 0.3s"
         bottomRef.current.style.backgroundColor = "rgb(32, 48, 63)";
         bottomWhiteText.current.style.color = "white"
         bottomText.current.style.color = "rgb(46, 165, 255)"
@@ -120,9 +120,9 @@ const Categories = ({
   }, []);
   const bottomTouchEnd = useCallback((e) => {
     if (bottomRef.current) {
-        bottomRef.current.style.transition = "ease-out 0.2s"
-        bottomWhiteText.current.style.transition = "ease-out 0.2s"
-        bottomText.current.style.transition = "ease-out 0.2s"
+        bottomRef.current.style.transition = "ease-out 0.3s"
+        bottomWhiteText.current.style.transition = "ease-out 0.3s"
+        bottomText.current.style.transition = "ease-out 0.3s"
         bottomRef.current.style.backgroundColor = "rgb(32, 48, 63)";
         topWhiteText.current.style.color = "white"
         bottomText.current.style.color = "rgb(46, 165, 255)"

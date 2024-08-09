@@ -146,6 +146,7 @@ const Reaction = ({
         ) : (
           <div className="reactions__bottom">
             <MyButton
+            blue = {false}
               onClick={() => {
                 setOpen({
                   isActive: true,

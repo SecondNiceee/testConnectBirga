@@ -389,6 +389,9 @@ const AdCreating = () => {
         }
       
     }
+    else{
+      window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+    }
   } 
 
 

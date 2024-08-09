@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import classes from  "./MyButton.module.css"
-const MyButton = ({ className, hard = false , children, ...props}) => {
+const MyButton = ({ className, hard = false , blue = true, children, ...props}) => {
 
     const myRef = useRef(null)
     const vibrate = useCallback( () => {
@@ -8,8 +8,14 @@ const MyButton = ({ className, hard = false , children, ...props}) => {
         myRef.current.style.backgroundColor = "#47A2E7"
         myRef.current.style.color = "#E6E6E7"
         setTimeout( () => {
-            myRef.current.style.backgroundColor = "transparent"
-             myRef.current.style.color = "rgb(46, 165, 255)"
+            if (blue){
+                 myRef.current.style.backgroundColor = "transparent"
+                 myRef.current.style.color = "rgb(46, 165, 255)"
+            }
+            else{
+                myRef.current.style.backgroundColor = "rgb(46, 165, 255)"
+                myRef.current.style.color = "white"
+            }
             } , 100 )
 
     }  , [])
@@ -20,8 +26,14 @@ const MyButton = ({ className, hard = false , children, ...props}) => {
         
     }  , [])
     const touchEnd = useCallback( (e) => {
+        if (blue){
             myRef.current.style.backgroundColor = "transparent"
-             myRef.current.style.color = "rgb(46, 165, 255)"
+            myRef.current.style.color = "rgb(46, 165, 255)"
+       }
+       else{
+           myRef.current.style.backgroundColor = "rgb(46, 165, 255)"
+           myRef.current.style.color = "white"
+       }
     } , [] )
     const element = useRef(null)
     useEffect( () =>{
