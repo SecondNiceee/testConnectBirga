@@ -338,7 +338,7 @@ const MyAds = ({isPage = false}) => {
   const setChangingTask = useCallback( (e) => {
     setDetails( (value) =>  ({...value , task : e}))
   }, [setDetails] ) 
-  const [nowValue , setNowKey] = useState('customer')
+  const [nowValue , setNowKey] = useState(myAdsArray.length < responsesArr.length ? "freelancer" :'customer')
 
   console.log(details.task)
 
