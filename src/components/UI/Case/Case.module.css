@@ -5,6 +5,7 @@
     flex-direction: column;
     transition: 0.2s;
     position: relative;
+    z-index: 300;
 }
 .area{
     position: absolute;
