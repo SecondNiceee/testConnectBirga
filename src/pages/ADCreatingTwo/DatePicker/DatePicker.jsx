@@ -13,9 +13,11 @@ const MyDatePicker = ({
   setState,
   state,
   errors,
+  whichOne,
+  setWhichOne,
   ...props
 }) => {
-  const [whichOne, setWhichOne] = useState("startOnly");
+  
   const keys = ["startOnly", "startAndEnd"];
 
   return (

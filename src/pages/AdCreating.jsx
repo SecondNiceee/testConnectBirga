@@ -46,9 +46,9 @@ const AdCreating = () => {
   const [secondPage , setSecondPage] = useState({
     budget: 0,
     tonValue: 0,
-    startTime : "",
-    endTime : "",
-    singleTime : "",
+    startTime : new Date(0),
+    endTime : new Date(0),
+    singleTime : new Date(0),
     isPrivate : false,
     time : {start : new Date() , end : new Date()}
   })
@@ -456,6 +456,9 @@ const AdCreating = () => {
   }, [GreyIntWidth]);
 
 
+  const [whichOne, setWhichOne] = useState("startOnly");
+
+
   useEffect(() => {
     MainButton.onClick(goForward);
     BackButton.onClick(goBack);
@@ -478,6 +481,9 @@ const AdCreating = () => {
       MainButton.hide();
     };
   }, []);
+
+
+
   
   const twoPages = useMemo( () => {
     return (
@@ -515,6 +521,8 @@ const AdCreating = () => {
             setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
           />
           <AdCreatingTwo
+            whichOne={whichOne}
+            setWhichOne={setWhichOne}
             errors={twoPages}
             GreyIntWidth={GreyIntWidth}
             GreyWidth={GreyWidth}
@@ -522,7 +530,7 @@ const AdCreating = () => {
             taskInformation={secondPage}
             tonConstant={tonConstant}
           />
-          <FirstDetails  style = {{position : "static" , minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage , category : firstPage.category.id}} />
+          <FirstDetails  style = {{position : "static" , minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage , category : firstPage.category.id , whichOne : whichOne } } />
           {/* <AdCreatingThree taskInformation={secondPage} /> */}
         </>
       )}

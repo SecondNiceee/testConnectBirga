@@ -17,7 +17,7 @@ Date.prototype.addHours = function(h) {
   return this;
 }
 
-const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , GreyWidth , GreyIntWidth , errors}) => {
+const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , GreyWidth , GreyIntWidth , errors , whichOne, setWhichOne}) => {
 
 
       const monthMap = {
@@ -167,6 +167,8 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
             <Cap className={cl.Cap}  step={2} > <p className = {cl.CapText}> Создайте объявление </p> </Cap>
             <Budget errorTon = {errors.ton} taskInformation={taskInformation} setTaskInformation={setTaskInformation}  className={cl.Budget} tonConstant = {tonConstant} />
             <MyDatePicker 
+            whichOne={whichOne}
+            setWhichOne={setWhichOne}
             errors = {{singleError : errors.singleError , startError : errors.startError, endError : errors.endError }}
             state={state} setState = {setState} GreyWidth = {GreyWidth} GreyIntWidth={GreyIntWidth} taskInformation={taskInformation} setTaskInformation={setTaskInformation} className={cl.DatePicker} />
       </div>
