@@ -10,6 +10,24 @@
     gap: calc(12.63px* 2);
     position: relative;
 }
+.topBlock{
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    border-top-left-radius: 9.97px;
+    border-top-right-radius: 9.97px;
+    left: 0;
+    top: 0;
+}
+.bottomBlock{
+    width: 100%;
+    height: 50%;
+    position: absolute;
+    border-top-left-radius: 9.97px;
+    border-top-right-radius: 9.97px;
+    left: 0;
+    top: calc(50% - 1px);
+}
 .Categories__block{
     width: 100%;
     display: flex;

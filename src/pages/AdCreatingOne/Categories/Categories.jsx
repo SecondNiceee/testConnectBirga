@@ -27,6 +27,8 @@ const Categories = ({className , taskInformation, setCatagoryChoiceOpen , setSub
     }
     return (
         <div className = { className ? [cl.Categories , className].join(' ') : cl.Categories   }>
+            <div className={cl.topBlock}></div>
+            <div className={cl.bottomBlock}></div>
             <div className={cl.Categories__block}>
                 <p>Категория</p>
                 <p  onClick={(e) => {setCatagoryChoiceOpen(true)}} className = {[cl.Category__link , cl.quest].join(' ')} href="">{taskInformation.category.category ? taskInformation.category.category : ''}</p>
