@@ -21,6 +21,26 @@ let inputObject = {
 let cardStart;
 const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
+
+  useEffect( () => {
+    let inputs = document.querySelectorAll("input");
+    function addH(){
+      window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+    }
+    // Добавляем обработчик события на каждый элемент input, у которого type не равен file
+    inputs.forEach(function(input) {
+      if (input.type !== "file") {
+        input.addEventListener("focus", addH);
+      }
+    });
+    return () => {
+      inputs.forEach(function(input) {
+        if (input.type !== "file") {
+          input.removeEventListener("focus", addH);
+        }
+      });
+    }
+  } , [] )
   useEffect( () => {
     document.documentElement.style.overflow = 'hidden'
     return () => {
