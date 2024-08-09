@@ -87,7 +87,6 @@ export const useButton = ({
 
     function compareTwoObject(a1, a2) {
       if (JSON.stringify(a1) !== JSON.stringify(a2)) {
-        alert("Тут");
         return false;
       }
       if (JSON.stringify(a1.time) !== JSON.stringify(a2.time)) {
