@@ -20,10 +20,12 @@ const AboutOne = ({
   const responces = useSelector( state => state.responses.responsesByA )
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(clearResponsesByA())
-    dispatch(fetchResponseByAdvertisement([task.id, task , 1]))
+    if (task.id){
+      dispatch(clearResponsesByA())
+      dispatch(fetchResponseByAdvertisement([task.id, task , 1]))
+    }
     // eslint-disable-next-line
-  }, []);
+  }, [task]);
 
   const deleteFunction = useCallback(
     (e) => {
