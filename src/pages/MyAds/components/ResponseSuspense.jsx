@@ -38,7 +38,9 @@ const ResponseSuspense = ({func , index, buttonText , task, isWatched, advertise
                 top : "-900px",
                 opacity : "0",
                 zIndex : -1,
-                left : "40px"
+                left : "40px"    ,
+                width : "30px",
+                right : "-25px"
               
             }} className="catch_block"></div>
     </div>

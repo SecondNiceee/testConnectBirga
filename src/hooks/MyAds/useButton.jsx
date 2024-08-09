@@ -30,7 +30,13 @@ export const useButton = ({
   const dispatch = useDispatch();
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
   const bedTask = useMemo(() => {
-    return myAdsArray.find((e) => e.id === secondPage.task.id);
+    let k = myAdsArray.find((e) => e.id === secondPage.task.id)
+    if (!k){
+      return myAdsArray[0]
+    }
+    else{
+      return k
+    }
   }, [myAdsArray, secondPage.task.id]);
   useEffect(() => {
     function writeFucntion() {
@@ -160,7 +166,7 @@ export const useButton = ({
     }
 
     if (details.isActive) {
-      if (compareTwoObject(bedTask.secondPage.task)) {
+      if (compareTwoObject(bedTask, details.task)) {
         MainButton.show();
         MainButton.setText("ОБНОВИТЬ");
 
