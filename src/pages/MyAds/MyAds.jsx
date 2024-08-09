@@ -25,6 +25,7 @@ import CardPage from "../CardPage/CardPage";
 import makeNewFile from "../../functions/newMakeFile";
 import axios from "axios";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
+import pagesHistory from "../../constants/pagesHistory";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -344,7 +345,19 @@ const MyAds = ({isPage = false}) => {
   const setChangingTask = useCallback( (e) => {
     setDetails( (value) =>  ({...value , task : e}))
   }, [setDetails] ) 
-  const [nowValue , setNowKey] = useState(myAdsArray.length < responsesArr.length ? "freelancer" :'customer')
+
+
+  console.log(pagesHistory)
+  const startPosition = useMemo( () => {
+    if (pagesHistory[pagesHistory.length - 1] === "/AdCreating"){
+      return "customer"
+    }
+    else{
+      return myAdsArray.length < responsesArr.length ? "freelancer" :'customer'
+    }
+    // eslint-disable-next-line
+  } , [pagesHistory] )
+  const [nowValue , setNowKey] = useState(startPosition)
 
   console.log(details.task)
 
