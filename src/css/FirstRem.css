@@ -80,6 +80,7 @@
   margin-right: 10.932px;
 }
 .First__block .FirstMain__top p {
+  transition: 0.5s;
   /* Default text */
   color: rgb(255, 255, 255);
   font-family: "SF Pro Display";

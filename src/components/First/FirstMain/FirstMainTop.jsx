@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import Pallete from "../../UI/Pallete/Pallete";
 import ShareIcon from "../../UI/ShareIcon/ShareIcon";
 
