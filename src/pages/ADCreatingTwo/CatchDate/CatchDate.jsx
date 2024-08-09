@@ -85,7 +85,7 @@ return (
           <div className={'left'}>
             <img className={'leftImage'} src={dateIcon} alt="" />
             <p className={'text'}>
-               {state.startTime ? state.startTime.toLocaleString("ru", options) : 'Дата и время начала'  } 
+               {state.startTime && state.startTime.getTime() !== new Date(0).getTime()  ? state.startTime.toLocaleString("ru", options) : 'Дата и время начала'  } 
             </p>
           </div>
           <img src={rightArrow} alt="" className={'arrowRight'} />

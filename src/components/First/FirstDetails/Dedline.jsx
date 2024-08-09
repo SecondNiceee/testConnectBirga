@@ -1,22 +1,21 @@
-import React from 'react';
-import formatDate from '../../../functions/makeDate';
+import React from "react";
+import formatDate from "../../../functions/makeDate";
+const defaultDate = new Date(0)
+const Dedline = ({ dedline }) => {
+  return (
+    <div className="DeadlineContainer">
+      <p>Дедлайн</p>
+      {dedline.start.getTime() !== defaultDate.getTime() && (
+        <p>Начать : {formatDate(dedline.start, true)}</p>
+      )}
 
-const Dedline = ({dedline}) => {
-    
-
-
-    return (
-        <div className='DeadlineContainer'>
-            <p>Дедлайн</p>
-            <p>Начать : {formatDate(dedline.start , true)}</p> 
-            {dedline.end !== "" ? 
-            <p>Закончить : {formatDate(dedline.end , true)} </p>
-            :
-            ""
-            }
-
-        </div>
-    );
+      {dedline.end !== "" ? (
+        <p>Дедлайн : {formatDate(dedline.end, true)} </p>
+      ) : (
+        <></>
+      )}
+    </div>
+  );
 };
 
 export default Dedline;

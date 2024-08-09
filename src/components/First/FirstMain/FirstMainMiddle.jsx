@@ -4,7 +4,7 @@ import formatDate from '../../../functions/makeDate';
 const FirstMainMiddle = ({time}) => {
     return (
         <div className="FirstMain__middle">
-        <p> {"Начать: " + formatDate(time.start)}</p>
+        <p> {"Дедлайн: " + formatDate(time.end)}</p>
       </div>
     );
 };
