@@ -54,8 +54,6 @@ const Responses = ({
     <>
       <div style={responces.length === 0 ? {display : "none"} : {}} className="responses__up-block">
         <p>Отклики</p>
-      </div>
-
       <ModalChoicer
       style={responces.length === 0 ? {display : "none"} : {}}
         setValue={(value) => {
@@ -66,6 +64,8 @@ const Responses = ({
         names={names}
         defaultValue={values[0]}
       />
+      </div>
+
       {responces.length > 0 ? (
         <>
           {responces.map((e, i) => {
