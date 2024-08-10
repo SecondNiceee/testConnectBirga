@@ -153,7 +153,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
 
       dispatch( postCard([myFormData , aboutU.userId, localCardSetting] ))
-      document.documentElement.style.overflow = "auto";
+      // document.documentElement.style.overflow = "auto";
       setCardsOpen(false);
     }
     else{

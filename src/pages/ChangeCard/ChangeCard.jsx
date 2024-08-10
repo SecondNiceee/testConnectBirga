@@ -22,12 +22,12 @@ let cardStart;
 const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
 
-  useEffect( () => {
-    document.documentElement.style.overflow = 'hidden'
-    return () => {
-       document.documentElement.style.overflow = 'auto'
-    }
-  } , [] )
+  // useEffect( () => {
+  //   document.documentElement.style.overflow = 'hidden'
+  //   return () => {
+  //      document.documentElement.style.overflow = 'auto'
+  //   }
+  // } , [] )
   useEffect(  () => {
 
     cardStart =  Object.assign({}, card);

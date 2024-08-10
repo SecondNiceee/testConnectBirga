@@ -67,13 +67,13 @@ const BudgetInput = ({
         id="budget"
         name="budget"
         type="text"
-        onFocus={(e) => {
-          document.documentElement.style.overflowY = 'hidden'
-          setTimeout( () => {
-              document.documentElement.style.overflowY = 'unset'
-          } , 2000)
-          setBudget(e.target.value === "0" ? "" : e.target.value);
-        }}
+        // onFocus={(e) => {
+        //   document.documentElement.style.overflowY = 'hidden'
+        //   setTimeout( () => {
+        //       document.documentElement.style.overflowY = 'unset'
+        //   } , 2000)
+        //   setBudget(e.target.value === "0" ? "" : e.target.value);
+        // }}
         onBlur={(e) => {
           setBudget(e.target.value.length > 0 ? e.target.value : "0");
         }}

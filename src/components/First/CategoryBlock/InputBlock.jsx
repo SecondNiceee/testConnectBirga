@@ -50,12 +50,12 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
           <input
             id="myInput"
             inputMode="numeric"
-            onFocus={(e) => {
-              document.documentElement.style.overflow = "hidden"
-              setTimeout( () => {
-                document.documentElement.style.overflow = "unset"
-              } , 500 )
-            }}
+            // onFocus={(e) => {
+            //   document.documentElement.style.overflow = "hidden"
+            //   setTimeout( () => {
+            //     document.documentElement.style.overflow = "unset"
+            //   } , 500 )
+            // }}
             onBlur={unFocusHandler}
             onChange={(e) => {
               setValue(e.target.value);

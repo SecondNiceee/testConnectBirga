@@ -19,7 +19,7 @@ const CardsArray = ({deleteFunction , cards ,setChangeActive  , setIndex }) => {
                 // dispatch(deleteServerCard(e.id))
               }}
               changeFunction={() => {
-                document.documentElement.style.overflow = "hidden";
+                // document.documentElement.style.overflow = "hidden";
                 setChangeActive(true);
                 setIndex(i);
               }}
