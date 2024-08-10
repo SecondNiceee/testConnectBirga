@@ -108,7 +108,7 @@ const Listbox = styled('ul')(
   border-radius: 12px;
   overflow: auto;
   outline: 0px;
-  background: rgba(37, 37, 37);;
+  background: rgba(37, 37, 37, 0.5);;
   border: 1px solid ${grey[700]};
   color: ${grey[300]};
   box-shadow: 0px 2px 4px rgba(0,0,0, 0.5);
