@@ -25,16 +25,16 @@ const FileInput = ({
       let localImages = [];
       let localFiles = []
       newFiles.forEach((event) => {
-        resizeImage(event, 300, 300, 0.6).then((value) => {
+        resizeImage(event, 500, 500, 0.6).then((value) => {
           // reader.readAsDataURL(value);
           localImages.push(URL.createObjectURL(value));
           localFiles.push(value)
           if (localImages.length === newFiles.length) {
             if (!clear) {
-              setFiles([...files, ...localFiles])
+              setFiles([...files, ...newFiles])
               setImages([...images, ...localImages]);
             } else {
-              setFiles([...localFiles])
+              setFiles([...newFiles])
               setImages([...localImages]);
             }
           }
