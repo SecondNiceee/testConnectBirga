@@ -36,7 +36,7 @@ const Choicer = ({nowKey , keys, setDetails, setResponce, setCard}) => {
         return () => {
     
         }
-      }  , [nowKey, keys, savedCards, savedResponces , savedTasks] )
+      } )
   
       
 
