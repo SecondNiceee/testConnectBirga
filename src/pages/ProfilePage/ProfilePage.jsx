@@ -17,7 +17,7 @@ import { changeMenuActive } from "../../store/menuSlice";
 import "../MyAds/MyAds.css"
 import BackButton from "../../constants/BackButton";
 import { useNavigate } from "react-router-dom";
-// const parOne = window.Telegram.WebApp.initDataUnsafe.user.id;
+// const parOne = 2144832745;
 // const parTwo = 1;
 const ProfilePage = ({ ...props }) => {
   const [responce, setResponce] = useState(null);
@@ -25,7 +25,7 @@ const ProfilePage = ({ ...props }) => {
 
 
 //   window.Telegram.WebApp.showAlert(window.Telegram.WebApp.initDataUnsafe.start_param)
-window.Telegram.WebApp.disableVerticalSwipes();
+  window.Telegram.WebApp.disableVerticalSwipes();
 
   const dispatch = useDispatch();
   const setMenuActive = useCallback(

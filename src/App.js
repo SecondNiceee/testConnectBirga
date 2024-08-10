@@ -188,7 +188,6 @@ function App() {
 
   window.Telegram.WebApp.expand();
   const me = useSelector((state) => state.telegramUserInfo);
-  console.log("Привет")
 
 
   useEffect(() => {

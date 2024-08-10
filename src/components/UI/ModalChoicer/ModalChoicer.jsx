@@ -102,13 +102,13 @@ const Listbox = styled('ul')(
   font-family: 'IBM Plex Sans', sans-serif;
   font-size: 0.875rem;
   box-sizing: border-box;
-  padding: 6px;
+  padding: 0px;
   margin: 12px 0;
   min-width: 200px;
   border-radius: 12px;
   overflow: auto;
   outline: 0px;
-  background: ${grey[900]};
+  background: rgba(37, 37, 37);;
   border: 1px solid ${grey[700]};
   color: ${grey[300]};
   box-shadow: 0px 2px 4px rgba(0,0,0, 0.5);
@@ -176,12 +176,12 @@ const Option = styled(BaseOption)(
   }
 
   &.${optionClasses.selected} {
-    background-color: ${blue[900]};
+    background-color: rgba(68, 68, 68);
     color: ${ blue[100] };
   }
 
   &.${optionClasses.highlighted} {
-    background-color: ${grey[800]};
+    background-color: rgba(68, 68, 68);;
     color: ${grey[300]};
   }
 
@@ -190,8 +190,10 @@ const Option = styled(BaseOption)(
   }
 
   &.${optionClasses.highlighted}.${optionClasses.selected} {
-    background-color: ${blue[900]};
+   
+     background-color: transparent;
     color: ${blue[100] };
+    position : relative;
   }
 
   &.${optionClasses.disabled} {
