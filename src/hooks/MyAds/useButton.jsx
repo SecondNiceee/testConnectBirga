@@ -108,10 +108,10 @@ export const useButton = ({
     function putTask(){
 
       let myFormData = new FormData();
-      myFormData.append('title' , details.task.taskName)
-      myFormData.append('description' , details.task.taskDescription)
-      myFormData.append("deadline" , 1)
-      myFormData.append("price" , details.task.tonValue )
+      myFormData.append('title' , String(details.task.taskName))
+      myFormData.append('description' , String(details.task.taskDescription))
+      myFormData.append("deadline" , String(1))
+      myFormData.append("price" , String(details.task.tonValue) )
       myFormData.append("startTime" , details.task.time.start)
       myFormData.append("endTime" , details.task.time.end)
 

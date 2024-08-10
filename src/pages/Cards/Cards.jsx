@@ -140,12 +140,12 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
 
       let myFormData = new FormData()
-      myFormData.append("categoryId", localCardSetting.category.id)
-      myFormData.append("title" , localCardSetting.title)
-      myFormData.append("description" , localCardSetting.description)
-      myFormData.append("behance" , localCardSetting.behanceLink)
-      myFormData.append("dribble" , localCardSetting.dribbbleLink)
-      myFormData.append("dropFile" , localCardSetting.dropfileLink)
+      myFormData.append("categoryId", String(localCardSetting.category.id))
+      myFormData.append("title" , String(localCardSetting.title))
+      myFormData.append("description" , String(localCardSetting.description))
+      myFormData.append("behance" , String(localCardSetting.behanceLink))
+      myFormData.append("dribble" , String(localCardSetting.dribbbleLink))
+      myFormData.append("dropFile" , String(localCardSetting.dropfileLink))
 
       localCardSetting.photos.forEach(e => {
         myFormData.append('photos' , e)

@@ -21,10 +21,10 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
                 console.log(details.task)
               if (checkMistakes(details.task)){
               let myFormData = new FormData();
-              myFormData.append('title' , detailsVar.task.taskName)
-              myFormData.append('description' , detailsVar.task.taskDescription)
-              myFormData.append("deadline" , 1)
-              myFormData.append("price" , detailsVar.task.tonValue )
+              myFormData.append('title' , String(detailsVar.task.taskName))
+              myFormData.append('description' , String(detailsVar.task.taskDescription))
+              myFormData.append("deadline" , String(1))
+              myFormData.append("price" , String(detailsVar.task.tonValue ))
               myFormData.append("startTime" , detailsVar.task.time.start)
               myFormData.append("endTime" , detailsVar.task.time.end)
     

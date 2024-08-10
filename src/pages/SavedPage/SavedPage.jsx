@@ -307,10 +307,10 @@ const SavedPage = () => {
   const forwardFunction = useCallback(() => {
     async function postResponce(advertismetId, userId) {
       let myFormData = new FormData();
-      myFormData.append("information", responce.text);
+      myFormData.append("information", String(responce.text));
 
-      myFormData.append("userId", userId);
-      myFormData.append("advertismentId", advertismetId);
+      myFormData.append("userId", String(userId));
+      myFormData.append("advertismentId", String(advertismetId));
 
       responce.photos.forEach((e, i) => {
         myFormData.append(`photos`, e);

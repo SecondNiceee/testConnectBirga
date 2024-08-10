@@ -143,11 +143,11 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       // });
       
       let myFormData = new FormData()
-      myFormData.append("title" , localCardSetting.title)
-      myFormData.append("description" , localCardSetting.description)
-      myFormData.append("behance" , localCardSetting.behanceLink)
-      myFormData.append("dribble" , localCardSetting.dribbbleLink)
-      myFormData.append("dropFile" , localCardSetting.dropfileLink)
+      myFormData.append("title" , String(localCardSetting.title))
+      myFormData.append("description" , String(localCardSetting.description))
+      myFormData.append("behance" , String(localCardSetting.behanceLink))
+      myFormData.append("dribble" , String(localCardSetting.dribbbleLink))
+      myFormData.append("dropFile" , String(localCardSetting.dropfileLink))
       
       let files = sortFiles(cardsSetting.photosNames , cardsSetting.photos)
       console.warn(files)

@@ -116,14 +116,14 @@ const AdCreating = () => {
           startError = true;
         }
       } else {
-        if (secondPage.singleTime.getTime() === new Date(0)) {
+        if (secondPage.singleTime.getTime() === new Date(0).getTime()) {
           singleError = true;
         }
       }
       if (
         (error.singleError === true &&
           !document.getElementById("dateSwapper").style.transform) ||
-        ((error.startError === true || error.endError === true) &&
+        ((error.startError === true || error.endError === true) &&                       
           document.getElementById("dateSwapper").style.transform)
       ) {
         if (

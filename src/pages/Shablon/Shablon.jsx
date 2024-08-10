@@ -19,8 +19,8 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
     function forward(){
       let myFormData = new FormData()
       // myFormData.append("userId" ,  window.Telegram.WebApp.initDataUnsafe.user.id )
-      myFormData.append("name" , localShablon.name )
-      myFormData.append("text" , localShablon.text)
+      myFormData.append("name" , String(localShablon.name) )
+      myFormData.append("text" , String(localShablon.text))
       if (put){
         let filesArr = sortFiles(shablon.photosNames, shablon.photos)
         filesArr.addedArr.forEach((e, i) => {
