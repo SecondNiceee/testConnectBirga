@@ -377,6 +377,9 @@ const information = createSlice({
       state.orderStatus = action.payload;
       state.orderInformations = [];
     },
+    clearTasks(state){
+      state.orderInformations = [];
+    },
     addResponce(state, action) {
       state.orderInformations = state.orderInformations.map((e) => {
         if (e.id === action.payload[0]) {
@@ -503,5 +506,6 @@ export const {
   addResponce,
   changeStatus,
   getMoreMyAds,
+  clearTasks
 } = information.actions;
 export default information.reducer;

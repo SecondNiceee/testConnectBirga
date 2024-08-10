@@ -20,7 +20,7 @@ import AboutReaction from "../MyAds/components/AboutReaction";
 import CardPage from "../CardPage/CardPage";
 import axios from "axios";
 import makeNewFile from "../../functions/newMakeFile";
-import { addResponce } from "../../store/information";
+import { addResponce, clearTasks } from "../../store/information";
 
 let isDetailsActiveVar = false;
 let pageValue = true;
@@ -390,6 +390,10 @@ const [subCategory, setSubCategory] = useState(false)
 //   firstRef.current.style.paddingBottom = "100vh"
 
 // }, [] )
+
+useEffect( () => {
+  dispatch(clearTasks())
+} , [] )
 
 useEffect( () => {
   let inputs = document.querySelectorAll("input");
