@@ -93,7 +93,7 @@ return (
 
 
         {isMyInformation ? 
-        <GreyText className={ 'myAdsGreyTextTwo'} > ЗАКОНЧИТЬ:  </GreyText> 
+        <GreyText className={ 'myAdsGreyTextTwo'} > ДЕДЛАЙН:  </GreyText> 
         :
         <>
         </>

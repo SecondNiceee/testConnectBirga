@@ -274,10 +274,10 @@ const AdCreating = () => {
           ton = true;
         }
         if (document.getElementById("dateSwapper").style.transform) {
-          if (secondPage.startTime.length === 0) {
+          if (secondPage.startTime.getTime() === new Date(0).getTime()) {
             startError = true;
           }
-          if (secondPage.endTime.length === 0) {
+          if (secondPage.endTime.getTime() === new Date(0).getTime()) {
             endError = true;
           }
           if (secondPage.endTime <= secondPage.startTime) {
@@ -285,7 +285,7 @@ const AdCreating = () => {
             startError = true;
           }
         } else {
-          if (secondPage.singleTime.length === 0) {
+          if (secondPage.singleTime.getTime() === new Date(0).getTime()) {
             singleError = true;
           }
         }

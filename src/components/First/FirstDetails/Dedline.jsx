@@ -4,7 +4,7 @@ const defaultDate = new Date(0)
 const Dedline = ({ dedline }) => {
   return (
     <div className="DeadlineContainer">
-      <p>Дедлайн</p>
+      <p>Сроки выполнения</p>
       {dedline.start.getTime() !== defaultDate.getTime() && (
         <p>Начать : {formatDate(dedline.start, true)}</p>
       )}
