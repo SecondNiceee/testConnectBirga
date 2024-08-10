@@ -17,6 +17,7 @@ import pagesHistory from "../constants/pagesHistory";
 import FirstDetails from "../components/First/FirstDetails/FirstDetails";
 import axios from "axios";
 
+
 let spet = 0;
 const AdCreating = () => {
   // const [taskInformation, setTaskInformation] = useState(
@@ -104,10 +105,10 @@ const AdCreating = () => {
         setError({ ...error, ton: false });
       }
       if (document.getElementById("dateSwapper").style.transform) {
-        if (secondPage.startTime.length === 0) {
+        if (secondPage.startTime.getTime() ===  new Date(0).getTime() ) {
           startError = true;
         }
-        if (secondPage.endTime.length === 0) {
+        if (secondPage.endTime.getTime() === new Date(0).getTime()) {
           endError = true;
         }
         if (secondPage.endTime <= secondPage.startTime) {
@@ -115,7 +116,7 @@ const AdCreating = () => {
           startError = true;
         }
       } else {
-        if (secondPage.singleTime.length === 0) {
+        if (secondPage.singleTime.getTime() === new Date(0)) {
           singleError = true;
         }
       }
@@ -456,7 +457,7 @@ const AdCreating = () => {
   }, [GreyIntWidth]);
 
 
-  const [whichOne, setWhichOne] = useState("startOnly");
+  const [whichOne, setWhichOne] = useState("startAndEnd");
 
 
   useEffect(() => {
