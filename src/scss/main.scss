@@ -173,8 +173,21 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
   padding-top: 11px;
   padding-bottom: 11px;
   padding-left: 16px;
-}
 
+  font-family: "SF Pro Text", sans-serif;;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: white;
+}
+.placement-bottom .base-Select-listbox{
+  border: none;
+}
+.placement-bottom .base-Select-listbox{
+  backdrop-filter: blur(80px);
+  box-shadow: 0 8px 64px 0 rgba(0, 0, 0, 0.1);
+}
 .base-Option-root{
   position: relative;
   border-bottom: 0.50px solid rgba(84, 84, 88, 0.65);

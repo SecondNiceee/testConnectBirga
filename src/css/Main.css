@@ -3438,6 +3438,23 @@ body {
   padding-top: 11px;
   padding-bottom: 11px;
   padding-left: 16px;
+  font-family: "SF Pro Text", sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: white;
+}
+
+.placement-bottom .base-Select-listbox {
+  border: none;
+}
+
+.placement-bottom .base-Select-listbox {
+  -webkit-backdrop-filter: blur(80px);
+          backdrop-filter: blur(80px);
+  -webkit-box-shadow: 0 8px 64px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 8px 64px 0 rgba(0, 0, 0, 0.1);
 }
 
 .base-Option-root {
