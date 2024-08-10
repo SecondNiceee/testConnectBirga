@@ -216,6 +216,7 @@ function App() {
   const b = _.cloneDeep(a);
   b.people.x = "хай";
 
+
   return (
     <BrowserRouter>
       <div className="UperContainer">
