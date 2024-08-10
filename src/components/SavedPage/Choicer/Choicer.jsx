@@ -14,13 +14,12 @@ const Choicer = ({nowKey , keys, setDetails, setResponce, setCard}) => {
     const containerThree = useRef(null)
 
     const pickerRef = useRef(null)
-
+    console.log(savedTasks)
     useEffect( () => {
         if (pickerRef.current && containerOne.current && containerTwo.current && containerThree.current){
-
+            alert("Увеличение")
             if (nowKey === keys[0]){
                 pickerRef.current.style.overflowY = "hidden"
-                console.log(containerOne)
                 pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight) + "px"
             }
             if (nowKey === keys[1]){

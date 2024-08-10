@@ -624,6 +624,9 @@ const saves = createSlice({
     },
     reducers : {
         clearAll(state){
+            state.cardsStatus = null
+            state.advertisementStatus = null
+            state.reponsesStatus = null
             state.cards = []
             state.tasks = []
             state.responces = []
