@@ -16,7 +16,7 @@ const FileInput = ({
   setFiles,
   fileError,
   photosNames,
-  clear = false,
+  clear = true,
 }) => {
   const [images, setImages] = useState([]);
 
