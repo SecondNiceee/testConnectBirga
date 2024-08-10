@@ -284,7 +284,7 @@
 
 
 .AdCreating__container{
-  min-height: 100vh;
+  min-height: var(--tg-viewport-height);
   display: flex;
   will-change: transform;
 }
@@ -297,7 +297,7 @@
   .datepicker-modal{
     position: fixed;
     top: 0;
-    height: 100vh;
+    height: var(--tg-viewport-height);
     z-index: 100;
     overflow-y: hidden;
     background-color: unset;  

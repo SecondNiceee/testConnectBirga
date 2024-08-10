@@ -70,6 +70,14 @@ const AdCreating = () => {
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);
 
+
+
+  useEffect( () => {
+    return () => {  
+      pagesHistory.push("/AdCreating")
+    }
+  } , [] )
+
   useEffect(() => {
     if (categorys && subCategorys) {
       setFirstPage(

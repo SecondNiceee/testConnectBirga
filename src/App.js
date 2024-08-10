@@ -37,7 +37,7 @@ const MyLoader = () => {
     <div
       style={{
         width: "100vw",
-        height: "100vh",
+        height: "var(--tg-viewport-height)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -70,7 +70,7 @@ const AnimatedSwitch = () => {
 
   return (
     <div className="container" style={{
-      minHeight : "100vh"
+      minHeight : "var(--tg-viewport-height)"
     }}>
       <div
         style={isMenuActive ? { opacity: "0.6" } : { maxWidth: "0px" }}

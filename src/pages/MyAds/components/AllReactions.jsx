@@ -17,7 +17,7 @@ const AllReactions = ({
       {status === "pending" ? (
         <MyLoader
           style={{
-            height: "calc(100vh - 456px)",
+            height: "calc(var(--tg-viewport-height) - 456px)",
             position: "fixed",
             left: 0,
           }}

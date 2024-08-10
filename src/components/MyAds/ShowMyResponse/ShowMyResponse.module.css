@@ -9,7 +9,7 @@
     gap: 8px;
     width: 100vw;
     z-index: 200;
-    height: 100vh;
+    height: var(--tg-viewport-height);
     transform: translateX(100%);
     transition: 0.4s;
     overflow-y: scroll;

@@ -37,7 +37,7 @@
     flex-direction: column;
     overflow: hidden;
     gap: calc(35px * 0.4767);
-    min-height: calc(100vh - 68px);
+    min-height: calc(var(--tg-viewport-height) - 68px);
     border-radius: 10px;
 }
 .First__block{

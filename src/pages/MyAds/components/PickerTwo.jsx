@@ -28,7 +28,7 @@ const PickerTwo = forwardRef(({setSecondPage , deleteFunction , myAdsArray, valu
         <div className="picker__block" ref={ref}>
         <AdCreateFunc text={"Создать объявление"} link={"/AdCreating"} />
         {myAdsArray.length === 0 && status === "all" ? 
-        <MyAnimation style = {{height : "calc(100vh - 300px)"}} text={text}/>
+        <MyAnimation style = {{height : "calc(var(--tg-viewport-height) - 300px)"}} text={text}/>
         :
         <AdsContainer myAdsArray={myAdsArray} setSecondPage={setSecondPage}  deleteFunction={deleteFunction} />
         }

@@ -3,7 +3,7 @@
 }
 .choicerWrapper{
     width: 100vw;
-    height: 100vh;
+    height: var(--tg-viewport-height);
     position: fixed;
     left: 100%;
     top: 0%;
