@@ -5,7 +5,7 @@ import { useInView } from 'react-intersection-observer';
 // import ResponseBlock from '../../../components/MyAds/ResponseBlock';
 
 const ResponseBlock = lazy( () => import("../../../components/MyAds/ResponseBlock") )
-const ResponseSuspense = ({func , index, buttonText , task, isWatched, advertisement}) => {
+const ResponseSuspense = ({func , index, buttonText , task, isWatched, advertisement,  viewsNumber = 0, setViewsNumber = () => {}}) => {
     const { ref, inView } = useInView({
         threshold: 0, // Порог видимости (от 0 до 1)
       });
@@ -13,6 +13,7 @@ const ResponseSuspense = ({func , index, buttonText , task, isWatched, advertise
     useEffect( () => {
         if (inView){
             setVisible(true)
+            setViewsNumber(viewsNumber + 1)
         }
     } , [inView] )
     const style = useMemo( () =>{

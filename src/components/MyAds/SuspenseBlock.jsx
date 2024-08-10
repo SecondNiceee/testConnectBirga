@@ -3,7 +3,7 @@ import BlockSpinner from '../UI/BlockSpinner/BlockSpinner';
 import { useInView } from 'react-intersection-observer';
 const Block = lazy( () => import("../../pages/MyAds/components/Block") )
 
-const SuspenseBlock = ({i , e, setSecondPage}) => {
+const SuspenseBlock = ({i , e, setSecondPage ,  viewsNumber = 0, setViewsNumber = () => {}}) => {
     const { ref, inView } = useInView({
         threshold: 0, // Порог видимости (от 0 до 1)
       });
@@ -11,6 +11,7 @@ const SuspenseBlock = ({i , e, setSecondPage}) => {
     useEffect( () => {
         if (inView){
             setVisible(true)
+            setViewsNumber(viewsNumber + 1)
         }
     } , [inView] )
     const style = useMemo( () =>{

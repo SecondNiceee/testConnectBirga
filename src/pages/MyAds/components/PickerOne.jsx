@@ -5,7 +5,7 @@ import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 import {  useSelector } from 'react-redux';
 
 
-const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue} , ref) => {
+const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  viewsNumber, setViewsNumber } , ref) => {
 
 
 
@@ -52,7 +52,7 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue} , ref) =
             
                 <MyAnimation text={text}/> 
             :
-                <MyResponses   responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
+                <MyResponses  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
              }
              <div ref={interRef} className="intersection-block">
 

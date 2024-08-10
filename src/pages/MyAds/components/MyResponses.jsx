@@ -5,7 +5,7 @@ import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ResponseSuspense from "./ResponseSuspense";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchResponses } from "../../../store/responses";
-const MyResponses = forwardRef( ({responsesArr, buttonFunction} , ref) => {
+const MyResponses = forwardRef( ({responsesArr, buttonFunction,  viewsNumber, setViewsNumber } , ref) => {
 
 
   const me = useSelector(state => state.telegramUserInfo)
@@ -47,6 +47,7 @@ const MyResponses = forwardRef( ({responsesArr, buttonFunction} , ref) => {
       {responsesArr.map((e, i) => {
         return (
           <ResponseSuspense
+            viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber}
             func={buttonFunction}
             index={i}
             buttonText={"МОЙ ОТКЛИК"}

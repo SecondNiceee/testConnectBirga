@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect,  useRef,  } from "react";
+import React, { memo, useCallback, useEffect,  useRef, useState,  } from "react";
 
 import { deleteAd } from "../../../store/information";
 import { useDispatch,  } from "react-redux";
@@ -55,6 +55,8 @@ const PickerContent = ({
   const containerOne = useRef(null)
   const containerTwo = useRef(null)
   const pickerRef = useRef(null)
+
+  const [viewsNumber, setViewsNumber] = useState(0)
   
   useEffect( () => {
     if (containerOne.current && containerTwo.current){
@@ -106,9 +108,9 @@ const PickerContent = ({
     >
       
 
-      <PickerOne ref={containerOne} oneValue = {valueOne} nowValue = {nowValue}  responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
+      <PickerOne viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} ref={containerOne} oneValue = {valueOne} nowValue = {nowValue}  responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
 
-      <PickerTwo ref={containerTwo} valueTwo = {valueTwo} myAdsArray={myAdsArray} setSecondPage = {setSecondPage}  deleteFunction = {deleteFunction} />
+      <PickerTwo  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} ref={containerTwo} valueTwo = {valueTwo} myAdsArray={myAdsArray} setSecondPage = {setSecondPage}  deleteFunction = {deleteFunction} />
 
 
 
