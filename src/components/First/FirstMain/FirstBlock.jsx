@@ -32,7 +32,9 @@ const FirstBlock = ({
   tonValue,
   task,
   agree = false,
-}) => {
+  viewsNumber = 0,
+  setViewsNumber = () =>{}
+ }) => {
 
   const [badPhotos, setBadPhotos] = useState([])
   useEffect(() => {
@@ -126,6 +128,7 @@ const FirstBlock = ({
   useEffect(() => {
     if (inView) {
       setVisible(true);
+      setViewsNumber(viewsNumber + 1)
     }
   }, [setVisible, inView]);
 

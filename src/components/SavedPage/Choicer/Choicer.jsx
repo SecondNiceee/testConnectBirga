@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo, useRef } from 'react';
+import React, { memo, useEffect, useMemo, useRef, useState } from 'react';
 import cl from './Choicer.module.css'
 
 import ChoicerInfo from './ChoicerInfo';
@@ -15,6 +15,8 @@ const Choicer = ({nowKey , keys, setDetails, setResponce, setCard}) => {
 
     const pickerRef = useRef(null)
     console.log(savedTasks)
+
+    const [viewsNumber ,setViewsNumber] = useState(0)
     useEffect( () => {
         if (pickerRef.current && containerOne.current && containerTwo.current && containerThree.current){
             if (nowKey === keys[0]){
@@ -36,9 +38,10 @@ const Choicer = ({nowKey , keys, setDetails, setResponce, setCard}) => {
         return () => {
     
         }
-      } )
+      }  , [nowKey, keys, savedCards, savedResponces , savedTasks, viewsNumber, setViewsNumber] )
   
-      
+
+    
 
     const style = useMemo( () => {
         switch (nowKey){
@@ -62,9 +65,9 @@ const Choicer = ({nowKey , keys, setDetails, setResponce, setCard}) => {
     } , [keys, nowKey])
     return (
         <div ref={pickerRef} style={style} className={cl.main}>
-                <ChoicerInfo ref={containerOne} setDetails = {setDetails} navigate={"task"} arr={savedTasks} text = {"У вас нет сохраненных заказов"}  />
-                <ChoicerInfo ref={containerTwo} setResponce = {setResponce} navigate={"response"} arr={savedResponces} text = {"У вас нет сохраненных откликов"} />
-                <ChoicerInfo ref={containerThree} setCard = {setCard} navigate={"card"} arr={savedCards} text = {"У вас нет сохраненных кейсов"} />
+                <ChoicerInfo viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} ref={containerOne} setDetails = {setDetails} navigate={"task"} arr={savedTasks} text = {"У вас нет сохраненных заказов"}  />
+                <ChoicerInfo viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} ref={containerTwo} setResponce = {setResponce} navigate={"response"} arr={savedResponces} text = {"У вас нет сохраненных откликов"} />
+                <ChoicerInfo viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} ref={containerThree} setCard = {setCard} navigate={"card"} arr={savedCards} text = {"У вас нет сохраненных кейсов"} />
         </div>
     );
 };

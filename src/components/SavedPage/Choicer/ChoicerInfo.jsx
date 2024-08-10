@@ -11,7 +11,7 @@ import { fetchSavedAdvertisements, fetchSavedCards, fetchSavedResponses } from "
 import { fetchMyOrders } from "../../../store/information";
 
 const ChoicerInfo = forwardRef(
-  ({ text, arr, navigate, setDetails, setResponce, setCard }, ref) => {
+  ({ text, arr, navigate, setDetails, setResponce, setCard, viewsNumber , setViewsNumber }, ref) => {
     const orderStatus = useSelector((state) => state.saves.advertisementStatus);
     const cardStatus = useSelector((state) => state.saves.cardsStatus);
     const responsesStatus = useSelector((state) => state.saves.reponsesStatus);
@@ -54,6 +54,8 @@ const ChoicerInfo = forwardRef(
         return arr.map((e, i) => {
           return (
             <FirstBlock
+            viewsNumber = {viewsNumber}
+            setViewsNumber = {setViewsNumber}
               index={i}
               setDetailsActive={setDetails}
               agree={true}
