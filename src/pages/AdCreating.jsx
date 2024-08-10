@@ -73,9 +73,7 @@ const AdCreating = () => {
 
 
   useEffect( () => {
-    return () => {  
-      pagesHistory.push("/AdCreating")
-    }
+    pagesHistory.push("/AdCreating")
   } , [] )
 
   useEffect(() => {
