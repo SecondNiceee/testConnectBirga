@@ -292,6 +292,11 @@ const MyAds = ({isPage = false}) => {
     response : {},
   })
 
+  useEffect( () => {
+    document.documentElement.scrollTop = 0
+    window.scrollTo(0, 0)
+  } , [] )
+
 
   useButton({
     setDetails : setDetails,
@@ -345,6 +350,7 @@ const MyAds = ({isPage = false}) => {
   const setChangingTask = useCallback( (e) => {
     setDetails( (value) =>  ({...value , task : e}))
   }, [setDetails] ) 
+
   window.Telegram.WebApp.disableVerticalSwipes();
 
   console.log(pagesHistory)
@@ -579,6 +585,21 @@ const MyAds = ({isPage = false}) => {
 
 
   console.log(details.task)
+
+  useEffect( () => {
+    const elementOne = document.documentElement.getElementsByClassName(".base-Popup-root")
+    const s = document.documentElement.querySelector(".MyAdsContainer")
+    console.log(s)
+    document.documentElement.addEventListener("touchstart" , () => {
+      console.log("я тут")              
+      for (let el of elementOne){
+        setTimeout( () => {
+          s.focus()
+        } , 1000  )
+      
+      }
+    })
+  } , [] )
 
   return (
     <>
