@@ -29,8 +29,7 @@ import axios from "axios";
 import makeNewFile from "../../functions/newMakeFile";
 import { addResponce, clearTasks } from "../../store/information";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
-
-const FirstDetails = lazy(() => import("../../components/First/FirstDetails/FirstDetails"))
+import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 
 let isDetailsActiveVar = false;
 let pageValue = true;
