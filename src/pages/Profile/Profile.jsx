@@ -43,7 +43,7 @@ let userInfoLocal = null
 const Profile = () => {
 
 
-  
+  window.Telegram.WebApp.disableVerticalSwipes();
 
   const [index , setIndex] = useState(1)
 

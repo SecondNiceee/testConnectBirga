@@ -15,7 +15,7 @@ import MyLoader from "../../components/UI/MyLoader/MyLoader";
 
 const AllShablons = () => {
 
-  
+  window.Telegram.WebApp.disableVerticalSwipes();
   const dispatch = useDispatch();
   const navigate = useNavigate()
 

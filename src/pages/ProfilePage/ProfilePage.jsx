@@ -25,7 +25,7 @@ const ProfilePage = ({ ...props }) => {
 
 
 //   window.Telegram.WebApp.showAlert(window.Telegram.WebApp.initDataUnsafe.start_param)
-
+window.Telegram.WebApp.disableVerticalSwipes();
 
   const dispatch = useDispatch();
   const setMenuActive = useCallback(

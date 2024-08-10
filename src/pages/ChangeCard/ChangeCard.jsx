@@ -33,6 +33,8 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     cardStart =  Object.assign({}, card);
   } , [])
 
+  window.Telegram.WebApp.disableVerticalSwipes();
+  
   const [cardsSetting, setCardsSetting] = useState(Object.assign({}, card));
 
   console.log(cardsSetting)

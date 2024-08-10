@@ -75,7 +75,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
     }
   } , [exitText, isExitShow] )
 
-
+  window.Telegram.WebApp.disableVerticalSwipes();
 
 
 

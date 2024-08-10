@@ -368,6 +368,8 @@ const SavedPage = () => {
     }
   }, [responce, savedTasks, details.id, dispatch]);
 
+  window.Telegram.WebApp.disableVerticalSwipes();
+
   useEffect(() => {
     MainButton.onClick(forwardFunction);
     return () => {

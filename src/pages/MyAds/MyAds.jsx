@@ -345,7 +345,7 @@ const MyAds = ({isPage = false}) => {
   const setChangingTask = useCallback( (e) => {
     setDetails( (value) =>  ({...value , task : e}))
   }, [setDetails] ) 
-
+  window.Telegram.WebApp.disableVerticalSwipes();
 
   console.log(pagesHistory)
   const startPosition = useMemo( () => {

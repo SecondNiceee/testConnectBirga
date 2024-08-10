@@ -465,6 +465,7 @@ const AdCreating = () => {
 
   const [whichOne, setWhichOne] = useState("startAndEnd");
 
+  window.Telegram.WebApp.disableVerticalSwipes();
 
   useEffect(() => {
     MainButton.onClick(goForward);
@@ -502,6 +503,7 @@ const AdCreating = () => {
       }
     )
   } , [error] )
+
   return (
     <motion.div
       ref={mainRef}

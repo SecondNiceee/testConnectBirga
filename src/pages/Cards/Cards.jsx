@@ -131,7 +131,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
 
 
-
+  window.Telegram.WebApp.disableVerticalSwipes();
 
   const saveFunc = useCallback( () => {
     if (checkMistakes()) {
