@@ -586,20 +586,6 @@ const MyAds = ({isPage = false}) => {
 
   console.log(details.task)
 
-  useEffect( () => {
-    const elementOne = document.documentElement.getElementsByClassName(".base-Popup-root")
-    const s = document.documentElement.querySelector(".MyAdsContainer")
-    console.log(s)
-    document.documentElement.addEventListener("touchstart" , () => {
-      console.log("я тут")              
-      for (let el of elementOne){
-        setTimeout( () => {
-          s.focus()
-        } , 1000  )
-      
-      }
-    })
-  } , [] )
 
   return (
     <>

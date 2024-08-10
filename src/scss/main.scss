@@ -168,6 +168,26 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
 
   content:  url(../images/icons/check.svg);
 }
+
+
+
+.selector__item{
+  align-items : center;
+  display : flex;
+  gap : 4px;
+  padding : 0px;
+  text-transform : uppercase;
+  font-family: "SF Pro Display 400";
+  font-weight: 400;
+  font-size: 13.33px;
+  letter-spacing: 0.02em;
+  text-align: right;
+  color: #2ea5ff;
+  background-color : transparent;
+  border : none
+}
+
+
 .placement-bottom .base-Option-root{
   border-radius: 0px;
   padding-top: 11px;
