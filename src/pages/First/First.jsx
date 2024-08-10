@@ -686,7 +686,6 @@ const First = ({ isPage = false }) => {
         timeout={400}
         classNames="left-right"
       >
-        {isDetailsActive.isOpen && (
             <FirstDetails
               isDetailsActive={isDetailsActive.isOpen}
               breakRef={firstRef}
@@ -695,7 +694,7 @@ const First = ({ isPage = false }) => {
               // className={}
               orderInformation={detailsAdertisement}
             />
-        )}
+        
       </CSSTransition>
 
       <CSSTransition
