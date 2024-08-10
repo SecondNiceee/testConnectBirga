@@ -163,7 +163,7 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
 .base--selected::after{
   right: 18.7px;
   position: absolute;
-  top: 50%;
+  top: 48%;
   transform: translateY(-50%);
 
   content:  url(../images/icons/check.svg);
@@ -174,7 +174,7 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
   padding-bottom: 11px;
   padding-left: 16px;
 
-  font-family: "SF Pro Text", sans-serif;;
+  font-family: "SF Pro Text 400";;
   font-weight: 400;
   font-size: 17px;
   line-height: 129%;

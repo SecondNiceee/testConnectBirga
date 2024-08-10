@@ -3426,7 +3426,7 @@ body {
 .base--selected::after {
   right: 18.7px;
   position: absolute;
-  top: 50%;
+  top: 48%;
   -webkit-transform: translateY(-50%);
       -ms-transform: translateY(-50%);
           transform: translateY(-50%);
@@ -3438,7 +3438,7 @@ body {
   padding-top: 11px;
   padding-bottom: 11px;
   padding-left: 16px;
-  font-family: "SF Pro Text", sans-serif;
+  font-family: "SF Pro Text 400";
   font-weight: 400;
   font-size: 17px;
   line-height: 129%;
