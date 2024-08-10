@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Photos from "./FirstMain/Photos";
@@ -30,9 +30,26 @@ const Block = ({
   responseCounter,
   viewsNumber,
   category,
+  endTime,
+  singleTime,
+  whichOne
 }) => {
   const dispatch = useDispatch();
   const tonConstant = useSelector((state) => state.ton.value);
+
+  const timing = useMemo( () => {
+    if (!end){
+      return time
+    }
+    else{
+      if (whichOne === "startOnly"){
+        return {end : singleTime}
+      }
+      else{
+        return {end : endTime}
+      }
+    }
+  } , [] )
 
   return (
     <>
@@ -48,7 +65,7 @@ const Block = ({
 
           <FirstMainTop isMyAds={isMyAds} category={category} isWatched={isWatched} taskName={taskName} id={id}  end={end} />
 
-          <FirstMainMiddle time={time} />
+          <FirstMainMiddle  time={timing} />
 
           <MainBottom 
           {...{tonConstant, tonValue, isMyAds, myAdsFunc, isButton, end, id, agree, task, isResponce, setDetailsActive,index, dispatch,deleteFunction}}
