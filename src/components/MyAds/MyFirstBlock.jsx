@@ -152,7 +152,7 @@ const MyFirstBlock = ({
           </div>
           <div className="FirstMain__middle">
             {/* <p>{executionPlace}</p> */}
-            <p> {"Дедлайн: " + formatDate(time.start)}</p>
+            <p> {"Дедлайн: " + formatDate(time.end)}</p>
           </div>
           <div className="FirstMain__bottom">
             <div className="FirstMain__bottom-left">
