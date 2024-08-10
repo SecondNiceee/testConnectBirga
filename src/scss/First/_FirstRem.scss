@@ -6,7 +6,7 @@
 .First {
   position: fixed;
   overflow :scroll;
-  height: var(--tg-viewport-height);
+  height: 100vh;
   display: flex;   
   transition: 0.4s;
   will-change: transform;
@@ -15,7 +15,7 @@
 }
 
 .first-container{
-    min-height: var(--tg-viewport-height);
+    min-height: 100vh;
     transition: 0.4s;
     display: flex;
 }
@@ -68,7 +68,7 @@
     padding-top: 18px;
     width: 100%;
     // height: 100%;
-    // height: var(--tg-viewport-height);
+    // height: 100vh;
     // overflow-y: scroll;
     transition: 0.5s;
     padding-bottom: 18px;
@@ -124,7 +124,7 @@
   gap: calc(8px);
   border-radius: 10px;
   overflow-x: hidden;
-  min-height: calc(var(--tg-viewport-height) - 65px);
+  min-height: calc(100vh - 65px);
 }
 
 .First__block { 
@@ -321,7 +321,7 @@
     background-color: rgba(24, 34, 45, 1.00);
     z-index: 11000;
     position: fixed;
-    height: var(--tg-viewport-height);
+    height: 100vh;
     left: 0px;
     top: 0;
     display: flex;

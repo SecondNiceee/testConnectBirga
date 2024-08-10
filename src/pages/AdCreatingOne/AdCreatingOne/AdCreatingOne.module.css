@@ -29,7 +29,7 @@
     padding-right: 14px;
     padding-bottom: calc(70px * 0.32);
 /* 
-    height: var(--tg-viewport-height);
+    height: 100vh;
     overflow-y: scroll; */
 }
 .Cap {

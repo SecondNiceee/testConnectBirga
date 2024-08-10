@@ -17,7 +17,7 @@
 .First {
   position: fixed;
   overflow: scroll;
-  height: var(--tg-viewport-height);
+  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,7 +29,7 @@
 }
 
 .first-container {
-  min-height: var(--tg-viewport-height);
+  min-height: 100vh;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   display: -webkit-box;
@@ -168,7 +168,7 @@
   gap: 8px;
   border-radius: 10px;
   overflow-x: hidden;
-  min-height: calc(var(--tg-viewport-height) - 65px);
+  min-height: calc(100vh - 65px);
 }
 
 .First__block {
@@ -410,7 +410,7 @@
   background-color: rgb(24, 34, 45);
   z-index: 11000;
   position: fixed;
-  height: var(--tg-viewport-height);
+  height: 100vh;
   left: 0px;
   top: 0;
   display: -webkit-box;
@@ -646,7 +646,7 @@
 }
 
 .TaskDetails {
-  min-height: var(--tg-viewport-height);
+  min-height: 100vh;
   min-width: 100vw;
   top: 0;
   z-index: 1000;
@@ -1508,7 +1508,7 @@
 }
 
 .AdCreating__container {
-  min-height: var(--tg-viewport-height);
+  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1525,7 +1525,7 @@
 .Modal-Portal .datepicker-modal {
   position: fixed;
   top: 0;
-  height: var(--tg-viewport-height);
+  height: 100vh;
   z-index: 100;
   overflow-y: hidden;
   background-color: unset;
@@ -1550,7 +1550,7 @@ input {
   padding-bottom: 20px;
   width: 100vw;
   position: fixed;
-  height: var(--tg-viewport-height);
+  height: 100vh;
   overflow-y: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1967,7 +1967,7 @@ input {
 
 .aboutMe {
   position: fixed;
-  height: var(--tg-viewport-height);
+  height: 100vh;
   width: 100%;
   position: absolute;
   left: 0;
@@ -2027,7 +2027,7 @@ input {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: var(--tg-viewport-height);
+  height: 100vh;
   overflow-y: scroll;
 }
 
@@ -2511,7 +2511,7 @@ input {
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
-  min-height: var(--tg-viewport-height);
+  min-height: 100vh;
   padding-bottom: 20px;
 }
 .MyAdsContainer .new-textarea {
@@ -2813,7 +2813,7 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: calc(var(--tg-viewport-height) - 252px);
+  height: calc(100vh - 252px);
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -2894,8 +2894,8 @@ input {
   z-index: 200;
   background: rgb(24, 34, 45);
   padding-bottom: 20px;
-  min-height: var(--tg-viewport-height);
-  height: var(--tg-viewport-height);
+  min-height: 100vh;
+  height: 100vh;
   overflow-y: scroll;
 }
 .shablon-wrapper .shablon-name {
@@ -2933,7 +2933,7 @@ input {
 .cards {
   position: fixed;
   width: 100vw;
-  height: var(--tg-viewport-height);
+  height: 100vh;
   left: 0;
   z-index: 400;
   top: 0;
@@ -3074,7 +3074,7 @@ input {
   padding-bottom: 20px;
   left: 0;
   top: 0;
-  min-height: var(--tg-viewport-height);
+  min-height: 100vh;
 }
 .all-shablon-wrapper .all-shablons-func {
   margin-top: 26px;
@@ -3099,7 +3099,7 @@ input {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: var(--tg-viewport-height);
+  height: 100vh;
 }
 .saved-wraper .new-textarea {
   border: 1.33px solid #636267;
@@ -3121,7 +3121,7 @@ input {
   top: 0;
   background-color: #18222d;
   z-index: 2000;
-  height: var(--tg-viewport-height);
+  height: 100vh;
   width: 100vw;
 }
 

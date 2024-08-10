@@ -3,7 +3,7 @@ import sad from "../../../animation/sadAnimation.json";
 import { useLottie } from "lottie-react";
 const MyAnimation = ({
   text = "Вы не откликнулись ни на одно задание",
-  height = "calc(var(--tg-viewport-height)-252px)",
+  height = "calc(100vh-252px)",
   ...props
 }) => {
   const options = {

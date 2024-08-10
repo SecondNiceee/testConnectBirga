@@ -283,7 +283,7 @@
     padding-top: 20px;
     margin-bottom: 18.33px;
     min-width: 100vw;
-    height: var(--tg-viewport-height);
+    height: 100vh;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
@@ -312,7 +312,7 @@
     padding: 0px 16px;
     padding-top: 20px;
     min-width: 100vw;
-    height: var(--tg-viewport-height);
+    height: 100vh;
     overflow-y: scroll;
     position: relative;
     z-index: 999;
@@ -357,7 +357,7 @@
     top: 0;
     z-index: 1001;
     width: 100%;
-    height: var(--tg-viewport-height);
+    height: 100vh;
     overflow-y: scroll;
     padding-bottom: 18px;
 
@@ -367,7 +367,7 @@
     margin-bottom: 18.33px;
     min-width: 100vw;
     display: flex;
-    height: var(--tg-viewport-height);
+    height: 100vh;
     overflow-y: scroll;
     flex-direction: column;
     will-change:  visibility;
@@ -716,7 +716,7 @@
     z-index: 1000;
     left: 100%;
     transform: translateX(100%);
-    height: calc(var(--tg-viewport-height) - 68px);
+    height: calc(100vh - 68px);
     position: fixed;
     width: 100vw;
     transition: 0.4s;
@@ -730,7 +730,7 @@
     transition: 0.4s;
     overflow-y: scroll;
     /* top: 0; */
-    height: var(--tg-viewport-height);
+    height: 100vh;
     padding-top: 20px;
 }
 .last-top{

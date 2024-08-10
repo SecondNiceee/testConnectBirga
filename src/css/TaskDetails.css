@@ -10,7 +10,7 @@
   -webkit-transition: 0.45s;
   transition: transform 0.45s;
   will-change: transform;
-  height: var(--tg-viewport-height);
+  height: 100vh;
 }
 .TaskDetails.active {
   transform: translateX(0%);

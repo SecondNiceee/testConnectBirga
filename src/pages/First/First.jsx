@@ -387,7 +387,7 @@ const [subCategory, setSubCategory] = useState(false)
 // useEffect( () => {
 //   firstRef.current.style.overflowY = "scroll"
 //   firstRef.current.style.height = "200vh"
-//   firstRef.current.style.paddingBottom = "var(--tg-viewport-height)"
+//   firstRef.current.style.paddingBottom = "100vh"
 
 // }, [] )
 

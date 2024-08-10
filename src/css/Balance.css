@@ -9,7 +9,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: var(--tg-viewport-height);
+  height: 100vh;
   overflow-y: scroll;
 }
 

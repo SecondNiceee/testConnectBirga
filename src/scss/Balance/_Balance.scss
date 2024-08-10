@@ -4,7 +4,7 @@ $height : 0.32;
     flex-direction: column;
     display: flex;
     justify-content: space-between;
-    height: var(--tg-viewport-height);
+    height: 100vh;
     overflow-y: scroll;
 }
 .balance__container{
