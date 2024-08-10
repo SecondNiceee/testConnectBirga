@@ -31,10 +31,10 @@ const FileInput = ({
           localFiles.push(value)
           if (localImages.length === newFiles.length) {
             if (!clear) {
-              setFiles([...files, ...newFiles])
+              setFiles([...files, ...localFiles])
               setImages([...images, ...localImages]);
             } else {
-              setFiles([...newFiles])
+              setFiles([...localFiles])
               setImages([...localImages]);
             }
           }
