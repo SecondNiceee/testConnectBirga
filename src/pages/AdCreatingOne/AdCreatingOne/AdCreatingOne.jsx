@@ -237,7 +237,7 @@ const AdCreatingOne = ({
           if (!e) {
             window.Telegram.WebApp.showAlert("ошибка фото!!");
           } else {
-            setTaskInformation({ ...taskInformation, photos: e });
+            setTaskInformation( (value) =>  ({...value, photos: e }));
           }
         }}
       />

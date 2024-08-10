@@ -356,7 +356,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  gap: 1px;
+  gap: 2px;
 }
 .First__block .FirstMain__bottom-left p {
   /* Default text */
