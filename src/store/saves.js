@@ -295,7 +295,6 @@ export const fetchSavedResponses = createAsyncThunk(
 export const fetchSavedAdvertisements = createAsyncThunk(
     "fetchSavedAdvertisements",
     async function ([page]) {
-        alert("я тебя вызывал")
         let im = await axios.get('https://back-birga.ywa.su/advertisement/saved' , {
             params : {
                 "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
