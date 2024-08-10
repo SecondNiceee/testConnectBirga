@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const Two = ({responseCounter}) => {
     return (
@@ -20,4 +20,4 @@ const Two = ({responseCounter}) => {
     );
 };
 
-export default Two;
+export default memo(Two);

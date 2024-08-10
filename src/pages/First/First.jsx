@@ -741,7 +741,17 @@ useEffect(() => {
             mountOnEnter
             unmountOnExit
           >
-            <FirstDetails
+            <div className="page" style={{
+              transform : "translateX(100%)",
+              transition : "0.4s",
+              position : "absolute",
+              left : "0",
+              top  : "0",
+              backgroundColor : "grey",
+              width : "100vw",
+              height : "100vh"
+            }}></div>
+            {/* <FirstDetails
               isDetailsActive={isDetailsActive.isOpen}
               breakRef = {firstRef}
               setProfile={setProfile}
@@ -749,7 +759,7 @@ useEffect(() => {
               // className={}
               orderInformation={detailsAdertisement }
 
-            />
+            /> */}
           </CSSTransition>
 
           <CSSTransition

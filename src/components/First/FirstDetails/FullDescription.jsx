@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { memo, useEffect, useRef } from "react";
 import imageDescription from "../../../images/icons/fullDescription.svg";
 const FullDescription = ({ fullDescription, ...props }) => {
   const textAreaRef = useRef(null)
@@ -30,4 +30,4 @@ const FullDescription = ({ fullDescription, ...props }) => {
   );
 };
 
-export default FullDescription;
+export default memo(FullDescription);

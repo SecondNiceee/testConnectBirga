@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import QOne from "./QOne";
 import QTwo from "./QTwo";
 import QThree from "./QThree";
@@ -47,4 +47,4 @@ const MainBottomRight = ({
   );
 };
 
-export default MainBottomRight;
+export default memo(MainBottomRight);

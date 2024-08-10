@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import FalseTie from "../../UI/FalseTie/FalseTie";
 
 const QTwo = ({end, agree, id, task, isButton, isResponce, isMyAds }) => {
@@ -21,4 +21,4 @@ const QTwo = ({end, agree, id, task, isButton, isResponce, isMyAds }) => {
   );
 };
 
-export default QTwo;
+export default memo(QTwo);

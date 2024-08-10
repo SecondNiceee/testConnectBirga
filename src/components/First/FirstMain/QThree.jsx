@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import MyButton from "../../UI/MyButton/MyButton";
 import { addWatch } from "../../../store/watchedAds";
 
@@ -24,4 +24,4 @@ const QThree = ({isMyAds , isResponce, isButton, setDetailsActive, index, dispat
   );
 };
 
-export default QThree;
+export default memo(QThree);

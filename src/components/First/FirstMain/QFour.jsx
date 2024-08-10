@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import MyButton from "../../UI/MyButton/MyButton";
 
 const QFour = ({isResponce, deleteFunction, isButton, setDetailsActive}) => {
@@ -35,4 +35,4 @@ const QFour = ({isResponce, deleteFunction, isButton, setDetailsActive}) => {
   );
 };
 
-export default QFour;
+export default memo(QFour);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import MyButton from "../../UI/MyButton/MyButton";
 
 const QOne = ({isMyAds, myAdsFunc, isButton}) => {
@@ -21,4 +21,4 @@ const QOne = ({isMyAds, myAdsFunc, isButton}) => {
   );
 };
 
-export default QOne;
+export default memo(QOne);

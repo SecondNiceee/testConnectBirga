@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import cl from './Pallete.module.css'
 import PalleteImg from '../../../images/icons/Design.svg'
 import ItSvg from "../../../images/icons/IT.svg"
@@ -22,4 +22,4 @@ const Pallete = ({className , category}) => {
     );
 };
 
-export default Pallete;
+export default memo(Pallete);

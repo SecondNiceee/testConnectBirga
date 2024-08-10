@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import SmallDimond from '../../UI/SmallDimond/SmallDimond';
 
 const FirstMainBottomLeft = ({tonValue, tonConstant}) => {
@@ -19,4 +19,4 @@ const FirstMainBottomLeft = ({tonValue, tonConstant}) => {
     );
 };
 
-export default FirstMainBottomLeft;
+export default memo(FirstMainBottomLeft);
