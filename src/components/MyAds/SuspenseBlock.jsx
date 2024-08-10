@@ -25,9 +25,9 @@ const SuspenseBlock = ({i , e, setSecondPage}) => {
         <div className='First__block' style={!isVisible ? style : {}} >
             <div ref={ref} style={{
                 width : "1px",
-                height : "1100px",
+                height : "2000px",
                 position : "absolute",
-                top : "-900px",
+                top : "-1800px",
                 opacity : "0",
                 left : "40px",
                 zIndex : -1

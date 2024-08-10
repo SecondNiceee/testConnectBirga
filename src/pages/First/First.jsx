@@ -686,11 +686,8 @@ const First = ({ isPage = false }) => {
         in={isDetailsActive.isOpen}
         timeout={400}
         classNames="left-right"
-        mountOnEnter
-        unmountOnExit
       >
         {isDetailsActive.isOpen && (
-          <Suspense fallback={<MyLoader />}>
             <FirstDetails
               isDetailsActive={isDetailsActive.isOpen}
               breakRef={firstRef}
@@ -699,7 +696,6 @@ const First = ({ isPage = false }) => {
               // className={}
               orderInformation={detailsAdertisement}
             />
-          </Suspense>
         )}
       </CSSTransition>
 
