@@ -320,12 +320,13 @@ const MyAds = ({isPage = false}) => {
   }, [setDetails] ) 
 
   window.Telegram.WebApp.disableVerticalSwipes();
-
+  alert(open)
   const startPosition = useMemo( () => {
-    if (open === 1){
+    if (open === "1"){
       return "freelancer"
     }
     else{
+
       if (pagesHistory[pagesHistory.length - 1] === "/AdCreating"){
         return "customer"
       }
