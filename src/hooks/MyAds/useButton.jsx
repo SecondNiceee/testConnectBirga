@@ -220,13 +220,13 @@ export const useButton = ({
         MainButton.onClick(putTask);
       }
       else{
-        if (!isOpen.isActive){
+        if (!isOpen.isActive && !myResponse.isOpen){
           MainButton.hide()
           MainButton.offClick(putTask)
         }
       }
     } else {
-      if (!isOpen.isActive){
+      if (!isOpen.isActive && !myResponse.isOpen){
         MainButton.hide();
         MainButton.offClick(putTask)
         MainButton.setParams({
