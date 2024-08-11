@@ -40,11 +40,13 @@ let localDetails;
 let detailsVar;
 
 
-const advertisementId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[0]
-const responseId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[1]
+// const advertisementId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[0]
+// const responseId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[1]
 
-// let advertisementId = 1
-// let responseId = 1
+let url = new URL(window.location.href);
+let advertisementId = url.searchParams.get("advertisemet")
+let responseId = url.searchParams.get("response")
+
 
 const defaultDate = new Date(0)
 
@@ -53,16 +55,10 @@ const defaultDate = new Date(0)
 
 const MyAds = ({isPage = false}) => {
 
-
+  alert(advertisementId)
+  alert(responseId)
   const [isPageValueOne , setPageValueOne] = useState(true)
   const [isPageValueTwo , setPageValueTwo] = useState(true)
-  useEffect( () => {
-    if (isPage){
-      let url = new URL(window.location.href);
-      advertisementId = url.searchParams.get("advertisemet")
-      responseId = url.searchParams.get("response")
-    }
-  } , [isPage] )
   
   const [valueOne , setValueOne] = useState("all")
 
