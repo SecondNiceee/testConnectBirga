@@ -44,12 +44,12 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowVal
     const me = useSelector(state => state.telegramUserInfo)
 
     useEffect( () => {
-        if (nowValue === "freelancer"){
+        dispatch(fetchResponses([me, 1]))
+        return () => {
             dispatch(clearResponses())
-          dispatch(fetchResponses([me, 1]))
         }
-    
-      } , [nowValue] )
+    } , [] )
+
 
     return (
 
