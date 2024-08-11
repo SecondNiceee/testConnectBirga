@@ -574,6 +574,8 @@ const MyAds = ({isPage = false}) => {
     setLastAdsTwo : setLastAdsTwo
   })
 
+  console.log(myAdsArray)
+
 
 
 

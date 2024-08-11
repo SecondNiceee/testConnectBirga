@@ -421,16 +421,14 @@ const information = createSlice({
     });
 
     builder.addCase(setStartTask.fulfilled, (state, action) => {
-      state.myAdsArray = []
-      state.myOrderStatus = null
-      // state.myAdsArray = state.myAdsArray.map((e) => {
-      //   if (e.id === action.payload) {
-      //     let copy = e;
-      //     copy.status = "inProcess";
-      //     return copy;
-      //   }
-      //   return e;
-      // });
+      state.myAdsArray = state.myAdsArray.map((e) => {
+        if (e.id === action.payload) {
+          let copy = e;
+          copy.status = "inProcess";
+          return copy;
+        }
+        return e;
+      });
     });
 
     builder.addCase(fetchTasksInformation.fulfilled, (state, action) => {
