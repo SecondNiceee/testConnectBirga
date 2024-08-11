@@ -1,8 +1,9 @@
-import React, { forwardRef,  useMemo, useRef } from 'react';
+import React, { forwardRef,  useEffect,  useMemo, useRef } from 'react';
 import MyAnimation from './MyAnimation';
 import MyResponses from './MyResponses';
 import MyLoader from '../../../components/UI/MyLoader/MyLoader';
-import {  useSelector } from 'react-redux';
+import {  useDispatch, useSelector } from 'react-redux';
+import { clearResponses, fetchResponses } from '../../../store/responses';
 
 
 const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowValue, viewsNumber, setViewsNumber } , ref) => {
@@ -38,13 +39,27 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowVal
         }
     }  , [oneValue])
 
+    const dispatch = useDispatch()
+
+    const me = useSelector(state => state.telegramUserInfo)
+
+    useEffect( () => {
+        if (nowValue === "freelancer"){
+          dispatch(fetchResponses([me, 1]))
+        }
+        else{
+          dispatch(clearResponses())
+        }
+    
+      } , [nowValue] )
+
     return (
 
 
         <div ref={ref} style={{
             alignSelf : "flex-start"
         }} className="picker__block">
-            {responsesArr.length === 0 ? 
+            {responsesArr.length === 0 && responsesStatus === "all" ? 
             
                 <MyAnimation text={text}/> 
             :
