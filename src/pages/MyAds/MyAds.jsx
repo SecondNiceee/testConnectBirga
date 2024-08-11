@@ -434,20 +434,16 @@ const MyAds = ({isPage = false}) => {
         responce.user.cardsNumber = b.data
         
         console.log(responce)
-        try {
-          // let imTwo = await axios.get(
-          //   "https://back-birga.ywa.su/advertisement/findCount",
-          //   {
-          //     params: {
-          //       userId: Number(responce.user.id),
-          //     },
-          //   }
-          // );
-          // responce.createNumber = imTwo.data;
-        } catch (e) {
-           console.log(e)
-          // window.Telegram.WebApp.showAlert(e);
-        }
+          let imTwo = await axios.get(
+            "https://back-birga.ywa.su/advertisement/findCount",
+            {
+              params: {
+                userId: Number(responce.user.id),
+              },
+            }
+          );
+          responce.createNumber = imTwo.data;
+
 
 
 
