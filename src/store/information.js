@@ -422,7 +422,7 @@ const information = createSlice({
 
     builder.addCase(setStartTask.fulfilled, (state, action) => {
       state.myAdsArray = []
-      state.myOrderStatus = "pending"
+      state.myOrderStatus = null
       // state.myAdsArray = state.myAdsArray.map((e) => {
       //   if (e.id === action.payload) {
       //     let copy = e;

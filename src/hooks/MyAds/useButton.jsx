@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
-import { putMyTask, setStartTask } from "../../store/information";
+import { fetchMyOrders, putMyTask, setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 import sortFiles from "../../functions/sortFiles";
 
@@ -71,6 +71,7 @@ export const useButton = ({
                   dispatch(setStartResponse(myAdOneResponse.id));
                   setOpen({ ...isOpen, isActive: false });
                   setSecondPage({ ...secondPage, isActive: false });
+                  dispatch(fetchMyOrders(1));
                 }
                 if (buttonId === "delete" || buttonId === null) {
                   console.log("Он отказался");
