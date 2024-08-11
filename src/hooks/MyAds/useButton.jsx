@@ -226,13 +226,15 @@ export const useButton = ({
         }
       }
     } else {
-      MainButton.hide();
-      MainButton.offClick(putTask)
-      MainButton.setParams({
-        color: "#2ea5ff",
-        text_color: "#ffffff",
-        is_active: true,
-      });
+      if (!isOpen.isActive){
+        MainButton.hide();
+        MainButton.offClick(putTask)
+        MainButton.setParams({
+          color: "#2ea5ff",
+          text_color: "#ffffff",
+          is_active: true,
+        });
+      }
     }
 
     BackButton.onClick(goBack);
