@@ -462,6 +462,7 @@ const MyAds = ({isPage = false}) => {
       }
       catch(e){
         window.Telegram.WebApp.showAlert("Этот отклик был удален.")
+        setOpen((value) => ({...value , isActive : false}))
         setPageValueOne(false)
         setPageValueTwo(false)
         console.log(e)
@@ -532,6 +533,8 @@ const MyAds = ({isPage = false}) => {
       }
       catch(e){
         window.Telegram.WebApp.showAlert("Вы удалили уже это задание.")
+        setOpen((value) => ({...value , isActive : false}))
+        setSecondPage((value) => ({...value , isActive : false}))
         setPageValueOne(false)
         setPageValueTwo(false)
         console.log(e)
