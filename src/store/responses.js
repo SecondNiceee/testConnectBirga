@@ -77,16 +77,32 @@ export const deleteResponse = createAsyncThunk(
 )
 export const setStartResponse = createAsyncThunk(
     "setStartResponse",
-    async function(id){
+    async function([responce , advertisement]){
         let myData = new FormData()
         myData.append("isWatched" , "inProcess")
         try{
             let im = await axios.put("https://back-birga.ywa.su/response" , myData, {
                 params : {
-                    id : id
+                    id : responce.id
                 }
             } )
+
+            await axios.get("https://back-birga.ywa.su/user/sendMessage", {
+                params: {
+                  chatId: responce.user.id,
+                  text:
+                    "📣 Да-да прошло, ха-ха «"
+                //   buttonUrl:
+                //     "https://birga.ywa.su/ResponsePage?advertisemet=" +
+                //     String(par[1].advertisement.id) +
+                //     "&response=" +
+                //     String(im.data.id),
+                },
+              });
+
+
         }
+
         catch(e){
             window.Telegram.WebApp.showAlert(e)
         }
@@ -156,7 +172,7 @@ export const fetchResponses = createAsyncThunk(
         
         let im = await axios.get('https://back-birga.ywa.su/response/findByUser' , {
             params : {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                "userId" : 2144832745,
                 page : par[1],
                 limit : 4
                 

@@ -44,7 +44,7 @@ export const useButton = ({
     }
   }, [myAdsArray, secondPage.task.id]);
   useEffect(() => {
-    function writeFucntion() {
+    async function writeFucntion() {
       window.Telegram.WebApp.showPopup(
         {
           title: "Внимание",
@@ -67,9 +67,12 @@ export const useButton = ({
               },
               (buttonId) => {
                 if (buttonId === "save") {
+                  
+                  
+  
                   dispatch(clearMyOrders())
                   dispatch(setStartTask(myAdOneAdvertisement.id));
-                  dispatch(setStartResponse(myAdOneResponse.id));
+                  dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
                   setOpen({ ...isOpen, isActive: false });
                   setSecondPage({ ...secondPage, isActive: false });
                   dispatch(fetchMyOrders(1));
