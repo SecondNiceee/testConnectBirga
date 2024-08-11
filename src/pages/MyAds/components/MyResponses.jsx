@@ -8,11 +8,12 @@ import { clearResponses, fetchResponses } from "../../../store/responses";
 const MyResponses = forwardRef( ({responsesArr, buttonFunction,  viewsNumber, setViewsNumber, nowValue } , ref) => {
 
 
-  const me = useSelector(state => state.telegramUserInfo)
+
   const [page , setPage] = useState(2)
   const orderStatus = useSelector(state => state.responses.status)
   const elementRef = useRef(null)
   const dispatch = useDispatch()
+  const me = useSelector(state => state.telegramUserInfo)
 
   const getMore = useCallback(async () => {
     dispatch(fetchResponses([me,page]));
@@ -30,15 +31,7 @@ const MyResponses = forwardRef( ({responsesArr, buttonFunction,  viewsNumber, se
     [orderStatus, getMore]
   );
   
-  useEffect( () => {
-    if (nowValue === "freelancer"){
-      dispatch(fetchResponses([me, 1]))
-    }
-    else{
-      dispatch(clearResponses())
-    }
 
-  } , [nowValue] )
 
   // useEffect( () => {
   //   if (nowValue === "cus")

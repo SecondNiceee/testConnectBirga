@@ -57,7 +57,7 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowVal
         <div ref={ref} style={{
             alignSelf : "flex-start"
         }} className="picker__block">
-            {responsesArr.length === 0 && responsesStatus === "all" ? 
+            {responsesArr.length === 0 && (responsesStatus !== "pending" || responsesStatus !== null) ? 
             
                 <MyAnimation text={text}/> 
             :
