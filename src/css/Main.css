@@ -2852,6 +2852,8 @@ input {
   padding-left: 16px;
   padding-right: 16px;
   left: 0;
+  height: 100vh;
+  overflow-y: scroll;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);

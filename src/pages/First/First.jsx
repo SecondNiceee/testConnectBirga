@@ -685,6 +685,7 @@ const First = ({ isPage = false }) => {
         in={isDetailsActive.isOpen}
         timeout={400}
         classNames="left-right"
+
       >
             <FirstDetails
               isDetailsActive={isDetailsActive.isOpen}

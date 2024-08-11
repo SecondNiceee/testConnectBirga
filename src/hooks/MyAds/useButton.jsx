@@ -27,7 +27,9 @@ export const useButton = ({
   lastAdsTwo,
   setLastAdsTwo,
   checkMistakes,
-  putTask
+  putTask,
+  setPageValueOne,
+  setPageValueTwo
 }) => {
   const dispatch = useDispatch();
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
@@ -143,10 +145,12 @@ export const useButton = ({
               setDetailsTwo((value) => ({ ...value, isOpen: false }));
             } else {
               if (isOpen.isActive) {
+                setPageValueTwo(false)
                 // isPageValueTwo = false
                 setOpen({ ...isOpen, isActive: false });
               } else {
                 if (secondPage.isActive) {
+                  setPageValueOne(false)
                   setSecondPage((value) => ({ ...value, isActive: false }));
                   // isPageValueOne = false
                 } else {
@@ -216,8 +220,10 @@ export const useButton = ({
         MainButton.onClick(putTask);
       }
       else{
-        MainButton.hide()
-        MainButton.offClick(putTask)
+        if (!isOpen.isActive){
+          MainButton.hide()
+          MainButton.offClick(putTask)
+        }
       }
     } else {
       MainButton.hide();
@@ -253,5 +259,7 @@ export const useButton = ({
     setMyResponse,
     lastAdsTwo,
     setLastAdsTwo,
+    setPageValueOne,
+    setPageValueTwo
   ]);
 };

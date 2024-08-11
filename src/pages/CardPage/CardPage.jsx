@@ -4,7 +4,7 @@ import InnerCase from "../../components/CardPage/InnerCase/InnerCase";
 import FullDescription from "../../components/First/FirstDetails/FullDescription";
 import LinkComp from "../../components/CardPage/Link/LinkComp";
 const CardPage = ({ card , ...props }) => {
-  window.Telegram.WebApp.disableVerticalSwipes();
+    window.Telegram.WebApp.disableVerticalSwipes();
     const linksComponents = useMemo( () => {
             return (
             <div  className={cl.cardsLinks}>

@@ -299,6 +299,8 @@ const MyAds = ({isPage = false}) => {
 
 
   useButton({
+    setPageValueOne : setPageValueOne,
+    setPageValueTwo : setPageValueTwo,
     setDetails : setDetails,
     checkMistakes : checkMistakes,
     setMyResponse : setMyResponse,

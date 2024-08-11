@@ -1,4 +1,4 @@
-import React, {  memo, useEffect, useMemo} from "react";
+import React, {  memo, useEffect, useMemo, useRef} from "react";
 
 import MyAdsBlock from "./MyAdsBlock";
 import PickerContent from "./PickerContent";
@@ -65,12 +65,18 @@ const MyAdOne = ({
 
   const responseStatus = useSelector(state => state.responses.status)
 
+  const containerRef = useRef()
+
+  useEffect( () => {
+
+  } , [] )
+
   return (
     <>
         {status === "loading" || responseStatus === "pending" ? 
       <MyLoader />
       :
-    <div className="my-ad-one">
+    <div ref={containerRef} className="my-ad-one">
       <Top name={"Мои задания"} setMenuActive={setMenuActive} />
 
 
