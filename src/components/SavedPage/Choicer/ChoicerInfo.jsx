@@ -117,14 +117,12 @@ const ChoicerInfo = forwardRef(
     const [responsesPage , setResponsesPage] = useState(2)
     const [cardPage , setCardPage] = useState(2)
 
-    console.log(allStatus)
 
     const getMore = useCallback(async () => {
-      console.log("Я тут")
+
         if (navigate === "task"){
             dispatch(fetchSavedAdvertisements([advertisementPage]))
             setAdvertisementPage(advertisementPage + 1)
-            console.log("Я тут")
         }
         if (navigate === "response"){
             dispatch(fetchSavedResponses([responsesPage]))
@@ -139,7 +137,7 @@ const ChoicerInfo = forwardRef(
     const onIntersaction = useCallback(
       (entries) => {
         const firtEntry = entries[0];
-        console.log("Я прям тут")
+  
         if (firtEntry.isIntersecting && orderStatus !== "all") {
           getMore();
         }
@@ -151,7 +149,6 @@ const ChoicerInfo = forwardRef(
     useEffect(() => {
       const observer = new IntersectionObserver(onIntersaction);
       if (observer && elementRef.current) {
-        console.log("Хай хай")
         observer.observe(elementRef.current);
       }
       return () => {
@@ -165,8 +162,7 @@ const ChoicerInfo = forwardRef(
 
 
 
-    console.log(arr)
-    console.log(allStatus)
+
     return (
       <>
           <>

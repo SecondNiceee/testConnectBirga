@@ -48,7 +48,6 @@ const Responses = ({
     // eslint-disable-next-line
   }, [responces]);
 
-  console.log(responces)
 
   return (
     <>

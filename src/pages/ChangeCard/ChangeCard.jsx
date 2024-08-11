@@ -37,8 +37,6 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   
   const [cardsSetting, setCardsSetting] = useState(Object.assign({}, card));
 
-  console.log(cardsSetting)
-  console.log(card)
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({
     nameError: false,
@@ -152,14 +150,12 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       myFormData.append("dropFile" , String(localCardSetting.dropfileLink))
       
       let files = sortFiles(cardsSetting.photosNames , cardsSetting.photos)
-      console.warn(files)
       files.addedArr.forEach((e,i) => {
         myFormData.append(`addFiles` , e)
       })
       files.removedArr.forEach( (e, i )  => {
         myFormData.append(`deleteFiles[${i}]` , e)
       })
-      console.log(cardsSetting)
       dispatch(putCard([myFormData, localCardSetting.id, cardsSetting]))
       // localCardSetting.photos.forEach(e => {
       //   myFormData.append('photos' , e)

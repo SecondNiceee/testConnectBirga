@@ -168,6 +168,7 @@ export const setStartTask = createAsyncThunk(
   "information/setStartTask",
   async function (id) {
     try {
+      alert(id)
       let myData = new FormData();
       myData.append("status", "inProcess");
       await axios.put("https://back-birga.ywa.su/advertisement", myData, {

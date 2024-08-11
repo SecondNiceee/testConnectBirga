@@ -186,8 +186,6 @@ const MyAds = ({isPage = false}) => {
     card : {}
   })
 
-  console.log(defaultDate.getTime())
-  console.log(new Date(details.task.time.end).getTime())
 
 
   useEffect( () => {
@@ -349,7 +347,6 @@ const MyAds = ({isPage = false}) => {
 
   window.Telegram.WebApp.disableVerticalSwipes();
 
-  console.log(pagesHistory)
   const startPosition = useMemo( () => {
     if (pagesHistory[pagesHistory.length - 1] === "/AdCreating"){
       return "customer"
@@ -360,8 +357,6 @@ const MyAds = ({isPage = false}) => {
     // eslint-disable-next-line
   } , [pagesHistory] )
   const [nowValue , setNowKey] = useState(startPosition)
-
-  console.log(details.task)
 
   // const sortedArray = useMemo( () => {
   //   let copy = [...myAdsArray]
@@ -430,10 +425,8 @@ const MyAds = ({isPage = false}) => {
 
         responce.photos = photos;
         responce.advertisement = myAdeOneStatus
-        console.log(responce)
         responce.user.cardsNumber = b.data
-        
-        console.log(responce)
+
           let imTwo = await axios.get(
             "https://back-birga.ywa.su/advertisement/findCount",
             {
@@ -498,7 +491,7 @@ const MyAds = ({isPage = false}) => {
           }
         })
         return {
-          id: order.id,
+          id: advertisementId,
           taskName: order.title,
           executionPlace: "Можно выполнить удаленно",
           time: {
@@ -534,7 +527,6 @@ const MyAds = ({isPage = false}) => {
     if (isPage && isPageValueOne){
       if (myAdeOneStatus === null){
         getAdvertisement().then((value) => {
-          console.log(value)
           setMyAdOneStatus(value)})
         return null
       }
@@ -579,7 +571,6 @@ const MyAds = ({isPage = false}) => {
 
 
 
-  console.log(details.task)
 
 
   return (

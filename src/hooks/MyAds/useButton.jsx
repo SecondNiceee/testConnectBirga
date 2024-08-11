@@ -119,7 +119,6 @@ export const useButton = ({
 
       let files = sortFiles(details.task.photosNames ,  details.task.photos)
       
-      console.log(files)
         for (let i = 0; i <  files.removedArr.length; i++){
           myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
         }

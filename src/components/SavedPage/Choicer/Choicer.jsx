@@ -7,13 +7,11 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
   const savedTasks = useSelector((state) => state.saves.tasks);
   const savedResponces = useSelector((state) => state.saves.responces);
   const savedCards = useSelector((state) => state.saves.cards);
-  console.log(savedTasks);
   const containerOne = useRef(null);
   const containerTwo = useRef(null);
   const containerThree = useRef(null);
 
   const pickerRef = useRef(null);
-  console.log(savedTasks);
 
   const [viewsNumber, setViewsNumber] = useState(0);
 
@@ -37,24 +35,6 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
 
       }
     }  , [nowKey, keys, savedTasks, savedResponces, savedCards] )
-
-  useEffect(() => {
-    function one(mutations) {
-      mutations.forEach(function (mutation) {
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "style"
-        ) {
-          console.log("Height changed to ");
-        }
-      });
-    }
-    let observer = new MutationObserver(one);
-    observer.observe(containerOne.current , {attributes : true})
-    return () => {
-        observer.disconnect()
-    }
-  }, []);
 
   const style = useMemo(() => {
     switch (nowKey) {

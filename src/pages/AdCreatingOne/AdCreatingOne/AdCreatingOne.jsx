@@ -80,7 +80,6 @@ const AdCreatingOne = ({
     isEndOpen: false,
   });
 
-  console.log(taskInformation)
   useEffect(() => {
     setState((value) => ({
       ...value,

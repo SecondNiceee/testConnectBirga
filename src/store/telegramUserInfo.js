@@ -171,7 +171,6 @@ export const fetchUserInfo = createAsyncThunk(
                 })
             }
         
-        console.log(user)
         return ( {
             firstName: firstName,
             lastName: lastName,

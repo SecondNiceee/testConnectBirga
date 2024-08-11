@@ -92,7 +92,6 @@ const AboutOne = ({
 
 
   const putStatus = useSelector( state => state.information.putTaskStatus )
-  console.log(putStatus)
   return (
     <>
 

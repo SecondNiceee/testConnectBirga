@@ -370,8 +370,6 @@ const First = ({ isPage = false }) => {
             },
           });
         }
-        console.log(im.data);
-        console.log(par[1].advertisement.id);
 
         await axios.get("https://back-birga.ywa.su/user/sendMessage", {
           params: {

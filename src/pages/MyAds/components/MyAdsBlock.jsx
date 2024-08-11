@@ -10,7 +10,6 @@ const MyAdsBlock = ({  nowValue, setNowKey,  greyWidth , greyIntWidth, setOneVal
   const advertisements = useSelector(state => state.information.myAdsArray)
   const finishedDeals = useMemo( () => {
     let rezult = String((me.deals + me.completedTasks.length) / (advertisements.length + responses.length) * 100 ).slice(0,2) + " %"
-    console.log(rezult)
     return isNaN((me.deals + me.completedTasks.length) / (advertisements.length + responses.length) * 100) ? "0%" : rezult
 
   } , [advertisements,responses, me.completedTasks.length, me.deals] )

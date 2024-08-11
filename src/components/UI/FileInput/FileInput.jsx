@@ -46,7 +46,6 @@ const FileInput = ({
     // eslint-disable-next-line
     [files, images]
   );
-  console.log(clear)
 
   useEffect(() => {
     addFiles(files, clear);
@@ -163,7 +162,6 @@ const FileInput = ({
   } , [images, files] )
 
 
-  console.log(files)
   return (
     <>
       <div
