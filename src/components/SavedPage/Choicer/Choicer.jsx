@@ -8,7 +8,7 @@ const Choicer = ({nowKey , keys, setDetails, setResponce, setCard}) => {
     const savedTasks = useSelector(state => state.saves.tasks)
     const savedResponces = useSelector(state => state.saves.responces)
     const savedCards = useSelector(state => state.saves.cards)
-
+    console.log(savedTasks)
     const containerOne = useRef(null)
     const containerTwo = useRef(null)
     const containerThree = useRef(null)
@@ -38,7 +38,7 @@ const Choicer = ({nowKey , keys, setDetails, setResponce, setCard}) => {
         return () => {
     
         }
-      }  , [nowKey, keys, savedCards, savedResponces , savedTasks, viewsNumber, setViewsNumber] )
+      }  , [nowKey, keys, savedCards, savedResponces ,  ,  savedTasks, viewsNumber, setViewsNumber] )
   
 
     

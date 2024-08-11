@@ -17,7 +17,7 @@ import SavedResponse from "../../components/SavedPage/SavedReponse/SavedResponse
 import SavedProfile from "../../components/SavedPage/SavedProfile/SavedProfile";
 import CardPage from "../CardPage/CardPage";
 import AboutReaction from "../MyAds/components/AboutReaction";
-import { clearAll } from "../../store/saves";
+import { clearAll, fetchSavedAdvertisements, fetchSavedCards, fetchSavedResponses } from "../../store/saves";
 
 const values = ["Заказы", "Отклики", "Кейсы"];
 const keys = ["advertisment", "responces", "cards"];
@@ -85,13 +85,16 @@ const SavedPage = () => {
   );
 
   useEffect(() => {
+    dispatch(fetchSavedAdvertisements([1]))
+    dispatch(fetchSavedCards([1]))
+    dispatch(fetchSavedResponses([1]))
     return () => {
+
       pagesHistory.push("/SavedPage");
       dispatch(clearAll())
-      
+
     };
   }, []);
-
   const savedTasks = useSelector((state) => state.saves.tasks);
 
   const gotIt = useMemo(() => {
@@ -101,12 +104,12 @@ const SavedPage = () => {
       savedTasks[details.id]
     ) {
       if (savedTasks[details.id].responces) {
-        // if (savedTasks[details.id].responces.find(e => e.user.id === "2144832745")){
-        //   return true
-        // }
-        // else{
-        //   return false
-        // }
+        if (savedTasks[details.id].responces.find(e => String(e.user.id) === "window.Telegram.WebApp.initDataUnsafe.user.id")){
+          return true
+        }
+        else{
+          return false
+        }
       }
     }
     return false;
@@ -359,7 +362,7 @@ const SavedPage = () => {
             // setShablon({...shablon , isActive : false})
           }
           if (buttonId === "save") {
-            postResponce(savedTasks[details.id].id, 2144832745);
+            postResponce(savedTasks[details.id].id, window.Telegram.WebApp.initDataUnsafe.user.id);
             setResponce((value) => ({ ...value, isOpen: false }));
             setDetails((value) => ({ ...value, isOpen: false }));
           }

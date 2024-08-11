@@ -16,6 +16,21 @@ const ChoicerInfo = forwardRef(
     const cardStatus = useSelector((state) => state.saves.cardsStatus);
     const responsesStatus = useSelector((state) => state.saves.reponsesStatus);
 
+
+    
+    const allStatus = useMemo( () => {
+      switch (navigate){
+          case "task":
+              return orderStatus
+          case "response":
+              return responsesStatus
+          case "card":
+              return cardStatus
+      }
+  } , [navigate , orderStatus , responsesStatus, cardStatus] )
+
+
+
     const isReady = useMemo(() => {
       if (navigate === "task") {
         return orderStatus === "complete";
@@ -98,14 +113,18 @@ const ChoicerInfo = forwardRef(
     const elementRef = useRef(null)
     const dispatch = useDispatch()
 
-    const [advertisementPage , setAdvertisementPage ] = useState(1)
-    const [responsesPage , setResponsesPage] = useState(1)
-    const [cardPage , setCardPage] = useState(1)
+    const [advertisementPage , setAdvertisementPage ] = useState(2)
+    const [responsesPage , setResponsesPage] = useState(2)
+    const [cardPage , setCardPage] = useState(2)
+
+    console.log(allStatus)
 
     const getMore = useCallback(async () => {
+      console.log("Я тут")
         if (navigate === "task"){
             dispatch(fetchSavedAdvertisements([advertisementPage]))
             setAdvertisementPage(advertisementPage + 1)
+            console.log("Я тут")
         }
         if (navigate === "response"){
             dispatch(fetchSavedResponses([responsesPage]))
@@ -120,18 +139,19 @@ const ChoicerInfo = forwardRef(
     const onIntersaction = useCallback(
       (entries) => {
         const firtEntry = entries[0];
-
+        console.log("Я прям тут")
         if (firtEntry.isIntersecting && orderStatus !== "all") {
           getMore();
         }
       },
-      [orderStatus, getMore]
+      [allStatus, getMore]
     );
 
 
     useEffect(() => {
       const observer = new IntersectionObserver(onIntersaction);
       if (observer && elementRef.current) {
+        console.log("Хай хай")
         observer.observe(elementRef.current);
       }
       return () => {
@@ -144,18 +164,9 @@ const ChoicerInfo = forwardRef(
 
 
 
-    const allStatus = useMemo( () => {
-        switch (navigate){
-            case "task":
-                return orderStatus
-            case "response":
-                return responsesStatus
-            case "card":
-                return cardStatus
-        }
-    } , [navigate , orderStatus , responsesStatus, cardStatus] )
 
     console.log(arr)
+    console.log(allStatus)
     return (
       <>
           <>
@@ -183,7 +194,7 @@ const ChoicerInfo = forwardRef(
               className={cl.blocksWrapper}
             >
               {array}
-              {allStatus !== "all" &&  <MyLoader ref={elementRef}  style = {{ height : "90px" , marginLeft : "-16px" , height : "80vh"}} />}
+              {allStatus == "all" ? <></>  :  <MyLoader ref={elementRef}  style = {{ height : "90px" , marginLeft : "-16px" , height : "80vh"}} />}
             </div>
           </>
 
@@ -192,4 +203,4 @@ const ChoicerInfo = forwardRef(
   }
 );
 
-export default memo(ChoicerInfo);
+export default ChoicerInfo;

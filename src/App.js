@@ -199,7 +199,7 @@ function App() {
     dispatch(getCategorys());
     dispatch(getSubCategorys());
     dispatch(fetchAllShablons());
-    // dispatch(fetchAllIds())
+    dispatch(fetchAllIds())
     // dispatch(fetchAllValues());
   }, [dispatch]);
 

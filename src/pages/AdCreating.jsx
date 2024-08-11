@@ -188,8 +188,8 @@ const AdCreating = () => {
   }
   async function post(el) {
     let myFormData = new FormData();
-    // myFormData.append("userId", 2144832745 );
-     myFormData.append("userId", String(2144832745)  );
+    // myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id );
+     myFormData.append("userId", String(window.Telegram.WebApp.initDataUnsafe.user.id)  );
     myFormData.append("title", String(el.taskName.trim()));
     myFormData.append("description", String(el.taskDescription));
     myFormData.append("deadline", "1");
@@ -212,7 +212,7 @@ const AdCreating = () => {
         myFormData.append("photos", file);
       }
     }
-
+    window.Telegram.WebApp.HapticFeedback.notificationOccurred("success")
     dispatch(postMyTask([myFormData, el.photos]));
     // for (let i = 0 ; i < 1; i++){
     //   try{
