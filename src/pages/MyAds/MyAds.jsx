@@ -290,36 +290,7 @@ const MyAds = ({isPage = false}) => {
   } , [] )
 
 
-  useButton({
-    myAdOneResponse : myAdOneResponse,
-    myAdOneAdvertisement : myAdOneAdvertisement,
-    setPageValueOne : setPageValueOne,
-    setPageValueTwo : setPageValueTwo,
-    setDetails : setDetails,
-    checkMistakes : checkMistakes,
-    setMyResponse : setMyResponse,
-    myResponse : myResponse,
-    setDetailsTwo : setDetailsTwo,
-    detailsTwo : detailsTwo, 
-    oneCards : oneCards,
-    localDetails : localDetails,
-    localAboutReaction : localAboutReaction,
-    localIsOpen : localIsOpen,
-    setOpen : setOpen,
-    setSecondPage : setSecondPage,
-    navigate : navigate,
-    setOpenAboutReaction : setOpenAboutReaction,
-    openAboutReaction : openAboutReaction,
-    isOpen : isOpen,
-    details : details,
-    secondPage : secondPage,
-    localSecondPage : localSecondPage,
-    setDetails : setDetails,
-    save : save,
-    setOneCard : setOneCard,
-    lastAdsTwo : lastAdsTwo,
-    setLastAdsTwo : setLastAdsTwo
-  })
+
 
 
   function setDetailsActive(value) {
@@ -570,6 +541,38 @@ const MyAds = ({isPage = false}) => {
 
 
   const postStatus = useSelector( state => state.information.postTaskStatus )
+
+
+  useButton({
+    myAdOneResponse : myAdOneResponse,
+    myAdOneAdvertisement : myAdOneAdvertisement,
+    setPageValueOne : setPageValueOne,
+    setPageValueTwo : setPageValueTwo,
+    setDetails : setDetails,
+    checkMistakes : checkMistakes,
+    setMyResponse : setMyResponse,
+    myResponse : myResponse,
+    setDetailsTwo : setDetailsTwo,
+    detailsTwo : detailsTwo, 
+    oneCards : oneCards,
+    localDetails : localDetails,
+    localAboutReaction : localAboutReaction,
+    localIsOpen : localIsOpen,
+    setOpen : setOpen,
+    setSecondPage : setSecondPage,
+    navigate : navigate,
+    setOpenAboutReaction : setOpenAboutReaction,
+    openAboutReaction : openAboutReaction,
+    isOpen : isOpen,
+    details : details,
+    secondPage : secondPage,
+    localSecondPage : localSecondPage,
+    setDetails : setDetails,
+    save : save,
+    setOneCard : setOneCard,
+    lastAdsTwo : lastAdsTwo,
+    setLastAdsTwo : setLastAdsTwo
+  })
 
 
 
