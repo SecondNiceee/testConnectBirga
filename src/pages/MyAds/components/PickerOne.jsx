@@ -45,10 +45,8 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowVal
 
     useEffect( () => {
         if (nowValue === "freelancer"){
+            dispatch(clearResponses())
           dispatch(fetchResponses([me, 1]))
-        }
-        else{
-          dispatch(clearResponses())
         }
     
       } , [nowValue] )
