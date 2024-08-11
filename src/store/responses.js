@@ -91,12 +91,9 @@ export const setStartResponse = createAsyncThunk(
                 params: {
                   chatId: responce.user.id,
                   text:
-                    "📣 Да-да прошло, ха-ха «"
-                //   buttonUrl:
-                //     "https://birga.ywa.su/ResponsePage?advertisemet=" +
-                //     String(par[1].advertisement.id) +
-                //     "&response=" +
-                //     String(im.data.id),
+                    `📣✅ Вы были выбраны исполнителем на задание «<b>${advertisement.taskName}</b>` ,
+                  buttonUrl:
+                    "https://birga.ywa.su/MyAds?open=1" 
                 },
               });
 

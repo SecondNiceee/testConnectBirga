@@ -46,6 +46,7 @@ let detailsVar;
 let url = new URL(window.location.href);
 let advertisementId = url.searchParams.get("advertisemet")
 let responseId = url.searchParams.get("response")
+let open = url.searchParams.get("open")
 
 
 const defaultDate = new Date(0)
@@ -321,11 +322,16 @@ const MyAds = ({isPage = false}) => {
   window.Telegram.WebApp.disableVerticalSwipes();
 
   const startPosition = useMemo( () => {
-    if (pagesHistory[pagesHistory.length - 1] === "/AdCreating"){
-      return "customer"
+    if (open === 1){
+      return "freelancer"
     }
     else{
-      return myAdsArray.length < responsesArr.length ? "freelancer" :'customer'
+      if (pagesHistory[pagesHistory.length - 1] === "/AdCreating"){
+        return "customer"
+      }
+      else{
+        return myAdsArray.length < responsesArr.length ? "freelancer" :'customer'
+      }
     }
     // eslint-disable-next-line
   } , [pagesHistory] )
