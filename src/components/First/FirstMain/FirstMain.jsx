@@ -48,7 +48,7 @@ const FirstMain = (
 
     return (
       <div  className="FirstMain">
-        {ordersInformation.length === 0 ? (
+        {ordersInformation.length === 0 && orderStatus === "all" ? (
           <h1 className="EmptyText"> Нет таких предложений </h1>
         ) : (
           ordersInformation.map((e, i) => {

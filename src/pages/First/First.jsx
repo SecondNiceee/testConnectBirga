@@ -131,7 +131,7 @@ const First = ({ isPage = false }) => {
 
   //     if (secFilteredArray[isDetailsActive.id].responces){
   //       if (secFilteredArray[isDetailsActive.id].responces.find((e) =>
-  //         Number(e.user.id) === 2144832745))
+  //         Number(e.user.id) === window.Telegram.WebApp.initDataUnsafe.user.id))
 
   //       {
   //         return true
@@ -446,7 +446,7 @@ const First = ({ isPage = false }) => {
             );
             postResponce(
               ordersInformation[isDetailsActive.id].id,
-              2144832745
+              window.Telegram.WebApp.initDataUnsafe.user.id
             );
             // mainRef.current.classList.remove('secondStep')
             setDetailsActive((value) => ({ ...value, isOpen: false }));
@@ -496,9 +496,9 @@ const First = ({ isPage = false }) => {
   //   }
   // } , [] )
 
-  // 2144832745
+  // window.Telegram.WebApp.initDataUnsafe.user.id
 
-  // 2144832745
+  // window.Telegram.WebApp.initDataUnsafe.user.id
 
   useEffect(() => {
     MainButton.onClick(forwardFunction);

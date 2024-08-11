@@ -40,11 +40,11 @@ let localDetails;
 let detailsVar;
 
 
-// const advertisementId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[0]
-// const responseId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[1]
+const advertisementId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[0]
+const responseId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[1]
 
-let advertisementId = 1
-let responseId = 1
+// let advertisementId = 1
+// let responseId = 1
 
 const defaultDate = new Date(0)
 
