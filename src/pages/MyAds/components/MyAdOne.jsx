@@ -73,7 +73,7 @@ const MyAdOne = ({
 
   return (
     <>
-        {status === "loading" || responseStatus === "pending" ? 
+        {status === "loading"  ? 
       <MyLoader />
       :
     <div ref={containerRef} className="my-ad-one">
