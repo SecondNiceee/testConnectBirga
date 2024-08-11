@@ -55,8 +55,6 @@ const defaultDate = new Date(0)
 
 const MyAds = ({isPage = false}) => {
 
-  alert(advertisementId)
-  alert(responseId)
   const [isPageValueOne , setPageValueOne] = useState(true)
   const [isPageValueTwo , setPageValueTwo] = useState(true)
   
