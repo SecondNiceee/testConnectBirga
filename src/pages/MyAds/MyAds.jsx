@@ -313,14 +313,15 @@ const MyAds = ({isPage = false}) => {
 
   
 
-
+  alert(open)
 
   const setChangingTask = useCallback( (e) => {
     setDetails( (value) =>  ({...value , task : e}))
   }, [setDetails] ) 
 
   window.Telegram.WebApp.disableVerticalSwipes();
-  alert(open)
+
+
   const startPosition = useMemo( () => {
     if (open === "1"){
       return "freelancer"
