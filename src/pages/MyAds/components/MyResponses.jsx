@@ -4,7 +4,7 @@ import React, { forwardRef, useCallback, useEffect, useRef, useState } from "rea
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ResponseSuspense from "./ResponseSuspense";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchResponses } from "../../../store/responses";
+import { clearResponses, fetchResponses } from "../../../store/responses";
 const MyResponses = forwardRef( ({responsesArr, buttonFunction,  viewsNumber, setViewsNumber, nowValue } , ref) => {
 
 
@@ -29,8 +29,16 @@ const MyResponses = forwardRef( ({responsesArr, buttonFunction,  viewsNumber, se
     },
     [orderStatus, getMore]
   );
+  
+  useEffect( () => {
+    if (nowValue === "freelancer"){
+      dispatch(fetchResponses([me, 1]))
+    }
+    else{
+      dispatch(clearResponses())
+    }
 
-  console.log(nowValue)
+  } , [nowValue] )
 
   // useEffect( () => {
   //   if (nowValue === "cus")
