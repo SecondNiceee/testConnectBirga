@@ -362,6 +362,10 @@ const information = createSlice({
     myPaginationArray: [],
   },
   reducers: {
+    clearMyOrders(state,action){
+      state.myAdsArray = []
+      state.myOrderStatus = null
+    },
     getMoreMyAds(state, action) {
       for (let i = action.payload * 6; i < action.payload * 6 + 6; i++) {
         if (state.myAdsArray[i]) {
@@ -501,6 +505,7 @@ const information = createSlice({
   },
 });
 export const {
+  clearMyOrders,
   changeTaskInformation,
   changeMyAds,
   addMyAds,

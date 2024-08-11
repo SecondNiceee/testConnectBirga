@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchMyOrders, putMyTask, setStartTask } from "../../store/information";
+import { clearMyOrders, fetchMyOrders, putMyTask, setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 import sortFiles from "../../functions/sortFiles";
 
@@ -67,6 +67,7 @@ export const useButton = ({
               },
               (buttonId) => {
                 if (buttonId === "save") {
+                  dispatch(clearMyOrders())
                   dispatch(setStartTask(myAdOneAdvertisement.id));
                   dispatch(setStartResponse(myAdOneResponse.id));
                   setOpen({ ...isOpen, isActive: false });
