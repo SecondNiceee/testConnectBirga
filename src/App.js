@@ -202,14 +202,14 @@ function App() {
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
-  console.log("Привет")
 
 
-  useEffect(() => {
-    if (me.id !== "" && me) {
-      dispatch(fetchResponses([me, 1]));
-    }
-  }, [dispatch, me]);
+
+  // useEffect(() => {
+  //   if (me.id !== "" && me) {
+  //     dispatch(fetchResponses([me, 1]));
+  //   }
+  // }, [dispatch, me]);
 
   const _ = require("lodash");
   const a = { people: { x: 2 } };
