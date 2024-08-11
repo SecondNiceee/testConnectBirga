@@ -1,74 +1,90 @@
-
-import React, { forwardRef, useCallback, useEffect, useRef, useState } from "react";
+import React, {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ResponseSuspense from "./ResponseSuspense";
 import { useDispatch, useSelector } from "react-redux";
 import { clearResponses, fetchResponses } from "../../../store/responses";
-const MyResponses = forwardRef( ({responsesArr, buttonFunction,  viewsNumber, setViewsNumber, nowValue } , ref) => {
+import MyAnimation from "./MyAnimation";
+const MyResponses = forwardRef(
+  (
+    { responsesArr, buttonFunction, viewsNumber, setViewsNumber, nowValue , text },
+    ref
+  ) => {
+    const [page, setPage] = useState(2);
+    const orderStatus = useSelector((state) => state.responses.status);
+    const elementRef = useRef(null);
+    const dispatch = useDispatch();
+    const me = useSelector((state) => state.telegramUserInfo);
 
+    const getMore = useCallback(async () => {
+      dispatch(fetchResponses([me, page]));
+      setPage(page + 1);
+    }, [page, setPage, dispatch, me]);
 
+    const onIntersaction = useCallback(
+      (entries) => {
+        const firtEntry = entries[0];
 
-  const [page , setPage] = useState(2)
-  const orderStatus = useSelector(state => state.responses.status)
-  const elementRef = useRef(null)
-  const dispatch = useDispatch()
-  const me = useSelector(state => state.telegramUserInfo)
+        if (firtEntry.isIntersecting && orderStatus !== "all") {
+          getMore();
+        }
+      },
+      [orderStatus, getMore]
+    );
 
-  const getMore = useCallback(async () => {
-    dispatch(fetchResponses([me,page]));
-    setPage(page + 1);
-  }, [page, setPage, dispatch, me]);
+    // useEffect( () => {
+    //   if (nowValue === "cus")
+    // } , [nowValue] )
 
-  const onIntersaction = useCallback(
-    (entries) => {
-      const firtEntry = entries[0];
-
-      if (firtEntry.isIntersecting && orderStatus !== "all") {
-        getMore();
+    useEffect(() => {
+      const observer = new IntersectionObserver(onIntersaction);
+      if (observer && elementRef.current) {
+        observer.observe(elementRef.current);
       }
-    },
-    [orderStatus, getMore]
-  );
-  
+      return () => {
+        observer.disconnect();
+      };
+      // eslint-disable-next-line
+    }, [responsesArr]);
 
+    return (
+      <div className="AdsContainer">
+        {responsesArr.length === 0 ? (
+          <MyAnimation text={text} />
+        ) : (
+          <>
+            {responsesArr.map((e, i) => {
+              return (
+                <ResponseSuspense
+                  viewsNumber={viewsNumber}
+                  setViewsNumber={setViewsNumber}
+                  func={buttonFunction}
+                  index={i}
+                  buttonText={"МОЙ ОТКЛИК"}
+                  task={e}
+                  isWatched={e.isWatched}
+                  advertisement={e.advertisement}
+                />
+              );
+            })}
+          </>
+        )}
 
-  // useEffect( () => {
-  //   if (nowValue === "cus")
-  // } , [nowValue] )
-
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(onIntersaction);
-    if (observer && elementRef.current) {
-      observer.observe(elementRef.current);
-    }
-    return () => {
-      observer.disconnect();
-    };
-    // eslint-disable-next-line
-  }, [responsesArr]);
-
-  return (
-    <div className="AdsContainer">
-      {responsesArr.map((e, i) => {
-        return (
-          <ResponseSuspense
-            viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber}
-            func={buttonFunction}
-            index={i}
-            buttonText={"МОЙ ОТКЛИК"}
-            task={e}
-            isWatched={e.isWatched}
-            advertisement={e.advertisement}
+        {orderStatus !== "all" && (
+          <MyLoader
+            ref={elementRef}
+            style={{ height: "90px", marginLeft: "-16px" }}
           />
-        );
-      })}
-
-      {orderStatus !== "all" &&  <MyLoader ref={elementRef}  style = {{ height : "90px" , marginLeft : "-16px"}} />}
-      
-    </div>
-  );
-} );
+        )}
+      </div>
+    );
+  }
+);
 
 export default MyResponses;

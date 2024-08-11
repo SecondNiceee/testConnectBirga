@@ -57,11 +57,11 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowVal
         <div ref={ref} style={{
             alignSelf : "flex-start"
         }} className="picker__block">
-            {responsesArr.length === 0 && (responsesStatus !== "pending" || responsesStatus !== null) ? 
+            {(responsesStatus === "complete" || responsesStatus === "all") ? 
             
-                <MyAnimation text={text}/> 
+            <MyResponses text = {text} nowValue = {nowValue}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
             :
-                <MyResponses nowValue = {nowValue}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
+            <MyLoader style = {{height : "60vh" , transforn : "translateX(-8px)"}}/> 
              }
              <div ref={interRef} className="intersection-block">
 
