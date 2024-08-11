@@ -457,6 +457,7 @@ const SavedPage = () => {
       <CSSTransition
         in={responce.isOpen}
         timeout={400}
+        style = {{position : "fixed"}}
         classNames={"left-right"}
         unmountOnExit
         mountOnEnter
