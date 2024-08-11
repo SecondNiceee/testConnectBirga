@@ -11,7 +11,8 @@ export const useButton = ({
   setSecondPage,
   navigate,
   setOpenAboutReaction,
-
+  myAdOneResponse,
+  myAdOneAdvertisement,
   openAboutReaction,
   isOpen,
   setDetails,
@@ -66,8 +67,8 @@ export const useButton = ({
               },
               (buttonId) => {
                 if (buttonId === "save") {
-                  dispatch(setStartTask(secondPage.task.id));
-                  dispatch(setStartResponse(isOpen.responce.id));
+                  dispatch(setStartTask(myAdOneAdvertisement.id));
+                  dispatch(setStartResponse(myAdOneResponse.id));
                   setOpen({ ...isOpen, isActive: false });
                   setSecondPage({ ...secondPage, isActive: false });
                 }

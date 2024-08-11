@@ -291,6 +291,8 @@ const MyAds = ({isPage = false}) => {
 
 
   useButton({
+    myAdOneResponse : myAdOneResponse,
+    myAdOneAdvertisement : myAdOneAdvertisement,
     setPageValueOne : setPageValueOne,
     setPageValueTwo : setPageValueTwo,
     setDetails : setDetails,
