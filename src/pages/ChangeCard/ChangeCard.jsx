@@ -282,7 +282,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
           setCardsSetting({ ...localCardSetting, description: e });
         }}
         setPhotos={(e) => {
-          setCardsSetting({ ...localCardSetting, photos: e });
+          setCardsSetting( (value) => ({ ...value, photos: e }));
         }}
         photos={cardsSetting.photos}
         MyInformation={false}

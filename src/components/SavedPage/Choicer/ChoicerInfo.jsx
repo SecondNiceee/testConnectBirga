@@ -190,11 +190,11 @@ const ChoicerInfo = forwardRef(
 
             <div
             ref={ref}
-              style={(allStatus == "all" && arr.length === 0)  ? { display: "none" } : { }}
+              style={(allStatus === "all" && arr.length === 0)  ? { display: "none" } : { }}
               className={cl.blocksWrapper}
             >
               {array}
-              {allStatus == "all" ? <></>  :  <MyLoader ref={elementRef}  style = {{ height : "90px" , marginLeft : "-16px" , height : "80vh"}} />}
+              {allStatus === "all" ? <></>  :  <MyLoader ref={elementRef}  style = {{ height : "90px" , marginLeft : "-16px" , height : "80vh"}} />}
             </div>
           </>
 

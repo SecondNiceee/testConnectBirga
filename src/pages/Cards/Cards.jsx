@@ -269,7 +269,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
           setCardsSetting({ ...cardsSetting, description: e });
         }}
         setPhotos={(e) => {
-          setCardsSetting({ ...cardsSetting, photos: e });
+          setCardsSetting( (value) =>  ({ ...value, photos: e }));
         }}
         photos={cardsSetting.photos}
         MyInformation={false}

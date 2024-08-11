@@ -189,7 +189,6 @@ function App() {
   window.Telegram.WebApp.expand();
   const me = useSelector((state) => state.telegramUserInfo);
 
-
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());

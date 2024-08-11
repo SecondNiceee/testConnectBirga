@@ -86,7 +86,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
                       setResponce({ ...responce, text: e });
                     }}
                     setPhotos={(e) => {
-                      setResponce({ ...responce, photos: e });
+                      setResponce( (value) =>  ({ ...value, photos: e }));
                     }}
                   />
           }

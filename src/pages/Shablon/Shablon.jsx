@@ -18,7 +18,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
   useEffect( () => {
     function forward(){
       let myFormData = new FormData()
-      // myFormData.append("userId" ,  window.Telegram.WebApp.initDataUnsafe.user.id )
+      // myFormData.append("userId" ,  2144832745 )
       myFormData.append("name" , String(localShablon.name) )
       myFormData.append("text" , String(localShablon.text))
       if (put){
@@ -121,7 +121,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
         }}
         photos={shablon.photos}
         setPhotos={(e) => {
-          setShablon({ ...shablon, photos: e });
+          setShablon( (value) =>  ({ ...value, photos: e }));
         }}
         textTitle={"ТЕКСТ ОТКЛИКА"}
         filesTitle={""}
