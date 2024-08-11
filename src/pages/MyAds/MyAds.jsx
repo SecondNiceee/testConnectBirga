@@ -313,7 +313,6 @@ const MyAds = ({isPage = false}) => {
 
   
 
-  alert(open)
 
   const setChangingTask = useCallback( (e) => {
     setDetails( (value) =>  ({...value , task : e}))
@@ -590,7 +589,7 @@ const MyAds = ({isPage = false}) => {
 
   return (
     <>
-      {myAdsArray[0] === null || postStatus === "pending" ? (
+      { postStatus === "pending" ? (
         <MyLoader />
       ) : (
         <motion.div

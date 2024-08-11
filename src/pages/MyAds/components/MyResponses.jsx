@@ -5,7 +5,7 @@ import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ResponseSuspense from "./ResponseSuspense";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchResponses } from "../../../store/responses";
-const MyResponses = forwardRef( ({responsesArr, buttonFunction,  viewsNumber, setViewsNumber } , ref) => {
+const MyResponses = forwardRef( ({responsesArr, buttonFunction,  viewsNumber, setViewsNumber, nowValue } , ref) => {
 
 
   const me = useSelector(state => state.telegramUserInfo)
@@ -29,6 +29,12 @@ const MyResponses = forwardRef( ({responsesArr, buttonFunction,  viewsNumber, se
     },
     [orderStatus, getMore]
   );
+
+  console.log(nowValue)
+
+  // useEffect( () => {
+  //   if (nowValue === "cus")
+  // } , [nowValue] )
 
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 import {  useSelector } from 'react-redux';
 
 
-const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  viewsNumber, setViewsNumber } , ref) => {
+const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowValue, viewsNumber, setViewsNumber } , ref) => {
 
 
 
@@ -40,10 +40,6 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  viewsN
 
     return (
 
-        <>
-        {responsesStatus === "pending" && responsesArr.length === 0 ? 
-        <MyLoader />
-        :
 
         <div ref={ref} style={{
             alignSelf : "flex-start"
@@ -52,14 +48,13 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  viewsN
             
                 <MyAnimation text={text}/> 
             :
-                <MyResponses  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
+                <MyResponses nowValue = {nowValue}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
              }
              <div ref={interRef} className="intersection-block">
 
              </div>
       </div>
-        }
-        </>
+
     );
 } );
 
