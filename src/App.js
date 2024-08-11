@@ -202,6 +202,8 @@ function App() {
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
+  console.log("Привет")
+
 
   useEffect(() => {
     if (me.id !== "" && me) {
