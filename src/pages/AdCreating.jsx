@@ -526,8 +526,15 @@ const AdCreating = () => {
 
 
     return () => {
-      MainButton.hide();
+
+      menu.style.opacity = "0"
+      menu.style.transform = "translateY(100%)"
       menu.style.paddingBottom = "27px"
+      setTimeout( () => {
+        menu.style.transform = "translateY(0%)"
+        menu.style.opacity = "1"
+      } , 400 )
+      MainButton.hide();
     };
   }, []);
 
