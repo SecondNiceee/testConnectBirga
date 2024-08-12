@@ -30,7 +30,7 @@ export const addCard = createAsyncThunk(
                 "userId" : 2144832745,
                 "cardId" : par[0]
             })
-            return par[1]
+            return par[0]
         }
         catch(e){
             console.log(e)
@@ -85,7 +85,7 @@ export const addResponce = createAsyncThunk(
             // rez.user = responseUser.data
             // rez.createNumber = crateNumber.data
             // rez.advertisement.user = advertisementUser.data
-            return rez
+            return par[0]
         }
         catch(e){
             console.log(e)
@@ -133,7 +133,7 @@ export const addAdvertisment = createAsyncThunk(
             })
             const rez = {...par[1] , user : advertisementUser.data, createNumber : advertisementCrateNumber.data }
 
-            return rez
+            return par[0]
             
         }
         catch(e){
@@ -696,25 +696,27 @@ const saves = createSlice({
 
         }))
         builder.addCase(deleteCard.fulfilled, ((state, action) => {
-            // state.cards = state.cards.filter((e,i) => {
-            //     return e.id !== action.payload
-            // })
+            state.cards = state.cards.filter((e,i) => {
+                return e.id !== action.payload
+            })
         }))
         builder.addCase(addCard.fulfilled , ((state, action) => {
+            state.cardIds.push({id : action.payload})
             // state.cards.push(action.payload)
         }))
         builder.addCase(deleteResponce.fulfilled, ((state, action) => {
-            // state.responces = state.responces.filter( (e, i) => {
-            //     return e.id !== action.payload
-            // } )
+            state.responces = state.responces.filter( (e, i) => {
+                return e.id !== action.payload
+            } )
         }))
         builder.addCase(addResponce.fulfilled , ((state, action) => {
+            state.responsesIds.push({id : action.payload})
             // state.responces.push(action.payload)
         }))
         builder.addCase(deleteAdvertisement.fulfilled, ((state , action) => {
-            // state.tasks = state.tasks.filter((e , i) => {
-            //     return e.id !== action.payload
-            // })
+            state.tasks = state.tasks.filter((e , i) => {
+                return e.id !== action.payload
+            })
         }))
         builder.addCase(fetchAllValues.fulfilled, ( (state, action) => {
             // state.tasks = action.payload[0]
@@ -722,6 +724,7 @@ const saves = createSlice({
             // state.cards = action.payload[2]
         } ))
         builder.addCase(addAdvertisment.fulfilled, ( (state ,action) => {
+            state.advertisementIds.push({id :action.payload})
             // state.tasks.push(action.payload)
         } ))
     }
@@ -729,4 +732,4 @@ const saves = createSlice({
 }
 )
 export default saves.reducer
-export const {clearAll} = saves.actions
+export const {clearAll} = saves.actions 

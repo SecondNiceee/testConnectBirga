@@ -7,6 +7,9 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
   const savedTasks = useSelector((state) => state.saves.tasks);
   const savedResponces = useSelector((state) => state.saves.responces);
   const savedCards = useSelector((state) => state.saves.cards);
+  const tasksStatus = useSelector( (state) => state.saves.advertisementStatus )
+  const cardsStatus = useSelector( (state) => state.saves.cardsStatus )
+  const responsesStatus = useSelector( (state) => state.saves.reponsesStatus )
   const containerOne = useRef(null);
   const containerTwo = useRef(null);
   const containerThree = useRef(null);
@@ -36,7 +39,7 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
       return () => {
 
       }
-    }  , [nowKey, keys, savedTasks, savedResponces, savedCards] )
+    }  , [nowKey, keys, savedTasks, savedResponces, savedCards, tasksStatus ,cardsStatus , responsesStatus ] )
 
   const style = useMemo(() => {
     switch (nowKey) {

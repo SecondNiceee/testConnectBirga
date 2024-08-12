@@ -205,6 +205,7 @@ function App() {
   }, [dispatch]);
 
     useEffect( () => {
+      console.log("Это рендер App")
       const menu = document.documentElement.querySelector(".FirstMenu")
       if (MainButton.isVisible){
         console.log(menu)
