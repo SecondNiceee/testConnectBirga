@@ -515,16 +515,19 @@ const AdCreating = () => {
   useEffect(() => {
 
     if (!MainButton.isVisible){
-
-      mainRef.current.style.height = "100vh"
-      menu.style.opacity = "0"
-      menu.style.transform = "translateY(100%)"
+      menu.style.display = "none"
+      // mainRef.current.style.height = "100vh"
+      menu.style.transform = "translateY(130%)"
       menu.style.paddingBottom = "3px"
-  
+      
+
+      setTimeout( () => {
+        menu.style.display = "flex"
+      } , 300 )
   
       setTimeout( () => {
-        menu.style.transform = "translateY(0%)"
         menu.style.opacity = "1"
+        menu.style.transform = "translateY(0%)"
       } , 450 )
       setTimeout( () => {
         mainRef.current.style.height = "calc(100vh - 80px)"
@@ -533,6 +536,7 @@ const AdCreating = () => {
   
       MainButton.show();
     }
+    BackButton.show()
     MainButton.setText("ДАЛЕЕ");
 
 
