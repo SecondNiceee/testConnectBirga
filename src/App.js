@@ -22,6 +22,7 @@ import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
 import { fetchResponses } from "./store/responses";
 import { fetchAllIds } from "./store/saves";
+import MainButton from "./constants/MainButton";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -201,6 +202,15 @@ function App() {
     dispatch(fetchAllIds())
     // dispatch(fetchAllValues());
   }, [dispatch]);
+
+
+    useEffect( () => {
+      const menu = document.documentElement.querySelector(".FirstMenu")
+      if (MainButton.isVisible){
+        console.log(menu)
+        menu.style.paddingBottom = "3px"
+      }
+    } )
 
 
 

@@ -16,21 +16,23 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
   const [viewsNumber, setViewsNumber] = useState(0);
 
   useEffect( () => {
-      if (pickerRef.current && containerOne.current && containerTwo.current && containerThree.current){
-          if (nowKey === keys[0]){
-              pickerRef.current.style.overflowY = "hidden"
-              pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight + 20) + "px"
-          }
-          if (nowKey === keys[1]){
-              pickerRef.current.style.overflowY = "hidden"
-              pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight + 20) + "px"
-          }
-          if (nowKey === keys[2]){
-              pickerRef.current.style.overflowY = "hidden"
-              pickerRef.current.style.minHeight = String(containerThree.current.offsetHeight + 20) + "px"
-          }
+    if (nowKey === keys[0]){
+      if (pickerRef.current && containerOne.current){
+        pickerRef.current.style.overflowY = "hidden"
+        pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight) + "px"
       }
-
+        }
+    if (nowKey === keys[1]){
+      if (pickerRef.current && containerTwo.current ){
+        pickerRef.current.style.overflowY = "hidden"
+        pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight) + "px"}
+    }
+    if (nowKey === keys[2]){
+      if (pickerRef.current && containerThree.current){
+        pickerRef.current.style.overflowY = "hidden"
+        pickerRef.current.style.minHeight = String(containerThree.current.offsetHeight) + "px"
+      }
+    }
       return () => {
 
       }
@@ -56,6 +58,8 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
         };
     }
   }, [keys, nowKey]);
+
+  
   return (
     <div ref={pickerRef} style={style} className={cl.main}>
       <ChoicerInfo
