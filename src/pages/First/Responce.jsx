@@ -11,6 +11,7 @@ let myResponse = {
   text : "",
   photos : ""
 }
+const menu = document.documentElement.querySelector(".FirstMenu")
 const Responce = forwardRef(({ orderInformation, responce, setResponce , left = "100%" , ...props   } , ref) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
 
@@ -25,6 +26,37 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
       MainButton.offClick(func)
     }
   } , [clearPhoto , setClearPhoto] )
+
+
+  if (MainButton.isVisible){
+    menu.style.paddingBottom = "3px"
+  }
+  else{
+    menu.style.paddingBottom = "27px"
+  }
+  useEffect( () => {
+    console.log("Это рендер AdCreating")
+    
+    const input = document.querySelectorAll('input[type="text"]');
+    const textarea  = document.querySelectorAll('textarea');
+    for (let smallInput of input){
+      smallInput.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallInput.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+    for (let smallTextarea of textarea){
+      smallTextarea.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallTextarea.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+  } , [] )
+
 
 
   return (

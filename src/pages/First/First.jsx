@@ -35,7 +35,20 @@ let isDetailsActiveVar = false;
 let pageValue = true;
 let localResponce;
 let localStep;
+
+const menu = document.documentElement.querySelector(".FirstMenu")
+
+
 const First = ({ isPage = false }) => {
+
+  if (MainButton.isVisible){
+    menu.style.paddingBottom = "3px"
+  }
+  else{
+    menu.style.paddingBottom = "27px"
+  }
+
+  
   const [step, setStep] = useState(0);
   localStep = step;
 
@@ -603,6 +616,28 @@ const First = ({ isPage = false }) => {
       }
     }
   }, [step, isDetailsActive.isOpen]);
+
+  useEffect( () => {
+    
+    const input = document.querySelectorAll('input[type="text"]');
+    const textarea  = document.querySelectorAll('textarea');
+    for (let smallInput of input){
+      smallInput.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallInput.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+    for (let smallTextarea of textarea){
+      smallTextarea.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallTextarea.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+  } , [] )
 
   return (
     <div style={firsStyle} className="first-container">

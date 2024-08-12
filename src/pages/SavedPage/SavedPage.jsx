@@ -20,8 +20,37 @@ import { clearAll, fetchSavedAdvertisements, fetchSavedCards, fetchSavedResponse
 
 const values = ["Заказы", "Отклики", "Кейсы"];
 const keys = ["advertisment", "responces", "cards"];
-const SavedPage = () => {
 
+const menu = document.documentElement.querySelector(".FirstMenu")
+const SavedPage = () => {
+  if (MainButton.isVisible){
+    menu.style.paddingBottom = "3px"
+  }
+  else{
+    menu.style.paddingBottom = "27px"
+  }
+
+  useEffect( () => {
+    
+    const input = document.querySelectorAll('input[type="text"]');
+    const textarea  = document.querySelectorAll('textarea');
+    for (let smallInput of input){
+      smallInput.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallInput.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+    for (let smallTextarea of textarea){
+      smallTextarea.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallTextarea.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+  } , [] )
 
 
   const [card, setCard] = useState({

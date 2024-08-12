@@ -11,7 +11,8 @@ import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
 import pagesHistory from "../../constants/pagesHistory";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
-
+import MainButton from "../../constants/MainButton";
+const menu = document.documentElement.querySelector(".FirstMenu")
 const AllShablons = () => {
 
   window.Telegram.WebApp.disableVerticalSwipes();
@@ -112,6 +113,36 @@ const AllShablons = () => {
   } , [shablon.isActive, navigate] )
   const postStatus = useSelector( state => state.shablon.postStatus )
   const putStatus = useSelector(  state => state.shablon.putStatus )
+  if (MainButton.isVisible){
+    menu.style.paddingBottom = "3px"
+  }
+  else{
+    menu.style.paddingBottom = "27px"
+  }
+
+  useEffect( () => {
+    
+    const input = document.querySelectorAll('input[type="text"]');
+    const textarea  = document.querySelectorAll('textarea');
+    for (let smallInput of input){
+      smallInput.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallInput.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+    for (let smallTextarea of textarea){
+      smallTextarea.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallTextarea.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+  } , [] )
+
+
   return (
     <div className="all-shablon-wrapper">
       {postStatus === "pending" || putStatus === "pending" ? <MyLoader style = {{transform : "translateX(-8px)"}} /> 

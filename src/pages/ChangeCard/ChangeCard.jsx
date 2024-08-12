@@ -19,6 +19,7 @@ let inputObject = {
   text: "",
 };
 let cardStart;
+const menu = document.documentElement.querySelector(".FirstMenu")
 const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
 
@@ -96,7 +97,12 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
 
   
-  
+  if (MainButton.isVisible){
+    menu.style.paddingBottom = "3px"
+  }
+  else{
+    menu.style.paddingBottom = "27px"
+  }
   
 
   const mainRef = useRef(null)
@@ -220,6 +226,8 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       }
       // document.documentElement.style.overflow = "auto";
     }
+    
+
 
     
     MainButton.setText("Изменить кейс");
@@ -250,6 +258,32 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       MainButton.setText('Сохранить')
     }
   } , [] )
+
+
+
+  useEffect( () => {
+    
+    const input = document.querySelectorAll('input[type="text"]');
+    const textarea  = document.querySelectorAll('textarea');
+    for (let smallInput of input){
+      smallInput.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallInput.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+    for (let smallTextarea of textarea){
+      smallTextarea.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallTextarea.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+  } , [] )
+
+
   return (
     <div ref={mainRef} className="cards">
       <h3 className="cards-title">{cardsSetting.title}</h3>

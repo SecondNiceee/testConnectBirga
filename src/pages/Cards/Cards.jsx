@@ -17,8 +17,14 @@ let mainLocalErrors ;
 let inputObject = {
   text : ''
 }
+const menu = document.documentElement.querySelector(".FirstMenu")
 const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
-
+  if (MainButton.isVisible){
+    menu.style.paddingBottom = "3px"
+  }
+  else{
+    menu.style.paddingBottom = "27px"
+  }
   
   const categorys = useSelector((state) => state.categorys.category);
 

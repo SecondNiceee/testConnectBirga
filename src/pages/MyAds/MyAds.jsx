@@ -26,6 +26,7 @@ import makeNewFile from "../../functions/newMakeFile";
 import axios from "axios";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import pagesHistory from "../../constants/pagesHistory";
+import MainButton from "../../constants/MainButton";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -38,6 +39,9 @@ let localSecondPage;
 let localIsOpen;
 let localDetails;
 let detailsVar;
+
+
+const menu = document.documentElement.querySelector(".FirstMenu")
 
 
 // const advertisementId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[0]
@@ -55,7 +59,12 @@ const defaultDate = new Date(0)
 
 
 const MyAds = ({isPage = false}) => {
-
+  if (MainButton.isVisible){
+    menu.style.paddingBottom = "3px"
+  }
+  else{
+    menu.style.paddingBottom = "27px"
+  }
   const [isPageValueOne , setPageValueOne] = useState(true)
   const [isPageValueTwo , setPageValueTwo] = useState(true)
   
@@ -584,7 +593,27 @@ const MyAds = ({isPage = false}) => {
   console.log(myAdsArray)
 
 
-
+  useEffect( () => {
+    
+    const input = document.querySelectorAll('input[type="text"]');
+    const textarea  = document.querySelectorAll('textarea');
+    for (let smallInput of input){
+      smallInput.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallInput.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+    for (let smallTextarea of textarea){
+      smallTextarea.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallTextarea.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+  } , [] )
 
 
   return (

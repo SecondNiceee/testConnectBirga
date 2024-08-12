@@ -423,8 +423,6 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
   width: 100vw;
   -webkit-transform: translateX(0%);
       -ms-transform: translateX(0%);

@@ -7,12 +7,18 @@ import { useDispatch } from "react-redux";
 import { postShablon, putShablon } from "../../store/shablon";
 import sortFiles from "../../functions/sortFiles";
 
+
+const menu = document.documentElement.querySelector(".FirstMenu")
 const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...props}) => {
   const dispatch = useDispatch()
   let localShablon = shablon
 
-
-
+  if (MainButton.isVisible){
+    menu.style.paddingBottom = "3px"
+  }
+  else{
+    menu.style.paddingBottom = "27px"
+  }
 
 
   useEffect( () => {
@@ -96,6 +102,37 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
       })
     }
   } , [shablon.name , shablon.text] )
+
+
+  if (MainButton.isVisible){
+    menu.style.paddingBottom = "3px"
+  }
+  else{
+    menu.style.paddingBottom = "27px"
+  }
+
+
+  useEffect( () => {
+    
+    const input = document.querySelectorAll('input[type="text"]');
+    const textarea  = document.querySelectorAll('textarea');
+    for (let smallInput of input){
+      smallInput.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallInput.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+    for (let smallTextarea of textarea){
+      smallTextarea.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallTextarea.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+  } , [] )
 
 
   return (

@@ -1,10 +1,42 @@
-import React, { memo, useMemo } from "react";
+import React, { memo, useEffect, useMemo } from "react";
 import cl from "./CardPage.module.css";
 import InnerCase from "../../components/CardPage/InnerCase/InnerCase";
 import FullDescription from "../../components/First/FirstDetails/FullDescription";
 import LinkComp from "../../components/CardPage/Link/LinkComp";
+import MainButton from "../../constants/MainButton";
+const menu = document.documentElement.querySelector(".FirstMenu")
 const CardPage = ({ card , ...props }) => {
     window.Telegram.WebApp.disableVerticalSwipes();
+
+    if (MainButton.isVisible){
+      menu.style.paddingBottom = "3px"
+    }
+    else{
+      menu.style.paddingBottom = "27px"
+    }
+    useEffect( () => {
+    
+      const input = document.querySelectorAll('input[type="text"]');
+      const textarea  = document.querySelectorAll('textarea');
+      for (let smallInput of input){
+        smallInput.addEventListener('focus', () => {
+          menu.style.display = 'none'; // скрываем меню
+        });
+        smallInput.addEventListener('blur', () => {
+          menu.style.display = 'flex'; // скрываем меню
+        });
+      }
+      for (let smallTextarea of textarea){
+        smallTextarea.addEventListener('focus', () => {
+          menu.style.display = 'none'; // скрываем меню
+        });
+        smallTextarea.addEventListener('blur', () => {
+          menu.style.display = 'flex'; // скрываем меню
+        });
+      }
+    } , [] )
+
+
     const linksComponents = useMemo( () => {
             return (
             <div  className={cl.cardsLinks}>
