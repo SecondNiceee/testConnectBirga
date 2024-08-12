@@ -525,10 +525,10 @@ const AdCreating = () => {
       setTimeout( () => {
         menu.style.transform = "translateY(0%)"
         menu.style.opacity = "1"
-      } , 300 )
+      } , 450 )
       setTimeout( () => {
         mainRef.current.style.height = "calc(100vh - 80px)"
-      } , 600 )
+      } , 900 )
   
   
       MainButton.show();
