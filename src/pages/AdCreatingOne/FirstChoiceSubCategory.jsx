@@ -34,7 +34,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
         // eslint-disable-next-line
     }, [])
     useEffect( () => {
-        subCategorys.push({id : -1, subCategory : "Все"})
+        subCategorys.unshift({id : -1, subCategory : "Все"})
     } , [] )
 
 

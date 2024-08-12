@@ -15,6 +15,7 @@ const Reaction = ({
   responce,
   writeButton = true,
   agree = false,
+  lastAds = false
 }) => {
   return (
     <>
@@ -86,7 +87,7 @@ const Reaction = ({
             </div>
           </div>
           
-          { (responce.isWatched === "inProcess" && writeButton) &&           <div className="blue-circle">
+          { (responce.isWatched === "inProcess" && writeButton && !lastAds) &&           <div className="blue-circle">
             <svg
             className="commit-icon"
               width="16"
@@ -132,7 +133,7 @@ const Reaction = ({
               </div>
             </div>
           ) : (
-            <div onClick={breakShare}  className="circle" style={responce.isWatched === "inProcess" && writeButton ? {marginLeft : "8px" , opacity : 0.5} : {opacity : 0.5}}>
+            <div onClick={breakShare}  className="circle" style={(responce.isWatched === "inProcess" && writeButton && !lastAds) ? {marginLeft : "8px" , opacity : 0.5} : {opacity : 0.5}}>
               <img  className="shareImage" src={share} alt="" />
             </div>
           )}

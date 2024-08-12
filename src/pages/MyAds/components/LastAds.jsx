@@ -40,7 +40,7 @@ const LastAds = ({
 
       {/* <LastTop name = {name} photo = {photo} stage = {stage} openAboutReactionFunc={openAboutReactionFunc} /> */}
 
-      <Reaction blue = {true}   openAboutReactionFunc = {openAboutReactionFunc} put={true} responce={responce} />
+      <Reaction lastAds = {true} blue = {true}   openAboutReactionFunc = {openAboutReactionFunc} put={true} responce={responce} />
       
       {/* <LastImages images = {images} /> */}
       
