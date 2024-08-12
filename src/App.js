@@ -175,7 +175,8 @@ const AnimatedSwitch = () => {
     </div>
   );
 };
-
+    
+var isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 function App() {
 
   window.Telegram.WebApp.disableVerticalSwipes();
@@ -203,12 +204,16 @@ function App() {
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
-
     useEffect( () => {
       const menu = document.documentElement.querySelector(".FirstMenu")
       if (MainButton.isVisible){
         console.log(menu)
         menu.style.paddingBottom = "3px"
+      }
+      else{
+        if (isMobile){
+          menu.style.paddingBottom = "27px"
+        }
       }
     } )
 
