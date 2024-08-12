@@ -3350,6 +3350,10 @@ body {
   overflow: auto;
 }
 
+.container {
+  height: 100vh;
+}
+
 .MainContainer {
   background: rgb(24, 34, 45);
   max-width: 430px;
