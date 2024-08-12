@@ -516,13 +516,12 @@ const AdCreating = () => {
 
     if (!MainButton.isVisible){
       menu.style.display = "none"
-      mainRef.current.style.height = "100vh"
+      // mainRef.current.style.height = "100vh"
       menu.style.transform = "translateY(130%)"
-
-
+      menu.style.paddingBottom = "3px"
+      
 
       setTimeout( () => {
-        menu.style.paddingBottom = "3px"
         menu.style.display = "flex"
       } , 300 )
   
@@ -545,15 +544,11 @@ const AdCreating = () => {
     return () => {
 
       menu.style.opacity = "0"
-      menu.style.transform = "translateY(120%)"
-      setTimeout( () => {
-        menu.style.opacity = "1"
-        menu.style.paddingBottom = "27px"
-        menu.style.display = "flex"
-        menu.style.transform = "translateY(120%)"
-      } , 300 )
+      menu.style.transform = "translateY(100%)"
+      menu.style.paddingBottom = "27px"
       setTimeout( () => {
         menu.style.transform = "translateY(0%)"
+        menu.style.opacity = "1"
       } , 400 )
       MainButton.hide();
     };
@@ -574,13 +569,9 @@ const AdCreating = () => {
   } , [error] )
 
   return (
-    <motion.div
+    <div
       ref={mainRef}
       className="AdCreating__container"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.2, ease: "easeIn" }}
     >
       {status === "pending" ? (
         <>
@@ -618,7 +609,7 @@ const AdCreating = () => {
       )}
 
 
-    </motion.div>
+    </div>
   );
 };
 
