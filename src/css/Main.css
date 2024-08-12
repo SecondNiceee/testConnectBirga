@@ -427,6 +427,8 @@
   -webkit-transform: translateX(0%);
       -ms-transform: translateX(0%);
           transform: translateX(0%);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
 }
 .FirstMenu .menuPath {
   fill: #7D919E;
