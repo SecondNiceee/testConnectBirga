@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: calc(calc(100vh - 53.6px) - 95px);
+    height: calc(100% - 95px);
     flex-direction: column;
 }
 .loaderText-block{
@@ -27,5 +27,5 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    height: calc(100vh - 53.6px);
+    height: 100%;
 }

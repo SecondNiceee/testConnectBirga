@@ -37,7 +37,7 @@
     flex-direction: column;
     overflow: hidden;
     gap: calc(35px * 0.4767);
-    min-height: calc(calc(100vh - 53.6px) - 68px);
+    min-height: calc(100% - 68px);
     border-radius: 10px;
 }
 .First__block{

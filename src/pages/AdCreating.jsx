@@ -104,6 +104,7 @@ const AdCreating = () => {
 
   useEffect( () => {
     pagesHistory.push("/AdCreating")
+    window.scrollTo(0 ,0)
     return () => {
       window.scrollTo(0 ,0)
     }
@@ -542,15 +543,11 @@ const AdCreating = () => {
   } , [error] )
 
   return (
-    <motion.div
+    <div
       ref={mainRef}
       className="AdCreating__container"
     >
-      {status === "pending" ? (
-        <>
-          <PostLoader />
-        </>
-      ) : (
+
         <>
           <AdCreatingOne
             className={"adCreatingOne"}
@@ -566,7 +563,7 @@ const AdCreating = () => {
             isSubcategoryChoiceOpen={isSubcategoryChoiceOpen}
             setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
           />
-          <AdCreatingTwo
+          {/* <AdCreatingTwo
             whichOne={whichOne}
             setWhichOne={setWhichOne}
             errors={twoPages}
@@ -576,13 +573,12 @@ const AdCreating = () => {
             taskInformation={secondPage}
             tonConstant={tonConstant}
           />
-          <FirstDetails  style = {{position : "static" , minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage , category : firstPage.category.id , whichOne : whichOne } } />
-          {/* <AdCreatingThree taskInformation={secondPage} /> */}
+          <FirstDetails  style = {{position : "static" , minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage , category : firstPage.category.id , whichOne : whichOne } } /> */}
         </>
-      )}
+      
 
 
-    </motion.div>
+    </div>
   );
 };
 

@@ -3,7 +3,7 @@
 }
 .choicerWrapper{
     width: 100vw;
-    height: calc(100vh - 53.6px);
+    height: 100%;
     position: fixed;
     left: 100%;
     top: 0%;

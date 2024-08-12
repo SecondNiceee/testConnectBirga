@@ -338,7 +338,7 @@ const First = ({ isPage = false }) => {
   // useEffect( () => {
   //   firstRef.current.style.overflowY = "scroll"
   //   firstRef.current.style.height = "200vh"
-  //   firstRef.current.style.paddingBottom = "calc(100vh - 53.6px)"
+  //   firstRef.current.style.paddingBottom = "100%"
 
   // }, [] )
 
@@ -633,24 +633,20 @@ const First = ({ isPage = false }) => {
       });
     }
   } , [] )
-  // useEffect( () => {
-  //   firstRef.current.style.height = "100vh"
-  //   setTimeout( () => {
-  //     firstRef.current.style.height = "calc(100vh - 80px)"
-  //   } , 600 )
-  // } , [] )
+  useEffect( () => {
+    firstRef.current.style.height = "100vh"
+    setTimeout( () => {
+      firstRef.current.style.height = "calc(100vh - 80px)"
+    } , 600 )
+  } , [] )
 
   return (
     <div style={firsStyle} className="first-container">
-      <motion.div
+      <div
         // style={style}
         ref={firstRef}
         className="First"
         onClick={closeMenu}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.2 }}
       >
 
 
@@ -686,7 +682,7 @@ const First = ({ isPage = false }) => {
             setTaskInformation={setFilters}
           />
         </CSSTransition>
-      </motion.div>
+      </div>
 
       <CSSTransition
         classNames="left-right"

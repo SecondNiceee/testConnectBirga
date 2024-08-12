@@ -9,7 +9,7 @@ input {
     padding-bottom: 20px;
     width: 100vw;
     position: fixed;
-    height: calc(100vh - 53.6px);
+    height: 100%;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
@@ -352,7 +352,7 @@ input {
 
 .aboutMe{
     position: fixed;    
-    height: calc(100vh - 53.6px);
+    height: 100%;
     width: 100%;
     position: absolute;
     left: 0;

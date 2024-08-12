@@ -7,11 +7,11 @@
     padding-right: 16px;
     // position: fixed;
     left: 0;
-    height: calc(100vh - 53.6px);
+    height: 100%;
     top: 0;
     overflow-y: scroll;
     transform: translateX(100%);
-    // height: calc(100vh - 53.6px);
+    // height: 100%;
     z-index: 100000;
     transition: 0.4s;
     background-color: #18222d;;

@@ -9,7 +9,7 @@
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  height: calc(100vh - 53.6px);
+  height: 100%;
   overflow-y: scroll;
 }
 
