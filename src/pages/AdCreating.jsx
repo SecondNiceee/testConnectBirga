@@ -19,6 +19,7 @@ import axios from "axios";
 
 
 let spet = 0;
+const menu = document.documentElement.querySelector(".FirstMenu")
 const AdCreating = () => {
   // const [taskInformation, setTaskInformation] = useState(
   //   useSelector((state) => state.information.taskInformation)
@@ -27,11 +28,17 @@ const AdCreating = () => {
   
 
 
-  
+  if (MainButton.isVisible){
+    menu.style.marginBottom = "0px"
+  }
+  else{
+    menu.style.marginBottom = "27px"
+  }
   useEffect( () => {
     console.log("Это рендер AdCreating")
-    const menu = document.documentElement.querySelector(".FirstMenu")
+    
     const input = document.querySelectorAll('input[type="text"]');
+    const textarea  = document.querySelectorAll('textarea');
     for (let smallInput of input){
       smallInput.addEventListener('focus', () => {
         menu.style.display = 'none'; // скрываем меню
@@ -39,7 +46,14 @@ const AdCreating = () => {
       smallInput.addEventListener('blur', () => {
         menu.style.display = 'flex'; // скрываем меню
       });
-      
+    }
+    for (let smallTextarea of textarea){
+      smallTextarea.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallTextarea.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
     }
   } , [] )
 
