@@ -516,7 +516,7 @@ const AdCreating = () => {
 
     if (!MainButton.isVisible){
       menu.style.display = "none"
-      // mainRef.current.style.height = "100vh"
+      mainRef.current.style.height = "100vh"
       menu.style.transform = "translateY(130%)"
       menu.style.paddingBottom = "3px"
       
