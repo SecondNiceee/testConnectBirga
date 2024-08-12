@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useEffect } from "react";
 
-import Top from "../../../components/UI/Top/Top";
 import Reaction from "./Reaction";
 import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
 import { useDispatch } from "react-redux";
