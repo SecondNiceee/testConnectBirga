@@ -53,7 +53,7 @@ category,
         case "chosen":
           return {color : "#30d158"}
         case "completed":
-          return {color : "#2ACF58"}
+          return {color : "#95979E"}
         default : 
           
       }

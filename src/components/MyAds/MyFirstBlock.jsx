@@ -54,7 +54,7 @@ const MyFirstBlock = ({
         case "inProcess":
             return {color : "#2ea5ff"}
         case "completed":
-            return {color : "purple"}
+            return {color : "#95979E"}
         default :
             console.log("Странная тема")
     } 
