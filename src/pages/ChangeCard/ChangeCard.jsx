@@ -233,7 +233,13 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     MainButton.setText("Изменить кейс");
     if (!modalActive && !isCategoryChoiceOpen){
       mainRef.current.style.overflow = "scroll"
+      menu.style.display = "none"
+      menu.style.transform = "translateY(-100%)"
       menu.style.paddingBottom = "3px"
+      setTimeout( () => {
+        menu.style.transform = "translateY(0%)"
+        menu.style.display = "flex"
+      } , 200 )
       MainButton.show()
       MainButton.onClick(saveFunc);
       BackButton.onClick(backFunc);

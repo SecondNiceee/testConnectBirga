@@ -109,7 +109,13 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
     }
     function disappear(){
 
+      menu.style.display = "none"
+      menu.style.transform = "translateY(-100%)"
       menu.style.paddingBottom = "3px"
+      setTimeout( () => {
+        menu.style.transform = "translateY(0%)"
+        menu.style.display = "flex"
+      } , 200 )
       MainButton.show()
       dateObject.style.backgroundColor = 'unset'
       dateObject.style.display = 'block'

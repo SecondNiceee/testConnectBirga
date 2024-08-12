@@ -190,7 +190,13 @@ export const useButton = ({
     BackButton.show();
 
     if (isOpen.isActive) {
+      menu.style.display = "none"
+      menu.style.transform = "translateY(-100%)"
       menu.style.paddingBottom = "3px"
+      setTimeout( () => {
+        menu.style.transform = "translateY(0%)"
+        menu.style.display = "flex"
+      } , 200 )
       MainButton.show();
       
       MainButton.setParams({
@@ -209,7 +215,13 @@ export const useButton = ({
 
     if (details.isActive) {
       if (!compareTwoObject(bedTask, details.task)) {
+        menu.style.display = "none"
+        menu.style.transform = "translateY(-100%)"
         menu.style.paddingBottom = "3px"
+        setTimeout( () => {
+          menu.style.transform = "translateY(0%)"
+          menu.style.display = "flex"
+        } , 200 )
         MainButton.show();
         
         MainButton.setText("ОБНОВИТЬ");

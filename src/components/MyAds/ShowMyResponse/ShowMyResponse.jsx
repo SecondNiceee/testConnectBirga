@@ -66,6 +66,13 @@ const ShowMyResponse = ({
     
     if (response.isWatched === "inProcess") {
       menu.style.paddingBottom = "3px"
+      menu.style.display = "none"
+      menu.style.transform = "translateY(-100%)"
+      menu.style.paddingBottom = "3px"
+      setTimeout( () => {
+        menu.style.transform = "translateY(0%)"
+        menu.style.display = "flex"
+      } , 200 )
       MainButton.show();
       MainButton.setText("ВЫПОЛНИЛ");
       MainButton.onClick(click);
