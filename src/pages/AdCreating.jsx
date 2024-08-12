@@ -511,46 +511,23 @@ const AdCreating = () => {
     // eslint-disable-next-line
   } , [goBack,goForward ]);
 
-
   useEffect(() => {
-
-    if (!MainButton.isVisible){
-      menu.style.display = "none"
-      // mainRef.current.style.height = "100vh"
-      menu.style.transform = "translateY(130%)"
-      menu.style.paddingBottom = "3px"
-      
-
-      setTimeout( () => {
-        menu.style.display = "flex"
-      } , 300 )
-  
-      setTimeout( () => {
-        menu.style.opacity = "1"
-        menu.style.transform = "translateY(0%)"
-      } , 450 )
-      setTimeout( () => {
-        mainRef.current.style.height = "calc(100vh - 80px)"
-      } , 900 )
-  
-  
-      MainButton.show();
-    }
-    BackButton.show()
+    menu.style.opacity = "0"
+    menu.style.transform = "translateY(100%)"
+    menu.style.paddingBottom = "3px"
+    setTimeout( () => {
+      menu.style.transform = "translateY(0%)"
+      menu.style.opacity = "1"
+    } , 400 )
+    MainButton.show();
+    BackButton.show();
     MainButton.setText("ДАЛЕЕ");
 
 
 
     return () => {
-
-      menu.style.opacity = "0"
-      menu.style.transform = "translateY(100%)"
-      menu.style.paddingBottom = "27px"
-      setTimeout( () => {
-        menu.style.transform = "translateY(0%)"
-        menu.style.opacity = "1"
-      } , 400 )
       MainButton.hide();
+      menu.style.paddingBottom = "27px"
     };
   }, []);
 
@@ -569,7 +546,7 @@ const AdCreating = () => {
   } , [error] )
 
   return (
-    <div
+    <motion.div
       ref={mainRef}
       className="AdCreating__container"
     >
@@ -609,7 +586,7 @@ const AdCreating = () => {
       )}
 
 
-    </div>
+    </motion.div>
   );
 };
 
