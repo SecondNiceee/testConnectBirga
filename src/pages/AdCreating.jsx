@@ -513,12 +513,12 @@ const AdCreating = () => {
 
   useEffect(() => {
     menu.style.opacity = "0"
-    menu.style.transform = "translateY(-100%)"
+    menu.style.transform = "translateY(100%)"
     menu.style.paddingBottom = "3px"
     setTimeout( () => {
       menu.style.transform = "translateY(0%)"
       menu.style.opacity = "1"
-    } , 300 )
+    } , 200 )
     MainButton.show();
     BackButton.show();
     MainButton.setText("ДАЛЕЕ");
