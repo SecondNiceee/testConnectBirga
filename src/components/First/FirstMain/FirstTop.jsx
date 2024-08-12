@@ -12,11 +12,6 @@ const FirstTop = ({ setFilterBy, filteredBy, setMenuActive , userInfo ,  ...prop
 
   return (
     <div  {...props} className="FirstTop">
-      <Burger
-        onClick={() => {
-          setMenuActive(true);
-        }}
-      />
       <OneInput
         value={filteredBy}
         onChange={(e) => {
@@ -24,9 +19,6 @@ const FirstTop = ({ setFilterBy, filteredBy, setMenuActive , userInfo ,  ...prop
         }}
         placeholder="Поиск по заданиям..."
       />
-      <Link to = '/Profile'>
-        <img style={{objectFit : "cover"}} className="icon" src={userInfo.photo.length > 0 ? userInfo.photo : userPhoto} alt="" />
-      </Link>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 .cards{
     position: fixed;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 53.6px);
     left: 0;
     z-index: 400;
     top: 0;

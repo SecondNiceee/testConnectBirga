@@ -330,7 +330,7 @@ const First = ({ isPage = false }) => {
   // useEffect( () => {
   //   firstRef.current.style.overflowY = "scroll"
   //   firstRef.current.style.height = "200vh"
-  //   firstRef.current.style.paddingBottom = "100vh"
+  //   firstRef.current.style.paddingBottom = "calc(100vh - 53.6px)"
 
   // }, [] )
 

@@ -6,7 +6,7 @@
 .First {
   position: fixed;
   overflow :scroll;
-  height: 100vh;
+  height: calc(100vh - 53.6px);
   display: flex;   
   transition: 0.4s;
   will-change: transform;
@@ -15,7 +15,7 @@
 }
 
 .first-container{
-    min-height: 100vh;
+    min-height: calc(100vh - 53.6px);
     transition: 0.4s;
     display: flex;
 }
@@ -23,7 +23,7 @@
 .filtration-container{
     display: flex;
     gap: 8px;
-    margin-top: 18px;
+    margin-top: 12px;
 }
 
 .secondStep{
@@ -65,10 +65,10 @@
     overflow-x: hidden;
     padding-left: 16px;
     padding-right: 16px;
-    padding-top: 18px;
+    padding-top: 17px;
     width: 100%;
     // height: 100%;
-    // height: 100vh;
+    // height: calc(100vh - 53.6px);
     // overflow-y: scroll;
     transition: 0.5s;
     padding-bottom: 18px;
@@ -94,7 +94,6 @@
   display: flex;
   gap: calc(9.97px);
   align-items: center;
-  margin-left: 30px;
   img {
     width: calc(28.33px);
     height: calc(28.33px);
@@ -118,16 +117,20 @@
 .FirstMain { 
   padding-bottom: 20px;
   width: calc(100vw - 32px);
-  margin-top: calc(18.33px);
+  margin-top: calc(17px);
   display: flex;
   overflow: hidden;
   flex-direction: column;
   gap: calc(8px);
   border-radius: 10px;
   overflow-x: hidden;
-  min-height: calc(100vh - 65px);
+  min-height: calc(calc(100vh - 53.6px) - 65px);
 }
 
+
+.menuLink path{
+    transition: 0.2s;
+}
 .First__block { 
   position: relative;
   display: flex;
@@ -318,26 +321,26 @@
     }
 }
 .FirstMenu{
+    padding-bottom: 3px;
     will-change: transform;
     background-color: rgba(24, 34, 45, 1.00);
     z-index: 11000;
     position: fixed;
-    height: 100vh;
-    left: 0px;
-    top: 0;
+    bottom: 0px;
+    width: 100vw;
+    left: 0px; 
     display: flex;
-    flex-direction: column;
     transition: 0.4s;
-    width: 301px;
-    padding: 27px 16px;
-    
+    width: 100vw;
+    transform: translateX(0%);
+
+
+    .menuPath{
+        fill: #7D919E;
+    }
     .icon{
         width: 53.33px;
         height: 53.33px;
-    }
-    &.hidden{
-        left: -301px;
-        transform: translateX(0%);
     }
     .FirstMenu__top{
         display: flex;
@@ -420,24 +423,82 @@
         text-align: left;
     }
     .MenuList{
+        align-items: center;
+        margin-bottom: 3px;
+        padding-top: 8px;
         display: flex;
-        flex-direction: column;
-        gap: calc(20px);
-        margin-top: calc(30px);
+        justify-content: space-between;
+        width: 100%;
         /* Menu Text */
-        .menuLink{
-            cursor: pointer;
-            color: rgb(149, 151, 158);
-            font-family: SF Pro Display;
-            font-size: 16px;
-            font-weight: 500;
-            line-height: 18.31px;
-            letter-spacing: 0%;
-            text-align: left;
+
             &:hover{
                 color: rgb(255, 255, 255)
             }
         }
+
+        .menuLink{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+            align-items: center;
+            justify-content: center;
+        }
+        .menuLink.active{
+            path{
+                fill: #DAF5FE;
+            }
+            p{
+                color: #DAF5FE;
+            }
+            .menuCircle{
+                border: #30d158 2px solid;
+            }
+        }
+        
+        .MenuList p{
+            font-family: "Roboto", sans-serif;
+            font-weight: 500;
+            font-size: 9px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #cdcece;
+
+        }
+        
+        
+        .menuCircle{
+            transform: translateY(-3px);
+            border-radius: 50%;
+            transition: 0.2s;
+            width: 37.33px;
+            height: 37.33px;
+            border: 2px solid  #7D919E ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .menuPhoto{
+            left: 50%;
+            top: 50%;
+            width: 31.25px;
+            height: 31.25px;
+            object-fit: cover;
+            border-radius: 50%;
+        
+        }
+        
+         img{
+            width: 32.5px;
+            height: 24px;
+            font-family: "Roboto", sans-serif;
+            font-weight: 500;
+            font-size: 9px;
+            letter-spacing: -0.02em;
+            text-align: center;
+            color: #daf5fe;
+        }
+        
     }
     .Menu__Helps{
         margin-top: calc(80px);
@@ -505,7 +566,6 @@
 
 
 
-}
 
 
 
@@ -522,3 +582,4 @@
     opacity: 1;
     transition: 0.30s;
 }
+

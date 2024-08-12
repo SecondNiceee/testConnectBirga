@@ -280,17 +280,16 @@
     overflow-x: clip;
     padding-left: 16px;
     padding-right: 16px;
-    padding-top: 20px;
+    padding-top: 17px;
     margin-bottom: 18.33px;
     min-width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 53.6px);
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
     position: relative;
 }
 .FirstAdsBlock{
-    margin-top: 30px;
     margin-bottom: 30px;
 }
 .top{
@@ -312,7 +311,7 @@
     padding: 0px 16px;
     padding-top: 20px;
     min-width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 53.6px);
     overflow-y: scroll;
     position: relative;
     z-index: 999;
@@ -357,7 +356,7 @@
     top: 0;
     z-index: 1001;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 53.6px);
     overflow-y: scroll;
     padding-bottom: 18px;
 
@@ -367,7 +366,7 @@
     margin-bottom: 18.33px;
     min-width: 100vw;
     display: flex;
-    height: 100vh;
+    height: calc(100vh - 53.6px);
     overflow-y: scroll;
     flex-direction: column;
     will-change:  visibility;
@@ -716,7 +715,7 @@
     z-index: 1000;
     left: 100%;
     transform: translateX(100%);
-    height: calc(100vh - 68px);
+    height: calc(calc(100vh - 53.6px) - 68px);
     position: fixed;
     width: 100vw;
     transition: 0.4s;
@@ -724,13 +723,13 @@
     -webkit-perspective: 1000;
     left: 0;
     /* top: 70px; */
-    padding: 0px 16px; 
+    padding: 0px 17px; 
     background-color: #18222d;
     will-change:  transform  , transition;
     transition: 0.4s;
     overflow-y: scroll;
     /* top: 0; */
-    height: 100vh;
+    height: calc(100vh - 53.6px);
     padding-top: 20px;
 }
 .last-top{

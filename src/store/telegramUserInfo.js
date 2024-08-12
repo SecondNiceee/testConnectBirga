@@ -122,8 +122,10 @@ export const fetchUserInfo = createAsyncThunk(
     try {
 
 
-        let firstName = window.Telegram.WebApp.initDataUnsafe.user.first_name;
-        let lastName = window.Telegram.WebApp.initDataUnsafe.user.last_name;
+        // let firstName = window.Telegram.WebApp.initDataUnsafe.user.first_name;
+        // let lastName = window.Telegram.WebApp.initDataUnsafe.user.last_name;
+        let firstName = "Арсен"
+        let lastName = "в"
         
         let UserId = 2144832745
         let user;

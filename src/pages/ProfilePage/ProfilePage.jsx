@@ -6,7 +6,6 @@ import Stage from "../../components/UI/Stage/Stage";
 import AboutMain from "../MyAds/components/AboutMain";
 import AboutInfo from "../MyAds/components/AboutInfo";
 import AboutTop from "../MyAds/components/AboutTop";
-import Top from "../../components/UI/Top/Top";
 import axios from "axios";
 import ExampleWorks from "../MyAds/components/ExampleWorks";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
@@ -167,7 +166,6 @@ const ProfilePage = ({ ...props }) => {
 
       {responce !== null ? (
         <>
-          <Top setMenuActive={setMenuActive} name={"Отклики"} />
 
           <AboutTop responce={responce} />
 

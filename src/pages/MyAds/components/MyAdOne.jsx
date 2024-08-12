@@ -2,7 +2,6 @@ import React, {  memo, useEffect, useMemo, useRef} from "react";
 
 import MyAdsBlock from "./MyAdsBlock";
 import PickerContent from "./PickerContent";
-import Top from "../../../components/UI/Top/Top";
 import { useSelector } from "react-redux";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 
@@ -73,11 +72,11 @@ const MyAdOne = ({
 
   return (
     <>
-        {status === "loading"  ? 
+        {status === "loading" ? 
       <MyLoader />
       :
     <div ref={containerRef} className="my-ad-one">
-      <Top name={"Мои задания"} setMenuActive={setMenuActive} />
+
 
 
       <MyAdsBlock setOneValue = {setOneValue}  setTwoValue = {setTwoValue} setNowKey={setNowKey} nowValue = {nowValue} greyIntWidth={GreyIntWidth} greyWidth={GreyWidth} deals={1} finishedDeals={"0%"} />

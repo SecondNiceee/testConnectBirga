@@ -7,7 +7,6 @@ import AboutInfo from "./AboutInfo";
 import AboutMain from "./AboutMain";
 import ExampleWorks from "./ExampleWorks";
 import { memo } from "react";
-import Top from "../../../components/UI/Top/Top";
 import axios from "axios";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import Stage from "../../../components/UI/Stage/Stage";
@@ -80,7 +79,6 @@ const AboutReaction = ({ responce , setOneCard,   ...props}) => {
     <div className="aboutReaction" {...props}>
 
 
-      <Top setMenuActive={setMenuActive} name={'Отклики'}/>
 
       <AboutTop responce={responce} />
 

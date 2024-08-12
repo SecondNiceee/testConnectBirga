@@ -37,7 +37,6 @@ const LastAds = ({
       className={"last-ads"}
       {...props}
     >
-      <Top setMenuActive={setMenuActive} className={"last-top"} name={"Отклики"} />
 
       {/* <LastTop name = {name} photo = {photo} stage = {stage} openAboutReactionFunc={openAboutReactionFunc} /> */}
 

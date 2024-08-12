@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { memo } from "react";
-import Top from "../../../components/UI/Top/Top";
 import { deleteAd } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
 import AllReactions from "./AllReactions";
@@ -97,7 +96,6 @@ const AboutOne = ({
 
 
     <div className="aboutOne" {...props} >
-      <Top name={"Отклики"} setMenuActive={setMenuActive} />
 
       {task && (putStatus !== "pending")  ? (
         <Block

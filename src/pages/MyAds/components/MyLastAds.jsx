@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useEffect } from "react";
 
-import Top from "../../../components/UI/Top/Top";
 import Reaction from "./Reaction";
 import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
 import { useDispatch } from "react-redux";
@@ -35,7 +34,6 @@ const MyLastAds = ({
     <div
       className={"last-ads"}
     >
-      {/* <Top setMenuActive={setMenuActive} className={"last-top"} name={"Отклики"} /> */}
 
       {/* <LastTop name = {name} photo = {photo} stage = {stage} openAboutReactionFunc={openAboutReactionFunc} /> */}
 

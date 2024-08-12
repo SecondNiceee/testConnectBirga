@@ -25,7 +25,7 @@
         z-index: 2000;
         transition: 0.4s;
         transform: translateX(100%);
-        min-height: 100vh;
+        min-height: calc(100vh - 53.6px);
         padding-bottom: 20px;
     }
     .new-textarea{
@@ -76,7 +76,6 @@
     text-align: center;
 }
 .counter__block{
-    margin-top: 30px;
     display: flex;
     gap: 8px;
     .number-of-transactions{
@@ -264,7 +263,7 @@
 .animation-block{
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 252px);
+    height: calc(calc(100vh - 53.6px) - 252px);
     justify-content: center;
 }
 .animation-text{

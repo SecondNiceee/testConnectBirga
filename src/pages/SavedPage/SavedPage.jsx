@@ -1,5 +1,4 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
-import Top from "../../components/UI/Top/Top";
 import useListner from "../../hooks/useListner";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
@@ -397,11 +396,6 @@ const SavedPage = () => {
 
   return (
     <div className="saved-wraper">
-      <Top
-        setMenuActive={setMenuActive}
-        name={"Сохраненное"}
-        className={"saved-top-wrapper"}
-      />
       <FullPicker
         GreyIntWidth={GreyIntWidth}
         GreyWidth={GreyWidth}

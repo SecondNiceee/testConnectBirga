@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useEffect } from "react";
 import cl from "./ShowMyResponse.module.css";
-import Top from "../../UI/Top/Top";
 import ResponseBlock from "../ResponseBlock";
 import MyReaction from "../MyReaction";
 import Customer from "../Customer/Customer";
@@ -102,11 +101,10 @@ const ShowMyResponse = ({
       {response.user.fuck ? (
         <div className={cl.wrapper}>
 
-            <MyLoader style={{ width: "100vw", height: "100vh" }} />
+            <MyLoader style={{ width: "100vw", height: "calc(100vh - 53.6px)" }} />
         </div>
       ) : (
         <div className={cl.wrapper}>
-          <Top setMenuActive={setMenuActive} name={"Мой отклик"} />
           <ResponseBlock
             isWatched={response.isWatched}
             index={index}

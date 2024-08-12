@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Top from "../../components/UI/Top/Top";
 import { useDispatch, useSelector } from "react-redux";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import GreyText from "../../components/UI/GreyText/GreyText";
@@ -118,7 +117,6 @@ const AllShablons = () => {
       {postStatus === "pending" || putStatus === "pending" ? <MyLoader style = {{transform : "translateX(-8px)"}} /> 
       :
       <>
-      <Top setMenuActive={setMenuActive} name={"Шаблоны откликов"} />
 
       {shablonsArr.length === 6 ?  <></>
       :

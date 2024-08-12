@@ -366,7 +366,6 @@ const Profile = () => {
 
       
 
-      <Burger onClick={() => setMenuActive(true)} />
 
       <img style={{objectFit : "cover"}} src={userInfo.photo.length > 0 ? userInfo.photo : userPhoto} className="profile__icon icon" alt="" />
 
