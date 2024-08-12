@@ -221,7 +221,7 @@ export const useButton = ({
         setTimeout( () => {
           menu.style.transform = "translateY(0%)"
           menu.style.display = "flex"
-        } , 200 )
+        } , 1 )
         MainButton.show();
         
         MainButton.setText("ОБНОВИТЬ");
