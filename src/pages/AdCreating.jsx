@@ -29,10 +29,10 @@ const AdCreating = () => {
 
 
   if (MainButton.isVisible){
-    menu.style.marginBottom = "0px"
+    menu.style.paddingBottom = "0px"
   }
   else{
-    menu.style.marginBottom = "27px"
+    menu.style.paddingBottom = "27px"
   }
   useEffect( () => {
     console.log("Это рендер AdCreating")
