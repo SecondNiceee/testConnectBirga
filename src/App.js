@@ -204,19 +204,6 @@ function App() {
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
-    useEffect( () => {
-      console.log("Это рендер App")
-      const menu = document.documentElement.querySelector(".FirstMenu")
-      if (MainButton.isVisible){
-        console.log(menu)
-        menu.style.paddingBottom = "3px"
-      }
-      else{
-        if (isMobile){
-          menu.style.paddingBottom = "27px"
-        }
-      }
-    } )
 
 
 
