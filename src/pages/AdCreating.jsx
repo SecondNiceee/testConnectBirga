@@ -511,16 +511,28 @@ const AdCreating = () => {
     // eslint-disable-next-line
   } , [goBack,goForward ]);
 
+
   useEffect(() => {
-    menu.style.opacity = "0"
-    menu.style.transform = "translateY(100%)"
-    menu.style.paddingBottom = "3px"
-    setTimeout( () => {
-      menu.style.transform = "translateY(0%)"
-      menu.style.opacity = "1"
-    } , 400 )
-    MainButton.show();
-    BackButton.show();
+
+    if (!MainButton.isVisible){
+
+      mainRef.current.style.height = "100vh"
+      menu.style.opacity = "0"
+      menu.style.transform = "translateY(100%)"
+      menu.style.paddingBottom = "3px"
+  
+  
+      setTimeout( () => {
+        menu.style.transform = "translateY(0%)"
+        menu.style.opacity = "1"
+      } , 300 )
+      setTimeout( () => {
+        mainRef.current.style.height = "calc(100vh - 80px)"
+      } , 600 )
+  
+  
+      MainButton.show();
+    }
     MainButton.setText("ДАЛЕЕ");
 
 
