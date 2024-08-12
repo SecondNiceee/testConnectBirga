@@ -518,7 +518,7 @@ const AdCreating = () => {
     setTimeout( () => {
       menu.style.transform = "translateY(0%)"
       menu.style.opacity = "1"
-    } , 1 )
+    } , 400 )
     MainButton.show();
     BackButton.show();
     MainButton.setText("ДАЛЕЕ");
