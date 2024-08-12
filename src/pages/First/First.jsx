@@ -12,7 +12,6 @@ import { motion } from "framer-motion";
 import BackButton from "../../constants/BackButton";
 import "../MyAds/MyAds.css";
 import MainButton from "../../constants/MainButton";
-import useListner from "../../hooks/useListner";
 import AllTasks from "./AllTasks";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
@@ -48,7 +47,7 @@ const First = ({ isPage = false }) => {
     menu.style.paddingBottom = "27px"
   }
 
-  
+
   const [step, setStep] = useState(0);
   localStep = step;
 
@@ -301,12 +300,6 @@ const First = ({ isPage = false }) => {
     [dispatch]
   );
 
-  useListner({
-    isMenuActive,
-    setMenuActive,
-    setDetailsActive,
-    isDetailsActive,
-  });
 
   const closeMenu = useCallback(() => {
     if (isMenuActive) {

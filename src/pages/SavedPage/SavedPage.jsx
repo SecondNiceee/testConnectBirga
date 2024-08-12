@@ -1,5 +1,4 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
-import useListner from "../../hooks/useListner";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import FullPicker from "../../components/UI/FullPicker/FullPicker";
@@ -416,12 +415,6 @@ const SavedPage = () => {
     [setCard]
   );
 
-  useListner({
-    isMenuActive,
-    setMenuActive,
-    // setDetailsActive,
-    // isDetailsActive,
-  });
 
   return (
     <div className="saved-wraper">

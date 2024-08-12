@@ -58,7 +58,7 @@ const FirstMenu = () => {
             </div> */}
 
       <div className="MenuList">
-        <Link className={ location.pathname === "/" ? "menuLink active" : "menuLink"}  to="/">
+        <Link className={ (location.pathname === "/" )  ? "menuLink active" : "menuLink"}  to="/">
           <svg
             width="33"
             height="25"
@@ -92,7 +92,7 @@ const FirstMenu = () => {
 
           <p>Разместить</p>
         </Link>
-        <Link className={ location.pathname === "/Profile" ? "menuLink active" : "menuLink"} to="/Profile">
+        <Link className={ (location.pathname === "/Profile" || location.pathname === "/AllShablons") ? "menuLink active" : "menuLink"} to="/Profile">
           <div className="menuCircle">
             <img className="menuPhoto" src={me.photo.length > 0 ? me.photo : userPhoto} alt="" />
           </div>

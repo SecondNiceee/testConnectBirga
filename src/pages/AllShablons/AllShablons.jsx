@@ -12,6 +12,7 @@ import BackButton from "../../constants/BackButton";
 import pagesHistory from "../../constants/pagesHistory";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import MainButton from "../../constants/MainButton";
+import MyAnimation from "../MyAds/components/MyAnimation";
 const menu = document.documentElement.querySelector(".FirstMenu")
 const AllShablons = () => {
 
@@ -166,7 +167,11 @@ const AllShablons = () => {
         <></>
       )}
 
+      {shablonsArr.length === 0 ? 
+        <MyAnimation style = {{height : "80vh"}} text="У вас нет ни одного шаблона" />
+        :
       <ShablonsWrap deleteFunction = {deleteFunction} className={"shablons-wrap"} shablonsArr={shablonsArr} putFunction = {putFunction}  />
+      }
 
       <CSSTransition
         in={shablon.isActive}

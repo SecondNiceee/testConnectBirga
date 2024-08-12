@@ -4,7 +4,6 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeMenuActive } from "../../store/menuSlice";
-import useListner from "../../hooks/useListner";
 import "./MyAds.css";
 
 import { motion, transform } from "framer-motion";
@@ -306,14 +305,6 @@ const MyAds = ({isPage = false}) => {
   function setDetailsActive(value) {
     setDetails({ ...details, isActive: value });
   }
-
-  useListner({
-    isMenuActive,
-    setMenuActive,
-    setDetailsActive,
-    isDetailsActive: details.isActive,
-  });
-
 
   const [mistakes, setMistakes] = useState({
     taskName: false,
