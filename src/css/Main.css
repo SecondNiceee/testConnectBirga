@@ -412,6 +412,7 @@
 }
 .FirstMenu {
   border-top: 0.5px solid rgba(125, 145, 158, 0.5);
+  margin-bottom: 32px;
   padding-bottom: 3px;
   will-change: transform;
   background-color: rgb(24, 34, 45);
@@ -582,7 +583,7 @@
 .FirstMenu .MenuList p {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
-  font-size: 9px;
+  font-size: 9.98px;
   letter-spacing: -0.02em;
   text-align: center;
   color: #cdcece;
@@ -594,9 +595,9 @@
   border-radius: 50%;
   -webkit-transition: 0.2s;
   transition: 0.2s;
-  width: 37.33px;
-  height: 37.33px;
-  border: 2px solid #7D919E;
+  width: 39.33px;
+  height: 39.33px;
+  border: 2px solid #2EA5FF;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
