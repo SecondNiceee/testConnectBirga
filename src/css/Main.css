@@ -417,7 +417,7 @@
     opacity: 0;
   }
   10% {
-    padding-bottom: 27px;
+    padding-bottom: 3px;
     -webkit-transform: translateY(100%);
             transform: translateY(100%);
   }
@@ -431,7 +431,7 @@
     opacity: 0;
   }
   10% {
-    padding-bottom: 27px;
+    padding-bottom: 3px;
     -webkit-transform: translateY(100%);
             transform: translateY(100%);
   }
@@ -445,7 +445,7 @@
     opacity: 0;
   }
   10% {
-    padding-bottom: 0px;
+    padding-bottom: 27px;
     -webkit-transform: translateY(100%);
             transform: translateY(100%);
   }
@@ -459,7 +459,7 @@
     opacity: 0;
   }
   10% {
-    padding-bottom: 0px;
+    padding-bottom: 27px;
     -webkit-transform: translateY(100%);
             transform: translateY(100%);
   }
