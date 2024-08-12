@@ -414,7 +414,7 @@
   border-top: 0.5px solid rgba(125, 145, 158, 0.5);
   margin-bottom: 32px;
   will-change: transform;
-  background-color: rgb(24, 34, 45);
+  background-color: #20303F;
   z-index: 11000;
   position: fixed;
   bottom: 0px;
@@ -577,7 +577,7 @@
   color: #DAF5FE;
 }
 .FirstMenu .menuLink.active .menuCircle {
-  border: #30d158 2px solid;
+  border: #2EA5FF 2px solid;
 }
 .FirstMenu .MenuList p {
   font-family: "Roboto", sans-serif;
@@ -596,7 +596,7 @@
   transition: 0.2s;
   width: 39.33px;
   height: 39.33px;
-  border: 2px solid #2EA5FF;
+  border: 2px solid #7D919E;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
