@@ -633,6 +633,12 @@ const First = ({ isPage = false }) => {
       });
     }
   } , [] )
+  // useEffect( () => {
+  //   firstRef.current.style.height = "100vh"
+  //   setTimeout( () => {
+  //     firstRef.current.style.height = "calc(100vh - 80px)"
+  //   } , 600 )
+  // } , [] )
 
   return (
     <div style={firsStyle} className="first-container">
@@ -643,8 +649,11 @@ const First = ({ isPage = false }) => {
         onClick={closeMenu}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
       >
+
+
         <div className="first-wrapper">
           <AllTasks
             setFilters={setFilters}

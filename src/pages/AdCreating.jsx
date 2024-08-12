@@ -512,21 +512,17 @@ const AdCreating = () => {
   } , [goBack,goForward ]);
 
   useEffect(() => {
-    menu.style.opacity = "0"
-    menu.style.transform = "translateY(100%)"
-    menu.style.paddingBottom = "3px"
-    setTimeout( () => {
-      menu.style.transform = "translateY(0%)"
-      menu.style.opacity = "1"
-    } , 400 )
+    if (!MainButton.isVisible){
+      menu.classList.add("appearAnimation")
+    }
     MainButton.show();
     BackButton.show();
     MainButton.setText("ДАЛЕЕ");
-
-
-
     return () => {
-      MainButton.hide();
+        menu.classList.remove("appearAnimation")
+        menu.classList.add("disappearAnimation")
+        MainButton.hide();
+      
       menu.style.paddingBottom = "27px"
     };
   }, []);

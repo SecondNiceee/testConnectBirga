@@ -410,6 +410,72 @@
       align-self: center;
   line-height: 0;
 }
+@-webkit-keyframes menuAnimate {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    padding-bottom: 27px;
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+@keyframes menuAnimate {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    padding-bottom: 27px;
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+@-webkit-keyframes disappearAnimation {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    padding-bottom: 0px;
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+@keyframes disappearAnimation {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    padding-bottom: 0px;
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+  }
+  100% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+  }
+}
+.FirstMenu.disappearAnimation {
+  -webkit-animation: disappearAnimation 1s forwards;
+          animation: disappearAnimation 1s forwards;
+}
+
+.FirstMenu.appearAnimation {
+  -webkit-animation: menuAnimate 1s forwards;
+          animation: menuAnimate 1s forwards;
+}
+
 .FirstMenu {
   border-top: 0.5px solid rgba(125, 145, 158, 0.5);
   padding-bottom: 32px;
