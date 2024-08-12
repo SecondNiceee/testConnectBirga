@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearMyOrders, fetchMyOrders, putMyTask, setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 import sortFiles from "../../functions/sortFiles";
-
+const menu = document.documentElement.querySelector(".FirstMenu")
 export const useButton = ({
   setOpen,
   setSecondPage,
@@ -190,7 +190,9 @@ export const useButton = ({
     BackButton.show();
 
     if (isOpen.isActive) {
+      menu.style.paddingBottom = "3px"
       MainButton.show();
+      
       MainButton.setParams({
         color: "#2ea5ff",
         text_color: "#ffffff",
@@ -201,12 +203,15 @@ export const useButton = ({
       MainButton.offClick(writeFucntion);
       if (!myResponse.isOpen && !details.isActive) {
         MainButton.hide();
+        menu.style.paddingBottom = "27px"
       }
     }
 
     if (details.isActive) {
       if (!compareTwoObject(bedTask, details.task)) {
+        menu.style.paddingBottom = "3px"
         MainButton.show();
+        
         MainButton.setText("ОБНОВИТЬ");
 
         if (checkMistakes(details.task, false)) {
@@ -227,12 +232,14 @@ export const useButton = ({
       else{
         if (!isOpen.isActive && !myResponse.isOpen){
           MainButton.hide()
+          menu.style.paddingBottom = "27px"
           MainButton.offClick(putTask)
         }
       }
     } else {
       if (!isOpen.isActive && !myResponse.isOpen){
         MainButton.hide();
+        menu.style.paddingBottom = "27px"
         MainButton.offClick(putTask)
         MainButton.setParams({
           color: "#2ea5ff",

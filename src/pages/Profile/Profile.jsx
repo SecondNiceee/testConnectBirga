@@ -196,7 +196,7 @@ const Profile = () => {
           })
           MainButton.onClick(save)
           if (!MainButton.isVisible){
-
+            menu.style.paddingBottom = "3px"
             MainButton.show()
           }
 
@@ -227,6 +227,7 @@ const Profile = () => {
       }
       else{
         MainButton.hide()
+        menu.style.paddingBottom = "27px"
         MainButton.offClick(save)
       }
 

@@ -242,6 +242,7 @@ const First = ({ isPage = false }) => {
     MainButton.onClick(forward);
     BackButton.onClick(back);
     if (isDetailsActiveVar) {
+      menu.style.paddingBottom = "3px"
       MainButton.show();
       BackButton.show();
       if (gotIt) {
@@ -262,6 +263,7 @@ const First = ({ isPage = false }) => {
     } else {
       BackButton.hide();
       MainButton.hide();
+      menu.style.paddingBottom = "27px"
       MainButton.setParams({
         is_active: true,
         color: "#2ea5ff",

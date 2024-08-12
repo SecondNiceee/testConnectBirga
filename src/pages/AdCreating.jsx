@@ -28,12 +28,12 @@ const AdCreating = () => {
   
 
 
-  if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
-  }
-  else{
-    menu.style.paddingBottom = "27px"
-  }
+  // if (MainButton.isVisible){
+  //   menu.style.paddingBottom = "3px"
+  // }
+  // else{
+  //   menu.style.paddingBottom = "27px"
+  // }
   useEffect( () => {
     console.log("Это рендер AdCreating")
     
@@ -512,7 +512,9 @@ const AdCreating = () => {
   } , [goBack,goForward ]);
 
   useEffect(() => {
+    menu.style.paddingBottom = "3px"
     MainButton.show();
+   
     BackButton.show();
     MainButton.setText("ДАЛЕЕ");
 
@@ -520,6 +522,7 @@ const AdCreating = () => {
 
     return () => {
       MainButton.hide();
+      menu.style.paddingBottom = "27px"
     };
   }, []);
 

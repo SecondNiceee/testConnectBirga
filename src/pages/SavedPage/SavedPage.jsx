@@ -208,8 +208,10 @@ const SavedPage = () => {
     MainButton.onClick(forward);
     BackButton.onClick(back);
     if (details.isOpen) {
+      menu.style.paddingBottom = "3px"
       BackButton.show();
       MainButton.show();
+      
 
       if (gotIt) {
         MainButton.setParams({
@@ -229,6 +231,7 @@ const SavedPage = () => {
     } else {
       BackButton.hide();
       MainButton.hide();
+      menu.style.paddingBottom = "27px"
       MainButton.offClick(forward);
       BackButton.offClick(back);
       MainButton.setParams({

@@ -16,7 +16,7 @@ Date.prototype.addHours = function(h) {
   this.setTime(this.getTime() + (h*60*60*1000));
   return this;
 }
-
+const menu = document.documentElement.querySelector(".FirstMenu")
 const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , GreyWidth , GreyIntWidth , errors , whichOne, setWhichOne}) => {
 
 
@@ -104,11 +104,12 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'
       datePickerObject.style.transform = 'translateY(0%)'
       MainButton.hide()
+      menu.style.paddingBottom = "27px"
       
     }
     function disappear(){
 
-
+      menu.style.paddingBottom = "3px"
       MainButton.show()
       dateObject.style.backgroundColor = 'unset'
       dateObject.style.display = 'block'

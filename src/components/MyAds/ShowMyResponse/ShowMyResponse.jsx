@@ -9,6 +9,7 @@ import MyLoader from "../../UI/MyLoader/MyLoader";
 import MainButton from "../../../constants/MainButton";
 import axios from "axios";
 import { changeMenuActive } from "../../../store/menuSlice";
+const menu = document.documentElement.querySelector(".FirstMenu")
 const ShowMyResponse = ({
   response = { advertisement: { user: {} } , id : 0 , user : {'fuck' : 'fuck'} },
   openDetails,
@@ -64,12 +65,14 @@ const ShowMyResponse = ({
     }
     
     if (response.isWatched === "inProcess") {
+      menu.style.paddingBottom = "3px"
       MainButton.show();
       MainButton.setText("ВЫПОЛНИЛ");
       MainButton.onClick(click);
     }
     return () => {
       MainButton.hide();
+      menu.style.paddingBottom = "27px"
       MainButton.offClick(click);
     };
   }, [

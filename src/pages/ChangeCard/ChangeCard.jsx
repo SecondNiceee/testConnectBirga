@@ -233,6 +233,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     MainButton.setText("Изменить кейс");
     if (!modalActive && !isCategoryChoiceOpen){
       mainRef.current.style.overflow = "scroll"
+      menu.style.paddingBottom = "3px"
       MainButton.show()
       MainButton.onClick(saveFunc);
       BackButton.onClick(backFunc);
@@ -240,6 +241,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     else{
       mainRef.current.style.overflow = "hidden"
       MainButton.hide()
+      menu.style.paddingBottom = "27px"
       BackButton.offClick(saveFunc)
     }
     return () => {

@@ -52,6 +52,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
     
 
 
+    menu.style.paddingBottom = "3px"
     BackButton.show()
     MainButton.show()
     if (put){
@@ -73,6 +74,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
       MainButton.setText(exitText)
       if (!isExitShow){
         MainButton.hide()
+        menu.style.paddingBottom = "27px"
         
       }
       else{

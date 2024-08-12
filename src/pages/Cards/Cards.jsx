@@ -208,6 +208,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     MainButton.setText("Добавить кейс");
     BackButton.show()
     if (!modalActive && !isCategoryChoiceOpen){
+      menu.style.paddingBottom = "3px"
       MainButton.show()
       MainButton.onClick(saveFunc);
       BackButton.onClick(backFunc);
@@ -216,6 +217,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     else{
       mainRef.current.style.overflow = "hidden"
       MainButton.hide()
+      menu.style.paddingBottom = "27px"
       BackButton.offClick(saveFunc)
     }
     return () => {
