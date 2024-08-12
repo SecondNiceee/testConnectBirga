@@ -29,7 +29,7 @@ const AdCreating = () => {
 
 
   if (MainButton.isVisible){
-    menu.style.paddingBottom = "0px"
+    menu.style.paddingBottom = "3px"
   }
   else{
     menu.style.paddingBottom = "27px"
