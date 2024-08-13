@@ -349,6 +349,32 @@
     }
 }
 
+@keyframes showContainerAnimation {
+        0%{
+            height: 100vh !important;
+        }
+        70%{
+            height: calc(100vh - 57px) !important; 
+        }
+}
+
+@keyframes hideContainerAnimation{
+    0%{
+        height: 100vh !important;
+    }
+    70%{
+        height: calc(100vh - 80px) !important; 
+    }
+}
+
+
+.containerShow{
+    animation: showContainerAnimation 2s both !important;
+}
+.containerHide{
+    animation: hideContainerAnimation 2s both !important;
+}
+
 .buttonShow{
     padding-bottom: 3px !important;
 }
@@ -358,11 +384,11 @@
 
 .FirstMenu.disappearAnimation{
     padding-bottom: 3px;
-    animation: disappearAnimation 0.5s forwards ;
+    animation: disappearAnimation 1s forwards ;
 }
 .FirstMenu.appearAnimation{
     padding-bottom: 27px;
-    animation: menuAnimate 0.5s forwards ;
+    animation: menuAnimate 1s forwards ;
 }
 .FirstMenu{
     border-top: 0.5px solid rgba(125, 145, 158, 0.5);;

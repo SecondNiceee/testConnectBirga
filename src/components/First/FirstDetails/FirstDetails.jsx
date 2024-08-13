@@ -1,30 +1,29 @@
-import React, { memo, useEffect, useRef } from 'react';
+import React, { forwardRef, memo, useEffect, useRef } from 'react';
 import TaskDetailsContainer from './TaskDetailsContainer';
 import TimeAndWatches from './TimeAndWatches';
 import SimilarAds from './SimilarAds';
 import { useDispatch } from 'react-redux';
 import { addWatch } from '../../../store/information';
 
-const FirstDetails = ({  orderInformation , className , setProfile, end = false, breakRef, isDetailsActive, ...props}) => {
+const FirstDetails = forwardRef(({  orderInformation , className , setProfile, end = false, breakRef, isDetailsActive, ...props}, ref) => {
     
-    useEffect( () => {  
-        if (isDetailsActive ){
-            if (breakRef.current && mainRef.current){
+    // useEffect( () => {  
+    //     if (isDetailsActive ){
+    //         if (breakRef.current && mainRef.current){
 
-                breakRef.current.style.overflow = "hidden"
-                mainRef.current.style.overflow = "scroll"
-            }
-        }
-        else{
-            if (breakRef){
-                breakRef.current.style.overflow = "scroll"
-            }
-        }
+    //             breakRef.current.style.overflow = "hidden"
+    //             mainRef.current.style.overflow = "scroll"
+    //         }
+    //     }
+    //     else{
+    //         if (breakRef){
+    //             breakRef.current.style.overflow = "scroll"
+    //         }
+    //     }
 
-    } , [isDetailsActive , breakRef] )
+    // } , [isDetailsActive , breakRef] )
     
 
-    const mainRef = useRef()
     const disatch = useDispatch()
     useEffect( () => {
         if (!end && orderInformation ){
@@ -39,7 +38,7 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
             ? 
             (
             
-            <div ref={mainRef} {...props} className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
+            <div ref={ref} {...props} className  =  {className ? ['TaskDetails' , className].join(' ') : 'TaskDetails'} >
 
                 <TaskDetailsContainer setProfile = {setProfile} end = {end}  orderInformation = {orderInformation} />
                 
@@ -56,6 +55,6 @@ const FirstDetails = ({  orderInformation , className , setProfile, end = false,
         }
         </>
     );
-};
+});
 
 export default memo(FirstDetails);

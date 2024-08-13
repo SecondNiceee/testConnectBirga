@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect} from "react";
+import React, { forwardRef, memo, useCallback, useEffect} from "react";
 import FirstMain from "../../components/First/FirstMain/FirstMain";
 import FirstTop from "../../components/First/FirstMain/FirstTop";
 import FirstLoader from "../../loaders/FirstLoader";
@@ -7,7 +7,7 @@ import { changeStatus, fetchTasksInformation } from "../../store/information";
 import CategoryBlock from "../../components/First/CategoryBlock/CategoryBlock";
 import InputBlock from "../../components/First/CategoryBlock/InputBlock";
 // let count = 0
-const AllTasks = ({
+const AllTasks = forwardRef(({
   setDetailsActive,
   setMenuActive,
   ordersInformation,
@@ -17,7 +17,7 @@ const AllTasks = ({
   filters,
   setFilters,
   setSubCategory
-}) => {
+} , ref) => {
 
 
 
@@ -115,6 +115,6 @@ const AllTasks = ({
 
     </div>
   );
-};
+} );
 
 export default memo(AllTasks);

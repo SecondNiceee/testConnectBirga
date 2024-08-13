@@ -470,6 +470,48 @@
             transform: translateY(0%);
   }
 }
+@-webkit-keyframes showContainerAnimation {
+  0% {
+    height: 100vh !important;
+  }
+  70% {
+    height: calc(100vh - 57px) !important;
+  }
+}
+@keyframes showContainerAnimation {
+  0% {
+    height: 100vh !important;
+  }
+  70% {
+    height: calc(100vh - 57px) !important;
+  }
+}
+@-webkit-keyframes hideContainerAnimation {
+  0% {
+    height: 100vh !important;
+  }
+  70% {
+    height: calc(100vh - 80px) !important;
+  }
+}
+@keyframes hideContainerAnimation {
+  0% {
+    height: 100vh !important;
+  }
+  70% {
+    height: calc(100vh - 80px) !important;
+  }
+}
+.containerShow {
+  -webkit-animation: showContainerAnimation 2s both !important;
+          animation: showContainerAnimation 2s both !important;
+}
+
+.containerHide {
+  -webkit-animation: hideContainerAnimation 2s both !important;
+          animation: hideContainerAnimation 2s both !important;
+}
+
 .buttonShow {
   padding-bottom: 3px !important;
 }
@@ -480,14 +522,14 @@
 
 .FirstMenu.disappearAnimation {
   padding-bottom: 3px;
-  -webkit-animation: disappearAnimation 0.5s forwards;
-          animation: disappearAnimation 0.5s forwards;
+  -webkit-animation: disappearAnimation 1s forwards;
+          animation: disappearAnimation 1s forwards;
 }
 
 .FirstMenu.appearAnimation {
   padding-bottom: 27px;
-  -webkit-animation: menuAnimate 0.5s forwards;
-          animation: menuAnimate 0.5s forwards;
+  -webkit-animation: menuAnimate 1s forwards;
+          animation: menuAnimate 1s forwards;
 }
 
 .FirstMenu {

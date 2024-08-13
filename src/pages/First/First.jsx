@@ -41,6 +41,36 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 const First = ({ isPage = false }) => {
 
 
+  const taskDetailsRef = useRef(null)
+  const responseRef = useRef(null)
+  const firstRef = useRef(null);
+
+  const show = useCallback( () => {
+    if (firstRef.current){
+      firstRef.current.classList.add("containerShow")
+    }
+    if (responseRef.current){
+      responseRef.current.classList.add("containerShow")
+    }
+    if (taskDetailsRef.current){
+      taskDetailsRef.current.classList.add("containerShow")
+    }
+  } , [] )
+
+  const hide = useCallback( () => {
+    if (firstRef.current){
+      firstRef.current.classList.add("containerHide")
+      firstRef.current.classList.remove("containerShow")
+    }
+    if (responseRef.current){
+      responseRef.current.classList.add("containerHide")
+      responseRef.current.classList.remove("containerShow")
+    }
+    if (taskDetailsRef.current){
+      taskDetailsRef.current.classList.add("containerHide")
+      taskDetailsRef.current.classList.remove("containerShow")
+    }
+  } , [] )
 
 
   const [step, setStep] = useState(0);
@@ -158,6 +188,7 @@ const First = ({ isPage = false }) => {
   useEffect(() => {
     if (isDetailsActive.isOpen) {
       BackButton.show();
+      
     }
   }, [isDetailsActive]);
 
@@ -240,6 +271,7 @@ const First = ({ isPage = false }) => {
       menu.classList.add("disappearAnimation")  
       menu.classList.remove("appearAnimation")
       MainButton.show();
+      show()
       BackButton.show();
       if (gotIt) {
         MainButton.setParams({
@@ -259,6 +291,7 @@ const First = ({ isPage = false }) => {
     } else {
       BackButton.hide();
       MainButton.hide();
+      hide()
       menu.classList.add("appearAnimation")
       menu.classList.remove("disappearAnimation")  
       MainButton.setParams({
@@ -485,7 +518,7 @@ const First = ({ isPage = false }) => {
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);
 
-  const firstRef = useRef(null);
+
 
   // useEffect( () => {
 
@@ -725,6 +758,7 @@ const First = ({ isPage = false }) => {
 
       >
             <FirstDetails
+              ref={taskDetailsRef}
               isDetailsActive={isDetailsActive.isOpen}
               breakRef={firstRef}
               setProfile={setProfile}
@@ -747,7 +781,7 @@ const First = ({ isPage = false }) => {
           // style = {{
           //   transform : "translateX(0px)"
           // }}
-          ref={mainRef}
+          ref={responseRef}
           responce={responce}
           setResponce={setResponce}
           orderInformation={
