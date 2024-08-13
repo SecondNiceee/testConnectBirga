@@ -469,13 +469,15 @@
   }
 }
 .FirstMenu.disappearAnimation {
-  -webkit-animation: disappearAnimation 1s forwards;
-          animation: disappearAnimation 1s forwards;
+  padding-bottom: 27px;
+  -webkit-animation: disappearAnimation 1s both;
+          animation: disappearAnimation 1s both;
 }
 
 .FirstMenu.appearAnimation {
-  -webkit-animation: menuAnimate 1s forwards;
-          animation: menuAnimate 1s forwards;
+  padding-bottom: 3px;
+  -webkit-animation: menuAnimate 1s both;
+          animation: menuAnimate 1s both;
 }
 
 .FirstMenu {

@@ -523,8 +523,6 @@ const AdCreating = () => {
         menu.classList.remove("appearAnimation")
         menu.classList.add("disappearAnimation")
         MainButton.hide();
-      
-      menu.style.paddingBottom = "27px"
     };
   }, []);
 
