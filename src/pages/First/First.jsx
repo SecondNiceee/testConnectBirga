@@ -635,6 +635,12 @@ const First = ({ isPage = false }) => {
   } , [] )
 
   const container = document.querySelector(".container")
+  useEffect( () => {
+    container.style.height = "calc(100vh)"
+    setTimeout( () => {
+      container.style.height = "calc(100vh - 85px)"
+    } , 600 )
+  } , [] )  
 
 
   return (
