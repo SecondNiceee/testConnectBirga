@@ -47,52 +47,29 @@ const First = ({ isPage = false }) => {
 
   const show = useCallback( () => {
     if (firstRef.current){
-      firstRef.current.style.height = "100vh"
+      firstRef.current.classList.add("containerShow")
     }
     if (responseRef.current){
-      responseRef.current.style.height = "100vh"
+      responseRef.current.classList.add("containerShow")
     }
     if (taskDetailsRef.current){
-      taskDetailsRef.current.style.height = "100vh"
+      taskDetailsRef.current.classList.add("containerShow")
     }
-
-    setTimeout( () => {
-      if (firstRef.current){
-        firstRef.current.style.height = "calc(100vh - 57px)"
-      }
-      if (responseRef.current){
-        responseRef.current.style.height = "calc(100vh - 57px)"
-      }
-      if (taskDetailsRef.current){
-        taskDetailsRef.current.style.height = "calc(100vh - 57px)"
-      }
-    } ,1500  )
-
-
   } , [] )
 
   const hide = useCallback( () => {
     if (firstRef.current){
-      firstRef.current.style.height= "100vh"
+      firstRef.current.classList.add("containerHide")
+      firstRef.current.classList.remove("containerShow")
     }
     if (responseRef.current){
-      responseRef.current.style.height = "100vh"
+      responseRef.current.classList.add("containerHide")
+      responseRef.current.classList.remove("containerShow")
     }
     if (taskDetailsRef.current){
-      taskDetailsRef.current.style.height = "100vh"
+      taskDetailsRef.current.classList.add("containerHide")
+      taskDetailsRef.current.classList.remove("containerShow")
     }
-
-    setTimeout( () => {
-      if (firstRef.current){
-        firstRef.current.style.height= "calc(100vh - 80px)"
-      }
-      if (responseRef.current){
-        responseRef.current.style.height = "calc(100vh - 80px)"
-      }
-      if (taskDetailsRef.current){
-        taskDetailsRef.current.style.height = "calc(100vh - 80px)"
-      }
-    } ,1500  )
   } , [] )
 
 

@@ -21,10 +21,8 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-transition: -webkit-transform 0.4s;
-  transition: -webkit-transform 0.4s;
-  transition: transform 0.4s;
-  transition: transform 0.4s, -webkit-transform 0.4s;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
   will-change: transform;
   overflow-x: hidden;
   min-width: 100vw;

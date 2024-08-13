@@ -8,7 +8,7 @@
   overflow :scroll;
   height: calc(100vh);
   display: flex;   
-  transition: transform 0.4s;
+  transition: 0.4s;
   will-change: transform;
   overflow-x: hidden;
   min-width: 100vw;
