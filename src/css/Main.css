@@ -492,7 +492,7 @@
 
 .FirstMenu {
   border-top: 0.5px solid rgba(125, 145, 158, 0.5);
-  padding-bottom: 32px;
+  padding-bottom: 27px;
   will-change: transform;
   background-color: #20303F;
   z-index: 11000;
