@@ -66,7 +66,7 @@ const First = ({ isPage = false }) => {
       if (taskDetailsRef.current){
         taskDetailsRef.current.style.height = "calc(100vh - 57px)"
       }
-    } ,700  )
+    } ,1500  )
 
 
   } , [] )
@@ -92,7 +92,7 @@ const First = ({ isPage = false }) => {
       if (taskDetailsRef.current){
         taskDetailsRef.current.style.height = "calc(100vh - 80px)"
       }
-    } ,700  )
+    } ,1500  )
   } , [] )
 
 
