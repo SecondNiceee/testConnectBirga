@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import rightArrow from '../../images/icons/rightArrow.svg'
 import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
-const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
+const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar , ...props}) => {
 
 
   useEffect( () => {
@@ -60,7 +60,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
     } )
 
     return (
-    <div className="subCategory__container">
+    <div {...props} className="subCategory__container">
       <OneInput
         placeholder="Поиск по заданиям"
         inputValue={inputValue}

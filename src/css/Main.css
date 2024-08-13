@@ -3054,6 +3054,7 @@ input {
 .responce-wrapper {
   min-width: 100vw;
   width: 100vw;
+  padding-bottom: 60px;
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;

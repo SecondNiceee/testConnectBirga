@@ -35,14 +35,10 @@ let pageValue = true;
 let localResponce;
 let localStep;
 
-const menu = document.documentElement.querySelector(".FirstMenu")
-
+const menu = document.documentElement.querySelector(".FirstMenu");
 
 const First = ({ isPage = false }) => {
-
-  const firstRef = useRef(null)
-
-
+  const firstRef = useRef(null);
 
   const [step, setStep] = useState(0);
   localStep = step;
@@ -159,7 +155,6 @@ const First = ({ isPage = false }) => {
   useEffect(() => {
     if (isDetailsActive.isOpen) {
       BackButton.show();
-      
     }
   }, [isDetailsActive]);
 
@@ -239,8 +234,8 @@ const First = ({ isPage = false }) => {
     MainButton.onClick(forward);
     BackButton.onClick(back);
     if (isDetailsActiveVar) {
-      menu.classList.add("disappearAnimation")  
-      menu.classList.remove("appearAnimation")
+      menu.classList.add("disappearAnimation");
+      menu.classList.remove("appearAnimation");
       MainButton.show();
       BackButton.show();
       if (gotIt) {
@@ -261,8 +256,8 @@ const First = ({ isPage = false }) => {
     } else {
       BackButton.hide();
       MainButton.hide();
-      menu.classList.add("appearAnimation")
-      menu.classList.remove("disappearAnimation")  
+      menu.classList.add("appearAnimation");
+      menu.classList.remove("disappearAnimation");
       MainButton.setParams({
         is_active: true,
         color: "#2ea5ff",
@@ -300,7 +295,6 @@ const First = ({ isPage = false }) => {
     },
     [dispatch]
   );
-
 
   const closeMenu = useCallback(() => {
     if (isMenuActive) {
@@ -449,10 +443,7 @@ const First = ({ isPage = false }) => {
             window.Telegram.WebApp.HapticFeedback.notificationOccurred(
               "success"
             );
-            postResponce(
-              ordersInformation[isDetailsActive.id].id,
-              2144832745
-            );
+            postResponce(ordersInformation[isDetailsActive.id].id, 2144832745);
             // mainRef.current.classList.remove('secondStep')
             setDetailsActive((value) => ({ ...value, isOpen: false }));
             setStep(0);
@@ -486,10 +477,6 @@ const First = ({ isPage = false }) => {
   const categorys = useSelector((state) => state.categorys.category);
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);
-
-
-
-
 
   useEffect(() => {
     MainButton.onClick(forwardFunction);
@@ -597,27 +584,26 @@ const First = ({ isPage = false }) => {
     }
   }, [step, isDetailsActive.isOpen]);
 
-  useEffect( () => {
-    
+  useEffect(() => {
     const input = document.querySelectorAll('input[type="text"]');
-    const textarea  = document.querySelectorAll('textarea');
-    for (let smallInput of input){
-      smallInput.addEventListener('focus', () => {
-        menu.style.display = 'none'; // скрываем меню
+    const textarea = document.querySelectorAll("textarea");
+    for (let smallInput of input) {
+      smallInput.addEventListener("focus", () => {
+        menu.style.display = "none"; // скрываем меню
       });
-      smallInput.addEventListener('blur', () => {
-        menu.style.display = 'flex'; // скрываем меню
-      });
-    }
-    for (let smallTextarea of textarea){
-      smallTextarea.addEventListener('focus', () => {
-        menu.style.display = 'none'; // скрываем меню
-      });
-      smallTextarea.addEventListener('blur', () => {
-        menu.style.display = 'flex'; // скрываем меню
+      smallInput.addEventListener("blur", () => {
+        menu.style.display = "flex"; // скрываем меню
       });
     }
-  } , [] )
+    for (let smallTextarea of textarea) {
+      smallTextarea.addEventListener("focus", () => {
+        menu.style.display = "none"; // скрываем меню
+      });
+      smallTextarea.addEventListener("blur", () => {
+        menu.style.display = "flex"; // скрываем меню
+      });
+    }
+  }, []);
 
   // useEffect( () => {
   //   firstRef.current.style.height = "100vh"
@@ -625,8 +611,6 @@ const First = ({ isPage = false }) => {
   //     firstRef.current.style.height = "calc(100vh - 80px)"
   //   } , 600 )
   // } , [] )
-
-
 
   return (
     <div style={firsStyle} className="first-container">
@@ -640,8 +624,6 @@ const First = ({ isPage = false }) => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
       >
-
-
         <div className="first-wrapper">
           <AllTasks
             setFilters={setFilters}
@@ -658,6 +640,9 @@ const First = ({ isPage = false }) => {
 
         <CSSTransition in={categoryOpen} timeout={0} mountOnEnter unmountOnExit>
           <FirstChoiceCategory
+            style={{
+              paddingBottom: "100px",
+            }}
             subCategorys={subCategorys}
             categorys={categorys}
             setCatagoryChoiceOpen={setCategoryOpen}
@@ -668,6 +653,9 @@ const First = ({ isPage = false }) => {
 
         <CSSTransition in={subCategory} timeout={0} mountOnEnter unmountOnExit>
           <FirstChoiceSubCategory
+            style={{
+              paddingBottom: "100px",
+            }}
             setSubcategoryChoiceOpen={setSubCategory}
             subCategorysPar={subCategorys}
             taskInformation={filters}
@@ -683,7 +671,7 @@ const First = ({ isPage = false }) => {
         mountOnEnter
         unmountOnExit
       >
-        <CardPage card={isCardOpen.card} />
+        <CardPage style={{ paddingBottom: "65px" }} card={isCardOpen.card} />
       </CSSTransition>
 
       <CSSTransition
@@ -694,6 +682,9 @@ const First = ({ isPage = false }) => {
         unmountOnExit
       >
         <AboutReaction
+          style={{
+            paddingBottom: "65px",
+          }}
           setOneCard={setCardOpen}
           responce={
             filteredArr[isDetailsActive.id]
@@ -710,17 +701,15 @@ const First = ({ isPage = false }) => {
         in={isDetailsActive.isOpen}
         timeout={400}
         classNames="left-right"
-
       >
-            <FirstDetails
-              isDetailsActive={isDetailsActive.isOpen}
-              breakRef={firstRef}
-              setProfile={setProfile}
-              style={pageValue && isPage ? { transform: "translateX(0%)" } : {}}
-              // className={}
-              orderInformation={detailsAdertisement}
-            />
-        
+        <FirstDetails
+          isDetailsActive={isDetailsActive.isOpen}
+          breakRef={firstRef}
+          setProfile={setProfile}
+          style={pageValue && isPage ? { transform: "translateX(0%)" } : {}}
+          // className={}
+          orderInformation={detailsAdertisement}
+        />
       </CSSTransition>
 
       <CSSTransition

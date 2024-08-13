@@ -10,7 +10,8 @@ const FirstChoiceCategory = ({
   setCatagoryChoiceOpen,
   categorys,
   subCategorys,
-  categoryOnly 
+  categoryOnly ,
+  ...props 
 
 }) => {
 
@@ -53,7 +54,7 @@ const FirstChoiceCategory = ({
     }
   }, [setCatagoryChoiceOpen]  )
   return (
-    <div className={cl.ChoiceCategory}>
+    <div {...props} className={cl.ChoiceCategory}>
       <OneInput
         placeholder="Поиск по заданиям"
         value={inputValue}
