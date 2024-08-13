@@ -619,12 +619,12 @@ const First = ({ isPage = false }) => {
     }
   } , [] )
 
-  useEffect( () => {
-    firstRef.current.style.height = "100vh"
-    setTimeout( () => {
-      firstRef.current.style.height = "calc(100vh - 80px)"
-    } , 600 )
-  } , [] )
+  // useEffect( () => {
+  //   firstRef.current.style.height = "100vh"
+  //   setTimeout( () => {
+  //     firstRef.current.style.height = "calc(100vh - 80px)"
+  //   } , 600 )
+  // } , [] )
 
 
 

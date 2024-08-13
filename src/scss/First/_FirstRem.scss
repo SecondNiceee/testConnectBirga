@@ -37,6 +37,7 @@
     transition: transform 0.4s;
     will-change: transform;
     width: 100vw;
+    margin-bottom: 60px;
 }
 .status{
     font-family: "SF Pro Display";
@@ -124,7 +125,7 @@
   gap: calc(8px);
   border-radius: 10px;
   overflow-x: hidden;
-  min-height: calc(calc(100vh) - 65px);
+  min-height: calc(calc(100vh));
 }
 
 
@@ -403,7 +404,7 @@
     display: flex;
     width: 100vw;
     transform: translateX(0%);
-    transition: transform 0.3s cubic-bezier(0.05, 0.31, 0.58, 1) ;
+    transition: transform 0.3s cubic-bezier(0.05, 0.31, 0.58, 1) , padding-bottom 0.3s cubic-bezier(0.05, 0.31, 0.58, 1) ;
 
 
     .menuPath{
