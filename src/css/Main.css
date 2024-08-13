@@ -415,17 +415,11 @@
 }
 @-webkit-keyframes menuAnimate {
   0% {
-    padding-bottom: 3px;
-  }
-  100% {
     padding-bottom: 27px;
   }
 }
 @keyframes menuAnimate {
   0% {
-    padding-bottom: 3px;
-  }
-  100% {
     padding-bottom: 27px;
   }
 }
@@ -839,6 +833,7 @@
   min-height: 100vh;
   min-width: 100vw;
   top: 0;
+  overflow-y: scroll;
   z-index: 1000;
   width: 100%;
   background: rgb(24, 34, 45);

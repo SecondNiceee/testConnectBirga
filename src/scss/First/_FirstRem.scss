@@ -324,11 +324,11 @@
 
 @keyframes menuAnimate{
     0%{
-        padding-bottom: 3px;
-    }
-    100%{
         padding-bottom: 27px;
     }
+    // 100%{
+    //     padding-bottom: 27px;
+    // }
 }
 
 @keyframes disappearAnimation{
