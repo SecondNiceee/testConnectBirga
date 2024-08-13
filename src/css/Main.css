@@ -425,36 +425,12 @@
 }
 @-webkit-keyframes disappearAnimation {
   0% {
-    opacity: 0;
-  }
-  2% {
-    -webkit-transform: translateY(130%);
-            transform: translateY(130%);
-  }
-  50% {
-    opacity: 1;
     padding-bottom: 3px;
-  }
-  100% {
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
   }
 }
 @keyframes disappearAnimation {
   0% {
-    opacity: 0;
-  }
-  2% {
-    -webkit-transform: translateY(130%);
-            transform: translateY(130%);
-  }
-  50% {
-    opacity: 1;
     padding-bottom: 3px;
-  }
-  100% {
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%);
   }
 }
 @-webkit-keyframes showContainerAnimation {

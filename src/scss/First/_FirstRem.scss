@@ -333,19 +333,9 @@
 
 @keyframes disappearAnimation{
     0%{
-        opacity: 0;
-    }
-    2%{
-        transform: translateY(130%)
-    }
-    50%{
-        opacity: 1;
         padding-bottom: 3px;
-        
     }
-    100%{
-        transform: translateY(0%)
-    }
+
 }
 
 @keyframes showContainerAnimation {
