@@ -38,7 +38,7 @@ const MyLoader = () => {
     <div
       style={{
         width: "100vw",
-        height: "calc(100vh - 53.6px)",
+        height: "calc(100vh)",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -71,7 +71,7 @@ const AnimatedSwitch = () => {
   console.log("Привет")
   return (
     <div className="container" style={{
-      minHeight : "calc(100vh - 53.6px)"
+      minHeight : "calc(100vh)"
     }}>
       <div
         style={isMenuActive ? { opacity: "0.6" } : { maxWidth: "0px" }}

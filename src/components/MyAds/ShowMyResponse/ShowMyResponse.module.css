@@ -9,7 +9,7 @@
     gap: 8px;
     width: 100vw;
     z-index: 200;
-    height: calc(100vh - 53.6px);
+    height: calc(100vh);
     transform: translateX(100%);
     transition: 0.4s;
     overflow-y: scroll;

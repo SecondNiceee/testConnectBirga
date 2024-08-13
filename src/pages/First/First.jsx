@@ -47,29 +47,52 @@ const First = ({ isPage = false }) => {
 
   const show = useCallback( () => {
     if (firstRef.current){
-      firstRef.current.classList.add("containerShow")
+      firstRef.current.style.height = "100vh"
     }
     if (responseRef.current){
-      responseRef.current.classList.add("containerShow")
+      responseRef.current.style.height = "100vh"
     }
     if (taskDetailsRef.current){
-      taskDetailsRef.current.classList.add("containerShow")
+      taskDetailsRef.current.style.height = "100vh"
     }
+
+    setTimeout( () => {
+      if (firstRef.current){
+        firstRef.current.style.height = "calc(100vh - 57px)"
+      }
+      if (responseRef.current){
+        responseRef.current.style.height = "calc(100vh - 57px)"
+      }
+      if (taskDetailsRef.current){
+        taskDetailsRef.current.style.height = "calc(100vh - 57px)"
+      }
+    } ,700  )
+
+
   } , [] )
 
   const hide = useCallback( () => {
     if (firstRef.current){
-      firstRef.current.classList.add("containerHide")
-      firstRef.current.classList.remove("containerShow")
+      firstRef.current.style.height= "100vh"
     }
     if (responseRef.current){
-      responseRef.current.classList.add("containerHide")
-      responseRef.current.classList.remove("containerShow")
+      responseRef.current.style.height = "100vh"
     }
     if (taskDetailsRef.current){
-      taskDetailsRef.current.classList.add("containerHide")
-      taskDetailsRef.current.classList.remove("containerShow")
+      taskDetailsRef.current.style.height = "100vh"
     }
+
+    setTimeout( () => {
+      if (firstRef.current){
+        firstRef.current.style.height= "calc(100vh - 80px)"
+      }
+      if (responseRef.current){
+        responseRef.current.style.height = "calc(100vh - 80px)"
+      }
+      if (taskDetailsRef.current){
+        taskDetailsRef.current.style.height = "calc(100vh - 80px)"
+      }
+    } ,700  )
   } , [] )
 
 
@@ -368,7 +391,7 @@ const First = ({ isPage = false }) => {
   // useEffect( () => {
   //   firstRef.current.style.overflowY = "scroll"
   //   firstRef.current.style.height = "200vh"
-  //   firstRef.current.style.paddingBottom = "calc(100vh - 53.6px)"
+  //   firstRef.current.style.paddingBottom = "calc(100vh)"
 
   // }, [] )
 

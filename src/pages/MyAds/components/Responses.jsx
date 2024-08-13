@@ -5,7 +5,7 @@ import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ReactionSuspense from "./ReactionSuspense";
 import MyAnimation from "./MyAnimation";
 
-const height = { height: "calc(calc(100vh - 53.6px) - 330px)" };
+const height = { height: "calc(calc(100vh) - 330px)" };
 const Responses = ({
   setFilterBy,
   responces,

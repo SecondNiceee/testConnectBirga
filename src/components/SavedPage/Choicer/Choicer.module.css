@@ -10,7 +10,7 @@
 .choicerBlock{
     flex-direction: column;
     display: flex;
-    height: calc(calc(100vh - 53.6px) - 100px);
+    height: calc(calc(100vh) - 100px);
     justify-content: center;
     align-items: center;
     
