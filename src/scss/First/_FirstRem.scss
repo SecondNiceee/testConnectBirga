@@ -4,7 +4,7 @@
     margin-top: 2px;
 }
 .First {
-  position: fixed;
+  position: absolute;
   overflow :scroll;
   height: 100%;
   display: flex;   
@@ -16,6 +16,8 @@
 
 .first-container{
     min-height: 100%;
+    height: 100vh;
+    position: relative;
     transition: 0.4s;
     display: flex;
 }
