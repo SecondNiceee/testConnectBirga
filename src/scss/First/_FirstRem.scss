@@ -341,7 +341,8 @@
 
 @keyframes disappearAnimation{
     0%{
-        opacity: 0;
+        opacity: 1;
+        padding-bottom: 27px;
     }
     2%{
         transform: translateY(130%)
@@ -352,6 +353,7 @@
         
     }
     100%{
+        padding-bottom: 3px;
         transform: translateY(0%)
     }
 }
