@@ -40,12 +40,12 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 
 const First = ({ isPage = false }) => {
 
-  if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
-  }
-  else{
-    menu.style.paddingBottom = "27px"
-  }
+  // if (MainButton.isVisible){
+  //   menu.style.paddingBottom = "3px"
+  // }
+  // else{
+  //   menu.style.paddingBottom = "27px"
+  // }
 
 
   const [step, setStep] = useState(0);
