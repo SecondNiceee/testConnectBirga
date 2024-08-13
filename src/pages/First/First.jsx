@@ -43,11 +43,13 @@ const First = ({ isPage = false }) => {
   if (MainButton.isVisible){
     if (!menu.classList.contains("buttonShow")){
       menu.classList.add("buttonShow")  
+      menu.classList.remove("buttonHide")
     }
   }
   else{
     if (!menu.classList.contains("buttonHide")){
       menu.classList.add("buttonHide")
+      menu.classList.remove("buttonShow")  
     }
   }
 
@@ -635,7 +637,7 @@ const First = ({ isPage = false }) => {
       });
     }
   } , [] )
-  
+
   useEffect( () => {
     firstRef.current.style.height = "100vh"
     setTimeout( () => {

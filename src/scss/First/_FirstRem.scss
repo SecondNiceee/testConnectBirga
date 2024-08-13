@@ -326,6 +326,7 @@
         opacity: 0;
     }
     10%{
+        opacity: 1;
         padding-bottom: 27px;
         transform: translateY(100%)
     }
@@ -339,6 +340,7 @@
         opacity: 0;
     }
     10%{
+        opacity: 1;
         padding-bottom: 3px;
         transform: translateY(100%)
     }
@@ -348,10 +350,10 @@
 }
 
 .buttonShow{
-    padding-bottom: 3px;
+    padding-bottom: 3px !important;
 }
 .buttonHide{
-    padding-bottom: 27px;
+    padding-bottom: 27px !important;
 }
 
 .FirstMenu.disappearAnimation{
@@ -375,7 +377,7 @@
     display: flex;
     width: 100vw;
     transform: translateX(0%);
-    transition: transform 0.5s cubic-bezier(0.05, 0.31, 0.58, 1) ;
+    transition: transform 0.3s cubic-bezier(0.05, 0.31, 0.58, 1) , padding-bottom 0.3s cubic-bezier(0.05, 0.31, 0.58, 1);
 
 
     .menuPath{
