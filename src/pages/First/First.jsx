@@ -40,18 +40,7 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 
 const First = ({ isPage = false }) => {
 
-  if (MainButton.isVisible){
-    if (!menu.classList.contains("buttonShow")){
-      menu.classList.add("buttonShow")  
-      menu.classList.remove("buttonHide")
-    }
-  }
-  else{
-    if (!menu.classList.contains("buttonHide")){
-      menu.classList.add("buttonHide")
-      menu.classList.remove("buttonShow")  
-    }
-  }
+
 
 
   const [step, setStep] = useState(0);
@@ -248,6 +237,8 @@ const First = ({ isPage = false }) => {
     MainButton.onClick(forward);
     BackButton.onClick(back);
     if (isDetailsActiveVar) {
+      menu.classList.add("buttonShow")  
+      menu.classList.remove("buttonHide")
       MainButton.show();
       BackButton.show();
       if (gotIt) {
@@ -268,6 +259,8 @@ const First = ({ isPage = false }) => {
     } else {
       BackButton.hide();
       MainButton.hide();
+      menu.classList.add("buttonHide")
+      menu.classList.remove("buttonShow")  
       MainButton.setParams({
         is_active: true,
         color: "#2ea5ff",
@@ -644,6 +637,8 @@ const First = ({ isPage = false }) => {
       firstRef.current.style.height = "calc(100vh - 80px)"
     } , 600 )
   } , [] )
+
+
 
   return (
     <div style={firsStyle} className="first-container">
