@@ -523,10 +523,14 @@
 
 .FirstMenu.disappearAnimation {
   padding-bottom: 3px;
+  -webkit-animation: disappearAnimation 1s forwards;
+          animation: disappearAnimation 1s forwards;
 }
 
 .FirstMenu.appearAnimation {
   padding-bottom: 27px;
+  -webkit-animation: menuAnimate 1s forwards;
+          animation: menuAnimate 1s forwards;
 }
 
 .FirstMenu {
