@@ -36,7 +36,7 @@ let localResponce;
 let localStep;
 
 const menu = document.documentElement.querySelector(".FirstMenu")
-
+const container = document.querySelector(".container")
 
 const First = ({ isPage = false }) => {
 
@@ -632,7 +632,7 @@ const First = ({ isPage = false }) => {
     }
   } , [] )
 
-  const container = document.querySelector(".container")
+
   useEffect( () => {
     container.style.height = "calc(100vh)"
     setTimeout( () => {

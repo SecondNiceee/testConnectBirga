@@ -20,20 +20,16 @@ import axios from "axios";
 
 let spet = 0;
 const menu = document.documentElement.querySelector(".FirstMenu")
+const container = document.querySelector(".container")
 const AdCreating = () => {
-  // const [taskInformation, setTaskInformation] = useState(
-  //   useSelector((state) => state.information.taskInformation)
-  // );
 
   
-
-
-  // if (MainButton.isVisible){
-  //   menu.style.paddingBottom = "3px"
-  // }
-  // else{
-  //   menu.style.paddingBottom = "27px"
-  // }
+  useEffect( () => {
+    container.style.height = "calc(100vh)"
+    setTimeout( () => {
+      container.style.height = "calc(100vh - 57px)"
+    } , 600 )
+  } , [] )  
   useEffect( () => {
     console.log("Это рендер AdCreating")
     
