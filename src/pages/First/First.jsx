@@ -36,15 +36,19 @@ let localResponce;
 let localStep;
 
 const menu = document.documentElement.querySelector(".FirstMenu")
-const container = document.querySelector(".container")
+
 
 const First = ({ isPage = false }) => {
 
   if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
+    if (!menu.classList.contains("buttonShow")){
+      menu.classList.add("buttonShow")  
+    }
   }
   else{
-    menu.style.paddingBottom = "27px"
+    if (!menu.classList.contains("buttonHide")){
+      menu.classList.add("buttonHide")
+    }
   }
 
 
@@ -52,9 +56,6 @@ const First = ({ isPage = false }) => {
   localStep = step;
 
   const dispatch = useDispatch();
-
-
-
 
   useEffect(() => {
     return () => {
@@ -339,7 +340,7 @@ const First = ({ isPage = false }) => {
   // useEffect( () => {
   //   firstRef.current.style.overflowY = "scroll"
   //   firstRef.current.style.height = "200vh"
-  //   firstRef.current.style.paddingBottom = "100%"
+  //   firstRef.current.style.paddingBottom = "calc(100vh - 53.6px)"
 
   // }, [] )
 
@@ -634,23 +635,25 @@ const First = ({ isPage = false }) => {
       });
     }
   } , [] )
-
-
+  
   useEffect( () => {
-    firstRef.current.style.height = "calc(100vh)"
+    firstRef.current.style.height = "100vh"
     setTimeout( () => {
-      firstRef.current.style.height = "calc(100vh - 85px)"
+      firstRef.current.style.height = "calc(100vh - 80px)"
     } , 600 )
-  } , [] )  
-
+  } , [] )
 
   return (
     <div style={firsStyle} className="first-container">
-      <div
+      <motion.div
         // style={style}
         ref={firstRef}
         className="First"
         onClick={closeMenu}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.2 }}
       >
 
 
@@ -686,7 +689,7 @@ const First = ({ isPage = false }) => {
             setTaskInformation={setFilters}
           />
         </CSSTransition>
-      </div>
+      </motion.div>
 
       <CSSTransition
         classNames="left-right"

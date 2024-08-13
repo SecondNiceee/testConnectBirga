@@ -111,7 +111,7 @@ const ShowMyResponse = ({
       {response.user.fuck ? (
         <div className={cl.wrapper}>
 
-            <MyLoader style={{ width: "100vw", height: "100%" }} />
+            <MyLoader style={{ width: "100vw", height: "calc(100vh - 53.6px)" }} />
         </div>
       ) : (
         <div className={cl.wrapper}>

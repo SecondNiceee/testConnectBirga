@@ -20,16 +20,20 @@ import axios from "axios";
 
 let spet = 0;
 const menu = document.documentElement.querySelector(".FirstMenu")
-const container = document.querySelector(".container")
 const AdCreating = () => {
+  // const [taskInformation, setTaskInformation] = useState(
+  //   useSelector((state) => state.information.taskInformation)
+  // );
 
   
-  useEffect( () => {
-    container.style.height = "calc(100vh)"
-    setTimeout( () => {
-      container.style.height = "calc(100vh - 57px)"
-    } , 600 )
-  } , [] )  
+
+
+  // if (MainButton.isVisible){
+  //   menu.style.paddingBottom = "3px"
+  // }
+  // else{
+  //   menu.style.paddingBottom = "27px"
+  // }
   useEffect( () => {
     console.log("Это рендер AdCreating")
     
@@ -100,7 +104,6 @@ const AdCreating = () => {
 
   useEffect( () => {
     pagesHistory.push("/AdCreating")
-    window.scrollTo(0 ,0)
     return () => {
       window.scrollTo(0 ,0)
     }
@@ -519,6 +522,7 @@ const AdCreating = () => {
         menu.classList.remove("appearAnimation")
         menu.classList.add("disappearAnimation")
         MainButton.hide();
+      
     };
   }, []);
 
@@ -537,11 +541,15 @@ const AdCreating = () => {
   } , [error] )
 
   return (
-    <div
+    <motion.div
       ref={mainRef}
       className="AdCreating__container"
     >
-
+      {status === "pending" ? (
+        <>
+          <PostLoader />
+        </>
+      ) : (
         <>
           <AdCreatingOne
             className={"adCreatingOne"}
@@ -557,7 +565,7 @@ const AdCreating = () => {
             isSubcategoryChoiceOpen={isSubcategoryChoiceOpen}
             setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
           />
-          {/* <AdCreatingTwo
+          <AdCreatingTwo
             whichOne={whichOne}
             setWhichOne={setWhichOne}
             errors={twoPages}
@@ -567,12 +575,13 @@ const AdCreating = () => {
             taskInformation={secondPage}
             tonConstant={tonConstant}
           />
-          <FirstDetails  style = {{position : "static" , minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage , category : firstPage.category.id , whichOne : whichOne } } /> */}
+          <FirstDetails  style = {{position : "static" , minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage , category : firstPage.category.id , whichOne : whichOne } } />
+          {/* <AdCreatingThree taskInformation={secondPage} /> */}
         </>
-      
+      )}
 
 
-    </div>
+    </motion.div>
   );
 };
 
