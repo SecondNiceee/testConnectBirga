@@ -28,12 +28,6 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
   } , [clearPhoto , setClearPhoto] )
 
 
-  if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
-  }
-  else{
-    menu.style.paddingBottom = "27px"
-  }
   useEffect( () => {
     console.log("Это рендер AdCreating")
     
