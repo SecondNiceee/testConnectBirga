@@ -34,6 +34,15 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
   overflow: auto;
 }
 
+
+.smallOpen{
+  height: calc(100vh - 86px) !important;
+}
+.bigOpen{
+  height: calc(100vh - 50px) !important;
+}
+
+
 .container{
   height: 100vh;
 }

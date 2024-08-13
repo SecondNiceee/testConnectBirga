@@ -40,18 +40,21 @@ const container = document.querySelector(".container")
 
 const First = ({ isPage = false }) => {
 
-  // if (MainButton.isVisible){
-  //   menu.style.paddingBottom = "3px"
-  // }
-  // else{
-  //   menu.style.paddingBottom = "27px"
-  // }
+  if (MainButton.isVisible){
+    menu.style.paddingBottom = "3px"
+  }
+  else{
+    menu.style.paddingBottom = "27px"
+  }
 
 
   const [step, setStep] = useState(0);
   localStep = step;
 
   const dispatch = useDispatch();
+
+
+
 
   useEffect(() => {
     return () => {
@@ -634,9 +637,9 @@ const First = ({ isPage = false }) => {
 
 
   useEffect( () => {
-    container.style.height = "calc(100vh)"
+    firstRef.current.style.height = "calc(100vh)"
     setTimeout( () => {
-      container.style.height = "calc(100vh - 85px)"
+      firstRef.current.style.height = "calc(100vh - 85px)"
     } , 600 )
   } , [] )  
 
