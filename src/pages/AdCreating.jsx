@@ -541,8 +541,11 @@ const AdCreating = () => {
   } , [error] )
 
   return (
-    <div
+    <motion.div
       ref={mainRef}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3, ease: "easeIn" }}
       className="AdCreating__container"
     >
 
@@ -576,7 +579,7 @@ const AdCreating = () => {
       
 
 
-    </div>
+    </motion.div>
   );
 };
 
