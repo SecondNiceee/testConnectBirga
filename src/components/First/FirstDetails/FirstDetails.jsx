@@ -45,7 +45,6 @@ const FirstDetails = forwardRef(({  orderInformation , className , setProfile, e
                 {end ? <></> :<TimeAndWatches time={orderInformation.creationTime} watches={orderInformation.viewsNumber} />}
                 
     
-                <SimilarAds similarAds = {[]} />
     
             </div>
             )

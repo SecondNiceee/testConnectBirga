@@ -1211,6 +1211,7 @@
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 60px;
 }
 .timeAndWatches .time {
   /* Создано сегодня, 01:16 51 просмотр */
@@ -1241,7 +1242,6 @@
       -ms-flex-direction: column;
           flex-direction: column;
   margin-top: 27px;
-  margin-bottom: 60px;
   gap: 10.63px;
 }
 .similarAds h2 {
