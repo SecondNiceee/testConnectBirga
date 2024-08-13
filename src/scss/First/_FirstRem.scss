@@ -358,11 +358,11 @@
 
 .FirstMenu.disappearAnimation{
     padding-bottom: 3px;
-    animation: disappearAnimation 1s forwards ;
+    animation: disappearAnimation 0.5s forwards ;
 }
 .FirstMenu.appearAnimation{
     padding-bottom: 27px;
-    animation: menuAnimate 1s forwards ;
+    animation: menuAnimate 0.5s forwards ;
 }
 .FirstMenu{
     border-top: 0.5px solid rgba(125, 145, 158, 0.5);;

@@ -237,8 +237,8 @@ const First = ({ isPage = false }) => {
     MainButton.onClick(forward);
     BackButton.onClick(back);
     if (isDetailsActiveVar) {
-      menu.classList.add("buttonShow")  
-      menu.classList.remove("buttonHide")
+      menu.classList.add("appearAnimation")  
+      menu.classList.remove("disappearAnimation")
       MainButton.show();
       BackButton.show();
       if (gotIt) {
@@ -259,8 +259,8 @@ const First = ({ isPage = false }) => {
     } else {
       BackButton.hide();
       MainButton.hide();
-      menu.classList.add("buttonHide")
-      menu.classList.remove("buttonShow")  
+      menu.classList.add("disappearAnimation")
+      menu.classList.remove("appearAnimation")  
       MainButton.setParams({
         is_active: true,
         color: "#2ea5ff",
