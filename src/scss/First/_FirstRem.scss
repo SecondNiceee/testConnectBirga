@@ -327,7 +327,7 @@
         opacity: 0;
     }
     2%{
-        transform: translateY(100%)
+        transform: translateY(130%)
     }
     50%{
         opacity: 1;
@@ -343,14 +343,6 @@
     0%{
         opacity: 1;
         padding-bottom: 27px;
-    }
-    2%{
-        transform: translateY(130%)
-    }
-    50%{
-        opacity: 1;
-        padding-bottom: 3px;
-        
     }
     100%{
         padding-bottom: 3px;
