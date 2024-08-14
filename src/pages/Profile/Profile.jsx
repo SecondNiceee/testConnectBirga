@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect,  useState } from "react";
+import React, { useCallback, useEffect,  useRef,  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import { motion } from "framer-motion";
@@ -41,6 +41,8 @@ let userInfoLocal = null
 
 const menu = document.documentElement.querySelector(".FirstMenu")
 const Profile = () => {
+
+  const mainRef = useRef(null)
 
   window.Telegram.WebApp.disableVerticalSwipes();
 
@@ -390,6 +392,7 @@ const Profile = () => {
 
     
     <motion.div
+      ref={mainRef}
       className="profile__container"
       variants={variants}
       initial="initial"
