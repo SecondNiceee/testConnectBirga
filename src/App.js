@@ -73,6 +73,8 @@ const AnimatedSwitch = () => {
       menuRef.current.classList.remove("disappearAnimation")
     }
   } , [location.pathname] )
+
+  console.log("Привет")
   
   return (
     <>
