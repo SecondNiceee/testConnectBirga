@@ -23,6 +23,7 @@ import { fetchAllShablons } from "./store/shablon";
 import { fetchResponses } from "./store/responses";
 import { fetchAllIds } from "./store/saves";
 import MainButton from "./constants/MainButton";
+import axios from "axios";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
