@@ -1,4 +1,4 @@
-import { lazy, useEffect, Suspense } from "react";
+import { lazy, useEffect, Suspense, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -60,16 +60,24 @@ const MyLoader = () => {
 const AnimatedSwitch = () => {
   const location = useLocation();
   const isMenuActive = useSelector((state) => state.menu.value);
-  // useEffect(() => {
 
-  //   // navigate('/MyAds')
-  //   // navigate('/')
-  // }, []
+  const menuRef = useRef(null)
 
-  // )
+  useEffect( () => {
+    if (location.pathname === "/AdCreating"){
+      menuRef.current.classList.add("disappearAnimation")
+      menuRef.current.classList.remove("appearAnimation")
+    }
+    else{
+      menuRef.current.classList.add("appearAnimation")
+      menuRef.current.classList.remove("disappearAnimation")
+    }
+  } , [location.pathname] )
+  
 
-  console.log("Привет")
   return (
+    <>
+      <FirstMenu ref={menuRef} />
     <div className="container" style={{
       minHeight : "calc(100vh)"
     }}>
@@ -173,6 +181,7 @@ const AnimatedSwitch = () => {
         </Routes>
       </AnimatePresence>
     </div>
+    </>
   );
 };
     
@@ -221,11 +230,12 @@ function App() {
   b.people.x = "хай";
 
 
+
   return (
     <BrowserRouter>
       <div className="UperContainer">
         <div className="MainContainer">
-          <FirstMenu />
+        
           <AnimatedSwitch />
           {/* <ModalChoicer /> */}
         </div>

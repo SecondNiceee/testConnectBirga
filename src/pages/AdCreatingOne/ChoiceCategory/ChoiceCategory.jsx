@@ -3,6 +3,7 @@ import cl from "./ChoiceCategory.module.css";
 import OneInput from "../../../components/UI/OneInput/OneInput";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import BackButton from "../../../constants/BackButton";
+import MainButton from "../../../constants/MainButton";
 
 const ChoiceCategory = ({
   setTaskInformation,
@@ -17,6 +18,21 @@ const ChoiceCategory = ({
 
 }) => {
   
+
+  useEffect( () => {
+    MainButton.setParams({
+      is_active: false, //неизвесетно
+      color: "#2f2f2f",
+      text_color: "#606060",
+    });
+    return () => {
+      MainButton.setParams({
+        color: "#2ea5ff",
+        text_color: "#ffffff",
+        is_active: true,
+      });
+    }
+  } , []  )
   const [inputValue, setInputValue] = useState("");
 
 

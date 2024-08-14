@@ -3,9 +3,23 @@ import React, { useEffect, useMemo, useState } from 'react';
 import rightArrow from '../../images/icons/rightArrow.svg'
 import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
+import MainButton from '../../constants/MainButton';
 const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
 
-
+  useEffect( () => {
+    MainButton.setParams({
+      is_active: false, //неизвесетно
+      color: "#2f2f2f",
+      text_color: "#606060",
+    });
+    return () => {
+      MainButton.setParams({
+        color: "#2ea5ff",
+        text_color: "#ffffff",
+        is_active: true,
+      });
+    }
+  } , []  )
 
     useEffect( () => {
         function closeFunction(){

@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import React, { forwardRef, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeMenuActive } from "../../store/menuSlice";
 import { Link, useLocation } from "react-router-dom";
@@ -8,7 +8,7 @@ import two from "../../images/menu/two.svg";
 import three from "../../images/menu/three.svg";
 import four from "../../images/menu/four.svg";
 
-const FirstMenu = () => {
+const FirstMenu = forwardRef(({...props} , ref) => {
   const dispatch = useDispatch();
 
   const isMenuActive = useSelector((state) => state.menu.value);
@@ -48,7 +48,7 @@ const FirstMenu = () => {
   const me = useSelector((state) => state.telegramUserInfo);
 
   return (
-    <div className={isMenuActive ? "FirstMenu" : "FirstMenu hidden"}>
+    <div ref={ref} className={isMenuActive ? "FirstMenu" : "FirstMenu hidden"}>
       {/* <div ref={myRef} onTouchStart={clickHandler} onTouchEnd={touchEnd} onClick={() => {
                     vibrate()
                     window.Telegram.WebApp.showAlert("Мы скоро добавим.")
@@ -134,6 +134,6 @@ const FirstMenu = () => {
       </div>
     </div>
   );
-};
+});
 
 export default FirstMenu;

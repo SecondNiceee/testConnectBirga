@@ -285,6 +285,7 @@
 
 
 .AdCreating__container{
+  padding-bottom: 60px;
   min-height: calc(100vh);
   display: flex;
   will-change: transform;
@@ -299,7 +300,7 @@
     position: fixed;
     top: 0;
     height: calc(100vh);
-    z-index: 100;
+    z-index: -1;
     overflow-y: hidden;
     background-color: unset;  
   }

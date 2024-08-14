@@ -512,15 +512,10 @@ const AdCreating = () => {
   } , [goBack,goForward ]);
 
   useEffect(() => {
-    if (!MainButton.isVisible){
-      menu.classList.add("appearAnimation")
-    }
     MainButton.show();
     BackButton.show();
     MainButton.setText("ДАЛЕЕ");
     return () => {
-        menu.classList.remove("appearAnimation")
-        menu.classList.add("disappearAnimation")
         MainButton.hide();
       
     };

@@ -1667,6 +1667,7 @@
 }
 
 .AdCreating__container {
+  padding-bottom: 60px;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1685,7 +1686,7 @@
   position: fixed;
   top: 0;
   height: 100vh;
-  z-index: 100;
+  z-index: -1;
   overflow-y: hidden;
   background-color: unset;
 }
@@ -3013,6 +3014,7 @@ input {
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;
+  position: fixed;
   left: 0;
   height: 100vh;
   top: 0;
