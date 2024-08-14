@@ -78,8 +78,16 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     }
 
     if (!Object.values(localErrors).every((value) => value === false)) {
+      MainButton.setParams({
+        is_active: false, //неизвесетно
+        color: "#2f2f2f",
+        text_color: "#606060",
+      });
+    } else {
+
       if (!modalActive && !isCategoryChoiceOpen){
         if (compare2Objects(cardsSetting, card)){
+          console.log("Я тут")
           MainButton.setParams({
             is_active: false, //неизвесетно
             color: "#2f2f2f",
@@ -87,6 +95,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
           });
         }
         else{
+          console.log("Сравнение не сработало")
           MainButton.setParams({
             color: "#2ea5ff",
             text_color: "#ffffff",
@@ -96,12 +105,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       }
       else{
       }
-    } else {
-          MainButton.setParams({
-            is_active: false, //неизвесетно
-            color: "#2f2f2f",
-            text_color: "#606060",
-          });
+
   
       
   }}, [cardsSetting.title, cardsSetting.photos, cardsSetting.description, modalActive, isCategoryChoiceOpen]);
