@@ -104,18 +104,10 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
       dateObject.style.backgroundColor = 'rgba(0, 0, 0, .6)'
       datePickerObject.style.transform = 'translateY(0%)'
       MainButton.hide()
-      menu.style.paddingBottom = "27px"
       
     }
     function disappear(){
 
-      menu.style.display = "none"
-      menu.style.transform = "translateY(-100%)"
-      menu.style.paddingBottom = "3px"
-      setTimeout( () => {
-        menu.style.transform = "translateY(0%)"
-        menu.style.display = "flex"
-      } , 200 )
       MainButton.show()
       dateObject.style.backgroundColor = 'unset'
       dateObject.style.display = 'block'
