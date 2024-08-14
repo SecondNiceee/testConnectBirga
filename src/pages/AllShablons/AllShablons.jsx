@@ -114,12 +114,6 @@ const AllShablons = () => {
   } , [shablon.isActive, navigate] )
   const postStatus = useSelector( state => state.shablon.postStatus )
   const putStatus = useSelector(  state => state.shablon.putStatus )
-  if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
-  }
-  else{
-    menu.style.paddingBottom = "27px"
-  }
 
   useEffect( () => {
     

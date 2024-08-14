@@ -13,12 +13,6 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
   const dispatch = useDispatch()
   let localShablon = shablon
 
-  if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
-  }
-  else{
-    menu.style.paddingBottom = "27px"
-  }
 
 
   useEffect( () => {
@@ -52,9 +46,6 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
     
 
 
-    menu.style.paddingBottom = "3px"
-    BackButton.show()
-    MainButton.show()
     if (put){
       MainButton.setText('Изменить шаблон')
     }
@@ -70,11 +61,17 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
   }, [shablon, dispatch, localShablon.name, localShablon.text, put, setActive , isExitShow , exitText])
 
   useEffect( () => {
+
+    menu.classList.add("disappearAnimation")
+    menu.classList.remove("appearAnimation")
+    MainButton.show()
+    BackButton.show()
     return () => {
       MainButton.setText(exitText)
       if (!isExitShow){
+        menu.classList.add("appearAnimation")
+        menu.classList.remove("disappearAnimation")
         MainButton.hide()
-        menu.style.paddingBottom = "27px"
         
       }
       else{
@@ -105,13 +102,6 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
     }
   } , [shablon.name , shablon.text] )
 
-
-  if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
-  }
-  else{
-    menu.style.paddingBottom = "27px"
-  }
 
 
   useEffect( () => {

@@ -189,14 +189,9 @@ export const useButton = ({
 
     BackButton.show();
 
-    if (isOpen.isActive) {
-      menu.style.display = "none"
-      menu.style.transform = "translateY(-100%)"
-      menu.style.paddingBottom = "3px"
-      setTimeout( () => {
-        menu.style.transform = "translateY(0%)"
-        menu.style.display = "flex"
-      } , 200 )
+    if (isOpen.isActive && secondPage.task.status !== "inProcess") {
+      menu.classList.add("disappearAnimation")
+      menu.classList.remove("appearAnimation")
       MainButton.show();
       
       MainButton.setParams({
@@ -208,21 +203,22 @@ export const useButton = ({
     } else {
       MainButton.offClick(writeFucntion);
       if (!myResponse.isOpen && !details.isActive) {
+        menu.classList.add("appearAnimation")
+        menu.classList.remove("disappearAnimation")
         MainButton.hide();
-        menu.style.paddingBottom = "27px"
       }
     }
 
     if (details.isActive) {
       if (!compareTwoObject(bedTask, details.task)) {
-        menu.style.display = "none"
-        menu.style.transform = "translateY(-100%)"
-        menu.style.paddingBottom = "3px"
-        setTimeout( () => {
-          menu.style.transform = "translateY(0%)"
-          menu.style.display = "flex"
-        } , 1 )
+        menu.classList.add("disappearAnimation")
+        menu.classList.remove("appearAnimation")
         MainButton.show();
+        MainButton.setParams({
+          color: "#2ea5ff",
+          text_color: "#ffffff",
+          is_active: true,
+        });
         
         MainButton.setText("ОБНОВИТЬ");
 
@@ -243,15 +239,26 @@ export const useButton = ({
       }
       else{
         if (!isOpen.isActive && !myResponse.isOpen){
-          MainButton.hide()
-          menu.style.paddingBottom = "27px"
+          MainButton.setParams({
+            is_active: false, //неизвесетно
+            color: "#2f2f2f",
+            text_color: "#606060",
+          });
           MainButton.offClick(putTask)
+        }
+        else{
+          MainButton.setParams({
+            color: "#2ea5ff",
+            text_color: "#ffffff",
+            is_active: true,
+          });
         }
       }
     } else {
       if (!isOpen.isActive && !myResponse.isOpen){
+        menu.classList.add("appearAnimation")
+        menu.classList.remove("disappearAnimation")
         MainButton.hide();
-        menu.style.paddingBottom = "27px"
         MainButton.offClick(putTask)
         MainButton.setParams({
           color: "#2ea5ff",

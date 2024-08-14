@@ -250,6 +250,7 @@ const telegramUserInfo = createSlice({
       state.profile.userId = action.payload.id
       state.completedTasks = action.payload.completedTasks
       state.deals = action.payload.deals
+      state.profile.cards.sort((a, b) => a.id - b.id)
     });
     builder.addCase(fetchUserInfo.rejected, (state) => {
       state.status = "error";

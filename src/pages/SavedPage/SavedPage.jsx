@@ -22,12 +22,6 @@ const keys = ["advertisment", "responces", "cards"];
 
 const menu = document.documentElement.querySelector(".FirstMenu")
 const SavedPage = () => {
-  if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
-  }
-  else{
-    menu.style.paddingBottom = "27px"
-  }
 
   useEffect( () => {
     
@@ -208,7 +202,8 @@ const SavedPage = () => {
     MainButton.onClick(forward);
     BackButton.onClick(back);
     if (details.isOpen) {
-      menu.style.paddingBottom = "3px"
+      menu.classList.add("disappearAnimation")
+      menu.classList.remove("appearAnimation")
       BackButton.show();
       MainButton.show();
       
@@ -229,9 +224,10 @@ const SavedPage = () => {
         }
       }
     } else {
+      menu.classList.add("appearAnimation")
+      menu.classList.remove("disappearAnimation")
       BackButton.hide();
       MainButton.hide();
-      menu.style.paddingBottom = "27px"
       MainButton.offClick(forward);
       BackButton.offClick(back);
       MainButton.setParams({

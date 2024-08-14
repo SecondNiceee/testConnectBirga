@@ -296,7 +296,6 @@
   font-family: "SF Pro Display";
   font-size: 14.67px;
   font-weight: 500;
-  line-height: 17.67px;
   letter-spacing: 0%;
   text-align: left;
   max-width: 237px;
@@ -3232,10 +3231,13 @@ input {
 .all-shablon-wrapper {
   min-width: 100vw;
   width: 100%;
+  overflow-y: scroll;
+  height: 100vh;
+  position: fixed;
   padding-top: 17px;
   padding-left: 16px;
   padding-right: 16px;
-  padding-bottom: 20px;
+  padding-bottom: 100px;
   left: 0;
   top: 0;
   min-height: 100vh;
@@ -3340,6 +3342,7 @@ input {
 }
 
 * {
+  -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
 }
 
