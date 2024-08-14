@@ -37,7 +37,7 @@ const AdCreating = () => {
   useEffect( () => {
     console.log("Это рендер AdCreating")
     
-    const input = document.querySelectorAll('input[type="text"]');
+    const input = document.querySelectorAll('input');
     const textarea  = document.querySelectorAll('textarea');
     for (let smallInput of input){
       smallInput.addEventListener('focus', () => {

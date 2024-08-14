@@ -147,7 +147,7 @@ const Profile = () => {
       },
       userInfoLocal.id
     ]))
-    const input = document.querySelectorAll('input[type="text"]');
+    const input = document.querySelectorAll('input');
     const textarea  = document.querySelectorAll('textarea');
     for (let smallInput of input){
         smallInput.blur()
@@ -201,6 +201,7 @@ const Profile = () => {
           MainButton.onClick(save)
           menu.classList.add("disappearAnimation")
           menu.classList.remove("appearAnimation")
+          
           if (!MainButton.isVisible){
             MainButton.show()
           }
@@ -364,7 +365,7 @@ const Profile = () => {
 
   useEffect( () => {
     
-    const input = document.querySelectorAll('input[type="text"]');
+    const input = document.querySelectorAll('input');
     const textarea  = document.querySelectorAll('textarea');
     for (let smallInput of input){
       smallInput.addEventListener('focus', () => {
@@ -468,7 +469,7 @@ const Profile = () => {
         unmountOnExit
         classNames={'cardsModal'}
         in = {cardsActive}
-        timeout={300}
+        timeout={400}
         >
 
             <Cards   save = {save} aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setCardsActive} />
@@ -481,7 +482,7 @@ const Profile = () => {
         unmountOnExit
         classNames={'cardsModal'}
         in = {changeActive}
-        timeout={300}
+        timeout={400}
         >
 
             <ChangeCards save={save} index={index}  card={cards[index]}  aboutU={aboutU} setAboutU={setAboutU} setCardsOpen={setChangeActive} />

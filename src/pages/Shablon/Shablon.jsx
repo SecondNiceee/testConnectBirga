@@ -116,7 +116,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
 
   useEffect( () => {
     
-    const input = document.querySelectorAll('input[type="text"]');
+    const input = document.querySelectorAll('input');
     const textarea  = document.querySelectorAll('textarea');
     for (let smallInput of input){
       smallInput.addEventListener('focus', () => {

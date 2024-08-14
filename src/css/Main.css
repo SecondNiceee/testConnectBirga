@@ -3097,6 +3097,7 @@ input {
 .cards {
   position: fixed;
   width: 100vw;
+  padding-bottom: 80px;
   height: 100vh;
   left: 0;
   z-index: 400;
@@ -3105,7 +3106,6 @@ input {
   padding-top: 23px;
   padding-left: 14px;
   padding-right: 14px;
-  padding-bottom: 20px;
   -webkit-transform: translate(100%);
       -ms-transform: translate(100%);
           transform: translate(100%);

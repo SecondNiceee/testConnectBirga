@@ -175,7 +175,7 @@ const FileInput = ({
 
         { isLoader && files.map((e, i) => {
           return (
-              <div className="filesLoader">
+              <div key={i} className="filesLoader">
                 <BlockSpinner style = {{...imageStyle , border : "1px solid black"}} />
               </div>
           )
@@ -215,7 +215,7 @@ const FileInput = ({
         })}
 
         <label
-          style={images.length === 5 ? { display: "none" } : imageStyle}
+          style={files.length === 5 ? { display: "none" } : imageStyle}
           className={images.length !== 0 ? cl.ActiveMainLabel : cl.MainLabel}
           htmlFor="file"
         >

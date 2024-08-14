@@ -8,7 +8,7 @@
     padding-left: 14px;
     padding-right: 14px;
     padding-bottom: 20px;
-    z-index: 100;
+    z-index: 300;
     transition: 0.2s;
     opacity: 0;
 }

@@ -22,7 +22,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
   useEffect( () => {
     
-    const input = document.querySelectorAll('input[type="text"]');
+    const input = document.querySelectorAll('input');
     const textarea  = document.querySelectorAll('textarea');
     for (let smallInput of input){
       smallInput.addEventListener('focus', () => {
@@ -42,7 +42,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     }
   } , [] )
 
-  
+
   const categorys = useSelector((state) => state.categorys.category);
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);

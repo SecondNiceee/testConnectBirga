@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import TaskName from "../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import behanceIcon from "../../images/icons/behance.svg";
@@ -38,6 +38,8 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   
   const [cardsSetting, setCardsSetting] = useState(Object.assign({}, card));
 
+
+  console.log(cardsSetting)
   const dispatch = useDispatch();
   const [errors, setErrors] = useState({
     nameError: false,
@@ -77,19 +79,37 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
     if (!Object.values(localErrors).every((value) => value === false)) {
       if (!modalActive && !isCategoryChoiceOpen){
-        MainButton.setParams({
-          color: "#2f2f2f",
-          text_color: "#606060",
-          is_visible: true,
-        });
+        if (compare2Objects(cardsSetting, card)){
+          MainButton.setParams({
+            is_active: false, //неизвесетно
+            color: "#2f2f2f",
+            text_color: "#606060",
+          });
+        }
+        else{
+          MainButton.setParams({
+            color: "#2f2f2f",
+            text_color: "#606060",
+            is_visible: true,
+          });
+        }
       }
     } else {
-      if(!modalActive && !isCategoryChoiceOpen){
+      if (compare2Objects(cardsSetting, card)){
         MainButton.setParams({
-          color: "#2EA6FF",
-          text_color: "#ffffff",
-          is_visible: true,
+          is_active: false, //неизвесетно
+          color: "#2f2f2f",
+          text_color: "#606060",
         });
+      }
+      else{
+        if(!modalActive && !isCategoryChoiceOpen){
+          MainButton.setParams({
+            color: "#2EA6FF",
+            text_color: "#ffffff",
+            is_visible: true,
+          });
+        }
       }
     }
   }, [cardsSetting.title, cardsSetting.photos, cardsSetting.description, modalActive, isCategoryChoiceOpen]);
@@ -255,11 +275,39 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     }
   } , [] )
 
+  
 
+  const compare2Objects = useCallback( (a , b) => {
+    if (a.title !== b.title){
+      return false
+    }
+    if (a.description !== b.description){
+      return false
+    }
+    if (a.behanceLink !== b.behanceLink){
+      return false
+    }
+    if (a.dribbbleLink !== b.dribbbleLink){
+      return false
+    }
+    if (a.dropfileLink !== b.dropfileLink){
+      return false
+    }
+    if (a.photos.length !== b.photos.length){
+      return false
+    }
+    for (let i = 0; i < a.photos.length; i++){
+      if (a.photos[i].name !== b.photos[i].name){
+        return false
+      }
+    }
+    return true
+
+  }  , [])
 
   useEffect( () => {
     
-    const input = document.querySelectorAll('input[type="text"]');
+    const input = document.querySelectorAll('input');
     const textarea  = document.querySelectorAll('textarea');
     for (let smallInput of input){
       smallInput.addEventListener('focus', () => {
