@@ -61,11 +61,7 @@ const AllShablons = () => {
     });
   }
 
-  function setShablonFunc(e){
-    setShablon({
-        ...shablon , shablon : e
-    })
-  }
+
 
   const putFunction = useCallback((e) => {
 
@@ -176,7 +172,9 @@ const AllShablons = () => {
       >
         <Shablon shablon={shablon.shablon} setActive={(e) => {
           setShablon((value) => ({...value , isActive : e}))
-        }} setShablon={setShablonFunc} put = {shablon.put} />
+        }} setShablon={(e) => {
+          setShablon((value) => ({...value , shablon : e}))
+        }} put = {shablon.put} />
       </CSSTransition>
       </>
 }
