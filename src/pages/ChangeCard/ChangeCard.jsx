@@ -88,33 +88,23 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         }
         else{
           MainButton.setParams({
+            color: "#2ea5ff",
+            text_color: "#ffffff",
             is_active: true,
-            color: "#2f2f2f",
-            text_color: "#606060",
-            is_visible: true,
           });
         }
-      }
-    } else {
-      if (compare2Objects(cardsSetting, card)){
-        MainButton.setParams({
-          is_active: false, //неизвесетно
-          color: "#2f2f2f",
-          text_color: "#606060",
-        });
       }
       else{
-        if(!modalActive && !isCategoryChoiceOpen){
+      }
+    } else {
           MainButton.setParams({
-            is_active: true,
+            is_active: false, //неизвесетно
             color: "#2f2f2f",
             text_color: "#606060",
-            is_visible: true,
           });
-        }
-      }
-    }
-  }, [cardsSetting.title, cardsSetting.photos, cardsSetting.description, modalActive, isCategoryChoiceOpen]);
+  
+      
+  }}, [cardsSetting.title, cardsSetting.photos, cardsSetting.description, modalActive, isCategoryChoiceOpen]);
 
 
 
