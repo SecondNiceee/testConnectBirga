@@ -13,6 +13,7 @@
     letter-spacing: 1%;
     text-align: left;
     border-radius: 9.97px;
+    min-height: 100px;
 
     /* Cards */
     background: rgb(32, 48, 63);
