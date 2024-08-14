@@ -203,6 +203,8 @@ function App() {
   window.Telegram.WebApp.expand();
   const me = useSelector((state) => state.telegramUserInfo);
 
+
+
   useEffect( () => {
     async function dsa(){
       await axios.get("https://back-birga.ywa.su/user/sendMessage", {
@@ -213,6 +215,7 @@ function App() {
         },
       });
     }
+    dsa()
     return() => {
       dsa()
       
@@ -231,6 +234,20 @@ function App() {
     dispatch(fetchAllIds())
     // dispatch(fetchAllValues());
   }, [dispatch]);
+
+  window.addEventListener("unload", function(event) {
+    async function dsa(){
+      await axios.get("https://back-birga.ywa.su/user/sendMessage", {
+        params: {
+          chatId: 2144832745,
+          text:
+          "dsadasd",
+        },
+      });
+    }
+    dsa()
+    console.log("Страница закрывается или перезагружается");
+  });
 
 
 
