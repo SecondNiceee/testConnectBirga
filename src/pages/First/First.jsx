@@ -458,6 +458,7 @@ const First = ({ isPage = false }) => {
               isShablon: false,
               shablonMaker: false,
             });
+            menu.style.display = "flex"
           }
         }
       );
