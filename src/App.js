@@ -224,7 +224,7 @@ function App() {
   // }, [dispatch, me]);
 
 
-
+  alert("Та версия")
   return (
     <BrowserRouter>
       <div className="UperContainer">
