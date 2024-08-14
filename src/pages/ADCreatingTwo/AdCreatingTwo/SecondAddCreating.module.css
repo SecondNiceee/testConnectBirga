@@ -6,8 +6,6 @@
     left: 0;
     top: 0;
     width: 100%;
-    height: calc(100vh);
-    overflow-y: scroll;
     background: rgb(24, 34, 45);
     z-index: 10;
     /* height: calc(100vh);

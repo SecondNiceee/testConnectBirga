@@ -67,8 +67,10 @@ const AnimatedSwitch = () => {
     if (location.pathname === "/AdCreating"){
       menuRef.current.classList.add("disappearAnimation")
       menuRef.current.classList.remove("appearAnimation")
+      document.documentElement.style.overflowY = "auto"
     }
     else{
+      document.documentElement.style.overflowY = "hidden"
       menuRef.current.classList.add("appearAnimation")
       menuRef.current.classList.remove("disappearAnimation")
     }

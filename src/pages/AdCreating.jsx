@@ -437,6 +437,10 @@ const AdCreating = () => {
     }
   } 
 
+  window.Telegram.WebApp.disableVerticalSwipes();
+
+  window.Telegram.WebApp.disableVerticalSwipes();
+
 
 
   const goBack = useCallback(() => {
