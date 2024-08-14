@@ -13,6 +13,7 @@
     /* height: calc(100vh);
     overflow-y: scroll; */
     overflow-x: hidden;
+    width: 100vw;
 }
 .Cap {
     margin-top: calc(23.33px);

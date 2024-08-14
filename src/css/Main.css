@@ -1667,6 +1667,7 @@
 }
 
 .AdCreating__container {
+  position: fixed;
   padding-bottom: 60px;
   min-height: 100vh;
   display: -webkit-box;

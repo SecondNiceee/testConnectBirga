@@ -172,9 +172,8 @@ const AllShablons = () => {
       >
         <Shablon shablon={shablon.shablon} setActive={(e) => {
           setShablon((value) => ({...value , isActive : e}))
-        }} setShablon={(e) => {
-          setShablon((value) => ({...value , shablon : e}))
-        }} put = {shablon.put} />
+        }} setShablon={setShablon}
+         put = {shablon.put} />
       </CSSTransition>
       </>
 }
