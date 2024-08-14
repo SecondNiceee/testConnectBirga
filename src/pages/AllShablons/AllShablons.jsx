@@ -175,7 +175,7 @@ const AllShablons = () => {
         timeout={400}
       >
         <Shablon shablon={shablon.shablon} setActive={(e) => {
-          setShablon({...shablon , isActive : e})
+          setShablon((value) => ({...value , isActive : e}))
         }} setShablon={setShablonFunc} put = {shablon.put} />
       </CSSTransition>
       </>

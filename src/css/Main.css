@@ -3346,6 +3346,11 @@ input {
   -webkit-tap-highlight-color: transparent;
 }
 
+* {
+  padding: 0px;
+  margin: 0px;
+}
+
 html {
   position: absolute;
   overflow: hidden;

@@ -8,12 +8,6 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 const CardPage = ({ card , ...props }) => {
     window.Telegram.WebApp.disableVerticalSwipes();
 
-    if (MainButton.isVisible){
-      menu.style.paddingBottom = "3px"
-    }
-    else{
-      menu.style.paddingBottom = "27px"
-    }
     useEffect( () => {
     
       const input = document.querySelectorAll('input');

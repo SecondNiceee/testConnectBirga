@@ -88,6 +88,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         }
         else{
           MainButton.setParams({
+            is_active: true,
             color: "#2f2f2f",
             text_color: "#606060",
             is_visible: true,
@@ -105,8 +106,9 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       else{
         if(!modalActive && !isCategoryChoiceOpen){
           MainButton.setParams({
-            color: "#2EA6FF",
-            text_color: "#ffffff",
+            is_active: true,
+            color: "#2f2f2f",
+            text_color: "#606060",
             is_visible: true,
           });
         }
@@ -161,7 +163,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       // });
       
       let myFormData = new FormData()
-      myFormData.append("title" , String(localCardSetting.title))
+      myFormData.append("title" , String(localCardSetting.title).trim())
       myFormData.append("description" , String(localCardSetting.description))
       myFormData.append("behance" , String(localCardSetting.behanceLink))
       myFormData.append("dribble" , String(localCardSetting.dribbbleLink))

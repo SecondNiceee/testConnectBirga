@@ -58,12 +58,6 @@ const defaultDate = new Date(0)
 
 
 const MyAds = ({isPage = false}) => {
-  if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
-  }
-  else{
-    menu.style.paddingBottom = "27px"
-  }
   const [isPageValueOne , setPageValueOne] = useState(true)
   const [isPageValueTwo , setPageValueTwo] = useState(true)
   

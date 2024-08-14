@@ -146,11 +146,11 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
       className={'shablon-description'}
         text={shablon.text}
         setText={(e) => {
-          setShablon({ ...shablon, text: e });
+          setShablon({...shablon, text: e });
         }}
         photos={shablon.photos}
         setPhotos={(e) => {
-          setShablon( (value) =>  ({ ...value, photos: e }));
+          setShablon({ ...shablon, photos: e });
         }}
         textTitle={"ТЕКСТ ОТКЛИКА"}
         filesTitle={""}
