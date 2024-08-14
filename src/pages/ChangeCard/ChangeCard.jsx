@@ -96,14 +96,6 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
 
 
-  
-  if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
-  }
-  else{
-    menu.style.paddingBottom = "27px"
-  }
-  
 
   const mainRef = useRef(null)
 
@@ -233,21 +225,17 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
     MainButton.setText("Изменить кейс");
     if (!modalActive && !isCategoryChoiceOpen){
       mainRef.current.style.overflow = "scroll"
-      menu.style.display = "none"
-      menu.style.transform = "translateY(-100%)"
-      menu.style.paddingBottom = "3px"
-      setTimeout( () => {
-        menu.style.transform = "translateY(0%)"
-        menu.style.display = "flex"
-      } , 200 )
+      menu.classList.add("disappearAnimation")
+      menu.classList.remove("appearAnimation")
       MainButton.show()
       MainButton.onClick(saveFunc);
       BackButton.onClick(backFunc);
     }
     else{
       mainRef.current.style.overflow = "hidden"
+      menu.classList.add("appearAnimation")
+      menu.classList.remove("disappearAnimation")
       MainButton.hide()
-      menu.style.paddingBottom = "27px"
       BackButton.offClick(saveFunc)
     }
     return () => {

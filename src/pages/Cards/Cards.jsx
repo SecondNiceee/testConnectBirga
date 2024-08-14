@@ -19,12 +19,29 @@ let inputObject = {
 }
 const menu = document.documentElement.querySelector(".FirstMenu")
 const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
-  if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
-  }
-  else{
-    menu.style.paddingBottom = "27px"
-  }
+
+  useEffect( () => {
+    
+    const input = document.querySelectorAll('input[type="text"]');
+    const textarea  = document.querySelectorAll('textarea');
+    for (let smallInput of input){
+      smallInput.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallInput.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+    for (let smallTextarea of textarea){
+      smallTextarea.addEventListener('focus', () => {
+        menu.style.display = 'none'; // скрываем меню
+      });
+      smallTextarea.addEventListener('blur', () => {
+        menu.style.display = 'flex'; // скрываем меню
+      });
+    }
+  } , [] )
+
   
   const categorys = useSelector((state) => state.categorys.category);
 
@@ -208,13 +225,8 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     MainButton.setText("Добавить кейс");
     BackButton.show()
     if (!modalActive && !isCategoryChoiceOpen){
-      menu.style.display = "none"
-      menu.style.transform = "translateY(-100%)"
-      menu.style.paddingBottom = "3px"
-      setTimeout( () => {
-        menu.style.transform = "translateY(0%)"
-        menu.style.display = "flex"
-      } , 200 )
+      menu.classList.add("disappearAnimation")
+      menu.classList.remove("appearAnimation")
       MainButton.show()
       MainButton.onClick(saveFunc);
       BackButton.onClick(backFunc);
@@ -222,8 +234,9 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
     }
     else{
       mainRef.current.style.overflow = "hidden"
+      menu.classList.add("appearAnimation")
+      menu.classList.remove("disappearAnimation")
       MainButton.hide()
-      menu.style.paddingBottom = "27px"
       BackButton.offClick(saveFunc)
     }
     return () => {

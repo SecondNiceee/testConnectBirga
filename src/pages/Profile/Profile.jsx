@@ -42,12 +42,6 @@ let userInfoLocal = null
 const menu = document.documentElement.querySelector(".FirstMenu")
 const Profile = () => {
 
-  if (MainButton.isVisible){
-    menu.style.paddingBottom = "3px"
-  }
-  else{
-    menu.style.paddingBottom = "27px"
-  }
   window.Telegram.WebApp.disableVerticalSwipes();
 
   const [index , setIndex] = useState(1)
@@ -196,7 +190,8 @@ const Profile = () => {
           })
           MainButton.onClick(save)
           if (!MainButton.isVisible){
-            menu.style.paddingBottom = "3px"
+            menu.classList.add("disappearAnimation")
+            menu.classList.remove("appearAnimation")
             MainButton.show()
           }
 
@@ -226,8 +221,9 @@ const Profile = () => {
 
       }
       else{
+        menu.classList.add("appearAnimation")
+        menu.classList.remove("disappearAnimation")
         MainButton.hide()
-        menu.style.paddingBottom = "27px"
         MainButton.offClick(save)
       }
 
