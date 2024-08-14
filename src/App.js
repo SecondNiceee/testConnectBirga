@@ -74,7 +74,6 @@ const AnimatedSwitch = () => {
     }
   } , [location.pathname] )
 
-  console.log("Привет")
   
   return (
     <>
