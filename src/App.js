@@ -74,7 +74,6 @@ const AnimatedSwitch = () => {
     }
   } , [location.pathname] )
   
-
   return (
     <>
       <FirstMenu ref={menuRef} />
