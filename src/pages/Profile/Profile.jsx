@@ -145,6 +145,14 @@ const Profile = () => {
       },
       userInfoLocal.id
     ]))
+    const input = document.querySelectorAll('input[type="text"]');
+    const textarea  = document.querySelectorAll('textarea');
+    for (let smallInput of input){
+        smallInput.blur()
+    }
+    for (let smallTextarea of textarea){
+        smallTextarea.blur()
+    }
 
   } , [dispatch] )
 
@@ -189,9 +197,9 @@ const Profile = () => {
             is_visible : true
           })
           MainButton.onClick(save)
+          menu.classList.add("disappearAnimation")
+          menu.classList.remove("appearAnimation")
           if (!MainButton.isVisible){
-            menu.classList.add("disappearAnimation")
-            menu.classList.remove("appearAnimation")
             MainButton.show()
           }
 
