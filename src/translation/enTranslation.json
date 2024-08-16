@@ -105,5 +105,8 @@
     "С выполненными заданиями" : "Has completed",
     "С примерами работ" : "Has examples",
     "подробнее" : "MORE DETAILS",
-    "Написать" : "Edit"
+    "Написать" : "Send",
+    "Стаж " : "Seniority",
+    "Поиск по категориям" : "Search for categories", 
+    "Поиск по подкатегориям" : "Search for subcategories"
 }

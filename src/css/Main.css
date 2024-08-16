@@ -858,6 +858,9 @@
 }
 
 .createdAt-block {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -2978,6 +2981,25 @@ input {
 }
 
 .creationTime {
+  font-family: "SF Pro Display";
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 107%;
+  text-align: center;
+  color: #95979e;
+  margin-top: 8px;
+}
+
+.creationTimeBlock {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 4px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.creationTimeBlock p {
   font-family: "SF Pro Display";
   font-weight: 500;
   font-size: 11px;

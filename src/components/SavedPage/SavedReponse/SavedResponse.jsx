@@ -14,7 +14,12 @@ const SavedResponse = ({ response, setProfileOpen, setDetails}) => {
             <FirstBlock isButton={true} index={99} setDetailsActive={setDetails} task={response.advertisement}  {...response.advertisement} />
             <Reaction openAboutReactionFunc={openAboutReactionFunc} blue = {true}  put={true} responce={response} />
             <TextAboutMe textareaClassName={"new-textarea"}  aboutU={response.information} />
-      <Text style={{marginTop : "0px"}} className="creationTime">{ "Создано " + formatDate(new Date(response.createdAt))}</Text>
+            <div className="creationTimeBlock">
+                <Text>
+                Создано 
+                </Text>
+                <p>{formatDate(new Date(response.createdAt))}</p>
+            </div>
         </div>
     );
 };

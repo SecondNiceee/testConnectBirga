@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useCallback, useMemo } from "react";
 
 import share from "../../../images/icons/Share.svg";
 
@@ -8,6 +8,7 @@ import MyButton from "../../../components/UI/MyButton/MyButton";
 import userPhoto from "../../../images/userPhoto/user.png"
 import breakShare from "../../../functions/breakShare";
 import Text from "../../../components/Text/Text";
+const en = true
 const Reaction = ({
   blue = false,
   setOpen,
@@ -18,6 +19,17 @@ const Reaction = ({
   agree = false,
   lastAds = false
 }) => {
+
+  const getAge = useCallback( (par) => {
+    if (en){
+      if (Number(par) === 1){
+        return "year"
+      }
+      else{
+        return "years"
+      }
+    }
+  } , []  )
   return (
     <>
       <div
@@ -80,10 +92,12 @@ const Reaction = ({
                                   <Text>◦</Text>
                                   <Text>158 отзывов</Text>
                                   <Text>◦</Text> */}
-                <Text>
-                  Стаж{" "}
-                  {responce.user.stage === null ? "0" : responce.user.stage} лет
-                </Text>
+                <Text>Стаж </Text>
+
+                <p>
+                  {responce.user.stage === null ? "0" : responce.user.stage} 
+                </p>
+                <p>{getAge(responce.user.stage)}</p>
               </div>
             </div>
           </div>

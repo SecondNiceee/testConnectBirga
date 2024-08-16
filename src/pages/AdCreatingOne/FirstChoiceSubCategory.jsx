@@ -4,6 +4,8 @@ import rightArrow from '../../images/icons/rightArrow.svg'
 import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
 import Text from '../../components/Text/Text';
+import translation from '../../functions/translate';
+const place = translation("Поиск по подкатегориям")
 const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar , ...props}) => {
 
 
@@ -63,7 +65,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
     return (
     <div {...props} className="subCategory__container">
       <OneInput
-        placeholder="Поиск по заданиям"
+        placeholder={place}
         inputValue={inputValue}
         setInputValue={setInputValue}
         className='subCategory__oneInput'

@@ -5,7 +5,9 @@ import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
 import MainButton from '../../constants/MainButton';
 import Text from '../../components/Text/Text';
+import translation from '../../functions/translate';
 const menu = document.documentElement.querySelector(".FirstMenu")
+const place = translation("Поиск по подкатегориям")
 const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
 
 
@@ -100,7 +102,7 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
     return (
     <div className="subCategory__container">
       <OneInput
-        placeholder="Поиск по заданиям"
+        placeholder={place}
         inputValue={inputValue}
         setInputValue={setInputValue}
         className='subCategory__oneInput'

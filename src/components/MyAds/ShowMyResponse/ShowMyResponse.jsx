@@ -67,11 +67,16 @@ const ShowMyResponse = ({
     }
 
     if (response.isWatched === "inProcess") {
+      menu.classList.add("disappearAnimation")
+      menu.classList.remove("appearAnimation")
       MainButton.show();
+      
       MainButton.setText("ВЫПОЛНИЛ");
       MainButton.onClick(click);
     }
     return () => {
+      menu.classList.add("appearAnimation")
+      menu.classList.remove("disappearAnimation")
       MainButton.hide();
       MainButton.offClick(click);
     };

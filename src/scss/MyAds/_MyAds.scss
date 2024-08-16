@@ -237,6 +237,21 @@
     text-align: center;
     color: #95979e;
     margin-top: 8px;
+    
+}
+.creationTimeBlock{
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    p{
+        font-family: "SF Pro Display";
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 107%;
+        text-align: center;
+        color: #95979e;
+        margin-top: 8px;
+    }
 }
 
 .PickerContent{

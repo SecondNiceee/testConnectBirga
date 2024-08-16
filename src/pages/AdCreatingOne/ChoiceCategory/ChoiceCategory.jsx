@@ -5,12 +5,14 @@ import CategoryItem from "../CategoryItem/CategoryItem";
 import BackButton from "../../../constants/BackButton";
 import MainButton from "../../../constants/MainButton";
 import Text from "../../../components/Text/Text";
+import translation from "../../../functions/translate";
 
 
 
 
 
 const menu = document.documentElement.querySelector(".FirstMenu")
+const place = translation("Поиск по категориям")
 const ChoiceCategory = ({
   setTaskInformation,
   taskInformation,
@@ -96,10 +98,11 @@ const ChoiceCategory = ({
       BackButton.offClick( closeCategory )
     }
   }, [setCatagoryChoiceOpen]  )
+
   return (
     <div className={cl.ChoiceCategory}>
       <OneInput
-        placeholder="Поиск по заданиям"
+        placeholder={place}
         value={inputValue}
         setInputValue={setInputValue}
         className={cl.OneInput}

@@ -4,7 +4,8 @@ import OneInput from "../../../components/UI/OneInput/OneInput";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import BackButton from "../../../constants/BackButton";
 import Text from "../../../components/Text/Text";
-
+import translation from "../../../functions/translate";
+const place = translation("Поиск по категориям")
 const FirstChoiceCategory = ({
   setTaskInformation,
   taskInformation,
@@ -57,7 +58,7 @@ const FirstChoiceCategory = ({
   return (
     <div {...props} className={cl.ChoiceCategory}>
       <OneInput
-        placeholder="Поиск по заданиям"
+        placeholder={place}
         value={inputValue}
         setInputValue={setInputValue}
         className={cl.OneInput}

@@ -14,46 +14,88 @@ import MyDatePicker from "../../../components/AdCreating/MyDatePicker/MyDatePick
 import Text from "../../../components/Text/Text";
 
 // eslint-disable-next-line
+
+const en = true
 Date.prototype.addHours = function (h) {
   this.setTime(this.getTime() + h * 60 * 60 * 1000);
   return this;
 };
+let monthMap;
+if (en){
+  monthMap = {
+    1: "Jan",
+    2: "Feb",
+    3: "March",
+    4: "Apr",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "Aug",
+    9: "Sep",
+    10: "Oct",
+    11: "Nov",
+    12: "Dec",
+  };
+}
+else{
 
-const monthMap = {
-  1: "Янв",
-  2: "Фев",
-  3: "Март",
-  4: "Апр",
-  5: "Май",
-  6: "Июнь",
-  7: "Июль",
-  8: "Авг",
-  9: "Сен",
-  10: "Окт",
-  11: "Ноя",
-  12: "Дек",
-};
-
-const dateConfig = {
-  month: {
-    format: (value) => monthMap[value.getMonth() + 1],
-    caption: "Мес",
-    step: 1,
-  },
-  date: {
-    format: "DD",
-    caption: "День",
-    step: 1,
-  },
-  hour: {
-    format: "hh",
-    caption: "Час",
-    step: 1,
-  },
-};
+  monthMap = {
+    1: "Янв",
+    2: "Фев",
+    3: "Март",
+    4: "Апр",
+    5: "Май",
+    6: "Июнь",
+    7: "Июль",
+    8: "Авг",
+    9: "Сен",
+    10: "Окт",
+    11: "Ноя",
+    12: "Дек",
+  };
+}
+let dateConfig;
+if (en){
+  dateConfig = {
+    month: {
+      format: (value) => monthMap[value.getMonth() + 1],
+      caption: "Month",
+      step: 1,
+    },
+    date: {
+      format: "DD",
+      caption: "Day",
+      step: 1,
+    },
+    hour: {
+      format: "hh",
+      caption: "Hour",
+      step: 1,
+    },
+  };
+}
+else{
+  dateConfig = {
+    month: {
+      format: (value) => monthMap[value.getMonth() + 1],
+      caption: "Мес",
+      step: 1,
+    },
+    date: {
+      format: "DD",
+      caption: "День",
+      step: 1,
+    },
+    hour: {
+      format: "hh",
+      caption: "Час",
+      step: 1,
+    },
+  };
+}
 
 const min = new Date(new Date().addHours(1) + 1);
-
+const menu = document.documentElement.querySelector(".FirstMenu")
 const AdCreatingOne = ({
   taskInformation,
   setTaskInformation,
@@ -172,7 +214,9 @@ const AdCreatingOne = ({
     if (dateObject && datePickerObject) {
       if (state.isOpen) {
         appear();
+        menu.style.display = "none"
       } else {
+        menu.style.display = "flex"
         disappear();
       }
     }
@@ -257,8 +301,8 @@ const AdCreatingOne = ({
       )}
 
       <MyDatePicker
-        confirmText="Сохранить"
-        cancelText="Отмена"
+        confirmText= {en ? "Save" : "Сохранить"}
+        cancelText= {en ? "Cancel" : "Отмена"}
         theme="ios"
         showCaption={true}
         dateConfig={dateConfig}

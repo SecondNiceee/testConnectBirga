@@ -150,7 +150,7 @@
 }
 .rates__text{
     display: flex;
-    gap: 5px;
+    gap: 3px;
 }
 .reaction .reaction__middle .icon{
     width: 32px;

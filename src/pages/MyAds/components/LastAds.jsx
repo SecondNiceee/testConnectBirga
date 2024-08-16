@@ -52,7 +52,12 @@ const LastAds = ({
         }
       } aboutU={responce.information} />
 
-      <Text className="creationTime">{ "Создано " + formatDate(new Date(responce.createdAt)) }</Text>
+                  <div className="creationTimeBlock">
+                <Text>
+                Создано 
+                </Text>
+                <p>{formatDate(new Date(responce.createdAt))}</p>
+            </div>
 
       
 {/* 
