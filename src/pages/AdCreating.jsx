@@ -140,7 +140,7 @@ const AdCreating = () => {
       }
     }
     if (spet === 1) {
-      if (error.ton && secondPage.tonValue > 0.5) {
+      if (error.ton && secondPage.tonValue >= 5) {
         setError({ ...error, ton: false });
       }
       if (document.getElementById("dateSwapper").style.transform) {
