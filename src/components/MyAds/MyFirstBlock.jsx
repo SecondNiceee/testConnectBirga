@@ -157,7 +157,7 @@ const MyFirstBlock = ({
               </div>
               <div className="FirstMain__price-bottom">
                 <p>
-                  {Number((tonValue * tonConstant).toFixed(0)).toLocaleString(
+                ~ {Number((tonValue * tonConstant).toFixed(0)).toLocaleString(
                     "ru-RU"
                   )}
                 </p>

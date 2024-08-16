@@ -5,6 +5,7 @@ import Text from "../../../components/Text/Text";
 
 const en = true
 const textPrice = en ? "USD" : "RUB"
+const textError = en ? "The cost must be more than 5 USD" : "Сумма должна быть не меньше 5 USD"
 const BudgetInput = ({
   className,
   setBudget,
@@ -105,7 +106,7 @@ const BudgetInput = ({
       :
           <div className={cl.bottomTextContainer}>
             <Text className={cl.text} style={{color : '#FF6767'}}>
-              Сумма должна быть больше 0.5 тонн
+              Сумма должна быть больше 5 USD
               </Text>
           </div>
 

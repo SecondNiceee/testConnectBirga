@@ -8,6 +8,9 @@ import cl from "./CategoryBlock.module.css";
 import Text from "../../Text/Text";
 
 let selectionPosition = 0
+const en = true
+const priceText = en ? "USD" : "RUB"
+const place = en ? "300 USD" : "5000 RUB"
 const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
   const inputRef = useRef(null);
   const textRef = useRef(null);
@@ -62,7 +65,7 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
               setValue(e.target.value);
             }}
             value={convertedValue}
-            placeholder="5000 RUB"
+            placeholder={place}
             className={cl.input}
             ref={inputRef}
             type="text"
@@ -72,7 +75,7 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
             style={convertedValue === "" ? { display: "none" } : {}}
             className={cl.afterText}
           >
-            RUB
+            {priceText}
           </Text>
         </div>
       </div>

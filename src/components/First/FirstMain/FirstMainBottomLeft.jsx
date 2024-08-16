@@ -12,7 +12,7 @@ const FirstMainBottomLeft = ({tonValue, tonConstant}) => {
         </div>
         <div className='FirstMain__price-bottom'>
           <p>
-            {Number((tonValue * tonConstant).toFixed(2)).toLocaleString(
+            ~ {Number((tonValue * tonConstant).toFixed(2)).toLocaleString(
               "en-EN"
             )}
           </p>

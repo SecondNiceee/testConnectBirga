@@ -310,7 +310,7 @@ const AdCreating = () => {
         );
       }
       case 1: {
-        if (secondPage.tonValue < 0.5) {
+        if (secondPage.tonValue < 5) {
           ton = true;
         }
         if (document.getElementById("dateSwapper").style.transform) {
