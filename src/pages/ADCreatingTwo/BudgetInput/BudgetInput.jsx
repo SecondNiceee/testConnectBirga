@@ -3,6 +3,8 @@ import cl from "./BudgetInput.module.css";
 import Info from "../../../images/icons/info.svg";
 import Text from "../../../components/Text/Text";
 
+const en = true
+const textPrice = en ? "USD" : "RUB"
 const BudgetInput = ({
   className,
   setBudget,
@@ -86,7 +88,7 @@ const BudgetInput = ({
 
         {/* <Text  className={cl.input}>{budget}</Text> */}
 
-      <Text style={ {left : budgetWidth() , color : style.color  }} className={cl.budgetText}>RUB</Text>
+      <Text style={ {left : budgetWidth() , color : style.color  }} className={cl.budgetText}>{textPrice}</Text>
 
       {!errorTon 
       ? (
