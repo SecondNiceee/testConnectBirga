@@ -109,5 +109,6 @@
     "Стаж " : "Seniority",
     "Поиск по категориям" : "Search for categories", 
     "Поиск по подкатегориям" : "Search for subcategories",
-    "Сумма должна быть больше 5 USD" : "The cost must be more than 5 USD"
+    "Сумма должна быть больше 5 USD" : "The cost must be more than 5 USD",
+    "Загрузка заданий" : "Uploading tasks"
 }

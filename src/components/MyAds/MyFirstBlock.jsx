@@ -7,6 +7,9 @@ import { useSelector } from "react-redux";
 import formatDate from "../../functions/makeDate";
 import BlockSpinner from "../UI/BlockSpinner/BlockSpinner";
 import Text from "../Text/Text";
+
+const en = true
+const textPrice = en ? 'USD' : "RUB"
 const MyFirstBlock = ({
   className,
   taskName,
@@ -157,11 +160,11 @@ const MyFirstBlock = ({
               </div>
               <div className="FirstMain__price-bottom">
                 <p>
-                ~ {Number((tonValue * tonConstant).toFixed(0)).toLocaleString(
-                    "ru-RU"
+                ~ {Number((tonValue * tonConstant).toFixed(2)).toLocaleString(
+                    "en-EN"
                   )}
                 </p>
-                <Text>RUB</Text>
+                <Text>{textPrice}</Text>
               </div>
             </div>
             <div className="FirstMain__bottom-right">
