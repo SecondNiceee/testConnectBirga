@@ -3,13 +3,13 @@
     "Подкатегория" : "Subcategory",
     "Сумма от": "Amount from",
     "Подробнее" : "MORE DETAILS",
-    "Задания" : "Assignments",
+    "Задания" : "Tasks",
     "Разместить" : "Place",
-    "Мои задания" : "My assignments",
+    "Мои задания" : "My Tasks",
     "Избранное" : "Favourites",
     "Поиск по заданиям..." : "Job Search...",
     " Создайте объявление " : "Create an advert",
-    " ,Название задания, " : "Assignments title",
+    " ,Название задания, " : "Task title",
     "Введите название задания" : "What needs to be done?",
     "Например, разработать дизайн" : "For example, to develop a design for a website",
     "Описание" : "Description" ,
@@ -61,11 +61,25 @@
     "Инфографика, презентации, иконки" : "Infographics, presentations, icons",
     "Наружная реклама, стенды, pos-материалы" : "Outdoor advertising, stands, pos-materials",
     "Архитектура, интерьер, ландшафт" : "Architecture, interior, landscape",
-    "Дизайн одежды" : "Fashion Design"
-
-    
-
-
-
+    "Дизайн одежды" : "Fashion Design",
+    "Сайт под ключ" : "Turnkey website", 
+    "Разработка мобильных приложений" : "Mobile application development", 
+    "Программирование" : "Programming",
+    "Доработка и поддержка сайта" : "Site development and support",
+    "Доработка и настройка 1С" : "Development and customisation of 1C",
+    "Создание лендингов" : "Creating lendings",
+    "Верстка" : "Layout",
+    "Скрипты и боты" : "Scripts and bots",
+    "WEB 3.0 разработка" : "WEB 3.0 development",
+    "Сроки выполнения" : "Due Date",
+    "Заказчик" : "Customer",
+    "Статус" : "Status",
+    "Активен" : "Active",
+    "Нет рейтинга" : "No rating",
+    "Начать: " : "Start time: ",
+    "См.больше" : "See more",
+    "МОЙ ОТКЛИК" : "My response",
+    "НАПИСАТЬ" : "WRITE",
+    "Создано " : "Created at"
 
 }

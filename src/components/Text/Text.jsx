@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import i18n from 'i18next';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import enTranslation from "../../translation/enTranslation.json"
@@ -14,11 +14,11 @@ i18n
     interpolation: { escapeValue: false },
   });
 
-const Text = ({ children, ...props}) => {
+const Text = forwardRef(({ children, ...props} , ref) => {
     const { t, i18n } = useTranslation();
     return (
-        <p {...props}>{t(String(children))}</p>
+        <p ref={ref} {...props}>{t(String(children))}</p>
     );
-};
+});
 
 export default Text;

@@ -2,14 +2,13 @@ import React from "react";
 import formatDate from "../../../functions/makeDate";
 import Text from "../../Text/Text";
 
-const TimeAndWatches = ({time , watches}) => {
-
-
-
-  
+const TimeAndWatches = ({ time, watches }) => {
   return (
     <div className="timeAndWatches">
-      <Text className="time">Создано {formatDate(new Date(time))}</Text>
+      <div className="createdAt-block">
+        <Text>Создано </Text>
+        <p>{formatDate(new Date(time))}</p>
+      </div>
       {/* <Text className="watches">{watches}</Text> */}
     </div>
   );

@@ -20,6 +20,33 @@
         transform: translateX(0%);
     }
 }
+.dedline__block{
+    display: flex;
+    gap: 4px;
+    p{
+        color: rgb(255, 255, 255);
+        font-family: "SF Pro Display";
+        font-size: 14.67px;
+        font-weight: 500;
+        line-height: 17.67px;
+        letter-spacing: 0%;
+        text-align: left;
+    }
+}
+.createdAt-block{
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+    margin-right: auto;
+    p{
+        font-family: "SF Pro Display";
+        font-weight: 500;
+        font-size: 11px;
+        line-height: 107%;
+        text-align: center;
+        color: #95979e;
+    }
+}
 
 .Task__container-one{
     display: flex;

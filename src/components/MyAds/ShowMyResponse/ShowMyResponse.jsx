@@ -10,9 +10,9 @@ import MainButton from "../../../constants/MainButton";
 import axios from "axios";
 import { changeMenuActive } from "../../../store/menuSlice";
 import Text from "../../Text/Text";
-const menu = document.documentElement.querySelector(".FirstMenu")
+const menu = document.documentElement.querySelector(".FirstMenu");
 const ShowMyResponse = ({
-  response = { advertisement: { user: {} } , id : 0 , user : {'fuck' : 'fuck'} },
+  response = { advertisement: { user: {} }, id: 0, user: { fuck: "fuck" } },
   openDetails,
   index,
   deleteFunction,
@@ -21,7 +21,7 @@ const ShowMyResponse = ({
 }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    function click(){
+    function click() {
       window.Telegram.WebApp.showPopup(
         {
           title: "Выбрать?",
@@ -33,18 +33,16 @@ const ShowMyResponse = ({
         },
         (buttonId) => {
           if (buttonId === "save") {
-            clickHandler()
-          } 
-          if (buttonId === "delete" || buttonId === null){
-            console.log("Он отказался")
+            clickHandler();
           }
-          
+          if (buttonId === "delete" || buttonId === null) {
+            console.log("Он отказался");
+          }
         }
       );
     }
     async function clickHandler() {
       try {
-        
         await axios.get("https://back-birga.ywa.su/bot/notification", {
           params: {
             executorId: String(response.user.id),
@@ -54,17 +52,20 @@ const ShowMyResponse = ({
             advertisementId: String(response.advertisement.id),
           },
         });
-        alert("chatId :  " + response.advertisement.user.id)
-        
-        
-        window.Telegram.WebApp.showAlert("Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. ")
+        alert("chatId :  " + response.advertisement.user.id);
+
+        window.Telegram.WebApp.showAlert(
+          "Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. "
+        );
       } catch (e) {
-        window.Telegram.WebApp.showAlert("Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку.");
-        window.Telegram.WebApp.showAlert(JSON.stringify(e))
+        window.Telegram.WebApp.showAlert(
+          "Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку."
+        );
+        window.Telegram.WebApp.showAlert(JSON.stringify(e));
         console.log(e);
       }
     }
-    
+
     if (response.isWatched === "inProcess") {
       MainButton.show();
       MainButton.setText("ВЫПОЛНИЛ");
@@ -90,20 +91,25 @@ const ShowMyResponse = ({
     [dispatch]
   );
 
-
-  const onImageClick = useCallback( () => {
+  const onImageClick = useCallback(() => {
     openAboutReaction({
-      isActive : true , 
-      responce : {user : response.advertisement.user, createNumber : response.advertisement.createNumber}
-    })
-  } , [openAboutReaction, response.advertisement.user, response.advertisement.createNumber] )
+      isActive: true,
+      responce: {
+        user: response.advertisement.user,
+        createNumber: response.advertisement.createNumber,
+      },
+    });
+  }, [
+    openAboutReaction,
+    response.advertisement.user,
+    response.advertisement.createNumber,
+  ]);
 
   return (
     <>
       {response.user.fuck ? (
         <div className={cl.wrapper}>
-
-            <MyLoader style={{ width: "100vw", height: "calc(100vh)" }} />
+          <MyLoader style={{ width: "100vw", height: "calc(100vh)" }} />
         </div>
       ) : (
         <div className={cl.wrapper}>
@@ -128,9 +134,11 @@ const ShowMyResponse = ({
             photo={response.advertisement.user.photo}
             link={response.advertisement.user.link}
           />
-          <Text className={cl.dateObject}>
-            Создано {formatDate(new Date(response.advertisement.creationTime))}
-          </Text>
+            <div className="createdAt-block">
+              <Text>Создано </Text>
+              <p>{formatDate(new Date(response.advertisement.creationTime))}</p>
+            </div>
+          
         </div>
       )}
     </>

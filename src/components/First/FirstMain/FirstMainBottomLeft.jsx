@@ -6,7 +6,7 @@ const FirstMainBottomLeft = ({tonValue, tonConstant}) => {
     return (
         <div className="FirstMain__bottom-left">
         <div className="FirstMain__price-up">
-          <Text>{tonValue} USDT</Text>
+          <p>{tonValue} USDT</p>
           <SmallDimond />
         </div>
         <div className='FirstMain__price-bottom'>

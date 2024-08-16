@@ -265,9 +265,10 @@
     flex-direction: column;
     position: fixed;
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    
     left: 0;
-    bottom: 0;
+    top: 0;
     background: rgb(24, 34, 45);
     padding-left: calc(48px* 0.32);
     padding-right: calc(48px* 0.32);
