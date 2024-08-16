@@ -26,6 +26,7 @@ import axios from "axios";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import pagesHistory from "../../constants/pagesHistory";
 import MainButton from "../../constants/MainButton";
+import translation from "../../functions/translate";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -38,6 +39,8 @@ let localSecondPage;
 let localIsOpen;
 let localDetails;
 let detailsVar;
+
+const sureText = translation("Вы уверены, что хотите удалить этот отклик?")
 
 
 const menu = document.documentElement.querySelector(".FirstMenu")
@@ -520,7 +523,7 @@ const MyAds = ({isPage = false}) => {
     window.Telegram.WebApp
     .showPopup({
       title: "Удалить?",
-      message: `Вы уверены, что хотите удалить этот отклик?`,
+      message: sureText,
       buttons: [
         { id: "save", type: "default", text: "Yes" },
         { id: "delete", type: "destructive", text: "No" },

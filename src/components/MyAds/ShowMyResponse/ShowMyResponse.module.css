@@ -1,7 +1,8 @@
 .wrapper{
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
+    padding-bottom: 50px;
     padding-left: 16px;
     padding-right: 16px;
     padding-top: 17px;
