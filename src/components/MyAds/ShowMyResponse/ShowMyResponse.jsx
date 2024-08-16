@@ -10,7 +10,10 @@ import MainButton from "../../../constants/MainButton";
 import axios from "axios";
 import { changeMenuActive } from "../../../store/menuSlice";
 import Text from "../../Text/Text";
+import translation from "../../../functions/translate";
 const menu = document.documentElement.querySelector(".FirstMenu");
+
+const textButtonOne = translation("ВЫПОЛНИЛ")
 const ShowMyResponse = ({
   response = { advertisement: { user: {} }, id: 0, user: { fuck: "fuck" } },
   openDetails,
@@ -71,7 +74,7 @@ const ShowMyResponse = ({
       menu.classList.remove("appearAnimation")
       MainButton.show();
       
-      MainButton.setText("ВЫПОЛНИЛ");
+      MainButton.setText(textButtonOne);
       MainButton.onClick(click);
     }
     return () => {

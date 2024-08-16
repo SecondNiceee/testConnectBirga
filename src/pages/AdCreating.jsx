@@ -16,6 +16,7 @@ import PostLoader from "../loaders/PostLoader";
 import pagesHistory from "../constants/pagesHistory";
 import FirstDetails from "../components/First/FirstDetails/FirstDetails";
 import axios from "axios";
+import translation from "../functions/translate";
 
 
 let spet = 0;
@@ -24,7 +25,8 @@ const AdCreating = () => {
   // const [taskInformation, setTaskInformation] = useState(
   //   useSelector((state) => state.information.taskInformation)
   // );
-
+const endText = translation("СОЗДАТЬ ЗАДАНИЕ")
+const continueText = translation("ДАЛЕЕ")
   
 
 
@@ -404,9 +406,9 @@ const AdCreating = () => {
         // spet += 1;
         // animte()
         if (spet === 2 || spet === 3) {
-          MainButton.setText("СОЗДАТЬ ЗАДАНИЕ");
+          MainButton.setText(endText);
         } else {
-          MainButton.setText("ДАЛЕЕ");
+          MainButton.setText(continueText);
         }
         if (spet === 3){
 
@@ -485,7 +487,7 @@ const AdCreating = () => {
         }
         clearInput()
         spet -= 1;
-        MainButton.setText("ДАЛЕЕ")
+        MainButton.setText(continueText)
         // backAnimte();
   
       }
@@ -518,7 +520,7 @@ const AdCreating = () => {
   useEffect(() => {
     MainButton.show();
     BackButton.show();
-    MainButton.setText("ДАЛЕЕ");
+    MainButton.setText(continueText);
     return () => {
         MainButton.hide();
       
