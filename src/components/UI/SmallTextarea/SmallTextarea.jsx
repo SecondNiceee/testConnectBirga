@@ -37,7 +37,7 @@ const SmallTextarea = ({ value, setValue, className }) => {
     <textarea
     ref={textAreaRef}
         className = {className ? [className, cl.textArea].join(' ') : cl.textArea}
-      placeholder="Опишите свой опыт и подход к работе"
+      placeholder={place}
       value={value}
       onChange={(e) => {
         setValue(e.target.value)

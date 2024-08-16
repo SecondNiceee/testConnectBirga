@@ -189,6 +189,7 @@ const AnimatedSwitch = () => {
 };
     
 var isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+const en = true
 function App() {
 
   window.Telegram.WebApp.disableVerticalSwipes();
@@ -212,6 +213,7 @@ function App() {
           chatId: 2144832745,
           text:
           "Кто - то октрыл приложение",
+          languageCode : en ? "en" : "ru"
         },
       });
     }

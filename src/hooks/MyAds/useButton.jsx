@@ -5,7 +5,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearMyOrders, fetchMyOrders, putMyTask, setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 import sortFiles from "../../functions/sortFiles";
+import translation from "../../functions/translate";
 const menu = document.documentElement.querySelector(".FirstMenu")
+
+const choiceText = translation("ВЫБРАТЬ")
 export const useButton = ({
   setOpen,
   setSecondPage,

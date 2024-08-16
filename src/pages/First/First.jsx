@@ -364,7 +364,7 @@ const First = ({ isPage = false }) => {
       });
     };
   }, []);
-
+  const en = true
   const forwardFunction = useCallback(() => {
     async function post(par) {
       try {
@@ -391,6 +391,7 @@ const First = ({ isPage = false }) => {
               String(par[1].advertisement.id) +
               "&response=" +
               String(im.data.id),
+              languageCode : en ? "en" : "ru"
           },
         });
 

@@ -5,12 +5,15 @@ import {  useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 import Block from "../../components/First/Block";
 import MainButton from "../../constants/MainButton";
+import translation from "../../functions/translate";
 
 
 let myResponse = {
   text : "",
   photos : ""
 }
+const textPlace = translation("Почему задание должны дать именно вам")
+const useTemplate = translation("Использовать шаблон")
 const menu = document.documentElement.querySelector(".FirstMenu")
 const Responce = forwardRef(({ orderInformation, responce, setResponce , left = "100%" , ...props   } , ref) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
@@ -86,7 +89,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
 
 
         }}
-        text={"Использовать шаблон"}
+        text={useTemplate}
         className={"responce-make-private"}
       />
       {responce.isShablon && (
@@ -106,7 +109,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
                     className={"responce-descriprion"}
                     text={responce.text}
                     photos={responce.photos}
-                    textPlaceholder={"Почему задание должны дать именно вам"}
+                    textPlaceholder={textPlace}
                     textTitle={"ТЕКСТ ОТКЛИКА"}
                     setText={(e) => {
                       setResponce({ ...responce, text: e });

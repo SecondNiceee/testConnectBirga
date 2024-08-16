@@ -3,6 +3,7 @@ import cl from "./Choicer.module.css";
 
 import ChoicerInfo from "./ChoicerInfo";
 import { useSelector } from "react-redux";
+import translation from "../../../functions/translate";
 const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
   const savedTasks = useSelector((state) => state.saves.tasks);
   const savedResponces = useSelector((state) => state.saves.responces);
@@ -17,6 +18,10 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
   const pickerRef = useRef(null);
 
   const [viewsNumber, setViewsNumber] = useState(0);
+
+  const textOne = translation("У вас нет сохраненных заказов")
+  const textTwo = translation("У вас нет сохраненных откликов")
+  const textThree = translation("У вас нет сохраненных кейсов")
 
   useEffect( () => {
     if (nowKey === keys[0]){
@@ -72,7 +77,7 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
         setDetails={setDetails}
         navigate={"task"}
         arr={savedTasks}
-        text={"У вас нет сохраненных заказов"}
+        text={textOne}
       />
       <ChoicerInfo
         viewsNumber={viewsNumber}
@@ -81,7 +86,7 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
         setResponce={setResponce}
         navigate={"response"}
         arr={savedResponces}
-        text={"У вас нет сохраненных откликов"}
+        text={textTwo}
       />
       <ChoicerInfo
         viewsNumber={viewsNumber}
@@ -90,7 +95,7 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
         setCard={setCard}
         navigate={"card"}
         arr={savedCards}
-        text={"У вас нет сохраненных кейсов"}
+        text={textThree}
       />
     </div>
   );

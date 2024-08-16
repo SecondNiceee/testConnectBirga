@@ -116,7 +116,15 @@
     "ВЫПОЛНИЛ" : "MARK AS DONE",
     "Сохранить" : "Save",
     "Изменить кейс" : "Update case",
-    "ОТКЛИКНУТЬСЯ" : "MAKE RESPONSE",
+    "ОТКЛИКНУТЬСЯ" : "RESPOND",
     "Изменить шаблон" : "Update template",
-    "Добавить шаблон" : "Add template"
+    "Добавить шаблон" : "Add template",
+    "Вы уверены, что хотите создать новое задание?" : "Are you sure you want to create a new task?",
+    "ВЫБРАТЬ" : "SELECT",
+    "У вас нет сохраненных заказов" : "You don't have any saved orders",
+    "У вас нет сохраненных откликов" : "You don't have any saved responses",
+    "У вас нет сохраненных кейсов" : "You don't have any saved cases",
+    "Использовать шаблон" : "Use a template",
+    "ТЕКСТ ОТКЛИКА" : "REFERENCE TEXT",
+    "Почему задание должны дать именно вам" : "Why the assignment should be given to you"
 }

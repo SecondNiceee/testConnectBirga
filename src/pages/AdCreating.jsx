@@ -27,7 +27,8 @@ const AdCreating = () => {
   // );
 const endText = translation("СОЗДАТЬ ЗАДАНИЕ")
 const continueText = translation("ДАЛЕЕ")
-  
+
+const translateText = translation("Вы уверены, что хотите создать новое задание?")
 
 
   // if (MainButton.isVisible){

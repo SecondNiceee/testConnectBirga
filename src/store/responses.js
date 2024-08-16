@@ -82,6 +82,7 @@ export const setStartResponse = createAsyncThunk(
         let myData = new FormData()
         myData.append("isWatched" , "inProcess")
         const messageOne = translation("📣✅ Вы были выбраны исполнителем на задание")
+        const en = true
         try{
             let im = await axios.put("https://back-birga.ywa.su/response" , myData, {
                 params : {
@@ -95,7 +96,8 @@ export const setStartResponse = createAsyncThunk(
                   text:
                   messageOne + ` «<b>${advertisement.taskName}</b>«` ,
                   buttonUrl:
-                    "https://birga.ywa.su/MyAds?open=1" 
+                    "https://birga.ywa.su/MyAds?open=1" ,
+                    languageCode : en ? "en" : "ru"
                 },
               });
 
@@ -130,11 +132,14 @@ export const addResponse = createAsyncThunk(
                 }
             })
 
+
+            const en = true
             
             await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
                 params : {
                   "chatId" : par[1].advertisement.user.chatId,
-                  "text" : messageOne + par[1].advertisement.taskName.bold() + messageTwo +  par[1].user.fl 
+                  "text" : messageOne + par[1].advertisement.taskName.bold() + messageTwo +  par[1].user.fl ,
+                  "languageCode" : en ? "en" : "ru"
                 }
               })
 

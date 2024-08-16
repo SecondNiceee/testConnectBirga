@@ -360,6 +360,7 @@ const SavedPage = () => {
         );
         const messageOne = translation("📣 Вы получили отклик на задачу «")
         const messageTwo = translation("» от ")
+        const en = true
         await axios.get("https://back-birga.ywa.su/user/sendMessage", {
           params: {
             chatId: im.data.user.chatId,
@@ -368,7 +369,9 @@ const SavedPage = () => {
               savedTasks[details.id].taskName.bold() +
               messageTwo +
               im.data.user.fl,
-              buttonUrl : "https://birga.ywa.su/ResponsePage?advertisemet=" + String(savedTasks[details.id].id) + "&response=" + String(im.data.id)
+              buttonUrl : "https://birga.ywa.su/ResponsePage?advertisemet=" + String(savedTasks[details.id].id) + "&response=" + String(im.data.id),
+              languageCode : en ? "en" : "ru"
+            
           },
         });
         dispatch(addResponce([savedTasks[details.id].id, im.data]));

@@ -39,6 +39,7 @@ const variants = {
 let aboutULocal = null
 
 let userInfoLocal = null
+const en = true
 
 
 
@@ -109,6 +110,21 @@ const Profile = () => {
     const numberInput = document.getElementById('numberInput')
 
     if (numberInput){
+      if (en){
+        if (Number(stage) === 1){
+          if (!numberInput.value.includes("year") ){
+            numberInput.value += ` year`
+          }
+        }
+        else{
+          if (!numberInput.value.includes("years")){
+            numberInput.value += ` years`
+          }
+        }
+      }
+      else{
+
+      
 
       if ( Number(stage) > 10 && Number(stage) < 20){
         if (!numberInput.value.includes(lett)){
@@ -137,6 +153,7 @@ const Profile = () => {
           }
         }
     }
+  }
       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []  )
 
@@ -290,9 +307,26 @@ const Profile = () => {
     let numb = Number(e.target.value.slice(e.target.value.length - 1 , e.target.value.length))
 
     if (e.target.value === ''){
-      setAboutU(value => ({...value , stage : `0 ${lett}`}))
+      if (en){
+        setAboutU(value => ({...value , stage : `0 years`}))
+      }
+      else{
+        setAboutU(value => ({...value , stage : `0 ${lett}`}))
+      }
 
     }
+
+    if (en){
+      if (Number(e.target.value) === 1){
+        e.target.value += " year"
+      }
+      else{
+        e.target.value += " years"
+      }
+    }
+    else{
+
+    
 
     if ( Number(e.target.value) > 10 && Number(e.target.value) < 20){
       e.target.value += ` ${lett}`
@@ -311,6 +345,7 @@ const Profile = () => {
           }
         }
       }
+    }
     
   } , [] )
 
