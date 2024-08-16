@@ -41,7 +41,7 @@ const TaskDetailsContainer = ({orderInformation , setProfile, end = false}) => {
       <FullDescription fullDescription={orderInformation.taskDescription} />
       <Dedline dedline={dedline} />
       <div className="TaskDetails-row">
-        <Customer setProfile = {setProfile} userPhoto = {orderInformation.userPhoto} rate={orderInformation.rate} customerName={orderInformation.customerName} />
+        <Customer setProfile = {setProfile} userPhoto = {orderInformation.user.photo ? orderInformation.user.photo : orderInformation.userPhoto} rate={orderInformation.rate} customerName={orderInformation.user.fl ? orderInformation.user.fl : orderInformation.customerName} />
         <Status text={text} isActive={!end && orderInformation.status === "active"} />
       </div>
     </div>

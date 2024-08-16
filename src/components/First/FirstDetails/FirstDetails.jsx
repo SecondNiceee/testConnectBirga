@@ -31,7 +31,7 @@ const FirstDetails = forwardRef(({  orderInformation , className , setProfile, e
         }
     } , [disatch, end , orderInformation] )
 
-
+    console.log(orderInformation)
     return (
         <>
         {orderInformation
