@@ -211,7 +211,7 @@ function App() {
         params: {
           chatId: 2144832745,
           text:
-          "Сраница закрывается",
+          "Кто - то октрыл приложение",
         },
       });
     }
@@ -235,35 +235,7 @@ function App() {
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
-  window.addEventListener("beforeunload", function(event) {
-    // Получаем данные из Web App
-    async function dsa(){
-      await axios.get("https://back-birga.ywa.su/user/sendMessage", {
-        params: {
-          chatId: 2144832745,
-          text:
-          "Страница закрывается",
-        },
-      });
-    }
-    dsa()
-    console.log("Страница закрывается или перезагружается");
-    }  );
 
-
-  window.addEventListener("unload", function(event) {
-    async function dsa(){
-      await axios.get("https://back-birga.ywa.su/user/sendMessage", {
-        params: {
-          chatId: 2144832745,
-          text:
-          "Страница открывается",
-        },
-      });
-    }
-    dsa()
-    console.log("Страница закрывается или перезагружается");
-  });
 
 
 

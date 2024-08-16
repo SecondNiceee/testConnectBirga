@@ -16,6 +16,7 @@ import SavedProfile from "../../components/SavedPage/SavedProfile/SavedProfile";
 import CardPage from "../CardPage/CardPage";
 import AboutReaction from "../MyAds/components/AboutReaction";
 import { clearAll, fetchSavedAdvertisements, fetchSavedCards, fetchSavedResponses } from "../../store/saves";
+import translation from "../../functions/translate";
 
 const values = ["Заказы", "Отклики", "Кейсы"];
 const keys = ["advertisment", "responces", "cards"];
@@ -355,13 +356,15 @@ const SavedPage = () => {
             },
           }
         );
+        const messageOne = translation("📣 Вы получили отклик на задачу «")
+        const messageTwo = translation("» от ")
         await axios.get("https://back-birga.ywa.su/user/sendMessage", {
           params: {
             chatId: im.data.user.chatId,
             text:
-              '📣 Вы получили отклик на задачу «' +
+            messageOne +
               savedTasks[details.id].taskName.bold() +
-              '» от ' +
+              messageTwo +
               im.data.user.fl,
               buttonUrl : "https://birga.ywa.su/ResponsePage?advertisemet=" + String(savedTasks[details.id].id) + "&response=" + String(im.data.id)
           },

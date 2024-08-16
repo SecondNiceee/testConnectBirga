@@ -29,12 +29,15 @@ import makeNewFile from "../../functions/newMakeFile";
 import { addResponce, clearTasks } from "../../store/information";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
+import translation from "../../functions/translate";
 
 let isDetailsActiveVar = false;
 let pageValue = true;
 let localResponce;
 let localStep;
 
+const messageOne = translation("📣 Вы получили отклик на задачу «")
+const messageTwo = translation("» от ")
 const menu = document.documentElement.querySelector(".FirstMenu");
 
 const First = ({ isPage = false }) => {
@@ -376,9 +379,9 @@ const First = ({ isPage = false }) => {
           params: {
             chatId: par[1].advertisement.user.chatId,
             text:
-              "📣 Вы получили отклик на задачу «" +
+            messageOne +
               par[1].advertisement.taskName.bold() +
-              "» от " +
+              messageTwo +
               par[1].user.fl,
             buttonUrl:
               "https://birga.ywa.su/ResponsePage?advertisemet=" +

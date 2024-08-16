@@ -80,6 +80,25 @@
     "См.больше" : "See more",
     "МОЙ ОТКЛИК" : "My response",
     "НАПИСАТЬ" : "WRITE",
-    "Создано " : "Created at"
-
+    "Создано " : "Created at",
+    "📣 Вы получили отклик на задачу «" : "📣 You have received a response to the task «",
+    "» от " : "» from ",
+    "📣✅ Вы были выбраны исполнителем на задание" : "📣✅ You have been selected as a performer for the task",
+    "Просмотрено" : "Watched",
+    "Не просмотрено" : "Unwatched",
+    "Отклик" : "Response",
+    "Название слишком короткое" : "The title is too short",
+    "Не активен" : "Inactive",
+    "В работе" : "On the job",
+    "У вас нет ни одного шаблона" : "You don't have any templates",
+    "Вы не откликнулись ни на одно задание" : "You have not responded to any of the tasks",
+    "У вас нет просмотренных откликов" : "You don't have any reviewed responses",
+    "У вас нет выполняемых заказов" : "You don't have any completed orders",
+    "У вас нет непросмотренных заданий" : "You don't have any unwatched tasks",
+    "У вас нет завершенных заказов" : "You don't have completed orders",
+    "У вас нет созданных заданий" : "You don't have any created tasks",
+    "У вас нет активных заданий" : "You don't have any active tasks",
+    "У вас нет заданий в работе" : "You don't have any tasks in your work",
+    "У вас нет завершенных заданий" : "You don't have any completed tasks",
+    "Нет откликов на задание" : "There are no responses to the task"
 }

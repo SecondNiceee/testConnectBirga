@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import makeNewFile from "../functions/newMakeFile";
+import translation from "../functions/translate";
 
 
 
@@ -80,6 +81,7 @@ export const setStartResponse = createAsyncThunk(
     async function([responce , advertisement]){
         let myData = new FormData()
         myData.append("isWatched" , "inProcess")
+        const messageOne = translation("📣✅ Вы были выбраны исполнителем на задание")
         try{
             let im = await axios.put("https://back-birga.ywa.su/response" , myData, {
                 params : {
@@ -91,7 +93,7 @@ export const setStartResponse = createAsyncThunk(
                 params: {
                   chatId: responce.user.id,
                   text:
-                    `📣✅ Вы были выбраны исполнителем на задание «<b>${advertisement.taskName}</b>` ,
+                  messageOne + `«<b>${advertisement.taskName}</b>` ,
                   buttonUrl:
                     "https://birga.ywa.su/MyAds?open=1" 
                 },
@@ -119,7 +121,8 @@ export const addResponse = createAsyncThunk(
             //     })
             // }
 
-
+            const messageOne = translation("📣 Вы получили отклик на задачу «")
+            const messageTwo = translation("» от ")
             await axios.post("https://back-birga.ywa.su/response" , par[0], {
                 params : {
                     advertisementId : par[1].advertisement.id,
@@ -127,11 +130,11 @@ export const addResponse = createAsyncThunk(
                 }
             })
 
-
+            
             await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
                 params : {
                   "chatId" : par[1].advertisement.user.chatId,
-                  "text" : '📣 Вы получили отклик на задачу «' + par[1].advertisement.taskName.bold() + '» от ' +  par[1].user.fl 
+                  "text" : messageOne + par[1].advertisement.taskName.bold() + messageTwo +  par[1].user.fl 
                 }
               })
 

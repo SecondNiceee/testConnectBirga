@@ -97,9 +97,9 @@ const ResponseBlock = ({
             ""
           )}
 
-          <div style={style} className="status">
+          <Text style={style} className="status">
             {watchingValue}
-          </div>
+          </Text>
 
           <div
             className="FirstMain__top"
