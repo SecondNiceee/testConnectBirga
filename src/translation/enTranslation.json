@@ -131,5 +131,6 @@
     "Перед выбором исполнителя\n ознакомьтесь с FAQ Биржи." : "Please read the Exchange's FAQ before selecting an artist.",
     "Вы уверены, что хотите выбрать\n этого исполнителя?" : "Are you sure you want to choose this artist?",
     "Вы выполнили это задание?" : "Did you complete this task?",
-    "Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. " : "We have sent a confirmation to the customer. Please do not press this button repeatedly. " 
+    "Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. " : "We have sent a confirmation to the customer. Please do not press this button repeatedly. ",
+    "Создано" : "Created at"
 }
