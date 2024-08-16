@@ -31,7 +31,7 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowVal
             case "inProcess":
                 return "У вас нет выполняемых заказов"
             case "unWatched":
-                return "У вас нет непросмотренных задани"
+                return "У вас нет непросмотренных заданий"
             case "completed":
                 return "У вас нет завершенных заказов"
             default : 

@@ -11,7 +11,7 @@ const PickerTwo = forwardRef(({setSecondPage , deleteFunction , myAdsArray, valu
       case "all":
         return "У вас нет созданных заданий"
       case "active":
-        return "У вас нет активных заданих"
+        return "У вас нет активных заданий"
       case "inProcess":
         return "У вас нет заданий в работе"
       case "completed":

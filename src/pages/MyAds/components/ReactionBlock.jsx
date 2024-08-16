@@ -1,8 +1,9 @@
 import React, { memo } from "react";
 import Responses from "./Responses";
+import translation from "../../../functions/translate";
 
 const values = ["all", "withCompletedTasks", "withCards"];
-const names = ["Все", "С выполненными заданиями", "С примерами работ"];
+const names = ["Все", "С выполненными заданиями", "С примерами работ"].map(e => translation(e));
 const ReactionBlock = ({
   setFilterBy,
   setOpen,

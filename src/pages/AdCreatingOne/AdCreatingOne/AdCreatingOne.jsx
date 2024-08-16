@@ -68,6 +68,7 @@ const AdCreatingOne = ({
   setCatagoryChoiceOpen,
   isSubcategoryChoiceOpen,
   setSubcategoryChoiceOpen,
+  ...props
 }) => {
   const [state, setState] = useState({
     time: new Date().addHours(1),
@@ -179,9 +180,7 @@ const AdCreatingOne = ({
 
   return (
     <div
-      style={{
-        minWidth: document.documentElement.clientWidth.toString() + "px",
-      }}
+      {...props}
       className={
         className ? [cl.AdCreating, className].join(" ") : cl.AdCreating
       }

@@ -93,7 +93,7 @@ export const setStartResponse = createAsyncThunk(
                 params: {
                   chatId: responce.user.id,
                   text:
-                  messageOne + `«<b>${advertisement.taskName}</b>` ,
+                  messageOne + ` «<b>${advertisement.taskName}</b>«` ,
                   buttonUrl:
                     "https://birga.ywa.su/MyAds?open=1" 
                 },

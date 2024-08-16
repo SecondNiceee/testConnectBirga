@@ -100,5 +100,10 @@
     "У вас нет активных заданий" : "You don't have any active tasks",
     "У вас нет заданий в работе" : "You don't have any tasks in your work",
     "У вас нет завершенных заданий" : "You don't have any completed tasks",
-    "Нет откликов на задание" : "There are no responses to the task"
+    "Нет откликов на задание" : "There are no responses to the task",
+    "Изменить" : "Edit",
+    "С выполненными заданиями" : "Has completed",
+    "С примерами работ" : "Has examples",
+    "подробнее" : "MORE DETAILS",
+    "Написать" : "Edit"
 }

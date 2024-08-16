@@ -639,6 +639,11 @@ const MyAds = ({isPage = false}) => {
         <CSSTransition classNames="details" in={details.isActive} timeout={300}
           mountOnEnter unmountOnExit>
             <AdCreatingOne
+              style = {{
+                height : "100vh",
+                overflowY : "scroll",
+                paddingBottom : "100px"
+              }}
               mistakes={mistakes}
               className="AdCreatingMy"
               taskInformation={details.task}

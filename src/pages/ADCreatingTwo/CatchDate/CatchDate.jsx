@@ -5,6 +5,7 @@ import rightArrow from "../../../images/icons/ArrowRight.svg";
 import GreyText from "../../../components/UI/GreyText/GreyText";
 import './CatchDate.css'
 import Text from "../../../components/Text/Text";
+import formatDate from "../../../functions/makeDate";
 
 let errorDate = new Date(0)
 const CatchDate = ({ className , whichOne , state, setState,errors, isMyInformation,  ...props }) => {
@@ -63,7 +64,7 @@ return (
           <img className={'leftImage'} src={dateIcon} alt="" />
           <Text className={'text'}>
 
-             {state.singleTime ? state.singleTime.toLocaleString("ru", options) : 'Дата и время'  } 
+             {state.singleTime ? formatDate(new Date(state.singleTime)) : 'Дата и время'  } 
           </Text>
         </div>
         <img src={rightArrow} alt="" className={'arrowRight'} />
@@ -86,7 +87,7 @@ return (
           <div className={'left'}>
             <img className={'leftImage'} src={dateIcon} alt="" />
             <Text className={'text'}>
-               {state.startTime && state.startTime.getTime() !== new Date(0).getTime()  ? state.startTime.toLocaleString("ru", options) : 'Дата и время начала'  } 
+               {state.startTime && state.startTime.getTime() !== new Date(0).getTime()  ?  formatDate(state.startTime) : 'Дата и время начала'  } 
             </Text>
           </div>
           <img src={rightArrow} alt="" className={'arrowRight'} />
@@ -110,7 +111,7 @@ return (
             <img className={'leftImage'} src={dateIcon} alt="" />
             <Text className={'text'}>
 
-            {state.endTime && String(state.endTime) !== String(errorDate) ? state.endTime.toLocaleString("ru", options) : 'Дата и время дедлайна'  } 
+            {state.endTime && String(state.endTime) !== String(errorDate) ? formatDate(state.endTime) : 'Дата и время дедлайна'  } 
             </Text>
           </div>
           <img src={rightArrow} alt="" className={'arrowRight'} />
