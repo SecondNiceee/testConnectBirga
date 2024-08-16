@@ -21,6 +21,8 @@ import translation from "../../functions/translate";
 const values = ["Заказы", "Отклики", "Кейсы"];
 const keys = ["advertisment", "responces", "cards"];
 
+const buttonText = translation("ОТКЛИКНУТЬСЯ")
+
 const menu = document.documentElement.querySelector(".FirstMenu")
 const SavedPage = () => {
 
@@ -312,7 +314,7 @@ const SavedPage = () => {
 
   useEffect(() => {
     if (details.isOpen) {
-      MainButton.setText("ОТКЛИКНУТЬСЯ");
+      MainButton.setText(buttonText);
     }
   }, [details.isOpen]);
 

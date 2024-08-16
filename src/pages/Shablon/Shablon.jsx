@@ -7,9 +7,12 @@ import { useDispatch } from "react-redux";
 import { postShablon, putShablon } from "../../store/shablon";
 import sortFiles from "../../functions/sortFiles";
 import Text from "../../components/Text/Text";
+import translation from "../../functions/translate";
 
 
 const menu = document.documentElement.querySelector(".FirstMenu")
+const updateText = translation("Изменить шаблон")
+const addText = translation("Добавить шаблон")
 const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...props}) => {
   const dispatch = useDispatch()
   let localShablon = shablon
@@ -48,10 +51,10 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
 
 
     if (put){
-      MainButton.setText('Изменить шаблон')
+      MainButton.setText(updateText)
     }
     else{
-      MainButton.setText('Добавить шаблон')
+      MainButton.setText(addText)
     }
 
     MainButton.onClick(forward)

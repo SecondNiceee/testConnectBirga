@@ -6,7 +6,10 @@ import { CSSTransition } from "react-transition-group";
 import Shablon from "../../../Shablon/Shablon";
 import ModalChoicer from "../../../../components/UI/ModalChoicer/ModalChoicer";
 import Text from "../../../../components/Text/Text";
+import translation from "../../../../functions/translate";
 
+
+const exitText = translation("ОТКЛИКНУТЬСЯ")
 const ShablinBlock = ({
   shablonsArr,
   left = "100%",
@@ -81,7 +84,7 @@ const ShablinBlock = ({
       >
         <Shablon
         
-          exitText = "ОТКЛИКНУТЬСЯ"
+          exitText = {exitText}
           isExitShow = {true}
           setActive={() => {
             setResponce({

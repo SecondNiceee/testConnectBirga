@@ -8,13 +8,12 @@ import formatDate from "../../../functions/makeDate";
 import { postResponse } from "../../../store/responses";
 import Text from "../../../components/Text/Text";
 const LastAds = ({
-
   openAboutReactionFunc,
 
   responce,
   ...props
 }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const setMenuActive = useCallback(
     (arg) => {
@@ -22,45 +21,45 @@ const LastAds = ({
     },
     [dispatch]
   );
-  useEffect( () => {
-    if (responce.isWatched !== "watched" && responce.isWatched !== "inProcess"){
-      dispatch(postResponse(responce.id))
+  useEffect(() => {
+    if (
+      responce.isWatched !== "watched" &&
+      responce.isWatched !== "inProcess"
+    ) {
+      dispatch(postResponse(responce.id));
     }
     // eslint-disable-next-line
-  } , [] )
-
-
-
+  }, []);
 
   return (
-    <div
-      className={"last-ads"}
-      {...props}
-    >
-
+    <div className={"last-ads"} {...props}>
       {/* <LastTop name = {name} photo = {photo} stage = {stage} openAboutReactionFunc={openAboutReactionFunc} /> */}
 
-      <Reaction lastAds = {true} blue = {true}   openAboutReactionFunc = {openAboutReactionFunc} put={true} responce={responce} />
-      
+      <Reaction
+        lastAds={true}
+        blue={true}
+        openAboutReactionFunc={openAboutReactionFunc}
+        put={true}
+        responce={responce}
+      />
+
       {/* <LastImages images = {images} /> */}
-      
 
       {/* <LastSertificates /> */}
-      <TextAboutMe textareaClassName={"new-textarea"} style = {
-        {
-          marginTop : "8px"
-        }
-      } aboutU={responce.information} />
+      <TextAboutMe
+        textareaClassName={"new-textarea"}
+        style={{
+          marginTop: "8px",
+        }}
+        aboutU={responce.information}
+      />
 
-                  <div className="creationTimeBlock">
-                <Text>
-                Создано 
-                </Text>
-                <p>{formatDate(new Date(responce.createdAt))}</p>
-            </div>
+      <div className="creationTimeBlock">
+        <Text>Создано</Text>
+        <p>{formatDate(new Date(responce.createdAt))}</p>
+      </div>
 
-      
-{/* 
+      {/* 
       <textarea className="last-textarea" name="" id="" value={text} /> */}
     </div>
   );

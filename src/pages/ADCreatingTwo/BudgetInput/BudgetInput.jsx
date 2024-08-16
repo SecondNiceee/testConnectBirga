@@ -5,7 +5,7 @@ import Text from "../../../components/Text/Text";
 
 const en = true
 const textPrice = en ? "USD" : "RUB"
-const textError = en ? "The cost must be more than 5 USD" : "Сумма должна быть не меньше 5 USD"
+
 const BudgetInput = ({
   className,
   setBudget,

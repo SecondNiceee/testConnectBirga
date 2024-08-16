@@ -113,5 +113,10 @@
     "Загрузка заданий" : "Uploading tasks",
     "ДАЛЕЕ" : "CONTINUE",
     "СОЗДАТЬ ЗАДАНИЕ" : "CREATE TASK",
-    "ВЫПОЛНИЛ" : "MARK AS DONE"
+    "ВЫПОЛНИЛ" : "MARK AS DONE",
+    "Сохранить" : "Save",
+    "Изменить кейс" : "Update case",
+    "ОТКЛИКНУТЬСЯ" : "MAKE RESPONSE",
+    "Изменить шаблон" : "Update template",
+    "Добавить шаблон" : "Add template"
 }

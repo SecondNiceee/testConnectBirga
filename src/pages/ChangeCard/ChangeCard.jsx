@@ -13,6 +13,7 @@ import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
 import { putCard } from "../../store/telegramUserInfo";
 import sortFiles from "../../functions/sortFiles";
 import Text from "../../components/Text/Text";
+import translation from "../../functions/translate";
 
 let localCardSetting;
 let mainLocalErrors;
@@ -21,6 +22,8 @@ let inputObject = {
 };
 let cardStart;
 const menu = document.documentElement.querySelector(".FirstMenu")
+const changeText = translation("Изменить кейс")
+const saveText = translation("Сохранить")
 const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
 
@@ -239,7 +242,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
 
     
-    MainButton.setText("Изменить кейс");
+    MainButton.setText(changeText);
     if (!modalActive && !isCategoryChoiceOpen){
       mainRef.current.style.overflow = "scroll"
       menu.classList.add("disappearAnimation")
@@ -268,7 +271,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
   useEffect( () => {
     return () => {
-      MainButton.setText('Сохранить')
+      MainButton.setText(saveText)
     }
   } , [] )
 

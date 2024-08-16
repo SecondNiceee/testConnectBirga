@@ -40,6 +40,9 @@ const messageOne = translation("📣 Вы получили отклик на з�
 const messageTwo = translation("» от ")
 const menu = document.documentElement.querySelector(".FirstMenu");
 
+
+const buttonText = translation("ОТКЛИКНУТЬСЯ")
+
 const First = ({ isPage = false }) => {
   const firstRef = useRef(null);
 
@@ -285,10 +288,10 @@ const First = ({ isPage = false }) => {
 
   useEffect(() => {
     if (step === 0) {
-      MainButton.setText("ОТКЛИКНУТЬСЯ");
+      MainButton.setText(buttonText);
     }
     if (step === 1) {
-      MainButton.setText("ОТКЛИКНУТЬСЯ");
+      MainButton.setText(buttonText);
     }
   }, [step, isDetailsActive.isOpen]);
 
