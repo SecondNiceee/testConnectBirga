@@ -114,7 +114,7 @@
 
 .EmptyText {
   color: rgb(255, 255, 255);
-  font-family: "SF Pro Display";
+  font-family: "SF Compact Rounded";
   font-size: 32px;
   font-weight: 500;
   line-height: normal;
@@ -834,6 +834,7 @@
       -ms-transform: translateX(100%);
           transform: translateX(100%);
   position: fixed;
+  padding-bottom: 90px;
 }
 .TaskDetails.active {
   -webkit-transform: translateX(0%);
