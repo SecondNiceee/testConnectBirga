@@ -110,5 +110,8 @@
     "Поиск по категориям" : "Search for categories", 
     "Поиск по подкатегориям" : "Search for subcategories",
     "Сумма должна быть больше 5 USD" : "The cost must be more than 5 USD",
-    "Загрузка заданий" : "Uploading tasks"
+    "Загрузка заданий" : "Uploading tasks",
+    "ДАЛЕЕ" : "CONTINUE",
+    "СОЗДАТЬ ЗАДАНИЕ" : "CREATE TASK",
+    "ВЫПОЛНИЛ" : "MARK AS DONE"
 }
