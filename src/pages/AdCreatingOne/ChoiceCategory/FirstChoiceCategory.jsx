@@ -3,6 +3,7 @@ import cl from "./ChoiceCategory.module.css";
 import OneInput from "../../../components/UI/OneInput/OneInput";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import BackButton from "../../../constants/BackButton";
+import Text from "../../../components/Text/Text";
 
 const FirstChoiceCategory = ({
   setTaskInformation,
@@ -76,7 +77,7 @@ setCatagoryChoiceOpen(false)
           );
         })}
       </div>
-      <p className={cl.anotherText}>Прочие категории скоро появятся...</p>
+      <Text className={cl.anotherText}>Прочие категории скоро появятся...</Text>
     </div>
   );
 };

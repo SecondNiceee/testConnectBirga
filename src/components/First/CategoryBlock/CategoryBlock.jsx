@@ -1,5 +1,6 @@
 import React, { useCallback, useRef } from "react";
 import cl from "./CategoryBlock.module.css";
+import Text from "../../Text/Text";
 const CategoryBlock = ({ name, value , func, ...props }) => {
 
   const myRef = useRef(null)
@@ -23,8 +24,8 @@ const CategoryBlock = ({ name, value , func, ...props }) => {
         func()
     }} {...props}  className={cl.wrapper}>
       <div className={cl.left}>
-        <p className={cl.name}>{name}</p>
-        <p className={cl.value}>{value}</p>
+        <Text className={cl.name}>{name}</Text>
+        <Text className={cl.value}>{value}</Text>
       </div>
       <div style={{lineHeight : 0}} className={cl.right}>
         <svg

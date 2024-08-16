@@ -1,6 +1,7 @@
 import React from "react";
 import sad from "../../../animation/sadAnimation.json";
 import { useLottie } from "lottie-react";
+import Text from "../../../components/Text/Text";
 const MyAnimation = ({
   text = "Вы не откликнулись ни на одно задание",
   height = "calc(calc(100vh)-252px)",
@@ -28,7 +29,7 @@ const MyAnimation = ({
       }}
     >
       {View}
-      <p className="animation-text">{text}</p>
+      <Text className="animation-text">{text}</Text>
     </div>
   );
 };

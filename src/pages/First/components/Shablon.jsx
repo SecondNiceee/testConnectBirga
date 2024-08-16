@@ -5,7 +5,7 @@ const Shablon = ({  shablon , setShablon  , ...props }) => {
     return (
         <div {...props}>
             <div className="shablon-wrapper">
-                <p>Использовать шаблон</p>
+                <Text>Использовать шаблон</Text>
                 <Switcher isEnable={shablon} setEnable={() => {
                     setShablon(!shablon)
                 }}  />

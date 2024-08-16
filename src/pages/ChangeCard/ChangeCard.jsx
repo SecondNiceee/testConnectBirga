@@ -12,6 +12,7 @@ import ModalInput from "../../components/UI/ModalInput/ModalInput";
 import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
 import { putCard } from "../../store/telegramUserInfo";
 import sortFiles from "../../functions/sortFiles";
+import Text from "../../components/Text/Text";
 
 let localCardSetting;
 let mainLocalErrors;
@@ -326,7 +327,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
   return (
     <div ref={mainRef} className="cards">
-      <h3 className="cards-title">{cardsSetting.title}</h3>
+      <Text className="cards-title">{cardsSetting.title}</Text>
 
     
 
@@ -360,9 +361,9 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         filesTitle={""}
         fileError={errors.fileError}
       />
-      <p className="cards-underText">
+      <Text className="cards-underText">
         Расскажите о себе и своем опыте работы Прикрепите релевантные примеры
-      </p>
+      </Text>
 
 
 
@@ -385,11 +386,11 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
           }}
         >
           <img src={dropfileIcon} alt="" />
-          <p>
+          <Text>
             {cardsSetting.dropfileLink.length > 0
               ? cardsSetting.dropfileLink
               : "Ccылка на Dropfile"}
-          </p>
+          </Text>
       </div>
 
         <div
@@ -406,11 +407,11 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
           }}
         >
           <img src={behanceIcon} alt="" />
-          <p>
+          <Text>
             {cardsSetting.behanceLink.length > 0
               ? cardsSetting.behanceLink
               : "Ссылка на Behance"}
-          </p>
+          </Text>
         </div>
         <div
           className="behans-link cards-link"
@@ -426,11 +427,11 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
           }}
         >
           <img src={dripleIcon} alt="" />
-          <p>
+          <Text>
             {cardsSetting.dribbbleLink.length > 0
               ? cardsSetting.dribbbleLink
               : "Ссылка на Dribbble"}
-          </p>
+          </Text>
         </div>
 
 

@@ -6,6 +6,7 @@ import MainButton from "../../constants/MainButton";
 import { useDispatch } from "react-redux";
 import { postShablon, putShablon } from "../../store/shablon";
 import sortFiles from "../../functions/sortFiles";
+import Text from "../../components/Text/Text";
 
 
 const menu = document.documentElement.querySelector(".FirstMenu")
@@ -129,7 +130,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
 
   return (
     <div {...props} className="shablon-wrapper">
-      <h3 className="shablon-title">{put ? shablon.name : "Новый шаблон"}</h3>
+      <Text className="shablon-title">{put ? shablon.name : "Новый шаблон"}</Text>
       {/* <button onClick={forward}>Сделать!</button> */}
       <TaskName
         className={"shablon-name"}
@@ -158,9 +159,9 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
         textPlaceholder={"Почему задание нужно доверить именно вам"}
       />
 
-      <p className="shablon-notice">
+      <Text className="shablon-notice">
         Расскажите о себе и своем опыте работы Прикрепите примеры
-      </p>
+      </Text>
 
 
 

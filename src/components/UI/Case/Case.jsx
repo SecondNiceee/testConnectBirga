@@ -3,6 +3,7 @@ import cl from "./Case.module.css";
 import FalseTie from "../FalseTie/FalseTie";
 import MyButton from "../MyButton/MyButton";
 import Circle from "../Circle/Circle";
+import Text from "../../Text/Text";
 
 const Case = ({
   className,
@@ -96,7 +97,7 @@ const Case = ({
       <div className={cl.caseBottom}>
         <div className={cl.caseLeft}>
           <h4>{title}</h4>
-          <p>Категория: Дизайн</p>
+          <Text>Категория: Дизайн</Text>
         </div>
 
         {watchOnly ? (

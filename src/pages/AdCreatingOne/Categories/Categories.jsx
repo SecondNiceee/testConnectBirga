@@ -1,5 +1,7 @@
 import React, { useCallback, useRef } from "react";
 import cl from "./Categories.module.css";
+import Text from "../../../components/Text/Text";
+import translation from "../../../functions/translate";
 
 const Categories = ({
   className,
@@ -42,7 +44,7 @@ const Categories = ({
 
 
   const topVibrate = useCallback(() => {
-    if (topRef.current) {
+    if (topRef.current && topText.current && topWhiteText.current)  {
     topRef.current.style.transition = "ease-in 0.1s ease 0.1s"
     topWhiteText.current.style.transition = "ease-in 0.1s ease 0.1s"
     topText.current.style.transition = "ease-in 0.1s ease 0.1s"
@@ -51,7 +53,7 @@ const Categories = ({
       topText.current.style.color = "#47A2E8"
     }
     setTimeout(() => {
-      if (topRef.current) {
+      if (topRef.current && topText.current) {
         topRef.current.style.transition = "ease-out 0.3s ease 0.3s"
         topWhiteText.current.style.transition = "ease-out 0.3s ease 0.3s"
         topText.current.style.transition = "ease-out 0.3s ease 0.3s"
@@ -64,7 +66,7 @@ const Categories = ({
   }, []);
   const topClickHandler = useCallback((e) => {
 
-    if (topRef.current) {
+    if (topRef.current && topWhiteText.current) {
         topRef.current.style.transition = "ease-in 0.1s ease 0.1s"
         topWhiteText.current.style.transition = "ease-in 0.1s ease 0.1s"
         topText.current.style.transition = "ease-in 0.1s ease 0.1s"
@@ -75,7 +77,7 @@ const Categories = ({
     // eslint-disable-next-line
   }, []);
   const topTouchEnd = useCallback((e) => {
-    if (topRef.current) {
+    if (topRef.current && topWhiteText.current) {
         topRef.current.style.transition = "ease-out 0.3s"
         topWhiteText.current.style.transition = "ease-out 0.3s"
         topText.current.style.transition = "ease-out 0.3s"
@@ -86,7 +88,7 @@ const Categories = ({
   }, []);
 
   const bottomVibrate = useCallback(() => {
-    if (bottomRef.current) {
+    if (bottomRef.current && bottomWhiteText.current) {
         bottomRef.current.style.transition = "ease-in 0.1s ease 0.1s"
     bottomWhiteText.current.style.transition = "ease-in 0.1s ease 0.1s"
     bottomText.current.style.transition = "ease-in 0.1s ease 0.1s"
@@ -95,7 +97,7 @@ const Categories = ({
       bottomText.current.style.color = "#47A2E8"
     }
     setTimeout(() => {
-      if (bottomRef.current) {
+      if (bottomRef.current && bottomWhiteText.current) {
         bottomRef.current.style.transition = "ease-out 0.3s ease 0.3s"
         bottomWhiteText.current.style.transition = "ease-out 0.3s ease 0.3s"
         bottomText.current.style.transition = "ease-out 0.3s ease 0.3s"
@@ -108,7 +110,7 @@ const Categories = ({
   }, []);
   const bottomClickHandler = useCallback((e) => {
 
-    if (bottomRef.current) {
+    if (bottomRef.current && bottomWhiteText.current && bottomText.current) {
         bottomRef.current.style.transition = "ease-in 0.1s ease 0.1s"
         bottomWhiteText.current.style.transition = "ease-in 0.1s ease 0.1s"
         bottomText.current.style.transition = "ease-in 0.1s ease 0.1s"
@@ -119,7 +121,7 @@ const Categories = ({
     // eslint-disable-next-line
   }, []);
   const bottomTouchEnd = useCallback((e) => {
-    if (bottomRef.current) {
+    if (bottomRef.current && bottomWhiteText.current && bottomText.current) {
         bottomRef.current.style.transition = "ease-out 0.3s"
         bottomWhiteText.current.style.transition = "ease-out 0.3s"
         bottomText.current.style.transition = "ease-out 0.3s"
@@ -165,12 +167,12 @@ const Categories = ({
         }}
         className={cl.Categories__block}
       >
-        <p ref={topWhiteText} >Категория</p>
-        <p ref={topText} className={[cl.Category__link, cl.quest].join(" ")} href="">
+        <Text ref={topWhiteText} >Категория</Text>
+        <Text ref={topText} className={[cl.Category__link, cl.quest].join(" ")} href="">
           {taskInformation.category.category
             ? taskInformation.category.category
             : ""}
-        </p>
+        </Text>
       </div>
       {categoryOnly ? (
         <></>
@@ -190,13 +192,13 @@ const Categories = ({
             }}
             className={cl.Categories__block}
           >
-            <p ref={bottomWhiteText}>Подкатегория</p>
-            <p ref={bottomText} className={cl.Category__link} href="">
+            <Text ref={bottomWhiteText}>Подкатегория</Text>
+            <Text ref={bottomText} className={cl.Category__link} href="">
               {taskInformation.subCategory.subCategory
-                ? format(taskInformation.subCategory.subCategory)
+                ? format( translation(taskInformation.subCategory.subCategory))
                 : ""}
               {/* {taskInformation.subCategory=== 'Выбрать' ? '' : '.'} */}
-            </p>
+            </Text>
           </div>
         </>
       )}

@@ -85,8 +85,7 @@
 .FirstMain__middle{
     margin-top: 20px;
     display: flex;
-    flex-direction: column;
-    gap:1px;
+    gap:2px;
 }
 .FirstMain__middle p{
     /* Small Text */

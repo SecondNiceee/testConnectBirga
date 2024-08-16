@@ -1,5 +1,6 @@
 import React from "react";
 import cl from './Shablon.module.css'
+import Text from "../../../../components/Text/Text";
 const Shablon = ({ shablon , putFunction, deleteFunction }) => {
   return (
     <div className={cl.shablon}>
@@ -18,7 +19,7 @@ const Shablon = ({ shablon , putFunction, deleteFunction }) => {
       <></>
        }
       <div className={cl.shablonBottom}>
-        <p className={cl.shablonBottomLeft}>{shablon.name}</p>
+        <Text className={cl.shablonBottomLeft}>{shablon.name}</Text>
         <div className={cl.shablonBottomRight}>
           <div className={cl.circle} onClick={deleteFunction}>
             <svg

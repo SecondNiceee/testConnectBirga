@@ -8,12 +8,12 @@ const LastSertificates = () => {
 
           <div className="documents-agree">
             <img src={subtruct} alt="" />
-            <p>Документы подтвержены</p>
+            <Text>Документы подтвержены</Text>
           </div>
 
           <div className="user-agree">
             <img src={greenSubtruct} alt="" />
-            <p>Проверенный пользователь</p>
+            <Text>Проверенный пользователь</Text>
           </div>
 
         </div>

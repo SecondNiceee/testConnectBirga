@@ -1,10 +1,13 @@
 import React, { memo, useMemo } from 'react';
 import formatDate from '../../../functions/makeDate';
+import Text from '../../Text/Text';
 
 const FirstMainMiddle = ({time}) => {
     return (
         <div className="FirstMain__middle">
-        <p> {"Дедлайн: " + formatDate(time.end, true)}</p>
+        <Text>Дедлайн: </Text>
+        <p>{formatDate(time.end, true)}</p>
+
       </div>
     );
 };

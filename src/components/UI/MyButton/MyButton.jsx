@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
 import classes from "./MyButton.module.css";
+import translation from "../../../functions/translate";
 const MyButton = ({
   className,
   hard = false,
@@ -36,6 +37,10 @@ const MyButton = ({
     }
   }, []);
   const element = useRef(null);
+
+  const text = useMemo( () => {
+    return translation(children)
+  } , [children] )
   useEffect(() => {
     function click() {
       if (hard && blue) {
@@ -65,7 +70,7 @@ const MyButton = ({
         }
         {...props}
       >
-        {children}
+        {text}
       </button>
     </div>
   );

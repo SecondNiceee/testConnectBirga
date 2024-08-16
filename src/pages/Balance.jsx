@@ -11,6 +11,7 @@ import download from '../images/icons/download.svg'
 import BackButton from '../constants/BackButton';
 import { useNavigate } from 'react-router-dom';
 import pagesHistory from '../constants/pagesHistory';
+import Text from '../components/Text/Text';
 
 const Balance = () => {
     const ref1 = useRef(null)
@@ -82,20 +83,20 @@ const Balance = () => {
 
         <div className='balance__container'>
             <div className="ur__schet">
-                <p>Счет</p>
+                <Text>Счет</Text>
                 <img className='info' src={info} alt="" />
             </div>
             <div className="real__balance-block">
                 <div className="real__balance-block-up">
-                    <p className='balance-text'>117</p>
-                    <p>TON</p>
+                    <Text className='balance-text'>117</Text>
+                    <Text>TON</Text>
                     <div className="blue__dymond">
                         <img src={white_dymond} alt="" />
 
                     </div>
                 </div>
                 <div className="real__balance-block-down">
-                    <p>~ 15 000 RUB</p>
+                    <Text>~ 15 000 RUB</Text>
 
                 </div>
             </div>
@@ -103,26 +104,26 @@ const Balance = () => {
                 <div className="balance__interesting-top">
                     <div className="top-block">
                         <img src={plus} alt="" />
-                        <p>Пополнить</p>
+                        <Text>Пополнить</Text>
                     </div>
                     <div className="top-block">
                         <img src={upUp} alt="" />
-                        <p>Отправить</p>
+                        <Text>Отправить</Text>
                     </div>
                 </div>
                 <div className="choice-of-get-more-block">
                     <img src={wallet} alt="" />
-                    <p>Способ пополнения</p>
+                    <Text>Способ пополнения</Text>
                     <div className="block-of-choice">
-                        <p>Wallet</p>
+                        <Text>Wallet</Text>
                         <img className='upDown' src={upDownArr} alt="" />
                     </div>
                 </div>
                 <div className="choice-of-get-more-block">
                     <img src={wallet} alt="" />
-                    <p>Способ пополнения</p>
+                    <Text>Способ пополнения</Text>
                     <div className="block-of-choice">
-                        <p>Wallet</p>
+                        <Text>Wallet</Text>
                         <img className='upDown' src={upDownArr} alt="" />
                     </div>
                 </div>
@@ -132,7 +133,7 @@ const Balance = () => {
         </div>
 
         <div className="transaction">
-                <p>ИСТОРИЯ ТРАНЗАКЦИЙ</p>
+                <Text>ИСТОРИЯ ТРАНЗАКЦИЙ</Text>
 
                 <div className="stages">
                 <div style={
@@ -141,13 +142,13 @@ const Balance = () => {
                     
                 </div>
                     <div onClick={() => setWhatShow('all')} className="stage">
-                        <p>Все</p>
+                        <Text>Все</Text>
                     </div>
                     <div onClick={() => setWhatShow('plus')} className="stage">
-                        <p>Пополнения</p>
+                        <Text>Пополнения</Text>
                     </div>
                     <div onClick={() => setWhatShow('minus')} className="stage">
-                        <p>Списания</p>
+                        <Text>Списания</Text>
                     </div>
                 </div>
 
@@ -163,15 +164,15 @@ const Balance = () => {
                                     <img className='download-image' src={download} alt="" />
                                 </div>
                                 <div className="common-text" >
-                                    <p>Пополнение TON</p>
-                                    <p className='date-text'>3 марта в 00:38</p>
+                                    <Text>Пополнение TON</Text>
+                                    <Text className='date-text'>3 марта в 00:38</Text>
                                 </div>
                                 <div className="common-color-text" >
                                     <div className="how__many">
-                                        <p className='how__many-text'>+ </p>
-                                        <p className='how__many-text'>1 TON</p>
+                                        <Text className='how__many-text'>+ </Text>
+                                        <Text className='how__many-text'>1 TON</Text>
                                     </div>
-                                    <p>Получено</p>
+                                    <Text>Получено</Text>
                                 </div>
                             </div>
                         </div >
@@ -181,15 +182,15 @@ const Balance = () => {
                                     <img className='download-image' src={download} alt="" />
                                 </div>
                                 <div className="common-text">
-                                    <p>Пополнение TON</p>
-                                    <p className='date-text'>3 марта в 00:38</p>
+                                    <Text>Пополнение TON</Text>
+                                    <Text className='date-text'>3 марта в 00:38</Text>
                                 </div>
                                 <div className="common-color-text">
                                     <div className="how__many">
-                                        <p className='how__many-text'>+ </p>
-                                        <p className='how__many-text'>1 TON</p>
+                                        <Text className='how__many-text'>+ </Text>
+                                        <Text className='how__many-text'>1 TON</Text>
                                     </div>
-                                    <p>Получено</p>
+                                    <Text>Получено</Text>
                                 </div>
                             </div>
                         </div>
@@ -199,15 +200,15 @@ const Balance = () => {
                                     <img className='download-image' src={download} alt="" />
                                 </div>
                                 <div className="common-text">
-                                    <p>Пополнение TON</p>
-                                    <p className='date-text'>3 марта в 00:38</p>
+                                    <Text>Пополнение TON</Text>
+                                    <Text className='date-text'>3 марта в 00:38</Text>
                                 </div>
                                 <div className="common-color-text">
                                     <div className="how__many">
-                                        <p className='how__many-text'>+ </p>
-                                        <p className='how__many-text'>1 TON</p>
+                                        <Text className='how__many-text'>+ </Text>
+                                        <Text className='how__many-text'>1 TON</Text>
                                     </div>
-                                    <p>Получено</p>
+                                    <Text>Получено</Text>
                                 </div>
                             </div> */}
                         </div>

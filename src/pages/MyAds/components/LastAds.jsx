@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { changeMenuActive } from "../../../store/menuSlice";
 import formatDate from "../../../functions/makeDate";
 import { postResponse } from "../../../store/responses";
+import Text from "../../../components/Text/Text";
 const LastAds = ({
 
   openAboutReactionFunc,
@@ -51,7 +52,7 @@ const LastAds = ({
         }
       } aboutU={responce.information} />
 
-      <p className="creationTime">{ "Создано " + formatDate(new Date(responce.createdAt)) }</p>
+      <Text className="creationTime">{ "Создано " + formatDate(new Date(responce.createdAt)) }</Text>
 
       
 {/* 

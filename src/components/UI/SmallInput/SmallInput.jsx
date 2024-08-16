@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import cl from './SmallInput.module.css'
+import Text from '../../Text/Text';
 const SmallInput = ({value , setValue,  mistake, mistakeText,  ...props}) => {
     return (
         <>
@@ -11,9 +12,9 @@ const SmallInput = ({value , setValue,  mistake, mistakeText,  ...props}) => {
                 setValue(e.target.value)
             }} />
             {mistake ? 
-            <p className={cl.mistakeText}>
+            <Text className={cl.mistakeText}>
                 {mistakeText}
-            </p>
+            </Text>
             :
             <> </>
             }

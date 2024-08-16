@@ -1,11 +1,12 @@
 import React from "react";
 import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
+import Text from "../../../components/Text/Text";
 
 const AboutMain = ({aboutU , aboutReaction}) => {
   return (
     <div className="aboutMain">
       <div className="aboutMeTitle">
-        <p>О себе</p>
+        <Text>О себе</Text>
       </div>
       <TextAboutMe aboutU={aboutU} />
       {/* <TextAboutMe aboutU={aboutReaction} darkSide={true} style = {{
@@ -15,7 +16,7 @@ const AboutMain = ({aboutU , aboutReaction}) => {
         <div className="background"></div>
         <textarea className="about-reaction-textarea" value={aboutReaction} />
         <div className="also">
-          <p>Читать полностью</p>
+          <Text>Читать полностью</Text>
         </div>
       </div> */}
     </div>

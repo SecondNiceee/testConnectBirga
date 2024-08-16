@@ -17,7 +17,7 @@ const Top = ({setMenuActive , name , className, ...props}) => {
                 setMenuActive(true);
                 }}
             />
-            <p className={cl.MyAds}>{name}</p>
+            <Text className={cl.MyAds}>{name}</Text>
             <img style={{objectFit : "cover"}} className={cl.topIcon} src={userInfo.photo.length > 0 ? userInfo.photo : userPhoto} alt="" />
 
         </div>

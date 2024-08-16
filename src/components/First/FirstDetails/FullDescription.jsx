@@ -1,5 +1,6 @@
 import React, { memo, useEffect, useRef } from "react";
 import imageDescription from "../../../images/icons/fullDescription.svg";
+import Text from "../../Text/Text";
 const FullDescription = ({ fullDescription, ...props }) => {
   const textAreaRef = useRef(null)
   const refTwo = useRef(null)
@@ -18,7 +19,7 @@ const FullDescription = ({ fullDescription, ...props }) => {
       {fullDescription.length > 0 ? (
         <div  {...props}  className="FullDescription">
           <div className="FullDescription-top">
-            <p>Описание</p>
+            <Text>Описание</Text>
             <img src={imageDescription} alt="" />
           </div>
           <textarea readOnly ref = {textAreaRef} value={fullDescription} className="FullDescriptionBottom"/>

@@ -7,6 +7,7 @@ import one from "../../images/menu/one.svg";
 import two from "../../images/menu/two.svg";
 import three from "../../images/menu/three.svg";
 import four from "../../images/menu/four.svg";
+import Text from "../../components/Text/Text";
 
 const FirstMenu = forwardRef(({...props} , ref) => {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const FirstMenu = forwardRef(({...props} , ref) => {
                     vibrate()
                     window.Telegram.WebApp.showAlert("Мы скоро добавим.")
             }} className="MenuPrice">
-                <p  className='MenuTextPrice'>Скоро</p>
+                <Text  className='MenuTextPrice'>Скоро</Text>
                  <SmallDimond className= 'dymond' /> 
             </div> */}
 
@@ -73,7 +74,7 @@ const FirstMenu = forwardRef(({...props} , ref) => {
             />
           </svg>
 
-          <p>Задания</p>
+          <Text>Задания</Text>
         </Link>
         <Link className={ location.pathname === "/AdCreating" ? "menuLink active" : "menuLink"} to="/AdCreating">
           <svg
@@ -90,7 +91,7 @@ const FirstMenu = forwardRef(({...props} , ref) => {
             />
           </svg>
 
-          <p>Разместить</p>
+          <Text>Разместить</Text>
         </Link>
         <Link className={ (location.pathname === "/Profile" || location.pathname === "/AllShablons") ? "menuLink active" : "menuLink"} to="/Profile">
           <div className="menuCircle">
@@ -112,7 +113,7 @@ const FirstMenu = forwardRef(({...props} , ref) => {
             />
           </svg>
 
-          <p>Мои задания</p>
+          <Text>Мои задания</Text>
         </Link>
         <Link className= { location.pathname === "/savedPage" ? "menuLink active" : "menuLink"} to="/savedPage">
           <svg
@@ -129,7 +130,7 @@ const FirstMenu = forwardRef(({...props} , ref) => {
             />
           </svg>
 
-          <p>Избранное</p>
+          <Text>Избранное</Text>
         </Link>
       </div>
     </div>

@@ -4,17 +4,17 @@ import greyArrowRight from '../../../images/icons/greyArrowRight.svg'
 const Veryfication = () => {
     return (
         <div className="profile__veryfication">
-        <p className="veryfication">Верификация</p>
+        <Text className="veryfication">Верификация</Text>
         <div className="veryfication__block">
           <div className="Okey">
             <img className="Subtract" src={Subtract} alt="" />
           </div>
 
           <div className="veryfication__block-text">
-            <p>Пройти KYC верификацию</p>
-            <p>
+            <Text>Пройти KYC верификацию</Text>
+            <Text>
               Подтвердите свою личность <br />и получайте на 20% больше откликов
-            </p>
+            </Text>
           </div>
           <img src={greyArrowRight} className="greyArrow" alt="" />
         </div>

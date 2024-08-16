@@ -11,6 +11,7 @@ import cl from "./AdCreatingOne.module.css";
 import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
 import "../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css";
 import MyDatePicker from "../../../components/AdCreating/MyDatePicker/MyDatePicker";
+import Text from "../../../components/Text/Text";
 
 // eslint-disable-next-line
 Date.prototype.addHours = function (h) {
@@ -190,7 +191,7 @@ const AdCreatingOne = ({
       ) : (
         <Cap step={1} className={cl.Cap}>
           {" "}
-          <p className={cl.CapText}> Создайте объявление </p>{" "}
+          <Text className={cl.CapText}> Создайте объявление </Text>{" "}
         </Cap>
       )}
       {MyInformation ? (
@@ -208,7 +209,7 @@ const AdCreatingOne = ({
 
       <TaskName
         // style = {mistakes.taskName ? {border : '1px solid red'} : {}}
-        title="Название задания "
+        title="Название задания"
         underText={MyInformation ? "" : "Например, разработать дизайн"}
         errorValue={mistakes.taskName || errorName ? true : false}
         text={taskInformation.taskName}

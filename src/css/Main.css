@@ -325,11 +325,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 0.33px;
+  gap: 2px;
 }
 .First__block .FirstMain__middle p {
   color: rgb(149, 151, 158);
@@ -374,6 +370,12 @@
   line-height: 17.67px;
   letter-spacing: 0%;
   text-align: left;
+}
+.First__block .FirstMain__price-bottom {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 5px;
 }
 .First__block .FirstMain__price-up {
   opacity: 0.3;
@@ -1635,6 +1637,7 @@
 }
 
 .subCategory__container {
+  padding-bottom: 60px;
   z-index: 400;
   overflow-y: scroll;
   display: -webkit-box;

@@ -9,6 +9,7 @@ import MyLoader from "../../UI/MyLoader/MyLoader";
 import MainButton from "../../../constants/MainButton";
 import axios from "axios";
 import { changeMenuActive } from "../../../store/menuSlice";
+import Text from "../../Text/Text";
 const menu = document.documentElement.querySelector(".FirstMenu")
 const ShowMyResponse = ({
   response = { advertisement: { user: {} } , id : 0 , user : {'fuck' : 'fuck'} },
@@ -127,9 +128,9 @@ const ShowMyResponse = ({
             photo={response.advertisement.user.photo}
             link={response.advertisement.user.link}
           />
-          <p className={cl.dateObject}>
+          <Text className={cl.dateObject}>
             Создано {formatDate(new Date(response.advertisement.creationTime))}
-          </p>
+          </Text>
         </div>
       )}
     </>

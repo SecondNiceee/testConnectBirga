@@ -24,6 +24,21 @@
     visibility: hidden;
 
 }
+.costPrice{
+    display: flex;
+    gap: 3px;
+    align-items: center;
+    color: rgb(255, 255, 255);
+    font-family: "SF Compact Rounded";
+    font-size: 13.33px;
+    font-weight: 500;
+    line-height: 15.64px;
+    letter-spacing: 2%;
+    text-align: left;
+}
+.costPrice span{
+    color:  rgb(218, 245, 254);
+}
 .input{
     min-width: 37px;
     color: rgb(255, 255, 255);

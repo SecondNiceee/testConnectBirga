@@ -25,8 +25,12 @@ import { changeProfile, deleteCard, deleteServerCard, putUserInfo } from "../../
 import pagesHistory from "../../constants/pagesHistory";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import CardsArray from "./components/CardsArray/CardsArray";
+import Text from "../../components/Text/Text";
+import translation from "../../functions/translate";
 
-
+const lett = translation("лет")
+const goda = translation("года")
+const god = translation("год")
 const variants = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },
@@ -107,27 +111,27 @@ const Profile = () => {
     if (numberInput){
 
       if ( Number(stage) > 10 && Number(stage) < 20){
-        if (!numberInput.value.includes('лет')){
-          numberInput.value += ' лет'
+        if (!numberInput.value.includes(lett)){
+          numberInput.value += ` ${lett}`
         }
       }
       else{
   
           if (numb > 1 && numb < 5){
-            if (!numberInput.value.includes('года')){
-              numberInput.value += ' года'
+            if (!numberInput.value.includes(`${goda}`)){
+              numberInput.value += ` ${goda}`
             }
   
           } 
           else{
             if(numb === 1){
-              if (!numberInput.value.includes('год')){
-                numberInput.value += ' год'
+              if (!numberInput.value.includes(`${god}`)){
+                numberInput.value += ` ${god}`
               }
             }
             else{
-              if (!numberInput.value.includes('лет')){
-                numberInput.value += ' лет'
+              if (!numberInput.value.includes(`${lett}`)){
+                numberInput.value += ` ${lett}`
               }
             }
           }
@@ -286,24 +290,24 @@ const Profile = () => {
     let numb = Number(e.target.value.slice(e.target.value.length - 1 , e.target.value.length))
 
     if (e.target.value === ''){
-      setAboutU(value => ({...value , stage : '0 лет'}))
+      setAboutU(value => ({...value , stage : `0 ${lett}`}))
 
     }
 
     if ( Number(e.target.value) > 10 && Number(e.target.value) < 20){
-      e.target.value += ' лет'
+      e.target.value += ` ${lett}`
     }
     else{
 
         if (numb > 1 && numb < 5){
-          e.target.value += ' года'
+          e.target.value += ` ${goda}`
         }
         else{
           if(numb === 1){
-            e.target.value += ' год'
+            e.target.value += ` ${god}`
           }
           else{
-            e.target.value += ' лет'  
+            e.target.value += ` ${lett}`
           }
         }
       }
@@ -408,12 +412,12 @@ const Profile = () => {
 
       <img style={{objectFit : "cover"}} src={userInfo.photo.length > 0 ? userInfo.photo : userPhoto} className="profile__icon icon" alt="" />
 
-      <p
+      <Text
         className="urName"
         id="Name"
       >
         { userInfo.firstName.length > 22 ? userInfo.firstName.slice(0, 22) + ".." : userInfo.firstName }
-      </p>
+      </Text>
 
 
       <Options />

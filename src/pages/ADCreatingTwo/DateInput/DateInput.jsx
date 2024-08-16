@@ -10,7 +10,7 @@ const DateInput = ({ className, date, setDate, ref, ...props }) => {
     <div ref={ref} className={cl.DateTimePicker} {...props}>
       <div className={cl.left}>
         <img className={cl.leftImage} src={dateIcon} alt="" />
-        <p className={cl.text}>Дата и время</p>
+        <Text className={cl.text}>Дата и время</Text>
       </div>
       <img src={rightArrow} alt="" className={cl.arrowRight} />
     </div>
@@ -20,14 +20,14 @@ const DateInput = ({ className, date, setDate, ref, ...props }) => {
       <div className={cl.DateTimePicker}>
         <div className={cl.left}>
           <img className={cl.leftImage} src={dateIcon} alt="" />
-          <p className={cl.text}>Дата и время</p>
+          <Text className={cl.text}>Дата и время</Text>
         </div>
         <img src={rightArrow} alt="" className={cl.arrowRight} />
       </div>
       <div className={cl.DateTimePicker}>
         <div className={cl.left}>
           <img className={cl.leftImage} src={dateIcon} alt="" />
-          <p className={cl.text}>Дата и время</p>
+          <Text className={cl.text}>Дата и время</Text>
         </div>
         <img src={rightArrow} alt="" className={cl.arrowRight} />
       </div>

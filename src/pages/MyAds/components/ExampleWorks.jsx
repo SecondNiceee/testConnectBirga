@@ -1,13 +1,14 @@
 import React, { memo } from "react";
 import Case from "../../../components/UI/Case/Case";
+import Text from "../../../components/Text/Text";
 
 const ExampleWorks = ({cards , openFunc}) => {
   return (
     <div className="examplesWork">
       {cards.length === 0 ? 
-      <p className="exampleWork-text">Нет примеров работ</p>
+      <Text className="exampleWork-text">Нет примеров работ</Text>
       :
-      <p className="exampleWork-text">Примеры работ</p>
+      <Text className="exampleWork-text">Примеры работ</Text>
       }
       
       <div className="cards__wraaper">

@@ -1,6 +1,7 @@
 import React, { memo, useRef } from "react";
 import cl from "./BudgetInput.module.css";
 import Info from "../../../images/icons/info.svg";
+import Text from "../../../components/Text/Text";
 
 const BudgetInput = ({
   className,
@@ -49,8 +50,8 @@ const BudgetInput = ({
       }
     >
 
-      <p className={[cl.input, cl.hidden].join(" ")} ref={ref1}></p>
-      <p style={ budget ? {display : 'none'} : {color : style.color}  }  className = { [cl.input , cl.absolute].join(' ') }> 0 </p>
+      <Text className={[cl.input, cl.hidden].join(" ")} ref={ref1}></Text>
+      <Text style={ budget ? {display : 'none'} : {color : style.color}  }  className = { [cl.input , cl.absolute].join(' ') }> 0 </Text>
       <input 
          style={style}
         value={budget}
@@ -83,26 +84,27 @@ const BudgetInput = ({
         // style={{position: 'absolute'  , background: 'rgb(32, 48, 63)' , width : '80%' , color : 'rgb(32, 48, 63)' , fontFamily : 'regular'}}
       />
 
-        {/* <p  className={cl.input}>{budget}</p> */}
+        {/* <Text  className={cl.input}>{budget}</Text> */}
 
-      <p style={ {left : budgetWidth() , color : style.color  }} className={cl.budgetText}>RUB</p>
+      <Text style={ {left : budgetWidth() , color : style.color  }} className={cl.budgetText}>RUB</Text>
 
       {!errorTon 
       ? (
         <div className={cl.bottomTextContainer}>
-            <p className={cl.text}>
-              Стоимость <span> {tonValue} USDT </span> 
-              
-              
-                </p>
+          <div className={cl.costPrice}>
+          <Text className={cl.text}>
+          Стоимость
+            </Text>
+            <span> {tonValue} USDT </span> 
+          </div>
             <img src={Info} alt="" />
       </div>
       )
       :
           <div className={cl.bottomTextContainer}>
-            <p className={cl.text} style={{color : '#FF6767'}}>
+            <Text className={cl.text} style={{color : '#FF6767'}}>
               Сумма должна быть больше 0.5 тонн
-              </p>
+              </Text>
           </div>
 
 

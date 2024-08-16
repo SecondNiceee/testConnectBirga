@@ -9,6 +9,7 @@ import DatePicker from 'react-mobile-datepicker';
 
 import cl from './SecondAddCreating.module.css'
 import MainButton from '../../../constants/MainButton';
+import Text from '../../../components/Text/Text';
 
 
 // eslint-disable-next-line
@@ -163,7 +164,7 @@ const SecondAddCreating = ({taskInformation , setTaskInformation, tonConstant , 
           />
 
 
-            <Cap className={cl.Cap}  step={2} > <p className = {cl.CapText}> Создайте объявление </p> </Cap>
+            <Cap className={cl.Cap}  step={2} > <Text className = {cl.CapText}> Создайте объявление </Text> </Cap>
             <Budget errorTon = {errors.ton} taskInformation={taskInformation} setTaskInformation={setTaskInformation}  className={cl.Budget} tonConstant = {tonConstant} />
             <MyDatePicker 
             whichOne={whichOne}

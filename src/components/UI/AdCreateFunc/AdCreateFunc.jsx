@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import cl from "./AdCreateFunc.module.css";
 import plus from "../../../images/icons/plus-circle.svg";
+import Text from "../../Text/Text";
 const AdCreateFunc = ({ link, text, func, className, ...props }) => {
   const myRef = useRef(null)
   const vibrate = useCallback( () => {
@@ -45,7 +46,7 @@ const touchEnd = useCallback( (e) => {
           }
         >
           <img src={plus} alt="" />
-          <p>{text}</p>
+          <Text>{text}</Text>
         </Link>
       ) : (
         <div ref={myRef} {...props} onClick={func} 
@@ -55,7 +56,7 @@ const touchEnd = useCallback( (e) => {
             : cl.AdCreactingFunction
         }>
           <img src={plus} alt="" />
-          <p>{text}</p>
+          <Text>{text}</Text>
         </div>
       )}
     </>

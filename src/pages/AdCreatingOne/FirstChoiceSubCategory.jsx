@@ -3,6 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import rightArrow from '../../images/icons/rightArrow.svg'
 import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
+import Text from '../../components/Text/Text';
 const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar , ...props}) => {
 
 
@@ -76,7 +77,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
                                     setTaskInformation( {...taskInformation , subCategory : e})
                                     setSubcategoryChoiceOpen(false)}} >
 
-                                    <p>{e.subCategory}</p>
+                                    <Text>{e.subCategory}</Text>
                                     <img className='arrowRight' src={rightArrow} alt="" />
                             </div>
                         )

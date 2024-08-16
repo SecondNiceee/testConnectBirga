@@ -1,4 +1,5 @@
 import React from 'react';
+import Text from '../../Text/Text';
 
 const Status = ({isActive , text}) => {
     const clickHandler = () => {
@@ -6,13 +7,13 @@ const Status = ({isActive , text}) => {
     }
     return ( 
         <div onClick={clickHandler} className='StatusContainer'>
-            <p>Статус</p>
+            <Text>Статус</Text>
             {isActive ? 
-                <p className='TrueActive'>Активен</p>
+                <Text className='TrueActive'>Активен</Text>
                 :
-                <p className='FalseActive'>Не активен</p>
+                <Text className='FalseActive'>Не активен</Text>
             }
-            <p>См.больше</p>
+            <Text>См.больше</Text>
         </div>
     );
 };

@@ -9,6 +9,7 @@ import React, {
 import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 import BlockSpinner from "../BlockSpinner/BlockSpinner";
+import Text from "../../Text/Text";
 let counter = 0;
 const FileInput = ({
   className,
@@ -257,14 +258,14 @@ const FileInput = ({
           <div className={cl.fileImageContainer}>
             <img className={cl.fileImage} src={file} alt="" />
           </div>
-          <p>Добавить фото</p>
+          <Text>Добавить фото</Text>
         </label>
       </div>
       {/* {images.map( (e, i) => {
-      return <p>{e}</p>
+      return <Text>{e}</Text>
     }) } */}
       {fileError ? (
-        <p className={cl.fileError}>Добавьте хотя бы один пример работы</p>
+        <Text className={cl.fileError}>Добавьте хотя бы один пример работы</Text>
       ) : (
         <> </>
       )}

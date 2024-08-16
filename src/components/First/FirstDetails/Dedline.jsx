@@ -1,16 +1,17 @@
 import React from "react";
 import formatDate from "../../../functions/makeDate";
+import Text from "../../Text/Text";
 const defaultDate = new Date(0)
 const Dedline = ({ dedline }) => {
   return (
     <div className="DeadlineContainer">
-      <p>Сроки выполнения</p>
+      <Text>Сроки выполнения</Text>
       {dedline.start.getTime() !== defaultDate.getTime() && (
-        <p>Начать : {formatDate(dedline.start, true)}</p>
+        <Text>Начать : {formatDate(dedline.start, true)}</Text>
       )}
 
       {dedline.end !== "" ? (
-        <p>Дедлайн : {formatDate(dedline.end, true)} </p>
+        <Text>Дедлайн : {formatDate(dedline.end, true)} </Text>
       ) : (
         <></>
       )}

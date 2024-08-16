@@ -4,6 +4,7 @@ import '../../../images/icons/Palitra.png'
 import designIcon from "../../../images/icons/Design.svg"
 import ItIcon from "../../../images/icons/IT.svg"
 import MoreSvg from "../../../images/icons/More.svg"
+import Text from '../../../components/Text/Text';
 const CategoryItem = ({className , id , category  }) => {
     const imageSrc = useMemo( () => {
         switch (id){
@@ -18,7 +19,7 @@ const CategoryItem = ({className , id , category  }) => {
     return (
         <div value = {id} className = {className ? [cl.CategoryItem , className].join(' ') : cl.CategoryItem }>
             <img src = {imageSrc}  alt="" />
-            <p>{category}</p>
+            <Text>{category}</Text>
         </div>
     );
 };

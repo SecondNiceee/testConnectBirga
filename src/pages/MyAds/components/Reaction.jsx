@@ -7,6 +7,7 @@ import FalseTie from "../../../components/UI/FalseTie/FalseTie";
 import MyButton from "../../../components/UI/MyButton/MyButton";
 import userPhoto from "../../../images/userPhoto/user.png"
 import breakShare from "../../../functions/breakShare";
+import Text from "../../../components/Text/Text";
 const Reaction = ({
   blue = false,
   setOpen,
@@ -58,7 +59,7 @@ const Reaction = ({
             }}
             className="reaction__middle-midle"
           >
-            <p
+            <Text
               className="reaction__userName"
               style={
                 blue
@@ -71,18 +72,18 @@ const Reaction = ({
               }
             >
               {responce.user.fl}
-            </p>
+            </Text>
             <div className="reaction__rates">
               {/* <img src={star} alt="" /> */}
               <div className="rates__text">
-                {/* <p><span>4</span></p>
-                                  <p>◦</p>
-                                  <p>158 отзывов</p>
-                                  <p>◦</p> */}
-                <p>
+                {/* <Text><span>4</span></Text>
+                                  <Text>◦</Text>
+                                  <Text>158 отзывов</Text>
+                                  <Text>◦</Text> */}
+                <Text>
                   Стаж{" "}
                   {responce.user.stage === null ? "0" : responce.user.stage} лет
-                </p>
+                </Text>
               </div>
             </div>
           </div>

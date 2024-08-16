@@ -4,6 +4,7 @@ import React from "react";
 import "../../pages/MyAds/MyAds.css";
 import MyButton from "../UI/MyButton/MyButton";
 import userPhoto from "../../images/userPhoto/user.png"
+import Text from "../Text/Text";
 const MyReaction = ({
   openAboutReactionFunc,
   responce,
@@ -51,15 +52,15 @@ const MyReaction = ({
             }}
             className="reaction__middle-midle"
           >
-            <p className="reaction__userName">{responce.user.fl.length > 12 ? responce.user.fl.slice(0,12) + "..." : responce.user.fl }</p>
+            <Text className="reaction__userName">{responce.user.fl.length > 12 ? responce.user.fl.slice(0,12) + "..." : responce.user.fl }</Text>
             <div className="reaction__rates">
               {/* <img src={star} alt="" /> */}
               <div className="rates__text">
-                {/* <p><span>4</span></p>
-                                  <p>◦</p>
-                                  <p>158 отзывов</p>
-                                  <p>◦</p> */}
-                <p>Отклик</p>
+                {/* <Text><span>4</span></Text>
+                                  <Text>◦</Text>
+                                  <Text>158 отзывов</Text>
+                                  <Text>◦</Text> */}
+                <Text>Отклик</Text>
               </div>
             </div>
           </div>

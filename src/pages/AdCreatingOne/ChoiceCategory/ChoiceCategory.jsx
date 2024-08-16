@@ -4,6 +4,7 @@ import OneInput from "../../../components/UI/OneInput/OneInput";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import BackButton from "../../../constants/BackButton";
 import MainButton from "../../../constants/MainButton";
+import Text from "../../../components/Text/Text";
 
 
 
@@ -126,7 +127,7 @@ const ChoiceCategory = ({
         })}
 
       </div>
-      <p className={cl.anotherText}>{text}</p>
+      <Text className={cl.anotherText}>{text}</Text>
     </div>
   );
 };

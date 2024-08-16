@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef } from 'react';
 import ArrowRight from "../../../../images/icons/rightArrow.svg";
 import { Link } from 'react-router-dom';
+import Text from '../../../../components/Text/Text';
 const Option = ({to, index = 1, text}) => {
 
     const myRef = useRef(null)
@@ -65,7 +66,7 @@ const Option = ({to, index = 1, text}) => {
               />
             </svg>
           </div>
-          <p>{text}</p>
+          <Text>{text}</Text>
         </div>
         <img className="arrowRight" src={ArrowRight} alt="" />
       </Link>

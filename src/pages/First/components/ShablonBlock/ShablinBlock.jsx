@@ -5,6 +5,7 @@ import AdCreateFunc from "../../../../components/UI/AdCreateFunc/AdCreateFunc";
 import { CSSTransition } from "react-transition-group";
 import Shablon from "../../../Shablon/Shablon";
 import ModalChoicer from "../../../../components/UI/ModalChoicer/ModalChoicer";
+import Text from "../../../../components/Text/Text";
 
 const ShablinBlock = ({
   shablonsArr,
@@ -25,7 +26,7 @@ const ShablinBlock = ({
     <div className={className ? [cl.main, className].join(" ") : cl.main}>
       {shablonsArr.length > 0 ? (
         <Component className={cl.component}>
-          <p>Шаблон</p>
+          <Text>Шаблон</Text>
           {/* <Choicer
             onChoice={(index) => {
               setResponce({

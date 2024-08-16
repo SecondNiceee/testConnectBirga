@@ -18,7 +18,7 @@ const AdCreatingThree = ({taskInformation }) => {
     >
       <Cap className={cl.Cap} step={3} >
         <div className={cl.upTextContainer}>
-            <p>Холдирование</p>
+            <Text>Холдирование</Text>
             <img src={info} alt="" />
         </div>
       </Cap>

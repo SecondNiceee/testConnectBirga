@@ -1,8 +1,10 @@
-import React, { memo, useCallback, useEffect,  useRef } from "react";
+import React, { memo, useCallback, useEffect,  useMemo,  useRef } from "react";
 import cl from "./DescriptionAndPhoto.module.css";
 import GreyText from "../../../components/UI/GreyText/GreyText";
 import FileInput from "../../../components/UI/FileInput/FileInput";
 import TextArea from "../../../components/UI/TextArea/TextArea";
+import Text from "../../Text/Text";
+import translation from "../../../functions/translate";
 const DescriptionAndPhoto = ({
   className,
   text,
@@ -31,6 +33,12 @@ const DescriptionAndPhoto = ({
     miniRef.current.scrollIntoView({ block: "nearest", behavior: 'smooth' })
   } , [] )
 
+  const place = useMemo( () => {
+    return translation(textPlaceholder)
+  } , [textPlaceholder] )
+
+
+
   return (
     <div
       className={
@@ -49,11 +57,11 @@ const DescriptionAndPhoto = ({
         ref={myRef}
           value={text}
           className={cl.DescriptionInput}
-          placeholder={textPlaceholder}
+          placeholder={place}
           setValue={setText}
         ></TextArea>
 
-<p 
+<p
 ref={miniRef}
           className={cl.inputCounter}
           style={text.length < 500 ? {} : { color: "#8a0303" }}

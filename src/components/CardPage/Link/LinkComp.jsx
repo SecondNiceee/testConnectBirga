@@ -3,6 +3,7 @@ import cl from './LinkComp.module.css'
 import behanceIcon from "../../../images/icons/behance.svg";
 import dripleIcon from "../../../images/icons/Dribble.svg";
 import dropfileIcon from "../../../images/icons/Dropfile.svg";
+import Text from '../../Text/Text';
 const LinkComp = ({navigate, link}) => {
     const imageLink = useMemo( () => {
         switch (navigate){
@@ -45,7 +46,7 @@ const LinkComp = ({navigate, link}) => {
             linkHandler()
         }} className={cl.cardsLink}>
             <img src={imageLink} alt="" />
-            <p>{link}</p>
+            <Text>{link}</Text>
         </div>
     );
 };

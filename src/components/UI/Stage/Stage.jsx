@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import cl from "./Stage.module.css"
+import Text from '../../Text/Text';
 const Stage = ({className, numberB}) => {
     const kk = useMemo(() => {
       if (!numberB || numberB === null){
@@ -31,14 +32,14 @@ const Stage = ({className, numberB}) => {
     return (
         <div className={ className ? [cl.main, className].join(' ') : cl.main}>
                 <div style={!numberB ? {opacity : 0.5} : {}} className={cl.one}>
-                    <p>{!numberB ? "Не указан" : numberB}</p>
+                    <Text>{!numberB ? "Не указан" : numberB}</Text>
                 </div>
                 {!numberB ? 
                 <>
                 </>
     :
                 <div className={cl.two}>
-                    <p>{kk}</p>
+                    <Text>{kk}</Text>
                 </div>
                 }
         </div>

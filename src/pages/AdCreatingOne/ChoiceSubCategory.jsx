@@ -4,6 +4,7 @@ import rightArrow from '../../images/icons/rightArrow.svg'
 import OneInput from '../../components/UI/OneInput/OneInput';
 import BackButton from '../../constants/BackButton';
 import MainButton from '../../constants/MainButton';
+import Text from '../../components/Text/Text';
 const menu = document.documentElement.querySelector(".FirstMenu")
 const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
 
@@ -115,7 +116,7 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
                                     setTaskInformation( {...taskInformation , subCategory : e})
                                     setSubcategoryChoiceOpen(false)}} >
 
-                                    <p>{e.subCategory}</p>
+                                    <Text>{e.subCategory}</Text>
                                     <img className='arrowRight' src={rightArrow} alt="" />
                             </div>
                         )

@@ -1,5 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import cl from "./SmallTextarea.module.css";
+import translation from "../../../functions/translate";
+
+const place = translation("Опишите свой опыт и подход к работе")
 const SmallTextarea = ({ value, setValue, className }) => {
     const textAreaRef = useRef(null)
     const refTwo = useRef(null)
@@ -9,13 +12,14 @@ const SmallTextarea = ({ value, setValue, className }) => {
         
 
     } , [value ,textAreaRef] )
+
   return (
     <>
 
         <textarea
     ref={refTwo}
         className = {className ? [className, cl.textArea].join(' ') : cl.textAreaHidden}
-      placeholder="Опишите свой опыт и подход к работе"
+      placeholder={place}
       value={value}
       readOnly = {true}
       onChange={(e) => {

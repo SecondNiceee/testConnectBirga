@@ -4,6 +4,7 @@ import dateIcon from "../../../images/icons/date.svg";
 import rightArrow from "../../../images/icons/ArrowRight.svg";
 import GreyText from "../../../components/UI/GreyText/GreyText";
 import './CatchDate.css'
+import Text from "../../../components/Text/Text";
 
 let errorDate = new Date(0)
 const CatchDate = ({ className , whichOne , state, setState,errors, isMyInformation,  ...props }) => {
@@ -60,10 +61,10 @@ return (
         >
         <div className={'left'}>
           <img className={'leftImage'} src={dateIcon} alt="" />
-          <p className={'text'}>
+          <Text className={'text'}>
 
              {state.singleTime ? state.singleTime.toLocaleString("ru", options) : 'Дата и время'  } 
-          </p>
+          </Text>
         </div>
         <img src={rightArrow} alt="" className={'arrowRight'} />
       </label>
@@ -84,9 +85,9 @@ return (
          className={'DateTimePicker'}   style={errors.startError ? {border : '1px solid #FF6767'} : {}} >
           <div className={'left'}>
             <img className={'leftImage'} src={dateIcon} alt="" />
-            <p className={'text'}>
+            <Text className={'text'}>
                {state.startTime && state.startTime.getTime() !== new Date(0).getTime()  ? state.startTime.toLocaleString("ru", options) : 'Дата и время начала'  } 
-            </p>
+            </Text>
           </div>
           <img src={rightArrow} alt="" className={'arrowRight'} />
         </div>
@@ -107,10 +108,10 @@ return (
           
           <div className={'left'}>
             <img className={'leftImage'} src={dateIcon} alt="" />
-            <p className={'text'}>
+            <Text className={'text'}>
 
             {state.endTime && String(state.endTime) !== String(errorDate) ? state.endTime.toLocaleString("ru", options) : 'Дата и время дедлайна'  } 
-            </p>
+            </Text>
           </div>
           <img src={rightArrow} alt="" className={'arrowRight'} />
         </div>

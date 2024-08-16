@@ -252,8 +252,7 @@
     padding-right: 19px;
     margin-top: 13px;
     display: flex;
-    flex-direction: column;
-    gap:0.33px;
+    gap:2px;
     p{
         color: rgb(149, 151, 158);
         font-family: "SF Pro Display";
@@ -287,6 +286,10 @@
                 letter-spacing: 0%;
                 text-align: left;
         }
+    }
+    .FirstMain__price-bottom{
+        display: flex;
+        gap: 5px;
     }
     .FirstMain__price-up{
         opacity: 0.3;

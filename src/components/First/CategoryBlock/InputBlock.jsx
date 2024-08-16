@@ -5,6 +5,7 @@ import React, {
   useRef,
 } from "react";
 import cl from "./CategoryBlock.module.css";
+import Text from "../../Text/Text";
 
 let selectionPosition = 0
 const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
@@ -42,10 +43,10 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
   return (
     <label htmlFor="myInput" style={{width : "110px"}} onClick={func} {...props} className={cl.wrapper}>
       <div className={cl.left}>
-        <p className={cl.name}>{"Сумма от"}</p>
-        <p ref={textRef} className={cl.hiddenText}>
+        <Text className={cl.name}>{"Сумма от"}</Text>
+        <Text ref={textRef} className={cl.hiddenText}>
           {convertedValue}
-        </p>
+        </Text>
         <div className={cl.inputBlock}>
           <input
             id="myInput"
@@ -66,13 +67,13 @@ const InputBlock = ({ value, setValue, func = () => {}, ...props }) => {
             ref={inputRef}
             type="text"
           />
-          <p
+          <Text
             ref={rubRef}
             style={convertedValue === "" ? { display: "none" } : {}}
             className={cl.afterText}
           >
             RUB
-          </p>
+          </Text>
         </div>
       </div>
     </label>

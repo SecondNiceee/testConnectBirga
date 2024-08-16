@@ -1,9 +1,10 @@
 import React, { memo } from 'react';
+import Text from '../../Text/Text';
 
 const Two = ({responseCounter}) => {
     return (
         <div className="two">
-        <p>{responseCounter}</p>
+        <Text>{responseCounter}</Text>
         <svg
           width="10"
           height="12"

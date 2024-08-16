@@ -8,14 +8,14 @@ const LastTopCenter = ({
     <div className="last-top-center">
 
         <div className="top-name-bl">
-          <p>{name}</p>
+          <Text>{name}</Text>
           <img src={subtruct} className="last-subtruct" alt="" />
         </div>
         
         <div className="top-characters">
           {/* <img src={star} className="last-star" alt="" /> */}
           <div className="characters-bl">
-            <p>Стаж {stage === null ? "0" : stage} лет</p>
+            <Text>Стаж {stage === null ? "0" : stage} лет</Text>
           </div>
         </div>
 

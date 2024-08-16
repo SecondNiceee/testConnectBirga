@@ -90,8 +90,8 @@ const AboutMe = ({ setAboutMeModal, setAboutU, aboutU, aboutMeModal , scrollTo }
           src={closeIcon}
           alt=""
         />
-        <p>О себе</p>
-        <p
+        <Text>О себе</Text>
+        <Text
           className="save"
           onClick={ 
             () => {
@@ -105,13 +105,13 @@ const AboutMe = ({ setAboutMeModal, setAboutU, aboutU, aboutMeModal , scrollTo }
           }}
         >
           ✔
-        </p>
+        </Text>
       </div> */}
       <div className="about__reason">
-        <p>Опишите свой опыт, подход к работе.</p>
-        <p>Почему заказ нужно доверить именно вам?</p>
+        <Text>Опишите свой опыт, подход к работе.</Text>
+        <Text>Почему заказ нужно доверить именно вам?</Text>
       </div>
-      <p>О себе</p>
+      <Text>О себе</Text>
       <div className="inputBlock">
         <textarea
     

@@ -1,6 +1,7 @@
 import React, { memo, useEffect } from "react";
 import Pallete from "../../UI/Pallete/Pallete";
 import ShareIcon from "../../UI/ShareIcon/ShareIcon";
+import Text from "../../Text/Text";
 
 const FirstMainTop = ({isMyAds , category, isWatched, taskName, id, end}) => {
   return (
@@ -9,7 +10,7 @@ const FirstMainTop = ({isMyAds , category, isWatched, taskName, id, end}) => {
       style={isMyAds ? { marginTop: "13px" } : {}}
     >
       <Pallete category={category} />
-      <p className={isWatched ? "watchedTask" : ""}>{taskName}</p>
+      <Text className={isWatched ? "watchedTask" : ""}>{taskName}</Text>
       <ShareIcon
         onClick={() => {
           window.Telegram.WebApp.openTelegramLink(

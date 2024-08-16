@@ -16,7 +16,7 @@ const ChoicerModal = ({arr , setOpen, className , onChoice}) => {
                         <Component onClick = {() => {
                             onChoice(i)
                         }}   key = {i} className={cl.component}>
-                            <p>{e}</p>
+                            <Text>{e}</Text>
                         </Component>
                     )
                 })}

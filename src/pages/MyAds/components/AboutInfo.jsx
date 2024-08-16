@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo } from "react";
+import Text from "../../../components/Text/Text";
 
 const AboutInfo = ({responce}) => {
   const counter = useCallback((par) => {
@@ -22,25 +23,25 @@ const AboutInfo = ({responce}) => {
   return (
     <div className="aboutInfo">
       <div className="name">
-        <p>{responce.user.fl}</p>
+        <Text>{responce.user.fl}</Text>
       </div>
 
       <div onClick={() => {
         window.Telegram.WebApp.openTelegramLink("https://t.me/" + responce.user.link)
       }} className="userLink">
-        <p className="telegramLink"> Открыть в Telegram </p>
+        <Text className="telegramLink"> Открыть в Telegram </Text>
 
         
       </div>
       <div className="aboutDown">
         <div className="block">
-          <p>{responce.createNumber}</p>
-          <p className="aboutInfo__text">{counter(responce.createNumber)} создано</p>
+          <Text>{responce.createNumber}</Text>
+          <Text className="aboutInfo__text">{counter(responce.createNumber)} создано</Text>
           
         </div>
         <div className="block">
-          <p>{responce.user.completedAdvertisements.length}</p>
-          <p className="aboutInfo__text">{counter(responce.user.completedAdvertisements.length)} выполнено</p>
+          <Text>{responce.user.completedAdvertisements.length}</Text>
+          <Text className="aboutInfo__text">{counter(responce.user.completedAdvertisements.length)} выполнено</Text>
         </div>
       </div>
 

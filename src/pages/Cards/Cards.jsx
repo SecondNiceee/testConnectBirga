@@ -12,6 +12,7 @@ import ModalInput from "../../components/UI/ModalInput/ModalInput";
 import Categories from "../AdCreatingOne/Categories/Categories";
 import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
 import {  postCard } from "../../store/telegramUserInfo";
+import Text from "../../components/Text/Text";
 let localCardSetting;
 let mainLocalErrors ;
 let inputObject = {
@@ -262,7 +263,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
   return (
     <div className="cards" ref={mainRef}>
-      <h3 className="cards-title">Новый кейс</h3>
+      <Text className="cards-title">Новый кейс</Text>
 
       <Categories className='cards-categorys' categoryOnly={true}  taskInformation={localCardSetting} setCatagoryChoiceOpen={setCatagoryChoiceOpen}  />
 
@@ -303,9 +304,9 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         textTitle={"ОПИСАНИЕ КЕЙСА"}
         filesTitle={""}
       />
-      <p className="cards-underText">
+      <Text className="cards-underText">
         Расскажите о себе и своем опыте работы Прикрепите релевантные примеры
-      </p>
+      </Text>
 
 
 
@@ -325,7 +326,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
           }
         }>
           <img src={dropfileIcon} alt="" />
-          <p>{cardsSetting.dropfileLink.length > 0 ? cardsSetting.dropfileLink : 'Ссылка на Dprofile'}</p>
+          <Text>{cardsSetting.dropfileLink.length > 0 ? cardsSetting.dropfileLink : 'Ссылка на Dprofile'}</Text>
         </div>
         <div className="behans-link cards-link" onClick={
           () => {
@@ -341,7 +342,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
           }
         }>
           <img src={behanceIcon} alt="" />
-          <p>{localCardSetting.behanceLink.length > 0 ? localCardSetting.behanceLink : 'Ссылка на Behance'}</p>
+          <Text>{localCardSetting.behanceLink.length > 0 ? localCardSetting.behanceLink : 'Ссылка на Behance'}</Text>
         </div>
         <div className="behans-link cards-link" onClick={
           () => {
@@ -356,7 +357,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
           }
         }>
           <img src={dripleIcon} alt="" />
-          <p>{localCardSetting.dribbbleLink.length > 0 ? localCardSetting.dribbbleLink : 'Ссылка на Dribbble'}</p>
+          <Text>{localCardSetting.dribbbleLink.length > 0 ? localCardSetting.dribbbleLink : 'Ссылка на Dribbble'}</Text>
         </div>
 
       </div>

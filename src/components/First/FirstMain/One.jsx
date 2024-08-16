@@ -1,9 +1,10 @@
 import React, { memo } from 'react';
+import Text from '../../Text/Text';
 
 const One = ({viewsNumber}) => {
     return (
         <div className="one">
-        <p>{viewsNumber}</p>
+        <Text>{viewsNumber}</Text>
         <svg
           width="16"
           height="13"

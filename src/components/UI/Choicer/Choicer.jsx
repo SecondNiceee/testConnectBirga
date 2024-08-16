@@ -9,7 +9,7 @@ const Choicer = ({ className, text, arr, isActive, setActive, onChoice  }) => {
     <div onClick={() => {
         setActive(true)
     }} className={className ?  [cl.Choicer, className].join(' ') : cl.Choicer}>
-      <p>{text}</p>
+      <Text>{text}</Text>
       <svg
         width="12"
         height="13"

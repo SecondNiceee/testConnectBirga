@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import cl from './InnerCase.module.css'
+import Text from '../../Text/Text';
 const InnerCase = ({ className, task,  title , description , photos, agree = false,  ...props }) => {
     return (
         <div
@@ -26,7 +27,7 @@ const InnerCase = ({ className, task,  title , description , photos, agree = fal
         <div className={cl.caseBottom}>
           <div className={cl.caseLeft}>
             <h4>{title}</h4>
-            <p>Категория: Дизайн</p>
+            <Text>Категория: Дизайн</Text>
           </div>
   
           

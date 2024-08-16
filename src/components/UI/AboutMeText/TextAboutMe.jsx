@@ -1,5 +1,6 @@
 import React, { memo, useEffect, useRef, useState } from 'react';
 import './TextAboutMe.css'
+import Text from '../../Text/Text';
 const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...props } ) => {
     const [hideAboutMe, setHideAboutMe] = useState({
       isActive : false,
@@ -102,9 +103,9 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
 
                     setHideAboutMe({...hideAboutMe, show : !hideAboutMe.show})
           }}>
-            <p>
+            <Text>
               {hideAboutMe.show ? 'Скрыть' : 'Развернуть'}
-            </p>
+            </Text>
           </div>
         </div>
     );

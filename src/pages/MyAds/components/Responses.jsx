@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ReactionSuspense from "./ReactionSuspense";
 import MyAnimation from "./MyAnimation";
+import Text from "../../../components/Text/Text";
 
 const height = { height: "calc(calc(100vh) - 330px)" };
 const Responses = ({
@@ -52,7 +53,7 @@ const Responses = ({
   return (
     <>
       <div style={responces.length === 0 ? {display : "none"} : {}} className="responses__up-block">
-        <p>Отклики</p>
+        <Text>Отклики</Text>
       <ModalChoicer
       style={responces.length === 0 ? {display : "none"} : {}}
         setValue={(value) => {

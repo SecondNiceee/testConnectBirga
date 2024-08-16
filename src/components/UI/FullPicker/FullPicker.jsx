@@ -1,5 +1,6 @@
 import React, { memo, useEffect, useMemo, useRef } from "react";
 import cl from "./FullPicker.module.css";
+import Text from "../../Text/Text";
 const FullPicker = ({
   values,
   keys,
@@ -38,23 +39,23 @@ const FullPicker = ({
         return (
           <>
             {nowKey === keys[i] ? (
-              <p key={i}
+              <Text key={i}
                 className={cl.bigValue}
                 onClick={(e) => {
                   setNowKey(keys[i]);
                 }}
               >
                 {values[i]}
-              </p>
+              </Text>
             ) : (
-              <p key={i}
+              <Text key={i}
                 className={cl.value}
                 onClick={(e) => {
                   setNowKey(keys[i]);
                 }}
               >
                 {values[i]}
-              </p>
+              </Text>
             )}
             <div className={cl.loup} style={i === keys.length - 1 ? {display : "none"} : {}}></div>
 

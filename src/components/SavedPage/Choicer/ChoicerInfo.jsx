@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MyLoader from "../../UI/MyLoader/MyLoader";
 import { fetchSavedAdvertisements, fetchSavedCards, fetchSavedResponses } from "../../../store/saves";
 import { fetchMyOrders } from "../../../store/information";
+import Text from "../../Text/Text";
 
 const ChoicerInfo = forwardRef(
   ({ text, arr, navigate, setDetails, setResponce, setCard, viewsNumber , setViewsNumber }, ref) => {
@@ -181,7 +182,7 @@ const ChoicerInfo = forwardRef(
               >
                 {View}
               </div>
-              <p className={cl.text}>{text}</p>
+              <Text className={cl.text}>{text}</Text>
             </div>
 
             <div
