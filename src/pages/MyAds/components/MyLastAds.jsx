@@ -49,7 +49,7 @@ const MyLastAds = ({
           marginTop : "8px"
         }
       } aboutU={responce.information} />
-      <div className="createdAt-block">
+      <div style={{marginTop : "8px"}} className="createdAt-block">
         <Text>Создано </Text>
         <p>{formatDate(new Date(responce.createdAt))}</p>
       </div>

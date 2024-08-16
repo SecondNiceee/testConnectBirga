@@ -139,10 +139,12 @@ const ShowMyResponse = ({
             photo={response.advertisement.user.photo}
             link={response.advertisement.user.link}
           />
+          <div className="timeAndWatches">
             <div className="createdAt-block">
               <Text>Создано </Text>
               <p>{formatDate(new Date(response.advertisement.creationTime))}</p>
             </div>
+          </div>
           
         </div>
       )}
