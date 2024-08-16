@@ -39,6 +39,7 @@ let localStep;
 const messageOne = translation("📣 Вы получили отклик на задачу «")
 const messageTwo = translation("» от ")
 const menu = document.documentElement.querySelector(".FirstMenu");
+let resp = translation("Откликнуться?")
 
 const textButton = translation("Вы действительно хотите откликнуться?")
 const buttonText = translation("ОТКЛИКНУТЬСЯ")
@@ -435,7 +436,7 @@ const First = ({ isPage = false }) => {
     if (step !== 0 && !responce.shablonMaker) {
       window.Telegram.WebApp.showPopup(
         {
-          title: "Откликнуться?",
+          title: resp,
           message: textButton,
           buttons: [
             { id: "save", type: "default", text: "Да" },

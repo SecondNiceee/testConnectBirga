@@ -11,6 +11,7 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 const choiceText = translation("ВЫБРАТЬ")
 const choiceTextTwo = translation("Перед выбором исполнителя\n ознакомьтесь с FAQ Биржи.")
 const lastChoice = translation("Вы уверены, что хотите выбрать\n этого исполнителя?")
+let isTake = translation("Выбрать?")
 export const useButton = ({
   setOpen,
   setSecondPage,
@@ -63,7 +64,7 @@ export const useButton = ({
           if (buttonId === "delete") {
             window.Telegram.WebApp.showPopup(
               {
-                title: "Выбрать?",
+                title: isTake,
                 message: lastChoice,
                 buttons: [
                   { id: "save", type: "default", text: "Да" },

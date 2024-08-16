@@ -20,6 +20,7 @@ import translation from "../functions/translate";
 
 
 const textButton = translation("Вы уверены, что хотите создать новое задание?")
+let create = translation("Создать?")
 let spet = 0;
 const menu = document.documentElement.querySelector(".FirstMenu")
 const AdCreating = () => {
@@ -416,7 +417,7 @@ const translateText = translation("Вы уверены, что хотите со
 
           clearInput()
           window.Telegram.WebApp.showPopup({
-            title: "Создать?",
+            title: create,
             message: textButton,
             buttons: [
               { id: "save", type: "default", text: "Да" },
