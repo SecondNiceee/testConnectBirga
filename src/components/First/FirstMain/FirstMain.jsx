@@ -3,7 +3,8 @@ import FirstBlock from "./FirstBlock";
 import { useDispatch, useSelector } from "react-redux";
 import MyLoader from "../../UI/MyLoader/MyLoader";
 import {  fetchTasksInformation } from "../../../store/information";
-
+import translation from "../../../functions/translate";
+const noWay = translation(" Нет таких предложений ")
 const FirstMain = (
   (
     {
@@ -49,7 +50,7 @@ const FirstMain = (
     return (
       <div  className="FirstMain">
         {ordersInformation.length === 0 && orderStatus === "all" ? (
-          <h1 className="EmptyText"> Нет таких предложений </h1>
+          <h1 className="EmptyText">{noWay}</h1>
         ) : (
           ordersInformation.map((e, i) => {
             return (

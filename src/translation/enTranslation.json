@@ -135,5 +135,6 @@
     "Создано" : "Created at",
     "Выбрать?" : "Choose?",
     "Создать?" : "Create?",
-    "Откликнуться?" : "Respond?"
+    "Откликнуться?" : "Respond?",
+    " Нет таких предложений " : "Didn't find any such announcements"
 }

@@ -427,7 +427,7 @@ const First = ({ isPage = false }) => {
         await post([myFormData, gibrid]);
         dispatch(clearResponses());
         dispatch(fetchResponses([me, 1]));
-        dispatch(addResponce([gibrid.advertisement.id, gibrid]));
+        // dispatch(addResponce([gibrid.advertisement.id, gibrid]));
       } catch (e) {
         console.warn(e);
       }
