@@ -24,8 +24,8 @@ const LinkComp = ({navigate, link}) => {
           title: "Перейти?",
           message: `Вы уверены, что хотите перейти по ссылке ${par}?`,
           buttons: [
-            { id: "save", type: "default", text: "Да" },
-            { id: "delete", type: "destructive", text: "Нет" },
+            { id: "save", type: "default", text: "Yes" },
+            { id: "delete", type: "destructive", text: "No" },
           ],
         } , (buttonId) => {
     

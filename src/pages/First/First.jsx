@@ -425,8 +425,8 @@ const First = ({ isPage = false }) => {
           stage: me.profile.stage,
         };
         await post([myFormData, gibrid]);
-        dispatch(clearResponses());
-        dispatch(fetchResponses([me, 1]));
+        // dispatch(clearResponses());
+        // dispatch(fetchResponses([me, 1]));
         // dispatch(addResponce([gibrid.advertisement.id, gibrid]));
       } catch (e) {
         console.warn(e);
