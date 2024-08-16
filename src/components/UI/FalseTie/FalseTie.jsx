@@ -57,8 +57,8 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
               title: "Удалить?",
               message: "Удалить из избранного?",
               buttons: [
-                { id: "save", type: "default", text: "Да" },
-                { id: "delete", type: "destructive", text: "Нет" },
+                { id: "save", type: "default", text: "Yes" },
+                { id: "delete", type: "destructive", text: "No" },
               ],
             } , (buttonId) => {
         
@@ -86,8 +86,8 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
               title: "Удалить?",
               message: "Удалить из избранного?",
               buttons: [
-                { id: "save", type: "default", text: "Да" },
-                { id: "delete", type: "destructive", text: "Нет" },
+                { id: "save", type: "default", text: "Yes" },
+                { id: "delete", type: "destructive", text: "No" },
               ],
             } , (buttonId) => {
         
@@ -113,8 +113,8 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
               title: "Удалить?",
               message: "Удалить из избранного?",
               buttons: [
-                { id: "save", type: "default", text: "Да" },
-                { id: "delete", type: "destructive", text: "Нет" },
+                { id: "save", type: "default", text: "Yes" },
+                { id: "delete", type: "destructive", text: "No" },
               ],
             } , (buttonId) => {
         

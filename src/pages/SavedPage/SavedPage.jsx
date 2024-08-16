@@ -387,8 +387,8 @@ const SavedPage = () => {
           title: "Откликнуться?",
           message: textButton,
           buttons: [
-            { id: "save", type: "default", text: "Да" },
-            { id: "delete", type: "destructive", text: "Нет" },
+            { id: "save", type: "default", text: "Yes" },
+            { id: "delete", type: "destructive", text: "No" },
           ],
         },
         (buttonId) => {

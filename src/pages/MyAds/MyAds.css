@@ -316,7 +316,8 @@
     overflow-y: scroll;
     position: relative;
     z-index: 999;
-    position: absolute;
+    padding-bottom: 100px;
+    position: fixed;
     left: 0;
     top: 0;
     background-color: rgb(24, 34, 45);

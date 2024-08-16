@@ -9,8 +9,8 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
               title: "Сохранить?",
               message: "Сохранить изменения перед выходом?",
               buttons: [
-                { id: "save", type: "default", text: "Да" },
-                { id: "delete", type: "destructive", text: "Нет" },
+                { id: "save", type: "default", text: "Yes" },
+                { id: "delete", type: "destructive", text: "No" },
               ],
             } , (buttonId) => {
     

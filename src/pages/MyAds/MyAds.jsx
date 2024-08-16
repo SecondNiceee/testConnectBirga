@@ -522,8 +522,8 @@ const MyAds = ({isPage = false}) => {
       title: "Удалить?",
       message: `Вы уверены, что хотите удалить этот отклик?`,
       buttons: [
-        { id: "save", type: "default", text: "Да" },
-        { id: "delete", type: "destructive", text: "Нет" },
+        { id: "save", type: "default", text: "Yes" },
+        { id: "delete", type: "destructive", text: "No" },
       ],
     } , (buttonId) => {
 

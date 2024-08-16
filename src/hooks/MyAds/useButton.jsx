@@ -56,8 +56,8 @@ export const useButton = ({
           title: "Внимание",
           message: choiceTextTwo,
           buttons: [
-            { id: "delete", type: "default", text: "Продолжить" },
-            { id: "save", type: "destructive", text: "Прочитать" },
+            { id: "delete", type: "default", text: "Continue" },
+            { id: "save", type: "destructive", text: "Read" },
           ],
         },
         (buttonId) => {
@@ -67,8 +67,8 @@ export const useButton = ({
                 title: isTake,
                 message: lastChoice,
                 buttons: [
-                  { id: "save", type: "default", text: "Да" },
-                  { id: "delete", type: "destructive", text: "Нет" },
+                  { id: "save", type: "default", text: "Yes" },
+                  { id: "delete", type: "destructive", text: "No" },
                 ],
               },
               (buttonId) => {
