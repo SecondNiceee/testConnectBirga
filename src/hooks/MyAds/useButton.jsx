@@ -9,6 +9,8 @@ import translation from "../../functions/translate";
 const menu = document.documentElement.querySelector(".FirstMenu")
 
 const choiceText = translation("ВЫБРАТЬ")
+const choiceTextTwo = translation("Перед выбором исполнителя\n ознакомьтесь с FAQ Биржи.")
+const lastChoice = translation("Вы уверены, что хотите выбрать\n этого исполнителя?")
 export const useButton = ({
   setOpen,
   setSecondPage,
@@ -51,7 +53,7 @@ export const useButton = ({
       window.Telegram.WebApp.showPopup(
         {
           title: "Внимание",
-          message: "Перед выбором исполнителя\n ознакомьтесь с FAQ Биржи.",
+          message: choiceTextTwo,
           buttons: [
             { id: "delete", type: "default", text: "Продолжить" },
             { id: "save", type: "destructive", text: "Прочитать" },
@@ -62,7 +64,7 @@ export const useButton = ({
             window.Telegram.WebApp.showPopup(
               {
                 title: "Выбрать?",
-                message: "Вы уверены, что хотите выбрать\n этого исполнителя?",
+                message: lastChoice,
                 buttons: [
                   { id: "save", type: "default", text: "Да" },
                   { id: "delete", type: "destructive", text: "Нет" },
@@ -201,7 +203,7 @@ export const useButton = ({
         color: "#2ea5ff",
         text_color: "#ffffff",
       });
-      MainButton.setText("ВЫБРАТЬ");
+      MainButton.setText(choiceText);
       MainButton.onClick(writeFucntion);
     } else {
       MainButton.offClick(writeFucntion);

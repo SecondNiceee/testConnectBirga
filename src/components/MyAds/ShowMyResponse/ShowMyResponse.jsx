@@ -14,6 +14,8 @@ import translation from "../../../functions/translate";
 const menu = document.documentElement.querySelector(".FirstMenu");
 
 const textButtonOne = translation("ВЫПОЛНИЛ")
+const isTake = translation("Вы выполнили это задание?")
+const bigText = translation("Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. ")
 const ShowMyResponse = ({
   response = { advertisement: { user: {} }, id: 0, user: { fuck: "fuck" } },
   openDetails,
@@ -28,7 +30,7 @@ const ShowMyResponse = ({
       window.Telegram.WebApp.showPopup(
         {
           title: "Выбрать?",
-          message: "Вы выполнили это задание?",
+          message: isTake,
           buttons: [
             { id: "save", type: "default", text: "Да" },
             { id: "delete", type: "destructive", text: "Нет" },
@@ -55,10 +57,9 @@ const ShowMyResponse = ({
             advertisementId: String(response.advertisement.id),
           },
         });
-        alert("chatId :  " + response.advertisement.user.id);
 
         window.Telegram.WebApp.showAlert(
-          "Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. "
+          bigText
         );
       } catch (e) {
         window.Telegram.WebApp.showAlert(

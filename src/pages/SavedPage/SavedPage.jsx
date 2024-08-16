@@ -22,7 +22,7 @@ const values = ["Заказы", "Отклики", "Кейсы"];
 const keys = ["advertisment", "responces", "cards"];
 
 const buttonText = translation("ОТКЛИКНУТЬСЯ")
-
+const textButton = translation("Вы действительно хотите откликнуться?")
 const menu = document.documentElement.querySelector(".FirstMenu")
 const SavedPage = () => {
 
@@ -128,7 +128,7 @@ const SavedPage = () => {
       savedTasks[details.id]
     ) {
       if (savedTasks[details.id].responces) {
-        if (savedTasks[details.id].responces.find(e => String(e.user.id) === "2144832745")){
+        if (savedTasks[details.id].responces.find(e => String(e.user.id) === "window.Telegram.WebApp.initDataUnsafe.user.id")){
           return true
         }
         else{
@@ -385,7 +385,7 @@ const SavedPage = () => {
       window.Telegram.WebApp.showPopup(
         {
           title: "Откликнуться?",
-          message: "Вы действительно хотите откликнуться?",
+          message: textButton,
           buttons: [
             { id: "save", type: "default", text: "Да" },
             { id: "delete", type: "destructive", text: "Нет" },
@@ -396,7 +396,7 @@ const SavedPage = () => {
             // setShablon({...shablon , isActive : false})
           }
           if (buttonId === "save") {
-            postResponce(savedTasks[details.id].id, 2144832745);
+            postResponce(savedTasks[details.id].id, window.Telegram.WebApp.initDataUnsafe.user.id);
             setResponce((value) => ({ ...value, isOpen: false }));
             setDetails((value) => ({ ...value, isOpen: false }));
           }

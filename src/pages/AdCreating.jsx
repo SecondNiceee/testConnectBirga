@@ -19,6 +19,7 @@ import axios from "axios";
 import translation from "../functions/translate";
 
 
+const textButton = translation("Вы уверены, что хотите создать новое задание?")
 let spet = 0;
 const menu = document.documentElement.querySelector(".FirstMenu")
 const AdCreating = () => {
@@ -221,8 +222,8 @@ const translateText = translation("Вы уверены, что хотите со
   }
   async function post(el) {
     let myFormData = new FormData();
-    // myFormData.append("userId", 2144832745 );
-     myFormData.append("userId", String(2144832745)  );
+    // myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id );
+     myFormData.append("userId", String(window.Telegram.WebApp.initDataUnsafe.user.id)  );
     myFormData.append("title", String(el.taskName.trim()));
     myFormData.append("description", String(el.taskDescription));
     myFormData.append("deadline", "1");
@@ -416,7 +417,7 @@ const translateText = translation("Вы уверены, что хотите со
           clearInput()
           window.Telegram.WebApp.showPopup({
             title: "Создать?",
-            message: `Вы уверены, что хотите создать новое задание?`,
+            message: textButton,
             buttons: [
               { id: "save", type: "default", text: "Да" },
               { id: "delete", type: "destructive", text: "Нет" },
