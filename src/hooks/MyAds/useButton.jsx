@@ -282,6 +282,7 @@ export const useButton = ({
     return () => {
       BackButton.offClick(goBack);
       MainButton.offClick(writeFucntion);
+      MainButton.offClick(putTask)
     };
 
     // eslint-disable-next-line
