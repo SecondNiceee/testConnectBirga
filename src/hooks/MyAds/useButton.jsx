@@ -41,6 +41,7 @@ export const useButton = ({
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
 
   const putTask = useCallback( () => {
+      console.log("ВЫХОВ ЭТОЙ ШТУКИ")
 
       let myFormData = new FormData();
       myFormData.append('title' , String(details.task.taskName))
@@ -290,7 +291,7 @@ export const useButton = ({
     isOpen.isActive,
     openAboutReaction.isActive,
     isOpen,
-    details,
+    details.isActive,
     navigate,
     save,
     setOneCard,
