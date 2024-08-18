@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,12 +34,37 @@ export const useButton = ({
   lastAdsTwo,
   setLastAdsTwo,
   checkMistakes,
-  putTask,
   setPageValueOne,
   setPageValueTwo
 }) => {
   const dispatch = useDispatch();
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
+
+  const putTask = useCallback( () => {
+
+      let myFormData = new FormData();
+      myFormData.append('title' , String(details.task.taskName))
+      myFormData.append('description' , String(details.task.taskDescription))
+      myFormData.append("deadline" , String(1))
+      myFormData.append("price" , String(details.task.tonValue) )
+      myFormData.append("startTime" , details.task.time.start)
+      myFormData.append("endTime" , details.task.time.end)
+
+      let files = sortFiles(details.task.photosNames ,  details.task.photos)
+      
+        for (let i = 0; i <  files.removedArr.length; i++){
+          myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
+        }
+        for (let i = 0; i < files.addedArr.length ; i++){
+          myFormData.append(`addFiles` , files.addedArr[i] )
+        }
+
+    dispatch(putMyTask([myFormData, details.task.id , details.task]))
+
+      
+    setDetails((value) => ({...value , isActive : false}))
+    
+  } , [details] ) 
   const bedTask = useMemo(() => {
     let k = myAdsArray.find((e) => e.id === secondPage.task.id)
     if (!k){
@@ -119,30 +144,7 @@ export const useButton = ({
       return true;
     }
 
-    function putTask(){
 
-      let myFormData = new FormData();
-      myFormData.append('title' , String(details.task.taskName))
-      myFormData.append('description' , String(details.task.taskDescription))
-      myFormData.append("deadline" , String(1))
-      myFormData.append("price" , String(details.task.tonValue) )
-      myFormData.append("startTime" , details.task.time.start)
-      myFormData.append("endTime" , details.task.time.end)
-
-      let files = sortFiles(details.task.photosNames ,  details.task.photos)
-      
-        for (let i = 0; i <  files.removedArr.length; i++){
-          myFormData.append(`deleteFiles[${i}]` , files.removedArr[i])
-        }
-        for (let i = 0; i < files.addedArr.length ; i++){
-          myFormData.append(`addFiles` , files.addedArr[i] )
-        }
-
-      dispatch(putMyTask([myFormData, details.task.id , details.task]))
-
-      
-      setDetails((value) => ({...value , isActive : false}))
-    }
 
 
 
