@@ -17,7 +17,7 @@ import "../MyAds/MyAds.css"
 import BackButton from "../../constants/BackButton";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../../constants/MainButton";
-// const parOne = window.Telegram.WebApp.initDataUnsafe.user.id;
+// const parOne = 1392120153;
 // const parTwo = 1;
 
 const menu = document.documentElement.querySelector(".FirstMenu")

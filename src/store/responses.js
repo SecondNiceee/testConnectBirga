@@ -177,7 +177,7 @@ export const fetchResponses = createAsyncThunk(
         
         let im = await axios.get('https://back-birga.ywa.su/response/findByUser' , {
             params : {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                "userId" : 1392120153,
                 page : par[1],
                 limit : 4
                 

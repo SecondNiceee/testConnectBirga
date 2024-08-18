@@ -78,7 +78,7 @@ const AboutOne = ({
   const setDetailsCallback = useCallback(() => {
     setDetails({
       isActive: true,
-      task: task,
+      task: {...task, myAds : true},
     });
     // eslint-disable-next-line
   }, [task]);

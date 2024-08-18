@@ -103,9 +103,9 @@ export const postMyTask = createAsyncThunk(
         {
           params: {
             page: 1,
-            userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+            userId: 1392120153,
             limit: 4,
-            // userId : window.Telegram.WebApp.initDataUnsafe.user.id
+            // userId : 1392120153
           },
           headers: {
             "Content-Type": "multipart/form-data",
@@ -194,9 +194,9 @@ export const fetchMyOrders = createAsyncThunk(
         {
           params: {
             page: page,
-            userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+            userId: 1392120153,
             limit: 4,
-            // userId : window.Telegram.WebApp.initDataUnsafe.user.id
+            // userId : 1392120153
           },
           headers: {
             "Content-Type": "multipart/form-data",

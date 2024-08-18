@@ -125,6 +125,7 @@ const MyAds = ({isPage = false}) => {
       time: { start: "", end: "" },
       photos: [],
       photosNames: [],
+      myAds : true
     },
   });
 
@@ -309,11 +310,6 @@ const MyAds = ({isPage = false}) => {
   }); // контролер ошибок
 
   
-
-
-  const setChangingTask = useCallback( (e) => {
-    setDetails( (value) =>  ({...value , task : e}))
-  }, [setDetails] ) 
 
   window.Telegram.WebApp.disableVerticalSwipes();
 
@@ -650,7 +646,7 @@ const MyAds = ({isPage = false}) => {
               mistakes={mistakes}
               className="AdCreatingMy"
               taskInformation={details.task}
-              setTaskInformation={setChangingTask}
+              setTaskInformation={setDetails}
               MyInformation={true}
               isDetailsActive={details.isActive}
             />

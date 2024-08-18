@@ -142,8 +142,8 @@ const AdCreatingOne = ({
           isStartOpen: false,
           startTime: time,
         }));
-        if (taskInformation.time) {
-          setTaskInformation({...taskInformation, time : {...taskInformation.time, start : time}})
+        if (taskInformation.myAds) {
+          setTaskInformation( (value) => ({...value, task : {...value.task , time : {...value.task.time , start : time}} }))
         } else {
           setTaskInformation((value) => ({ ...value, startTime: time }));
         }
@@ -166,8 +166,8 @@ const AdCreatingOne = ({
           isEndOpen: false,
           endTime: time,
         });
-        if (taskInformation.time) {
-          setTaskInformation({...taskInformation, time : {...taskInformation.time, end : time}})
+        if (taskInformation.myAds) {
+          setTaskInformation( (value) => ({...value, task : {...value.task , time : {...value.task.time , end : time}} }))
         } else {
           setTaskInformation((value) => ({ ...value, endTime: time }));
         }
@@ -222,6 +222,37 @@ const AdCreatingOne = ({
     }
   }, [state.isOpen, dateObject, datePickerObject]);
 
+
+  const setTextDescription = useCallback( (e) => {
+    console.log("Вызов этой штуки")
+    if (taskInformation.myAds){
+      console.log("Вызов этой фигни")
+      setTaskInformation( (value) => ({...value , task : {...value.task , taskDescription : e }}) )
+    }
+    else{
+      setTaskInformation( (value) => ({...value, taskDescription : e}) )
+    }
+  } , [taskInformation , setTaskInformation] )
+
+  const setTextTitle = useCallback( (e) => {
+    if (taskInformation.myAds){
+      setTaskInformation( (value) => ({...value , task : {...value.task , taskName : e }}) )
+    }
+    else{
+      setTaskInformation((value) =>  ({...value , taskName : e}) )
+    }
+  } , [taskInformation , setTaskInformation] )
+
+  const setFile = useCallback( (e) => {
+    if (taskInformation.myAds){
+      setTaskInformation( (value) => ({...value , task : {...value.task , photos : e}}) )
+    }
+    else{
+      setTaskInformation( (value) => ({...value , photos : e}) )
+    }
+  } )
+
+
   return (
     <div
       {...props}
@@ -232,7 +263,7 @@ const AdCreatingOne = ({
       {MyInformation ? (
         ""
       ) : (
-        <Cap step={1} className={cl.Cap}>
+        <Cap step={1} className={cl.Cap}> 
           {" "}
           <Text className={cl.CapText}> Создайте объявление </Text>{" "}
         </Cap>
@@ -257,9 +288,7 @@ const AdCreatingOne = ({
         errorValue={mistakes.taskName || errorName ? true : false}
         text={taskInformation.taskName}
         placeholder={"Введите название задания"}
-        setText={(e) => {
-          setTaskInformation({ ...taskInformation, taskName: e });
-        }}
+        setText={setTextTitle}
       />
 
       <DescriptionAndPhoto
@@ -271,18 +300,10 @@ const AdCreatingOne = ({
         filesTitle={"ИЗОБРАЖЕНИЯ"}
         textPlaceholder={"Дайте подробное тз..."}
         text={taskInformation.taskDescription}
-        setText={(e) => {
-          setTaskInformation({ ...taskInformation, taskDescription: e });
-        }}
+        setText={setTextDescription}
         photos={taskInformation.photos}
         photosNames={taskInformation.photosNames}
-        setPhotos={(e) => {
-          if (!e) {
-            window.Telegram.WebApp.showAlert("ошибка фото!!");
-          } else {
-            setTaskInformation( (value) =>  ({...value, photos: e }));
-          }
-        }}
+        setPhotos={setFile}
       />
 
       {MyInformation ? (
