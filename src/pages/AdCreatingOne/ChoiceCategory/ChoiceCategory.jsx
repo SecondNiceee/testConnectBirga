@@ -25,6 +25,13 @@ const ChoiceCategory = ({
   text = "Прочие категории скоро появятся.."
 
 }) => {
+
+  useEffect( () => {
+    document.documentElement.style.overflowY = "hidden"
+    return () => {
+      document.documentElement.style.overflowY = "auto"
+    }
+  } , [] )
   
   useEffect( () => {
     

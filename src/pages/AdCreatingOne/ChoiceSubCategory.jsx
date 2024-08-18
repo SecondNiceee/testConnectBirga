@@ -10,7 +10,13 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 const place = translation("Поиск по подкатегориям")
 const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar}) => {
 
-
+  useEffect( () => {
+    document.documentElement.style.overflowY = "hidden"
+    return () => {
+      document.documentElement.style.overflowY = "auto"
+    }
+  } , [] )
+  
   useEffect( () => {
     
     const input = document.querySelectorAll('input');
