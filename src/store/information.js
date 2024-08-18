@@ -38,6 +38,7 @@ export const deleteAd = createAsyncThunk(
 export const putMyTask = createAsyncThunk(
   "inforation/putMyTask",
   async function (data) {
+    console.log("ЭТО ПОСТ")
     try {
       let answ = await axios.put(
         "https://back-birga.ywa.su/advertisement",

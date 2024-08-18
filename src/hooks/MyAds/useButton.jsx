@@ -241,6 +241,7 @@ export const useButton = ({
             text_color: "#606060",
           });
         }
+        MainButton.offClick(putTask)
         MainButton.onClick(putTask);
       }
       else{
