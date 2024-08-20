@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AdCreateFunc from "../../components/UI/AdCreateFunc/AdCreateFunc";
 import GreyText from "../../components/UI/GreyText/GreyText";
-import { changeMenuActive } from "../../store/menuSlice";
 import ShablonsWrap from "./components/ShablonsWrap/ShablonsWrap";
 import { CSSTransition } from "react-transition-group";
 import Shablon from "../Shablon/Shablon";
@@ -26,12 +25,6 @@ const AllShablons = () => {
     }
   } , [] )
 
-  const setMenuActive = useCallback(
-    (arg) => {
-      dispatch(changeMenuActive(arg));
-    },
-    [dispatch]
-  );
 
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
 

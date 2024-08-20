@@ -8,7 +8,7 @@ const values = ["Я исполнитель", "Я заказчик"];
 const keys = ["freelancer", "customer"];
 const modalNamesOne = ["Все", "В работе", "Просмотренные", "Непросмотренные", "Завершенные"].map(e => translation(e))
 const modalNamesTwo = ["Все" , "Активные" , "В работе" , "Завершенные"].map(e => translation(e))
-const MyAdsBlock = ({  nowValue, setNowKey,  greyWidth , greyIntWidth, setOneValue, setTwoValue  }) => {
+const MyAdsBlock = ({  nowValue, setNowKey,  greyWidth , greyIntWidth, setOneValue, setTwoValue , valueOne , valueTwo  }) => {
   const me = useSelector(state => state.telegramUserInfo)
   const responses = useSelector(state => state.responses.responses)
   const advertisements = useSelector(state => state.information.myAdsArray)
@@ -31,9 +31,9 @@ const MyAdsBlock = ({  nowValue, setNowKey,  greyWidth , greyIntWidth, setOneVal
       </div>
       <div className="YourAds">
         <Text>Ваши объявления</Text>
-        <ModalChoicer style = {nowValue === "customer" ? {display : "none"} : {}} values={["all" , "inProcess" , "watched" , "unWatched", "completed"]} names={modalNamesOne} setValue={setOneValue} defaultValue={"all"} />
+        <ModalChoicer style = {nowValue === "customer" ? {display : "none"} : {}} values={["all" , "inProcess" , "watched" , "unWatched", "completed"]} names={modalNamesOne} value = {valueOne} setValue={setOneValue} defaultValue={"all"} />
         
-        <ModalChoicer style = {nowValue === "customer" ? {} : {display : "none"}} values={["all" , "active", "inProcess" , "completed"]} names={modalNamesTwo} setValue={setTwoValue} defaultValue={"all"} />
+        <ModalChoicer style = {nowValue === "customer" ? {} : {display : "none"}} values={["all" , "active", "inProcess" , "completed"]} names={modalNamesTwo} value = {valueTwo} setValue={setTwoValue} defaultValue={"all"} />
         
       </div>
       <div className="pick">

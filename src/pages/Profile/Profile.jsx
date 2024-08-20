@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect,  useRef,  useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeMenuActive } from "../../store/menuSlice";
 import { motion } from "framer-motion";
 
 import { CSSTransition } from "react-transition-group";
@@ -63,11 +62,6 @@ const Profile = () => {
 
 
   
-  const setMenuActive = (arg) => {
-    dispatch(changeMenuActive(arg));
-  };
-  
-
   
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
@@ -96,7 +90,6 @@ const Profile = () => {
   
   aboutULocal = aboutU
   userInfoLocal = userInfo
-
 
 
 
@@ -423,6 +416,14 @@ const Profile = () => {
       });
     }
   } , [] )
+
+
+
+  const changer = useSelector( state => state.menuSlice.changer )
+  useEffect( () => {
+    setCardsActive(false)
+    setChangeActive(false)
+  } , [changer] )
 
 
 

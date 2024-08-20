@@ -10,6 +10,7 @@
     transition: 0.2s;
 }
 .responses__up-block{
+    margin-right: 17px;
     display: flex;
     justify-content: space-between;
     align-items: center;

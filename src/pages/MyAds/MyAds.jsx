@@ -3,7 +3,6 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 // import myImage from '../../images/desccription.png'
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { changeMenuActive } from "../../store/menuSlice";
 import "./MyAds.css";
 
 import { motion, transform } from "framer-motion";
@@ -100,16 +99,8 @@ const MyAds = ({isPage = false}) => {
 
 
 
-  const isMenuActive = useSelector((state) => state.menu.value);
   const dispatch = useDispatch()
 
-  const setMenuActive = useCallback(
-    (arg) => {
-      dispatch(changeMenuActive(arg));
-    },
-    [dispatch]
-  );
-  
 
 
   const [details, setDetails] = useState({
@@ -600,6 +591,23 @@ const MyAds = ({isPage = false}) => {
   } , [] )
 
 
+  const changer = useSelector( state => state.menuSlice.changer )
+
+  console.log(changer)
+
+  useEffect( () => {
+    setDetails(value => ({...value , isActive : false}))
+    setDetailsTwo( (value) => ({...value, isOpen:false}) )
+    setLastAdsTwo( (value) => ({...value , isOpen: false}) )
+    setMyResponse( (value) => ({...value, isOpen : false}) )
+    setOneCard( (value) => ({...value , isOpen : false}) )
+    setOpen( (value) => ({...value , isActive : false}) )
+    setOpenAboutReaction((value) => ({...value , isActive : false}))
+    setSecondPage( (value) => ({...value , isActive : false}) )
+  
+  } , [changer])
+
+
   return (
     <>
       { postStatus === "pending" ? (
@@ -628,7 +636,6 @@ const MyAds = ({isPage = false}) => {
             myAdsArray={filteredArray}
             setSecondPage={setSecondPage}
             setDetails={setDetailsTwo}
-            setMenuActive={setMenuActive}
           />
 
 
@@ -665,7 +672,6 @@ const MyAds = ({isPage = false}) => {
               setSecondPage={setSecondPage}
               setOpen={setOpen}
               task={myAdOneAdvertisement}
-              setMenuActive={setMenuActive}
               openAboutReactionFunc={setOpenAboutReaction}
             />
           </CSSTransition>

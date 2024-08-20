@@ -16,7 +16,7 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
       document.documentElement.style.overflowY = "auto"
     }
   } , [] )
-  
+
   useEffect( () => {
     
     const input = document.querySelectorAll('input');

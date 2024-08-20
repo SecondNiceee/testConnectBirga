@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const menuSlice = createSlice ( {
     name : 'menuSlice',
     initialState : {
-        value : false
+        changer : 0
     },
     reducers : {
-        changeMenuActive(state, action) {
-                state.value = action.payload
+        setChanger(state){
+            state.changer = new Date()
         }
     }
 
 })
-export const {changeMenuActive} = menuSlice.actions;
+export const {setChanger} = menuSlice.actions
 export default menuSlice.reducer

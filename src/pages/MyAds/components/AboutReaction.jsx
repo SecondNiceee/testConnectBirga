@@ -12,17 +12,9 @@ import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import Stage from "../../../components/UI/Stage/Stage";
 import Compact from "../../../components/UI/Compact/Compact";
 import { useDispatch } from "react-redux";
-import { changeMenuActive } from "../../../store/menuSlice";
 import makeNewFile from "../../../functions/newMakeFile";
 
 const AboutReaction = ({ responce , setOneCard,   ...props}) => {
-  const dispatch = useDispatch()
-  const setMenuActive = useCallback(
-    (arg) => {
-      dispatch(changeMenuActive(arg));
-    },
-    [dispatch]
-  );
 
   const [cards , setCards] = useState(null)
   useEffect( () => {

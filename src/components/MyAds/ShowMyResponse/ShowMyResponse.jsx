@@ -8,7 +8,6 @@ import { useDispatch } from "react-redux";
 import MyLoader from "../../UI/MyLoader/MyLoader";
 import MainButton from "../../../constants/MainButton";
 import axios from "axios";
-import { changeMenuActive } from "../../../store/menuSlice";
 import Text from "../../Text/Text";
 import translation from "../../../functions/translate";
 const menu = document.documentElement.querySelector(".FirstMenu");
@@ -93,12 +92,6 @@ const ShowMyResponse = ({
     response.user.id,
   ]);
 
-  const setMenuActive = useCallback(
-    (arg) => {
-      dispatch(changeMenuActive(arg));
-    },
-    [dispatch]
-  );
 
   const onImageClick = useCallback(() => {
     openAboutReaction({

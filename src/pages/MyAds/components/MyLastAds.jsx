@@ -3,7 +3,6 @@ import React, { memo, useCallback, useEffect } from "react";
 import Reaction from "./Reaction";
 import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
 import { useDispatch } from "react-redux";
-import { changeMenuActive } from "../../../store/menuSlice";
 import formatDate from "../../../functions/makeDate";
 import { postResponse } from "../../../store/responses";
 import Text from "../../../components/Text/Text";
@@ -15,12 +14,6 @@ const MyLastAds = ({
 }) => {
   const dispatch = useDispatch()
 
-  const setMenuActive = useCallback(
-    (arg) => {
-      dispatch(changeMenuActive(arg));
-    },
-    [dispatch]
-  );
   useEffect( () => {
     if (responce.isWatched !== "watched" && responce.isWatched !== "inProcess"){
       dispatch(postResponse(responce.id))

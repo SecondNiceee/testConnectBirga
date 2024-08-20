@@ -3090,7 +3090,7 @@ input {
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
-  z-index: 100000;
+  z-index: 10000;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   background-color: #18222d;
@@ -3446,6 +3446,10 @@ body {
   height: auto;
   width: 100%;
   overflow: auto;
+}
+
+.MuiSelect-select {
+  padding: 0px !important;
 }
 
 .MainContainer {

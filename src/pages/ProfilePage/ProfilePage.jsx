@@ -12,7 +12,6 @@ import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import { useDispatch } from "react-redux";
 import makeNewFile from "../../functions/newMakeFile";
 import Compact from "../../components/UI/Compact/Compact";
-import { changeMenuActive } from "../../store/menuSlice";
 import "../MyAds/MyAds.css"
 import BackButton from "../../constants/BackButton";
 import { useNavigate } from "react-router-dom";
@@ -53,12 +52,6 @@ const ProfilePage = ({ ...props }) => {
   window.Telegram.WebApp.disableVerticalSwipes();
 
   const dispatch = useDispatch();
-  const setMenuActive = useCallback(
-    (arg) => {
-      dispatch(changeMenuActive(arg));
-    },
-    [dispatch]
-  );
 
   const navigate = useNavigate()
 

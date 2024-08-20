@@ -60,7 +60,7 @@ const MyLoader = () => {
 
 const AnimatedSwitch = () => {
   const location = useLocation();
-  const isMenuActive = useSelector((state) => state.menu.value);
+  const isMenuActive = useSelector((state) => state.menuSlice.value);
 
   const menuRef = useRef(null)
 

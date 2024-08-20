@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeMenuActive } from "../../store/menuSlice";
 import FullPicker from "../../components/UI/FullPicker/FullPicker";
 import Choicer from "../../components/SavedPage/Choicer/Choicer";
 import { CSSTransition } from "react-transition-group";
@@ -101,12 +100,6 @@ const SavedPage = () => {
     isOpen : false,
     id : 0
     })
-  const setMenuActive = useCallback(
-    (set) => {
-      dispatch(changeMenuActive(set));
-    },
-    [dispatch]
-  );
 
   useEffect(() => {
     dispatch(fetchSavedAdvertisements([1]))

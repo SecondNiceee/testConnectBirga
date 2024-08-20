@@ -12,13 +12,13 @@ export default configureStore( {
     reducer : {
         information : information,
         ton : ton,
-        menu : menuSlice,
+        menuSlice : menuSlice,
         telegramUserInfo : telegramUserInfo,
         categorys : categorys,
         shablon : shablon,
         watchedAds : watchedAds,
         saves : saves,
-        responses : responses
+        responses : responses,
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

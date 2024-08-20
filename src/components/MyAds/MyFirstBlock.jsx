@@ -68,13 +68,6 @@ const MyFirstBlock = ({
               {photos.map((e, i) => {
                 return (
                   <img
-                    onClick={() => {
-                      setSlideActive({
-                        isActive: true,
-                        index: i,
-                        photos: photos,
-                      });
-                    }}
                     key={i}
                     src={URL.createObjectURL(e)}
                     style={

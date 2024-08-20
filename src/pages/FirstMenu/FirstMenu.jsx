@@ -1,52 +1,33 @@
 import React, { forwardRef, useCallback, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeMenuActive } from "../../store/menuSlice";
-import { Link, useLocation } from "react-router-dom";
+import { Link, unstable_HistoryRouter, useLocation, useNavigate } from "react-router-dom";
 import userPhoto from '../../images/userPhoto/user.png'
 import one from "../../images/menu/one.svg";
 import two from "../../images/menu/two.svg";
 import three from "../../images/menu/three.svg";
 import four from "../../images/menu/four.svg";
 import Text from "../../components/Text/Text";
+import { setChanger } from "../../store/menuSlice";
 
 const FirstMenu = forwardRef(({...props} , ref) => {
   const dispatch = useDispatch();
 
-  const isMenuActive = useSelector((state) => state.menu.value);
+  const isMenuActive = useSelector((state) => state.menuSlice.value);
 
-  const setMenuActive = (set) => {
-    dispatch(changeMenuActive(set));
-  };
-  const userInfo = useSelector((state) => state.telegramUserInfo);
 
   const myRef = useRef(null);
-  const vibrate = useCallback(() => {
-    window.navigator.vibrate(100);
-    if (myRef.current) {
-      myRef.current.style.backgroundColor = "#3D4855";
-    }
-    setTimeout(() => {
-      if (myRef.current) {
-        myRef.current.style.backgroundColor = "rgb(32, 48, 63)";
-      }
-    }, 100);
-    // eslint-disable-next-line
-  }, []);
-  const clickHandler = useCallback((e) => {
-    if (myRef.current) {
-      myRef.current.style.backgroundColor = "#3D4855";
-    }
-    // eslint-disable-next-line
-  }, []);
-  const touchEnd = useCallback((e) => {
-    if (myRef.current) {
-      myRef.current.style.backgroundColor = "rgb(32, 48, 63)";
-    }
-  }, []);
 
   const location = useLocation();
 
   const me = useSelector((state) => state.telegramUserInfo);
+
+  const navigate = useNavigate()
+  const onClick = useCallback( (par) => {
+    dispatch(setChanger())
+    navigate(par)
+    ref.current.classList.add("fuckNuubs")
+    ref.current.classList.remove("disappearAnimation")
+  } , [navigate] )
 
   return (
     <div ref={ref} className={isMenuActive ? "FirstMenu" : "FirstMenu hidden"}>
@@ -59,7 +40,7 @@ const FirstMenu = forwardRef(({...props} , ref) => {
             </div> */}
 
       <div className="MenuList">
-        <Link className={ (location.pathname === "/" )  ? "menuLink active" : "menuLink"}  to="/">
+        <div className={ (location.pathname === "/" )  ? "menuLink active" : "menuLink"} onClick={() => {onClick("/")}}  >
           <svg
             width="33"
             height="25"
@@ -75,7 +56,7 @@ const FirstMenu = forwardRef(({...props} , ref) => {
           </svg>
 
           <Text>Задания</Text>
-        </Link>
+        </div>
         <Link className={ location.pathname === "/AdCreating" ? "menuLink active" : "menuLink"} to="/AdCreating">
           <svg
             width="26"
@@ -93,12 +74,12 @@ const FirstMenu = forwardRef(({...props} , ref) => {
 
           <Text>Разместить</Text>
         </Link>
-        <Link className={ (location.pathname === "/Profile" || location.pathname === "/AllShablons") ? "menuLink active" : "menuLink"} to="/Profile">
+        <div className={ (location.pathname === "/Profile" || location.pathname === "/AllShablons") ? "menuLink active" : "menuLink"} onClick={() => {onClick("/Profile")}}>
           <div className="menuCircle">
             <img className="menuPhoto" src={me.photo.length > 0 ? me.photo : userPhoto} alt="" />
           </div>
-        </Link>
-        <Link className={ location.pathname === "/MyAds" ? "menuLink active" : "menuLink"} to="/MyAds">
+        </div>
+        <div className={ location.pathname === "/MyAds" ? "menuLink active" : "menuLink"} onClick={() => {onClick("/MyAds")}}>
           <svg
             width="30"
             height="23"
@@ -114,7 +95,7 @@ const FirstMenu = forwardRef(({...props} , ref) => {
           </svg>
 
           <Text>Мои задания</Text>
-        </Link>
+        </div>
         <Link className= { location.pathname === "/savedPage" ? "menuLink active" : "menuLink"} to="/savedPage">
           <svg
             width="24"

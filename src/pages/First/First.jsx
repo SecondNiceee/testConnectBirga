@@ -14,7 +14,6 @@ import "../MyAds/MyAds.css";
 import MainButton from "../../constants/MainButton";
 import AllTasks from "./AllTasks";
 import { useDispatch, useSelector } from "react-redux";
-import { changeMenuActive } from "../../store/menuSlice";
 import Responce from "./Responce";
 import { CSSTransition } from "react-transition-group";
 import pagesHistory from "../../constants/pagesHistory";
@@ -133,9 +132,7 @@ const First = ({ isPage = false }) => {
     }
   }, [filteredArr, filters, tonConstant]);
 
-  const isMenuActive = useSelector((state) => state.menu.value);
 
-  const mainRef = useRef(null);
 
   // const gotIt = useMemo( () => {
   //   if (secFilteredArray !== null && secFilteredArray.length > 0 && secFilteredArray[isDetailsActive.id]){
@@ -296,18 +293,6 @@ const First = ({ isPage = false }) => {
     }
   }, [step, isDetailsActive.isOpen]);
 
-  const setMenuActive = useCallback(
-    (set) => {
-      dispatch(changeMenuActive(set));
-    },
-    [dispatch]
-  );
-
-  const closeMenu = useCallback(() => {
-    if (isMenuActive) {
-      setMenuActive(false);
-    }
-  }, [isMenuActive, setMenuActive]);
 
   localResponce = responce;
 
@@ -620,6 +605,17 @@ const First = ({ isPage = false }) => {
   //     firstRef.current.style.height = "calc(100vh - 80px)"
   //   } , 600 )
   // } , [] )
+  const changer = useSelector( state => state.menuSlice.changer )
+
+  useEffect( () => {
+    setCardOpen((value) => ({...value , isOpen : false}))
+    setCategoryOpen(false)
+    setDetailsActive((value) => ({...value , isOpen : false}))
+    setProfile(false)
+    setResponce((value) => ({...value , isShablon : false , isShablonModalActive: false, shablonMaker : false}))
+    setStep(0)
+    setSubCategory(false)
+  } , [changer] )
 
   return (
     <div style={firsStyle} className="first-container">
@@ -627,7 +623,6 @@ const First = ({ isPage = false }) => {
         // style={style}
         ref={firstRef}
         className="First"
-        onClick={closeMenu}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -643,9 +638,10 @@ const First = ({ isPage = false }) => {
             setFilterBy={setFilterBy}
             ordersInformation={secFilteredArray}
             setDetailsActive={setDetailsActive}
-            setMenuActive={setMenuActive}
           />
         </div>
+
+        
 
         <CSSTransition in={categoryOpen} timeout={0} mountOnEnter unmountOnExit>
           <FirstChoiceCategory
