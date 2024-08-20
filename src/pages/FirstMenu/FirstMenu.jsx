@@ -96,7 +96,7 @@ const FirstMenu = forwardRef(({...props} , ref) => {
 
           <Text>Мои задания</Text>
         </div>
-        <Link className= { location.pathname === "/savedPage" ? "menuLink active" : "menuLink"} to="/savedPage">
+        <Link className= { location.pathname === "/savedPage" ? "menuLink active" : "menuLink"} onClick={() => {onClick("/savedPage")}}>
           <svg
             width="24"
             height="24"

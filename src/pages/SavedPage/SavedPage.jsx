@@ -415,6 +415,18 @@ const SavedPage = () => {
     [setCard]
   );
 
+  const changer = useSelector(state => state.menuSlice.changer)
+
+  useEffect( () => {
+    setCard((value) => ({...value , isOpen : false}))
+    setDetails( (value) => ({...value , isOpen : false}) )
+    setExtraDetails( (value) => ({...value , isOpen : false}) )
+    setMyResponse( (value) => ({...value,isActive : false}) )
+    setProfile(false)
+    setProfileOpen(false)
+    setResponce(value => ({...value , isOpen : false , isShablon : false ,isShablonModalActive : false , shablonMaker:false }))
+  } , [changer] )
+
 
   return (
     <div className="saved-wraper">
