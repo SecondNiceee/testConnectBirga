@@ -612,6 +612,7 @@ const MyAds = ({isPage = false}) => {
 
 
   console.log("Это секонд page :" + secondPage.task)
+  console.log(secondPage.task)
 
 
   return (
