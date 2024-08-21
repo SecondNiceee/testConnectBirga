@@ -15,12 +15,12 @@ const MyLastAds = ({
 }) => {
   const dispatch = useDispatch()
 
-  useEffect( () => {
-    if (responce.isWatched !== "watched" && responce.isWatched !== "inProcess"){
-      dispatch(postResponse(responce.id))
-    }
-    // eslint-disable-next-line
-  } , [] )
+  // useEffect( () => {
+  //   if (responce.isWatched !== "watched" && responce.isWatched !== "inProcess"){
+  //     dispatch(postResponse(responce.id))
+  //   }
+  //   // eslint-disable-next-line
+  // } , [] )
 
 
 

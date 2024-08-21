@@ -385,7 +385,26 @@ const First = ({ isPage = false }) => {
           },
         });
 
+
+        setDetailsActive((value) => ({ ...value, isOpen: false }));
+        setStep(0);
+        setProfile(false);
+        setCardOpen((value) => ({ ...value, isOpen: false }));
+        setResponce({
+          text: "",
+          photos: [],
+          name: "привет",
+          isShablonModalActive: false,
+          shablonIndex: 0,
+          isShablon: false,
+          shablonMaker: false,
+        });
+        menu.style.display = "flex"
+
         return par[1];
+
+
+        
       } catch (e) {
         console.log(e);
         window.Telegram.WebApp.showAlert(e);
@@ -442,20 +461,7 @@ const First = ({ isPage = false }) => {
             );
             postResponce(ordersInformation[isDetailsActive.id].id, 2144832745);
             // mainRef.current.classList.remove('secondStep')
-            setDetailsActive((value) => ({ ...value, isOpen: false }));
-            setStep(0);
-            setProfile(false);
-            setCardOpen((value) => ({ ...value, isOpen: false }));
-            setResponce({
-              text: "",
-              photos: [],
-              name: "привет",
-              isShablonModalActive: false,
-              shablonIndex: 0,
-              isShablon: false,
-              shablonMaker: false,
-            });
-            menu.style.display = "flex"
+
           }
         }
       );

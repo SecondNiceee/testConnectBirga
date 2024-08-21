@@ -36,7 +36,6 @@
     "Просмотренные" : "Watched",
     "Непросмотренные" : "Unwatched",
     "Завершенные" : "Completed",
-    "В работе" : "On the job",
     "Заказы" : "Orders",
     "Отклики" : "Feedbacks",
     "Кейсы" : "Cases",
@@ -166,5 +165,11 @@
     "НАЧАТЬ" : "START TIME" ,
     "ДЕДЛАЙН" : "DEADLINE" ,
     "Сохранить?" : "Save?" , 
-    "Сохранить новый кейс?" : "Save a new case?"
-}                                   
+    "Сохранить новый кейс?" : "Save a new case?",
+    "Создать новый шаблон" : "Create a new template",
+    "Новый шаблон" : "New template",
+    "НАЗВАНИЕ ШАБЛОНА" : "TEMPLATE NAME",
+    "Расскажите о себе и своем опыте работы. Прикрепите примеры." : "Tell us about yourself and your work experience. Attach examples.",
+    "Введите название шаблона" : "Enter the name of the template",
+    "Почему задание нужно доверить именно вам" : "Why the task should be entrusted to you"
+}                                    

@@ -79,7 +79,7 @@ const SavedPage = () => {
     shablonMaker: false,
   });
 
-  const isMenuActive = useSelector((state) => state.menu.value);
+
   const dispatch = useDispatch();
   const [nowKey, setNowKey] = useState("advertisment");
 

@@ -144,7 +144,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
         }}
         errorValue={false}
         underText={""}
-        placeholder={"Введите название шаблона"}
+        placeholder={translation("Введите название шаблона")}
       />
       <DescriptionAndPhoto
       className={'shablon-description'}
@@ -159,12 +159,10 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
         textTitle={"ТЕКСТ ОТКЛИКА"}
         filesTitle={""}
         MyInformation={false}
-        textPlaceholder={"Почему задание нужно доверить именно вам"}
+        textPlaceholder={translation("Почему задание нужно доверить именно вам")}
       />
 
-      <Text className="shablon-notice">
-        Расскажите о себе и своем опыте работы Прикрепите примеры
-      </Text>
+      <Text className="shablon-notice">Расскажите о себе и своем опыте работы. Прикрепите примеры.</Text>
 
 
 
