@@ -2,4 +2,6 @@
     opacity: 0.5;
     background-color: black;
     z-index: 700;
+    width: 100vw;
+    height: 100vh;
 }
