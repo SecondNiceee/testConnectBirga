@@ -718,6 +718,7 @@
     left: 100%;
     transform: translateX(100%);
     height: calc(calc(100vh) - 68px);
+    padding-bottom: 74px;
     position: fixed;
     width: 100vw;
     transition: 0.4s;

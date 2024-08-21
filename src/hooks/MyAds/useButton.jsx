@@ -257,6 +257,9 @@ export const useButton = ({
         MainButton.onClick(putTask);
       }
       else{
+        menu.classList.add("disappearAnimation")
+        menu.classList.remove("appearAnimation")
+          MainButton.show()
           MainButton.setParams({
             is_active: false, //неизвесетно
             color: "#2f2f2f",
