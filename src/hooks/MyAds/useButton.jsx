@@ -266,8 +266,10 @@ export const useButton = ({
       }
     } else {
       if (!isOpen.isActive && !myResponse.isOpen){
-        menu.classList.add("disappearAnimation")
-        menu.classList.remove("appearAnimation")
+        menu.classList.add("appearAnimation")
+        menu.classList.remove("disappearAnimation")
+        MainButton.hide();
+        MainButton.offClick(putTask)
         MainButton.setParams({
           is_active: false, //неизвесетно
           color: "#2f2f2f",
