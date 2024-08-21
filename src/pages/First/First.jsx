@@ -46,6 +46,8 @@ const buttonText = translation("ОТКЛИКНУТЬСЯ")
 const Yes = translation("Yes")
 const No = translation("No")
 
+const en = true
+
 
 const First = ({ isPage = false }) => {
   const firstRef = useRef(null);
@@ -354,11 +356,16 @@ const First = ({ isPage = false }) => {
       });
     };
   }, []);
-  const en = true
+
+
+  const [putStatus , setPutStatus] = useState(false)
+
+  
   const forwardFunction = useCallback(() => {
     async function post(par) {
       try {
         let im;
+        setPutStatus(true)
         for (let i = 0; i < 1; i++) {
           im = await axios.post("https://back-birga.ywa.su/response", par[0], {
             params: {
@@ -386,6 +393,7 @@ const First = ({ isPage = false }) => {
         });
 
 
+
         setDetailsActive((value) => ({ ...value, isOpen: false }));
         setStep(0);
         setProfile(false);
@@ -400,11 +408,13 @@ const First = ({ isPage = false }) => {
           shablonMaker: false,
         });
         menu.style.display = "flex"
+        
+        setPutStatus(false)
 
         return par[1];
 
 
-        
+
       } catch (e) {
         console.log(e);
         window.Telegram.WebApp.showAlert(e);
@@ -739,6 +749,7 @@ const First = ({ isPage = false }) => {
           // style = {{
           //   transform : "translateX(0px)"
           // }}
+          putStatus = {putStatus}
           responce={responce}
           setResponce={setResponce}
           orderInformation={

@@ -6,6 +6,8 @@ import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 import Block from "../../components/First/Block";
 import MainButton from "../../constants/MainButton";
 import translation from "../../functions/translate";
+import { CSSTransition } from "react-transition-group";
+import LoaderBlock from "../../components/First/LoaderBlock/LoaderBlock";
 
 
 let myResponse = {
@@ -15,7 +17,7 @@ let myResponse = {
 const textPlace = translation("Почему задание должны дать именно вам")
 const useTemplate = translation("Использовать шаблон")
 const menu = document.documentElement.querySelector(".FirstMenu")
-const Responce = forwardRef(({ orderInformation, responce, setResponce , left = "100%" , ...props   } , ref) => {
+const Responce = forwardRef(({ orderInformation, responce, setResponce , left = "100%" , putStatus, ...props   } , ref) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
 
 
@@ -57,7 +59,10 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
 
 
   return (
+    
     <div ref={ref} {...props} className="responce-wrapper">
+
+
 
       <Block {...orderInformation} />
       <MakePrivate
@@ -120,7 +125,14 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
                   />
           }
 
-     
+      <CSSTransition
+      in = {putStatus}
+      timeout={0}
+      unmountOnExit
+      mountOnEnter
+      >
+        <LoaderBlock />
+      </CSSTransition>
       
     </div>
   );
