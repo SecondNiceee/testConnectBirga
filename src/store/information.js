@@ -67,7 +67,7 @@ export const putMyTask = createAsyncThunk(
       localTask.photos = changedFiles;
       localTask.photosNames = answ.data.photos;
 
-      return localTask;
+      return {...localTask , myAds : true};
     } catch (e) {
       console.warn(e);
     }

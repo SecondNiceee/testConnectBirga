@@ -680,7 +680,7 @@ const First = ({ isPage = false }) => {
         mountOnEnter
         unmountOnExit
       >
-        <CardPage style={{ paddingBottom: "65px" }} card={isCardOpen.card} />
+        <CardPage style={{ paddingBottom: "74px" }} card={isCardOpen.card} />
       </CSSTransition>
 
       <CSSTransition
@@ -692,7 +692,7 @@ const First = ({ isPage = false }) => {
       >
         <AboutReaction
           style={{
-            paddingBottom: "65px",
+            paddingBottom: "74px",
           }}
           setOneCard={setCardOpen}
           responce={

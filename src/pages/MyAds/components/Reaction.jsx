@@ -29,6 +29,29 @@ const Reaction = ({
         return "years"
       }
     }
+    else{
+      let numb = Number(String(par).slice(String(par).length - 1 , String(par).length))
+      if ( Number(par) > 10 && Number(par) < 20){
+        return "лет"
+      }
+      else{
+  
+          if (numb > 1 && numb < 5){
+            return `года`
+          }
+          else{
+            if(numb === 1){
+              return `год`
+            }
+            else{
+              return "лет"
+            }
+          }
+        }
+      
+      
+      /// какая - то логика лет 
+    }
   } , []  )
   return (
     <>

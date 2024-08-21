@@ -1,17 +1,18 @@
 import React, { useCallback, useMemo } from "react";
 import Text from "../../../components/Text/Text";
+import translation from "../../../functions/translate";
 
 const AboutInfo = ({responce}) => {
   const counter = useCallback((par) => {
     if (Number(par) === 1){
-      return "Задание"
+      return translation("Задание")
     } 
     else{
       if (Number(par) > 1 && Number(par) < 5){
-        return "Задания"
+        return translation("Задания")
       }
       else{
-        return "Заданий"
+        return translation("Заданий")
       }
     }
 // eslint-disable-next-line
@@ -36,12 +37,12 @@ const AboutInfo = ({responce}) => {
       <div className="aboutDown">
         <div className="block">
           <Text>{responce.createNumber}</Text>
-          <Text className="aboutInfo__text">{counter(responce.createNumber)} создано</Text>
+          <p className="aboutInfo__text">{counter(responce.createNumber)} {translation("создано")}</p>
           
         </div>
         <div className="block">
-          <Text>{responce.user.completedAdvertisements.length}</Text>
-          <Text className="aboutInfo__text">{counter(responce.user.completedAdvertisements.length)} выполнено</Text>
+          <p>{responce.user.completedAdvertisements.length}</p>
+          <p className="aboutInfo__text">{counter(responce.user.completedAdvertisements.length)} {translation("выполнено")}</p>
         </div>
       </div>
 

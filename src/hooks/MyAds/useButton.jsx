@@ -130,7 +130,7 @@ export const useButton = ({
     }
 
     function compareTwoObject(a1, a2) {
-      if (JSON.stringify(a1) !== JSON.stringify(a2)) {
+      if (JSON.stringify({...a1 , myAds : true}) !== JSON.stringify({...a2 , myAds : true})) {
         return false;
       }
       if (JSON.stringify(a1.time) !== JSON.stringify(a2.time)) {
@@ -221,7 +221,7 @@ export const useButton = ({
     }
 
     if (details.isActive) {
-      if (!compareTwoObject(bedTask, details.task)) {
+      if (!compareTwoObject(secondPage.task, details.task)) {
         menu.classList.add("disappearAnimation")
         menu.classList.remove("appearAnimation")
         MainButton.show();
@@ -250,7 +250,6 @@ export const useButton = ({
         MainButton.onClick(putTask);
       }
       else{
-          alert("Я попал сюда")
           MainButton.setParams({
             is_active: false, //неизвесетно
             color: "#2f2f2f",

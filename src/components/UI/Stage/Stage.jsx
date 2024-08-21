@@ -1,32 +1,44 @@
 import React, { useMemo } from 'react';
 import cl from "./Stage.module.css"
 import Text from '../../Text/Text';
+const en = true
 const Stage = ({className, numberB}) => {
     const kk = useMemo(() => {
       if (!numberB || numberB === null){
         return "Не указан"
       }
       else{
-
         let number = String(numberB)
-          let numb = Number(number.slice(number.length - 1 , number.length))
-          if ( Number(number) > 10 && Number(number) < 20){
-              return " Лет"
-            }
-            else{
-        
-                if (numb > 1 && numb < 5){
-                  return " Года"
-                }
-                else{
-                  if(numb === 1){
-                    return " Год"
+        if (!en){
+
+            let numb = Number(number.slice(number.length - 1 , number.length))
+            if ( Number(number) > 10 && Number(number) < 20){
+                return " Лет"
+              }
+              else{
+          
+                  if (numb > 1 && numb < 5){
+                    return " Года"
                   }
                   else{
-                    return " Лет"
+                    if(numb === 1){
+                      return " Год"
+                    }
+                    else{
+                      return " Лет"
+                    }
                   }
                 }
-              }
+
+        }
+        else{
+            if (Number(number) === 1){
+              return " year"
+            }
+            else{
+              return " years"
+            }
+        }
       }
     } , [numberB])
     return (

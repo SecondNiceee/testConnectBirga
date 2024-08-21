@@ -366,9 +366,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         filesTitle={""}
         fileError={errors.fileError}
       />
-      <Text className="cards-underText">
-        Расскажите о себе и своем опыте работы. Прикрепите релевантные примеры
-      </Text>
+      <Text className="cards-underText">Расскажите о себе и своем опыте работы. Прикрепите релевантные примеры.</Text>
 
 
 

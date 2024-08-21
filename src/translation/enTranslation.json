@@ -156,6 +156,10 @@
     "ИЗОБРАЖЕНИЯ" : "IMAGES",
     "Сохранить изменения перед выходом?" : "Save changes before exiting?",
     "У вас дата начала меньше даты завершения." : "You have a start date less than an end date.",
-    "ОБНОВИТЬ" : "SAVE"
- 
+    "ОБНОВИТЬ" : "SAVE",
+    "Задание" : "Task",
+    "Заданий" : "Tasks",
+    "создано" : " created",
+    "выполнено" : "completed",
+    " Открыть в Telegram " : " Open in Telegram "
 } 
