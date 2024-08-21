@@ -65,7 +65,7 @@ export default function ModalChoicer({
                           {values.map((e, i) => {
                             return (
                               <Option
-                              className = {names[i] === name ? "Noob" : ""}
+                              className = {names[i] === name ? "base--selected" : ""}
                               onClick={() => {
                                 
                                 setValue(values[i])
@@ -195,6 +195,7 @@ AnimatedListbox.propTypes = {
 
 const Option = styled("li")(
   ({ theme }) => `
+  position : relative;
   font-family: "SF Pro Text 400";
   font-weight: 400;
   font-size: 17px;
