@@ -206,8 +206,8 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
   
     window.Telegram.WebApp
     .showPopup({
-      title: "Сохранить?",
-      message: `Сохранить новый кейс?`,
+      title: translation("Сохранить?"),
+      message: translation(`Сохранить новый кейс?`),
       buttons: [
         { id: "save", type: "default", text: Yes },
         { id: "delete", type: "destructive", text: No },

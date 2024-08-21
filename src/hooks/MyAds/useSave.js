@@ -10,7 +10,7 @@ export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sort
         if (details.task !== myAdsArray[secondPage.index] ) {
           window.Telegram.WebApp
             .showPopup({
-              title: "Сохранить?",
+              title: translation("Сохранить?"),
               message: translation("Сохранить изменения перед выходом?"),
               buttons: [
                 { id: "save", type: "default", text: Yes },

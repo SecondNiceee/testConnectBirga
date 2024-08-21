@@ -164,5 +164,7 @@
     " Открыть в Telegram " : " Open in Telegram " ,
     "Название задания" : "Task title" ,
     "НАЧАТЬ" : "START TIME" ,
-    "ДЕДЛАЙН" : "DEADLINE"
-}                                
+    "ДЕДЛАЙН" : "DEADLINE" ,
+    "Сохранить?" : "Save?" , 
+    "Сохранить новый кейс?" : "Save a new case?"
+}                                   

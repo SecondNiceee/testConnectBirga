@@ -651,7 +651,7 @@ const MyAds = ({isPage = false}) => {
               style = {{
                 height : "100vh",
                 overflowY : "scroll",
-                paddingBottom : "100px"
+                paddingBottom : "74px"
               }}
               mistakes={mistakes}
               className="AdCreatingMy"

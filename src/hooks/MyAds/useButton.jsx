@@ -266,14 +266,12 @@ export const useButton = ({
       }
     } else {
       if (!isOpen.isActive && !myResponse.isOpen){
-        menu.classList.add("appearAnimation")
-        menu.classList.remove("disappearAnimation")
-        MainButton.hide();
-        MainButton.offClick(putTask)
+        menu.classList.add("disappearAnimation")
+        menu.classList.remove("appearAnimation")
         MainButton.setParams({
-          color: "#2ea5ff",
-          text_color: "#ffffff",
-          is_active: true,
+          is_active: false, //неизвесетно
+          color: "#2f2f2f",
+          text_color: "#606060",
         });
       }
     }

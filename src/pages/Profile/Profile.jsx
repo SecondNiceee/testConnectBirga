@@ -210,7 +210,7 @@ const Profile = () => {
     if (!cardsActive && !changeActive){
       if ( compare2Objects(userInfoLocal.profile, aboutULocal) === false ){
           MainButton.setParams({
-            text : 'Сохранить',
+            text : translation('Сохранить'),
             is_visible : true
           })
           MainButton.onClick(save)
