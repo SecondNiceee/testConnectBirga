@@ -2916,7 +2916,6 @@ input {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 8px;
-  padding-bottom: 20px;
 }
 
 .block {
@@ -3475,7 +3474,6 @@ body {
   font-family: "SF Pro Display";
   font-weight: 500;
   font-size: 14px;
-  max-width: 80px;
   line-height: 120%;
   color: #fff;
 }

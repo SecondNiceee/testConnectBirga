@@ -35,15 +35,7 @@ const CatchDate = ({ className , whichOne , state, setState,errors, isMyInformat
     return 'translateX(' + (-1)*widthOfDocument.toString() + 'px)'  
   }
 
-  var options = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour : 'numeric',
-    minute : 'numeric',
-    timezone: 'UTC'
-  };
-
+  console.log(isMyInformation)
 return (
     <div
     {...props}
@@ -71,10 +63,8 @@ return (
       </label>
 
       <div ref={ref2} className={'PeriodInput'} >
-        {isMyInformation ? 
-
-            <GreyText className={'myAdsGreyText'}>НАЧАТЬ:</GreyText> 
-            :
+        {isMyInformation ? <GreyText className={'myAdsGreyText'}>НАЧАТЬ:</GreyText> 
+:
             <></>
         }
 

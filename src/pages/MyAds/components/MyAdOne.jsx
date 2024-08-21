@@ -66,9 +66,7 @@ const MyAdOne = ({
 
   const containerRef = useRef()
 
-  useEffect( () => {
-
-  } , [] )
+  
 
   return (
     <>

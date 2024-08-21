@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect,  useRef, useState,  } from "react";
 
 import { deleteAd } from "../../../store/information";
-import { useDispatch,  } from "react-redux";
+import { useDispatch, useSelector,  } from "react-redux";
 import BackButton from "../../../constants/BackButton";
 import PickerTwo from "./PickerTwo";
 import PickerOne from "./PickerOne";
@@ -62,6 +62,11 @@ const PickerContent = ({
   const pickerRef = useRef(null)
 
   const [viewsNumber, setViewsNumber] = useState(0)
+
+
+  const advertisementStatus = useSelector(state => state.information.myOrderStatus)
+
+  const responsesStatus = useSelector(state => state.responses.status)
   
   useEffect( () => {
     if (containerOne.current && containerTwo.current){
@@ -94,7 +99,7 @@ const PickerContent = ({
     return () => {
 
     }
-  }  , [nowValue, responsesArr, myAdsArray] )
+  }  , [nowValue, responsesArr, myAdsArray, advertisementStatus, responsesStatus] )
   
 
 
