@@ -129,7 +129,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
       unmountOnExit
       mountOnEnter
       >
-        <LoaderBlock top={String(ref.current.scrollTop) + "px"}  />
+        <LoaderBlock top={ ref.current ? String(ref.current.scrollTop) + "px" : "0px"}  />
       </CSSTransition>
       
     </div>
