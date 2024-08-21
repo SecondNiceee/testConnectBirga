@@ -56,7 +56,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
     }
   } , [] )
 
-
+  console.log(String(ref.current.scrollTop) + "px")
 
   return (
     
@@ -131,7 +131,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
       unmountOnExit
       mountOnEnter
       >
-        <LoaderBlock />
+        <LoaderBlock top={String(ref.current.scrollTop) + "px"}  />
       </CSSTransition>
       
     </div>

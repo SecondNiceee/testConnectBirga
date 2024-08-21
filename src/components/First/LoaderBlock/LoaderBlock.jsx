@@ -1,11 +1,17 @@
 import React from "react";
 import cl from "./LoaderBlock.module.css";
 import MyLoader from "../../UI/MyLoader/MyLoader";
-const LoaderBlock = () => {
+const LoaderBlock = ({top}) => {
+    console.log("Это топ " + top)
   return (
     <>
-      <div className={cl.wrapper}></div>
-      <MyLoader style={{ width: "100vw", height: "100vh", zIndex : "2000" }} />
+      <div style={{top : top}} className={cl.wrapper}></div>
+      <MyLoader style={{    width: "100vw",
+    height: "100vh",
+    zIndex: "2000",
+    position: "fixed",
+    left: "0px",
+    top: top}} />
     </>
   );
 };

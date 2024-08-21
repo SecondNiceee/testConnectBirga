@@ -68,6 +68,8 @@ const First = ({ isPage = false }) => {
     isOpen: false,
   });
 
+  const responseRef = useRef(null)
+
   useEffect(() => {
     if (isPage) {
       setTimeout(() => {
@@ -746,9 +748,7 @@ const First = ({ isPage = false }) => {
         unmountOnExit
       >
         <Responce
-          // style = {{
-          //   transform : "translateX(0px)"
-          // }}
+          ref={responseRef}
           putStatus = {putStatus}
           responce={responce}
           setResponce={setResponce}
