@@ -84,7 +84,10 @@ const AboutReaction = ({ responce , setOneCard,   ...props}) => {
       </Compact>
     
 
-      {cards === null ? <MyLoader/> :
+      {cards === null ? <MyLoader style = {{
+        transform : "translateX(-8px)",
+        minHeight : "150px"
+      }}/> :
       <ExampleWorks openFunc={openFunc}   cards={cards}/>}
 
 

@@ -44,7 +44,7 @@ export const useButton = ({
 
   const putTask = useCallback( () => {
       console.log("ВЫХОВ ЭТОЙ ШТУКИ")
-
+      console.log(details.task)
       let myFormData = new FormData();
       myFormData.append('title' , String(details.task.taskName))
       myFormData.append('description' , String(details.task.taskDescription))
