@@ -23,6 +23,8 @@ const keys = ["advertisment", "responces", "cards"];
 const buttonText = translation("ОТКЛИКНУТЬСЯ")
 const textButton = translation("Вы действительно хотите откликнуться?")
 const menu = document.documentElement.querySelector(".FirstMenu")
+const Yes = translation("Yes")
+const No = translation("No")
 const SavedPage = () => {
 
   useEffect( () => {
@@ -380,8 +382,8 @@ const SavedPage = () => {
           title: "Откликнуться?",
           message: textButton,
           buttons: [
-            { id: "save", type: "default", text: "Yes" },
-            { id: "delete", type: "destructive", text: "No" },
+            { id: "save", type: "default", text: Yes },
+            { id: "delete", type: "destructive", text: No },
           ],
         },
         (buttonId) => {

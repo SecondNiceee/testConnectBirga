@@ -22,6 +22,12 @@ let inputObject = {
 const menu = document.documentElement.querySelector(".FirstMenu")
 const textButton = translation("Добавить кейс")
 const saveText = translation("Сохранить")
+const Yes = translation("Yes")
+const No = translation("No")
+const caseTtile = translation("НАЗВАНИЕ КЕЙСА")
+const placeOne = translation("Придумайте название для нового кейса")
+const placeTwo = translation("Опишите в чем особенность ваших работ")
+const descriptionOfCase = translation("ОПИСАНИЕ КЕЙСА")
 const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
   useEffect( () => {
@@ -203,8 +209,8 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
       title: "Сохранить?",
       message: `Сохранить новый кейс?`,
       buttons: [
-        { id: "save", type: "default", text: "Yes" },
-        { id: "delete", type: "destructive", text: "No" },
+        { id: "save", type: "default", text: Yes },
+        { id: "delete", type: "destructive", text: No },
       ],
     } , (buttonId) => {
 
@@ -279,9 +285,9 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
             }}>Сохранить</button> */}
       <TaskName
-        placeholder={"Придумайте название для нового кейса"}
+        placeholder={placeOne}
         className={"cards-taskName"}
-        title={"НАЗВАНИЕ КЕЙСА"}
+        title={caseTtile}
         text={cardsSetting.title}
         description={cardsSetting.description}
         setText={(e) => {
@@ -295,7 +301,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         fileError={errors.fileError}
         className={"cards-descriptionAndPhoto"}
         text={cardsSetting.description}
-        textPlaceholder={"Опишите в чем особенность ваших работ"}
+        textPlaceholder={placeTwo}
         setText={(e) => {
           setCardsSetting({ ...cardsSetting, description: e });
         }}
@@ -304,11 +310,11 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
         }}
         photos={cardsSetting.photos}
         MyInformation={false}
-        textTitle={"ОПИСАНИЕ КЕЙСА"}
+        textTitle={descriptionOfCase}
         filesTitle={""}
       />
       <Text className="cards-underText">
-        Расскажите о себе и своем опыте работы Прикрепите релевантные примеры
+        Расскажите о себе и своем опыте работы. Прикрепите релевантные примеры.
       </Text>
 
 
@@ -323,13 +329,13 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
               setText : function(e){
                 setCardsSetting({...cardsSetting , dropfileLink : e})
               },
-              placeholder : 'Вставте ссылку на кейс в Dropfile',
+              placeholder : translation('Вставте ссылку на кейс в Dropfile'),
             }
             setModalActive(true)
           }
         }>
           <img src={dropfileIcon} alt="" />
-          <Text>{cardsSetting.dropfileLink.length > 0 ? cardsSetting.dropfileLink : 'Ссылка на Dprofile'}</Text>
+          <Text>{cardsSetting.dropfileLink.length > 0 ? cardsSetting.dropfileLink : translation('Ссылка на Dprofile')}</Text>
         </div>
         <div className="behans-link cards-link" onClick={
           () => {
@@ -339,13 +345,13 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
 
                 setCardsSetting({...cardsSetting , behanceLink : e})
               },
-              placeholder : 'Вставте ссылку на кейс в Behance',
+              placeholder : translation('Вставте ссылку на кейс в Behance'),
             }
             setModalActive(true)
           }
         }>
           <img src={behanceIcon} alt="" />
-          <Text>{localCardSetting.behanceLink.length > 0 ? localCardSetting.behanceLink : 'Ссылка на Behance'}</Text>
+          <Text>{localCardSetting.behanceLink.length > 0 ? localCardSetting.behanceLink : translation('Ссылка на Behance')}</Text>
         </div>
         <div className="behans-link cards-link" onClick={
           () => {
@@ -354,13 +360,13 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
               setText : function(e){
                 setCardsSetting({...cardsSetting , dribbbleLink : e})
               },
-              placeholder : 'Вставте ссылку на кейс в Dribble',
+              placeholder : translation('Вставте ссылку на кейс в Dribble'),
             }
             setModalActive(true)
           }
         }>
           <img src={dripleIcon} alt="" />
-          <Text>{localCardSetting.dribbbleLink.length > 0 ? localCardSetting.dribbbleLink : 'Ссылка на Dribbble'}</Text>
+          <Text>{localCardSetting.dribbbleLink.length > 0 ? localCardSetting.dribbbleLink : translation('Ссылка на Dribbble')}</Text>
         </div>
 
       </div>
@@ -391,7 +397,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
             setCatagoryChoiceOpen={setCatagoryChoiceOpen}
             categorys = {categorys}
             subCategorys={subCategorys}
-            text="Пока что можно создать карточки только с дизайном.."
+            text={translation("Пока что можно создать карточки только с дизайном..")}
           />
       </CSSTransition>
 

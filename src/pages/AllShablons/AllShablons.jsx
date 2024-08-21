@@ -12,7 +12,12 @@ import pagesHistory from "../../constants/pagesHistory";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import MainButton from "../../constants/MainButton";
 import MyAnimation from "../MyAds/components/MyAnimation";
+import translation from "../../functions/translate";
 const menu = document.documentElement.querySelector(".FirstMenu")
+
+
+const Yes = translation("Yes")
+const No = translation("No")
 const AllShablons = () => {
 
   window.Telegram.WebApp.disableVerticalSwipes();
@@ -71,8 +76,8 @@ const AllShablons = () => {
       title: "Удалить?",
       message: "Вы хотите удалить этот шаблон?",
       buttons: [
-        { id: "save", type: "default", text: "Yes" },
-        { id: "delete", type: "destructive", text: "No" },
+        { id: "save", type: "default", text: Yes },
+        { id: "delete", type: "destructive", text: No },
       ],
     } , (buttonId) => {
 

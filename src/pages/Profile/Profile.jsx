@@ -42,7 +42,8 @@ const en = true
 
 
 
-
+const Yes = translation("Yes")
+const No = translation("No")
 const menu = document.documentElement.querySelector(".FirstMenu")
 const Profile = () => {
 
@@ -371,8 +372,8 @@ const Profile = () => {
       title: "Удалить?",
       message: "Вы хотите удалить этот кейс?",
       buttons: [
-        { id: "save", type: "default", text: "Yes" },
-        { id: "delete", type: "destructive", text: "No" },
+        { id: "save", type: "default", text: Yes },
+        { id: "delete", type: "destructive", text: No },
       ],
     } , (buttonId) => {
 

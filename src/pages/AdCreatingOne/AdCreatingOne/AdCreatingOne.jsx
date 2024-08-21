@@ -12,6 +12,7 @@ import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
 import "../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css";
 import MyDatePicker from "../../../components/AdCreating/MyDatePicker/MyDatePicker";
 import Text from "../../../components/Text/Text";
+import translation from "../../../functions/translate";
 
 // eslint-disable-next-line
 
@@ -283,11 +284,11 @@ const AdCreatingOne = ({
 
       <TaskName
         // style = {mistakes.taskName ? {border : '1px solid red'} : {}}
-        title="Название задания"
+        title={translation("Название задания")}
         underText={MyInformation ? "" : "Например, разработать дизайн"}
         errorValue={mistakes.taskName || errorName ? true : false}
         text={taskInformation.taskName}
-        placeholder={"Введите название задания"}
+        placeholder={translation("Введите название задания")}
         setText={setTextTitle}
       />
 
@@ -296,9 +297,9 @@ const AdCreatingOne = ({
         taskInformation={taskInformation}
         setTaskInformation={setTaskInformation}
         className={cl.DescriptionAndPhoto}
-        textTitle={"Описание"}
-        filesTitle={"ИЗОБРАЖЕНИЯ"}
-        textPlaceholder={"Дайте подробное тз..."}
+        textTitle={translation("Описание")}
+        filesTitle={translation("ИЗОБРАЖЕНИЯ")}
+        textPlaceholder={translation("Дайте подробное тз...")}
         text={taskInformation.taskDescription}
         setText={setTextDescription}
         photos={taskInformation.photos}

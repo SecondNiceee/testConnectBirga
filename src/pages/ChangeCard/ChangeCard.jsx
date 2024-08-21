@@ -24,6 +24,8 @@ let cardStart;
 const menu = document.documentElement.querySelector(".FirstMenu")
 const changeText = translation("Изменить кейс")
 const saveText = translation("Сохранить")
+const Yes = translation("Yes")
+const No = translation("No")
 const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
 
@@ -211,8 +213,8 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
           title: "Изменить?",
           message: `Изменить этот кейс?`,
           buttons: [
-            { id: "save", type: "default", text: "Yes" },
-            { id: "delete", type: "destructive", text: "No" },
+            { id: "save", type: "default", text: Yes },
+            { id: "delete", type: "destructive", text: No },
           ],
         } , (buttonId) => {
     

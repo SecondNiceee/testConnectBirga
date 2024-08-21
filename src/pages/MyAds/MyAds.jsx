@@ -39,6 +39,9 @@ let localIsOpen;
 let localDetails;
 let detailsVar;
 
+const Yes = translation("Yes")
+const No = translation("No")
+
 const sureText = translation("Вы уверены, что хотите удалить этот отклик?")
 
 
@@ -206,7 +209,7 @@ const MyAds = ({isPage = false}) => {
       if (changingTask.time.end < changingTask.time.start) {
         timeError = true;
         if (isSet){
-          window.Telegram.WebApp.showAlert("У вас дата начала меньше даты завершения.")
+          window.Telegram.WebApp.showAlert(translation("У вас дата начала меньше даты завершения."))
         }
       }
     }
@@ -512,8 +515,8 @@ const MyAds = ({isPage = false}) => {
       title: "Удалить?",
       message: sureText,
       buttons: [
-        { id: "save", type: "default", text: "Yes" },
-        { id: "delete", type: "destructive", text: "No" },
+        { id: "save", type: "default", text: Yes },
+        { id: "delete", type: "destructive", text: No },
       ],
     } , (buttonId) => {
 

@@ -37,7 +37,7 @@
     transition: transform 0.4s;
     will-change: transform;
     width: 100vw;
-    margin-bottom: 60px;
+    margin-bottom: 96px;
 }
 .status{
     font-family: "SF Pro Display";
@@ -72,7 +72,6 @@
     // height: calc(100vh);
     // overflow-y: scroll;
     transition: 0.5s;
-    padding-bottom: 18px;
     min-width: 100vw;
 }
 
@@ -116,7 +115,6 @@
 
 
 .FirstMain { 
-  padding-bottom: 20px;
   width: calc(100vw - 32px);
   margin-top: calc(17px);
   display: flex;

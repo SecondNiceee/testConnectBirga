@@ -47,7 +47,7 @@ export default function ModalChoicer({
         <CustomButton  onClick = {clickHandler} >{name}</CustomButton>
 
         {isOpen && 
-                <div onTouchStart={closeFunction} className={cl.area}>
+                <div onTouchStart={closeFunction} onClick={closeFunction} className={cl.area}>
 
                 </div>
         }
@@ -64,10 +64,14 @@ export default function ModalChoicer({
 
                           {values.map((e, i) => {
                             return (
-                              <Option onClick={() => {
+                              <Option
+                              className = {names[i] === name ? "Noob" : ""}
+                              onClick={() => {
+                                
                                 setValue(values[i])
                                 setOpen(false)
                                 setName(names[i])
+                                
                               }} key={i} value={e}>
                                 {names[i]}
                               </Option>
@@ -161,41 +165,16 @@ const StyledButton = styled("button", { shouldForwardProp: () => true })(
 
 const Listbox = styled("ul")(
   ({ theme }) => `
-  z-index: 300;
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 0.875rem;
+  border-radius: 12px ;
+  top: 25px;
+  right: -7px;
   position : absolute;
-  right : -5px;
-  box-sizing: border-box;
-  padding: 0px;
-  margin: 12px 0;
-  min-width: 200px;
-  border-radius: 12px;
-  overflow: auto;
-  outline: 0px;
-  background: rgba(18, 18, 18);
-  border: 1px solid ${grey[700]};
-  color: ${grey[300]};
-  box-shadow: 0px 2px 4px rgba(0,0,0, 0.5);
-  .closed & {
-    opacity: 0;
-    transform: scale(0.95, 0.8);
-    transition: opacity 200ms ease-in, transform 200ms ease-in;
-  }
-  
-  .open & {
-    opacity: 1;
-    transform: scale(1, 1);
-    transition: opacity 100ms ease-out, transform 100ms cubic-bezier(0.43, 0.29, 0.37, 1.48);
-  }
-
-  .placement-top & {
-    transform-origin: bottom;
-  }
-
-  .placement-bottom & {
-    transform-origin: top;
-  }
+  z-index : 300;
+  backdrop-filter: blur(80px);
+  box-shadow: 0 8px 84px 0 rgba(0, 0, 0, 0.1);
+  display : flex;
+  flex-direction : column;
+  max-width : 190px;
   `
 );
 
@@ -216,12 +195,28 @@ AnimatedListbox.propTypes = {
 
 const Option = styled("li")(
   ({ theme }) => `
-  list-style: none;
-  padding: 8px;
-  border-radius: 8px;
-  cursor: default;
+  font-family: "SF Pro Text 400";
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 129%;
+  letter-spacing: -0.02em;
+  color: white;
 
+
+  background: #181d23;
+  list-style: none;
+  border-bottom: 0.50px solid rgba(84, 84, 88, 0.65);
+  
+  padding: 11px 16px;
+  width: 190px;
+  height: 44px;
+
+
+  &:nth-child(1){
+    border-radius: 12px 12px 0px 0px ;
+  }
   &:last-of-type {
+    border-radius: 0px 0px 12px 12px ;
     border-bottom: none;
   }
 

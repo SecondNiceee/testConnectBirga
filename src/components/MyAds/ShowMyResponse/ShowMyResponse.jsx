@@ -15,6 +15,8 @@ const menu = document.documentElement.querySelector(".FirstMenu");
 const textButtonOne = translation("ВЫПОЛНИЛ")
 const isTake = translation("Вы выполнили это задание?")
 const bigText = translation("Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. ")
+const Yes = translation("Yes")
+const No = translation("No")
 const ShowMyResponse = ({
   response = { advertisement: { user: {} }, id: 0, user: { fuck: "fuck" } },
   openDetails,
@@ -31,8 +33,8 @@ const ShowMyResponse = ({
           title: "Выбрать?",
           message: isTake,
           buttons: [
-            { id: "save", type: "default", text: "Yes" },
-            { id: "delete", type: "destructive", text: "No" },
+            { id: "save", type: "default", text: Yes },
+            { id: "delete", type: "destructive", text: No },
           ],
         },
         (buttonId) => {

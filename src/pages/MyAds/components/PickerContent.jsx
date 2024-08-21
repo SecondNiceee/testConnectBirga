@@ -5,6 +5,11 @@ import { useDispatch,  } from "react-redux";
 import BackButton from "../../../constants/BackButton";
 import PickerTwo from "./PickerTwo";
 import PickerOne from "./PickerOne";
+import translation from "../../../functions/translate";
+
+
+const Yes = translation("Yes")
+const No = translation("No")
 const PickerContent = ({
   myAdsArray,
   nowValue,
@@ -25,8 +30,8 @@ const PickerContent = ({
           title: "Удалить?",
           message: "Вы хотите удалить это задание?",
           buttons: [
-            { id: "save", type: "default", text: "Yes" },
-            { id: "delete", type: "destructive", text: "No" },
+            { id: "save", type: "default", text: Yes },
+            { id: "delete", type: "destructive", text: No },
           ],
         },
         (buttonId) => {

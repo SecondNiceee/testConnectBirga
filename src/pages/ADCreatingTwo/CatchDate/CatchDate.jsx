@@ -73,7 +73,7 @@ return (
       <div ref={ref2} className={'PeriodInput'} >
         {isMyInformation ? 
 
-            <GreyText className={'myAdsGreyText'}> НАЧАТЬ:  </GreyText> 
+            <GreyText className={'myAdsGreyText'}>НАЧАТЬ:</GreyText> 
             :
             <></>
         }
@@ -87,7 +87,7 @@ return (
           <div className={'left'}>
             <img className={'leftImage'} src={dateIcon} alt="" />
             <Text className={'text'}>
-               {state.startTime && state.startTime.getTime() !== new Date(0).getTime()  ?  formatDate(state.startTime) : 'Дата и время начала'  } 
+               {state.startTime && state.startTime.getTime() !== new Date(0).getTime()  ?  formatDate(state.startTime, true) : 'Дата и время начала'  } 
             </Text>
           </div>
           <img src={rightArrow} alt="" className={'arrowRight'} />
@@ -95,7 +95,7 @@ return (
 
 
         {isMyInformation ? 
-        <GreyText className={ 'myAdsGreyTextTwo'} > ДЕДЛАЙН:  </GreyText> 
+        <GreyText className={ 'myAdsGreyTextTwo'} >ДЕДЛАЙН:</GreyText> 
         :
         <>
         </>
@@ -111,7 +111,7 @@ return (
             <img className={'leftImage'} src={dateIcon} alt="" />
             <Text className={'text'}>
 
-            {state.endTime && String(state.endTime) !== String(errorDate) ? formatDate(state.endTime) : 'Дата и время дедлайна'  } 
+            {state.endTime && String(state.endTime) !== String(errorDate) ? formatDate(state.endTime, true) : 'Дата и время дедлайна'  } 
             </Text>
           </div>
           <img src={rightArrow} alt="" className={'arrowRight'} />

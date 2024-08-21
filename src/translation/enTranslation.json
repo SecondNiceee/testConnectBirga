@@ -137,5 +137,25 @@
     "Создать?" : "Create?",
     "Откликнуться?" : "Respond?",
     " Нет таких предложений " : "Didn't find any such announcements",
-    "Вы уверены, что хотите удалить этот отклик?" : "Are you sure you want to delete this feedback?"
-}
+    "Вы уверены, что хотите удалить этот отклик?" : "Are you sure you want to delete this feedback?",
+    "Yes" : "Да",
+    "No" : "Нет",
+    "Новый кейс" : "New case",
+    "НАЗВАНИЕ КЕЙСА" : "CASE NAME",
+    "Придумайте название для нового кейса" : "Come up with a name for the new case",
+    "Опишите в чем особенность ваших работ" : "Describe the specialty of your works.",
+    "ОПИСАНИЕ КЕЙСА" : "Case description",
+    "Вставте ссылку на кейс в Dropfile" : "Paste the link to the case into Dropfile",
+    "Ссылка на Dprofile" : "Dprofile link",
+    "Вставте ссылку на кейс в Behance" : "Paste a link to the case study in Behance",
+    "Ссылка на Behance" : "Behance link",
+    "Вставте ссылку на кейс в Dribble" : "Paste a link to the case in Dribble",
+    "Ссылка на Dribbble" : "Dribbble link",
+    "Пока что можно создать карточки только с дизайном.." : "For now, you can only create cards with a design...",
+    "Расскажите о себе и своем опыте работы. Прикрепите релевантные примеры." : "Tell us about yourself and your work experience. Attach relevant examples.",
+    "ИЗОБРАЖЕНИЯ" : "IMAGES",
+    "Сохранить изменения перед выходом?" : "Save changes before exiting?",
+    "У вас дата начала меньше даты завершения." : "You have a start date less than an end date.",
+    "ОБНОВИТЬ" : "SAVE"
+ 
+} 

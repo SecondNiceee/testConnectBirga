@@ -12,6 +12,8 @@ const choiceText = translation("ВЫБРАТЬ")
 const choiceTextTwo = translation("Перед выбором исполнителя\n ознакомьтесь с FAQ Биржи.")
 const lastChoice = translation("Вы уверены, что хотите выбрать\n этого исполнителя?")
 let isTake = translation("Выбрать?")
+const Yes = translation("Yes")
+const No = translation("No")
 export const useButton = ({
   setOpen,
   setSecondPage,
@@ -93,8 +95,8 @@ export const useButton = ({
                 title: isTake,
                 message: lastChoice,
                 buttons: [
-                  { id: "save", type: "default", text: "Yes" },
-                  { id: "delete", type: "destructive", text: "No" },
+                  { id: "save", type: "default", text: Yes },
+                  { id: "delete", type: "destructive", text: No },
                 ],
               },
               (buttonId) => {
@@ -229,7 +231,7 @@ export const useButton = ({
           is_active: true,
         });
         
-        MainButton.setText("ОБНОВИТЬ");
+        MainButton.setText(translation("ОБНОВИТЬ"));
 
         if (checkMistakes(details.task, false)) {
           MainButton.setParams({

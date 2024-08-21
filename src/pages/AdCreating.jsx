@@ -23,6 +23,8 @@ const textButton = translation("Вы уверены, что хотите соз�
 let create = translation("Создать?")
 let spet = 0;
 const menu = document.documentElement.querySelector(".FirstMenu")
+const Yes = translation("Yes")
+const No = translation("No")
 const AdCreating = () => {
   // const [taskInformation, setTaskInformation] = useState(
   //   useSelector((state) => state.information.taskInformation)
@@ -420,8 +422,8 @@ const translateText = translation("Вы уверены, что хотите со
             title: create,
             message: textButton,
             buttons: [
-              { id: "save", type: "default", text: "Yes" },
-              { id: "delete", type: "destructive", text: "No" },
+              { id: "save", type: "default", text: Yes },
+              { id: "delete", type: "destructive", text: No },
             ],
           } , (buttonId) => {
       

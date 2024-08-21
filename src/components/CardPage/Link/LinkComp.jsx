@@ -4,6 +4,9 @@ import behanceIcon from "../../../images/icons/behance.svg";
 import dripleIcon from "../../../images/icons/Dribble.svg";
 import dropfileIcon from "../../../images/icons/Dropfile.svg";
 import Text from '../../Text/Text';
+import translation from '../../../functions/translate';
+const Yes = translation("Yes")
+const No = translation("No")
 const LinkComp = ({navigate, link}) => {
     const imageLink = useMemo( () => {
         switch (navigate){
@@ -24,8 +27,8 @@ const LinkComp = ({navigate, link}) => {
           title: "Перейти?",
           message: `Вы уверены, что хотите перейти по ссылке ${par}?`,
           buttons: [
-            { id: "save", type: "default", text: "Yes" },
-            { id: "delete", type: "destructive", text: "No" },
+            { id: "save", type: "default", text: Yes },
+            { id: "delete", type: "destructive", text: No },
           ],
         } , (buttonId) => {
     

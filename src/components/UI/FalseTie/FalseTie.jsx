@@ -2,6 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import cl from './FalseTie.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { addAdvertisment, addCard, addResponce, deleteAdvertisement, deleteCard, deleteResponce } from '../../../store/saves';
+import translation from '../../../functions/translate';
+const Yes = translation("Yes")
+const No = translation("No")
 const FalseTie = ({className, id, task, navigate, agree, end = false, ...props}) => {
     const [active, setActive] = useState(false)
 
@@ -57,8 +60,8 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
               title: "Удалить?",
               message: "Удалить из избранного?",
               buttons: [
-                { id: "save", type: "default", text: "Yes" },
-                { id: "delete", type: "destructive", text: "No" },
+                { id: "save", type: "default", text: Yes },
+                { id: "delete", type: "destructive", text: No },
               ],
             } , (buttonId) => {
         
@@ -86,8 +89,8 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
               title: "Удалить?",
               message: "Удалить из избранного?",
               buttons: [
-                { id: "save", type: "default", text: "Yes" },
-                { id: "delete", type: "destructive", text: "No" },
+                { id: "save", type: "default", text: Yes },
+                { id: "delete", type: "destructive", text: No },
               ],
             } , (buttonId) => {
         
@@ -113,8 +116,8 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
               title: "Удалить?",
               message: "Удалить из избранного?",
               buttons: [
-                { id: "save", type: "default", text: "Yes" },
-                { id: "delete", type: "destructive", text: "No" },
+                { id: "save", type: "default", text: Yes },
+                { id: "delete", type: "destructive", text: No },
               ],
             } , (buttonId) => {
         

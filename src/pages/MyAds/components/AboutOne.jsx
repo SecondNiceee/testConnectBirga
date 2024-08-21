@@ -6,7 +6,13 @@ import AllReactions from "./AllReactions";
 import Block from "../../../components/First/Block";
 import { clearResponsesByA, fetchResponseByAdvertisement } from "../../../store/responses";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
+import translation from "../../../functions/translate";
 
+
+
+
+const Yes = translation("Yes")
+const No = translation("No")
 const AboutOne = ({
   task,
   setMenuActive,
@@ -33,8 +39,8 @@ const AboutOne = ({
           title: "Удалить?",
           message: "Вы хотите удалить это задание?",
           buttons: [
-            { id: "save", type: "default", text: "Yes" },
-            { id: "delete", type: "destructive", text: "No" },
+            { id: "save", type: "default", text: Yes },
+            { id: "delete", type: "destructive", text: No },
           ],
         },
         (buttonId) => {

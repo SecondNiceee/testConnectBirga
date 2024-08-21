@@ -43,6 +43,10 @@ let resp = translation("Откликнуться?")
 const textButton = translation("Вы действительно хотите откликнуться?")
 const buttonText = translation("ОТКЛИКНУТЬСЯ")
 
+const Yes = translation("Yes")
+const No = translation("No")
+
+
 const First = ({ isPage = false }) => {
   const firstRef = useRef(null);
 
@@ -424,8 +428,8 @@ const First = ({ isPage = false }) => {
           title: resp,
           message: textButton,
           buttons: [
-            { id: "save", type: "default", text: "Yes" },
-            { id: "delete", type: "destructive", text: "No" },
+            { id: "save", type: "default", text: Yes },
+            { id: "delete", type: "destructive", text: No },
           ],
         },
         (buttonId) => {

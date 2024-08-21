@@ -1,16 +1,20 @@
 import { useCallback } from "react";
 import { putMyTask } from "../../store/information";
+import translation from "../../functions/translate";
 
+const Yes = translation("Yes")
+const No = translation("No")
 export const useSave = ({detailsVar, myAdsArray, secondPage, checkMistakes, sortFiles, dispatch, setDetails, details }) =>{
+
     const save = useCallback( () => {
         if (details.task !== myAdsArray[secondPage.index] ) {
           window.Telegram.WebApp
             .showPopup({
               title: "Сохранить?",
-              message: "Сохранить изменения перед выходом?",
+              message: translation("Сохранить изменения перед выходом?"),
               buttons: [
-                { id: "save", type: "default", text: "Yes" },
-                { id: "delete", type: "destructive", text: "No" },
+                { id: "save", type: "default", text: Yes },
+                { id: "delete", type: "destructive", text: No },
               ],
             } , (buttonId) => {
     
