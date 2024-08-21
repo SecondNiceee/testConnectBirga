@@ -106,6 +106,12 @@ const ChoiceCategory = ({
     }
   }, [setCatagoryChoiceOpen]  )
 
+
+  const myFilteredCategory = useMemo( () => {
+    return realCategorys.filter(e =>  translation(e.category).includes(inputValue))
+  } , [realCategorys , inputValue] )
+  
+
   return (
     <div className={cl.ChoiceCategory}>
       <OneInput
@@ -116,7 +122,7 @@ const ChoiceCategory = ({
       />
       <div className={cl.categoryContainer}>
 
-        {realCategorys.map((e) => {
+        {myFilteredCategory.map((e) => {
           return (
             <div
               onClick={() => {

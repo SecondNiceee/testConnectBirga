@@ -105,6 +105,11 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
         }
     } )
 
+
+    const filteredSubCategorys = useMemo( () => {
+      return subCategorys.filter( e => translation(e.subCategory).includes(inputValue) )
+    } , [inputValue , subCategorys] )
+
     return (
     <div className="subCategory__container">
       <OneInput
@@ -117,7 +122,7 @@ const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTask
         paddingBottom : "20px"
       }}>
             <div className="sub__wrapper">
-                    {subCategorys.map((e, id) => {
+                    {filteredSubCategorys.map((e, id) => {
                         return (
                             <div key={id}  className="SubBlock" onClick={() => {
                         

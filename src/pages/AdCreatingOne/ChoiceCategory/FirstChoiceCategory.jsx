@@ -59,8 +59,9 @@ const FirstChoiceCategory = ({
   console.log(myCategorys)
 
   const myFilteredCategory = useMemo( () => {
-    return myCategorys.filter(e => e.category.includes(inputValue))
+    return myCategorys.filter(e =>  translation(e.category).includes(inputValue))
   } , [myCategorys , inputValue] )
+  
   return (
     <div {...props} className={cl.ChoiceCategory}>
       <OneInput
