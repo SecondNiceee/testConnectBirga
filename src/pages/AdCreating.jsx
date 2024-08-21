@@ -26,21 +26,13 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 const Yes = translation("Yes")
 const No = translation("No")
 const AdCreating = () => {
-  // const [taskInformation, setTaskInformation] = useState(
-  //   useSelector((state) => state.information.taskInformation)
-  // );
+
 const endText = translation("СОЗДАТЬ ЗАДАНИЕ")
 const continueText = translation("ДАЛЕЕ")
 
 const translateText = translation("Вы уверены, что хотите создать новое задание?")
 
 
-  // if (MainButton.isVisible){
-  //   menu.style.paddingBottom = "3px"
-  // }
-  // else{
-  //   menu.style.paddingBottom = "27px"
-  // }
   useEffect( () => {
     console.log("Это рендер AdCreating")
     
@@ -581,7 +573,7 @@ const translateText = translation("Вы уверены, что хотите со
             taskInformation={secondPage}
             tonConstant={tonConstant}
           />
-          <FirstDetails  style = {{position : "static" , minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage , category : firstPage.category.id , whichOne : whichOne } } />
+          <FirstDetails   style = {{position : "static" ,  minHeight : "unset" , overflowY : "unset" ,minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage , category : firstPage.category.id , whichOne : whichOne } } />
           {/* <AdCreatingThree taskInformation={secondPage} /> */}
         </>
       )}

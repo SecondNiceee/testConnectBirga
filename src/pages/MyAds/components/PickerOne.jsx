@@ -61,7 +61,7 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowVal
             
             <MyResponses text = {text} nowValue = {nowValue}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
             :
-            <MyLoader style = {{height : "60vh" , transforn : "translateX(-8px)"}}/> 
+            <MyLoader style = {{height : "60vh" , transform : "translateX(-16px)"}}/> 
              }
              <div ref={interRef} className="intersection-block">
 

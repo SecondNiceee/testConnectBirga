@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import formatDate from "../../../functions/makeDate";
 import { postResponse } from "../../../store/responses";
 import Text from "../../../components/Text/Text";
+import MainButton from "../../../constants/MainButton";
 const MyLastAds = ({
 
   openAboutReactionFunc,
@@ -26,6 +27,7 @@ const MyLastAds = ({
 
   return (
     <div
+      style={MainButton.isVisible ? {paddingBottom : "74px"} : {paddingBottom : "97px"} } 
       className={"last-ads"}
     >
 
