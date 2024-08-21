@@ -250,21 +250,13 @@ export const useButton = ({
         MainButton.onClick(putTask);
       }
       else{
-        if (!isOpen.isActive && !myResponse.isOpen){
+          alert("Я попал сюда")
           MainButton.setParams({
             is_active: false, //неизвесетно
             color: "#2f2f2f",
             text_color: "#606060",
           });
           MainButton.offClick(putTask)
-        }
-        else{
-          MainButton.setParams({
-            color: "#2ea5ff",
-            text_color: "#ffffff",
-            is_active: true,
-          });
-        }
       }
     } else {
       if (!isOpen.isActive && !myResponse.isOpen){

@@ -367,7 +367,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         fileError={errors.fileError}
       />
       <Text className="cards-underText">
-        Расскажите о себе и своем опыте работы Прикрепите релевантные примеры
+        Расскажите о себе и своем опыте работы. Прикрепите релевантные примеры
       </Text>
 
 
