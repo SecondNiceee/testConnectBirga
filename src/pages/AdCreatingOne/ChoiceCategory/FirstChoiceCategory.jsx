@@ -55,6 +55,12 @@ const FirstChoiceCategory = ({
       BackButton.offClick( closeCategory )
     }
   }, [setCatagoryChoiceOpen]  )
+
+  console.log(myCategorys)
+
+  const myFilteredCategory = useMemo( () => {
+    return myCategorys.filter(e => e.category.includes(inputValue))
+  } , [myCategorys , inputValue] )
   return (
     <div {...props} className={cl.ChoiceCategory}>
       <OneInput
@@ -64,7 +70,7 @@ const FirstChoiceCategory = ({
         className={cl.OneInput}
       />
       <div className={cl.categoryContainer}>
-        {myCategorys.map((e , i) => {
+        {myFilteredCategory.map((e , i) => {
           return (
             <div key={i}
               onClick={() => {

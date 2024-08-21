@@ -290,6 +290,7 @@ export const useButton = ({
 
     // eslint-disable-next-line
   }, [
+    myAdsArray,
     secondPage,
     isOpen.isActive,
     openAboutReaction.isActive,
