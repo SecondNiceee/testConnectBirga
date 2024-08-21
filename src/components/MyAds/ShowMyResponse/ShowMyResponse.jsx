@@ -116,11 +116,7 @@ const ShowMyResponse = ({
           <MyLoader style={{ width: "100vw", height: "calc(100vh)" }} />
         </div>
       ) : (
-        <div style={{
-          paddingBottom : "100px",
-          position : "fixed",
-          overflowY : "scroll"
-        }} className={cl.wrapper}>
+        <div style={MainButton.isVisible ? {paddingBottom : "74px"} : {paddingBottom : "97px"}} className={cl.wrapper}>
           <ResponseBlock
             isWatched={response.isWatched}
             index={index}

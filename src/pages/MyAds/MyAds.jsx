@@ -570,7 +570,6 @@ const MyAds = ({isPage = false}) => {
     setLastAdsTwo : setLastAdsTwo
   })
 
-  console.log(myAdsArray)
 
 
   useEffect( () => {
@@ -598,7 +597,6 @@ const MyAds = ({isPage = false}) => {
 
   const changer = useSelector( state => state.menuSlice.changer )
 
-  console.log(changer)
 
   useEffect( () => {
     setDetails(value => ({...value , isActive : false}))
@@ -611,6 +609,9 @@ const MyAds = ({isPage = false}) => {
     setSecondPage( (value) => ({...value , isActive : false}) )
   
   } , [changer])
+
+
+  console.log("Это секонд page :" + secondPage.task)
 
 
   return (

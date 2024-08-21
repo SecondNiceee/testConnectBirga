@@ -9,12 +9,13 @@
     background-color: #18222d;
     gap: 8px;
     width: 100vw;
-    z-index: 200;
+    z-index: 400;
     height: calc(100vh);
     transform: translateX(100%);
     transition: 0.4s;
     overflow-y: scroll;
     padding-bottom: 20px;
+    overflow-y: scroll;
 
     
 }

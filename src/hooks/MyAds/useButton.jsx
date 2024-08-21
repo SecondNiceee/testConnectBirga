@@ -292,6 +292,7 @@ export const useButton = ({
   }, [
     myAdsArray,
     secondPage,
+    secondPage.task,
     isOpen.isActive,
     openAboutReaction.isActive,
     isOpen,
