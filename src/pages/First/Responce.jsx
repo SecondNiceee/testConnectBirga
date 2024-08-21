@@ -56,8 +56,6 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
     }
   } , [] )
 
-  console.log(String(ref.current.scrollTop) + "px")
-
   return (
     
     <div ref={ref} {...props} className="responce-wrapper">
