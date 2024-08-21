@@ -1,7 +1,7 @@
 import { Triangle } from "react-loader-spinner";
 import cl from "./MyLoader.module.css"
 import { forwardRef } from "react";
-const MyLoader = forwardRef(({...props}, ref) => {
+const MyLoader = forwardRef(({text, ...props}, ref) => {
     return (
       <div
        {...props}
@@ -26,6 +26,7 @@ const MyLoader = forwardRef(({...props}, ref) => {
           wrapperStyle={{}}
           wrapperClass=""
         />
+        {text && <p className={cl.text}>{text}</p>}
       </div>
     );
   } );

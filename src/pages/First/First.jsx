@@ -368,6 +368,7 @@ const First = ({ isPage = false }) => {
       try {
         let im;
         setPutStatus(true)
+        responseRef.current.style.overflowY = "hidden"
         for (let i = 0; i < 1; i++) {
           im = await axios.post("https://back-birga.ywa.su/response", par[0], {
             params: {
@@ -411,6 +412,7 @@ const First = ({ isPage = false }) => {
         });
         menu.style.display = "flex"
         
+        responseRef.current.style.overflowY = "scroll"
         setPutStatus(false)
 
         return par[1];
