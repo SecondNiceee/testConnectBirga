@@ -130,6 +130,8 @@ const MyAds = ({isPage = false}) => {
   
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
 
+  console.log(secondPage.task)
+
   const filteredArray = useMemo( () => {
     switch (valueTwo){
       case "all":

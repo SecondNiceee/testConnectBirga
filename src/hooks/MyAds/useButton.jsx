@@ -13,7 +13,7 @@ const choiceTextTwo = translation("Перед выбором исполните�
 const lastChoice = translation("Вы уверены, что хотите выбрать\n этого исполнителя?")
 let isTake = translation("Выбрать?")
 const Yes = translation("Yes")
-const No = translation("No")
+const No = translation("No")  
 export const useButton = ({
   setOpen,
   setSecondPage,
@@ -228,6 +228,7 @@ export const useButton = ({
     }
 
     if (details.isActive) {
+      MainButton.setText(translation("ОБНОВИТЬ"));
       if (!compareTwoObject(secondPage.task, details.task)) {
         menu.classList.add("disappearAnimation")
         menu.classList.remove("appearAnimation")
@@ -238,7 +239,6 @@ export const useButton = ({
           is_active: true,
         });
         
-        MainButton.setText(translation("ОБНОВИТЬ"));
 
         if (checkMistakes(details.task, false)) {
           MainButton.setParams({
@@ -290,7 +290,6 @@ export const useButton = ({
 
     // eslint-disable-next-line
   }, [
-    secondPage.isActive,
     secondPage,
     isOpen.isActive,
     openAboutReaction.isActive,

@@ -336,7 +336,6 @@ const AdCreatingOne = ({
       />
 
       <CSSTransition
-        classNames={"modal"}
         in={isCategoryChoiceOpen}
         timeout={0}
         mountOnEnter
@@ -353,7 +352,6 @@ const AdCreatingOne = ({
       </CSSTransition>
 
       <CSSTransition
-        classNames={"modal-two"}
         in={isSubcategoryChoiceOpen}
         timeout={0}
         unmountOnExit
