@@ -25,7 +25,7 @@
 .dedline__block{
     display: flex;
     gap: 4px;
-    p{
+    p:nth-child(1) , p:nth-child(2){
         color: rgb(255, 255, 255);
         font-family: "SF Pro Display";
         font-size: 14.67px;

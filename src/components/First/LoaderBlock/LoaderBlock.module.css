@@ -1,7 +1,11 @@
 .wrapper{
-    opacity: 0.5;
-    background-color: black;
-    z-index: 700;
-    width: 100vw;
+    top: 0;
+    background-color: #000;
     height: 100vh;
+    position: fixed;
+    left: 0px;
+    /* left: 100vw; */
+    opacity: .5;
+    width: 100vw;
+    z-index: 700;
 }
