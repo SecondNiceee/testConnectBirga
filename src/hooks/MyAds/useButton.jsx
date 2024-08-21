@@ -294,7 +294,7 @@ export const useButton = ({
     isOpen.isActive,
     openAboutReaction.isActive,
     isOpen,
-    details.isActive,
+    details,
     navigate,
     save,
     setOneCard,
