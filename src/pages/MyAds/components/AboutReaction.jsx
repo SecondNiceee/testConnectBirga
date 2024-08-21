@@ -13,6 +13,7 @@ import Stage from "../../../components/UI/Stage/Stage";
 import Compact from "../../../components/UI/Compact/Compact";
 import { useDispatch } from "react-redux";
 import makeNewFile from "../../../functions/newMakeFile";
+import MainButton from "../../../constants/MainButton";
 
 const AboutReaction = ({ responce , setOneCard,   ...props}) => {
 
@@ -68,7 +69,7 @@ const AboutReaction = ({ responce , setOneCard,   ...props}) => {
 
 
   return (
-    <div className="aboutReaction" {...props}>
+    <div style={MainButton.isVisible ? {paddingBottom : "74px"} : {paddingBottom : "97px"}} className="aboutReaction" {...props}>
 
 
 
