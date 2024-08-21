@@ -191,7 +191,13 @@ export const useButton = ({
               }
             }
           } else {
-            save();
+            if (!compareTwoObject(secondPage.task, details.task)){
+              save();
+            }
+            else{
+              setDetails((value) => ({...value , isActive : false}))
+            }
+            
           }
         } else {
           setOpenAboutReaction({ ...openAboutReaction, isActive: false });

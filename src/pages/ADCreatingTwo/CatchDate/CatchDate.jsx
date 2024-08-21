@@ -6,6 +6,7 @@ import GreyText from "../../../components/UI/GreyText/GreyText";
 import './CatchDate.css'
 import Text from "../../../components/Text/Text";
 import formatDate from "../../../functions/makeDate";
+import translation from "../../../functions/translate";
 
 let errorDate = new Date(0)
 const CatchDate = ({ className , whichOne , state, setState,errors, isMyInformation,  ...props }) => {
@@ -63,8 +64,8 @@ return (
       </label>
 
       <div ref={ref2} className={'PeriodInput'} >
-        {isMyInformation ? <GreyText className={'myAdsGreyText'}>НАЧАТЬ:</GreyText> 
-:
+        {isMyInformation ? <p className={'myAdsGreyText'}>{translation("НАЧАТЬ")}:</p> 
+: 
             <></>
         }
 
@@ -85,7 +86,7 @@ return (
 
 
         {isMyInformation ? 
-        <GreyText className={ 'myAdsGreyTextTwo'} >ДЕДЛАЙН:</GreyText> 
+        <p className={ 'myAdsGreyTextTwo'} >{translation("ДЕДЛАЙН")}:</p> 
         :
         <>
         </>
