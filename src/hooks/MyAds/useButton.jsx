@@ -64,7 +64,7 @@ export const useButton = ({
 
     dispatch(putMyTask([myFormData, details.task.id , details.task]))
 
-      
+    setSecondPage( (value) => ({...value , task : {...details.task}}) )
     setDetails((value) => ({...value , isActive : false}))
     
   } , [details] ) 
@@ -291,7 +291,7 @@ export const useButton = ({
     // eslint-disable-next-line
   }, [
     myAdsArray,
-    secondPage,
+    secondPage.isActive,
     secondPage.task,
     isOpen.isActive,
     openAboutReaction.isActive,

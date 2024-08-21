@@ -143,7 +143,7 @@ const First = ({ isPage = false }) => {
 
   //     if (secFilteredArray[isDetailsActive.id].responces){
   //       if (secFilteredArray[isDetailsActive.id].responces.find((e) =>
-  //         Number(e.user.id) === 1392120153))
+  //         Number(e.user.id) === 2144832745))
 
   //       {
   //         return true
@@ -440,7 +440,7 @@ const First = ({ isPage = false }) => {
             window.Telegram.WebApp.HapticFeedback.notificationOccurred(
               "success"
             );
-            postResponce(ordersInformation[isDetailsActive.id].id, 1392120153);
+            postResponce(ordersInformation[isDetailsActive.id].id, 2144832745);
             // mainRef.current.classList.remove('secondStep')
             setDetailsActive((value) => ({ ...value, isOpen: false }));
             setStep(0);

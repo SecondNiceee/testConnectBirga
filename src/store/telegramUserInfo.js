@@ -126,7 +126,7 @@ export const fetchUserInfo = createAsyncThunk(
         let lastName = ""
         // let firstName = "Николай"
         // let lastName = "в"
-        let UserId = 1392120153
+        let UserId = 2144832745
         let user;
         try{
 
@@ -139,7 +139,7 @@ export const fetchUserInfo = createAsyncThunk(
         catch(e){
             await axios.post("https://back-birga.ywa.su/user/createByBot" , {}, {
                 params : {
-                    id : 1392120153
+                    id : 2144832745
                 }
             })
             user = await axios.get("https://back-birga.ywa.su/user/findOne", {

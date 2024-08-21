@@ -610,6 +610,14 @@ const MyAds = ({isPage = false}) => {
   
   } , [changer])
 
+  // const putStatus = useSelector((state) => state.information.putTaskStatus);
+
+  // useEffect( () => {
+  //   setDetails( (value) => ({...value , task : {putStatus , myAds : true}}) )
+  // } , [putStatus] )
+
+
+
 
   console.log("Это секонд page :" + secondPage.task)
   console.log(secondPage.task)
