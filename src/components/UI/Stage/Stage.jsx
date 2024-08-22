@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
 import cl from "./Stage.module.css"
 import Text from '../../Text/Text';
+import translation from '../../../functions/translate';
 const en = true
 const Stage = ({className, numberB}) => {
     const kk = useMemo(() => {
       if (!numberB || numberB === null){
-        return "Не указан"
+        return translation("Не указан")
       }
       else{
         let number = String(numberB)
@@ -44,7 +45,7 @@ const Stage = ({className, numberB}) => {
     return (
         <div className={ className ? [cl.main, className].join(' ') : cl.main}>
                 <div style={!numberB ? {opacity : 0.5} : {}} className={cl.one}>
-                    <Text>{!numberB ? "Не указан" : numberB}</Text>
+                    <Text>{!numberB ? translation("Не указан") : numberB}</Text>
                 </div>
                 {!numberB ? 
                 <>

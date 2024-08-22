@@ -42,7 +42,7 @@
     "Шаблоны откликов" : "Response templates",
     "О себе" : "About me",
     "Опишите свой опыт и подход к работе" : "Describe your approach to work",
-    "Стаж работы" : "Length of service",
+    "Стаж работы" : "Working experience",
     "Примеры работ" : "Examples of work",
     "Добавить кейс" : "Add a case",
     "Категория: Дизайн" : "Category : Design",
@@ -171,5 +171,9 @@
     "НАЗВАНИЕ ШАБЛОНА" : "TEMPLATE NAME",
     "Расскажите о себе и своем опыте работы. Прикрепите примеры." : "Tell us about yourself and your work experience. Attach examples.",
     "Введите название шаблона" : "Enter the name of the template",
-    "Почему задание нужно доверить именно вам" : "Why the task should be entrusted to you"
+    "Почему задание нужно доверить именно вам" : "Why the task should be entrusted to you",
+    "Создать шаблон" : "Create template",
+    "Шаблон" : "Template",
+    "Пользователь ничего не написал о себе" : "The user has not written anything about himself",
+    "Не указан" : "Not stated"
 }                                    

@@ -68,7 +68,7 @@ const ShablinBlock = ({
         </Component>
       ) : (
         <AdCreateFunc
-          text={"Создать шаблон"}
+          text={translation("Создать шаблон")}
           func={() => {
             setResponce((value) =>  ({ ...value , shablonMaker: true }));
           }}
