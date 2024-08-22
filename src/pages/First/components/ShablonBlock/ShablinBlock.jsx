@@ -20,11 +20,12 @@ const ShablinBlock = ({
   clearPhoto
 }) => {
   const [shablonSetting, setShablonSetting] = useState({
-    text: "",
-    name: "",
-    photos: [],
+    shablon : {
+      text: "",
+      name: "",
+      photos: [],
+    }
   });
-  let localShablonSetting = shablonSetting;
   return (
     <div className={className ? [cl.main, className].join(" ") : cl.main}>
       {shablonsArr.length > 0 ? (
@@ -90,12 +91,12 @@ const ShablinBlock = ({
             setResponce({
               ...responce,
               shablonMaker: false,
-              text: shablonSetting.text,
-              name: shablonSetting.name,
-              photos: shablonSetting.photos,
+              text: shablonSetting.shablon.text,
+              name: shablonSetting.shablon.name,
+              photos: shablonSetting.shablon.photos,
             });
           }}
-          shablon={localShablonSetting}
+          shablon={shablonSetting}
           setShablon={setShablonSetting}
         />
       </CSSTransition>
