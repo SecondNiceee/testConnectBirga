@@ -248,6 +248,7 @@ function App() {
   //     dispatch(fetchResponses([me, 1]));
   //   }
   // }, [dispatch, me]);
+  alert("Это тестовый бот лучший биржи")
 
   return (
     <BrowserRouter>
@@ -262,7 +263,7 @@ function App() {
     // Это ветка тестинг
     // Тут какое - то изменение
     // Тут огромное изменение
-  );
+    );
 }
 
 export default App;
