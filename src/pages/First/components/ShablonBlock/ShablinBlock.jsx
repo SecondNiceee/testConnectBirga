@@ -96,7 +96,7 @@ const ShablinBlock = ({
               photos: shablonSetting.shablon.photos,
             });
           }}
-          shablon={shablonSetting}
+          shablon={shablonSetting.shablon}
           setShablon={setShablonSetting}
         />
       </CSSTransition>
