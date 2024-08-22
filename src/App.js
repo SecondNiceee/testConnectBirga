@@ -259,7 +259,7 @@ function App() {
         </div>
       </div>
     </BrowserRouter>
-    // <SwiperComponent />
+    // Это ветка тестинг
   );
 }
 
