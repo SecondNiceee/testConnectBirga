@@ -131,6 +131,17 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
   } , [] )
 
 
+  useEffect( () => {
+    return () => {
+      MainButton.setParams({
+        color : '#2ea5ff',
+        text_color : '#ffffff',
+        is_active : true
+      })
+    }
+  } , [] )
+
+
   return (
     <div {...props} className="shablon-wrapper">
       <Text className="shablon-title">{put ? shablon.name : "Новый шаблон"}</Text>

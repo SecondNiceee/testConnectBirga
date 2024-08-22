@@ -538,6 +538,17 @@ const translateText = translation("Вы уверены, что хотите со
     )
   } , [error] )
 
+
+  useEffect( () => {
+    return () => {
+      MainButton.setParams({
+        color : '#2ea5ff',
+        text_color : '#ffffff',
+        is_active : true
+      })
+    }
+  } , [] )
+
   return (
     <motion.div
       ref={mainRef}
