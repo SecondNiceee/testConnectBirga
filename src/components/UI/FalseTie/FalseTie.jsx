@@ -57,8 +57,8 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
 
             window.Telegram.WebApp
             .showPopup({
-              title: "Удалить?",
-              message: "Удалить из избранного?",
+              title: translation("Удалить?"),
+              message: translation("Удалить из избранного?"),
               buttons: [
                 { id: "save", type: "default", text: Yes },
                 { id: "delete", type: "destructive", text: No },
@@ -86,8 +86,8 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
 
             window.Telegram.WebApp
             .showPopup({
-              title: "Удалить?",
-              message: "Удалить из избранного?",
+              title: translation("Удалить?"),
+              message: translation("Удалить из избранного?"),
               buttons: [
                 { id: "save", type: "default", text: Yes },
                 { id: "delete", type: "destructive", text: No },

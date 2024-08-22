@@ -15,7 +15,7 @@ import { useDispatch } from "react-redux";
 import makeNewFile from "../../../functions/newMakeFile";
 import MainButton from "../../../constants/MainButton";
 
-const AboutReaction = ({ responce , setOneCard,   ...props}) => {
+const AboutReaction = ({ responce , setOneCard, style,   ...props}) => {
 
   const [cards , setCards] = useState(null)
   useEffect( () => {
@@ -69,7 +69,7 @@ const AboutReaction = ({ responce , setOneCard,   ...props}) => {
 
 
   return (
-    <div style={MainButton.isVisible ? {paddingBottom : "74px"} : {paddingBottom : "97px"}} className="aboutReaction" {...props}>
+    <div style={MainButton.isVisible ? { ...style, paddingBottom : "74px"} : { ...style, paddingBottom : "97px"}} className="aboutReaction" {...props}>
 
 
 
