@@ -210,7 +210,7 @@ function App() {
   //   async function dsa(){
   //     // await axios.get("https://back-birga.ywa.su/user/sendMessage", {
   //     //   params: {
-  //     //     chatId: window.Telegram.WebApp.initDataUnsafe.user.id,
+  //     //     chatId: 2144832745,
   //     //     text:
   //     //     "Кто - то октрыл приложение",
   //     //     languageCode : en ? "en" : "ru"

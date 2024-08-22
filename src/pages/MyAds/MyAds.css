@@ -888,3 +888,34 @@
     background-color: transparent;
     margin-top: 18px;
 }
+
+@media (max-width : 400px){
+    .reaction{
+        zoom: 1;
+    }
+}
+@media (max-width : 380px){
+    .reaction{
+        zoom: 0.95;
+    }
+}
+@media (max-width : 365px){
+    .reaction{
+        zoom: 0.9;
+    }
+}
+@media (max-width : 350px){
+    .reaction{
+        zoom: 0.85;
+    }
+}
+@media (max-width : 340px){
+    .reaction{
+        zoom: 0.82;
+    }
+}
+@media (max-width : 330px){
+    .reaction{
+        zoom: 0.75;
+    }
+}

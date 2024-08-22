@@ -813,6 +813,16 @@
   transition: 0.3s;
 }
 
+@media (max-width: 360px) {
+  .First__block {
+    zoom: 0.95;
+  }
+}
+@media (max-width: 340px) {
+  .First__block {
+    zoom: 0.95;
+  }
+}
 .TaskDetails {
   min-height: 100vh;
   height: 100vh;

@@ -1,6 +1,7 @@
 import React, { memo, useEffect, useRef, useState } from 'react';
 import './TextAboutMe.css'
 import Text from '../../Text/Text';
+import translation from '../../../functions/translate';
 const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...props } ) => {
     const [hideAboutMe, setHideAboutMe] = useState({
       isActive : false,
@@ -32,8 +33,8 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
       else{
         refTwo.current.value = aboutU
         if (aboutU === ''){
-          refTwo.current.value = "Пользователь ничего не написал о себе"
-          areaRef.current.value = "Пользователь ничего не написал о себе"
+          refTwo.current.value = translation("Пользователь ничего не написал о себе")
+          areaRef.current.value = translation("Пользователь ничего не написал о себе")
           setEmpy(true)
         }
         else{
@@ -46,8 +47,8 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
       areaRef.current.style.borderRadius = "10px"
       if (aboutU === ''){
         setEmpy(true)
-          refTwo.current.value = "Пользователь ничего не написал о себе"
-          areaRef.current.value = "Пользователь ничего не написал о себе"
+          refTwo.current.value = translation("Пользователь ничего не написал о себе")
+          areaRef.current.value = translation("Пользователь ничего не написал о себе")
       }
       else{
         areaRef.current.value = aboutU

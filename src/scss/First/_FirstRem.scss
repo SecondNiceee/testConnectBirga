@@ -656,3 +656,14 @@
     transition: 0.30s;
 }
 
+@media(max-width : 360px){
+    .First__block{
+        zoom: 0.95;
+    }
+}
+
+@media(max-width : 340px){
+    .First__block{
+        zoom: 0.95;
+    }
+}
