@@ -259,7 +259,6 @@ function App() {
         </div>
       </div>
     </BrowserRouter>
-    // Это ветка тестинг
   );
 }
 
