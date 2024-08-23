@@ -8,13 +8,14 @@ const FullDescription = ({ fullDescription, ...props }) => {
     if (textAreaRef.current && refTwo.current) 
       textAreaRef.current.style.height = (refTwo.current.scrollHeight).toString() + 'px'
   } , [fullDescription] )
+  
   return (
     <>
       <textarea style={{
         position : "absolute",
         opacity : 0,
-        height : "17.66px",
-        width : "calc(100vw - 32px)"
+        height : "17.65px",
+        width : "calc(100vw - 66px)"
       }} ref={refTwo} readOnly value={fullDescription} className="FullDescriptionBottom"/>
       {fullDescription.length > 0 ? (
         <div  {...props}  className="FullDescription">
