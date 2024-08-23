@@ -56,6 +56,13 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
     }
   } , [] )
 
+  useEffect( () => {
+    document.documentElement.style.overflowY = "auto"
+    return () => {
+      document.documentElement.style.overflowY = "scroll"
+    }
+  } , [])
+
   return (
     
     <div ref={ref} {...props} className="responce-wrapper">
