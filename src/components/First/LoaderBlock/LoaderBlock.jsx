@@ -6,7 +6,7 @@ const LoaderBlock = ({top}) => {
   return (
     <>
       <div style={{top : top}} className={cl.wrapper}></div>
-      <MyLoader style={{    width: "100vw",
+      <MyLoader  style={{    width: "100vw",
     height: "100vh",
     zIndex: "2000",
     position: "fixed",

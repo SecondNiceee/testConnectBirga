@@ -13,6 +13,7 @@ const CategoryBlock = ({ name, value , func, ...props }) => {
       
   }  , [])
   const touchEnd = useCallback( (e) => {
+
       myRef.current.style.backgroundColor = "#2e3640"
        myRef.current.style.backgroundColor = "#2e3640"
   } , [] )
@@ -20,7 +21,6 @@ const CategoryBlock = ({ name, value , func, ...props }) => {
 
   return (
     <div style={{lineHeight : 0}} ref={myRef} onTouchStart={clickHandler} onTouchEnd={touchEnd} onClick={() => {
-        vibrate()
         func()
     }} {...props}  className={cl.wrapper}>
       <div className={cl.left}>

@@ -370,8 +370,8 @@ const Profile = () => {
 
     window.Telegram.WebApp
     .showPopup({
-      title: "Удалить?",
-      message: "Вы хотите удалить этот кейс?",
+      title: translation("Удалить?"),
+      message: translation("Вы хотите удалить этот кейс?"),
       buttons: [
         { id: "save", type: "default", text: Yes },
         { id: "delete", type: "destructive", text: No },

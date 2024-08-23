@@ -33,15 +33,13 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
 
 
     const subCategorys = useMemo(() => {
-        return subCategorysPar.filter(e => e.category.id === taskInformation.category.id && e.subCategory !== "Другое")
+      let copy = subCategorysPar.filter(e => e.category.id === taskInformation.category.id && e.subCategory !== "Другое")
+      copy.unshift({id : -1, subCategory : "Все"})
+        return copy
         // eslint-disable-next-line
     }, [])
-    useEffect( () => {
-        subCategorys.unshift({id : -1, subCategory : "Все"})
-    } , [] )
 
-
-    const [inputValue , setInputValue] = useState('')
+    const [inputValue , setInputValue] = useState("")
 
     // const sortSubCategory = useMemo(() => {
     //         let n = subCategory.filter((e) => {
@@ -61,7 +59,10 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
             BackButton.offClick(closeSebCategory)
         }
     } )
+    console.log(subCategorys)
     const filteredSubCategorys = useMemo( () => {
+      console.log(subCategorys)
+      console.log(subCategorys.filter(e => translation(e.subCategory).includes(inputValue)))
       return subCategorys.filter( e => translation(e.subCategory).includes(inputValue) )
     } , [inputValue , subCategorys] )
     return (
@@ -71,7 +72,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
         inputValue={inputValue}
         setInputValue={setInputValue}
         className='subCategory__oneInput'
-      />
+      />  
       <div className="sub__block">
             <div className="sub__wrapper">
                     {filteredSubCategorys.map((e, id) => {

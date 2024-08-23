@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeStatus, fetchTasksInformation } from "../../store/information";
 import CategoryBlock from "../../components/First/CategoryBlock/CategoryBlock";
 import InputBlock from "../../components/First/CategoryBlock/InputBlock";
+import translation from "../../functions/translate";
 // let count = 0
 const AllTasks = forwardRef(({
   setDetailsActive,
@@ -81,6 +82,13 @@ const AllTasks = forwardRef(({
     
   }, [setFilters] )
 
+  function format(e){
+    if (translation(e).length < 7){
+      return translation(e).trim()
+    }
+    return translation(e).slice(0, 7).trim() + ".."
+  }
+
 
 
   return (
@@ -92,8 +100,8 @@ const AllTasks = forwardRef(({
         userInfo={userInfo}
       />
               <div className="filtration-container">
-          <CategoryBlock func={openCategoryFunc} name={"Категория"} value={filters.category.category}/>
-          <CategoryBlock func={openSubCategoryFunc} name={"Подкатегория"}  value={filters.subCategory.subCategory}/>
+          <CategoryBlock func={openCategoryFunc} name={"Категория"} value={format(filters.category.category)}/>
+          <CategoryBlock func={openSubCategoryFunc} name={"Подкатегория"}  value={format(filters.subCategory.subCategory)}/>
           <InputBlock setValue={setValueFunc} value={String(filters.price)} />
         </div>
 
@@ -110,7 +118,7 @@ const AllTasks = forwardRef(({
                                                                                 
         </>
       ) : (
-        <FirstLoader />
+        <FirstLoader  />
       )}
 
     </div>
