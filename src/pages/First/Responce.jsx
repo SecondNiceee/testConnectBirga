@@ -1,4 +1,4 @@
-import React, { forwardRef, memo, useEffect, useState } from "react";
+import React, { forwardRef, memo, useCallback, useEffect, useState } from "react";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
 import {  useSelector } from "react-redux";
@@ -56,6 +56,19 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
     }
   } , [] )
 
+  useEffect( () => {
+    document.documentElement.style.overflowY = "auto"
+    return () => {
+      document.documentElement.style.overflowY = "scroll"
+    }
+  } , [])
+
+  const focusText = useCallback( () => {
+    ref.current.scrollTo(0, 100)
+    setTimeout( () => {
+      ref.current.scrollTo(0, 100)
+    } , 400 )
+  } , [] )
 
   return (
     
@@ -109,6 +122,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
        
           {(shablonsArr.length > 0 || !responce.isShablon) && 
                     <DescriptionAndPhoto
+                    textFocus = {focusText}
                     clearPhoto={clearPhoto}
                     className={"responce-descriprion"}
                     text={responce.text}

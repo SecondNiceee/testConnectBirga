@@ -17,6 +17,7 @@ const DescriptionAndPhoto = ({
   textPlaceholder,
   fileError,
   clearPhoto,
+  textFocus
 }) => {
 
   const hiddenRef = useRef(null)
@@ -29,9 +30,6 @@ const DescriptionAndPhoto = ({
 
   const miniRef = useRef(null)
 
-  const onFocusFunc = useCallback( () => {
-    miniRef.current.scrollIntoView({ block: "nearest", behavior: 'smooth' })
-  } , [] )
 
   const place = useMemo( () => {
     return translation(textPlaceholder)
@@ -53,7 +51,7 @@ const DescriptionAndPhoto = ({
         <textarea ref={hiddenRef} value={text} className={cl.hiddenText}/>
 
         <TextArea
-        onFocus = {onFocusFunc}
+        onFocus = {textFocus}
         ref={myRef}
           value={text}
           className={cl.DescriptionInput}
