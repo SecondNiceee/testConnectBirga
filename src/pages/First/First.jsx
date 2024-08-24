@@ -654,7 +654,7 @@ const First = ({ isPage = false }) => {
         exit={{ opacity: 0 }}
         transition={{ duration: 0.2 }}
       >
-        <div className="first-wrapper">
+        <div className="first-wrapper" style={{top : document.documentElement.scrollTop + "px"}}>
           <AllTasks
             setFilters={setFilters}
             setSubCategory={setSubCategory}
