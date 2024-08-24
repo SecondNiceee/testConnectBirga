@@ -195,6 +195,7 @@ const First = ({ isPage = false }) => {
         if (step === 0) {
           // mainRef.current.classList.add('secondStep')
           setStep(1);
+          document.documentElement.style.overflowY = "auto"
         }
       }
     }
@@ -208,6 +209,7 @@ const First = ({ isPage = false }) => {
         } else {
           if (step === 1) {
             setStep(0);
+            document.documentElement.style.overflowY = "hidden"
             MainButton.setParams({
               is_active: true,
               color: "#2ea5ff",
@@ -396,7 +398,7 @@ const First = ({ isPage = false }) => {
         });
 
 
-
+        document.documentElement.style.overflowY = "hidden"
         setDetailsActive((value) => ({ ...value, isOpen: false }));
         setStep(0);
         setProfile(false);
@@ -636,6 +638,7 @@ const First = ({ isPage = false }) => {
     setDetailsActive((value) => ({...value , isOpen : false}))
     setProfile(false)
     setResponce((value) => ({...value , isShablon : false , isShablonModalActive: false, shablonMaker : false}))
+    document.documentElement.style.overflowY = "hidden"
     setStep(0)
     setSubCategory(false)
   } , [changer] )
