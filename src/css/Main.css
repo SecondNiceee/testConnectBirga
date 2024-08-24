@@ -3487,41 +3487,36 @@ body {
 }
 
 .left-right-enter {
-  -webkit-transform: translateX(0%) !important;
-      -ms-transform: translateX(0%) !important;
-          transform: translateX(0%) !important;
+  -webkit-transform: translate3d(0%, 0%, 0%) !important;
+          transform: translate3d(0%, 0%, 0%) !important;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .left-right-enter-active {
-  -webkit-transform: translateX(0%) !important;
-      -ms-transform: translateX(0%) !important;
-          transform: translateX(0%) !important;
+  -webkit-transform: translate3d(0%, 0%, 0%) !important;
+          transform: translate3d(0%, 0%, 0%) !important;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .left-right-enter-done {
-  -webkit-transform: translateX(0%) !important;
-      -ms-transform: translateX(0%) !important;
-          transform: translateX(0%) !important;
+  -webkit-transform: translate3d(0%, 0%, 0%) !important;
+          transform: translate3d(0%, 0%, 0%) !important;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .left-right-exit {
-  -webkit-transform: translateX(0%) !important;
-      -ms-transform: translateX(0%) !important;
-          transform: translateX(0%) !important;
+  -webkit-transform: translate3d(0%, 0%, 0%) !important;
+          transform: translate3d(0%, 0%, 0%) !important;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
 .left-right-exit-active {
-  -webkit-transform: translateX(100%) !important;
-      -ms-transform: translateX(100%) !important;
-          transform: translateX(100%) !important;
+  -webkit-transform: translate3d(100%, 0%, 0%) !important;
+          transform: translate3d(100%, 0%, 0%) !important;
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }

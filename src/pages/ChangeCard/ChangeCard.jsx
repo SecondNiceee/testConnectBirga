@@ -164,10 +164,10 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
       
       let myFormData = new FormData()
       myFormData.append("title" , String(localCardSetting.title).trim())
-      myFormData.append("description" , String(localCardSetting.description))
-      myFormData.append("behance" , String(localCardSetting.behanceLink))
-      myFormData.append("dribble" , String(localCardSetting.dribbbleLink))
-      myFormData.append("dropFile" , String(localCardSetting.dropfileLink))
+      myFormData.append("description" , String(localCardSetting.description.trim()))
+      myFormData.append("behance" , String(localCardSetting.behanceLink.trim()))
+      myFormData.append("dribble" , String(localCardSetting.dribbbleLink.trim()))
+      myFormData.append("dropFile" , String(localCardSetting.dropfileLink.trim()))
       
       let files = sortFiles(cardsSetting.photosNames , cardsSetting.photos)
       files.addedArr.forEach((e,i) => {
