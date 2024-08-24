@@ -56,12 +56,12 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
     }
   } , [] )
 
-  useEffect( () => {
-    document.documentElement.style.overflowY = "auto"
-    return () => {
-      document.documentElement.style.overflowY = "scroll"
-    }
-  } , [])
+  // useEffect( () => {
+  //   document.documentElement.style.overflowY = "auto"
+  //   return () => {
+  //     document.documentElement.style.overflowY = "scroll"
+  //   }
+  // } , [])
 
   const focusText = useCallback( () => {
     ref.current.scrollTo(0, 100)
