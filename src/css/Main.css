@@ -3089,12 +3089,15 @@ input {
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;
+  position: fixed;
   left: 0;
+  height: 100vh;
   top: 0;
+  overflow-y: scroll;
   -webkit-transform: translateX(100%);
       -ms-transform: translateX(100%);
           transform: translateX(100%);
-  z-index: 10000;
+  z-index: 100000;
   -webkit-transition: 0.4s;
   transition: 0.4s;
   background-color: #18222d;

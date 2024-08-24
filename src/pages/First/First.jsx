@@ -147,7 +147,7 @@ const First = ({ isPage = false }) => {
 
   //     if (secFilteredArray[isDetailsActive.id].responces){
   //       if (secFilteredArray[isDetailsActive.id].responces.find((e) =>
-  //         Number(e.user.id) === 2144832745))
+  //         Number(e.user.id) === window.Telegram.WebApp.initDataUnsafe.user.id))
 
   //       {
   //         return true
@@ -473,7 +473,7 @@ const First = ({ isPage = false }) => {
             window.Telegram.WebApp.HapticFeedback.notificationOccurred(
               "success"
             );
-            postResponce(ordersInformation[isDetailsActive.id].id, 2144832745);
+            postResponce(ordersInformation[isDetailsActive.id].id, window.Telegram.WebApp.initDataUnsafe.user.id);
             // mainRef.current.classList.remove('secondStep')
 
           }
@@ -670,7 +670,6 @@ const First = ({ isPage = false }) => {
           <FirstChoiceCategory
             style={{
               paddingBottom: "100px",
-              top : firstRef.current ? {top : firstRef.current.scrollTop + "px"} : {}
             }}
             subCategorys={subCategorys}
             categorys={categorys}
@@ -684,7 +683,6 @@ const First = ({ isPage = false }) => {
           <FirstChoiceSubCategory
             style={{
               paddingBottom: "100px",
-              top : firstRef.current ? {top : firstRef.current.scrollTop + "px"} : {}
             }}
             setSubcategoryChoiceOpen={setSubCategory}
             subCategorysPar={subCategorys}
@@ -736,7 +734,7 @@ const First = ({ isPage = false }) => {
           isDetailsActive={isDetailsActive.isOpen}
           breakRef={firstRef}
           setProfile={setProfile}
-          style={pageValue && isPage ? { transform: "translateX(0%)" , top : document.documentElement.scrollTop + "px" } : {top : document.documentElement.scrollTop + "px"}}
+          style={pageValue && isPage ? { transform: "translateX(0%)" } : {}}
           // className={}
           orderInformation={detailsAdertisement}
         />
@@ -748,6 +746,7 @@ const First = ({ isPage = false }) => {
         timeout={400}
         // classNames="left-right"
         mountOnEnter
+        unmountOnExit
       >
         <Responce
           ref={responseRef}
