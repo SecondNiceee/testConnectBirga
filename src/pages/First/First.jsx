@@ -670,6 +670,7 @@ const First = ({ isPage = false }) => {
           <FirstChoiceCategory
             style={{
               paddingBottom: "100px",
+              top : firstRef.current ? firstRef.current.scrollTop + "px" : "0px"
             }}
             subCategorys={subCategorys}
             categorys={categorys}
@@ -683,6 +684,7 @@ const First = ({ isPage = false }) => {
           <FirstChoiceSubCategory
             style={{
               paddingBottom: "100px",
+              top : firstRef.current ? firstRef.current.scrollTop + "px" : "0px"
             }}
             setSubcategoryChoiceOpen={setSubCategory}
             subCategorysPar={subCategorys}

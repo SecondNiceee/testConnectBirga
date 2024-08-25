@@ -1,11 +1,17 @@
  $width : 0.32;
 $height : 0.32;
 
+
+.profile__wrapper{
+    transition: 0.4s;
+}
+
 input {
     background: none;
     padding: 0;
     outline:none;}
 .profile__container{
+    
     padding-bottom: 97px;
     width: 100vw;
     position: fixed;

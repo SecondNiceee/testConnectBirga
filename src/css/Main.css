@@ -850,22 +850,6 @@
           transform: translateX(0%);
 }
 
-.dedline__block {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 4px;
-}
-.dedline__block p:nth-child(1), .dedline__block p:nth-child(2) {
-  color: rgb(255, 255, 255);
-  font-family: "SF Pro Display";
-  font-size: 14.67px;
-  font-weight: 500;
-  line-height: 17.67px;
-  letter-spacing: 0%;
-  text-align: left;
-}
-
 .createdAt-block {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
@@ -1110,6 +1094,21 @@
 }
 .Task__container-one .DeadlineContainer p:nth-child(2), .Task__container-one .DeadlineContainer p:nth-child(3) {
   /* Default text */
+  color: rgb(255, 255, 255);
+  font-family: "SF Pro Display";
+  font-size: 14.67px;
+  font-weight: 500;
+  line-height: 17.67px;
+  letter-spacing: 0%;
+  text-align: left;
+}
+.Task__container-one .DeadlineContainer .dedline__block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 4px;
+}
+.Task__container-one .DeadlineContainer .dedline__block p:nth-child(1), .Task__container-one .DeadlineContainer .dedline__block p:nth-child(2) {
   color: rgb(255, 255, 255);
   font-family: "SF Pro Display";
   font-size: 14.67px;
@@ -1755,6 +1754,11 @@
   position: absolute;
   left: 100%;
   top: 0;
+}
+
+.profile__wrapper {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input {

@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, memo } from 'react';
 import i18n from 'i18next';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import enTranslation from "../../translation/enTranslation.json"
@@ -21,4 +21,4 @@ const Text = forwardRef(({ children, ...props} , ref) => {
     );
 });
 
-export default Text;
+export default memo(Text);

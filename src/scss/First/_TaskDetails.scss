@@ -22,19 +22,7 @@
         transform: translateX(0%);
     }
 }
-.dedline__block{
-    display: flex;
-    gap: 4px;
-    p:nth-child(1) , p:nth-child(2){
-        color: rgb(255, 255, 255);
-        font-family: "SF Pro Display";
-        font-size: 14.67px;
-        font-weight: 500;
-        line-height: 17.67px;
-        letter-spacing: 0%;
-        text-align: left;
-    }
-}
+
 .createdAt-block{
     justify-content: center;
     display: flex;
@@ -235,6 +223,19 @@
             line-height: 17.67px;
             letter-spacing: 0%;
             text-align: left;
+        }
+        .dedline__block{
+            display: flex;
+            gap: 4px;
+            p:nth-child(1) , p:nth-child(2){
+                color: rgb(255, 255, 255);
+                font-family: "SF Pro Display";
+                font-size: 14.67px;
+                font-weight: 500;
+                line-height: 17.67px;
+                letter-spacing: 0%;
+                text-align: left;
+            }
         }
     }
     .TaskDetails-row{
