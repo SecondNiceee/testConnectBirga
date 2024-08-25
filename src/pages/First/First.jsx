@@ -588,12 +588,12 @@ const First = ({ isPage = false }) => {
   const firsStyle = useMemo(() => {
     if (step === 1) {
       return {
-        transform: "translateX(-100vw)",
+        transform: "translateX(-200vw)",
       };
     } else {
       if (isDetailsActive.isOpen)
         return {
-          transform: "translateX(0vw)",
+          transform: "translateX(-100vw)",
         };
       else {
         return {};
@@ -668,7 +668,7 @@ const First = ({ isPage = false }) => {
 
         <CSSTransition in={categoryOpen} timeout={0} mountOnEnter unmountOnExit>
           <FirstChoiceCategory
-            style={{
+              style={{
               paddingBottom: "100px",
               top : firstRef.current ? firstRef.current.scrollTop + "px" : "0px"
             }}
@@ -730,7 +730,7 @@ const First = ({ isPage = false }) => {
       <CSSTransition
         in={isDetailsActive.isOpen}
         timeout={400}
-        classNames="left-right"
+        // classNames="left-right"
       >
         <FirstDetails
           isDetailsActive={isDetailsActive.isOpen}

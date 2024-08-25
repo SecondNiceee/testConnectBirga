@@ -3330,6 +3330,13 @@ input {
   margin-top: 8px;
 }
 
+.shablon-container {
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s;
+}
+
 .saved-wraper {
   padding-left: 16px;
   padding-right: 16px;

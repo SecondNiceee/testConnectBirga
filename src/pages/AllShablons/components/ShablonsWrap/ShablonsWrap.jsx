@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import Shablon from '../Shablon/Shablon';
 import cl from './ShablonsWrap.module.css'
 
@@ -19,4 +19,4 @@ const ShablonsWrap = ({shablonsArr, putFunction, deleteFunction, className}) => 
     );
 };
 
-export default ShablonsWrap;
+export default memo(ShablonsWrap);

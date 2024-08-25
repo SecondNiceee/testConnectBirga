@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { memo, useCallback, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import cl from "./AdCreateFunc.module.css";
 import plus from "../../../images/icons/plus-circle.svg";
@@ -63,4 +63,4 @@ const touchEnd = useCallback( (e) => {
   );
 };
 
-export default AdCreateFunc;
+export default memo(AdCreateFunc);

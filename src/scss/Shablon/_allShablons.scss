@@ -12,6 +12,7 @@
     left: 0;
     top: 0;
     min-height: calc(100vh);
+    
     .all-shablons-func{
     }
     .shablon-wrapper-grey{
@@ -21,4 +22,7 @@
     .shablons-wrap{
         margin-top: 8px;
     }
+}
+.shablon-container{
+    transition: transform 0.4s;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import sad from "../../../animation/sadAnimation.json";
 import { useLottie } from "lottie-react";
 import Text from "../../../components/Text/Text";
@@ -34,4 +34,4 @@ const MyAnimation = ({
   );
 };
 
-export default MyAnimation;
+export default memo(MyAnimation);

@@ -180,5 +180,6 @@
     "Удалить?" : "Delete?",
     "Удалить из избранного?" : "Remove from favorites?",
     "Вы хотите удалить этот шаблон?" : "Do you want to delete this template?",
-    "Вы хотите удалить этот кейс?" : "Do you want to delete this case?"
+    "Вы хотите удалить этот кейс?" : "Do you want to delete this case?",
+    "Ccылка на Dropfile" : "Dropfile link"
 }                                    

@@ -79,6 +79,12 @@ const Profile = () => {
 
   const [changeActive, setChangeActive] = useState(false);
 
+  const changer = useSelector((state) => state.menuSlice.changer);
+  useEffect(() => {
+    setCardsActive(false);
+    setChangeActive(false);
+  }, [changer]);
+
   const [aboutU, setAboutU] = useState({
     ...userInfo.profile,
     stage: userInfo.profile.stage,
@@ -346,22 +352,18 @@ const Profile = () => {
     }
   }, []);
 
-  const changer = useSelector((state) => state.menuSlice.changer);
-  useEffect(() => {
-    setCardsActive(false);
-    setChangeActive(false);
-  }, [changer]);
+
 
   const profileStyle = useMemo(() => {
     if (cardsActive || changeActive) {
       return {
-        transform: "translateX(-100vw)",
+        transform: "translate3d(-100vw , 0 , 0)",
       };
     }
     return {
-      transform: "translateX(0px)",
+      transform: "translate3d(0, 0, 0)",
     };
-  }, [cardsActive, changeActive]);
+  }, [cardsActive, changeActive, changer]);
 
   return (
     <>
@@ -472,7 +474,7 @@ const Profile = () => {
             />
           </CSSTransition>
 
-          
+
         </motion.div>
       )}
     </>
