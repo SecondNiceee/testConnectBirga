@@ -610,6 +610,17 @@ const MyAds = ({isPage = false}) => {
   
   } , [changer])
 
+  const myAdsStyle = useMemo( () => {
+    if (details.isActive){
+      return {
+        transform : "translate3d(-100vw , 0 , 0)"
+      }
+    }
+    return {
+      transform : "tranlate3d(0, 0, 0)"
+    }
+  } )
+
   // const putStatus = useSelector((state) => state.information.putTaskStatus);
 
   // useEffect( () => {
@@ -629,6 +640,7 @@ const MyAds = ({isPage = false}) => {
         <MyLoader />
       ) : (
         <motion.div
+        style={myAdsStyle}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.1 }}
@@ -657,13 +669,14 @@ const MyAds = ({isPage = false}) => {
 
 
 
-        <CSSTransition classNames="details" in={details.isActive} timeout={300}
+        <CSSTransition classNames="details" in={details.isActive} timeout={400}
           mountOnEnter unmountOnExit>
             <AdCreatingOne
               style = {{
                 height : "100vh",
                 overflowY : "scroll",
-                paddingBottom : "74px"
+                paddingBottom : "74px",
+                left : "100vw"
               }}
               mistakes={mistakes}
               className="AdCreatingMy"
@@ -762,7 +775,7 @@ const MyAds = ({isPage = false}) => {
       <CSSTransition
             in={detailsTwo.isOpen}
             timeout={400}
-            classNames="left-right"
+            // classNames="left-right"
             mountOnEnter
             unmountOnExit
           >
