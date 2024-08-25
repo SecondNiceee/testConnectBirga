@@ -3094,7 +3094,7 @@ input {
   padding-left: 16px;
   padding-right: 16px;
   position: fixed;
-  left: 0;
+  left: 100vw;
   height: 100vh;
   top: 0;
   overflow-y: auto;
