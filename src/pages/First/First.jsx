@@ -602,7 +602,7 @@ const First = ({ isPage = false }) => {
   }, [step, isDetailsActive.isOpen]);
 
   useEffect(() => {
-    const input = document.querySelectorAll('input');
+    const input = document.querySelectorAll('input'); 
     const textarea = document.querySelectorAll("textarea");
     for (let smallInput of input) {
       smallInput.addEventListener("focus", () => {
@@ -701,7 +701,7 @@ const First = ({ isPage = false }) => {
         mountOnEnter
         unmountOnExit
       >
-        <CardPage style={{ paddingBottom: "74px" }} card={isCardOpen.card} />
+        <CardPage style={{ paddingBottom: "74px" , left : "100vw" }} card={isCardOpen.card} />
       </CSSTransition>
 
       <CSSTransition
@@ -714,6 +714,7 @@ const First = ({ isPage = false }) => {
         <AboutReaction
           style={{
             paddingBottom: "74px",
+            left : "100vw"
           }}
           setOneCard={setCardOpen}
           responce={
@@ -736,7 +737,7 @@ const First = ({ isPage = false }) => {
           isDetailsActive={isDetailsActive.isOpen}
           breakRef={firstRef}
           setProfile={setProfile}
-          style={pageValue && isPage ? { transform: "translateX(0%)" } : {}}
+          // style={pageValue && isPage ? { transform: "translateX(0%)" } : {}}
           // className={}
           orderInformation={detailsAdertisement}
         />
