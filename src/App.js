@@ -202,8 +202,6 @@ function App() {
   const dispatch = useDispatch();
 
   window.Telegram.WebApp.expand();
-
-  console.log("Привет")
   // useEffect( () => {
   //   async function dsa(){
   //     // await axios.get("https://back-birga.ywa.su/user/sendMessage", {
