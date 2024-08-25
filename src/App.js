@@ -204,8 +204,7 @@ function App() {
   window.Telegram.WebApp.expand();
   const me = useSelector((state) => state.telegramUserInfo);
 
-
-
+  console.log("Привет")
   // useEffect( () => {
   //   async function dsa(){
   //     // await axios.get("https://back-birga.ywa.su/user/sendMessage", {
