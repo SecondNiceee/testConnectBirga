@@ -8,6 +8,7 @@ import "./css/Main.css";
 import "./css/Fonts.css";
 import "./css/Values.css";
 import "./css/style.css";
+import "./scss/Profile/_Profile.scss"
 
 // import { postEvent } from '@tma.js/sdk';
 // import { initPopup } from '@tma.js/sdk';
@@ -22,8 +23,10 @@ import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
 import { fetchResponses } from "./store/responses";
 import { fetchAllIds } from "./store/saves";
-import MainButton from "./constants/MainButton";
-import axios from "axios";
+
+import { TonClient, WalletContractV4, internal } from "ton";
+import { mnemonicNew, mnemonicToPrivateKey } from "ton-crypto";
+
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -34,7 +37,10 @@ const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
 
+
+
 const MyLoader = () => {
+  
   return (
     <div
       style={{
@@ -76,6 +82,23 @@ const AnimatedSwitch = () => {
       menuRef.current.classList.remove("disappearAnimation")
     }
   } , [location.pathname] )
+
+
+
+
+
+
+
+  useEffect( () => {
+    async function  getSomething(params) {
+      let mnemonics = await mnemonicNew();
+      let keyPair = await mnemonicToPrivateKey(mnemonics);
+      console.log(keyPair)
+      // Create wallet contract
+
+    }
+    getSomething()
+  } , []) 
 
   
   return (

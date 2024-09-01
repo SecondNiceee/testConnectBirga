@@ -1,0 +1,96 @@
+.container{
+    min-width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgb(24, 34, 45);
+    z-index: 10;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.title{
+    margin-top: 51px;
+    text-align: center;
+    font-family: "SF Compact Rounded";
+    font-weight: 500;
+    font-size: 23px;
+    text-align: center;
+    color: #daf5fe;
+}
+.topText{
+    margin-top: 12px;
+    align-items: center;
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    text-align: center;
+    color: #fff;
+}
+.listContainer{
+    margin-top: 28px;
+    display: flex;
+    gap: 10px;
+}
+.list{
+    width: 100%;
+    background-color: #20303f;
+    border-radius: 10px;
+}
+.listItem{
+    padding-left: 25px;
+    padding-top: 8px;
+    display: flex;
+    gap: 17px;
+    p{
+        font-family: "SF Compact Rounded";
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 110%;
+        letter-spacing: -0.02em;
+        text-align: center;
+        color: #daf5fe;
+    }
+    p:last-of-type{
+        border-bottom: 0.5px solid rgba(84, 84, 88, 0.36);
+        padding-bottom: 9px;
+        width: 100%;
+        text-align: left;
+    }
+    
+}
+.createButton{
+    margin-top: 10px;
+}
+.textAlertBlock{
+    border-radius: 13px;
+    padding: 11px 15px;
+    backdrop-filter: blur(79.77716064453125px);
+    background: #242c37;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 51px;
+    p:nth-child(1){
+        font-family: "SF Pro Text 600";
+        font-weight: 600;
+        font-size: 13px;
+        line-height: 138%;
+        letter-spacing: -0.01em;
+        text-align: center;
+        color: #fff;
+    }
+    p:nth-child(2){
+        font-family: "SF Pro Text 400";
+        font-weight: 400;
+        font-size: 13px;
+        line-height: 138%;
+        letter-spacing: -0.01em;
+        text-align: center;
+        color: #fff;
+        opacity: 0.6;
+    }
+}

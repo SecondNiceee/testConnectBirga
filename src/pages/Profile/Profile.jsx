@@ -34,6 +34,8 @@ import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import CardsArray from "./components/CardsArray/CardsArray";
 import Text from "../../components/Text/Text";
 import translation from "../../functions/translate";
+import PayBlock from "./components/PayBlock/PayBlock";
+import PaymentPageOne from "./components/PaymentPageOne/PaymentPageOne";
 
 const lett = translation("лет");
 const goda = translation("года");
@@ -394,6 +396,8 @@ const Profile = () => {
                 : userInfo.firstName}
             </Text>
 
+            <PayBlock className="pay-block" />
+
             <Options />
 
             <Compact title={"О себе"} className={"compact-block"}>
@@ -472,6 +476,18 @@ const Profile = () => {
               setAboutU={setAboutU}
               setCardsOpen={setChangeActive}
             />
+          </CSSTransition>
+
+
+
+          
+          <CSSTransition
+            mountOnEnter
+            unmountOnExit
+            in={true}
+            timeout={400}
+          >
+            <PaymentPageOne />
           </CSSTransition>
 
 

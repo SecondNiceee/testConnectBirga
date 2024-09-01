@@ -34,6 +34,9 @@
     "react-telegram-embed": "^0.1.1",
     "react-transition-group": "^4.4.5",
     "swiper": "^11.1.4",
+    "ton": "^13.9.0",
+    "ton-core": "^0.53.0",
+    "ton-crypto": "^3.2.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -65,6 +68,6 @@
   },
   "devDependencies": {
     "gh-pages": "^6.1.1",
-    "sass": "^1.72.0"
+    "sass": "^1.77.8"
   }
 }
