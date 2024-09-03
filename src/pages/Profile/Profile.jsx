@@ -51,8 +51,8 @@ let aboutULocal = null;
 let userInfoLocal = null;
 const en = true;
 
-const Yes = translation("Yes");
-const No = translation("No");
+const Yes = translation("Да");
+const No = translation("Нет");
 const menu = document.documentElement.querySelector(".FirstMenu");
 const Profile = () => {
   const mainRef = useRef(null);
@@ -481,14 +481,14 @@ const Profile = () => {
 
 
           
-          <CSSTransition
+          {/* <CSSTransition
             mountOnEnter
             unmountOnExit
             in={true}
             timeout={400}
           >
             <PaymentPageOne />
-          </CSSTransition>
+          </CSSTransition> */}
 
 
         </motion.div>

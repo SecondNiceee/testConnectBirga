@@ -12,8 +12,8 @@ const choiceText = translation("ВЫБРАТЬ")
 const choiceTextTwo = translation("Перед выбором исполнителя\n ознакомьтесь с FAQ Биржи.")
 const lastChoice = translation("Вы уверены, что хотите выбрать\n этого исполнителя?")
 let isTake = translation("Выбрать?")
-const Yes = translation("Yes")
-const No = translation("No")  
+const Yes = translation("Да")
+const No = translation("Нет")  
 export const useButton = ({
   setOpen,
   setSecondPage,
@@ -81,11 +81,11 @@ export const useButton = ({
     async function writeFucntion() {
       window.Telegram.WebApp.showPopup(
         {
-          title: "Внимание",
+          title: translation("Внимание"),
           message: choiceTextTwo,
           buttons: [
-            { id: "delete", type: "default", text: "Continue" },
-            { id: "save", type: "destructive", text: "Read" },
+            { id: "delete", type: "default", text: translation("Продолжить") },
+            { id: "save", type: "destructive", text: translation("Прочитать") },
           ],
         },
         (buttonId) => {

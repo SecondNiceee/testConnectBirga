@@ -43,8 +43,8 @@ let resp = translation("Откликнуться?")
 const textButton = translation("Вы действительно хотите откликнуться?")
 const buttonText = translation("ОТКЛИКНУТЬСЯ")
 
-const Yes = translation("Yes")
-const No = translation("No")
+const Yes = translation("Да")
+const No = translation("Нет")
 
 const en = true
 
@@ -187,9 +187,9 @@ const First = ({ isPage = false }) => {
     function forward() {
       if (gotIt) {
         window.Telegram.WebApp.showPopup({
-          title: "Ошибка",
+          title: translation("Ошибка"),
           message:
-            "Вы уже откликнулись на это задание. Заказчик обязательно увидит ваш отклик.",
+            translation("Вы уже откликнулись на это задание. Заказчик обязательно увидит ваш отклик."),
         });
       } else {
         if (step === 0) {

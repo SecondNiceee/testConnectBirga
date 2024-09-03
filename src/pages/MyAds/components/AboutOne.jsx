@@ -11,8 +11,8 @@ import translation from "../../../functions/translate";
 
 
 
-const Yes = translation("Yes")
-const No = translation("No")
+const Yes = translation("Да")
+const No = translation("Нет")
 const AboutOne = ({
   task,
   setMenuActive,
@@ -36,8 +36,8 @@ const AboutOne = ({
     (e) => {
       window.Telegram.WebApp.showPopup(
         {
-          title: "Удалить?",
-          message: "Вы хотите удалить это задание?",
+          title: translation("Удалить?"),
+          message: translation("Вы хотите удалить это задание?"),
           buttons: [
             { id: "save", type: "default", text: Yes },
             { id: "delete", type: "destructive", text: No },

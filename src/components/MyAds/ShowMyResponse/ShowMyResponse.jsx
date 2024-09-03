@@ -15,8 +15,8 @@ const menu = document.documentElement.querySelector(".FirstMenu");
 const textButtonOne = translation("ВЫПОЛНИЛ")
 const isTake = translation("Вы выполнили это задание?")
 const bigText = translation("Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. ")
-const Yes = translation("Yes")
-const No = translation("No")
+const Yes = translation("Да")
+const No = translation("Нет")
 const ShowMyResponse = ({
   response = { advertisement: { user: {} }, id: 0, user: { fuck: "fuck" } },
   openDetails,
@@ -30,7 +30,7 @@ const ShowMyResponse = ({
     function click() {
       window.Telegram.WebApp.showPopup(
         {
-          title: "Выбрать?",
+          title: translation("Выбрать?"),
           message: isTake,
           buttons: [
             { id: "save", type: "default", text: Yes },

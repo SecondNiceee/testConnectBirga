@@ -1,4 +1,4 @@
-import { lazy, useEffect, Suspense, useRef } from "react";
+import { lazy, useEffect, Suspense, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -25,7 +25,8 @@ import { fetchResponses } from "./store/responses";
 import { fetchAllIds } from "./store/saves";
 
 import { TonClient, WalletContractV4, internal } from "ton";
-import { mnemonicNew, mnemonicToPrivateKey } from "ton-crypto";
+import { mnemonicNew, mnemonicToPrivateKey, mnemonicToWalletKey } from "ton-crypto";
+import TonWeb from "tonweb";
 
 
 const First = lazy(() => import("./pages/First/First"));
@@ -88,17 +89,30 @@ const AnimatedSwitch = () => {
 
 
 
+  const [wallet, setWallet] = useState(null);
 
-  useEffect( () => {
-    async function  getSomething(params) {
-      let mnemonics = await mnemonicNew();
-      let keyPair = await mnemonicToPrivateKey(mnemonics);
-      console.log(keyPair)
-      // Create wallet contract
+  var decoder = new TextDecoder("utf-8");
+  function arrayBufferToString(buffer) {
+    return decoder.decode(new Uint8Array(buffer));
+}
 
-    }
-    getSomething()
-  } , []) 
+  useEffect(() => {
+      async function getSmething(params) {
+        
+          const client = new TonClient({
+            endpoint: 'https://toncenter.com/api/v2/jsonRPC',
+          });
+
+          // Generate new key
+          let mnemonics = await mnemonicNew();
+          let keyPair = await mnemonicToPrivateKey(mnemonics);
+
+          console.log(mnemonics)
+      }
+      getSmething()
+  }, []);
+
+  console.log(wallet)
 
   
   return (

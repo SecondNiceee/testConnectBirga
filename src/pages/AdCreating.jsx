@@ -23,8 +23,8 @@ const textButton = translation("Вы уверены, что хотите соз�
 let create = translation("Создать?")
 let spet = 0;
 const menu = document.documentElement.querySelector(".FirstMenu")
-const Yes = translation("Yes")
-const No = translation("No")
+const Yes = translation("Да")
+const No = translation("Нет")
 const AdCreating = () => {
 
 const endText = translation("СОЗДАТЬ ЗАДАНИЕ")

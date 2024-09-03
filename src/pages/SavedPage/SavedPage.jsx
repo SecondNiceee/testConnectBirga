@@ -23,8 +23,8 @@ const keys = ["advertisment", "responces", "cards"];
 const buttonText = translation("ОТКЛИКНУТЬСЯ")
 const textButton = translation("Вы действительно хотите откликнуться?")
 const menu = document.documentElement.querySelector(".FirstMenu")
-const Yes = translation("Yes")
-const No = translation("No")
+const Yes = translation("Да")
+const No = translation("Нет")
 const SavedPage = () => {
 
   useEffect( () => {
@@ -146,9 +146,9 @@ const SavedPage = () => {
     function forward() {
       if (gotIt) {
         window.Telegram.WebApp.showPopup({
-          title: "Ошибка",
+          title: translation("Ошибка"),
           message:
-            "Вы уже откликнулись на это задание. Заказчик обязательно увидит ваш отклик.",
+            translation("Вы уже откликнулись на это задание. Заказчик обязательно увидит ваш отклик."),
         });
       } else {
         if (!responce.isOpen) {
@@ -379,7 +379,7 @@ const SavedPage = () => {
     if (responce.isOpen && !responce.shablonMaker) {
       window.Telegram.WebApp.showPopup(
         {
-          title: "Откликнуться?",
+          title: translation("Откликнуться?"),
           message: textButton,
           buttons: [
             { id: "save", type: "default", text: Yes },

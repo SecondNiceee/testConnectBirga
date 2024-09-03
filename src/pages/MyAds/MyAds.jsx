@@ -39,8 +39,8 @@ let localIsOpen;
 let localDetails;
 let detailsVar;
 
-const Yes = translation("Yes")
-const No = translation("No")
+const Yes = translation("Да")
+const No = translation("Нет")
 
 const sureText = translation("Вы уверены, что хотите удалить этот отклик?")
 
@@ -514,7 +514,7 @@ const MyAds = ({isPage = false}) => {
   const deleteFunction = useCallback( (index) => {
     window.Telegram.WebApp
     .showPopup({
-      title: "Удалить?",
+      title: translation("Удалить?"),
       message: sureText,
       buttons: [
         { id: "save", type: "default", text: Yes },

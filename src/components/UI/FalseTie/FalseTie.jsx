@@ -3,8 +3,8 @@ import cl from './FalseTie.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { addAdvertisment, addCard, addResponce, deleteAdvertisement, deleteCard, deleteResponce } from '../../../store/saves';
 import translation from '../../../functions/translate';
-const Yes = translation("Yes")
-const No = translation("No")
+const Yes = translation("Да")
+const No = translation("Нет")
 const FalseTie = ({className, id, task, navigate, agree, end = false, ...props}) => {
     const [active, setActive] = useState(false)
 
@@ -113,8 +113,8 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
 
             window.Telegram.WebApp
             .showPopup({
-              title: "Удалить?",
-              message: "Удалить из избранного?",
+              title: translation("Удалить?"),
+              message: translation("Удалить из избранного?"),
               buttons: [
                 { id: "save", type: "default", text: Yes },
                 { id: "delete", type: "destructive", text: No },
