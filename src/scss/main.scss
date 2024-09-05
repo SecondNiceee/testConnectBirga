@@ -225,15 +225,15 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
 }
 
 .show-modal-enter{
-  scale: 0;
+  scale: 1;
 }
 .show-modal-enter-active{
   scale: 1;
 }
 .show-modal-exit{
-  scale: 1;
+  scale: 0;
 }
-.show-modal-enter-active{
+.show-modal-exit-active{
   scale: 0;
 }
 // .slider-appear-enter{
