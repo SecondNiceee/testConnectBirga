@@ -68,15 +68,6 @@ export const useButton = ({
     setDetails((value) => ({...value , isActive : false}))
     
   } , [details] ) 
-  const bedTask = useMemo(() => {
-    let k = myAdsArray.find((e) => e.id === secondPage.task.id)
-    if (!k){
-      return myAdsArray[0]
-    }
-    else{
-      return k
-    }
-  }, [myAdsArray, secondPage.task.id]);
   useEffect(() => {
     async function writeFucntion() {
       window.Telegram.WebApp.showPopup(
@@ -215,7 +206,9 @@ export const useButton = ({
       MainButton.setParams({
         color: "#2ea5ff",
         text_color: "#ffffff",
+        is_active: true,
       });
+
       MainButton.setText(choiceText);
       MainButton.onClick(writeFucntion);
     } else {

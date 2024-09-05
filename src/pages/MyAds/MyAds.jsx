@@ -296,9 +296,6 @@ const MyAds = ({isPage = false}) => {
 
 
 
-  function setDetailsActive(value) {
-    setDetails({ ...details, isActive: value });
-  }
 
   const [mistakes, setMistakes] = useState({
     taskName: false,
