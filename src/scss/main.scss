@@ -230,6 +230,9 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
 .show-modal-enter-active{
   scale: 1;
 }
+.show-modal-enter-done{
+  scale: 1;
+}
 .show-modal-exit{
   scale: 0;
 }
