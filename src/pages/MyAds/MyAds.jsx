@@ -781,6 +781,7 @@ const MyAds = ({isPage = false}) => {
           >
             <FirstDetails
               // className={}
+              style = {{paddingBottom : "96px"}}
               orderInformation={filteredResponses[detailsTwo.id] ? filteredResponses[detailsTwo.id].advertisement : ""  }
 
             />
