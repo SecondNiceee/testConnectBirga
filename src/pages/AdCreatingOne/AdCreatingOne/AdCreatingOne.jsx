@@ -342,7 +342,7 @@ const AdCreatingOne = ({
         unmountOnExit
       >
         <ChoiceCategory
-          
+          style = {{top:document.documentElement.scrollTop + "px"}}
           taskInformation={taskInformation}
           setTaskInformation={setTaskInformation}
           setCatagoryChoiceOpen={setCatagoryChoiceOpen}
@@ -358,6 +358,7 @@ const AdCreatingOne = ({
         mountOnEnter
       >
         <ChoiceSubCategory
+         style = {{top:document.documentElement.scrollTop + "px"}}
           subCategorysPar={subCategorys}
           setTaskInformation={setTaskInformation}
           setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
