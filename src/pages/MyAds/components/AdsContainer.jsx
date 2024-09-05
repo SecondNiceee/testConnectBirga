@@ -5,13 +5,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearMyOrders, fetchMyOrders } from '../../../store/information';
 import MyAnimation from './MyAnimation';
 
-const AdsContainer = ({myAdsArray, setSecondPage,  viewsNumber , setViewsNumber , deleteFunction, valueTwo}) => {
+const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , deleteFunction, valueTwo}) => {
 
 
     const [page , setPage] = useState(1)
     const orderStatus = useSelector(state => state.information.myOrderStatus)
     const elementRef = useRef(null)
     const dispatch = useDispatch()
+    const myAdsArray = useSelector((state) => state.information.myAdsArray);
 
   
     const getMore = useCallback(async () => {
@@ -58,7 +59,6 @@ const AdsContainer = ({myAdsArray, setSecondPage,  viewsNumber , setViewsNumber 
       }
     } , [valueTwo] )
   
-
 
 
 
