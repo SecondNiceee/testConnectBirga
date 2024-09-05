@@ -9,6 +9,7 @@ import "./css/Fonts.css";
 import "./css/Values.css";
 import "./css/style.css";
 import "./scss/Profile/_Profile.scss"
+import "./scss/main.scss"
 
 // import { postEvent } from '@tma.js/sdk';
 // import { initPopup } from '@tma.js/sdk';

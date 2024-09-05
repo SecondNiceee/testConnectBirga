@@ -223,6 +223,19 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
 .base-Option-root:hover{
   background-color: rgba(68, 68, 68);
 }
+
+.show-modal-enter{
+  scale: 0;
+}
+.show-modal-enter-active{
+  scale: 1;
+}
+.show-modal-exit{
+  scale: 1;
+}
+.show-modal-enter-active{
+  scale: 0;
+}
 // .slider-appear-enter{
 //   opacity: 0;
 //   transition: 0.3s;

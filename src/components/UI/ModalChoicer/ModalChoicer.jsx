@@ -53,12 +53,12 @@ export default function ModalChoicer({
         }
 
         <CSSTransition in = {isOpen}
-        timeout={0}
+        timeout={3000}
         mountOnEnter
         unmountOnExit
+        
+        classNames={"show-modal"}
          >
-
-                <Popup>
 
                       <AnimatedListbox>
 
@@ -66,6 +66,7 @@ export default function ModalChoicer({
                             return (
                               <Option
                               className = {names[i] === name ? "base--selected" : ""}
+                              style={values.length === 1 ? {borderRadius : "12px"} : {}}
                               onClick={() => {
                                 
                                 setValue(values[i])
@@ -80,8 +81,6 @@ export default function ModalChoicer({
 
                       </AnimatedListbox>
 
-
-                </Popup>
 
 
         </CSSTransition>
@@ -165,6 +164,8 @@ const StyledButton = styled("button", { shouldForwardProp: () => true })(
 
 const Listbox = styled("ul")(
   ({ theme }) => `
+  transition : 0.2s ;
+  transform-origin : right top;
   border-radius: 12px ;
   top: 25px;
   right: -7px;
