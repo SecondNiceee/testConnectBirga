@@ -14,11 +14,11 @@ const TaskDetailsContainer = ({orderInformation , setProfile, end = false}) => {
     }
     switch (orderInformation.status){
       case "active":
-        return "Заказчик еще не выбрал исполнителя, вы можете им стать."
+        return translation("Заказчик еще не выбрал исполнителя, вы можете им стать.")
       case "inProcess":
-        return "Заказчик уже выбрал исполнителя."
+        return translation("Заказчик уже выбрал исполнителя.")
       case "completed":
-        return "Задание уже выполнено."
+        return translation("Задание уже выполнено.")
       default :
 
     }
