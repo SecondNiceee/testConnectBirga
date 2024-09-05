@@ -594,12 +594,14 @@ const translateText = translation("Вы уверены, что хотите со
             taskInformation={secondPage}
             tonConstant={tonConstant}
           />
-          <CSSTransition timeout={0}
-          in = {spet !== 0}
-          unmountOnExit mountOnEnter>
-            <FirstDetails   style = {{position : "static" ,  minHeight : "unset" , "height" : "unset", overflowY : "unset" ,minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage , category : firstPage.category.id , whichOne : whichOne } } />
-          </CSSTransition>
-          {/* <AdCreatingThree taskInformation={secondPage} /> */}
+          <div className="adCreatingThree-wrapper">
+            <CSSTransition timeout={0}
+            in = {spet !== 0}
+            unmountOnExit mountOnEnter>
+              <FirstDetails   style = {{position : "static" ,  minHeight : "unset" , "height" : "unset", overflowY : "unset" ,minWidth : "100vw", transform : "translateX(0%)"}} end = {true} orderInformation={{...firstPage , ...secondPage , category : firstPage.category.id , whichOne : whichOne } } />
+            </CSSTransition>
+            {/* <AdCreatingThree taskInformation={secondPage} /> */}
+          </div>
         </>
       )}
 

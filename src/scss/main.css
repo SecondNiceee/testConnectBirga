@@ -1261,6 +1261,10 @@
   height: 10.56px;
 }
 
+.adCreatingThree-wrapper {
+  min-width: 100vw;
+}
+
 .AdCreating__container {
   padding-bottom: 72px;
   min-height: 100vh;
