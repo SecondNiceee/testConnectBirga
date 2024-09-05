@@ -53,7 +53,7 @@ export default function ModalChoicer({
         }
 
         <CSSTransition in = {isOpen}
-        timeout={3000}
+        timeout={200}
         mountOnEnter
         unmountOnExit
         
