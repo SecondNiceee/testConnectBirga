@@ -744,8 +744,8 @@ const First = ({ isPage = false }) => {
       </CSSTransition>
 
       <CSSTransition
-        //  in={step === 1 ? true : false}
-        in = {true}
+         in={step === 1 ? true : false}
+        // in = {true}
         timeout={400}
         mountOnEnter
         unmountOnExit
