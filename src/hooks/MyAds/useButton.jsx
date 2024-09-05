@@ -276,6 +276,11 @@ export const useButton = ({
 
     BackButton.onClick(goBack);
     return () => {
+      MainButton.setParams({
+        color: "#2ea5ff",
+        text_color: "#ffffff",
+        is_active: true,
+      });
       BackButton.offClick(goBack);
       MainButton.offClick(writeFucntion);
       MainButton.offClick(putTask)

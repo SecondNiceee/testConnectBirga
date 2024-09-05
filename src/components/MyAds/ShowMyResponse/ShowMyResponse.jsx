@@ -25,7 +25,6 @@ const ShowMyResponse = ({
   setLastAds,
   openAboutReaction,
 }) => {
-  const dispatch = useDispatch();
   useEffect(() => {
     function click() {
       window.Telegram.WebApp.showPopup(
@@ -75,6 +74,11 @@ const ShowMyResponse = ({
       menu.classList.add("disappearAnimation")
       menu.classList.remove("appearAnimation")
       MainButton.show();
+      MainButton.setParams({
+        color: "#2ea5ff",
+        text_color: "#ffffff",
+        is_active: true,
+      });
       
       MainButton.setText(textButtonOne);
       MainButton.onClick(click);

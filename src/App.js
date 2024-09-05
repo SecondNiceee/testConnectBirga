@@ -262,7 +262,7 @@ function App() {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
     dispatch(fetchMyOrders(1));
-    dispatch(getCategorys());
+    dispatch(getCategorys());   
     dispatch(getSubCategorys());
     dispatch(getCategorys());
     dispatch(getSubCategorys());
