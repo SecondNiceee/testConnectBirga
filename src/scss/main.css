@@ -130,7 +130,7 @@
   gap: 8px;
   border-radius: 10px;
   overflow-x: hidden;
-  min-height: 100vh;
+  min-height: unset;
 }
 
 .menuLink path {
@@ -199,10 +199,8 @@
   border-radius: 6.67px;
 }
 .First__block .first__photos .first__photo {
-  min-width: calc(0.48* 100vw);
-  height: calc(0.35* 100vw);
-  border-radius: 6.67px;
-  object-fit: cover;
+  min-width: 48vw;
+  height: 35vw;
   border-radius: 6.67px;
   -o-object-fit: cover;
      object-fit: cover;
@@ -1295,6 +1293,10 @@
 
 .profile__wrapper {
   transition: 0.4s;
+}
+
+.pay-block {
+  margin-top: 28px;
 }
 
 input {
@@ -2886,4 +2888,24 @@ body {
 
 .base-Option-root:hover {
   background-color: rgb(68, 68, 68);
+}
+
+.show-modal-enter {
+  scale: 1 !important;
+}
+
+.show-modal-enter-active {
+  scale: 1 !important;
+}
+
+.show-modal-enter-done {
+  scale: 1 !important;
+}
+
+.show-modal-exit {
+  scale: 0 !important;
+}
+
+.show-modal-exit-active {
+  scale: 0 !important;
 }/*# sourceMappingURL=main.css.map */
