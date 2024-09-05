@@ -66,13 +66,9 @@ const MyAdOne = ({
 
   const containerRef = useRef()
 
-  
 
   return (
-    <>
-        {status === "loading" ? 
-      <MyLoader />
-      :
+  
     <div ref={containerRef} className="my-ad-one">
 
 
@@ -91,8 +87,7 @@ const MyAdOne = ({
             setSecondPage = {setSecondPage}
           />
     </div>
-}
-    </>
+
   );
 };
 

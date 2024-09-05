@@ -18,7 +18,6 @@ import FirstMenu from "./pages/FirstMenu/FirstMenu";
 
 import { fetchTon } from "./store/ton";
 import { fetchUserInfo } from "./store/telegramUserInfo";
-import { fetchMyOrders } from "./store/information";
 import { Triangle } from "react-loader-spinner";
 import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
@@ -90,30 +89,22 @@ const AnimatedSwitch = () => {
 
 
 
-  const [wallet, setWallet] = useState(null);
 
-  var decoder = new TextDecoder("utf-8");
-  function arrayBufferToString(buffer) {
-    return decoder.decode(new Uint8Array(buffer));
-}
-
-  useEffect(() => {
-      async function getSmething(params) {
+  // useEffect(() => {
+  //     async function getSmething(params) {
         
-          const client = new TonClient({
-            endpoint: 'https://toncenter.com/api/v2/jsonRPC',
-          });
+  //         const client = new TonClient({
+  //           endpoint: 'https://toncenter.com/api/v2/jsonRPC',
+  //         });
 
-          // Generate new key
-          let mnemonics = await mnemonicNew();
-          let keyPair = await mnemonicToPrivateKey(mnemonics);
+  //         // Generate new key
+  //         let mnemonics = await mnemonicNew();
+  //         let keyPair = await mnemonicToPrivateKey(mnemonics);
 
-          console.log(mnemonics)
-      }
-      getSmething()
-  }, []);
-
-  console.log(wallet)
+  //         console.log(mnemonics)
+  //     }
+  //     getSmething()
+  // }, []);
 
   
   return (
@@ -261,7 +252,6 @@ function App() {
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
-    dispatch(fetchMyOrders(1));
     dispatch(getCategorys());   
     dispatch(getSubCategorys());
     dispatch(getCategorys());

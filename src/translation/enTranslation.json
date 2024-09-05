@@ -198,6 +198,7 @@
     "Заказчик еще не выбрал исполнителя, вы можете им стать." : "The customer has not yet chosen an executor, you can become one.",
     "Заказчик уже выбрал исполнителя." : "The customer has already chosen the contractor.",
     "Задание уже выполнено." : "The assignment has already been completed.",
-    "Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку." : "Sorry, the confirmation could not be sent to the customer. Please contact support."
+    "Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку." : "Sorry, the confirmation could not be sent to the customer. Please contact support.",
+    "Завершено" : "Completed"
     
 }                                    

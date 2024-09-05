@@ -26,6 +26,7 @@ import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import pagesHistory from "../../constants/pagesHistory";
 import MainButton from "../../constants/MainButton";
 import translation from "../../functions/translate";
+import { clearMyOrders } from "../../store/information";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -615,8 +616,12 @@ const MyAds = ({isPage = false}) => {
 
 
 
-  console.log("Это секонд page :" + secondPage.task)
-  console.log(secondPage.task)
+
+  useEffect( () => {
+    return () => {
+      dispatch(clearMyOrders())
+    }
+  } , [] )
 
 
   return (

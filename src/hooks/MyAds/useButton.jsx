@@ -2,7 +2,7 @@ import { useCallback, useEffect, useMemo } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
-import { clearMyOrders, fetchMyOrders, putMyTask, setStartTask } from "../../store/information";
+import { putMyTask, setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 import sortFiles from "../../functions/sortFiles";
 import translation from "../../functions/translate";
