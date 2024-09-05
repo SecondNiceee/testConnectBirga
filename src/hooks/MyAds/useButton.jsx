@@ -95,12 +95,14 @@ export const useButton = ({
                   
                   
   
-                  dispatch(clearMyOrders())
+                  // dispatch(clearMyOrders())
                   dispatch(setStartTask(myAdOneAdvertisement.id));
                   dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
                   setOpen({ ...isOpen, isActive: false });
                   setSecondPage({ ...secondPage, isActive: false });
-                  dispatch(fetchMyOrders(1));
+                  // dispatch(fetchMyOrders(1));
+
+
                 }
                 if (buttonId === "delete" || buttonId === null) {
                   console.log("Он отказался");

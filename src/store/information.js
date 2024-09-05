@@ -425,6 +425,7 @@ const information = createSlice({
     });
 
     builder.addCase(setStartTask.fulfilled, (state, action) => {
+      state.myAdsArray = state.myAdsArray.map((e, i) => e.id === action.payload ? {...e, status : "inProcess"} : e)
     });
 
     builder.addCase(fetchTasksInformation.fulfilled, (state, action) => {
