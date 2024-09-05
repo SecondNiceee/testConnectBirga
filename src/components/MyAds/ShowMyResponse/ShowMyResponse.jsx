@@ -64,7 +64,7 @@ const ShowMyResponse = ({
         );
       } catch (e) {
         window.Telegram.WebApp.showAlert(
-          "Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку."
+          translation("Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку.")
         );
         window.Telegram.WebApp.showAlert(JSON.stringify(e));
         console.log(e);
