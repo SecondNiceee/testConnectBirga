@@ -165,7 +165,7 @@ const StyledButton = styled("button", { shouldForwardProp: () => true })(
 const Listbox = styled("ul")(
   ({ theme }) => `
   scale : 0;
-  transition : 0.2s ;
+  transition : 0.2s ease-in ;
   transform-origin : right top;
   border-radius: 12px ;
   top: 25px;

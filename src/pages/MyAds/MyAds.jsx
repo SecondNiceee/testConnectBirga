@@ -775,7 +775,7 @@ const MyAds = ({isPage = false}) => {
       <CSSTransition
             in={detailsTwo.isOpen}
             timeout={400}
-            // classNames="left-right"
+            classNames="left-right"
             mountOnEnter
             unmountOnExit
           >
