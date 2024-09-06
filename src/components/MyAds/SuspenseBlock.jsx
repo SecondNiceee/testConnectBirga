@@ -24,11 +24,11 @@ const SuspenseBlock = ({i , e, setSecondPage ,  viewsNumber = 0, setViewsNumber 
     } , [e.photos] )
     return (
         <div className='First__block' style={!isVisible ? style : {}} >
-            {/* <div ref={ref} style={{
+            <div ref={ref} style={{
                 width : "1px",
-                height : "1000px",
+                height : "2000px",
                 position : "absolute",
-                top : "-800px",
+                top : "-1800px",
                 opacity : "0",
                 left : "40px",
                 zIndex : -1
@@ -36,8 +36,7 @@ const SuspenseBlock = ({i , e, setSecondPage ,  viewsNumber = 0, setViewsNumber 
             {isVisible &&  <Suspense fallback = {<BlockSpinner style = {e.photos.length > 0 ? {height : "313px"} : {height : "144px"}}   />}>
                         <Block e={e} i={i} setSecondPage={setSecondPage}/>
                 </Suspense>
-                } */}
-                <Block e={e} i={i} setSecondPage={setSecondPage}/>
+                }
         </div>
     );
 };

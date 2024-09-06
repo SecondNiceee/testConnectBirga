@@ -165,7 +165,7 @@ const StyledButton = styled("button", { shouldForwardProp: () => true })(
 const Listbox = styled("ul")(
   ({ theme }) => `
   scale : 0;
-  transition : 0.2s ease-in ;
+  transition : 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) ;
   transform-origin : right top;
   border-radius: 12px ;
   top: 25px;
@@ -197,6 +197,9 @@ AnimatedListbox.propTypes = {
 
 const Option = styled("li")(
   ({ theme }) => `
+
+
+
   position : relative;
   font-family: "SF Pro Text 400";
   font-weight: 400;
@@ -215,6 +218,10 @@ const Option = styled("li")(
   height: 44px;
 
 
+  border-bottom: 0.64px solid rgba(84, 84, 88, 0.65);
+  padding: 14px 20px;
+
+
   &:nth-child(1){
     border-radius: 12px 12px 0px 0px ;
   }
@@ -224,12 +231,11 @@ const Option = styled("li")(
   }
 
   &.${optionClasses.selected} {
-    background-color: rgba(68, 68, 68);
     color: ${blue[100]};
   }
 
   &.${optionClasses.highlighted} {
-    background-color: rgba(68, 68, 68);;
+    background-color: red;
     color: ${grey[300]};
   }
 
@@ -249,8 +255,7 @@ const Option = styled("li")(
   }
 
   &:hover:not(.${optionClasses.disabled}) {
-    background-color: ${grey[800]};
-    color: ${grey[300]};
+      background: #32373c;
   }
   `
 );
