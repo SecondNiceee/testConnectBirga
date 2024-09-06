@@ -226,18 +226,23 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
 
 .show-modal-enter{
   scale: 1 !important;
+  opacity: 1 !important;
 }
 .show-modal-enter-active{
   scale: 1 !important;
+  opacity: 1 !important;
 }
 .show-modal-enter-done{
   scale: 1 !important;
+  opacity: 1 !important;
 }
 .show-modal-exit{
   scale: 0 !important;
+  opacity: 0 !important;
 }
 .show-modal-exit-active{
   scale: 0 !important;
+  opacity: 0 !important;
 }
 // .slider-appear-enter{
 //   opacity: 0;

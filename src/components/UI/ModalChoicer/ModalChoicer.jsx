@@ -42,6 +42,17 @@ export default function ModalChoicer({
       setOpen(false)
   } , [setOpen] )
   const [name, setName] = React.useState(names[values.indexOf(defaultValue)])
+
+  // const style = React.useMemo( () => {
+  //   if (isOpen){
+  //     return {
+  //       transition : "0.3s"
+  //     }
+  //   }
+  //   return {
+  //     transition : "0.3s"
+  //   }
+  // } , [isOpen] )
   return (
     <div {...props} className={cl.modalWrapper}>
         <CustomButton  onClick = {clickHandler} >{name}</CustomButton>
@@ -60,13 +71,13 @@ export default function ModalChoicer({
         classNames={"show-modal"}
          >
 
-                      <AnimatedListbox>
+                      <AnimatedListbox >
 
                           {values.map((e, i) => {
                             return (
                               <Option
                               className = {names[i] === name ? "base--selected" : ""}
-                              style={values.length === 1 ? {borderRadius : "12px"} : {}}
+                              style={values.length === 1 ? {borderRadius : "12px", } : {}}
                               onClick={() => {
                                 
                                 setValue(values[i])
@@ -164,8 +175,9 @@ const StyledButton = styled("button", { shouldForwardProp: () => true })(
 
 const Listbox = styled("ul")(
   ({ theme }) => `
+  opacity : 0;
   scale : 0;
-  transition : 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) ;
+  transition : all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0s;
   transform-origin : right top;
   border-radius: 12px ;
   top: 25px;
@@ -179,6 +191,7 @@ const Listbox = styled("ul")(
   max-width : 190px;
   webkit-backdrop-filter: blur(100px);
   box-shadow: 0 4px 48px rgba(0, 0, 0, 0.2);
+  background: rgb(57 57 57 / 50%);
   `
 );
 
@@ -211,7 +224,6 @@ const Option = styled("li")(
   color: white;
 
 
-  background: #282C30;
   list-style: none;
   border-bottom: 0.50px solid rgba(84, 84, 88, 0.65);
   

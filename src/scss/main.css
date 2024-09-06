@@ -2896,20 +2896,25 @@ body {
 
 .show-modal-enter {
   scale: 1 !important;
+  opacity: 1 !important;
 }
 
 .show-modal-enter-active {
   scale: 1 !important;
+  opacity: 1 !important;
 }
 
 .show-modal-enter-done {
   scale: 1 !important;
+  opacity: 1 !important;
 }
 
 .show-modal-exit {
   scale: 0 !important;
+  opacity: 0 !important;
 }
 
 .show-modal-exit-active {
   scale: 0 !important;
+  opacity: 0 !important;
 }/*# sourceMappingURL=main.css.map */
