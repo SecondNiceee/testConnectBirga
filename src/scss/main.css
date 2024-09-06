@@ -2911,10 +2911,10 @@ body {
 
 .show-modal-exit {
   scale: 0 !important;
-  opacity: 0 !important;
+  opacity: 1 !important;
 }
 
 .show-modal-exit-active {
   scale: 0 !important;
-  opacity: 0 !important;
+  opacity: 1 !important;
 }/*# sourceMappingURL=main.css.map */

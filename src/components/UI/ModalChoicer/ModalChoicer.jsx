@@ -43,6 +43,7 @@ export default function ModalChoicer({
   } , [setOpen] )
   const [name, setName] = React.useState(names[values.indexOf(defaultValue)])
 
+
   // const style = React.useMemo( () => {
   //   if (isOpen){
   //     return {
@@ -53,18 +54,19 @@ export default function ModalChoicer({
   //     transition : "0.3s"
   //   }
   // } , [isOpen] )
+
   return (
     <div {...props} className={cl.modalWrapper}>
         <CustomButton  onClick = {clickHandler} >{name}</CustomButton>
 
         {isOpen && 
-                <div onTouchStart={closeFunction} onClick={closeFunction} className={cl.area}>
+                <div onTouchStart={closeFunction} onTouchMove={closeFunction} onTouchCancel={closeFunction}  onClick={closeFunction} className={cl.area}>
 
                 </div>
         }
 
         <CSSTransition in = {isOpen}
-        timeout={200}
+        timeout={300}
         
         classNames={"show-modal"}
          >
@@ -181,7 +183,7 @@ const Listbox = styled("ul")(
   top: 25px;
   right: -7px;
   position : absolute;
-  z-index : 300;  
+  z-index : 2200;  
   backdrop-filter: blur(80px);
   box-shadow: 0 8px 84px 0 rgba(0, 0, 0, 0.1);
   display : flex;
@@ -189,7 +191,7 @@ const Listbox = styled("ul")(
   max-width : 190px;
   webkit-backdrop-filter: blur(100px);
   box-shadow: 0 4px 48px rgba(0, 0, 0, 0.2);
-  background: rgba(37, 37, 37 ,50%);
+  background: rgba(0, 0, 0 ,50%);
   `
 );
 
@@ -223,14 +225,13 @@ const Option = styled("li")(
 
 
   list-style: none;
-  border-bottom: 0.50px solid rgba(84, 84, 88, 0.65);
   
   padding: 11px 16px;
   width: 190px;
   height: 44px;
 
 
-  border-bottom: 0.64px solid rgba(84, 84, 88, 0.65);
+  border-bottom: 0.64px solid rgb(54 54 54, 0.65);
   padding: 11px 20px;
 
 
@@ -243,12 +244,10 @@ const Option = styled("li")(
   }
 
   &.${optionClasses.selected} {
-    color: ${blue[100]};
   }
 
   &.${optionClasses.highlighted} {
     background-color: red;
-    color: ${grey[300]};
   }
 
   &:focus-visible {
@@ -258,7 +257,6 @@ const Option = styled("li")(
   &.${optionClasses.highlighted}.${optionClasses.selected} {
    
      background-color: transparent;
-    color: ${blue[100]};
     position : relative;
   }
 
