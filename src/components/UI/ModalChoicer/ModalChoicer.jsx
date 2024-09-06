@@ -183,7 +183,7 @@ const Listbox = styled("ul")(
   top: 25px;
   right: -7px;
   position : absolute;
-  z-index : 300;
+  z-index : 300;  
   backdrop-filter: blur(80px);
   box-shadow: 0 8px 84px 0 rgba(0, 0, 0, 0.1);
   display : flex;
