@@ -65,8 +65,6 @@ export default function ModalChoicer({
 
         <CSSTransition in = {isOpen}
         timeout={200}
-        mountOnEnter
-        unmountOnExit
         
         classNames={"show-modal"}
          >
@@ -177,7 +175,7 @@ const Listbox = styled("ul")(
   ({ theme }) => `
   opacity : 0;
   scale : 0;
-  transition : all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0s;
+  transition : all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1) 0s;
   transform-origin : right top;
   border-radius: 12px ;
   top: 25px;
@@ -191,7 +189,7 @@ const Listbox = styled("ul")(
   max-width : 190px;
   webkit-backdrop-filter: blur(100px);
   box-shadow: 0 4px 48px rgba(0, 0, 0, 0.2);
-  background: rgb(57 57 57 / 50%);
+  background: rgb(37 37 37 / 50%);
   `
 );
 
@@ -233,7 +231,7 @@ const Option = styled("li")(
 
 
   border-bottom: 0.64px solid rgba(84, 84, 88, 0.65);
-  padding: 14px 20px;
+  padding: 11px 20px;
 
 
   &:nth-child(1){
