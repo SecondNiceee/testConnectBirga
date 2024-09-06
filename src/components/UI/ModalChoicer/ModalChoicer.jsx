@@ -231,7 +231,7 @@ const Option = styled("li")(
   height: 44px;
 
 
-  border-bottom: 0.64px solid rgb(54 54 54, 0.65);
+  border-bottom: 0.64px solid rgba(54 54 54, 0.65);
   padding: 11px 20px;
 
 
