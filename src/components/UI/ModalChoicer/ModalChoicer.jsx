@@ -189,7 +189,7 @@ const Listbox = styled("ul")(
   max-width : 190px;
   webkit-backdrop-filter: blur(100px);
   box-shadow: 0 4px 48px rgba(0, 0, 0, 0.2);
-  background: rgb(37 37 37 / 50%);
+  background: rgba(37, 37, 37 ,50%);
   `
 );
 
