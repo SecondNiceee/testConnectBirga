@@ -177,6 +177,8 @@ const Listbox = styled("ul")(
   display : flex;
   flex-direction : column;
   max-width : 190px;
+  webkit-backdrop-filter: blur(100px);
+  box-shadow: 0 4px 48px rgba(0, 0, 0, 0.2);
   `
 );
 
@@ -198,7 +200,7 @@ AnimatedListbox.propTypes = {
 const Option = styled("li")(
   ({ theme }) => `
 
-
+  display : flex;
 
   position : relative;
   font-family: "SF Pro Text 400";
@@ -209,7 +211,7 @@ const Option = styled("li")(
   color: white;
 
 
-  background: #181d23;
+  background: #282C30;
   list-style: none;
   border-bottom: 0.50px solid rgba(84, 84, 88, 0.65);
   
