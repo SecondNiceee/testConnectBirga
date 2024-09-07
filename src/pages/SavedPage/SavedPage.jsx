@@ -344,7 +344,7 @@ const SavedPage = () => {
       });
       try {
         let im = await axios.post(
-          "https://back-birga.ywa.su/response",
+          "https://www.connectbirga.ru/response",
           myFormData,
           {
             params: {
@@ -356,7 +356,7 @@ const SavedPage = () => {
         const messageOne = translation("📣 Вы получили отклик на задачу «")
         const messageTwo = translation("» от ")
         const en = true
-        await axios.get("https://back-birga.ywa.su/user/sendMessage", {
+        await axios.get("https://www.connectbirga.ru/user/sendMessage", {
           params: {
             chatId: im.data.user.chatId,
             text:

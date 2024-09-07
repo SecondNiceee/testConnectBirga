@@ -23,7 +23,7 @@ const AboutReaction = ({ responce , setOneCard, style,   ...props}) => {
       let localCards = []
       try{
 
-        let allCards = await axios.get("https://back-birga.ywa.su/card/findByUser" , {
+        let allCards = await axios.get("https://www.connectbirga.ru/card/findByUser" , {
             params : {
                 userId : responce.user.id
             }

@@ -244,7 +244,7 @@ const translateText = translation("Вы уверены, что хотите со
     // for (let i = 0 ; i < 1; i++){
     //   try{
     //     console.log("Создание задания")
-    //     await axios.post("https://back-birga.ywa.su/advertisement", myFormData, {
+    //     await axios.post("https://www.connectbirga.ru/advertisement", myFormData, {
     //       headers: {
     //         "Content-Type" :'multipart/form-data',
     //         "Access-Control-Allow-Origin": "*"
@@ -263,7 +263,7 @@ const translateText = translation("Вы уверены, что хотите со
 
     
     //   let state = await axios.post(
-    //   "https://back-birga.ywa.su/advertisement",
+    //   "https://www.connectbirga.ru/advertisement",
     //   myFormData,
     //   {
     //     headers: {

@@ -7,7 +7,7 @@ import TaskName from "../../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import ChoiceCategory from "../ChoiceCategory/ChoiceCategory";
 import ChoiceSubCategory from "../ChoiceSubCategory";
-import cl from "./AdCreatingOne.module.css";
+import cl from "./AdCreatingOne.module.scss";
 import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
 import "../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css";
 import MyDatePicker from "../../../components/AdCreating/MyDatePicker/MyDatePicker";

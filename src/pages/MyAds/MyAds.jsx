@@ -370,7 +370,7 @@ const MyAds = ({isPage = false}) => {
 
       
       let im = await axios.get(
-        "https://back-birga.ywa.su/response/findOne",
+        "https://www.connectbirga.ru/response/findOne",
         {
           params: {
             id: responseId,
@@ -384,7 +384,7 @@ const MyAds = ({isPage = false}) => {
           photos = await makeNewFile(responce.folder, responce.photos);
         }
 
-        let b = await axios.get("https://back-birga.ywa.su/card/countByUser" , {
+        let b = await axios.get("https://www.connectbirga.ru/card/countByUser" , {
             params : {
                 advertisementId: responce.user.id,
             }
@@ -395,7 +395,7 @@ const MyAds = ({isPage = false}) => {
         responce.user.cardsNumber = b.data
 
           let imTwo = await axios.get(
-            "https://back-birga.ywa.su/advertisement/findCount",
+            "https://www.connectbirga.ru/advertisement/findCount",
             {
               params: {
                 userId: Number(responce.user.id),
@@ -445,14 +445,14 @@ const MyAds = ({isPage = false}) => {
     async function getAdvertisement() {
       try{
 
-        let im = await axios.get("https://back-birga.ywa.su/advertisement/findOne" , {
+        let im = await axios.get("https://www.connectbirga.ru/advertisement/findOne" , {
           params : {
             id : advertisementId
           }
         })
         let order = im.data
         let files = await makeNewFile(order.folder, order.photos);
-        let responseCounter = await axios.get("https://back-birga.ywa.su/response/countByAdvertisement" , {
+        let responseCounter = await axios.get("https://www.connectbirga.ru/response/countByAdvertisement" , {
           params : {
             "advertisementId" : order.id
           }

@@ -55,15 +55,26 @@ export default function ModalChoicer({
   //   }
   // } , [isOpen] )
 
+
+  React.useEffect( () => {
+    
+    function closeFunction(e){
+        if (!e.target.closest(".list-box") && !(e.target.closest(".custom-button"))){
+          setOpen(false)
+        }
+      
+    }
+    document.documentElement.addEventListener("touchstart" , closeFunction)
+    return () =>{
+
+      document.documentElement.removeEventListener("touchstart", closeFunction)
+    }
+    } , [] )
+
   return (
     <div {...props} className={cl.modalWrapper}>
-        <CustomButton  onClick = {clickHandler} >{name}</CustomButton>
+        <CustomButton className = "custom-button"  onClick = {clickHandler} >{name}</CustomButton>
 
-        {isOpen && 
-                <div onTouchStart={closeFunction} onTouchMove={closeFunction} onTouchCancel={closeFunction}  onClick={closeFunction} className={cl.area}>
-
-                </div>
-        }
 
         <CSSTransition in = {isOpen}
         timeout={300}
@@ -71,7 +82,7 @@ export default function ModalChoicer({
         classNames={"show-modal"}
          >
 
-                      <AnimatedListbox >
+                      <AnimatedListbox className = "list-box"  >
 
                           {values.map((e, i) => {
                             return (

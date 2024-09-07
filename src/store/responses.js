@@ -10,7 +10,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
     "fetchResponseByAdvertisement",
     async function([id, task, page]){
         let im = await axios.get(
-            "https://back-birga.ywa.su/response/findByAdvertisement",
+            "https://www.connectbirga.ru/response/findByAdvertisement",
             {
               params: {
                 advertisementId: id,
@@ -27,7 +27,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
               photos = await makeNewFile(responces[i].folder, responces[i].photos);
             }
 
-            let b = await axios.get("https://back-birga.ywa.su/card/countByUser" , {
+            let b = await axios.get("https://www.connectbirga.ru/card/countByUser" , {
                 params : {
                     advertisementId: responces[i].user.id,
                 }
@@ -40,7 +40,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
     
             try {
               let imTwo = await axios.get(
-                "https://back-birga.ywa.su/advertisement/findCount",
+                "https://www.connectbirga.ru/advertisement/findCount",
                 {
                   params: {
                     userId: responces[i].user.id,
@@ -63,7 +63,7 @@ export const deleteResponse = createAsyncThunk(
     async function(id){
         try{
 
-            await axios.delete("https://back-birga.ywa.su/response", {
+            await axios.delete("https://www.connectbirga.ru/response", {
                 params : {
                     id : id
                 }
@@ -84,13 +84,13 @@ export const setStartResponse = createAsyncThunk(
         const messageOne = translation("📣✅ Вы были выбраны исполнителем на задание")
         const en = true
         try{
-            let im = await axios.put("https://back-birga.ywa.su/response" , myData, {
+            let im = await axios.put("https://www.connectbirga.ru/response" , myData, {
                 params : {
                     id : responce.id
                 }
             } )
 
-            await axios.get("https://back-birga.ywa.su/user/sendMessage", {
+            await axios.get("https://www.connectbirga.ru/user/sendMessage", {
                 params: {
                   chatId: responce.user.id,
                   text:
@@ -115,7 +115,7 @@ export const addResponse = createAsyncThunk(
         try{
             // for (let i = 0 ; i < 20;i++){
 
-            //     await axios.post("https://back-birga.ywa.su/response" , par[0], {
+            //     await axios.post("https://www.connectbirga.ru/response" , par[0], {
             //         params : {
             //             advertisementId : par[1].advertisement.id,
             //             userId : par[1].user.id
@@ -125,7 +125,7 @@ export const addResponse = createAsyncThunk(
 
             const messageOne = translation("📣 Вы получили отклик на задачу «")
             const messageTwo = translation("» от ")
-            await axios.post("https://back-birga.ywa.su/response" , par[0], {
+            await axios.post("https://www.connectbirga.ru/response" , par[0], {
                 params : {
                     advertisementId : par[1].advertisement.id,
                     userId : par[1].user.id
@@ -135,7 +135,7 @@ export const addResponse = createAsyncThunk(
 
             const en = true
             
-            await axios.get("https://back-birga.ywa.su/user/sendMessage" , {
+            await axios.get("https://www.connectbirga.ru/user/sendMessage" , {
                 params : {
                   "chatId" : par[1].advertisement.user.chatId,
                   "text" : messageOne + par[1].advertisement.taskName.bold() + messageTwo +  par[1].user.fl ,
@@ -158,7 +158,7 @@ export const postResponse = createAsyncThunk(
         let myData = new FormData()
         myData.append("isWatched" , "watched")
         try{
-            let im = await axios.put("https://back-birga.ywa.su/response" , myData, {
+            let im = await axios.put("https://www.connectbirga.ru/response" , myData, {
                 params : {
                     id : id
                 }
@@ -175,7 +175,7 @@ export const fetchResponses = createAsyncThunk(
         try{
 
         
-        let im = await axios.get('https://back-birga.ywa.su/response/findByUser' , {
+        let im = await axios.get('https://www.connectbirga.ru/response/findByUser' , {
             params : {
                 "userId" : 2144832745,
                 page : par[1],
@@ -203,7 +203,7 @@ export const fetchResponses = createAsyncThunk(
 
             try {
                 let imTwo = await axios.get(
-                  "https://back-birga.ywa.su/advertisement/findCount",
+                  "https://www.connectbirga.ru/advertisement/findCount",
                   {
                     params: {
                       userId: me.id,
@@ -218,13 +218,13 @@ export const fetchResponses = createAsyncThunk(
             
             console.log(localResponses)
 
-            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : localResponses[i].advertisement.user.id
                 }
             })
 
-            const advertisementCrateNumber = await axios.get("https://back-birga.ywa.su/advertisement/findCount" , {
+            const advertisementCrateNumber = await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
                 params : {
                     "userId" : localResponses[i].advertisement.user.id
                 }

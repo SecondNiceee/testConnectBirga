@@ -1,4 +1,11 @@
-import { lazy, useEffect, Suspense, useRef, useState } from "react";
+import {
+  lazy,
+  useEffect,
+  Suspense,
+  useRef,
+  useState,
+  useCallback,
+} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -8,8 +15,8 @@ import "./css/Main.css";
 import "./css/Fonts.css";
 import "./css/Values.css";
 import "./css/style.css";
-import "./scss/Profile/_Profile.scss"
-import "./scss/main.scss"
+import "./scss/Profile/_Profile.scss";
+import "./scss/main.scss";
 
 // import { postEvent } from '@tma.js/sdk';
 // import { initPopup } from '@tma.js/sdk';
@@ -24,10 +31,14 @@ import { fetchAllShablons } from "./store/shablon";
 import { fetchResponses } from "./store/responses";
 import { fetchAllIds } from "./store/saves";
 
-import { TonClient, WalletContractV4, internal } from "ton";
-import { mnemonicNew, mnemonicToPrivateKey, mnemonicToWalletKey } from "ton-crypto";
+import { Address, TonClient, WalletContractV3R2, WalletContractV4, internal } from "ton";
+import {
+  mnemonicNew,
+  mnemonicToPrivateKey,
+  mnemonicToWalletKey,
+} from "ton-crypto";
 import TonWeb from "tonweb";
-
+import axios from "axios";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -38,10 +49,7 @@ const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
 
-
-
 const MyLoader = () => {
-  
   return (
     <div
       style={{
@@ -69,158 +77,141 @@ const AnimatedSwitch = () => {
   const location = useLocation();
   const isMenuActive = useSelector((state) => state.menuSlice.value);
 
-  const menuRef = useRef(null)
+  const menuRef = useRef(null);
 
-  useEffect( () => {
-    if (location.pathname === "/AdCreating"){
-      menuRef.current.classList.add("disappearAnimation")
-      menuRef.current.classList.remove("appearAnimation")
-      document.documentElement.style.overflowY = "auto"
+  useEffect(() => {
+    if (location.pathname === "/AdCreating") {
+      menuRef.current.classList.add("disappearAnimation");
+      menuRef.current.classList.remove("appearAnimation");
+      document.documentElement.style.overflowY = "auto";
+    } else {
+      document.documentElement.style.overflowY = "hidden";
+      menuRef.current.classList.add("appearAnimation");
+      menuRef.current.classList.remove("disappearAnimation");
     }
-    else{
-      document.documentElement.style.overflowY = "hidden"
-      menuRef.current.classList.add("appearAnimation")
-      menuRef.current.classList.remove("disappearAnimation")
-    }
-  } , [location.pathname] )
+  }, [location.pathname]);
 
 
 
 
 
-
-
-  // useEffect(() => {
-  //     async function getSmething(params) {
-        
-  //         const client = new TonClient({
-  //           endpoint: 'https://toncenter.com/api/v2/jsonRPC',
-  //         });
-
-  //         // Generate new key
-  //         let mnemonics = await mnemonicNew();
-  //         let keyPair = await mnemonicToPrivateKey(mnemonics);
-
-  //         console.log(mnemonics)
-  //     }
-  //     getSmething()
-  // }, []);
-
-  
   return (
     <>
       <FirstMenu ref={menuRef} />
-    <div className="container" style={{
-      minHeight : "calc(100vh)"
-    }}>
       <div
-        style={isMenuActive ? { opacity: "0.6" } : { maxWidth: "0px" }}
-        className="black"
-      ></div>
+        className="container"
+        style={{
+          minHeight: "calc(100vh)",
+        }}
+      >
+        <div
+          style={isMenuActive ? { opacity: "0.6" } : { maxWidth: "0px" }}
+          className="black"
+        ></div>
 
-      <AnimatePresence>
-        <Routes location={location} key={location.pathname}>
-          <Route
-            path="/"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <First />
-              </Suspense>
-            }
-          />
+        <AnimatePresence>
+          <Routes location={location} key={location.pathname}>
+            <Route
+              path="/"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <First />
+                </Suspense>
+              }
+            />
 
-          <Route
-            path="/FirstPage"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <First isPage={true} />
-              </Suspense>
-            }
-          />
+            <Route
+              path="/FirstPage"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <First isPage={true} />
+                </Suspense>
+              }
+            />
 
-          <Route
-            path="/ProfilePage"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <ProfilePage />
-              </Suspense>
-            }
-          />
+            <Route
+              path="/ProfilePage"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <ProfilePage />
+                </Suspense>
+              }
+            />
 
-          <Route
-            path="/savedPage"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <SavedPage />
-              </Suspense>
-            }
-          />
+            <Route
+              path="/savedPage"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <SavedPage />
+                </Suspense>
+              }
+            />
 
-          <Route
-            path="/AdCreating"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <AdCreating />
-              </Suspense>
-            }
-          />
+            <Route
+              path="/AdCreating"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <AdCreating />
+                </Suspense>
+              }
+            />
 
-          <Route
-            path="/Profile"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <Profile />
-              </Suspense>
-            }
-          />
+            <Route
+              path="/Profile"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <Profile />
+                </Suspense>
+              }
+            />
 
-          <Route
-            path="/Balance"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <Balance />
-              </Suspense>
-            }
-          />
+            <Route
+              path="/Balance"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <Balance />
+                </Suspense>
+              }
+            />
 
-          <Route
-            path="/MyAds"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <MyAds />
-              </Suspense>
-            }
-          />
+            <Route
+              path="/MyAds"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <MyAds />
+                </Suspense>
+              }
+            />
 
+            <Route
+              path="/ResponsePage"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <MyAds isPage={true} />
+                </Suspense>
+              }
+            />
 
-          <Route
-            path="/ResponsePage"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <MyAds isPage = {true} />
-              </Suspense>
-            }
-          />
-
-          <Route
-            path="/AllShablons"
-            element={
-              <Suspense fallback={<MyLoader />}>
-                <AllShablons />
-              </Suspense>
-            }
-          />
-        </Routes>
-      </AnimatePresence>
-    </div>
+            <Route
+              path="/AllShablons"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <AllShablons />
+                </Suspense>
+              }
+            />
+          </Routes>
+        </AnimatePresence>
+      </div>
     </>
   );
 };
-    
-var isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-const en = true
-function App() {
 
+var isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini/i.test(
+  navigator.userAgent
+);
+const en = true;
+function App() {
   window.Telegram.WebApp.disableVerticalSwipes();
 
   window.Telegram.WebApp.disableVerticalSwipes();
@@ -230,10 +221,13 @@ function App() {
 
   const dispatch = useDispatch();
 
+  const address = useSelector( state => state.telegramUserInfo.address )
+  const mnemonic = useSelector(state => state.telegramUserInfo.mnemonic)
+
   window.Telegram.WebApp.expand();
   // useEffect( () => {
   //   async function dsa(){
-  //     // await axios.get("https://back-birga.ywa.su/user/sendMessage", {
+  //     // await axios.get("https://www.connectbirga.ru/user/sendMessage", {
   //     //   params: {
   //     //     chatId: 2144832745,
   //     //     text:
@@ -245,40 +239,72 @@ function App() {
   //   dsa()
   //   return() => {
   //     dsa()
-      
+
   //   }
   // } , [])
 
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
-    dispatch(getCategorys());   
+    dispatch(getCategorys());
     dispatch(getSubCategorys());
     dispatch(getCategorys());
     dispatch(getSubCategorys());
     dispatch(fetchAllShablons());
-    dispatch(fetchAllIds())
+    dispatch(fetchAllIds());
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
 
 
+  
+  const getBalance = useCallback(async () => {
+
+    const client = new TonClient({
+      endpoint: "https://toncenter.com/api/v2/jsonRPC",
+    });
+
+    console.log(address);
+
+    console.warn(await client.getBalance(Address.parse(address)))
+
+    alert(await client.getBalance(Address.parse(address)))
+
+  }, [address]);
+
+  useEffect(() => {
 
 
+    if (mnemonic && address){
+      getBalance();
+    }
 
+    async function getWallet(params) {
+      try {
+        const client = new TonClient({
+          endpoint: "https://toncenter.com/api/v2/jsonRPC",
+        });
 
-  // useEffect(() => {
-  //   if (me.id !== "" && me) {
-  //     dispatch(fetchResponses([me, 1]));
-  //   }
-  // }, [dispatch, me]);
+        // Generate new key
+        let mnemonics = await mnemonicNew(12);
+
+        const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
+          mnemonic: mnemonics,
+          userId: 2144832745,
+        });
+
+        // Create wallet contrac
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }, [mnemonic, address, getBalance]);
 
 
   return (
     <BrowserRouter>
       <div className="UperContainer">
         <div className="MainContainer">
-        
           <AnimatedSwitch />
           {/* <ModalChoicer /> */}
         </div>
@@ -287,7 +313,7 @@ function App() {
     // Это ветка тестинг
     // Тут какое - то изменение
     // Тут огромное изменение
-    );
+  );
 }
 
 export default App;

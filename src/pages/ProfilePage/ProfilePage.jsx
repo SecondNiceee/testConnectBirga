@@ -94,14 +94,14 @@ const ProfilePage = ({ ...props }) => {
     async function getAllCards() {
       let localCards = [];
       try {
-        const user = await axios.get("https://back-birga.ywa.su/user/findOne", {
+        const user = await axios.get("https://www.connectbirga.ru/user/findOne", {
           params: {
             id: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1]),
           },
         });
 
         let imTwo = await axios.get(
-            "https://back-birga.ywa.su/advertisement/findCount",
+            "https://www.connectbirga.ru/advertisement/findCount",
             {
               params: {
                 userId: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1]),
@@ -109,14 +109,14 @@ const ProfilePage = ({ ...props }) => {
             }
           );
 
-        const cardOne = await axios.get("https://back-birga.ywa.su/card/findOne" , {
+        const cardOne = await axios.get("https://www.connectbirga.ru/card/findOne" , {
             params : {
                 id : Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[0])
             }
         })
 
         let allCards = await axios.get(
-          "https://back-birga.ywa.su/card/findByUser",
+          "https://www.connectbirga.ru/card/findByUser",
           {
             params: {
               userId: user.data.id,

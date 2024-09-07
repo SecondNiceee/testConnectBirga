@@ -48,7 +48,7 @@ const ShowMyResponse = ({
     }
     async function clickHandler() {
       try {
-        await axios.get("https://back-birga.ywa.su/bot/notification", {
+        await axios.get("https://www.connectbirga.ru/bot/notification", {
           params: {
             executorId: String(response.user.id),
             consumerId: String(response.advertisement.user.id),

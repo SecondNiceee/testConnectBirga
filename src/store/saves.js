@@ -7,7 +7,7 @@ export const deleteCard = createAsyncThunk(
     "deleteCard" ,
     async function(id){
         try{
-            await axios.delete("https://back-birga.ywa.su/user/savedCard", {
+            await axios.delete("https://www.connectbirga.ru/user/savedCard", {
                 params:{
                     "userId" : 2144832745,
                     "cardId" : id
@@ -26,7 +26,7 @@ export const addCard = createAsyncThunk(
     "addCard" ,
     async function (par){
         try{
-            await axios.post('https://back-birga.ywa.su/card/save' , {
+            await axios.post('https://www.connectbirga.ru/card/save' , {
                 "userId" : 2144832745,
                 "cardId" : par[0]
             })
@@ -42,7 +42,7 @@ export const deleteResponce = createAsyncThunk(
     "deleteReponce",
     async function(id){
         try{
-            await axios.delete("https://back-birga.ywa.su/user/savedResponse" , { params : {
+            await axios.delete("https://www.connectbirga.ru/user/savedResponse" , { params : {
                 "responseId" : id,
                 "userId" : 2144832745
             } })
@@ -59,23 +59,23 @@ export const addResponce = createAsyncThunk(
     "addResponce",
     async function(par){
         try{
-            await axios.post('https://back-birga.ywa.su/response/save', {
+            await axios.post('https://www.connectbirga.ru/response/save', {
                     "responseId" : par[0],
                     "userId" : 2144832745
             })
 
-            const responseUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+            const responseUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : par[1].user.id
                 }
             })
 
-            const crateNumber = await axios.get("https://back-birga.ywa.su/advertisement/findCount" , {
+            const crateNumber = await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
                 params : {
                     "userId" : par[1].user.id
                 }
             })
-            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : 2144832745
                 }
@@ -98,7 +98,7 @@ export const deleteAdvertisement = createAsyncThunk(
     "deleteAdvertisement" , 
     async function(id){
         try{
-            await axios.delete("https://back-birga.ywa.su/user/savedAdvertisement" , {
+            await axios.delete("https://www.connectbirga.ru/user/savedAdvertisement" , {
                 params : {
                     "advertisementId" : id,
                     "userId" : 2144832745
@@ -115,18 +115,18 @@ export const addAdvertisment = createAsyncThunk(
     "addAdvertisement",
     async function(par){
         try{
-            let im = await axios.post('https://back-birga.ywa.su/advertisement/save' , {
+            let im = await axios.post('https://www.connectbirga.ru/advertisement/save' , {
                 "advertisementId" : par[0],
                 "userId" : 2144832745
             })
 
-            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : par[1].user.id
                 }
             })
 
-            const advertisementCrateNumber = await axios.get("https://back-birga.ywa.su/advertisement/findCount" , {
+            const advertisementCrateNumber = await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
                 params : {
                     "userId" : par[1].user.id
                 }
@@ -151,7 +151,7 @@ export const fetchSavedCards = createAsyncThunk(
         
 
 
-        let im = await axios.get('https://back-birga.ywa.su/card/saved' , {
+        let im = await axios.get('https://www.connectbirga.ru/card/saved' , {
             params : {
                 "userId" : 2144832745,
                 "page" : page,
@@ -192,7 +192,7 @@ export const fetchSavedCards = createAsyncThunk(
 export const fetchSavedResponses = createAsyncThunk(
     "fetchSavedResponses",
     async function ([page]) {
-        let imTwo = await axios.get('https://back-birga.ywa.su/response/saved' , {
+        let imTwo = await axios.get('https://www.connectbirga.ru/response/saved' , {
             params : {
                 "userId" : 2144832745,
                 limit : 4,
@@ -202,7 +202,7 @@ export const fetchSavedResponses = createAsyncThunk(
 
 
 
-        // let imTwo = await axios.get('https://back-birga.ywa.su/response/saved' , {
+        // let imTwo = await axios.get('https://www.connectbirga.ru/response/saved' , {
         //     params : {
         //         "userId" : 2144832745
         //     }
@@ -220,12 +220,12 @@ export const fetchSavedResponses = createAsyncThunk(
             }
 
 
-            const responseUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+            const responseUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : responces[i].user.id // тут
                 }
             })
-            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : responces[i].advertisement.user.id
                 }
@@ -270,7 +270,7 @@ export const fetchSavedResponses = createAsyncThunk(
     
             try {
               let luo = await axios.get(
-                "https://back-birga.ywa.su/advertisement/findCount",
+                "https://www.connectbirga.ru/advertisement/findCount",
                 {
                   params: {
                     userId: responseUser.data.id,
@@ -296,7 +296,7 @@ export const fetchSavedResponses = createAsyncThunk(
 export const fetchSavedAdvertisements = createAsyncThunk(
     "fetchSavedAdvertisements",
     async function ([page]) {
-        let im = await axios.get('https://back-birga.ywa.su/advertisement/saved' , {
+        let im = await axios.get('https://www.connectbirga.ru/advertisement/saved' , {
             params : {
                 "userId" : 2144832745,
                 limit : 4,
@@ -325,13 +325,13 @@ export const fetchSavedAdvertisements = createAsyncThunk(
             }
 
             let files = await makeNewFile(order.folder, order.photos);
-            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : order.user.id
                 }
             })
 
-            const advertisementCrateNumber = await axios.get("https://back-birga.ywa.su/advertisement/findCount" , {
+            const advertisementCrateNumber = await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
                 params : {
                     "userId" : order.user.id
                 }
@@ -384,17 +384,17 @@ export const fetchAllIds = createAsyncThunk(
     "fetchAllIds", 
     async function (params) {
         try{
-            let imOne = await axios.get("https://back-birga.ywa.su/advertisement/savedIds" , {
+            let imOne = await axios.get("https://www.connectbirga.ru/advertisement/savedIds" , {
                 params : {
                     "userId" : 2144832745
                 }
             })
-            let imTwo = await axios.get("https://back-birga.ywa.su/response/savedIds" , {
+            let imTwo = await axios.get("https://www.connectbirga.ru/response/savedIds" , {
                 params : {
                     "userId" : 2144832745
                 }
             })
-            let imThree = await axios.get("https://back-birga.ywa.su/card/savedIds" , {
+            let imThree = await axios.get("https://www.connectbirga.ru/card/savedIds" , {
                 params : {
                     "userId" : 2144832745
                 }
@@ -416,7 +416,7 @@ export const fetchAllValues = createAsyncThunk(
         try{
 
         
-        let im = await axios.get('https://back-birga.ywa.su/advertisement/saved' , {
+        let im = await axios.get('https://www.connectbirga.ru/advertisement/saved' , {
             params : {
                 "userId" : 2144832745
             }
@@ -438,13 +438,13 @@ export const fetchAllValues = createAsyncThunk(
             }
 
             let files = await makeNewFile(order.folder, order.photos);
-            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : order.user.id
                 }
             })
 
-            const advertisementCrateNumber = await axios.get("https://back-birga.ywa.su/advertisement/findCount" , {
+            const advertisementCrateNumber = await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
                 params : {
                     "userId" : order.user.id
                 }
@@ -489,7 +489,7 @@ export const fetchAllValues = createAsyncThunk(
 
 
 
-        let imTwo = await axios.get('https://back-birga.ywa.su/response/saved' , {
+        let imTwo = await axios.get('https://www.connectbirga.ru/response/saved' , {
             params : {
                 "userId" : 2144832745
             }
@@ -507,12 +507,12 @@ export const fetchAllValues = createAsyncThunk(
             }
 
 
-            const responseUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+            const responseUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : 2144832745 // тут
                 }
             })
-            const advertisementUser = await axios.get("https://back-birga.ywa.su/user/findOne" , {
+            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : responces[i].advertisement.user.id
                 }
@@ -557,7 +557,7 @@ export const fetchAllValues = createAsyncThunk(
     
             try {
               let luo = await axios.get(
-                "https://back-birga.ywa.su/advertisement/findCount",
+                "https://www.connectbirga.ru/advertisement/findCount",
                 {
                   params: {
                     userId: imTwo.data.id,
@@ -574,7 +574,7 @@ export const fetchAllValues = createAsyncThunk(
           }
         
 
-        im = await axios.get('https://back-birga.ywa.su/card/saved' , {
+        im = await axios.get('https://www.connectbirga.ru/card/saved' , {
             params : {
                 "userId" : 2144832745
             }

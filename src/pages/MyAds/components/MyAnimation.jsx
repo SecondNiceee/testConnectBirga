@@ -2,6 +2,8 @@ import React, { memo } from "react";
 import sad from "../../../animation/sadAnimation.json";
 import { useLottie } from "lottie-react";
 import Text from "../../../components/Text/Text";
+
+alert("Отыгровка тебя")
 const MyAnimation = ({
   text = "Вы не откликнулись ни на одно задание",
   height = "calc(calc(100vh)-252px)",

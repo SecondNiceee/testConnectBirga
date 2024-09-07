@@ -238,12 +238,17 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
 }
 .show-modal-exit{
   scale: 0 !important;
-  opacity: 1 !important;
+  opacity: 0 !important;
 }
 .show-modal-exit-active{
   scale: 0 !important;
-  opacity: 1 !important;
+  opacity: 0 !important;
 }
+
+ button, li, a, img {
+  cursor: pointer;
+}
+
 // .slider-appear-enter{
 //   opacity: 0;
 //   transition: 0.3s;

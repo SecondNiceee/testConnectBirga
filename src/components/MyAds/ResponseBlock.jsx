@@ -94,7 +94,7 @@ const ResponseBlock = ({
                     alt=""
                   />
                 );
-                // return <img className='first__photo' src = {'https://back-birga.ywa.su/' + e} />
+                // return <img className='first__photo' src = {'https://www.connectbirga.ru/' + e} />
               })}
             </div>
           ) : (

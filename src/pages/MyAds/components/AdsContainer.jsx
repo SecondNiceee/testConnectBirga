@@ -41,7 +41,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , deleteFunc
         observer.disconnect();
       };
       // eslint-disable-next-line
-    }, [myAdsArray, onIntersaction]);
+    }, [myAdsArray]);
 
     const text = useMemo( () => {
       switch (valueTwo){
@@ -61,13 +61,15 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , deleteFunc
   
 
 
-
+    console.log(myAdsArray);
+    
     return (
       <>
       
         {myAdsArray.lenght === 0 ?
         
             <MyAnimation style = {{height : "calc(calc(100vh) - 300px)"}} text={text}/>
+
             :
 
             <div className="AdsContainer">

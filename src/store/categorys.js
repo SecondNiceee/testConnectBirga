@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getCategorys = createAsyncThunk(
     'category/getCategorys' , 
     async function(){
-        let categorys = await axios.get('https://back-birga.ywa.su/category/category' )
+        let categorys = await axios.get('https://www.connectbirga.ru/category/category' )
         let categorysPar = categorys.data.filter(e => e.category !== 'Другое')
         categorysPar.push(categorys.data.find(e => e.category === 'Другое'))
         return categorysPar
@@ -12,7 +12,7 @@ export const getCategorys = createAsyncThunk(
 export const getSubCategorys = createAsyncThunk(
     'categorys/getSubCategorys',
     async function(){
-        let subCategorys = await axios.get('https://back-birga.ywa.su/category/subCategory')
+        let subCategorys = await axios.get('https://www.connectbirga.ru/category/subCategory')
         return subCategorys.data
     }
 )

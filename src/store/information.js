@@ -9,7 +9,7 @@ export const addWatch = createAsyncThunk(
     try {
       let myData = new FormData();
       myData.append("views", String(Number(advertisement.viewsNumber) + 1));
-      await axios.put("https://back-birga.ywa.su/advertisement", myData, {
+      await axios.put("https://www.connectbirga.ru/advertisement", myData, {
         params: {
           id: String(advertisement.id),
         },
@@ -23,7 +23,7 @@ export const deleteAd = createAsyncThunk(
   "information/deleteMyAd",
   async function (id) {
     try {
-      await axios.delete("https://back-birga.ywa.su/advertisement", {
+      await axios.delete("https://www.connectbirga.ru/advertisement", {
         params: {
           id: id,
         },
@@ -41,7 +41,7 @@ export const putMyTask = createAsyncThunk(
     console.log("ЭТО ПОСТ")
     try {
       let answ = await axios.put(
-        "https://back-birga.ywa.su/advertisement",
+        "https://www.connectbirga.ru/advertisement",
         data[0],
         {
           params: {
@@ -83,7 +83,7 @@ export const postMyTask = createAsyncThunk(
       for (let i = 0 ; i < 1; i++){
         try{
           console.log("Создание задания")
-          await axios.post("https://back-birga.ywa.su/advertisement", arr[0], {
+          await axios.post("https://www.connectbirga.ru/advertisement", arr[0], {
             headers: {
               "Content-Type" :'multipart/form-data',
             },
@@ -100,7 +100,7 @@ export const postMyTask = createAsyncThunk(
 
       let tasks = [];
       let task = await axios.get(
-        "https://back-birga.ywa.su/advertisement/findByUser",
+        "https://www.connectbirga.ru/advertisement/findByUser",
         {
           params: {
             page: 1,
@@ -121,7 +121,7 @@ export const postMyTask = createAsyncThunk(
       } else {
         for (let order of task.data) {
           let files = await makeNewFile(order.folder, order.photos);
-          let responseCounter = await axios.get("https://back-birga.ywa.su/response/countByAdvertisement" , {
+          let responseCounter = await axios.get("https://www.connectbirga.ru/response/countByAdvertisement" , {
             params : {
               "advertisementId" : order.id
             }
@@ -171,7 +171,7 @@ export const setStartTask = createAsyncThunk(
     try {
       let myData = new FormData();
       myData.append("status", "inProcess");
-      await axios.put("https://back-birga.ywa.su/advertisement", myData, {
+      await axios.put("https://www.connectbirga.ru/advertisement", myData, {
         params: {
           id: id,
         },
@@ -191,7 +191,7 @@ export const fetchMyOrders = createAsyncThunk(
     try {
       let tasks = [];
       let task = await axios.get(
-        "https://back-birga.ywa.su/advertisement/findByUser",
+        "https://www.connectbirga.ru/advertisement/findByUser",
         {
           params: {
             page: page,
@@ -212,7 +212,7 @@ export const fetchMyOrders = createAsyncThunk(
       } else {
         for (let order of task.data) {
           let files = await makeNewFile(order.folder, order.photos);
-          let responseCounter = await axios.get("https://back-birga.ywa.su/response/countByAdvertisement" , {
+          let responseCounter = await axios.get("https://www.connectbirga.ru/response/countByAdvertisement" , {
             params : {
               "advertisementId" : order.id
             }
@@ -264,7 +264,7 @@ export const fetchTasksInformation = createAsyncThunk(
     
     try {
       task = await axios.get(
-        "https://back-birga.ywa.su/advertisement/findAll",
+        "https://www.connectbirga.ru/advertisement/findAll",
         {
           params: {
             limit: 4,
@@ -294,7 +294,7 @@ export const fetchTasksInformation = createAsyncThunk(
           let files = await makeNewFile(order.folder, order.photos);
 
           let imTwo = await axios.get(
-            "https://back-birga.ywa.su/advertisement/findCount",
+            "https://www.connectbirga.ru/advertisement/findCount",
             {
               params: {
                 userId: order.user.id,
