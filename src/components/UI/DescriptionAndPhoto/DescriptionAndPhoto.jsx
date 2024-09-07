@@ -17,7 +17,6 @@ const DescriptionAndPhoto = ({
   textPlaceholder,
   fileError,
   clearPhoto,
-  textFocus
 }) => {
 
   const hiddenRef = useRef(null)
@@ -51,7 +50,6 @@ const DescriptionAndPhoto = ({
         <textarea ref={hiddenRef} value={text} className={cl.hiddenText}/>
 
         <TextArea
-        onFocus = {textFocus}
         ref={myRef}
           value={text}
           className={cl.DescriptionInput}
