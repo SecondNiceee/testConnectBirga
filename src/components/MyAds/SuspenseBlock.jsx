@@ -16,10 +16,10 @@ const SuspenseBlock = ({i , e, setSecondPage ,  viewsNumber = 0, setViewsNumber 
     } , [inView] )
     const style = useMemo( () =>{
         if (e.photos.length > 0){
-            return {minHeight : "314px" , position : "relative"}
+            return {minHeight : "calc(184px + 35vh)" , position : "relative"}
         }
         else{
-            return {minHeight : "178px", position : "relative"}
+            return {minHeight : "calc(178px)", position : "relative"}
         }
     } , [e.photos] )
     return (

@@ -63,13 +63,6 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
   //   }
   // } , [])
 
-  const focusText = useCallback( () => {
-    ref.current.scrollTo(0, 100)
-    setTimeout( () => {
-      ref.current.scrollTo(0, 100)
-    } , 400 )
-  } , [] )
-
   return (
     
     <div ref={ref} {...props} className="responce-wrapper">
@@ -122,7 +115,6 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
        
           {(shablonsArr.length > 0 || !responce.isShablon) && 
                     <DescriptionAndPhoto
-                    textFocus = {focusText}
                     clearPhoto={clearPhoto}
                     className={"responce-descriprion"}
                     text={responce.text}

@@ -79,7 +79,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , deleteFunc
 
                 );
               })}
-              { (orderStatus !== "all")  &&  <MyLoader ref={elementRef}  style = {{ height : "90px" , marginLeft : "-16px"}} />}
+              { (orderStatus !== "all")  &&  <MyLoader ref={elementRef}  style = {{ height : "200px" , marginLeft : "-16px"}} />}
 
             </div>
         }
