@@ -74,7 +74,7 @@ const PickerContent = ({
     return () => {
 
     }
-  }  , [nowValue, responsesArr, myAdsArray, advertisementStatus, responsesStatus, viewsNumber, setViewsNumber] )
+  }  , [nowValue, responsesArr, myAdsArray, advertisementStatus, responsesStatus, viewsNumber] )
   
 
 
