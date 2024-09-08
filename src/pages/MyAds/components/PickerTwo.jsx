@@ -5,16 +5,17 @@ import AdsContainer from './AdsContainer';
 import { useSelector } from 'react-redux';
 import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 
-const PickerTwo = forwardRef(({setSecondPage , deleteFunction , valueTwo ,  viewsNumber , setViewsNumber } , ref) => {
+const PickerTwo = forwardRef(({setSecondPage  , valueTwo ,  viewsNumber , setViewsNumber, myAdsArray } , ref) => {
 
 
 
   const status = useSelector(state => state.information.myOrderStatus)
-  const myAdsArray = useSelector((state) => state.information.myAdsArray);
+  console.log(viewsNumber);
+  
     return (
         <div className="picker__block" ref={ref}>
         <AdCreateFunc text={"Создать объявление"} link={"/AdCreating"} />
-        <AdsContainer valueTwo = {valueTwo}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} myAdsArray={myAdsArray} setSecondPage={setSecondPage}  deleteFunction={deleteFunction} />
+        <AdsContainer valueTwo = {valueTwo}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} myAdsArray={myAdsArray} setSecondPage={setSecondPage}  />
 
 
 

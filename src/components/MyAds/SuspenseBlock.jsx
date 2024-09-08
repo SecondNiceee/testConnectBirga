@@ -9,11 +9,13 @@ const SuspenseBlock = ({i , e, setSecondPage ,  viewsNumber = 0, setViewsNumber 
       });
     const [isVisible, setVisible] = useState(false)
     useEffect( () => {
-        if (inView){
-            setVisible(true)
-            setViewsNumber(viewsNumber + 1)
+        if (!isVisible){
+            if (inView){
+                setVisible(true)
+                setViewsNumber((value) => (value + 1))
+            }
         }
-    } , [inView] )
+    } , [inView, isVisible] )
     const style = useMemo( () =>{
         if (e.photos.length > 0){
             return {minHeight : "calc(184px + 35vh)" , position : "relative"}

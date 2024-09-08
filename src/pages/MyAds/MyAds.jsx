@@ -132,6 +132,7 @@ const MyAds = ({isPage = false}) => {
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
 
 
+  console.log(valueTwo);
 
   const filteredArray = useMemo( () => {
     switch (valueTwo){
@@ -149,6 +150,9 @@ const MyAds = ({isPage = false}) => {
         window.Telegram.WebApp.showAlert("Что - то пошло не так MyAds второй")
     }
   } , [myAdsArray , valueTwo] )
+
+  console.log(filteredArray);
+  
 
 
   
@@ -640,9 +644,7 @@ const MyAds = ({isPage = false}) => {
 
           <MyAdOne
           responsesArr = {filteredResponses}
-          myResponse = {myResponse}
           setMyResponse = {setMyResponse}
-          details = {detailsTwo}
             setOneValue = {setValueOne}
             setTwoValue = {setValueTwo}
             nowValue={nowValue}
@@ -651,7 +653,6 @@ const MyAds = ({isPage = false}) => {
             setNowKey={setNowKey}
             myAdsArray={filteredArray}
             setSecondPage={setSecondPage}
-            setDetails={setDetailsTwo}
           />
 
 
