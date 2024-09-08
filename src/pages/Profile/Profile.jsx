@@ -36,6 +36,7 @@ import Text from "../../components/Text/Text";
 import translation from "../../functions/translate";
 import PayBlock from "./components/PayBlock/PayBlock";
 import PaymentPageOne from "./components/PaymentPageOne/PaymentPageOne";
+import en from "../../constants/language";
 
 const lett = translation("лет");
 const goda = translation("года");
@@ -49,7 +50,7 @@ const variants = {
 let aboutULocal = null;
 
 let userInfoLocal = null;
-const en = true;
+
 
 const Yes = translation("Да");
 const No = translation("Нет");

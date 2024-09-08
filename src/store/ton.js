@@ -1,6 +1,7 @@
 import { createSlice , createAsyncThunk } from "@reduxjs/toolkit";
+import en from "../constants/language";
 
-const en = true
+
 export const fetchTon = createAsyncThunk(
     'ton/fetchTon',
     async function () {

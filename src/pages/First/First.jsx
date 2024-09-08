@@ -29,6 +29,7 @@ import { addResponce, clearTasks } from "../../store/information";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import translation from "../../functions/translate";
+import en from "../../constants/language";
 
 let isDetailsActiveVar = false;
 let pageValue = true;
@@ -46,7 +47,7 @@ const buttonText = translation("ОТКЛИКНУТЬСЯ")
 const Yes = translation("Да")
 const No = translation("Нет")
 
-const en = true
+
 
 
 const First = ({ isPage = false }) => {

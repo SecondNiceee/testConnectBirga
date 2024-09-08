@@ -2,6 +2,7 @@ import React, { forwardRef, memo } from 'react';
 import i18n from 'i18next';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import enTranslation from "../../translation/enTranslation.json"
+import en from '../../constants/language';
 
 i18n
   .use(initReactI18next)
@@ -9,7 +10,7 @@ i18n
     resources: {
       en: { translation: enTranslation },
     },
-    lng: 'en', // set default language
+    lng: en ? "en" : "ru", // set default language
     fallbackLng: 'en', // set fallback language
     interpolation: { escapeValue: false },
   });

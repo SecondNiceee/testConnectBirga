@@ -206,11 +206,6 @@ const AnimatedSwitch = () => {
     </>
   );
 };
-
-var isMobile = /iPhone|iPad|iPod|Android|BlackBerry|IEMobile|Opera Mini/i.test(
-  navigator.userAgent
-);
-const en = true;
 function App() {
   window.Telegram.WebApp.disableVerticalSwipes();
 

@@ -3,6 +3,7 @@ import axios from "axios";
 
 import makeNewFile from "../functions/newMakeFile";
 import translation from "../functions/translate";
+import en from "../constants/language";
 
 
 
@@ -82,7 +83,6 @@ export const setStartResponse = createAsyncThunk(
         let myData = new FormData()
         myData.append("isWatched" , "inProcess")
         const messageOne = translation("📣✅ Вы были выбраны исполнителем на задание")
-        const en = true
         try{
             let im = await axios.put("https://www.connectbirga.ru/response" , myData, {
                 params : {

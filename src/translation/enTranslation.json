@@ -199,6 +199,7 @@
     "Заказчик уже выбрал исполнителя." : "The customer has already chosen the contractor.",
     "Задание уже выполнено." : "The assignment has already been completed.",
     "Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку." : "Sorry, the confirmation could not be sent to the customer. Please contact support.",
-    "Завершено" : "Completed"
+    "Завершено" : "Completed",
+    "Мы пока не добавили возможность делиться откликами:(" : "We haven't added the ability to share feedback yet:("
     
 }                                    

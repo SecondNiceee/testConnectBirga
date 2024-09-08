@@ -8,7 +8,9 @@ import MyButton from "../../../components/UI/MyButton/MyButton";
 import userPhoto from "../../../images/userPhoto/user.png"
 import breakShare from "../../../functions/breakShare";
 import Text from "../../../components/Text/Text";
-const en = true
+import en from "../../../constants/language";
+
+
 const Reaction = ({
   blue = false,
   setOpen,

@@ -16,6 +16,7 @@ import CardPage from "../CardPage/CardPage";
 import AboutReaction from "../MyAds/components/AboutReaction";
 import { clearAll, fetchSavedAdvertisements, fetchSavedCards, fetchSavedResponses } from "../../store/saves";
 import translation from "../../functions/translate";
+import en from "../../constants/language";
 
 const values = ["Заказы", "Отклики", "Кейсы"];
 const keys = ["advertisment", "responces", "cards"];
@@ -355,7 +356,6 @@ const SavedPage = () => {
         );
         const messageOne = translation("📣 Вы получили отклик на задачу «")
         const messageTwo = translation("» от ")
-        const en = true
         await axios.get("https://www.connectbirga.ru/user/sendMessage", {
           params: {
             chatId: im.data.user.chatId,

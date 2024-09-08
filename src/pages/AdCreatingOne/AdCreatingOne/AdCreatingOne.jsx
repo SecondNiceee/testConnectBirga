@@ -13,10 +13,11 @@ import "../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css";
 import MyDatePicker from "../../../components/AdCreating/MyDatePicker/MyDatePicker";
 import Text from "../../../components/Text/Text";
 import translation from "../../../functions/translate";
+import en from "../../../constants/language";
 
 // eslint-disable-next-line
 
-const en = true
+
 Date.prototype.addHours = function (h) {
   this.setTime(this.getTime() + h * 60 * 60 * 1000);
   return this;

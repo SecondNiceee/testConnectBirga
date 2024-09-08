@@ -7,8 +7,9 @@ import { useSelector } from "react-redux";
 import formatDate from "../../functions/makeDate";
 import BlockSpinner from "../UI/BlockSpinner/BlockSpinner";
 import Text from "../Text/Text";
+import en from "../../constants/language";
 
-const en = true
+
 const textPrice = en ? 'USD' : "RUB"
 const MyFirstBlock = ({
   className,
