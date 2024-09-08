@@ -53,12 +53,13 @@ const Reaction = ({
       /// какая - то логика лет 
     }
   } , []  )
+  console.log(responce)
   return (
     <>
       <div
         className="reaction"
         style={
-          responce.isWatched === "inProcess" && writeButton
+          (responce.isWatched === "inProcess" || responce.isWatched === "completed")  && writeButton
             ? { border: "1.67px solid #2ea5ff" }
             : {}
         }

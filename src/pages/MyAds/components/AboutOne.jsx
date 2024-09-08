@@ -107,8 +107,8 @@ const AboutOne = ({
         <Block
           deleteFunction={deleteCallback}
           setDetailsActive={setDetailsCallback}
-          isResponce={task.status !== "inProcess" }
-          isButton={task.status !== "inProcess" }
+          isResponce={true }
+          isButton={task.status !== "inProcess" && task.status !== "completed" }
           className={"FirstAdsBlock"}
         
           {...task}

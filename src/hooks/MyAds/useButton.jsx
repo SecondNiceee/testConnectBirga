@@ -200,7 +200,7 @@ export const useButton = ({
 
     BackButton.show();
 
-    if (isOpen.isActive && secondPage.task.status !== "inProcess") {
+    if (isOpen.isActive && secondPage.task.status !== "inProcess" && secondPage.task.status !== "completed") {
       menu.classList.add("disappearAnimation")
       menu.classList.remove("appearAnimation")
       MainButton.show();

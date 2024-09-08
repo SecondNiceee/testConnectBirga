@@ -62,6 +62,10 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
   //     document.documentElement.style.overflowY = "scroll"
   //   }
   // } , [])
+  const onFocus = useCallback((e) => {
+    e.preventDefault()
+    e.target.preventDefault()
+} , [] )
 
   return (
     
@@ -115,6 +119,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
        
           {(shablonsArr.length > 0 || !responce.isShablon) && 
                     <DescriptionAndPhoto
+                    onFocus={onFocus}
                     clearPhoto={clearPhoto}
                     className={"responce-descriprion"}
                     text={responce.text}
