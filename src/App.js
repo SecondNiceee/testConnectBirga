@@ -268,7 +268,7 @@ function App() {
 
     console.warn(await client.getBalance(Address.parse(address)))
 
-    alert(await client.getBalance(Address.parse(address)))
+    // alert(await client.getBalance(Address.parse(address)))
 
   }, [address]);
 

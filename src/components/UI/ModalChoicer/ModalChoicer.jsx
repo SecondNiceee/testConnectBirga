@@ -225,7 +225,6 @@ const Option = styled("li")(
   ({ theme }) => `
 
   display : flex;
-
   position : relative;
   font-family: "SF Pro Text 400";
   font-weight: 400;
@@ -242,7 +241,7 @@ const Option = styled("li")(
   height: 44px;
 
 
-  border-bottom: 0.64px solid rgba(54 54 54, 0.65);
+  border-bottom: 0.64px solid rgba(54, 54, 54, 0.65);
   padding: 11px 20px;
 
 
