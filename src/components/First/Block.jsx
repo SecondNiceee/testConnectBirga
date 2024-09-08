@@ -32,7 +32,8 @@ const Block = ({
   endTime,
   singleTime,
   whichOne,
-  status
+  status,
+  showStatus = false
 }) => {
   const dispatch = useDispatch();
   const tonConstant = useSelector((state) => state.ton.value);
@@ -62,7 +63,7 @@ const Block = ({
         >
           <Photos photos={photos} />
 
-          <MyAdsTop status = {status} isMyAds={isMyAds} isResponce={isResponce} viewsNumber={viewsNumber} responseCounter={responseCounter} />
+          <MyAdsTop showStatus = {showStatus} status = {status} isMyAds={isMyAds} isResponce={isResponce} viewsNumber={viewsNumber} responseCounter={responseCounter} />
 
           <FirstMainTop isMyAds={isMyAds} category={category} isWatched={isWatched} taskName={taskName} id={id}  end={end} />
 

@@ -13,6 +13,7 @@ import translation from "../../../functions/translate";
 
 const Yes = translation("Да")
 const No = translation("Нет")
+const showStatus = true
 const AboutOne = ({
   task,
   setMenuActive,
@@ -105,10 +106,11 @@ const AboutOne = ({
 
       {task && (putStatus !== "pending")  ? (
         <Block
+          showStatus = {showStatus}
           deleteFunction={deleteCallback}
           setDetailsActive={setDetailsCallback}
-          isResponce={true }
-          isButton={task.status !== "inProcess" && task.status !== "completed" }
+          isResponce={task.status !== "inProcess" && task.status !== "completed"}
+          isButton={task.status !== "inProcess" && task.status !== "completed"}
           className={"FirstAdsBlock"}
         
           {...task}

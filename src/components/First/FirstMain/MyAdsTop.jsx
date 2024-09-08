@@ -2,7 +2,7 @@ import React, { memo, useMemo } from "react";
 import MyAdsTopRight from "./MyAdsTopRight";
 import Text from "../../Text/Text";
 
-const MyAdsTop = ({isMyAds, isResponce, viewsNumber, responseCounter, status }) => {
+const MyAdsTop = ({isMyAds, isResponce, viewsNumber, responseCounter, status, showStatus = false }) => {
   const textStatus = useMemo(() => {
     switch (status) {
       case "active":
@@ -30,7 +30,7 @@ const MyAdsTop = ({isMyAds, isResponce, viewsNumber, responseCounter, status }) 
   }, [status]);
   return (
     <>
-      {isMyAds || isResponce ? (
+      {isMyAds || isResponce || showStatus ? (
         <div className="myAds__top">
           <Text style = {style} className="myAds__top-left">{textStatus}</Text>
           <MyAdsTopRight viewsNumber={viewsNumber} responseCounter={responseCounter} />
