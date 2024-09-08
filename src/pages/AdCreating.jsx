@@ -290,14 +290,22 @@ const translateText = translation("Вы уверены, что хотите со
   //   }
   // } , [] )
   useEffect( () => {
-      if (spet === 1 || spet === 2){
+      if (spet === 2){
         if (mainRef.current){
           mainRef.current.style.height = "100vh"
+          mainRef.current.style.maxHeight = "unset"
         }
       }
       else{
         if (mainRef.current){
-          mainRef.current.style.height = "100%"
+          if (spet === 1){
+            mainRef.current.style.height = "100%"
+            mainRef.current.style.maxHeight = "100vh"
+          }
+          else{
+            mainRef.current.style.height = "100%"
+            mainRef.current.style.maxHeight = "unset"
+          }
         }
       }
   } , [spet]  )

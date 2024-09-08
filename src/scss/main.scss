@@ -237,14 +237,20 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
   opacity: 1 !important;
 }
 .show-modal-exit{
-  scale: 0 !important;
-  opacity: 0 !important;
+  transition: 0.5s !important;
+  scale: 1 !important;
+  opacity: 1 !important;
 }
 .show-modal-exit-active{
+  transition: 0.5s !important;
+  scale: 1 !important;
+  opacity: 1 !important;
+}
+.show-modal-exit-done{
+  transition: 0.3s !important;
   scale: 0 !important;
   opacity: 0 !important;
 }
-
  button, li, a, img {
   cursor: pointer;
 }

@@ -60,7 +60,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
   
 
 
-    console.log(myAdsArray);
+    console.log(viewsNumber);
     
     return (
       <>

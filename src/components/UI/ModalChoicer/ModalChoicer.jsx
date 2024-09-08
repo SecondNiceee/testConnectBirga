@@ -77,7 +77,7 @@ export default function ModalChoicer({
 
 
         <CSSTransition in = {isOpen}
-        timeout={300}
+        timeout={0}
         
         classNames={"show-modal"}
          >

@@ -10,7 +10,6 @@ const PickerTwo = forwardRef(({setSecondPage  , valueTwo ,  viewsNumber , setVie
 
 
   const status = useSelector(state => state.information.myOrderStatus)
-  console.log(viewsNumber);
   
     return (
         <div className="picker__block" ref={ref}>

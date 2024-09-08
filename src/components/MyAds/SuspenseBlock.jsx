@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import BlockSpinner from '../UI/BlockSpinner/BlockSpinner';
 import { useInView } from 'react-intersection-observer';
-const Block = lazy( () => import("../../pages/MyAds/components/Block") )
+import Block from '../../pages/MyAds/components/Block';
 
 const SuspenseBlock = ({i , e, setSecondPage ,  viewsNumber = 0, setViewsNumber = () => {}}) => {
     const { ref, inView } = useInView({
@@ -35,9 +35,8 @@ const SuspenseBlock = ({i , e, setSecondPage ,  viewsNumber = 0, setViewsNumber 
                 left : "40px",
                 zIndex : -1
             }} className="catch_block"></div>
-            {isVisible &&  <Suspense fallback = {<BlockSpinner style = {e.photos.length > 0 ? {height : "313px"} : {height : "144px"}}   />}>
+            {isVisible &&
                         <Block e={e} i={i} setSecondPage={setSecondPage}/>
-                </Suspense>
                 }
         </div>
     );
