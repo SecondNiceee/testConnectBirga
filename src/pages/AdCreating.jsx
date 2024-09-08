@@ -293,19 +293,18 @@ const translateText = translation("Вы уверены, что хотите со
       if (spet === 2){
         if (mainRef.current){
           mainRef.current.style.height = "100vh"
-          mainRef.current.style.maxHeight = "unset"
+          mainRef.current.style.paddingBottom = "60px"
         }
       }
       else{
         if (mainRef.current){
           if (spet === 1){
             mainRef.current.style.height = "100%"
-            mainRef.current.style.maxHeight = "100vh"
             mainRef.current.style.paddingBottom = "0px"
           }
           else{
+            mainRef.current.style.paddingBottom = "60px"
             mainRef.current.style.height = "100%"
-            mainRef.current.style.maxHeight = "unset"
           }
         }
       }
