@@ -2,6 +2,7 @@ import React from 'react';
 import i18n from 'i18next';
 import { initReactI18next, useTranslation } from 'react-i18next';
 import enTranslation from "../translation/enTranslation.json"
+import ruTranslation from "../translation/ruTranslation.json"
 import en from '../constants/language';
 
 i18n
@@ -9,6 +10,7 @@ i18n
   .init({
     resources: {
       en: { translation: enTranslation },
+      ru : {translation : ruTranslation}
     },
     lng:  en ? 'en' : "ru", // set default language
     fallbackLng: 'en', // set fallback language
