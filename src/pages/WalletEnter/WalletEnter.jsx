@@ -27,7 +27,9 @@ const WalletEnter = () => {
 
   useEffect( () => {
     document.documentElement.style.overflowY = "auto"
+    document.body.style.overflowY = "auto"
     return () => {
+      document.body.style.overflowY = "hidden"
       document.documentElement.style.overflowY = "hidden"
     }
   } , [] )

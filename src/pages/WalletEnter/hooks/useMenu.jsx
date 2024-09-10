@@ -3,13 +3,14 @@ import menu from '../../../constants/menu';
 
 const useMenu = () => {
     useEffect( () => {
-
+        const menu = document.querySelector(".FirstMenu")
 
         if (menu){
-          menu.classList.add("disappearAnimation")
-          menu.classList.remove("appearAnimation")
+          menu.style.display = "none"
         }
-    
+        return () => {
+          menu.style.display = "flex"
+        }
       } , [] )
 };
 

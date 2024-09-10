@@ -1,9 +1,14 @@
+.mainContainer{
+    display: flex;
+    
 
+}
 .wrapper{
     display: flex;
     flex-direction: column;
     padding-left: 16px;
     padding-right: 16px;
+    min-width: 100vw;
     .top{
         display: flex;
         margin-top: 24px;
@@ -61,7 +66,171 @@
         }
     
     }
-    .depositsContainer{
-        margin-top: 10px;
+}
+
+.depositContainer{
+    padding-left: 16px;
+    padding-right: 16px;
+    min-width: 100vw;
+    margin-top: 28px;
+    .capText{
+        font-family: "SF Compact Rounded";
+        font-weight: 500;
+        font-size: 23px;
+        text-align: center;
+        color: #daf5fe;
+        margin-left: auto;
+        margin-right: auto;
     }
+    .qr{
+        margin-top: 27px;
+        background-color: bisque;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+        width: 196px;
+        height: 196px;
+    }
+    .addressBlock{
+        display: flex;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 8px;
+        align-items: center;
+        border-radius: 28px;
+        background-color: #2f2f2f;
+        padding: 9px 13px;
+        margin-top: 18px;
+        justify-content: center;
+        p{
+            font-family: "SF Pro Display";
+            font-weight: 500;
+            font-size: 13px;
+            letter-spacing: 0.02em;
+            text-align: center;
+            color: #fff;
+        }
+    }
+    .alertBlock{
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        gap: 10px;
+        align-items: center;
+        border-radius: 13px;
+        padding: 12px 15px;
+        backdrop-filter: blur(79.77716064453125px);
+        background-color: #242c37;
+        display: flex;
+        flex-direction: column;
+        gap:10px;
+        p:first-of-type{
+            font-family: "SF Pro Text";
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: -0.01em;
+            text-align: center;
+            color: #fff;
+        }
+        p:last-of-type{
+            font-family: "SF Pro Text";
+            font-weight: 400;
+            font-size: 12px;
+            letter-spacing: -0.01em;
+            text-align: center;
+            color: #fff;
+            opacity: 0.6;
+        }
+    }
+    .stagesBlock{
+        display: flex;
+        flex-direction: column;
+        padding: 15px 15px 11px 15px;
+        border-radius: 13px;
+        backdrop-filter: blur(79.77716064453125px);
+        background: #20303f;
+        margin-top: 20px;
+    }
+    .howGetText{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        p:first-of-type{
+            font-family: "SF Compact Rounded";
+            font-weight: 500;
+            font-size: 23px;
+            color: #daf5fe;
+            text-align: center;
+        }
+        p:last-of-type{
+            font-family: "SF Pro Text";
+            font-weight: 400;
+            font-size: 12px;
+            letter-spacing: -0.01em;
+            color: #fff;
+            text-align: center;
+            opacity: 0.6;
+
+        }
+    }
+    .stages{
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+        margin-top: 17px;
+    }
+    .line{
+        margin-top: 17px;
+        width: 100%;
+    }
+    .stage{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        .circle{
+            border-radius: 24px;
+            padding: 13px 19px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #223d52;
+            align-self: self-start;
+            min-width: 48px;
+            p{
+                font-family: "SF Pro Rounded";
+                font-weight: 500;
+                font-size: 17px;
+                text-align: center;
+                color: #daf5fe;
+            }
+        }
+        p:last-of-type{
+            font-family: "SF Compact Rounded";
+            font-weight: 400;
+            font-size: 13px;
+            color: #fff;
+        }
+        .stageWithButton{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            button{
+                display: flex;
+                gap: 5px;
+                align-items: center;
+                border-radius: 10px;
+                padding: 8px 16px;
+                background-color: #2ea5ff;
+                width: 151px;
+                height: 34px;
+            }
+        }
+
+    }
+    
 }
