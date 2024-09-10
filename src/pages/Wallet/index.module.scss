@@ -1,0 +1,61 @@
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
+    padding-right: 16px;
+    .top{
+        display: flex;
+        margin-top: 24px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 3px;
+        align-items: center;
+        p{
+            font-family: "SF Pro Display";
+            font-weight: 600;
+            font-size: 17px;
+            text-align: right;
+            color: #fff;
+        }
+    }
+    .priceText{
+        margin-left: auto;
+        margin-right: auto;
+        font-family: "SF Compact Rounded";
+        font-weight: 500;
+        font-size: 59px;
+        letter-spacing: 0.04em;
+        text-align: right;
+        color: white;
+        span{
+            color: #daf5fe;
+        }
+    }
+    .buttonsWrapper{
+        display: flex;
+        gap: 8px;
+        justify-content: space-between;
+        align-items: center;
+        
+        .buttonOne{
+            width: 100%;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            display: flex;
+            gap: 9px;
+            font-family: "SF Pro Display 600";
+            font-weight: 600;
+            font-size: 17px;
+            color: #fff;
+            background-color: #2ea5ff;
+            &:last-of-type{
+                background-color:#2e3640;;
+            }
+        }
+    
+    }
+    .depositsContainer{
+        margin-top: 10px;
+    }
+}

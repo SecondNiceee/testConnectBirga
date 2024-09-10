@@ -3,7 +3,6 @@ import {
   useEffect,
   Suspense,
   useRef,
-  useState,
   useCallback,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -46,6 +45,7 @@ const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
 const WalletEnter = lazy( () => import("./pages/WalletEnter/WalletEnter") )
+const Wallet = lazy( () => (import("./pages/Wallet")) )
 
 const MyLoader = () => {
   return (
@@ -135,6 +135,16 @@ const AnimatedSwitch = () => {
                 </Suspense>
               }
             />
+
+          <Route
+              path="/Wallet"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <Wallet />
+                </Suspense>
+              }
+            />
+
 
             <Route
               path="/ProfilePage"

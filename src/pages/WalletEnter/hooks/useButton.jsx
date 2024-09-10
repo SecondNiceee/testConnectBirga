@@ -10,11 +10,11 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
 
     useEffect( () => {
         const mistakesCopy = [false, false, false ,false ,false, false]
-        console.log(keys);
+        
         
         if (mistakes.includes(true)){
             numbers.forEach((e, i) => {
-                if (keys[i] != values[i]){
+                if (keys[e] != values[e]){
                     mistakesCopy[i] = true
                 }
             })
@@ -67,7 +67,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
       const saveFunction = useCallback( () => {
           if (checkFunction()){
             createWallet().then(value => {
-                navigate("/")
+                navigate("/Wallet")
             }).catch(value => {
                 alert("Кошелек не был создан, причина : " + JSON.stringify(value))
                 console.log(value)
