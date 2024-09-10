@@ -3,17 +3,21 @@ import cl from "./WalletEnter.module.scss";
 
 import { mnemonicNew } from "ton-crypto";
 
-import MainButton from "../../constants/MainButton";
+
 import One from "./components/One/One";
 import Two from "./components/Two/Two";
-import menu from "../../constants/menu";
+
+
+import useButton from "./hooks/useButton";
+import useMenu from "./hooks/useMenu";
+import useKeys from "./hooks/useKeys";
 
 
 
 
 
 
-const WalletEnter = ({ className }) => {
+const WalletEnter = () => {
   const [keys, setKeys] = useState(null);
   const [step, setStep] = useState(0)
   const [values, setValues] = useState([
@@ -21,78 +25,12 @@ const WalletEnter = ({ className }) => {
 ])
   const [mistakes, setMistakes] = useState([false, false, false, false, false, false])
 
+  useMenu()
 
-  useEffect( () => {
+  useButton({step, setStep, keys, values, setMistakes, mistakes})
 
+  useKeys({setKeys})
 
-    if (menu){
-      menu.classList.add("disappearAnimation")
-      menu.classList.remove("appearAnimation")
-    }
-
-  } , [] )
-
-  const checkFunction = useCallback( () => {
-      const mistakesCopy = [false, false, false, false, false, false]
-      keys.forEach((element, i) => {
-        if (element !== values[i]){
-          mistakesCopy[i] = true
-        }
-      });
-      setMistakes(mistakesCopy)
-  }, [keys, values, setMistakes] )
-
-  const saveFunction = useCallback( () => {
-      if (checkFunction()){
-        alert("Создать кошель")   
-      }
-  } , [checkFunction] )
-
-  useEffect( () => {
-
-
-    const forwardFunction = () => {
-      if (step === 0){
-        setStep((value) => (value + 1))
-      }
-      else{
-        saveFunction()
-      }
-    }
-
-    
-    if (step === 0){
-      MainButton.setText("ПРОДОЛЖИТЬ")
-    }
-    else{
-      MainButton.setText("СОЗДАТЬ КОШЕЛЕК")
-    }
-
-
-    MainButton.show()
-    MainButton.onClick(forwardFunction)
-    return () => {
-      MainButton.offClick(forwardFunction)
-    }
-  } , [step, saveFunction] )
-
-
-  useEffect(() => {
-    const getKeys = async () => {
-      const keys = await mnemonicNew(12);
-      return keys;
-    };
-    getKeys().then((value) => setKeys(value));
-  }, []);
-
-
-
-
-
-
-  const changeHandler = useCallback( (val, index) => {
-        setValues( (value) => ([...value.map((e,i) => index === i ? val : e) ]) )
-    } , [] )
   
   const style = useMemo( () => {
     if (step){
@@ -102,7 +40,10 @@ const WalletEnter = ({ className }) => {
     }
     return {}
   } , [step] )
-
+  
+  const changeHandler = useCallback( (val, index) => {
+        setValues( (value) => ([...value.map((e,i) => index === i ? val : e) ]) )
+    } , [] )
 
   return (
     <div style={style} className={cl.wrapper}>
