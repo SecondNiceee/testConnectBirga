@@ -15,7 +15,7 @@ import useKeys from "./hooks/useKeys";
 
 
 
-
+const numbers = [2, 3, 4, 6, 8, 9];
 
 const WalletEnter = () => {
   const [keys, setKeys] = useState(null);
@@ -27,7 +27,7 @@ const WalletEnter = () => {
 
   useMenu()
 
-  useButton({step, setStep, keys, values, setMistakes, mistakes})
+  useButton({step, setStep, keys, values, setMistakes, mistakes, numbers})
 
   useKeys({setKeys})
 
@@ -48,7 +48,7 @@ const WalletEnter = () => {
   return (
     <div style={style} className={cl.wrapper}>
         <One keys={keys} />
-        <Two values={values} mistakes={mistakes} changeHandler={changeHandler}  />
+        <Two numbers={numbers} values={values} mistakes={mistakes} changeHandler={changeHandler}  />
     </div>
   );
 };

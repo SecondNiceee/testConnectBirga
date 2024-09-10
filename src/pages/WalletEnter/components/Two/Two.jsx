@@ -2,7 +2,7 @@ import React, { memo, useCallback, useState } from "react";
 import cl from "./Two.module.scss";
 import UpTextContainer from "../UpText/UpTextContainer";
 import InputBlock from "../InputBlock/InputBlock";
-const numbers = [2, 3, 4, 6, 8, 9];
+
 const numberNames = [
   "Первое слово",
   "Второе слово",
@@ -17,7 +17,7 @@ const numberNames = [
   "Одиннадцатое слово",
   "Двенадцатое слово",
 ];
-const Two = ({values , mistakes, changeHandler}) => {
+const Two = ({values , mistakes, changeHandler, numbers}) => {
 
   return (
     <div className={cl.container}>

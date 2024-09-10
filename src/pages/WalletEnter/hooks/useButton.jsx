@@ -4,7 +4,7 @@ import BackButton from '../../../constants/BackButton';
 import MainButton from '../../../constants/MainButton';
 import axios from 'axios';
 
-const useButton = ({step, setStep, keys, values, setMistakes, mistakes}) => {
+const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}) => {
     
     const navigate = useNavigate()
 
@@ -13,8 +13,8 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes}) => {
         console.log(keys);
         
         if (mistakes.includes(true)){
-            keys.forEach((e, i) => {
-                if (e != values[i]){
+            numbers.forEach((e, i) => {
+                if (keys[i] != values[i]){
                     mistakesCopy[i] = true
                 }
             })
@@ -22,8 +22,8 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes}) => {
                 setMistakes(mistakesCopy)
             }
         }
-        console.log("Воу");
-    } , [values, mistakes, keys] )
+
+    } , [values, mistakes, keys, numbers] )
 
 
     const backFunction = useCallback( () => {
@@ -54,7 +54,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes}) => {
             }
           });
           setMistakes(mistakesCopy)
-      }, [keys, values, setMistakes] )
+      }, [keys, values, setMistakes, ] )
 
 
       const createWallet = useCallback( async () => {
@@ -70,6 +70,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes}) => {
                 navigate("/")
             }).catch(value => {
                 alert("Кошелек не был создан, причина : " + JSON.stringify(value))
+                console.log(value)
             })
           }
           else{
