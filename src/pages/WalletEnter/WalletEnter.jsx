@@ -15,7 +15,11 @@ import useKeys from "./hooks/useKeys";
 
 
 
-const numbers = [2, 3, 4, 6, 8, 9];
+const numbers = [2, 3, 4, 6, 8, 12];
+
+for(let i = 0; i < 4; i++) {
+  numbers.push(Math.floor(Math.random() * 12) + 1);
+}
 
 const WalletEnter = () => {
   const [keys, setKeys] = useState(null);
