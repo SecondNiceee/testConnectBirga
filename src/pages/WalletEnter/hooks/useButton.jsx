@@ -14,7 +14,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
 
         if (mistakes.includes(true)){
             numbers.forEach((e, i) => {
-                if (keys[e-1] !== values[e-1]){
+                if (keys[e - 1] !== values[i]){
                     mistakesCopy[i] = true
                 }
             })
@@ -22,7 +22,8 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
                 setMistakes(mistakesCopy)
             }
         }
-
+        console.log(keys);
+        
         console.log(values);
         console.log(mistakes);
         console.log(mistakesCopy);
@@ -58,11 +59,11 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
     
       const checkFunction = useCallback( () => {
           const mistakesCopy = [false, false, false, false, false, false]
-          keys.forEach((element, i) => {
-            if (element !== values[i]){
-              mistakesCopy[i] = true
+          numbers.forEach((e, i) => {
+            if (keys[e - 1] !== values[i]){
+                mistakesCopy[i] = true
             }
-          });
+        })
           setMistakes(mistakesCopy)
       }, [keys, values, setMistakes, ] )
 
