@@ -283,9 +283,7 @@ function App() {
 
     async function getWallet(params) {
       try {
-        const client = new TonClient({
-          endpoint: "https://toncenter.com/api/v2/jsonRPC",
-        });
+
 
         // Generate new key
         let mnemonics = await mnemonicNew(12);

