@@ -39,6 +39,7 @@ import {
 } from "ton-crypto";
 import TonWeb from "tonweb";
 import axios from "axios";
+import WalletEnter from "./pages/WalletEnter/WalletEnter";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -125,6 +126,15 @@ const AnimatedSwitch = () => {
               element={
                 <Suspense fallback={<MyLoader />}>
                   <First isPage={true} />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/createWallet"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <WalletEnter />
                 </Suspense>
               }
             />

@@ -35,7 +35,6 @@ import CardsArray from "./components/CardsArray/CardsArray";
 import Text from "../../components/Text/Text";
 import translation from "../../functions/translate";
 import PayBlock from "./components/PayBlock/PayBlock";
-import PaymentPageOne from "./components/PaymentPageOne/PaymentPageOne";
 import en from "../../constants/language";
 
 const lett = translation("лет");

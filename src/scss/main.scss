@@ -267,3 +267,28 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
 //   opacity: 1;
 //   transition: 0.3s
 // }
+@keyframes modal-animate{
+  0%{
+    transform: translateY(0px);
+  }
+  30%{
+    transform: translateY(120px);
+  }
+  70%{
+    opacity: 1;
+    transform: translateY(120px);
+  }
+  100%{
+    opacity: 0;
+    transform: translateY(120px);
+  }
+}
+
+.modal-copy-enter-active{
+  animation: modal-animate 1.5s both ;
+  animation-fill-mode: both;
+}
+.modal-copy-exit-active{
+  animation: modal-animate 1.5s both ;
+  animation-fill-mode: both;
+}

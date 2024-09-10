@@ -1,0 +1,53 @@
+.container{
+    min-width: 100vw;
+    left: 0;
+    top: 0;
+    background: rgb(24, 34, 45);
+    z-index: 10;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 76px;
+}
+
+.title{
+    margin-top: 51px;
+    text-align: center;
+    font-family: "SF Compact Rounded";
+    font-weight: 500;
+    font-size: 23px;
+    text-align: center;
+    color: #daf5fe;
+}
+.topText{
+    margin-top: 12px;
+    align-items: center;
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 120%;
+    text-align: center;
+    color: #fff;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.createButton{
+    margin-top: 10px;
+}
+.copyText{
+    left: calc(50% - 75px);
+    margin-top: 12px;
+    align-items: center;
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 120%;
+    text-align: center;
+    color: #fff;
+    background: #20303f;
+    position: fixed;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    top: -100px;
+}
