@@ -15,15 +15,24 @@ import useKeys from "./hooks/useKeys";
 
 
 
-const numbers = [];
 
-for(let i = 0; i < 4; i++) {
-  numbers.push(Math.floor(Math.random() * 12) + 1);
-}
 
 const WalletEnter = () => {
+
+
   const [keys, setKeys] = useState(null);
   const [step, setStep] = useState(0)
+  const [numbers , setNumbers] = useState([])
+
+  useEffect( () => {
+    const localNumbers = []
+    while(localNumbers.length < 4){
+      let randomnumber = Math.floor(Math.random() * 12) + 1;
+      if(localNumbers.indexOf(randomnumber) > -1) continue;
+      localNumbers[localNumbers.length] = randomnumber;
+  }
+    setNumbers(localNumbers)
+  } , [] )
   const [values, setValues] = useState([
     "", "", "" , "", "", ""
 ])
@@ -32,7 +41,6 @@ const WalletEnter = () => {
   useEffect( () => {
     document.documentElement.style.overflowY = "auto"
     document.body.style.overflowY = "auto"
-    alert("Я тут!")
     return () => {
       document.body.style.overflowY = "hidden"
       document.documentElement.style.overflowY = "hidden"
