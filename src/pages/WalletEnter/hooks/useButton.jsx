@@ -13,7 +13,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes}) => {
         console.log(keys);
         
         if (mistakes.includes(true)){
-            keys.foreach((e, i) => {
+            keys.forEach((e, i) => {
                 if (e != values[i]){
                     mistakesCopy[i] = true
                 }
