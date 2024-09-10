@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import cl from "./WalletEnter.module.scss";
 
 import { mnemonicNew } from "ton-crypto";
@@ -91,10 +91,19 @@ const [mistakes, setMistakes] = [false, false, false, false, false, false]
   const changeHandler = useCallback( (val, index) => {
         setValues( (value) => ([...value.map((e,i) => index === i ? val : e) ]) )
     } , [] )
+  
+  const style = useMemo( () => {
+    if (step){
+      return {
+        transform : "-100vw"
+      }
+    }
+    return {}
+  } , [step] )
 
 
   return (
-    <div className={cl.wrapper}>
+    <div style={style} className={cl.wrapper}>
         <One keys={keys} />
         <Two values={values} mistakes={mistakes} changeHandler={changeHandler}  />
     </div>

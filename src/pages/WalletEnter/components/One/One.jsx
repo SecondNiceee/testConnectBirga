@@ -57,7 +57,7 @@ const One = ({keys, className}) => {
           :
           <MyLoader style = {{
             width : "100vw",
-            transform : "-8px"
+            transform : "-16px"
           }} />
         }
         </div>
