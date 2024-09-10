@@ -6,6 +6,8 @@ import { mnemonicNew } from "ton-crypto";
 import MainButton from "../../constants/MainButton";
 import One from "./components/One/One";
 import Two from "./components/Two/Two";
+import menu from "../../constants/menu";
+
 
 
 
@@ -17,11 +19,11 @@ const WalletEnter = ({ className }) => {
   const [values, setValues] = useState([
     "", "", "" , "", "", ""
 ])
-const [mistakes, setMistakes] = [false, false, false, false, false, false]
+  const [mistakes, setMistakes] = useState([false, false, false, false, false, false])
 
 
   useEffect( () => {
-    const menu = document.documentElement.querySelector(".FirstMenu");
+
 
     if (menu){
       menu.classList.add("disappearAnimation")
@@ -95,7 +97,7 @@ const [mistakes, setMistakes] = [false, false, false, false, false, false]
   const style = useMemo( () => {
     if (step){
       return {
-        transform : "-100vw"
+        transform : "translateX(-100vw)"
       }
     }
     return {}

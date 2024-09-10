@@ -31,15 +31,11 @@ import { fetchAllShablons } from "./store/shablon";
 import { fetchResponses } from "./store/responses";
 import { fetchAllIds } from "./store/saves";
 
-import { Address, TonClient, WalletContractV3R2, WalletContractV4, internal } from "ton";
+import { Address, TonClient } from "ton";
 import {
   mnemonicNew,
-  mnemonicToPrivateKey,
-  mnemonicToWalletKey,
 } from "ton-crypto";
-import TonWeb from "tonweb";
 import axios from "axios";
-import WalletEnter from "./pages/WalletEnter/WalletEnter";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -49,6 +45,7 @@ const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
 const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
+const WalletEnter = lazy( () => import("./pages/WalletEnter/WalletEnter") )
 
 const MyLoader = () => {
   return (
