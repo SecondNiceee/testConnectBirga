@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 const PayBlock = ({ className }) => {
   const navigate = useNavigate();
   const clickHandler = useCallback(() => {
+    document.documentElement.style.overflowY = "auto"
     navigate("/createWallet");
   }, []);
   return (
