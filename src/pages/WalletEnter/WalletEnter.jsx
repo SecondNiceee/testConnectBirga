@@ -56,7 +56,7 @@ const WalletEnter = ({ className }) => {
         setStep((value) => (value + 1))
       }
       else{
-
+        saveFunction()
       }
     }
 
@@ -74,7 +74,7 @@ const WalletEnter = ({ className }) => {
     return () => {
       MainButton.offClick(forwardFunction)
     }
-  } , [step] )
+  } , [step, saveFunction] )
 
 
   useEffect(() => {
