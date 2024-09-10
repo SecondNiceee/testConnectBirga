@@ -65,6 +65,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
             }
         })
           setMistakes(mistakesCopy)
+          return mistakesCopy.every(e => !e)
       }, [keys, values, setMistakes, ] )
 
 
