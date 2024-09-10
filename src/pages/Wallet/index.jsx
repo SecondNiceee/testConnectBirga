@@ -1,11 +1,9 @@
 import React, { useEffect } from "react";
 import cl from "./index.module.scss";
 import Buttons from "./components/Buttons";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import useProtect from "./hooks/useProtect";
 const Wallet = () => {
-    useProtect()
+  useProtect()
 
   return (
     <div className={cl.wrapper}>

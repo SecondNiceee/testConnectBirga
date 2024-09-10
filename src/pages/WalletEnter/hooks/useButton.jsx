@@ -11,10 +11,10 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
     useEffect( () => {
         const mistakesCopy = [false, false, false ,false ,false, false]
         
-        
+        console.log(mistakes)
         if (mistakes.includes(true)){
             numbers.forEach((e, i) => {
-                if (keys[e] != values[e]){
+                if (keys[e-1] != values[e-1]){
                     mistakesCopy[i] = true
                 }
             })
@@ -98,8 +98,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
         else{
           MainButton.setText("СОЗДАТЬ КОШЕЛЕК")
         }
-    
-    
+        
         MainButton.show()
         MainButton.onClick(forwardFunction)
         return () => {

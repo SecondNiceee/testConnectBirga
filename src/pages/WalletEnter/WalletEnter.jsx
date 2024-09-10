@@ -25,6 +25,13 @@ const WalletEnter = () => {
 ])
   const [mistakes, setMistakes] = useState([false, false, false, false, false, false])
 
+  useEffect( () => {
+    document.documentElement.style.overflowY = "auto"
+    return () => {
+      document.documentElement.style.overflowY = "hidden"
+    }
+  } , [] )
+
   useMenu()
 
   useButton({step, setStep, keys, values, setMistakes, mistakes, numbers})
