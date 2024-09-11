@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import cl from "../index.module.scss"
 import Buttons from './Buttons';
 import { Address, fromNano } from 'ton-core';
@@ -65,4 +65,4 @@ const MainPage = ({setDepositShow}) => {
     );
 };
 
-export default MainPage;
+export default memo(MainPage);

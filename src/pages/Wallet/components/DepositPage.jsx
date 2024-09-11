@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { memo, useCallback, useState } from "react";
 import cl from "../index.module.scss";
 import { useSelector } from "react-redux";
 import AlertBlock from "./AlertBlock";
@@ -57,4 +57,4 @@ const DepositPage = ({address}) => {
   );
 };
 
-export default DepositPage;
+export default memo(DepositPage);
