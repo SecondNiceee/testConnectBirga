@@ -78,10 +78,10 @@ const AnimatedSwitch = () => {
   const menuRef = useRef(null);
 
   useEffect(() => {
-    if (location.pathname === "/AdCreating") {
-      menuRef.current.classList.add("disappearAnimation");
-      menuRef.current.classList.remove("appearAnimation");
-      document.documentElement.style.overflowY = "auto";
+    if (location.pathname === "/AdCreating" || location.pathname === "/createWallet") {
+        menuRef.current.classList.add("disappearAnimation");
+        menuRef.current.classList.remove("appearAnimation");
+        document.documentElement.style.overflowY = "auto";
     } else {
       document.documentElement.style.overflowY = "hidden";
       menuRef.current.classList.add("appearAnimation");
