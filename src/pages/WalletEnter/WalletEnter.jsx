@@ -37,6 +37,7 @@ const WalletEnter = () => {
     "", "", "" , "", "", ""
 ])
   const [mistakes, setMistakes] = useState([false, false, false, false, false, false])
+  
 
   useEffect( () => {
     document.documentElement.style.overflowY = "auto"

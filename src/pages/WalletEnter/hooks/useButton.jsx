@@ -83,9 +83,9 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
       const saveFunction = useCallback( () => {
           if (checkFunction()){
             createWallet().then(value => {
-                dispatch(fetchUserInfo().then(value => 
+                dispatch(fetchUserInfo()).then(value => 
                   navigate("/Wallet")
-                ))
+                )
             })
             .catch(value => {
                 alert("Кошелек не был создан, причина : " + JSON.stringify(value))
