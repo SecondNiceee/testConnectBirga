@@ -9,7 +9,7 @@ const PayBlock = ({ className }) => {
   const navigate = useNavigate();
   const clickHandler = useCallback(() => {
     if (address){
-      navigate("/createWallet");
+      navigate("/Wallet");
     }
     else{
       navigate("/createWallet");

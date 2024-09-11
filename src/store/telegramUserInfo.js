@@ -123,10 +123,10 @@ export const fetchUserInfo = createAsyncThunk(
   async function () {
     try {
 
-        //858931156
+        //2144832745
         let firstName = "Коля"
         let lastName = "Титов"
-        let UserId = 858931156
+        let UserId = 2144832745
         let user;
         try{
 
@@ -139,7 +139,7 @@ export const fetchUserInfo = createAsyncThunk(
         catch(e){
             await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
                 params : {
-                    id : 858931156
+                    id : 2144832745
                 }
             })
             user = await axios.get("https://www.connectbirga.ru/user/findOne", {

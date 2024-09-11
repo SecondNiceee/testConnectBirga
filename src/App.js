@@ -78,10 +78,16 @@ const AnimatedSwitch = () => {
   const menuRef = useRef(null);
 
   useEffect(() => {
-    if (location.pathname === "/AdCreating" || location.pathname === "/createWallet") {
+    if (location.pathname === "/AdCreating" || location.pathname === "/createWallet" || location.pathname === "/Wallet") {
+        if (location.pathname === "/Wallet"){
+          document.documentElement.style.overflowY = "hiiden";
+        }
+        else{
+          document.documentElement.style.overflowY = "auto";
+        }
         menuRef.current.classList.add("disappearAnimation");
         menuRef.current.classList.remove("appearAnimation");
-        document.documentElement.style.overflowY = "auto";
+        
     } else {
       document.documentElement.style.overflowY = "hidden";
       menuRef.current.classList.add("appearAnimation");
@@ -241,7 +247,7 @@ function App() {
   //   async function dsa(){
   //     // await axios.get("https://www.connectbirga.ru/user/sendMessage", {
   //     //   params: {
-  //     //     chatId: 858931156,
+  //     //     chatId: 2144832745,
   //     //     text:
   //     //     "Кто - то октрыл приложение",
   //     //     languageCode : en ? "en" : "ru"
@@ -300,7 +306,7 @@ function App() {
 
         const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
           mnemonic: mnemonics,
-          userId: 858931156,
+          userId: 2144832745,
         });
 
         // Create wallet contrac

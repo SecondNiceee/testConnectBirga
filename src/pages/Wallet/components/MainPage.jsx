@@ -1,7 +1,40 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import cl from "../index.module.scss"
 import Buttons from './Buttons';
-const MainPage = () => {
+import { Address, fromNano } from 'ton-core';
+import { TonClient } from 'ton';
+import { useSelector } from 'react-redux';
+const MainPage = ({setDepositShow}) => {
+
+
+    const address = useSelector( state => state.telegramUserInfo.address )
+
+
+    const [balance, setBalance] = useState(0)
+    
+
+    const getBalance = useCallback(async () => {
+
+      const client = new TonClient({
+        endpoint: "https://toncenter.com/api/v2/jsonRPC",
+      });
+
+      console.log(address);
+
+      const balance = await client.getBalance(Address.parse(address))
+
+      console.log(fromNano(balance));
+      
+
+
+    }, [address]);
+  
+    useEffect( () => {
+      if (address){
+        getBalance()
+      }
+    }, [address] )
+
     return (
         <div className={cl.wrapper}>
 
@@ -20,10 +53,13 @@ const MainPage = () => {
             />
           </svg>
         </div>
+        {/* <p className={cl.priceText}>
+          <span>≈T</span>{balance}
+        </p> */}
         <p className={cl.priceText}>
-          <span>≈$</span>713.29
+        {balance}<span> TON</span>
         </p>
-          <Buttons />
+          <Buttons setDepositShow = {setDepositShow} />
 
       </div>
     );

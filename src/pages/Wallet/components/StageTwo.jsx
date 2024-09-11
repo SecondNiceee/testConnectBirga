@@ -1,6 +1,11 @@
 import React from 'react';
 import cl from "../index.module.scss"
+export const clickHandler = () => {
+    window.Telegram.WebApp.openTelegramLink("https://t.me/wallet");
+}
 const StageTwo = () => {
+
+    
     return (
     <div className={cl.stage}>
         <div className={cl.circle}>
@@ -8,10 +13,10 @@ const StageTwo = () => {
         </div>
         <div className={cl.stageWithButton}>
             <p>
-            Перейдите в Wallet. Войдите в кошелёк TON Space, выберите Send -
-            {">"} Tether USD -{">"} External Wallet
+            Перейдите в <span onClick={clickHandler} className={cl.blue}>Wallet.</span> Войдите в кошелёк TON Space, выберите Send -
+            {">"} <span className={cl.green}>Tether USD</span> -{">"} External Wallet
             </p>
-            <button>
+            <button onClick={clickHandler}>
                 <p>Купить на Wallet</p>
                 <svg
                     width="10"

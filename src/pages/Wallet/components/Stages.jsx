@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cl from "../index.module.scss"
 import StageThree from './StageThree';
 import StageOne from './StageOne';
@@ -18,4 +18,4 @@ const Stages = ({address}) => {
     );
 };
 
-export default Stages;
+export default memo(Stages);

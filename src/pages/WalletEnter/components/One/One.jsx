@@ -5,15 +5,9 @@ import TextAlertBlock from "../TextAlertBlock/TextAlertBlock";
 import cl from "./One.module.scss";
 import { CSSTransition } from "react-transition-group";
 import MyLoader from "../../../../components/UI/MyLoader/MyLoader";
+import copyTextToClipboard from "../../../../functions/copyTextToClipboard";
+import CopyText from "../../../../components/UI/CopyText/CopyText";
 
-async function copyTextToClipboard(text) {
-  try {
-    await navigator.clipboard.writeText(text);
-    console.log("Text copied to clipboard...");
-  } catch (err) {
-    console.error("Failed to copy text: ", err);
-  }
-}
 
 const One = ({ keys, className }) => {
   const [copyState, setCopyState] = useState(false);
@@ -62,13 +56,7 @@ const One = ({ keys, className }) => {
 
           <TextAlertBlock />
 
-          <CSSTransition
-            in={copyState}
-            timeout={2000}
-            classNames={"modal-copy"}
-          >
-            <p className={cl.copyText}>Скопировано!</p>
-          </CSSTransition>
+          <CopyText copyState={copyState} />
         </>
       ) : (
         <MyLoader

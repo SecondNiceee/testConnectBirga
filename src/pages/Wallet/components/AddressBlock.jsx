@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cl from "../index.module.scss"
 const makeAdress = (adress) => {
     
@@ -11,11 +11,12 @@ const makeAdress = (adress) => {
     }
     return ""
 };
-const AddressBlock = ({address}) => {
+const AddressBlock = ({address , onClick = () => {}}) => {
     return (
-      <div className={cl.addressBlock}>
+      <div onClick={onClick} className={cl.addressBlock}>
         <p>{makeAdress(address)}</p>
         <svg
+          
           width="14"
           height="15"
           viewBox="0 0 14 15"
@@ -31,4 +32,4 @@ const AddressBlock = ({address}) => {
     );
 };
 
-export default AddressBlock;
+export default memo(AddressBlock);

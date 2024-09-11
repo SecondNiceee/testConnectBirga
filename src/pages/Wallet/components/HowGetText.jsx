@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import cl from "../index.module.scss"
 const HowGetText = () => {
     return (
@@ -33,4 +33,4 @@ const HowGetText = () => {
     );
 };
 
-export default HowGetText;
+export default memo(HowGetText);

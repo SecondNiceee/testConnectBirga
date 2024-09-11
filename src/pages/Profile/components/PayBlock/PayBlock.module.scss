@@ -45,12 +45,13 @@
 .animation{
     opacity: 0;
     transform: rotate(90deg);
+    scale: 1.1;
     transition: left 0.4s ease-in-out;
     top: 0;
     left: -100px;
     position: absolute;
     border-radius: 100%;
     /* fill: #52deff; */
-    filter: blur(20px);
+    filter: blur(15px);
     animation: changeColor 2s infinite both;
 }
