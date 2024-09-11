@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from "../index.module.scss"
 export const clickHandler = () => {
-    window.Telegram.WebApp.openTelegramLink("https://t.me/wallet");
+    window.Telegram.WebApp.openTelegramLink("https://t.me/wallet/start");
 }
 const StageTwo = () => {
 
