@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import BackButton from '../../../constants/BackButton';
 import MainButton from '../../../constants/MainButton';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { fetchUserInfo } from '../../../store/telegramUserInfo';
 
 const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}) => {
     
@@ -35,7 +37,9 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
 
 
     } , [values, mistakes, keys, numbers] )
+    
 
+    const dispatch = useDispatch()
 
     const backFunction = useCallback( () => {
         if (step){
@@ -79,8 +83,11 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
       const saveFunction = useCallback( () => {
           if (checkFunction()){
             createWallet().then(value => {
-                navigate("/Wallet")
-            }).catch(value => {
+                dispatch(fetchUserInfo().then(value => 
+                  navigate("/Wallet")
+                ))
+            })
+            .catch(value => {
                 alert("Кошелек не был создан, причина : " + JSON.stringify(value))
                 console.log(value)
             })

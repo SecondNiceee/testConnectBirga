@@ -21,7 +21,7 @@ const PayBlock = ({ className }) => {
       className={className ? [cl.container, className].join(" ") : className}
     >
       <CreateButton onClick={clickHandler} className={cl.createButton}>
-        <p>{address ? "Создать кошелек" : "Кошелек"}</p>
+        <p>{address ? "Кошелек" : "Создать кошелек"}</p>
         <svg
           width="20"
           height="17"
@@ -77,7 +77,7 @@ const PayBlock = ({ className }) => {
               </svg>
       </CreateButton>
 
-      <PayTextContainer style = {address ? {} : {display : "none"}} />
+      <PayTextContainer style = {!address ? {} : {display : "none"}} />
     </div>
   );
 };
