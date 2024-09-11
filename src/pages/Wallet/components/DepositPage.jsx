@@ -9,6 +9,7 @@ import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import copyTextToClipboard from "../../../functions/copyTextToClipboard";
 import CopyText from "../../../components/UI/CopyText/CopyText";
 import {QRCodeSVG} from 'qrcode.react';
+import icon from "../../../images/icons/Dimond.svg"
 
 
 
@@ -28,7 +29,12 @@ const DepositPage = ({address}) => {
         <>
           <p className={cl.capText}>Сделать депозит USDT (TON)</p>
 
-          <QRCodeSVG size={90} className={cl.qr} value="https://reactjs.org/" />
+          <QRCodeSVG imageSettings={{
+            src : "../../../images/icons/Dimond.svg",
+            height : 20,
+            width : 20,
+          }
+          } marginSize = {2} level="L" bgColor="#ffffff" size={90} className={cl.qr} value="https://reactjs.org/" />
 
           <AddressBlock onClick={clickHandler} address={address} />
 

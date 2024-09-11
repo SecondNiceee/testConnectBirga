@@ -9,7 +9,12 @@
     padding-left: 16px;
     padding-right: 16px;
     min-width: 100vw;
-
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    
     .top{
         display: flex;
         margin-top: 24px;
@@ -79,7 +84,7 @@
     overflow-y: scroll;
     left: 0px;
     top: 0px;
-    transform: translateX(100%);
+    transform: rotate(360deg) translateX(100%);
     padding-top: 28px;
     padding-bottom: 72px;
     display: flex;
