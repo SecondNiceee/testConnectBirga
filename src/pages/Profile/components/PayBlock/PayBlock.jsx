@@ -3,18 +3,25 @@ import cl from "./PayBlock.module.scss";
 import CreateButton from "../CreateButton/CreateButton";
 import PayTextContainer from "../PayTextContainer/PayTextContainer";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 const PayBlock = ({ className }) => {
+  const address = useSelector((state) => state.telegramUserInfo.address);
   const navigate = useNavigate();
   const clickHandler = useCallback(() => {
-    document.documentElement.style.overflowY = "auto"
-    navigate("/createWallet");
+    if (address){
+      navigate("/createWallet");
+    }
+    else{
+      navigate("/createWallet");
+    }
+    
   }, []);
   return (
     <div
       className={className ? [cl.container, className].join(" ") : className}
     >
       <CreateButton onClick={clickHandler} className={cl.createButton}>
-        <p>Создать кошелек</p>
+        <p>{address ? "Создать кошелек" : "Кошелек"}</p>
         <svg
           width="20"
           height="17"
@@ -27,9 +34,50 @@ const PayBlock = ({ className }) => {
             fill="white"
           />
         </svg>
+        <svg
+                className={cl.animation}
+                width="236"
+                height="52"
+                viewBox="0 0 236 52"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g filter="url(#filter0_f_2312_10096)">
+                  <ellipse
+                    cx="108.832"
+                    cy="26"
+                    rx="66.5"
+                    ry="124"
+                    fill="#52DEFF"
+                  />
+                </g>
+                <defs>
+                  <filter
+                    id="filter0_f_2312_10096"
+                    x="-18.2546"
+                    y="-158.587"
+                    width="254.173"
+                    height="369.173"
+                    filterUnits="userSpaceOnUse"
+                    color-interpolation-filters="sRGB"
+                  >
+                    <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                    <feBlend
+                      mode="normal"
+                      in="SourceGraphic"
+                      in2="BackgroundImageFix"
+                      result="shape"
+                    />
+                    <feGaussianBlur
+                      stdDeviation="30.2933"
+                      result="effect1_foregroundBlur_2312_10096"
+                    />
+                  </filter>
+                </defs>
+              </svg>
       </CreateButton>
 
-      <PayTextContainer />
+      <PayTextContainer style = {address ? {} : {display : "none"}} />
     </div>
   );
 };

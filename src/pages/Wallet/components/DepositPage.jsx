@@ -6,8 +6,8 @@ import HowGetText from "./HowGetText";
 import Stages from "./Stages";
 import AddressBlock from "./AddressBlock";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
-const DepositPage = () => {
-  const address = useSelector((state) => state.telegramUserInfo.address);
+const DepositPage = ({address}) => {
+  
   return (
     <div className={cl.depositContainer}>
       {address ? (

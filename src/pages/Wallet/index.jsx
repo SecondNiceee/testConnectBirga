@@ -4,14 +4,15 @@ import Buttons from "./components/Buttons";
 import useProtect from "./hooks/useProtect";
 import MainPage from "./components/MainPage";
 import DepositPage from "./components/DepositPage";
+import { useSelector } from "react-redux";
 const Wallet = () => {
   useProtect()
-
+  const address = useSelector((state) => state.telegramUserInfo.address);
   return (
     <div className={cl.mainContainer}>
 
         <MainPage />
-        <DepositPage />
+        <DepositPage address={address} />
 
     </div>
   );

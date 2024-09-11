@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import cl from "./PayTextContainer.module.scss";
-const PayTextContainer = () => {
+const PayTextContainer = ({...props}) => {
   return (
-    <div className={cl.textContainer}>
+    <div {...props} className={cl.textContainer}>
       <div className={cl.one}>
         <p>
           Что такое <span>кошелек</span> и для чего он нужен?

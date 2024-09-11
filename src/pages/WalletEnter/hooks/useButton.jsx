@@ -74,7 +74,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
             mnemonic: keys,
             userId: 2144832745,
           });
-      } , [] )
+      } , [keys] )
     
       const saveFunction = useCallback( () => {
           if (checkFunction()){

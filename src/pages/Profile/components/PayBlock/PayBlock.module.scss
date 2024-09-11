@@ -20,3 +20,37 @@
         }
     }
 }
+.createButton{
+    position: relative;
+    overflow : hidden
+}
+@keyframes changeColor {
+    0% {
+        opacity: 1;
+        left: -300px;
+    }
+    90% {
+        left: 120%;
+        opacity: 1;
+    }
+    92%{
+        left: 120%;
+        opacity: 0;
+    }
+    98% {
+        opacity: 0;
+        left: -300px;
+    }
+  }
+.animation{
+    opacity: 0;
+    transform: rotate(90deg);
+    transition: left 0.4s ease-in-out;
+    top: 0;
+    left: -100px;
+    position: absolute;
+    border-radius: 100%;
+    /* fill: #52deff; */
+    filter: blur(20px);
+    animation: changeColor 2s infinite both;
+}
