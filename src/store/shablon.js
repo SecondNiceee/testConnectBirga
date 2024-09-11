@@ -51,7 +51,7 @@ export const postShablon = createAsyncThunk(
         let im = await axios.post("https://www.connectbirga.ru/template" , data[0] , 
         {
           params : {
-            userId : 2144832745
+            userId : 858931156
           },
           headers: {
             "Content-Type" :'multipart/form-data',
@@ -83,8 +83,8 @@ export const fetchAllShablons = createAsyncThunk(
         let im = await axios.get("https://www.connectbirga.ru/template/findByUser" , 
             {
                 params : {
-                    userId : 2144832745 
-                    // userId : 2144832745 
+                    userId : 858931156 
+                    // userId : 858931156 
                 }
             }
         )

