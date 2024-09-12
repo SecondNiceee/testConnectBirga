@@ -100,7 +100,8 @@ const AnimatedSwitch = () => {
 
 
 
-
+  console.log("хай");
+  
   
   return (
     <>
