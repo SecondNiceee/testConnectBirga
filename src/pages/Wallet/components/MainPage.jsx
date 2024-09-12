@@ -23,11 +23,12 @@ const MainPage = ({setDepositShow}) => {
 
       const balance = await client.getBalance(Address.parse(address))
 
-      console.log(fromNano(balance));
-      
+      console.log(Number(balance) / 10**9);
+
+      setBalance (String(Number(balance) / 10**9).slice(0,5) ) 
 
 
-    }, [address]);
+    }, [address, setBalance]);
   
     useEffect( () => {
       if (address){
@@ -57,7 +58,7 @@ const MainPage = ({setDepositShow}) => {
           <span>≈T</span>{balance}
         </p> */}
         <p className={cl.priceText}>
-        {balance}<span> TON</span>
+        ~{balance}<span> TON</span>
         </p>
           <Buttons setDepositShow = {setDepositShow} />
 

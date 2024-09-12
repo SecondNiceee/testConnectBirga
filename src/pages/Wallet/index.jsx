@@ -34,6 +34,9 @@ const Wallet = () => {
       MainButton.show()
       MainButton.onClick(clickHandler)
     }
+    else{
+      MainButton.hide()
+    }
     BackButton.show()
 
     BackButton.onClick(BackFunction)
@@ -49,7 +52,7 @@ const Wallet = () => {
 
         <MainPage setDepositShow={setDepositShow} />
 
-        <CSSTransition  in = {depositShow} timeout={400}
+        <CSSTransition  in = {depositShow} timeout={0}
         classNames={"left-zero"}
         mountOnEnter
         unmountOnExit
