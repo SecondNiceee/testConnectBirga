@@ -101,7 +101,6 @@ const AnimatedSwitch = () => {
 
 
 
-  console.log("Привет");
   
   return (
     <>
