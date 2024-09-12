@@ -47,6 +47,10 @@ const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
 const WalletEnter = lazy( () => import("./pages/WalletEnter/WalletEnter") )
 const Wallet = lazy( () => (import("./pages/Wallet")) )
 
+
+
+export const API_KEY = process.env.REACT_APP_API_KEY;
+
 const MyLoader = () => {
   return (
     <div
@@ -234,6 +238,10 @@ const AnimatedSwitch = () => {
   );
 };
 function App() {
+
+  console.log(API_KEY);
+  
+
   window.Telegram.WebApp.disableVerticalSwipes();
 
   window.Telegram.WebApp.disableVerticalSwipes();
