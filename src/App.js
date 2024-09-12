@@ -101,7 +101,8 @@ const AnimatedSwitch = () => {
 
 
 
-
+  console.log("Привет");
+  
   return (
     <>
       <FirstMenu ref={menuRef} />
