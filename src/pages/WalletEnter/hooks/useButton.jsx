@@ -79,7 +79,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
             userId: 2144832745,
           } , {
             headers : {
-              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             }
           });
       } , [keys] )

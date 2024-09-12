@@ -99,7 +99,7 @@ const ProfilePage = ({ ...props }) => {
             id: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1]),
           },
           headers : {
-            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         });
 
@@ -110,7 +110,7 @@ const ProfilePage = ({ ...props }) => {
                 userId: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1]),
               },
               headers : {
-                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
             }
           );
@@ -120,7 +120,7 @@ const ProfilePage = ({ ...props }) => {
                 id : Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[0])
             },
             headers : {
-              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             }
         })
 
@@ -131,7 +131,7 @@ const ProfilePage = ({ ...props }) => {
               userId: user.data.id,
             },
             headers : {
-              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             }
           }
         );

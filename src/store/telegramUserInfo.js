@@ -39,7 +39,7 @@ export const putCard = createAsyncThunk(
                     headers: {
                         "Content-Type" :'multipart/form-data',
                         "Access-Contrsol-Allow-Origin": "*",
-                        "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                        "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
 
                       },
                 }
@@ -75,7 +75,7 @@ export const postCard = createAsyncThunk(
                     headers: {
                         "Content-Type" :'multipart/form-data',
                         "Access-Control-Allow-Origin": "*",
-                        "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                        "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                       },
                 }
              )
@@ -110,7 +110,7 @@ export const putUserInfo = createAsyncThunk(
                     userId : data[1],
                     headers: {
                         "Content-Type" :'multipart/form-data',
-                        "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs",
+                        "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY,
                         "Access-Control-Allow-Origin": "*",
                       },
                 }
@@ -139,7 +139,7 @@ export const fetchUserInfo = createAsyncThunk(
                 id: UserId,
               },
               headers : {
-                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
             });
         }
@@ -149,7 +149,7 @@ export const fetchUserInfo = createAsyncThunk(
                     id : 2144832745
                 },
                 headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
             user = await axios.get("https://www.connectbirga.ru/user/findOne", {
@@ -157,7 +157,7 @@ export const fetchUserInfo = createAsyncThunk(
                   id: UserId,
                 },
                 headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
               });
         }
@@ -169,7 +169,7 @@ export const fetchUserInfo = createAsyncThunk(
                 userId : UserId
             },
             headers : {
-                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
         })
         for (let e of allCards.data)

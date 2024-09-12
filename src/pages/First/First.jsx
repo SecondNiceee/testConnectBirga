@@ -377,7 +377,7 @@ const First = ({ isPage = false }) => {
               userId: par[1].user.id,
             },
             headers : {
-              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             }
           });
         }
@@ -398,7 +398,7 @@ const First = ({ isPage = false }) => {
               languageCode : en ? "en" : "ru"
           },
           headers : {
-            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         });
 
@@ -521,7 +521,7 @@ const First = ({ isPage = false }) => {
               id: window.Telegram.WebApp.initDataUnsafe.start_param,
             },
             headers : {
-              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             }
           }
         );
@@ -544,7 +544,7 @@ const First = ({ isPage = false }) => {
               userId: order.user.id,
             },
             headers : {
-              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             }
           }
         );

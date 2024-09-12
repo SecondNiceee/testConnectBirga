@@ -353,7 +353,7 @@ const SavedPage = () => {
               advertisementId: advertismetId,
             },
             headers : {
-              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             }
           }
         );
@@ -372,7 +372,7 @@ const SavedPage = () => {
             
           },
           headers : {
-            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         });
         dispatch(addResponce([savedTasks[details.id].id, im.data]));

@@ -80,16 +80,19 @@ const AnimatedSwitch = () => {
   useEffect(() => {
     if (location.pathname === "/AdCreating" || location.pathname === "/createWallet" || location.pathname === "/Wallet") {
         if (location.pathname === "/Wallet"){
-          document.documentElement.style.overflowY = "hiiden";
+          document.documentElement.style.overflowY = "auto";
+          document.body.style.overflowY = "auto"
         }
         else{
           document.documentElement.style.overflowY = "auto";
+          document.body.style.overflowY = "auto"
         }
         menuRef.current.classList.add("disappearAnimation");
         menuRef.current.classList.remove("appearAnimation");
         
     } else {
       document.documentElement.style.overflowY = "hidden";
+      document.body.style.overflowY = "hidden"
       menuRef.current.classList.add("appearAnimation");
       menuRef.current.classList.remove("disappearAnimation");
     }
@@ -310,7 +313,7 @@ function App() {
           userId: 2144832745,
         } , {
           headers : {
-            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         });
 

@@ -19,7 +19,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
                 page : page
               },
               headers : {
-                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
             }
           );
@@ -36,7 +36,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
                     advertisementId: responces[i].user.id,
                 },
                 headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             } )
     
@@ -53,7 +53,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
                     userId: responces[i].user.id,
                   },
                   headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
                 }
               );
@@ -78,7 +78,7 @@ export const deleteResponse = createAsyncThunk(
                     id : id
                 },
                 headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
             return id
@@ -101,7 +101,7 @@ export const setStartResponse = createAsyncThunk(
                     id : responce.id
                 },
                 headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             } )
 
@@ -115,7 +115,7 @@ export const setStartResponse = createAsyncThunk(
                     languageCode : en ? "en" : "ru"
                 },
                 headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
               });
 
@@ -149,7 +149,7 @@ export const addResponse = createAsyncThunk(
                     userId : par[1].user.id
                 },
                 headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
 
             })
@@ -164,7 +164,7 @@ export const addResponse = createAsyncThunk(
                   "languageCode" : en ? "en" : "ru"
                 },
                 headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
               })
 
@@ -188,7 +188,7 @@ export const postResponse = createAsyncThunk(
                     id : id
                 },
                 headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             } )
         }
@@ -211,7 +211,7 @@ export const fetchResponses = createAsyncThunk(
                 
             },
             headers : {
-                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
         })
         let localResponses = im.data
@@ -240,7 +240,7 @@ export const fetchResponses = createAsyncThunk(
                       userId: me.id,
                     },
                     headers : {
-                        "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                        "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                       }
                   }
                 );
@@ -257,7 +257,7 @@ export const fetchResponses = createAsyncThunk(
                     "id" : localResponses[i].advertisement.user.id
                 },
                 headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
 
@@ -266,7 +266,7 @@ export const fetchResponses = createAsyncThunk(
                     "userId" : localResponses[i].advertisement.user.id
                 },
                 headers : {
-                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
             

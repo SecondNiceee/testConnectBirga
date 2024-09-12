@@ -379,7 +379,7 @@ const MyAds = ({isPage = false}) => {
             id: responseId,
           },
           headers : {
-            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         }
       );
@@ -395,7 +395,7 @@ const MyAds = ({isPage = false}) => {
                 advertisementId: responce.user.id,
             },
             headers : {
-              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             }
         } )
 
@@ -410,7 +410,7 @@ const MyAds = ({isPage = false}) => {
                 userId: Number(responce.user.id),
               },
               headers : {
-                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
             }
           );
@@ -470,7 +470,7 @@ const MyAds = ({isPage = false}) => {
             
           },
           headers : {
-            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         })
         return {

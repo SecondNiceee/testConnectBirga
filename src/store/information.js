@@ -14,7 +14,7 @@ export const addWatch = createAsyncThunk(
           id: String(advertisement.id),
         },
         headers : {
-          "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+          "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
         }
       });
     } catch (e) {
@@ -31,7 +31,7 @@ export const deleteAd = createAsyncThunk(
           id: id,
         },
         headers : {
-          "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+          "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
         }
       });
       return id;
@@ -56,7 +56,7 @@ export const putMyTask = createAsyncThunk(
           headers: {
             "Content-Type": "multipart/form-data",
             "Access-Control-Allow-Origin": "*",
-            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             
           },
         }
@@ -94,7 +94,7 @@ export const postMyTask = createAsyncThunk(
           await axios.post("https://www.connectbirga.ru/advertisement", arr[0], {
             headers: {
               "Content-Type" :'multipart/form-data',
-              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             },
           });
         }
@@ -120,7 +120,7 @@ export const postMyTask = createAsyncThunk(
           headers: {
             "Content-Type": "multipart/form-data",
             "Access-Control-Allow-Origin": "*",
-            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           },
         }
       );
@@ -136,7 +136,7 @@ export const postMyTask = createAsyncThunk(
               "advertisementId" : order.id
             },
             headers : {
-              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             }
           })
           tasks.push({
@@ -189,7 +189,7 @@ export const setStartTask = createAsyncThunk(
           id: id,
         },
         headers : {
-          "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+          "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
         }
       });
       return id;
@@ -218,7 +218,7 @@ export const fetchMyOrders = createAsyncThunk(
           headers: {
             "Content-Type": "multipart/form-data",
             "Access-Control-Allow-Origin": "*",
-            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
 
           },
         }
@@ -235,7 +235,7 @@ export const fetchMyOrders = createAsyncThunk(
               "advertisementId" : order.id,
             },
             headers : {
-              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             }
           })
           tasks.push({
@@ -292,7 +292,7 @@ export const fetchTasksInformation = createAsyncThunk(
             page: par,
           },
           headers : {
-            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         }
       );
@@ -324,7 +324,7 @@ export const fetchTasksInformation = createAsyncThunk(
                 userId: order.user.id,
               },
               headers : {
-                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
             }
           );
