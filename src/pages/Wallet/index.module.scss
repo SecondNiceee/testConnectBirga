@@ -9,11 +9,9 @@
     padding-left: 16px;
     padding-right: 16px;
     min-width: 100vw;
-    position: fixed;
     left: 0;
     top: 0;
     width: 100vw;
-    height: 100vh;
     
     .top{
         display: flex;
@@ -75,16 +73,15 @@
 }
 
 .depositContainer{
+    position: relative;
+    z-index: 20;
     background: rgb(24, 34, 45);
     padding-left: 16px;
     padding-right: 16px;
     min-width: 100vw;
-    position: fixed;
-    height: 100vh;
-    overflow-y: scroll;
     left: 0px;
     top: 0px;
-    transform: rotate(360deg) translateX(100%);
+    transform: rotate(360deg) translateX(0%);
     padding-top: 28px;
     padding-bottom: 72px;
     display: flex;

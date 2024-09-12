@@ -98,6 +98,9 @@ const ProfilePage = ({ ...props }) => {
           params: {
             id: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1]),
           },
+          headers : {
+            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+          }
         });
 
         let imTwo = await axios.get(
@@ -106,12 +109,18 @@ const ProfilePage = ({ ...props }) => {
               params: {
                 userId: Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[1]),
               },
+              headers : {
+                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              }
             }
           );
 
         const cardOne = await axios.get("https://www.connectbirga.ru/card/findOne" , {
             params : {
                 id : Number(window.Telegram.WebApp.initDataUnsafe.start_param.split('m')[0])
+            },
+            headers : {
+              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
             }
         })
 
@@ -121,6 +130,9 @@ const ProfilePage = ({ ...props }) => {
             params: {
               userId: user.data.id,
             },
+            headers : {
+              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            }
           }
         );
 

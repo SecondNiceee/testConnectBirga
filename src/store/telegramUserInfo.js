@@ -38,7 +38,9 @@ export const putCard = createAsyncThunk(
                     },
                     headers: {
                         "Content-Type" :'multipart/form-data',
-                        "Access-Contrsol-Allow-Origin": "*"
+                        "Access-Contrsol-Allow-Origin": "*",
+                        "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+
                       },
                 }
             )
@@ -72,7 +74,8 @@ export const postCard = createAsyncThunk(
                     },
                     headers: {
                         "Content-Type" :'multipart/form-data',
-                        "Access-Control-Allow-Origin": "*"
+                        "Access-Control-Allow-Origin": "*",
+                        "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
                       },
                 }
              )
@@ -107,7 +110,8 @@ export const putUserInfo = createAsyncThunk(
                     userId : data[1],
                     headers: {
                         "Content-Type" :'multipart/form-data',
-                        "Access-Control-Allow-Origin": "*"
+                        "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs",
+                        "Access-Control-Allow-Origin": "*",
                       },
                 }
             })
@@ -134,18 +138,27 @@ export const fetchUserInfo = createAsyncThunk(
               params: {
                 id: UserId,
               },
+              headers : {
+                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              }
             });
         }
         catch(e){
             await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
                 params : {
                     id : 2144832745
-                }
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
             })
             user = await axios.get("https://www.connectbirga.ru/user/findOne", {
                 params: {
                   id: UserId,
                 },
+                headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
               });
         }
 
@@ -154,7 +167,10 @@ export const fetchUserInfo = createAsyncThunk(
         let allCards = await axios.get("https://www.connectbirga.ru/card/findByUser" , {
             params : {
                 userId : UserId
-            }
+            },
+            headers : {
+                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              }
         })
         for (let e of allCards.data)
             {

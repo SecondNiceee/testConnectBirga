@@ -49,8 +49,10 @@ const Wallet = () => {
 
         <MainPage setDepositShow={setDepositShow} />
 
-        <CSSTransition in = {depositShow} timeout={400}
-        classNames={"left-right"}
+        <CSSTransition  in = {depositShow} timeout={400}
+        classNames={"left-zero"}
+        mountOnEnter
+        unmountOnExit
         >
           <DepositPage  address={address} />
         </CSSTransition>

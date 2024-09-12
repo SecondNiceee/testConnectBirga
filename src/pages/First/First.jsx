@@ -376,6 +376,9 @@ const First = ({ isPage = false }) => {
               advertisementId: par[1].advertisement.id,
               userId: par[1].user.id,
             },
+            headers : {
+              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            }
           });
         }
 
@@ -394,6 +397,9 @@ const First = ({ isPage = false }) => {
               String(im.data.id),
               languageCode : en ? "en" : "ru"
           },
+          headers : {
+            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+          }
         });
 
 
@@ -514,6 +520,9 @@ const First = ({ isPage = false }) => {
             params: {
               id: window.Telegram.WebApp.initDataUnsafe.start_param,
             },
+            headers : {
+              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            }
           }
         );
         let order = advertisement.data;
@@ -534,6 +543,9 @@ const First = ({ isPage = false }) => {
             params: {
               userId: order.user.id,
             },
+            headers : {
+              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            }
           }
         );
 

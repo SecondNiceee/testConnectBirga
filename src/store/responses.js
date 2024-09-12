@@ -18,6 +18,9 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
                 limit : 4,
                 page : page
               },
+              headers : {
+                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              }
             }
           );
           let responces = im.data;
@@ -31,7 +34,10 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
             let b = await axios.get("https://www.connectbirga.ru/card/countByUser" , {
                 params : {
                     advertisementId: responces[i].user.id,
-                }
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
             } )
     
             responces[i].photos = photos;
@@ -46,6 +52,9 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
                   params: {
                     userId: responces[i].user.id,
                   },
+                  headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
                 }
               );
               responces[i].createNumber = imTwo.data;
@@ -67,7 +76,10 @@ export const deleteResponse = createAsyncThunk(
             await axios.delete("https://www.connectbirga.ru/response", {
                 params : {
                     id : id
-                }
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
             })
             return id
         }
@@ -87,7 +99,10 @@ export const setStartResponse = createAsyncThunk(
             let im = await axios.put("https://www.connectbirga.ru/response" , myData, {
                 params : {
                     id : responce.id
-                }
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
             } )
 
             await axios.get("https://www.connectbirga.ru/user/sendMessage", {
@@ -99,6 +114,9 @@ export const setStartResponse = createAsyncThunk(
                     "https://birga.ywa.su/MyAds?open=1" ,
                     languageCode : en ? "en" : "ru"
                 },
+                headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
               });
 
 
@@ -129,7 +147,11 @@ export const addResponse = createAsyncThunk(
                 params : {
                     advertisementId : par[1].advertisement.id,
                     userId : par[1].user.id
-                }
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
+
             })
 
 
@@ -140,7 +162,10 @@ export const addResponse = createAsyncThunk(
                   "chatId" : par[1].advertisement.user.chatId,
                   "text" : messageOne + par[1].advertisement.taskName.bold() + messageTwo +  par[1].user.fl ,
                   "languageCode" : en ? "en" : "ru"
-                }
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
               })
 
             return par[1]
@@ -161,7 +186,10 @@ export const postResponse = createAsyncThunk(
             let im = await axios.put("https://www.connectbirga.ru/response" , myData, {
                 params : {
                     id : id
-                }
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
             } )
         }
         catch(e){
@@ -181,7 +209,10 @@ export const fetchResponses = createAsyncThunk(
                 page : par[1],
                 limit : 4
                 
-            }
+            },
+            headers : {
+                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              }
         })
         let localResponses = im.data
 
@@ -208,6 +239,9 @@ export const fetchResponses = createAsyncThunk(
                     params: {
                       userId: me.id,
                     },
+                    headers : {
+                        "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                      }
                   }
                 );
                 localResponses[i].createNumber = imTwo.data;
@@ -221,13 +255,19 @@ export const fetchResponses = createAsyncThunk(
             const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : localResponses[i].advertisement.user.id
-                }
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
             })
 
             const advertisementCrateNumber = await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
                 params : {
                     "userId" : localResponses[i].advertisement.user.id
-                }
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+                  }
             })
             
             

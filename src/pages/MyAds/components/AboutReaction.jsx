@@ -26,6 +26,9 @@ const AboutReaction = ({ responce , setOneCard, style,   ...props}) => {
         let allCards = await axios.get("https://www.connectbirga.ru/card/findByUser" , {
             params : {
                 userId : responce.user.id
+            },
+            headers : {
+              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
             }
         })
 

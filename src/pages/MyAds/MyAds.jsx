@@ -378,6 +378,9 @@ const MyAds = ({isPage = false}) => {
           params: {
             id: responseId,
           },
+          headers : {
+            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+          }
         }
       );
       let responce = im.data;
@@ -390,6 +393,9 @@ const MyAds = ({isPage = false}) => {
         let b = await axios.get("https://www.connectbirga.ru/card/countByUser" , {
             params : {
                 advertisementId: responce.user.id,
+            },
+            headers : {
+              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
             }
         } )
 
@@ -403,6 +409,9 @@ const MyAds = ({isPage = false}) => {
               params: {
                 userId: Number(responce.user.id),
               },
+              headers : {
+                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              }
             }
           );
           responce.createNumber = imTwo.data;
@@ -457,7 +466,11 @@ const MyAds = ({isPage = false}) => {
         let files = await makeNewFile(order.folder, order.photos);
         let responseCounter = await axios.get("https://www.connectbirga.ru/response/countByAdvertisement" , {
           params : {
-            "advertisementId" : order.id
+            "advertisementId" : order.id,
+            
+          },
+          headers : {
+            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
           }
         })
         return {

@@ -56,6 +56,9 @@ const ShowMyResponse = ({
             chatId: String(response.advertisement.user.id),
             advertisementId: String(response.advertisement.id),
           },
+         headers : {
+          "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+         } 
         });
 
         window.Telegram.WebApp.showAlert(

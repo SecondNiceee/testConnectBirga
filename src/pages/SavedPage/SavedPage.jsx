@@ -352,6 +352,9 @@ const SavedPage = () => {
               userId: userId,
               advertisementId: advertismetId,
             },
+            headers : {
+              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            }
           }
         );
         const messageOne = translation("📣 Вы получили отклик на задачу «")
@@ -368,6 +371,9 @@ const SavedPage = () => {
               languageCode : en ? "en" : "ru"
             
           },
+          headers : {
+            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+          }
         });
         dispatch(addResponce([savedTasks[details.id].id, im.data]));
       } catch (e) {

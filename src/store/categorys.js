@@ -12,7 +12,11 @@ export const getCategorys = createAsyncThunk(
 export const getSubCategorys = createAsyncThunk(
     'categorys/getSubCategorys',
     async function(){
-        let subCategorys = await axios.get('https://www.connectbirga.ru/category/subCategory')
+        let subCategorys = await axios.get('https://www.connectbirga.ru/category/subCategory' , {
+            headers : {
+                "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+              }
+        })
         return subCategorys.data
     }
 )

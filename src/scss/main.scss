@@ -87,6 +87,36 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
   transform: translate3d(100% , 0 , 0) !important;
   transition: 0.4s;
 }
+
+
+.left-zero-enter{
+  transform: translate3d(-100vw , 0 , 0) !important;
+  transition: 0.4s;
+}
+.left-zero-enter-active{
+  transform: translate3d(-100vw , 0 , 0) !important;
+  transition: 0.4s;
+}
+.left-zero-enter-done{
+  transform: translate3d(-100vw , 0 , 0) !important;
+  transition: 0.4s;
+}
+
+
+.left-right-exit{
+  transform: translate3d(0 , 0 , 0) !important;
+  transition: 0.4s;
+}
+.left-right-exit-active{
+  transform: translate3d(0 , 0 , 0) !important;
+  transition: 0.4s;
+}
+.left-right-exit-done{
+  transform: translate3d(100% , 0 , 0) !important;
+  transition: 0.4s;
+}
+
+
 *::-webkit-scrollbar {display:none;}
 
 .page-enter {

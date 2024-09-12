@@ -26,6 +26,9 @@ export const putShablon = createAsyncThunk(
         {
           params : {
             id : data[1]
+          },
+          headers : {
+            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
           }
         }
       )
@@ -55,7 +58,8 @@ export const postShablon = createAsyncThunk(
           },
           headers: {
             "Content-Type" :'multipart/form-data',
-            "Access-Control-Allow-Origin": "*"
+            "Access-Control-Allow-Origin": "*",
+            "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
           },
         }
         )
@@ -85,6 +89,9 @@ export const fetchAllShablons = createAsyncThunk(
                 params : {
                     userId : 2144832745 
                     // userId : 2144832745 
+                },
+                headers : {
+                  "X-API-KEY-AUTH" : "X_API_KEY_AUTH_SOME_KEY_FOR_AUTHlkfdjsdofjs"
                 }
             }
         )
