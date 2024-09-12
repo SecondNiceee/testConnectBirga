@@ -325,7 +325,7 @@ function App() {
     }
   }, [mnemonic, address, getBalance]);
 
-
+  
   return (
     <BrowserRouter>
       <div className="UperContainer">
