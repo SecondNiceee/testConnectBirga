@@ -13,6 +13,9 @@ module.exports = function override(config, env) {
             process: "process/browser.js",
             Buffer: ["buffer", "Buffer"],
         }),
+        new webpack.DefinePlugin({
+            "process.env.REACT_APP_API_KEY" : JSON.stringify(process.env.REACT_APP_API_KEY || 'development')
+        })
     ]
     // console.log(config.resolve)
     // console.log(config.plugins)
