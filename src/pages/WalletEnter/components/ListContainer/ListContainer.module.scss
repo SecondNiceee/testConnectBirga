@@ -1,7 +1,8 @@
 .listContainer{
     margin-top: 28px;
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 8px;
 }
 .list{
     width: 100%;
@@ -28,5 +29,6 @@
         width: 100%;
         text-align: left;
     }
+    
     
 }

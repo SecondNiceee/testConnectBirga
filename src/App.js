@@ -82,8 +82,8 @@ const AnimatedSwitch = () => {
   const menuRef = useRef(null);
 
   useEffect(() => {
-    if (location.pathname === "/AdCreating" || location.pathname === "/createWallet" || location.pathname === "/Wallet") {
-        if (location.pathname === "/Wallet"){
+    if (location.pathname === "/AdCreating" || location.pathname === "/createWallet" || location.pathname === "/Wallet" || location.pathname === "/WalletInit") {
+        if (location.pathname === "/Wallet" || location.pathname === "/WalletInit"){
           document.documentElement.style.overflowY = "auto";
           document.body.style.overflowY = "auto"
         }

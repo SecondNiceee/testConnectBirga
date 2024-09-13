@@ -125,6 +125,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
         MainButton.show()
         MainButton.onClick(forwardFunction)
         return () => {
+          MainButton.hide()
           MainButton.offClick(forwardFunction)
         }
       } , [step, saveFunction, setStep] )

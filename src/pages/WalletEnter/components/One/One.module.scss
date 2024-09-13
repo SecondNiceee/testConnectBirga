@@ -4,11 +4,29 @@
     top: 0;
     background: rgb(24, 34, 45);
     z-index: 10;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 42px;
+    padding-right: 42px;
     padding-bottom: 16px;
+    .listInput{
+        margin-top: 10px;
+    }
+    .listInputItem{
+        background-color: #2e3641;
+    }
 }
-
+.padding{
+    padding-bottom: 80px;
+}
+.resetAll{
+    font-family: "SF Pro Display";
+    font-weight: 500;
+    font-size: 17px;
+    line-height: 92%;
+    letter-spacing: 0.02em;
+    text-align: center;
+    color: #2ea5ff;
+    margin-top: 13px;
+}
 .title{
     margin-top: 51px;
     text-align: center;
@@ -22,7 +40,7 @@
     margin-top: 10px;
 }
 .WalletInitCreateButton{
-    margin-top: 10px;
+    margin-top: 32px;
 }
 .buttonContainer{
     display: flex;
