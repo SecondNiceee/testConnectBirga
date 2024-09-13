@@ -53,7 +53,6 @@ const Wallet = () => {
         <MainPage setDepositShow={setDepositShow} />
 
         <CSSTransition  in = {depositShow} timeout={0}
-        classNames={"left-zero"}
         mountOnEnter
         unmountOnExit
         >

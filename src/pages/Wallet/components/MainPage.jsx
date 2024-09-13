@@ -4,8 +4,7 @@ import Buttons from './Buttons';
 import { Address, fromNano } from 'ton-core';
 import { TonClient } from 'ton';
 import { useSelector } from 'react-redux';
-const MainPage = ({setDepositShow}) => {
-
+const MainPage =   ({setDepositShow}) => {
 
     const address = useSelector( state => state.telegramUserInfo.address )
 
@@ -17,6 +16,7 @@ const MainPage = ({setDepositShow}) => {
 
       const client = new TonClient({
         endpoint: "https://toncenter.com/api/v2/jsonRPC",
+        apiKey : process.env.REACT_APP_API_KEY_TWO
       });
 
       console.log(address);
