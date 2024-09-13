@@ -4,8 +4,8 @@
     top: 0;
     background: rgb(24, 34, 45);
     z-index: 10;
-    padding-left: 42px;
-    padding-right: 42px;
+    padding-left: 16px;
+    padding-right: 16px;
     padding-bottom: 16px;
     .listInput{
         margin-top: 10px;
@@ -15,6 +15,8 @@
     }
 }
 .padding{
+    padding-left: 42px;
+    padding-right: 42px;
     padding-bottom: 80px;
 }
 .resetAll{

@@ -116,7 +116,7 @@ const WalletInit = () => {
       <ListInput setSomeInput = {setSomeInput} inputs={inputs} inputClassName={cl.listInputItem} className={cl.listInput} />
       <p onClick={clearAll} className={cl.resetAll}>Очистить всё</p>
     </div>
-    <CSSTransition classNames = "errorModal" in = {false} timeout={3000}  >
+    <CSSTransition classNames = "errorModal" in = {show} timeout={3000}  >
         <ErrorBlock />
     </CSSTransition>
     </>
