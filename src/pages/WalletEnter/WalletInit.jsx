@@ -8,6 +8,7 @@ import ErrorBlock from "./components/ErrorBlock/ErrorBlock";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../../constants/MainButton";
 import BackButton from "../../constants/BackButton";
+import axios from "axios";
 const WalletInit = () => {
     const [inputs, setInputs] = useState(Array.from({length : 12} , () => ""))
     const [show , setShow] = useState(false)

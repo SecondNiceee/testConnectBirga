@@ -1,8 +1,11 @@
 import React from "react";
 import cl from "../index.module.scss";
-const Buttons = ({setDepositShow}) => {
+const Buttons = ({setDepositShow, setWithDrawal}) => {
   const clickHandler = () => {
     setDepositShow(true)
+  }
+  const clickHandlerTwo = () => {
+    setWithDrawal(true)
   }
   return (
     <div className={cl.buttonsWrapper}>
@@ -23,7 +26,7 @@ const Buttons = ({setDepositShow}) => {
         </svg>
         <p>Ввод</p>
       </div>
-      <div className={cl.buttonOne}>
+      <div className={cl.buttonOne} onClick={clickHandlerTwo}>
         <svg
           width="19"
           height="19"

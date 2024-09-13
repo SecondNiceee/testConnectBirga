@@ -10,10 +10,12 @@ import { clickHandler } from "./components/StageTwo";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../../constants/MainButton";
 import BackButton from "../../constants/BackButton"
+import WithdrawalPage from "./components/WithdrawalPage";
 const Wallet = () => {
   useProtect()
   const address = useSelector((state) => state.telegramUserInfo.address);
   const navigate = useNavigate()
+  const [withdrawal, setWithDrawal] = useState(false)
   const [depositShow, setDepositShow] = useState(false)
 
   const BackFunction = useCallback( () => {
@@ -50,7 +52,7 @@ const Wallet = () => {
   return (
     <div className={cl.mainContainer}>
 
-        <MainPage setDepositShow={setDepositShow} />
+        <MainPage setWithDrawal = {setWithDrawal} setDepositShow={setDepositShow} />
 
         <CSSTransition  in = {depositShow} timeout={0}
         mountOnEnter
@@ -58,6 +60,10 @@ const Wallet = () => {
         >
           <DepositPage  address={address} />
         </CSSTransition>
+
+        <CSSTransition in = {withdrawal} mountOnEnter unmountOnExit>
+            <WithdrawalPage />
+        </CSSTransition> 
 
     </div>
   );

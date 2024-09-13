@@ -4,7 +4,7 @@ import Buttons from './Buttons';
 import { Address, fromNano } from 'ton-core';
 import { TonClient } from 'ton';
 import { useSelector } from 'react-redux';
-const MainPage =   ({setDepositShow}) => {
+const MainPage =   ({setDepositShow , setWithDrawal}) => {
 
     const address = useSelector( state => state.telegramUserInfo.address )
 
@@ -60,7 +60,7 @@ const MainPage =   ({setDepositShow}) => {
         <p className={cl.priceText}>
         ~{balance}<span> TON</span>
         </p>
-          <Buttons setDepositShow = {setDepositShow} />
+          <Buttons setWithDrawal = {setWithDrawal} setDepositShow = {setDepositShow} />
 
       </div>
     );
