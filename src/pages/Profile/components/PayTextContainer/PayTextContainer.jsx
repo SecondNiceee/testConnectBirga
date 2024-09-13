@@ -1,6 +1,11 @@
 import React, { memo } from "react";
 import cl from "./PayTextContainer.module.scss";
+import { useNavigate } from "react-router-dom";
 const PayTextContainer = ({...props}) => {
+  const navigate = useNavigate()
+  const clickHandler = () => {  
+    navigate("/WalletInit")
+  }
   return (
     <div {...props} className={cl.textContainer}>
       <div className={cl.one}>
@@ -21,7 +26,7 @@ const PayTextContainer = ({...props}) => {
         </svg>
       </div>
       <p>
-        Уже есть кошелек? <span>Войти</span>
+        Уже есть кошелек? <span onClick={clickHandler}>Войти</span>
       </p>
     </div>
   );

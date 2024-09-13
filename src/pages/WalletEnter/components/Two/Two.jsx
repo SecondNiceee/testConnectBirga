@@ -2,6 +2,8 @@ import React, { memo, useCallback, useState } from "react";
 import cl from "./Two.module.scss";
 import UpTextContainer from "../UpText/UpTextContainer";
 import InputBlock from "../InputBlock/InputBlock";
+import ListContainer from "../ListContainer/ListContainer";
+import ListInput from "../ListContainer/ListInput";
 
 const numberNames = [
   "Первое слово",

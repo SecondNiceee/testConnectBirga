@@ -10,19 +10,36 @@
         line-height: 110%;
         letter-spacing: -0.02em;
         text-align: center;
-        color: #daf5fe;
+        padding-bottom: 9px;
+        color: white;
     }
-    p:last-of-type{
+    input:last-of-type{
         border-bottom: 0.5px solid rgba(84, 84, 88, 0.36);
         padding-bottom: 9px;
         width: 100%;
         text-align: left;
         color: white;
+        background-color: transparent;
+        font-family: "SF Pro Text";
+        font-weight: 400;
+        font-size: 17px;
+        letter-spacing: -0.02em;
+        color: #fff;
+        &::placeholder{
+            opacity: 0.5;
+        }
+
     }
+
    &:last-of-type{
-    p:last-of-type{
+    input:last-of-type{
 
         border-bottom: 0px;
+    }
+    p:last-of-type{
+        p:last-of-type{
+            border-bottom: 0px;
+        }
     }
    } 
 }

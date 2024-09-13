@@ -11,6 +11,7 @@ import Two from "./components/Two/Two";
 import useButton from "./hooks/useButton";
 import useMenu from "./hooks/useMenu";
 import useKeys from "./hooks/useKeys";
+import MyLoader from "../../components/UI/MyLoader/MyLoader";
 
 
 
@@ -69,10 +70,16 @@ const WalletEnter = () => {
     } , [] )
 
   return (
+    <>
+    {keys ? 
     <div style={style} className={cl.wrapper}>
         <One keys={keys} />
         <Two numbers={numbers} values={values} mistakes={mistakes} changeHandler={changeHandler}  />
     </div>
+    :
+    <MyLoader />
+    }
+    </>
   );
 };
 

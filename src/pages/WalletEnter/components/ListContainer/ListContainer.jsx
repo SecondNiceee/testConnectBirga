@@ -2,9 +2,11 @@ import React from 'react';
 import cl from "./ListContainer.module.scss"
 import ListItem from '../ListItem/ListItem';
 const ListContainer = ({keys}) => {
-    console.log(keys.slice(6,12));
     
     return (
+      <>
+      {keys ? 
+
        <div className={cl.listContainer}>
         <div className={cl.list}>
             {keys.slice(0, 6).map((e, i) => 
@@ -17,6 +19,11 @@ const ListContainer = ({keys}) => {
           )}
         </div>
       </div>
+      :
+      <>
+      </>
+      }
+      </>
     );
 };
 
