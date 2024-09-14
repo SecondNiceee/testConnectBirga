@@ -1,15 +1,18 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useMemo, useRef } from 'react';
 import cl from "../index.module.scss"
 import GreyText from '../../../components/UI/GreyText/GreyText';
 import CreateInput from '../../../components/UI/CreateInput/CreateInput';
-const Compact = ({greyText, onChange, inputType, inputValue, inputPlaceholder, className = ""}) => {
+const Compact = ({greyText, onChange, inputType = "text", inputMode = "text", inputValue, inputPlaceholder, className = ""}) => {
+
     return (
         <div className={[className, cl.adressBlock].join(' ')}>
-                            <GreyText className={cl.GreyText} >
+                <GreyText className={cl.GreyText} >
                     {greyText}
                 </GreyText>
 
-                <CreateInput type={inputType} value={inputValue}  placeholder = {inputPlaceholder} setValue={onChange} />
+                <div className={cl.createWrapper}>
+                    <CreateInput className = {cl.newPadding}  inputMode={inputMode} type={inputType} value={inputValue}  placeholder = {inputPlaceholder} setValue={onChange} />
+                </div>
         </div>
     );
 };

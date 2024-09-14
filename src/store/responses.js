@@ -205,7 +205,7 @@ export const fetchResponses = createAsyncThunk(
         
         let im = await axios.get('https://www.connectbirga.ru/response/findByUser' , {
             params : {
-                "userId" : 858931156,
+                "userId" : 1392120153,
                 page : par[1],
                 limit : 4
                 

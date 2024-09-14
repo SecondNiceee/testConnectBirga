@@ -4,37 +4,14 @@ import Buttons from './Buttons';
 import { Address, fromNano } from 'ton-core';
 import { TonClient } from 'ton';
 import { useSelector } from 'react-redux';
-const MainPage =   ({setDepositShow , setWithDrawal}) => {
+const MainPage =   ({setDepositShow , setWithDrawal , balance}) => {
 
     const address = useSelector( state => state.telegramUserInfo.address )
 
 
-    const [balance, setBalance] = useState(0)
-    
 
-    const getBalance = useCallback(async () => {
-
-      const client = new TonClient({
-        endpoint: "https://toncenter.com/api/v2/jsonRPC",
-        apiKey : process.env.REACT_APP_API_KEY_TWO
-      });
-
-      console.log(address);
-
-      const balance = await client.getBalance(Address.parse(address))
-
-      console.log(Number(balance) / 10**9);
-
-      setBalance (String(Number(balance) / 10**9).slice(0,5) ) 
-
-
-    }, [address, setBalance]);
   
-    useEffect( () => {
-      if (address){
-        getBalance()
-      }
-    }, [address] )
+
 
     return (
         <div className={cl.wrapper}>
@@ -58,7 +35,7 @@ const MainPage =   ({setDepositShow , setWithDrawal}) => {
           <span>≈T</span>{balance}
         </p> */}
         <p className={cl.priceText}>
-        ~{balance}<span> TON</span>
+        ~{String(balance).slice(0,5)}<span> TON</span>
         </p>
           <Buttons setWithDrawal = {setWithDrawal} setDepositShow = {setDepositShow} />
 

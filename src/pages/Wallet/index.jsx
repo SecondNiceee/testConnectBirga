@@ -11,6 +11,7 @@ import { useNavigate } from "react-router-dom";
 import MainButton from "../../constants/MainButton";
 import BackButton from "../../constants/BackButton"
 import WithdrawalPage from "./components/WithdrawalPage";
+import { Address, TonClient } from "ton";
 const Wallet = () => {
   useProtect()
   const address = useSelector((state) => state.telegramUserInfo.address);
@@ -49,6 +50,34 @@ const Wallet = () => {
       MainButton.offClick(clickHandler)
     }
   } , [depositShow, BackFunction] )
+
+  const [balance, setBalance] = useState(0)
+    
+
+  const getBalance = useCallback(async () => {
+
+    const client = new TonClient({
+      endpoint: "https://toncenter.com/api/v2/jsonRPC",
+      apiKey : process.env.REACT_APP_API_KEY_TWO
+    });
+
+    console.log(address);
+
+    const balance = await client.getBalance(Address.parse(address))
+
+
+    setBalance((Number(balance)) ) 
+
+
+  }, [address, setBalance]);
+
+    
+  useEffect( () => {
+    if (address){
+      getBalance()
+    }
+  }, [address] )
+
   return (
     <div className={cl.mainContainer}>
 
@@ -61,8 +90,8 @@ const Wallet = () => {
           <DepositPage  address={address} />
         </CSSTransition>
 
-        <CSSTransition in = {withdrawal} mountOnEnter unmountOnExit>
-            <WithdrawalPage />
+        <CSSTransition in = {withdrawal} >
+            <WithdrawalPage balance={balance} />
         </CSSTransition> 
 
     </div>
