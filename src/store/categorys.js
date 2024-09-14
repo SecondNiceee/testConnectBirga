@@ -3,7 +3,11 @@ import axios from 'axios';
 export const getCategorys = createAsyncThunk(
     'category/getCategorys' , 
     async function(){
-        let categorys = await axios.get('https://www.connectbirga.ru/category/category' )
+        let categorys = await axios.get('https://www.connectbirga.ru/category/category', {
+            headers : {
+                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+              }
+        } )
         let categorysPar = categorys.data.filter(e => e.category !== 'Другое')
         categorysPar.push(categorys.data.find(e => e.category === 'Другое'))
         return categorysPar

@@ -74,18 +74,6 @@ const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
           <p>≈{en ? "$" : "₽"}{balance * value}</p>
         </div>
       </div>
-      <div className={cl.monetka}>
-        <div className={cl.left}>
-        <svg width="41" height="41" viewBox="0 0 41 41" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M20.668 40.834C31.7137 40.834 40.668 31.8797 40.668 20.834C40.668 9.78827 31.7137 0.833984 20.668 0.833984C9.62225 0.833984 0.667969 9.78827 0.667969 20.834C0.667969 31.8797 9.62225 40.834 20.668 40.834Z" fill="#3DA8F8" />
-</svg>
-          <p>CON</p>
-        </div>
-        <div className={cl.right}>
-          <p>0</p>
-          <p>≈{en ? "$" : "₽"}{balance * value}</p>
-        </div>
-      </div>
     </div>
   );
 };

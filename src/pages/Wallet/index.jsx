@@ -48,6 +48,18 @@ const Wallet = () => {
   } , [depositShow, BackFunction] )
 
   const [balance, setBalance] = useState(0)
+
+  useEffect( () => {
+    const menu = document.documentElement.querySelector(".FirstMenu");
+    if (depositShow || withdrawal){
+      menu.classList.add("disappearAnimation");
+      menu.classList.remove("appearAnimation");
+    }
+    else{
+      menu.classList.add("appearAnimation");
+      menu.classList.remove("disappearAnimation");
+    }
+  }, [depositShow, withdrawal] )
     
 
   const getBalance = useCallback(async () => {

@@ -82,6 +82,7 @@ const AnimatedSwitch = () => {
   const menuRef = useRef(null);
 
   useEffect(() => {
+
     if (location.pathname === "/AdCreating" || location.pathname === "/createWallet" || location.pathname === "/Wallet" || location.pathname === "/WalletInit") {
         if (location.pathname === "/Wallet" || location.pathname === "/WalletInit"){
           document.documentElement.style.overflowY = "auto";
@@ -91,8 +92,10 @@ const AnimatedSwitch = () => {
           document.documentElement.style.overflowY = "auto";
           document.body.style.overflowY = "auto"
         }
-        menuRef.current.classList.add("disappearAnimation");
-        menuRef.current.classList.remove("appearAnimation");
+        if(location.pathname !== "/Wallet"){
+          menuRef.current.classList.add("disappearAnimation");
+          menuRef.current.classList.remove("appearAnimation");
+        }
         
     } else {
       document.documentElement.style.overflowY = "hidden";
