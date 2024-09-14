@@ -32,8 +32,8 @@ const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
           <span>≈T</span>{balance}
         </p> */}
       <p className={cl.priceText}>
-        ~{String(balance * value).slice(0, 5)}
-        <span> {en ? "$" : "₽"}</span>
+        ~ {String(balance * value).slice(0, 5)}
+        <span>{en ? "$" : "₽"}</span>
       </p>
       <Buttons setWithDrawal={setWithDrawal} setDepositShow={setDepositShow} />
 
@@ -71,7 +71,7 @@ const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
         </div>
         <div className={cl.right}>
           <p>{balance}</p>
-          <p>≈{en ? "$" : "₽"}{balance * value}</p>
+          <p>≈{balance * value}{en ? "$" : "₽"}</p>
         </div>
       </div>
     </div>
