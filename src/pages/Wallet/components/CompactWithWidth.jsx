@@ -17,7 +17,7 @@ const CompactWithWidth = ({greyText, onChange,inputMistake = false, inputType = 
                 <p ref={hiddenRef} className={cl.hiddenText}>{inputValue}</p>
                 <GreyText className={cl.GreyText} >
                     {greyText}
-                </GreyText>
+                </GreyText>           
 
                 <div onClick={clickHndler}  style={inputMistake ? {border : "1px solid #fe6766"} : {}} className={cl.createWrapper}>
                     <CreateInput mistake = {inputMistake}  className = {cl.newPadding} ref = {inputRef}  inputMode={inputMode} type={inputType} value={inputValue}  placeholder = {inputPlaceholder} setValue={onChange} />
