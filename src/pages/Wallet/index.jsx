@@ -77,7 +77,7 @@ const Wallet = () => {
   return (
     <div className={cl.mainContainer}>
 
-        <MainPage setWithDrawal = {setWithDrawal} setDepositShow={setDepositShow} />
+        <MainPage balance={balance} setWithDrawal = {setWithDrawal} setDepositShow={setDepositShow} />
 
         <CSSTransition  in = {depositShow} timeout={0}
         mountOnEnter
@@ -86,7 +86,7 @@ const Wallet = () => {
           <DepositPage  address={address} />
         </CSSTransition>
 
-        <CSSTransition in = {withdrawal} >
+        <CSSTransition unmountOnExit mountOnEnter in = {withdrawal} >
             <WithdrawalPage balance={balance} />
         </CSSTransition> 
 
