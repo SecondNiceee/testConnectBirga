@@ -121,8 +121,8 @@ const WithdrawalPage = ({balance}) => {
 
 
 
+      <RoundedBlocks summ={myValues.summ} />
     </div>
-    <RoundedBlocks summ={myValues.summ} />
     </>
   );
 };

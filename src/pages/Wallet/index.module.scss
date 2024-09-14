@@ -1,6 +1,5 @@
 .mainContainer{
     display: flex;
-    padding-bottom: 200px;
 
 }
 .wrapper{
@@ -332,6 +331,10 @@
     transform: translateX(-100vw);
     padding-left: 16px;
     padding-right: 16px;
+    height: calc(100vh - 57px);
+    padding-bottom: 10px;
+    overflow-y: scroll;
+
 
     .balanceBlock{
         .balanceText{
@@ -445,11 +448,8 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 67px;
-    width: calc(100vw - 32px);
+    width: 100%;
+    margin-top: auto;
     z-index: 20;
     .roundBlock{
         display: flex;

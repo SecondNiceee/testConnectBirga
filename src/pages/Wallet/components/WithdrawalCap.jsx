@@ -7,7 +7,7 @@ const WithdrawalCap = () => {
 
 
        <TonIcon />
-      <p>Выввести TON</p>
+      <p>Вывести TON</p>
 
     </div>
   );
