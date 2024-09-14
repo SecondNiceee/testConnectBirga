@@ -23,11 +23,10 @@ const WithdrawalPage = ({balance}) => {
     }
     MainButton.show()
     MainButton.setText("ВЫВЕСТИ")
-    MainButton.hasShineEffect(true)
+
     MainButton.onClick(buttonFunction)
     return () => {
       MainButton.hide()
-      MainButton.hasShineEffect(false)
       MainButton.offClick(buttonFunction)
     }
   } , [] )
