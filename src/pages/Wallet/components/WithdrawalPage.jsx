@@ -53,10 +53,10 @@ const WithdrawalPage = ({balance}) => {
         color: "#2f2f2f",
         text_color: "#606060",
       });
+      window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
     }
     let timeout
     if (Number(myValues.summ.replace(',', '.')) > balance){
-      window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
        timeout = setTimeout( timeoutFunction, 2000 )
     }
     else{
