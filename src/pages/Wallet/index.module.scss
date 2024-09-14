@@ -303,7 +303,10 @@
 
     .newPadding{
         padding-right: 0px;
+        border: none !important;
     }
+
+
 
     .hiddenText{
         color: rgb(255, 255, 255);
@@ -386,4 +389,38 @@
         margin-top: 30px;
     }
 }
-
+    .roundedsBlock{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 67px;
+    width: calc(100vw - 32px);
+    .roundBlock{
+        display: flex;
+        justify-content: space-between;
+        padding: 11px 16px;
+        border-radius: 10px;
+        background-color: #20303f;
+        align-items: center;
+        .left{
+            display: flex;
+            gap: 2.67px;
+            align-items: center;
+        }
+        p{
+            font-family: "SF Pro Text 400";
+            font-weight: 400;
+            font-size: 17px;
+            line-height: 129%;
+            letter-spacing: -0.02em;
+            color: #fff;
+        }
+        .right{
+            color: #daf5fe;
+        }
+    }
+}

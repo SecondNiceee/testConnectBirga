@@ -24,30 +24,26 @@ const Wallet = () => {
       setDepositShow(false)
     }
     else{
-      navigate(-1)
+      if (withdrawal){
+        setWithDrawal(false)
+      }
+      else{
+
+        navigate(-1)
+      }
     }
-  } , [depositShow, setDepositShow] )
+  } , [depositShow, setDepositShow, withdrawal, setWithDrawal] )
 
   useEffect( () => {
 
-    if (depositShow){
 
-
-      MainButton.setText("Открыть Wallet")
-      MainButton.show()
-      MainButton.onClick(clickHandler)
-    }
-    else{
-      MainButton.hide()
-    }
     BackButton.show()
 
     BackButton.onClick(BackFunction)
     
     return () => {
       BackButton.offClick(BackFunction)
-      MainButton.hide()
-      MainButton.offClick(clickHandler)
+      
     }
   } , [depositShow, BackFunction] )
 

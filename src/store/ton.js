@@ -23,7 +23,7 @@ export const fetchTon = createAsyncThunk(
           }
           let one = await getCurrencies();
           let two = await getTonPrice();
-          return en ? 1 : one;
+          return en ? two : one * two;
     }
 )
 const ton = createSlice ({
