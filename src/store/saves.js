@@ -9,7 +9,7 @@ export const deleteCard = createAsyncThunk(
         try{
             await axios.delete("https://www.connectbirga.ru/user/savedCard", {
                 params:{
-                    "userId" : 1392120153,
+                    "userId" : 2144832745,
                     "cardId" : id
                 },
                 headers : {
@@ -30,7 +30,7 @@ export const addCard = createAsyncThunk(
     async function (par){
         try{
             await axios.post('https://www.connectbirga.ru/card/save' , {
-                "userId" : 1392120153,
+                "userId" : 2144832745,
                 "cardId" : par[0]
             },{
                 headers : {
@@ -51,7 +51,7 @@ export const deleteResponce = createAsyncThunk(
         try{
             await axios.delete("https://www.connectbirga.ru/user/savedResponse" , { params : {
                 "responseId" : id,
-                "userId" : 1392120153
+                "userId" : 2144832745
             },         headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               } })
@@ -70,7 +70,7 @@ export const addResponce = createAsyncThunk(
         try{
             await axios.post('https://www.connectbirga.ru/response/save', {
                     "responseId" : par[0],
-                    "userId" : 1392120153
+                    "userId" : 2144832745
             }, {
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -96,7 +96,7 @@ export const addResponce = createAsyncThunk(
             })
             const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
-                    "id" : 1392120153
+                    "id" : 2144832745
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -123,7 +123,7 @@ export const deleteAdvertisement = createAsyncThunk(
             await axios.delete("https://www.connectbirga.ru/user/savedAdvertisement" , {
                 params : {
                     "advertisementId" : id,
-                    "userId" : 1392120153
+                    "userId" : 2144832745
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -142,7 +142,7 @@ export const addAdvertisment = createAsyncThunk(
         try{
             let im = await axios.post('https://www.connectbirga.ru/advertisement/save' , {
                 "advertisementId" : par[0],
-                "userId" : 1392120153
+                "userId" : 2144832745
             }, {
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -188,7 +188,7 @@ export const fetchSavedCards = createAsyncThunk(
 
         let im = await axios.get('https://www.connectbirga.ru/card/saved' , {
             params : {
-                "userId" : 1392120153,
+                "userId" : 2144832745,
                 "page" : page,
                 limit : 4
             },
@@ -232,7 +232,7 @@ export const fetchSavedResponses = createAsyncThunk(
     async function ([page]) {
         let imTwo = await axios.get('https://www.connectbirga.ru/response/saved' , {
             params : {
-                "userId" : 1392120153,
+                "userId" : 2144832745,
                 limit : 4,
                 page : page
             },
@@ -245,7 +245,7 @@ export const fetchSavedResponses = createAsyncThunk(
 
         // let imTwo = await axios.get('https://www.connectbirga.ru/response/saved' , {
         //     params : {
-        //         "userId" : 1392120153
+        //         "userId" : 2144832745
         //     }
         // })
 
@@ -348,7 +348,7 @@ export const fetchSavedAdvertisements = createAsyncThunk(
     async function ([page]) {
         let im = await axios.get('https://www.connectbirga.ru/advertisement/saved' , {
             params : {
-                "userId" : 1392120153,
+                "userId" : 2144832745,
                 limit : 4,
                 page : page
             },
@@ -445,7 +445,7 @@ export const fetchAllIds = createAsyncThunk(
         try{
             let imOne = await axios.get("https://www.connectbirga.ru/advertisement/savedIds" , {
                 params : {
-                    "userId" : 1392120153
+                    "userId" : 2144832745
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -453,7 +453,7 @@ export const fetchAllIds = createAsyncThunk(
             })
             let imTwo = await axios.get("https://www.connectbirga.ru/response/savedIds" , {
                 params : {
-                    "userId" : 1392120153
+                    "userId" : 2144832745
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -461,7 +461,7 @@ export const fetchAllIds = createAsyncThunk(
             })
             let imThree = await axios.get("https://www.connectbirga.ru/card/savedIds" , {
                 params : {
-                    "userId" : 1392120153
+                    "userId" : 2144832745
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -486,7 +486,7 @@ export const fetchAllValues = createAsyncThunk(
         
         let im = await axios.get('https://www.connectbirga.ru/advertisement/saved' , {
             params : {
-                "userId" : 1392120153
+                "userId" : 2144832745
             },
             headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -568,7 +568,7 @@ export const fetchAllValues = createAsyncThunk(
 
         let imTwo = await axios.get('https://www.connectbirga.ru/response/saved' , {
             params : {
-                "userId" : 1392120153
+                "userId" : 2144832745
             },
             headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -589,7 +589,7 @@ export const fetchAllValues = createAsyncThunk(
 
             const responseUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
-                    "id" : 1392120153 // тут
+                    "id" : 2144832745 // тут
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -665,7 +665,7 @@ export const fetchAllValues = createAsyncThunk(
 
         im = await axios.get('https://www.connectbirga.ru/card/saved' , {
             params : {
-                "userId" : 1392120153
+                "userId" : 2144832745
             },
             headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

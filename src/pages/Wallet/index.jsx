@@ -29,7 +29,7 @@ const Wallet = () => {
       }
       else{
 
-        navigate(-1)
+        navigate("/Profile")
       }
     }
   } , [depositShow, setDepositShow, withdrawal, setWithDrawal] )
