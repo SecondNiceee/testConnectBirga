@@ -39,7 +39,7 @@ const Buttons = ({setDepositShow, setWithDrawal}) => {
             fill="white"
           />
         </svg>
-        <p>Вывести</p>
+        <p>Пополнить</p>
       </div>
     </div>
   );

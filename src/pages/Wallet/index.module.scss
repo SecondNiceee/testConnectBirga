@@ -37,7 +37,7 @@
             flex-direction: column;
             gap: 3.67px;
             align-items: flex-end;
-            p:first-of-type{
+            p:last-of-type{
                 font-family: "SF Compact Rounded";
                 font-weight: 400;
                 font-size: 18px;
@@ -45,7 +45,7 @@
                 text-align: right;
                 color: #fff;
             }
-            p:last-of-type{
+            p:first-of-type{
                 font-family: "SF Pro Text 400";
                 font-weight: 400;
                 font-size: 14px;
@@ -133,7 +133,7 @@
     top: 0px;
     transform: rotate(360deg) translateX(-100%);
     padding-top: 28px;
-    padding-bottom: 72px;
+    padding-bottom: 16px;
     display: flex;
     flex-direction: column;
     .capText{
