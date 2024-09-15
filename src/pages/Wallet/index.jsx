@@ -51,15 +51,11 @@ const Wallet = () => {
 
   useEffect( () => {
     const menu = document.documentElement.querySelector(".FirstMenu");
-    if (depositShow || withdrawal){
-      menu.classList.add("disappearAnimation");
-      menu.classList.remove("appearAnimation");
+    menu.style.display = "none"
+    return () => {
+      menu.style.display = "flex"
     }
-    else{
-      menu.classList.add("appearAnimation");
-      menu.classList.remove("disappearAnimation");
-    }
-  }, [depositShow, withdrawal] )
+  }, [] )
     
 
   const getBalance = useCallback(async () => {

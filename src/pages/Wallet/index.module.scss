@@ -331,8 +331,8 @@
     transform: translateX(-100vw);
     padding-left: 16px;
     padding-right: 16px;
-    height: calc(100vh - 57px);
-    padding-bottom: 10px;
+    height: calc(100vh);
+    padding-bottom: 16px;
     overflow-y: scroll;
 
 
@@ -346,6 +346,7 @@
             color: #daf5fe;
             margin-left: 16.3px;
             margin-top: 8.67px;
+            margin-bottom: 30px;
             .white{
                 color: white;
             }
