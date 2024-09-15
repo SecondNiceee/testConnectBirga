@@ -1,7 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import makeNewFile from "../functions/newMakeFile";
-import { useEffect } from "react";
 
 export const deleteCard = createAsyncThunk(
     "deleteCard" ,
@@ -77,7 +76,7 @@ export const addResponce = createAsyncThunk(
                   }
             })
 
-            const responseUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
+             await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : par[1].user.id
                 },
@@ -86,7 +85,7 @@ export const addResponce = createAsyncThunk(
                   }
             })
 
-            const crateNumber = await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
+             await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
                 params : {
                     "userId" : par[1].user.id
                 },
@@ -94,7 +93,7 @@ export const addResponce = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
+            await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : 1392120153
                 },
@@ -102,8 +101,6 @@ export const addResponce = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-
-            const rez = {...par[1] , user : responseUser.data , createNumber : crateNumber.data, advertisement : {...par[1].addAdvertisment, user : advertisementUser.data} }
             // rez.user = responseUser.data
             // rez.createNumber = crateNumber.data
             // rez.advertisement.user = advertisementUser.data
@@ -140,7 +137,7 @@ export const addAdvertisment = createAsyncThunk(
     "addAdvertisement",
     async function(par){
         try{
-            let im = await axios.post('https://www.connectbirga.ru/advertisement/save' , {
+             await axios.post('https://www.connectbirga.ru/advertisement/save' , {
                 "advertisementId" : par[0],
                 "userId" : 1392120153
             }, {
@@ -149,7 +146,7 @@ export const addAdvertisment = createAsyncThunk(
                   }
             })
 
-            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
+            await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
                     "id" : par[1].user.id
                 },
@@ -158,7 +155,7 @@ export const addAdvertisment = createAsyncThunk(
                   }
             })
 
-            const advertisementCrateNumber = await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
+            await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
                 params : {
                     "userId" : par[1].user.id
                 },
@@ -166,7 +163,6 @@ export const addAdvertisment = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-            const rez = {...par[1] , user : advertisementUser.data, createNumber : advertisementCrateNumber.data }
 
             return par[0]
             

@@ -40,14 +40,7 @@ const WalletEnter = () => {
   const [mistakes, setMistakes] = useState([false, false, false, false, false, false])
   
 
-  useEffect( () => {
-    document.documentElement.style.overflowY = "auto"
-    document.body.style.overflowY = "auto"
-    return () => {
-      document.body.style.overflowY = "hidden"
-      document.documentElement.style.overflowY = "hidden"
-    }
-  } , [] )
+
 
   useMenu()
 

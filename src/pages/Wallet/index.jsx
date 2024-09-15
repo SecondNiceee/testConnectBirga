@@ -1,14 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import cl from "./index.module.scss";
-import Buttons from "./components/Buttons";
 import useProtect from "./hooks/useProtect";
 import MainPage from "./components/MainPage";
 import DepositPage from "./components/DepositPage";
 import { useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
-import { clickHandler } from "./components/StageTwo";
 import { useNavigate } from "react-router-dom";
-import MainButton from "../../constants/MainButton";
 import BackButton from "../../constants/BackButton"
 import WithdrawalPage from "./components/WithdrawalPage";
 import { Address, TonClient } from "ton";
@@ -32,7 +29,7 @@ const Wallet = () => {
         navigate("/Profile")
       }
     }
-  } , [depositShow, setDepositShow, withdrawal, setWithDrawal] )
+  } , [depositShow, setDepositShow, withdrawal, setWithDrawal, navigate] )
 
   useEffect( () => {
 
@@ -80,7 +77,7 @@ const Wallet = () => {
     if (address){
       getBalance()
     }
-  }, [address] )
+  }, [address, getBalance] )
 
   return (
     <div className={cl.mainContainer}>

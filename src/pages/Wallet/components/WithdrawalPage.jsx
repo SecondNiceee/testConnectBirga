@@ -1,14 +1,11 @@
-import React, { memo, useCallback, useEffect, useMemo, useState } from "react";
-import GreyText from "../../../components/UI/GreyText/GreyText";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import cl from "../index.module.scss";
 import WithdrawalCap from "./WithdrawalCap";
-import CreateInput from "../../../components/UI/CreateInput/CreateInput";
 import Compact from "./Compact";
 import InformationBlock from "./InformationBlock";
 import BalanceBlock from "./BalanceBlock";
 import RoundedBlocks from "./RoundedBlocks";
 import MainButton from "../../../constants/MainButton";
-import BackButton from "../../../constants/BackButton";
 import axios from "axios";
 const WithdrawalPage = ({balance, setWithDrawal}) => { 
 
@@ -27,7 +24,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
       try{
         console.log("1392120153", myValues.address, String(myValues.summ.replace(',', '.')) );
         
-        const reposnse = await axios.get('https://www.connectbirga.ru/user/sendToAddress', {
+        await axios.get('https://www.connectbirga.ru/user/sendToAddress', {
           params : {
             fromId : 1392120153,
             toAddress : myValues.address,
@@ -65,7 +62,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
       MainButton.hide()
       MainButton.offClick(buttonFunction)
     }
-  } , [myValues.address, setWithDrawal] )
+  } , [myValues, setWithDrawal] )
   
 
   const valuesChanger = useCallback((e) => {
@@ -102,7 +99,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
         clearTimeout(timeout)
       
     }
-  } , [myValues.summ] )
+  } , [myValues.summ, balance] )
 
 
   return (

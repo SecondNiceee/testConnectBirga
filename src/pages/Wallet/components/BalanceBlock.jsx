@@ -7,7 +7,7 @@ const BalanceBlock = ({setMyValues, summ, balance, inputMistake}) => {
         if (!isNaN(newStr.replace(',' , ""))){
             setMyValues((value) => ({ ...value, summ: String(newStr) }));
         }
-      }, []);
+      }, [setMyValues]);
     
       const summValue = useMemo( () => {
         const newStrOne = summ.split(',')[0]

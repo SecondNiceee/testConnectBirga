@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useMemo, useRef } from 'react';
+import React, { memo, useCallback, useEffect, useRef } from 'react';
 import cl from "../index.module.scss"
 import GreyText from '../../../components/UI/GreyText/GreyText';
 import CreateInput from '../../../components/UI/CreateInput/CreateInput';

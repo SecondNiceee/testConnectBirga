@@ -96,7 +96,7 @@ export const setStartResponse = createAsyncThunk(
         myData.append("isWatched" , "inProcess")
         const messageOne = translation("📣✅ Вы были выбраны исполнителем на задание")
         try{
-            let im = await axios.put("https://www.connectbirga.ru/response" , myData, {
+            await axios.put("https://www.connectbirga.ru/response" , myData, {
                 params : {
                     id : responce.id
                 },
@@ -183,7 +183,7 @@ export const postResponse = createAsyncThunk(
         let myData = new FormData()
         myData.append("isWatched" , "watched")
         try{
-            let im = await axios.put("https://www.connectbirga.ru/response" , myData, {
+            await axios.put("https://www.connectbirga.ru/response" , myData, {
                 params : {
                     id : id
                 },

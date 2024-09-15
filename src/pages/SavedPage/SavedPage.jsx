@@ -114,7 +114,7 @@ const SavedPage = () => {
       dispatch(clearAll())
 
     };
-  }, []);
+  }, [dispatch]);
   const savedTasks = useSelector((state) => state.saves.tasks);
 
   const gotIt = useMemo(() => {

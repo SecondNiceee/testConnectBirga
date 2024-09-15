@@ -1,6 +1,5 @@
 import React, { memo, useCallback, useState } from "react";
 import cl from "../index.module.scss";
-import { useSelector } from "react-redux";
 import AlertBlock from "./AlertBlock";
 import HowGetText from "./HowGetText";
 import Stages from "./Stages";
@@ -8,7 +7,7 @@ import AddressBlock from "./AddressBlock";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import copyTextToClipboard from "../../../functions/copyTextToClipboard";
 import CopyText from "../../../components/UI/CopyText/CopyText";
-import {QRCodeSVG, QRCodeCanvas} from 'qrcode.react';
+import { QRCodeCanvas} from 'qrcode.react';
 import icon from "../../../images/icons/ThisTon.svg"
 
 

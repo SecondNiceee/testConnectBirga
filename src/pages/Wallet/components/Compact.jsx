@@ -1,8 +1,8 @@
-import React, { memo, useEffect, useMemo, useRef } from 'react';
+import React, { memo } from 'react';
 import cl from "../index.module.scss"
 import GreyText from '../../../components/UI/GreyText/GreyText';
 import CreateInput from '../../../components/UI/CreateInput/CreateInput';
-import { color } from 'framer-motion';
+
 const Compact = ({greyText, onChange, inputType = "text", inputMode = "text", inputMistake = false, isGreyRed = false, inputValue, inputPlaceholder, className = ""}) => {
 
     return (

@@ -9,13 +9,11 @@ import AboutTop from "../MyAds/components/AboutTop";
 import axios from "axios";
 import ExampleWorks from "../MyAds/components/ExampleWorks";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
-import { useDispatch } from "react-redux";
 import makeNewFile from "../../functions/newMakeFile";
 import Compact from "../../components/UI/Compact/Compact";
 import "../MyAds/MyAds.css"
 import BackButton from "../../constants/BackButton";
 import { useNavigate } from "react-router-dom";
-import MainButton from "../../constants/MainButton";
 // const parOne = 1392120153;
 // const parTwo = 1;
 
@@ -51,7 +49,6 @@ const ProfilePage = ({ ...props }) => {
 //   window.Telegram.WebApp.showAlert(window.Telegram.WebApp.initDataUnsafe.start_param)
   window.Telegram.WebApp.disableVerticalSwipes();
 
-  const dispatch = useDispatch();
 
   const navigate = useNavigate()
 

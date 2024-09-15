@@ -1,12 +1,9 @@
-import React, { memo, useCallback, useEffect, useState } from "react";
+import React, { memo } from "react";
 import cl from "../index.module.scss";
 import Buttons from "./Buttons";
-import { Address, fromNano } from "ton-core";
-import { TonClient } from "ton";
 import { useSelector } from "react-redux";
 import en from "../../../constants/language";
 const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
-  const address = useSelector((state) => state.telegramUserInfo.address);
 
   const value = useSelector((state) => state.ton.value);
   console.log(value);

