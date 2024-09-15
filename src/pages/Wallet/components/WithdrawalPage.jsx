@@ -12,7 +12,14 @@ import BackButton from "../../../constants/BackButton";
 import axios from "axios";
 const WithdrawalPage = ({balance, setWithDrawal}) => { 
 
-
+  const [myValues, setMyValues] = useState({
+    address: "",
+    summ: "0",
+  });
+  const [mistakes, setMistakes] = useState({
+    address : false,
+    summ : false
+  })
 
   useEffect( () => {
     async function buttonFunction(){
@@ -60,14 +67,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
     }
   } , [myValues.address, setWithDrawal] )
   
-  const [myValues, setMyValues] = useState({
-    address: "",
-    summ: "0",
-  });
-  const [mistakes, setMistakes] = useState({
-    address : false,
-    summ : false
-  })
+
   const valuesChanger = useCallback((e) => {
     setMyValues((value) => ({ ...value, address: e }));
   }, []);

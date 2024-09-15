@@ -95,7 +95,7 @@ const Wallet = () => {
         </CSSTransition>
 
         <CSSTransition unmountOnExit mountOnEnter in = {withdrawal} >
-            <WithdrawalPage balance={balance} />
+            <WithdrawalPage setWithDrawal={setWithDrawal} balance={balance} />
         </CSSTransition> 
 
     </div>

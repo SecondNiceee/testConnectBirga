@@ -8,10 +8,13 @@ import { useNavigate } from "react-router-dom";
 import MainButton from "../../constants/MainButton";
 import BackButton from "../../constants/BackButton";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { fetchUserInfo } from "../../store/telegramUserInfo";
 const WalletInit = () => {
     const [inputs, setInputs] = useState(Array.from({length : 12} , () => ""))
     const [show , setShow] = useState(false)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const buttonClick = useCallback( async () => {
         const phrase = await navigator.clipboard.readText()
         .then(text => 
@@ -50,8 +53,12 @@ const WalletInit = () => {
 
 
     const checkWallet = useCallback( async () => {
+        MainButton.showProgress()
+        console.log('====================================');
+        console.log(inputs.map((e,i) => e.trim()));
+        console.log('====================================');
         try{
-
+            
             const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
                 mnemonic: inputs.map((e,i) => e.trim()),
                 userId: 1392120153,
@@ -60,7 +67,8 @@ const WalletInit = () => {
                   "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                 }
               });
-              navigate('/Wallet')
+              dispatch(fetchUserInfo()).then(value => navigate('/Wallet'))
+              
         }
         catch(e){
             window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
@@ -69,6 +77,7 @@ const WalletInit = () => {
             console.log('====================================');
             setShow((value) => !value)
         }
+        MainButton.hideProgress()
     } , [inputs]  )
 
     useEffect( () => {
@@ -78,7 +87,7 @@ const WalletInit = () => {
             MainButton.hide()
             MainButton.offClick(checkWallet)
         }
-    } , [] )
+    } , [checkWallet] )
     
     const setSomeInput = useCallback((value, index) => {
         setInputs((val) => ([...val].map((e,i) => index === i ? value : e)))
