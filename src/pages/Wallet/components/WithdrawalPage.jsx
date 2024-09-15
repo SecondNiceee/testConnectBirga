@@ -9,6 +9,7 @@ import MainButton from "../../../constants/MainButton";
 import axios from "axios";
 const WithdrawalPage = ({balance, setWithDrawal}) => { 
 
+  console.log("Хай")
   const [myValues, setMyValues] = useState({
     address: "",
     summ: "",
