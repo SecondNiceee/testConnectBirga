@@ -19,6 +19,12 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
   })
 
   useEffect( () => {
+    if(mistakes.address){
+      setMistakes((value) => ({...value, address:false}))
+    }
+  } , [mistakes.address, myValues.address] )
+
+  useEffect( () => {
     async function buttonFunction(){
       MainButton.showProgress()
       try{
@@ -100,6 +106,8 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
       
     }
   } , [myValues.summ, balance] )
+
+
 
 
   return (
