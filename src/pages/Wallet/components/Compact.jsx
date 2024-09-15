@@ -12,7 +12,7 @@ const Compact = ({greyText, onChange, inputType = "text", inputMode = "text", in
                 </GreyText>
 
                 <div className={cl.createWrapper}>
-                    <CreateInput mistake = {inputMistake}   className = {cl.newPadding}  inputMode={inputMode} type={inputType} value={inputValue}  placeholder = {inputPlaceholder} setValue={onChange} />
+                    <CreateInput mistake = {inputMistake} inputMode={inputMode} type={inputType} value={inputValue}  placeholder = {inputPlaceholder} setValue={onChange} />
                 </div>
         </div>
     );

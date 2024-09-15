@@ -35,10 +35,13 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
             fromId : 1392120153,
             toAddress : myValues.address,
             amount: String(myValues.summ.replace(',', '.'))
+          },
+          headers : {
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         })
         
-        MainButton.hideProgress()
+        
         window.Telegram.WebApp.showPopup(
           {
             title: "Вывод в пути.",
@@ -58,6 +61,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
         window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
         setMistakes((value) => ({...value , address : true}))
       }
+      MainButton.hideProgress()
 
     }
     MainButton.show()
@@ -124,12 +128,13 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
         inputValue={myValues.address}
         onChange={valuesChanger}
         
+        
       />
 
     <InformationBlock  />
 
 
-    <BalanceBlock inputMistake = {mistakes.summ} balance={balance} setMyValues={setMyValues} summ={myValues.summ} />
+    <BalanceBlock  inputMistake = {mistakes.summ} balance={balance} setMyValues={setMyValues} summ={myValues.summ} />
 
 
 

@@ -23,6 +23,7 @@ const BalanceBlock = ({setMyValues, summ, balance, inputMistake}) => {
         <div className={cl.balanceBlock}>
 
         <CompactWithWidth
+            
             greyText={"Сумма"}
             inputPlaceholder={"Введите сумму (минимум 0.05)"}
             inputType={"text"}
