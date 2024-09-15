@@ -59,22 +59,26 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
         console.log(e);
         console.log('====================================');
         window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+        window.Telegram.WebApp.showPopup(
+          {
+            title: "Ошибка!",
+            message: "Введите правильный адресс кошелька и попробуйте снова",
+            buttons: [
+              { id: "save", type: "destructive", text: "Понятно" },
+            ],
+          },
+          (buttonId) => {
+            if (buttonId === "save" || buttonId === null) {
+              console.log("Он что - то нажал");
+              
+            }
+          }
+        );
       }
       MainButton.hideProgress()
-      window.Telegram.WebApp.showPopup(
-        {
-          title: "Ошибка!",
-          message: "Введите правильный адресс кошелька и попробуйте снова",
-          buttons: [
-            { id: "save", type: "delete", text: "Понятно" },
-          ],
-        },
-        (buttonId) => {
-          if (buttonId === "save" || buttonId === null) {
-          }
-        }
-      );
+
     }
+    MainButton.hideProgress()
     MainButton.show()
     MainButton.setText("ВЫВЕСТИ")
 
