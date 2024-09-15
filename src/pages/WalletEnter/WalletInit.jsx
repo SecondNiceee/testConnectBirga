@@ -41,6 +41,7 @@ const WalletInit = () => {
             navigate(-1)
         }
         BackButton.show()
+        MainButton.setText("Войти в кошелек")
         BackButton.onClick(backFucntion)
         return () => {
             BackButton.offClick(backFucntion)
@@ -63,6 +64,9 @@ const WalletInit = () => {
         }
         catch(e){
             window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+            console.log('====================================');
+            console.log(e);
+            console.log('====================================');
             setShow((value) => !value)
         }
     } , [inputs]  )

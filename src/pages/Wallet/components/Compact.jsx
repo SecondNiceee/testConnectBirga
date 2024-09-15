@@ -2,11 +2,12 @@ import React, { memo, useEffect, useMemo, useRef } from 'react';
 import cl from "../index.module.scss"
 import GreyText from '../../../components/UI/GreyText/GreyText';
 import CreateInput from '../../../components/UI/CreateInput/CreateInput';
-const Compact = ({greyText, onChange, inputType = "text", inputMode = "text", inputMistake = false, inputValue, inputPlaceholder, className = ""}) => {
+import { color } from 'framer-motion';
+const Compact = ({greyText, onChange, inputType = "text", inputMode = "text", inputMistake = false, isGreyRed = false, inputValue, inputPlaceholder, className = ""}) => {
 
     return (
         <div className={[className, cl.adressBlock].join(' ')}>
-                <GreyText className={cl.GreyText} >
+                <GreyText style = {isGreyRed && inputMistake ? {color : "#fe6766"} : {}} className={cl.GreyText} >
                     {greyText}
                 </GreyText>
 

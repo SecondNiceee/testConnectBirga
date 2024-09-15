@@ -4,22 +4,51 @@ import cl from "../index.module.scss";
 import WithdrawalCap from "./WithdrawalCap";
 import CreateInput from "../../../components/UI/CreateInput/CreateInput";
 import Compact from "./Compact";
-import CompactWithWidth from "./CompactWithWidth";
-import { useSelector } from "react-redux";
-import en from "../../../constants/language";
 import InformationBlock from "./InformationBlock";
 import BalanceBlock from "./BalanceBlock";
 import RoundedBlocks from "./RoundedBlocks";
 import MainButton from "../../../constants/MainButton";
 import BackButton from "../../../constants/BackButton";
 import axios from "axios";
-const WithdrawalPage = ({balance}) => { 
+const WithdrawalPage = ({balance, setWithDrawal}) => { 
 
 
 
   useEffect( () => {
     async function buttonFunction(){
-      const reposnse = await axios.post('')
+      MainButton.showProgress()
+      try{
+        console.log("1392120153", myValues.address, String(myValues.summ.replace(',', '.')) );
+        
+        const reposnse = await axios.get('https://www.connectbirga.ru/user/sendToAddress', {
+          params : {
+            fromId : 1392120153,
+            toAddress : myValues.address,
+            amount: String(myValues.summ.replace(',', '.'))
+          }
+        })
+        
+        MainButton.hideProgress()
+        window.Telegram.WebApp.showPopup(
+          {
+            title: "Вывод в пути.",
+            message: "Ваш тоны поступят на ваш баланс в течении нескольких минут.",
+            buttons: [
+              { id: "save", type: "default", text: "Понятно" },
+            ],
+          },
+          (buttonId) => {
+            if (buttonId === "save" || buttonId === null) {
+              setWithDrawal(false)
+            }
+          }
+        );
+      }
+      catch(e){
+        window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+        setMistakes((value) => ({...value , address : true}))
+      }
+
     }
     MainButton.show()
     MainButton.setText("ВЫВЕСТИ")
@@ -29,7 +58,7 @@ const WithdrawalPage = ({balance}) => {
       MainButton.hide()
       MainButton.offClick(buttonFunction)
     }
-  } , [] )
+  } , [myValues.address, setWithDrawal] )
   
   const [myValues, setMyValues] = useState({
     address: "",
@@ -82,6 +111,8 @@ const WithdrawalPage = ({balance}) => {
       <WithdrawalCap />
 
       <Compact
+        isGreyRed = {true}
+        inputMistake = {mistakes.address}
         greyText={"Адрес"}
         inputPlaceholder={"Введите адрес кошелька"}
         inputType={"text"}
