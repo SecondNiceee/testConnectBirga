@@ -18,11 +18,6 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
     summ : false
   })
 
-  useEffect( () => {
-    if(mistakes.address){
-      setMistakes((value) => ({...value, address:false}))
-    }
-  } , [mistakes.address, myValues.address] )
 
   useEffect( () => {
     async function buttonFunction(){
@@ -41,7 +36,8 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
           }
         })
         
-        
+        MainButton.hideProgress()
+
         window.Telegram.WebApp.showPopup(
           {
             title: "Вывод в пути.",
@@ -56,13 +52,28 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
             }
           }
         );
+
       }
       catch(e){
+        console.log('====================================');
+        console.log(e);
+        console.log('====================================');
         window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
-        setMistakes((value) => ({...value , address : true}))
       }
       MainButton.hideProgress()
-
+      window.Telegram.WebApp.showPopup(
+        {
+          title: "Ошибка!",
+          message: "Введите правильный адресс кошелька и попробуйте снова",
+          buttons: [
+            { id: "save", type: "delete", text: "Понятно" },
+          ],
+        },
+        (buttonId) => {
+          if (buttonId === "save" || buttonId === null) {
+          }
+        }
+      );
     }
     MainButton.show()
     MainButton.setText("ВЫВЕСТИ")
