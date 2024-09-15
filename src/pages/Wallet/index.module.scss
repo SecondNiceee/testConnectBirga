@@ -32,6 +32,9 @@
                 color: #fff;
             }
         }
+        &:last-of-type{
+            opacity: 0.5;
+        }
         .right{
             display: flex;
             flex-direction: column;
