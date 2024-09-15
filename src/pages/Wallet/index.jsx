@@ -70,7 +70,7 @@ const Wallet = () => {
     const balance = await client.getBalance(Address.parse(address))
 
 
-    setBalance((Number(balance)) ) 
+    setBalance((Number(balance) / 10**9) ) 
 
 
   }, [address, setBalance]);
