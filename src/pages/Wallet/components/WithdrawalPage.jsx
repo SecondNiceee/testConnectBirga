@@ -11,7 +11,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
 
   const [myValues, setMyValues] = useState({
     address: "",
-    summ: "0",
+    summ: "",
   });
   const [mistakes, setMistakes] = useState({
     address : false,
@@ -41,7 +41,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
         window.Telegram.WebApp.showPopup(
           {
             title: "Вывод в пути.",
-            message: "Ваш тоны поступят на ваш баланс в течении нескольких минут.",
+            message: "Ваши тоны поступят на баланс в течении нескольких минут",
             buttons: [
               { id: "save", type: "default", text: "Понятно" },
             ],
@@ -127,7 +127,9 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
   } , [myValues.summ, balance] )
 
 
-
+  console.log('====================================');
+  console.log(myValues.summ);
+  console.log('====================================');
 
   return (
     <>

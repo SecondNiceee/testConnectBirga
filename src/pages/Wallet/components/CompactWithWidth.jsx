@@ -6,12 +6,33 @@ const CompactWithWidth = ({greyText, onChange,inputMistake = false, inputType = 
     const hiddenRef = useRef(null)
     const inputRef = useRef(null)
     useEffect( () => {
+        function focusFunction(e){
+            if (e.target.value === "0"){
+                e.target.value = ""
+            }
+        }
+        function blurFunction(e){
+            if (e.target.value === ""){
+                e.target.value = "0"
+            }
+        }
+        inputRef.current.addEventListener('focus' ,focusFunction )
+        inputRef.current.addEventListener('blur',blurFunction)
+        return () => {
+            inputRef.current.removeEventListener('focus' ,focusFunction )
+            inputRef.current.removeEventListener('blur',blurFunction)
+        } 
+    } , [] )
+    useEffect( () => {
         hiddenRef.current.textContent = inputValue !== "0" ? inputValue : "0"
-        inputRef.current.style.width = inputValue !== "0" ?  hiddenRef.current.offsetWidth + "px" : "26px"
+        inputRef.current.style.width = inputValue !== "0" ?  hiddenRef.current.offsetWidth + "px" : "27px"
     } , [inputValue] )
     const clickHndler = useCallback( () => {
         inputRef.current.focus()
     } , [] )
+    console.log('====================================');
+    console.log(inputValue);
+    console.log('====================================');
     return (
         <div className={[className, cl.adressBlock].join(' ')}>
                 <p ref={hiddenRef} className={cl.hiddenText}>{inputValue}</p>

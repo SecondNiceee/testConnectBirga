@@ -48,11 +48,16 @@ const Wallet = () => {
 
   useEffect( () => {
     const menu = document.documentElement.querySelector(".FirstMenu");
-    menu.style.display = "none"
+    if (!(withdrawal || depositShow)){
+      menu.style.display = "flex"
+    }
+    else{
+       menu.style.display = "none"
+    }
     return () => {
       menu.style.display = "flex"
     }
-  }, [] )
+  }, [withdrawal, depositShow] )
     
 
   const getBalance = useCallback(async () => {

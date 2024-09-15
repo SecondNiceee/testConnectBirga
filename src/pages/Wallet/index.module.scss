@@ -351,9 +351,19 @@
             margin-top: 8.67px;
             margin-bottom: 30px;
             .white{
+                font-family: "SF Pro Display 400";
+                font-weight: 400;
+                font-size: 13px;
+                line-height: 117%;
+                letter-spacing: 0.04em;
                 color: white;
             }
             .blue{
+                font-family: "SF Pro Display 400";
+                font-weight: 400;
+                font-size: 13px;
+                line-height: 117%;
+                letter-spacing: 0.04em;
                 color: #2ea6ff;
             }
         }
@@ -387,7 +397,7 @@
         width: 100%;
         display: flex;
         align-items: center;
-        gap: 7px;
+        gap: 4px;
         border-radius: 9.97px;
         background: rgb(32, 48, 63);
         p{

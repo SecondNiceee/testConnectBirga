@@ -16,7 +16,7 @@ const RoundedBlocks = ({summ}) => {
   const itog = useMemo( () => {
     const newStrTwo = summ.split(",")[1] ? summ.split(",")[1] : "0"
     const toFixedWhat = Math.max(4, newStrTwo.length)
-    const rez = Number(summ.replace(",", '.')) - 0.0004
+    const rez = Number(summ.replace(",", '.')) - 0.004
     return rez < 0 ? 0 : rez.toFixed(toFixedWhat)
   }, [summ] ) 
   return (
@@ -37,7 +37,7 @@ const RoundedBlocks = ({summ}) => {
             />
           </svg>
         </div>
-        <p className={cl.right}>0.0004 TON</p>
+        <p className={cl.right}>0.004 TON</p>
       </div>
 
       <div className={cl.roundBlock}>

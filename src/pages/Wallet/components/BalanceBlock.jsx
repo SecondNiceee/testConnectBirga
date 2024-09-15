@@ -19,13 +19,17 @@ const BalanceBlock = ({setMyValues, summ, balance, inputMistake}) => {
       const styleError = useMemo(() => {
         return inputMistake ? {color : "#fe6766"} : {}
       }, [inputMistake] )
+    
+    const maxFunction = useCallback( () => {
+      setMyValues( (value) => ({...value, summ : String(balance).replace('.', ',')}) )
+    } , [balance, setMyValues] )
     return (
         <div className={cl.balanceBlock}>
 
         <CompactWithWidth
             
             greyText={"Сумма"}
-            inputPlaceholder={"Введите сумму (минимум 0.05)"}
+            inputPlaceholder={""}
             inputType={"text"}
             inputMode="decimal"
             inputValue={summValue}
@@ -33,7 +37,7 @@ const BalanceBlock = ({setMyValues, summ, balance, inputMistake}) => {
             className={cl.summBlock}
             inputMistake = {inputMistake}
         />
-        <p style={styleError} className={cl.balanceText}>Ваш Баланс: <span style={styleError} className={cl.white}>{balance} TON ·</span>  <span style={styleError} className={cl.blue}>Max</span></p>
+        <p style={styleError} className={cl.balanceText}>Ваш Баланс: <span style={styleError} className={cl.white}>{balance} TON ·</span>  <span onClick={maxFunction} style={styleError} className={cl.blue}>Max</span></p>
      </div>
 
     );
