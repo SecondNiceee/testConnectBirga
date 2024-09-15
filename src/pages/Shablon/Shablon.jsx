@@ -22,7 +22,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
   useEffect( () => {
     function forward(){
       let myFormData = new FormData()
-      // myFormData.append("userId" ,  5157996064 )
+      // myFormData.append("userId" ,  2144832745 )
       myFormData.append("name" , String(localShablon.name.trim()) )
       myFormData.append("text" , String(localShablon.text.trim()))
       if (put){
