@@ -390,12 +390,7 @@ const translateText = translation("Вы уверены, что хотите со
   } , [firstPage.taskDescription, navigate] )
 
 
-  function clearInput(){
-    var inputs = document.getElementsByTagName('input');
-    for (var i = 0; i < inputs.length; i++) {
-      inputs[i].blur();
-    }
-  }
+
 
   // eslint-disable-next-line
   const goForward = () => {
@@ -406,13 +401,9 @@ const translateText = translation("Вы уверены, что хотите со
       mainRef.current.classList.remove('oneBack')
       mainRef.current.classList.remove('twoBack')
       if (spet === 0){
-
-
-          clearInput()
           mainRef.current.classList.add('stepOne')
       }
       if (spet === 1){
-        clearInput()
         mainRef.current.classList.add('stepTwo')
       }
 
@@ -427,7 +418,6 @@ const translateText = translation("Вы уверены, что хотите со
         }
         if (spet === 3){
 
-          clearInput()
           window.Telegram.WebApp.showPopup({
             title: create,
             message: textButton,
@@ -469,11 +459,11 @@ const translateText = translation("Вы уверены, что хотите со
       endError: false})
     if (isCategoryChoiceOpen || isSubcategoryChoiceOpen){
       if (isCategoryChoiceOpen){
-        clearInput()
+
         setCatagoryChoiceOpen(false)
       }
       else{
-        clearInput()
+
         setSubcategoryChoiceOpen(false)
       }
     }
@@ -488,20 +478,20 @@ const translateText = translation("Вы уверены, что хотите со
       } else {
         
         if (spet === 1){
-          clearInput()
+
             mainRef.current.classList.remove('stepOne')
             mainRef.current.classList.remove('stepTwo')
             mainRef.current.classList.add('oneBack')
           
         }
         if (spet === 2){
-          clearInput()
+
             mainRef.current.classList.remove('stepTwo')
             mainRef.current.classList.remove('stepOne')
             mainRef.current.classList.add('twoBack')
           
         }
-        clearInput()
+
         spet -= 1;
         MainButton.setText(continueText)
         // backAnimte();
