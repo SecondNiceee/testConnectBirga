@@ -70,9 +70,10 @@ export const useButton = ({
   } , [details] ) 
   useEffect(() => {
     function writeFucntion() {
+      alert("Был клик сюда")
       if (!buyPage){
         setBuyPage(true)
-        
+        console.log("Buy page стал true")
       }
       else{
         if (balance < secondPage.task.tonValue){

@@ -67,7 +67,9 @@ const MyAds = ({isPage = false}) => {
   const [isPageValueOne , setPageValueOne] = useState(true)
   const [isPageValueTwo , setPageValueTwo] = useState(true)
   const [buyPage, setBuyPage] = useState(false)
-  
+  console.log('====================================');
+  console.log(buyPage);
+  console.log('====================================');
   const [valueOne , setValueOne] = useState("all")
 
   const [valueTwo , setValueTwo] = useState("all")
