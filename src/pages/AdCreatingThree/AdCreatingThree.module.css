@@ -11,7 +11,8 @@
     overflow-y: scroll;
     position: fixed;
     background: rgb(24, 34, 45);
-    z-index: 300;
+    z-index: 2300;
+    padding-bottom: 72px;
     
     /* height: calc(100vh);
     overflow-y: scroll; */
