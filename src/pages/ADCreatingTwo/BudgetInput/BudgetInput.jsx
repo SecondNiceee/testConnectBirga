@@ -98,7 +98,7 @@ const BudgetInput = ({
           <Text className={cl.text}>
           Стоимость
             </Text>
-            <span> {tonValue} USDT </span> 
+            <span> {tonValue} TON </span> 
           </div>
             <img src={Info} alt="" />
       </div>
@@ -106,7 +106,7 @@ const BudgetInput = ({
       :
           <div className={cl.bottomTextContainer}>
             <Text className={cl.text} style={{color : '#FF6767'}}>
-              Сумма должна быть больше 5 USD
+              Сумма должна быть больше 0.5 TON
               </Text>
           </div>
 

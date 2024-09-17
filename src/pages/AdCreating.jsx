@@ -137,7 +137,7 @@ const translateText = translation("Вы уверены, что хотите со
       }
     }
     if (spet === 1) {
-      if (error.ton && secondPage.tonValue >= 5) {
+      if (error.ton && secondPage.tonValue >= 0.5) {
         setError({ ...error, ton: false });
       }
       if (document.getElementById("dateSwapper").style.transform) {
@@ -327,7 +327,7 @@ const translateText = translation("Вы уверены, что хотите со
         );
       }
       case 1: {
-        if (secondPage.tonValue < 5) {
+        if (secondPage.tonValue < 0.5) {
           ton = true;
         }
         if (document.getElementById("dateSwapper").style.transform) {

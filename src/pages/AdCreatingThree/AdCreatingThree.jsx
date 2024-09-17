@@ -6,10 +6,11 @@ import cl from "./AdCreatingThree.module.css";
 import Upper from "./Upper/Upper";
 import Block from "./Block/Block";
 import AlertBlock from "./AlertBlock/AlertBlock";
+import { useSelector } from "react-redux";
 
 const AdCreatingThree = ({taskInformation }) => {
 
-
+  const balance = useSelector(state => state.balance.value)
 
   return (
     <div className= {cl.AdCreatingThree}
@@ -20,11 +21,11 @@ const AdCreatingThree = ({taskInformation }) => {
       
       <div className={cl.blocks}>
         <Block left={"Задание"} right={String(taskInformation.tonValue) + " TON"} />
-        <Block left={"Комиссия"} right={"0.004 TON"} />
-        <Block left={"Итого"} right={String(taskInformation.tonValue + 0.004) + " TON"} />
+        <Block left={"Комиссия"} right={"0.01 TON"} />
+        <Block left={"Итого"} right={String(taskInformation.tonValue + 0.01) + " TON"} />
       </div>
       <Holding taskInformation={taskInformation}  className={cl.Holding} />
-      <AlertBlock />
+      {balance < taskInformation.tonValue + 0.01 && <AlertBlock />}
     </div>
   );
 };
