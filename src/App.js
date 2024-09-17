@@ -50,9 +50,6 @@ const WalletInit = lazy( () => (import("./pages/WalletEnter/WalletInit")) )
 
 
 export const API_KEY = process.env.REACT_APP_API_KEY;
-console.log('====================================');
-console.log("ХАй хай хай");
-console.log('====================================');
 const MyLoader = () => {
   return (
     <div

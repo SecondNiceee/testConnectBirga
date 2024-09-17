@@ -71,59 +71,11 @@ export const useButton = ({
     
   } , [details] ) 
   useEffect(() => {
-    async function writeFucntion() {
-      setBuyPage(true)
+    function writeFucntion() {
+      if (!buyPage){
+        setBuyPage(true)
+      }
       
-      window.Telegram.WebApp.showPopup(
-        {
-          title: translation("Внимание"),
-          message: choiceTextTwo,
-          buttons: [
-            { id: "delete", type: "default", text: translation("Продолжить") },
-            { id: "save", type: "destructive", text: translation("Прочитать") },
-          ],
-        },
-        (buttonId) => {
-          if (buttonId === "delete") {
-            window.Telegram.WebApp.showPopup(
-              {
-                title: isTake,
-                message: lastChoice,
-                buttons: [
-                  { id: "save", type: "default", text: Yes },
-                  { id: "delete", type: "destructive", text: No },
-                ],
-              },
-              (buttonId) => {
-                if (buttonId === "save") {
-                  
-                  
-  
-                  // dispatch(clearMyOrders())
-                  dispatch(setStartTask(myAdOneAdvertisement.id));
-                  dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
-                  setOpen({ ...isOpen, isActive: false });
-                  setSecondPage({ ...secondPage, isActive: false });
-                  // dispatch(fetchMyOrders(1));
-
-
-                }
-                if (buttonId === "delete" || buttonId === null) {
-                  console.log("Он отказался");
-                }
-              }
-            );
-          }
-          if (buttonId === "save") {
-            window.Telegram.WebApp.openLink(
-              "https://walletru.helpscoutdocs.com/"
-            );
-          }
-          if (buttonId === null) {
-            console.log("Он отказался");
-          }
-        }
-      );
     }
 
     function compareTwoObject(a1, a2) {
@@ -208,15 +160,18 @@ export const useButton = ({
       menu.classList.add("disappearAnimation")
       menu.classList.remove("appearAnimation")
       MainButton.show();
-      
       MainButton.setParams({
         color: "#2ea5ff",
         text_color: "#ffffff",
         is_active: true,
       });
-
-      MainButton.setText(choiceText);
       MainButton.onClick(writeFucntion);
+      if (!buyPage){
+          MainButton.setText(choiceText);
+      }
+      else{
+        MainButton.setText("ЗАХОДИРОВАТЬ")
+      }
     } else {
       MainButton.offClick(writeFucntion);
       if (!myResponse.isOpen && !details.isActive) {
@@ -225,6 +180,7 @@ export const useButton = ({
         MainButton.hide();
       }
     }
+
 
     if (details.isActive) {
       MainButton.setText(translation("ОБНОВИТЬ"));
