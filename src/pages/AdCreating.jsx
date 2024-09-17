@@ -443,6 +443,7 @@ const translateText = translation("Вы уверены, что хотите со
             if (buttonId === "save") {
               finish();
             }
+            
           } )
 
 
@@ -572,6 +573,9 @@ const translateText = translation("Вы уверены, что хотите со
       ref={mainRef}
       className="AdCreating__container"
     >
+      <button onClick={() => {
+        
+      }}>Дальше</button>
       {status === "pending" ? (
         <>
           <PostLoader />
