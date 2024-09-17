@@ -1,21 +1,23 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import cl from "../index.module.scss"
 import CompactWithWidth from './CompactWithWidth';
-const BalanceBlock = ({setMyValues, summ, balance, inputMistake}) => {
+const BalanceBlock = ({setMyValues, sum, balance, inputMistake}) => {
     const summChange = useCallback((e) => {
         const newStr = e.replace(/\s/g, '');
+        console.log(e);
+        
         if (!isNaN(newStr.replace(',' , ""))){
             setMyValues((value) => ({ ...value, summ: String(newStr) }));
         }
       }, [setMyValues]);
     
       const summValue = useMemo( () => {
-        const newStrOne = summ.split(',')[0]
-        const newStrTwo = summ.split(",")[1]
+        const newStrOne = sum.split(',')[0]
+        const newStrTwo = sum.split(",")[1]
     
-        const formattedNumber = summ.includes(',') ? new Intl.NumberFormat('ru-RU').format(Number(newStrOne)) + ',' + newStrTwo : new Intl.NumberFormat('ru-RU').format(Number(newStrOne))
+        const formattedNumber = sum.includes(',') ? new Intl.NumberFormat('ru-RU').format(Number(newStrOne)) + ',' + newStrTwo : new Intl.NumberFormat('ru-RU').format(Number(newStrOne))
         return formattedNumber
-      } , [summ] )
+      } , [sum] )
       const styleError = useMemo(() => {
         return inputMistake ? {color : "#fe6766"} : {}
       }, [inputMistake] )

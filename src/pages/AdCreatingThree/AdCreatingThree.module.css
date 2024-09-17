@@ -3,9 +3,16 @@
     flex-direction: column;
     padding-left: 16px;
     padding-right: 16px;
-    margin-top: 23.33px;
+    padding-top: 42px;
     z-index: 100;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    overflow-y: scroll;
+    position: fixed;
     background: rgb(24, 34, 45);
+    z-index: 300;
+    
     /* height: calc(100vh);
     overflow-y: scroll; */
 }
@@ -38,4 +45,12 @@
 }
 .Holding{
     margin-top: calc(30px);
+}
+
+.AdCreatingThree .blocks{
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
 }

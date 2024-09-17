@@ -40,7 +40,7 @@ const RoundedBlocks = ({summ}) => {
         <p className={cl.right}>0.004 TON</p>
       </div>
 
-      <div className={cl.roundBlock}>
+      <div className={cl.roundBlock}> 
         <p>Итого</p>
 
         <p className={cl.right}>

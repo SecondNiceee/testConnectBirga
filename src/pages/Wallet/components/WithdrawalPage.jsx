@@ -9,10 +9,9 @@ import MainButton from "../../../constants/MainButton";
 import axios from "axios";
 const WithdrawalPage = ({balance, setWithDrawal}) => { 
 
-  console.log("Хай")
   const [myValues, setMyValues] = useState({
     address: "",
-    summ: "",
+    summ: "0",
   });
   const [mistakes, setMistakes] = useState({
     address : false,
@@ -128,9 +127,10 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
   } , [myValues.summ, balance] )
 
 
-  console.log('====================================');
-  console.log(myValues.summ);
-  console.log('====================================');
+
+  useEffect( () => {
+    setMistakes((value) => ({...value, summ : false}))
+  } , [myValues.summ] )
 
   return (
     <>
@@ -152,7 +152,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
     <InformationBlock  />
 
 
-    <BalanceBlock  inputMistake = {mistakes.summ} balance={balance} setMyValues={setMyValues} summ={myValues.summ} />
+    <BalanceBlock  inputMistake = {mistakes.summ} balance={balance} setMyValues={setMyValues} sum={myValues.summ} />
 
 
 

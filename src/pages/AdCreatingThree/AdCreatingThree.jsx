@@ -1,11 +1,11 @@
 import React from "react";
 
-import Cap from "../../components/UI/Cap/Cap";
-import info from '../../images/icons/info.svg'
-import PaymentMethod from "./PaymentMethod/PaymentMethod";
 import Holding from "./Holding/Holding";
 
 import cl from "./AdCreatingThree.module.css";
+import Upper from "./Upper/Upper";
+import Block from "./Block/Block";
+import AlertBlock from "./AlertBlock/AlertBlock";
 
 const AdCreatingThree = ({taskInformation }) => {
 
@@ -16,14 +16,15 @@ const AdCreatingThree = ({taskInformation }) => {
     style={{minWidth : document.documentElement.clientWidth.toString() + 'px'}}
 
     >
-      <Cap className={cl.Cap} step={3} >
-        <div className={cl.upTextContainer}>
-            <Text>Холдирование</Text>
-            <img src={info} alt="" />
-        </div>
-      </Cap>
-      <PaymentMethod className={cl.PaymentMethod} />
+      <Upper />
+      
+      <div className={cl.blocks}>
+        <Block left={"Задание"} right={String(taskInformation.tonValue) + " TON"} />
+        <Block left={"Комиссия"} right={"0.004 TON"} />
+        <Block left={"Итого"} right={String(taskInformation.tonValue + 0.004) + " TON"} />
+      </div>
       <Holding taskInformation={taskInformation}  className={cl.Holding} />
+      <AlertBlock />
     </div>
   );
 };

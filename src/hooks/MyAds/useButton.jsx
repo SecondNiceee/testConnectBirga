@@ -37,7 +37,9 @@ export const useButton = ({
   setLastAdsTwo,
   checkMistakes,
   setPageValueOne,
-  setPageValueTwo
+  setPageValueTwo,
+  setBuyPage,
+  buyPage
 }) => {
   const dispatch = useDispatch();
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
@@ -70,6 +72,8 @@ export const useButton = ({
   } , [details] ) 
   useEffect(() => {
     async function writeFucntion() {
+      setBuyPage(true)
+      
       window.Telegram.WebApp.showPopup(
         {
           title: translation("Внимание"),
@@ -308,6 +312,8 @@ export const useButton = ({
     lastAdsTwo,
     setLastAdsTwo,
     setPageValueOne,
-    setPageValueTwo
+    setPageValueTwo,
+    buyPage,
+    setBuyPage
   ]);
 };

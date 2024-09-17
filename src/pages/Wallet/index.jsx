@@ -68,11 +68,19 @@ const Wallet = () => {
     });
 
     console.log(address);
+    let balance
+    try{
 
-    const balance = await client.getBalance(Address.parse(address))
+       balance = await client.getBalance(Address.parse(address), )
+       setBalance((Number(balance) / 10**9) ) 
+    }
+    catch(e){
+      console.log('====================================');
+      console.log(balance);
+      console.log(e)
+      console.log('====================================');
+    }
 
-
-    setBalance((Number(balance) / 10**9) ) 
 
 
   }, [address, setBalance]);

@@ -6,7 +6,7 @@ import en from "../../../constants/language";
 const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
 
   const value = useSelector((state) => state.ton.value);
-  console.log(value);
+  console.log(balance);
 
   return (
     <div className={cl.wrapper}>

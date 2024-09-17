@@ -26,6 +26,7 @@ import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import pagesHistory from "../../constants/pagesHistory";
 import MainButton from "../../constants/MainButton";
 import translation from "../../functions/translate";
+import AdCreatingThree from "../AdCreatingThree/AdCreatingThree";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -65,6 +66,7 @@ const defaultDate = new Date(0)
 const MyAds = ({isPage = false}) => {
   const [isPageValueOne , setPageValueOne] = useState(true)
   const [isPageValueTwo , setPageValueTwo] = useState(true)
+  const [buyPage, setBuyPage] = useState(false)
   
   const [valueOne , setValueOne] = useState("all")
 
@@ -780,6 +782,15 @@ const MyAds = ({isPage = false}) => {
               orderInformation={filteredResponses[detailsTwo.id] ? filteredResponses[detailsTwo.id].advertisement : ""  }
 
             />
+        </CSSTransition>
+
+
+        <CSSTransition in = {buyPage}
+        unmountOnExit
+        mountOnEnter
+
+        >
+          <AdCreatingThree taskInformation={{tonValue : 1}} />
         </CSSTransition>
 
 

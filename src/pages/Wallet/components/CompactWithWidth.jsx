@@ -2,6 +2,7 @@ import React, { memo, useCallback, useEffect, useRef } from 'react';
 import cl from "../index.module.scss"
 import GreyText from '../../../components/UI/GreyText/GreyText';
 import CreateInput from '../../../components/UI/CreateInput/CreateInput';
+let myRef;
 const CompactWithWidth = ({greyText, onChange,inputMistake = false, inputType = "text", inputMode = "text", inputValue, inputPlaceholder, className = ""}) => {
     const hiddenRef = useRef(null)
     const inputRef = useRef(null)
@@ -16,11 +17,18 @@ const CompactWithWidth = ({greyText, onChange,inputMistake = false, inputType = 
                 e.target.value = "0"
             }
         }
+        // function changeHandler(e){
+        //     if (e.target.value === ""){
+        //         e.target.value = ""
+        //     }
+        //     console.log("change");
+            
+        // }
+        
         inputRef.current.addEventListener('focus' ,focusFunction )
         inputRef.current.addEventListener('blur',blurFunction)
+        // inputRef.current.addEventListener('input',changeHandler)
         return () => {
-            inputRef.current.removeEventListener('focus' ,focusFunction )
-            inputRef.current.removeEventListener('blur',blurFunction)
         } 
     } , [] )
     useEffect( () => {
