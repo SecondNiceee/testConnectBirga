@@ -44,7 +44,7 @@ const Wallet = () => {
     }
   } , [depositShow, BackFunction] )
 
-  const [balance, setBalance] = useState(0)
+  const balance = useSelector(state => state.balance.value)
 
   useEffect( () => {
     const menu = document.documentElement.querySelector(".FirstMenu");
@@ -59,38 +59,6 @@ const Wallet = () => {
     }
   }, [withdrawal, depositShow] )
     
-
-  const getBalance = useCallback(async () => {
-
-    const client = new TonClient({
-      endpoint: "https://toncenter.com/api/v2/jsonRPC",
-      apiKey : process.env.REACT_APP_API_KEY_TWO
-    });
-
-    console.log(address);
-    let balance
-    try{
-
-       balance = await client.getBalance(Address.parse(address), )
-       setBalance((Number(balance) / 10**9) ) 
-    }
-    catch(e){
-      console.log('====================================');
-      console.log(balance);
-      console.log(e)
-      console.log('====================================');
-    }
-
-
-
-  }, [address, setBalance]);
-
-    
-  useEffect( () => {
-    if (address){
-      getBalance()
-    }
-  }, [address, getBalance] )
 
   return (
     <div className={cl.mainContainer}>

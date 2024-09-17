@@ -35,6 +35,7 @@ import {
   mnemonicNew,
 } from "ton-crypto";
 import axios from "axios";
+import { getBalance } from "./store/balance";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -250,7 +251,6 @@ const AnimatedSwitch = () => {
 };
 function App() {
 
-  console.log(API_KEY);
   
 
   window.Telegram.WebApp.disableVerticalSwipes();
@@ -262,27 +262,9 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const address = useSelector( state => state.telegramUserInfo.address )
-  const mnemonic = useSelector(state => state.telegramUserInfo.mnemonic)
 
   window.Telegram.WebApp.expand();
-  // useEffect( () => {
-  //   async function dsa(){
-  //     // await axios.get("https://www.connectbirga.ru/user/sendMessage", {
-  //     //   params: {
-  //     //     chatId: 5157996064,
-  //     //     text:
-  //     //     "Кто - то октрыл приложение",
-  //     //     languageCode : en ? "en" : "ru"
-  //     //   },
-  //     // });
-  //   }
-  //   dsa()
-  //   return() => {
-  //     dsa()
 
-  //   }
-  // } , [])
 
   useEffect(() => {
     dispatch(fetchTon());
@@ -296,53 +278,16 @@ function App() {
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
+
+
+
+
   console.log(process.env.REACT_APP_API_KEY);
   
 
   
-  const getBalance = useCallback(async () => {
-
-    const client = new TonClient({
-      endpoint: "https://toncenter.com/api/v2/jsonRPC", 
-    });
-
-    console.log(address);
-
-    console.warn(await client.getBalance(Address.parse(address)))
-
-    // alert(await client.getBalance(Address.parse(address)))
-
-  }, [address]);
-
-  useEffect(() => {
 
 
-    if (mnemonic && address){
-      getBalance();
-    }
-
-    async function getWallet(params) {
-      try {
-
-
-        // Generate new key
-        let mnemonics = await mnemonicNew(12);
-
-        const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
-          mnemonic: mnemonics,
-          userId: 5157996064,
-        } , {
-          headers : {
-            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-          }
-        });
-
-        // Create wallet contrac
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  }, [mnemonic, address, getBalance]);
 
   
   return (

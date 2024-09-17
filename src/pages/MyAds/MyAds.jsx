@@ -583,7 +583,9 @@ const MyAds = ({isPage = false}) => {
     save : save,
     setOneCard : setOneCard,
     lastAdsTwo : lastAdsTwo,
-    setLastAdsTwo : setLastAdsTwo
+    setLastAdsTwo : setLastAdsTwo,
+    setBuyPage : setBuyPage,
+    buyPage : buyPage
   })
 
 

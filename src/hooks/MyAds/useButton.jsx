@@ -9,11 +9,7 @@ import translation from "../../functions/translate";
 const menu = document.documentElement.querySelector(".FirstMenu")
 
 const choiceText = translation("ВЫБРАТЬ")
-const choiceTextTwo = translation("Перед выбором исполнителя\n ознакомьтесь с FAQ Биржи.")
-const lastChoice = translation("Вы уверены, что хотите выбрать\n этого исполнителя?")
-let isTake = translation("Выбрать?")
-const Yes = translation("Да")
-const No = translation("Нет")  
+ 
 export const useButton = ({
   setOpen,
   setSecondPage,
@@ -41,6 +37,8 @@ export const useButton = ({
   setBuyPage,
   buyPage
 }) => {
+
+  const balance = useSelector(state => state.balance.value)
   const dispatch = useDispatch();
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
 
@@ -74,6 +72,15 @@ export const useButton = ({
     function writeFucntion() {
       if (!buyPage){
         setBuyPage(true)
+        
+      }
+      else{
+        if (balance < secondPage.task.tonValue){
+          navigate("/Wallet")
+        }
+        else{
+          alert("Что-то жесткое")
+        }
       }
       
     }
@@ -170,7 +177,12 @@ export const useButton = ({
           MainButton.setText(choiceText);
       }
       else{
-        MainButton.setText("ЗАХОДИРОВАТЬ")
+        if (balance < secondPage.task.tonValue){
+          MainButton.setText("КОШЕЛЕК")
+        }
+        else{
+          MainButton.setText("ЗАХОЛДИРОВАТЬ")
+        }
       }
     } else {
       MainButton.offClick(writeFucntion);
