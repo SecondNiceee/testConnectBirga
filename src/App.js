@@ -262,7 +262,9 @@ function App() {
 
   const dispatch = useDispatch();
 
-
+  console.log('====================================');
+  console.log("Kjk");
+  console.log('====================================');
   window.Telegram.WebApp.expand();
 
 
