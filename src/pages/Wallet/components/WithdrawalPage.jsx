@@ -11,7 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBalance } from "../../../store/balance";
 const WithdrawalPage = ({balance, setWithDrawal}) => { 
 
-  console.log("Хай")
+  const [undetText , setUnderText ] = useState(false)
+
   const [myValues, setMyValues] = useState({
     address: "",
     summ: "",
@@ -100,6 +101,9 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
   useEffect( () => {
     MainButton.showProgress()
     function timeoutFunction(){
+      if (Number(myValues.summ.replace(',', '.')) < 0.05){
+        setUnderText(true)
+      }
       setMistakes((value) => ({...value, summ : true}))
       MainButton.hideProgress()
       MainButton.setParams({
@@ -110,10 +114,14 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
       window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
     }
     let timeout
-    if (Number(myValues.summ.replace(',', '.')) > balance){
+    if (Number(myValues.summ.replace(',', '.')) > balance || Number(myValues.summ.replace(',', '.')) < 0.05 && Number(myValues.summ.replace(',', '.')) !== 0){
        timeout = setTimeout( timeoutFunction, 2000 )
+       if (Number(myValues.summ.replace(',', '.')) > 0.05){
+        setUnderText(false)
+       }
     }
     else{
+      setUnderText(false)
       MainButton.hideProgress()
       MainButton.setParams({
         color: "#2ea5ff",
@@ -127,7 +135,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
         clearTimeout(timeout)
       
     }
-  } , [myValues.summ, balance] )
+  } , [myValues.summ, balance, setUnderText] )
 
 
   console.log('====================================');
@@ -154,7 +162,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
     <InformationBlock  />
 
 
-    <BalanceBlock  inputMistake = {mistakes.summ} balance={balance} setMyValues={setMyValues} sum={myValues.summ} />
+    <BalanceBlock underText={undetText} inputMistake = {mistakes.summ} balance={balance} setMyValues={setMyValues} sum={myValues.summ} />
 
 
 

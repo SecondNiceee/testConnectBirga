@@ -169,7 +169,7 @@
   gap: 8px;
   border-radius: 10px;
   overflow-x: hidden;
-  min-height: 100vh;
+  min-height: unset;
 }
 
 .menuLink path {
@@ -262,10 +262,8 @@
   border-radius: 6.67px;
 }
 .First__block .first__photos .first__photo {
-  min-width: calc(0.48* 100vw);
-  height: calc(0.35* 100vw);
-  border-radius: 6.67px;
-  object-fit: cover;
+  min-width: 48vw;
+  height: 35vw;
   border-radius: 6.67px;
   -o-object-fit: cover;
      object-fit: cover;
@@ -387,7 +385,7 @@
   text-align: left;
 }
 .First__block .FirstMain__price-up {
-  opacity: 0.3;
+  opacity: 1;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -404,6 +402,10 @@
   line-height: 28px;
   letter-spacing: 0%;
   text-align: left;
+}
+.First__block .FirstMain__price-up img {
+  width: 21.67px;
+  height: 21.67px;
 }
 .First__block .FirstMain__bottom-right {
   min-width: 21px;
@@ -1724,8 +1726,12 @@
   height: 10.56px;
 }
 
+.adCreatingThree-wrapper {
+  min-width: 100vw;
+}
+
 .AdCreating__container {
-  padding-bottom: 60px;
+  padding-bottom: 76px;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1761,6 +1767,10 @@
 .profile__wrapper {
   -webkit-transition: 0.4s;
   transition: 0.4s;
+}
+
+.pay-block {
+  margin-top: 28px;
 }
 
 input {
@@ -3523,6 +3533,41 @@ body {
 }
 
 .left-right-exit {
+  -webkit-transform: translate3d(100vw, 0, 0) !important;
+          transform: translate3d(100vw, 0, 0) !important;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.left-right-exit-active {
+  -webkit-transform: translate3d(100vw, 0, 0) !important;
+          transform: translate3d(100vw, 0, 0) !important;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.left-zero-enter {
+  -webkit-transform: translate3d(-100vw, 0, 0) !important;
+          transform: translate3d(-100vw, 0, 0) !important;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.left-zero-enter-active {
+  -webkit-transform: translate3d(-100vw, 0, 0) !important;
+          transform: translate3d(-100vw, 0, 0) !important;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.left-zero-enter-done {
+  -webkit-transform: translate3d(-100vw, 0, 0) !important;
+          transform: translate3d(-100vw, 0, 0) !important;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.left-right-exit {
   -webkit-transform: translate3d(0, 0, 0) !important;
           transform: translate3d(0, 0, 0) !important;
   -webkit-transition: 0.4s;
@@ -3530,6 +3575,13 @@ body {
 }
 
 .left-right-exit-active {
+  -webkit-transform: translate3d(100%, 0, 0) !important;
+          transform: translate3d(100%, 0, 0) !important;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.left-right-exit-done {
   -webkit-transform: translate3d(100%, 0, 0) !important;
           transform: translate3d(100%, 0, 0) !important;
   -webkit-transition: 0.4s;
@@ -3742,4 +3794,160 @@ body {
 
 .base-Option-root:hover {
   background-color: rgb(68, 68, 68);
+}
+
+.show-modal-enter {
+  scale: 1 !important;
+  opacity: 1 !important;
+}
+
+.show-modal-enter-active {
+  scale: 1 !important;
+  opacity: 1 !important;
+}
+
+.show-modal-enter-done {
+  scale: 1 !important;
+  opacity: 1 !important;
+}
+
+.show-modal-exit {
+  -webkit-transition: 0.4s !important;
+  transition: 0.4s !important;
+  scale: 1 !important;
+  opacity: 1 !important;
+}
+
+.show-modal-exit-active {
+  -webkit-transition: 0.4s !important;
+  transition: 0.4s !important;
+  scale: 1 !important;
+  opacity: 1 !important;
+}
+
+.show-modal-exit-done {
+  -webkit-transition: 0.4s !important;
+  transition: 0.4s !important;
+  scale: 0 !important;
+  opacity: 0 !important;
+}
+
+button, li, a, img {
+  cursor: pointer;
+}
+
+@-webkit-keyframes animateError {
+  0% {
+    opacity: 0;
+    scale: 0;
+    -webkit-transition: 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  6% {
+    scale: 1.1;
+    opacity: 1;
+  }
+  8% {
+    scale: 1;
+  }
+  70% {
+    scale: 1;
+    opacity: 1;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+  100% {
+    scale: 1;
+    opacity: 0;
+  }
+}
+
+@keyframes animateError {
+  0% {
+    opacity: 0;
+    scale: 0;
+    -webkit-transition: 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  6% {
+    scale: 1.1;
+    opacity: 1;
+  }
+  8% {
+    scale: 1;
+  }
+  70% {
+    scale: 1;
+    opacity: 1;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+  }
+  100% {
+    scale: 1;
+    opacity: 0;
+  }
+}
+.errorModal-enter-active {
+  -webkit-animation: animateError 2s both;
+          animation: animateError 2s both;
+}
+
+.errorModal-exit-active {
+  -webkit-animation: animateError 2s both;
+          animation: animateError 2s both;
+}
+
+@-webkit-keyframes modal-animate {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  30% {
+    -webkit-transform: translateY(120px);
+            transform: translateY(120px);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translateY(120px);
+            transform: translateY(120px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(120px);
+            transform: translateY(120px);
+  }
+}
+
+@keyframes modal-animate {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  30% {
+    -webkit-transform: translateY(120px);
+            transform: translateY(120px);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translateY(120px);
+            transform: translateY(120px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(120px);
+            transform: translateY(120px);
+  }
+}
+.modal-copy-enter-active {
+  -webkit-animation: modal-animate 1.5s both;
+          animation: modal-animate 1.5s both;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.modal-copy-exit-active {
+  -webkit-animation: modal-animate 1.5s both;
+          animation: modal-animate 1.5s both;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
 }
