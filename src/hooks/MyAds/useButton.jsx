@@ -75,6 +75,9 @@ export const useButton = ({
         params : {
           fromId : id,
           amount : amount
+        },
+        headers : {
+          "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
         }
       })
       console.log("858931156" ,secondPage.task.tonValue );
