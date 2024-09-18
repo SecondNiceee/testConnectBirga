@@ -262,9 +262,8 @@ function App() {
 
   const dispatch = useDispatch();
 
-  console.log('====================================');
-  console.log("Лоооол");
-  console.log('====================================');
+  const address = useSelector( state => state.telegramUserInfo.address )
+
   window.Telegram.WebApp.expand();
 
 
@@ -282,9 +281,13 @@ function App() {
 
 
 
+  useEffect( () => {
+    if (address){
+      dispatch(getBalance({userAddress : address}))
+    }
+  } , [address] )
 
 
-  console.log(process.env.REACT_APP_API_KEY);
   
 
   

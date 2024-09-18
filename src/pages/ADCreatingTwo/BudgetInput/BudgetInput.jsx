@@ -15,7 +15,7 @@ const BudgetInput = ({
   errorTon
 }) => {
   const KisInteger = function (obj) {
-    return "0123456789".includes(obj[obj.length - 1]);
+    return "0123456789,".includes(obj[obj.length - 1]);
   };
 
   function budgetWidth() {
@@ -28,20 +28,20 @@ const BudgetInput = ({
   }
 
   function format(strPar) {
-    let str = strPar;
-    if (str.length > 1) {
-      if (str[0] === "0") {
-        str = str.replace("0", "");
+    const one = strPar.split(',')[0]
+    const two = strPar.split(',')[1]
+    if (two){
+      return Number(one.replace(/\s/g, '')).toLocaleString("ru-RU") + ',' + two 
+    }
+    else{
+      if (strPar.includes(',')){
+        return Number(one.replace(/\s/g, '')).toLocaleString("ru-RU") + ','
+      }
+      else{
+        return Number(one.replace(/\s/g, '')).toLocaleString("ru-RU") 
       }
     }
-    str = str.replaceAll(" ", "").substring(0, 6);
-    const s = str.length;
-    const chars = str.split("");
-    const strWithSpaces = chars.reduceRight((acc, char, i) => {
-      const spaceOrNothing = (s - i) % 3 === 0 ? " " : "";
-      return spaceOrNothing + char + acc;
-    }, "");
-    return strWithSpaces[0] === " " ? strWithSpaces.slice(1) : strWithSpaces;
+
   }
 
   const ref1 = useRef(null);

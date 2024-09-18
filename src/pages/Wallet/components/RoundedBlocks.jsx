@@ -2,22 +2,17 @@ import React, { useMemo } from "react";
 import cl from "../index.module.scss"
 import en from "../../../constants/language";
 import { useSelector } from "react-redux";
+import formateMoney from "../../../functions/formateMoney";
 
 
-const format = (value) => {
-  if (String(value).slice(4,5) === "."){
-      return String(value).slice(0,4)
-  }
-  return String(value).slice(0,5)
-  
-}
+
 const RoundedBlocks = ({summ}) => {
   const price = useSelector(state => state.ton.value)
   const itog = useMemo( () => {
     const newStrTwo = summ.split(",")[1] ? summ.split(",")[1] : "0"
     const toFixedWhat = Math.max(4, newStrTwo.length)
     const rez = Number(summ.replace(",", '.')) - 0.004
-    return rez < 0 ? 0 : rez.toFixed(toFixedWhat)
+    return rez < 0 ? 0 : rez.toFixed(toFixedWhat) 
   }, [summ] ) 
   return (
     <div className={cl.roundedsBlock}>
@@ -44,7 +39,7 @@ const RoundedBlocks = ({summ}) => {
         <p>Итого</p>
 
         <p className={cl.right}>
-          {itog} TON ≈ {format(itog * price)}
+          { String(itog).replace('.', ',')} TON ≈ {formateMoney(String(itog * price).replace('.' , ','), 2, ',')}
           {en ? "$" : "₽"}
         </p>
       </div>

@@ -3,6 +3,7 @@ import cl from "../index.module.scss";
 import Buttons from "./Buttons";
 import { useSelector } from "react-redux";
 import en from "../../../constants/language";
+import formateMoney from "../../../functions/formateMoney";
 const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
 
   const value = useSelector((state) => state.ton.value);
@@ -29,7 +30,7 @@ const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
           <span>≈T</span>{balance}
         </p> */}
       <p className={cl.priceText}>
-       {String(balance * value).slice(0, 6)}
+       {formateMoney(String(balance * value).replace('.', ',') , 2,',' )}
         <span>{en ? "$" : "₽"}</span>
       </p>
       <Buttons setWithDrawal={setWithDrawal} setDepositShow={setDepositShow} />
@@ -68,10 +69,10 @@ const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
         </div>
         <div className={cl.right}>
            <p>
-            ≈{balance * value}
+            ≈{ formateMoney(String(balance * value).replace(',' , '.'),2,'.' ) }
             {en ? "$" : "₽"}
           </p>
-          <p>{balance}</p>
+          <p>{ formateMoney(String(balance).replace(',','.'),3,'.')}</p>
 
         </div>
       </div>

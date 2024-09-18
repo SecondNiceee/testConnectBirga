@@ -136,8 +136,8 @@ const ResponseBlock = ({
               <div className="FirstMain__price-bottom">
                 <p>
                 ~ {Number((tonValue * tonConstant).toFixed(2)).toLocaleString(
-                    "en-EN"
-                  )}
+                    "ru-RU"
+                  ).replace(',', '.')}
                 </p>
                 <Text>{textPrice}</Text>
               </div>

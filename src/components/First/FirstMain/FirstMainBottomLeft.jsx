@@ -12,9 +12,9 @@ const FirstMainBottomLeft = ({tonValue, tonConstant}) => {
         </div>
         <div className='FirstMain__price-bottom'>
           <p>
-            ~ {Number((tonValue * tonConstant).toFixed(0)).toLocaleString(
+            ~ {Number((tonValue * tonConstant).toFixed(2)).toLocaleString(
               "ru-RU"
-            )}
+            ).replace(',', '.')}
           </p>
             <Text>
             {textPrice}

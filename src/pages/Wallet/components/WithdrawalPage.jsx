@@ -7,6 +7,8 @@ import BalanceBlock from "./BalanceBlock";
 import RoundedBlocks from "./RoundedBlocks";
 import MainButton from "../../../constants/MainButton";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getBalance } from "../../../store/balance";
 const WithdrawalPage = ({balance, setWithDrawal}) => { 
 
   console.log("Хай")
@@ -18,7 +20,8 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
     address : false,
     summ : false
   })
-
+  const dispatch = useDispatch()
+  const address = useSelector( state => state.telegramUserInfo.address )
 
   useEffect( () => {
     async function buttonFunction(){
@@ -36,9 +39,8 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         })
-        
+        dispatch(getBalance({userAddress : address}))
         MainButton.hideProgress()
-
         window.Telegram.WebApp.showPopup(
           {
             title: "Вывод в пути.",
@@ -152,7 +154,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
     <InformationBlock  />
 
 
-    <BalanceBlock  inputMistake = {mistakes.summ} balance={balance} setMyValues={setMyValues} summ={myValues.summ} />
+    <BalanceBlock  inputMistake = {mistakes.summ} balance={balance} setMyValues={setMyValues} sum={myValues.summ} />
 
 
 

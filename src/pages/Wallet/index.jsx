@@ -72,7 +72,8 @@ const Wallet = () => {
           <DepositPage  address={address} />
         </CSSTransition>
 
-        <CSSTransition unmountOnExit mountOnEnter in = {withdrawal} >
+        <CSSTransition
+        timeout={0} unmountOnExit mountOnEnter in = {withdrawal} >
             <WithdrawalPage setWithDrawal={setWithDrawal} balance={balance} />
         </CSSTransition> 
 
