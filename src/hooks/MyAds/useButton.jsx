@@ -70,7 +70,6 @@ export const useButton = ({
   } , [details] ) 
   useEffect(() => {
     function writeFucntion() {
-      alert("Был клик сюда")
       if (!buyPage){
         setBuyPage(true)
         console.log("Buy page стал true")
@@ -80,7 +79,24 @@ export const useButton = ({
           navigate("/Wallet")
         }
         else{
-          alert("Что-то жесткое")
+          window.Telegram.WebApp.showPopup(
+            {
+              title: translation("Захолдировать?"),
+              message: "Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания испольнителем.",
+              buttons: [
+                { id: "save", type: "default", text: "Да" },
+                { id: "delete", type: "destructive", text: "Нет" },
+              ],
+            },
+            (buttonId) => {
+              if (buttonId === "save") {
+                alert("Что-то страшное")
+              }
+              if (buttonId === "delete" || buttonId === null) {
+                console.log("Он отказался");
+              }
+            }
+          );
         }
       }
       
