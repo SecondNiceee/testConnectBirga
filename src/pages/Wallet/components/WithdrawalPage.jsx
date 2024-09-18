@@ -33,7 +33,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
           params : {
             fromId : 858931156,
             toAddress : myValues.address,
-            amount: String(myValues.summ.replace(',', '.'))
+            amount: String(Number(myValues.summ.replace(',', '.')) - 0.004)
           },
           headers : {
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
