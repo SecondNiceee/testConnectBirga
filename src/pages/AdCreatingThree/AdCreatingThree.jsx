@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 const AdCreatingThree = ({taskInformation }) => {
 
   const balance = useSelector(state => state.balance.value)
+  const address = useSelector( state => state.telegramUserInfo.address )
 
   return (
     <div className= {cl.AdCreatingThree}
@@ -25,8 +26,8 @@ const AdCreatingThree = ({taskInformation }) => {
         <Block left={"Итого"} right={String(taskInformation.tonValue + 0.01) + " TON"} />
       </div>
       <Holding taskInformation={taskInformation}  className={cl.Holding} />
-      {balance < taskInformation.tonValue + 0.01 && <AlertBlock />}
-    </div>
+      { (balance < taskInformation.tonValue + 0.01 || !address)  && <AlertBlock address = {address} />}
+    </div> 
   );
 };
 
