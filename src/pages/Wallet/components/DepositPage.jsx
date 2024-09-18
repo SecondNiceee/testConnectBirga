@@ -29,7 +29,7 @@ const DepositPage = ({address}) => {
         <>
           <p className={cl.capText}>Сделать депозит USDT (TON)</p>
 
-          <QRCodeCanvas level="Q"  imageSettings={{
+          <QRCodeCanvas level="H"  imageSettings={{
             src : icon,
             height : 22,
             width : 22,
