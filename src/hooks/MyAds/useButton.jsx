@@ -6,6 +6,7 @@ import { putMyTask, setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 import sortFiles from "../../functions/sortFiles";
 import translation from "../../functions/translate";
+import axios from "axios";
 const menu = document.documentElement.querySelector(".FirstMenu")
 
 const choiceText = translation("ВЫБРАТЬ")
@@ -69,6 +70,16 @@ export const useButton = ({
     
   } , [details] ) 
   useEffect(() => {
+    async function hold(id, amount) {
+      await axios.get("https://www.connectbirga.ru/user/hold" , {
+        params : {
+          fromId : id,
+          amount : amount
+        }
+      })
+      console.log("858931156" ,secondPage.task.tonValue );
+      
+    }
     function writeFucntion() {
       if (!buyPage){
         setBuyPage(true)
@@ -90,7 +101,9 @@ export const useButton = ({
             },
             (buttonId) => {
               if (buttonId === "save") {
-                alert("Что-то страшное")
+                hold(858931156, String(secondPage.task.tonValue)).then(value => alert("Прошло успешно")).catch(value => {
+                  console.warn(value)
+                } )
               }
               if (buttonId === "delete" || buttonId === null) {
                 console.log("Он отказался");
