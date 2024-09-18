@@ -110,54 +110,60 @@ export const useButton = ({
 
 
     function goBack() {
-      if (oneCards.isOpen) {
-        setOneCard((value) => ({ ...value, isOpen: false }));
-      } else {
-        if (!openAboutReaction.isActive) {
-          if (!details.isActive) {
-            if (detailsTwo.isOpen) {
-              setDetailsTwo((value) => ({ ...value, isOpen: false }));
-            } else {
-              if (isOpen.isActive) {
-                setPageValueTwo(false)
-                // isPageValueTwo = false
-                setOpen({ ...isOpen, isActive: false });
-              } else {
-                if (secondPage.isActive) {
-                  setPageValueOne(false)
-                  setSecondPage((value) => ({ ...value, isActive: false }));
-                  // isPageValueOne = false
-                } else {
-                  // if (history[history.length - 1] === '/AdCreating'){
+      if (buyPage){
+        setBuyPage(false)
+      }
+      else{
 
-                  //   navigate();
-                  // }
-                  // else{
-                  //   navigate(-1)
-                  // }
-                  if (lastAdsTwo.isOpen) {
-                    setLastAdsTwo((value) => ({ ...value, isOpen: false }));
+        if (oneCards.isOpen) {
+          setOneCard((value) => ({ ...value, isOpen: false }));
+        } else {
+          if (!openAboutReaction.isActive) {
+            if (!details.isActive) {
+              if (detailsTwo.isOpen) {
+                setDetailsTwo((value) => ({ ...value, isOpen: false }));
+              } else {
+                if (isOpen.isActive) {
+                  setPageValueTwo(false)
+                  // isPageValueTwo = false
+                  setOpen({ ...isOpen, isActive: false });
+                } else {
+                  if (secondPage.isActive) {
+                    setPageValueOne(false)
+                    setSecondPage((value) => ({ ...value, isActive: false }));
+                    // isPageValueOne = false
                   } else {
-                    if (myResponse.isOpen) {
-                      setMyResponse((value) => ({ ...value, isOpen: false }));
+                    // if (history[history.length - 1] === '/AdCreating'){
+  
+                    //   navigate();
+                    // }
+                    // else{
+                    //   navigate(-1)
+                    // }
+                    if (lastAdsTwo.isOpen) {
+                      setLastAdsTwo((value) => ({ ...value, isOpen: false }));
                     } else {
-                      navigate("/");
+                      if (myResponse.isOpen) {
+                        setMyResponse((value) => ({ ...value, isOpen: false }));
+                      } else {
+                        navigate("/");
+                      }
                     }
                   }
                 }
               }
+            } else {
+              if (!compareTwoObject(secondPage.task, details.task)){
+                save();
+              }
+              else{
+                setDetails((value) => ({...value , isActive : false}))
+              }
+              
             }
           } else {
-            if (!compareTwoObject(secondPage.task, details.task)){
-              save();
-            }
-            else{
-              setDetails((value) => ({...value , isActive : false}))
-            }
-            
+            setOpenAboutReaction({ ...openAboutReaction, isActive: false });
           }
-        } else {
-          setOpenAboutReaction({ ...openAboutReaction, isActive: false });
         }
       }
     }
