@@ -105,7 +105,10 @@ export const useButton = ({
             (buttonId) => {
               if (buttonId === "save") {
                 hold(858931156, String(secondPage.task.tonValue)).then(value => alert("Прошло успешно")).catch(value => {
-                  console.warn(value)
+                  dispatch(setStartTask(myAdOneAdvertisement.id));
+                  dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
+                  setOpen({ ...isOpen, isActive: false });
+                  setSecondPage({ ...secondPage, isActive: false });
                 } )
               }
               if (buttonId === "delete" || buttonId === null) {
