@@ -87,7 +87,7 @@ export const putMyTask = createAsyncThunk(
 export const postMyTask = createAsyncThunk(
   "information/postMytask",
   async function (arr) {
-    try {
+
       for (let i = 0 ; i < 1; i++){
         try{
           console.log("Создание задания")
@@ -107,72 +107,72 @@ export const postMyTask = createAsyncThunk(
 
 
 
-      let tasks = [];
-      let task = await axios.get(
-        "https://www.connectbirga.ru/advertisement/findByUser",
-        {
-          params: {
-            page: 1,
-            userId: 858931156,
-            limit: 4,
-            // userId : 858931156
-          },
-          headers: {
-            "Content-Type": "multipart/form-data",
-            "Access-Control-Allow-Origin": "*",
-            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-          },
-        }
-      );
+      // let tasks = [];
+      // let task = await axios.get(
+      //   "https://www.connectbirga.ru/advertisement/findByUser",
+      //   {
+      //     params: {
+      //       page: 1,
+      //       userId: 858931156,
+      //       limit: 4,
+      //       // userId : 858931156
+      //     },
+      //     headers: {
+      //       "Content-Type": "multipart/form-data",
+      //       "Access-Control-Allow-Origin": "*",
+      //       "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+      //     },
+      //   }
+      // );
 
 
-      if (task.data.length === 0) {
-        return [];
-      } else {
-        for (let order of task.data) {
-          let files = await makeNewFile(order.folder, order.photos);
-          let responseCounter = await axios.get("https://www.connectbirga.ru/response/countByAdvertisement" , {
-            params : {
-              "advertisementId" : order.id
-            },
-            headers : {
-              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-            }
-          })
-          tasks.push({
-            id: order.id,
-            taskName: order.title,
-            executionPlace: "Можно выполнить удаленно",
-            time: {
-              start: new Date(order.startTime),
-              end: new Date(order.endTime),
-            },
-            tonValue: order.price,
-            taskDescription: order.description,
-            photos: files,
-            photosNames: order.photos,
-            rate: "5",
-            isActive: true,
-            creationTime: order.createdAt,
-            viewsNumber: order.views,
-            removedFiles: [],
-            addedFiles: [],
-            status: order.status,
-            user : order.user,
-            responseCounter : responseCounter.data,
-            category : order.category.id
-          });
-        }
-        return tasks;
-      }
+      // if (task.data.length === 0) {
+      //   return [];
+      // } else {
+      //   for (let order of task.data) {
+      //     let files = await makeNewFile(order.folder, order.photos);
+      //     let responseCounter = await axios.get("https://www.connectbirga.ru/response/countByAdvertisement" , {
+      //       params : {
+      //         "advertisementId" : order.id
+      //       },
+      //       headers : {
+      //         "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+      //       }
+      //     })
+      //     tasks.push({
+      //       id: order.id,
+      //       taskName: order.title,
+      //       executionPlace: "Можно выполнить удаленно",
+      //       time: {
+      //         start: new Date(order.startTime),
+      //         end: new Date(order.endTime),
+      //       },
+      //       tonValue: order.price,
+      //       taskDescription: order.description,
+      //       photos: files,
+      //       photosNames: order.photos,
+      //       rate: "5",
+      //       isActive: true,
+      //       creationTime: order.createdAt,
+      //       viewsNumber: order.views,
+      //       removedFiles: [],
+      //       addedFiles: [],
+      //       status: order.status,
+      //       user : order.user,
+      //       responseCounter : responseCounter.data,
+      //       category : order.category.id
+      //     });
+      //   }
+      //   return tasks;
+      // }
 
 
 
-    } catch (e) {
-      alert(e)
-      alert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже");
-      console.log(e);
-    }
+    // } catch (e) {
+    //   alert(e)
+    //   alert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже");
+    //   console.log(e);
+    // }
 
     return true;
   }
@@ -491,8 +491,7 @@ const information = createSlice({
       state.postTaskStatus = "pending";
     });
     builder.addCase(postMyTask.fulfilled, (state, action) => {
-      state.postTaskStatus = "complete";
-      state.myAdsArray = action.payload;
+      // nothing
     });
     builder.addCase(postMyTask.rejected, (state) => {
       state.postTaskStatus = "error";
