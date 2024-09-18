@@ -56,10 +56,16 @@ const ShowMyResponse = ({
             chatId: String(response.advertisement.user.id),
             advertisementId: String(response.advertisement.id),
           },
+          
          headers : {
           "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
          } 
         });
+        console.log(String(response.user.id))
+        console.log(response.advertisement.user.id)
+        console.log(String(response.id))
+        console.log(String(response.advertisement.user.id))
+        console.log(String(response.advertisement.id))
 
         window.Telegram.WebApp.showAlert(
           bigText
