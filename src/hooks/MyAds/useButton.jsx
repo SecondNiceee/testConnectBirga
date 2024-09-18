@@ -104,7 +104,7 @@ export const useButton = ({
             },
             (buttonId) => {
               if (buttonId === "save") {
-                hold(858931156, String(secondPage.task.tonValue)).then(value => {
+                hold(858931156, String(secondPage.task.tonValue + 0.01)).then(value => {
                   dispatch(setStartTask(myAdOneAdvertisement.id));
                   dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
                   setOpen({ ...isOpen, isActive: false });
