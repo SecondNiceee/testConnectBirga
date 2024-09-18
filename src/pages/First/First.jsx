@@ -719,7 +719,7 @@ const First = ({ isPage = false }) => {
 
       <CSSTransition
         in={isProfile}
-        timeout={400}
+        timeout={10000}
         classNames="left-right"
         mountOnEnter
         unmountOnExit
