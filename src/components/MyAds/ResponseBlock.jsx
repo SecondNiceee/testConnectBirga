@@ -8,7 +8,7 @@ import MyButton from "../UI/MyButton/MyButton";
 import formatDate from "../../functions/makeDate";
 import Text from "../Text/Text";
 import en from "../../constants/language";
-
+import RealTon from "../../images/icons/RealTon.svg";
 
 
 const textPrice = en ? 'USD' : "RUB"
@@ -130,8 +130,8 @@ const ResponseBlock = ({
           <div className="FirstMain__bottom">
             <div className="FirstMain__bottom-left">
               <div className="FirstMain__price-up">
-                <p>{tonValue} USDT</p>
-                <SmallDimond />
+                <p>{tonValue} TON</p>
+                <img src={RealTon} alt="" />
               </div>
               <div className="FirstMain__price-bottom">
                 <p>

@@ -132,6 +132,7 @@ export const fetchUserInfo = createAsyncThunk(
         let lastName = "Титов"
         let UserId = 858931156
         let user;
+        
         try{
 
              user = await axios.get("https://www.connectbirga.ru/user/findOne", {
