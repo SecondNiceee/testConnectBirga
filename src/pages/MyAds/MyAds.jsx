@@ -109,7 +109,7 @@ const MyAds = ({isPage = false}) => {
 
   const dispatch = useDispatch()
 
-  const [happyHold , setHappyHold] = useState(true)
+  const [happyHold , setHappyHold] = useState(false)
 
   const [details, setDetails] = useState({
     isActive: false,
