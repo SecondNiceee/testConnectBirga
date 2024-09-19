@@ -492,6 +492,7 @@ const information = createSlice({
     });
     builder.addCase(postMyTask.fulfilled, (state, action) => {
       state.myOrderStatus = null
+      state.myAdsArray = []
     });
     builder.addCase(postMyTask.rejected, (state) => {
       state.postTaskStatus = "error";
