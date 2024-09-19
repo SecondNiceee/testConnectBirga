@@ -1,0 +1,44 @@
+import React, { useEffect } from 'react';
+import cl from "./HappyHold.module.scss";
+import { useLottie } from "lottie-react";
+import chemodan from "../../animation/Chemodan.json"
+const HappyHold = ({response ,task}) => {
+    useEffect( () => {
+        const menu = document.querySelector('.FirstMenu')
+        menu.style.display = "none"
+        return () => {
+            menu.style.display = "display"
+        }
+
+    } , [] )
+
+    const options = {
+        animationData: chemodan,
+        loop: true,
+        style: {
+          display: "flex",
+          justifyContent: "center",
+          marginLeft: "auto",
+          marginRight: "auto",
+          width: "150px",
+          marginBottom : "10px"
+        },
+      };
+
+    const { View } = useLottie(options);
+    return (
+        <div className={cl.container}>
+            <div className={cl.up}>
+                {View}
+                <h3>Успешно!</h3>
+                {/* <h2>Ваше задание принятно в работу исполнителем {response.user.fl}</h2> */}
+                <h2>Ваше задание принятно в работу исполнителем "ФЫВХЫХВЫФ"</h2>
+            </div>
+            <p className={cl.bottomBlock}>
+                <span>{task.tonValue} TON</span>  были заколдированы до конца выполнения задания
+            </p>
+        </div>
+    );
+};
+
+export default HappyHold;

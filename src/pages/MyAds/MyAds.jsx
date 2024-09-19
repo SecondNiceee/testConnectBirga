@@ -27,6 +27,7 @@ import pagesHistory from "../../constants/pagesHistory";
 import MainButton from "../../constants/MainButton";
 import translation from "../../functions/translate";
 import AdCreatingThree from "../AdCreatingThree/AdCreatingThree";
+import HappyHold from "../HappyHold/HappyHold";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -108,7 +109,7 @@ const MyAds = ({isPage = false}) => {
 
   const dispatch = useDispatch()
 
-
+  const [happyHold , setHappyHold] = useState(true)
 
   const [details, setDetails] = useState({
     isActive: false,
@@ -587,7 +588,9 @@ const MyAds = ({isPage = false}) => {
     lastAdsTwo : lastAdsTwo,
     setLastAdsTwo : setLastAdsTwo,
     setBuyPage : setBuyPage,
-    buyPage : buyPage
+    buyPage : buyPage,
+    happyHold : happyHold,
+    setHappyHold : setHappyHold
   })
 
 
@@ -797,10 +800,22 @@ const MyAds = ({isPage = false}) => {
           <AdCreatingThree taskInformation={{tonValue : secondPage.task.tonValue}} />
         </CSSTransition>
 
+        <CSSTransition             
+            in={happyHold}
+            timeout={400}
+            classNames="left-right"
+            mountOnEnter
+            unmountOnExit
+        >
+          <HappyHold task={secondPage.task} response={openAboutReaction.responce} />
+        </CSSTransition>
+
 
 
 
         </motion.div>
+
+
       )}
     </>
   );

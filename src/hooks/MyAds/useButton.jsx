@@ -36,7 +36,9 @@ export const useButton = ({
   setPageValueOne,
   setPageValueTwo,
   setBuyPage,
-  buyPage
+  buyPage,
+  happyHold,
+  setHappyHold
 }) => {
 
   const balance = useSelector(state => state.balance.value)
@@ -89,39 +91,47 @@ export const useButton = ({
         console.log("Buy page стал true")
       }
       else{
-        if (balance < secondPage.task.tonValue){
-          navigate("/Wallet")
+        if (!happyHold){
+            dispatch(setStartTask(myAdOneAdvertisement.id));
+            dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
+            setOpen({ ...isOpen, isActive: false });
+            setBuyPage(false)
+            setHappyHold(false)
+            setSecondPage({ ...secondPage, isActive: false });
         }
         else{
-          window.Telegram.WebApp.showPopup(
-            {
-              title: translation("Захолдировать?"),
-              message: "Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания испольнителем.",
-              buttons: [
-                { id: "save", type: "default", text: "Да" },
-                { id: "delete", type: "destructive", text: "Нет" },
-              ],
-            },
-            (buttonId) => {
-              if (buttonId === "save") {
-                hold(858931156, String(secondPage.task.tonValue + 0.01)).then(value => {
-                  dispatch(setStartTask(myAdOneAdvertisement.id));
-                  dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
-                  setOpen({ ...isOpen, isActive: false });
-                  setSecondPage({ ...secondPage, isActive: false });
-                }).catch(value => {
-                  console.log(value);
-                  
-                  alert("Холд не прошел. Отправте в поддержку следующее сообщение")
-                  alert(JSON.stringify(value))
-                  
-                } )
+
+          if (balance < secondPage.task.tonValue){
+            navigate("/Wallet")
+          }
+          else{
+            window.Telegram.WebApp.showPopup(
+              {
+                title: translation("Захолдировать?"),
+                message: "Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания испольнителем.",
+                buttons: [
+                  { id: "save", type: "default", text: "Да" },
+                  { id: "delete", type: "destructive", text: "Нет" },
+                ],
+              },
+              (buttonId) => {
+                if (buttonId === "save") {
+                    hold(858931156, String(secondPage.task.tonValue + 0.01)).then(value => {
+                    setHappyHold(true)
+
+                  }).catch(value => {
+                    console.log(value);
+                    alert("Холд не прошел. Отправте в поддержку следующее сообщение")
+                    alert(JSON.stringify(value))
+                    
+                  } )
+                }
+                if (buttonId === "delete" || buttonId === null) {
+                  console.log("Он отказался");
+                }
               }
-              if (buttonId === "delete" || buttonId === null) {
-                console.log("Он отказался");
-              }
-            }
-          );
+            );
+          }
         }
       }
       
@@ -225,11 +235,17 @@ export const useButton = ({
           MainButton.setText(choiceText);
       }
       else{
-        if (balance < secondPage.task.tonValue){
-          MainButton.setText("КОШЕЛЕК")
+        if (!happyHold){
+
+          if (balance < secondPage.task.tonValue){
+            MainButton.setText("КОШЕЛЕК")
+          }
+          else{
+            MainButton.setText("ЗАХОЛДИРОВАТЬ")
+          }
         }
         else{
-          MainButton.setText("ЗАХОЛДИРОВАТЬ")
+          MainButton.setText("Перейти к заданию")
         }
       }
     } else {
@@ -331,6 +347,8 @@ export const useButton = ({
     setPageValueOne,
     setPageValueTwo,
     buyPage,
-    setBuyPage
+    setBuyPage,
+    happyHold,
+    setHappyHold
   ]);
 };
