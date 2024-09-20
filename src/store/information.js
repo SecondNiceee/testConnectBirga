@@ -491,7 +491,7 @@ const information = createSlice({
       // state.postTaskStatus = "pending";
     });
     builder.addCase(postMyTask.fulfilled, (state, action) => {
-      state.myOrderStatus = null
+      state.myOrderStatus = "pending"
       state.myAdsArray = [] 
     });
     builder.addCase(postMyTask.rejected, (state) => {
