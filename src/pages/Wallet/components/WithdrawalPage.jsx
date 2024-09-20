@@ -91,7 +91,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
       MainButton.hide()
       MainButton.offClick(buttonFunction)
     }
-  } , [myValues, setWithDrawal] )
+  } , [myValues, setWithDrawal, address, dispatch] )
   
 
   const valuesChanger = useCallback((e) => {
@@ -114,7 +114,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
       window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
     }
     let timeout
-    if (Number(myValues.summ.replace(',', '.')) > balance || Number(myValues.summ.replace(',', '.')) < 0.05 && Number(myValues.summ.replace(',', '.')) !== 0){
+    if ((Number(myValues.summ.replace(',', '.')) > balance || Number(myValues.summ.replace(',', '.')) < 0.05) && Number(myValues.summ.replace(',', '.')) !== 0){
        timeout = setTimeout( timeoutFunction, 2000 )
        if (Number(myValues.summ.replace(',', '.')) > 0.05){
         setUnderText(false)

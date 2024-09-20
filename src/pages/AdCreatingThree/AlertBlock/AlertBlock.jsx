@@ -1,12 +1,12 @@
 import React, { useMemo } from 'react';
 import cl from "./AlertBlock.module.scss"
-const AlertBlock = ({address}) => {
+const AlertBlock = ({address, tonValue}) => {
     const text = useMemo( () => {
         if (!address){
-            return "Вам нужно создать кошелек(это бесплатно), чтобы продолжить."
+            return `Для выбора исполнителя необходимо создать Коннект Кошелёк (бесплатно) и пополнить его на стоимость заказа (${tonValue} TON)`
         }
         return "На вашем кошельке отсутствует сумма, необходимая для выбора исполнителя. Пополните кошелёк и попробуйте снова!"
-    }  , [address])
+    }  , [address, tonValue])
     return (
         <div className={cl.container}>
             <h4>Обратите внимание!</h4>

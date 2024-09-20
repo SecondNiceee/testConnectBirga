@@ -20,7 +20,7 @@ const HappyHold = ({response ,task}) => {
           justifyContent: "center",
           marginLeft: "auto",
           marginRight: "auto",
-          width: "150px",
+          width: "100px",
           marginBottom : "10px"
         },
       };

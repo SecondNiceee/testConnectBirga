@@ -42,6 +42,7 @@ export const useButton = ({
 }) => {
 
   const balance = useSelector(state => state.balance.value)
+  const address = useSelector( state => state.telegramUserInfo.address )
   const dispatch = useDispatch();
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
 
@@ -86,12 +87,33 @@ export const useButton = ({
       
     }
     function writeFucntion() {
+      if (!address){
+        window.Telegram.WebApp.showPopup(
+          {
+            title: translation("Внимание!"),
+            message: "Для выбора исполнителя необходимо создать Коннект Кошелёк, это бесплатно.",
+            buttons: [
+              { id: "save", type: "default", text: "Создать" },
+              { id: "delete", type: "destructive", text: "Отмена" },
+            ],
+          },
+          (buttonId) => {
+            if (buttonId === "save") {
+              navigate('/Profile')
+            }
+            if (buttonId === "delete" || buttonId === null) {
+              console.log("Он отказался");
+            }
+          }
+        );
+      }
+
       if (!buyPage){
         setBuyPage(true)
         console.log("Buy page стал true")
       }
       else{
-        if (!happyHold){
+        if (happyHold){
             setOpen({ ...isOpen, isActive: false });
             setBuyPage(false)
             setHappyHold(false)
