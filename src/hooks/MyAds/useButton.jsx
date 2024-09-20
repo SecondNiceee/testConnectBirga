@@ -125,8 +125,11 @@ export const useButton = ({
                 setSecondPage({ ...secondPage, isActive: false });
             }
             else{
-    
-              if (balance < secondPage.task.tonValue){
+              alert("дошел до сюда")
+              console.log(balance)
+              console.log(secondPage.task.tonValue)
+              if (Number(balance) < Number(secondPage.task.tonValue)){
+
                 setWalletH(true)
               }
               else{
@@ -164,9 +167,6 @@ export const useButton = ({
           }
   
         }
-      }
-      else{
-        setWalletH(true)
       }
 
       
