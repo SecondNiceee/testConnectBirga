@@ -271,7 +271,8 @@ export const useButton = ({
     
 
 
-
+    console.log("Happy Hold" + happyHold);
+    
     if (!walletH){
 
     
@@ -302,7 +303,7 @@ export const useButton = ({
             }
           }
           else{
-            MainButton.setText("Перейти к заданию")
+            MainButton.setText("Перейти к заданиям")
           }
         }
       } else {
