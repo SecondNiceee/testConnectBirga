@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton"
 import WithdrawalPage from "./components/WithdrawalPage";
 import { Address, TonClient } from "ton";
-const Wallet = ({...props}) => {
+const Wallet = ({ onClose = false , ...props}) => {
   useProtect()
   const address = useSelector((state) => state.telegramUserInfo.address);
   const navigate = useNavigate()
@@ -25,11 +25,15 @@ const Wallet = ({...props}) => {
         setWithDrawal(false)
       }
       else{
-
-        navigate("/Profile")
+        if (!onClose){
+          navigate("/Profile")
+        }
+        else{
+          onClose(true)
+        }
       }
     }
-  } , [depositShow, setDepositShow, withdrawal, setWithDrawal, navigate] )
+  } , [depositShow, setDepositShow, withdrawal, setWithDrawal, navigate, onClose] )
 
   useEffect( () => {
 
