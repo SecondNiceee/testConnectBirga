@@ -196,6 +196,9 @@ export const useButton = ({
 
 
     function goBack() {
+      if (!walletH){
+
+      
       if (happyHold){
         setOpen({ ...isOpen, isActive: false });
         setBuyPage(false)
@@ -262,12 +265,16 @@ export const useButton = ({
         }
       }
     }
+    }
+
 
     
 
 
 
+    if (!walletH){
 
+    
 
       BackButton.show();
 
@@ -363,6 +370,7 @@ export const useButton = ({
       }
   
       BackButton.onClick(goBack);
+    }
     
 
     return () => {
