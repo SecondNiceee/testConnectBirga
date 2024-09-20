@@ -23,8 +23,9 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
     const onIntersaction = useCallback(
       (entries) => {
         const firtEntry = entries[0];
-
+        alert(orderStatus)
         if (firtEntry.isIntersecting && orderStatus !== "all") {
+          alert("А вот сюда я попал??")
           getMore();
         }
       },
@@ -35,7 +36,6 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
     useEffect(() => {
       const observer = new IntersectionObserver(onIntersaction);
       if (observer && elementRef.current) {
-        alert("Хай как дела")
         observer.observe(elementRef.current);
       }
       return () => {
