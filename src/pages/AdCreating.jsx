@@ -5,6 +5,7 @@ import AdCreatingTwo from "./ADCreatingTwo/AdCreatingTwo/AddCreatingTwo";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  fetchMyOrders,
   postMyTask,
 } from "../store/information";
 import BackButton from "../constants/BackButton";
@@ -241,9 +242,8 @@ const translateText = translation("Вы уверены, что хотите со
     }
     window.Telegram.WebApp.HapticFeedback.notificationOccurred("success")
     await dispatch(postMyTask([myFormData, el.photos]))
-    setTimeout( () => {
-      navigate("/MyAds")
-    } , 4000 )
+    dispatch(fetchMyOrders(1))
+    navigate("/MyAds")
     
     // for (let i = 0 ; i < 1; i++){
     //   try{

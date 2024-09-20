@@ -36,6 +36,7 @@ import {
 } from "ton-crypto";
 import axios from "axios";
 import { getBalance } from "./store/balance";
+import { fetchMyOrders } from "./store/information";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -108,6 +109,7 @@ const AnimatedSwitch = () => {
       menuRef.current.classList.remove("disappearAnimation");
     }
   }, [location.pathname]);
+
 
 
 
@@ -282,6 +284,10 @@ function App() {
     dispatch(fetchAllIds());
     // dispatch(fetchAllValues());
   }, [dispatch]);
+
+  useEffect(() =>{
+    dispatch(fetchMyOrders(1));
+  },[] )
 
 
 
