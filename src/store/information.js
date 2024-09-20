@@ -212,7 +212,7 @@ export const fetchMyOrders = createAsyncThunk(
           params: {
             page: page,
             userId: 2144832745,
-            limit: 4,
+            limit: 1,
             // userId : 2144832745
           },
           headers: {
@@ -476,7 +476,7 @@ const information = createSlice({
     });
     builder.addCase(fetchMyOrders.fulfilled, (state, action) => {
       state.myAdsArray.push(...action.payload);
-      if (action.payload.length < 4) {
+      if (action.payload.length < 1) {
         state.myOrderStatus = "all";
       } else {
         state.myOrderStatus = "completed";

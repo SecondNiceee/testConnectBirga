@@ -29,7 +29,7 @@ const Wallet = ({ onClose = false , ...props}) => {
           navigate("/Profile")
         }
         else{
-          onClose(true)
+          onClose(false)
         }
       }
     }
