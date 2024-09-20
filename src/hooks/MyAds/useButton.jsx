@@ -275,7 +275,7 @@ export const useButton = ({
     if (!walletH){
 
     
-
+      
       BackButton.show();
 
       if (isOpen.isActive && secondPage.task.status !== "inProcess" && secondPage.task.status !== "completed" ) {

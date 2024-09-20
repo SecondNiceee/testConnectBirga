@@ -62,6 +62,9 @@ const Wallet = ({ onClose = false , isFixed = false, ...props}) => {
        menu.style.display = "none"
     }
     return () => {
+      if (isFixed){
+        document.documentElement.style.overflowY = "hidden"
+      }
       menu.style.display = "flex"
     }
   }, [withdrawal, depositShow] )
