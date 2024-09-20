@@ -31,7 +31,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
     const onIntersaction = useCallback(
       (entries) => {
         const firtEntry = entries[0];
-        if (firtEntry.isIntersecting && orderStatus !== "all") {
+        if (firtEntry.isIntersecting && orderStatus !== "all" && orderStatus !== "pending") {
           getMore();
         }
       },

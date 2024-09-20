@@ -488,7 +488,7 @@ const information = createSlice({
       alert();
     });
     builder.addCase(postMyTask.pending, (state) => {
-      // state.postTaskStatus = "pending";
+      state.postTaskStatus = "pending";
     });
     builder.addCase(postMyTask.fulfilled, (state, action) => {
       state.myOrderStatus = null

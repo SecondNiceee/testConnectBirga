@@ -371,6 +371,10 @@ export const useButton = ({
   
       BackButton.onClick(goBack);
     }
+    else{
+      menu.classList.add("appearAnimation")
+      menu.classList.remove("disappearAnimation")
+    }
     
 
     return () => {
