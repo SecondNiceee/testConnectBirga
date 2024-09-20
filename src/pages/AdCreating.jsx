@@ -243,7 +243,6 @@ const translateText = translation("Вы уверены, что хотите со
     }
     window.Telegram.WebApp.HapticFeedback.notificationOccurred("success")
     await dispatch(postMyTask([myFormData, el.photos]))
-
     navigate("/MyAds")
     
     // for (let i = 0 ; i < 1; i++){
