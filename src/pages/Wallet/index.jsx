@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton"
 import WithdrawalPage from "./components/WithdrawalPage";
 import { Address, TonClient } from "ton";
-const Wallet = () => {
+const Wallet = ({...props}) => {
   useProtect()
   const address = useSelector((state) => state.telegramUserInfo.address);
   const navigate = useNavigate()
@@ -61,7 +61,7 @@ const Wallet = () => {
     
 
   return (
-    <div className={cl.mainContainer}>
+    <div className={cl.mainContainer} {...props}>
 
         <MainPage balance={balance} setWithDrawal = {setWithDrawal} setDepositShow={setDepositShow} />
 

@@ -96,6 +96,10 @@ const AnimatedSwitch = () => {
           menuRef.current.classList.add("disappearAnimation");
           menuRef.current.classList.remove("appearAnimation");
         }
+        else{
+          menuRef.current.classList.add("appearAnimation");
+          menuRef.current.classList.remove("disappearAnimation");
+        }
         
     } else {
       document.documentElement.style.overflowY = "hidden";

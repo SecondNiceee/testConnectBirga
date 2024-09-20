@@ -243,7 +243,7 @@ const Profile = () => {
   useEffect(() => {
     BackButton.show();
     function goBack() {
-      navigate("/");
+      navigate(-1);
     }
     if (cardsActive || changeActive) {
       BackButton.offClick(goBack);

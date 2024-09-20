@@ -38,7 +38,9 @@ export const useButton = ({
   setBuyPage,
   buyPage,
   happyHold,
-  setHappyHold
+  setHappyHold,
+  walletH,
+  setWalletH
 }) => {
 
   const balance = useSelector(state => state.balance.value)
@@ -87,76 +89,82 @@ export const useButton = ({
       
     }
     function writeFucntion() {
-      if (!address){
-        window.Telegram.WebApp.showPopup(
-          {
-            title: translation("Внимание!"),
-            message: "Для выбора исполнителя необходимо создать Коннект Кошелёк, это бесплатно.",
-            buttons: [
-              { id: "save", type: "default", text: "Создать" },
-              { id: "delete", type: "destructive", text: "Отмена" },
-            ],
-          },
-          (buttonId) => {
-            if (buttonId === "save") {
-              navigate('/Profile')
+      if (!walletH){
+
+        if (!address){
+          window.Telegram.WebApp.showPopup(
+            {
+              title: translation("Внимание!"),
+              message: "Для выбора исполнителя необходимо создать Коннект Кошелёк, это бесплатно.",
+              buttons: [
+                { id: "save", type: "default", text: "Создать" },
+                { id: "delete", type: "destructive", text: "Отмена" },
+              ],
+            },
+            (buttonId) => {
+              if (buttonId === "save") {
+                navigate('/Profile')
+              }
+              if (buttonId === "delete" || buttonId === null) {
+                console.log("Он отказался");
+              }
             }
-            if (buttonId === "delete" || buttonId === null) {
-              console.log("Он отказался");
-            }
-          }
-        );
-      }
-      else{
-        if (!buyPage){
-          setBuyPage(true)
-          console.log("Buy page стал true")
+          );
         }
         else{
-          if (happyHold){
-              setOpen({ ...isOpen, isActive: false });
-              setBuyPage(false)
-              setHappyHold(false)
-              setSecondPage({ ...secondPage, isActive: false });
+          if (!buyPage){
+            setBuyPage(true)
+            console.log("Buy page стал true")
           }
           else{
-  
-            if (balance < secondPage.task.tonValue){
-              navigate("/Wallet")
+            if (happyHold){
+                setOpen({ ...isOpen, isActive: false });
+                setBuyPage(false)
+                setHappyHold(false)
+                setSecondPage({ ...secondPage, isActive: false });
             }
             else{
-              window.Telegram.WebApp.showPopup(
-                {
-                  title: translation("Захолдировать?"),
-                  message: "Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания испольнителем.",
-                  buttons: [
-                    { id: "save", type: "default", text: "Да" },
-                    { id: "delete", type: "destructive", text: "Нет" },
-                  ],
-                },
-                (buttonId) => {
-                  if (buttonId === "save") {
-                      hold(2144832745, String(secondPage.task.tonValue + 0.01)).then(value => {
-                      setHappyHold(true)
-                      window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-                      dispatch(setStartTask(myAdOneAdvertisement.id));
-                      dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
-  
-                    }).catch(value => {
-                      console.log(value);
-                      alert("Холд не прошел. Отправте в поддержку следующее сообщение")
-                      alert(JSON.stringify(value))
-                      
-                    } )
+    
+              if (balance < secondPage.task.tonValue){
+                setWalletH(true)
+              }
+              else{
+                window.Telegram.WebApp.showPopup(
+                  {
+                    title: translation("Захолдировать?"),
+                    message: "Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания испольнителем.",
+                    buttons: [
+                      { id: "save", type: "default", text: "Да" },
+                      { id: "delete", type: "destructive", text: "Нет" },
+                    ],
+                  },
+                  (buttonId) => {
+                    if (buttonId === "save") {
+                        hold(2144832745, String(secondPage.task.tonValue + 0.01)).then(value => {
+                        setHappyHold(true)
+                        window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+                        dispatch(setStartTask(myAdOneAdvertisement.id));
+                        dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
+    
+                      }).catch(value => {
+                        console.log(value);
+                        alert("Холд не прошел. Отправте в поддержку следующее сообщение")
+                        alert(JSON.stringify(value))
+                        
+                      } )
+                    }
+                    if (buttonId === "delete" || buttonId === null) {
+                      console.log("Он отказался");
+                    }
                   }
-                  if (buttonId === "delete" || buttonId === null) {
-                    console.log("Он отказался");
-                  }
-                }
-              );
+                );
+              }
             }
           }
+  
         }
+      }
+      else{
 
       }
 
@@ -254,48 +262,16 @@ export const useButton = ({
       }
     }
 
-    BackButton.show();
-
-    if (isOpen.isActive && secondPage.task.status !== "inProcess" && secondPage.task.status !== "completed") {
-      menu.classList.add("disappearAnimation")
-      menu.classList.remove("appearAnimation")
-      MainButton.show();
-      MainButton.setParams({
-        color: "#2ea5ff",
-        text_color: "#ffffff",
-        is_active: true,
-      });
-      MainButton.onClick(writeFucntion);
-      if (!buyPage){
-          MainButton.setText(choiceText);
-      }
-      else{
-        if (!happyHold){
-
-          if (balance < secondPage.task.tonValue){
-            MainButton.setText("КОШЕЛЕК")
-          }
-          else{
-            MainButton.setText("ЗАХОЛДИРОВАТЬ")
-          }
-        }
-        else{
-          MainButton.setText("Перейти к заданию")
-        }
-      }
-    } else {
-      MainButton.offClick(writeFucntion);
-      if (!myResponse.isOpen && !details.isActive) {
-        menu.classList.add("appearAnimation")
-        menu.classList.remove("disappearAnimation")
-        MainButton.hide();
-      }
-    }
+    
 
 
-    if (details.isActive) {
-      MainButton.setText(translation("ОБНОВИТЬ"));
-      if (!compareTwoObject(secondPage.task, details.task)) {
+    if (!walletH){
+
+
+
+      BackButton.show();
+
+      if (isOpen.isActive && secondPage.task.status !== "inProcess" && secondPage.task.status !== "completed" ) {
         menu.classList.add("disappearAnimation")
         menu.classList.remove("appearAnimation")
         MainButton.show();
@@ -304,50 +280,91 @@ export const useButton = ({
           text_color: "#ffffff",
           is_active: true,
         });
-        
-
-        if (checkMistakes(details.task, false)) {
+        MainButton.onClick(writeFucntion);
+        if (!buyPage){
+            MainButton.setText(choiceText);
+        }
+        else{
+          if (!happyHold){
+  
+            if (balance < secondPage.task.tonValue){
+              MainButton.setText("КОШЕЛЕК")
+            }
+            else{
+              MainButton.setText("ЗАХОЛДИРОВАТЬ")
+            }
+          }
+          else{
+            MainButton.setText("Перейти к заданию")
+          }
+        }
+      } else {
+        MainButton.offClick(writeFucntion);
+        if (!myResponse.isOpen && !details.isActive ) {
+          menu.classList.add("appearAnimation")
+          menu.classList.remove("disappearAnimation")
+          MainButton.hide();
+        }
+      }
+  
+  
+      if (details.isActive) {
+        MainButton.setText(translation("ОБНОВИТЬ"));
+        if (!compareTwoObject(secondPage.task, details.task)) {
+          menu.classList.add("disappearAnimation")
+          menu.classList.remove("appearAnimation")
+          MainButton.show();
           MainButton.setParams({
             color: "#2ea5ff",
             text_color: "#ffffff",
             is_active: true,
           });
-        } else {
+          
+  
+          if (checkMistakes(details.task, false)) {
+            MainButton.setParams({
+              color: "#2ea5ff",
+              text_color: "#ffffff",
+              is_active: true,
+            });
+          } else {
+            MainButton.setParams({
+              is_active: false, //неизвесетно
+              color: "#2f2f2f",
+              text_color: "#606060",
+            });
+          }
+          MainButton.offClick(putTask)
+          MainButton.onClick(putTask);
+        }
+        else{
+          menu.classList.add("disappearAnimation")
+          menu.classList.remove("appearAnimation")
+            MainButton.show()
+            MainButton.setParams({
+              is_active: false, //неизвесетно
+              color: "#2f2f2f",
+              text_color: "#606060",
+            });
+            MainButton.offClick(putTask)
+        }
+      } else {
+        if (!isOpen.isActive && !myResponse.isOpen){
+          menu.classList.add("appearAnimation")
+          menu.classList.remove("disappearAnimation")
+          MainButton.hide();
+          MainButton.offClick(putTask)
           MainButton.setParams({
             is_active: false, //неизвесетно
             color: "#2f2f2f",
             text_color: "#606060",
           });
         }
-        MainButton.offClick(putTask)
-        MainButton.onClick(putTask);
       }
-      else{
-        menu.classList.add("disappearAnimation")
-        menu.classList.remove("appearAnimation")
-          MainButton.show()
-          MainButton.setParams({
-            is_active: false, //неизвесетно
-            color: "#2f2f2f",
-            text_color: "#606060",
-          });
-          MainButton.offClick(putTask)
-      }
-    } else {
-      if (!isOpen.isActive && !myResponse.isOpen){
-        menu.classList.add("appearAnimation")
-        menu.classList.remove("disappearAnimation")
-        MainButton.hide();
-        MainButton.offClick(putTask)
-        MainButton.setParams({
-          is_active: false, //неизвесетно
-          color: "#2f2f2f",
-          text_color: "#606060",
-        });
-      }
+  
+      BackButton.onClick(goBack);
     }
 
-    BackButton.onClick(goBack);
     return () => {
       MainButton.setParams({
         color: "#2ea5ff",
@@ -383,6 +400,8 @@ export const useButton = ({
     buyPage,
     setBuyPage,
     happyHold,
-    setHappyHold
+    setHappyHold,
+    walletH,
+    setWalletH
   ]);
 };
