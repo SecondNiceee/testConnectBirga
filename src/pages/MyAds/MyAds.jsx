@@ -560,6 +560,8 @@ const MyAds = ({isPage = false}) => {
   const postStatus = useSelector( state => state.information.postTaskStatus )
 
 
+  console.log(walletH);
+  
   useButton({
     myAdOneResponse : myAdOneResponse,
     myAdOneAdvertisement : myAdOneAdvertisement,
