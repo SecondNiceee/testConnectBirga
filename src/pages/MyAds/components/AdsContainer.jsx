@@ -96,7 +96,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
                 position : "absolute",
                 bottom : "0px",
                 opacity : "0",
-                left : "100vw",
+                left : "150vw",
                 zIndex : -1
             }} className="catch_block"></div>}
 
