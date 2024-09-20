@@ -35,13 +35,14 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
     useEffect(() => {
       const observer = new IntersectionObserver(onIntersaction);
       if (observer && elementRef.current) {
+        alert("Хай как дела")
         observer.observe(elementRef.current);
       }
       return () => {
         observer.disconnect();
       };
       // eslint-disable-next-line
-    }, [myAdsArray]);
+    }, [myAdsArray, onIntersaction]);
 
     const text = useMemo( () => {
       switch (valueTwo){
