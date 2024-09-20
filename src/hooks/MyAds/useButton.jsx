@@ -144,7 +144,7 @@ export const useButton = ({
                   },
                   (buttonId) => {
                     if (buttonId === "save") {
-                        hold(2144832745, String(secondPage.task.tonValue + 0.01)).then(value => {
+                        hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
                         setHappyHold(true)
                         window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
                         dispatch(setStartTask(myAdOneAdvertisement.id));
