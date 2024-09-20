@@ -165,7 +165,7 @@ export const useButton = ({
         }
       }
       else{
-
+        setWalletH(true)
       }
 
       
