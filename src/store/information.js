@@ -467,12 +467,9 @@ const information = createSlice({
     });
 
     builder.addCase(fetchMyOrders.pending, (state) => {
-      if (state.myAdsArray.length > 0){
-        state.myOrderStatus = "completed";
-      }
-      else{
+
         state.myOrderStatus = "loading";
-      }
+      
     });
     builder.addCase(fetchMyOrders.fulfilled, (state, action) => {
       state.myAdsArray.push(...action.payload);

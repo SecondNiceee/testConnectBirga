@@ -31,7 +31,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
     const onIntersaction = useCallback(
       (entries) => {
         const firtEntry = entries[0];
-        if (firtEntry.isIntersecting && orderStatus !== "all" && orderStatus !== "pending") {
+        if (firtEntry.isIntersecting && orderStatus !== "all" && orderStatus !== "loading") {
           getMore();
         }
       },
@@ -48,7 +48,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
         observer.disconnect();
       };
       // eslint-disable-next-line
-    }, [myAdsArray]);
+    }, [myAdsArray, onIntersaction]);
 
     const text = useMemo( () => {
       switch (valueTwo){
