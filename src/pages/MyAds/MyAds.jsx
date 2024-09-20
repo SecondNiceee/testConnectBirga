@@ -645,15 +645,6 @@ const MyAds = ({isPage = false}) => {
   // } , [putStatus] )
 
 
-  const style = useMemo( () => {
-    if (walletH){
-      return {
-        transform : "translateX(-100vw)"
-      }
-    }
-    return {}
-    
-  }, [walletH] )
 
 
 
@@ -663,7 +654,6 @@ const MyAds = ({isPage = false}) => {
         <MyLoader />
       ) : (
         <motion.div
-          style={style}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.1 }}
