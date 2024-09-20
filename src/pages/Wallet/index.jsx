@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import cl from "./index.module.scss";
 import useProtect from "./hooks/useProtect";
 import MainPage from "./components/MainPage";
@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton"
 import WithdrawalPage from "./components/WithdrawalPage";
 import { Address, TonClient } from "ton";
-const Wallet = ({ onClose = false , ...props}) => {
+const Wallet = ({ onClose = false , isFixed = false, ...props}) => {
   useProtect()
   const address = useSelector((state) => state.telegramUserInfo.address);
   const navigate = useNavigate()
@@ -52,6 +52,9 @@ const Wallet = ({ onClose = false , ...props}) => {
 
   useEffect( () => {
     const menu = document.documentElement.querySelector(".FirstMenu");
+    menu.classList.add("disappearAnimation")
+    menu.classList.remove("appearAnimation")
+    document.documentElement.style.overflowY = "auto"
     if (!(withdrawal || depositShow)){
       menu.style.display = "flex"
     }
@@ -62,7 +65,8 @@ const Wallet = ({ onClose = false , ...props}) => {
       menu.style.display = "flex"
     }
   }, [withdrawal, depositShow] )
-    
+  
+
 
   return (
     <div className={cl.mainContainer} {...props}>

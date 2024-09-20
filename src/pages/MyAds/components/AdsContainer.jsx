@@ -14,9 +14,8 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
     const dispatch = useDispatch()
 
     useEffect(() =>{
-      if (orderStatus !== "all"){
+
         dispatch(fetchMyOrders(1));
-      }
       return () => {
         dispatch(clearMyOrders())
       }
@@ -32,9 +31,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
     const onIntersaction = useCallback(
       (entries) => {
         const firtEntry = entries[0];
-        alert(orderStatus)
         if (firtEntry.isIntersecting && orderStatus !== "all") {
-          alert("А вот сюда я попал??")
           getMore();
         }
       },
@@ -51,7 +48,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
         observer.disconnect();
       };
       // eslint-disable-next-line
-    }, [myAdsArray, onIntersaction]);
+    }, [myAdsArray]);
 
     const text = useMemo( () => {
       switch (valueTwo){

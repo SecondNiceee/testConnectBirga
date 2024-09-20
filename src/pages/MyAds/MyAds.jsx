@@ -831,7 +831,7 @@ const MyAds = ({isPage = false}) => {
         mountOnEnter
         unmountOnExit
         >
-          <Wallet onClose = {setWalletH} />
+          <Wallet isFixed = {true} onClose = {setWalletH} />
         </CSSTransition>
 
 

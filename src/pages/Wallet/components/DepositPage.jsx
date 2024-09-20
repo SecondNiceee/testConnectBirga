@@ -12,7 +12,7 @@ import icon from "../../../images/icons/ThisTon.svg"
 
 
 
-const DepositPage = ({address}) => {
+const DepositPage = ({address, ...props}) => {
   const [copyState, setCopyState] = useState(false);
 
   const clickHandler = useCallback(() => {
