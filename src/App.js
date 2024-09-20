@@ -285,9 +285,9 @@ function App() {
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
-  useEffect(() =>{
-    dispatch(fetchMyOrders(1));
-  },[] )
+  // useEffect(() =>{
+  //   dispatch(fetchMyOrders(1));
+  // },[] )
 
 
 
