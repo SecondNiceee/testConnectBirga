@@ -240,7 +240,7 @@ const translateText = translation("Вы уверены, что хотите со
       }
     }
     window.Telegram.WebApp.HapticFeedback.notificationOccurred("success")
-    dispatch(postMyTask([myFormData, el.photos])).then(value => navigate("/MyAds"));
+    dispatch(postMyTask([myFormData, el.photos]).then(value => navigate("/MyAds")));
     // for (let i = 0 ; i < 1; i++){
     //   try{
     //     console.log("Создание задания")
