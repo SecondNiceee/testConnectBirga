@@ -203,7 +203,7 @@ export const useButton = ({
         setOpen({ ...isOpen, isActive: false });
         setBuyPage(false)
         setHappyHold(false)
-        setSecondPage({ ...secondPage, isActive: false });
+        // setSecondPage({ ...secondPage, isActive: false });
       }
       else{
 

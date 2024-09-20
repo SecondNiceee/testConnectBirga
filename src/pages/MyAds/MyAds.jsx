@@ -822,7 +822,7 @@ const MyAds = ({isPage = false}) => {
             mountOnEnter
             unmountOnExit
         >
-          <HappyHold task={myAdOneResponse} response={openAboutReaction.responce} />
+          <HappyHold task={myAdOneAdvertisement} response={myAdOneResponse} />
         </CSSTransition>
 
         <CSSTransition in = {walletH}
