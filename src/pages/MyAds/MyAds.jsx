@@ -648,7 +648,7 @@ const MyAds = ({isPage = false}) => {
   const style = useMemo( () => {
     if (walletH){
       return {
-        transfom : "translateX(-100vw)"
+        transform : "translateX(-100vw)"
       }
     }
     return {}
@@ -832,7 +832,7 @@ const MyAds = ({isPage = false}) => {
         unmountOnExit
         >
           <Wallet style = {{
-            left : "100vw"
+            transform : "translateX(-100vw)"
           }} />
         </CSSTransition>
 
