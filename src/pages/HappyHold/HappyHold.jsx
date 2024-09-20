@@ -7,7 +7,7 @@ const HappyHold = ({response ,task}) => {
         const menu = document.querySelector('.FirstMenu')
         menu.style.display = "none"
         return () => {
-            menu.style.display = "display"
+            menu.style.display = "flex"
         }
 
     } , [] )

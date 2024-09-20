@@ -122,7 +122,7 @@ export const useButton = ({
                 setOpen({ ...isOpen, isActive: false });
                 setBuyPage(false)
                 setHappyHold(false)
-                setSecondPage({ ...secondPage, isActive: false });
+                // setSecondPage({ ...secondPage, isActive: false });
             }
             else{
               alert("дошел до сюда")
@@ -303,7 +303,7 @@ export const useButton = ({
             }
           }
           else{
-            MainButton.setText("Перейти к заданиям")
+            MainButton.setText("Перейти к заданию")
           }
         }
       } else {
