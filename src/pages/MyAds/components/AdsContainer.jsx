@@ -13,7 +13,8 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
     const elementRef = useRef(null)
     const dispatch = useDispatch()
 
-  
+    console.log(page)
+    console.log(orderStatus)
     const getMore = useCallback(async () => {
       dispatch(fetchMyOrders(page));
       setPage(page + 1);
