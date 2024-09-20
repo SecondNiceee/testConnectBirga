@@ -812,7 +812,7 @@ const MyAds = ({isPage = false}) => {
           <HappyHold task={secondPage.task} response={openAboutReaction.responce} />
         </CSSTransition>
 
-        <CSSTransition in = {true}
+        <CSSTransition in = {walletH}
         timeout={400}
         classNames={""}
         mountOnEnter
