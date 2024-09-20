@@ -8,14 +8,19 @@ import MyAnimation from './MyAnimation';
 const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, myAdsArray}) => {
 
 
-    const [page , setPage] = useState(2)
+    const [page , setPage] = useState(1)
     const orderStatus = useSelector(state => state.information.myOrderStatus)
     const elementRef = useRef(null)
     const dispatch = useDispatch()
 
-    useEffect(() =>{
-      dispatch(fetchMyOrders(1));
-    },[] )
+    // useEffect(() =>{
+    //   if (orderStatus !== "all"){
+    //     dispatch(fetchMyOrders(1));
+    //   }
+    //   return () => {
+    //     dispatch(clearMyOrders())
+    //   }
+    // },[] )
 
     console.log(page)
     console.log(orderStatus)
