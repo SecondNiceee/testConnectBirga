@@ -655,7 +655,7 @@ const MyAds = ({isPage = false}) => {
     
   }, [walletH] )
 
-
+  console.log(secondPage.task)
 
   return (
     <>
@@ -822,7 +822,7 @@ const MyAds = ({isPage = false}) => {
             mountOnEnter
             unmountOnExit
         >
-          <HappyHold task={secondPage.task} response={openAboutReaction.responce} />
+          <HappyHold task={myAdOneResponse} response={openAboutReaction.responce} />
         </CSSTransition>
 
         <CSSTransition in = {walletH}
