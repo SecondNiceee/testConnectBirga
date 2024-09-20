@@ -89,6 +89,7 @@ export const useButton = ({
       
     }
     function writeFucntion() {
+
       if (!walletH){
 
         if (!address){
@@ -265,7 +266,6 @@ export const useButton = ({
     
 
 
-    if (!walletH){
 
 
 
@@ -363,7 +363,7 @@ export const useButton = ({
       }
   
       BackButton.onClick(goBack);
-    }
+    
 
     return () => {
       MainButton.setParams({

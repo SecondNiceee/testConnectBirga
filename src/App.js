@@ -283,7 +283,12 @@ function App() {
     dispatch(fetchAllShablons());
     dispatch(fetchAllIds());
     // dispatch(fetchAllValues());
-  }, [dispatch])
+  }, [dispatch]);
+
+  useEffect(() =>{
+    dispatch(fetchMyOrders(1));
+  },[] )
+
 
 
   useEffect( () => {
