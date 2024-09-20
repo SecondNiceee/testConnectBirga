@@ -28,6 +28,7 @@ import MainButton from "../../constants/MainButton";
 import translation from "../../functions/translate";
 import AdCreatingThree from "../AdCreatingThree/AdCreatingThree";
 import HappyHold from "../HappyHold/HappyHold";
+import Wallet from "../Wallet";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -68,6 +69,7 @@ const MyAds = ({isPage = false}) => {
   const [isPageValueOne , setPageValueOne] = useState(true)
   const [isPageValueTwo , setPageValueTwo] = useState(true)
   const [buyPage, setBuyPage] = useState(false)
+  const [walletH, setWalletH] = useState(false)
   console.log('====================================');
   console.log(buyPage);
   console.log('====================================');
@@ -808,6 +810,15 @@ const MyAds = ({isPage = false}) => {
             unmountOnExit
         >
           <HappyHold task={secondPage.task} response={openAboutReaction.responce} />
+        </CSSTransition>
+
+        <CSSTransition in = {true}
+        timeout={400}
+        classNames={""}
+        mountOnEnter
+        unmountOnExit
+        >
+          <Wallet />
         </CSSTransition>
 
 

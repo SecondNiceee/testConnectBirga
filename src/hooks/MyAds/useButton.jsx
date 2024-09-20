@@ -107,56 +107,59 @@ export const useButton = ({
           }
         );
       }
-
-      if (!buyPage){
-        setBuyPage(true)
-        console.log("Buy page стал true")
-      }
       else{
-        if (happyHold){
-            setOpen({ ...isOpen, isActive: false });
-            setBuyPage(false)
-            setHappyHold(false)
-            setSecondPage({ ...secondPage, isActive: false });
+        if (!buyPage){
+          setBuyPage(true)
+          console.log("Buy page стал true")
         }
         else{
-
-          if (balance < secondPage.task.tonValue){
-            navigate("/Wallet")
+          if (happyHold){
+              setOpen({ ...isOpen, isActive: false });
+              setBuyPage(false)
+              setHappyHold(false)
+              setSecondPage({ ...secondPage, isActive: false });
           }
           else{
-            window.Telegram.WebApp.showPopup(
-              {
-                title: translation("Захолдировать?"),
-                message: "Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания испольнителем.",
-                buttons: [
-                  { id: "save", type: "default", text: "Да" },
-                  { id: "delete", type: "destructive", text: "Нет" },
-                ],
-              },
-              (buttonId) => {
-                if (buttonId === "save") {
-                    hold(2144832745, String(secondPage.task.tonValue + 0.01)).then(value => {
-                    setHappyHold(true)
-                    window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-                    dispatch(setStartTask(myAdOneAdvertisement.id));
-                    dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
-
-                  }).catch(value => {
-                    console.log(value);
-                    alert("Холд не прошел. Отправте в поддержку следующее сообщение")
-                    alert(JSON.stringify(value))
-                    
-                  } )
+  
+            if (balance < secondPage.task.tonValue){
+              navigate("/Wallet")
+            }
+            else{
+              window.Telegram.WebApp.showPopup(
+                {
+                  title: translation("Захолдировать?"),
+                  message: "Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания испольнителем.",
+                  buttons: [
+                    { id: "save", type: "default", text: "Да" },
+                    { id: "delete", type: "destructive", text: "Нет" },
+                  ],
+                },
+                (buttonId) => {
+                  if (buttonId === "save") {
+                      hold(2144832745, String(secondPage.task.tonValue + 0.01)).then(value => {
+                      setHappyHold(true)
+                      window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+                      dispatch(setStartTask(myAdOneAdvertisement.id));
+                      dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
+  
+                    }).catch(value => {
+                      console.log(value);
+                      alert("Холд не прошел. Отправте в поддержку следующее сообщение")
+                      alert(JSON.stringify(value))
+                      
+                    } )
+                  }
+                  if (buttonId === "delete" || buttonId === null) {
+                    console.log("Он отказался");
+                  }
                 }
-                if (buttonId === "delete" || buttonId === null) {
-                  console.log("Он отказался");
-                }
-              }
-            );
+              );
+            }
           }
         }
+
       }
+
       
     }
 
