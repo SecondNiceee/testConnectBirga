@@ -143,6 +143,9 @@ export const fetchUserInfo = createAsyncThunk(
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
             });
+            console.log('====================================');
+            console.log(user);
+            console.log('====================================');
         }
         catch(e){
             await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
@@ -202,7 +205,8 @@ export const fetchUserInfo = createAsyncThunk(
             stage : user.data.stage,
             deals : user.data.deals,
             completedTasks : user.data.completedAdvertisements,
-            cards : localCards
+            cards : localCards,
+            congradulations : user.data.congradulations
           } );
     }
     catch (e){
@@ -271,6 +275,7 @@ const telegramUserInfo = createSlice({
       state.mnemonic = action.payload.mnemonic
       state.address = action.payload.address
       state.profile.cards.sort((a, b) => a.id - b.id)
+      state.congradulations = action.payload.address
     });
     builder.addCase(fetchUserInfo.rejected, (state) => {
       state.status = "error";

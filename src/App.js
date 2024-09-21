@@ -6,7 +6,7 @@ import {
   useCallback,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -37,6 +37,7 @@ import {
 import axios from "axios";
 import { getBalance } from "./store/balance";
 import { fetchMyOrders } from "./store/information";
+import HappyPage from "./pages/HappyHold/HappyPage";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -111,9 +112,13 @@ const AnimatedSwitch = () => {
   }, [location.pathname]);
 
 
+  const navigate = useNavigate()
 
-
-  console.log("хай");
+  useEffect( () => {
+    if (true){
+      navigate('/HappyPage')
+    }
+  } , [] )
   
   
   return (
@@ -222,7 +227,15 @@ const AnimatedSwitch = () => {
                 </Suspense>
               }
             />
-
+            
+            <Route
+              path="/HappyPage"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <HappyPage />
+                </Suspense>
+              }
+            />
             <Route
               path="/MyAds"
               element={
@@ -284,6 +297,8 @@ function App() {
     dispatch(fetchAllIds());
     // dispatch(fetchAllValues());
   }, [dispatch]);
+
+
 
   // useEffect(() =>{
   //   dispatch(fetchMyOrders(1));
