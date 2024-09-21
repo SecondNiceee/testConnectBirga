@@ -20,14 +20,22 @@ const balance = createSlice(
     {
         name : "balance",
         initialState : {
-            value : 0
+            value : 0,
+            status : null,
         },
         reducers : {
 
         },
         extraReducers : (build => {
+            build.addCase(getBalance.pending , (state, action) => {
+                state.status = "pending"
+            })
+            build.addCase(getBalance.rejected , (state, action) => {
+                state.status = "reject"
+            })
             build.addCase(getBalance.fulfilled , (state, action) => {
                 state.value = action.payload
+                state.status = "completed"
             })
         })
     }

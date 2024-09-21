@@ -52,8 +52,8 @@ const Wallet = ({ onClose = false , isFixed = false, ...props}) => {
 
   useEffect( () => {
     const menu = document.documentElement.querySelector(".FirstMenu");
-    menu.classList.add("disappearAnimation")
-    menu.classList.remove("appearAnimation")
+    menu.classList.add("appearAnimation")
+    menu.classList.remove("disappearAnimation")
     document.documentElement.style.overflowY = "auto"
     if (!(withdrawal || depositShow)){
       menu.style.display = "flex"
@@ -67,7 +67,7 @@ const Wallet = ({ onClose = false , isFixed = false, ...props}) => {
       }
       menu.style.display = "flex"
     }
-  }, [withdrawal, depositShow] )
+  }, [withdrawal, depositShow, isFixed] )
   
 
 

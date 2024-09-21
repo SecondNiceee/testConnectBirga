@@ -2,6 +2,60 @@
     display: flex;
 
 }
+@keyframes someAnimation{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+
+}
+
+
+.alertBlock{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    gap: 10px;
+    align-items: center;
+    border-radius: 13px;
+    padding: 12px 15px;
+    backdrop-filter: blur(79.77716064453125px);
+    background-color: #242c37;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    p:first-of-type{
+        font-family: "SF Pro Text 600";
+        font-weight: 600;
+        font-size: 12px;
+        letter-spacing: -0.01em;
+        text-align: center;
+        color: #fff;
+    }
+    p:last-of-type{
+        line-height: 138%;
+        font-family: "SF Pro Text 400";
+        font-weight: 400;
+        font-size: 12px;
+        letter-spacing: -0.01em;
+        text-align: center;
+        color: #fff;
+        opacity: 0.6;
+    }
+}
+
+.latter{
+    position: fixed;
+    width: calc(100vw - 32px);
+    left: 16px;
+    bottom: 106px;
+    opacity: 0;
+    scale: 0;
+   transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 .wrapper{
     display: flex;
     flex-direction: column;
@@ -11,6 +65,12 @@
     left: 0;
     top: 0;
     width: 100vw;
+    .reloadBalanceAnimation{
+        animation: someAnimation 1s both infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reloadBalance{
+
+    }
 
     .monetka{
         display: flex;
@@ -179,39 +239,7 @@
             color: #fff;
         }
     }
-    .alertBlock{
-        margin-top: 20px;
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-        gap: 10px;
-        align-items: center;
-        border-radius: 13px;
-        padding: 12px 15px;
-        backdrop-filter: blur(79.77716064453125px);
-        background-color: #242c37;
-        display: flex;
-        flex-direction: column;
-        gap:10px;
-        p:first-of-type{
-            font-family: "SF Pro Text 600";
-            font-weight: 600;
-            font-size: 12px;
-            letter-spacing: -0.01em;
-            text-align: center;
-            color: #fff;
-        }
-        p:last-of-type{
-            line-height: 138%;
-            font-family: "SF Pro Text 400";
-            font-weight: 400;
-            font-size: 12px;
-            letter-spacing: -0.01em;
-            text-align: center;
-            color: #fff;
-            opacity: 0.6;
-        }
-    }
+
     .stagesBlock{
         display: flex;
         flex-direction: column;

@@ -69,7 +69,7 @@ const Block = ({
 
           <FirstMainMiddle  time={timing} />
 
-          <MainBottom 
+        <MainBottom 
           {...{tonConstant, tonValue, isMyAds, myAdsFunc, isButton, end, id, agree, task, isResponce, setDetailsActive,index, dispatch,deleteFunction}}
             />
         </div>

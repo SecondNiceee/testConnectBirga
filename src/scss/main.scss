@@ -292,10 +292,36 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
     transition: 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) ;
   }
   6%{
-    scale: 1.1;
+    scale: 1.10;
     opacity: 1;
   }
-  8%{
+  9%{
+    scale: 1;
+  }
+  70%{
+    scale: 1;
+    opacity: 1;
+    transition: 0.2s;
+  }
+  100%{
+    scale: 1;
+    opacity: 0;
+  }
+
+}
+
+
+@keyframes animateError{
+  0%{
+    opacity: 0;
+    scale: 0;
+    transition: 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275) ;
+  }
+  3%{
+    scale: 1.08;
+    opacity: 1;
+  }
+  6%{
     scale: 1;
   }
   70%{
@@ -316,6 +342,13 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
 }
 .errorModal-exit-active{
   animation: animateError 2s both;
+}
+
+.errorModalTwo-enter-active{
+  animation: animateError 5s both;
+}
+.errorModalTwo-exit-active{
+  animation: animateError 5s both;
 }
 
 // .slider-appear-enter{
