@@ -114,11 +114,11 @@ const AnimatedSwitch = () => {
 
   const navigate = useNavigate()
 
-  useEffect( () => {
-    if (true){
-      navigate('/HappyPage')
-    }
-  } , [] )
+  // useEffect( () => {
+  //   if (true){
+  //     navigate('/HappyPage')
+  //   }
+  // } , [] )
   
   
   return (
