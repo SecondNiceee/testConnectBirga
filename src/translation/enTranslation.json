@@ -242,6 +242,18 @@
     "Сумма" : "Summ",
     "Ваш Баланс:" : "Your Balance:",
     "Ваша секретная фраза" : "Your secret phrase",
-    "Эта фраза — очень важное сочетание слов, которое поможет вам восстановить кошелек, если вы выйдете из системы или потеряете устройство." : "This phrase is a very important combination of words that will help you recover your wallet if you log out or lose your device."
+    "Эта фраза — очень важное сочетание слов, которое поможет вам восстановить кошелек, если вы выйдете из системы или потеряете устройство." : "This phrase is a very important combination of words that will help you recover your wallet if you log out or lose your device.",
+    "Первое слово" : "First word",
+    "Второе слово" : "Second word",
+    "Третье слово" : "Third word",
+    "Четвертое слово" : "Fourth word",
+    "Пятое слово" :  "Fifth word",
+    "Шестое слово" : "Sixth word",
+    "Седьмое слово" : "Seventh word",
+    "Восьмое слово" : "Eighth word",
+    "Девятое слово" : "Ninth word",
+    "Десятое слово" : "Tenth word",
+    "Одиннадцатое слово" : "Eleventh word",
+    "Двенадцатое слово" : "Twelfth word"
  
 }                                    

@@ -127,10 +127,10 @@ export const fetchUserInfo = createAsyncThunk(
   async function () {
     try {
 
-        //1392120153
+        //2144832745
         let firstName = "Коля"
         let lastName = "Титов"
-        let UserId = 1392120153
+        let UserId = 2144832745
         let user;
         
         try{
@@ -150,7 +150,7 @@ export const fetchUserInfo = createAsyncThunk(
         catch(e){
             await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
                 params : {
-                    id : 1392120153
+                    id : 2144832745
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

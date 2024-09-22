@@ -14,7 +14,7 @@ import Compact from "../../components/UI/Compact/Compact";
 import "../MyAds/MyAds.css"
 import BackButton from "../../constants/BackButton";
 import { useNavigate } from "react-router-dom";
-// const parOne = 1392120153;
+// const parOne = 2144832745;
 // const parTwo = 1;
 
 const menu = document.documentElement.querySelector(".FirstMenu")
