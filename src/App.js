@@ -86,14 +86,11 @@ const AnimatedSwitch = () => {
   useEffect(() => {
 
     if (location.pathname === "/AdCreating" || location.pathname === "/createWallet" || location.pathname === "/Wallet" || location.pathname === "/WalletInit") {
-        if (location.pathname === "/Wallet" || location.pathname === "/WalletInit"){
+        if (location.pathname !== "/Wallet"){
           document.documentElement.style.overflowY = "auto";
           document.body.style.overflowY = "auto"
         }
-        else{
-          document.documentElement.style.overflowY = "auto";
-          document.body.style.overflowY = "auto"
-        }
+        
         if(location.pathname !== "/Wallet"){
           menuRef.current.classList.add("disappearAnimation");
           menuRef.current.classList.remove("appearAnimation");

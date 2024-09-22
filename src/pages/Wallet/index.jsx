@@ -68,14 +68,17 @@ const Wallet = ({ onClose = false , isFixed = false, ...props}) => {
     menu.classList.remove("disappearAnimation")
     if (!(withdrawal || depositShow)){
       document.documentElement.style.overflowY = "hidden"
+      document.body.style.overflowY = "hidden"
       menu.style.display = "flex"
     }
     else{
+      document.body.style.overflowY = "auto"
       document.documentElement.style.overflowY = "auto"
        menu.style.display = "none"
     }
     return () => {
       if (isFixed){
+        document.body.style.overflowY = "hidden"
         document.documentElement.style.overflowY = "hidden"
       }
       menu.style.display = "flex"
