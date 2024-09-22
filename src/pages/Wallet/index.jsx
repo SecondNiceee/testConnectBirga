@@ -9,12 +9,19 @@ import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton"
 import WithdrawalPage from "./components/WithdrawalPage";
 import { Address, TonClient } from "ton";
+import pagesHistory from "../../constants/pagesHistory";
 const Wallet = ({ onClose = false , isFixed = false, ...props}) => {
   useProtect()
   const address = useSelector((state) => state.telegramUserInfo.address);
   const navigate = useNavigate()
   const [withdrawal, setWithDrawal] = useState(false)
   const [depositShow, setDepositShow] = useState(false)
+
+  useEffect( () => {
+    return () => {
+      pagesHistory.push('/Wallet')
+    }
+  } , []  )
 
   const BackFunction = useCallback( () => {
     if (depositShow){
@@ -26,7 +33,12 @@ const Wallet = ({ onClose = false , isFixed = false, ...props}) => {
       }
       else{
         if (!onClose){
-          navigate("/Profile")
+          if (pagesHistory[pagesHistory.length - 1] === "/WalletEnter" || pagesHistory[pagesHistory.length - 1] === "/WalletInit"){
+            navigate(-2)
+          }
+          else{
+            navigate(-1)
+          }
         }
         else{
           onClose(false)
@@ -54,11 +66,12 @@ const Wallet = ({ onClose = false , isFixed = false, ...props}) => {
     const menu = document.documentElement.querySelector(".FirstMenu");
     menu.classList.add("appearAnimation")
     menu.classList.remove("disappearAnimation")
-    document.documentElement.style.overflowY = "auto"
     if (!(withdrawal || depositShow)){
+      document.documentElement.style.overflowY = "hidden"
       menu.style.display = "flex"
     }
     else{
+      document.documentElement.style.overflowY = "auto"
        menu.style.display = "none"
     }
     return () => {

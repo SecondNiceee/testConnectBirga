@@ -10,6 +10,7 @@ import BackButton from "../../constants/BackButton";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { fetchUserInfo } from "../../store/telegramUserInfo";
+import pagesHistory from "../../constants/pagesHistory";
 const WalletInit = () => {
     const [inputs, setInputs] = useState(Array.from({length : 12} , () => ""))
     const [show , setShow] = useState(false)
@@ -50,6 +51,10 @@ const WalletInit = () => {
             BackButton.offClick(backFucntion)
         }
     })
+
+    useEffect( () => {
+      pagesHistory.push('/WalletInit')
+    } , [] )
 
     useEffect( () => {
       const menu = document.documentElement.querySelector(".FirstMenu");

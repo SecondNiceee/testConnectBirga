@@ -4,7 +4,7 @@ import { CSSTransition } from "react-transition-group";
 const CopyText = ({ copyState }) => {
   return (
     <CSSTransition in={copyState} timeout={2000} classNames={"modal-copy"}>
-      <p className={cl.copyText}>Скопировано!</p>
+      <p className={cl.copyText}>Скопировано в буфер обмена!</p>
     </CSSTransition>
   );
 };

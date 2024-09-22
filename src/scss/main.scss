@@ -368,15 +368,15 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
     transform: translateY(0px);
   }
   30%{
-    transform: translateY(120px);
+    transform: translateY(125px);
   }
   70%{
     opacity: 1;
-    transform: translateY(120px);
+    transform: translateY(125px);
   }
   100%{
     opacity: 0;
-    transform: translateY(120px);
+    transform: translateY(125px);
   }
 }
 

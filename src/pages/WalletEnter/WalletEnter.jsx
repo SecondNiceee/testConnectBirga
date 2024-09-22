@@ -12,6 +12,7 @@ import useButton from "./hooks/useButton";
 import useMenu from "./hooks/useMenu";
 import useKeys from "./hooks/useKeys";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
+import pagesHistory from "../../constants/pagesHistory";
 
 
 
@@ -24,6 +25,11 @@ const WalletEnter = () => {
   const [keys, setKeys] = useState(null);
   const [step, setStep] = useState(0)
   const [numbers , setNumbers] = useState([])
+
+
+  useEffect( () => {
+    pagesHistory.push('/WalletEnter')
+  } , [] )
 
   useEffect( () => {
     const localNumbers = []
