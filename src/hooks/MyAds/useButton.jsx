@@ -96,10 +96,10 @@ export const useButton = ({
           window.Telegram.WebApp.showPopup(
             {
               title: translation("Внимание!"),
-              message: "Для выбора исполнителя необходимо создать Коннект Кошелёк, это бесплатно.",
+              message: translation("Для выбора исполнителя необходимо создать Коннект Кошелёк, это бесплатно."),
               buttons: [
-                { id: "save", type: "default", text: "Создать" },
-                { id: "delete", type: "destructive", text: "Отмена" },
+                { id: "save", type: "default", text: translation("Создать") },
+                { id: "delete", type: "destructive", text: translation("Отмена") },
               ],
             },
             (buttonId) => {
