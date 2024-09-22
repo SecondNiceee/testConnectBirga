@@ -7,6 +7,7 @@ import { CSSTransition } from "react-transition-group";
 import MyLoader from "../../../../components/UI/MyLoader/MyLoader";
 import copyTextToClipboard from "../../../../functions/copyTextToClipboard";
 import CopyText from "../../../../components/UI/CopyText/CopyText";
+import Text from "../../../../components/Text/Text";
 
 
 const One = ({ keys, className }) => {
@@ -38,7 +39,7 @@ const One = ({ keys, className }) => {
 
           <CreateButton onClick={clickHandler} className={cl.createButton}>
             <div className={cl.buttonContainer}>
-              <p>Скопировать</p>
+              <Text>Скопировать</Text>
               <svg
                 width="17"
                 height="19"

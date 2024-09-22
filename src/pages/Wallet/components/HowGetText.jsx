@@ -1,15 +1,16 @@
 import React, { memo } from 'react';
 import cl from "../index.module.scss"
+import Text from '../../../components/Text/Text';
 const HowGetText = () => {
     return (
         <>
 
             <div className={cl.howGetText}>
-            <p>Как получить TON</p>
-            <p>
+            <Text>Как получить TON</Text>
+            <Text>
                 Отправьте монеты на указанный выше адрес, чтобы они стали доступны в
-                кошельке
-            </p>
+                кошельке.
+            </Text>
             </div>
 
             <svg

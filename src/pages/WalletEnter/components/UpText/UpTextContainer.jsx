@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import cl from "./UpTextContainer.module.scss"
+import Text from '../../../../components/Text/Text';
 const UpTextContainer = ({className}) => {
     return (
     <div className={ className ? [cl.upText, className].join(' ') : className}>
@@ -18,10 +19,10 @@ const UpTextContainer = ({className}) => {
             />
           </svg>
         </div>
-        <p>
+        <Text>
             Введите слова, которые были показаны
             на предыдущем шаге, для продолжения.
-        </p>
+        </Text>
     </div>
     );
 };

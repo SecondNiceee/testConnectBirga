@@ -3,6 +3,7 @@ import cl from "../index.module.scss"
 import en from "../../../constants/language";
 import { useSelector } from "react-redux";
 import formateMoney from "../../../functions/formateMoney";
+import Text from "../../../components/Text/Text";
 
 
 
@@ -18,7 +19,7 @@ const RoundedBlocks = ({summ}) => {
     <div className={cl.roundedsBlock}>
       <div className={cl.roundBlock}>
         <div className={cl.left}>
-          <p>Комиссия за блокчейн</p>
+          <Text>Комиссия за блокчейн</Text>
           <svg
             width="16"
             height="16"
@@ -36,7 +37,7 @@ const RoundedBlocks = ({summ}) => {
       </div>
 
       <div className={cl.roundBlock}> 
-        <p>Итого</p>
+        <Text>Итого</Text>
 
         <p className={cl.right}>
           { String(itog).replace('.', ',')} TON ≈ {formateMoney(String(itog * price).replace('.' , ','), 2, ',')}

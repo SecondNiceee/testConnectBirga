@@ -1,5 +1,6 @@
 import React from "react";
 import cl from "../index.module.scss";
+import Text from "../../../components/Text/Text";
 const Buttons = ({setDepositShow, setWithDrawal}) => {
   const clickHandler = () => {
     setDepositShow(true)
@@ -24,7 +25,7 @@ const Buttons = ({setDepositShow, setWithDrawal}) => {
             fill="white"
           />
         </svg>
-        <p>Пополнить</p>
+        <Text>Пополнить</Text>
       </div>
       <div className={cl.buttonOne} onClick={clickHandlerTwo}>
         <svg
@@ -39,7 +40,7 @@ const Buttons = ({setDepositShow, setWithDrawal}) => {
             fill="white"
           />
         </svg>
-        <p>Вывести</p>
+        <Text>Вывести</Text>
       </div>
     </div>
   );

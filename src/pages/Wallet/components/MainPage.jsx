@@ -9,6 +9,7 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import { CSSTransition } from "react-transition-group";
 import ErrorBlock from "../../WalletEnter/components/ErrorBlock/ErrorBlock";
 import BalanceAlert from "./BalanceAlert";
+import Text from "../../../components/Text/Text";
 const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
   const balanceStatus = useSelector(state => state.balance.status)
   const dispatch = useDispatch()
@@ -47,7 +48,7 @@ const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
   return (
     <div className={cl.wrapper}>
       <div onClick={balanceClickHandler} className={cl.top}>
-        <p>Кошелек</p>
+        <Text>Кошелек</Text>
         <svg ref={reloadRef}  className={cl.reloadBalance} width="22" height="21" viewBox="0 0 22 21" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M18.5371 9.45068H17.6142C17.2253 6.10864 14.3249 3.42578 10.8313 3.42578C8.89988 3.42578 7.14646 4.26953 5.93357 5.58789C5.61057 5.9043 5.62376 6.32617 5.88743 6.57007C6.15769 6.82056 6.54661 6.82056 6.8762 6.51733C7.85837 5.45605 9.26902 4.79028 10.8313 4.79028C13.613 4.79028 15.8608 6.82715 16.2365 9.45068H15.228C14.7204 9.45068 14.582 9.82642 14.8786 10.2351L16.4541 12.4631C16.698 12.7927 17.0671 12.7993 17.3044 12.4631L18.8865 10.2417C19.1831 9.82642 19.0512 9.45068 18.5371 9.45068ZM3.12546 11.0393H4.05491C4.44382 14.3813 7.34421 17.0642 10.8313 17.0642C12.7759 17.0642 14.5293 16.2139 15.7422 14.8955C16.0586 14.5791 16.0454 14.1572 15.7817 13.9133C15.5115 13.6628 15.1291 13.6628 14.7929 13.9727C13.824 15.0339 12.4133 15.6997 10.8313 15.6997C8.05613 15.6997 5.80833 13.6628 5.43259 11.0393H6.43455C6.93552 11.0393 7.08054 10.6636 6.78391 10.2549L5.20188 8.02686C4.96458 7.69727 4.59544 7.69067 4.35813 8.02686L2.7761 10.2483C2.47288 10.6636 2.6113 11.0393 3.12546 11.0393Z" fill="#2EA5FF" />
 </svg>

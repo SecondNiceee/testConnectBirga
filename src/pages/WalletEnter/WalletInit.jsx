@@ -11,6 +11,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { fetchUserInfo } from "../../store/telegramUserInfo";
 import pagesHistory from "../../constants/pagesHistory";
+import Text from "../../components/Text/Text";
 const WalletInit = () => {
     const [inputs, setInputs] = useState(Array.from({length : 12} , () => ""))
     const [show , setShow] = useState(false)
@@ -116,13 +117,13 @@ const WalletInit = () => {
     <div className={[cl.container, cl.padding].join(' ')}>
       <h2 className={cl.title}>Войти в кошелек</h2>
 
-      <p className={cl.topText}>
+      <Text className={cl.topText}>
         Вставьте сид фразу вашего кошелька, чтобы использовать его в приложении
-      </p>
+      </Text>
 
       <CreateButton onClick={buttonClick} className={cl.WalletInitCreateButton}>
         <div className={cl.buttonContainer}>
-          <p>Вставить фразу</p>
+          <Text>Вставить фразу</Text>
           <svg
             width="16"
             height="20"

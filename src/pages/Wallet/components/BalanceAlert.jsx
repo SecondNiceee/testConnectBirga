@@ -1,11 +1,12 @@
 import React from 'react';
 import cl from "../index.module.scss"
+import translation from '../../../functions/translate';
 const BalanceAlert = () => {
     return (
     <div className={ [cl.alertBlock, cl.latter].join(' ')}>
-        <p>Баланс обновляется!</p>
+        <p>{translation("Баланс обновляется!")}</p>
         <p>
-            После успешной транзакции, баланс может быть изменен вплоть до 10 минут
+            { translation("После успешной транзакции, баланс может быть изменен вплоть до 10 минут.") }
         </p>
       </div>
     );
