@@ -9,6 +9,7 @@ import MainButton from "../../../constants/MainButton";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getBalance } from "../../../store/balance";
+import translation from "../../../functions/translate";
 const WithdrawalPage = ({balance, setWithDrawal}) => { 
 
   const [undetText , setUnderText ] = useState(false)
@@ -28,11 +29,11 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
     async function buttonFunction(){
       MainButton.showProgress()
       try{
-        console.log("2144832745", myValues.address, String(myValues.summ.replace(',', '.')) );
+        console.log("1392120153", myValues.address, String(myValues.summ.replace(',', '.')) );
         
         await axios.get('https://www.connectbirga.ru/user/sendToAddress', {
           params : {
-            fromId : 2144832745,
+            fromId : 1392120153,
             toAddress : myValues.address,
             amount: String(Number(myValues.summ.replace(',', '.')) - 0.004)
           },
@@ -150,8 +151,8 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
       <Compact
         isGreyRed = {true}
         inputMistake = {mistakes.address}
-        greyText={"Адрес"}
-        inputPlaceholder={"Введите адрес кошелька"}
+        greyText={translation("Адрес")}
+        inputPlaceholder={translation("Введите адрес кошелька")}
         inputType={"text"}
         inputValue={myValues.address}
         onChange={valuesChanger}

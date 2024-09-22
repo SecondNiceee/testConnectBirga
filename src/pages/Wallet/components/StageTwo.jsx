@@ -15,8 +15,8 @@ const StageTwo = () => {
         </div>
         <div className={cl.stageWithButton}>
             <p>
-            { translation("Перейдите в")} <span onClick={clickHandler} className={cl.blue}>Wallet.</span> {translation("Войдите в кошелёк TON Space, выберите Send ->")}
-             <span className={cl.green}>Tether USD</span> -{">"} External Wallet
+            { translation("Перейдите в ")} <span onClick={clickHandler} className={cl.blue}>Wallet.</span> {translation("Войдите в кошелёк TON Space, выберите Send ->")}
+             <span className={cl.green}> Tether USD </span> -{">"} External Wallet
             </p>
             <button onClick={clickHandler}>
                 <Text>Купить на Wallet</Text>

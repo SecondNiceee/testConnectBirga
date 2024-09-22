@@ -7,6 +7,7 @@ import MyLoader from "../../../../components/UI/MyLoader/MyLoader";
 import copyTextToClipboard from "../../../../functions/copyTextToClipboard";
 import CopyText from "../../../../components/UI/CopyText/CopyText";
 import Text from "../../../../components/Text/Text";
+import translation from "../../../../functions/translate";
 
 
 const One = ({ keys, className }) => {
@@ -26,13 +27,13 @@ const One = ({ keys, className }) => {
     >
       {keys ? (
         <>
-          <h2 className={cl.title}>Ваша секретная фраза</h2>
+          <h2 className={cl.title}>{translation("Ваша секретная фраза")}</h2>
 
-          <p className={cl.topText}>
+          <Text className={cl.topText}>
             Эта фраза — очень важное сочетание слов, которое поможет вам
             восстановить кошелек, если вы выйдете из системы или потеряете
             устройство.
-          </p>
+          </Text>
 
           <ListContainer keys={keys} />
 

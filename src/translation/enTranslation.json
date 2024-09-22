@@ -231,13 +231,17 @@
     "Войдите в кошелёк TON Space, выберите Send ->" : "Log in to your TON Space wallet, select Send ->",
     "Купить на Wallet" : "Buy in Wallet",
     "Вывести TON" : "Withdraw TON",
-    "Вставить фразу" : "Insert phrase",
-    "Вставьте сид фразу вашего кошелька, чтобы использовать его в приложении" : "Insert your wallet's sid phrase to use it in the app",
+    "Вставить фразу" : "Paste phrase",
+    "Вставьте сид фразу вашего кошелька, чтобы использовать его в приложении" : "Paste your wallet's sid phrase to use it in the app",
     "Скопировать" : "Copy",
     "Если вы потеряете свою сид-фразу, вы не сможете восстановить кошелёк! Скопируйте сид-фразу и сохраните ее в безопасном месте" : "If you lose your sid-phrase, you will not be able to recover your wallet! Copy the sid-phrase and save it in a safe place",
     "Введите слова, которые были показаны на предыдущем шаге, для продолжения." : "Enter the words that were shown in the previous step to continue.",
-    "Сделать депозит TON" : "Make a TON deposit"
-
-
+    "Сделать депозит TON" : "Make a TON deposit",
+    "Адрес" : "address",
+    "Введите адрес кошелька" : "Enter the wallet address",
+    "Сумма" : "Summ",
+    "Ваш Баланс:" : "Your Balance:",
+    "Ваша секретная фраза" : "Your secret phrase",
+    "Эта фраза — очень важное сочетание слов, которое поможет вам восстановить кошелек, если вы выйдете из системы или потеряете устройство." : "This phrase is a very important combination of words that will help you recover your wallet if you log out or lose your device."
  
 }                                    
