@@ -16,9 +16,12 @@ const DepositPage = ({address, ...props}) => {
   const [copyState, setCopyState] = useState(false);
 
   const clickHandler = useCallback(() => {
+
     if (address) {
+      window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
       copyTextToClipboard(address);
       setCopyState((value) => !value);
+
     }
   }, [address]);
 

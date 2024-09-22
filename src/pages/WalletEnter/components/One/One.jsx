@@ -14,6 +14,7 @@ const One = ({ keys, className }) => {
 
   const clickHandler = useCallback(() => {
     if (keys) {
+      window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
       copyTextToClipboard(keys.join(" "));
       setCopyState((value) => !value);
     }
