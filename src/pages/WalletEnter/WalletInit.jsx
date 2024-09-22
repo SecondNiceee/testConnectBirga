@@ -12,6 +12,7 @@ import { useDispatch } from "react-redux";
 import { fetchUserInfo } from "../../store/telegramUserInfo";
 import pagesHistory from "../../constants/pagesHistory";
 import Text from "../../components/Text/Text";
+import translation from "../../functions/translate";
 const WalletInit = () => {
     const [inputs, setInputs] = useState(Array.from({length : 12} , () => ""))
     const [show , setShow] = useState(false)
@@ -46,7 +47,7 @@ const WalletInit = () => {
             navigate(-1)
         }
         BackButton.show()
-        MainButton.setText("Войти в кошелек")
+        MainButton.setText(translation("Войти в кошелек"))
         BackButton.onClick(backFucntion)
         return () => {
             BackButton.offClick(backFucntion)
@@ -113,15 +114,14 @@ const WalletInit = () => {
 
   return (
     <>
-    <button onClick={checkWallet}>Хэй как дела</button>
     <div className={[cl.container, cl.padding].join(' ')}>
-      <h2 className={cl.title}>Войти в кошелек</h2>
+      <h2 className={cl.title}>{translation("Войти в кошелек")}</h2>
 
       <Text className={cl.topText}>
         Вставьте сид фразу вашего кошелька, чтобы использовать его в приложении
       </Text>
 
-      <CreateButton onClick={buttonClick} className={cl.WalletInitCreateButton}>
+      {/* <CreateButton onClick={buttonClick} className={cl.WalletInitCreateButton}>
         <div className={cl.buttonContainer}>
           <Text>Вставить фразу</Text>
           <svg
@@ -137,10 +137,10 @@ const WalletInit = () => {
             />
           </svg>
         </div>
-      </CreateButton>
+      </CreateButton> */}
 
       <ListInput setSomeInput = {setSomeInput} inputs={inputs} inputClassName={cl.listInputItem} className={cl.listInput} />
-      <p onClick={clearAll} className={cl.resetAll}>Очистить всё</p>
+      <Text onClick={clearAll} className={cl.resetAll}>Очистить всё</Text>
     </div>
     <CSSTransition classNames = "errorModal" in = {show} timeout={3000}  >
         <ErrorBlock />
