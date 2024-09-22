@@ -6,7 +6,6 @@ import { Address } from "ton-core";
 export const getBalance = createAsyncThunk(
     "getBalance",
     async function ({userAddress}) {
-        alert(userAddress)
         const client = new TonClient({
             endpoint: "https://toncenter.com/api/v2/jsonRPC",
             apiKey : process.env.REACT_APP_API_KEY_TWO

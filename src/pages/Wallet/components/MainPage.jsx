@@ -173,7 +173,7 @@ const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
         </div>
       </div>
 
-      <CSSTransition classNames = "errorModalTwo" in = {clickLol} timeout={4000}  >
+      <CSSTransition classNames = "errorModalTwo" in = {clickLol} timeout={10000}  >
         <BalanceAlert />
       </CSSTransition>
     </div>

@@ -84,7 +84,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
     }
     MainButton.hideProgress()
     MainButton.show()
-    MainButton.setText("ВЫВЕСТИ")
+    MainButton.setText("Отправить")
 
     MainButton.onClick(buttonFunction)
     return () => {

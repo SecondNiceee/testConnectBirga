@@ -311,7 +311,7 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
 }
 
 
-@keyframes animateError{
+@keyframes animateErrorTwo{
   0%{
     opacity: 0;
     scale: 0;
@@ -345,10 +345,10 @@ body { width: 100%; height: auto; overflow: hidden;   background: rgb(24, 34, 45
 }
 
 .errorModalTwo-enter-active{
-  animation: animateError 5s both;
+  animation: animateErrorTwo 10s both;
 }
 .errorModalTwo-exit-active{
-  animation: animateError 5s both;
+  animation: animateErrorTwo 10s both;
 }
 
 // .slider-appear-enter{
