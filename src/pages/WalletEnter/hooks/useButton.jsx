@@ -5,6 +5,7 @@ import MainButton from '../../../constants/MainButton';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { fetchUserInfo } from '../../../store/telegramUserInfo';
+import translation from '../../../functions/translate';
 
 const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}) => {
     
@@ -116,10 +117,10 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
     
         
         if (step === 0){
-          MainButton.setText("ПРОДОЛЖИТЬ")
+          MainButton.setText(translation("ПРОДОЛЖИТЬ"))
         }
         else{
-          MainButton.setText("СОЗДАТЬ КОШЕЛЕК")
+          MainButton.setText(translation("СОЗДАТЬ КОШЕЛЕК"))
         }
         
         MainButton.show()
