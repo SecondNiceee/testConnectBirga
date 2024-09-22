@@ -256,6 +256,8 @@
     "Одиннадцатое слово" : "Eleventh word",
     "Двенадцатое слово" : "Twelfth word",
     "ПРОДОЛЖИТЬ" : "CONTINUE",
-    "СОЗДАТЬ КОШЕЛЕК" : "CREATE A WALLET"
+    "СОЗДАТЬ КОШЕЛЕК" : "CREATE A WALLET",
+    "Скопировано в буфер обмена!" : "Copied to clipboard!",
+    "Проверка" : "Checking"
  
 }                                    

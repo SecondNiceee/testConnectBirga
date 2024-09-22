@@ -1,11 +1,12 @@
 import React, { memo } from 'react';
 import cl from "./UpTextContainer.module.scss"
 import Text from '../../../../components/Text/Text';
+import translation from '../../../../functions/translate';
 const UpTextContainer = ({className}) => {
     return (
     <div className={ className ? [cl.upText, className].join(' ') : className}>
         <div className={cl.upTitleBlock}>
-          <h3 className={cl.upTitle}>Проверка</h3>
+          <h3 className={cl.upTitle}>{translation("Проверка")}</h3>
           <svg
             width="18"
             height="21"
