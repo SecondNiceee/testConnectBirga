@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import cl from "../index.module.scss";
 import Buttons from "./Buttons";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,6 @@ import formateMoney from "../../../functions/formateMoney";
 import { getBalance } from "../../../store/balance";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { CSSTransition } from "react-transition-group";
-import ErrorBlock from "../../WalletEnter/components/ErrorBlock/ErrorBlock";
 import BalanceAlert from "./BalanceAlert";
 import Text from "../../../components/Text/Text";
 const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
@@ -44,7 +43,7 @@ const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
     setReloadBalande(true)
     dispatch(getBalance({userAddress : address}))
 
-  } , [setReloadBalande, setClickLol] )
+  } , [setReloadBalande, setClickLol, address, dispatch] )
   return (
     <div className={cl.wrapper}>
       <div onClick={balanceClickHandler} className={cl.top}>

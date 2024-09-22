@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import cl from "./WalletEnter.module.scss";
 
-import { mnemonicNew } from "ton-crypto";
 
 
 import One from "./components/One/One";

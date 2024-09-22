@@ -1,6 +1,4 @@
 import React, {
-  lazy,
-  Suspense,
   useCallback,
   useEffect,
   useMemo,
@@ -17,7 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Responce from "./Responce";
 import { CSSTransition } from "react-transition-group";
 import pagesHistory from "../../constants/pagesHistory";
-import { clearResponses, fetchResponses } from "../../store/responses";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
 import FirstChoiceCategory from "../AdCreatingOne/ChoiceCategory/FirstChoiceCategory";
 import FirstChoiceSubCategory from "../AdCreatingOne/FirstChoiceSubCategory";
@@ -25,8 +22,7 @@ import AboutReaction from "../MyAds/components/AboutReaction";
 import CardPage from "../CardPage/CardPage";
 import axios from "axios";
 import makeNewFile from "../../functions/newMakeFile";
-import { addResponce, clearTasks } from "../../store/information";
-import MyLoader from "../../components/UI/MyLoader/MyLoader";
+import {  clearTasks } from "../../store/information";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import translation from "../../functions/translate";
 import en from "../../constants/language";
@@ -338,7 +334,7 @@ const First = ({ isPage = false }) => {
 
   useEffect(() => {
     dispatch(clearTasks());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     let inputs = document.querySelectorAll("input");
@@ -488,12 +484,12 @@ const First = ({ isPage = false }) => {
       );
     }
   }, [
+    
     responce,
     step,
     ordersInformation,
     isDetailsActive.id,
     setDetailsActive,
-    dispatch,
     setStep,
     me,
     secFilteredArray,

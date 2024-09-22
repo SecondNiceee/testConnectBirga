@@ -19,7 +19,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
       return () => {
         dispatch(clearMyOrders())
       }
-    },[] )
+    },[dispatch] )
 
     console.log(page)
     console.log(orderStatus)

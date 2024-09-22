@@ -10,7 +10,6 @@ import { motion } from "framer-motion";
 
 import { CSSTransition } from "react-transition-group";
 
-import Burger from "../../components/UI/Burger/Burger";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
 import userPhoto from "../../images/userPhoto/user.png";
@@ -365,7 +364,7 @@ const Profile = () => {
     return {
       transform: "translate3d(0, 0, 0)",
     };
-  }, [cardsActive, changeActive, changer]);
+  }, [cardsActive, changeActive]);
 
   return (
     <>

@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from "react";
+import React, { memo, useEffect } from "react";
 
 import Reaction from "./Reaction";
 import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";

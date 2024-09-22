@@ -9,7 +9,7 @@ const Upper = () => {
         <div className={cl.container}>
             <h3>{translation("Холдирование")}</h3>
             <p>{translation(" Перед выбором исполнителя необходимо захолдировать токены ")}</p>
-            <p>{translation("Подробнее")} <span>{translation("см.здесь")}</span></p>
+            <p>{translation("Подробнее")} <span onClick={watchFunction}>{translation("см.здесь")}</span></p>
         </div>
     );
 };

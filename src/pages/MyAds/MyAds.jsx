@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./MyAds.css";
 
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 import LastAds from "./components/LastAds";
 import MyAdOne from "./components/MyAdOne";
 import AboutReaction from "./components/AboutReaction";
@@ -24,7 +24,6 @@ import makeNewFile from "../../functions/newMakeFile";
 import axios from "axios";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import pagesHistory from "../../constants/pagesHistory";
-import MainButton from "../../constants/MainButton";
 import translation from "../../functions/translate";
 import AdCreatingThree from "../AdCreatingThree/AdCreatingThree";
 import HappyHold from "../HappyHold/HappyHold";
@@ -586,7 +585,6 @@ const MyAds = ({isPage = false}) => {
     details : details,
     secondPage : secondPage,
     localSecondPage : localSecondPage,
-    setDetails : setDetails,
     save : save,
     setOneCard : setOneCard,
     lastAdsTwo : lastAdsTwo,

@@ -5,8 +5,6 @@ import AdCreatingTwo from "./ADCreatingTwo/AdCreatingTwo/AddCreatingTwo";
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  clearMyOrders,
-  fetchMyOrders,
   postMyTask,
 } from "../store/information";
 import BackButton from "../constants/BackButton";
@@ -30,7 +28,6 @@ const AdCreating = () => {
 const endText = translation("СОЗДАТЬ ЗАДАНИЕ")
 const continueText = translation("ДАЛЕЕ")
 
-const translateText = translation("Вы уверены, что хотите создать новое задание?")
 
 
   useEffect( () => {
@@ -312,7 +309,7 @@ const translateText = translation("Вы уверены, что хотите со
           }
         }
       }
-  } , [spet]  )
+  } , []  )
   const mainRef = useRef(null)
   function checking() {
     let taskName = false;
@@ -502,7 +499,7 @@ const translateText = translation("Вы уверены, что хотите со
   
       }
     }
-  } , [isCategoryChoiceOpen , isSubcategoryChoiceOpen,setCatagoryChoiceOpen,setSubcategoryChoiceOpen, navigate ])
+  } , [isCategoryChoiceOpen , isSubcategoryChoiceOpen,setCatagoryChoiceOpen,setSubcategoryChoiceOpen, navigate, continueText ])
 
   const GreyIntWidth = useMemo(() => {
     return (document.documentElement.clientWidth - 36) / 2;
@@ -535,7 +532,7 @@ const translateText = translation("Вы уверены, что хотите со
         MainButton.hide();
       
     };
-  }, []);
+  }, [continueText]);
 
 
 

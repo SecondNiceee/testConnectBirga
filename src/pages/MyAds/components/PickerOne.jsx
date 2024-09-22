@@ -1,5 +1,5 @@
 import React, { forwardRef,  useEffect,  useMemo, useRef } from 'react';
-import MyAnimation from './MyAnimation';
+
 import MyResponses from './MyResponses';
 import MyLoader from '../../../components/UI/MyLoader/MyLoader';
 import {  useDispatch, useSelector } from 'react-redux';
@@ -50,7 +50,7 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowVal
         return () => {
             dispatch(clearResponses())
         }
-    } , [me] )
+    } , [me, dispatch] )
 
 
     return (

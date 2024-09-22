@@ -3,7 +3,6 @@ import ListContainer from "../ListContainer/ListContainer";
 import CreateButton from "../../../Profile/components/CreateButton/CreateButton";
 import TextAlertBlock from "../TextAlertBlock/TextAlertBlock";
 import cl from "./One.module.scss";
-import { CSSTransition } from "react-transition-group";
 import MyLoader from "../../../../components/UI/MyLoader/MyLoader";
 import copyTextToClipboard from "../../../../functions/copyTextToClipboard";
 import CopyText from "../../../../components/UI/CopyText/CopyText";

@@ -216,7 +216,7 @@
     "Обратите внимание!" : "Note to self!",
     "Убедитесь, что вы переводите свои токены на правильный адрес и в правильную сеть (TON)." : "Make sure you transfer your tokens to the correct address and to the correct network (TON).",
     "Баланс обновляется!" : "The balance is updating!",
-    "После успешной транзакции, баланс может быть изменен вплоть до 10 минут" : "After a successful transaction, the balance can be changed for up to 10 minutes.",
+    "После успешной транзакции, баланс может быть изменен вплоть до 10 минут." : "After a successful transaction, the balance can be changed for up to 10 minutes.",
     "Пополнить" : "To pay in",
     "Вывести" : "Withdraw",
     "Как получить TON" : "How to get a TON",
@@ -235,7 +235,8 @@
     "Вставьте сид фразу вашего кошелька, чтобы использовать его в приложении" : "Insert your wallet's sid phrase to use it in the app",
     "Скопировать" : "Copy",
     "Если вы потеряете свою сид-фразу, вы не сможете восстановить кошелёк! Скопируйте сид-фразу и сохраните ее в безопасном месте" : "If you lose your sid-phrase, you will not be able to recover your wallet! Copy the sid-phrase and save it in a safe place",
-    "Введите слова, которые были показаны на предыдущем шаге, для продолжения." : "Enter the words that were shown in the previous step to continue."
+    "Введите слова, которые были показаны на предыдущем шаге, для продолжения." : "Enter the words that were shown in the previous step to continue.",
+    "Сделать депозит TON" : "Make a TON deposit"
 
 
  

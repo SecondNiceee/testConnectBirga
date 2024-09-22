@@ -1,15 +1,10 @@
 import React, { memo, useCallback, useEffect,  useRef, useState,  } from "react";
 
-import { deleteAd } from "../../../store/information";
-import { useDispatch, useSelector,  } from "react-redux";
-import BackButton from "../../../constants/BackButton";
+import { useSelector,  } from "react-redux";
 import PickerTwo from "./PickerTwo";
 import PickerOne from "./PickerOne";
-import translation from "../../../functions/translate";
 
 
-const Yes = translation("Да")
-const No = translation("Нет")
 const PickerContent = ({
   nowValue,
   setSecondPage,
@@ -19,7 +14,6 @@ const PickerContent = ({
   responsesArr,
   myAdsArray
 }) => {
-  const dispatch = useDispatch();
 
 
   

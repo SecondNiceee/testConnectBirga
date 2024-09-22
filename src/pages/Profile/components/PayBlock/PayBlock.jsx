@@ -16,7 +16,7 @@ const PayBlock = ({ className }) => {
       navigate("/createWallet");
     }
     
-  }, []);
+  }, [navigate, address]);
   return (
     <div
       className={className ? [cl.container, className].join(" ") : className}

@@ -9,6 +9,7 @@ import copyTextToClipboard from "../../../functions/copyTextToClipboard";
 import CopyText from "../../../components/UI/CopyText/CopyText";
 import { QRCodeCanvas} from 'qrcode.react';
 import icon from "../../../images/icons/ThisTon.svg"
+import Text from "../../../components/Text/Text";
 
 
 
@@ -30,7 +31,7 @@ const DepositPage = ({address, ...props}) => {
     <div className={cl.depositContainer}>
       {address ? (
         <>
-          <p className={cl.capText}>Сделать депозит USDT (TON)</p>
+          <Text className={cl.capText}>Сделать депозит TON</Text>
 
           <QRCodeCanvas level="L"  imageSettings={{
             src : icon,

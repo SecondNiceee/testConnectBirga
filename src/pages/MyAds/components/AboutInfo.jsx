@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import Text from "../../../components/Text/Text";
 import translation from "../../../functions/translate";
 

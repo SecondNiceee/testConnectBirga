@@ -2,7 +2,6 @@ import React, { memo, useCallback, useEffect, useRef } from 'react';
 import cl from "../index.module.scss"
 import GreyText from '../../../components/UI/GreyText/GreyText';
 import CreateInput from '../../../components/UI/CreateInput/CreateInput';
-let myRef;
 const CompactWithWidth = ({greyText, onChange,inputMistake = false, inputType = "text", inputMode = "text", inputValue, inputPlaceholder, className = ""}) => {
     const hiddenRef = useRef(null)
     const inputRef = useRef(null)

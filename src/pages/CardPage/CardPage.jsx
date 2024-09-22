@@ -3,7 +3,6 @@ import cl from "./CardPage.module.css";
 import InnerCase from "../../components/CardPage/InnerCase/InnerCase";
 import FullDescription from "../../components/First/FirstDetails/FullDescription";
 import LinkComp from "../../components/CardPage/Link/LinkComp";
-import MainButton from "../../constants/MainButton";
 const menu = document.documentElement.querySelector(".FirstMenu")
 const CardPage = ({ card , ...props }) => {
     window.Telegram.WebApp.disableVerticalSwipes();

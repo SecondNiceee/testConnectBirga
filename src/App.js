@@ -3,7 +3,6 @@ import {
   useEffect,
   Suspense,
   useRef,
-  useCallback,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -27,16 +26,10 @@ import { fetchUserInfo } from "./store/telegramUserInfo";
 import { Triangle } from "react-loader-spinner";
 import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
-import { fetchResponses } from "./store/responses";
+
 import { fetchAllIds } from "./store/saves";
 
-import { Address, TonClient } from "ton";
-import {
-  mnemonicNew,
-} from "ton-crypto";
-import axios from "axios";
 import { getBalance } from "./store/balance";
-import { fetchMyOrders } from "./store/information";
 import HappyPage from "./pages/HappyHold/HappyPage";
 
 const First = lazy(() => import("./pages/First/First"));
