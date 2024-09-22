@@ -260,5 +260,6 @@
     "Скопировано в буфер обмена!" : "Copied to clipboard!",
     "Проверка" : "Checking" ,
     "Войти в кошелек" : "Login to Wallet",
-    "Очистить всё" : "Clear all"
+    "Очистить всё" : "Clear all",
+    "Некорректная сид-фраза. Проверьте ее и введите снова" : "Incorrect sid-phrase. Check it and enter it again"
 }                                    
