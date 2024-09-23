@@ -660,11 +660,8 @@ const MyAds = ({isPage = false}) => {
       { postStatus === "pending" ? (
         <MyLoader />
       ) : (
-        <motion.div
+        <div
           style={style}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.1 }}
           className="MyAdsContainer"
         >
 
@@ -835,7 +832,7 @@ const MyAds = ({isPage = false}) => {
 
 
 
-        </motion.div>
+        </div>
 
 
       )}

@@ -371,14 +371,10 @@ const Profile = () => {
       {userInfo.state !== "yes" ? (
         <MyLoader />
       ) : (
-        <motion.div
+        <div
+        
           ref={mainRef}
           className="profile__wrapper"
-          variants={variants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition="transition"
           style={profileStyle}
         >
           <div className="profile__container">
@@ -490,7 +486,7 @@ const Profile = () => {
           </CSSTransition> */}
 
 
-        </motion.div>
+        </div>
       )}
     </>
   );
