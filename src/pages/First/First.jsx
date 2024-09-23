@@ -391,7 +391,7 @@ const First = ({ isPage = false }) => {
               messageTwo +
               par[1].user.fl,
             buttonUrl:
-              "https://birga.ywa.su/ResponsePage?advertisemet=" +
+              "https://connectbirga.ru/ResponsePage?advertisemet=" +
               String(par[1].advertisement.id) +
               "&response=" +
               String(im.data.id),
