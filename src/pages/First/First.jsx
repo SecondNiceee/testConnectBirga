@@ -748,6 +748,7 @@ const First = ({ isPage = false }) => {
         unmountOnExit
       >
         <AboutReaction
+        isTelesgramVisible={false}
           style={{
             paddingBottom: "74px",
             left : "100vw"

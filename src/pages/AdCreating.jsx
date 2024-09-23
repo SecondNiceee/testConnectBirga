@@ -92,6 +92,8 @@ const continueText = translation("ДАЛЕЕ")
 
   const status = useSelector((state) => state.information.postTaskStatus);
 
+  const categorysStatus = useSelector(state => state.categorys.status)
+
   const categorys = useSelector((state) => state.categorys.category);
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);
