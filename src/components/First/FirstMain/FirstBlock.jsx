@@ -129,10 +129,10 @@ const FirstBlock = ({
     if (!isVisible){
       if (inView) {
         setVisible(true);
-        setViewsNumber((value) => viewsNumber + 1)
+        setViewsNumber((value) => value + 1)
       }
     }
-  }, [setVisible, inView, isVisible]);
+  }, [setVisible, inView, isVisible, setViewsNumber]);
 
   return (
     <div

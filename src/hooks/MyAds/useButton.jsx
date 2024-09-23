@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
@@ -73,7 +73,7 @@ export const useButton = ({
     setSecondPage( (value) => ({...value , task : {...details.task}}) )
     setDetails((value) => ({...value , isActive : false}))
     
-  } , [details] ) 
+  } , [details, setSecondPage, setDetails, dispatch] ) 
   useEffect(() => {
     async function hold(id, amount) {
       await axios.get("https://www.connectbirga.ru/user/hold" , {
@@ -125,7 +125,6 @@ export const useButton = ({
                 // setSecondPage({ ...secondPage, isActive: false });
             }
             else{
-              alert("дошел до сюда")
               console.log(balance)
               console.log(secondPage.task.tonValue)
               if (Number(balance) < Number(secondPage.task.tonValue)){
@@ -136,10 +135,10 @@ export const useButton = ({
                 window.Telegram.WebApp.showPopup(
                   {
                     title: translation("Захолдировать?"),
-                    message: "Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания испольнителем.",
+                    message: "Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания исполнителем.(через поддержку)",
                     buttons: [
-                      { id: "save", type: "default", text: "Да" },
-                      { id: "delete", type: "destructive", text: "Нет" },
+                      { id: "save", type: "default", text: translation("Да") },
+                      { id: "delete", type: "destructive", text: translation("Нет") },
                     ],
                   },
                   (buttonId) => {
@@ -299,7 +298,7 @@ export const useButton = ({
               MainButton.setText("КОШЕЛЕК")
             }
             else{
-              MainButton.setText("ЗАХОЛДИРОВАТЬ")
+              MainButton.setText(translation("ЗАХОЛДИРОВАТЬ"))
             }
           }
           else{
@@ -415,6 +414,7 @@ export const useButton = ({
     happyHold,
     setHappyHold,
     walletH,
-    setWalletH
+    setWalletH,
+    dispatch
   ]);
 };

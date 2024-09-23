@@ -1,5 +1,4 @@
-import React, { useMemo, useState } from "react";
-import FirstBlock from "../FirstMain/FirstBlock";
+import React, { useMemo } from "react";
 import FullDescription from "./FullDescription"
 import Dedline from './Dedline'
 import Status from './Status'
@@ -35,7 +34,7 @@ const TaskDetailsContainer = ({orderInformation , setProfile, end = false}) => {
         return {start : orderInformation.startTime , end : orderInformation.endTime }
       }
     }
-  } , [orderInformation] )
+  } , [orderInformation, end] )
   return (
     <div className="Task__container-one">
       <Block end = {end} task={orderInformation} {...orderInformation} isButton = {false} />

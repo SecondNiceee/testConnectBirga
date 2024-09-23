@@ -3,7 +3,10 @@ import cl from './Upper.module.scss'
 import translation from '../../../functions/translate';
 const Upper = () => {
     const watchFunction = () => {
-        alert("Куда-то там переход")
+        window.Telegram.WebApp.openTelegramLink(
+            "https://t.me/connect_work_news"
+          );
+        
     }
     return (
         <div className={cl.container}>

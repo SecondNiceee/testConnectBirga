@@ -5,7 +5,7 @@ import {
   useRef,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -101,8 +101,6 @@ const AnimatedSwitch = () => {
     }
   }, [location.pathname]);
 
-
-  const navigate = useNavigate()
 
   // useEffect( () => {
   //   if (true){
@@ -300,7 +298,7 @@ function App() {
     if (address){
       dispatch(getBalance({userAddress : address}))
     }
-  } , [address] )
+  } , [address, dispatch] )
 
 
   

@@ -270,6 +270,10 @@
     "Упс" : "Oops.",
     "Для отклика создайте Коннект Кошелёк, это бесплатно." : "To respond, create a Connect Wallet, it's free.",
     "Комиссия" : "Commission",
-    "К ХОЛДИРОВАНИЮ" : "TO HOLDING"
+    "К ХОЛДИРОВАНИЮ" : "TO HOLDING",
+    "ЗАХОЛДИРОВАТЬ" : "HOLD",
+    "Захолдировать?" : "HOLD?",
+    "Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания исполнителем.(через поддержку)" : "It will be possible to return the deposited money only in case of non-fulfillment of the task by the freelancer.(through support)."
+
     
 }                                    

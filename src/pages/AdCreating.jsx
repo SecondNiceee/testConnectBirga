@@ -92,7 +92,9 @@ const continueText = translation("ДАЛЕЕ")
 
   const status = useSelector((state) => state.information.postTaskStatus);
 
-  const categorysStatus = useSelector(state => state.categorys.status)
+  const subCategorysStatus = useSelector(state => state.categorys.subCategoryStatus)
+
+  const categorysStatus = useSelector(state => state.categorys.categoryStatus)
 
   const categorys = useSelector((state) => state.categorys.category);
 
@@ -566,7 +568,7 @@ const continueText = translation("ДАЛЕЕ")
       ref={mainRef}
       className="AdCreating__container"
     >
-      {status === "pending" ? (
+      {status === "pending" || categorysStatus !== "OK" || subCategorysStatus !== "OK" ? (
         <>
           <PostLoader />
         </>

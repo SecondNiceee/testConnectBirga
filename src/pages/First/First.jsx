@@ -511,7 +511,8 @@ const First = ({ isPage = false }) => {
       }
     }
   }, [
-    
+    address,
+    navigate,
     responce,
     step,
     ordersInformation,
