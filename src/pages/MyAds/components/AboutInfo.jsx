@@ -45,7 +45,7 @@ const AboutInfo = ({responce, isTelesgramVisible = true}) => {
         </div>
         <div className="block">
           <p>{responce.user.completedAdvertisements.length}</p>
-          <p className="aboutInfo__text">{counter(responce.user.completedAdvertisements.length)} {translation("выполнено")}</p>
+          <p className="aboutInfo__text">{counter(responce.user.completedAdvertisements)} {translation("выполнено")}</p>
         </div>
       </div>
 
