@@ -61,6 +61,7 @@ const Profile = () => {
   const [index, setIndex] = useState(1);
 
   useEffect(() => {
+    MainButton.hide()
     return () => {
       pagesHistory.push("/Profile");
     };
