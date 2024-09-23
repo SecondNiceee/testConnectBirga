@@ -26,6 +26,8 @@ const AboutInfo = ({responce, isTelesgramVisible = true}) => {
       window.Telegram.WebApp.showAlert( translation("Для доступа к контактам заказчика необходимо откликнуться."))
     }
   } , [responce.user.link , isTelesgramVisible] )
+
+  console.warn(responce.user.completedAdvertisements)
   return (
     <div className="aboutInfo">
       <div className="name">
@@ -44,8 +46,8 @@ const AboutInfo = ({responce, isTelesgramVisible = true}) => {
           
         </div>
         <div className="block">
-          <p>{responce.user.completedAdvertisements.length}</p>
-          <p className="aboutInfo__text">{counter(responce.user.completedAdvertisements)} {translation("выполнено")}</p>
+          <p>{responce.user.completedAdvertisements}</p>
+          <p className="aboutInfo__text">{counter(Number(responce.user.completedAdvertisements))} {translation("выполнено")}</p>
         </div>
       </div>
 
