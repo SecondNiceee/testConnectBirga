@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import cl from "./HappyHold.module.scss";
 import { useLottie } from "lottie-react";
 import chemodan from "../../animation/Chemodan.json"
+import translation from '../../functions/translate';
 const HappyHold = ({response ,task}) => {
     useEffect( () => {
         const menu = document.querySelector('.FirstMenu')
@@ -30,12 +31,12 @@ const HappyHold = ({response ,task}) => {
         <div className={cl.container}>
             <div className={cl.up}>
                 {View}
-                <h3>Успешно!</h3>
+                <h3>{translation("Успешно!")}</h3>
                 {/* <h2>Ваше задание принятно в работу исполнителем {response.user.fl}</h2> */}
-                <h2>Ваше задание принятно в работу исполнителем "{response.user.fl}"</h2>
+                <h2>${translation("Ваше задание принятно в работу исполнителем")} {response.user.fl}"</h2>
             </div>
             <p className={cl.bottomBlock}>
-                <span>{task.tonValue} TON</span>  были заколдированы до конца выполнения задания
+                <span>{task.tonValue} TON</span>  {translation("были заколдированы до конца выполнения задания")} 
             </p>
         </div>
     );

@@ -135,7 +135,7 @@ export const useButton = ({
                 window.Telegram.WebApp.showPopup(
                   {
                     title: translation("Захолдировать?"),
-                    message: translation("Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания исполнителем.(через поддержку)"),
+                    message: translation("Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания исполнителем(через поддержку)."),
                     buttons: [
                       { id: "save", type: "default", text: translation("Да") },
                       { id: "delete", type: "destructive", text: translation("Нет") },
