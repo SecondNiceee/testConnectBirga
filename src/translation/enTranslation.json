@@ -266,6 +266,8 @@
     "Для выбора исполнителя необходимо создать Коннект Кошелёк, это бесплатно." : "To select an artist you need to create a Connect Wallet, it's free.",
     "Создать" : "Create",
     "Отмена" : "Cancel",
-    "Для доступа к контактам заказчика необходимо откликнуться." : "To access customer contacts, you must respond."
+    "Для доступа к контактам заказчика необходимо откликнуться." : "To access customer contacts, you must respond.",
+    "Упс" : "Oops.",
+    "Для отклика создайте Коннект Кошелёк, это бесплатно." : "To respond, create a Connect Wallet, it's free."
     
 }                                    
