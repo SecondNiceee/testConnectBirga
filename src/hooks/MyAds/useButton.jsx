@@ -148,6 +148,7 @@ export const useButton = ({
                         window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
                         dispatch(setStartTask(myAdOneAdvertisement.id));
                         dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
+                        MainButton.setText(translation("Перейти к заданию"))
     
                       }).catch(value => {
                         console.log(value);
@@ -302,7 +303,7 @@ export const useButton = ({
             }
           }
           else{
-            MainButton.setText("Перейти к заданию")
+            MainButton.setText(translation("Перейти к заданию"))
           }
         }
       } else {
