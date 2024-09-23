@@ -296,6 +296,9 @@ export const fetchTasksInformation = createAsyncThunk(
           }
         }
       );
+      console.log('====================================');
+      console.log(task);
+      console.log('====================================');
     } catch (e) {
       alert(e);
       console.log(e);

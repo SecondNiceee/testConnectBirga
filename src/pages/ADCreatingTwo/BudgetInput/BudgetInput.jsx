@@ -56,6 +56,7 @@ const BudgetInput = ({
       <Text className={[cl.input, cl.hidden].join(" ")} ref={ref1}></Text>
       <Text style={ budget ? {display : 'none'} : {color : style.color}  }  className = { [cl.input , cl.absolute].join(' ') }> 0 </Text>
       <input 
+      autoComplete="off"
          style={style}
         value={budget}
         
