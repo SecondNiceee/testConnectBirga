@@ -14,7 +14,7 @@ import Compact from "../../../components/UI/Compact/Compact";
 import makeNewFile from "../../../functions/newMakeFile";
 import MainButton from "../../../constants/MainButton";
 
-const AboutReaction = ({ responce , setOneCard, style,   ...props}) => {
+const AboutReaction = ({ responce , setOneCard, style, isTelesgramVisible,   ...props}) => {
 
   const [cards , setCards] = useState(null)
   useEffect( () => {
@@ -77,7 +77,7 @@ const AboutReaction = ({ responce , setOneCard, style,   ...props}) => {
 
       <AboutTop responce={responce} />
 
-      <AboutInfo responce={responce} />
+      <AboutInfo isTelesgramVisible = {isTelesgramVisible} responce={responce} />
 
       <AboutMain aboutU = {responce.user.about}  />
 

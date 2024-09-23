@@ -265,5 +265,7 @@
     "Внимание!" : "Attention!",
     "Для выбора исполнителя необходимо создать Коннект Кошелёк, это бесплатно." : "To select an artist you need to create a Connect Wallet, it's free.",
     "Создать" : "Create",
-    "Отмена" : "Cancel"
+    "Отмена" : "Cancel",
+    "Для доступа к контактам заказчика необходимо откликнуться." : "To access customer contacts, you must respond."
+    
 }                                    
