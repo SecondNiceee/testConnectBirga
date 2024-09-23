@@ -2,7 +2,7 @@
     "Категория" : "Category",
     "Подкатегория" : "Subcategory",
     "Сумма от": "Amount from",
-    "Подробнее" : "MORE DETAILS",
+    "Подробнее" : "More details",
     "Задания" : "Tasks",
     "Разместить" : "Place",
     "Мои задания" : "My Tasks",
@@ -268,6 +268,8 @@
     "Отмена" : "Cancel",
     "Для доступа к контактам заказчика необходимо откликнуться." : "To access customer contacts, you must respond.",
     "Упс" : "Oops.",
-    "Для отклика создайте Коннект Кошелёк, это бесплатно." : "To respond, create a Connect Wallet, it's free."
+    "Для отклика создайте Коннект Кошелёк, это бесплатно." : "To respond, create a Connect Wallet, it's free.",
+    "Комиссия" : "Commission",
+    "К ХОЛДИРОВАНИЮ" : "TO HOLDING"
     
 }                                    
