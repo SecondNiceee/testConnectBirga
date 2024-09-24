@@ -9,6 +9,26 @@ import translation from "../../functions/translate";
 import axios from "axios";
 const menu = document.documentElement.querySelector(".FirstMenu")
 
+
+function compareTwoObject(a1, a2) {
+  console.log(a1 , a2)
+  if (JSON.stringify({...a1 , myAds : true}) !== JSON.stringify({...a2 , myAds : true})) {
+    return false;
+  }
+  if (JSON.stringify(a1.time) !== JSON.stringify(a2.time)) {
+    return false;
+  }
+  if (a1.photos.length !== a2.photos.length) {
+    return false;
+  }
+  for (let i = 0; i < a1.photos.length; i++) {
+    if (a1.photos[i].name !== a2.photos[i].name) {
+      return false;
+    }
+  }
+  return true;
+}
+
 const choiceText = translation("ВЫБРАТЬ")
  
 export const useButton = ({
@@ -48,6 +68,8 @@ export const useButton = ({
   const dispatch = useDispatch();
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
 
+  
+
   const putTask = useCallback( () => {
       console.log("ВЫХОВ ЭТОЙ ШТУКИ")
       console.log(details.task)
@@ -74,216 +96,216 @@ export const useButton = ({
     setDetails((value) => ({...value , isActive : false}))
     
   } , [details, setSecondPage, setDetails, dispatch] ) 
-  useEffect(() => {
-    async function hold(id, amount) {
-      await axios.get("https://www.connectbirga.ru/user/hold" , {
-        params : {
-          fromId : id,
-          amount : amount
-        },
-        headers : {
-          "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-        }
-      })
-      console.log("2144832745" ,secondPage.task.tonValue );
-      
-    }
-    function writeFucntion() {
 
-      if (!walletH){
+  async function hold(id, amount) {
+    await axios.get("https://www.connectbirga.ru/user/hold" , {
+      params : {
+        fromId : id,
+        amount : amount
+      },
+      headers : {
+        "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+      }
+    })
+    console.log("2144832745" ,secondPage.task.tonValue );
 
-        if (!address){
-          window.Telegram.WebApp.showPopup(
-            {
-              title: translation("Внимание!"),
-              message: translation("Для выбора исполнителя необходимо создать Коннект Кошелёк, это бесплатно."),
-              buttons: [
-                { id: "save", type: "default", text: translation("Создать") },
-                { id: "delete", type: "destructive", text: translation("Отмена") },
-              ],
-            },
-            (buttonId) => {
-              if (buttonId === "save") {
-                navigate('/Profile')
-              }
-              if (buttonId === "delete" || buttonId === null) {
-                console.log("Он отказался");
-              }
+    
+  }
+
+
+
+  function writeFucntion() {
+
+    if (!walletH){
+
+      if (!address){
+        window.Telegram.WebApp.showPopup(
+          {
+            title: translation("Внимание!"),
+            message: translation("Для выбора исполнителя необходимо создать Коннект Кошелёк, это бесплатно."),
+            buttons: [
+              { id: "save", type: "default", text: translation("Создать") },
+              { id: "delete", type: "destructive", text: translation("Отмена") },
+            ],
+          },
+          (buttonId) => {
+            if (buttonId === "save") {
+              navigate('/Profile')
             }
-          );
+            if (buttonId === "delete" || buttonId === null) {
+              console.log("Он отказался");
+            }
+          }
+        );
+      }
+      else{
+        if (!buyPage){
+          setBuyPage(true)
+          console.log("Buy page стал true")
         }
         else{
-          if (!buyPage){
-            setBuyPage(true)
-            console.log("Buy page стал true")
+          if (happyHold){
+              setOpen({ ...isOpen, isActive: false });
+              setBuyPage(false)
+              setHappyHold(false)
+              // setSecondPage({ ...secondPage, isActive: false });
           }
           else{
-            if (happyHold){
-                setOpen({ ...isOpen, isActive: false });
-                setBuyPage(false)
-                setHappyHold(false)
-                // setSecondPage({ ...secondPage, isActive: false });
+            console.log(balance)
+            console.log(secondPage.task.tonValue)
+            if (Number(balance) < Number(secondPage.task.tonValue)){
+
+              setWalletH(true)
+              MainButton.hide()
             }
             else{
-              console.log(balance)
-              console.log(secondPage.task.tonValue)
-              if (Number(balance) < Number(secondPage.task.tonValue)){
+              window.Telegram.WebApp.showPopup(
+                {
+                  title: translation("Захолдировать?"),
+                  message: translation("Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания исполнителем(через поддержку)."),
+                  buttons: [
+                    { id: "save", type: "default", text: translation("Да") },
+                    { id: "delete", type: "destructive", text: translation("Нет") },
+                  ],
+                },
+                (buttonId) => {
+                  if (buttonId === "save") {
+                    //   hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
+                    //   window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+                    //   dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
 
-                setWalletH(true)
-                MainButton.hide()
-              }
-              else{
-                window.Telegram.WebApp.showPopup(
-                  {
-                    title: translation("Захолдировать?"),
-                    message: translation("Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания исполнителем(через поддержку)."),
-                    buttons: [
-                      { id: "save", type: "default", text: translation("Да") },
-                      { id: "delete", type: "destructive", text: translation("Нет") },
-                    ],
-                  },
-                  (buttonId) => {
-                    if (buttonId === "save") {
-                      //   hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
-                      //   window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-                      //   dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
-
-                      //   dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
-                      //   ).then( value =>  setHappyHold(true))
-                      //   MainButton.setText(translation("Перейти к заданию"))
-    
-                      // }).catch(value => {
-                      //   console.log(value);
-                      //   alert("Холд не прошел. Отправте в поддержку следующее сообщение")
-                      //   alert(JSON.stringify(value))
-                        
-                      // } )
-
-
-
-                       
-                        window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-                        dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
-
-                        dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
-                        ).then( value =>  setHappyHold(true))
-                        // MainButton.setText(translation("Перейти к заданию"))
-    
-                    }
-                    if (buttonId === "delete" || buttonId === null) {
-                      console.log("Он отказался");
-                      console.log("Да это так");
+                    //   dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
+                    //   ).then( value =>  setHappyHold(true))
+                    //   MainButton.setText(translation("Перейти к заданию"))
+  
+                    // }).catch(value => {
+                    //   console.log(value);
+                    //   alert("Холд не прошел. Отправте в поддержку следующее сообщение")
+                    //   alert(JSON.stringify(value))
                       
-                    }
+                    // } )
+
+
+
+                     
+                      window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+                      dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
+
+                      dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
+                      ).then( value =>  setHappyHold(true))
+                      // MainButton.setText(translation("Перейти к заданию"))
+  
                   }
-                );
-              }
+                  if (buttonId === "delete" || buttonId === null) {
+                    console.log("Он отказался");
+                    console.log("Да это так");
+                    
+                  }
+                }
+              );
             }
           }
+        }
+
+      }
+    }
+
+    
+  }
   
+
+  function goBack() {
+    if (!walletH){
+
+    
+    if (happyHold){
+      setOpen({ ...isOpen, isActive: false });
+      setBuyPage(false)
+      setHappyHold(false)
+      // setSecondPage({ ...secondPage, isActive: false });
+    }
+    else{
+
+      if (buyPage){
+        setBuyPage(false)
+      }
+      else{
+
+        if (oneCards.isOpen) {
+          setOneCard((value) => ({ ...value, isOpen: false }));
+        } else {
+          if (!openAboutReaction.isActive) {
+            if (!details.isActive) {
+              if (detailsTwo.isOpen) {
+                setDetailsTwo((value) => ({ ...value, isOpen: false }));
+              } else {
+                if (isOpen.isActive) {
+                  setPageValueTwo(false)
+                  // isPageValueTwo = false
+                  setOpen({ ...isOpen, isActive: false });
+                } else {
+                  if (secondPage.isActive) {
+                    setPageValueOne(false)
+                    setSecondPage((value) => ({ ...value, isActive: false }));
+                    // isPageValueOne = false
+                  } else {
+                    // if (history[history.length - 1] === '/AdCreating'){
+  
+                    //   navigate();
+                    // }
+                    // else{
+                    //   navigate(-1)
+                    // }
+                    if (lastAdsTwo.isOpen) {
+                      setLastAdsTwo((value) => ({ ...value, isOpen: false }));
+                    } else {
+                      if (myResponse.isOpen) {
+                        setMyResponse((value) => ({ ...value, isOpen: false }));
+                      } else {
+                        navigate("/");
+                      }
+                    }
+                  }
+                }
+              }
+            } else {
+              if (!compareTwoObject(secondPage.task, details.task)){
+                save();
+              }
+              else{
+                setDetails((value) => ({...value , isActive : false}))
+              }
+              
+            }
+          } else {
+            setOpenAboutReaction({ ...openAboutReaction, isActive: false });
+          }
         }
       }
-
-      
     }
+  }
+  }
 
-    function compareTwoObject(a1, a2) {
-      console.log(a1 , a2)
-      if (JSON.stringify({...a1 , myAds : true}) !== JSON.stringify({...a2 , myAds : true})) {
-        return false;
-      }
-      if (JSON.stringify(a1.time) !== JSON.stringify(a2.time)) {
-        return false;
-      }
-      if (a1.photos.length !== a2.photos.length) {
-        return false;
-      }
-      for (let i = 0; i < a1.photos.length; i++) {
-        if (a1.photos[i].name !== a2.photos[i].name) {
-          return false;
-        }
-      }
-      return true;
-    }
+
+  
+
+
+  useEffect( () => {
+
+  }  )
+
+
+  
+  useEffect(() => {
+
+
+
+
 
 
     alert(happyHold)
 
 
-    function goBack() {
-      if (!walletH){
-
-      
-      if (happyHold){
-        setOpen({ ...isOpen, isActive: false });
-        setBuyPage(false)
-        setHappyHold(false)
-        // setSecondPage({ ...secondPage, isActive: false });
-      }
-      else{
-
-        if (buyPage){
-          setBuyPage(false)
-        }
-        else{
-  
-          if (oneCards.isOpen) {
-            setOneCard((value) => ({ ...value, isOpen: false }));
-          } else {
-            if (!openAboutReaction.isActive) {
-              if (!details.isActive) {
-                if (detailsTwo.isOpen) {
-                  setDetailsTwo((value) => ({ ...value, isOpen: false }));
-                } else {
-                  if (isOpen.isActive) {
-                    setPageValueTwo(false)
-                    // isPageValueTwo = false
-                    setOpen({ ...isOpen, isActive: false });
-                  } else {
-                    if (secondPage.isActive) {
-                      setPageValueOne(false)
-                      setSecondPage((value) => ({ ...value, isActive: false }));
-                      // isPageValueOne = false
-                    } else {
-                      // if (history[history.length - 1] === '/AdCreating'){
-    
-                      //   navigate();
-                      // }
-                      // else{
-                      //   navigate(-1)
-                      // }
-                      if (lastAdsTwo.isOpen) {
-                        setLastAdsTwo((value) => ({ ...value, isOpen: false }));
-                      } else {
-                        if (myResponse.isOpen) {
-                          setMyResponse((value) => ({ ...value, isOpen: false }));
-                        } else {
-                          navigate("/");
-                        }
-                      }
-                    }
-                  }
-                }
-              } else {
-                if (!compareTwoObject(secondPage.task, details.task)){
-                  save();
-                }
-                else{
-                  setDetails((value) => ({...value , isActive : false}))
-                }
-                
-              }
-            } else {
-              setOpenAboutReaction({ ...openAboutReaction, isActive: false });
-            }
-          }
-        }
-      }
-    }
-    }
-
-
-    
 
 
     console.log("Happy Hold" + happyHold);
