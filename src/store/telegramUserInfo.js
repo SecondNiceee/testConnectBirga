@@ -141,7 +141,6 @@ export const fetchUserInfo = createAsyncThunk(
              user = await axios.get("https://www.connectbirga.ru/user/findOne", {
               params: {
                 id: UserId,
-                language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en"
               },
               headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -154,7 +153,8 @@ export const fetchUserInfo = createAsyncThunk(
         catch(e){
             await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
                 params : {
-                    id : 2144832745
+                    id : 2144832745,
+                    language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en"
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
