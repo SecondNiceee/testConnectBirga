@@ -171,6 +171,8 @@ export const useButton = ({
                     }
                     if (buttonId === "delete" || buttonId === null) {
                       console.log("Он отказался");
+                      console.log("Да это так");
+                      
                     }
                   }
                 );
