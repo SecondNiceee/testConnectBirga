@@ -180,7 +180,11 @@ const Profile = () => {
     
     
     if (!cardsActive && !changeActive) {
-      if (compare2Objects(userInfoLocal.profile, aboutULocal) === false && userInfo.state === "yes" && userInfo.profile.about !== null) {
+      if (compare2Objects(userInfo.profile, aboutU) === false && userInfo.state === "yes" && userInfo.profile.about !== null && aboutU.about !== null) {
+        console.log('====================================');
+        console.log(userInfo.profile);
+        console.log(aboutU);
+        console.log('====================================');
         MainButton.enable();
         MainButton.setParams({
           text: translation("Сохранить"),
