@@ -6,7 +6,6 @@ import React, {
   useState,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion";
 
 import { CSSTransition } from "react-transition-group";
 
@@ -39,12 +38,6 @@ import en from "../../constants/language";
 const lett = translation("лет");
 const goda = translation("года");
 const god = translation("год");
-const variants = {
-  initial: { opacity: 1 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-  transition: { duration: 0.4 },
-};
 let aboutULocal = null;
 
 let userInfoLocal = null;

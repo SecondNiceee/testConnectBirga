@@ -7,6 +7,7 @@ import { setStartResponse } from "../../store/responses";
 import sortFiles from "../../functions/sortFiles";
 import translation from "../../functions/translate";
 import axios from "axios";
+import HappyHold from "../../pages/HappyHold/HappyHold";
 const menu = document.documentElement.querySelector(".FirstMenu")
 
 const choiceText = translation("ВЫБРАТЬ")
@@ -144,10 +145,11 @@ export const useButton = ({
                   (buttonId) => {
                     if (buttonId === "save") {
                         hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
-                        setHappyHold(true)
                         window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-                        dispatch(setStartTask(myAdOneAdvertisement.id));
-                        dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
+                        dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
+
+                          dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
+                        ).then( value =>  setHappyHold(true))
                         MainButton.setText(translation("Перейти к заданию"))
     
                       }).catch(value => {
@@ -374,6 +376,9 @@ export const useButton = ({
     else{
       menu.classList.add("appearAnimation")
       menu.classList.remove("disappearAnimation")
+    }
+    if (HappyHold){
+      MainButton.setText(translation("Перейти к заданию"))
     }
     
 

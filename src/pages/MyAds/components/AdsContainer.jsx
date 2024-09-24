@@ -13,6 +13,9 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
     const elementRef = useRef(null)
     const dispatch = useDispatch()
 
+    // eslint-disable-next-line
+    const [reFetch, setReFetch] = useState(false)
+
     useEffect(() =>{
 
         dispatch(fetchMyOrders(1));
@@ -31,11 +34,16 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
     const onIntersaction = useCallback(
       (entries) => {
         const firtEntry = entries[0];
+        if (!firtEntry.isIntersecting && orderStatus !== "all" && page === 2){
+          setTimeout( () => {
+            setReFetch( (value) => (!value) )
+          } , 500 )
+        }
         if (firtEntry.isIntersecting && orderStatus !== "all" && orderStatus !== "loading") {
           getMore();
         }
       },
-      [orderStatus, getMore]
+      [orderStatus, getMore, setReFetch, page]
     );
 
 
