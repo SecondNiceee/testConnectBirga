@@ -130,6 +130,7 @@ export const useButton = ({
               if (Number(balance) < Number(secondPage.task.tonValue)){
 
                 setWalletH(true)
+                MainButton.hide()
               }
               else{
                 window.Telegram.WebApp.showPopup(
@@ -413,32 +414,5 @@ export const useButton = ({
     };
 
     // eslint-disable-next-line
-  }, [
-    myAdsArray,
-    secondPage.isActive,
-    secondPage.task,
-    isOpen.isActive,
-    openAboutReaction.isActive,
-    isOpen,
-    details,
-    navigate,
-    save,
-    setOneCard,
-    oneCards.isOpen,
-    detailsTwo.isOpen,
-    setDetailsTwo,
-    myResponse.isOpen,
-    setMyResponse,
-    lastAdsTwo,
-    setLastAdsTwo,
-    setPageValueOne,
-    setPageValueTwo,
-    buyPage,
-    setBuyPage,
-    happyHold,
-    setHappyHold,
-    walletH,
-    setWalletH,
-    dispatch
-  ]);
+  }, );
 };

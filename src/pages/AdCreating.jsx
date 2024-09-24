@@ -395,7 +395,9 @@ const continueText = translation("ДАЛЕЕ")
   } , [firstPage.taskDescription, navigate] )
 
 
-
+  useEffect( () => {
+    MainButton.setText(translation("ДАЛЕЕ"))
+  } , []  )
 
   // eslint-disable-next-line
   const goForward = () => {
