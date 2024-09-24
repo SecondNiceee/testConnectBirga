@@ -236,7 +236,7 @@ const telegramUserInfo = createSlice({
     completedTasks : [],
     deals : 0,
     profile : {
-        about : '',
+        about : null,
         stage : 0,
         cards : [
         ]
@@ -265,7 +265,6 @@ const telegramUserInfo = createSlice({
       state.status = "loading";
     });
     builder.addCase(fetchUserInfo.fulfilled, (state, action) => {
-      state.state = "yes";
       state.id = action.payload.id;
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;
@@ -279,6 +278,7 @@ const telegramUserInfo = createSlice({
       state.address = action.payload.address
       state.profile.cards.sort((a, b) => a.id - b.id)
       state.congradulations = action.payload.address
+      state.state = "yes";
     });
     builder.addCase(fetchUserInfo.rejected, (state) => {
       state.status = "error";

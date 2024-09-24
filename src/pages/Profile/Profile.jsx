@@ -136,10 +136,10 @@ const Profile = () => {
   }, []);
 
   const save = useCallback(() => {
-    dispatch(changeProfile(aboutULocal));
+    dispatch(changeProfile({...aboutULocal , about : aboutULocal.about.trim()}));
     dispatch(
       putUserInfo([
-        { stage: Number(aboutULocal.stage), about: aboutULocal.about },
+        { stage: Number(aboutULocal.stage), about: aboutULocal.about.trim() },
         userInfoLocal.id,
       ])
     );
@@ -180,7 +180,7 @@ const Profile = () => {
     
     
     if (!cardsActive && !changeActive) {
-      if (compare2Objects(userInfoLocal.profile, aboutULocal) === false && userInfo.state === "yes") {
+      if (compare2Objects(userInfoLocal.profile, aboutULocal) === false && userInfo.state === "yes" && userInfo.profile.about !== null) {
         MainButton.enable();
         MainButton.setParams({
           text: translation("Сохранить"),

@@ -55,7 +55,7 @@ const AllShablons = () => {
     const localMistakes = {    name : true,
       text : true}
     if (Object.values(mistakes).includes(true)){
-      if (shablon.shablon.name.length > 3){
+      if (shablon.shablon.name.length >= 3){
         localMistakes.name = false
       }
       if (shablon.shablon.text.length >= 5){
@@ -148,10 +148,10 @@ const AllShablons = () => {
   } , [dispatch, shablon.shablon] )
   const check = useCallback( () => {
     const localMistakes = {name : false, text : false}
-    if (shablon.shablon.name.length < 3){
+    if (shablon.shablon.name.trim().length < 3){
       localMistakes.name = true
     }
-    if (shablon.shablon.text.length < 5){
+    if (shablon.shablon.text.trim().length < 5){
       localMistakes.name = true
     }
     if (JSON.stringify(localMistakes) !== JSON.stringify(mistakes)){
