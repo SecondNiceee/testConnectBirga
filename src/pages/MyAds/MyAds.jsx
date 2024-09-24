@@ -464,7 +464,8 @@ const MyAds = ({isPage = false}) => {
 
         let im = await axios.get("https://www.connectbirga.ru/advertisement/findOne" , {
           params : {
-            id : advertisementId
+            id : advertisementId,
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         })
         let order = im.data
@@ -503,7 +504,7 @@ const MyAds = ({isPage = false}) => {
         };
       }
       catch(e){
-        window.Telegram.WebApp.showAlert("Вы удалили уже это задание.")
+        window.Telegram.WebApp.showAlert(translation("Вы удалили уже это задание."))
         setOpen((value) => ({...value , isActive : false}))
         setSecondPage((value) => ({...value , isActive : false}))
         setPageValueOne(false)

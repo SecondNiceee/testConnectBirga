@@ -279,5 +279,6 @@
     "были заколдированы до конца выполнения задания" : "were holded until the end of the task",
     "Перейти к заданию" : "Go to task",
     "Нет примеров работ" : "No examples of work",
-    "Сохранить шаблон перед выходом?" : "Save the template before exiting?"
+    "Сохранить шаблон перед выходом?" : "Save the template before exiting?",
+    "Вы удалили уже это задание." : "You've already deleted this task."
 }                                    

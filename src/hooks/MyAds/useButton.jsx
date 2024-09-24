@@ -143,20 +143,31 @@ export const useButton = ({
                   },
                   (buttonId) => {
                     if (buttonId === "save") {
-                        hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
+                      //   hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
+                      //   window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+                      //   dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
+
+                      //   dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
+                      //   ).then( value =>  setHappyHold(true))
+                      //   MainButton.setText(translation("Перейти к заданию"))
+    
+                      // }).catch(value => {
+                      //   console.log(value);
+                      //   alert("Холд не прошел. Отправте в поддержку следующее сообщение")
+                      //   alert(JSON.stringify(value))
+                        
+                      // } )
+
+
+
+                       
                         window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
                         dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
 
-                          dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
+                        dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
                         ).then( value =>  setHappyHold(true))
-                        MainButton.setText(translation("Перейти к заданию"))
+                        // MainButton.setText(translation("Перейти к заданию"))
     
-                      }).catch(value => {
-                        console.log(value);
-                        alert("Холд не прошел. Отправте в поддержку следующее сообщение")
-                        alert(JSON.stringify(value))
-                        
-                      } )
                     }
                     if (buttonId === "delete" || buttonId === null) {
                       console.log("Он отказался");
@@ -193,7 +204,7 @@ export const useButton = ({
     }
 
 
-
+    alert(happyHold)
 
 
     function goBack() {
@@ -302,7 +313,14 @@ export const useButton = ({
               MainButton.setText("КОШЕЛЕК")
             }
             else{
-              MainButton.setText(translation("ЗАХОЛДИРОВАТЬ"))
+              if (happyHold){
+                MainButton.setText(translation("Перейти к заданию"))
+              }
+              else{
+                MainButton.setText(translation("ЗАХОЛДИРОВАТЬ"))
+
+              }
+
             }
           }
         }
