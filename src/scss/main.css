@@ -492,6 +492,7 @@
   color: rgb(255, 255, 255);
 }
 .FirstMenu .menuLink {
+  cursor: pointer;
   width: 100%;
   display: flex;
   flex-direction: column;
