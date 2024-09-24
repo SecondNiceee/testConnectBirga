@@ -363,6 +363,7 @@ const Profile = () => {
   }, [cardsActive, changeActive]);
 
   useEffect( () => {
+    MainButton.hide()
     return () => {
       MainButton.hide()
     }
