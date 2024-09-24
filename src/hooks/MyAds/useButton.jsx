@@ -424,7 +424,121 @@ export const useButton = ({
     }
     
 
+    console.log("Хай");
+    
     return () => {
+
+
+      if (!walletH){
+
+    
+      
+        BackButton.show();
+  
+        if (isOpen.isActive && secondPage.task.status !== "inProcess" && secondPage.task.status !== "completed" ) {
+          menu.classList.add("disappearAnimation")
+          menu.classList.remove("appearAnimation")
+          MainButton.show();
+          MainButton.setParams({
+            color: "#2ea5ff",
+            text_color: "#ffffff",
+            is_active: true,
+          });
+          if (!buyPage){
+              MainButton.setText(choiceText);
+          }
+          else{
+            if (happyHold){
+              MainButton.setText(translation("Перейти к заданию"))
+            }
+            else{
+              if (balance < secondPage.task.tonValue){
+                MainButton.setText("КОШЕЛЕК")
+              }
+              else{
+                if (happyHold){
+                  MainButton.setText(translation("Перейти к заданию"))
+                }
+                else{
+                  MainButton.setText(translation("ЗАХОЛДИРОВАТЬ"))
+  
+                }
+  
+              }
+            }
+          }
+        } else {
+          if (!myResponse.isOpen && !details.isActive ) {
+            menu.classList.add("appearAnimation")
+            menu.classList.remove("disappearAnimation")
+            MainButton.hide();
+          }
+        }
+    
+    
+        if (details.isActive) {
+          MainButton.setText(translation("ОБНОВИТЬ"));
+          if (!compareTwoObject(secondPage.task, details.task)) {
+            menu.classList.add("disappearAnimation")
+            menu.classList.remove("appearAnimation")
+            MainButton.show();
+            MainButton.setParams({
+              color: "#2ea5ff",
+              text_color: "#ffffff",
+              is_active: true,
+            });
+            
+    
+            if (checkMistakes(details.task, false)) {
+              MainButton.setParams({
+                color: "#2ea5ff",
+                text_color: "#ffffff",
+                is_active: true,
+              });
+            } else {
+              MainButton.setParams({
+                is_active: false, //неизвесетно
+                color: "#2f2f2f",
+                text_color: "#606060",
+              });
+            }
+
+          }
+          else{
+            menu.classList.add("disappearAnimation")
+            menu.classList.remove("appearAnimation")
+              MainButton.show()
+              MainButton.setParams({
+                is_active: false, //неизвесетно
+                color: "#2f2f2f",
+                text_color: "#606060",
+              });
+          }
+        } else {
+          if (!isOpen.isActive && !myResponse.isOpen){
+            menu.classList.add("appearAnimation")
+            menu.classList.remove("disappearAnimation")
+            MainButton.hide();
+            MainButton.setParams({
+              is_active: false, //неизвесетно
+              color: "#2f2f2f",
+              text_color: "#606060",
+            });
+          }
+        }
+    
+      }
+      else{
+        menu.classList.add("appearAnimation")
+        menu.classList.remove("disappearAnimation")
+      }
+      if (happyHold){
+        MainButton.setText(translation("Перейти к заданию"))
+      }
+      
+
+
+
       MainButton.setParams({
         color: "#2ea5ff",
         text_color: "#ffffff",
