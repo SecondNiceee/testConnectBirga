@@ -400,6 +400,7 @@ const continueText = translation("ДАЛЕЕ")
       MainButton.setText(translation("ДАЛЕЕ"))
   } , 2000 ) 
   } , []  )
+  MainButton.setText(translation("ДАЛЕЕ"))
 
   // eslint-disable-next-line
   const goForward = () => {
