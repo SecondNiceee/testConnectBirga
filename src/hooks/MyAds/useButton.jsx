@@ -293,17 +293,16 @@ export const useButton = ({
             MainButton.setText(choiceText);
         }
         else{
-          if (!happyHold){
-  
+          if (happyHold){
+            MainButton.setText(translation("Перейти к заданию"))
+          }
+          else{
             if (balance < secondPage.task.tonValue){
               MainButton.setText("КОШЕЛЕК")
             }
             else{
               MainButton.setText(translation("ЗАХОЛДИРОВАТЬ"))
             }
-          }
-          else{
-            MainButton.setText(translation("Перейти к заданию"))
           }
         }
       } else {

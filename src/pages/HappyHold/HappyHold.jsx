@@ -3,8 +3,10 @@ import cl from "./HappyHold.module.scss";
 import { useLottie } from "lottie-react";
 import chemodan from "../../animation/Chemodan.json"
 import translation from '../../functions/translate';
+import MainButton from '../../constants/MainButton';
 const HappyHold = ({response ,task}) => {
     useEffect( () => {
+        MainButton.setText(translation("Перейти к заданию"))
         const menu = document.querySelector('.FirstMenu')
         menu.style.display = "none"
         return () => {
