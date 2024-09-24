@@ -6,7 +6,9 @@ import translation from '../../functions/translate';
 import MainButton from '../../constants/MainButton';
 const HappyHold = ({response ,task}) => {
     useEffect( () => {
-        MainButton.setText(translation("Перейти к заданию"))
+        setTimeout( () => {
+            MainButton.setText(translation("Перейти к заданию"))
+        } , 500 )
         const menu = document.querySelector('.FirstMenu')
         menu.style.display = "none"
         return () => {

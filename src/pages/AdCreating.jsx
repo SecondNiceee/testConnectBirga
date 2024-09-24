@@ -396,7 +396,9 @@ const continueText = translation("ДАЛЕЕ")
 
 
   useEffect( () => {
-    MainButton.setText(translation("ДАЛЕЕ"))
+    setTimeout( () => {
+      MainButton.setText(translation("ДАЛЕЕ"))
+  } , 500 )
   } , []  )
 
   // eslint-disable-next-line
