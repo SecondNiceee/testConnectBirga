@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useRef } from "react";
 import cl from "./Case.module.css";
 import FalseTie from "../FalseTie/FalseTie";
-import MyButton from "../MyButton/MyButton";
 import Circle from "../Circle/Circle";
 import Text from "../../Text/Text";
 

@@ -5,7 +5,7 @@ import GreyText from "../../components/UI/GreyText/GreyText";
 import ShablonsWrap from "./components/ShablonsWrap/ShablonsWrap";
 import { CSSTransition } from "react-transition-group";
 import Shablon from "../Shablon/Shablon";
-import { deleteShablon } from "../../store/shablon";
+import { deleteShablon, postShablon } from "../../store/shablon";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
 import pagesHistory from "../../constants/pagesHistory";
@@ -28,6 +28,11 @@ const AllShablons = () => {
   }, []);
 
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
+
+  const [mistakes, setMistakes] = useState( {
+    name : false,
+    text : false
+  } )
 
   const [shablon, setShablon] = useState({
     isActive: false,
@@ -90,10 +95,65 @@ const AllShablons = () => {
     [dispatch]
   );
 
+
+  
+
+  const save = useCallback( () => {
+    const myFormData = new FormData()
+    myFormData.append("name" , String(shablon.shablon.name.trim()) )
+    myFormData.append("text" , String(shablon.shablon.text.trim()))
+
+    shablon.shablon.photos.forEach((e,i) => {
+      myFormData.append("photos" , e)
+    })
+    // myFormData.append("photos" , shablon.photos)
+    dispatch(postShablon([myFormData, shablon.shablon]))
+
+  } , [dispatch, shablon.shablon] )
+  const check = useCallback( () => {
+    const localMistakes = {name : false, text : false}
+    if (shablon.shablon.name.length < 3){
+      localMistakes.name = true
+    }
+    if (shablon.shablon.text.length < 3){
+      localMistakes.name = true
+    }
+    if (JSON.stringify(localMistakes) !== JSON.stringify(mistakes)){
+      setMistakes(localMistakes)
+    }
+    return Object.values(localMistakes).every(value => !value )
+  } , [mistakes, shablon.shablon] )
+
+  const exitTemplate = useCallback( () => {
+    window.Telegram.WebApp.showPopup(
+      {
+        title: translation("Сохранить?"),
+        message: translation("Сохранить шаблон перед выходом?"),
+        buttons: [
+          { id: "save", type: "default", text: translation("Да") },
+          { id: "delete", type: "destructive", text: translation("Нет") },
+        ],
+      },
+      (buttonId) => {
+        if (buttonId === "save") {
+          if (check()){
+            save()
+          }
+        }
+        if (buttonId === "delete" || buttonId === null) {
+          setShablon((value) => ({ ...value, isActive: false }));
+        }
+      }
+    );
+  } , [check, save, setShablon] )
+
+
+
   useEffect(() => {
     function back() {
       if (shablon.isActive) {
-        setShablon((value) => ({ ...value, isActive: false }));
+        exitTemplate()
+        // setShablon((value) => ({ ...value, isActive: false }));
       } else {
         navigate(-1);
       }
@@ -102,7 +162,7 @@ const AllShablons = () => {
     return () => {
       BackButton.offClick(back);
     };
-  }, [shablon.isActive, navigate]);
+  }, [shablon.isActive, navigate, exitTemplate]);
   const postStatus = useSelector((state) => state.shablon.postStatus);
   const putStatus = useSelector((state) => state.shablon.putStatus);
 
