@@ -14,7 +14,10 @@ export const deleteServerCard = createAsyncThunk(
             await axios.delete("https://www.connectbirga.ru/card" , {
                 params : {
                     id : data
-                }
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+                  }
             }
             )
 
