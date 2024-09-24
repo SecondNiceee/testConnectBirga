@@ -43,6 +43,9 @@ const AllShablons = () => {
 
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
 
+  console.log('====================================');
+  console.log(shablonsArr);
+  console.log('====================================');
   const [mistakes, setMistakes] = useState( {
     name : false,
     text : false

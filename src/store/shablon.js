@@ -9,6 +9,9 @@ export const deleteShablon = createAsyncThunk(
       await axios.delete("https://www.connectbirga.ru/template" , {
         params : {
           id : id
+        },
+        headers : {
+          "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
         }
       })
       return id
