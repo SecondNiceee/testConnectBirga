@@ -52,8 +52,8 @@ const AllShablons = () => {
   } )
 
   useEffect( () => {
-    const localMistakes = {    name : false,
-      text : false}
+    const localMistakes = {    name : true,
+      text : true}
     if (Object.values(mistakes).includes(true)){
       if (shablon.shablon.name.length > 3){
         localMistakes.name = false

@@ -1,9 +1,8 @@
-import React, { memo, useCallback, useEffect,  useMemo,  useRef } from "react";
+import React, { memo, useEffect,  useMemo,  useRef } from "react";
 import cl from "./DescriptionAndPhoto.module.css";
 import GreyText from "../../../components/UI/GreyText/GreyText";
 import FileInput from "../../../components/UI/FileInput/FileInput";
 import TextArea from "../../../components/UI/TextArea/TextArea";
-import Text from "../../Text/Text";
 import translation from "../../../functions/translate";
 const DescriptionAndPhoto = ({
   className,

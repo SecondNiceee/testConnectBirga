@@ -177,9 +177,10 @@ const Profile = () => {
       // }
       // return true;
     }
-
+    
+    
     if (!cardsActive && !changeActive) {
-      if (compare2Objects(userInfoLocal.profile, aboutULocal) === false) {
+      if (compare2Objects(userInfoLocal.profile, aboutULocal) === false && userInfo.state === "yes") {
         MainButton.enable();
         MainButton.setParams({
           text: translation("Сохранить"),
@@ -225,6 +226,7 @@ const Profile = () => {
       // })
     }
   }, [
+    userInfo.state,
     aboutU,
     changeActive,
     cardsActive,
@@ -359,6 +361,12 @@ const Profile = () => {
       transform: "translate3d(0, 0, 0)",
     };
   }, [cardsActive, changeActive]);
+
+  useEffect( () => {
+    return () => {
+      MainButton.hide()
+    }
+  } , [] )
 
   return (
     <>

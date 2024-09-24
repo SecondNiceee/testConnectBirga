@@ -111,12 +111,12 @@ export const putUserInfo = createAsyncThunk(
             await axios.put('https://www.connectbirga.ru/user' , data[0] , {
                 params : {
                     userId : data[1],
-                    headers: {
-                        "Content-Type" :'multipart/form-data',
-                        "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY,
-                        "Access-Control-Allow-Origin": "*",
-                      },
-                }
+                },
+                headers: {
+                    "Content-Type" :'multipart/form-data',
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY,
+                    "Access-Control-Allow-Origin": "*",
+                  },
             })
             return true
         }
