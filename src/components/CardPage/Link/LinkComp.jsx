@@ -46,8 +46,8 @@ const LinkComp = ({navigate, link}) => {
     
     return (
         <div  onClick={(par) => {
-            linkHandler()
-        }} className={cl.cardsLink}>
+            linkHandler(link)
+        }} className={ [cl.cardsLink, cl.blue].join(' ')}>
             <img src={imageLink} alt="" />
             <Text>{link}</Text>
         </div>
