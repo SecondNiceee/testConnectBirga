@@ -170,7 +170,8 @@ const AllShablons = () => {
       (buttonId) => {
         if (buttonId === "save") {
           if (check()){
-            save(put)
+              save(put)
+              setShablon((value) => ({ ...value, isActive: false }));
           }
           else{
             window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
