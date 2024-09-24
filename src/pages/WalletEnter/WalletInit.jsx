@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import ListInput from "./components/ListContainer/ListInput";
 import cl from "./components/One/One.module.scss";
-import CreateButton from "../Profile/components/CreateButton/CreateButton";
 import { CSSTransition } from "react-transition-group";
 import ErrorBlock from "./components/ErrorBlock/ErrorBlock";
 import { useNavigate } from "react-router-dom";
@@ -18,28 +17,28 @@ const WalletInit = () => {
     const [show , setShow] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const buttonClick = useCallback( async () => {
-        const phrase = await navigator.clipboard.readText()
-        .then(text => 
-          text
-        )
-        .catch(err => {
-          console.error('Failed to read clipboard contents: ', err);
-        });
+    // const buttonClick = useCallback( async () => {
+    //     const phrase = await navigator.clipboard.readText()
+    //     .then(text => 
+    //       text
+    //     )
+    //     .catch(err => {
+    //       console.error('Failed to read clipboard contents: ', err);
+    //     });
         
-        const phraseArray = phrase.split(' ')
-        const newArr = []
-        for (let i = 0;i < 12; i++){
-            if (i < phraseArray.length){
-                newArr.push(phraseArray[i])
-            }
-            else{
-                newArr.push('')
-            }
-        }
-        setInputs(newArr)
+    //     const phraseArray = phrase.split(' ')
+    //     const newArr = []
+    //     for (let i = 0;i < 12; i++){
+    //         if (i < phraseArray.length){
+    //             newArr.push(phraseArray[i])
+    //         }
+    //         else{
+    //             newArr.push('')
+    //         }
+    //     }
+    //     setInputs(newArr)
         
-    } , [] )
+    // } , [] )
     console.log();
 
     useEffect(  () => {
