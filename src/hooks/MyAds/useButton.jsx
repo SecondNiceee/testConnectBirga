@@ -7,7 +7,6 @@ import { setStartResponse } from "../../store/responses";
 import sortFiles from "../../functions/sortFiles";
 import translation from "../../functions/translate";
 import axios from "axios";
-import HappyHold from "../../pages/HappyHold/HappyHold";
 const menu = document.documentElement.querySelector(".FirstMenu")
 
 const choiceText = translation("ВЫБРАТЬ")
@@ -377,7 +376,7 @@ export const useButton = ({
       menu.classList.add("appearAnimation")
       menu.classList.remove("disappearAnimation")
     }
-    if (HappyHold){
+    if (happyHold){
       MainButton.setText(translation("Перейти к заданию"))
     }
     
