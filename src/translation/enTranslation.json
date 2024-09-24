@@ -280,5 +280,6 @@
     "Перейти к заданию" : "Go to task",
     "Нет примеров работ" : "No examples of work",
     "Сохранить шаблон перед выходом?" : "Save the template before exiting?",
-    "Вы удалили уже это задание." : "You've already deleted this task."
+    "Вы удалили уже это задание." : "You've already deleted this task.",
+    "КОШЕЛЕК" : "WALLET"
 }                                    

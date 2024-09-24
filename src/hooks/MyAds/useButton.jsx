@@ -321,7 +321,7 @@ export const useButton = ({
           }
           else{
             if (balance < secondPage.task.tonValue){
-              MainButton.setText("КОШЕЛЕК")
+              MainButton.setText(translation("КОШЕЛЕК"))
             }
             else{
               if (happyHold){
