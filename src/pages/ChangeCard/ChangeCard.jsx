@@ -38,7 +38,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   useEffect(  () => {
 
     cardStart =  Object.assign({}, card);
-  } , [])
+  } , [card])
 
   window.Telegram.WebApp.disableVerticalSwipes();
   
@@ -63,6 +63,35 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
   localCardSetting = cardsSetting;
   mainLocalErrors = errors;
+
+
+  const compare2Objects = useCallback( (a , b) => {
+    if (a.title !== b.title){
+      return false
+    }
+    if (a.description !== b.description){
+      return false
+    }
+    if (a.behanceLink !== b.behanceLink){
+      return false
+    }
+    if (a.dribbbleLink !== b.dribbbleLink){
+      return false
+    }
+    if (a.dropfileLink !== b.dropfileLink){
+      return false
+    }
+    if (a.photos.length !== b.photos.length){
+      return false
+    }
+    for (let i = 0; i < a.photos.length; i++){
+      if (a.photos[i].name !== b.photos[i].name){
+        return false
+      }
+    }
+    return true
+
+  }  , [])
 
   useEffect(() => {
     let photos = false;
@@ -114,7 +143,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
 
   
       
-  }}, [cardsSetting.title, cardsSetting.photos, cardsSetting.description, modalActive, isCategoryChoiceOpen]);
+  }}, [cardsSetting.title, cardsSetting.photos, cardsSetting.description, modalActive, isCategoryChoiceOpen , card, cardsSetting, compare2Objects]);
 
 
 
@@ -274,38 +303,17 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   useEffect( () => {
     return () => {
       MainButton.setText(saveText)
+      MainButton.setParams({
+        color: "#2ea5ff",
+        text_color: "#ffffff",
+        is_active: true,
+      });
     }
   } , [] )
 
   
 
-  const compare2Objects = useCallback( (a , b) => {
-    if (a.title !== b.title){
-      return false
-    }
-    if (a.description !== b.description){
-      return false
-    }
-    if (a.behanceLink !== b.behanceLink){
-      return false
-    }
-    if (a.dribbbleLink !== b.dribbbleLink){
-      return false
-    }
-    if (a.dropfileLink !== b.dropfileLink){
-      return false
-    }
-    if (a.photos.length !== b.photos.length){
-      return false
-    }
-    for (let i = 0; i < a.photos.length; i++){
-      if (a.photos[i].name !== b.photos[i].name){
-        return false
-      }
-    }
-    return true
 
-  }  , [])
 
   useEffect( () => {
     

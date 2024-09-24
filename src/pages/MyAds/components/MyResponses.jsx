@@ -9,7 +9,7 @@ import React, {
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ResponseSuspense from "./ResponseSuspense";
 import { useDispatch, useSelector } from "react-redux";
-import { clearResponses, fetchResponses } from "../../../store/responses";
+import {  fetchResponses } from "../../../store/responses";
 import MyAnimation from "./MyAnimation";
 const MyResponses = forwardRef(
   (

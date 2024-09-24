@@ -31,18 +31,18 @@ const categorys = createSlice(
             categoryStatus : null,
             subCategoryStatus : null,
             category : [],
-            subCategory : []
+            subCategory : [],
         },
         extraReducers : builder => {
             builder.addCase(getCategorys.pending, (state) => {state.categoryStatus = 'pending'})
-            builder.addCase(getCategorys.fulfilled, (state, action) => {state.categoryStatus = 'complete' 
+            builder.addCase(getCategorys.fulfilled, (state, action) => {state.categoryStatus = 'OK' 
                 state.category = action.payload
             })
             builder.addCase(getCategorys.rejected, (state) => {state.categoryStatus = 'error'} )
 
 
             builder.addCase(getSubCategorys.pending, (state) => {state.subCategoryStatus = 'pending'})
-            builder.addCase(getSubCategorys.fulfilled, (state, action) => {state.subCategoryStatus = 'complete'
+            builder.addCase(getSubCategorys.fulfilled, (state, action) => {state.subCategoryStatus = 'OK'
                 state.subCategory = action.payload
             })
             builder.addCase(getSubCategorys.rejected, (state) => {state.subCategoryStatus = 'error'})

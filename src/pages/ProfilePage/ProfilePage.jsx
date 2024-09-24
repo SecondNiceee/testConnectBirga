@@ -14,10 +14,11 @@ import Compact from "../../components/UI/Compact/Compact";
 import "../MyAds/MyAds.css"
 import BackButton from "../../constants/BackButton";
 import { useNavigate } from "react-router-dom";
-// const parOne = 858931156;
+// const parOne = 2144832745;
 // const parTwo = 1;
 
 const menu = document.documentElement.querySelector(".FirstMenu")
+let enter = true
 const ProfilePage = ({ ...props }) => {
   useEffect( () => {
     
@@ -70,7 +71,9 @@ const ProfilePage = ({ ...props }) => {
   useEffect( () => {
     function backFunction(){
         if (oneCards.isOpen){
+            enter = false
             setOneCard((value) => ({...value , isOpen : false}))
+            
         }
         else{
             navigate("/")
@@ -225,7 +228,7 @@ const ProfilePage = ({ ...props }) => {
             mountOnEnter
             unmountOnExit
           >
-            <CardPage style = {oneCards.isOpen ? {transform : "translateX(0px)"} : {}} card={oneCards.card} />
+            <CardPage style = {enter ? {transform : "translateX(0px)"} : {}} card={oneCards.card} />
           </CSSTransition>
 
 

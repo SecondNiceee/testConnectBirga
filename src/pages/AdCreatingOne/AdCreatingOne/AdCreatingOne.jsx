@@ -15,9 +15,9 @@ import Text from "../../../components/Text/Text";
 import translation from "../../../functions/translate";
 import en from "../../../constants/language";
 
+
+
 // eslint-disable-next-line
-
-
 Date.prototype.addHours = function (h) {
   this.setTime(this.getTime() + h * 60 * 60 * 1000);
   return this;
@@ -175,7 +175,7 @@ const AdCreatingOne = ({
         }
       }
     },
-    [setTaskInformation, state, taskInformation.time, taskInformation]
+    [setTaskInformation, state, taskInformation.myAds]
   );
 
   const handleCancel = useCallback(() => {
@@ -252,7 +252,7 @@ const AdCreatingOne = ({
     else{
       setTaskInformation( (value) => ({...value , photos : e}) )
     }
-  } )
+  } , [taskInformation.myAds , setTaskInformation] )
 
 
   return (

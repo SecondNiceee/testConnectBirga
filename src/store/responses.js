@@ -111,7 +111,7 @@ export const setStartResponse = createAsyncThunk(
                   text:
                   messageOne + ` «<b>${advertisement.taskName}</b>«` ,
                   buttonUrl:
-                    "https://birga.ywa.su/MyAds?open=1" ,
+                    "https://www.connectbirga.ru/MyAds?open=1" ,
                     languageCode : en ? "en" : "ru"
                 },
                 headers : {
@@ -205,7 +205,7 @@ export const fetchResponses = createAsyncThunk(
         
         let im = await axios.get('https://www.connectbirga.ru/response/findByUser' , {
             params : {
-                "userId" : 858931156,
+                "userId" : 2144832745,
                 page : par[1],
                 limit : 4
                 

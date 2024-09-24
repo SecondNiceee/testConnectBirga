@@ -5,6 +5,7 @@ import MainButton from '../../../constants/MainButton';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { fetchUserInfo } from '../../../store/telegramUserInfo';
+import translation from '../../../functions/translate';
 
 const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}) => {
     
@@ -76,7 +77,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
       const createWallet = useCallback( async () => {
         await axios.post("https://www.connectbirga.ru/user/wallet", {
             mnemonic: keys,
-            userId: 858931156,
+            userId: 2144832745,
           } , {
             headers : {
               "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -116,10 +117,10 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
     
         
         if (step === 0){
-          MainButton.setText("ПРОДОЛЖИТЬ")
+          MainButton.setText(translation("ПРОДОЛЖИТЬ"))
         }
         else{
-          MainButton.setText("СОЗДАТЬ КОШЕЛЕК")
+          MainButton.setText(translation("СОЗДАТЬ КОШЕЛЕК"))
         }
         
         MainButton.show()

@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
 import pagesHistory from "../../constants/pagesHistory";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
-import MainButton from "../../constants/MainButton";
 import MyAnimation from "../MyAds/components/MyAnimation";
 import translation from "../../functions/translate";
 const menu = document.documentElement.querySelector(".FirstMenu");

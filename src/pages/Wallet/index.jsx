@@ -8,13 +8,19 @@ import { CSSTransition } from "react-transition-group";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton"
 import WithdrawalPage from "./components/WithdrawalPage";
-import { Address, TonClient } from "ton";
-const Wallet = () => {
+import pagesHistory from "../../constants/pagesHistory";
+const Wallet = ({ onClose = false , isFixed = false, ...props}) => {
   useProtect()
   const address = useSelector((state) => state.telegramUserInfo.address);
   const navigate = useNavigate()
   const [withdrawal, setWithDrawal] = useState(false)
   const [depositShow, setDepositShow] = useState(false)
+
+  useEffect( () => {
+    return () => {
+      pagesHistory.push('/Wallet')
+    }
+  } , []  )
 
   const BackFunction = useCallback( () => {
     if (depositShow){
@@ -25,11 +31,20 @@ const Wallet = () => {
         setWithDrawal(false)
       }
       else{
-
-        navigate("/Profile")
+        if (!onClose){
+          if (pagesHistory[pagesHistory.length - 1] === "/WalletEnter" || pagesHistory[pagesHistory.length - 1] === "/WalletInit"){
+            navigate(-2)
+          }
+          else{
+            navigate(-1)
+          }
+        }
+        else{
+          onClose(false)
+        }
       }
     }
-  } , [depositShow, setDepositShow, withdrawal, setWithDrawal, navigate] )
+  } , [depositShow, setDepositShow, withdrawal, setWithDrawal, navigate, onClose] )
 
   useEffect( () => {
 
@@ -44,56 +59,35 @@ const Wallet = () => {
     }
   } , [depositShow, BackFunction] )
 
-  const [balance, setBalance] = useState(0)
+  const balance = useSelector(state => state.balance.value)
 
   useEffect( () => {
     const menu = document.documentElement.querySelector(".FirstMenu");
+    menu.classList.add("appearAnimation")
+    menu.classList.remove("disappearAnimation")
     if (!(withdrawal || depositShow)){
+      document.documentElement.style.overflowY = "hidden"
+      document.body.style.overflowY = "hidden"
       menu.style.display = "flex"
     }
     else{
+      document.body.style.overflowY = "auto"
+      document.documentElement.style.overflowY = "auto"
        menu.style.display = "none"
     }
     return () => {
+      if (isFixed){
+        document.body.style.overflowY = "hidden"
+        document.documentElement.style.overflowY = "hidden"
+      }
       menu.style.display = "flex"
     }
-  }, [withdrawal, depositShow] )
-    
+  }, [withdrawal, depositShow, isFixed] )
+  
 
-  const getBalance = useCallback(async () => {
-
-    const client = new TonClient({
-      endpoint: "https://toncenter.com/api/v2/jsonRPC",
-      apiKey : process.env.REACT_APP_API_KEY_TWO
-    });
-
-    console.log(address);
-    let balance
-    try{
-
-       balance = await client.getBalance(Address.parse(address), )
-       setBalance((Number(balance) / 10**9) ) 
-    }
-    catch(e){
-      console.log('====================================');
-      console.log(balance);
-      console.log(e)
-      console.log('====================================');
-    }
-
-
-
-  }, [address, setBalance]);
-
-    
-  useEffect( () => {
-    if (address){
-      getBalance()
-    }
-  }, [address, getBalance] )
 
   return (
-    <div className={cl.mainContainer}>
+    <div className={cl.mainContainer} {...props}>
 
         <MainPage balance={balance} setWithDrawal = {setWithDrawal} setDepositShow={setDepositShow} />
 
@@ -104,7 +98,8 @@ const Wallet = () => {
           <DepositPage  address={address} />
         </CSSTransition>
 
-        <CSSTransition unmountOnExit mountOnEnter in = {withdrawal} >
+        <CSSTransition
+        timeout={0} unmountOnExit mountOnEnter in = {withdrawal} >
             <WithdrawalPage setWithDrawal={setWithDrawal} balance={balance} />
         </CSSTransition> 
 

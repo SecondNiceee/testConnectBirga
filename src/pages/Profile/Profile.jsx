@@ -6,11 +6,9 @@ import React, {
   useState,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion";
 
 import { CSSTransition } from "react-transition-group";
 
-import Burger from "../../components/UI/Burger/Burger";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
 import userPhoto from "../../images/userPhoto/user.png";
@@ -40,12 +38,6 @@ import en from "../../constants/language";
 const lett = translation("лет");
 const goda = translation("года");
 const god = translation("год");
-const variants = {
-  initial: { opacity: 1 },
-  animate: { opacity: 1 },
-  exit: { opacity: 0 },
-  transition: { duration: 0.4 },
-};
 let aboutULocal = null;
 
 let userInfoLocal = null;
@@ -62,6 +54,7 @@ const Profile = () => {
   const [index, setIndex] = useState(1);
 
   useEffect(() => {
+    MainButton.hide()
     return () => {
       pagesHistory.push("/Profile");
     };
@@ -243,7 +236,7 @@ const Profile = () => {
   useEffect(() => {
     BackButton.show();
     function goBack() {
-      navigate("/");
+      navigate(-1);
     }
     if (cardsActive || changeActive) {
       BackButton.offClick(goBack);
@@ -365,21 +358,17 @@ const Profile = () => {
     return {
       transform: "translate3d(0, 0, 0)",
     };
-  }, [cardsActive, changeActive, changer]);
+  }, [cardsActive, changeActive]);
 
   return (
     <>
       {userInfo.state !== "yes" ? (
         <MyLoader />
       ) : (
-        <motion.div
+        <div
+        
           ref={mainRef}
           className="profile__wrapper"
-          variants={variants}
-          initial="initial"
-          animate="animate"
-          exit="exit"
-          transition="transition"
           style={profileStyle}
         >
           <div className="profile__container">
@@ -491,7 +480,7 @@ const Profile = () => {
           </CSSTransition> */}
 
 
-        </motion.div>
+        </div>
       )}
     </>
   );

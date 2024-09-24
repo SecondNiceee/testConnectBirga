@@ -15,7 +15,7 @@ const BudgetInput = ({
   errorTon
 }) => {
   const KisInteger = function (obj) {
-    return "0123456789".includes(obj[obj.length - 1]);
+    return "0123456789,".includes(obj[obj.length - 1]);
   };
 
   function budgetWidth() {
@@ -28,20 +28,20 @@ const BudgetInput = ({
   }
 
   function format(strPar) {
-    let str = strPar;
-    if (str.length > 1) {
-      if (str[0] === "0") {
-        str = str.replace("0", "");
+    const one = strPar.split(',')[0]
+    const two = strPar.split(',')[1]
+    if (two){
+      return Number(one.replace(/\s/g, '')).toLocaleString("ru-RU") + ',' + two 
+    }
+    else{
+      if (strPar.includes(',')){
+        return Number(one.replace(/\s/g, '')).toLocaleString("ru-RU") + ','
+      }
+      else{
+        return Number(one.replace(/\s/g, '')).toLocaleString("ru-RU") 
       }
     }
-    str = str.replaceAll(" ", "").substring(0, 6);
-    const s = str.length;
-    const chars = str.split("");
-    const strWithSpaces = chars.reduceRight((acc, char, i) => {
-      const spaceOrNothing = (s - i) % 3 === 0 ? " " : "";
-      return spaceOrNothing + char + acc;
-    }, "");
-    return strWithSpaces[0] === " " ? strWithSpaces.slice(1) : strWithSpaces;
+
   }
 
   const ref1 = useRef(null);
@@ -56,6 +56,7 @@ const BudgetInput = ({
       <Text className={[cl.input, cl.hidden].join(" ")} ref={ref1}></Text>
       <Text style={ budget ? {display : 'none'} : {color : style.color}  }  className = { [cl.input , cl.absolute].join(' ') }> 0 </Text>
       <input 
+      autoComplete="off"
          style={style}
         value={budget}
         
@@ -98,7 +99,7 @@ const BudgetInput = ({
           <Text className={cl.text}>
           Стоимость
             </Text>
-            <span> {tonValue} USDT </span> 
+            <span> {tonValue} TON </span> 
           </div>
             <img src={Info} alt="" />
       </div>
@@ -106,7 +107,7 @@ const BudgetInput = ({
       :
           <div className={cl.bottomTextContainer}>
             <Text className={cl.text} style={{color : '#FF6767'}}>
-              Сумма должна быть больше 5 USD
+              Сумма должна быть больше 0.1 TON
               </Text>
           </div>
 

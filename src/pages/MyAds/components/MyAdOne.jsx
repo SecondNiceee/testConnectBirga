@@ -3,7 +3,6 @@ import React, {  memo, useEffect, useMemo, useRef} from "react";
 import MyAdsBlock from "./MyAdsBlock";
 import PickerContent from "./PickerContent";
 import { useSelector } from "react-redux";
-import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 
 // const popup = initPopup();
 const MyAdOne = ({
@@ -57,10 +56,6 @@ const MyAdOne = ({
   }, [GreyIntWidth]);
 
 
-
-  const status = useSelector(state => state.information.myOrderStatus)
-
-  const responseStatus = useSelector(state => state.responses.status)
 
   const containerRef = useRef()
 

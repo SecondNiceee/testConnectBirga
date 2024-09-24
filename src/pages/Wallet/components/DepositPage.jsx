@@ -9,16 +9,20 @@ import copyTextToClipboard from "../../../functions/copyTextToClipboard";
 import CopyText from "../../../components/UI/CopyText/CopyText";
 import { QRCodeCanvas} from 'qrcode.react';
 import icon from "../../../images/icons/ThisTon.svg"
+import Text from "../../../components/Text/Text";
 
 
 
-const DepositPage = ({address}) => {
+const DepositPage = ({address, ...props}) => {
   const [copyState, setCopyState] = useState(false);
 
   const clickHandler = useCallback(() => {
+
     if (address) {
+      window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
       copyTextToClipboard(address);
       setCopyState((value) => !value);
+
     }
   }, [address]);
 
@@ -27,9 +31,9 @@ const DepositPage = ({address}) => {
     <div className={cl.depositContainer}>
       {address ? (
         <>
-          <p className={cl.capText}>Сделать депозит USDT (TON)</p>
+          <Text className={cl.capText}>Сделать депозит TON</Text>
 
-          <QRCodeCanvas level="Q"  imageSettings={{
+          <QRCodeCanvas level="L"  imageSettings={{
             src : icon,
             height : 22,
             width : 22,

@@ -1,6 +1,7 @@
 import React, { memo } from "react";
 import cl from "./PayTextContainer.module.scss";
 import { useNavigate } from "react-router-dom";
+import translation from "../../../../functions/translate";
 const PayTextContainer = ({...props}) => {
   const navigate = useNavigate()
   const clickHandler = () => {  
@@ -10,7 +11,7 @@ const PayTextContainer = ({...props}) => {
     <div {...props} className={cl.textContainer}>
       <div className={cl.one}>
         <p>
-          Что такое <span>кошелек</span> и для чего он нужен?
+          {translation("Что такое ")}<span>{translation("кошелек")}</span>{translation(" и для чего он нужен?")}
         </p>
         <svg
           width="13"
@@ -26,7 +27,7 @@ const PayTextContainer = ({...props}) => {
         </svg>
       </div>
       <p>
-        Уже есть кошелек? <span onClick={clickHandler}>Войти</span>
+         {translation("Уже есть кошелек?")} <span onClick={clickHandler}>{translation("Войти")}</span>
       </p>
     </div>
   );

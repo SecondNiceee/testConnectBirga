@@ -14,7 +14,10 @@ export const deleteServerCard = createAsyncThunk(
             await axios.delete("https://www.connectbirga.ru/card" , {
                 params : {
                     id : data
-                }
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+                  }
             }
             )
 
@@ -127,11 +130,12 @@ export const fetchUserInfo = createAsyncThunk(
   async function () {
     try {
 
-        //858931156
+        //2144832745
         let firstName = "Коля"
         let lastName = "Титов"
-        let UserId = 858931156
+        let UserId = 2144832745
         let user;
+        
         try{
 
              user = await axios.get("https://www.connectbirga.ru/user/findOne", {
@@ -142,11 +146,14 @@ export const fetchUserInfo = createAsyncThunk(
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
             });
+            console.log('====================================');
+            console.log(user);
+            console.log('====================================');
         }
         catch(e){
             await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
                 params : {
-                    id : 858931156
+                    id : 2144832745
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -201,7 +208,8 @@ export const fetchUserInfo = createAsyncThunk(
             stage : user.data.stage,
             deals : user.data.deals,
             completedTasks : user.data.completedAdvertisements,
-            cards : localCards
+            cards : localCards,
+            congradulations : user.data.congradulations
           } );
     }
     catch (e){
@@ -270,6 +278,7 @@ const telegramUserInfo = createSlice({
       state.mnemonic = action.payload.mnemonic
       state.address = action.payload.address
       state.profile.cards.sort((a, b) => a.id - b.id)
+      state.congradulations = action.payload.address
     });
     builder.addCase(fetchUserInfo.rejected, (state) => {
       state.status = "error";

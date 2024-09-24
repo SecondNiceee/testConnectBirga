@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import "./MyAds.css";
 
-import { motion, transform } from "framer-motion";
+import { motion } from "framer-motion";
 import LastAds from "./components/LastAds";
 import MyAdOne from "./components/MyAdOne";
 import AboutReaction from "./components/AboutReaction";
@@ -24,9 +24,10 @@ import makeNewFile from "../../functions/newMakeFile";
 import axios from "axios";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import pagesHistory from "../../constants/pagesHistory";
-import MainButton from "../../constants/MainButton";
 import translation from "../../functions/translate";
 import AdCreatingThree from "../AdCreatingThree/AdCreatingThree";
+import HappyHold from "../HappyHold/HappyHold";
+import Wallet from "../Wallet";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -67,7 +68,10 @@ const MyAds = ({isPage = false}) => {
   const [isPageValueOne , setPageValueOne] = useState(true)
   const [isPageValueTwo , setPageValueTwo] = useState(true)
   const [buyPage, setBuyPage] = useState(false)
-  
+  const [walletH, setWalletH] = useState(false)
+  console.log('====================================');
+  console.log(buyPage);
+  console.log('====================================');
   const [valueOne , setValueOne] = useState("all")
 
   const [valueTwo , setValueTwo] = useState("all")
@@ -106,7 +110,7 @@ const MyAds = ({isPage = false}) => {
 
   const dispatch = useDispatch()
 
-
+  const [happyHold , setHappyHold] = useState(false)
 
   const [details, setDetails] = useState({
     isActive: false,
@@ -555,6 +559,8 @@ const MyAds = ({isPage = false}) => {
   const postStatus = useSelector( state => state.information.postTaskStatus )
 
 
+  console.log(walletH);
+  
   useButton({
     myAdOneResponse : myAdOneResponse,
     myAdOneAdvertisement : myAdOneAdvertisement,
@@ -579,11 +585,16 @@ const MyAds = ({isPage = false}) => {
     details : details,
     secondPage : secondPage,
     localSecondPage : localSecondPage,
-    setDetails : setDetails,
     save : save,
     setOneCard : setOneCard,
     lastAdsTwo : lastAdsTwo,
-    setLastAdsTwo : setLastAdsTwo
+    setLastAdsTwo : setLastAdsTwo,
+    setBuyPage : setBuyPage,
+    buyPage : buyPage,
+    happyHold : happyHold,
+    setHappyHold : setHappyHold,
+    walletH : walletH,
+    setWalletH : setWalletH
   })
 
 
@@ -632,19 +643,25 @@ const MyAds = ({isPage = false}) => {
   // } , [putStatus] )
 
 
+  const style = useMemo( () => {
+    if (walletH){
+      return {
+        transform : "translateX(-100vw)"
+      }
+    }
+    return {}
+    
+  }, [walletH] )
 
-
-
+  console.log(secondPage.task)
 
   return (
     <>
       { postStatus === "pending" ? (
         <MyLoader />
       ) : (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.1 }}
+        <div
+          style={style}
           className="MyAdsContainer"
         >
 
@@ -790,13 +807,34 @@ const MyAds = ({isPage = false}) => {
         mountOnEnter
 
         >
-          <AdCreatingThree taskInformation={{tonValue : 1}} />
+          <AdCreatingThree taskInformation={{tonValue : secondPage.task.tonValue}} />
+        </CSSTransition>
+
+        <CSSTransition             
+            in={happyHold}
+            timeout={400}
+            classNames="left-right"
+            mountOnEnter
+            unmountOnExit
+        >
+          <HappyHold task={myAdOneAdvertisement} response={myAdOneResponse} />
+        </CSSTransition>
+
+        <CSSTransition in = {walletH}
+        timeout={400}
+        classNames={""}
+        mountOnEnter
+        unmountOnExit
+        >
+          <Wallet isFixed = {true} onClose = {setWalletH} />
         </CSSTransition>
 
 
 
 
-        </motion.div>
+        </div>
+
+
       )}
     </>
   );

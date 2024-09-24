@@ -1,5 +1,7 @@
 import React from 'react';
 import cl from "../index.module.scss"
+import translation from '../../../functions/translate';
+import Text from '../../../components/Text/Text';
 export const clickHandler = () => {
     window.Telegram.WebApp.openTelegramLink("https://t.me/wallet/start");
 }
@@ -13,11 +15,11 @@ const StageTwo = () => {
         </div>
         <div className={cl.stageWithButton}>
             <p>
-            Перейдите в <span onClick={clickHandler} className={cl.blue}>Wallet.</span> Войдите в кошелёк TON Space, выберите Send -
-            {">"} <span className={cl.green}>Tether USD</span> -{">"} External Wallet
+            { translation("Перейдите в ")} <span onClick={clickHandler} className={cl.blue}>Wallet.</span> {translation("Войдите в кошелёк TON Space, выберите Send ->")}
+             <span className={cl.green}> Tether USD </span> -{">"} External Wallet
             </p>
             <button onClick={clickHandler}>
-                <p>Купить на Wallet</p>
+                <Text>Купить на Wallet</Text>
                 <svg
                     width="10"
                     height="10"

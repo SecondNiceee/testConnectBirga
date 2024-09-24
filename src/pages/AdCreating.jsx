@@ -28,7 +28,6 @@ const AdCreating = () => {
 const endText = translation("СОЗДАТЬ ЗАДАНИЕ")
 const continueText = translation("ДАЛЕЕ")
 
-const translateText = translation("Вы уверены, что хотите создать новое задание?")
 
 
   useEffect( () => {
@@ -93,6 +92,10 @@ const translateText = translation("Вы уверены, что хотите со
 
   const status = useSelector((state) => state.information.postTaskStatus);
 
+  const subCategorysStatus = useSelector(state => state.categorys.subCategoryStatus)
+
+  const categorysStatus = useSelector(state => state.categorys.categoryStatus)
+
   const categorys = useSelector((state) => state.categorys.category);
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);
@@ -137,7 +140,7 @@ const translateText = translation("Вы уверены, что хотите со
       }
     }
     if (spet === 1) {
-      if (error.ton && secondPage.tonValue >= 5) {
+      if (error.ton && secondPage.tonValue >= 0.1) {
         setError({ ...error, ton: false });
       }
       if (document.getElementById("dateSwapper").style.transform) {
@@ -208,15 +211,15 @@ const translateText = translation("Вы уверены, что хотите со
     // dispatch(addMyAds(taskInformationCopy))
 
     
-    navigate("/MyAds");
+    
     
     // MainButton.hide();
     spet = 0;
   }
   async function post(el) {
     let myFormData = new FormData();
-    // myFormData.append("userId", 858931156 );
-     myFormData.append("userId", String(858931156)  );
+    // myFormData.append("userId", 2144832745 );
+     myFormData.append("userId", String(2144832745)  );
     myFormData.append("title", String(el.taskName.trim()));
     myFormData.append("description", String(el.taskDescription.trim()));
     myFormData.append("deadline", "1");
@@ -240,7 +243,9 @@ const translateText = translation("Вы уверены, что хотите со
       }
     }
     window.Telegram.WebApp.HapticFeedback.notificationOccurred("success")
-    dispatch(postMyTask([myFormData, el.photos]));
+    await dispatch(postMyTask([myFormData, el.photos]))
+    navigate("/MyAds")
+    
     // for (let i = 0 ; i < 1; i++){
     //   try{
     //     console.log("Создание задания")
@@ -308,7 +313,7 @@ const translateText = translation("Вы уверены, что хотите со
           }
         }
       }
-  } , [spet]  )
+  } , []  )
   const mainRef = useRef(null)
   function checking() {
     let taskName = false;
@@ -327,7 +332,7 @@ const translateText = translation("Вы уверены, что хотите со
         );
       }
       case 1: {
-        if (secondPage.tonValue < 5) {
+        if (secondPage.tonValue < 0.1) {
           ton = true;
         }
         if (document.getElementById("dateSwapper").style.transform) {
@@ -390,12 +395,7 @@ const translateText = translation("Вы уверены, что хотите со
   } , [firstPage.taskDescription, navigate] )
 
 
-  function clearInput(){
-    var inputs = document.getElementsByTagName('input');
-    for (var i = 0; i < inputs.length; i++) {
-      inputs[i].blur();
-    }
-  }
+
 
   // eslint-disable-next-line
   const goForward = () => {
@@ -406,13 +406,9 @@ const translateText = translation("Вы уверены, что хотите со
       mainRef.current.classList.remove('oneBack')
       mainRef.current.classList.remove('twoBack')
       if (spet === 0){
-
-
-          clearInput()
           mainRef.current.classList.add('stepOne')
       }
       if (spet === 1){
-        clearInput()
         mainRef.current.classList.add('stepTwo')
       }
 
@@ -427,7 +423,6 @@ const translateText = translation("Вы уверены, что хотите со
         }
         if (spet === 3){
 
-          clearInput()
           window.Telegram.WebApp.showPopup({
             title: create,
             message: textButton,
@@ -443,6 +438,7 @@ const translateText = translation("Вы уверены, что хотите со
             if (buttonId === "save") {
               finish();
             }
+            
           } )
 
 
@@ -468,11 +464,11 @@ const translateText = translation("Вы уверены, что хотите со
       endError: false})
     if (isCategoryChoiceOpen || isSubcategoryChoiceOpen){
       if (isCategoryChoiceOpen){
-        clearInput()
+
         setCatagoryChoiceOpen(false)
       }
       else{
-        clearInput()
+
         setSubcategoryChoiceOpen(false)
       }
     }
@@ -487,27 +483,27 @@ const translateText = translation("Вы уверены, что хотите со
       } else {
         
         if (spet === 1){
-          clearInput()
+
             mainRef.current.classList.remove('stepOne')
             mainRef.current.classList.remove('stepTwo')
             mainRef.current.classList.add('oneBack')
           
         }
         if (spet === 2){
-          clearInput()
+
             mainRef.current.classList.remove('stepTwo')
             mainRef.current.classList.remove('stepOne')
             mainRef.current.classList.add('twoBack')
           
         }
-        clearInput()
+
         spet -= 1;
         MainButton.setText(continueText)
         // backAnimte();
   
       }
     }
-  } , [isCategoryChoiceOpen , isSubcategoryChoiceOpen,setCatagoryChoiceOpen,setSubcategoryChoiceOpen, navigate ])
+  } , [isCategoryChoiceOpen , isSubcategoryChoiceOpen,setCatagoryChoiceOpen,setSubcategoryChoiceOpen, navigate, continueText ])
 
   const GreyIntWidth = useMemo(() => {
     return (document.documentElement.clientWidth - 36) / 2;
@@ -540,7 +536,7 @@ const translateText = translation("Вы уверены, что хотите со
         MainButton.hide();
       
     };
-  }, []);
+  }, [continueText]);
 
 
 
@@ -572,7 +568,7 @@ const translateText = translation("Вы уверены, что хотите со
       ref={mainRef}
       className="AdCreating__container"
     >
-      {status === "pending" ? (
+      {status === "pending" || categorysStatus !== "OK" || subCategorysStatus !== "OK" ? (
         <>
           <PostLoader />
         </>

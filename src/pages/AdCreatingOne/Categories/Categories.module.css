@@ -29,6 +29,7 @@
     border-bottom-right-radius: 9.97px;
     left: 0;
     top: calc(50% - 1px);
+    cursor: pointer;
 }
 .Categories__block{
     width: 100%;

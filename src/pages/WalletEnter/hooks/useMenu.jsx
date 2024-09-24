@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import menu from '../../../constants/menu';
+import { useEffect } from 'react';
+
 
 const useMenu = () => {
     useEffect( () => {

@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import cl from "../index.module.scss"
+import translation from '../../../functions/translate';
 const AlertBlock = () => {
     return (
     <div className={cl.alertBlock}>
-        <p>Обратите внимание!</p>
+        <p>{ translation("Обратите внимание!")}</p>
         <p>
-          Убедитесь, то вы переводите свои токены на правильный адрес и в
-          правильную сеть (TON)
+           {translation("Убедитесь, что вы переводите свои токены на правильный адрес и в правильную сеть (TON).")}
         </p>
       </div>
     );

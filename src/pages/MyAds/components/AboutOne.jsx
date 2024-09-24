@@ -66,7 +66,7 @@ const AboutOne = ({
         return responces
       }
       if (filterBy === "withCompletedTasks"){
-        return [...responces.filter(e => e.user.completedAdvertisements.length > 0)]
+        return [...responces.filter(e => Number(e.user.completedAdvertisements) > 0)]
       }
       if (filterBy === "withCards"){
         return [...responces.filter(e => e.user.cardsNumber > 0)]

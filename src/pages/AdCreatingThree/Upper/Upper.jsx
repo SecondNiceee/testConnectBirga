@@ -1,15 +1,18 @@
 import React, { memo } from 'react';
 import cl from './Upper.module.scss'
+import translation from '../../../functions/translate';
 const Upper = () => {
     const watchFunction = () => {
-        alert("Куда-то там переход")
+        window.Telegram.WebApp.openTelegramLink(
+            "https://t.me/connect_work_news"
+          );
+        
     }
     return (
         <div className={cl.container}>
-            <h3>Холдирование</h3>
-            <p>Перед выбором исполнителя 
-            необходимо захолдировать токены </p>
-            <p>Подробнее <span>см.здесь</span></p>
+            <h3>{translation("Холдирование")}</h3>
+            <p>{translation(" Перед выбором исполнителя необходимо захолдировать токены ")}</p>
+            <p>{translation("Подробнее")} <span onClick={watchFunction}>{translation("см.здесь")}</span></p>
         </div>
     );
 };

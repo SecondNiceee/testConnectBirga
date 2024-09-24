@@ -1,9 +1,8 @@
-import React, { memo, useCallback, useState } from "react";
+import React, { memo } from "react";
 import cl from "./Two.module.scss";
 import UpTextContainer from "../UpText/UpTextContainer";
 import InputBlock from "../InputBlock/InputBlock";
-import ListContainer from "../ListContainer/ListContainer";
-import ListInput from "../ListContainer/ListInput";
+import translation from "../../../../functions/translate";
 
 const numberNames = [
   "Первое слово",
@@ -26,7 +25,7 @@ const Two = ({values , mistakes, changeHandler, numbers}) => {
       <UpTextContainer className={cl.UpTextContainer} />
       <div className={cl.inputBlocks}>
         {numbers.map((e, i) => (
-          <InputBlock  mistake = {mistakes[i]} value={values[i]} onChange={changeHandler} index={i} key={i} placeholder={numberNames[e-1]} number={e} />
+          <InputBlock  mistake = {mistakes[i]} value={values[i]} onChange={changeHandler} index={i} key={i} placeholder={ translation(numberNames[e-1])} number={e} />
         ))}
       </div>
     </div>

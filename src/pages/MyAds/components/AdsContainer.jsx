@@ -8,12 +8,24 @@ import MyAnimation from './MyAnimation';
 const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, myAdsArray}) => {
 
 
-    const [page , setPage] = useState(1)
+    const [page , setPage] = useState(2)
     const orderStatus = useSelector(state => state.information.myOrderStatus)
     const elementRef = useRef(null)
     const dispatch = useDispatch()
 
-  
+    // eslint-disable-next-line
+    const [reFetch, setReFetch] = useState(false)
+
+    useEffect(() =>{
+
+        dispatch(fetchMyOrders(1));
+      return () => {
+        dispatch(clearMyOrders())
+      }
+    },[dispatch] )
+
+    console.log(page)
+    console.log(orderStatus)
     const getMore = useCallback(async () => {
       dispatch(fetchMyOrders(page));
       setPage(page + 1);
@@ -22,12 +34,16 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
     const onIntersaction = useCallback(
       (entries) => {
         const firtEntry = entries[0];
-
-        if (firtEntry.isIntersecting && orderStatus !== "all") {
+        if (!firtEntry.isIntersecting && orderStatus !== "all" && page === 2){
+          setTimeout( () => {
+            setReFetch( (value) => (!value) )
+          } , 500 )
+        }
+        if (firtEntry.isIntersecting && orderStatus !== "all" && orderStatus !== "loading") {
           getMore();
         }
       },
-      [orderStatus, getMore]
+      [orderStatus, getMore, setReFetch, page]
     );
 
 
@@ -40,7 +56,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
         observer.disconnect();
       };
       // eslint-disable-next-line
-    }, [myAdsArray]);
+    }, [myAdsArray, onIntersaction]);
 
     const text = useMemo( () => {
       switch (valueTwo){
@@ -78,7 +94,16 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
 
                 );
               })}
-              { (orderStatus !== "all")  &&  <MyLoader ref={elementRef}  style = {{ height : "200px" , marginLeft : "-16px"}} />}
+              { (orderStatus !== "all")  &&  <MyLoader   style = {{ height : "200px" , marginLeft : "-16px"}} />}
+              { (orderStatus !== "all")  &&              <div ref={elementRef} style={{
+                width : "1px",
+                height : "2000px",
+                position : "absolute",
+                bottom : "0px",
+                opacity : "0",
+                left : "150vw",
+                zIndex : -1
+            }} className="catch_block"></div>}
 
             </div>
         }

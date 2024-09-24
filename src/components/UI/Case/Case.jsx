@@ -121,7 +121,7 @@ const Case = ({
                   "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" +
                     String(card.id) +
                     "m" +
-                    858931156
+                    2144832745
                 );
               }}
               className={cl.circle}
@@ -180,7 +180,7 @@ const Case = ({
                   "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" +
                     String(card.id) +
                     "m" +
-                    858931156
+                    2144832745
                 );
               }}
             >

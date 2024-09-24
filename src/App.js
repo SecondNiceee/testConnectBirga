@@ -3,7 +3,6 @@ import {
   useEffect,
   Suspense,
   useRef,
-  useCallback,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
@@ -27,14 +26,11 @@ import { fetchUserInfo } from "./store/telegramUserInfo";
 import { Triangle } from "react-loader-spinner";
 import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
-import { fetchResponses } from "./store/responses";
+
 import { fetchAllIds } from "./store/saves";
 
-import { Address, TonClient } from "ton";
-import {
-  mnemonicNew,
-} from "ton-crypto";
-import axios from "axios";
+import { getBalance } from "./store/balance";
+import HappyPage from "./pages/HappyHold/HappyPage";
 
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -50,7 +46,6 @@ const WalletInit = lazy( () => (import("./pages/WalletEnter/WalletInit")) )
 
 
 export const API_KEY = process.env.REACT_APP_API_KEY;
-
 const MyLoader = () => {
   return (
     <div
@@ -84,17 +79,18 @@ const AnimatedSwitch = () => {
   useEffect(() => {
 
     if (location.pathname === "/AdCreating" || location.pathname === "/createWallet" || location.pathname === "/Wallet" || location.pathname === "/WalletInit") {
-        if (location.pathname === "/Wallet" || location.pathname === "/WalletInit"){
+        if (location.pathname !== "/Wallet"){
           document.documentElement.style.overflowY = "auto";
           document.body.style.overflowY = "auto"
         }
-        else{
-          document.documentElement.style.overflowY = "auto";
-          document.body.style.overflowY = "auto"
-        }
+        
         if(location.pathname !== "/Wallet"){
           menuRef.current.classList.add("disappearAnimation");
           menuRef.current.classList.remove("appearAnimation");
+        }
+        else{
+          menuRef.current.classList.add("appearAnimation");
+          menuRef.current.classList.remove("disappearAnimation");
         }
         
     } else {
@@ -106,8 +102,11 @@ const AnimatedSwitch = () => {
   }, [location.pathname]);
 
 
-
-  console.log("хай");
+  // useEffect( () => {
+  //   if (true){
+  //     navigate('/HappyPage')
+  //   }
+  // } , [] )
   
   
   return (
@@ -216,7 +215,15 @@ const AnimatedSwitch = () => {
                 </Suspense>
               }
             />
-
+            
+            <Route
+              path="/HappyPage"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <HappyPage />
+                </Suspense>
+              }
+            />
             <Route
               path="/MyAds"
               element={
@@ -251,7 +258,6 @@ const AnimatedSwitch = () => {
 };
 function App() {
 
-  console.log(API_KEY);
   
 
   window.Telegram.WebApp.disableVerticalSwipes();
@@ -264,26 +270,9 @@ function App() {
   const dispatch = useDispatch();
 
   const address = useSelector( state => state.telegramUserInfo.address )
-  const mnemonic = useSelector(state => state.telegramUserInfo.mnemonic)
 
   window.Telegram.WebApp.expand();
-  // useEffect( () => {
-  //   async function dsa(){
-  //     // await axios.get("https://www.connectbirga.ru/user/sendMessage", {
-  //     //   params: {
-  //     //     chatId: 5157996064,
-  //     //     text:
-  //     //     "Кто - то октрыл приложение",
-  //     //     languageCode : en ? "en" : "ru"
-  //     //   },
-  //     // });
-  //   }
-  //   dsa()
-  //   return() => {
-  //     dsa()
 
-  //   }
-  // } , [])
 
   useEffect(() => {
     dispatch(fetchTon());
@@ -297,53 +286,26 @@ function App() {
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
-  console.log(process.env.REACT_APP_API_KEY);
+
+
+  // useEffect(() =>{
+  //   dispatch(fetchMyOrders(1));
+  // },[] )
+
+
+
+  useEffect( () => {
+    if (address){
+      dispatch(getBalance({userAddress : address}))
+    }
+  } , [address, dispatch] )
+
+
   
 
   
-  const getBalance = useCallback(async () => {
-
-    const client = new TonClient({
-      endpoint: "https://toncenter.com/api/v2/jsonRPC", 
-    });
-
-    console.log(address);
-
-    console.warn(await client.getBalance(Address.parse(address)))
-
-    // alert(await client.getBalance(Address.parse(address)))
-
-  }, [address]);
-
-  useEffect(() => {
 
 
-    if (mnemonic && address){
-      getBalance();
-    }
-
-    async function getWallet(params) {
-      try {
-
-
-        // Generate new key
-        let mnemonics = await mnemonicNew(12);
-
-        const user = await axios.post("https://www.connectbirga.ru/user/wallet", {
-          mnemonic: mnemonics,
-          userId: 5157996064,
-        } , {
-          headers : {
-            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-          }
-        });
-
-        // Create wallet contrac
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  }, [mnemonic, address, getBalance]);
 
   
   return (

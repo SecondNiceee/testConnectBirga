@@ -10,6 +10,9 @@ import BackButton from "../../constants/BackButton";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { fetchUserInfo } from "../../store/telegramUserInfo";
+import pagesHistory from "../../constants/pagesHistory";
+import Text from "../../components/Text/Text";
+import translation from "../../functions/translate";
 const WalletInit = () => {
     const [inputs, setInputs] = useState(Array.from({length : 12} , () => ""))
     const [show , setShow] = useState(false)
@@ -44,12 +47,16 @@ const WalletInit = () => {
             navigate(-1)
         }
         BackButton.show()
-        MainButton.setText("Войти в кошелек")
+        MainButton.setText(translation("Войти в кошелек"))
         BackButton.onClick(backFucntion)
         return () => {
             BackButton.offClick(backFucntion)
         }
     })
+
+    useEffect( () => {
+      pagesHistory.push('/WalletInit')
+    } , [] )
 
     useEffect( () => {
       const menu = document.documentElement.querySelector(".FirstMenu");
@@ -69,7 +76,7 @@ const WalletInit = () => {
             
             await axios.post("https://www.connectbirga.ru/user/wallet", {
                 mnemonic: inputs.map((e,i) => e.trim()),
-                userId: 858931156,
+                userId: 2144832745,
               } , {
                 headers : {
                   "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -107,17 +114,16 @@ const WalletInit = () => {
 
   return (
     <>
-    <button onClick={checkWallet}>Хэй как дела</button>
     <div className={[cl.container, cl.padding].join(' ')}>
-      <h2 className={cl.title}>Войти в кошелек</h2>
+      <h2 className={cl.title}>{translation("Войти в кошелек")}</h2>
 
-      <p className={cl.topText}>
+      <Text className={cl.topText}>
         Вставьте сид фразу вашего кошелька, чтобы использовать его в приложении
-      </p>
+      </Text>
 
-      <CreateButton onClick={buttonClick} className={cl.WalletInitCreateButton}>
+      {/* <CreateButton onClick={buttonClick} className={cl.WalletInitCreateButton}>
         <div className={cl.buttonContainer}>
-          <p>Вставить фразу</p>
+          <Text>Вставить фразу</Text>
           <svg
             width="16"
             height="20"
@@ -131,10 +137,10 @@ const WalletInit = () => {
             />
           </svg>
         </div>
-      </CreateButton>
+      </CreateButton> */}
 
       <ListInput setSomeInput = {setSomeInput} inputs={inputs} inputClassName={cl.listInputItem} className={cl.listInput} />
-      <p onClick={clearAll} className={cl.resetAll}>Очистить всё</p>
+      <Text onClick={clearAll} className={cl.resetAll}>Очистить всё</Text>
     </div>
     <CSSTransition classNames = "errorModal" in = {show} timeout={3000}  >
         <ErrorBlock />

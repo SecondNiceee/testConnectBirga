@@ -1,5 +1,6 @@
 import React from 'react';
 import cl from "../index.module.scss"
+import translation from '../../../functions/translate';
 const StageOne = ({address}) => {
     return (
         <div className={cl.stage}>
@@ -7,8 +8,8 @@ const StageOne = ({address}) => {
             <p className={cl.circleText}>1</p>
         </div>
         <p>
-            Найдите свой адрес Коннект кошелька выше (начинается с
-            {address.slice(0, 2)}) и скопируйте его
+            {translation("Найдите свой адрес Коннект кошелька выше (начинается с")  }
+            {address.slice(0, 2)}{")"} {translation("и скопируйте его")}
         </p>
     </div>
     );

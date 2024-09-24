@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useCallback, useEffect } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,14 +6,12 @@ import { putMyTask, setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 import sortFiles from "../../functions/sortFiles";
 import translation from "../../functions/translate";
+import axios from "axios";
+import HappyHold from "../../pages/HappyHold/HappyHold";
 const menu = document.documentElement.querySelector(".FirstMenu")
 
 const choiceText = translation("ВЫБРАТЬ")
-const choiceTextTwo = translation("Перед выбором исполнителя\n ознакомьтесь с FAQ Биржи.")
-const lastChoice = translation("Вы уверены, что хотите выбрать\n этого исполнителя?")
-let isTake = translation("Выбрать?")
-const Yes = translation("Да")
-const No = translation("Нет")  
+ 
 export const useButton = ({
   setOpen,
   setSecondPage,
@@ -39,8 +37,15 @@ export const useButton = ({
   setPageValueOne,
   setPageValueTwo,
   setBuyPage,
-  buyPage
+  buyPage,
+  happyHold,
+  setHappyHold,
+  walletH,
+  setWalletH
 }) => {
+
+  const balance = useSelector(state => state.balance.value)
+  const address = useSelector( state => state.telegramUserInfo.address )
   const dispatch = useDispatch();
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
 
@@ -69,61 +74,104 @@ export const useButton = ({
     setSecondPage( (value) => ({...value , task : {...details.task}}) )
     setDetails((value) => ({...value , isActive : false}))
     
-  } , [details] ) 
+  } , [details, setSecondPage, setDetails, dispatch] ) 
   useEffect(() => {
-    async function writeFucntion() {
-      setBuyPage(true)
-      
-      window.Telegram.WebApp.showPopup(
-        {
-          title: translation("Внимание"),
-          message: choiceTextTwo,
-          buttons: [
-            { id: "delete", type: "default", text: translation("Продолжить") },
-            { id: "save", type: "destructive", text: translation("Прочитать") },
-          ],
+    async function hold(id, amount) {
+      await axios.get("https://www.connectbirga.ru/user/hold" , {
+        params : {
+          fromId : id,
+          amount : amount
         },
-        (buttonId) => {
-          if (buttonId === "delete") {
-            window.Telegram.WebApp.showPopup(
-              {
-                title: isTake,
-                message: lastChoice,
-                buttons: [
-                  { id: "save", type: "default", text: Yes },
-                  { id: "delete", type: "destructive", text: No },
-                ],
-              },
-              (buttonId) => {
-                if (buttonId === "save") {
-                  
-                  
-  
-                  // dispatch(clearMyOrders())
-                  dispatch(setStartTask(myAdOneAdvertisement.id));
-                  dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]));
-                  setOpen({ ...isOpen, isActive: false });
-                  setSecondPage({ ...secondPage, isActive: false });
-                  // dispatch(fetchMyOrders(1));
-
-
-                }
-                if (buttonId === "delete" || buttonId === null) {
-                  console.log("Он отказался");
-                }
-              }
-            );
-          }
-          if (buttonId === "save") {
-            window.Telegram.WebApp.openLink(
-              "https://walletru.helpscoutdocs.com/"
-            );
-          }
-          if (buttonId === null) {
-            console.log("Он отказался");
-          }
+        headers : {
+          "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
         }
-      );
+      })
+      console.log("2144832745" ,secondPage.task.tonValue );
+      
+    }
+    function writeFucntion() {
+
+      if (!walletH){
+
+        if (!address){
+          window.Telegram.WebApp.showPopup(
+            {
+              title: translation("Внимание!"),
+              message: translation("Для выбора исполнителя необходимо создать Коннект Кошелёк, это бесплатно."),
+              buttons: [
+                { id: "save", type: "default", text: translation("Создать") },
+                { id: "delete", type: "destructive", text: translation("Отмена") },
+              ],
+            },
+            (buttonId) => {
+              if (buttonId === "save") {
+                navigate('/Profile')
+              }
+              if (buttonId === "delete" || buttonId === null) {
+                console.log("Он отказался");
+              }
+            }
+          );
+        }
+        else{
+          if (!buyPage){
+            setBuyPage(true)
+            console.log("Buy page стал true")
+          }
+          else{
+            if (happyHold){
+                setOpen({ ...isOpen, isActive: false });
+                setBuyPage(false)
+                setHappyHold(false)
+                // setSecondPage({ ...secondPage, isActive: false });
+            }
+            else{
+              console.log(balance)
+              console.log(secondPage.task.tonValue)
+              if (Number(balance) < Number(secondPage.task.tonValue)){
+
+                setWalletH(true)
+              }
+              else{
+                window.Telegram.WebApp.showPopup(
+                  {
+                    title: translation("Захолдировать?"),
+                    message: translation("Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания исполнителем(через поддержку)."),
+                    buttons: [
+                      { id: "save", type: "default", text: translation("Да") },
+                      { id: "delete", type: "destructive", text: translation("Нет") },
+                    ],
+                  },
+                  (buttonId) => {
+                    if (buttonId === "save") {
+                        hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
+                        window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+                        dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
+
+                          dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
+                        ).then( value =>  setHappyHold(true))
+                        MainButton.setText(translation("Перейти к заданию"))
+    
+                      }).catch(value => {
+                        console.log(value);
+                        alert("Холд не прошел. Отправте в поддержку следующее сообщение")
+                        alert(JSON.stringify(value))
+                        
+                      } )
+                    }
+                    if (buttonId === "delete" || buttonId === null) {
+                      console.log("Он отказался");
+                    }
+                  }
+                );
+              }
+            }
+          }
+  
+        }
+      }
+
+      
     }
 
     function compareTwoObject(a1, a2) {
@@ -150,85 +198,90 @@ export const useButton = ({
 
 
     function goBack() {
-      if (oneCards.isOpen) {
-        setOneCard((value) => ({ ...value, isOpen: false }));
-      } else {
-        if (!openAboutReaction.isActive) {
-          if (!details.isActive) {
-            if (detailsTwo.isOpen) {
-              setDetailsTwo((value) => ({ ...value, isOpen: false }));
-            } else {
-              if (isOpen.isActive) {
-                setPageValueTwo(false)
-                // isPageValueTwo = false
-                setOpen({ ...isOpen, isActive: false });
-              } else {
-                if (secondPage.isActive) {
-                  setPageValueOne(false)
-                  setSecondPage((value) => ({ ...value, isActive: false }));
-                  // isPageValueOne = false
-                } else {
-                  // if (history[history.length - 1] === '/AdCreating'){
+      if (!walletH){
 
-                  //   navigate();
-                  // }
-                  // else{
-                  //   navigate(-1)
-                  // }
-                  if (lastAdsTwo.isOpen) {
-                    setLastAdsTwo((value) => ({ ...value, isOpen: false }));
+      
+      if (happyHold){
+        setOpen({ ...isOpen, isActive: false });
+        setBuyPage(false)
+        setHappyHold(false)
+        // setSecondPage({ ...secondPage, isActive: false });
+      }
+      else{
+
+        if (buyPage){
+          setBuyPage(false)
+        }
+        else{
+  
+          if (oneCards.isOpen) {
+            setOneCard((value) => ({ ...value, isOpen: false }));
+          } else {
+            if (!openAboutReaction.isActive) {
+              if (!details.isActive) {
+                if (detailsTwo.isOpen) {
+                  setDetailsTwo((value) => ({ ...value, isOpen: false }));
+                } else {
+                  if (isOpen.isActive) {
+                    setPageValueTwo(false)
+                    // isPageValueTwo = false
+                    setOpen({ ...isOpen, isActive: false });
                   } else {
-                    if (myResponse.isOpen) {
-                      setMyResponse((value) => ({ ...value, isOpen: false }));
+                    if (secondPage.isActive) {
+                      setPageValueOne(false)
+                      setSecondPage((value) => ({ ...value, isActive: false }));
+                      // isPageValueOne = false
                     } else {
-                      navigate("/");
+                      // if (history[history.length - 1] === '/AdCreating'){
+    
+                      //   navigate();
+                      // }
+                      // else{
+                      //   navigate(-1)
+                      // }
+                      if (lastAdsTwo.isOpen) {
+                        setLastAdsTwo((value) => ({ ...value, isOpen: false }));
+                      } else {
+                        if (myResponse.isOpen) {
+                          setMyResponse((value) => ({ ...value, isOpen: false }));
+                        } else {
+                          navigate("/");
+                        }
+                      }
                     }
                   }
                 }
+              } else {
+                if (!compareTwoObject(secondPage.task, details.task)){
+                  save();
+                }
+                else{
+                  setDetails((value) => ({...value , isActive : false}))
+                }
+                
               }
+            } else {
+              setOpenAboutReaction({ ...openAboutReaction, isActive: false });
             }
-          } else {
-            if (!compareTwoObject(secondPage.task, details.task)){
-              save();
-            }
-            else{
-              setDetails((value) => ({...value , isActive : false}))
-            }
-            
           }
-        } else {
-          setOpenAboutReaction({ ...openAboutReaction, isActive: false });
         }
       }
     }
-
-    BackButton.show();
-
-    if (isOpen.isActive && secondPage.task.status !== "inProcess" && secondPage.task.status !== "completed") {
-      menu.classList.add("disappearAnimation")
-      menu.classList.remove("appearAnimation")
-      MainButton.show();
-      
-      MainButton.setParams({
-        color: "#2ea5ff",
-        text_color: "#ffffff",
-        is_active: true,
-      });
-
-      MainButton.setText(choiceText);
-      MainButton.onClick(writeFucntion);
-    } else {
-      MainButton.offClick(writeFucntion);
-      if (!myResponse.isOpen && !details.isActive) {
-        menu.classList.add("appearAnimation")
-        menu.classList.remove("disappearAnimation")
-        MainButton.hide();
-      }
     }
 
-    if (details.isActive) {
-      MainButton.setText(translation("ОБНОВИТЬ"));
-      if (!compareTwoObject(secondPage.task, details.task)) {
+
+    
+
+
+    console.log("Happy Hold" + happyHold);
+    
+    if (!walletH){
+
+    
+      
+      BackButton.show();
+
+      if (isOpen.isActive && secondPage.task.status !== "inProcess" && secondPage.task.status !== "completed" ) {
         menu.classList.add("disappearAnimation")
         menu.classList.remove("appearAnimation")
         MainButton.show();
@@ -237,50 +290,98 @@ export const useButton = ({
           text_color: "#ffffff",
           is_active: true,
         });
-        
-
-        if (checkMistakes(details.task, false)) {
+        MainButton.onClick(writeFucntion);
+        if (!buyPage){
+            MainButton.setText(choiceText);
+        }
+        else{
+          if (happyHold){
+            MainButton.setText(translation("Перейти к заданию"))
+          }
+          else{
+            if (balance < secondPage.task.tonValue){
+              MainButton.setText("КОШЕЛЕК")
+            }
+            else{
+              MainButton.setText(translation("ЗАХОЛДИРОВАТЬ"))
+            }
+          }
+        }
+      } else {
+        MainButton.offClick(writeFucntion);
+        if (!myResponse.isOpen && !details.isActive ) {
+          menu.classList.add("appearAnimation")
+          menu.classList.remove("disappearAnimation")
+          MainButton.hide();
+        }
+      }
+  
+  
+      if (details.isActive) {
+        MainButton.setText(translation("ОБНОВИТЬ"));
+        if (!compareTwoObject(secondPage.task, details.task)) {
+          menu.classList.add("disappearAnimation")
+          menu.classList.remove("appearAnimation")
+          MainButton.show();
           MainButton.setParams({
             color: "#2ea5ff",
             text_color: "#ffffff",
             is_active: true,
           });
-        } else {
+          
+  
+          if (checkMistakes(details.task, false)) {
+            MainButton.setParams({
+              color: "#2ea5ff",
+              text_color: "#ffffff",
+              is_active: true,
+            });
+          } else {
+            MainButton.setParams({
+              is_active: false, //неизвесетно
+              color: "#2f2f2f",
+              text_color: "#606060",
+            });
+          }
+          MainButton.offClick(putTask)
+          MainButton.onClick(putTask);
+        }
+        else{
+          menu.classList.add("disappearAnimation")
+          menu.classList.remove("appearAnimation")
+            MainButton.show()
+            MainButton.setParams({
+              is_active: false, //неизвесетно
+              color: "#2f2f2f",
+              text_color: "#606060",
+            });
+            MainButton.offClick(putTask)
+        }
+      } else {
+        if (!isOpen.isActive && !myResponse.isOpen){
+          menu.classList.add("appearAnimation")
+          menu.classList.remove("disappearAnimation")
+          MainButton.hide();
+          MainButton.offClick(putTask)
           MainButton.setParams({
             is_active: false, //неизвесетно
             color: "#2f2f2f",
             text_color: "#606060",
           });
         }
-        MainButton.offClick(putTask)
-        MainButton.onClick(putTask);
       }
-      else{
-        menu.classList.add("disappearAnimation")
-        menu.classList.remove("appearAnimation")
-          MainButton.show()
-          MainButton.setParams({
-            is_active: false, //неизвесетно
-            color: "#2f2f2f",
-            text_color: "#606060",
-          });
-          MainButton.offClick(putTask)
-      }
-    } else {
-      if (!isOpen.isActive && !myResponse.isOpen){
-        menu.classList.add("appearAnimation")
-        menu.classList.remove("disappearAnimation")
-        MainButton.hide();
-        MainButton.offClick(putTask)
-        MainButton.setParams({
-          is_active: false, //неизвесетно
-          color: "#2f2f2f",
-          text_color: "#606060",
-        });
-      }
+  
+      BackButton.onClick(goBack);
     }
+    else{
+      menu.classList.add("appearAnimation")
+      menu.classList.remove("disappearAnimation")
+    }
+    if (HappyHold){
+      MainButton.setText(translation("Перейти к заданию"))
+    }
+    
 
-    BackButton.onClick(goBack);
     return () => {
       MainButton.setParams({
         color: "#2ea5ff",
@@ -314,6 +415,11 @@ export const useButton = ({
     setPageValueOne,
     setPageValueTwo,
     buyPage,
-    setBuyPage
+    setBuyPage,
+    happyHold,
+    setHappyHold,
+    walletH,
+    setWalletH,
+    dispatch
   ]);
 };

@@ -1,7 +1,6 @@
-import React, { forwardRef, memo, useEffect, useRef } from 'react';
+import React, { forwardRef, memo, useEffect } from 'react';
 import TaskDetailsContainer from './TaskDetailsContainer';
 import TimeAndWatches from './TimeAndWatches';
-import SimilarAds from './SimilarAds';
 import { useDispatch } from 'react-redux';
 import { addWatch } from '../../../store/information';
 

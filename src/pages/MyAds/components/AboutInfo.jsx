@@ -1,8 +1,8 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback } from "react";
 import Text from "../../../components/Text/Text";
 import translation from "../../../functions/translate";
 
-const AboutInfo = ({responce}) => {
+const AboutInfo = ({responce, isTelesgramVisible = true}) => {
   const counter = useCallback((par) => {
     if (Number(par) === 1){
       return translation("Задание")
@@ -18,18 +18,23 @@ const AboutInfo = ({responce}) => {
 // eslint-disable-next-line
   }, [])
 
-  
+  const clickHanlder = useCallback( () => {
+    if (isTelesgramVisible){
+      window.Telegram.WebApp.openTelegramLink("https://t.me/" + responce.user.link)
+    }else
+    {
+      window.Telegram.WebApp.showAlert( translation("Для доступа к контактам заказчика необходимо откликнуться."))
+    }
+  } , [responce.user.link , isTelesgramVisible] )
 
-
+  console.warn(responce.user.completedAdvertisements)
   return (
     <div className="aboutInfo">
       <div className="name">
         <Text>{responce.user.fl}</Text>
       </div>
 
-      <div onClick={() => {
-        window.Telegram.WebApp.openTelegramLink("https://t.me/" + responce.user.link)
-      }} className="userLink">
+      <div onClick={clickHanlder} className="userLink">
         <Text className="telegramLink"> Открыть в Telegram </Text>
 
         
@@ -41,8 +46,8 @@ const AboutInfo = ({responce}) => {
           
         </div>
         <div className="block">
-          <p>{responce.user.completedAdvertisements.length}</p>
-          <p className="aboutInfo__text">{counter(responce.user.completedAdvertisements.length)} {translation("выполнено")}</p>
+          <p>{responce.user.completedAdvertisements}</p>
+          <p className="aboutInfo__text">{counter(Number(responce.user.completedAdvertisements))} {translation("выполнено")}</p>
         </div>
       </div>
 

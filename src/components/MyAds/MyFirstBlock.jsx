@@ -8,7 +8,7 @@ import formatDate from "../../functions/makeDate";
 import BlockSpinner from "../UI/BlockSpinner/BlockSpinner";
 import Text from "../Text/Text";
 import en from "../../constants/language";
-
+import RealTon from "../../images/icons/RealTon.svg"
 
 const textPrice = en ? 'USD' : "RUB"
 const MyFirstBlock = ({
@@ -149,14 +149,14 @@ const MyFirstBlock = ({
           <div className="FirstMain__bottom">
             <div className="FirstMain__bottom-left">
               <div className="FirstMain__price-up">
-                <p>{tonValue} USDT</p>
-                <SmallDimond />
+                <p>{tonValue} TON</p>
+                <img src={RealTon} alt="" />
               </div>
               <div className="FirstMain__price-bottom">
                 <p>
                 ~ {Number((tonValue * tonConstant).toFixed(2)).toLocaleString(
-                    "en-EN"
-                  )}
+                    "ru-RU"
+                  ).replace(',','.')}
                 </p>
                 <Text>{textPrice}</Text>
               </div>

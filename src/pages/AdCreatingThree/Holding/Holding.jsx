@@ -10,7 +10,7 @@ const Holding = ({className, taskInformation }) => {
         <div className={className ? [className , cl.Holding].join(' ') : cl.Holding}>
             <Text>К ХОЛДИРОВАНИЮ</Text>
             <p>{taskInformation.tonValue} <span className={cl.TON}>TON</span></p>
-            <p>~  {formateMoney(String(taskInformation.tonValue * value) , 3, '.' )} {en ? "USD" : "RUB"}</p>
+            <p>~  {formateMoney(String(taskInformation.tonValue * value).replace('.', ',') , 2, ',' )} {en ? "USD" : "RUB"}</p>
         </div>
     );
 };

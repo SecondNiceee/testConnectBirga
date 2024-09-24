@@ -1,6 +1,4 @@
 import React, {
-  lazy,
-  Suspense,
   useCallback,
   useEffect,
   useMemo,
@@ -17,7 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Responce from "./Responce";
 import { CSSTransition } from "react-transition-group";
 import pagesHistory from "../../constants/pagesHistory";
-import { clearResponses, fetchResponses } from "../../store/responses";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
 import FirstChoiceCategory from "../AdCreatingOne/ChoiceCategory/FirstChoiceCategory";
 import FirstChoiceSubCategory from "../AdCreatingOne/FirstChoiceSubCategory";
@@ -25,11 +22,11 @@ import AboutReaction from "../MyAds/components/AboutReaction";
 import CardPage from "../CardPage/CardPage";
 import axios from "axios";
 import makeNewFile from "../../functions/newMakeFile";
-import { addResponce, clearTasks } from "../../store/information";
-import MyLoader from "../../components/UI/MyLoader/MyLoader";
+import {  clearTasks } from "../../store/information";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import translation from "../../functions/translate";
 import en from "../../constants/language";
+import { useNavigate } from "react-router-dom";
 
 let isDetailsActiveVar = false;
 let pageValue = true;
@@ -54,6 +51,9 @@ const First = ({ isPage = false }) => {
   const firstRef = useRef(null);
 
   const [step, setStep] = useState(0);
+
+  const address = useSelector( state => state.telegramUserInfo.address )
+  const navigate = useNavigate()
   localStep = step;
 
   const dispatch = useDispatch();
@@ -338,7 +338,7 @@ const First = ({ isPage = false }) => {
 
   useEffect(() => {
     dispatch(clearTasks());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     let inputs = document.querySelectorAll("input");
@@ -391,7 +391,7 @@ const First = ({ isPage = false }) => {
               messageTwo +
               par[1].user.fl,
             buttonUrl:
-              "https://birga.ywa.su/ResponsePage?advertisemet=" +
+              "https://connectbirga.ru/ResponsePage?advertisemet=" +
               String(par[1].advertisement.id) +
               "&response=" +
               String(im.data.id),
@@ -463,37 +463,61 @@ const First = ({ isPage = false }) => {
     }
 
     if (step !== 0 && !responce.shablonMaker) {
-      window.Telegram.WebApp.showPopup(
-        {
-          title: resp,
-          message: textButton,
+      if (address !== null){
+
+          window.Telegram.WebApp.showPopup(
+            {
+              title: resp,
+              message: textButton,
+              buttons: [
+                { id: "save", type: "default", text: Yes },
+                { id: "delete", type: "destructive", text: No },
+              ],
+            },
+            (buttonId) => {
+              if (buttonId === "delete" || buttonId === null) {
+                // setShablon({...shablon , isActive : false})
+              }
+              if (buttonId === "save") {
+                window.Telegram.WebApp.HapticFeedback.notificationOccurred(
+                  "success"
+                );
+                postResponce(ordersInformation[isDetailsActive.id].id, window.Telegram.WebApp.initDataUnsafe.user.id);
+                // mainRef.current.classList.remove('secondStep')
+    
+              }
+            }
+          );
+      }
+      else{
+        window.Telegram.WebApp.showPopup({
+          title: translation(translation("Упс")),
+          message: translation(`Для отклика создайте Коннект Кошелёк, это бесплатно.`),
           buttons: [
-            { id: "save", type: "default", text: Yes },
-            { id: "delete", type: "destructive", text: No },
+            { id: "save", type: "default", text: translation("Создать") },
+            { id: "delete", type: "destructive", text: translation("Отмена") },
           ],
-        },
-        (buttonId) => {
+        } , (buttonId) => {
+    
           if (buttonId === "delete" || buttonId === null) {
-            // setShablon({...shablon , isActive : false})
+            
           }
           if (buttonId === "save") {
-            window.Telegram.WebApp.HapticFeedback.notificationOccurred(
-              "success"
-            );
-            postResponce(ordersInformation[isDetailsActive.id].id, window.Telegram.WebApp.initDataUnsafe.user.id);
-            // mainRef.current.classList.remove('secondStep')
-
+            navigate("/Profile")
           }
-        }
-      );
+    
+    
+        } )
+      }
     }
   }, [
+    address,
+    navigate,
     responce,
     step,
     ordersInformation,
     isDetailsActive.id,
     setDetailsActive,
-    dispatch,
     setStep,
     me,
     secFilteredArray,
@@ -725,6 +749,7 @@ const First = ({ isPage = false }) => {
         unmountOnExit
       >
         <AboutReaction
+        isTelesgramVisible={false}
           style={{
             paddingBottom: "74px",
             left : "100vw"
