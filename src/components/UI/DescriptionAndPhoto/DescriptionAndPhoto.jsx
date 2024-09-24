@@ -17,6 +17,7 @@ const DescriptionAndPhoto = ({
   textPlaceholder,
   fileError,
   clearPhoto,
+  textError = false,
   onFocus = () => {}
 }) => {
 
@@ -46,11 +47,12 @@ const DescriptionAndPhoto = ({
       }
     >
       <GreyText className={cl.GreyText}>{textTitle}</GreyText>
-      <div className={cl.InputContainer}>
+      <div style={ textError ? {border : "1px solid rgb(255, 103, 103)"} : {}} className={cl.InputContainer}>
         
         <textarea ref={hiddenRef} value={text} className={cl.hiddenText}/>
 
         <TextArea
+        
         onFocus = {onFocus}
         ref={myRef}
           value={text}

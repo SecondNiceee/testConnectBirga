@@ -13,7 +13,7 @@ import translation from "../../functions/translate";
 const menu = document.documentElement.querySelector(".FirstMenu")
 const updateText = translation("Изменить шаблон")
 const addText = translation("Добавить шаблон")
-const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...props}) => {
+const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, mistakes, ...props}) => {
   const dispatch = useDispatch()
   let localShablon = shablon
 
@@ -147,17 +147,19 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
       <Text className="shablon-title">{put ? shablon.name : "Новый шаблон"}</Text>
       {/* <button onClick={forward}>Сделать!</button> */}
       <TaskName
+        
         className={"shablon-name"}
         title={"НАЗВАНИЕ ШАБЛОНА"}
         text={shablon.name}
         setText={(e) => {
           setShablon((value) => ({...value, shablon : {...value.shablon , name : e }}));
         }}
-        errorValue={false}
+        errorValue={mistakes.name}
         underText={""}
         placeholder={translation("Введите название шаблона")}
       />
       <DescriptionAndPhoto
+      textError = {mistakes.text}
       className={'shablon-description'}
         text={shablon.text}
         setText={(e) => {
@@ -171,6 +173,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, ...
         filesTitle={""}
         MyInformation={false}
         textPlaceholder={translation("Почему задание нужно доверить именно вам")}
+        
       />
 
       <Text className="shablon-notice">Расскажите о себе и своем опыте работы. Прикрепите примеры.</Text>

@@ -5,21 +5,35 @@ import GreyText from "../../components/UI/GreyText/GreyText";
 import ShablonsWrap from "./components/ShablonsWrap/ShablonsWrap";
 import { CSSTransition } from "react-transition-group";
 import Shablon from "../Shablon/Shablon";
-import { deleteShablon, postShablon } from "../../store/shablon";
+import { deleteShablon, postShablon, putShablon } from "../../store/shablon";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
 import pagesHistory from "../../constants/pagesHistory";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import MyAnimation from "../MyAds/components/MyAnimation";
 import translation from "../../functions/translate";
+import sortFiles from "../../functions/sortFiles";
 const menu = document.documentElement.querySelector(".FirstMenu");
 
 const Yes = translation("Да");
 const No = translation("Нет");
 const AllShablons = () => {
   window.Telegram.WebApp.disableVerticalSwipes();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [shablon, setShablon] = useState({
+    isActive: false,
+    shablon: {
+      id: 0,
+      name: "",
+      text: "",
+      photos: [],
+      photosNames: [],
+    },
+    put: false,
+  });
 
   useEffect(() => {
     return () => {
@@ -34,17 +48,23 @@ const AllShablons = () => {
     text : false
   } )
 
-  const [shablon, setShablon] = useState({
-    isActive: false,
-    shablon: {
-      id: 0,
-      name: "",
-      text: "",
-      photos: [],
-      photosNames: [],
-    },
-    put: false,
-  });
+  useEffect( () => {
+    const localMistakes = {    name : false,
+      text : false}
+    if (Object.values(mistakes).includes(true)){
+      if (shablon.shablon.name.length > 3){
+        localMistakes.name = false
+      }
+      if (shablon.shablon.text.length >= 5){
+        localMistakes.text = false
+      }
+      if (JSON.stringify(localMistakes) !== JSON.stringify(mistakes)){
+        setMistakes({...localMistakes})
+      }
+    }
+  } , [shablon.shablon , mistakes, setMistakes] )
+
+
 
   function clickOnFunc() {
     setShablon({
@@ -98,16 +118,29 @@ const AllShablons = () => {
 
   
 
-  const save = useCallback( () => {
+  const save = useCallback( (put) => {
     const myFormData = new FormData()
     myFormData.append("name" , String(shablon.shablon.name.trim()) )
     myFormData.append("text" , String(shablon.shablon.text.trim()))
 
-    shablon.shablon.photos.forEach((e,i) => {
-      myFormData.append("photos" , e)
-    })
+    if (put){
+      let filesArr = sortFiles(shablon.shablon.photosNames, shablon.shablon.photos)
+      filesArr.addedArr.forEach((e, i) => {
+        myFormData.append(`addFiles` , e)
+      })
+      filesArr.removedArr.forEach((e, i) => {
+        myFormData.append(`deleteFiles[${i}]` , e)
+      })
+      dispatch(putShablon([myFormData , shablon.shablon.id, shablon.shablon]))
+    }
+    else{
+      shablon.shablon.photos.forEach((e,i) => {
+        myFormData.append("photos" , e)
+      })
+      // myFormData.append("photos" , shablon.photos)
+      dispatch(postShablon([myFormData, shablon.shablon]))
+    }
     // myFormData.append("photos" , shablon.photos)
-    dispatch(postShablon([myFormData, shablon.shablon]))
 
   } , [dispatch, shablon.shablon] )
   const check = useCallback( () => {
@@ -115,7 +148,7 @@ const AllShablons = () => {
     if (shablon.shablon.name.length < 3){
       localMistakes.name = true
     }
-    if (shablon.shablon.text.length < 3){
+    if (shablon.shablon.text.length < 5){
       localMistakes.name = true
     }
     if (JSON.stringify(localMistakes) !== JSON.stringify(mistakes)){
@@ -124,11 +157,11 @@ const AllShablons = () => {
     return Object.values(localMistakes).every(value => !value )
   } , [mistakes, shablon.shablon] )
 
-  const exitTemplate = useCallback( () => {
+  const exitTemplate = useCallback( (put) => {
     window.Telegram.WebApp.showPopup(
       {
-        title: translation("Сохранить?"),
-        message: translation("Сохранить шаблон перед выходом?"),
+        title: put ? translation("Изменить?") : translation("Сохранить?"),
+        message: put ? translation("Сохранить изменения перед выходом?") : translation("Сохранить шаблон перед выходом?"),
         buttons: [
           { id: "save", type: "default", text: translation("Да") },
           { id: "delete", type: "destructive", text: translation("Нет") },
@@ -137,7 +170,10 @@ const AllShablons = () => {
       (buttonId) => {
         if (buttonId === "save") {
           if (check()){
-            save()
+            save(put)
+          }
+          else{
+            window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
           }
         }
         if (buttonId === "delete" || buttonId === null) {
@@ -152,7 +188,7 @@ const AllShablons = () => {
   useEffect(() => {
     function back() {
       if (shablon.isActive) {
-        exitTemplate()
+        exitTemplate(shablon.put)
         // setShablon((value) => ({ ...value, isActive: false }));
       } else {
         navigate(-1);
@@ -162,7 +198,7 @@ const AllShablons = () => {
     return () => {
       BackButton.offClick(back);
     };
-  }, [shablon.isActive, navigate, exitTemplate]);
+  }, [shablon.isActive, navigate, exitTemplate, shablon.put]);
   const postStatus = useSelector((state) => state.shablon.postStatus);
   const putStatus = useSelector((state) => state.shablon.putStatus);
 
@@ -246,6 +282,7 @@ const AllShablons = () => {
           timeout={400}
         >
           <Shablon
+            mistakes = {mistakes}
             shablon={shablon.shablon}
             setActive={(e) => {
               setShablon((value) => ({ ...value, isActive: e }));
