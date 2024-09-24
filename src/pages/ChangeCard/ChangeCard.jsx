@@ -303,6 +303,11 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
   useEffect( () => {
     return () => {
       MainButton.setText(saveText)
+      MainButton.setParams({
+        color: "#2ea5ff",
+        text_color: "#ffffff",
+        is_active: true,
+      });
     }
   } , [] )
 
