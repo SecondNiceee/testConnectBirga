@@ -164,8 +164,10 @@ const ChoicerInfo = forwardRef(
 
 
     return (
-      <>
+      <div className={cl.choicerContainer}>
+          {arr.length === 0 ? 
           <>
+            <MyLoader style = { allStatus !== "all" ? {transform : "translateX(-16px)"} : {display : "none"}} />
             <div
               
               style={(arr.length === 0 && allStatus === "all") ? { } : {display: "none" }}
@@ -183,6 +185,8 @@ const ChoicerInfo = forwardRef(
               </div>
               <Text className={cl.text}>{text}</Text>
             </div>
+          </>
+            :
 
             <div
             ref={ref}
@@ -192,9 +196,11 @@ const ChoicerInfo = forwardRef(
               {array}
               {allStatus === "all" ? <></>  :  <MyLoader ref={elementRef}  style = {{ height : "90px" , marginLeft : "-16px" , height : "80vh"}} />}
             </div>
-          </>
+          }
 
-      </>
+          </div>
+
+      
     );
   }
 );
