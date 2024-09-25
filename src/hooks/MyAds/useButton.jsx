@@ -22,7 +22,8 @@ export const useButton = ({
   walletH,
   putTask,
   writeFucntion,
-  goBack
+  goBack,
+  showDetails
 }) => {
 
   const balance = useSelector(state => state.balance.value)
@@ -87,7 +88,7 @@ export const useButton = ({
         }
       } else {
         MainButton.offClick(writeFucntion);
-        if (!myResponse.isOpen && !details.isActive ) {
+        if (!myResponse.isOpen && !showDetails ) {
           menu.classList.add("appearAnimation")
           menu.classList.remove("disappearAnimation")
           MainButton.hide();
@@ -95,7 +96,7 @@ export const useButton = ({
       }
   
   
-      if (details.isActive) {
+      if (showDetails) {
         MainButton.setText(translation("ОБНОВИТЬ"));
         if (!compareTwoObject(secondPage.task, details.task)) {
           menu.classList.add("disappearAnimation")

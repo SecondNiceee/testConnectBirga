@@ -227,31 +227,18 @@ const AdCreatingOne = ({
 
   const setTextDescription = useCallback( (e) => {
     console.log("Вызов этой штуки")
-    if (taskInformation.myAds){
-      console.log("Вызов этой фигни")
-      setTaskInformation( (value) => ({...value , task : {...value.task , taskDescription : e }}) )
-    }
-    else{
+    
       setTaskInformation( (value) => ({...value, taskDescription : e}) )
-    }
+
   } , [taskInformation , setTaskInformation] )
 
   const setTextTitle = useCallback( (e) => {
-    if (taskInformation.myAds){
-      setTaskInformation( (value) => ({...value , task : {...value.task , taskName : e }}) )
-    }
-    else{
       setTaskInformation((value) =>  ({...value , taskName : e}) )
-    }
   } , [taskInformation , setTaskInformation] )
 
   const setFile = useCallback( (e) => {
-    if (taskInformation.myAds){
-      setTaskInformation( (value) => ({...value , task : {...value.task , photos : e}}) )
-    }
-    else{
-      setTaskInformation( (value) => ({...value , photos : e}) )
-    }
+    setTaskInformation( (value) => ({...value , photos : e}) )
+    
   } , [taskInformation.myAds , setTaskInformation] )
 
 

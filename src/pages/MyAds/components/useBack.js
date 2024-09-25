@@ -2,7 +2,7 @@
 import { useNavigate } from 'react-router-dom';
 import { compareTwoObject } from './compareTwoObject';
 
-const useBack = ({walletH, happyHold, setOpen, isOpen, setBuyPage, setHappyHold, buyPage, oneCards, setOneCard, openAboutReaction, details, detailsTwo, setDetailsTwo, setPageValueTwo,secondPage,  setPageValueOne, setSecondPage, lastAdsTwo, setLastAdsTwo, myResponse, setMyResponse, save, setDetails, setOpenAboutReaction}) => {
+const useBack = ({walletH, happyHold, setOpen, isOpen, setBuyPage, setHappyHold, buyPage, oneCards, setOneCard, openAboutReaction, details, detailsTwo, setDetailsTwo, setPageValueTwo,secondPage,  setPageValueOne, setSecondPage, lastAdsTwo, setLastAdsTwo, myResponse, setMyResponse, save, setOpenAboutReaction , setShowDetails , showDetails}) => {
     const navigate = useNavigate()
 
     function goBack() {
@@ -26,7 +26,7 @@ const useBack = ({walletH, happyHold, setOpen, isOpen, setBuyPage, setHappyHold,
               setOneCard((value) => ({ ...value, isOpen: false }));
             } else {
               if (!openAboutReaction.isActive) {
-                if (!details.isActive) {
+                if (!showDetails) {
                   if (detailsTwo.isOpen) {
                     setDetailsTwo((value) => ({ ...value, isOpen: false }));
                   } else {
@@ -60,11 +60,11 @@ const useBack = ({walletH, happyHold, setOpen, isOpen, setBuyPage, setHappyHold,
                     }
                   }
                 } else {
-                  if (!compareTwoObject(secondPage.task, details.task)){
+                  if (!compareTwoObject(secondPage.task, details)){
                     save();
                   }
                   else{
-                    setDetails((value) => ({...value , isActive : false}))
+                    setShowDetails(false)
                   }
                   
                 }

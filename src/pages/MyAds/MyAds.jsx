@@ -115,8 +115,6 @@ const MyAds = ({isPage = false}) => {
   const [happyHold , setHappyHold] = useState(false)
 
   const [details, setDetails] = useState({
-    isActive: false,
-    task: {
       id: "",
       taskName: "",
       taskDescription: "",
@@ -127,9 +125,10 @@ const MyAds = ({isPage = false}) => {
       time: { start: "", end: "" },
       photos: [],
       photosNames: [],
-      myAds : true
-    },
+    
   });
+
+  const [showDetails, setShowDetails] = useState(false)
 
   detailsVar = details;
 
@@ -586,7 +585,9 @@ const MyAds = ({isPage = false}) => {
       setPageValueOne : setPageValueOne ,
       setPageValueTwo : setPageValueTwo,
       setSecondPage : setSecondPage,
-      walletH : walletH
+      walletH : walletH,
+      setShowDetails : setShowDetails,
+      showDetails : showDetails
     }
   )
 
@@ -624,7 +625,8 @@ const MyAds = ({isPage = false}) => {
     putTask : putTask,
     secondPage : secondPage,
     walletH : walletH,
-    writeFucntion : writeFucntion
+    writeFucntion : writeFucntion,
+    showDetails : showDetails
   })
 
 
@@ -714,7 +716,7 @@ const MyAds = ({isPage = false}) => {
 
 
 
-        <CSSTransition classNames="left-right" in={details.isActive} timeout={400}
+        <CSSTransition classNames="left-right" in={showDetails} timeout={400}
           mountOnEnter unmountOnExit>
             <AdCreatingOne
               style = {{
@@ -724,10 +726,10 @@ const MyAds = ({isPage = false}) => {
               }}
               mistakes={mistakes}
               className="AdCreatingMy"
-              taskInformation={details.task}
+              taskInformation={details}
               setTaskInformation={setDetails}
               MyInformation={true}
-              isDetailsActive={details.isActive}
+              isDetailsActive={showDetails}
             />
           </CSSTransition>
 
