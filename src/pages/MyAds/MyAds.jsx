@@ -27,6 +27,9 @@ import translation from "../../functions/translate";
 import AdCreatingThree from "../AdCreatingThree/AdCreatingThree";
 import HappyHold from "../HappyHold/HappyHold";
 import Wallet from "../Wallet";
+import usePut from "../../hooks/MyAds/usePut";
+import useWriteFucntion from "../../hooks/MyAds/writeFunction";
+import useBack from "./components/useBack";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -560,41 +563,71 @@ const MyAds = ({isPage = false}) => {
 
 
   console.log(walletH);
-  
-  useButton({
-    myAdOneResponse : myAdOneResponse,
-    myAdOneAdvertisement : myAdOneAdvertisement,
-    setPageValueOne : setPageValueOne,
-    setPageValueTwo : setPageValueTwo,
-    setDetails : setDetails,
-    checkMistakes : checkMistakes,
-    setMyResponse : setMyResponse,
-    myResponse : myResponse,
-    setDetailsTwo : setDetailsTwo,
-    detailsTwo : detailsTwo, 
-    oneCards : oneCards,
-    localDetails : localDetails,
-    localAboutReaction : localAboutReaction,
-    localIsOpen : localIsOpen,
-    setOpen : setOpen,
-    setSecondPage : setSecondPage,
-    navigate : navigate,
-    setOpenAboutReaction : setOpenAboutReaction,
-    openAboutReaction : openAboutReaction,
-    isOpen : isOpen,
+
+
+  const goBack = useBack(
+    {buyPage : buyPage,
+      details : details,
+      detailsTwo : detailsTwo,
+      happyHold : happyHold ,
+      isOpen : isOpen,
+      lastAdsTwo : lastAdsTwo ,
+      myResponse : myResponse,
+      oneCards : oneCards,
+      openAboutReaction : openAboutReaction,
+      save : save,
+      secondPage : secondPage,
+      setBuyPage : setBuyPage, 
+      setDetails : setDetails,
+      setDetailsTwo : setDetailsTwo,
+      setHappyHold : setHappyHold,
+      setLastAdsTwo : setLastAdsTwo,
+      setMyResponse : setMyResponse,
+      setOneCard : setOneCard,
+      setOpen : setOpen,
+      setOpenAboutReaction : setOpenAboutReaction,
+      setPageValueOne : setPageValueOne ,
+      setPageValueTwo : setPageValueTwo,
+      setSecondPage : setSecondPage,
+      walletH : walletH
+    }
+  )
+
+  const putTask = usePut({
     details : details,
-    secondPage : secondPage,
-    localSecondPage : localSecondPage,
-    save : save,
-    setOneCard : setOneCard,
-    lastAdsTwo : lastAdsTwo,
-    setLastAdsTwo : setLastAdsTwo,
-    setBuyPage : setBuyPage,
+    setSecondPage : setSecondPage,
+    setDetails : setDetails,
+    dispatch : dispatch
+  })
+  
+  const writeFucntion  = useWriteFucntion(
+    {
+      buyPage : buyPage,
+      happyHold : happyHold,
+      isOpen : isOpen,
+      myAdOneAdvertisement : myAdOneAdvertisement,
+      myAdOneResponse : myAdOneResponse,
+      secondPage : secondPage,
+      setBuyPage : setBuyPage,
+      setHappyHold : setHappyHold,
+      setOpen : setOpen,
+      setWalletH : setWalletH,
+      walletH : walletH,
+
+    }
+  )
+  useButton({
     buyPage : buyPage,
-    happyHold : happyHold,
-    setHappyHold : setHappyHold,
+    checkMistakes : checkMistakes,
+    details : details ,
+    goBack : goBack,
+    happyHold : happyHold, 
+    isOpen : isOpen,
+    myResponse : myResponse,
+    putTask : putTask,
+    secondPage : secondPage,
     walletH : walletH,
-    setWalletH : setWalletH
+    writeFucntion : writeFucntion
   })
 
 
