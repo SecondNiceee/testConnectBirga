@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-
 import makeNewFile from "../functions/newMakeFile";
 
 
@@ -206,8 +205,9 @@ export const fetchUserInfo = createAsyncThunk(
             alert("успех" + JSON.stringify(response.data))
         }
         catch(e){
-            alert(e)
-            photoUrl = ""
+            if (!e.code === "ERR_NETWORK"){
+                photoUrl = ""
+            }
         }
         return ( {
             firstName: firstName,
