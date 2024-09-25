@@ -533,6 +533,11 @@ const MyAds = ({isPage = false}) => {
   } , [isPage , myAdeOneStatus  , secondPage.index , filteredArray , isPageValueOne] )
 
 
+  console.log('====================================');
+  console.log(isPage , myAdOneAdvertisement);
+  console.log('====================================');
+
+
 
 
   const deleteFunction = useCallback( (index) => {

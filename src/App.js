@@ -237,7 +237,7 @@ const AnimatedSwitch = () => {
               path="/ResponsePage"
               element={
                 <Suspense fallback={<MyLoader />}>
-                  <MyAds isPage={true} />
+                  <MyAds isPage = {true}/>
                 </Suspense>
               }
             />
