@@ -111,7 +111,7 @@ export const setStartResponse = createAsyncThunk(
                   text:
                   messageOne + ` «<b>${advertisement.taskName}</b>»` ,
                   buttonUrl:
-                    "https://www.connectbirga.ru/MyAds?open=1" ,
+                    "https://connectbirga.ru/MyAds?open=1" ,
                     languageCode : en ? "en" : "ru"
                 },
                 headers : {
