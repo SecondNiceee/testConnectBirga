@@ -7,6 +7,7 @@ import Text from '../../Text/Text';
 import translation from '../../../functions/translate';
 const Yes = translation("Да")
 const No = translation("Нет")
+
 const LinkComp = ({navigate, link}) => {
     const imageLink = useMemo( () => {
         switch (navigate){

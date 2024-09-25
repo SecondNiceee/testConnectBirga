@@ -545,7 +545,8 @@ const First = ({ isPage = false }) => {
               id: window.Telegram.WebApp.initDataUnsafe.start_param,
             },
             headers : {
-              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY,
+              
             }
           }
         );

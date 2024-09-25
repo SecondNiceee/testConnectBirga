@@ -294,6 +294,7 @@ const AdCreatingOne = ({
       />
 
       <DescriptionAndPhoto
+      
         MyInformation={MyInformation}
         taskInformation={taskInformation}
         setTaskInformation={setTaskInformation}

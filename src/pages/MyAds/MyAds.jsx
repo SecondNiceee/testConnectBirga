@@ -562,9 +562,6 @@ const MyAds = ({isPage = false}) => {
   const postStatus = useSelector( state => state.information.postTaskStatus )
 
 
-  console.log(walletH);
-
-
   const goBack = useBack(
     {buyPage : buyPage,
       details : details,
