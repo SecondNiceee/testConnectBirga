@@ -281,5 +281,13 @@
     "Нет примеров работ" : "No examples of work",
     "Сохранить шаблон перед выходом?" : "Save the template before exiting?",
     "Вы удалили уже это задание." : "You've already deleted this task.",
-    "КОШЕЛЕК" : "WALLET"
+    "КОШЕЛЕК" : "WALLET",
+    "на Коннект Бирже" : "on the Connect",
+    "вчера в " : "yesterday at ",
+    "Вчера в " : "Yesterday at ",
+    "Завтра в " : "Tomorrow at ",
+    "завтра в " : "tomorrow at ",
+    "сегодня в " : "today at",
+    "Cегодня в " : "Today at"
+    
 }                                    

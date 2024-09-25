@@ -9,6 +9,7 @@ import BlockSpinner from "../UI/BlockSpinner/BlockSpinner";
 import Text from "../Text/Text";
 import en from "../../constants/language";
 import RealTon from "../../images/icons/RealTon.svg"
+import translation from "../../functions/translate";
 
 const textPrice = en ? 'USD' : "RUB"
 const MyFirstBlock = ({
@@ -133,8 +134,7 @@ const MyFirstBlock = ({
             <ShareIcon
               onClick={() => {
                 window.Telegram.WebApp.openTelegramLink(
-                  `https://t.me/share/url?text=%0AЗадание «${taskName}» на Коннект Бирже&url=https://t.me/ConnectexBot/task?startapp=` +
-                    String(id)
+                    `https://t.me/share/url?text=%0A${translation("Задание")} «${taskName}» ${translation("на Коннект Бирже")}&url=https://t.me/ConnectexBot/task?startapp=${String(id)}`
                 );
               }}
               style={end ? { opacity: 0.5 } : {}}

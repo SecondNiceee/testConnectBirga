@@ -1,4 +1,5 @@
 import en from "../constants/language";
+import translation from "./translate";
 
 function formatDate(date , isCapitalize = false) {
   if (en){
@@ -52,19 +53,19 @@ function formatDate(date , isCapitalize = false) {
   
     if (date.toDateString() === yesterday.toDateString()) {
       if (!isCapitalize){
-        return 'вчера в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+        return translation('вчера в ') + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
       }
-      return 'Вчера в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+      return translation('Вчера в ') + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
     } else if (date.toDateString() === tomorrow.toDateString()) {
       if (!isCapitalize){
-        return 'завтра в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+        return translation('завтра в ') + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
       }
-      return 'Завтра в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+      return translation('Завтра в ') + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
     } else if (date.toDateString() === now.toDateString()) {
       if (!isCapitalize){
-        return 'сегодня в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+        return translation('сегодня в ') + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
       }
-      return 'Cегодня в ' + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
+      return translation('Cегодня в ') + date.toLocaleTimeString('ru-RU', { hour: 'numeric', minute: 'numeric', hour12: false });
     } else {
       return date.toLocaleString('ru-RU', options);
     }

@@ -109,7 +109,7 @@ export const setStartResponse = createAsyncThunk(
                 params: {
                   chatId: responce.user.id,
                   text:
-                  messageOne + ` «<b>${advertisement.taskName}</b>«` ,
+                  messageOne + ` «<b>${advertisement.taskName}</b>»` ,
                   buttonUrl:
                     "https://www.connectbirga.ru/MyAds?open=1" ,
                     languageCode : en ? "en" : "ru"
