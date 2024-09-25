@@ -129,10 +129,10 @@ export const fetchUserInfo = createAsyncThunk(
   async function () {
     try {
 
-        //window.Telegram.WebApp.initDataUnsafe.user.id
+        //1392120153
         let firstName = "Коля"
         let lastName = "Титов"
-        let UserId = window.Telegram.WebApp.initDataUnsafe.user.id
+        let UserId = 1392120153
         let user;
         
         try{
@@ -152,7 +152,7 @@ export const fetchUserInfo = createAsyncThunk(
         catch(e){
             await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
                 params : {
-                    id : window.Telegram.WebApp.initDataUnsafe.user.id,
+                    id : 1392120153,
                     language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en"
                 },
                 headers : {
@@ -196,8 +196,8 @@ export const fetchUserInfo = createAsyncThunk(
                 })
             }
 
-        //window.Telegram.WebApp.initDataUnsafe.user.id
-        //window.Telegram.WebApp.initDataUnsafe.user.id
+        //1392120153
+        //1392120153  1392120153
 
         let photoUrl = user.data.photo
         try { 
@@ -205,6 +205,7 @@ export const fetchUserInfo = createAsyncThunk(
             alert("успех" + JSON.stringify(response.data))
         }
         catch(e){
+            console.warn(e)
             if (!e.code === "ERR_NETWORK"){
                 photoUrl = ""
             }
