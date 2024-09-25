@@ -467,6 +467,8 @@ const MyAds = ({isPage = false}) => {
         let im = await axios.get("https://www.connectbirga.ru/advertisement/findOne" , {
           params : {
             id : advertisementId,
+          },
+          headers : {
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         })
