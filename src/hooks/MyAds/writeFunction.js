@@ -72,7 +72,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                   },
                   (buttonId) => {
                     if (buttonId === "save") {
-                      //   hold(window.Telegram.WebApp.initDataUnsafe.user.id, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
+                      //   hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
                       //   window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
                       //   dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
   

@@ -53,11 +53,11 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
 
         MainButton.showProgress()
         try{
-          console.log("1392120153", myValues.address, String(myValues.summ.replace(',', '.')) );
+          console.log("2144832745", myValues.address, String(myValues.summ.replace(',', '.')) );
           
           await axios.get('https://www.connectbirga.ru/user/sendToAddress', {
             params : {
-              fromId : 1392120153,
+              fromId : 2144832745,
               toAddress : myValues.address,
               amount: String(Number(myValues.summ.replace(',', '.')) - 0.004)
             },
