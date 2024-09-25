@@ -207,7 +207,7 @@ const MyAds = ({isPage = false}) => {
       setSecondPage((value) => ({...value , isActive : true}))
       setOpen((value) => ({...value, isActive : true}))
     }
-  } , [isPage] )
+  } , [isPage, setSecondPage] )
 
 
   function checkMistakes(changingTask , isSet = true) {
@@ -534,7 +534,7 @@ const MyAds = ({isPage = false}) => {
 
 
   console.log('====================================');
-  console.log(isPage , myAdOneAdvertisement);
+  console.log(isPage , myAdOneAdvertisement, secondPage);
   console.log('====================================');
 
 
