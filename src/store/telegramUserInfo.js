@@ -196,10 +196,19 @@ export const fetchUserInfo = createAsyncThunk(
                     photos : files
                 })
             }
-        alert(user.data.photo)
 
         //window.Telegram.WebApp.initDataUnsafe.user.id
         //window.Telegram.WebApp.initDataUnsafe.user.id
+
+        let photoUrl = user.data.photo
+        try { 
+            const response = await axios.get(user.data.photo)
+            alert("успех" + JSON.stringify(response.data))
+        }
+        catch(e){
+            alert(e)
+            photoUrl = ""
+        }
         return ( {
             firstName: firstName,
             lastName: lastName,
@@ -207,7 +216,7 @@ export const fetchUserInfo = createAsyncThunk(
             mnemonic : user.data.mnemonic,
             id: UserId,
             link : user.data.link,
-            photo: user.data.photo,
+            photo: photoUrl,
             about : user.data.about,
             stage : user.data.stage,
             deals : user.data.deals,
