@@ -202,12 +202,7 @@ const MyAds = ({isPage = false}) => {
 
 
 
-  useEffect( () => {
-    if (isPage){
-      setSecondPage((value) => ({...value , isActive : true}))
-      setOpen((value) => ({...value, isActive : true}))
-    }
-  } , [isPage, setSecondPage] )
+
 
 
   function checkMistakes(changingTask , isSet = true) {
@@ -696,6 +691,13 @@ const MyAds = ({isPage = false}) => {
 
 
   console.log(details)
+
+  useEffect( () => {
+    if (isPage){
+      setSecondPage((value) => ({...value , isActive : true}))
+      setOpen((value) => ({...value, isActive : true}))
+    }
+  } , [isPage, setSecondPage] )
   return (
     <>
       { postStatus === "pending" ? (
