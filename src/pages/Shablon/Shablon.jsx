@@ -152,7 +152,7 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, mis
         title={"НАЗВАНИЕ ШАБЛОНА"}
         text={shablon.name}
         setText={(e) => {
-          setShablon((value) => ({...value, shablon : {...value.shablon , name : e }}));
+          setShablon( (value ) => ({...value , name : e}) )
         }}
         errorValue={mistakes.name}
         underText={""}
@@ -163,11 +163,11 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, mis
       className={'shablon-description'}
         text={shablon.text}
         setText={(e) => {
-          setShablon((value) => ({...value, shablon : {...value.shablon , text : e }}));
+          setShablon( (value ) => ({...value , text : e}) )
         }}
         photos={shablon.photos}
         setPhotos={(e) => {
-          setShablon((value) => ({...value, shablon : {...value.shablon , photos : e }}));
+          setShablon( (value ) => ({...value, photos :e}) )
         }}
         textTitle={"ТЕКСТ ОТКЛИКА"}
         filesTitle={""}

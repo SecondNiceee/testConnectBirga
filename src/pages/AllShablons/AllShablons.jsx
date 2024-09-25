@@ -24,16 +24,17 @@ const AllShablons = () => {
   const navigate = useNavigate();
 
   const [shablon, setShablon] = useState({
-    isActive: false,
-    shablon: {
       id: 0,
       name: "",
       text: "",
       photos: [],
       photosNames: [],
-    },
-    put: false,
   });
+
+  const [shablonShow , setShablonShow] = useState({
+    isActive : false,
+    put : false
+  })
 
   useEffect(() => {
     return () => {
@@ -55,41 +56,43 @@ const AllShablons = () => {
     const localMistakes = {    name : true,
       text : true}
     if (Object.values(mistakes).includes(true)){
-      if (shablon.shablon.name.length >= 3){
+      if (shablon.name.length >= 3){
         localMistakes.name = false
       }
-      if (shablon.shablon.text.length >= 5){
+      if (shablon.text.length >= 5){
         localMistakes.text = false
       }
       if (JSON.stringify(localMistakes) !== JSON.stringify(mistakes)){
         setMistakes({...localMistakes})
       }
     }
-  } , [shablon.shablon , mistakes, setMistakes] )
+  } , [shablon , mistakes, setMistakes] )
 
 
 
   function clickOnFunc() {
     setShablon({
-      isActive: true,
-      shablon: {
+
         id: 0,
         name: "",
         text: "",
         photos: [],
         photosNames: [],
-      },
-      put: false,
     });
+    setShablonShow({
+      isActive : true, 
+      put : false
+    })
   }
 
   const putFunction = useCallback(
     (e) => {
-      setShablon({
-        isActive: true,
-        shablon: e,
-        put: true,
-      });
+      setShablon(e)
+      setShablonShow(
+        {isActive : true,
+          put : true
+        }
+      )
     },
     [setShablon]
   );
@@ -123,42 +126,42 @@ const AllShablons = () => {
 
   const save = useCallback( (put) => {
     const myFormData = new FormData()
-    myFormData.append("name" , String(shablon.shablon.name.trim()) )
-    myFormData.append("text" , String(shablon.shablon.text.trim()))
+    myFormData.append("name" , String(shablon.name.trim()) )
+    myFormData.append("text" , String(shablon.text.trim()))
 
     if (put){
-      let filesArr = sortFiles(shablon.shablon.photosNames, shablon.shablon.photos)
+      let filesArr = sortFiles(shablon.photosNames, shablon.photos)
       filesArr.addedArr.forEach((e, i) => {
         myFormData.append(`addFiles` , e)
       })
       filesArr.removedArr.forEach((e, i) => {
         myFormData.append(`deleteFiles[${i}]` , e)
       })
-      dispatch(putShablon([myFormData , shablon.shablon.id, shablon.shablon]))
+      dispatch(putShablon([myFormData , shablon.id, shablon]))
     }
     else{
       shablon.shablon.photos.forEach((e,i) => {
         myFormData.append("photos" , e)
       })
       // myFormData.append("photos" , shablon.photos)
-      dispatch(postShablon([myFormData, shablon.shablon]))
+      dispatch(postShablon([myFormData, shablon]))
     }
     // myFormData.append("photos" , shablon.photos)
 
-  } , [dispatch, shablon.shablon] )
+  } , [dispatch, shablon] )
   const check = useCallback( () => {
     const localMistakes = {name : false, text : false}
-    if (shablon.shablon.name.trim().length < 3){
+    if (shablon.name.trim().length < 3){
       localMistakes.name = true
     }
-    if (shablon.shablon.text.trim().length < 5){
+    if (shablon.text.trim().length < 5){
       localMistakes.name = true
     }
     if (JSON.stringify(localMistakes) !== JSON.stringify(mistakes)){
       setMistakes(localMistakes)
     }
     return Object.values(localMistakes).every(value => !value )
-  } , [mistakes, shablon.shablon] )
+  } , [mistakes, shablon] )
 
   const exitTemplate = useCallback( (put) => {
     window.Telegram.WebApp.showPopup(
@@ -174,14 +177,14 @@ const AllShablons = () => {
         if (buttonId === "save") {
           if (check()){
               save(put)
-              setShablon((value) => ({ ...value, isActive: false }));
+              setShablonShow((value) => ({...value , isActive : false}))
           }
           else{
             window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
           }
         }
         if (buttonId === "delete" || buttonId === null) {
-          setShablon((value) => ({ ...value, isActive: false }));
+          setShablonShow( (value) => ({...value , isActive : false}) )
         }
       }
     );
@@ -191,8 +194,8 @@ const AllShablons = () => {
 
   useEffect(() => {
     function back() {
-      if (shablon.isActive) {
-        exitTemplate(shablon.put)
+      if (shablonShow.isActive) {
+        exitTemplate(shablonShow.put)
         // setShablon((value) => ({ ...value, isActive: false }));
       } else {
         navigate(-1);
@@ -202,7 +205,7 @@ const AllShablons = () => {
     return () => {
       BackButton.offClick(back);
     };
-  }, [shablon.isActive, navigate, exitTemplate, shablon.put]);
+  }, [shablonShow, navigate, exitTemplate]);
   const postStatus = useSelector((state) => state.shablon.postStatus);
   const putStatus = useSelector((state) => state.shablon.putStatus);
 
@@ -228,7 +231,7 @@ const AllShablons = () => {
   }, []);
 
   const shablonStyle = useMemo( () => {
-    if (shablon.isActive){
+    if (shablonShow.isActive){
       return {
         transform : "translate3d(-100vw , 0px, 0px)"
       }
@@ -236,7 +239,7 @@ const AllShablons = () => {
     return {
       transform : "translate3d(0px , 0px, 0px)"
     }
-  } , [shablon.isActive] ) 
+  } , [shablonShow.isActive] ) 
 
   return (
     <div style={shablonStyle}  className="shablon-container">
@@ -279,7 +282,7 @@ const AllShablons = () => {
           </>
         )}
         <CSSTransition
-          in={shablon.isActive}
+          in={shablonShow.isActive}
           // classNames={"left-right"}
           mountOnEnter
           unmountOnExit
@@ -287,12 +290,12 @@ const AllShablons = () => {
         >
           <Shablon
             mistakes = {mistakes}
-            shablon={shablon.shablon}
+            shablon={shablon}
             setActive={(e) => {
               setShablon((value) => ({ ...value, isActive: e }));
             }}
             setShablon={setShablon}
-            put={shablon.put}
+            put={shablonShow.put}
           />
         </CSSTransition>
       </div>

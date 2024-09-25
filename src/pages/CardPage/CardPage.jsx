@@ -3,6 +3,7 @@ import cl from "./CardPage.module.css";
 import InnerCase from "../../components/CardPage/InnerCase/InnerCase";
 import FullDescription from "../../components/First/FirstDetails/FullDescription";
 import LinkComp from "../../components/CardPage/Link/LinkComp";
+import MyLoader from "../../components/UI/MyLoader/MyLoader";
 const menu = document.documentElement.querySelector(".FirstMenu")
 const CardPage = ({ card , ...props }) => {
     window.Telegram.WebApp.disableVerticalSwipes();
@@ -60,6 +61,12 @@ const CardPage = ({ card , ...props }) => {
     } , [card.dropfileLink, card.behanceLink , card.dribbbleLink] )
 
   return (
+    <>
+    {card.id === 0 ?
+    <MyLoader style = {{
+      transform : "translateX(-16px)"
+    }} />
+    :
     <div {...props} className={cl.wrapper}>
       <InnerCase
         task={card}
@@ -74,6 +81,8 @@ const CardPage = ({ card , ...props }) => {
       {linksComponents}
       
     </div>
+}
+    </>
   );
 };
 
