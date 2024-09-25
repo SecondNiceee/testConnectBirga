@@ -192,7 +192,8 @@ export const fetchUserInfo = createAsyncThunk(
                     dribbbleLink : e.dribble,
                     dropfileLink : e.dropFile,
                     photosNames : e.photos,
-                    photos : files
+                    photos : files,
+                    
                 })
             }
 
@@ -225,7 +226,8 @@ export const fetchUserInfo = createAsyncThunk(
             deals : user.data.deals,
             completedTasks : user.data.completedAdvertisements,
             cards : localCards,
-            congradulations : user.data.congradulations
+            congradulations : user.data.congradulations,
+            lastTransaction : user.data.lastTransaction
           } );
     }
     catch (e){
@@ -251,6 +253,7 @@ const telegramUserInfo = createSlice({
     lastName: "",
     completedTasks : [],
     deals : 0,
+    lastTransaction : "NO",
     profile : {
         about : null,
         stage : 0,
@@ -281,6 +284,7 @@ const telegramUserInfo = createSlice({
       state.status = "loading";
     });
     builder.addCase(fetchUserInfo.fulfilled, (state, action) => {
+      state.fetchUserInfo = action.payload.lastTransaction
       state.id = action.payload.id;
       state.firstName = action.payload.firstName;
       state.lastName = action.payload.lastName;

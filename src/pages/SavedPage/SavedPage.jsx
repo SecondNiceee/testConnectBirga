@@ -278,12 +278,10 @@ const SavedPage = () => {
         BackButton.show()
       }
       else{
-        BackButton.hide()
         BackButton.offClick(backFunction)
       }
       return () => {
         BackButton.offClick(backFunction)
-          BackButton.hide()
         
       }
   } , [myResponse.isActive, isProfileOpen, card.isOpen, setMyResponse, setProfileOpen, extraDetails.isOpen, setCard] )
@@ -302,7 +300,6 @@ const SavedPage = () => {
     }
     else{
       if (!myResponse.isActive){
-        BackButton.hide()
       }
       BackButton.offClick(backFunction)
     }

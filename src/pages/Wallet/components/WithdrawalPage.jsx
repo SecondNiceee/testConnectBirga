@@ -25,75 +25,107 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
   const dispatch = useDispatch()
   const address = useSelector( state => state.telegramUserInfo.address )
 
+  const lastTransaction = useSelector( state => state.telegramUserInfo.lastTransaction )
+
+
+
   useEffect( () => {
     async function buttonFunction(){
-      MainButton.showProgress()
-      try{
-        console.log("1392120153", myValues.address, String(myValues.summ.replace(',', '.')) );
-        
-        await axios.get('https://www.connectbirga.ru/user/sendToAddress', {
-          params : {
-            fromId : 1392120153,
-            toAddress : myValues.address,
-            amount: String(Number(myValues.summ.replace(',', '.')) - 0.004)
-          },
-          headers : {
-            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-          }
-        })
-        dispatch(getBalance({userAddress : address}))
-        MainButton.hideProgress()
-        window.Telegram.WebApp.showPopup(
-          {
-            title: "Вывод в пути.",
-            message: "Ваши тоны поступят на баланс в течении нескольких минут",
-            buttons: [
-              { id: "save", type: "default", text: "Понятно" },
-            ],
-          },
-          (buttonId) => {
-            if (buttonId === "save" || buttonId === null) {
-              setWithDrawal(false)
-            }
-          }
-        );
 
-      }
-      catch(e){
-        console.log('====================================');
-        console.log(e);
-        console.log('====================================');
-        window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+      if ( (new Date() - new Date(lastTransaction))  / (1000 * 60)){
         window.Telegram.WebApp.showPopup(
           {
-            title: "Ошибка!",
-            message: "Введите правильный адресс кошелька и попробуйте снова",
+            title: translation("Ошибка!"),
+            message: translation("Вы недавно проводили транзакцию , пожалуйста , перезайдите в приложение через 5 минут и попробуйте операцию снова."),
             buttons: [
-              { id: "save", type: "destructive", text: "Понятно" },
+              { id: "save", type: "default", text: translation("Понятно") },
             ],
           },
           (buttonId) => {
             if (buttonId === "save" || buttonId === null) {
-              console.log("Он что - то нажал");
+              console.log("ок");
               
             }
           }
         );
       }
-      MainButton.hideProgress()
+      else{
+
+        MainButton.showProgress()
+        try{
+          console.log("1392120153", myValues.address, String(myValues.summ.replace(',', '.')) );
+          
+          await axios.get('https://www.connectbirga.ru/user/sendToAddress', {
+            params : {
+              fromId : 1392120153,
+              toAddress : myValues.address,
+              amount: String(Number(myValues.summ.replace(',', '.')) - 0.004)
+            },
+            headers : {
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+            }
+          })
+          dispatch(getBalance({userAddress : address}))
+          MainButton.hideProgress()
+          window.Telegram.WebApp.showPopup(
+            {
+              title: translation("Вывод в пути."),
+              message: translation("Ваши тоны поступят на баланс в течении нескольких минут"),
+              buttons: [
+                { id: "save", type: "default", text: translation("Понятно") },
+              ],
+            },
+            (buttonId) => {
+              if (buttonId === "save" || buttonId === null) {
+                setWithDrawal(false)
+              }
+              
+            }
+          );
+  
+          
+  
+        }
+        catch(e){
+          console.log('====================================');
+          console.log(e);
+          console.log('====================================');
+          window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+          window.Telegram.WebApp.showPopup(
+            {
+              title: translation("Ошибка!"),
+              message: translation("Введите правильный адресс кошелька и попробуйте снова"),
+              buttons: [
+                { id: "save", type: "destructive", text: "Понятно" },
+              ],
+            },
+            (buttonId) => {
+              if (buttonId === "save" || buttonId === null) {
+                console.log("Он что - то нажал");
+                
+              }
+            }
+          );
+        }
+        MainButton.hideProgress()
+      }
 
     }
     MainButton.hideProgress()
     MainButton.show()
-    MainButton.setText("Отправить")
+    MainButton.setText(translation("Отправить"))
 
     MainButton.onClick(buttonFunction)
     return () => {
       MainButton.hide()
       MainButton.offClick(buttonFunction)
     }
-  } , [myValues, setWithDrawal, address, dispatch] )
+  } , [myValues, setWithDrawal, address, dispatch, lastTransaction] )
   
+  console.log('====================================');
+  console.log(lastTransaction);
+  console.log('====================================');
+
 
   const valuesChanger = useCallback((e) => {
     setMyValues((value) => ({ ...value, address: e }));
