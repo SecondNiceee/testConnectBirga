@@ -218,8 +218,8 @@ const continueText = translation("ДАЛЕЕ")
   }
   async function post(el) {
     let myFormData = new FormData();
-    // myFormData.append("userId", 1392120153 );
-     myFormData.append("userId", String(1392120153)  );
+    // myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id );
+     myFormData.append("userId", String(window.Telegram.WebApp.initDataUnsafe.user.id)  );
     myFormData.append("title", String(el.taskName.trim()));
     myFormData.append("description", String(el.taskDescription.trim()));
     myFormData.append("deadline", "1");

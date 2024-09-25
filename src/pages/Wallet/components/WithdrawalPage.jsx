@@ -24,16 +24,17 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
   })
   const dispatch = useDispatch()
   const address = useSelector( state => state.telegramUserInfo.address )
-
+  // window.Telegram.WebApp.initDataUnsafe.user.id
+  // window.Telegram.WebApp.initDataUnsafe.user.id
   useEffect( () => {
     async function buttonFunction(){
       MainButton.showProgress()
       try{
-        console.log("1392120153", myValues.address, String(myValues.summ.replace(',', '.')) );
+        console.log("window.Telegram.WebApp.initDataUnsafe.user.id", myValues.address, String(myValues.summ.replace(',', '.')) );
         
         await axios.get('https://www.connectbirga.ru/user/sendToAddress', {
           params : {
-            fromId : 1392120153,
+            fromId : window.Telegram.WebApp.initDataUnsafe.user.id,
             toAddress : myValues.address,
             amount: String(Number(myValues.summ.replace(',', '.')) - 0.004)
           },

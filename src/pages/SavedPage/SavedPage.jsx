@@ -124,7 +124,7 @@ const SavedPage = () => {
       savedTasks[details.id]
     ) {
       if (savedTasks[details.id].responces) {
-        if (savedTasks[details.id].responces.find(e => String(e.user.id) === "1392120153")){
+        if (savedTasks[details.id].responces.find(e => String(e.user.id) === "window.Telegram.WebApp.initDataUnsafe.user.id")){
           return true
         }
         else{
@@ -397,7 +397,7 @@ const SavedPage = () => {
             // setShablon({...shablon , isActive : false})
           }
           if (buttonId === "save") {
-            postResponce(savedTasks[details.id].id, 1392120153);
+            postResponce(savedTasks[details.id].id, window.Telegram.WebApp.initDataUnsafe.user.id);
             setResponce((value) => ({ ...value, isOpen: false }));
             setDetails((value) => ({ ...value, isOpen: false }));
           }

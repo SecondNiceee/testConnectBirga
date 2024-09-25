@@ -120,7 +120,7 @@ const Case = ({
                   "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" +
                     String(card.id) +
                     "m" +
-                    1392120153
+                    window.Telegram.WebApp.initDataUnsafe.user.id
                 );
               }}
               className={cl.circle}
@@ -179,7 +179,7 @@ const Case = ({
                   "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" +
                     String(card.id) +
                     "m" +
-                    1392120153
+                    window.Telegram.WebApp.initDataUnsafe.user.id
                 );
               }}
             >
