@@ -129,10 +129,10 @@ export const fetchUserInfo = createAsyncThunk(
   async function () {
     try {
 
-        //1392120153
+        //window.Telegram.WebApp.initDataUnsafe.user.id
         let firstName = "Коля"
         let lastName = "Титов"
-        let UserId = 1392120153
+        let UserId = window.Telegram.WebApp.initDataUnsafe.user.id
         let user;
         
         try{
@@ -152,7 +152,7 @@ export const fetchUserInfo = createAsyncThunk(
         catch(e){
             await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
                 params : {
-                    id : 1392120153,
+                    id : window.Telegram.WebApp.initDataUnsafe.user.id,
                     language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en"
                 },
                 headers : {
@@ -197,8 +197,8 @@ export const fetchUserInfo = createAsyncThunk(
                 })
             }
 
-        //1392120153
-        //1392120153  1392120153
+        //window.Telegram.WebApp.initDataUnsafe.user.id
+        //window.Telegram.WebApp.initDataUnsafe.user.id  window.Telegram.WebApp.initDataUnsafe.user.id
 
         let photoUrl = user.data.photo
         try { 
