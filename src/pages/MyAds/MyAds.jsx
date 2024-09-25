@@ -687,6 +687,8 @@ const MyAds = ({isPage = false}) => {
 
   console.log(secondPage.task)
 
+
+  console.log(details)
   return (
     <>
       { postStatus === "pending" ? (
@@ -741,6 +743,7 @@ const MyAds = ({isPage = false}) => {
             unmountOnExit
           >
             <AboutOne
+            setDetailsShow={setShowDetails}
             style = { (isPageValueOne && isPage) ? {left : "0px"} : {}}
             setDetails={setDetails}
               setSecondPage={setSecondPage}

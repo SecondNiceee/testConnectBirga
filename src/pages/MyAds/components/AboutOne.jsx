@@ -20,6 +20,7 @@ const AboutOne = ({
   setOpen,
   setSecondPage,
   setDetails,
+  setDetailsShow,
   openAboutReactionFunc,
   ...props
 }) => {
@@ -84,9 +85,9 @@ const AboutOne = ({
 
   const setDetailsCallback = useCallback(() => {
     setDetails({
-      isActive: true,
-      task: {...task, myAds : true},
+...task, myAds : true
     });
+    setDetailsShow(true)
     // eslint-disable-next-line
   }, [task]);
 

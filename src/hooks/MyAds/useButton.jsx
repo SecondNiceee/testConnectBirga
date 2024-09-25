@@ -109,7 +109,7 @@ export const useButton = ({
           });
           
   
-          if (checkMistakes(details.task, false)) {
+          if (checkMistakes(details, false)) {
             MainButton.setParams({
               color: "#2ea5ff",
               text_color: "#ffffff",
@@ -173,5 +173,5 @@ export const useButton = ({
     };
 
     // eslint-disable-next-line
-  }, );
+  } );
 };
