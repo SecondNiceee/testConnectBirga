@@ -70,6 +70,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
               }
               if (buttonId === "save") {
                 dispatch(deleteCard(id))
+                setActive(false)
               }
         
         
@@ -78,7 +79,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
         else{
             dispatch(deleteCard(id))
         }
-    }  , [id , agree , dispatch] )
+    }  , [id , agree , dispatch, setActive] )
 
 
     const deleteResponceFunc = useCallback( () => {
@@ -99,6 +100,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
               }
               if (buttonId === "save") {
                 dispatch(deleteResponce(id))
+                setActive(false)
               }
         
         
@@ -107,7 +109,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
         else{
             dispatch(deleteResponce(id))
         }
-    } , [id , agree , dispatch] )
+    } , [id , agree , dispatch, setActive] )
     const deleteAdFunction = useCallback(() => {
         if (agree){
 
@@ -126,6 +128,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
               }
               if (buttonId === "save") {
                 dispatch(deleteAdvertisement(id))
+                setActive(false)
               }
         
         
@@ -134,7 +137,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
         else{
             dispatch(deleteAdvertisement(id))
         }
-    } , [id , agree, dispatch] )
+    } , [id , agree, dispatch, setActive] )
 
     const el = useRef(null)
     useEffect( () => {
@@ -182,7 +185,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
                         default :
                             window.Telegram.WebApp.showAlert('Что - то пошло не так')
                     }
-                    setActive(false)
+                    
                     
                 }
             }

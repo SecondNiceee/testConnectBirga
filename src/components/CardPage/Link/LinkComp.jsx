@@ -26,7 +26,7 @@ const LinkComp = ({navigate, link}) => {
         window.Telegram.WebApp
         .showPopup({
           title: translation("Перейти?"),
-          message: translation(`Вы уверены, что хотите перейти по ссылке `) + {par} + `?`,
+          message: translation(`Вы уверены, что хотите перейти по ссылке `) + par + `?`,
           buttons: [
             { id: "save", type: "default", text: Yes },
             { id: "delete", type: "destructive", text: No },

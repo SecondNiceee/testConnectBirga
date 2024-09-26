@@ -23,7 +23,8 @@ export const useButton = ({
   putTask,
   writeFucntion,
   goBack,
-  showDetails
+  showDetails,
+  myAdOneAdvertisement
 }) => {
 
   const balance = useSelector(state => state.balance.value)
@@ -71,7 +72,7 @@ export const useButton = ({
             MainButton.setText(translation("Перейти к заданию"))
           }
           else{
-            if (balance < secondPage.task.tonValue){
+            if (Number(balance) < Number(myAdOneAdvertisement.tonValue)){
               MainButton.setText(translation("КОШЕЛЕК"))
             }
             else{
