@@ -71,7 +71,7 @@ const MyReaction = ({
                 response : responce
               })
             }}>Подробнее</MyButton>
-            {responce.isWatched !== "inProcess"  && (
+            { (responce.isWatched !== "inProcess" && responce.isWatched !== "completed")   && (
               <div
                 onClick={() => {
                   deleteFunction(responce.id);

@@ -10,6 +10,7 @@ import cl from "./FileInput.module.css";
 import file from "../../../images/icons/file.svg";
 import BlockSpinner from "../BlockSpinner/BlockSpinner";
 import Text from "../../Text/Text";
+import translation from "../../../functions/translate";
 let counter = 0;
 const FileInput = ({
   className,
@@ -44,7 +45,10 @@ const FileInput = ({
             setLoader(false)
           }
           
-        });
+        }).catch( (value) =>{
+          setLoader(false)
+          window.Telegram.WebApp.showAlert(translation("Не удалось загрузить фотку, попробуйте еще раз или перезайдите на страницу."))
+        } );
       });
       // eslint-disable-next-line
     },
@@ -232,7 +236,7 @@ const FileInput = ({
             onChange={(event) => {
               if (event.target.files && event.target.files[0]) {
                 if (event.target.files.length + files.length > 5) {
-                  window.Telegram.WebApp.showAlert("Максимум 5 файлов");
+                  window.Telegram.WebApp.showAlert(translation("Максимум 5 файлов"));
                 } else {
                   let newFiles = [];
                   for (let i = 0; i < event.target.files.length; i++) {

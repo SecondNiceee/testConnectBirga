@@ -64,7 +64,7 @@ const WalletEnter = () => {
   } , [step] )
   
   const changeHandler = useCallback( (val, index) => {
-        setValues( (value) => ([...value.map((e,i) => index === i ? val : e) ]) )
+        setValues( (value) => ([...value.map((e,i) => index === i ? val.toLowerCase() : e) ]) )
     } , [] )
 
   return (

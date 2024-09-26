@@ -75,7 +75,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
             else{
               console.log(balance)
               console.log(secondPage.task.tonValue)
-              if (Number(balance) < Number(secondPage.task.tonValue)){
+              if (Number(balance) < Number(myAdOneAdvertisement.tonValue)){
   
                 setWalletH(true)
                 MainButton.hide()
@@ -122,7 +122,6 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                           window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
                           dispatch(setStartTask(myAdOneAdvertisement.id))
     
-                          dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
                           setHappyHold(true)
   
                           MainButton.setText(translation("Перейти к заданию"))

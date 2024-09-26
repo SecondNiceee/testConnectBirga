@@ -606,7 +606,7 @@ const MyAds = ({isPage = false}) => {
       buyPage : buyPage,
       happyHold : happyHold,
       isOpen : isOpen,
-      myAdOneAdvertisement : myAdOneAdvertisement,
+      myAdOneAdvertisement : myAdOneAdvertisement ? myAdOneAdvertisement : secondPage.task,
       myAdOneResponse : myAdOneResponse,
       secondPage : secondPage,
       setBuyPage : setBuyPage,
@@ -629,7 +629,8 @@ const MyAds = ({isPage = false}) => {
     secondPage : secondPage,
     walletH : walletH,
     writeFucntion : writeFucntion,
-    showDetails : showDetails
+    showDetails : showDetails,
+    myAdOneAdvertisement : myAdOneAdvertisement ? myAdOneAdvertisement : secondPage.task
   })
 
 
