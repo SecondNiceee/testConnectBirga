@@ -371,6 +371,7 @@ const information = createSlice({
     changeOrderStatus: null,
     postTaskStatus: null,
     putTaskStatus: null,
+    ordersIds : [],
     taskInformation: {
       category: { name: "", value: "" },
       subCategory: "Выбрать",
@@ -384,6 +385,7 @@ const information = createSlice({
       singleTime: "",
       isPrivate: false,
       time: { start: null, end: null },
+
     },
 
     orderInformations: [],
@@ -470,7 +472,7 @@ const information = createSlice({
     });
 
     builder.addCase(fetchMyOrders.pending, (state) => {
-
+      
         state.myOrderStatus = "loading";
       
     });
