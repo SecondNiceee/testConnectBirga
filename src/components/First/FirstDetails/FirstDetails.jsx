@@ -51,7 +51,9 @@ const FirstDetails = forwardRef(({  orderInformation , className , setProfile, e
             <>
 <FirstLoader style = {{
     position : "absolute",
-    height : "100vh"
+    height : "100vh",
+    left : "150vw",
+    transform : "translateX(-50%)"
 }} />
             </>
         }
