@@ -1,5 +1,5 @@
 // const en =  window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code !== "ru" : false
-const en = true
+const en = false
 // alert(window.Telegram.WebApp.initDataUnsafe.user.language_code )
 console.log('====================================');
 console.log("Хай");

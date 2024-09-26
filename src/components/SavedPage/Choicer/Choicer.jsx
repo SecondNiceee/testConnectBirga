@@ -27,24 +27,24 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
     if (nowKey === keys[0]){
       if (pickerRef.current && containerOne.current){
         pickerRef.current.style.overflowY = "hidden"
-        pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight) + "px"
+        pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight + 100) + "px"
       }
         }
     if (nowKey === keys[1]){
       if (pickerRef.current && containerTwo.current ){
         pickerRef.current.style.overflowY = "hidden"
-        pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight) + "px"}
+        pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight + 100) + "px"}
     }
     if (nowKey === keys[2]){
       if (pickerRef.current && containerThree.current){
         pickerRef.current.style.overflowY = "hidden"
-        pickerRef.current.style.minHeight = String(containerThree.current.offsetHeight) + "px"
+        pickerRef.current.style.minHeight = String(containerThree.current.offsetHeight + 100) + "px"
       }
     }
       return () => {
 
       }
-    }  , [nowKey, keys, savedTasks, savedResponces, savedCards, tasksStatus ,cardsStatus , responsesStatus ] )
+    }  , [nowKey, keys, savedTasks, savedResponces, savedCards, tasksStatus ,cardsStatus , responsesStatus, viewsNumber ] )
 
   const style = useMemo(() => {
     switch (nowKey) {

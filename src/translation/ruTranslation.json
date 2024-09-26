@@ -288,5 +288,12 @@
     "Завтра в " : "Завтра в ",
     "завтра в " : "завтра в ",
     "сегодня в " : "сегодня в ",
-    "Cегодня в " : "Cегодня в "
+    "Cегодня в " : "Cегодня в ",
+    "Ошибка!" : "Mistake!",
+    "Вы недавно проводили транзакцию , пожалуйста , перезайдите в приложение через 5 минут и попробуйте операцию снова." : "You have recently performed a transaction, please re-enter the application in 5 minutes and try the transaction again.",
+    "Понятно" : "Ok",
+    "Вывод в пути." : "Successfully",
+    "Ваши тоны поступят на баланс в течении нескольких минут" : "Your tones will be on your balance in a few minutes",
+    "Отправить" : "Send",
+    "Холд не прошел. Отправте в поддержку следующее сообщение" : "Hold failed. Send the following message to support"
 }                                    
