@@ -20,11 +20,14 @@ const FileInput = ({
   clear = true,
 }) => {
   const [images, setImages] = useState([]);
+  const [loaderSize, setLoaderSize] = useState(files.length)
 
   const addFiles = useCallback(
     (newFiles, clear = false) => {
       let localImages = [];
       let localFiles = []
+      setLoader(true)
+      setLoaderSize(newFiles.length)
       newFiles.forEach((event) => {
         resizeImage(event, 1000, 1000, 1).then((value) => {
           // reader.readAsDataURL(value);
@@ -38,6 +41,7 @@ const FileInput = ({
               // setFiles([...localFiles])
               setImages([...localImages]);
             }
+            setLoader(false)
           }
           
         });
@@ -174,13 +178,7 @@ const FileInput = ({
         }
       >
 
-        { isLoader && files.map((e, i) => {
-          return (
-              <div key={i} className="filesLoader">
-                <BlockSpinner style = {{...imageStyle , border : "1px solid black"}} />
-              </div>
-          )
-        })}
+
 
       
 
@@ -215,6 +213,15 @@ const FileInput = ({
           );
         })}
 
+
+{ isLoader && Array.from({ length: loaderSize }).map((e, i) => {
+          return (
+              <div key={i} className="filesLoader">
+                <BlockSpinner style = {{...imageStyle , border : "1px solid black"}} />
+              </div>
+          )
+        })}
+
         <label
           style={files.length === 5 ? { display: "none" } : imageStyle}
           className={images.length !== 0 ? cl.ActiveMainLabel : cl.MainLabel}
@@ -223,7 +230,6 @@ const FileInput = ({
           <input
             ref={myRef}
             onChange={(event) => {
-              myRef.current.scrollIntoView({ block: "nearest", behavior: 'smooth' })
               if (event.target.files && event.target.files[0]) {
                 if (event.target.files.length + files.length > 5) {
                   window.Telegram.WebApp.showAlert("Максимум 5 файлов");
