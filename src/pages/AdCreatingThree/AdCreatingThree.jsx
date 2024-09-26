@@ -29,9 +29,9 @@ const AdCreatingThree = ({taskInformation }) => {
       <Upper />
       
       <div className={cl.blocks}>
-        <Block left={translation("Задание")} right={String(taskInformation.tonValue) + " TON"} />
+        <Block left={translation("Задание")} right={String(Number(taskInformation.tonValue)) + " TON"} />
         <Block left={translation("Комиссия")} right={"0.01 TON"} />
-        <Block left={translation("Итого")} right={String((taskInformation.tonValue + 0.01).toFixed(3)) + " TON"} />
+        <Block left={translation("Итого")} right={String((Number(taskInformation.tonValue) + 0.01).toFixed(3)) + " TON"} />
       </div>
       <Holding taskInformation={taskInformation}  className={cl.Holding} />
       { (balance < taskInformation.tonValue + 0.01 || !address)  && <AlertBlock address = {address} tonValue={taskInformation.tonValue + 0.01} />}
