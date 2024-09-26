@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import cl from "./HappyHold.module.scss";
 import { useLottie } from "lottie-react";
 import chemodan from "../../animation/boomstick.json"
 import { useSelector } from 'react-redux';
+import MainButton from '../../constants/MainButton';
+import translation from '../../functions/translate';
+import { useNavigate } from 'react-router-dom';
 const HappyPage = ({task}) => {
     const user = useSelector( state => state.telegramUserInfo )
+    const navigate = useNavigate()
     console.log(user);
     
     useEffect( () => {
@@ -16,6 +20,20 @@ const HappyPage = ({task}) => {
         }
 
     } , [] )
+
+    const buttonFunction = useCallback( () => {
+        navigate("/Wallet")
+    } , [] )
+
+    useEffect( () => {
+        MainButton.show()
+        MainButton.onClick(buttonFunction)
+        MainButton.setText(translation("КОШЕЛЕК"))
+        return () => {
+            MainButton.offClick(buttonFunction)
+            MainButton.hide()
+        }
+    } , [buttonFunction] )
 
     const options = {
         animationData: chemodan,

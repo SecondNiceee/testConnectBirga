@@ -78,7 +78,7 @@ const AnimatedSwitch = () => {
 
   useEffect(() => {
 
-    if (location.pathname === "/AdCreating" || location.pathname === "/createWallet" || location.pathname === "/Wallet" || location.pathname === "/WalletInit") {
+    if (location.pathname === "/AdCreating" || location.pathname === "/createWallet" || location.pathname === "/Wallet" || location.pathname === "/WalletInit" || location.pathname === "/HappyPage") {
         if (location.pathname !== "/Wallet"){
           document.documentElement.style.overflowY = "auto";
           document.body.style.overflowY = "auto"
@@ -221,7 +221,7 @@ const AnimatedSwitch = () => {
               path="/HappyPage"
               element={
                 <Suspense fallback={<MyLoader />}>
-                  <HappyPage task={congratulate[congratulate.length - 1]} />
+                  <HappyPage task={ congratulate ?  congratulate[congratulate.length - 1] : []} />
                 </Suspense>
               }
             />
