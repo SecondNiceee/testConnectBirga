@@ -256,6 +256,10 @@ const AllShablons = () => {
     }
   } , [shablonShow.isActive] ) 
 
+  const activeCallback = useCallback( (val) => {
+    setShablonShow((value) => ({...value, isActive : val}))
+  } , [setShablonShow] )
+
   return (
     <div style={shablonStyle}  className="shablon-container">
       <div className="all-shablon-wrapper">
@@ -306,7 +310,7 @@ const AllShablons = () => {
           <Shablon
             mistakes = {mistakes}
             shablon={shablon}
-            setActive={setShablonShow}
+            setActive={activeCallback}
             setShablon={setShablon}
             put={shablonShow.put}
           />
