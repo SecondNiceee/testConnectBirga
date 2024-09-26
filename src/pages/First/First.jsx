@@ -301,6 +301,7 @@ const First = ({ isPage = false }) => {
     isCardOpen.isOpen,
     setProfile,
     setCardOpen,
+    detailsAdertisement.status
   ]);
 
   useEffect(() => {
