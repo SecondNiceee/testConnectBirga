@@ -17,8 +17,6 @@ module.exports = function override(config, env) {
             "process.env.REACT_APP_API_KEY" : JSON.stringify(process.env.REACT_APP_API_KEY || 'development')
         })
     ]
-    // console.log(config.resolve)
-    // console.log(config.plugins)
 
     return config
 }
