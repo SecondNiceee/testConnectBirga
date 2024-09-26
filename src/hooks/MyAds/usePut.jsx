@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import  { useCallback } from 'react';
 import { putMyTask } from '../../store/information';
 import sortFiles from '../../functions/sortFiles';
 
@@ -26,7 +26,7 @@ const usePut = ({details, setSecondPage, setDetails, dispatch , setDetailsShow})
       setSecondPage( (value) => ({...value , task : {...details}}) )
       setDetailsShow(false)
       
-    } , [details, setSecondPage, setDetails, dispatch, setDetailsShow] ) 
+    } , [details, setSecondPage, dispatch, setDetailsShow] ) 
     return putTask
 };
 

@@ -19,7 +19,7 @@ const AdCreatingThree = ({taskInformation }) => {
 
   useEffect( () => {
     dispatch(getBalance({userAddress : address}))
-  } , [] )
+  } , [dispatch, address] )
 
   return (
     <div className= {cl.AdCreatingThree}

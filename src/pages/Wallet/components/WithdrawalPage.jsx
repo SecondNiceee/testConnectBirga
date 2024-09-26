@@ -32,7 +32,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
 
   useEffect( () => {
     dispatch(getBalance({userAddress : address}))
-  } , [] )
+  } , [dispatch, address] )
   useEffect( () => {
     async function buttonFunction(){
 

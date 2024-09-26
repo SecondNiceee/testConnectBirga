@@ -23,7 +23,7 @@ const HappyPage = ({task , congradulate }) => {
         async function start(  ) {
             try{
 
-                const user = await axios.patch("https://www.connectbirga.ru/user", {},  {
+                 await axios.patch("https://www.connectbirga.ru/user", {},  {
                     params: {
                       congratulateId : congradulate[0].id ,
                       userId: window.Telegram.WebApp.initDataUnsafe.user.id,
@@ -40,7 +40,7 @@ const HappyPage = ({task , congradulate }) => {
 
         }
         start()
-    } , [] )
+    } , [congradulate] )
     
     useEffect( () => {
         const menu = document.querySelector('.FirstMenu')
@@ -54,7 +54,7 @@ const HappyPage = ({task , congradulate }) => {
 
     const buttonFunction = useCallback( () => {
         navigate("/Wallet")
-    } , [] )
+    } , [navigate] )
 
     useEffect( () => {
         MainButton.show()

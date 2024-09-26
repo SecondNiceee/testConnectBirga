@@ -43,7 +43,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
           getMore();
         }
       },
-      [orderStatus, getMore, setReFetch, page]
+      [orderStatus, getMore]
     );
 
 

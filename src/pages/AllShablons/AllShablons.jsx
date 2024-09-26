@@ -5,7 +5,7 @@ import GreyText from "../../components/UI/GreyText/GreyText";
 import ShablonsWrap from "./components/ShablonsWrap/ShablonsWrap";
 import { CSSTransition } from "react-transition-group";
 import Shablon from "../Shablon/Shablon";
-import { deleteShablon, postShablon, putShablon } from "../../store/shablon";
+import { deleteShablon, postShablon } from "../../store/shablon";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
 import pagesHistory from "../../constants/pagesHistory";
@@ -154,7 +154,7 @@ const AllShablons = () => {
     setShablonShow( (value) => ({...value, isActive : false}) )
     // myFormData.append("photos" , shablon.photos)
 
-  } , [dispatch, shablon, setShablonShow] )
+  } , [dispatch, shablon, setShablonShow, putShablon] )
   const check = useCallback( () => {
     const localMistakes = {name : false, text : false}
     if (shablon.name.trim().length < 3){
@@ -203,7 +203,7 @@ const AllShablons = () => {
     else{
       setShablonShow( (value) => ({...value , isActive : false}) )
     }
-  } , [check, save, setShablon, shablon, putShablon, setShablonShow] )
+  } , [check, save, shablon, putShablon, setShablonShow] )
 
 
 

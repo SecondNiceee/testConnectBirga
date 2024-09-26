@@ -230,16 +230,16 @@ const AdCreatingOne = ({
     
       setTaskInformation( (value) => ({...value, taskDescription : e}) )
 
-  } , [taskInformation , setTaskInformation] )
+  } , [ setTaskInformation] )
 
   const setTextTitle = useCallback( (e) => {
       setTaskInformation((value) =>  ({...value , taskName : e}) )
-  } , [taskInformation , setTaskInformation] )
+  } , [setTaskInformation] )
 
   const setFile = useCallback( (e) => {
     setTaskInformation( (value) => ({...value , photos : e}) )
     
-  } , [taskInformation.myAds , setTaskInformation] )
+  } , [setTaskInformation] )
 
 
   return (

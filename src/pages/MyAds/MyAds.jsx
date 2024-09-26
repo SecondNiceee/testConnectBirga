@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 // import myImage from '../../images/desccription.png'
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import "./MyAds.css";
 
 import LastAds from "./components/LastAds";
@@ -37,10 +36,6 @@ import useBack from "./components/useBack";
 // const AboutReaction = lazy( () => import ("./components/AboutReaction") )
 
 
-let localAboutReaction;
-let localSecondPage;
-let localIsOpen;
-let localDetails;
 let detailsVar;
 
 const Yes = translation("Да")
@@ -249,16 +244,11 @@ const MyAds = ({isPage = false}) => {
     }
   } });
 
-  localAboutReaction = openAboutReaction;
-  localIsOpen = isOpen;
-  localSecondPage = secondPage;
-  localDetails = details
 
 
 
 
 
-  const navigate = useNavigate();
 
   const save = useSave({
   

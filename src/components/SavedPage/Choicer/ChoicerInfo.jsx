@@ -1,4 +1,4 @@
-import React, { forwardRef, memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import React, { forwardRef, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useLottie } from "lottie-react";
 import sleeping from "../../../animation/tired.json";
 import cl from "./Choicer.module.css";
@@ -26,22 +26,13 @@ const ChoicerInfo = forwardRef(
               return responsesStatus
           case "card":
               return cardStatus
+          default :
+              console.log("Странно че-то")
       }
   } , [navigate , orderStatus , responsesStatus, cardStatus] )
 
 
 
-    const isReady = useMemo(() => {
-      if (navigate === "task") {
-        return orderStatus === "complete";
-      }
-      if (navigate === "response") {
-        return responsesStatus === "complete";
-      }
-      if (navigate === "card") {
-        return cardStatus === "complete";
-      }
-    }, [orderStatus, cardStatus, responsesStatus, navigate]);
 
     const options = {
       animationData: sleeping,
@@ -142,7 +133,7 @@ const ChoicerInfo = forwardRef(
           getMore();
         }
       },
-      [allStatus, getMore]
+      [allStatus, getMore, orderStatus]
     );
 
 
@@ -194,7 +185,7 @@ const ChoicerInfo = forwardRef(
               className={cl.blocksWrapper}
             >
               {array}
-              {allStatus === "all" ? <></>  :  <MyLoader ref={elementRef}  style = {{ height : "90px" , marginLeft : "-16px" , height : "80vh"}} />}
+              {allStatus === "all" ? <></>  :  <MyLoader ref={elementRef}  style = {{ marginLeft : "-16px" , height : "80vh"}} />}
             </div>
           }
 

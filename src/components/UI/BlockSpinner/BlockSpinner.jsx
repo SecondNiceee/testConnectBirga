@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hourglass, ThreeCircles } from 'react-loader-spinner';
+import { Hourglass } from 'react-loader-spinner';
 
 const BlockSpinner = ({...props}) => {
     return (
