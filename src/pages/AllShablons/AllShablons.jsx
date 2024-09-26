@@ -184,6 +184,7 @@ const AllShablons = () => {
             if (check()){
                 save(put)
                 setShablonShow((value) => ({...value , isActive : false}))
+                setShablonShow( (value) => ({...value , isActive : false}) )
             }
             else{
               window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
