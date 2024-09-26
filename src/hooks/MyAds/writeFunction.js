@@ -14,6 +14,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
     const dispatch = useDispatch()
     const address = useSelector( state => state.telegramUserInfo.address )
     const balance = useSelector( state => state.balance.value )
+    const lastTransaction = useSelector( state => state.telegramUserInfo.lastTransaction )
 
     function writeFunction(){
 
@@ -61,50 +62,72 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                 MainButton.hide()
               }
               else{
-                window.Telegram.WebApp.showPopup(
-                  {
-                    title: translation("Захолдировать?"),
-                    message: translation("Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания исполнителем(через поддержку)."),
-                    buttons: [
-                      { id: "save", type: "default", text: translation("Да") },
-                      { id: "delete", type: "destructive", text: translation("Нет") },
-                    ],
-                  },
-                  (buttonId) => {
-                    if (buttonId === "save") {
-                      //   hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
-                      //   window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-                      //   dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
-  
-                      //   dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
-                      //   ).then( value =>  setHappyHold(true))
-                      //   MainButton.setText(translation("Перейти к заданию"))
-    
-                      // }).catch(value => {
-                      //   console.log(value);
-                      //   alert("Холд не прошел. Отправте в поддержку следующее сообщение")
-                      //   alert(JSON.stringify(value))
+                if ((new Date() - new Date(lastTransaction))  / (1000 * 60) < 5){
+                  
+                  window.Telegram.WebApp.showPopup(
+                    {
+                      title: translation("Ошибка!"),
+                      message: translation("Вы недавно проводили транзакцию , пожалуйста , перезайдите в приложение через 5 минут и попробуйте операцию снова."),
+                      buttons: [
+                        { id: "save", type: "default", text: translation("Понятно") },
+                      ],
+                    },
+                    (buttonId) => {
+                      if (buttonId === "save" || buttonId === null) {
+                        console.log("ок");
                         
-                      // } )
-  
-  
-  
-                       
-                        window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-                        dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
-  
-                        dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
-                        ).then( value =>  setHappyHold(true))
-                        // MainButton.setText(translation("Перейти к заданию"))
+                      }
+                    }
+                  );
+                }
+                else{
+
+                  window.Telegram.WebApp.showPopup(
+                    {
+                      title: translation("Захолдировать?"),
+                      message: translation("Вернуть захолдированные деньги можно будет лишь в случае невыполнения задания исполнителем(через поддержку)."),
+                      buttons: [
+                        { id: "save", type: "default", text: translation("Да") },
+                        { id: "delete", type: "destructive", text: translation("Нет") },
+                      ],
+                    },
+                    (buttonId) => {
+                      if (buttonId === "save") {
+                        //   hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
+                        //   window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+                        //   dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
     
+                        //   dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
+                        //   ).then( value =>  setHappyHold(true))
+                        //   MainButton.setText(translation("Перейти к заданию"))
+      
+                        // }).catch(value => {
+                        //   console.log(value);
+                        //   alert("Холд не прошел. Отправте в поддержку следующее сообщение")
+                        //   alert(JSON.stringify(value))
+                          
+                        // } )
+    
+    
+    
+                         
+                          window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+                          dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
+    
+                          dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
+                          ).then( value =>  setHappyHold(true))
+                          // MainButton.setText(translation("Перейти к заданию"))
+      
+                      }
+                      if (buttonId === "delete" || buttonId === null) {
+                        console.log("Он отказался");
+                        console.log("Да это так");
+                        
+                      }
                     }
-                    if (buttonId === "delete" || buttonId === null) {
-                      console.log("Он отказался");
-                      console.log("Да это так");
-                      
-                    }
-                  }
-                );
+                  );
+                }
+              
               }
             }
           }
