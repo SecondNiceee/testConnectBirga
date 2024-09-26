@@ -336,6 +336,7 @@ const responses = createSlice({
         responsesByAStatus : null,
         responses : [],
         responsesByA : [],
+        responsesByAIds : [],
         startStatus : "completed"
     },
     reducers :{
@@ -352,7 +353,8 @@ const responses = createSlice({
 
         builder.addCase(fetchResponseByAdvertisement.fulfilled, ((state , action) => {
             state.responsesByAStatus = "completed"
-            state.responsesByA.push(...action.payload)
+            state.responsesByA.push(...action.payload.filter(e => !state.responsesByAIds.includes(e.id)))
+            state.responsesByAIds.push(...action.payload.map(e => e.id))
             if (action.payload.length < 4){
                 state.responsesByAStatus = "all"
             }
