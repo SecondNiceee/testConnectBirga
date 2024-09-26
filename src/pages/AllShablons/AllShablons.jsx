@@ -144,7 +144,7 @@ const AllShablons = () => {
       dispatch(putShablon([myFormData , shablon.id, shablon]))
     }
     else{
-      shablon.shablon.photos.forEach((e,i) => {
+      shablon.photos.forEach((e,i) => {
         myFormData.append("photos" , e)
       })
       // myFormData.append("photos" , shablon.photos)

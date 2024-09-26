@@ -305,6 +305,7 @@ const First = ({ isPage = false }) => {
 
   localResponce = responce;
 
+
   useEffect(() => {
     if (localResponce.text.length < 3 && localStep === 1) {
       MainButton.setParams({
