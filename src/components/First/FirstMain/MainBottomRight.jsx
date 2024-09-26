@@ -18,7 +18,7 @@ const MainBottomRight = ({
   dispatch,
   deleteFunction
 }) => {
-  console.log(isResponce);
+
   
   return (
     <div className="FirstMain__bottom-right">
