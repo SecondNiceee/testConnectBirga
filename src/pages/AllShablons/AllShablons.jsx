@@ -150,6 +150,8 @@ const AllShablons = () => {
       // myFormData.append("photos" , shablon.photos)
       dispatch(postShablon([myFormData, shablon]))
     }
+
+    setShablonShow( (value) => ({...value, isActive : false}) )
     // myFormData.append("photos" , shablon.photos)
 
   } , [dispatch, shablon] )
@@ -184,7 +186,7 @@ const AllShablons = () => {
             if (check()){
                 save(put)
                 setShablonShow((value) => ({...value , isActive : false}))
-                setShablonShow( (value) => ({...value , isActive : false}) )
+                
             }
             else{
               window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
