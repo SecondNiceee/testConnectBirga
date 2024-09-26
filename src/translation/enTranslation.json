@@ -296,7 +296,9 @@
     "Ваши тоны поступят на баланс в течении нескольких минут" : "Your tones will be on your balance in a few minutes",
     "Введите правильный адресс кошелька и попробуйте снова" : "Enter the correct wallet address and try again",
     "Отправить" : "Send",
-    "Холд не прошел. Отправте в поддержку следующее сообщение" : "Hold failed. Send the following message to support"
+    "Холд не прошел. Отправте в поддержку следующее сообщение" : "Hold failed. Send the following message to support",
+    "Выберите Отправить -> Внешний кошелек -> Toncoin" : "Select Send -> External Wallet -> Toncoin",
+    "Вставьте скопированный адрес выше и подтвердите необходимую вам транзакцию." : "Paste the copied address above and confirm the transaction you need."
 
 
     

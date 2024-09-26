@@ -922,6 +922,7 @@
       align-self: center;
 }
 .Task__container-one .FullDescriptionBottom {
+  resize: none;
   background-color: transparent;
   /* Default text */
   background-color: transparent;
@@ -3429,6 +3430,7 @@ input {
 }
 
 .FullDescriptionBottom {
+  resize: none;
   background-color: transparent;
   /* Default text */
   color: rgb(255, 255, 255);
