@@ -77,6 +77,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
             } )
         }
         else{
+            setActive(false)
             dispatch(deleteCard(id))
         }
     }  , [id , agree , dispatch, setActive] )
@@ -107,6 +108,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
             } )
         }
         else{
+            setActive(false)
             dispatch(deleteResponce(id))
         }
     } , [id , agree , dispatch, setActive] )
@@ -135,6 +137,7 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
             } )
         }
         else{
+            setActive(false)
             dispatch(deleteAdvertisement(id))
         }
     } , [id , agree, dispatch, setActive] )
