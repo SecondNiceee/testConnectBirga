@@ -5,7 +5,7 @@ import GreyText from "../../components/UI/GreyText/GreyText";
 import ShablonsWrap from "./components/ShablonsWrap/ShablonsWrap";
 import { CSSTransition } from "react-transition-group";
 import Shablon from "../Shablon/Shablon";
-import { deleteShablon, postShablon } from "../../store/shablon";
+import { deleteShablon, postShablon, putShablon } from "../../store/shablon";
 import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton";
 import pagesHistory from "../../constants/pagesHistory";
@@ -24,7 +24,7 @@ const AllShablons = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [putShablon , setPutShablon] = useState({})
+  const [putShablonState , setPutShablon] = useState({})
 
   const [shablon, setShablon] = useState({
       id: 0,
@@ -132,7 +132,7 @@ const AllShablons = () => {
     const myFormData = new FormData()
     myFormData.append("name" , String(shablon.name.trim()) )
     myFormData.append("text" , String(shablon.text.trim()))
-
+    alert(put)
     if (put){
       let filesArr = sortFiles(shablon.photosNames, shablon.photos)
       filesArr.addedArr.forEach((e, i) => {
@@ -154,7 +154,7 @@ const AllShablons = () => {
     setShablonShow( (value) => ({...value, isActive : false}) )
     // myFormData.append("photos" , shablon.photos)
 
-  } , [dispatch, shablon, setShablonShow, putShablon] )
+  } , [dispatch, shablon, setShablonShow, putShablonState] )
   const check = useCallback( () => {
     const localMistakes = {name : false, text : false}
     if (shablon.name.trim().length < 3){
@@ -170,7 +170,7 @@ const AllShablons = () => {
   } , [mistakes, shablon] )
 
   const exitTemplate = useCallback( (put) => {
-    if (!compareTwoObject(shablon,putShablon )){
+    if (!compareTwoObject(shablon,putShablonState )){
 
       window.Telegram.WebApp.showPopup(
         {
@@ -203,7 +203,7 @@ const AllShablons = () => {
     else{
       setShablonShow( (value) => ({...value , isActive : false}) )
     }
-  } , [check, save, shablon, putShablon, setShablonShow] )
+  } , [check, save, shablon, putShablonState, setShablonShow] )
 
 
 
