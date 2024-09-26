@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import { putMyTask } from '../../store/information';
 import sortFiles from '../../functions/sortFiles';
 
-const usePut = ({details, setSecondPage, setDetails, dispatch}) => {
+const usePut = ({details, setSecondPage, setDetails, dispatch , setDetailsShow}) => {
     const putTask = useCallback( () => {
         let myFormData = new FormData();
         myFormData.append('title' , String(details.taskName))
@@ -24,9 +24,9 @@ const usePut = ({details, setSecondPage, setDetails, dispatch}) => {
       dispatch(putMyTask([myFormData, details.id , details]))
   
       setSecondPage( (value) => ({...value , task : {...details}}) )
-      setDetails((value) => ({...value , isActive : false}))
+      setDetailsShow(false)
       
-    } , [details, setSecondPage, setDetails, dispatch] ) 
+    } , [details, setSecondPage, setDetails, dispatch, setDetailsShow] ) 
     return putTask
 };
 

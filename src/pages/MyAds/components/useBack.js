@@ -2,8 +2,9 @@
 import { useNavigate } from 'react-router-dom';
 import { compareTwoObject } from './compareTwoObject';
 
-const useBack = ({walletH, happyHold, setOpen, isOpen, setBuyPage, setHappyHold, buyPage, oneCards, setOneCard, openAboutReaction, details, detailsTwo, setDetailsTwo, setPageValueTwo,secondPage,  setPageValueOne, setSecondPage, lastAdsTwo, setLastAdsTwo, myResponse, setMyResponse, save, setOpenAboutReaction , setShowDetails , showDetails}) => {
+const useBack = ({walletH, happyHold, setOpen, isOpen, setBuyPage, setHappyHold, buyPage, oneCards, setOneCard, openAboutReaction, details, detailsTwo, setDetailsTwo, setPageValueTwo,secondPage,  setPageValueOne, setSecondPage, lastAdsTwo, setLastAdsTwo, myResponse, setMyResponse, save, setOpenAboutReaction , setShowDetails , showDetails, myAdOneAdvertisement}) => {
     const navigate = useNavigate()
+
 
     function goBack() {
         if (!walletH){
@@ -60,7 +61,7 @@ const useBack = ({walletH, happyHold, setOpen, isOpen, setBuyPage, setHappyHold,
                     }
                   }
                 } else {
-                  if (!compareTwoObject(secondPage.task, details)){
+                  if (!compareTwoObject(myAdOneAdvertisement, {...details, myAds : undefined})){
                     save();
                   }
                   else{

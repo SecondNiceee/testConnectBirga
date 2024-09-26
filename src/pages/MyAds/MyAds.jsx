@@ -590,7 +590,8 @@ const MyAds = ({isPage = false}) => {
       setSecondPage : setSecondPage,
       walletH : walletH,
       setShowDetails : setShowDetails,
-      showDetails : showDetails
+      showDetails : showDetails,
+      myAdOneAdvertisement : myAdOneAdvertisement
     }
   )
 
@@ -598,7 +599,8 @@ const MyAds = ({isPage = false}) => {
     details : details,
     setSecondPage : setSecondPage,
     setDetails : setDetails,
-    dispatch : dispatch
+    dispatch : dispatch,
+    setDetailsShow : setShowDetails
   })
   
   const writeFucntion  = useWriteFucntion(
