@@ -396,6 +396,7 @@ const information = createSlice({
   reducers: {
     clearMyOrders(state,action){
       state.myAdsArray = []
+      state.ordersIds = []
       state.myOrderStatus = null
     },
     getMoreMyAds(state, action) {
@@ -430,6 +431,7 @@ const information = createSlice({
     },
     changeMyAds(state, action) {
       state.myAdsArray = action.payload;
+      state.ordersIds = []
     },
     putMyAds(state, action) {
       let changedAd = action.payload;
@@ -477,7 +479,8 @@ const information = createSlice({
       
     });
     builder.addCase(fetchMyOrders.fulfilled, (state, action) => {
-      state.myAdsArray.push(...action.payload);
+      state.myAdsArray.push(...action.payload.filter(e => !state.ordersIds.includes(e.id)));
+      state.ordersIds.push(...action.payload.map(e => e.id))
       if (action.payload.length < 1) {
         state.myOrderStatus = "all";
       } else {

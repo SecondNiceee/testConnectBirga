@@ -337,15 +337,19 @@ const responses = createSlice({
         responses : [],
         responsesByA : [],
         responsesByAIds : [],
-        startStatus : "completed"
+        startStatus : "completed",
+        responseIds : []
     },
     reducers :{
         clearResponses(state,action){
             state.status = null
             state.responses = []
+            state.responseIds = []
+            
         },
         clearResponsesByA(state , action){
             state.responsesByAStatus = "pending"
+            state.responsesByAIds = []
             state.responsesByA = []
         }
     },
@@ -358,6 +362,7 @@ const responses = createSlice({
             if (action.payload.length < 4){
                 state.responsesByAStatus = "all"
             }
+            console.log(state.responsesByAIds)
         }))
 
         builder.addCase(fetchResponseByAdvertisement.pending, ((state , action) => {
@@ -384,7 +389,8 @@ const responses = createSlice({
             }
         }  ))
         builder.addCase(fetchResponses.fulfilled , ((state , action) => {
-            state.responses.push(...action.payload)
+            state.responses.push(...action.payload.filter(e => !state.responseIds.includes(e.id)))
+            state.responseIds.push(...action.payload.map(e => e.id))
             if (action.payload.length < 4){
                 state.status = "all"
             }
