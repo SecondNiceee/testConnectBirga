@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getBalance } from "../../../store/balance";
 import translation from "../../../functions/translate";
 import formateMoney from "../../../functions/formateMoney";
+import { fetchUserInfo } from "../../../store/telegramUserInfo";
 const WithdrawalPage = ({balance, setWithDrawal}) => { 
 
   const [undetText , setUnderText ] = useState(false)
@@ -78,6 +79,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
             },
             (buttonId) => {
               if (buttonId === "save" || buttonId === null) {
+                dispatch(fetchUserInfo())
                 setWithDrawal(false)
               }
               

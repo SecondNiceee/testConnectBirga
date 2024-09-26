@@ -5,6 +5,7 @@ import MainButton from "../../constants/MainButton";
 import { setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 import axios from "axios";
+import { fetchUserInfo } from "../../store/telegramUserInfo";
 
 
 
@@ -114,9 +115,10 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                           hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
                           window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
                           dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
-    
                           dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
-                          ).then( value =>  setHappyHold(true))
+                          ).then( value =>  {
+                            setHappyHold(true)
+                            dispatch(fetchUserInfo())})
                           MainButton.setText(translation("Перейти к заданию"))
       
                         }).catch(value => {
