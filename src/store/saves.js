@@ -787,6 +787,9 @@ const saves = createSlice({
             state.cardIds = state.cardIds.filter((e,i) => {
                 return e.id !== action.payload
             })
+            state.cards = state.cards.filter((e,i) => {
+                return e.id !== action.payload
+            })
         }))
         builder.addCase(addCard.fulfilled , ((state, action) => {
             state.cardIds.push({id : action.payload})
@@ -796,6 +799,9 @@ const saves = createSlice({
             state.responsesIds = state.responsesIds.filter( (e, i) => {
                 return e.id !== action.payload
             } )
+            state.responces = state.responces.filter( (e, i) => {
+                return e.id !== action.payload
+            } )
         }))
         builder.addCase(addResponce.fulfilled , ((state, action) => {
             state.responsesIds.push({id : action.payload})
@@ -803,6 +809,9 @@ const saves = createSlice({
         }))
         builder.addCase(deleteAdvertisement.fulfilled, ((state , action) => {
             state.advertisementIds = state.advertisementIds.filter((e , i) => {
+                return e.id !== action.payload
+            })
+            state.tasks = state.tasks.filter((e , i) => {
                 return e.id !== action.payload
             })
         }))
