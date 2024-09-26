@@ -29,7 +29,6 @@ import en from "../../constants/language";
 import { useNavigate } from "react-router-dom";
 
 let isDetailsActiveVar = false;
-let pageValue = true;
 let localResponce;
 let localStep;
 
@@ -48,6 +47,8 @@ const No = translation("Нет")
 
 
 const First = ({ isPage = false }) => {
+
+  const [pageValue, setPageValue] = useState(true)
   const firstRef = useRef(null);
 
   const [step, setStep] = useState(0);
@@ -234,8 +235,7 @@ const First = ({ isPage = false }) => {
                     shablonMaker: false,
                   });
                   closeDetails();
-
-                  pageValue = false;
+                  setPageValue(false)
                 }
               }
             }
@@ -596,7 +596,7 @@ const First = ({ isPage = false }) => {
           category: order.category.id,
         };
       } catch (e) {
-        pageValue = false;
+        setPageValue(false)
         setDetailsActive({ isOpen: false, id: 1 });
       }
     }
@@ -621,6 +621,7 @@ const First = ({ isPage = false }) => {
     isDetailsActive.id,
     ordersInformation,
     secFilteredArray,
+    pageValue
   ]);
 
   const firsStyle = useMemo(() => {
