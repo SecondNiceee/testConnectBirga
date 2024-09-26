@@ -55,7 +55,7 @@ const HappyPage = ({task}) => {
                 {View}
                 <h3>Поздравляем!</h3>
                 {/* <h2>Ваше задание принятно в работу исполнителем {response.user.fl}</h2> */}
-                <h2>Вы выполнили задание какое-то там</h2>
+                <h2>Вы выполнили задание "{task.title}"</h2>
             </div>
             <p className={cl.bottomBlock}>
                 <span>{task.price} TON </span>  были отправлены на ваш Коннект Кошелек 
