@@ -144,7 +144,7 @@ const First = ({ isPage = false }) => {
 
 
   
-  const [pageAdvertisement, setPageAdvertisement] = useState(null);
+  const [pageAdvertisement, setPageAdvertisement] = useState();
 
 
   // const gotIt = useMemo( () => {
@@ -353,20 +353,24 @@ const First = ({ isPage = false }) => {
         });
       } else {
         if (localStep === 0 ) {
-          if (detailsAdertisement.status === "active"){
 
-            MainButton.setParams({
-              is_active: true,
-              color: "#2ea5ff",
-              text_color: "#ffffff",
-            });
-          }
-          else{     
-            MainButton.setParams({
-              is_active: false, //неизвесетно
-              color: "#2f2f2f",
-              text_color: "#606060",
-            });
+          if (isDetailsActive.isOpen){
+
+            if (detailsAdertisement.status === "active"){
+  
+              MainButton.setParams({
+                is_active: true,
+                color: "#2ea5ff",
+                text_color: "#ffffff",
+              });
+            }
+            else{     
+              MainButton.setParams({
+                is_active: false, //неизвесетно
+                color: "#2f2f2f",
+                text_color: "#606060",
+              });
+            }
           }
         }
       }
@@ -395,7 +399,7 @@ const First = ({ isPage = false }) => {
     isCardOpen.isOpen,
     setProfile,
     setCardOpen,
-    detailsAdertisement.status
+    detailsAdertisement
   ]);
 
   useEffect(() => {
