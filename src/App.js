@@ -306,7 +306,6 @@ function App() {
 
   
 
-  console.log("Хай хай")
 
   
   return (

@@ -13,6 +13,7 @@ import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import MyAnimation from "../MyAds/components/MyAnimation";
 import translation from "../../functions/translate";
 import sortFiles from "../../functions/sortFiles";
+import { compareTwoObject } from "../MyAds/components/compareTwoObject";
 const menu = document.documentElement.querySelector(".FirstMenu");
 
 const Yes = translation("Да");
@@ -22,6 +23,8 @@ const AllShablons = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const [putShablon , setPutShablon] = useState({})
 
   const [shablon, setShablon] = useState({
       id: 0,
@@ -93,8 +96,9 @@ const AllShablons = () => {
           put : true
         }
       )
+      setPutShablon(e)
     },
-    [setShablon]
+    [setShablon, setPutShablon]
   );
 
   const deleteFunction = useCallback(
@@ -146,6 +150,8 @@ const AllShablons = () => {
       // myFormData.append("photos" , shablon.photos)
       dispatch(postShablon([myFormData, shablon]))
     }
+
+    setShablonShow( (value) => ({...value, isActive : false}) )
     // myFormData.append("photos" , shablon.photos)
 
   } , [dispatch, shablon] )
@@ -164,31 +170,40 @@ const AllShablons = () => {
   } , [mistakes, shablon] )
 
   const exitTemplate = useCallback( (put) => {
-    window.Telegram.WebApp.showPopup(
-      {
-        title: put ? translation("Изменить?") : translation("Сохранить?"),
-        message: put ? translation("Сохранить изменения перед выходом?") : translation("Сохранить шаблон перед выходом?"),
-        buttons: [
-          { id: "save", type: "default", text: translation("Да") },
-          { id: "delete", type: "destructive", text: translation("Нет") },
-        ],
-      },
-      (buttonId) => {
-        if (buttonId === "save") {
-          if (check()){
-              save(put)
-              setShablonShow((value) => ({...value , isActive : false}))
+    if (!compareTwoObject(shablon,putShablon )){
+
+      window.Telegram.WebApp.showPopup(
+        {
+          title: put ? translation("Изменить?") : translation("Сохранить?"),
+          message: put ? translation("Сохранить изменения перед выходом?") : translation("Сохранить шаблон перед выходом?"),
+          buttons: [
+            { id: "save", type: "default", text: translation("Да") },
+            { id: "delete", type: "destructive", text: translation("Нет") },
+          ],
+        },
+        (buttonId) => {
+          if (buttonId === "save") {
+            if (check()){
+                alert("Я тут")
+                save(put)
+                alert("Я даже тут!")
+                setShablonShow((value) => ({...value , isActive : false}))
+                
+            }
+            else{
+              window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+            }
           }
-          else{
-            window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+          if (buttonId === "delete" || buttonId === null) {
+            setShablonShow( (value) => ({...value , isActive : false}) )
           }
         }
-        if (buttonId === "delete" || buttonId === null) {
-          setShablonShow( (value) => ({...value , isActive : false}) )
-        }
-      }
-    );
-  } , [check, save, setShablon] )
+      );
+    }
+    else{
+      setShablonShow( (value) => ({...value , isActive : false}) )
+    }
+  } , [check, save, setShablon, shablon, putShablon] )
 
 
 
@@ -291,9 +306,7 @@ const AllShablons = () => {
           <Shablon
             mistakes = {mistakes}
             shablon={shablon}
-            setActive={(e) => {
-              setShablon((value) => ({ ...value, isActive: e }));
-            }}
+            setActive={setShablonShow}
             setShablon={setShablon}
             put={shablonShow.put}
           />

@@ -64,7 +64,7 @@ const CardPage = ({ card , ...props }) => {
     <>
     {card.id === 0 ?
     <MyLoader style = {{
-      transform : "translateX(-16px)"
+      transform : "translateX(-32px)"
     }} />
     :
     <div {...props} className={cl.wrapper}>

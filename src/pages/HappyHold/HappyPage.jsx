@@ -7,11 +7,15 @@ import MainButton from '../../constants/MainButton';
 import translation from '../../functions/translate';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import pagesHistory from '../../constants/pagesHistory';
 const HappyPage = ({task , congradulate }) => {
     const user = useSelector( state => state.telegramUserInfo )
     const navigate = useNavigate()
     console.log(user);
 
+    useEffect( () => {
+        pagesHistory.push("/HappyPage")
+    } , [] )
     console.warn(congradulate);
     
 
@@ -22,7 +26,7 @@ const HappyPage = ({task , congradulate }) => {
                 const user = await axios.patch("https://www.connectbirga.ru/user", {},  {
                     params: {
                       congratulateId : congradulate[0].id ,
-                      userId: 2144832745,
+                      userId: window.Telegram.WebApp.initDataUnsafe.user.id,
                     },
                     headers : {
                       "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
