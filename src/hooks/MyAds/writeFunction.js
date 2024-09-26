@@ -4,11 +4,29 @@ import { useNavigate } from "react-router-dom";
 import MainButton from "../../constants/MainButton";
 import { setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
+import axios from "axios";
+
+
+
 
 function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isOpen, setHappyHold, secondPage , setWalletH, myAdOneAdvertisement, myAdOneResponse
-
- }) {
-
+  
+}) {
+  
+  async function hold(id, amount) {
+    await axios.get("https://www.connectbirga.ru/user/hold" , {
+      params : {
+        fromId : id,
+        amount : amount
+      },
+      headers : {
+        "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+      }
+    })
+    console.log("2144832745" ,secondPage.task.tonValue );
+  
+    
+  }
     
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -93,20 +111,20 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                     },
                     (buttonId) => {
                       if (buttonId === "save") {
-                        //   hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
-                        //   window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-                        //   dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
+                          hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
+                          window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+                          dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
     
-                        //   dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
-                        //   ).then( value =>  setHappyHold(true))
-                        //   MainButton.setText(translation("Перейти к заданию"))
+                          dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
+                          ).then( value =>  setHappyHold(true))
+                          MainButton.setText(translation("Перейти к заданию"))
       
-                        // }).catch(value => {
-                        //   console.log(value);
-                        //   alert("Холд не прошел. Отправте в поддержку следующее сообщение")
-                        //   alert(JSON.stringify(value))
+                        }).catch(value => {
+                          console.log(value);
+                          alert("Холд не прошел. Отправте в поддержку следующее сообщение")
+                          alert(JSON.stringify(value))
                           
-                        // } )
+                        } )
     
     
     

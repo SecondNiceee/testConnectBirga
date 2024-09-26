@@ -261,7 +261,7 @@ const MyAds = ({isPage = false}) => {
   const navigate = useNavigate();
 
   const save = useSave({
-    
+  
     detailsVar,
     myAdsArray : filteredArray,
     secondPage,
@@ -269,7 +269,8 @@ const MyAds = ({isPage = false}) => {
     sortFiles,
     dispatch,
     setDetails,
-    details
+    details,
+    setDetailsShow : setShowDetails
   })// функция сохранения , а также модалка телеграма
 
 
