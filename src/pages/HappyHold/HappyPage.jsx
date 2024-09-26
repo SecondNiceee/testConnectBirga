@@ -6,10 +6,30 @@ import { useSelector } from 'react-redux';
 import MainButton from '../../constants/MainButton';
 import translation from '../../functions/translate';
 import { useNavigate } from 'react-router-dom';
-const HappyPage = ({task}) => {
+import axios from 'axios';
+const HappyPage = ({task , congradulate }) => {
     const user = useSelector( state => state.telegramUserInfo )
     const navigate = useNavigate()
     console.log(user);
+
+    console.warn(congradulate);
+    
+
+    useEffect( () => {
+        // async function start(  ) {
+        //     const newCongradulate = congradulate.slice(1, congradulate.length)
+        //     const user = await axios.patch("https://www.connectbirga.ru/user", newCongradulate,  {
+        //         params: {
+        //           congratulateId : congradulate[0].id ,
+        //           userId: 2144832745,
+        //         },
+        //         headers : {
+        //           "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+        //         }
+        //       });
+
+        // }
+    } , [] )
     
     useEffect( () => {
         const menu = document.querySelector('.FirstMenu')
@@ -29,11 +49,12 @@ const HappyPage = ({task}) => {
         MainButton.show()
         MainButton.onClick(buttonFunction)
         MainButton.setText(translation("КОШЕЛЕК"))
+        
         return () => {
             MainButton.offClick(buttonFunction)
             MainButton.hide()
         }
-    } , [buttonFunction] )
+    } , [buttonFunction ] )
 
     const options = {
         animationData: chemodan,

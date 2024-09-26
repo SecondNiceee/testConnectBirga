@@ -221,7 +221,7 @@ const AnimatedSwitch = () => {
               path="/HappyPage"
               element={
                 <Suspense fallback={<MyLoader />}>
-                  <HappyPage task={ congratulate ?  congratulate[congratulate.length - 1] : []} />
+                  <HappyPage congradulate={congratulate} task={ congratulate ?  congratulate[congratulate.length - 1] : []} />
                 </Suspense>
               }
             />
