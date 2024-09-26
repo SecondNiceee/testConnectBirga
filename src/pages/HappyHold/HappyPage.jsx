@@ -26,7 +26,7 @@ const HappyPage = ({task , congradulate }) => {
                 const user = await axios.patch("https://www.connectbirga.ru/user", {},  {
                     params: {
                       congratulateId : congradulate[0].id ,
-                      userId: 2144832745,
+                      userId: window.Telegram.WebApp.initDataUnsafe.user.id,
                     },
                     headers : {
                       "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
