@@ -16,19 +16,20 @@ const HappyPage = ({task , congradulate }) => {
     
 
     useEffect( () => {
-        // async function start(  ) {
-        //     const newCongradulate = congradulate.slice(1, congradulate.length)
-        //     const user = await axios.patch("https://www.connectbirga.ru/user", newCongradulate,  {
-        //         params: {
-        //           congratulateId : congradulate[0].id ,
-        //           userId: 2144832745,
-        //         },
-        //         headers : {
-        //           "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-        //         }
-        //       });
+        async function start(  ) {
+            const newCongradulate = congradulate.slice(1, congradulate.length)
+            const user = await axios.patch("https://www.connectbirga.ru/user", newCongradulate,  {
+                params: {
+                  congratulateId : congradulate[0].id ,
+                  userId: 2144832745,
+                },
+                headers : {
+                  "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+                }
+              });
 
-        // }
+        }
+        start()
     } , [] )
     
     useEffect( () => {
