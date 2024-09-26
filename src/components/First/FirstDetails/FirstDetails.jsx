@@ -3,7 +3,6 @@ import TaskDetailsContainer from './TaskDetailsContainer';
 import TimeAndWatches from './TimeAndWatches';
 import { useDispatch } from 'react-redux';
 import { addWatch } from '../../../store/information';
-import MyLoader from '../../UI/MyLoader/MyLoader';
 import FirstLoader from '../../../loaders/FirstLoader';
 
 const FirstDetails = forwardRef(({  orderInformation , className , setProfile, end = false, breakRef, isDetailsActive, ...props}, ref) => {

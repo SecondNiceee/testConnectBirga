@@ -107,7 +107,7 @@ const AnimatedSwitch = () => {
     if (congratulate && congratulate.length > 0){
       navigate('/HappyPage')
     }
-  } , [congratulate] )
+  } , [congratulate, navigate] )
   
   
   return (

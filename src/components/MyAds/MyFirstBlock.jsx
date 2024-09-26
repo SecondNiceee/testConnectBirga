@@ -2,7 +2,6 @@ import React, { memo, useMemo } from "react";
 import MyButton from "../UI/MyButton/MyButton";
 import Pallete from "../UI/Pallete/Pallete";
 import ShareIcon from "../UI/ShareIcon/ShareIcon";
-import SmallDimond from "../UI/SmallDimond/SmallDimond";
 import { useSelector } from "react-redux";
 import formatDate from "../../functions/makeDate";
 import BlockSpinner from "../UI/BlockSpinner/BlockSpinner";

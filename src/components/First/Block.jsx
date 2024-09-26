@@ -50,7 +50,7 @@ const Block = ({
         return {end : endTime}
       }
     }
-  } , [] )
+  } , [end, endTime, singleTime, time, whichOne] )
 
   
   return (

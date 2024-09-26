@@ -1,7 +1,6 @@
 import React, { memo, useMemo } from "react";
 import Pallete from "../UI/Pallete/Pallete";
 import ShareIcon from "../UI/ShareIcon/ShareIcon";
-import SmallDimond from "../UI/SmallDimond/SmallDimond";
 import FalseTie from "../UI/FalseTie/FalseTie";
 import { useSelector } from "react-redux";
 import MyButton from "../UI/MyButton/MyButton";

@@ -4,7 +4,6 @@ import ResponseBlock from "../ResponseBlock";
 import MyReaction from "../MyReaction";
 import Customer from "../Customer/Customer";
 import formatDate from "../../../functions/makeDate";
-import { useDispatch } from "react-redux";
 import MyLoader from "../../UI/MyLoader/MyLoader";
 import MainButton from "../../../constants/MainButton";
 import axios from "axios";
