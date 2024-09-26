@@ -57,11 +57,11 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
 
         MainButton.showProgress()
         try{
-          console.log("2144832745", myValues.address, String(myValues.summ.replace(',', '.')) );
+          console.log("window.Telegram.WebApp.initDataUnsafe.user.id", myValues.address, String(myValues.summ.replace(',', '.')) );
           
           await axios.get('https://www.connectbirga.ru/user/sendToAddress', {
             params : {
-              fromId : 2144832745,
+              fromId : window.Telegram.WebApp.initDataUnsafe.user.id,
               toAddress : myValues.address,
               amount: (Number(formateMoney(String(Number(myValues.summ.replace(',', '.'))) , 3, '.')) - 0.004).toFixed(3)
             },
