@@ -104,7 +104,7 @@ const AnimatedSwitch = () => {
   const congratulate = useSelector(state => state.telegramUserInfo.congratulate)
 
   useEffect( () => {
-    if (congratulate){
+    if (congratulate && congratulate.length > 0){
       navigate('/HappyPage')
     }
   } , [congratulate] )
