@@ -855,7 +855,7 @@ const MyAds = ({isPage = false}) => {
         mountOnEnter
 
         >
-          <AdCreatingThree taskInformation={{tonValue : myAdOneAdvertisement.tonValue}} />
+          <AdCreatingThree taskInformation={{tonValue : myAdOneAdvertisement ? myAdOneAdvertisement.tonValue : 0}} />
         </CSSTransition>
 
         <CSSTransition             
