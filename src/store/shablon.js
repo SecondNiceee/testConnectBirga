@@ -57,7 +57,7 @@ export const postShablon = createAsyncThunk(
         let im = await axios.post("https://www.connectbirga.ru/template" , data[0] , 
         {
           params : {
-            userId : window.Telegram.WebApp.initDataUnsafe.user.id
+            userId : 2144832745
           },
           headers: {
             "Content-Type" :'multipart/form-data',
@@ -90,8 +90,8 @@ export const fetchAllShablons = createAsyncThunk(
         let im = await axios.get("https://www.connectbirga.ru/template/findByUser" , 
             {
                 params : {
-                    userId : window.Telegram.WebApp.initDataUnsafe.user.id 
-                    // userId : window.Telegram.WebApp.initDataUnsafe.user.id 
+                    userId : 2144832745 
+                    // userId : 2144832745 
                 },
                 headers : {
                   "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
