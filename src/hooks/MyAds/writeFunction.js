@@ -112,18 +112,24 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                     },
                     (buttonId) => {
                       if (buttonId === "save") {
-                          hold(2144832745, String( Number(secondPage.task.tonValue + 0.01).toFixed(3))).then(value => {
+                          hold(2144832745, String( Number(myAdOneAdvertisement.tonValue + 0.01).toFixed(3))).then(value => {
                           window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
                           dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
                           dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
-                          ).then( value =>  {
-                            setHappyHold(true)
-                            dispatch(fetchUserInfo())})
+                          )
+                          setHappyHold(true)
+                          dispatch(fetchUserInfo())
+                          window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
+                          dispatch(setStartTask(myAdOneAdvertisement.id))
+    
+                          dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
+                          setHappyHold(true)
+  
                           MainButton.setText(translation("Перейти к заданию"))
       
                         }).catch(value => {
                           console.log(value);
-                          alert("Холд не прошел. Отправте в поддержку следующее сообщение")
+                          alert(translation("Холд не прошел. Отправте в поддержку следующее сообщение"))
                           alert(JSON.stringify(value))
                           
                         } )
@@ -131,11 +137,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
     
     
                          
-                          window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-                          dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
-    
-                          dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
-                          ).then( value =>  setHappyHold(true))
+
                           // MainButton.setText(translation("Перейти к заданию"))
       
                       }
