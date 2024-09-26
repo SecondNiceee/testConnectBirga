@@ -119,12 +119,13 @@ export const setStartResponse = createAsyncThunk(
                   }
               });
 
-
+              
         }
 
         catch(e){
             window.Telegram.WebApp.showAlert(e)
         }
+        return "something"
     }
 )
 export const addResponse = createAsyncThunk(
@@ -334,7 +335,8 @@ const responses = createSlice({
         status : null,
         responsesByAStatus : null,
         responses : [],
-        responsesByA : []
+        responsesByA : [],
+        startStatus : "completed"
     },
     reducers :{
         clearResponses(state,action){
@@ -388,6 +390,13 @@ const responses = createSlice({
                 state.status = "complete"
             }
         }))
+        builder.addCase(setStartResponse.pending , ((state) => {
+            state.startStatus = "pending"
+        }))
+        builder.addCase(setStartResponse.fulfilled, ((state) => {
+            state.startStatus = "completed"
+        }))
+
     }
 })
 export const {clearResponses , clearResponsesByA} = responses.actions

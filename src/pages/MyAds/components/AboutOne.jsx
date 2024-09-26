@@ -25,14 +25,15 @@ const AboutOne = ({
   ...props
 }) => {
   const responces = useSelector( state => state.responses.responsesByA )
+  const  startStatus = useSelector( state => state.responses.startStatus )
   const dispatch = useDispatch();
   useEffect(() => {
-    if (task){
+    if (task && startStatus === "completed"){
       dispatch(clearResponsesByA())
       dispatch(fetchResponseByAdvertisement([task.id, task , 1]))
     }
     // eslint-disable-next-line
-  }, [task]);
+  }, [task,startStatus ]);
 
   const deleteFunction = useCallback(
     (e) => {
