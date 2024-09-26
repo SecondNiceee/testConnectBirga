@@ -699,6 +699,9 @@ const MyAds = ({isPage = false}) => {
       setOpen((value) => ({...value, isActive : true}))
     }
   } , [isPage, setSecondPage] )
+
+
+  console.warn(secondPage)
   return (
     <>
       { postStatus === "pending" ? (
@@ -852,7 +855,7 @@ const MyAds = ({isPage = false}) => {
         mountOnEnter
 
         >
-          <AdCreatingThree taskInformation={{tonValue : secondPage.task.tonValue}} />
+          <AdCreatingThree taskInformation={{tonValue : myAdOneAdvertisement.tonValue}} />
         </CSSTransition>
 
         <CSSTransition             
