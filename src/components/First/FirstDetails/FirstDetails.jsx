@@ -35,7 +35,8 @@ const FirstDetails = forwardRef(({  orderInformation , className , setProfile, e
     console.log(orderInformation)
     return (
         <>
-        {orderInformation
+        {  // orderInformation
+        false
             ? 
             (
             
@@ -51,7 +52,10 @@ const FirstDetails = forwardRef(({  orderInformation , className , setProfile, e
             )
             :
             <>
-            <FirstLoader />
+            <FirstLoader style = {{
+                position : "absolute",
+                height : "100vh"
+            }} />
             </>
         }
         </>

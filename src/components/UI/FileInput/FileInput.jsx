@@ -21,6 +21,7 @@ const FileInput = ({
   clear = true,
 }) => {
   const [images, setImages] = useState([]);
+  const [isLoader, setLoader] = useState(false)
   const [loaderSize, setLoaderSize] = useState(files.length)
 
   const addFiles = useCallback(
@@ -29,8 +30,8 @@ const FileInput = ({
       let localFiles = []
       setLoader(true)
       setLoaderSize(newFiles.length)
-      newFiles.forEach((event) => {
-        resizeImage(event, 1000, 1000, 1).then((value) => {
+      newFiles.forEach((event) => {  
+        resizeImage(event, 700, 700, 1).then((value) => {
           // reader.readAsDataURL(value);
           localImages.push(URL.createObjectURL(value));
           localFiles.push(value)
@@ -160,7 +161,7 @@ const FileInput = ({
     }
     return {};
   }, [files]);
-  const [isLoader, setLoader] = useState(false)
+
   useEffect( () => {  
     if (images.length < files.length){
       setLoader(true)
@@ -202,6 +203,7 @@ const FileInput = ({
                       return images.indexOf(obj) !== images.indexOf(e);
                     })
                   );
+                  myRef.current.value = ""
                 }}
                 className={[cl.removeIcon, "_icon-trash"].join(" ")}
               />
@@ -251,9 +253,12 @@ const FileInput = ({
                     newFiles.push(newFile);
                   }
                   // setFiles([...files, ...newFiles]);
+                  
                   addFiles(newFiles);
                 }
               }
+
+
 
               // hideKeyboard(myRef.current)
             }}

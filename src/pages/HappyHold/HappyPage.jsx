@@ -7,11 +7,15 @@ import MainButton from '../../constants/MainButton';
 import translation from '../../functions/translate';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import pagesHistory from '../../constants/pagesHistory';
 const HappyPage = ({task , congradulate }) => {
     const user = useSelector( state => state.telegramUserInfo )
     const navigate = useNavigate()
     console.log(user);
 
+    useEffect( () => {
+        pagesHistory.push("/HappyPage")
+    } , [] )
     console.warn(congradulate);
     
 
