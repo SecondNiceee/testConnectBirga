@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import TaskName from "../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import BackButton from "../../constants/BackButton";
@@ -184,4 +184,4 @@ const Shablon = ({shablon, setShablon, setActive, put, isExitShow, exitText, mis
   );
 };
 
-export default Shablon;
+export default memo(Shablon);
