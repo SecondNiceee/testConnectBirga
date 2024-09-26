@@ -143,6 +143,9 @@ const First = ({ isPage = false }) => {
   }, [filteredArr, filters, tonConstant]);
 
 
+  
+  const [pageAdvertisement, setPageAdvertisement] = useState(null);
+
 
   // const gotIt = useMemo( () => {
   //   if (secFilteredArray !== null && secFilteredArray.length > 0 && secFilteredArray[isDetailsActive.id]){
@@ -180,6 +183,97 @@ const First = ({ isPage = false }) => {
     isOpen: false,
     card: {},
   });
+
+
+  const detailsAdertisement = useMemo(() => {
+    async function getAdvertisement() {
+      try {
+        let advertisement = await axios.get(
+          "https://www.connectbirga.ru/advertisement/findOne",
+          {
+            params: {
+              id: window.Telegram.WebApp.initDataUnsafe.start_param,
+            },
+            headers : {
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY,
+              
+            }
+          }
+        );
+        let order = advertisement.data;
+        let one = new Date(order.startTime);
+
+        let two;
+        if (order.endTime) {
+          two = new Date(order.endTime);
+        } else {
+          two = "";
+        }
+
+        let files = await makeNewFile(order.folder, order.photos);
+
+        let imTwo = await axios.get(
+          "https://www.connectbirga.ru/advertisement/findCount",
+          {
+            params: {
+              userId: order.user.id,
+            },
+            headers : {
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+            }
+          }
+        );
+
+        return {
+          id: order.id,
+          taskName: order.title,
+          executionPlace: "Можно выполнить удаленно",
+          time: { start: one, end: two },
+          tonValue: order.price,
+          taskDescription: order.description,
+          photos: files,
+          photosName: order.photos,
+          customerName: order.user.fl,
+          userPhoto: order.user.photo || "",
+          rate: "5",
+          isActive: true,
+          creationTime: order.createdAt,
+          viewsNumber: order.views,
+          responces: order.responses,
+          status: order.status,
+          user: order.user,
+          createNumber: imTwo.data,
+          category: order.category.id,
+        };
+      } catch (e) {
+        setPageValue(false)
+        setDetailsActive({ isOpen: false, id: 1 });
+      }
+    }
+
+    if (ordersInformation === null) {
+      return "";
+    } else {
+      if (pageValue && isPage) {
+        if (pageAdvertisement === null) {
+          getAdvertisement().then((value) => setPageAdvertisement(value));
+        }
+
+        return pageAdvertisement;
+      } else {
+        /// НЕ попал сюда
+        return secFilteredArray[isDetailsActive.id];
+      }
+    }
+  }, [
+    isPage,
+    pageAdvertisement,
+    isDetailsActive.id,
+    ordersInformation,
+    secFilteredArray,
+    pageValue
+  ]);
+
 
   useEffect(() => {
     function closeDetails() {
@@ -351,6 +445,7 @@ const First = ({ isPage = false }) => {
   useEffect(() => {
     dispatch(clearTasks());
   }, [dispatch]);
+
 
   useEffect(() => {
     let inputs = document.querySelectorAll("input");
@@ -546,95 +641,7 @@ const First = ({ isPage = false }) => {
     };
   }, [responce, forwardFunction]);
 
-  const [pageAdvertisement, setPageAdvertisement] = useState(null);
-  const detailsAdertisement = useMemo(() => {
-    async function getAdvertisement() {
-      try {
-        let advertisement = await axios.get(
-          "https://www.connectbirga.ru/advertisement/findOne",
-          {
-            params: {
-              id: window.Telegram.WebApp.initDataUnsafe.start_param,
-            },
-            headers : {
-              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY,
-              
-            }
-          }
-        );
-        let order = advertisement.data;
-        let one = new Date(order.startTime);
 
-        let two;
-        if (order.endTime) {
-          two = new Date(order.endTime);
-        } else {
-          two = "";
-        }
-
-        let files = await makeNewFile(order.folder, order.photos);
-
-        let imTwo = await axios.get(
-          "https://www.connectbirga.ru/advertisement/findCount",
-          {
-            params: {
-              userId: order.user.id,
-            },
-            headers : {
-              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-            }
-          }
-        );
-
-        return {
-          id: order.id,
-          taskName: order.title,
-          executionPlace: "Можно выполнить удаленно",
-          time: { start: one, end: two },
-          tonValue: order.price,
-          taskDescription: order.description,
-          photos: files,
-          photosName: order.photos,
-          customerName: order.user.fl,
-          userPhoto: order.user.photo || "",
-          rate: "5",
-          isActive: true,
-          creationTime: order.createdAt,
-          viewsNumber: order.views,
-          responces: order.responses,
-          status: order.status,
-          user: order.user,
-          createNumber: imTwo.data,
-          category: order.category.id,
-        };
-      } catch (e) {
-        setPageValue(false)
-        setDetailsActive({ isOpen: false, id: 1 });
-      }
-    }
-
-    if (ordersInformation === null) {
-      return "";
-    } else {
-      if (pageValue && isPage) {
-        if (pageAdvertisement === null) {
-          getAdvertisement().then((value) => setPageAdvertisement(value));
-        }
-
-        return pageAdvertisement;
-      } else {
-        /// НЕ попал сюда
-        return secFilteredArray[isDetailsActive.id];
-      }
-    }
-  }, [
-    isPage,
-    pageAdvertisement,
-    isDetailsActive.id,
-    ordersInformation,
-    secFilteredArray,
-    pageValue
-  ]);
 
   const firsStyle = useMemo(() => {
     if (step === 1) {

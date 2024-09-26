@@ -40,7 +40,7 @@ const HappyHold = ({response ,task}) => {
                 <h2>{translation("Ваше задание принятно в работу исполнителем")} {response.user.fl}</h2>
             </div>
             <p className={cl.bottomBlock}>
-                <span>{task.tonValue} TON</span>  {translation("были заколдированы до конца выполнения задания")} 
+                <span>{task.tonValue} TON</span>  {translation("были захолдированы до конца выполнения задания")} 
             </p>
         </div>
     );
