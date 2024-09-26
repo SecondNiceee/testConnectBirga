@@ -227,7 +227,8 @@ export const fetchUserInfo = createAsyncThunk(
             completedTasks : user.data.completedAdvertisements,
             cards : localCards,
             congradulations : user.data.congradulations,
-            lastTransaction : user.data.lastTransaction
+            lastTransaction : user.data.lastTransaction,
+            congratulate : user.data.congratulate
           } );
     }
     catch (e){
@@ -254,6 +255,7 @@ const telegramUserInfo = createSlice({
     completedTasks : [],
     deals : 0,
     lastTransaction : "NO",
+    congratulate : null,
     profile : {
         about : null,
         stage : 0,
@@ -298,7 +300,9 @@ const telegramUserInfo = createSlice({
       state.address = action.payload.address
       state.profile.cards.sort((a, b) => a.id - b.id)
       state.congradulations = action.payload.address
+      state.congratulate = action.payload.congratulate
       state.state = "yes";
+      
     });
     builder.addCase(fetchUserInfo.rejected, (state) => {
       state.status = "error";

@@ -3,7 +3,7 @@ import cl from "./HappyHold.module.scss";
 import { useLottie } from "lottie-react";
 import chemodan from "../../animation/boomstick.json"
 import { useSelector } from 'react-redux';
-const HappyPage = () => {
+const HappyPage = ({task}) => {
     const user = useSelector( state => state.telegramUserInfo )
     console.log(user);
     
@@ -11,6 +11,7 @@ const HappyPage = () => {
         const menu = document.querySelector('.FirstMenu')
         menu.style.display = "none"
         return () => {
+
             menu.style.display = "flex"
         }
 
@@ -39,7 +40,7 @@ const HappyPage = () => {
                 <h2>Вы выполнили задание какое-то там</h2>
             </div>
             <p className={cl.bottomBlock}>
-                <span>0.1 TON</span>  были отправлены на ваш Коннект Кошелек 
+                <span>{task.price} TON </span>  были отправлены на ваш Коннект Кошелек 
             </p>
         </div>
     );

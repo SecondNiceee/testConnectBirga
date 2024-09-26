@@ -5,7 +5,7 @@ import {
   useRef,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
@@ -30,8 +30,7 @@ import { fetchAllShablons } from "./store/shablon";
 import { fetchAllIds } from "./store/saves";
 
 import { getBalance } from "./store/balance";
-import HappyPage from "./pages/HappyHold/HappyPage";
-
+const HappyPage = lazy( () => import("./pages/HappyHold/HappyPage") )
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
 const Profile = lazy(() => import("./pages/Profile/Profile"));
@@ -75,6 +74,7 @@ const AnimatedSwitch = () => {
   const isMenuActive = useSelector((state) => state.menuSlice.value);
 
   const menuRef = useRef(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
 
@@ -101,12 +101,13 @@ const AnimatedSwitch = () => {
     }
   }, [location.pathname]);
 
+  const congratulate = useSelector(state => state.telegramUserInfo.congratulate)
 
-  // useEffect( () => {
-  //   if (true){
-  //     navigate('/HappyPage')
-  //   }
-  // } , [] )
+  useEffect( () => {
+    if (congratulate){
+      navigate('/HappyPage')
+    }
+  } , [congratulate] )
   
   
   return (
@@ -220,7 +221,7 @@ const AnimatedSwitch = () => {
               path="/HappyPage"
               element={
                 <Suspense fallback={<MyLoader />}>
-                  <HappyPage />
+                  <HappyPage task={congratulate[congratulate.length - 1]} />
                 </Suspense>
               }
             />

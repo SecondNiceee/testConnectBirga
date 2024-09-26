@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Holding from "./Holding/Holding";
 
@@ -6,13 +6,20 @@ import cl from "./AdCreatingThree.module.css";
 import Upper from "./Upper/Upper";
 import Block from "./Block/Block";
 import AlertBlock from "./AlertBlock/AlertBlock";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import translation from "../../functions/translate";
+import { getBalance } from "../../store/balance";
 
 const AdCreatingThree = ({taskInformation }) => {
 
+  const dispatch = useDispatch()
+
   const balance = useSelector(state => state.balance.value)
   const address = useSelector( state => state.telegramUserInfo.address )
+
+  useEffect( () => {
+    dispatch(getBalance({userAddress : address}))
+  } , [] )
 
   return (
     <div className= {cl.AdCreatingThree}

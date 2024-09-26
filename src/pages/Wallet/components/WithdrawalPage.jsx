@@ -30,11 +30,13 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
   const lastTransaction = useSelector( state => state.telegramUserInfo.lastTransaction )
 
 
-
+  useEffect( () => {
+    dispatch(getBalance({userAddress : address}))
+  } , [] )
   useEffect( () => {
     async function buttonFunction(){
 
-      if ( (new Date() - new Date(lastTransaction))  / (1000 * 60) < 5){
+      if ( (new Date() - new Date(lastTransaction))  / (1000 * 60) < 2){
         window.Telegram.WebApp.showPopup(
           {
             title: translation("Ошибка!"),

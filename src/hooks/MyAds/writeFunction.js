@@ -81,7 +81,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                 MainButton.hide()
               }
               else{
-                if ((new Date() - new Date(lastTransaction))  / (1000 * 60) < 5){
+                if ((new Date() - new Date(lastTransaction))  / (1000 * 60) < 2){
                   
                   window.Telegram.WebApp.showPopup(
                     {
