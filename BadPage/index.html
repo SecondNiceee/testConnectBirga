@@ -12,8 +12,8 @@
       }
 
       .lottieAnimation {
-        width: 200px;
-        height: 200px;
+        width: 240px;
+        height: 240px;
       }
       .container {
         margin: auto;
@@ -46,16 +46,17 @@
       <div id="lottie-animation" class="lottieAnimation"></div>
       <p>У нас ничего не вышло, потом зайдите.</p>
     </div>
+  </body>
+</html>
     <script>
+        
         const animation = lottie.loadAnimation({
           container: document.getElementById("lottie-animation"), // контейнер для анимации
           renderer: "svg", // тип рендерера (может быть 'svg', 'canvas' или 'html')
           loop: true, // зацикливание анимации
           autoplay: true, // автоматический запуск анимации
-          path: "./animation/sorry.json", // путь к вашему JSON-файлу с анимацией
+          path: "https://lottie.host/16e7d8dd-a22e-47bc-8d09-0e191c6011d6/VFGgkFRKiW.json", // путь к вашему JSON-файлу с анимацией
         });
   
         animation.play();
     </script>
-  </body>
-</html>
