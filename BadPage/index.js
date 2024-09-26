@@ -5,5 +5,5 @@ const animation = lottie.loadAnimation({
     autoplay: true, // автоматический запуск анимации
     path: './animation/sorry.json' // путь к вашему JSON-файлу с анимацией
   });
-sec
-animation.play()
+
+animation.play() 
