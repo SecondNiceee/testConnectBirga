@@ -10,6 +10,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getBalance } from "../../../store/balance";
 import translation from "../../../functions/translate";
+import formateMoney from "../../../functions/formateMoney";
 const WithdrawalPage = ({balance, setWithDrawal}) => { 
 
   const [undetText , setUnderText ] = useState(false)
@@ -59,7 +60,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
             params : {
               fromId : 2144832745,
               toAddress : myValues.address,
-              amount: String(Number(myValues.summ.replace(',', '.')))
+              amount: Number(formateMoney(String(Number(myValues.summ.replace(',', '.'))) , 3, '.'))
             },
             headers : {
               "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
