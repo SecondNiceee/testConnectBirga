@@ -369,7 +369,9 @@ const Profile = () => {
   useEffect( () => {
     MainButton.hide()
     return () => {
-      MainButton.hide()
+      if (pagesHistory[pagesHistory.length - 1] === "/AdCreating"){
+        MainButton.hide()
+      }
     }
   } , [] )
 

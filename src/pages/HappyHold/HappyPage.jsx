@@ -40,7 +40,8 @@ const HappyPage = ({task , congradulate }) => {
 
         }
         start()
-    } , [congradulate] )
+        // eslint-disable-next-line
+    } , [] )
     
     useEffect( () => {
         const menu = document.querySelector('.FirstMenu')

@@ -258,12 +258,22 @@ const First = ({ isPage = false }) => {
           text_color: "#606060",
         });
       } else {
-        if (localStep === 0) {
-          MainButton.setParams({
-            is_active: true,
-            color: "#2ea5ff",
-            text_color: "#ffffff",
-          });
+        if (localStep === 0 ) {
+          if (detailsAdertisement.status === "active"){
+
+            MainButton.setParams({
+              is_active: true,
+              color: "#2ea5ff",
+              text_color: "#ffffff",
+            });
+          }
+          else{     
+            MainButton.setParams({
+              is_active: false, //неизвесетно
+              color: "#2f2f2f",
+              text_color: "#606060",
+            });
+          }
         }
       }
     } else {
