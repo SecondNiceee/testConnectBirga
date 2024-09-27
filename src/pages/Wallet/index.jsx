@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import BackButton from "../../constants/BackButton"
 import WithdrawalPage from "./components/WithdrawalPage";
 import pagesHistory from "../../constants/pagesHistory";
-const Wallet = ({ onClose = false , isFixed = false, ...props}) => {
+const Wallet = ({ onClose = false , isFixed = false, left = false, ...props}) => {
   useProtect()
   const address = useSelector((state) => state.telegramUserInfo.address);
   const navigate = useNavigate()
@@ -100,7 +100,7 @@ const Wallet = ({ onClose = false , isFixed = false, ...props}) => {
         mountOnEnter
         unmountOnExit
         >
-          <DepositPage  address={address} />
+          <DepositPage left = {left}  address={address} />
         </CSSTransition>
 
         <CSSTransition

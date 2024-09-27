@@ -262,7 +262,6 @@ const First = ({ isPage = false }) => {
 
         return pageAdvertisement;
       } else {
-        alert("Я попадаю сюда")
         return secFilteredArray[isDetailsActive.id];
       }
     }

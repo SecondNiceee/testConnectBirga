@@ -54,7 +54,7 @@ export const useButton = ({
       
       BackButton.show();
 
-      if (isOpen.isActive && secondPage.task.status !== "inProcess" && secondPage.task.status !== "completed" ) {
+      if (isOpen.isActive && myAdOneAdvertisement.status !== "inProcess" && myAdOneAdvertisement.status !== "completed" ) {
         menu.classList.add("disappearAnimation")
         menu.classList.remove("appearAnimation")
         MainButton.show();

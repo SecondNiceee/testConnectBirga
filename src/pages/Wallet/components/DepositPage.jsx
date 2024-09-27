@@ -13,7 +13,7 @@ import Text from "../../../components/Text/Text";
 
 
 
-const DepositPage = ({address, ...props}) => {
+const DepositPage = ({address, left, ...props}) => {
   const [copyState, setCopyState] = useState(false);
 
   const clickHandler = useCallback(() => {
@@ -58,7 +58,7 @@ const DepositPage = ({address, ...props}) => {
 
     </div>
 
-    <CopyText copyState={copyState} />
+    <CopyText style = {left ? {left : "calc(100vw + 16px)"} : {}} copyState={copyState} />
 </>
   );
 };
