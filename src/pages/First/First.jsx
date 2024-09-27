@@ -146,28 +146,28 @@ const First = ({ isPage = false }) => {
   
   const [pageAdvertisement, setPageAdvertisement] = useState(null);
 
+  console.log(detailsAdertisement)
 
-  // const gotIt = useMemo( () => {
-  //   if (secFilteredArray !== null && secFilteredArray.length > 0 && secFilteredArray[isDetailsActive.id]){
 
-  //     if (secFilteredArray[isDetailsActive.id].responces){
-  //       if (secFilteredArray[isDetailsActive.id].responces.find((e) =>
-  //         Number(e.user.id) === window.Telegram.WebApp.initDataUnsafe.user.id))
+  const gotIt = useMemo( () => {
+    if (detailsAdertisement !== null ){
 
-  //       {
-  //         return true
-  //       }
-  //       else{
+      if (detailsAdertisement.responces){
+        if (detailsAdertisement.responces.find((e) =>
+          Number(e.user.id) === window.Telegram.WebApp.initDataUnsafe.user.id) || detailsAdertisement.user.id === window.Telegram.WebApp.initDataUnsafe.user.id)
 
-  //         return false
-  //       }
-  //     }
-  //   }
-  //   return false
-  //   // eslint-disable-next-line
-  // },[secFilteredArray, isDetailsActive.id,isDetailsActive.isOpen ] )
+        {
+          return true
+        }
+        else{
+          return false
+        }
+      }
+    }
+    return false
+    // eslint-disable-next-line
+  },[detailsAdertisement,isDetailsActive.isOpen ] )
 
-  const gotIt = false;
 
   useEffect(() => {
     if (isDetailsActive.isOpen) {

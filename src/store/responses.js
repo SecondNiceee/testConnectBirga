@@ -275,6 +275,7 @@ export const fetchResponses = createAsyncThunk(
             localResponses[i].advertisement = {
               id : localResponses[i].advertisement.id,
               taskName : localResponses[i].advertisement.title,
+              status : localResponses[i].advertisement.status,
               executionPlace: "Можно выполнить удаленно",
               time : {start : one , end : two},
               tonValue : localResponses[i].advertisement.price,
