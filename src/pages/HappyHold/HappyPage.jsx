@@ -8,7 +8,7 @@ import translation from '../../functions/translate';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import pagesHistory from '../../constants/pagesHistory';
-const HappyPage = ({task , congradulate }) => {
+const HappyPage = ({task , congradulate, setShowCongradulate }) => {
     const user = useSelector( state => state.telegramUserInfo )
     const navigate = useNavigate()
 
@@ -45,6 +45,7 @@ const HappyPage = ({task , congradulate }) => {
     useEffect( () => {
         const menu = document.querySelector('.FirstMenu')
         menu.style.display = "none"
+        
         return () => {
 
             menu.style.display = "flex"
@@ -53,6 +54,7 @@ const HappyPage = ({task , congradulate }) => {
     } , [] )
 
     const buttonFunction = useCallback( () => {
+        setShowCongradulate(false)
         navigate("/Wallet")
     } , [navigate] )
 

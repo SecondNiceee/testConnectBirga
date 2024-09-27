@@ -3,6 +3,7 @@ import {
   useEffect,
   Suspense,
   useRef,
+  useState,
 } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -103,11 +104,13 @@ const AnimatedSwitch = () => {
 
   const congratulate = useSelector(state => state.telegramUserInfo.congratulate)
 
+  const [showCongradulate , setShowCongradulate] = useState(true)
+
   useEffect( () => {
-    if (congratulate && congratulate.length > 0){
+    if (congratulate && congratulate.length > 0 && showCongradulate){
       navigate('/HappyPage')
     }
-  } , [congratulate, navigate] )
+  } , [congratulate, navigate, showCongradulate] )
   
   
   return (
@@ -221,7 +224,7 @@ const AnimatedSwitch = () => {
               path="/HappyPage"
               element={
                 <Suspense fallback={<MyLoader />}>
-                  <HappyPage congradulate={congratulate} task={ congratulate ?  congratulate[congratulate.length - 1] : []} />
+                  <HappyPage setShowCongradulate = {setShowCongradulate} congradulate={congratulate} task={ congratulate ?  congratulate[congratulate.length - 1] : []} />
                 </Suspense>
               }
             />
