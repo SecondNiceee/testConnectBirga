@@ -139,8 +139,7 @@ const Profile = () => {
     dispatch(changeProfile({...aboutULocal , about : aboutULocal.about.trim()}));
     dispatch(
       putUserInfo([
-        { stage: Number(aboutULocal.stage), about: aboutULocal.about.trim() },
-        userInfoLocal.id,
+        { stage: Number(aboutULocal.stage), about: aboutULocal.about.trim() },  
       ])
     );
     const input = document.querySelectorAll("input");
@@ -180,7 +179,7 @@ const Profile = () => {
     
     
     if (!cardsActive && !changeActive) {
-      if (compare2Objects(userInfo.profile, aboutU) === false && userInfo.state === "yes" && userInfo.profile.about !== null && aboutU.about !== null) {
+      if (compare2Objects(userInfo.profile, {...aboutU, stage : aboutU.stage.trim() , about : aboutU.about.trim()}) === false && userInfo.state === "yes" && userInfo.profile.about !== null && aboutU.about !== null) {
         console.log('====================================');
         console.log(userInfo.profile);
         console.log(aboutU);

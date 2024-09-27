@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import formatDate from "../../../functions/makeDate";
 import Text from "../../Text/Text";
 import translation from "../../../functions/translate";
+import en from "../../../constants/language";
 
 const TimeAndWatches = ({ time, watches, responses }) => {
   
@@ -12,53 +13,72 @@ const TimeAndWatches = ({ time, watches, responses }) => {
 
   const textOne = useMemo( () => {
     const w = Number(watches)
-    if (0 < w < 5){
-      return translation("просмотра")
-    }
-    else{
+    if (!en){
 
-      if (w < 21){
-        return translation("просмотров")
+      if (0 < w && w < 5){
+        return translation("просмотра")
       }
       else{
-        if (String(w).slice(String(w).length - 1, String(w).length) === "1"){
-          return translation("просмотр")
+  
+        if (w < 21){
+          return translation("просмотров")
         }
         else{
-          if ( 1 < Number(String(w).slice(String(w).length - 1, String(w).length)) < 5  ){
-            return "просмотра"
+          if (String(w).slice(String(w).length - 1, String(w).length) === "1"){
+            return translation("просмотр")
           }
           else{
-            return "просмотров"
-          }
-        } 
+            if ( 1 < Number(String(w).slice(String(w).length - 1, String(w).length)) && Number(String(w).slice(String(w).length - 1, String(w).length))  < 5  ){
+              return "просмотра"
+            }
+            else{
+              return "просмотров"
+            }
+          } 
+        }
       }
+    }
+    else{
+      if (w === 1){
+        return "watch"
+      }
+      return "watches"
     }
 
   } , [watches] )
   const textTwo = useMemo( () => {
     const w = Number(responses)
-    if (0 < w < 5){
-      return translation("отклик")
-    }
-    else{
+    if (!en){
 
-      if (w < 21){
-        return translation("откликов")
+
+      if (0 < w  && w < 5){
+        return translation("отклик")
       }
       else{
-        if (String(w).slice(String(w).length - 1, String(w).length) === "1"){
-          return translation("отклик")
+  
+        if (w < 21){
+          return translation("откликов")
         }
         else{
-          if ( 1 < Number(String(w).slice(String(w).length - 1, String(w).length)) < 5  ){
-            return "отклика"
+          if (String(w).slice(String(w).length - 1, String(w).length) === "1"){
+            return translation("отклик")
           }
           else{
-            return "откликов"
-          }
-        } 
+            if ( 1 < Number(String(w).slice(String(w).length - 1, String(w).length)) &&  Number(String(w).slice(String(w).length - 1, String(w).length))  < 5  ){
+              return "отклика"
+            }
+            else{
+              return "откликов"
+            }
+          } 
+        }
       }
+    }
+    else{
+      if (w === 1){
+        return "response"
+      }
+      return "reponses"
     }
 
   } , [responses] )

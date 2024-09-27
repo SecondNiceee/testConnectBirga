@@ -106,10 +106,13 @@ export const postCard = createAsyncThunk(
 export const putUserInfo = createAsyncThunk(
     "telegramUserInfo/putUserInfo",
     async function (data){
+        console.log("------------------------------------")
+        console.log("------------------------------------")
+        console.log(data[0])
         try{
             await axios.put('https://www.connectbirga.ru/user' , data[0] , {
                 params : {
-                    userId : data[1],
+                    userId : window.Telegram.WebApp.initDataUnsafe.user,
                 },
                 headers: {
                     "Content-Type" :'multipart/form-data',
@@ -120,6 +123,7 @@ export const putUserInfo = createAsyncThunk(
             return true
         }
         catch(e){
+            alert(e)
             console.warn(e)
         }
     }
