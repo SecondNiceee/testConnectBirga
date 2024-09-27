@@ -72,6 +72,7 @@ const BudgetInput = ({
         id="budget"
         name="budget"
         type="text"
+        maxLength={7}
         // onFocus={(e) => {
         //   document.documentElement.style.overflowY = 'hidden'
         //   setTimeout( () => {
