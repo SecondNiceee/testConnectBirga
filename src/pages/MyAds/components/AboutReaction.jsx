@@ -90,7 +90,7 @@ const AboutReaction = ({ responce , setOneCard, style, isTelesgramVisible,   ...
         transform : "translateX(-8px)",
         minHeight : "150px"
       }}/> :
-      <ExampleWorks openFunc={openFunc}   cards={cards}/>}
+      <ExampleWorks userId = {responce.user.id} openFunc={openFunc}   cards={cards}/>}
 
 
 

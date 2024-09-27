@@ -288,7 +288,7 @@ export const fetchTasksInformation = createAsyncThunk(
         "https://www.connectbirga.ru/advertisement/findAll",
         {
           params: {
-            limit: 4,
+            limit: 2,
             page: par,
           },
           headers : {
@@ -464,7 +464,7 @@ const information = createSlice({
 
     builder.addCase(fetchTasksInformation.fulfilled, (state, action) => {
       state.orderStatus = "complete";
-      if (action.payload.length < 4) {
+      if (action.payload.length < 2) {
         state.orderStatus = "all";
       }
       state.orderInformations.push(...action.payload);

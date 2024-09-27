@@ -19,27 +19,27 @@ const HappyPage = ({task , congradulate, setShowCongradulate }) => {
     
 
     useEffect( () => {
-        // async function start(  ) {
-        //     try{
+        async function start(  ) {
+            try{
 
-        //          await axios.patch("https://www.connectbirga.ru/user", {},  {
-        //             params: {
-        //               congratulateId : congradulate[0].id ,
-        //               userId: window.Telegram.WebApp.initDataUnsafe.user.id,
-        //             },
-        //             headers : {
-        //               "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-        //             }
-        //           });
-        //     }
-        //     catch(e){
-        //         alert(e)
-        //         console.warn(e)
-        //     }
+                 await axios.patch("https://www.connectbirga.ru/user", {},  {
+                    params: {
+                      congratulateId : congradulate[0].id ,
+                      userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+                    },
+                    headers : {
+                      "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+                    }
+                  });
+            }
+            catch(e){
+                alert(e)
+                console.warn(e)
+            }
 
-        // }
-        // start()
-        // eslint-disable-next-line
+        }
+        start()
+       // eslint-disable-next-line
     } , [] )
     
     useEffect( () => {

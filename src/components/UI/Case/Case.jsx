@@ -17,6 +17,7 @@ const Case = ({
   deleteFunction,
   watchOnly,
   agree = false,
+  userId = window.Telegram.WebApp.initDataUnsafe.user.id,
   ...props
 }) => {
 
@@ -120,7 +121,7 @@ const Case = ({
                   "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" +
                     String(card.id) +
                     "m" +
-                    window.Telegram.WebApp.initDataUnsafe.user.id
+                    userId
                 );
               }}
               className={cl.circle}
