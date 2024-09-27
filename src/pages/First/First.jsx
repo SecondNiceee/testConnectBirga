@@ -144,7 +144,7 @@ const First = ({ isPage = false }) => {
 
 
   
-  const [pageAdvertisement, setPageAdvertisement] = useState();
+  const [pageAdvertisement, setPageAdvertisement] = useState(null);
 
 
   // const gotIt = useMemo( () => {
@@ -246,6 +246,7 @@ const First = ({ isPage = false }) => {
           category: order.category.id,
         };
       } catch (e) {
+        alert(e)
         setPageValue(false)
         setDetailsActive({ isOpen: false, id: 1 });
       }
@@ -261,7 +262,7 @@ const First = ({ isPage = false }) => {
 
         return pageAdvertisement;
       } else {
-        /// НЕ попал сюда
+        alert("Я попадаю сюда")
         return secFilteredArray[isDetailsActive.id];
       }
     }
