@@ -23,10 +23,14 @@ let spet = 0;
 const menu = document.documentElement.querySelector(".FirstMenu")
 const Yes = translation("Да")
 const No = translation("Нет")
-const AdCreating = () => {
-
 const endText = translation("СОЗДАТЬ ЗАДАНИЕ")
 const continueText = translation("ДАЛЕЕ")
+
+const AdCreating = () => {
+
+
+
+
 
 
 
@@ -508,7 +512,7 @@ const continueText = translation("ДАЛЕЕ")
   
       }
     }
-  } , [isCategoryChoiceOpen , isSubcategoryChoiceOpen,setCatagoryChoiceOpen,setSubcategoryChoiceOpen, navigate, continueText ])
+  } , [isCategoryChoiceOpen , isSubcategoryChoiceOpen,setCatagoryChoiceOpen,setSubcategoryChoiceOpen, navigate ])
 
   const GreyIntWidth = useMemo(() => {
     return (document.documentElement.clientWidth - 36) / 2;
@@ -541,7 +545,7 @@ const continueText = translation("ДАЛЕЕ")
         MainButton.hide();
       
     };
-  }, [continueText]);
+  }, []);
 
 
 
