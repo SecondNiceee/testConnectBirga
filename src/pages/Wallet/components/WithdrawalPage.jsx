@@ -63,7 +63,7 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
             params : {
               fromId : window.Telegram.WebApp.initDataUnsafe.user.id,
               toAddress : myValues.address,
-              amount: (Number(formateMoney(String(Number(myValues.summ.replace(',', '.'))) , 3, '.')) - 0.004).toFixed(3)
+              amount: String((Number(formateMoney(String(Number(myValues.summ.replace(',', '.'))) , 3, '.')) - 0.004).toFixed(3))
             },
             headers : {
               "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
