@@ -228,7 +228,7 @@ const First = ({ isPage = false }) => {
         return secFilteredArray[isDetailsActive.id];
       }
     }
-  }, [
+  }, [  
     isPage,
     pageAdvertisement,
     isDetailsActive.id,
@@ -242,7 +242,7 @@ const First = ({ isPage = false }) => {
 
 
   const gotIt = useMemo( () => {
-    if (detailsAdertisement !== null ){
+    if (detailsAdertisement ){
 
       if (detailsAdertisement.responces){
         if (detailsAdertisement.responces.find((e) =>
@@ -289,7 +289,7 @@ const First = ({ isPage = false }) => {
         window.Telegram.WebApp.showPopup({
           title: translation("Ошибка"),
           message:
-            translation("Вы уже откликнулись на это задание. Заказчик обязательно увидит ваш отклик."),
+            translation("Задание ваше или вы откликнулись уже на него."),
         });
       } else {
         if (step === 0) {
