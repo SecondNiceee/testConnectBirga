@@ -75,7 +75,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
             else{
               console.log(balance)
               console.log(secondPage.task.tonValue)
-              if (Number(balance) < Number(myAdOneAdvertisement.tonValue)){
+              if (Number(balance) < (Number(myAdOneAdvertisement.tonValue) + 0.01).toFixed(2)){
   
                 setWalletH(true)
                 MainButton.hide()

@@ -28,7 +28,7 @@ const ShowMyResponse = ({
     function click() {
       window.Telegram.WebApp.showPopup(
         {
-          title: translation("Выбрать?"),
+          title: translation("Подтвердите?"),
           message: isTake,
           buttons: [
             { id: "save", type: "default", text: Yes },

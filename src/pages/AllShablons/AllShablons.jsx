@@ -132,7 +132,6 @@ const AllShablons = () => {
     const myFormData = new FormData()
     myFormData.append("name" , String(shablon.name.trim()) )
     myFormData.append("text" , String(shablon.text.trim()))
-    alert(put)
     if (put){
       let filesArr = sortFiles(shablon.photosNames, shablon.photos)
       filesArr.addedArr.forEach((e, i) => {
@@ -184,9 +183,7 @@ const AllShablons = () => {
         (buttonId) => {
           if (buttonId === "save") {
             if (check()){
-                alert("Я тут")
                 save(put)
-                alert("Я даже тут!")
                 setShablonShow((value) => ({...value , isActive : false}))
                 
             }

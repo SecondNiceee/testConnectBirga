@@ -9,12 +9,21 @@ import PropagateLoader from "react-spinners/PropagateLoader";
 import { CSSTransition } from "react-transition-group";
 import BalanceAlert from "./BalanceAlert";
 import Text from "../../../components/Text/Text";
+import { fetchTon } from "../../../store/ton";
 const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
+
+
   const balanceStatus = useSelector(state => state.balance.status)
   const dispatch = useDispatch()
   const value = useSelector((state) => state.ton.value);
   const reloadRef = useRef(null)
   const address = useSelector(state => state.telegramUserInfo.address)
+
+  useEffect( () => {
+    if (value === 0){
+      dispatch(fetchTon())
+    }
+  } , [] )
 
   const [clickLol, setClickLol] = useState(false)
   

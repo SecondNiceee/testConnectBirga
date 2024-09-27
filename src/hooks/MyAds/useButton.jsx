@@ -72,7 +72,7 @@ export const useButton = ({
             MainButton.setText(translation("Перейти к заданию"))
           }
           else{
-            if (Number(balance) < Number(myAdOneAdvertisement.tonValue)){
+            if (Number(balance) < (Number(myAdOneAdvertisement.tonValue) + 0.01).toFixed(2)){
               MainButton.setText(translation("КОШЕЛЕК"))
             }
             else{

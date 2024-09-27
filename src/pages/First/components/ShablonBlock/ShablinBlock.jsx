@@ -26,6 +26,11 @@ const ShablinBlock = ({
       photos: [],
     }
   });
+
+
+
+
+
   return (
     <div className={className ? [cl.main, className].join(" ") : cl.main}>
       {shablonsArr.length > 0 ? (
@@ -84,7 +89,7 @@ const ShablinBlock = ({
         mountOnEnter
       >
         <Shablon
-        
+          mistakes={{text : false, name : false}}
           exitText = {exitText}
           isExitShow = {true}
           setActive={() => {

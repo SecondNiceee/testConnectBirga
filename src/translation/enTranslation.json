@@ -224,6 +224,7 @@
     "Убедитесь, что вы выводите свои токены на правильный адрес и в правильную сеть (TON)." : "Make sure you are outputting your tokens to the correct address and to the correct network (TON).",
     "Комиссия за блокчейн" : "Blockchain fees",
     "Итого" : "Total",
+    "Будет получено" : "Will be received",
     "Найдите свой адрес Коннект кошелька выше (начинается с" : "Find your Connect Wallet address above (starts with )",
     "и скопируйте его" : "and copy it.",
     "Вставьте скопированный адрес выше и нажмите CONTINUE. Подтвердите транзакцию." : "Paste the copied address above and press CONTINUE. Confirm the transaction.",
@@ -301,7 +302,8 @@
     "Вставьте скопированный адрес выше и подтвердите необходимую вам транзакцию." : "Paste the copied address above and confirm the transaction you need.",
     "Не удалось загрузить фотку, попробуйте еще раз или перезайдите на страницу." : "Could not load the picture, try again or reload the page.",
     "Максимум 5 файлов" : "Maximum 5 files",
-    "Задание ваше или вы откликнулись уже на него." : "The assignment is yours or you have responded to it already."
+    "Задание ваше или вы откликнулись уже на него." : "The assignment is yours or you have responded to it already.",
+    "Подтвердите" : "Confirm"
 
 
     

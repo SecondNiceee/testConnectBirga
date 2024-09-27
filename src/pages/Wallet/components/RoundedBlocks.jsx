@@ -37,7 +37,7 @@ const RoundedBlocks = ({summ}) => {
       </div>
 
       <div className={cl.roundBlock}> 
-        <Text>Итого</Text>
+        <Text>Будет получено</Text>
 
         <p className={cl.right}>
           { String(itog).replace('.', ',')} TON ≈ {formateMoney(String(itog * price).replace('.' , ','), 2, ',')}

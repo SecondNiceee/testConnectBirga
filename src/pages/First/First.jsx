@@ -260,6 +260,9 @@ const First = ({ isPage = false }) => {
     // eslint-disable-next-line
   },[detailsAdertisement,isDetailsActive.isOpen ] )
 
+  console.log(gotIt);
+  
+
 
   useEffect(() => {
     if (isDetailsActive.isOpen) {
@@ -580,7 +583,7 @@ const First = ({ isPage = false }) => {
     }
 
     if (step !== 0 && !responce.shablonMaker) {
-      if (address !== null){
+      if (address){
 
           window.Telegram.WebApp.showPopup(
             {
