@@ -355,22 +355,24 @@ const First = ({ isPage = false }) => {
         if (localStep === 0 ) {
 
           if (isDetailsActive.isOpen){
+            if (detailsAdertisement){
+              if (detailsAdertisement.status === "active"){
 
-            if (detailsAdertisement.status === "active"){
-  
-              MainButton.setParams({
-                is_active: true,
-                color: "#2ea5ff",
-                text_color: "#ffffff",
-              });
-            }
-            else{     
-              MainButton.setParams({
-                is_active: false, //неизвесетно
-                color: "#2f2f2f",
-                text_color: "#606060",
-              });
-            }
+                MainButton.setParams({
+                  is_active: true,
+                  color: "#2ea5ff",
+                  text_color: "#ffffff",
+                });
+
+              }
+              else{
+                MainButton.setParams({
+                  is_active: false, //неизвесетно
+                  color: "#2f2f2f",
+                  text_color: "#606060",
+                });
+              }
+            } 
           }
         }
       }

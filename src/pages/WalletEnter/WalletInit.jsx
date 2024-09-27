@@ -104,7 +104,7 @@ const WalletInit = () => {
     } , [checkWallet] )
     
     const setSomeInput = useCallback((value, index) => {
-        setInputs((val) => ([...val].map((e,i) => index === i ? value : e)))
+        setInputs((val) => ([...val].map((e,i) => index === i ? value.toLowerCase() : e.toLowerCase())))
     } , [setInputs] )
     const clearAll = useCallback( () => {
         setInputs(Array.from({length : 12} , () => ""))
