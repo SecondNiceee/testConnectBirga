@@ -112,7 +112,7 @@ export const putUserInfo = createAsyncThunk(
         try{
             await axios.put('https://www.connectbirga.ru/user' , data[0] , {
                 params : {
-                    userId : window.Telegram.WebApp.initDataUnsafe.user,
+                    userId : String(window.Telegram.WebApp.initDataUnsafe.user.id),
                 },
                 headers: {
                     "Content-Type" :'multipart/form-data',
