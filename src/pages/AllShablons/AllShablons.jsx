@@ -153,7 +153,7 @@ const AllShablons = () => {
     setShablonShow( (value) => ({...value, isActive : false}) )
     // myFormData.append("photos" , shablon.photos)
 
-  } , [dispatch, shablon, setShablonShow, putShablonState] )
+  } , [dispatch, shablon, setShablonShow] )
   const check = useCallback( () => {
     const localMistakes = {name : false, text : false}
     if (shablon.name.trim().length < 3){
