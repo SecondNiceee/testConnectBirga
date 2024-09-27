@@ -4,6 +4,11 @@ import Text from "../../Text/Text";
 import translation from "../../../functions/translate";
 
 const TimeAndWatches = ({ time, watches, responses }) => {
+  
+
+  console.log(watches);
+  console.log(responses)
+  
 
   const textOne = useMemo( () => {
     const w = Number(watches)

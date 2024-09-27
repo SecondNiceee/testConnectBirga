@@ -145,7 +145,7 @@ const AdCreatingOne = ({
           startTime: time,
         }));
         if (taskInformation.myAds) {
-          setTaskInformation( (value) => ({...value, task : {...value.task , time : {...value.task.time , start : time}} }))
+          setTaskInformation( (value) => ({...value, time : {...value.time , start : time}} ))
         } else {
           setTaskInformation((value) => ({ ...value, startTime: time }));
         }
@@ -169,7 +169,7 @@ const AdCreatingOne = ({
           endTime: time,
         });
         if (taskInformation.myAds) {
-          setTaskInformation( (value) => ({...value, task : {...value.task , time : {...value.task.time , end : time}} }))
+          setTaskInformation( (value) => ({...value , time : {...value.time , end : time}} ))
         } else {
           setTaskInformation((value) => ({ ...value, endTime: time }));
         }
