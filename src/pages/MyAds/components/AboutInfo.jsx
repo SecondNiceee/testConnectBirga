@@ -18,6 +18,8 @@ const AboutInfo = ({responce, isTelesgramVisible = true}) => {
 // eslint-disable-next-line
   }, [])
 
+  console.warn(responce.user)
+
   const clickHanlder = useCallback( () => {
     if (isTelesgramVisible){
       window.Telegram.WebApp.openTelegramLink("https://t.me/" + responce.user.link)

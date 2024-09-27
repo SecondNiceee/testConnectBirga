@@ -17,6 +17,56 @@
     /* height: calc(100vh);
     overflow-y: scroll; */
 }
+
+
+.newBlock{
+    display: flex;
+    border-radius: 10px;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    background-color: #20303f;
+
+}
+
+.newBlock p{
+    width: 100%;
+    font-family: "SF Pro Text 400";
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 129%;
+    letter-spacing: -0.02em;
+    color: #fff;
+}
+.newBlock .left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:  100%;
+}
+.newBlock .left p{
+    color: white;
+}
+.newBlock .right p{
+    color:  #daf5fe;
+}
+.newBlock .right{
+    width:  100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.newBlock .grab{
+    font-family: "SF Pro Text 400";
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 129%;
+    letter-spacing: -0.02em;
+    text-decoration: line-through;
+    color: #95979e;
+}
 .upTextContainer{
     display: flex;
     gap: calc(4px);

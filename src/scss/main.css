@@ -1625,6 +1625,8 @@ input {
 .profile__icon {
   width: 90.24px;
   height: 90.24px;
+  max-width: 90.24px;
+  min-height: 90.24px;
   margin-left: auto;
   margin-right: auto;
 }

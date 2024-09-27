@@ -404,6 +404,15 @@ const AdCreating = () => {
       MainButton.setText(translation("ДАЛЕЕ"))
   } , 2000 ) 
   } , []  )
+
+  useEffect( () => {
+    var inputs = document.getElementsByTagName('input');
+
+    // Проходим по каждому инпуту и удаляем фокус
+    for (var i = 0; i < inputs.length; i++) {
+      inputs[i].blur();
+    }
+  } , [spet] )
   MainButton.setText(translation("ДАЛЕЕ"))
 
   // eslint-disable-next-line

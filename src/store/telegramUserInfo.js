@@ -207,7 +207,6 @@ export const fetchUserInfo = createAsyncThunk(
         let photoUrl = user.data.photo
         try { 
             const response = await axios.get(user.data.photo)
-            alert("успех" + JSON.stringify(response.data))
         }
         catch(e){
             if (!e.code === "ERR_NETWORK"){
