@@ -148,43 +148,6 @@ const First = ({ isPage = false }) => {
 
 
 
-
-  const gotIt = useMemo( () => {
-    if (detailsAdertisement !== null ){
-
-      if (detailsAdertisement.responces){
-        if (detailsAdertisement.responces.find((e) =>
-          Number(e.user.id) === window.Telegram.WebApp.initDataUnsafe.user.id) || detailsAdertisement.user.id === window.Telegram.WebApp.initDataUnsafe.user.id)
-
-        {
-          return true
-        }
-        else{
-          return false
-        }
-      }
-    }
-    return false
-    // eslint-disable-next-line
-  },[detailsAdertisement,isDetailsActive.isOpen ] )
-
-
-  useEffect(() => {
-    if (isDetailsActive.isOpen) {
-      BackButton.show();
-    }
-  }, [isDetailsActive]);
-
-  isDetailsActiveVar = isDetailsActive.isOpen;
-
-  const [isProfile, setProfile] = useState(false);
-
-  const [isCardOpen, setCardOpen] = useState({
-    isOpen: false,
-    card: {},
-  });
-
-
   const detailsAdertisement = useMemo(() => {
     async function getAdvertisement() {
       try {
@@ -273,6 +236,47 @@ const First = ({ isPage = false }) => {
     secFilteredArray,
     pageValue
   ]);
+
+
+
+
+
+  const gotIt = useMemo( () => {
+    if (detailsAdertisement !== null ){
+
+      if (detailsAdertisement.responces){
+        if (detailsAdertisement.responces.find((e) =>
+          Number(e.user.id) === window.Telegram.WebApp.initDataUnsafe.user.id) || detailsAdertisement.user.id === window.Telegram.WebApp.initDataUnsafe.user.id)
+
+        {
+          return true
+        }
+        else{
+          return false
+        }
+      }
+    }
+    return false
+    // eslint-disable-next-line
+  },[detailsAdertisement,isDetailsActive.isOpen ] )
+
+
+  useEffect(() => {
+    if (isDetailsActive.isOpen) {
+      BackButton.show();
+    }
+  }, [isDetailsActive]);
+
+  isDetailsActiveVar = isDetailsActive.isOpen;
+
+  const [isProfile, setProfile] = useState(false);
+
+  const [isCardOpen, setCardOpen] = useState({
+    isOpen: false,
+    card: {},
+  });
+
+
 
 
   useEffect(() => {
