@@ -6,6 +6,7 @@ import { setStartTask } from "../../store/information";
 import { setStartResponse } from "../../store/responses";
 import axios from "axios";
 import { fetchUserInfo } from "../../store/telegramUserInfo";
+import { useMemo } from "react";
 
 
 
@@ -13,6 +14,17 @@ import { fetchUserInfo } from "../../store/telegramUserInfo";
 function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isOpen, setHappyHold, secondPage , setWalletH, myAdOneAdvertisement, myAdOneResponse
   
 }) {
+
+
+  
+  const perventValue = useMemo( () => {
+    return  (Number(myAdOneAdvertisement.tonValue) * 0.004).toFixed(3)
+  }, [myAdOneAdvertisement.tonValue, rezult] ) 
+  
+  const rezult = useMemo( () => {
+    return  Number(myAdOneAdvertisement.tonValue) + perventValue + 0.02
+  }, [perventValue] )
+
   
   async function hold(id, amount) {
     await axios.get("https://www.connectbirga.ru/user/hold" , {
@@ -75,7 +87,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
             else{
               console.log(balance)
               console.log(secondPage.task.tonValue)
-              if (Number(balance) < (Number(myAdOneAdvertisement.tonValue) + 0.01).toFixed(2)){
+              if (Number(balance) < rezult){
   
                 setWalletH(true)
                 MainButton.hide()
@@ -112,7 +124,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                     },
                     (buttonId) => {
                       if (buttonId === "save") {
-                          hold(window.Telegram.WebApp.initDataUnsafe.user.id, String(  (Number(myAdOneAdvertisement.tonValue) + 0.01).toFixed(3) ) ).then(value => {
+                          hold(window.Telegram.WebApp.initDataUnsafe.user.id, String(  rezult ) ).then(value => {
                           window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
                           dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
                           dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))

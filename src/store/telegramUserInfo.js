@@ -115,9 +115,8 @@ export const putUserInfo = createAsyncThunk(
                     userId : String(window.Telegram.WebApp.initDataUnsafe.user.id),
                 },
                 headers: {
-                    "Content-Type" :'multipart/form-data',
+                    "Content-Type" :'application/json',
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY,
-                    "Access-Control-Allow-Origin": "*",
                   },
             })
             return true

@@ -216,20 +216,23 @@ export const fetchResponses = createAsyncThunk(
               }
         })
 
-        const advertisement = await axios.get("https://www.connectbirga.ru/advertisement/findOne", {
-            params : {
-                "id" : im.data.advertisement.id
-            },
-            headers : {
-                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-            }
-        })
+
         let localResponses = im.data
 
         let me = par[0]
         
 
         for (let i = 0; i < localResponses.length; i++){
+
+            const advertisement = await axios.get("https://www.connectbirga.ru/advertisement/findOne", {
+                params : {
+                    "id" : im.data[i].advertisement.id
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+                }
+            })
+
             let one = new Date(advertisement.startTime)
   
             let two;

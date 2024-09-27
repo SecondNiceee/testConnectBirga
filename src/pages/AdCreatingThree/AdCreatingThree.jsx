@@ -27,7 +27,7 @@ const AdCreatingThree = ({taskInformation }) => {
 
   const rezult = useMemo( () => {
     return  Number(taskInformation.tonValue) + perventValue + 0.02
-  }, [perventValue] )
+  }, [perventValue, taskInformation.tonValue] )
   return (
     <div className= {cl.AdCreatingThree}
     style={{minWidth : document.documentElement.clientWidth.toString() + 'px'}}
@@ -50,7 +50,7 @@ const AdCreatingThree = ({taskInformation }) => {
           <div className={cl.left}>
             <p>Сервис.сбор</p>
           </div>
-          <div className={cl.rigth}>
+          <div className={cl.right}>
             <p className={cl.standart}>{perventValue} TON</p>
             <p className={cl.standart}>4%</p>
             <p className={cl.grob}>8%</p>
