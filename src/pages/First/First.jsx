@@ -146,7 +146,7 @@ const First = ({ isPage = false }) => {
   
   const [pageAdvertisement, setPageAdvertisement] = useState(null);
 
-  console.log(detailsAdertisement)
+
 
 
   const gotIt = useMemo( () => {
