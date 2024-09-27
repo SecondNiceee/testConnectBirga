@@ -27,7 +27,7 @@ const AboutInfo = ({responce, isTelesgramVisible = true}) => {
     {
       window.Telegram.WebApp.showAlert( translation("Для доступа к контактам заказчика необходимо откликнуться."))
     }
-  } , [responce.user.link , isTelesgramVisible] )
+  } , [responce , isTelesgramVisible] )
 
   console.warn(responce.user.completedAdvertisements)
   return (

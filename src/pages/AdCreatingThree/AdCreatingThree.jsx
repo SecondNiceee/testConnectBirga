@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 
 import Holding from "./Holding/Holding";
 
@@ -21,6 +21,13 @@ const AdCreatingThree = ({taskInformation }) => {
     dispatch(getBalance({userAddress : address}))
   } , [dispatch, address] )
 
+  const perventValue = useMemo( () => {
+    return  (Number(taskInformation.tonValue) * 0.004).toFixed(3)
+  }, [taskInformation.tonValue] ) 
+
+  const rezult = useMemo( () => {
+    return  Number(taskInformation.tonValue) + perventValue + 0.02
+  }, [perventValue] )
   return (
     <div className= {cl.AdCreatingThree}
     style={{minWidth : document.documentElement.clientWidth.toString() + 'px'}}
@@ -41,20 +48,17 @@ const AdCreatingThree = ({taskInformation }) => {
         </div>
         <div className={cl.newBlock}>
           <div className={cl.left}>
-
             <p>Сервис.сбор</p>
           </div>
           <div className={cl.rigth}>
-            <p className={cl.standart}>1.4 TON</p>
+            <p className={cl.standart}>{perventValue} TON</p>
             <p className={cl.standart}>4%</p>
             <p className={cl.grob}>8%</p>
           </div>
         </div>
-        <Block left={translation("Комиссия")} right={"0.02 TON"} />
-        <Block left={translation("Сервис.сбор")} right={String((Number(taskInformation.tonValue) + 0.01).toFixed(3)) + " TON"} />
       </div>
       <Holding taskInformation={taskInformation}  className={cl.Holding} />
-      { (balance < taskInformation.tonValue + 0.01 || !address)  && <AlertBlock address = {address} tonValue={taskInformation.tonValue + 0.01} />}
+      { (balance < rezult)  && <AlertBlock address = {address} tonValue={rezult} />}
     </div> 
   );
 };

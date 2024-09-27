@@ -14,27 +14,35 @@ const TimeAndWatches = ({ time, watches, responses }) => {
   const textOne = useMemo( () => {
     const w = Number(watches)
     if (!en){
-
-      if (0 < w && w < 5){
-        return translation("просмотра")
+      if (w === 0){
+        return "просмотров"
+      }
+      if (w === 1){
+        return "просмотр"
       }
       else{
-  
-        if (w < 21){
-          return translation("просмотров")
+
+        if (0 < w && w < 5){
+          return translation("просмотра")
         }
         else{
-          if (String(w).slice(String(w).length - 1, String(w).length) === "1"){
-            return translation("просмотр")
+    
+          if (w < 21){
+            return translation("просмотров")
           }
           else{
-            if ( 1 < Number(String(w).slice(String(w).length - 1, String(w).length)) && Number(String(w).slice(String(w).length - 1, String(w).length))  < 5  ){
-              return "просмотра"
+            if (String(w).slice(String(w).length - 1, String(w).length) === "1"){
+              return translation("просмотр")
             }
             else{
-              return "просмотров"
-            }
-          } 
+              if ( 1 < Number(String(w).slice(String(w).length - 1, String(w).length)) && Number(String(w).slice(String(w).length - 1, String(w).length))  < 5  ){
+                return "просмотра"
+              }
+              else{
+                return "просмотров"
+              }
+            } 
+          }
         }
       }
     }
@@ -50,9 +58,11 @@ const TimeAndWatches = ({ time, watches, responses }) => {
     const w = Number(responses)
     if (!en){
 
-
-      if (0 < w  && w < 5){
-        return translation("отклик")
+      if ( w === 1){
+        return "отклик"
+      }
+      if (1 < w  && w < 5){
+        return translation("отклика")
       }
       else{
   
@@ -84,7 +94,7 @@ const TimeAndWatches = ({ time, watches, responses }) => {
   } , [responses] )
   return (
     <div className="timeAndWatches">
-      <p className="watches"><span>{watches}</span> {textOne}   <span>{responses}</span> {textTwo}</p>
+      {responses && <p className="watches"><span>{watches}</span> {textOne}   <span>{responses}</span> {textTwo}</p>}
       <div className="createdAt-block">
         <Text>Создано </Text>
         <p>{formatDate(new Date(time))}</p>

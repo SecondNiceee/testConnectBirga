@@ -215,23 +215,32 @@ export const fetchResponses = createAsyncThunk(
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
         })
+
+        const advertisement = await axios.get("https://www.connectbirga.ru/advertisement/findOne", {
+            params : {
+                "id" : im.data.advertisement.id
+            },
+            headers : {
+                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+            }
+        })
         let localResponses = im.data
 
         let me = par[0]
         
 
         for (let i = 0; i < localResponses.length; i++){
-            let one = new Date(localResponses[i].advertisement.startTime)
+            let one = new Date(advertisement.startTime)
   
             let two;
-            if (localResponses[i].advertisement.endTime){
-               two = new Date(localResponses[i].advertisement.endTime)
+            if (advertisement.endTime){
+               two = new Date(advertisement.endTime)
             }
             else{
                two = ""
             }
 
-            let files = await makeNewFile(localResponses[i].advertisement.folder, localResponses[i].advertisement.photos);
+            let files = await makeNewFile(advertisement.folder, advertisement.photos);
 
             try {
                 let imTwo = await axios.get(
@@ -255,7 +264,7 @@ export const fetchResponses = createAsyncThunk(
 
             const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
                 params : {
-                    "id" : localResponses[i].advertisement.user.id
+                    "id" : advertisement.user.id
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -273,27 +282,30 @@ export const fetchResponses = createAsyncThunk(
             
             
             localResponses[i].advertisement = {
-              id : localResponses[i].advertisement.id,
-              taskName : localResponses[i].advertisement.title,
-              status : localResponses[i].advertisement.status,
+              id : advertisement.id,
+              taskName : advertisement.title,
+              status : advertisement.status,
               executionPlace: "Можно выполнить удаленно",
               time : {start : one , end : two},
-              tonValue : localResponses[i].advertisement.price,
-              taskDescription : localResponses[i].advertisement.description,
+              tonValue : advertisement.price,
+              taskDescription : advertisement.description,
               photos : files,
-              photosName : localResponses[i].advertisement.photos,
+              photosName : advertisement.photos,
               customerName : me.firstName,
               userPhoto : me.photo || "",
               rate : '5',
               isActive : true,
-              creationTime : localResponses[i].advertisement.createdAt,
-              category : localResponses[i].advertisement.category.id,
-              viewsNumber : localResponses[i].advertisement.advertisement,
+              creationTime : advertisement.createdAt,
+              category : advertisement.category.id,
+              viewsNumber : advertisement.advertisement,
               user : advertisementUser.data,
-              createNumber : advertisementCrateNumber.data
+              createNumber : advertisementCrateNumber.data,
+              responces : advertisement.responces
 
               
             }
+
+            
 
             let photos = [];
     

@@ -57,8 +57,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    display: flex;
 }
-.newBlock .grab{
+.newBlock .grob{
     font-family: "SF Pro Text 400";
     font-weight: 400;
     font-size: 17px;

@@ -43,7 +43,7 @@ const FirstDetails = forwardRef(({  orderInformation , className , setProfile, e
 
                 <TaskDetailsContainer setProfile = {setProfile} end = {end}  orderInformation = {orderInformation} />
                 
-                {end ? <></> :<TimeAndWatches responses={orderInformation.responces.length} time={orderInformation.creationTime} watches={orderInformation.viewsNumber} />}
+                {end ? <></> :<TimeAndWatches responses={orderInformation.responces ? orderInformation.responces.length : null} time={orderInformation.creationTime} watches={orderInformation.viewsNumber} />}
                 
 
 

@@ -17,9 +17,6 @@ const HappyHold = ({response ,task}) => {
 
     } , [] )
 
-    useEffect( () => {
-        MainButton.show()
-    } , [] )
 
     const options = {
         animationData: chemodan,

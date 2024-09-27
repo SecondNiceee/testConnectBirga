@@ -54,7 +54,8 @@ export const useButton = ({
       
       BackButton.show();
 
-      if (isOpen.isActive && myAdOneAdvertisement.status !== "inProcess" && myAdOneAdvertisement.status !== "completed" ) {
+      if (isOpen.isActive) {
+
         menu.classList.add("disappearAnimation")
         menu.classList.remove("appearAnimation")
         MainButton.show();
@@ -64,6 +65,9 @@ export const useButton = ({
           is_active: true,
         });
         MainButton.onClick(writeFucntion);
+        if (!( myAdOneAdvertisement.status !== "inProcess" && myAdOneAdvertisement.status !== "completed" )){
+          MainButton.hide()
+        }
         if (!buyPage){
             MainButton.setText(choiceText);
         }
