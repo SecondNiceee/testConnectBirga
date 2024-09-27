@@ -704,6 +704,9 @@ const First = ({ isPage = false }) => {
     setSubCategory(false)
   } , [changer] )
 
+
+  console.warn(detailsAdertisement)
+
   return (
     <div style={firsStyle} className="first-container">
       <motion.div

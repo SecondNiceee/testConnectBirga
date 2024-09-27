@@ -30,7 +30,9 @@ const FirstDetails = forwardRef(({  orderInformation , className , setProfile, e
             disatch(addWatch(orderInformation))
         }
     } , [disatch, end , orderInformation] )
+    
 
+    console.warn(orderInformation)
     return (
         <>
         {orderInformation
@@ -49,12 +51,12 @@ const FirstDetails = forwardRef(({  orderInformation , className , setProfile, e
             )
             :
             <>
-<FirstLoader style = {{
-    position : "absolute",
-    height : "100vh",
-    left : "150vw",
-    transform : "translateX(-50%)"
-}} />
+            <FirstLoader style = {{
+                position : "absolute",
+                height : "100vh",
+                left : "150vw",
+                transform : "translateX(-50%)"
+            }} />
             </>
         }
         </>
