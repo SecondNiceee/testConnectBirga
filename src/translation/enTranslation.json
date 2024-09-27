@@ -303,7 +303,9 @@
     "Не удалось загрузить фотку, попробуйте еще раз или перезайдите на страницу." : "Could not load the picture, try again or reload the page.",
     "Максимум 5 файлов" : "Maximum 5 files",
     "Задание ваше или вы откликнулись уже на него." : "The assignment is yours or you have responded to it already.",
-    "Подтвердите" : "Confirm"
+    "Подтвердите" : "Confirm",
+    "Закрыть" : "Close",
+    "ВЫБРАТЬ ИСПОЛНИТЕЛЯ" : "CHOOSE AN ARTIST"
 
 
     

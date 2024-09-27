@@ -13,7 +13,7 @@ const menu = document.documentElement.querySelector(".FirstMenu");
 
 const textButtonOne = translation("ВЫПОЛНИЛ")
 const isTake = translation("Вы выполнили это задание?")
-const bigText = translation("Мы выслали подтверждение заказчику.\nПожалуйста, не нажимайте эту кнопку много раз.\nПодтверждение точно было выслано. ")
+const bigText = translation("Отправили запрос заказчику, статус задания обновится после после подтверждения")
 const Yes = translation("Да")
 const No = translation("Нет")
 const ShowMyResponse = ({
@@ -28,7 +28,7 @@ const ShowMyResponse = ({
     function click() {
       window.Telegram.WebApp.showPopup(
         {
-          title: translation("Подтвердите?"),
+          title: translation("Подтвердите"),
           message: isTake,
           buttons: [
             { id: "save", type: "default", text: Yes },
@@ -66,9 +66,22 @@ const ShowMyResponse = ({
         console.log(String(response.advertisement.user.id))
         console.log(String(response.advertisement.id))
 
-        window.Telegram.WebApp.showAlert(
-          bigText
-        );
+        window.Telegram.WebApp
+        .showPopup({
+          title: translation("Успешно!"),
+          message: bigText,
+          buttons: [
+            { id: "save", type: "default", text: translation("Закрыть") },
+          ],
+        } , (buttonId) => {
+    
+          if (buttonId === "save" || buttonId === null) {
+            console.log("Ok");
+            
+          }
+    
+    
+        } )
       } catch (e) {
         window.Telegram.WebApp.showAlert(
           translation("Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку.")

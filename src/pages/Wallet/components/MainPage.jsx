@@ -23,7 +23,7 @@ const MainPage = ({ setDepositShow, setWithDrawal, balance }) => {
     if (value === 0){
       dispatch(fetchTon())
     }
-  } , [] )
+  } , [dispatch, value] )
 
   const [clickLol, setClickLol] = useState(false)
   

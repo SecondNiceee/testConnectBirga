@@ -9,7 +9,7 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 
 
 
-const choiceText = translation("ВЫБРАТЬ")
+const choiceText = translation("ВЫБРАТЬ ИСПОЛНИТЕЛЯ")
  
 export const useButton = ({
   isOpen,
@@ -89,7 +89,7 @@ export const useButton = ({
         }
       } else {
         MainButton.offClick(writeFucntion);
-        if (!myResponse.isOpen && !showDetails ) {
+        if (!myResponse.isOpen && !showDetails && !happyHold ) {
           menu.classList.add("appearAnimation")
           menu.classList.remove("disappearAnimation")
           MainButton.hide();
@@ -138,7 +138,7 @@ export const useButton = ({
             MainButton.offClick(putTask)
         }
       } else {
-        if (!isOpen.isActive && !myResponse.isOpen){
+        if (!isOpen.isActive && !myResponse.isOpen && !happyHold){
           menu.classList.add("appearAnimation")
           menu.classList.remove("disappearAnimation")
           MainButton.hide();

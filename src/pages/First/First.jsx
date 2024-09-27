@@ -246,7 +246,7 @@ const First = ({ isPage = false }) => {
 
       if (detailsAdertisement.responces){
         if (detailsAdertisement.responces.find((e) =>
-          Number(e.user.id) === window.Telegram.WebApp.initDataUnsafe.user.id) || detailsAdertisement.user.id === window.Telegram.WebApp.initDataUnsafe.user.id)
+          String(e.user.id) === String(window.Telegram.WebApp.initDataUnsafe.user.id)) || detailsAdertisement.user.id === window.Telegram.WebApp.initDataUnsafe.user.id)
 
         {
           return true
