@@ -945,7 +945,7 @@
 .timeAndWatches {
   display: flex;
   flex-direction: column;
-  gap: 1px;
+  gap: 4px;
   margin-top: 10px;
   margin-left: auto;
   margin-right: auto;

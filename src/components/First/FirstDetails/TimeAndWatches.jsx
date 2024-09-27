@@ -59,7 +59,7 @@ const TimeAndWatches = ({ time, watches, responses }) => {
   } , [responses] )
   return (
     <div className="timeAndWatches">
-      <Text className="watches"><span>{watches}</span> {textOne}   <span>{responses}</span> {textTwo}</Text>
+      <p className="watches"><span>{watches}</span> {textOne}   <span>{responses}</span> {textTwo}</p>
       <div className="createdAt-block">
         <Text>Создано </Text>
         <p>{formatDate(new Date(time))}</p>
