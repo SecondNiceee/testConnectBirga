@@ -109,7 +109,7 @@ const Reaction = ({
                   : {}
               }
             >
-              {responce.user.fl}
+              {responce.user.fl.length > 9 ? responce.user.fl.slice(0,9) + '...' : responce.user.fl}
             </Text>
             <div className="reaction__rates">
               {/* <img src={star} alt="" /> */}
