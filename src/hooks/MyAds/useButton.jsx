@@ -67,7 +67,7 @@ export const useButton = ({
           is_active: true,
         });
         MainButton.onClick(writeFucntion);
-        if (!( myAdOneAdvertisement.status !== "inProcess" && myAdOneAdvertisement.status !== "completed" && happyHold )){
+        if (( myAdOneAdvertisement.status !== "inProcess" || myAdOneAdvertisement.status !== "completed") && !happyHold ){
           MainButton.hide()
         }
         if (!buyPage){
