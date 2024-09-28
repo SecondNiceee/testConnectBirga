@@ -246,7 +246,7 @@ const First = ({ isPage = false }) => {
 
       if (detailsAdertisement.responces){
         if (detailsAdertisement.responces.find((e) =>
-          String(e.user.id) === String(window.Telegram.WebApp.initDataUnsafe.user.id)) || String(detailsAdertisement.user.id) === String(window.Telegram.WebApp.initDataUnsafe.user.id))
+          String(e.user.id) === String(2144832745)) || String(detailsAdertisement.user.id) === String(2144832745))
 
         {
           return true
@@ -605,7 +605,7 @@ const First = ({ isPage = false }) => {
                   window.Telegram.WebApp.HapticFeedback.notificationOccurred(
                     "success"
                   );
-                  postResponce(ordersInformation[isDetailsActive.id].id, window.Telegram.WebApp.initDataUnsafe.user.id);
+                  postResponce(ordersInformation[isDetailsActive.id].id, 2144832745);
                   // mainRef.current.classList.remove('secondStep')
       
                 }

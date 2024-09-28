@@ -10,7 +10,7 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowVal
 
 
 
-
+    console.warn(responsesArr)
 
 
 

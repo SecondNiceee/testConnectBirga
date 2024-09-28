@@ -206,7 +206,7 @@ export const fetchResponses = createAsyncThunk(
         
         let im = await axios.get('https://www.connectbirga.ru/response/findByUser' , {
             params : {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                "userId" : 2144832745,
                 page : par[1],
                 limit : 4
                 
@@ -215,6 +215,8 @@ export const fetchResponses = createAsyncThunk(
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
         })
+
+
 
 
         let localResponses = im.data
@@ -284,7 +286,6 @@ export const fetchResponses = createAsyncThunk(
                   }
             })
             
-            
             localResponses[i].advertisement = {
               id : advertisement.id,
               taskName : advertisement.title,
@@ -304,7 +305,7 @@ export const fetchResponses = createAsyncThunk(
               viewsNumber : advertisement.advertisement,
               user : advertisementUser.data,
               createNumber : advertisementCrateNumber.data,
-              responces : advertisement.responces
+              responces : advertisement.responses
 
               
             }

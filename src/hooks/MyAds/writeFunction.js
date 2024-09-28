@@ -17,26 +17,33 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
 
 
   
-  const perventValue = useMemo( () => {
-    return  (Number(myAdOneAdvertisement.tonValue) * 0.04).toFixed(3)
-  }, [myAdOneAdvertisement.tonValue] ) 
+
+  const serviceUs = useMemo( () => {
+    return Number(myAdOneAdvertisement.tonValue) * 0.015 + 0.01
+  } , [myAdOneAdvertisement.tonValue ] )
+
+  const service = useMemo( () => {
+    return Number(myAdOneAdvertisement.tonValue) * 0.025 
+  } , [myAdOneAdvertisement.tonValue ] )
   
   const rezult = useMemo( () => {
-    return  Number(myAdOneAdvertisement.tonValue) + perventValue + 0.02
-  }, [perventValue] )
+    return  Number(myAdOneAdvertisement.tonValue)  + 0.01
+  }, [myAdOneAdvertisement.tonValue] )
 
   
-  async function hold(id, amount) {
+  async function hold(id, amount , service, serviceUs) {
     await axios.get("https://www.connectbirga.ru/user/hold" , {
       params : {
         fromId : id,
-        amount : amount
+        amount : amount,
+        service : String(service),
+        serviceUs : String(serviceUs)
       },
       headers : {
         "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
       }
     })
-    console.log("window.Telegram.WebApp.initDataUnsafe.user.id" ,secondPage.task.tonValue );
+    console.log("2144832745" ,secondPage.task.tonValue );
   
     
   }
@@ -124,7 +131,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                     },
                     (buttonId) => {
                       if (buttonId === "save") {
-                          hold(window.Telegram.WebApp.initDataUnsafe.user.id, String(  rezult ) ).then(value => {
+                          hold(2144832745, String(  rezult ) ,  service, serviceUs  ).then(value => {
                           window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
                           dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
                           dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
