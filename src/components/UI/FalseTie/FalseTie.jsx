@@ -20,8 +20,12 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
     useEffect( () => {
         switch (navigate){
             case "advertisement":{
+                console.log(savedTasks)
+                console.log(id)
                 savedTasks.forEach( (e, i) => {
                     if (e.id === id){
+                        console.log(id)
+                        console.log(e)
                         setActive(true)
                     }
                 } )
