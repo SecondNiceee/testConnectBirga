@@ -29,7 +29,7 @@ const AdCreatingThree = ({taskInformation }) => {
   }, [taskInformation.tonValue] ) 
 
   const rezult = useMemo( () => {
-    return  Number(taskInformation.tonValue) + perventValue + 0.02
+    return  (Number(taskInformation.tonValue) + perventValue + 0.02).toFixed(3)
   }, [perventValue, taskInformation.tonValue] )
   return (
     <div className= {cl.AdCreatingThree}
