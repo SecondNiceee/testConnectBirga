@@ -17,7 +17,7 @@ const Case = ({
   deleteFunction,
   watchOnly,
   agree = false,
-  userId = 2144832745,
+  userId = window.Telegram.WebApp.initDataUnsafe.user.id,
   ...props
 }) => {
 
@@ -180,7 +180,7 @@ const Case = ({
                   "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" +
                     String(card.id) +
                     "m" +
-                    2144832745
+                    window.Telegram.WebApp.initDataUnsafe.user.id
                 );
               }}
             >

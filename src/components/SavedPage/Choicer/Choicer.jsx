@@ -23,9 +23,9 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
   const textTwo = translation("У вас нет сохраненных откликов")
   const textThree = translation("У вас нет сохраненных кейсов")
 
+  console.warn(nowKey)
   useEffect( () => {
     const elements = document.querySelector('.pickerRef')
-    setTimeout( () => {
       if (nowKey === keys[0]){
         if (pickerRef.current && elements[0]){
           pickerRef.current.style.overflowY = "hidden"
@@ -45,7 +45,6 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
           pickerRef.current.style.minHeight = String(elements[2].offsetHeight + 100) + "px"
         }
       }
-    } , 1000 ) 
 
       return () => {
 
