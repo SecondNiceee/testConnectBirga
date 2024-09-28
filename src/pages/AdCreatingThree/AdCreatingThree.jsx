@@ -58,9 +58,10 @@ const AdCreatingThree = ({taskInformation }) => {
           <div className={cl.right}>
             <div className={cl.one}>
               <p className={cl.standart}>{perventValue} TON</p>
-              <p className={cl.standart}>4%</p>
+              
             </div>
             <div className={cl.two}>
+              <p className={cl.standart}>4%</p>
                 <p className={cl.grob}>8%</p>
             </div>
           </div>
