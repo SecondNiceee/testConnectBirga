@@ -21,9 +21,9 @@ const AdCreatingThree = ({taskInformation }) => {
     dispatch(getBalance({userAddress : address}))
   } , [dispatch, address] )
 
-  // 2144832745
+  // window.Telegram.WebApp.initDataUnsafe.user.id
 
-  // 2144832745
+  // window.Telegram.WebApp.initDataUnsafe.user.id
   const perventValue = useMemo( () => {
     return  Number((Number(taskInformation.tonValue) * 0.04).toFixed(3))
   }, [taskInformation.tonValue] ) 
