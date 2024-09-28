@@ -66,7 +66,7 @@ const First = ({ isPage = false }) => {
   }, []);
 
   const [isDetailsActive, setDetailsActive] = useState({
-    id: 0,
+    id: -1,
     isOpen: false,
   });
 

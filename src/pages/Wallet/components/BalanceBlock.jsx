@@ -9,13 +9,14 @@ const BalanceBlock = ({
   inputMistake,
   underText,
 }) => {
+  
   const summChange = useCallback(
     (e) => {
       const newStr = e.replace(/\s/g, "");
       console.log(e);
 
-      if (!isNaN(newStr.replace(",", ""))) {
-        setMyValues((value) => ({ ...value, summ: String(newStr) }));
+      if (!isNaN(newStr.replace('.', ',').replace(",", ""))) {
+        setMyValues((value) => ({ ...value, summ: String(newStr.replace('.' , ",")) }));
       }
     },
     [setMyValues]

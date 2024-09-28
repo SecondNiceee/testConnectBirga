@@ -28,6 +28,8 @@ const AdCreatingThree = ({taskInformation }) => {
     return  Number((Number(taskInformation.tonValue) * 0.04).toFixed(3))
   }, [taskInformation.tonValue] ) 
 
+  // window.Telegram.WebApp.initDataUnsafe.user.id
+
   const rezult = useMemo( () => {
     return  (Number(taskInformation.tonValue) + perventValue + 0.02).toFixed(3)
   }, [perventValue, taskInformation.tonValue] )

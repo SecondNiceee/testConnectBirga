@@ -15,7 +15,7 @@ const BudgetInput = ({
   errorTon
 }) => {
   const KisInteger = function (obj) {
-    return "0123456789,".includes(obj[obj.length - 1]);
+    return "0123456789,.".includes(obj[obj.length - 1]);
   };
 
   function budgetWidth() {
@@ -28,13 +28,15 @@ const BudgetInput = ({
   }
 
   function format(strPar) {
-    const one = strPar.split(',')[0]
-    const two = strPar.split(',')[1]
+    const newStr = strPar.replace('.' , ',')
+    console.log(newStr)
+    const one = newStr.split(',')[0]
+    const two = newStr.split(',')[1]
     if (two){
       return Number(one.replace(/\s/g, '')).toLocaleString("ru-RU") + ',' + two 
     }
     else{
-      if (strPar.includes(',')){
+      if (newStr.includes(',')){
         return Number(one.replace(/\s/g, '')).toLocaleString("ru-RU") + ','
       }
       else{

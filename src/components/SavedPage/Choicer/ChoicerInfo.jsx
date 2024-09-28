@@ -133,7 +133,7 @@ const ChoicerInfo = forwardRef(
           getMore();
         }
       },
-      [ getMore, orderStatus]
+      [allStatus, getMore, orderStatus]
     );
 
 
@@ -155,7 +155,7 @@ const ChoicerInfo = forwardRef(
 
 
     return (
-      <div className={cl.choicerContainer}>
+      <div ref={ref} className={cl.choicerContainer}>
           {arr.length === 0 ? 
           <>
             <MyLoader style = { allStatus !== "all" ? {transform : "translateX(-16px)"} : {display : "none"}} />

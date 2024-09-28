@@ -23,28 +23,25 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
   const textTwo = translation("У вас нет сохраненных откликов")
   const textThree = translation("У вас нет сохраненных кейсов")
 
-  console.warn(nowKey)
   useEffect( () => {
-    const elements = document.querySelector('.pickerRef')
       if (nowKey === keys[0]){
-        if (pickerRef.current && elements[0]){
+        if (pickerRef.current && containerOne.current){
           pickerRef.current.style.overflowY = "hidden"
-          pickerRef.current.style.minHeight = String(elements[0].offsetHeight + 100) + "px"
+          pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight + 100) + "px"
         }
           }
       if (nowKey === keys[1]){
-        alert("Хай хай")
-        if (pickerRef.current && elements[1] ){
-          alert("nen")
+        if (pickerRef.current && containerTwo.current ){
           pickerRef.current.style.overflowY = "hidden"
-          pickerRef.current.style.minHeight = String(elements[1].offsetHeight + 100) + "px"}
+          pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight + 100) + "px"}
       }
       if (nowKey === keys[2]){
-        if (pickerRef.current && elements[2]){
+        if (pickerRef.current && containerThree.current){
           pickerRef.current.style.overflowY = "hidden"
-          pickerRef.current.style.minHeight = String(elements[2].offsetHeight + 100) + "px"
+          pickerRef.current.style.minHeight = String(containerThree.current.offsetHeight + 100) + "px"
         }
       }
+
 
       return () => {
 
@@ -74,8 +71,9 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
 
   
   return (
-    <div ref={pickerRef} style={style} className={[cl.main, "pickerRef"].join(' ')}>
+    <div ref={pickerRef} style={style} className={cl.main}>
       <ChoicerInfo
+        nowKey = {nowKey}
         viewsNumber={viewsNumber}
         setViewsNumber={setViewsNumber}
         ref={containerOne}
@@ -85,6 +83,7 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
         text={textOne}
       />
       <ChoicerInfo
+      nowKey = {nowKey}
         viewsNumber={viewsNumber}
         setViewsNumber={setViewsNumber}
         ref={containerTwo}
@@ -94,6 +93,7 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
         text={textTwo}
       />
       <ChoicerInfo
+      nowKey = {nowKey}
         viewsNumber={viewsNumber}
         setViewsNumber={setViewsNumber}
         ref={containerThree}

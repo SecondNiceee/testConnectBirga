@@ -40,7 +40,7 @@ const RoundedBlocks = ({summ}) => {
         <Text>Будет получено</Text>
 
         <p className={cl.right}>
-          { String(itog).replace('.', ',')} TON ≈ {formateMoney(String(itog * price).replace('.' , ','), 2, ',')}
+          { String(Number(itog).toFixed(3)).replace('.', ',')} TON ≈ {formateMoney(String((itog * price).toFixed(2)).replace('.' , ','), 2, ',')}
           {en ? "$" : "₽"}
         </p>
       </div>

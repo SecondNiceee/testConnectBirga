@@ -6,20 +6,22 @@ import makeNewFile from "../functions/newMakeFile";
 export const addWatch = createAsyncThunk(
   "information/addWatch",
   async function (advertisement) {
-    if (advertisement.viewsNumber){
-
+    if (advertisement.viewsNumber !== undefined && advertisement.viewsNumber !== null) {
       try {
         let myData = new FormData();
         myData.append("views", String(Number(advertisement.viewsNumber) + 1));
+        
         await axios.put("https://www.connectbirga.ru/advertisement", myData, {
           params: {
             id: String(advertisement.id),
           },
           headers : {
+            "Content-Type": "multipart/form-data",
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
           }
         });
       } catch (e) {
+        alert(e)
         console.warn(e);
       }
     }
