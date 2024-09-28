@@ -224,15 +224,16 @@ export const fetchResponses = createAsyncThunk(
 
         for (let i = 0; i < localResponses.length; i++){
 
-            const advertisement = await axios.get("https://www.connectbirga.ru/advertisement/findOne", {
+            const advertisementData = await axios.get("https://www.connectbirga.ru/advertisement/findOne", {
                 params : {
-                    "id" : im.data[i].advertisement.id
+                    "id" : im.data.advertisement.id
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                 }
             })
 
+            const advertisement = advertisementData.data
             let one = new Date(advertisement.startTime)
   
             let two;

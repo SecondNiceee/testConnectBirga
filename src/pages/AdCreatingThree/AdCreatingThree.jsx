@@ -57,7 +57,7 @@ const AdCreatingThree = ({taskInformation }) => {
           </div>
         </div>
       </div>
-      <Holding taskInformation={taskInformation}  className={cl.Holding} />
+      <Holding rezult={rezult} taskInformation={taskInformation}  className={cl.Holding} />
       { (balance < rezult)  && <AlertBlock address = {address} tonValue={rezult} />}
     </div> 
   );
