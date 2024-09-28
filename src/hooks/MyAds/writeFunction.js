@@ -18,8 +18,8 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
 
   
   const perventValue = useMemo( () => {
-    return  (Number(myAdOneAdvertisement.tonValue) * 0.004).toFixed(3)
-  }, [myAdOneAdvertisement.tonValue, rezult] ) 
+    return  (Number(myAdOneAdvertisement.tonValue) * 0.04).toFixed(3)
+  }, [myAdOneAdvertisement.tonValue] ) 
   
   const rezult = useMemo( () => {
     return  Number(myAdOneAdvertisement.tonValue) + perventValue + 0.02

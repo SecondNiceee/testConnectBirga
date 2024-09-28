@@ -1,4 +1,4 @@
-import {  useEffect } from "react";
+import {  useEffect, useMemo } from "react";
 import BackButton from "../../constants/BackButton";
 import MainButton from "../../constants/MainButton";
 import translation from "../../functions/translate";
@@ -30,7 +30,14 @@ export const useButton = ({
   const balance = useSelector(state => state.balance.value)
 
 
+    
+  const perventValue = useMemo( () => {
+    return  (Number(myAdOneAdvertisement.tonValue) * 0.04).toFixed(3)
+  }, [myAdOneAdvertisement.tonValue] ) 
   
+  const rezult = useMemo( () => {
+    return  Number(myAdOneAdvertisement.tonValue) + perventValue + 0.02
+  }, [perventValue] )
 
 
 
@@ -76,7 +83,7 @@ export const useButton = ({
             MainButton.setText(translation("Перейти к заданию"))
           }
           else{
-            if (Number(balance) < (Number(myAdOneAdvertisement.tonValue) + 0.01).toFixed(2)){
+            if (Number(balance) < rezult){
               MainButton.setText(translation("КОШЕЛЕК"))
             }
             else{

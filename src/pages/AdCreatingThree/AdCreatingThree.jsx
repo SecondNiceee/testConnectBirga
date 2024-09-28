@@ -22,7 +22,7 @@ const AdCreatingThree = ({taskInformation }) => {
   } , [dispatch, address] )
 
   const perventValue = useMemo( () => {
-    return  (Number(taskInformation.tonValue) * 0.004).toFixed(3)
+    return  (Number(taskInformation.tonValue) * 0.04).toFixed(3)
   }, [taskInformation.tonValue] ) 
 
   const rezult = useMemo( () => {
