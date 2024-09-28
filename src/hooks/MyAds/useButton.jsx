@@ -9,7 +9,7 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 
 
 
-const choiceText = translation("ВЫБРАТЬ ИСПОЛНИТЕЛЯ")
+const choiceText = translation("Выбрать исполнителя")
  
 export const useButton = ({
   isOpen,
