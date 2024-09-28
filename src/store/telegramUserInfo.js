@@ -112,7 +112,7 @@ export const putUserInfo = createAsyncThunk(
         try{
             await axios.put('https://www.connectbirga.ru/user' , data[0] , {
                 params : {
-                    userId : String(window.Telegram.WebApp.initDataUnsafe.user.id),
+                    userId : String(2144832745),
                 },
                 headers: {
                     "Content-Type" :'application/json',
@@ -132,10 +132,10 @@ export const fetchUserInfo = createAsyncThunk(
   async function () {
     try {
 
-        //window.Telegram.WebApp.initDataUnsafe.user.id
+        //2144832745
         let firstName = window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.first_name : "Коля"
         let lastName = window.Telegram.WebApp.initDataUnsafe.user ?  window.Telegram.WebApp.initDataUnsafe.user.last_name : "Титов"
-        let UserId = window.Telegram.WebApp.initDataUnsafe.user.id
+        let UserId = 2144832745
         let user;
         
         try{
@@ -155,7 +155,7 @@ export const fetchUserInfo = createAsyncThunk(
         catch(e){
             await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
                 params : {
-                    id : window.Telegram.WebApp.initDataUnsafe.user.id,
+                    id : 2144832745,
                     language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en"
                 },
                 headers : {
@@ -200,8 +200,8 @@ export const fetchUserInfo = createAsyncThunk(
                 })
             }
 
-        //window.Telegram.WebApp.initDataUnsafe.user.id
-        //window.Telegram.WebApp.initDataUnsafe.user.id  window.Telegram.WebApp.initDataUnsafe.user.id
+        //2144832745
+        //2144832745  2144832745
 
         let photoUrl = user.data.photo
         try { 

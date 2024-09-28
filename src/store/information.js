@@ -6,19 +6,22 @@ import makeNewFile from "../functions/newMakeFile";
 export const addWatch = createAsyncThunk(
   "information/addWatch",
   async function (advertisement) {
-    try {
-      let myData = new FormData();
-      myData.append("views", String(Number(advertisement.viewsNumber) + 1));
-      await axios.put("https://www.connectbirga.ru/advertisement", myData, {
-        params: {
-          id: String(advertisement.id),
-        },
-        headers : {
-          "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-        }
-      });
-    } catch (e) {
-      console.warn(e);
+    if (orderInformations.viewsNumber){
+
+      try {
+        let myData = new FormData();
+        myData.append("views", String(Number(advertisement.viewsNumber) + 1));
+        await axios.put("https://www.connectbirga.ru/advertisement", myData, {
+          params: {
+            id: String(advertisement.id),
+          },
+          headers : {
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+          }
+        });
+      } catch (e) {
+        console.warn(e);
+      }
     }
   }
 );
@@ -113,9 +116,9 @@ export const postMyTask = createAsyncThunk(
       //   {
       //     params: {
       //       page: 1,
-      //       userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+      //       userId: 2144832745,
       //       limit: 4,
-      //       // userId : window.Telegram.WebApp.initDataUnsafe.user.id
+      //       // userId : 2144832745
       //     },
       //     headers: {
       //       "Content-Type": "multipart/form-data",
@@ -211,9 +214,9 @@ export const fetchMyOrders = createAsyncThunk(
         {
           params: {
             page: page,
-            userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+            userId: 2144832745,
             limit: 1,
-            // userId : window.Telegram.WebApp.initDataUnsafe.user.id
+            // userId : 2144832745
           },
           headers: {
             "Content-Type": "multipart/form-data",
