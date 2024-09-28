@@ -24,23 +24,28 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
   const textThree = translation("У вас нет сохраненных кейсов")
 
   useEffect( () => {
-    if (nowKey === keys[0]){
-      if (pickerRef.current && containerOne.current){
-        pickerRef.current.style.overflowY = "hidden"
-        pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight + 100) + "px"
-      }
+    setTimeout( () => {
+      if (nowKey === keys[0]){
+        if (pickerRef.current && containerOne.current){
+          pickerRef.current.style.overflowY = "hidden"
+          pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight + 100) + "px"
         }
-    if (nowKey === keys[1]){
-      if (pickerRef.current && containerTwo.current ){
-        pickerRef.current.style.overflowY = "hidden"
-        pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight + 100) + "px"}
-    }
-    if (nowKey === keys[2]){
-      if (pickerRef.current && containerThree.current){
-        pickerRef.current.style.overflowY = "hidden"
-        pickerRef.current.style.minHeight = String(containerThree.current.offsetHeight + 100) + "px"
+          }
+      if (nowKey === keys[1]){
+        alert("Хай хай")
+        if (pickerRef.current && containerTwo.current ){
+          alert("nen")
+          pickerRef.current.style.overflowY = "hidden"
+          pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight + 100) + "px"}
       }
-    }
+      if (nowKey === keys[2]){
+        if (pickerRef.current && containerThree.current){
+          pickerRef.current.style.overflowY = "hidden"
+          pickerRef.current.style.minHeight = String(containerThree.current.offsetHeight + 100) + "px"
+        }
+      }
+    } , 1000 )
+
       return () => {
 
       }

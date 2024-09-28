@@ -8,7 +8,9 @@
     
 }
 .choicerContainer{
-    min-width: calc(100vw - 32px);    
+    min-width: calc(100vw - 32px);  
+    align-self: self-start;
+    justify-self: flex-start; 
 }
 .choicerBlock{
     flex-direction: column;
