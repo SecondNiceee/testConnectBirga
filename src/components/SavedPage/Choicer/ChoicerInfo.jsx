@@ -133,7 +133,7 @@ const ChoicerInfo = forwardRef(
           getMore();
         }
       },
-      [allStatus, getMore, orderStatus]
+      [ getMore, orderStatus]
     );
 
 

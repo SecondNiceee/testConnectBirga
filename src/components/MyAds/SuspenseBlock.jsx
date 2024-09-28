@@ -1,5 +1,4 @@
 import React, { lazy, Suspense, useEffect, useMemo, useState } from 'react';
-import BlockSpinner from '../UI/BlockSpinner/BlockSpinner';
 import { useInView } from 'react-intersection-observer';
 import Block from '../../pages/MyAds/components/Block';
 

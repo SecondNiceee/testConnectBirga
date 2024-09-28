@@ -24,27 +24,28 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
   const textThree = translation("У вас нет сохраненных кейсов")
 
   useEffect( () => {
+    const elements = document.querySelector('.pickerRef')
     setTimeout( () => {
       if (nowKey === keys[0]){
-        if (pickerRef.current && containerOne.current){
+        if (pickerRef.current && elements[0]){
           pickerRef.current.style.overflowY = "hidden"
-          pickerRef.current.style.minHeight = String(containerOne.current.offsetHeight + 100) + "px"
+          pickerRef.current.style.minHeight = String(elements[0].offsetHeight + 100) + "px"
         }
           }
       if (nowKey === keys[1]){
         alert("Хай хай")
-        if (pickerRef.current && containerTwo.current ){
+        if (pickerRef.current && elements[1] ){
           alert("nen")
           pickerRef.current.style.overflowY = "hidden"
-          pickerRef.current.style.minHeight = String(containerTwo.current.offsetHeight + 100) + "px"}
+          pickerRef.current.style.minHeight = String(elements[1].offsetHeight + 100) + "px"}
       }
       if (nowKey === keys[2]){
-        if (pickerRef.current && containerThree.current){
+        if (pickerRef.current && elements[2]){
           pickerRef.current.style.overflowY = "hidden"
-          pickerRef.current.style.minHeight = String(containerThree.current.offsetHeight + 100) + "px"
+          pickerRef.current.style.minHeight = String(elements[2].offsetHeight + 100) + "px"
         }
       }
-    } , 1000 )
+    } , 1000 ) 
 
       return () => {
 
@@ -74,7 +75,7 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
 
   
   return (
-    <div ref={pickerRef} style={style} className={cl.main}>
+    <div ref={pickerRef} style={style} className={[cl.main, "pickerRef"].join(' ')}>
       <ChoicerInfo
         viewsNumber={viewsNumber}
         setViewsNumber={setViewsNumber}

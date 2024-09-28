@@ -32,17 +32,12 @@ export const useButton = ({
 
     
   const perventValue = useMemo( () => {
-    return  (Number(myAdOneAdvertisement.tonValue) * 0.04).toFixed(3)
+    return  Number((Number(myAdOneAdvertisement.tonValue) * 0.04).toFixed(3))
   }, [myAdOneAdvertisement.tonValue] ) 
   
   const rezult = useMemo( () => {
     return  Number(myAdOneAdvertisement.tonValue) + perventValue + 0.02
-  }, [perventValue] )
-
-
-
-
-
+  }, [perventValue, myAdOneAdvertisement.tonValue] )
 
 
 

@@ -2,14 +2,12 @@ import React, { useCallback, useEffect } from 'react';
 import cl from "./HappyHold.module.scss";
 import { useLottie } from "lottie-react";
 import chemodan from "../../animation/boomstick.json"
-import { useSelector } from 'react-redux';
 import MainButton from '../../constants/MainButton';
 import translation from '../../functions/translate';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import pagesHistory from '../../constants/pagesHistory';
 const HappyPage = ({task , congradulate, setShowCongradulate }) => {
-    const user = useSelector( state => state.telegramUserInfo )
     const navigate = useNavigate()
 
     useEffect( () => {
@@ -25,7 +23,7 @@ const HappyPage = ({task , congradulate, setShowCongradulate }) => {
                  await axios.patch("https://www.connectbirga.ru/user", {},  {
                     params: {
                       congratulateId : congradulate[0].id ,
-                      userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+                      userId: 2144832745,
                     },
                     headers : {
                       "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -56,7 +54,7 @@ const HappyPage = ({task , congradulate, setShowCongradulate }) => {
     const buttonFunction = useCallback( () => {
         setShowCongradulate(false)
         navigate("/Wallet")
-    } , [navigate] )
+    } , [navigate, setShowCongradulate] )
 
     useEffect( () => {
         MainButton.show()
