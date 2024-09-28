@@ -226,7 +226,7 @@ export const fetchResponses = createAsyncThunk(
 
             const advertisementData = await axios.get("https://www.connectbirga.ru/advertisement/findOne", {
                 params : {
-                    "id" : im.data.advertisement.id
+                    "id" : localResponses[0].advertisement.id
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
