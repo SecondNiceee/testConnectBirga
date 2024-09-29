@@ -140,6 +140,7 @@ export const fetchUserInfo = createAsyncThunk(
         
         try{
 
+
              user = await axios.get("https://www.connectbirga.ru/user/findOne", {
               params: {
                 id: UserId,
@@ -156,7 +157,8 @@ export const fetchUserInfo = createAsyncThunk(
             await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
                 params : {
                     id : window.Telegram.WebApp.initDataUnsafe.user.id,
-                    language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en"
+                    language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en",
+                    link : window.Telegram.WebApp.initDataUnsafe.user.link
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -211,7 +213,6 @@ export const fetchUserInfo = createAsyncThunk(
             if (!e.code === "ERR_NETWORK"){
                 photoUrl = ""
                 console.warn("Я ТУТ")
-                alert("Я ТУТ")
             }
         }
         return ( {

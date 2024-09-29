@@ -7,8 +7,6 @@ import en from "../../../constants/language";
 const TimeAndWatches = ({ time, watches, responses }) => {
   
 
-  console.log(watches);
-  console.log(responses)
   
 
   const textOne = useMemo( () => {
