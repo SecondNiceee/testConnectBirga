@@ -296,7 +296,7 @@ const First = ({ isPage = false }) => {
         });
       } else {
         if (step === 0){
-
+          alert(address)
           if (!address){
               window.Telegram.WebApp.showPopup({
                 title: translation(translation("Упс")),
@@ -317,6 +317,7 @@ const First = ({ isPage = false }) => {
           
               } )
           }
+
           else{
             setStep(1)
           }
@@ -638,6 +639,7 @@ const First = ({ isPage = false }) => {
       
     }
   }, [
+
     responce,
     step,
     ordersInformation,
