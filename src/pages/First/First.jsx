@@ -244,7 +244,7 @@ const First = ({ isPage = false }) => {
   const gotIt = useMemo( () => {
     console.log(detailsAdertisement);
     
-    if (detailsAdertisement !== null){
+    if (detailsAdertisement){
 
       if (detailsAdertisement.responces){
         console.log(detailsAdertisement)
