@@ -1,5 +1,4 @@
 import en from "../constants/language";
-import translation from "./translate";
 
 function formatDate(date , isCapitalize = false) {
   if (en){
