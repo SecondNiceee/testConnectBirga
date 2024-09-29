@@ -206,7 +206,7 @@ const First = ({ isPage = false }) => {
           status: order.status,
           user: order.user,
           createNumber: imTwo.data,
-          responces : imTwo.data,
+          responces : imTwo.data.responses,
           category: order.category.id,
         };
       } catch (e) {
@@ -243,9 +243,12 @@ const First = ({ isPage = false }) => {
 
 
   const gotIt = useMemo( () => {
-    if (detailsAdertisement ){
+    console.log(detailsAdertisement);
+    
+    if (detailsAdertisement !== null){
 
       if (detailsAdertisement.responces){
+        console.log(detailsAdertisement)
         if (detailsAdertisement.responces.find((e) =>
           String(e.user.id) === String(window.Telegram.WebApp.initDataUnsafe.user.id)) || String(detailsAdertisement.user.id) === String(window.Telegram.WebApp.initDataUnsafe.user.id))
 
@@ -847,7 +850,7 @@ const First = ({ isPage = false }) => {
               ? secFilteredArray[isDetailsActive.id]
               : "he"
           }
-        />
+        /> 
       </CSSTransition>
     </div>
   );
