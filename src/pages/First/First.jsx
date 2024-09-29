@@ -260,6 +260,12 @@ const First = ({ isPage = false }) => {
     // eslint-disable-next-line
   },[detailsAdertisement,isDetailsActive.isOpen ] )
 
+  useEffect( () =>  {
+    alert("Я джокер чанкер")
+
+  } , [] )
+
+
   console.log(gotIt);
   
 
@@ -321,6 +327,7 @@ const First = ({ isPage = false }) => {
           else{
             setStep(1)
           }
+
         }
       }
     }
