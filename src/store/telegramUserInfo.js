@@ -211,21 +211,21 @@ export const fetchUserInfo = createAsyncThunk(
         }
         
         catch(e){
-            if (!(e.code === "ERR_NETWORK")){
-                const response = axios.put("https://www.connectbirga.ru/user/photo", {
 
-                } , {
-                    params : {
-                        "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
-                    }
+
+            const response = axios.put("https://www.connectbirga.ru/user/photo", {
+
+            } , {
+                params : {
+                    "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                },
+                headers : {
+                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                 }
-            )
-                photoUrl = response  ? response : null
-            }
-            else{
-                console.warn("Я тут");
-                
-            }
+            } )
+
+            photoUrl = response  ? response : null
+            
         }
         return ( {
             firstName: firstName,
