@@ -32,17 +32,12 @@ export const useButton = ({
 
     
   const perventValue = useMemo( () => {
-    return  (Number(myAdOneAdvertisement.tonValue) * 0.04).toFixed(3)
+    return  Number((Number(myAdOneAdvertisement.tonValue) * 0.04).toFixed(3))
   }, [myAdOneAdvertisement.tonValue] ) 
   
   const rezult = useMemo( () => {
     return  Number(myAdOneAdvertisement.tonValue) + perventValue + 0.02
-  }, [perventValue] )
-
-
-
-
-
+  }, [perventValue, myAdOneAdvertisement.tonValue] )
 
 
 
@@ -72,7 +67,7 @@ export const useButton = ({
           is_active: true,
         });
         MainButton.onClick(writeFucntion);
-        if (!( myAdOneAdvertisement.status !== "inProcess" && myAdOneAdvertisement.status !== "completed" )){
+        if (( myAdOneAdvertisement.status === "inProcess" || myAdOneAdvertisement.status === "completed") && !happyHold ){
           MainButton.hide()
         }
         if (!buyPage){

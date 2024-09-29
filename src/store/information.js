@@ -6,19 +6,24 @@ import makeNewFile from "../functions/newMakeFile";
 export const addWatch = createAsyncThunk(
   "information/addWatch",
   async function (advertisement) {
-    try {
-      let myData = new FormData();
-      myData.append("views", String(Number(advertisement.viewsNumber) + 1));
-      await axios.put("https://www.connectbirga.ru/advertisement", myData, {
-        params: {
-          id: String(advertisement.id),
-        },
-        headers : {
-          "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-        }
-      });
-    } catch (e) {
-      console.warn(e);
+    if (advertisement.viewsNumber !== undefined && advertisement.viewsNumber !== null) {
+      try {
+        let myData = new FormData();
+        myData.append("views", String(Number(advertisement.viewsNumber) + 1));
+        
+        await axios.put("https://www.connectbirga.ru/advertisement", myData, {
+          params: {
+            id: String(advertisement.id),
+          },
+          headers : {
+            "Content-Type": "multipart/form-data",
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+          }
+        });
+      } catch (e) {
+        alert(e)
+        console.warn(e);
+      }
     }
   }
 );
@@ -113,9 +118,9 @@ export const postMyTask = createAsyncThunk(
       //   {
       //     params: {
       //       page: 1,
-      //       userId: 2144832745,
+      //       userId: window.Telegram.WebApp.initDataUnsafe.user.id,
       //       limit: 4,
-      //       // userId : 2144832745
+      //       // userId : window.Telegram.WebApp.initDataUnsafe.user.id
       //     },
       //     headers: {
       //       "Content-Type": "multipart/form-data",
@@ -211,9 +216,9 @@ export const fetchMyOrders = createAsyncThunk(
         {
           params: {
             page: page,
-            userId: 2144832745,
+            userId: window.Telegram.WebApp.initDataUnsafe.user.id,
             limit: 1,
-            // userId : 2144832745
+            // userId : window.Telegram.WebApp.initDataUnsafe.user.id
           },
           headers: {
             "Content-Type": "multipart/form-data",

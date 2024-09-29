@@ -16,7 +16,14 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
 }) {
 
 
-  
+  // window.Telegram.WebApp.initDataUnsafe.user.id
+
+  // window.Telegram.WebApp.initDataUnsafe.user.id
+
+
+  //window.Telegram.WebApp.initDataUnsafe.user.id
+
+  //window.Telegram.WebApp.initDataUnsafe.user.id
 
   const serviceUs = useMemo( () => {
     return Number(myAdOneAdvertisement.tonValue) * 0.015 + 0.01
@@ -43,7 +50,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
         "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
       }
     })
-    console.log("2144832745" ,secondPage.task.tonValue );
+    console.log("window.Telegram.WebApp.initDataUnsafe.user.id" ,secondPage.task.tonValue );
   
     
   }
@@ -94,7 +101,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
             else{
               console.log(balance)
               console.log(secondPage.task.tonValue)
-              if (Number(balance) < rezult){
+              if (Number(balance) < (rezult + serviceUs + service)){
   
                 setWalletH(true)
                 MainButton.hide()
@@ -131,7 +138,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                     },
                     (buttonId) => {
                       if (buttonId === "save") {
-                          hold(2144832745, String(  rezult ) ,  service, serviceUs  ).then(value => {
+                          hold(window.Telegram.WebApp.initDataUnsafe.user.id, String(  rezult ) ,  service, serviceUs  ).then(value => {
                           window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
                           dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
                           dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))

@@ -1,6 +1,6 @@
-import React from 'react';
+
 import i18n from 'i18next';
-import { initReactI18next, useTranslation } from 'react-i18next';
+import { initReactI18next } from 'react-i18next';
 import enTranslation from "../translation/enTranslation.json"
 import ruTranslation from "../translation/ruTranslation.json"
 import en from '../constants/language';

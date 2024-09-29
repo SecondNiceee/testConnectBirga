@@ -1,23 +1,9 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { Select as BaseSelect } from "@mui/base/Select";
-import { Option as BaseOption, optionClasses } from "@mui/base/Option";
+import { Option as  optionClasses } from "@mui/base/Option";
 import { styled } from "@mui/system";
 import cl from "./ModalChoicer.module.css"
-import { CssTransition } from "@mui/base/Transitions";
-import { PopupContext } from "@mui/base/Unstable_Popup";
 import { CSSTransition } from "react-transition-group";
-
-const Select = React.forwardRef(function Select(props, ref) {
-  const slots = {
-    root: CustomButton,
-    listbox: AnimatedListbox,
-    popup: Popup,
-    ...props.slots,
-  };
-
-  return <BaseSelect {...props} ref={ref} slots={slots} />;
-});
 
 export default function ModalChoicer({
   values,
@@ -38,9 +24,6 @@ export default function ModalChoicer({
     }
   } , [isOpen , setOpen] )
 
-  const closeFunction = React.useCallback( () => {
-      setOpen(false)
-  } , [setOpen] )
   const [name, setName] = React.useState(names[values.indexOf(defaultValue)])
 
 
@@ -278,7 +261,3 @@ const Option = styled("li")(
   }
   `
 );
-
-const Popup = styled("div")`
-  z-index: 1;
-`;

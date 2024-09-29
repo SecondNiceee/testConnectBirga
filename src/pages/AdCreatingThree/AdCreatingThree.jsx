@@ -21,12 +21,17 @@ const AdCreatingThree = ({taskInformation }) => {
     dispatch(getBalance({userAddress : address}))
   } , [dispatch, address] )
 
+  // window.Telegram.WebApp.initDataUnsafe.user.id
+
+  // window.Telegram.WebApp.initDataUnsafe.user.id
   const perventValue = useMemo( () => {
-    return  (Number(taskInformation.tonValue) * 0.04).toFixed(3)
+    return  Number((Number(taskInformation.tonValue) * 0.04).toFixed(3))
   }, [taskInformation.tonValue] ) 
 
+  // window.Telegram.WebApp.initDataUnsafe.user.id
+
   const rezult = useMemo( () => {
-    return  Number(taskInformation.tonValue) + perventValue + 0.02
+    return  (Number(taskInformation.tonValue) + perventValue + 0.02).toFixed(3)
   }, [perventValue, taskInformation.tonValue] )
   return (
     <div className= {cl.AdCreatingThree}
@@ -48,14 +53,15 @@ const AdCreatingThree = ({taskInformation }) => {
         </div>
         <div className={cl.newBlock}>
           <div className={cl.left}>
-            <p>Сервис.сбор</p>
+            <p>Сервис. сбор</p>
           </div>
           <div className={cl.right}>
             <div className={cl.one}>
               <p className={cl.standart}>{perventValue} TON</p>
-              <p className={cl.standart}>4%</p>
+              
             </div>
             <div className={cl.two}>
+              <p className={cl.standart}>4%</p>
                 <p className={cl.grob}>8%</p>
             </div>
           </div>

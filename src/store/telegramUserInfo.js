@@ -112,7 +112,7 @@ export const putUserInfo = createAsyncThunk(
         try{
             await axios.put('https://www.connectbirga.ru/user' , data[0] , {
                 params : {
-                    userId : String(2144832745),
+                    userId : String(window.Telegram.WebApp.initDataUnsafe.user.id),
                 },
                 headers: {
                     "Content-Type" :'application/json',
@@ -132,13 +132,14 @@ export const fetchUserInfo = createAsyncThunk(
   async function () {
     try {
 
-        //2144832745
+        //window.Telegram.WebApp.initDataUnsafe.user.id
         let firstName = window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.first_name : "Коля"
         let lastName = window.Telegram.WebApp.initDataUnsafe.user ?  window.Telegram.WebApp.initDataUnsafe.user.last_name : "Титов"
-        let UserId = 2144832745
+        let UserId = window.Telegram.WebApp.initDataUnsafe.user.id
         let user;
         
         try{
+
 
              user = await axios.get("https://www.connectbirga.ru/user/findOne", {
               params: {
@@ -155,8 +156,9 @@ export const fetchUserInfo = createAsyncThunk(
         catch(e){
             await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
                 params : {
-                    id : 2144832745,
-                    language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en"
+                    id : window.Telegram.WebApp.initDataUnsafe.user.id,
+                    language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en",
+                    link : window.Telegram.WebApp.initDataUnsafe.user.link
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -200,18 +202,17 @@ export const fetchUserInfo = createAsyncThunk(
                 })
             }
 
-        //2144832745
-        //2144832745  2144832745
+        //window.Telegram.WebApp.initDataUnsafe.user.id
+        //window.Telegram.WebApp.initDataUnsafe.user.id  window.Telegram.WebApp.initDataUnsafe.user.id
 
         let photoUrl = user.data.photo
         try { 
-            const response = await axios.get(user.data.photo)
+            await axios.get(user.data.photo)
         }
         catch(e){
             if (!e.code === "ERR_NETWORK"){
                 photoUrl = ""
                 console.warn("Я ТУТ")
-                alert("Я ТУТ")
             }
         }
         return ( {

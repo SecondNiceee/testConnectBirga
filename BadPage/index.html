@@ -28,7 +28,7 @@
       }
 
       p {
-        font-family: cursive;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         font-weight: 500;
         font-size: 23px;
         text-align: center;
@@ -49,13 +49,20 @@
   </body>
 </html>
     <script>
+        setTimeout(() => {
+          if (!sessionStorage.getItem('pageRefreshed')) {
+              sessionStorage.setItem('pageRefreshed', true);
+              location.reload();  
+          }
+          
+        }, 3000);
         
         const animation = lottie.loadAnimation({
           container: document.getElementById("lottie-animation"), // контейнер для анимации
           renderer: "svg", // тип рендерера (может быть 'svg', 'canvas' или 'html')
           loop: true, // зацикливание анимации
           autoplay: true, // автоматический запуск анимации
-          path: "https://lottie.host/16e7d8dd-a22e-47bc-8d09-0e191c6011d6/VFGgkFRKiW.json", // путь к вашему JSON-файлу с анимацией
+          path: "https://lottie.host/23c7c0c1-2ed6-4de7-a3b2-68643bed584f/7PHK2syx24.json", // путь к вашему JSON-файлу с анимацией
         });
   
         animation.play();

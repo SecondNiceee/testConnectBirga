@@ -222,8 +222,8 @@ const AdCreating = () => {
   }
   async function post(el) {
     let myFormData = new FormData();
-    // myFormData.append("userId", 2144832745 );
-     myFormData.append("userId", String(2144832745)  );
+    // myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id );
+     myFormData.append("userId", String(window.Telegram.WebApp.initDataUnsafe.user.id)  );
     myFormData.append("title", String(el.taskName.trim()));
     myFormData.append("description", String(el.taskDescription.trim()));
     myFormData.append("deadline", "1");
@@ -412,7 +412,7 @@ const AdCreating = () => {
     for (var i = 0; i < inputs.length; i++) {
       inputs[i].blur();
     }
-  } , [spet] )
+  } , [] )
   MainButton.setText(translation("ДАЛЕЕ"))
 
   // eslint-disable-next-line

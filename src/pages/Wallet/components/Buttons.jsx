@@ -1,6 +1,7 @@
 import React from "react";
 import cl from "../index.module.scss";
 import Text from "../../../components/Text/Text";
+import en from "../../../constants/language";
 const Buttons = ({setDepositShow, setWithDrawal}) => {
   const clickHandler = () => {
     setDepositShow(true)
@@ -40,7 +41,7 @@ const Buttons = ({setDepositShow, setWithDrawal}) => {
             fill="white"
           />
         </svg>
-        <Text>Вывести</Text>
+        <Text>{en ? "Withdraw" : "Отправить"}</Text>
       </div>
     </div>
   );

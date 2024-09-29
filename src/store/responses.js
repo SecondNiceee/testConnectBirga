@@ -206,7 +206,7 @@ export const fetchResponses = createAsyncThunk(
         
         let im = await axios.get('https://www.connectbirga.ru/response/findByUser' , {
             params : {
-                "userId" : 2144832745,
+                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
                 page : par[1],
                 limit : 4
                 
@@ -228,7 +228,7 @@ export const fetchResponses = createAsyncThunk(
 
             const advertisementData = await axios.get("https://www.connectbirga.ru/advertisement/findOne", {
                 params : {
-                    "id" : localResponses[0].advertisement.id
+                    "id" : localResponses[i].advertisement.id
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
