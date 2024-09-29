@@ -211,8 +211,10 @@ export const fetchUserInfo = createAsyncThunk(
         }
         catch(e){
             if (!e.code === "ERR_NETWORK"){
-                photoUrl = ""
                 console.warn("Я ТУТ")
+            }
+            else{
+                photoUrl = ""
             }
         }
         return ( {
