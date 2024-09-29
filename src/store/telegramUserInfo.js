@@ -209,11 +209,9 @@ export const fetchUserInfo = createAsyncThunk(
         try { 
             await axios.get(user.data.photo)
         }
+        
         catch(e){
-            if (!e.code === "ERR_NETWORK"){
-                console.warn("Я ТУТ")
-            }
-            else{
+            if (!(e.code === "ERR_NETWORK")){
                 const response = axios.put("https://www.connectbirga.ru/user/photo", {
 
                 } , {
@@ -223,6 +221,10 @@ export const fetchUserInfo = createAsyncThunk(
                 }
             )
                 photoUrl = response  ? response : null
+            }
+            else{
+                console.warn("Я тут");
+                
             }
         }
         return ( {
