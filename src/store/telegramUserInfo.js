@@ -214,7 +214,15 @@ export const fetchUserInfo = createAsyncThunk(
                 console.warn("Я ТУТ")
             }
             else{
-                photoUrl = ""
+                const response = axios.put("https://www.connectbirga.ru/user/photo", {
+
+                } , {
+                    params : {
+                        "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                    }
+                }
+            )
+                photoUrl = response  ? response : null
             }
         }
         return ( {
