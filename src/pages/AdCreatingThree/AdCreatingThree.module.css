@@ -18,6 +18,11 @@
     overflow-y: scroll; */
 }
 
+.two{
+    display: flex;
+    gap: 14px;
+}
+
 .newBlock{
     display: flex;
     border-radius: 10px;

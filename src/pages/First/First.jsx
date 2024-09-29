@@ -260,11 +260,6 @@ const First = ({ isPage = false }) => {
     // eslint-disable-next-line
   },[detailsAdertisement,isDetailsActive.isOpen ] )
 
-  useEffect( () =>  {
-    alert("Я джокер чанкер")
-
-  } , [] )
-
 
   console.log(gotIt);
   
@@ -302,11 +297,10 @@ const First = ({ isPage = false }) => {
         });
       } else {
         if (step === 0){
-          alert(address)
           if (!address){
               window.Telegram.WebApp.showPopup({
-                title: translation(translation("Упс")),
-                message: translation(`Для отклика создайте Коннект Кошелёк, это бесплатно.`),
+                title: translation(translation("Отклик")),
+                message: translation(`Чтобы оставлять отклики создайте Коннект Кошелёк, это бесплатно`),
                 buttons: [
                   { id: "save", type: "default", text: translation("Создать") },
                   { id: "delete", type: "destructive", text: translation("Отмена") },
