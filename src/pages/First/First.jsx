@@ -295,9 +295,31 @@ const First = ({ isPage = false }) => {
             translation("Задание ваше или вы откликнулись уже на него."),
         });
       } else {
-        if (step === 0) {
-          // mainRef.current.classList.add('secondStep')
-          setStep(1);
+        if (step === 0){
+
+          if (!address){
+              window.Telegram.WebApp.showPopup({
+                title: translation(translation("Упс")),
+                message: translation(`Для отклика создайте Коннект Кошелёк, это бесплатно.`),
+                buttons: [
+                  { id: "save", type: "default", text: translation("Создать") },
+                  { id: "delete", type: "destructive", text: translation("Отмена") },
+                ],
+              } , (buttonId) => {
+          
+                if (buttonId === "delete" || buttonId === null) {
+                  
+                }
+                if (buttonId === "save") {
+                  navigate("/Profile")
+                }
+          
+          
+              } )
+          }
+          else{
+            setStep(1)
+          }
         }
       }
     }
@@ -408,7 +430,9 @@ const First = ({ isPage = false }) => {
     isCardOpen.isOpen,
     setProfile,
     setCardOpen,
-    detailsAdertisement
+    detailsAdertisement,
+    navigate,
+    address
   ]);
 
   useEffect(() => {
@@ -582,7 +606,6 @@ const First = ({ isPage = false }) => {
     }
 
     if (step !== 0 && !responce.shablonMaker) {
-      if (address){
           if (localResponce.text.length < 3){
             window.Telegram.WebApp.showAlert(translation("Ваш отклик пуст!"))
           }
@@ -612,31 +635,9 @@ const First = ({ isPage = false }) => {
               }
             );
           }
-      }
-      else{
-        window.Telegram.WebApp.showPopup({
-          title: translation(translation("Упс")),
-          message: translation(`Для отклика создайте Коннект Кошелёк, это бесплатно.`),
-          buttons: [
-            { id: "save", type: "default", text: translation("Создать") },
-            { id: "delete", type: "destructive", text: translation("Отмена") },
-          ],
-        } , (buttonId) => {
-    
-          if (buttonId === "delete" || buttonId === null) {
-            
-          }
-          if (buttonId === "save") {
-            navigate("/Profile")
-          }
-    
-    
-        } )
-      }
+      
     }
   }, [
-    address,
-    navigate,
     responce,
     step,
     ordersInformation,

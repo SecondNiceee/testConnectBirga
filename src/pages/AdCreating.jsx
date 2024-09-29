@@ -412,7 +412,7 @@ const AdCreating = () => {
     for (var i = 0; i < inputs.length; i++) {
       inputs[i].blur();
     }
-  } , [spet] )
+  } , [] )
   MainButton.setText(translation("ДАЛЕЕ"))
 
   // eslint-disable-next-line
