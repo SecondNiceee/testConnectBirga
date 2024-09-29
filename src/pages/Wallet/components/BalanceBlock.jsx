@@ -42,7 +42,6 @@ const BalanceBlock = ({
       summ: String(balance).replace(".", ","),
     }));
   }, [balance, setMyValues]);
-  console.log(underText);
   
   return (
     <div className={cl.balanceBlock}>
