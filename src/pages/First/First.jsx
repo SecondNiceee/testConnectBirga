@@ -206,6 +206,7 @@ const First = ({ isPage = false }) => {
           status: order.status,
           user: order.user,
           createNumber: imTwo.data,
+          responces : imTwo.data,
           category: order.category.id,
         };
       } catch (e) {
@@ -839,6 +840,9 @@ const First = ({ isPage = false }) => {
           responce={responce}
           setResponce={setResponce}
           orderInformation={
+            (pageValue && isPage) ? 
+            pageAdvertisement
+            :
             secFilteredArray[isDetailsActive.id]
               ? secFilteredArray[isDetailsActive.id]
               : "he"

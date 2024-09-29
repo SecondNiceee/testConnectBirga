@@ -305,7 +305,7 @@ export const fetchTasksInformation = createAsyncThunk(
       console.log(task);
       console.log('====================================');
     } catch (e) {
-      alert(e);
+      alert("Сейчас идет обновление, пожалуйста перезайдите через минуту")
       console.log(e);
     }
 
