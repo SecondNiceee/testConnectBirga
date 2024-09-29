@@ -804,12 +804,7 @@ const First = ({ isPage = false }) => {
           }}
           setOneCard={setCardOpen}
           responce={
-            filteredArr[isDetailsActive.id]
-              ? {
-                  createNumber: filteredArr[isDetailsActive.id].createNumber,
-                  user: filteredArr[isDetailsActive.id].user,
-                }
-              : {}
+            detailsAdertisement
           }
         />
       </CSSTransition>
