@@ -243,7 +243,7 @@ export const fetchUserInfo = createAsyncThunk(
                 }
             } )
 
-            photoUrl = response.data  ? response.data : null
+            photoUrl = response.data  ? response.data : ""
         }
         return ( {
             firstName: firstName,
