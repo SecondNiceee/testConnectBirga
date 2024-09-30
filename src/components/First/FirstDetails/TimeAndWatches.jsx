@@ -92,9 +92,9 @@ const TimeAndWatches = ({ time, watches, responses }) => {
   } , [responses] )
   return (
     <div className="timeAndWatches">
-      {(responses !== null && responses !== undefined)  ? <p className="watches"><span>{watches}</span> {textOne}   <span>{responses}</span> {textTwo}</p> : <></>}
+      {(responses !== null && responses !== undefined)  ? <p className="watches"><span>{watches}</span> {textOne} {'\u00A0'}   <span>{responses}</span> {textTwo}</p> : <></>}
       <div className="createdAt-block">
-        <Text>Создано </Text>
+        <Text>Создано</Text>
         <p>{formatDate(new Date(time))}</p>
         
       </div>

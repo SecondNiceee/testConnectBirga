@@ -862,7 +862,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 4px;
+  gap: 2px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -904,6 +904,9 @@
   display: -ms-flexbox;
   display: flex;
   gap: 4px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .Task__container-one .FullDescription-top p {
   /* Default text */
@@ -931,9 +934,63 @@
   font-family: "SF Pro Display";
   font-size: 14.67px;
   font-weight: 500;
-  line-height: 17.67px;
+  line-height: 19.7px;
   letter-spacing: 0%;
   text-align: left;
+  overflow-y: hidden;
+  overflow-y: hidden;
+}
+@-webkit-keyframes modal-animate {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  30% {
+    -webkit-transform: translateY(125px);
+            transform: translateY(125px);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translateY(125px);
+            transform: translateY(125px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(125px);
+            transform: translateY(125px);
+  }
+}
+@keyframes modal-animate {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  30% {
+    -webkit-transform: translateY(125px);
+            transform: translateY(125px);
+  }
+  70% {
+    opacity: 1;
+    -webkit-transform: translateY(125px);
+            transform: translateY(125px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(125px);
+            transform: translateY(125px);
+  }
+}
+.Task__container-one .modal-copy-enter-active {
+  -webkit-animation: modal-animate 1.5s both;
+          animation: modal-animate 1.5s both;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+.Task__container-one .modal-copy-exit-active {
+  -webkit-animation: modal-animate 1.5s both;
+          animation: modal-animate 1.5s both;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
 }
 .Task__container-one .TaskDetails-row {
   display: -webkit-box;
@@ -3074,6 +3131,7 @@ input {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  width: calc(100vw - 32px);
 }
 
 .animation-text {
@@ -3417,6 +3475,9 @@ input {
   display: -ms-flexbox;
   display: flex;
   gap: 4px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .FullDescription-top p {
   /* Default text */
@@ -3444,9 +3505,11 @@ input {
   font-family: "SF Pro Display";
   font-size: 14.67px;
   font-weight: 500;
-  line-height: 17.67px;
+  line-height: 19.7px;
   letter-spacing: 0%;
   text-align: left;
+  overflow-y: hidden;
+  overflow-y: hidden;
 }
 
 * {
@@ -3964,27 +4027,6 @@ button, li, a, img {
 .errorModalTwo-exit-active {
   -webkit-animation: animateErrorTwo 10s both;
           animation: animateErrorTwo 10s both;
-}
-
-@-webkit-keyframes modal-animate {
-  0% {
-    -webkit-transform: translateY(0px);
-            transform: translateY(0px);
-  }
-  30% {
-    -webkit-transform: translateY(125px);
-            transform: translateY(125px);
-  }
-  70% {
-    opacity: 1;
-    -webkit-transform: translateY(125px);
-            transform: translateY(125px);
-  }
-  100% {
-    opacity: 0;
-    -webkit-transform: translateY(125px);
-            transform: translateY(125px);
-  }
 }
 
 @keyframes modal-animate {

@@ -27,3 +27,17 @@
   background: #2c2c2c;
   border-radius: 13px;
 }
+
+.modal-copy-enter-active {
+  -webkit-animation: modal-animate 1.5s both;
+          animation: modal-animate 1.5s both;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+.modal-copy-exit-active {
+  -webkit-animation: modal-animate 1.5s both;
+          animation: modal-animate 1.5s both;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}

@@ -62,7 +62,7 @@
 }
 .Categories__block  .Category__link::after{
     content:'';
-    background-image: url(../../../images/icons/UpDown.svg);
+    background-image: url(../../../images/icons/Selector.svg);
     display: block;
     object-fit: cover;
     background-size: cover;

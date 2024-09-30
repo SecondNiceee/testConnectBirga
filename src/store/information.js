@@ -21,7 +21,7 @@ export const addWatch = createAsyncThunk(
           }
         });
       } catch (e) {
-        alert(e)
+        // alert(e)
         console.warn(e);
       }
     }
