@@ -50,6 +50,10 @@
     opacity: 0;
     left: -300px;
   }
+  100% {
+    opacity: 0;
+    left: -300px;
+  }
 }
 
 @keyframes changeColor {
@@ -66,6 +70,10 @@
     opacity: 0;
   }
   98% {
+    opacity: 0;
+    left: -300px;
+  }
+  100% {
     opacity: 0;
     left: -300px;
   }

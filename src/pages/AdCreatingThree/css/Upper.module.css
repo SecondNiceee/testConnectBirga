@@ -40,4 +40,5 @@
 }
 .container p:last-of-type span {
   color: #2ea5ff;
+  cursor: pointer;
 }

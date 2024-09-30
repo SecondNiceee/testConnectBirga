@@ -1,20 +1,29 @@
 .copyText {
-  left: calc(50% - 75px);
   margin-top: 12px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-family: "SF Pro Display";
-  font-weight: 500;
-  font-size: 17px;
-  line-height: 120%;
   text-align: center;
   color: #fff;
   z-index: 20;
-  background: #20303f;
   position: fixed;
-  padding: 20px;
-  border-radius: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  width: calc(100vw - 32px);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   text-align: center;
   top: -100px;
+  left: 16px;
+  font-family: "SF Pro Text 400";
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #fff;
+  -webkit-backdrop-filter: blur(79.7771606445px);
+          backdrop-filter: blur(79.7771606445px);
+  background: #2c2c2c;
+  border-radius: 13px;
 }

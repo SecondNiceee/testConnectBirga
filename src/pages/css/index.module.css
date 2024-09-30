@@ -4,6 +4,80 @@
   display: flex;
 }
 
+@-webkit-keyframes someAnimation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes someAnimation {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.alertBlock {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  gap: 10px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 13px;
+  padding: 12px 15px;
+  -webkit-backdrop-filter: blur(79.7771606445px);
+          backdrop-filter: blur(79.7771606445px);
+  background-color: #242c37;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
+}
+.alertBlock p:first-of-type {
+  font-family: "SF Pro Text 600";
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #fff;
+}
+.alertBlock p:last-of-type {
+  line-height: 138%;
+  font-family: "SF Pro Text 400";
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: -0.01em;
+  text-align: center;
+  color: #fff;
+  opacity: 0.6;
+}
+
+.latter {
+  position: fixed;
+  width: calc(100vw - 32px);
+  left: 16px;
+  bottom: 106px;
+  opacity: 0;
+  scale: 0;
+  -webkit-transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -18,6 +92,10 @@
   left: 0;
   top: 0;
   width: 100vw;
+}
+.wrapper .reloadBalanceAnimation {
+  -webkit-animation: someAnimation 1s both infinite cubic-bezier(0.4, 0, 0.2, 1);
+          animation: someAnimation 1s both infinite cubic-bezier(0.4, 0, 0.2, 1);
 }
 .wrapper .monetka {
   display: -webkit-box;
@@ -50,7 +128,7 @@
   line-height: 106%;
   color: #fff;
 }
-.wrapper .monetka:last-of-type {
+.wrapper .monetka:nth-child(5) {
   opacity: 0.5;
 }
 .wrapper .monetka .right {
@@ -96,7 +174,7 @@
 }
 .wrapper .top p {
   font-family: "SF Pro Display";
-  font-weight: 600;
+  font-weight: 500;
   font-size: 17px;
   text-align: right;
   color: #fff;
@@ -227,47 +305,6 @@
   letter-spacing: 0.02em;
   text-align: center;
   color: #fff;
-}
-.depositContainer .alertBlock {
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-  gap: 10px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 13px;
-  padding: 12px 15px;
-  -webkit-backdrop-filter: blur(79.7771606445px);
-          backdrop-filter: blur(79.7771606445px);
-  background-color: #242c37;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 10px;
-}
-.depositContainer .alertBlock p:first-of-type {
-  font-family: "SF Pro Text 600";
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: -0.01em;
-  text-align: center;
-  color: #fff;
-}
-.depositContainer .alertBlock p:last-of-type {
-  line-height: 138%;
-  font-family: "SF Pro Text 400";
-  font-weight: 400;
-  font-size: 12px;
-  letter-spacing: -0.01em;
-  text-align: center;
-  color: #fff;
-  opacity: 0.6;
 }
 .depositContainer .stagesBlock {
   display: -webkit-box;
@@ -406,8 +443,9 @@
   border-radius: 10px;
   padding: 8px 16px;
   background-color: #2ea5ff;
-  width: 151px;
   height: 34px;
+  -ms-flex-item-align: self-start;
+      align-self: self-start;
 }
 
 .withDrawal {
