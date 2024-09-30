@@ -225,8 +225,8 @@ export const fetchUserInfo = createAsyncThunk(
                         "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                     }
                 } )
-    
-                photoUrl = response.data  ? response.data : ""
+                console.warn(response.data)
+                photoUrl = response.data  ? response.data.photo : ""
                 
             }
         }
@@ -242,8 +242,8 @@ export const fetchUserInfo = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                 }
             } )
-
-            photoUrl = response.data  ? response.data : ""
+            console.warn(response.data)
+            photoUrl = response.data  ? response.data.photo : ""
         }
         return ( {
             firstName: firstName,
