@@ -31,7 +31,6 @@ const HappyPage = ({task , congradulate, setShowCongradulate }) => {
                   });
             }
             catch(e){
-                alert(e)
                 console.warn(e)
             }
 
