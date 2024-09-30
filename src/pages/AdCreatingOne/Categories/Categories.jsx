@@ -8,8 +8,6 @@ const Categories = ({
   taskInformation,
   setCatagoryChoiceOpen,
   setSubcategoryChoiceOpen,
-  categorys,
-  subCategorys,
   categoryOnly,
 }) => {
   function format(arg) {

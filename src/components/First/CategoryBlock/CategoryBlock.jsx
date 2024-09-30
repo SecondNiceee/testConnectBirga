@@ -4,10 +4,6 @@ import Text from "../../Text/Text";
 const CategoryBlock = ({ name, value , func, ...props }) => {
 
   const myRef = useRef(null)
-  const vibrate = useCallback( () => {
-      // window.navigator.vibrate(100);
-      myRef.current.style.backgroundColor = "#3D444E"
-  }  , [])
   const clickHandler = useCallback( (e) => {
     myRef.current.style.backgroundColor = "#3D444E"
       

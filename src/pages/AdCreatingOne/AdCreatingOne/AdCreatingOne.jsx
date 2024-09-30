@@ -265,8 +265,6 @@ const AdCreatingOne = ({
           taskInformation={taskInformation}
           setCatagoryChoiceOpen={setCatagoryChoiceOpen}
           setSubcategoryChoiceOpen={setSubcategoryChoiceOpen}
-          categorys={categorys}
-          subCategorys={subCategorys}
         />
       )}
 

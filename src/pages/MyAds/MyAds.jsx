@@ -21,7 +21,6 @@ import CardPage from "../CardPage/CardPage";
 import makeNewFile from "../../functions/newMakeFile";
 import axios from "axios";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
-import pagesHistory from "../../constants/pagesHistory";
 import translation from "../../functions/translate";
 import AdCreatingThree from "../AdCreatingThree/AdCreatingThree";
 import HappyHold from "../HappyHold/HappyHold";
@@ -53,7 +52,6 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 let url = new URL(window.location.href);
 let advertisementId = url.searchParams.get("advertisemet")
 let responseId = url.searchParams.get("response")
-let open = url.searchParams.get("open")
 
 
 const defaultDate = new Date(0)
@@ -304,22 +302,53 @@ const MyAds = ({isPage = false}) => {
   window.Telegram.WebApp.disableVerticalSwipes();
 
 
-  const startPosition = useMemo( () => {
-    if (open === "1"){
-      return "freelancer"
-    }
-    else{
 
-      if (pagesHistory[pagesHistory.length - 1] === "/AdCreating"){
-        return "customer"
+
+  
+  const [nowValue , setNowKey] = useState("customer")
+
+  useEffect( () => {
+    
+    const more = async () => {
+      const imTwo = await axios.get(
+        "https://www.connectbirga.ru/advertisement/findCount",
+        {
+          params: {
+            userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+          },
+          headers : {
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+          }
+        }
+      );
+      const imOne = await axios.get(
+        "https://www.connectbirga.ru/response/findCount",
+        {
+          params: {
+            userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+          },
+          headers : {
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+          }
+        }
+      );
+      const advertisemetCount = imTwo.data
+      const responseCount = imOne.data
+
+      if (advertisemetCount < responseCount){
+        setNowKey("freelancer")
       }
       else{
-        return myAdsArray.length < responsesArr.length ? "freelancer" :'customer'
+        setNowKey("customer")
       }
     }
-    // eslint-disable-next-line
-  } , [pagesHistory] )
-  const [nowValue , setNowKey] = useState(startPosition)
+
+    more()
+
+    
+  } , [] )
+
+
 
   // const sortedArray = useMemo( () => {
   //   let copy = [...myAdsArray]

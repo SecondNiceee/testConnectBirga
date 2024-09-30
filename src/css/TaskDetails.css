@@ -70,12 +70,13 @@
   font-family: "SF Pro Display";
   font-size: 14.67px;
   font-weight: 500;
-  line-height: 17.67px;
+  line-height: 19.7px;
   flex-grow: 1;
   width: 100%;
   margin-right: auto;
   letter-spacing: 0%;
   text-align: left;
+  overflow-y: hidden;
 }
 .Task__container-one .TaskDetails-row {
   display: -webkit-box;

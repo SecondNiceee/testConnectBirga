@@ -245,7 +245,6 @@ export const fetchUserInfo = createAsyncThunk(
             console.warn(response.data)
             photoUrl = response.data ? response.data.photo : ""
         }
-        alert(photoUrl)
         return ( {
             firstName: firstName,
             lastName: lastName,

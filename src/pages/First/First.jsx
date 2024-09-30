@@ -209,7 +209,6 @@ const First = ({ isPage = false }) => {
           category: order.category.id,
         };
       } catch (e) {
-        alert(e)
         setPageValue(false)
         setDetailsActive({ isOpen: false, id: 1 });
       }
@@ -592,7 +591,7 @@ const First = ({ isPage = false }) => {
       try {
         let gibrid = { ...responce };
         gibrid.isWatched = "";
-        gibrid.advertisement = secFilteredArray[isDetailsActive.id];
+        gibrid.advertisement = detailsAdertisement.id;
         gibrid.user = {
           id: me.id,
           fl: me.firstName,
@@ -633,7 +632,7 @@ const First = ({ isPage = false }) => {
                   window.Telegram.WebApp.HapticFeedback.notificationOccurred(
                     "success"
                   );
-                  postResponce(ordersInformation[isDetailsActive.id].id, window.Telegram.WebApp.initDataUnsafe.user.id);
+                  postResponce(detailsAdertisement.id, window.Telegram.WebApp.initDataUnsafe.user.id);
                   // mainRef.current.classList.remove('secondStep')
       
                 }
@@ -646,12 +645,11 @@ const First = ({ isPage = false }) => {
 
     responce,
     step,
-    ordersInformation,
-    isDetailsActive.id,
+    
     setDetailsActive,
     setStep,
     me,
-    secFilteredArray,
+    detailsAdertisement
   ]);
 
   const categorys = useSelector((state) => state.categorys.category);
