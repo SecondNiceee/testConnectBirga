@@ -41,7 +41,6 @@ export const deleteAd = createAsyncThunk(
       });
       return id;
     } catch (e) {
-      alert(JSON.stringify(e));
       console.warn(e);
     }
   }
@@ -495,7 +494,6 @@ const information = createSlice({
     builder.addCase(fetchMyOrders.rejected, (state, action) => {
       state.myOrderStatus = "error";
 
-      alert();
     });
     builder.addCase(postMyTask.pending, (state) => {
       state.postTaskStatus = "pending";

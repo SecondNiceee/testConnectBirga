@@ -470,7 +470,6 @@ export const fetchAllIds = createAsyncThunk(
             }
         }
         catch(e){
-            alert(JSON.stringify(e))
         }
     }
 )
