@@ -297,6 +297,7 @@ const AllShablons = () => {
             )}
           </>
         )}
+      </div>
         <CSSTransition
           in={shablonShow.isActive}
           // classNames={"left-right"}
@@ -312,7 +313,6 @@ const AllShablons = () => {
             put={shablonShow.put}
           />
         </CSSTransition>
-      </div>
     </div>
   );
 };

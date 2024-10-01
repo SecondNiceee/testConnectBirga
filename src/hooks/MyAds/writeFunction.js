@@ -88,6 +88,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
         }
         else{
           if (!buyPage){
+
             setBuyPage(true)
             console.log("Buy page стал true")
           }
@@ -138,7 +139,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                     },
                     (buttonId) => {
                       if (buttonId === "save") {
-                          hold(window.Telegram.WebApp.initDataUnsafe.user.id, String(  rezult ) ,  service, serviceUs  ).then(value => {
+                          hold(window.Telegram.WebApp.initDataUnsafe.user.id, String(  rezult.toFixed(6) ) ,  service.toFixed(6), serviceUs.toFixed(6)  ).then(value => {
                           window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
                           dispatch(setStartTask(myAdOneAdvertisement.id)).then(value =>
                           dispatch(setStartResponse([myAdOneResponse , myAdOneAdvertisement]))
