@@ -507,26 +507,32 @@ const First = ({ isPage = false }) => {
             }
           });
         }
+        try{
 
-        await axios.get("https://www.connectbirga.ru/user/sendMessage", {
-          params: {
-            chatId: par[1].advertisement.user.chatId,
-            text:
-            messageOne +
-              par[1].advertisement.taskName.bold() +
-              messageTwo +
-              par[1].user.fl,
-            buttonUrl:
-              "https://connectbirga.ru/ResponsePage?advertisemet=" +
-              String(par[1].advertisement.id) +
-              "&response=" +
-              String(im.data.id),
-              languageCode : en ? "en" : "ru"
-          },
-          headers : {
-            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-          }
-        });
+          await axios.get("https://www.connectbirga.ru/user/sendMessage", {
+            params: {
+              chatId: par[1].advertisement.user.chatId,
+              text:
+              messageOne +
+                par[1].advertisement.taskName.bold() +
+                messageTwo +
+                par[1].user.fl,
+              buttonUrl:
+                "https://connectbirga.ru/ResponsePage?advertisemet=" +
+                String(par[1].advertisement.id) +
+                "&response=" +
+                String(im.data.id),
+                languageCode : en ? "en" : "ru"
+            },
+            headers : {
+              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+            }
+          });
+        }
+        catch(e){
+          console.warn(e)
+        }
+
 
 
 
