@@ -289,7 +289,7 @@ const telegramUserInfo = createSlice({
     lastTransaction : "NO",
     congratulate : null,
     profile : {
-        about : null,
+        about : "",
         stage : 0,
         cards : [
         ]

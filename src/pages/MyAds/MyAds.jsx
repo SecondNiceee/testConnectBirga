@@ -28,6 +28,7 @@ import Wallet from "../Wallet";
 import usePut from "../../hooks/MyAds/usePut";
 import useWriteFucntion from "../../hooks/MyAds/writeFunction";
 import useBack from "./components/useBack";
+import pagesHistory from "../../constants/pagesHistory";
 
 // const LastAds = lazy( () => import ("./components/LastAds") )
 // const MyAdOne = lazy( () => import ("./components/MyAdOne") )
@@ -334,12 +335,17 @@ const MyAds = ({isPage = false}) => {
       );
       const advertisemetCount = imTwo.data
       const responseCount = imOne.data
-
-      if (advertisemetCount < responseCount){
-        setNowKey("freelancer")
+      if (pagesHistory[pagesHistory.length - 1] === "/AdCreating"){
+        setNowKey("customer")
       }
       else{
-        setNowKey("customer")
+
+        if (advertisemetCount < responseCount){
+          setNowKey("freelancer")
+        }
+        else{
+          setNowKey("customer")
+        }
       }
     }
 
