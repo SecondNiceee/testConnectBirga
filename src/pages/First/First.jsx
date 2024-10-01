@@ -299,30 +299,9 @@ const First = ({ isPage = false }) => {
         });
       } else {
         if (step === 0){
-          if (!address){
-              window.Telegram.WebApp.showPopup({
-                title: translation(translation("Отклик")),
-                message: translation(`Чтобы оставлять отклики создайте Коннект Кошелёк, это бесплатно`),
-                buttons: [
-                  { id: "save", type: "default", text: translation("Создать") },
-                  { id: "delete", type: "destructive", text: translation("Отмена") },
-                ],
-              } , (buttonId) => {
-          
-                if (buttonId === "delete" || buttonId === null) {
-                  
-                }
-                if (buttonId === "save") {
-                  navigate("/Profile")
-                }
-          
-          
-              } )
-          }
-
-          else{
+        
             setStep(1)
-          }
+          
 
         }
       }
@@ -591,7 +570,7 @@ const First = ({ isPage = false }) => {
       try {
         let gibrid = { ...responce };
         gibrid.isWatched = "";
-        gibrid.advertisement = detailsAdertisement.id;
+        gibrid.advertisement = detailsAdertisement;
         gibrid.user = {
           id: me.id,
           fl: me.firstName,
