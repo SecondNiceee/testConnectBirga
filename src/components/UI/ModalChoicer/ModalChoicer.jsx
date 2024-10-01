@@ -158,7 +158,7 @@ const StyledButton = styled("button", { shouldForwardProp: () => true })(
     text-transform : uppercase;
     font-family: "SF Pro Display";
     font-weight: 400;
-    font-size: 13.33px;
+    font-size: 16px;
     letter-spacing: 0.02em;
     text-align: right;
     color: #2ea5ff;

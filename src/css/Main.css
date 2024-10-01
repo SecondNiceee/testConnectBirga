@@ -938,7 +938,6 @@
   letter-spacing: 0%;
   text-align: left;
   overflow-y: hidden;
-  overflow-y: hidden;
 }
 @-webkit-keyframes modal-animate {
   0% {
@@ -3205,10 +3204,10 @@ input {
   padding-top: 23px;
   padding-left: 16px;
   padding-right: 16px;
-  left: 0;
-  -webkit-transform: translateX(100%);
-      -ms-transform: translateX(100%);
-          transform: translateX(100%);
+  left: 100vw;
+  -webkit-transform: translateX(0);
+      -ms-transform: translateX(0);
+          transform: translateX(0);
   top: 0;
   position: fixed;
   z-index: 200;
@@ -3508,7 +3507,6 @@ input {
   line-height: 19.7px;
   letter-spacing: 0%;
   text-align: left;
-  overflow-y: hidden;
   overflow-y: hidden;
 }
 
