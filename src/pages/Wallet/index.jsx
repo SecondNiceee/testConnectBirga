@@ -33,6 +33,7 @@ const Wallet = ({ onClose = false , isFixed = false, left = false, ...props}) =>
       else{
         if (!onClose){
           if (pagesHistory[pagesHistory.length - 1] === "/WalletEnter" || pagesHistory[pagesHistory.length - 1] === "/WalletInit" || pagesHistory[pagesHistory.length - 1] === "/HappyPage"){
+            console.warn(pagesHistory[pagesHistory.length - 1])
             if (pagesHistory[pagesHistory.length - 1] === "/HappyPage"){
                 navigate('/')
             }

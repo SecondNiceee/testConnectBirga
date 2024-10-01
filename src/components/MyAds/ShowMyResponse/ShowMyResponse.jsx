@@ -104,8 +104,8 @@ const ShowMyResponse = ({
           message: translation(`Вы не можете завершить задание, пока у вас не создан кошелек
 Кошелёк необходим для выплаты вознаграждения за задание.`),
           buttons: [
-            { id: "save", type: "default", text: translation("Да") },
-            { id: "delete", type: "destructive", text: translation("Нет") },
+            { id: "save", type: "default", text: translation("Создать") },
+            { id: "delete", type: "destructive", text: translation("Отмена") },
           ],
         } , (buttonId) => {
     

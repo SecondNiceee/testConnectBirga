@@ -90,6 +90,9 @@ const ShablinBlock = ({
           mistakes={{text : false, name : false}}
           exitText = {exitText}
           isExitShow = {true}
+          style = {{
+            left : "0px"
+          }}
           setActive={() => {
             setResponce({
               ...responce,
