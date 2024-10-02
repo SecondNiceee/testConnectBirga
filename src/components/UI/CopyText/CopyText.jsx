@@ -10,5 +10,5 @@ const CopyText = ({ copyState, ...props }) => {
     </CSSTransition>
   );
 };
-
+  
 export default memo(CopyText);
