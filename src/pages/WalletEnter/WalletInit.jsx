@@ -18,7 +18,7 @@ const WalletInit = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    
+
     useEffect( () => {
       MainButton.show()
       return () => {
@@ -59,7 +59,7 @@ const WalletInit = () => {
         return () => {
             BackButton.offClick(backFucntion)
         }
-    })
+    }, [navigate])
 
     useEffect( () => {
       pagesHistory.push('/WalletInit')
