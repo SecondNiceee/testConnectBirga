@@ -117,12 +117,12 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
 
     }
     MainButton.hideProgress()
-    MainButton.show()
+
     MainButton.setText(translation("Отправить"))
 
     MainButton.onClick(buttonFunction)
     return () => {
-      MainButton.hide()
+
       MainButton.offClick(buttonFunction)
     }
   } , [myValues, setWithDrawal, address, dispatch, lastTransaction] )
@@ -159,13 +159,23 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
        }
     }
     else{
+      if (Number(myValues.summ.replace(',', '.')) === 0){
+        MainButton.setParams({
+          is_active: false, //неизвесетно
+          color: "#2f2f2f",
+          text_color: "#606060",
+        });
+      }
+      else{
+
+        MainButton.setParams({
+          color: "#2ea5ff",
+          text_color: "#ffffff",
+          is_active: true,
+        });
+      }
       setUnderText(false)
       MainButton.hideProgress()
-      MainButton.setParams({
-        color: "#2ea5ff",
-        text_color: "#ffffff",
-        is_active: true,
-      });
       setMistakes( (value) => ({...value, summ : false}) )
     }
     return () => {
@@ -174,6 +184,14 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
       
     }
   } , [myValues.summ, balance, setUnderText] )
+
+
+  useEffect( () => {
+    MainButton.show()
+    return () => {
+      MainButton.hide()
+    }
+  }, [] )
 
 
   console.log('====================================');
