@@ -12,6 +12,7 @@ import useMenu from "./hooks/useMenu";
 import useKeys from "./hooks/useKeys";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import pagesHistory from "../../constants/pagesHistory";
+import MainButton from "../../constants/MainButton";
 
 
 
@@ -52,6 +53,13 @@ const WalletEnter = () => {
   useButton({step, setStep, keys, values, setMistakes, mistakes, numbers})
 
   useKeys({setKeys})
+
+  useEffect( () => {
+    MainButton.show()
+    return () => {
+      MainButton.hide()
+    }
+  }, [] )
 
   
   const style = useMemo( () => {

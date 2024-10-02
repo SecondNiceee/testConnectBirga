@@ -17,6 +17,14 @@ const WalletInit = () => {
     const [show , setShow] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
+
+    
+    useEffect( () => {
+      MainButton.show()
+      return () => {
+        MainButton.hide()
+      }
+    }, [] )
     // const buttonClick = useCallback( async () => {
     //     const phrase = await navigator.clipboard.readText()
     //     .then(text => 
@@ -45,7 +53,7 @@ const WalletInit = () => {
         function backFucntion(){
             navigate(-1)
         }
-        BackButton.show()
+
         MainButton.setText(translation("Войти в кошелек"))
         BackButton.onClick(backFucntion)
         return () => {
@@ -95,10 +103,10 @@ const WalletInit = () => {
     } , [inputs, dispatch, navigate]  )
 
     useEffect( () => {
-        MainButton.show()
+
         MainButton.onClick(checkWallet)
         return () => {
-            MainButton.hide()
+
             MainButton.offClick(checkWallet)
         }
     } , [checkWallet] )
