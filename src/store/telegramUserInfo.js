@@ -204,47 +204,8 @@ export const fetchUserInfo = createAsyncThunk(
         //window.Telegram.WebApp.initDataUnsafe.user.id
         //window.Telegram.WebApp.initDataUnsafe.user.id  window.Telegram.WebApp.initDataUnsafe.user.id
 
-        let photoUrl = user.data.photo
+        let photoUrl = user.data.photo ? user.data.photo : ""
 
-        if (photoUrl){
-
-            try { 
-                await axios.get(user.data.photo)
-            }
-            
-            catch(e){
-    
-    
-                const response = await axios.put("https://www.connectbirga.ru/user/photo", {
-    
-                } , {
-                    params : {
-                        "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
-                    },
-                    headers : {
-                        "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-                    }
-                } )
-                console.warn(response.data)
-                photoUrl = response.data ? response.data.photo : ""
-                
-            }
-        }
-        else{
-                
-            const response = await axios.put("https://www.connectbirga.ru/user/photo", {
-    
-            } , {
-                params : {
-                    "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
-                },
-                headers : {
-                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-                }
-            } )
-            console.warn(response.data)
-            photoUrl = response.data ? response.data.photo : ""
-        }
         return ( {
             firstName: firstName,
             lastName: lastName,

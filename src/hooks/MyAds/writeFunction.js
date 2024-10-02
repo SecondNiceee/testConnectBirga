@@ -39,6 +39,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
 
   
   async function hold(id, amount , service, serviceUs) {
+    alert(myAdOneAdvertisement.id)
     await axios.get("https://www.connectbirga.ru/user/hold" , {
       params : {
         fromId : id,
