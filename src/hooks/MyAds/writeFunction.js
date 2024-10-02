@@ -44,7 +44,8 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
         fromId : id,
         amount : amount,
         service : String(service),
-        serviceUs : String(serviceUs)
+        serviceUs : String(serviceUs),
+        advertisementId : String(myAdOneAdvertisement.id)
       },
       headers : {
         "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
