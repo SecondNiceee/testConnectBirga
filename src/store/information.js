@@ -336,6 +336,14 @@ export const fetchTasksInformation = createAsyncThunk(
             }
           );
 
+          const newUser = {...order.user}
+          try{
+            const response = await axios.get(newUser.photo)
+          }
+          catch{
+            newUser.photo = ""
+          }
+
           tasks.push({
             id: order.id,
             taskName: order.title,
@@ -353,7 +361,7 @@ export const fetchTasksInformation = createAsyncThunk(
             viewsNumber: order.views,
             responces: order.responses,
             status: order.status,
-            user: order.user,
+            user: newUser,
             createNumber : imTwo.data,
             category : order.category.id,
             subCategory : order.subCategory[0].id
