@@ -55,7 +55,7 @@ const ShowMyResponse = ({
       if (address){
 
         try {
-          await axios.get("https://www.connectbirga.ru/bot/notification", {
+          await axios.get(process.env.REACT_APP_HOST + "/bot/notification", {
             params: {
               executorId: String(response.user.id),
               consumerId: String(response.advertisement.user.id),
@@ -190,10 +190,12 @@ const ShowMyResponse = ({
             responce={response}
           />
           <Customer
+            id = {response.advertisement.user.id}
             onImageClick={onImageClick}
             fl={response.advertisement.user.fl}
             photo={response.advertisement.user.photo}
             link={response.advertisement.user.link}
+            
           />
             <div className="createdAt-block">
               <Text>Создано </Text>

@@ -6,7 +6,7 @@ export const deleteCard = createAsyncThunk(
     "deleteCard" ,
     async function(id){
         try{
-            await axios.delete("https://www.connectbirga.ru/user/savedCard", {
+            await axios.delete(`${process.env.REACT_APP_HOST}/user/savedCard`, {
                 params:{
                     "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
                     "cardId" : id
@@ -28,7 +28,7 @@ export const addCard = createAsyncThunk(
     "addCard" ,
     async function (par){
         try{
-            await axios.post('https://www.connectbirga.ru/card/save' , {
+            await axios.post(`${process.env.REACT_APP_HOST}/card/save` , {
                 "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
                 "cardId" : par[0]
             },{
@@ -48,7 +48,7 @@ export const deleteResponce = createAsyncThunk(
     "deleteReponce",
     async function(id){
         try{
-            await axios.delete("https://www.connectbirga.ru/user/savedResponse" , { params : {
+            await axios.delete(`${process.env.REACT_APP_HOST}/user/savedResponse` , { params : {
                 "responseId" : id,
                 "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             },         headers : {
@@ -67,7 +67,7 @@ export const addResponce = createAsyncThunk(
     "addResponce",
     async function(par){
         try{
-            await axios.post('https://www.connectbirga.ru/response/save', {
+            await axios.post(`${process.env.REACT_APP_HOST}/response/save`, {
                     "responseId" : par[0],
                     "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             }, {
@@ -76,7 +76,7 @@ export const addResponce = createAsyncThunk(
                   }
             })
 
-             await axios.get("https://www.connectbirga.ru/user/findOne" , {
+             await axios.get(`${process.env.REACT_APP_HOST}/user/findOne` , {
                 params : {
                     "id" : par[1].user.id
                 },
@@ -85,7 +85,7 @@ export const addResponce = createAsyncThunk(
                   }
             })
 
-             await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
+             await axios.get(`${process.env.REACT_APP_HOST}/advertisement/findCount` , {
                 params : {
                     "userId" : par[1].user.id
                 },
@@ -93,7 +93,7 @@ export const addResponce = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-            await axios.get("https://www.connectbirga.ru/user/findOne" , {
+            await axios.get(`${process.env.REACT_APP_HOST}/user/findOne` , {
                 params : {
                     "id" : window.Telegram.WebApp.initDataUnsafe.user.id
                 },
@@ -117,7 +117,7 @@ export const deleteAdvertisement = createAsyncThunk(
     "deleteAdvertisement" , 
     async function(id){
         try{
-            await axios.delete("https://www.connectbirga.ru/user/savedAdvertisement" , {
+            await axios.delete(`${process.env.REACT_APP_HOST}/user/savedAdvertisement` , {
                 params : {
                     "advertisementId" : id,
                     "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
@@ -137,7 +137,7 @@ export const addAdvertisment = createAsyncThunk(
     "addAdvertisement",
     async function(par){
         try{
-             await axios.post('https://www.connectbirga.ru/advertisement/save' , {
+             await axios.post(`${process.env.REACT_APP_HOST}/advertisement/save` , {
                 "advertisementId" : par[0],
                 "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             }, {
@@ -146,7 +146,7 @@ export const addAdvertisment = createAsyncThunk(
                   }
             })
 
-            await axios.get("https://www.connectbirga.ru/user/findOne" , {
+            await axios.get(`${process.env.REACT_APP_HOST}/user/findOne` , {
                 params : {
                     "id" : par[1].user.id
                 },
@@ -155,7 +155,7 @@ export const addAdvertisment = createAsyncThunk(
                   }
             })
 
-            await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
+            await axios.get(`${process.env.REACT_APP_HOST}/advertisement/findCount` , {
                 params : {
                     "userId" : par[1].user.id
                 },
@@ -182,7 +182,7 @@ export const fetchSavedCards = createAsyncThunk(
         
 
 
-        let im = await axios.get('https://www.connectbirga.ru/card/saved' , {
+        let im = await axios.get(`${process.env.REACT_APP_HOST}/card/saved` , {
             params : {
                 "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
                 "page" : page,
@@ -226,7 +226,7 @@ export const fetchSavedCards = createAsyncThunk(
 export const fetchSavedResponses = createAsyncThunk(
     "fetchSavedResponses",
     async function ([page]) {
-        let imTwo = await axios.get('https://www.connectbirga.ru/response/saved' , {
+        let imTwo = await axios.get(`${process.env.REACT_APP_HOST}/response/saved` , {
             params : {
                 "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
                 limit : 4,
@@ -239,7 +239,7 @@ export const fetchSavedResponses = createAsyncThunk(
 
 
 
-        // let imTwo = await axios.get('https://www.connectbirga.ru/response/saved' , {
+        // let imTwo = await axios.get(`${process.env.REACT_APP_HOST}/response/saved` , {
         //     params : {
         //         "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
         //     }
@@ -257,7 +257,7 @@ export const fetchSavedResponses = createAsyncThunk(
             }
 
 
-            const responseUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
+            const responseUser = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne` , {
                 params : {
                     "id" : responces[i].user.id // тут
                 },
@@ -265,7 +265,7 @@ export const fetchSavedResponses = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
+            const advertisementUser = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne` , {
                 params : {
                     "id" : responces[i].advertisement.user.id
                 },
@@ -301,7 +301,7 @@ export const fetchSavedResponses = createAsyncThunk(
                 photos : files,
                 photosName : responces[i].advertisement.photos,
                 customerName : responces[i].advertisement.user.fl,
-                userPhoto : responces[i].advertisement.user.photo || "",
+                userPhoto : responces[i].advertisement.user.photo ? responces[i].advertisement.user.photo : ""  ,
                 rate : '5',
                 isActive : true,
                 creationTime : responces[i].advertisement.createdAt,
@@ -313,7 +313,7 @@ export const fetchSavedResponses = createAsyncThunk(
     
             try {
               let luo = await axios.get(
-                "https://www.connectbirga.ru/advertisement/findCount",
+                `${process.env.REACT_APP_HOST}/advertisement/findCount`,
                 {
                   params: {
                     userId: responseUser.data.id,
@@ -342,7 +342,7 @@ export const fetchSavedResponses = createAsyncThunk(
 export const fetchSavedAdvertisements = createAsyncThunk(
     "fetchSavedAdvertisements",
     async function ([page]) {
-        let im = await axios.get('https://www.connectbirga.ru/advertisement/saved' , {
+        let im = await axios.get(`${process.env.REACT_APP_HOST}/advertisement/saved` , {
             params : {
                 "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
                 limit : 4,
@@ -374,7 +374,7 @@ export const fetchSavedAdvertisements = createAsyncThunk(
             }
 
             let files = await makeNewFile(order.folder, order.photos);
-            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
+            const advertisementUser = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne` , {
                 params : {
                     "id" : order.user.id
                 },
@@ -383,7 +383,7 @@ export const fetchSavedAdvertisements = createAsyncThunk(
                   }
             })
 
-            const advertisementCrateNumber = await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
+            const advertisementCrateNumber = await axios.get(`${process.env.REACT_APP_HOST}/advertisement/findCount` , {
                 params : {
                     "userId" : order.user.id
                 },
@@ -439,7 +439,7 @@ export const fetchAllIds = createAsyncThunk(
     "fetchAllIds", 
     async function (params) {
         try{
-            let imOne = await axios.get("https://www.connectbirga.ru/advertisement/savedIds" , {
+            let imOne = await axios.get(`${process.env.REACT_APP_HOST}/advertisement/savedIds` , {
                 params : {
                     "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
                 },
@@ -447,7 +447,7 @@ export const fetchAllIds = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-            let imTwo = await axios.get("https://www.connectbirga.ru/response/savedIds" , {
+            let imTwo = await axios.get(`${process.env.REACT_APP_HOST}/response/savedIds` , {
                 params : {
                     "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
                 },
@@ -455,7 +455,7 @@ export const fetchAllIds = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-            let imThree = await axios.get("https://www.connectbirga.ru/card/savedIds" , {
+            let imThree = await axios.get(`${process.env.REACT_APP_HOST}/card/savedIds` , {
                 params : {
                     "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
                 },
@@ -479,7 +479,7 @@ export const fetchAllValues = createAsyncThunk(
         try{
 
         
-        let im = await axios.get('https://www.connectbirga.ru/advertisement/saved' , {
+        let im = await axios.get(`${process.env.REACT_APP_HOST}/advertisement/saved` , {
             params : {
                 "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             },
@@ -504,7 +504,7 @@ export const fetchAllValues = createAsyncThunk(
             }
 
             let files = await makeNewFile(order.folder, order.photos);
-            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
+            const advertisementUser = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne` , {
                 params : {
                     "id" : order.user.id
                 },
@@ -513,7 +513,7 @@ export const fetchAllValues = createAsyncThunk(
                   }
             })
 
-            const advertisementCrateNumber = await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
+            const advertisementCrateNumber = await axios.get(`${process.env.REACT_APP_HOST}/advertisement/findCount` , {
                 params : {
                     "userId" : order.user.id
                 },
@@ -561,7 +561,7 @@ export const fetchAllValues = createAsyncThunk(
 
 
 
-        let imTwo = await axios.get('https://www.connectbirga.ru/response/saved' , {
+        let imTwo = await axios.get(`${process.env.REACT_APP_HOST}/response/saved` , {
             params : {
                 "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             },
@@ -582,7 +582,7 @@ export const fetchAllValues = createAsyncThunk(
             }
 
 
-            const responseUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
+            const responseUser = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
                 params : {
                     "id" : window.Telegram.WebApp.initDataUnsafe.user.id // тут
                 },
@@ -590,7 +590,7 @@ export const fetchAllValues = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
+            const advertisementUser = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne` , {
                 params : {
                     "id" : responces[i].advertisement.user.id
                 },
@@ -638,7 +638,7 @@ export const fetchAllValues = createAsyncThunk(
     
             try {
               let luo = await axios.get(
-                "https://www.connectbirga.ru/advertisement/findCount",
+                `${process.env.REACT_APP_HOST}/advertisement/findCount`,
                 {
                   params: {
                     userId: imTwo.data.id,
@@ -658,7 +658,7 @@ export const fetchAllValues = createAsyncThunk(
           }
         
 
-        im = await axios.get('https://www.connectbirga.ru/card/saved' , {
+        im = await axios.get(`${process.env.REACT_APP_HOST}/card/saved` , {
             params : {
                 "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
             },

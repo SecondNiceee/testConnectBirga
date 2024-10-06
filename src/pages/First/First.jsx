@@ -152,7 +152,7 @@ const First = ({ isPage = false }) => {
     async function getAdvertisement() {
       try {
         let advertisement = await axios.get(
-          "https://www.connectbirga.ru/advertisement/findOne",
+          process.env.REACT_APP_HOST + "/advertisement/findOne",
           {
             params: {
               id: window.Telegram.WebApp.initDataUnsafe.start_param,
@@ -176,7 +176,7 @@ const First = ({ isPage = false }) => {
         let files = await makeNewFile(order.folder, order.photos);
 
         let imTwo = await axios.get(
-          "https://www.connectbirga.ru/advertisement/findCount",
+          process.env.REACT_APP_HOST + "/advertisement/findCount",
           {
             params: {
               userId: order.user.id,
@@ -197,7 +197,7 @@ const First = ({ isPage = false }) => {
           photos: files,
           photosName: order.photos,
           customerName: order.user.fl,
-          userPhoto: order.user.photo || "",
+          userPhoto: order.user.photo ? order.user.photo : "",
           rate: "5",
           isActive: true,
           creationTime: order.createdAt,
@@ -497,7 +497,7 @@ const First = ({ isPage = false }) => {
         setPutStatus(true)
         responseRef.current.style.overflowY = "hidden"
         for (let i = 0; i < 1; i++) {
-          im = await axios.post("https://www.connectbirga.ru/response", par[0], {
+          im = await axios.post(process.env.REACT_APP_HOST + "/response", par[0], {
             params: {
               advertisementId: par[1].advertisement.id,
               userId: par[1].user.id,
@@ -509,7 +509,7 @@ const First = ({ isPage = false }) => {
         }
         try{
 
-          await axios.get("https://www.connectbirga.ru/user/sendMessage", {
+          await axios.get( process.env.REACT_APP_HOST + "/user/sendMessage", {
             params: {
               chatId: par[1].advertisement.user.chatId,
               text:
@@ -518,7 +518,7 @@ const First = ({ isPage = false }) => {
                 messageTwo +
                 par[1].user.fl,
               buttonUrl:
-                "https://connectbirga.ru/ResponsePage?advertisemet=" +
+                process.env.REACT_APP_HOST + "/ResponsePage?advertisemet=" +
                 String(par[1].advertisement.id) +
                 "&response=" +
                 String(im.data.id),
@@ -582,7 +582,7 @@ const First = ({ isPage = false }) => {
           id: me.id,
           fl: me.firstName,
           link: me.link,
-          photo: me.photo,
+          photo: me.photo ? me.photo : "",
           about: me.profile.about,
           stage: me.profile.stage,
         };

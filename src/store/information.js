@@ -11,7 +11,7 @@ export const addWatch = createAsyncThunk(
         let myData = new FormData();
         myData.append("views", String(Number(advertisement.viewsNumber) + 1));
         
-        await axios.put("https://www.connectbirga.ru/advertisement", myData, {
+        await axios.put(`${process.env.REACT_APP_HOST}/advertisement`, myData, {
           params: {
             id: String(advertisement.id),
           },
@@ -31,7 +31,7 @@ export const deleteAd = createAsyncThunk(
   "information/deleteMyAd",
   async function (id) {
     try {
-      await axios.delete("https://www.connectbirga.ru/advertisement", {
+      await axios.delete(`${process.env.REACT_APP_HOST}/advertisement`, {
         params: {
           id: id,
         },
@@ -51,7 +51,7 @@ export const putMyTask = createAsyncThunk(
     console.log("ЭТО ПОСТ")
     try {
       let answ = await axios.put(
-        "https://www.connectbirga.ru/advertisement",
+        `${process.env.REACT_APP_HOST}/advertisement`,
         data[0],
         {
           params: {
@@ -95,7 +95,7 @@ export const postMyTask = createAsyncThunk(
       for (let i = 0 ; i < 1; i++){
         try{
           console.log("Создание задания")
-          await axios.post("https://www.connectbirga.ru/advertisement", arr[0], {
+          await axios.post(`${process.env.REACT_APP_HOST}/advertisement`, arr[0], {
             headers: {
               "Content-Type" :'multipart/form-data',
               "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -113,7 +113,7 @@ export const postMyTask = createAsyncThunk(
 
       // let tasks = [];
       // let task = await axios.get(
-      //   "https://www.connectbirga.ru/advertisement/findByUser",
+      //   `${process.env.REACT_APP_HOST}/advertisement/findByUser`,
       //   {
       //     params: {
       //       page: 1,
@@ -135,7 +135,7 @@ export const postMyTask = createAsyncThunk(
       // } else {
       //   for (let order of task.data) {
       //     let files = await makeNewFile(order.folder, order.photos);
-      //     let responseCounter = await axios.get("https://www.connectbirga.ru/response/countByAdvertisement" , {
+      //     let responseCounter = await axios.get(`${process.env.REACT_APP_HOST}/response/countByAdvertisement` , {
       //       params : {
       //         "advertisementId" : order.id
       //       },
@@ -188,7 +188,7 @@ export const setStartTask = createAsyncThunk(
     try {
       let myData = new FormData();
       myData.append("status", "inProcess");
-      await axios.put("https://www.connectbirga.ru/advertisement", myData, {
+      await axios.put(`${process.env.REACT_APP_HOST}/advertisement`, myData, {
         params: {
           id: id,
         },
@@ -211,7 +211,7 @@ export const fetchMyOrders = createAsyncThunk(
     try {
       let tasks = [];
       let task = await axios.get(
-        "https://www.connectbirga.ru/advertisement/findByUser",
+        `${process.env.REACT_APP_HOST}/advertisement/findByUser`,
         {
           params: {
             page: page,
@@ -234,7 +234,7 @@ export const fetchMyOrders = createAsyncThunk(
       } else {
         for (let order of task.data) {
           let files = await makeNewFile(order.folder, order.photos);
-          let responseCounter = await axios.get("https://www.connectbirga.ru/response/countByAdvertisement" , {
+          let responseCounter = await axios.get(`${process.env.REACT_APP_HOST}/response/countByAdvertisement` , {
             params : {
               "advertisementId" : order.id,
             },
@@ -289,7 +289,7 @@ export const fetchTasksInformation = createAsyncThunk(
     
     try {
       task = await axios.get(
-        "https://www.connectbirga.ru/advertisement/findAll",
+        `${process.env.REACT_APP_HOST}/advertisement/findAll`,
         {
           params: {
             limit: 2,
@@ -325,7 +325,7 @@ export const fetchTasksInformation = createAsyncThunk(
           let files = await makeNewFile(order.folder, order.photos);
 
           let imTwo = await axios.get(
-            "https://www.connectbirga.ru/advertisement/findCount",
+            `${process.env.REACT_APP_HOST}/advertisement/findCount`,
             {
               params: {
                 userId: order.user.id,
@@ -346,7 +346,7 @@ export const fetchTasksInformation = createAsyncThunk(
             photos: files,
             photosName: order.photos,
             customerName: order.user.fl,
-            userPhoto: order.user.photo || "",
+            userPhoto: order.user.photo ? order.user.photo : "",
             rate: "5",
             isActive: true,
             creationTime: order.createdAt,

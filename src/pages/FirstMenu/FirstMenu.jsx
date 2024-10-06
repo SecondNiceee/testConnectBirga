@@ -70,7 +70,7 @@ const FirstMenu = forwardRef(({...props} , ref) => {
         </Link>
         <div className={ (location.pathname === "/Profile" || location.pathname === "/AllShablons") ? "menuLink active" : "menuLink"} onClick={() => {onClick("/Profile")}}>
           <div className="menuCircle">
-            <img className="menuPhoto" src={me.photo.length > 0 ? me.photo : userPhoto} alt="" />
+            <img className="menuPhoto" src={me.photo.length > 0 ? me.photo.split('https://').length === 2 ? me.photo : `${process.env.REACT_APP_HOST}/${me.id}/${me.photo}` : userPhoto} alt="" />
           </div>
         </div>
         <div className={ location.pathname === "/MyAds" ? "menuLink active" : "menuLink"} onClick={() => {onClick("/MyAds")}}>

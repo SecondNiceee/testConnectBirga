@@ -388,7 +388,7 @@ const Profile = () => {
           <div className="profile__container">
             <img
               style={{ objectFit: "cover" }}
-              src={userInfo.photo.length > 0 ? userInfo.photo : userPhoto}
+              src={userInfo.photo.length > 0 ? userInfo.photo.split('https://').length === 2 ? userInfo.photo : `${process.env.REACT_APP_HOST}/${userInfo.id}/${userInfo.photo}` : userPhoto}
               className="profile__icon icon"
               alt=""
             />

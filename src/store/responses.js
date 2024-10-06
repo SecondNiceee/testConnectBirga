@@ -11,7 +11,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
     "fetchResponseByAdvertisement",
     async function([id, task, page]){
         let im = await axios.get(
-            "https://www.connectbirga.ru/response/findByAdvertisement",
+            `${process.env.REACT_APP_HOST}/response/findByAdvertisement`,
             {
               params: {
                 advertisementId: id,
@@ -31,7 +31,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
               photos = await makeNewFile(responces[i].folder, responces[i].photos);
             }
 
-            let b = await axios.get("https://www.connectbirga.ru/card/countByUser" , {
+            let b = await axios.get(`${process.env.REACT_APP_HOST}/card/countByUser` , {
                 params : {
                     advertisementId: responces[i].user.id,
                 },
@@ -47,7 +47,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
     
             try {
               let imTwo = await axios.get(
-                "https://www.connectbirga.ru/advertisement/findCount",
+                `${process.env.REACT_APP_HOST}/advertisement/findCount`,
                 {
                   params: {
                     userId: responces[i].user.id,
@@ -73,7 +73,7 @@ export const deleteResponse = createAsyncThunk(
     async function(id){
         try{
 
-            await axios.delete("https://www.connectbirga.ru/response", {
+            await axios.delete(`${process.env.REACT_APP_HOST}/response`, {
                 params : {
                     id : id
                 },
@@ -96,7 +96,7 @@ export const setStartResponse = createAsyncThunk(
         myData.append("isWatched" , "inProcess")
         const messageOne = translation("📣✅ Вы были выбраны исполнителем на задание")
         try{
-            await axios.put("https://www.connectbirga.ru/response" , myData, {
+            await axios.put(`${process.env.REACT_APP_HOST}/response` , myData, {
                 params : {
                     id : responce.id
                 },
@@ -105,7 +105,7 @@ export const setStartResponse = createAsyncThunk(
                   }
             } )
 
-            await axios.get("https://www.connectbirga.ru/user/sendMessage", {
+            await axios.get(`${process.env.REACT_APP_HOST}/user/sendMessage`, {
                 params: {
                   chatId: responce.user.id,
                   text:
@@ -134,7 +134,7 @@ export const addResponse = createAsyncThunk(
         try{
             // for (let i = 0 ; i < 20;i++){
 
-            //     await axios.post("https://www.connectbirga.ru/response" , par[0], {
+            //     await axios.post(`${process.env.REACT_APP_HOST}/response` , par[0], {
             //         params : {
             //             advertisementId : par[1].advertisement.id,
             //             userId : par[1].user.id
@@ -144,7 +144,7 @@ export const addResponse = createAsyncThunk(
 
             const messageOne = translation("📣 Вы получили отклик на задачу «")
             const messageTwo = translation("» от ")
-            await axios.post("https://www.connectbirga.ru/response" , par[0], {
+            await axios.post(`${process.env.REACT_APP_HOST}/response` , par[0], {
                 params : {
                     advertisementId : par[1].advertisement.id,
                     userId : par[1].user.id
@@ -158,7 +158,7 @@ export const addResponse = createAsyncThunk(
 
             const en = true
             
-            await axios.get("https://www.connectbirga.ru/user/sendMessage" , {
+            await axios.get(`${process.env.REACT_APP_HOST}/user/sendMessage` , {
                 params : {
                   "chatId" : par[1].advertisement.user.chatId,
                   "text" : messageOne + par[1].advertisement.taskName.bold() + messageTwo +  par[1].user.fl ,
@@ -184,7 +184,7 @@ export const postResponse = createAsyncThunk(
         let myData = new FormData()
         myData.append("isWatched" , "watched")
         try{
-            await axios.put("https://www.connectbirga.ru/response" , myData, {
+            await axios.put(`${process.env.REACT_APP_HOST}/response` , myData, {
                 params : {
                     id : id
                 },
@@ -204,7 +204,7 @@ export const fetchResponses = createAsyncThunk(
         try{
 
         
-        let im = await axios.get('https://www.connectbirga.ru/response/findByUser' , {
+        let im = await axios.get(`${process.env.REACT_APP_HOST}/response/findByUser` , {
             params : {
                 "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
                 page : par[1],
@@ -226,7 +226,7 @@ export const fetchResponses = createAsyncThunk(
 
         for (let i = 0; i < localResponses.length; i++){
 
-            const advertisementData = await axios.get("https://www.connectbirga.ru/advertisement/findOne", {
+            const advertisementData = await axios.get(`${process.env.REACT_APP_HOST}/advertisement/findOne`, {
                 params : {
                     "id" : localResponses[i].advertisement.id
                 },
@@ -250,7 +250,7 @@ export const fetchResponses = createAsyncThunk(
 
             try {
                 let imTwo = await axios.get(
-                  "https://www.connectbirga.ru/advertisement/findCount",
+                  `${process.env.REACT_APP_HOST}/advertisement/findCount`,
                   {
                     params: {
                       userId: me.id,
@@ -268,7 +268,7 @@ export const fetchResponses = createAsyncThunk(
             
             console.log(localResponses)
 
-            const advertisementUser = await axios.get("https://www.connectbirga.ru/user/findOne" , {
+            const advertisementUser = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne` , {
                 params : {
                     "id" : advertisement.user.id
                 },
@@ -277,7 +277,7 @@ export const fetchResponses = createAsyncThunk(
                   }
             })
 
-            const advertisementCrateNumber = await axios.get("https://www.connectbirga.ru/advertisement/findCount" , {
+            const advertisementCrateNumber = await axios.get(`${process.env.REACT_APP_HOST}/advertisement/findCount` , {
                 params : {
                     "userId" : localResponses[i].advertisement.user.id
                 },
@@ -297,7 +297,7 @@ export const fetchResponses = createAsyncThunk(
               photos : files,
               photosName : advertisement.photos,
               customerName : me.firstName,
-              userPhoto : me.photo || "",
+              userPhoto : me.photo ? me.photo : "",
               rate : '5',
               isActive : true,
               creationTime : advertisement.createdAt,
@@ -325,7 +325,7 @@ export const fetchResponses = createAsyncThunk(
                 "id" : me.id,
                 "fl" : me.firstName,
                 "link" : me.link,
-                "photo" : me.photo,
+                "photo" : me.photo ? me.photo : "",
                 "about" : me.profile.about,
                 "stage" : me.profile.stage,
                 "completedAdvertisements" : me.completedTasks
