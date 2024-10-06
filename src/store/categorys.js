@@ -3,7 +3,7 @@ import axios from 'axios';
 export const getCategorys = createAsyncThunk(
     'category/getCategorys' , 
     async function(){
-        let categorys = await axios.get('https://www.connectbirga.ru/category/category', {
+        let categorys = await axios.get(`${process.env.REACT_APP_HOST}/category/category`, {
             headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
@@ -16,7 +16,7 @@ export const getCategorys = createAsyncThunk(
 export const getSubCategorys = createAsyncThunk(
     'categorys/getSubCategorys',
     async function(){
-        let subCategorys = await axios.get('https://www.connectbirga.ru/category/subCategory' , {
+        let subCategorys = await axios.get(`${process.env.REACT_APP_HOST}/category/subCategory` , {
             headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }

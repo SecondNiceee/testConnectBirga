@@ -10,7 +10,7 @@ export const deleteServerCard = createAsyncThunk(
     "telegramUserInfo/putCard",
     async function (data){
         try{
-            await axios.delete("https://www.connectbirga.ru/card" , {
+            await axios.delete(`${process.env.REACT_APP_HOST}/card` , {
                 params : {
                     id : data
                 },
@@ -33,7 +33,7 @@ export const putCard = createAsyncThunk(
     "telegramUserInfo/putCard",
     async function (data){
         try{
-            let im = await axios.put("https://www.connectbirga.ru/card" , data[0] , 
+            let im = await axios.put(`${process.env.REACT_APP_HOST}/card` , data[0] , 
                 {
                     params : {
                         id : data[1]
@@ -69,7 +69,7 @@ export const postCard = createAsyncThunk(
     "telegramUserInfo/postUserInfo",
     async function (data){
         try{
-            let im = await axios.post("https://www.connectbirga.ru/card" , data[0] , 
+            let im = await axios.post(`${process.env.REACT_APP_HOST}/card` , data[0] , 
                 {
                     params : {
                         userId : data[1]
@@ -110,7 +110,7 @@ export const putUserInfo = createAsyncThunk(
         console.log("------------------------------------")
         console.log(data[0])
         try{
-            await axios.put('https://www.connectbirga.ru/user' , data[0] , {
+            await axios.put(`${process.env.REACT_APP_HOST}/user` , data[0] , {
                 params : {
                     userId : String(window.Telegram.WebApp.initDataUnsafe.user.id),
                 },
@@ -140,7 +140,7 @@ export const fetchUserInfo = createAsyncThunk(
         try{
 
 
-             user = await axios.get("https://www.connectbirga.ru/user/findOne", {
+             user = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
               params: {
                 id: UserId,
               },
@@ -153,7 +153,7 @@ export const fetchUserInfo = createAsyncThunk(
             console.log('====================================');
         }
         catch(e){
-            await axios.post("https://www.connectbirga.ru/user/createByBot" , {}, {
+            await axios.post(`${process.env.REACT_APP_HOST}/user/createByBot` , {}, {
                 params : {
                     id : window.Telegram.WebApp.initDataUnsafe.user.id,
                     language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en",
@@ -163,7 +163,7 @@ export const fetchUserInfo = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-            user = await axios.get("https://www.connectbirga.ru/user/findOne", {
+            user = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
                 params: {
                   id: UserId,
                 },
@@ -175,7 +175,7 @@ export const fetchUserInfo = createAsyncThunk(
 
         let localCards = []
 
-        let allCards = await axios.get("https://www.connectbirga.ru/card/findByUser" , {
+        let allCards = await axios.get(`${process.env.REACT_APP_HOST}/card/findByUser` , {
             params : {
                 userId : UserId
             },
