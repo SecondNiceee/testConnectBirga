@@ -297,7 +297,7 @@ export const fetchResponses = createAsyncThunk(
               photos : files,
               photosName : advertisement.photos,
               customerName : me.firstName,
-              userPhoto : me.photo || "",
+              userPhoto : me.photo ? me.photo : "",
               rate : '5',
               isActive : true,
               creationTime : advertisement.createdAt,
@@ -325,7 +325,7 @@ export const fetchResponses = createAsyncThunk(
                 "id" : me.id,
                 "fl" : me.firstName,
                 "link" : me.link,
-                "photo" : me.photo,
+                "photo" : me.photo ? me.photo : "",
                 "about" : me.profile.about,
                 "stage" : me.profile.stage,
                 "completedAdvertisements" : me.completedTasks

@@ -346,7 +346,7 @@ export const fetchTasksInformation = createAsyncThunk(
             photos: files,
             photosName: order.photos,
             customerName: order.user.fl,
-            userPhoto: order.user.photo || "",
+            userPhoto: order.user.photo ? order.user.photo : "",
             rate: "5",
             isActive: true,
             creationTime: order.createdAt,

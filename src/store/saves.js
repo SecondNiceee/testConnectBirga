@@ -301,7 +301,7 @@ export const fetchSavedResponses = createAsyncThunk(
                 photos : files,
                 photosName : responces[i].advertisement.photos,
                 customerName : responces[i].advertisement.user.fl,
-                userPhoto : responces[i].advertisement.user.photo || "",
+                userPhoto : responces[i].advertisement.user.photo ? responces[i].advertisement.user.photo : ""  ,
                 rate : '5',
                 isActive : true,
                 creationTime : responces[i].advertisement.createdAt,
