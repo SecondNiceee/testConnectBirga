@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import galks from '../../../images/icons/Subtract.svg'
 import userImage from "../../../images/userPhoto/user.png"
 import Text from '../../Text/Text';
+import { useSelector } from 'react-redux';
 const Customer = ({customerName, rate, userPhoto, setProfile, id}) => {
     const userInfo = useSelector(state => state.telegramUserInfo)
     const urId = useMemo( () => {
