@@ -152,7 +152,7 @@ const First = ({ isPage = false }) => {
     async function getAdvertisement() {
       try {
         let advertisement = await axios.get(
-          "https://www.connectbirga.ru/advertisement/findOne",
+          process.env.REACT_APP_HOST + "/advertisement/findOne",
           {
             params: {
               id: window.Telegram.WebApp.initDataUnsafe.start_param,
@@ -176,7 +176,7 @@ const First = ({ isPage = false }) => {
         let files = await makeNewFile(order.folder, order.photos);
 
         let imTwo = await axios.get(
-          "https://www.connectbirga.ru/advertisement/findCount",
+          process.env.REACT_APP_HOST + "/advertisement/findCount",
           {
             params: {
               userId: order.user.id,
@@ -497,7 +497,7 @@ const First = ({ isPage = false }) => {
         setPutStatus(true)
         responseRef.current.style.overflowY = "hidden"
         for (let i = 0; i < 1; i++) {
-          im = await axios.post("https://www.connectbirga.ru/response", par[0], {
+          im = await axios.post(process.env.REACT_APP_HOST + "/response", par[0], {
             params: {
               advertisementId: par[1].advertisement.id,
               userId: par[1].user.id,
