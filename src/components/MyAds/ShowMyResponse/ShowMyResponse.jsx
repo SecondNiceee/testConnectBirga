@@ -55,7 +55,7 @@ const ShowMyResponse = ({
       if (address){
 
         try {
-          await axios.get("https://www.connectbirga.ru/bot/notification", {
+          await axios.get(process.env.REACT_APP_HOST + "/bot/notification", {
             params: {
               executorId: String(response.user.id),
               consumerId: String(response.advertisement.user.id),

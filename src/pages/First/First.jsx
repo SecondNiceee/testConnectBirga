@@ -509,7 +509,7 @@ const First = ({ isPage = false }) => {
         }
         try{
 
-          await axios.get("https://www.connectbirga.ru/user/sendMessage", {
+          await axios.get( process.env.REACT_APP_HOST + "/user/sendMessage", {
             params: {
               chatId: par[1].advertisement.user.chatId,
               text:
@@ -518,7 +518,7 @@ const First = ({ isPage = false }) => {
                 messageTwo +
                 par[1].user.fl,
               buttonUrl:
-                "https://connectbirga.ru/ResponsePage?advertisemet=" +
+                process.env.REACT_APP_HOST + "/ResponsePage?advertisemet=" +
                 String(par[1].advertisement.id) +
                 "&response=" +
                 String(im.data.id),
