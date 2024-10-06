@@ -68,7 +68,7 @@ const AdCreating = () => {
     photos: [],
     customerName : me.firstName,
     creationTime : new Date(),
-    userPhoto : me.photo,
+    userPhoto : me.photo ? me.photo : "",
     time : {start : new Date() , end : new Date(),
 
     }

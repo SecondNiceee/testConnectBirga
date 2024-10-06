@@ -197,7 +197,7 @@ const First = ({ isPage = false }) => {
           photos: files,
           photosName: order.photos,
           customerName: order.user.fl,
-          userPhoto: order.user.photo || "",
+          userPhoto: order.user.photo ? order.user.photo : "",
           rate: "5",
           isActive: true,
           creationTime: order.createdAt,
@@ -582,7 +582,7 @@ const First = ({ isPage = false }) => {
           id: me.id,
           fl: me.firstName,
           link: me.link,
-          photo: me.photo,
+          photo: me.photo ? me.photo : "",
           about: me.profile.about,
           stage: me.profile.stage,
         };
