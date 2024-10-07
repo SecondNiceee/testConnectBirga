@@ -27,6 +27,7 @@ import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import translation from "../../functions/translate";
 import en from "../../constants/language";
 import { useNavigate } from "react-router-dom";
+import makeNewUser from "../../functions/makeNewUser";
 
 let isDetailsActiveVar = false;
 let localResponce;
@@ -187,6 +188,8 @@ const First = ({ isPage = false }) => {
           }
         );
 
+        const newUser = await makeNewUser(order)
+
         return {
           id: order.id,
           taskName: order.title,
@@ -204,7 +207,7 @@ const First = ({ isPage = false }) => {
           viewsNumber: order.views,
           responces: order.responses,
           status: order.status,
-          user: order.user,
+          user: newUser,
           createNumber: imTwo.data,
           category: order.category.id,
         };
@@ -518,7 +521,7 @@ const First = ({ isPage = false }) => {
                 messageTwo +
                 par[1].user.fl,
               buttonUrl:
-                process.env.REACT_APP_HOST + "/ResponsePage?advertisemet=" +
+                "https://connectbirga.ru/ResponsePage?advertisement=" +
                 String(par[1].advertisement.id) +
                 "&response=" +
                 String(im.data.id),
