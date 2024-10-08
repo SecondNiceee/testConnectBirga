@@ -44,6 +44,10 @@ const LinkComp = ({navigate, link}) => {
         } )
     } , [link] )
 
+
+
+    
+
     
     return (
         <div  onClick={(par) => {

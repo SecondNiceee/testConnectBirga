@@ -398,9 +398,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         >
           <img src={dropfileIcon} alt="" />
           <Text>
-            {cardsSetting.dropfileLink.length > 0
-              ? cardsSetting.dropfileLink
-              : "Ccылка на Dropfile"}
+            {"Ccылка на Dropfile"}
           </Text>
       </div>
 
@@ -419,9 +417,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         >
           <img src={behanceIcon} alt="" />
           <Text>
-            {cardsSetting.behanceLink.length > 0
-              ? cardsSetting.behanceLink
-              : "Ссылка на Behance"}
+            {"Ссылка на Behance"}
           </Text>
         </div>
         <div
@@ -439,9 +435,7 @@ const ChangeCards = ({save, setCardsOpen, setAboutU, index, card, aboutU }) => {
         >
           <img src={dripleIcon} alt="" />
           <Text>
-            {cardsSetting.dribbbleLink.length > 0
-              ? cardsSetting.dribbbleLink
-              : "Ссылка на Dribbble"}
+            {"Ссылка на Dribbble"}
           </Text>
         </div>
 
