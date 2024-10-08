@@ -335,7 +335,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
           }
         }>
           <img src={dropfileIcon} alt="" />
-          <Text>{cardsSetting.dropfileLink.length > 0 ? cardsSetting.dropfileLink : translation('Ссылка на Dprofile')}</Text>
+          <Text>{'Ссылка на Dprofile'}</Text>
         </div>
         <div className="behans-link cards-link" onClick={
           () => {
@@ -351,7 +351,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
           }
         }>
           <img src={behanceIcon} alt="" />
-          <Text>{localCardSetting.behanceLink.length > 0 ? localCardSetting.behanceLink : translation('Ссылка на Behance')}</Text>
+          <Text>{'Ссылка на Behance'}</Text>
         </div>
         <div className="behans-link cards-link" onClick={
           () => {
@@ -366,7 +366,7 @@ const Cards = ({ setCardsOpen, setAboutU, aboutU , save  }) => {
           }
         }>
           <img src={dripleIcon} alt="" />
-          <Text>{localCardSetting.dribbbleLink.length > 0 ? localCardSetting.dribbbleLink : translation('Ссылка на Dribbble')}</Text>
+          <Text>{'Ссылка на Dribbble'}</Text>
         </div>
 
       </div>
