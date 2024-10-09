@@ -36,19 +36,19 @@ const CardPage = ({ card , ...props }) => {
             return (
             <div  className={cl.cardsLinks}>
             {card.behanceLink.length > 0 ? 
-                <LinkComp navigate={"behance"} link={translation("Ссылка на Behance")}  />
+                <LinkComp navigate={"behance"} link={card.behanceLink} name={translation("Ссылка на Behance")}  />
                 :
                 <></>
             }
 
             {card.dribbbleLink.length > 0 ? 
-                <LinkComp navigate={"driple"} link={translation("Ссылка на Dribbble")}  />
+                <LinkComp navigate={"driple"} link={card.dribbbleLink} name={translation("Ссылка на Dribbble")}  />
                 :
                 <></>
             }
 
             {card.dropfileLink.length > 0 ? 
-            <LinkComp navigate={"dropfile"} link={translation("Ccылка на Dropfile")}  />
+            <LinkComp navigate={"dropfile"} link={card.dropfileLink} name={translation("Ccылка на Dropfile")}  />
             :
             <></>
     }

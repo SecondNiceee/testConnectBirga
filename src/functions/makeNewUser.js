@@ -17,7 +17,7 @@ export default async function makeNewUser(order) {
           },
         }
       );
-      newUser.photo = responce.data;
+      newUser.photo = responce.data.photo;
     } catch (e) {
       newUser.photo = "";
     }

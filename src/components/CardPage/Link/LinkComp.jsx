@@ -8,7 +8,7 @@ import translation from '../../../functions/translate';
 const Yes = translation("Да")
 const No = translation("Нет")
 
-const LinkComp = ({navigate, link}) => {
+const LinkComp = ({navigate, link, name}) => {
     const imageLink = useMemo( () => {
         switch (navigate){
             case "behance":
@@ -54,7 +54,7 @@ const LinkComp = ({navigate, link}) => {
             linkHandler(link)
         }} className={ [cl.cardsLink, cl.blue].join(' ')}>
             <img src={imageLink} alt="" />
-            <Text>{link}</Text>
+            <Text>{name}</Text>
         </div>
     );
 };
