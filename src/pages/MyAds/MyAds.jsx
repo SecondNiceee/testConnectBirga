@@ -51,7 +51,7 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 // const responseId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[1]
 
 let url = new URL(window.location.href);
-let advertisementId = url.searchParams.get("advertisemet")
+let advertisementId = url.searchParams.get("advertisement")
 let responseId = url.searchParams.get("response")
 
 
