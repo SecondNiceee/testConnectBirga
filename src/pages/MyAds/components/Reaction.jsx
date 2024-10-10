@@ -9,6 +9,7 @@ import userPhoto from "../../../images/userPhoto/user.png"
 import breakShare from "../../../functions/breakShare";
 import Text from "../../../components/Text/Text";
 import en from "../../../constants/language";
+import translation from "../../../functions/translate";
 
 
 const Reaction = ({
