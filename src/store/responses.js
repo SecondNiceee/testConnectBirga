@@ -4,6 +4,7 @@ import axios from "axios";
 import makeNewFile from "../functions/newMakeFile";
 import translation from "../functions/translate";
 import en from "../constants/language";
+import makeNewUser from "../functions/makeNewUser";
 
 
 
@@ -285,33 +286,33 @@ export const fetchResponses = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-            
-            localResponses[i].advertisement = {
-              id : advertisement.id,
-              taskName : advertisement.title,
-              status : advertisement.status,
-              executionPlace: "Можно выполнить удаленно",
-              time : {start : one , end : two},
-              tonValue : advertisement.price,
-              taskDescription : advertisement.description,
-              photos : files,
-              photosName : advertisement.photos,
-              customerName : me.firstName,
-              userPhoto : me.photo ? me.photo : "",
-              rate : '5',
-              isActive : true,
-              creationTime : advertisement.createdAt,
-              category : advertisement.category.id,
-              viewsNumber : advertisement.advertisement,
-              user : advertisementUser.data,
-              createNumber : advertisementCrateNumber.data,
-              responces : advertisement.responses
 
-              
+            const advertisementError = {
+                id : advertisement.id,
+                taskName : advertisement.title,
+                status : advertisement.status,
+                executionPlace: "Можно выполнить удаленно",
+                time : {start : one , end : two},
+                tonValue : advertisement.price,
+                taskDescription : advertisement.description,
+                photos : files,
+                photosName : advertisement.photos,
+                customerName : me.firstName,
+                userPhoto : me.photo ? me.photo : "",
+                rate : '5',
+                isActive : true,
+                creationTime : advertisement.createdAt,
+                category : advertisement.category.id,
+                viewsNumber : advertisement.advertisement,
+                user : advertisementUser.data,
+                createNumber : advertisementCrateNumber.data,
+                responces : advertisement.responses
             }
-
+            const newAdvertisementUser = makeNewUser(advertisementError)
             
+            localResponses[i].advertisement = newAdvertisementUser
 
+        
             let photos = [];
     
             if (localResponses[i].photos) {

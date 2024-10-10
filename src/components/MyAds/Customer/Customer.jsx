@@ -1,9 +1,36 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import cl from './Customer.module.css'
 import MyButton from '../../UI/MyButton/MyButton';
 import userPhoto from "../../../images/userPhoto/user.png"
 import Text from '../../Text/Text';
 const Customer = ({fl , photo, link, id, onImageClick}) => {
+
+    const openTelegrmaLink = useCallback( () => {
+        if (link && Number(link) > 0 ){
+            window.Telegram.WebApp.openTelegramLink(
+                "https://t.me/" + link
+              );
+        }
+        else{
+            window.Telegram.WebApp
+            .showPopup({
+              title: translation("Упс"),
+              message: "Похоже, у пользователя закрытый профиль",
+              buttons: [
+                { id: "save", type: "default", text: "Понятно" },
+              ],
+            } , (buttonId) => {
+        
+              if (buttonId === "save" || buttonId === null) {
+                console.log("Ok");
+                
+              }
+        
+        
+            } )
+        }
+
+} , [link] )
     return (
         <div className={cl.wrapper}>
             <img style={{
@@ -13,11 +40,7 @@ const Customer = ({fl , photo, link, id, onImageClick}) => {
                 <Text>{fl}</Text>
                 <Text>Заказчик</Text>
             </div>
-            <MyButton hard = {true} onClick = {() => {
-                      window.Telegram.WebApp.openTelegramLink(
-                        "https://t.me/" + link
-                      );
-              }}  style = {{marginLeft : "auto"}}>
+            <MyButton hard = {true} onClick = {openTelegrmaLink}  style = {{marginLeft : "auto"}}>
                 НАПИСАТЬ
             </MyButton>
         </div>

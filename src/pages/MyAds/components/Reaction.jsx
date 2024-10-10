@@ -55,7 +55,41 @@ const Reaction = ({
       /// какая - то логика лет 
     }
   } , []  )
+
+
+  
   console.log(responce)
+
+
+  const openTelegrmaLink = useCallback( () => {
+    if (responce.user.link && Number(responce.user.link) > 0 ){
+        window.Telegram.WebApp.openTelegramLink(
+            "https://t.me/" + responce.user.link
+          );
+    }
+    else{
+        window.Telegram.WebApp
+        .showPopup({
+          title: translation("Упс"),
+          message: "Похоже, у пользователя закрытый профиль",
+          buttons: [
+            { id: "save", type: "default", text: "Понятно" },
+          ],
+        } , (buttonId) => {
+    
+          if (buttonId === "save" || buttonId === null) {
+            console.log("Ok");
+            
+          }
+    
+    
+        } )
+    }
+
+} , [responce.user.link] )
+
+
+
   return (
     <>
       <div
@@ -88,7 +122,7 @@ const Reaction = ({
               openAboutReactionFunc({ isActive: true, responce: responce });
             }}
             className="icon"
-            src={responce.user.photo.length > 0 ? responce.user.photo.split('https://').length === 2 ? responce.user.photo : `${process.env.REACT_APP_HOST}/${responce.user.id}/${responce.user.photo}` : userPhoto}
+            src={ responce.user.photo ?? responce.user.photo.length > 0 ? responce.user.photo.split('https://').length === 2 ? responce.user.photo : `${process.env.REACT_APP_HOST}/${responce.user.id}/${responce.user.photo}` : userPhoto}
             alt=""
           />
           <div
@@ -109,7 +143,7 @@ const Reaction = ({
                   : {}
               }
             >
-              {responce.user.fl.length > 9 ? responce.user.fl.slice(0,9) + '...' : responce.user.fl}
+              {  responce.user.fl.length > 9 ? responce.user.fl.slice(0,9) + '...' : responce.user.fl}
             </Text>
             <div className="reaction__rates">
               {/* <img src={star} alt="" /> */}
@@ -154,11 +188,7 @@ const Reaction = ({
               <MyButton
                 hard = {true}
                 style = {writeButton ? {} : {display : "none"}}
-                onClick={() => {
-                  window.Telegram.WebApp.openTelegramLink(
-                    "https://t.me/" + responce.user.link
-                  );
-                }}
+                onClick={openTelegrmaLink}
               >
                 Написать
               </MyButton>
@@ -202,11 +232,7 @@ const Reaction = ({
             <MyButton
               hard = {true}
               className="bottom__two"
-              onClick={() => {
-                window.Telegram.WebApp.openTelegramLink(
-                  "https://t.me/" + responce.user.link
-                );
-              }}
+              onClick={openTelegrmaLink}
             >
               Написать
             </MyButton>
