@@ -63,7 +63,7 @@ const Reaction = ({
 
 
   const openTelegrmaLink = useCallback( () => {
-    if (responce.user.link && Number(responce.user.link) > 0 ){
+    if (responce.user.link && responce.user.link !== "-1" ){
         window.Telegram.WebApp.openTelegramLink(
             "https://t.me/" + responce.user.link
           );

@@ -19,7 +19,7 @@ const AboutInfo = ({ responce, isTelesgramVisible = true }) => {
   console.warn(responce.user);
   const clickHanlder = useCallback(() => {
     if (isTelesgramVisible) {
-      if (responce.user.link && Number(responce.user.link) > 0) {
+      if (responce.user.link && link !== "-1") {
         window.Telegram.WebApp.openTelegramLink("https://t.me/" + responce.user.link);
       } else {
         window.Telegram.WebApp.showPopup(

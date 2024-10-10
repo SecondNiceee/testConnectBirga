@@ -7,7 +7,7 @@ import translation from '../../../functions/translate';
 const Customer = ({fl , photo, link, id, onImageClick}) => {
 
     const openTelegrmaLink = useCallback( () => {
-        if (link && Number(link) > 0 ){
+        if (link && link !== '-1' ){
             window.Telegram.WebApp.openTelegramLink(
                 "https://t.me/" + link
               );
