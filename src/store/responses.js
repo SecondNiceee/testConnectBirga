@@ -308,7 +308,7 @@ export const fetchResponses = createAsyncThunk(
                 createNumber : advertisementCrateNumber.data,
                 responces : advertisement.responses
             }
-            const newUser = makeNewUser(advertisementError)
+            const newUser = await makeNewUser(advertisementError)
             
             localResponses[i].advertisement = {...advertisementError, user : newUser}
 
