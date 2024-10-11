@@ -313,7 +313,6 @@ export const fetchResponses = createAsyncThunk(
             localResponses[i].advertisement = {...advertisementError, user : newUser}
 
             console.warn(localResponses[i].advertisement)
-            console.warn(newUser)
 
         
             let photos = [];
