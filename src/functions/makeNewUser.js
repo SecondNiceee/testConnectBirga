@@ -15,6 +15,9 @@ export default async function makeNewUser(order) {
           params: {
             userId: newUser.id,
           },
+          headers : {
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+           } 
         }
       );
       newUser.photo = responce.data.photo;
