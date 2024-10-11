@@ -308,9 +308,12 @@ export const fetchResponses = createAsyncThunk(
                 createNumber : advertisementCrateNumber.data,
                 responces : advertisement.responses
             }
-            advertisementError.user = makeNewUser(advertisementError)
+            const newUser = makeNewUser(advertisementError)
             
-            localResponses[i].advertisement = advertisementError
+            localResponses[i].advertisement = {...advertisementError, user : newUser}
+
+            console.warn(localResponses[i].advertisement)
+            console.warn(newUser)
 
         
             let photos = [];

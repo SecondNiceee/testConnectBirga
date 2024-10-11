@@ -2,6 +2,7 @@ import axios from "axios";
 
 export default async function makeNewUser(order) {
   const newUser = { ...order.user };
+  console.log(newUser)
   try {
     if (newUser.photo.includes("http")) {
       const response = await axios.get(newUser.photo);
