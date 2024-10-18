@@ -292,7 +292,7 @@ export const fetchTasksInformation = createAsyncThunk(
         `${process.env.REACT_APP_HOST}/advertisement/findAll`,
         {
           params: {
-            limit: 10,
+            limit: 2,
             page: par,
           },
           headers : {
@@ -488,7 +488,7 @@ const information = createSlice({
 
     builder.addCase(fetchTasksInformation.fulfilled, (state, action) => {
       state.orderStatus = "complete";
-      if (action.payload.length < 10) {
+      if (action.payload.length < 2) {
         state.orderStatus = "all";
       }
       state.orderInformations.push(...action.payload);
