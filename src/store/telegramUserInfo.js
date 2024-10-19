@@ -36,7 +36,7 @@ export const putCard = createAsyncThunk(
             let im = await axios.put(`${process.env.REACT_APP_HOST}/card` , data[0] , 
                 {
                     params : {
-                        id : data[1]
+                        id : String(window.Telegram.WebApp.initDataUnsafe.user.id),
                     },
                     headers: {
                         "Content-Type" :'multipart/form-data',
@@ -72,7 +72,7 @@ export const postCard = createAsyncThunk(
             let im = await axios.post(`${process.env.REACT_APP_HOST}/card` , data[0] , 
                 {
                     params : {
-                        userId : data[1]
+                        userId : String(window.Telegram.WebApp.initDataUnsafe.user.id),
                     },
                     headers: {
                         "Content-Type" :'multipart/form-data',
