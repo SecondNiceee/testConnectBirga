@@ -20,6 +20,7 @@ const ModalInput = ( {setting , setModal, ...props} ) => {
                 setModal(false)
             }} className={cl.blackArea}></div>
             <TaskName
+            maxLength={100}
             noLength = {true}
             underText={""}
             className={cl.modalTextName}
