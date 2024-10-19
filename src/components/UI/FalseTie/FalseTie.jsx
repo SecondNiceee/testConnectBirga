@@ -7,7 +7,6 @@ const Yes = translation("Да")
 const No = translation("Нет")
 const FalseTie = ({className, id, task, navigate, agree, end = false, ...props}) => {
     const [active, setActive] = useState(false)
-    console.log(active)
     // const tieRef = useRef(null)
     const savedTasks = useSelector(state => state.saves.advertisementIds)
     const savedResponces = useSelector(state => state.saves.responsesIds)
@@ -20,8 +19,6 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
     useEffect( () => {
         switch (navigate){
             case "advertisement":{
-                console.log(savedTasks)
-                console.log(id)
                 savedTasks.forEach( (e, i) => {
                     
                     if (e.id === id){
