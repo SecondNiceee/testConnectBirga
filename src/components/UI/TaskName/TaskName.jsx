@@ -38,7 +38,7 @@ const TaskName = ({className , text , title , setText , noLength = false, maxLen
         <div {...props} className = { className ? [ cl.TaskName, className].join(' ') : cl.TaskName}>
             <GreyText className={cl.GreyText}>{title}</GreyText>
             <CreateInput
-            maxLength = {50}
+            maxLength = {maxLength}
             noLength = {noLength}
              style = {errorValue
                 ? {border : 'solid 1px #FF6767'}
