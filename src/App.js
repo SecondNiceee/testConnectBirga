@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import axios from 'axios'
 
 import "./css/Main.css";
 import "./css/Fonts.css";
@@ -111,6 +112,14 @@ const AnimatedSwitch = () => {
       navigate('/HappyPage')
     }
   } , [congratulate, navigate, showCongradulate] )
+
+  useEffect(() => {
+    axios.put(`${process.env.REACT_APP_HOST}/user/visit`, {
+      params: {
+        userId: useSelector(state => state.telegramUserInfo.id)
+      }
+    })
+  }, [])
   
   
   return (
