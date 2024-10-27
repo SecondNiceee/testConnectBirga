@@ -121,7 +121,7 @@ const AnimatedSwitch = () => {
         userId: userId
       }
     })
-  }, [])
+  }, [userId])
   
   
   return (
