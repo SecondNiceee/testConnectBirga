@@ -115,6 +115,7 @@ const AnimatedSwitch = () => {
   } , [congratulate, navigate, showCongradulate] )
 
   useEffect(() => {
+    console.log(userId)
     axios.put(`${process.env.REACT_APP_HOST}/user/visit`, {
       params: {
         userId: userId
