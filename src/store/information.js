@@ -344,9 +344,13 @@ export const fetchTasksInformation = createAsyncThunk(
           }
           catch{
             try{
-            const responce = await axios.put('https://www.connectbirga.ru/user/photo' , {}, {
+              console.log("photo update")
+            const responce = await axios.put(`${process.env.REACT_APP_HOST}/user/photo`, {}, {
               params : {
                 userId : newUser.id
+              },
+              headers : {
+                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
             })
             newUser.photo = responce.data

@@ -116,11 +116,11 @@ const AnimatedSwitch = () => {
 
   useEffect(() => {
     console.log(userId)
-    axios.put(`${process.env.REACT_APP_HOST}/user/visit`, {
+    axios.put(`${process.env.REACT_APP_HOST}/user/visit`, {}, {
       params: {
         userId: userId
       },
-      headers : {
+      headers: {
         "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
       }
     })
