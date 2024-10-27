@@ -38,7 +38,7 @@ export const fetchResponseByAdvertisement = createAsyncThunk(
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-                  }
+                }
             } )
     
             responces[i].photos = photos;
