@@ -118,7 +118,7 @@ const AnimatedSwitch = () => {
     console.log(userId)
     axios.put(`${process.env.REACT_APP_HOST}/user/visit`, {}, {
       params: {
-        userId: userId
+        userId: String(userId)
       },
       headers: {
         "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
