@@ -104,6 +104,7 @@ const AnimatedSwitch = () => {
   }, [location.pathname]);
 
   const congratulate = useSelector(state => state.telegramUserInfo.congratulate)
+  const userId = useSelector(state => state.telegramUserInfo.id)
 
   const [showCongradulate , setShowCongradulate] = useState(true)
 
@@ -116,7 +117,7 @@ const AnimatedSwitch = () => {
   useEffect(() => {
     axios.put(`${process.env.REACT_APP_HOST}/user/visit`, {
       params: {
-        userId: useSelector(state => state.telegramUserInfo.id)
+        userId: userId
       }
     })
   }, [])
