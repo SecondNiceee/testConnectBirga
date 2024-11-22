@@ -3,7 +3,8 @@ import axios from "axios";
 
 export const shareFunction = (id) => async () => {
     const repsonse = await axios.post(`${process.env.REACT_APP_HOST}/bot/getMailingMessage` , {
-      "advertisementId" : id
+      "advertisementId" : id,
+      "userId" : Number(window.Telegram.WebApp.initDataUnsafe.user.id)
     }, {
         headers : {
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
