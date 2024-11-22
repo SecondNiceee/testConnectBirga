@@ -16,8 +16,11 @@ export const shareFunction = (id) => async () => {
     const messageId = repsonse.data
     console.log(messageId)
     window.Telegram.WebApp.shareMessage({
-        prepared_message_id: messageId // подставьте полученный prepared_message_id
+        message_id: messageId
+      }).then((result) => {
+        console.log("Сообщение успешно отправлено:", result);
+      }).catch((error) => {
+        console.error("Ошибка при отправке сообщения:", error);
       });
-
 
 }
