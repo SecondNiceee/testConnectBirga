@@ -112,12 +112,7 @@ const ResponseBlock = ({
             <Pallete category={category} />
             <Text>{taskName}</Text>
             <ShareIcon
-              onClick={() => {
-                window.Telegram.WebApp.openTelegramLink(
-                  "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/task?startapp=" +
-                    String(id)
-                );
-              }}
+              onClick={ShareIcon(id)}
               className="share__icon"
             />
           </div>

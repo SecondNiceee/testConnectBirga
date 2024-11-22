@@ -9,6 +9,7 @@ import Text from "../Text/Text";
 import en from "../../constants/language";
 import RealTon from "../../images/icons/RealTon.svg"
 import translation from "../../functions/translate";
+import { shareFunction } from "../../functions/shareFunction";
 
 const textPrice = en ? 'USD' : "RUB"
 const MyFirstBlock = ({
@@ -131,11 +132,7 @@ const MyFirstBlock = ({
             <Pallete category={category} />
             <Text className={isWatched ? "watchedTask" : ""}>{taskName}</Text>
             <ShareIcon
-              onClick={() => {
-                window.Telegram.WebApp.openTelegramLink(
-                    `https://t.me/share/url?text=%0A${translation("Задание")} «${taskName}» ${translation("на Коннект Бирже")}&url=https://t.me/ConnectexBot/task?startapp=${String(id)}`
-                );
-              }}
+              onClick={shareFunction(id)}
               style={end ? { opacity: 0.5 } : {}}
               className="share__icon"
             />

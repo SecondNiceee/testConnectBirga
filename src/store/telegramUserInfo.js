@@ -33,6 +33,8 @@ export const putCard = createAsyncThunk(
     "telegramUserInfo/putCard",
     async function (data){
         try{
+            //window.Telegram.WebApp.initDataUnsafe.user.id 
+            //
             let im = await axios.put(`${process.env.REACT_APP_HOST}/card` , data[0] , 
                 {
                     params : {
