@@ -3,10 +3,7 @@ import React, { memo, useCallback, useEffect,  useRef, useState,  } from "react"
 import { useSelector,  } from "react-redux";
 import PickerTwo from "./PickerTwo";
 import PickerOne from "./PickerOne";
-import { CSSTransition } from "react-transition-group";
-import PhotosSlider from "../../../components/UI/PhotosSlider/PhotosSlider";
-import useSlider from "../../../hooks/useSlider";
-import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
+
 
 
 const PickerContent = ({
@@ -16,19 +13,16 @@ const PickerContent = ({
   valueOne,
   setMyResponse,
   responsesArr,
-  myAdsArray
+  myAdsArray,
+  setSlideOpened,
+  setPhotoIndex,
+  setPhotos
 }) => {
 
-
-  
 
   const buttonFunction = useCallback( (index) => {
       setMyResponse({isOpen : true , id : index})
   } , [setMyResponse]  )
-
-
-
-
 
   const containerOne = useRef(null)
   const containerTwo = useRef(null)
@@ -75,10 +69,6 @@ const PickerContent = ({
   }  , [nowValue, responsesArr, myAdsArray, advertisementStatus, responsesStatus, viewsNumber] )
   
 
-  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
-
-
-
   return (
     <>
       <div
@@ -98,7 +88,6 @@ const PickerContent = ({
 
       </div>
 
-      <CssTransitionSlider blockerAll={true} setSliderOpened={setSlideOpened} top={false} leftPosition={0} blockerId={""} isSliderOpened={isSliderOpened}  renderMap={photos} sliderIndex={photoIndex} swiperId={"1"}    />
       
     </>
   );

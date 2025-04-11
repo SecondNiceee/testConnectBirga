@@ -27,6 +27,9 @@ const ShowMyResponse = ({
   deleteFunction,
   setLastAds,
   openAboutReaction,
+  setSlideOpened,
+  setPhotos,
+  setPhotoIndex
 }) => {
 
   const address = useSelector( state => state.telegramUserInfo.address )
@@ -168,7 +171,6 @@ const ShowMyResponse = ({
     response.advertisement.createNumber,
   ]);
 
-  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
 
   return (
     <>
@@ -212,7 +214,6 @@ const ShowMyResponse = ({
           
         </div>
       )}
-      <CssTransitionSlider blockerAll={true} blockerId={""} isSliderOpened={isSliderOpened} leftPosition={0} renderMap={photos} setSliderOpened={setSlideOpened} sliderIndex={photoIndex} swiperId={"1"} top={0}  />
     </>
   );
 };

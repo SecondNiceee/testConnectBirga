@@ -31,6 +31,8 @@ import useBack from "./components/useBack";
 import pagesHistory from "../../constants/pagesHistory";
 import { USERID } from "../../constants/tgStatic.config";
 import useBlockInputs from "../../hooks/useBlockInputs";
+import useSlider from "../../hooks/useSlider";
+import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
 
 
 let detailsVar;
@@ -614,7 +616,7 @@ const MyAds = ({isPage = false}) => {
     setOpen( (value) => ({...value , isActive : false}) )
     setOpenAboutReaction((value) => ({...value , isActive : false}))
     setSecondPage( (value) => ({...value , isActive : false}) )
-  
+
   } , [changer])
 
 
@@ -636,6 +638,8 @@ const MyAds = ({isPage = false}) => {
     }
   } , [isPage, setSecondPage] )
 
+  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
+
   return (
     <>
       { postStatus === "pending" ? (
@@ -647,6 +651,9 @@ const MyAds = ({isPage = false}) => {
         >
 
           <MyAdOne
+          setPhotoIndex={setPhotoIndex}
+          setPhotos={setPhotos}
+          setSlideOpened={setSlideOpened}
           responsesArr = {filteredResponses}
           setMyResponse = {setMyResponse}
             setOneValue = {setValueOne}
@@ -684,6 +691,9 @@ const MyAds = ({isPage = false}) => {
             unmountOnExit
           >
             <AboutOne
+            setPhotos={setPhotos}
+            setPhotoIndex={setPhotoIndex}
+            setSlideOpened={setSlideOpened}
             setDetailsShow={setShowDetails}
             style = { (isPageValueOne && isPage) ? {left : "0px"} : {}}
             setDetails={setDetails}
@@ -705,6 +715,9 @@ const MyAds = ({isPage = false}) => {
             unmountOnExit
           >
             <LastAds
+              setPhotoIndex={setPhotoIndex}
+              setPhotos={setPhotos}
+              setSlideOpened={setSlideOpened}
              style = { (isPageValueTwo && isPage) ? {left : "0px" , transition : "0s", transform : "translateX(0px)"} : {left : "0px" , transition : "0s", transform : "translateX(0px)"}}
             responce = {myAdOneResponse}
               openAboutReactionFunc={setOpenAboutReaction}
@@ -714,6 +727,7 @@ const MyAds = ({isPage = false}) => {
 
 
           <CSSTransition
+
             classNames="left-right"
             in={lastAdsTwo.isOpen}
             timeout={400}
@@ -736,7 +750,7 @@ const MyAds = ({isPage = false}) => {
             mountOnEnter
             unmountOnExit
           >
-            <AboutReaction isFirst={false} isMyAds={true} setOneCard = {setOneCard} responce = {openAboutReaction.responce}   />
+            <AboutReaction setPhotoIndex={setPhotoIndex} setPhotos={setPhotos} setSlideOpened={setSlideOpened} isFirst={false} isMyAds={true} setOneCard = {setOneCard} responce = {openAboutReaction.responce}   />
           </CSSTransition>
 
           <CSSTransition
@@ -746,7 +760,7 @@ const MyAds = ({isPage = false}) => {
             mountOnEnter
             unmountOnExit
           >
-           <CardPage card={oneCards.card} />
+           <CardPage setPhotoIndex={setPhotoIndex} setPhotos={setPhotos} setSlideOpened={setSlideOpened}   card={oneCards.card} />
       </CSSTransition>
 
 
@@ -758,7 +772,7 @@ const MyAds = ({isPage = false}) => {
         mountOnEnter
   
       > 
-        <ShowMyResponse openAboutReaction = {setOpenAboutReaction} setLastAds = {setLastAdsTwo} deleteFunction = {deleteFunction}  index={myResponse.id} openDetails = {openDetails} response={filteredResponses[myResponse.id]} />
+        <ShowMyResponse setPhotoIndex={setPhotoIndex} setPhotos={setPhotos} setSlideOpened={setSlideOpened} openAboutReaction = {setOpenAboutReaction} setLastAds = {setLastAdsTwo} deleteFunction = {deleteFunction}  index={myResponse.id} openDetails = {openDetails} response={filteredResponses[myResponse.id]} />
       </CSSTransition>
 
 
@@ -806,12 +820,11 @@ const MyAds = ({isPage = false}) => {
         </CSSTransition>
 
 
-
-
         </div>
 
+        )}
 
-      )}
+        <CssTransitionSlider blockerAll={true} blockerId={""} isSliderOpened={isSliderOpened} leftPosition={0} renderMap={photos} setSliderOpened={setSlideOpened} sliderIndex={photoIndex} swiperId={"1"} top={0} />
     </>
   );
 };

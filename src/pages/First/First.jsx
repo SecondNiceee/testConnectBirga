@@ -215,7 +215,7 @@ const First = ({ isPage = false }) => {
     pageValue
   ]);
 
-  const isMyResponse = useIsMyResponse({detailsAdertisement})
+  const isMyResponse = useIsMyResponse({detailsAdertisement, isDetailsActive})
 
   const [isProfile, setProfile] = useState(false);
 

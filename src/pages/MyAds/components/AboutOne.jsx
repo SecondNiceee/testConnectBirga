@@ -24,6 +24,9 @@ const AboutOne = ({
   setDetails,
   setDetailsShow,
   openAboutReactionFunc,
+  setPhotoIndex,
+  setPhotos,
+  setSlideOpened,
   ...props
 }) => {
   const responces = useSelector((state) => state.responses.responsesByA);
@@ -108,14 +111,7 @@ const AboutOne = ({
 
   const putStatus = useSelector((state) => state.information.putTaskStatus);
 
-  const {
-    isSliderOpened,
-    photoIndex,
-    photos,
-    setPhotoIndex,
-    setPhotos,
-    setSlideOpened,
-  } = useSlider();
+
   return (
     <>
       <div className="aboutOne" {...props}>
@@ -153,17 +149,6 @@ const AboutOne = ({
           setOpen={setOpen}
         />
       </div>
-      <CssTransitionSlider
-        blockerAll={true}
-        blockerId={""}
-        isSliderOpened={isSliderOpened}
-        leftPosition={0}
-        renderMap={photos}
-        setSliderOpened={setSlideOpened}
-        sliderIndex={photoIndex}
-        swiperId={"1"}
-        top={0}
-      />
     </>
   );
 };

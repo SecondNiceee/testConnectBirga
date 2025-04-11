@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { USERID } from "../../../constants/tgStatic.config";
 
-const useIsMyResponse = ({detailsAdertisement}) => {
+const useIsMyResponse = ({detailsAdertisement, isDetailsActive}) => {
       const gotIt = useMemo( () => {
         if (detailsAdertisement){
           if (detailsAdertisement.responces){

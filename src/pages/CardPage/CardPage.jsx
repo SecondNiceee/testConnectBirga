@@ -5,10 +5,8 @@ import FullDescription from "../../components/First/FirstDetails/FullDescription
 import LinkComp from "../../components/CardPage/Link/LinkComp";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import translation from "../../functions/translate";
-import useSlider from "../../hooks/useSlider";
-import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
 const menu = document.documentElement.querySelector(".FirstMenu");
-const CardPage = ({ card, ...props }) => {
+const CardPage = ({ card, setPhotoIndex, setPhotos, setSlideOpened, ...props }) => {
   window.Telegram.WebApp.disableVerticalSwipes();
 
   useEffect(() => {
@@ -68,14 +66,7 @@ const CardPage = ({ card, ...props }) => {
     );
   }, [card.dropfileLink, card.behanceLink, card.dribbbleLink]);
 
-  const {
-    isSliderOpened,
-    photoIndex,
-    photos,
-    setPhotoIndex,
-    setPhotos,
-    setSlideOpened,
-  } = useSlider();
+
 
   return (
     <>
@@ -106,17 +97,6 @@ const CardPage = ({ card, ...props }) => {
           {linksComponents}
         </div>
       )}
-      <CssTransitionSlider
-        blockerAll={true}
-        blockerId={""}
-        isSliderOpened={isSliderOpened}
-        leftPosition={0}
-        renderMap={photos}
-        setSliderOpened={setSlideOpened}
-        sliderIndex={photoIndex}
-        swiperId={"1"}
-        top={0}
-      />
     </>
   );
 };

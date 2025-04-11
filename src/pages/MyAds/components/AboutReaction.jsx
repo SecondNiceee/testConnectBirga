@@ -11,8 +11,6 @@ import Stage from "../../../components/UI/Stage/Stage";
 import Compact from "../../../components/UI/Compact/Compact";
 import makeNewFile from "../../../functions/newMakeFile";
 import MainButton from "../../../constants/MainButton";
-import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
-import useSlider from "../../../hooks/useSlider";
 
 const AboutReaction = ({
   responce,
@@ -21,6 +19,9 @@ const AboutReaction = ({
   isTelesgramVisible,
   isMyAds,
   isFirst,
+  setPhotoIndex,
+  setPhotos,
+  setSlideOpened,
   ...props
 }) => {
   const [cards, setCards] = useState(null);
@@ -73,14 +74,6 @@ const AboutReaction = ({
     [setOneCard]
   );
 
-  const {
-    isSliderOpened,
-    photoIndex,
-    photos,
-    setPhotoIndex,
-    setPhotos,
-    setSlideOpened,
-  } = useSlider();
 
   console.log("Тут тут")
 
@@ -127,17 +120,6 @@ const AboutReaction = ({
         )}
       </div>
 
-      <CssTransitionSlider
-        blockerAll={true}
-        blockerId={""}
-        isSliderOpened={isSliderOpened}
-        leftPosition={isFirst ? "100vw" : 0}
-        renderMap={photos}
-        setSliderOpened={setSlideOpened}
-        sliderIndex={photoIndex}
-        swiperId={"1"}
-        top={0}
-      />
     </>
   );
 };

@@ -11,8 +11,10 @@ import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransiti
 import useSlider from "../../../hooks/useSlider";
 const LastAds = ({
   openAboutReactionFunc,
-
   responce,
+  setPhotoIndex,
+  setPhotos,
+  setSlideOpened,
   ...props
 }) => {
   const dispatch = useDispatch();
@@ -27,8 +29,6 @@ const LastAds = ({
     }
     // eslint-disable-next-line
   }, []);
-
-  const {isSliderOpened,photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
 
   return (
     <>
@@ -66,7 +66,7 @@ const LastAds = ({
         {/* 
         <textarea className="last-textarea" name="" id="" value={text} /> */}
       </div>
-      <CssTransitionSlider blockerAll={true} blockerId={""} isSliderOpened={isSliderOpened} leftPosition={0} renderMap={photos} setSliderOpened={setSlideOpened} sliderIndex={photoIndex} swiperId={"1"} top={0} />
+
     </>
   );
 
