@@ -19,7 +19,7 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, 
 
     const closeSliderFunction = useCallback( () => {
         setSliderOpened(false)
-    } )
+    }, [] )
 
     useEffect( () => {
         const buttonText = MainButton.text
@@ -75,9 +75,6 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, 
     };
 
     const numberOfPhotos = renderMap.length
-
-
-    console.log(left);
 
     return (
         <div ref={ref} className={`w-[100vw] h-[100vh] fixed z-[200000] flex-col bg-black flex justify-center items-center`} style={{

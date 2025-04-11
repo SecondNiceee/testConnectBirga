@@ -39,7 +39,7 @@ const ResponseBlock = ({
 
   const watchingValue = useMemo(() => {
     if (isWatched === "") {
-      return "Не просмотрено";
+    return "Не просмотрено";
     }
     if (isWatched === "watched") {
       return "Просмотрено";

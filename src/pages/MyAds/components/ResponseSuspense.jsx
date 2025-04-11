@@ -34,7 +34,7 @@ const ResponseSuspense = ({func , index, buttonText , task, isWatched, advertise
         <div style={!isVisible ? style : {position : "relative"}} className="First__block">
             {
                 isVisible && <Suspense fallback = {<BlockSpinner style = {advertisement.photos.length > 0 ? {minHeight : "315px"} : {minHeight : "178px"}} />}>
-                    <ResponseBlock   setSlideOpened = {setSlideOpened} setPhotos = {setPhotos} setPhotoIndex = {setPhotoIndex}  func={func} index={index} buttonText={buttonText} task={task} isWatched={isWatched} {...advertisement} />
+                    <ResponseBlock  setSlideOpened = {setSlideOpened} setPhotos = {setPhotos} setPhotoIndex = {setPhotoIndex}  func={func} index={index} buttonText={buttonText} task={task} isWatched={isWatched} {...advertisement} />
                 </Suspense>
             }
             <div ref={ref} style={{

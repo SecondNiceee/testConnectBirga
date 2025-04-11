@@ -33,6 +33,8 @@ import useMenuRejection from "./hooks/useMenuRejection";
 import useBlockInputs from "../../hooks/useBlockInputs";
 import useAddHistory from "../../hooks/MyAds/useAddHistory";
 import useSlider from "../../hooks/useSlider";
+import useFilteredArray from "./hooks/useFilteredArray";
+import useIsMyResponse from "./hooks/useIsMyResponse";
 
 let isDetailsActiveVar = false;
 let localResponce;
@@ -100,7 +102,6 @@ const First = ({ isPage = false }) => {
     shablonMaker: false,
   });
 
-  const tonConstant = useSelector((state) => state.ton.value);
 
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
@@ -120,32 +121,7 @@ const First = ({ isPage = false }) => {
     window.Telegram.WebApp.disableVerticalSwipes();
   }, []);
 
-  const secFilteredArray = useMemo(() => {
-    let copy = [...filteredArr];
-    if (filters.category.id !== -1) {
-      if (filters.subCategory.id !== -1) {
-        return copy.filter((e) => {
-          return (
-            e.category === filters.category.id &&
-            e.subCategory === filters.subCategory.id &&
-            e.tonValue * tonConstant >= filters.price
-          );
-        });
-      } else {
-        return copy.filter((e) => {
-          return (
-            e.category === filters.category.id &&
-            e.tonValue * tonConstant >= filters.price
-          );
-        });
-      }
-    } else {
-      return copy.filter((e) => {
-        return e.tonValue * tonConstant >= filters.price;
-      });
-    }
-  }, [filteredArr, filters, tonConstant]);
-
+  const secFilteredArray = useFilteredArray({filteredArr, filters})
 
   const [pageAdvertisement, setPageAdvertisement] = useState(null);
 
@@ -239,28 +215,14 @@ const First = ({ isPage = false }) => {
     pageValue
   ]);
 
+  const isMyResponse = useIsMyResponse({detailsAdertisement})
 
-  const gotIt = useMemo( () => {
-    console.log(detailsAdertisement);
-    
-    if (detailsAdertisement){
+  const [isProfile, setProfile] = useState(false);
 
-      if (detailsAdertisement.responces){
-        console.log(detailsAdertisement)
-        if (detailsAdertisement.responces.find((e) =>
-          String(e.user.id) === USERID) || String(detailsAdertisement.user.id) === USERID)
-
-        {
-          return true
-        }
-        else{
-          return false
-        }
-      }
-    }
-    return false
-    // eslint-disable-next-line
-  },[detailsAdertisement,isDetailsActive.isOpen ] )
+  const [isCardOpen, setCardOpen] = useState({
+    isOpen: false,
+    card: {},
+  });
 
   useEffect(() => {
     if (isDetailsActive.isOpen) {
@@ -270,79 +232,78 @@ const First = ({ isPage = false }) => {
 
   isDetailsActiveVar = isDetailsActive.isOpen;
 
-  const [isProfile, setProfile] = useState(false);
-
-  const [isCardOpen, setCardOpen] = useState({
-    isOpen: false,
-    card: {},
-  });
-
+  const {isSliderOpened, photoIndex, photos, setPhotoIndex ,setPhotos, setSlideOpened} = useSlider()
 
   useEffect(() => {
     function closeDetails() {
       setDetailsActive((value) => ({ ...value, isOpen: false }));
     }
-
     function forward() {
-      if (gotIt) {
-        window.Telegram.WebApp.showPopup({
-          title: translation("Ошибка"),
-          message:
-            translation("Задание ваше или вы откликнулись уже на него."),
-        });
-      } else {
-        if (step === 0){
-        
-            setStep(1)
-          
-
+      if (!isSliderOpened){
+        if (isMyResponse) {
+          window.Telegram.WebApp.showPopup({
+            title: translation("Ошибка"),
+            message:
+              translation("Задание ваше или вы откликнулись уже на него."),
+          });
+        } else {
+          if (step === 0){
+              setStep(1)
+          }
         }
+      }
+      else{
+        setSlideOpened(false)
       }
     }
 
     function back() {
-      if (responce.isShablonModalActive) {
-        setResponce((value) => ({ ...value, isShablonModalActive: false }));
-      } else {
-        if (responce.shablonMaker) {
-          setResponce((value) => ({ ...value, shablonMaker: false }));
+      if (!isSliderOpened){
+        if (responce.isShablonModalActive) {
+          setResponce((value) => ({ ...value, isShablonModalActive: false }));
         } else {
-          if (step === 1) {
-            setStep(0);
-            MainButton.setParams({
-              is_active: true,
-              color: "#2ea5ff",
-              text_color: "#ffffff",
-            });
-
-            // mainRef.current.classList.remove('secondStep')
+          if (responce.shablonMaker) {
+            setResponce((value) => ({ ...value, shablonMaker: false }));
           } else {
-            if (isCardOpen.isOpen) {
-              setCardOpen((value) => ({ ...value, isOpen: false }));
+            if (step === 1) {
+              setStep(0);
+              MainButton.setParams({
+                is_active: true,
+                color: "#2ea5ff",
+                text_color: "#ffffff",
+              });
+              // mainRef.current.classList.remove('secondStep')
             } else {
-              if (isProfile) {
-                setProfile(false);
+              if (isCardOpen.isOpen) {
+                setCardOpen((value) => ({ ...value, isOpen: false }));
               } else {
-                if (step === 0) {
-                  setResponce({
-                    text: "",
-                    photos: [],
-                    name: "привет",
-                    isShablonModalActive: false,
-                    shablonIndex: 0,
-                    isShablon: false,
-                    shablonMaker: false,
-                  });
-                  closeDetails();
-                  setPageValue(false)
+                if (isProfile) {
+                  setProfile(false);
+                } else {
+                  if (step === 0) {
+                    setResponce({
+                      text: "",
+                      photos: [],
+                      name: "привет",
+                      isShablonModalActive: false,
+                      shablonIndex: 0,
+                      isShablon: false,
+                      shablonMaker: false,
+                    });
+                    closeDetails();
+                    setPageValue(false)
+                  }
                 }
               }
             }
           }
         }
+
+      }
+      else{
+        setSlideOpened(false)
       }
     }
-
     MainButton.onClick(forward);
     BackButton.onClick(back);
     if (isDetailsActiveVar) {
@@ -350,7 +311,7 @@ const First = ({ isPage = false }) => {
       menu.classList.remove("appearAnimation");
       MainButton.show();
       BackButton.show();
-      if (gotIt) {
+      if (isMyResponse) {
         MainButton.setParams({
           //неизвесетно
           color: "#2f2f2f",
@@ -366,7 +327,6 @@ const First = ({ isPage = false }) => {
                   color: "#2ea5ff",
                   text_color: "#ffffff",
                 });
-
               }
               else{
                 MainButton.setParams({
@@ -397,7 +357,7 @@ const First = ({ isPage = false }) => {
   }, [
     isDetailsActive.isOpen,
     step,
-    gotIt,
+    isMyResponse,
     responce.isShablonModalActive,
     responce.shablonMaker,
     isProfile,
@@ -406,7 +366,8 @@ const First = ({ isPage = false }) => {
     setCardOpen,
     detailsAdertisement,
     navigate,
-    address
+    address,
+    isSliderOpened
   ]);
 
   useEffect(() => {
@@ -569,7 +530,6 @@ const First = ({ isPage = false }) => {
             );
           }
     }
-
   }, [
     responce,
     step,
@@ -608,8 +568,6 @@ const First = ({ isPage = false }) => {
   useBlockInputs()
 
   useMenuRejection({setCardOpen, setCategoryOpen, setDetailsActive, setProfile, setResponce, setStep, setSubCategory})
-
-  const {isSliderOpened, photoIndex, photos, setPhotoIndex ,setPhotos, setSlideOpened} = useSlider()
 
   return (
     <>
