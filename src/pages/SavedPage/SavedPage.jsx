@@ -17,6 +17,9 @@ import AboutReaction from "../MyAds/components/AboutReaction";
 import { clearAll, fetchSavedAdvertisements, fetchSavedCards, fetchSavedResponses } from "../../store/saves";
 import translation from "../../functions/translate";
 import en from "../../constants/language";
+import { USERID } from "../../constants/tgStatic.config";
+import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
+import useSlider from "../../hooks/useSlider";
 
 const values = ["Заказы", "Отклики", "Кейсы"];
 const keys = ["advertisment", "responces", "cards"];
@@ -124,7 +127,7 @@ const SavedPage = () => {
       savedTasks[details.id]
     ) {
       if (savedTasks[details.id].responces) {
-        if (savedTasks[details.id].responces.find(e => String(e.user.id) === "window.Telegram.WebApp.initDataUnsafe.user.id")){
+        if (savedTasks[details.id].responces.find(e => String(e.user.id) === USERID)){
           return true
         }
         else{
@@ -394,7 +397,7 @@ const SavedPage = () => {
             // setShablon({...shablon , isActive : false})
           }
           if (buttonId === "save") {
-            postResponce(savedTasks[details.id].id, window.Telegram.WebApp.initDataUnsafe.user.id);
+            postResponce(savedTasks[details.id].id, USERID);
             setResponce((value) => ({ ...value, isOpen: false }));
             setDetails((value) => ({ ...value, isOpen: false }));
           }
@@ -433,7 +436,10 @@ const SavedPage = () => {
   } , [changer] )
 
 
+  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
   return (
+    <>
+
     <div className="saved-wraper">
       <FullPicker
         GreyIntWidth={GreyIntWidth}
@@ -475,7 +481,7 @@ const SavedPage = () => {
         unmountOnExit
         mountOnEnter
       >
-        <FirstDetails style = {{
+        <FirstDetails setPhotos={setPhotos} setPhotoIndex={setPhotoIndex} setSliderOpened={setSlideOpened}  style = {{
           zIndex : '2002'
         }}  orderInformation={myResponse.responce.advertisement} />
       </CSSTransition>
@@ -487,7 +493,7 @@ const SavedPage = () => {
         unmountOnExit
         mountOnEnter
       >
-        <FirstDetails setProfile={setProfile}  orderInformation={savedTasks[details.id]} />
+        <FirstDetails setPhotos={setPhotos} setPhotoIndex={setPhotoIndex} setSliderOpened={setSlideOpened} setProfile={setProfile}  orderInformation={savedTasks[details.id]} />
       </CSSTransition>
 
       <CSSTransition
@@ -528,9 +534,10 @@ const SavedPage = () => {
             <AboutReaction setOneCard={setCard} responce={savedTasks[details.id] ? { createNumber : savedTasks[details.id].createNumber  , user : savedTasks[details.id].user} : {}}
             />
           </CSSTransition>
-
-
     </div>
+        <CssTransitionSlider blockerAll={true} blockerId={""} isSliderOpened={isSliderOpened} leftPosition={0} renderMap={photos} setSliderOpened={setSlideOpened} sliderIndex={photoIndex}  swiperId={"1"} top={0}  />
+    </>
+
   );
 };
 

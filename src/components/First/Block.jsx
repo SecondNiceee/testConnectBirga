@@ -12,7 +12,6 @@ const Block = ({
   taskName,
   time,
   end = false,
-
   setDetailsActive,
   isButton,
   photos,
@@ -33,26 +32,36 @@ const Block = ({
   singleTime,
   whichOne,
   status,
-  showStatus = false
+  showStatus = false,
+  setPhotoIndex,
+  setPhotos,
+  setSliderOpened,
 }) => {
+
   const dispatch = useDispatch();
   const tonConstant = useSelector((state) => state.ton.value);
 
-  const timing = useMemo( () => {
-    if (!end){
-      return time
-    }
-    else{
-      if (whichOne === "startOnly"){
-        return {end : singleTime}
-      }
-      else{
-        return {end : endTime}
+  const timing = useMemo(() => {
+    if (!end) {
+      return time;
+    } else {
+      if (whichOne === "startOnly") {
+        return { end: singleTime };
+      } else {
+        return { end: endTime };
       }
     }
-  } , [end, endTime, singleTime, time, whichOne] )
+  }, [end, endTime, singleTime, time, whichOne]);
 
-  
+  const isFirstPagePhotos = !isMyAds && !isResponce && isButton // Фотки ли это первой странички
+  const isFirstDetailsPhotos = !isMyAds && !isResponce && !isButton // Фотки принадлежат подробнее в первом  первой страничке
+
+  const photosClickFunction = () => {
+    if (isFirstPagePhotos) {
+      setDetailsActive({ isOpen: true, id: index });
+    }
+  };
+
   return (
     <>
       {photos && (
@@ -61,20 +70,56 @@ const Block = ({
             className ? ["First__block", className].join(" ") : "First__block"
           }
         >
-          <Photos photos={photos} />
+          <Photos
+            isResponse = {isResponce}
+            isFirstDetailsPhotos = {isFirstDetailsPhotos}
+            setPhotoIndex={setPhotoIndex}
+            setPhotos={setPhotos}
+            setSliderOpened={setSliderOpened}
+            onClick={photosClickFunction}
+            photos={photos}
+          />
 
-          <MyAdsTop showStatus = {showStatus} status = {status} isMyAds={isMyAds} isResponce={isResponce} viewsNumber={viewsNumber} responseCounter={responseCounter} />
+          <MyAdsTop
+            showStatus={showStatus}
+            status={status}
+            isMyAds={isMyAds}
+            isResponce={isResponce}
+            viewsNumber={viewsNumber}
+            responseCounter={responseCounter}
+          />
 
-          <FirstMainTop isMyAds={isMyAds} category={category} isWatched={isWatched} taskName={taskName} id={id}  end={end} />
+          <FirstMainTop
+            isMyAds={isMyAds}
+            category={category}
+            isWatched={isWatched}
+            taskName={taskName}
+            id={id}
+            end={end}
+          />
 
-          <FirstMainMiddle  time={timing} />
+          <FirstMainMiddle time={timing} />
 
-        <MainBottom 
-          {...{tonConstant, tonValue, isMyAds, myAdsFunc, isButton, end, id, agree, task, isResponce, setDetailsActive,index, dispatch,deleteFunction}}
-            />
+          <MainBottom
+            {...{
+              tonConstant,
+              tonValue,
+              isMyAds,
+              myAdsFunc,
+              isButton,
+              end,
+              id,
+              agree,
+              task,
+              isResponce,
+              setDetailsActive,
+              index,
+              dispatch,
+              deleteFunction,
+            }}
+          />
         </div>
-      ) 
-    }
+      )}
     </>
   );
 };

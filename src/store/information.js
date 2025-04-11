@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 import makeNewFile from "../functions/newMakeFile";
+import { USERID } from "../constants/tgStatic.config";
 
 export const addWatch = createAsyncThunk(
   "information/addWatch",
@@ -109,75 +110,6 @@ export const postMyTask = createAsyncThunk(
         }
       }
 
-
-
-      // let tasks = [];
-      // let task = await axios.get(
-      //   `${process.env.REACT_APP_HOST}/advertisement/findByUser`,
-      //   {
-      //     params: {
-      //       page: 1,
-      //       userId: window.Telegram.WebApp.initDataUnsafe.user.id,
-      //       limit: 4,
-      //       // userId : window.Telegram.WebApp.initDataUnsafe.user.id
-      //     },
-      //     headers: {
-      //       "Content-Type": "multipart/form-data",
-      //       "Access-Control-Allow-Origin": "*",
-      //       "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-      //     },
-      //   }
-      // );
-
-
-      // if (task.data.length === 0) {
-      //   return [];
-      // } else {
-      //   for (let order of task.data) {
-      //     let files = await makeNewFile(order.folder, order.photos);
-      //     let responseCounter = await axios.get(`${process.env.REACT_APP_HOST}/response/countByAdvertisement` , {
-      //       params : {
-      //         "advertisementId" : order.id
-      //       },
-      //       headers : {
-      //         "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-      //       }
-      //     })
-      //     tasks.push({
-      //       id: order.id,
-      //       taskName: order.title,
-      //       executionPlace: "Можно выполнить удаленно",
-      //       time: {
-      //         start: new Date(order.startTime),
-      //         end: new Date(order.endTime),
-      //       },
-      //       tonValue: order.price,
-      //       taskDescription: order.description,
-      //       photos: files,
-      //       photosNames: order.photos,
-      //       rate: "5",
-      //       isActive: true,
-      //       creationTime: order.createdAt,
-      //       viewsNumber: order.views,
-      //       removedFiles: [],
-      //       addedFiles: [],
-      //       status: order.status,
-      //       user : order.user,
-      //       responseCounter : responseCounter.data,
-      //       category : order.category.id
-      //     });
-      //   }
-      //   return tasks;
-      // }
-
-
-
-    // } catch (e) {
-    //   alert(e)
-    //   alert("Произошла непредвиденная ошибка. Пожалуйста, попробуйте позже");
-    //   console.log(e);
-    // }
-
     return true;
   }
 );
@@ -215,9 +147,8 @@ export const fetchMyOrders = createAsyncThunk(
         {
           params: {
             page: page,
-            userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+            userId: USERID,
             limit: 1,
-            // userId : window.Telegram.WebApp.initDataUnsafe.user.id
           },
           headers: {
             "Content-Type": "multipart/form-data",

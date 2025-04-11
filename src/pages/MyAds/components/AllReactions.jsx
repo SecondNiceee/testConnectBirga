@@ -2,6 +2,8 @@ import React from "react";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ReactionBlock from "./ReactionBlock";
 import { useSelector } from "react-redux";
+import useSlider from "../../../hooks/useSlider";
+import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
 
 const AllReactions = ({
   setFilterBy,
@@ -9,9 +11,13 @@ const AllReactions = ({
   responces,
   setOpen,
   filteredArray,
-  getMore
+  getMore,
+  setPhotos,
+  setPhotoIndex,
+  setSliderOpened
 }) => {
   const status = useSelector( state => state.responses.responsesByAStatus )
+
   return (
     <>
       {status === "pending" ? (
@@ -24,6 +30,9 @@ const AllReactions = ({
         />
       ) : (
         <ReactionBlock
+          setPhotoIndex={setPhotoIndex}
+          setPhotos={setPhotos}
+          setSlideOpened={setSliderOpened}
           getMore = {getMore}
           setFilterBy={setFilterBy}
           openAboutReactionFunc={openAboutReactionFunc}

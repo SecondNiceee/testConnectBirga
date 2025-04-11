@@ -6,7 +6,7 @@ import {  useDispatch, useSelector } from 'react-redux';
 import { clearResponses, fetchResponses } from '../../../store/responses';
 
 
-const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowValue, viewsNumber, setViewsNumber } , ref) => {
+const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowValue, viewsNumber, setViewsNumber, setSlideOpened, setPhotos, setPhotoIndex } , ref) => {
 
 
 
@@ -55,20 +55,24 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowVal
 
     return (
 
+        <>
+            <div ref={ref} style={{
+                alignSelf : "flex-start"
+            }} className="picker__block">
+                {(responsesStatus === "complete" || responsesStatus === "all") ? 
+                
+                <MyResponses setSlideOpened = {setSlideOpened} setPhotos = {setPhotos} setPhotoIndex = {setPhotoIndex} text = {text} nowValue = {nowValue}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
+                :
+                <MyLoader style = {{height : "60vh" , transform : "translateX(-16px)"}}/> 
+                }
+                <div ref={interRef} className="intersection-block">
 
-        <div ref={ref} style={{
-            alignSelf : "flex-start"
-        }} className="picker__block">
-            {(responsesStatus === "complete" || responsesStatus === "all") ? 
-            
-            <MyResponses text = {text} nowValue = {nowValue}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
-            :
-            <MyLoader style = {{height : "60vh" , transform : "translateX(-16px)"}}/> 
-             }
-             <div ref={interRef} className="intersection-block">
+                </div>
+                
+        </div>
 
-             </div>
-      </div>
+                             
+        </>
 
     );
 } );

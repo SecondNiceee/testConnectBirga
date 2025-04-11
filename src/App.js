@@ -17,6 +17,7 @@ import "./css/Values.css";
 import "./css/style.css";
 import "./scss/Profile/_Profile.scss";
 import "./scss/main.scss";
+import "./css/index.css";
 
 // import { postEvent } from '@tma.js/sdk';
 // import { initPopup } from '@tma.js/sdk';
@@ -72,6 +73,8 @@ const MyLoader = () => {
 };
 
 const AnimatedSwitch = () => {
+
+  
   const location = useLocation();
   const isMenuActive = useSelector((state) => state.menuSlice.value);
 
@@ -114,16 +117,28 @@ const AnimatedSwitch = () => {
     }
   } , [congratulate, navigate, showCongradulate] )
 
+
   useEffect(() => {
-    console.log(userId)
-    axios.put(`${process.env.REACT_APP_HOST}/user/visit`, {}, {
-      params: {
-        userId: String(userId)
-      },
-      headers: {
-        "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+    async function makeUserVisit(params) {
+      try{
+        const response = await axios.put(`${process.env.REACT_APP_HOST}/user/visit`, {}, {
+          params: {
+            userId: String(userId)
+          },
+          headers: {
+            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+          }
+        })
+        console.log(response)
       }
-    })
+      catch(e){
+        console.log(e)
+      }
+    }
+    if (userId){
+      makeUserVisit()
+    }
+
   }, [userId])
   
   

@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
-import rightArrow from '../../images/icons/rightArrow.svg'
-import OneInput from '../../components/UI/OneInput/OneInput';
-import BackButton from '../../constants/BackButton';
-import MainButton from '../../constants/MainButton';
-import Text from '../../components/Text/Text';
-import translation from '../../functions/translate';
+import rightArrow from '../../../../../images/icons/rightArrow.svg'
+import OneInput from '../../../../../components/UI/OneInput/OneInput';
+import BackButton from '../../../../../constants/BackButton';
+import MainButton from '../../../../../constants/MainButton';
+import Text from '../../../../../components/Text/Text';
+import translation from '../../../../../functions/translate';
 const menu = document.documentElement.querySelector(".FirstMenu")
 const place = translation("Поиск по подкатегориям")
 const ChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar, ...props}) => {

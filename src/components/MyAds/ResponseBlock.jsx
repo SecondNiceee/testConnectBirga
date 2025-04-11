@@ -1,6 +1,5 @@
 import React, { memo, useMemo } from "react";
 import Pallete from "../UI/Pallete/Pallete";
-import ShareIcon from "../UI/ShareIcon/ShareIcon";
 import FalseTie from "../UI/FalseTie/FalseTie";
 import { useSelector } from "react-redux";
 import MyButton from "../UI/MyButton/MyButton";
@@ -8,6 +7,9 @@ import formatDate from "../../functions/makeDate";
 import Text from "../Text/Text";
 import en from "../../constants/language";
 import RealTon from "../../images/icons/RealTon.svg";
+import { shareFunction } from "../../functions/shareFunction";
+import ShareIcon from "../UI/ShareIcon/ShareIcon";
+import { useSliderClicker } from "../UI/PhotosSlider/hooks/useSliderClicker";
 
 
 const textPrice = en ? 'USD' : "RUB"
@@ -27,8 +29,12 @@ const ResponseBlock = ({
   index,
   isWatched,
   category,
+  showStatus = false,
+  setPhotos, setPhotoIndex,
+  setSlideOpened,
   ...props
 }) => {
+
   const tonConstant = useSelector((state) => state.ton.value);
 
   const watchingValue = useMemo(() => {
@@ -60,6 +66,8 @@ const ResponseBlock = ({
     }
   }, [isWatched]);
 
+
+  const photosClickEvent = useSliderClicker({photos, setPhotoIndex, setPhotos, setSlideOpened})
   return (
     <>
       {photos !== undefined ? (
@@ -74,15 +82,9 @@ const ResponseBlock = ({
               {photos.map((e, i) => {
                 return (
                   <img
-                    onClick={() => {
-                      setSlideActive({
-                        isActive: true,
-                        index: i,
-                        photos: photos,
-                      });
-                    }}
                     key={i}
                     src={URL.createObjectURL(e)}
+                    onClick={photosClickEvent(i)}
                     style={
                       photos.length === 1
                         ? {
@@ -112,7 +114,7 @@ const ResponseBlock = ({
             <Pallete category={category} />
             <Text>{taskName}</Text>
             <ShareIcon
-              onClick={ShareIcon(id)}
+              onClick={shareFunction(id)}
               className="share__icon"
             />
           </div>
@@ -151,8 +153,9 @@ const ResponseBlock = ({
       ) : (
         <div></div>
       )}
+
     </>
-  );
+  )
 };
 
 export default memo(ResponseBlock);

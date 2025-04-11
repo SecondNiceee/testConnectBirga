@@ -14,10 +14,8 @@ import AllTasks from "./AllTasks";
 import { useDispatch, useSelector } from "react-redux";
 import Responce from "./Responce";
 import { CSSTransition } from "react-transition-group";
-import pagesHistory from "../../constants/pagesHistory";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
-import FirstChoiceCategory from "../AdCreatingOne/ChoiceCategory/FirstChoiceCategory";
-import FirstChoiceSubCategory from "../AdCreatingOne/FirstChoiceSubCategory";
+import FirstChoiceCategory from "../AdCreatingOne/ui/components/ChoiceCategory/FirstChoiceCategory";
 import AboutReaction from "../MyAds/components/AboutReaction";
 import CardPage from "../CardPage/CardPage";
 import axios from "axios";
@@ -28,6 +26,13 @@ import translation from "../../functions/translate";
 import en from "../../constants/language";
 import { useNavigate } from "react-router-dom";
 import makeNewUser from "../../functions/makeNewUser";
+import { USERID } from "../../constants/tgStatic.config";
+import FirstChoiceSubCategory from "../AdCreatingOne/ui/components/FirstChoiceSubCategory/FirstChoiceSubCategory";
+import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
+import useMenuRejection from "./hooks/useMenuRejection";
+import useBlockInputs from "../../hooks/useBlockInputs";
+import useAddHistory from "../../hooks/MyAds/useAddHistory";
+import useSlider from "../../hooks/useSlider";
 
 let isDetailsActiveVar = false;
 let localResponce;
@@ -50,21 +55,24 @@ const No = translation("Нет")
 const First = ({ isPage = false }) => {
 
   const [pageValue, setPageValue] = useState(true)
+
   const firstRef = useRef(null);
 
   const [step, setStep] = useState(0);
 
+  const categorys = useSelector((state) => state.categorys.category);
+
+  const subCategorys = useSelector((state) => state.categorys.subCategory);
+
   const address = useSelector( state => state.telegramUserInfo.address )
+
   const navigate = useNavigate()
+
   localStep = step;
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    return () => {
-      pagesHistory.push("/");
-    };
-  }, []);
+  useAddHistory();
 
   const [isDetailsActive, setDetailsActive] = useState({
     id: -1,
@@ -110,11 +118,6 @@ const First = ({ isPage = false }) => {
 
   useEffect(() => {
     window.Telegram.WebApp.disableVerticalSwipes();
-    // const data = JSON.stringify({ allow_vertical_swipe: false });
-
-    // window
-    //   .TelegramWebviewProxy
-    //   .postEvent('web_app_setup_swipe_behavior', data);
   }, []);
 
   const secFilteredArray = useMemo(() => {
@@ -144,10 +147,7 @@ const First = ({ isPage = false }) => {
   }, [filteredArr, filters, tonConstant]);
 
 
-  
   const [pageAdvertisement, setPageAdvertisement] = useState(null);
-
-
 
   const detailsAdertisement = useMemo(() => {
     async function getAdvertisement() {
@@ -240,9 +240,6 @@ const First = ({ isPage = false }) => {
   ]);
 
 
-
-
-
   const gotIt = useMemo( () => {
     console.log(detailsAdertisement);
     
@@ -251,7 +248,7 @@ const First = ({ isPage = false }) => {
       if (detailsAdertisement.responces){
         console.log(detailsAdertisement)
         if (detailsAdertisement.responces.find((e) =>
-          String(e.user.id) === String(window.Telegram.WebApp.initDataUnsafe.user.id)) || String(detailsAdertisement.user.id) === String(window.Telegram.WebApp.initDataUnsafe.user.id))
+          String(e.user.id) === USERID) || String(detailsAdertisement.user.id) === USERID)
 
         {
           return true
@@ -264,11 +261,6 @@ const First = ({ isPage = false }) => {
     return false
     // eslint-disable-next-line
   },[detailsAdertisement,isDetailsActive.isOpen ] )
-
-
-  console.log(gotIt);
-  
-
 
   useEffect(() => {
     if (isDetailsActive.isOpen) {
@@ -284,8 +276,6 @@ const First = ({ isPage = false }) => {
     isOpen: false,
     card: {},
   });
-
-
 
 
   useEffect(() => {
@@ -368,11 +358,9 @@ const First = ({ isPage = false }) => {
         });
       } else {
         if (localStep === 0 ) {
-
           if (isDetailsActive.isOpen){
             if (detailsAdertisement){
               if (detailsAdertisement.status === "active"){
-
                 MainButton.setParams({
                   is_active: true,
                   color: "#2ea5ff",
@@ -430,9 +418,7 @@ const First = ({ isPage = false }) => {
     }
   }, [step, isDetailsActive.isOpen]);
 
-
   localResponce = responce;
-
 
   useEffect(() => {
     if (localResponce.text.length < 3 && localStep === 1) {
@@ -451,49 +437,21 @@ const First = ({ isPage = false }) => {
     }
   }, [responce.text, step]);
 
+
   const me = useSelector((state) => state.telegramUserInfo);
 
   const [categoryOpen, setCategoryOpen] = useState(false);
 
   const [subCategory, setSubCategory] = useState(false);
 
-  // useEffect( () => {
-  //   firstRef.current.style.overflowY = "scroll"
-  //   firstRef.current.style.height = "200vh"
-  //   firstRef.current.style.paddingBottom = "calc(100vh)"
-
-  // }, [] )
-
   useEffect(() => {
     dispatch(clearTasks());
   }, [dispatch]);
 
-
-  useEffect(() => {
-    let inputs = document.querySelectorAll("input");
-    function addH() {
-      window.Telegram.WebApp.HapticFeedback.notificationOccurred("success");
-    }
-    // Добавляем обработчик события на каждый элемент input, у которого type не равен file
-    inputs.forEach(function (input) {
-      if (input.type !== "file") {
-        input.addEventListener("focus", addH);
-      }
-    });
-    return () => {
-      inputs.forEach(function (input) {
-        if (input.type !== "file") {
-          input.removeEventListener("focus", addH);
-        }
-      });
-    };
-  }, []);
-
-
   const [putStatus , setPutStatus] = useState(false)
 
-  
   const forwardFunction = useCallback(() => {
+
     async function post(par) {
       try {
         let im;
@@ -511,7 +469,6 @@ const First = ({ isPage = false }) => {
           });
         }
         try{
-
           await axios.get( process.env.REACT_APP_HOST + "/user/sendMessage", {
             params: {
               chatId: par[1].advertisement.user.chatId,
@@ -532,14 +489,9 @@ const First = ({ isPage = false }) => {
             }
           });
         }
-        
         catch(e){
           console.warn(e)
         }
-
-
-
-
         setDetailsActive((value) => ({ ...value, isOpen: false }));
         setStep(0);
         setProfile(false);
@@ -554,14 +506,9 @@ const First = ({ isPage = false }) => {
           shablonMaker: false,
         });
         menu.style.display = "flex"
-
         responseRef.current.style.overflowY = "scroll"
         setPutStatus(false)
-
         return par[1];
-
-
-
       } catch (e) {
         console.log(e);
         window.Telegram.WebApp.showAlert(e);
@@ -570,10 +517,8 @@ const First = ({ isPage = false }) => {
     async function postResponce(advertismetId, userId) {
       let myFormData = new FormData();
       myFormData.append("information", String(responce.text));
-
       myFormData.append("userId", String(userId));
       myFormData.append("advertismentId", String(advertismetId));
-
       responce.photos.forEach((e, i) => {
         myFormData.append(`photos`, e);
       });
@@ -590,9 +535,6 @@ const First = ({ isPage = false }) => {
           stage: me.profile.stage,
         };
         await post([myFormData, gibrid]);
-        // dispatch(clearResponses());
-        // dispatch(fetchResponses([me, 1]));
-        // dispatch(addResponce([gibrid.advertisement.id, gibrid]));
       } catch (e) {
         console.warn(e);
       }
@@ -615,35 +557,27 @@ const First = ({ isPage = false }) => {
               },
               (buttonId) => {
                 if (buttonId === "delete" || buttonId === null) {
-                  // setShablon({...shablon , isActive : false})
+
                 }
                 if (buttonId === "save") {
                   window.Telegram.WebApp.HapticFeedback.notificationOccurred(
                     "success"
                   );
-                  postResponce(detailsAdertisement.id, window.Telegram.WebApp.initDataUnsafe.user.id);
-                  // mainRef.current.classList.remove('secondStep')
-      
+                  postResponce(detailsAdertisement.id, USERID);
                 }
               }
             );
           }
-      
     }
-  }, [
 
+  }, [
     responce,
     step,
-    
     setDetailsActive,
     setStep,
     me,
     detailsAdertisement
   ]);
-
-  const categorys = useSelector((state) => state.categorys.category);
-
-  const subCategorys = useSelector((state) => state.categorys.subCategory);
 
   useEffect(() => {
     MainButton.onClick(forwardFunction);
@@ -670,53 +604,20 @@ const First = ({ isPage = false }) => {
     }
   }, [step, isDetailsActive.isOpen]);
 
-  useEffect(() => {
-    const input = document.querySelectorAll('input'); 
-    const textarea = document.querySelectorAll("textarea");
-    for (let smallInput of input) {
-      smallInput.addEventListener("focus", () => {
-        menu.style.display = "none"; // скрываем меню
-      });
-      smallInput.addEventListener("blur", () => {
-        menu.style.display = "flex"; // скрываем меню
-      });
-    }
-    for (let smallTextarea of textarea) {
-      smallTextarea.addEventListener("focus", () => {
-        menu.style.display = "none"; // скрываем меню
-      });
-      smallTextarea.addEventListener("blur", () => {
-        menu.style.display = "flex"; // скрываем меню
-      });
-    }
-  }, []);
 
-  // useEffect( () => {
-  //   firstRef.current.style.height = "100vh"
-  //   setTimeout( () => {
-  //     firstRef.current.style.height = "calc(100vh - 80px)"
-  //   } , 600 )
-  // } , [] )
-  const changer = useSelector( state => state.menuSlice.changer )
+  useBlockInputs()
 
-  useEffect( () => {
-    setCardOpen((value) => ({...value , isOpen : false}))
-    setCategoryOpen(false)
-    setDetailsActive((value) => ({...value , isOpen : false}))
-    setProfile(false)
-    setResponce((value) => ({...value , isShablon : false , isShablonModalActive: false, shablonMaker : false}))
-    setStep(0)
-    setSubCategory(false)
-  } , [changer] )
+  useMenuRejection({setCardOpen, setCategoryOpen, setDetailsActive, setProfile, setResponce, setStep, setSubCategory})
 
-
-  console.warn(detailsAdertisement)
+  const {isSliderOpened, photoIndex, photos, setPhotoIndex ,setPhotos, setSlideOpened} = useSlider()
 
   return (
+    <>
     <div style={firsStyle} className="first-container">
       <motion.div
         // style={style}
         ref={firstRef}
+        id="First"
         className="First"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -735,8 +636,6 @@ const First = ({ isPage = false }) => {
             setDetailsActive={setDetailsActive}
           />
         </div>
-
-        
 
         <CSSTransition in={categoryOpen} timeout={0} mountOnEnter unmountOnExit>
           <FirstChoiceCategory
@@ -784,7 +683,9 @@ const First = ({ isPage = false }) => {
         unmountOnExit
       >
         <AboutReaction
-        isTelesgramVisible={false}
+          isFirst={true}
+          isMyAds={false}
+          isTelesgramVisible={false}
           style={{
             paddingBottom: "74px",
             left : "100vw"
@@ -802,6 +703,9 @@ const First = ({ isPage = false }) => {
         // classNames="left-right"
       >
         <FirstDetails
+          setPhotoIndex = {setPhotoIndex}
+          setPhotos = {setPhotos}
+          setSliderOpened = {setSlideOpened}
           isDetailsActive={isDetailsActive.isOpen}
           breakRef={firstRef}
           setProfile={setProfile}
@@ -834,6 +738,10 @@ const First = ({ isPage = false }) => {
         /> 
       </CSSTransition>
     </div>
+
+    <CssTransitionSlider blockerAll={true} blockerId={""} isSliderOpened={isSliderOpened} leftPosition={0} renderMap={photos} setSliderOpened={setSlideOpened} sliderIndex={photoIndex} swiperId={"1"} top={0}  />
+    
+    </>
   );
 };
 

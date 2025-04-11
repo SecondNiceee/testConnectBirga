@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from "react";
 import cl from "./Categories.module.css";
-import Text from "../../../components/Text/Text";
-import translation from "../../../functions/translate";
+import Text from "../../../../../components/Text/Text";
+import translation from "../../../../../functions/translate";
 
 const Categories = ({
   className,

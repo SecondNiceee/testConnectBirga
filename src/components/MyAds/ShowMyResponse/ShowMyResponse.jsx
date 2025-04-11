@@ -11,6 +11,8 @@ import Text from "../../Text/Text";
 import translation from "../../../functions/translate";
 import {  useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import useSlider from "../../../hooks/useSlider";
+import CssTransitionSlider from "../../UI/PhotosSlider/CssTransitionSlider";
 const menu = document.documentElement.querySelector(".FirstMenu");
 
 const textButtonOne = translation("ВЫПОЛНИЛ")
@@ -166,6 +168,8 @@ const ShowMyResponse = ({
     response.advertisement.createNumber,
   ]);
 
+  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
+
   return (
     <>
       {response.user.fuck ? (
@@ -182,6 +186,10 @@ const ShowMyResponse = ({
             buttonText={"Подробнее"}
             {...response.advertisement}
             task={response.advertisement}
+            setPhotoIndex={setPhotoIndex}
+            setPhotos={setPhotos}
+            setSlideOpened={setSlideOpened}
+
           />
           <MyReaction
             openAboutReactionFunc={openAboutReaction}
@@ -204,6 +212,7 @@ const ShowMyResponse = ({
           
         </div>
       )}
+      <CssTransitionSlider blockerAll={true} blockerId={""} isSliderOpened={isSliderOpened} leftPosition={0} renderMap={photos} setSliderOpened={setSlideOpened} sliderIndex={photoIndex} swiperId={"1"} top={0}  />
     </>
   );
 };

@@ -1,11 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import cl from "./ChoiceCategory.module.css";
-import OneInput from "../../../components/UI/OneInput/OneInput";
 import CategoryItem from "../CategoryItem/CategoryItem";
-import BackButton from "../../../constants/BackButton";
-import Text from "../../../components/Text/Text";
-import translation from "../../../functions/translate";
+import translation from "../../../../../functions/translate";
+import Text from "../../../../../components/Text/Text";
+import BackButton from "../../../../../constants/BackButton";
+import OneInput from "../../../../../components/UI/OneInput/OneInput";
+
 const place = translation("Поиск по категориям")
+
 const FirstChoiceCategory = ({
   setTaskInformation,
   taskInformation,

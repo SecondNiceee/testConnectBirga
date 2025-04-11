@@ -20,7 +20,10 @@ const Reaction = ({
   responce,
   writeButton = true,
   agree = false,
-  lastAds = false
+  lastAds = false,
+  setPhotos,
+  setPhotoIndex,
+  setSlideOpened
 }) => {
 
   const getAge = useCallback( (par) => {
@@ -90,6 +93,11 @@ const Reaction = ({
 } , [responce.user.link] )
 
 
+  const imageOnClick = (index) => () => {
+    setPhotos(responce.photos)
+    setPhotoIndex(index)
+    setSlideOpened(true)
+  }
 
   return (
     <>
@@ -105,6 +113,7 @@ const Reaction = ({
           <div className="reactions__images">
             {responce.photos.map((e, i) => (
               <img
+                onClick={imageOnClick(i)}
                 style={responce.photos.length === 1 ? { width: "100%" } : {}}
                 src={URL.createObjectURL(e)}
                 alt=""

@@ -6,7 +6,9 @@ import Customer from './Customer'
 import Block from "../Block";
 import translation from "../../../functions/translate";
 
-const TaskDetailsContainer = ({orderInformation , setProfile, end = false}) => {
+const TaskDetailsContainer = ({orderInformation , setProfile, end = false, setPhotoIndex,
+  setPhotos,
+  setSliderOpened,}) => {
   const text = useMemo(() => {
     if (end){
       return translation("Вы еще не создали задание, поэтому оно неактивно.")
@@ -37,7 +39,9 @@ const TaskDetailsContainer = ({orderInformation , setProfile, end = false}) => {
   } , [orderInformation, end] )
   return (
     <div className="Task__container-one">
-      <Block end = {end} task={orderInformation} {...orderInformation} isButton = {false} />
+      <Block   setPhotoIndex={setPhotoIndex}
+              setPhotos={setPhotos}
+              setSliderOpened={setSliderOpened} sliderLeftPosition="0" sliderPreviousText="ОТКЛИКНУТЬСЯ"  sliderBlockId="First"  sliderBlockerAll = {true} sliderHideButton = {false} end = {end} task={orderInformation} {...orderInformation} isButton = {false} />
       <FullDescription fullDescription={orderInformation.taskDescription} />
       <Dedline dedline={dedline} />
       <div className="TaskDetails-row">

@@ -35,7 +35,7 @@ const SuspenseBlock = ({i , e, setSecondPage ,  viewsNumber = 0, setViewsNumber 
                 zIndex : -1
             }} className="catch_block"></div>
             {isVisible &&
-                        <Block e={e} i={i} setSecondPage={setSecondPage}/>
+                <Block e={e} i={i} setSecondPage={setSecondPage}/>
                 }
         </div>
     );

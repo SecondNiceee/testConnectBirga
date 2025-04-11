@@ -9,7 +9,7 @@ import MainButton from "../../constants/MainButton";
 import { useDispatch, useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import ModalInput from "../../components/UI/ModalInput/ModalInput";
-import ChoiceCategory from "../AdCreatingOne/ChoiceCategory/ChoiceCategory";
+import ChoiceCategory from "../AdCreatingOne/ui/components/ChoiceCategory/ChoiceCategory";
 import { putCard } from "../../store/telegramUserInfo";
 import sortFiles from "../../functions/sortFiles";
 import Text from "../../components/Text/Text";

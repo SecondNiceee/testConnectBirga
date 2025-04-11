@@ -24,14 +24,7 @@ const FirstMenu = forwardRef(({...props} , ref) => {
   } , [navigate, dispatch, ref] )
 
   return (
-    <div ref={ref} className={isMenuActive ? "FirstMenu" : "FirstMenu hidden"}>
-      {/* <div ref={myRef} onTouchStart={clickHandler} onTouchEnd={touchEnd} onClick={() => {
-                    vibrate()
-                    window.Telegram.WebApp.showAlert("Мы скоро добавим.")
-            }} className="MenuPrice">
-                <Text  className='MenuTextPrice'>Скоро</Text>
-                 <SmallDimond className= 'dymond' /> 
-            </div> */}
+    <div ref={ref} className={"FirstMenu"}>
 
       <div className="MenuList">
         <div className={ (location.pathname === "/" )  ? "menuLink active" : "menuLink"} onClick={() => {onClick("/")}}  >

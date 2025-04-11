@@ -12,8 +12,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {  fetchResponses } from "../../../store/responses";
 import MyAnimation from "./MyAnimation";
 const MyResponses = forwardRef(
-  (
-    { responsesArr, buttonFunction, viewsNumber, setViewsNumber, nowValue , text },
+  ( 
+    { responsesArr, buttonFunction, viewsNumber, setViewsNumber, nowValue , text, setPhotos, setSlideOpened, setPhotoIndex },
     ref
   ) => {
     const [page, setPage] = useState(2);
@@ -64,6 +64,10 @@ const MyResponses = forwardRef(
             {responsesArr.map((e, i) => {
               return (
                 <ResponseSuspense
+                
+                setSlideOpened = {setSlideOpened}
+                setPhotos = {setPhotos}
+                setPhotoIndex = {setPhotoIndex}
                   viewsNumber={viewsNumber}
                   setViewsNumber={setViewsNumber}
                   func={buttonFunction}
@@ -82,6 +86,7 @@ const MyResponses = forwardRef(
           <MyLoader
             ref={elementRef}
             style={{ height: "90px", marginLeft: "-16px" }}
+
           />
         )}
       </div>

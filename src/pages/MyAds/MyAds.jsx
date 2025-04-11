@@ -10,7 +10,7 @@ import AboutReaction from "./components/AboutReaction";
 import AboutOne from "./components/AboutOne";
 import { CSSTransition } from "react-transition-group";
 import sortFiles from "../../functions/sortFiles";
-import AdCreatingOne from "../AdCreatingOne/AdCreatingOne/AdCreatingOne";
+import AdCreatingOne from "../AdCreatingOne/ui/AdCreatingOne/AdCreatingOne";
 import { useButton } from "../../hooks/MyAds/useButton";
 import { useSave } from "../../hooks/MyAds/useSave";
 import ShowMyResponse from "../../components/MyAds/ShowMyResponse/ShowMyResponse";
@@ -29,11 +29,8 @@ import usePut from "../../hooks/MyAds/usePut";
 import useWriteFucntion from "../../hooks/MyAds/writeFunction";
 import useBack from "./components/useBack";
 import pagesHistory from "../../constants/pagesHistory";
-
-// const LastAds = lazy( () => import ("./components/LastAds") )
-// const MyAdOne = lazy( () => import ("./components/MyAdOne") )
-// const AboutOne = lazy( () => import ("./components/AboutOne") )
-// const AboutReaction = lazy( () => import ("./components/AboutReaction") )
+import { USERID } from "../../constants/tgStatic.config";
+import useBlockInputs from "../../hooks/useBlockInputs";
 
 
 let detailsVar;
@@ -43,12 +40,7 @@ const No = translation("Нет")
 
 const sureText = translation("Вы уверены, что хотите удалить этот отклик?")
 
-
 const menu = document.documentElement.querySelector(".FirstMenu")
-
-
-// const advertisementId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[0]
-// const responseId = window.Telegram.WebApp.initDataUnsafe.start_param.split("m")[1]
 
 let url = new URL(window.location.href);
 let advertisementId = url.searchParams.get("advertisement")
@@ -243,12 +235,6 @@ const MyAds = ({isPage = false}) => {
     }
   } });
 
-
-
-
-
-
-
   const save = useSave({
   
     detailsVar,
@@ -261,8 +247,6 @@ const MyAds = ({isPage = false}) => {
     details,
     setDetailsShow : setShowDetails
   })// функция сохранения , а также модалка телеграма
-
-
 
   const [myResponse, setMyResponse] = useState({
     isOpen: false,
@@ -291,8 +275,6 @@ const MyAds = ({isPage = false}) => {
 
 
 
-
-
   const [mistakes, setMistakes] = useState({
     taskName: false,
     timeError: false,
@@ -302,10 +284,6 @@ const MyAds = ({isPage = false}) => {
 
   window.Telegram.WebApp.disableVerticalSwipes();
 
-
-
-
-  
   const [nowValue , setNowKey] = useState("customer")
 
   useEffect( () => {
@@ -315,7 +293,7 @@ const MyAds = ({isPage = false}) => {
         "https://www.connectbirga.ru/advertisement/findCount",
         {
           params: {
-            userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+            userId: USERID,
           },
           headers : {
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -326,7 +304,7 @@ const MyAds = ({isPage = false}) => {
         "https://www.connectbirga.ru/response/findCount",
         {
           params: {
-            userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+            userId: USERID,
           },
           headers : {
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -355,45 +333,8 @@ const MyAds = ({isPage = false}) => {
   } , [] )
 
 
-
-  // const sortedArray = useMemo( () => {
-  //   let copy = [...myAdsArray]
-
-  //     return copy.sort( (a , b) => {
-  //       let order = {"inProcess" : 0 , "active" : 1, "completed" : 2 }
-  //       return order[a.status] - order[b.status]
-  //     } )
-    
-  // } , [myAdsArray , nowValue] )
-
-
-
-//   useEffect( () => {
-//     document.documentElement.style.overflowY = 'scroll'
-//     document.documentElement.style.marginTop = '40px'
-//     setTimeout( () => {
-
-//       window.scrollTo({
-//         top: 40,
-//         behavior: "smooth",
-//       });
-//        document.documentElement.style.overflowY = 'hidden'
-//     }, 350 )
-
-// },[] )
-
-  
-
-
-  
-
-
   const [myAdeOneStatus , setMyAdOneStatus] = useState(null)
   const [pageResponseStatus , setPageResponseStatus] = useState(null)
-
-
-
-  
 
   const myAdOneResponse = useMemo( () => {
     async function getResponse() {
@@ -559,8 +500,6 @@ const MyAds = ({isPage = false}) => {
   console.log('====================================');
 
 
-
-
   const deleteFunction = useCallback( (index) => {
     window.Telegram.WebApp
     .showPopup({
@@ -661,32 +600,10 @@ const MyAds = ({isPage = false}) => {
   })
 
 
-
-  useEffect( () => {
-    
-    const input = document.querySelectorAll('input');
-    const textarea  = document.querySelectorAll('textarea');
-    for (let smallInput of input){
-      smallInput.addEventListener('focus', () => {
-        menu.style.display = 'none'; // скрываем меню
-      });
-      smallInput.addEventListener('blur', () => {
-        menu.style.display = 'flex'; // скрываем меню
-      });
-    }
-    for (let smallTextarea of textarea){
-      smallTextarea.addEventListener('focus', () => {
-        menu.style.display = 'none'; // скрываем меню
-      });
-      smallTextarea.addEventListener('blur', () => {
-        menu.style.display = 'flex'; // скрываем меню
-      });
-    }
-  } , [] )
+  useBlockInputs();
 
 
   const changer = useSelector( state => state.menuSlice.changer )
-
 
   useEffect( () => {
     setDetails(value => ({...value , isActive : false}))
@@ -699,11 +616,6 @@ const MyAds = ({isPage = false}) => {
     setSecondPage( (value) => ({...value , isActive : false}) )
   
   } , [changer])
-  // const putStatus = useSelector((state) => state.information.putTaskStatus);
-
-  // useEffect( () => {
-  //   setDetails( (value) => ({...value , task : {putStatus , myAds : true}}) )
-  // } , [putStatus] )
 
 
   const style = useMemo( () => {
@@ -716,10 +628,6 @@ const MyAds = ({isPage = false}) => {
     
   }, [walletH] )
 
-  console.log(secondPage.task)
-
-
-  console.log(details)
 
   useEffect( () => {
     if (isPage){
@@ -728,8 +636,6 @@ const MyAds = ({isPage = false}) => {
     }
   } , [isPage, setSecondPage] )
 
-
-  console.warn(secondPage)
   return (
     <>
       { postStatus === "pending" ? (
@@ -739,8 +645,6 @@ const MyAds = ({isPage = false}) => {
           style={style}
           className="MyAdsContainer"
         >
-
-
 
           <MyAdOne
           responsesArr = {filteredResponses}
@@ -754,10 +658,6 @@ const MyAds = ({isPage = false}) => {
             myAdsArray={filteredArray}
             setSecondPage={setSecondPage}
           />
-
-
-
-
 
         <CSSTransition classNames="left-right" in={showDetails} timeout={400}
           mountOnEnter unmountOnExit>
@@ -836,7 +736,7 @@ const MyAds = ({isPage = false}) => {
             mountOnEnter
             unmountOnExit
           >
-            <AboutReaction setOneCard = {setOneCard} responce = {openAboutReaction.responce}   />
+            <AboutReaction isFirst={false} isMyAds={true} setOneCard = {setOneCard} responce = {openAboutReaction.responce}   />
           </CSSTransition>
 
           <CSSTransition

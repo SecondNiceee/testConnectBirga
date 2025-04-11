@@ -14,13 +14,12 @@ const Block = ({e, i, setSecondPage }) => {
                 myAdsFunc={(value) => {
                   setSecondPage({ isActive: true, task: e, index: i });
                 }}
+                
                 isButton={true}
               />
 
-
             </div>
-           
-
+          
     </>
 
     );

@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import makeNewFile from "../functions/newMakeFile";
+import { USERID } from "../constants/tgStatic.config";
 
 export const deleteCard = createAsyncThunk(
     "deleteCard" ,
@@ -8,7 +9,7 @@ export const deleteCard = createAsyncThunk(
         try{
             await axios.delete(`${process.env.REACT_APP_HOST}/user/savedCard`, {
                 params:{
-                    "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                    "userId" : USERID,
                     "cardId" : id
                 },
                 headers : {
@@ -29,7 +30,7 @@ export const addCard = createAsyncThunk(
     async function (par){
         try{
             await axios.post(`${process.env.REACT_APP_HOST}/card/save` , {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                "userId" : USERID,
                 "cardId" : par[0]
             },{
                 headers : {
@@ -50,7 +51,7 @@ export const deleteResponce = createAsyncThunk(
         try{
             await axios.delete(`${process.env.REACT_APP_HOST}/user/savedResponse` , { params : {
                 "responseId" : id,
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                "userId" : USERID
             },         headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               } })
@@ -69,7 +70,7 @@ export const addResponce = createAsyncThunk(
         try{
             await axios.post(`${process.env.REACT_APP_HOST}/response/save`, {
                     "responseId" : par[0],
-                    "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                    "userId" : USERID
             }, {
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -95,7 +96,7 @@ export const addResponce = createAsyncThunk(
             })
             await axios.get(`${process.env.REACT_APP_HOST}/user/findOne` , {
                 params : {
-                    "id" : window.Telegram.WebApp.initDataUnsafe.user.id
+                    "id" : USERID
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -120,7 +121,7 @@ export const deleteAdvertisement = createAsyncThunk(
             await axios.delete(`${process.env.REACT_APP_HOST}/user/savedAdvertisement` , {
                 params : {
                     "advertisementId" : id,
-                    "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                    "userId" : USERID
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -139,7 +140,7 @@ export const addAdvertisment = createAsyncThunk(
         try{
              await axios.post(`${process.env.REACT_APP_HOST}/advertisement/save` , {
                 "advertisementId" : par[0],
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                "userId" : USERID
             }, {
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -184,7 +185,7 @@ export const fetchSavedCards = createAsyncThunk(
 
         let im = await axios.get(`${process.env.REACT_APP_HOST}/card/saved` , {
             params : {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                "userId" : USERID,
                 "page" : page,
                 limit : 4
             },
@@ -228,7 +229,7 @@ export const fetchSavedResponses = createAsyncThunk(
     async function ([page]) {
         let imTwo = await axios.get(`${process.env.REACT_APP_HOST}/response/saved` , {
             params : {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                "userId" : USERID,
                 limit : 4,
                 page : page
             },
@@ -239,11 +240,6 @@ export const fetchSavedResponses = createAsyncThunk(
 
 
 
-        // let imTwo = await axios.get(`${process.env.REACT_APP_HOST}/response/saved` , {
-        //     params : {
-        //         "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
-        //     }
-        // })
 
         let responces = imTwo.data
 
@@ -344,7 +340,7 @@ export const fetchSavedAdvertisements = createAsyncThunk(
     async function ([page]) {
         let im = await axios.get(`${process.env.REACT_APP_HOST}/advertisement/saved` , {
             params : {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                "userId" : USERID,
                 limit : 4,
                 page : page
             },
@@ -441,7 +437,7 @@ export const fetchAllIds = createAsyncThunk(
         try{
             let imOne = await axios.get(`${process.env.REACT_APP_HOST}/advertisement/savedIds` , {
                 params : {
-                    "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                    "userId" : USERID
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -449,7 +445,7 @@ export const fetchAllIds = createAsyncThunk(
             })
             let imTwo = await axios.get(`${process.env.REACT_APP_HOST}/response/savedIds` , {
                 params : {
-                    "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                    "userId" : USERID
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -457,7 +453,7 @@ export const fetchAllIds = createAsyncThunk(
             })
             let imThree = await axios.get(`${process.env.REACT_APP_HOST}/card/savedIds` , {
                 params : {
-                    "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                    "userId" : USERID
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -481,7 +477,7 @@ export const fetchAllValues = createAsyncThunk(
         
         let im = await axios.get(`${process.env.REACT_APP_HOST}/advertisement/saved` , {
             params : {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                "userId" : USERID
             },
             headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -563,7 +559,7 @@ export const fetchAllValues = createAsyncThunk(
 
         let imTwo = await axios.get(`${process.env.REACT_APP_HOST}/response/saved` , {
             params : {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                "userId" : USERID
             },
             headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -584,7 +580,7 @@ export const fetchAllValues = createAsyncThunk(
 
             const responseUser = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
                 params : {
-                    "id" : window.Telegram.WebApp.initDataUnsafe.user.id // тут
+                    "id" : USERID // тут
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -660,7 +656,7 @@ export const fetchAllValues = createAsyncThunk(
 
         im = await axios.get(`${process.env.REACT_APP_HOST}/card/saved` , {
             params : {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id
+                "userId" : USERID
             },
             headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

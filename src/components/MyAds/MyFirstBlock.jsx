@@ -66,7 +66,7 @@ const MyFirstBlock = ({
           }
         >
           {photos.length ? (
-            <div className="first__photos">
+            <div onClick={() => myAdsFunc()} className="first__photos">
               {photos.map((e, i) => {
                 return (
                   <img

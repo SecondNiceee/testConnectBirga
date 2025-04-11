@@ -1,10 +1,14 @@
 import React, { useMemo } from 'react';
 import cl from './CategoryItem.module.css'
-import '../../../images/icons/Palitra.png'
-import designIcon from "../../../images/icons/TrulyDesign.svg"
-import ItIcon from "../../../images/icons/IT.svg"
-import MoreSvg from "../../../images/icons/More.svg"
-import Text from '../../../components/Text/Text';
+import '../../../../../images/icons/Palitra.png'
+import designIcon from "../../../../../images/icons/TrulyDesign.svg"
+import ItIcon from "../../../../../images/icons/IT.svg"
+import MoreSvg from "../../../../../images/icons/More.svg"
+import Text from '../../../../../components/Text/Text';
+
+
+
+
 const CategoryItem = ({className , id , category  }) => {
     const imageSrc = useMemo( () => {
         switch (id){

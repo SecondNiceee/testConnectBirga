@@ -162,10 +162,6 @@
     flex-direction: column;
     transition: 0.5s
 }
-.FirstMenu.hidden{
-    left: -100%;
-}
-
 
 .FirstMenu .FirstMenu__top{
     display: flex;

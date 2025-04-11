@@ -47,6 +47,7 @@ const Yes = translation("Да");
 const No = translation("Нет");
 const menu = document.documentElement.querySelector(".FirstMenu");
 const Profile = () => {
+
   const mainRef = useRef(null);
 
   window.Telegram.WebApp.disableVerticalSwipes();
@@ -75,6 +76,7 @@ const Profile = () => {
   const [changeActive, setChangeActive] = useState(false);
 
   const changer = useSelector((state) => state.menuSlice.changer);
+
   useEffect(() => {
     setCardsActive(false);
     setChangeActive(false);
@@ -159,22 +161,6 @@ const Profile = () => {
       } else {
         return false;
       }
-      // if (JSON.stringify(x) !== JSON.stringify(y)){
-      //   return false
-      // }
-      // if (x.cards.length !== y.cards.length){
-      //   return false
-      // }
-      // else{
-      //   for (let xCard of x.cards){
-      //     for (let yCard of y.cards){
-      //       if (JSON.stringify(xCard) !== JSON.stringify(yCard)){
-      //         return false
-      //       }
-      //     }
-      //   }
-      // }
-      // return true;
     }
     
     

@@ -44,9 +44,6 @@ const FirstMain = (
       };
       // eslint-disable-next-line
     }, [ordersInformation]);
-
-
-    
     return (
       <div  className="FirstMain">
         {ordersInformation.length === 0 && orderStatus === "all" ? (
@@ -67,15 +64,6 @@ const FirstMain = (
           })
         )}
 
-
-
-          
-          
-
-    
-        
-
-        
 
         {orderStatus !== "all" && (
           <MyLoader

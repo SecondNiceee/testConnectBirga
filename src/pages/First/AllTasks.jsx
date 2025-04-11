@@ -24,29 +24,7 @@ const AllTasks = forwardRef(({
 
   const orderStatus = useSelector((state) => state.information.orderStatus)
 
-
-
-
-
-  
-
-  // const orderStatus = useSelector((state) => state.information.orderStatus);
-
-
-
- 
-
-
-
-
-
-
-
-
-
   const userInfo = useSelector((state) => state.telegramUserInfo);
-
-  
 
 
   const tonConstant = useSelector((state) => state.ton.value);
@@ -112,10 +90,7 @@ const AllTasks = forwardRef(({
             orderStatus = {orderStatus}
             setDetailsActive={setDetailsActive}
             ordersInformation={ordersInformation}
-          />
-
-          
-                                                                                
+          />                                     
         </>
       ) : (
         <FirstLoader  />

@@ -9,7 +9,10 @@ const ReactionBlock = ({
   setOpen,
   responces,
   openAboutReactionFunc,
-  getMore
+  getMore,
+  setPhotos,
+  setPhotoIndex,
+  setSlideOpened
 }) => {
   //451
   return (
@@ -17,6 +20,9 @@ const ReactionBlock = ({
        
 
       <Responses
+        setPhotos = {setPhotos}
+        setPhotoIndex = {setPhotoIndex}
+        setSlideOpened = {setSlideOpened}
         getMore = {getMore}
         setFilterBy={setFilterBy}
         values={values}

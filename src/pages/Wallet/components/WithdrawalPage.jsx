@@ -12,6 +12,7 @@ import { getBalance } from "../../../store/balance";
 import translation from "../../../functions/translate";
 import formateMoney from "../../../functions/formateMoney";
 import { fetchUserInfo } from "../../../store/telegramUserInfo";
+import { USERID } from "../../../constants/tgStatic.config";
 const WithdrawalPage = ({balance, setWithDrawal}) => { 
 
   const [undetText , setUnderText ] = useState(false)
@@ -57,11 +58,10 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
 
         MainButton.showProgress()
         try{
-          console.log("window.Telegram.WebApp.initDataUnsafe.user.id", myValues.address, String(myValues.summ.replace(',', '.')), String((Number(formateMoney(String(Number(myValues.summ.replace(',', '.'))) , 3, '.')) - 0.004).toFixed(3)));
           
           await axios.get('https://www.connectbirga.ru/user/sendToAddress', {
             params : {
-              fromId : window.Telegram.WebApp.initDataUnsafe.user.id,
+              fromId : USERID,
               toAddress : myValues.address,
               amount: String((Number(formateMoney(String(Number(myValues.summ.replace(',', '.'))) , 3, '.')) - 0.004).toFixed(6))
             },

@@ -3,6 +3,9 @@ import cl from "./Case.module.css";
 import FalseTie from "../FalseTie/FalseTie";
 import Circle from "../Circle/Circle";
 import Text from "../../Text/Text";
+import { USERID } from "../../../constants/tgStatic.config";
+import { useSliderClicker } from "../PhotosSlider/hooks/useSliderClicker";
+
 
 const Case = ({
   className,
@@ -17,7 +20,10 @@ const Case = ({
   deleteFunction,
   watchOnly,
   agree = false,
-  userId = window.Telegram.WebApp.initDataUnsafe.user.id,
+  userId = USERID,
+  setPhotos,
+  setSliderOpened,
+  setPhotoIndex,
   ...props
 }) => {
 
@@ -47,6 +53,9 @@ const Case = ({
           myRef.current.style.backgroundColor = "rgb(32, 48, 63)"
       }
   }, [] )
+
+
+  const photosClickEvent = useSliderClicker({photos, setPhotoIndex, setPhotos, setSlideOpened : setSliderOpened})
 
   return (
 
@@ -82,6 +91,7 @@ const Case = ({
             let url = URL.createObjectURL(e);
             return (
               <img
+                onClick={photosClickEvent(i)}
                 key={i}
                 style={photos.length === 1 ? { minWidth: "100%" } : {}}
                 src={url}
@@ -180,7 +190,7 @@ const Case = ({
                   "https://t.me/share/url?text=&url=https://t.me/ConnectexBot/case?startapp=" +
                     String(card.id) +
                     "m" +
-                    window.Telegram.WebApp.initDataUnsafe.user.id
+                    userId
                 );
               }}
             >

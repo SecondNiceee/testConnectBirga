@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import AdCreatingOne from "./AdCreatingOne/AdCreatingOne/AdCreatingOne";
+import AdCreatingOne from "./AdCreatingOne/ui/AdCreatingOne/AdCreatingOne";
 import AdCreatingTwo from "./ADCreatingTwo/AdCreatingTwo/AddCreatingTwo";
 
 import { motion } from "framer-motion";
@@ -15,6 +15,7 @@ import pagesHistory from "../constants/pagesHistory";
 import FirstDetails from "../components/First/FirstDetails/FirstDetails";
 import translation from "../functions/translate";
 import { CSSTransition } from "react-transition-group";
+import { USERID } from "../constants/tgStatic.config";
 
 
 const textButton = translation("Вы уверены, что хотите создать новое задание?")
@@ -222,8 +223,7 @@ const AdCreating = () => {
   }
   async function post(el) {
     let myFormData = new FormData();
-    // myFormData.append("userId", window.Telegram.WebApp.initDataUnsafe.user.id );
-     myFormData.append("userId", String(window.Telegram.WebApp.initDataUnsafe.user.id)  );
+     myFormData.append("userId", USERID );
     myFormData.append("title", String(el.taskName.trim()));
     myFormData.append("description", String(el.taskDescription.trim()));
     myFormData.append("deadline", "1");

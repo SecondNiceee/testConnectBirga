@@ -15,6 +15,9 @@ const Responses = ({
   openAboutReactionFunc,
   setOpen,
   getMore,
+  setPhotos,
+  setPhotoIndex,
+  setSlideOpened
 }) => {
   const [page, setPage] = useState(2);
   const orderStatus = useSelector(
@@ -71,6 +74,9 @@ const Responses = ({
             return (
               <>
                 <ReactionSuspense
+                  setPhotos = {setPhotos}
+                  setPhotoIndex = {setPhotoIndex}
+                  setSlideOpened = {setSlideOpened}
                   openAboutReactionFunc={openAboutReactionFunc}
                   responce={e}
                   setOpen={setOpen}

@@ -1,20 +1,19 @@
 import React, { memo, useCallback, useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import cl from "./AdCreatingOne.module.scss";
-import Cap from "../../../components/UI/Cap/Cap";
-import Categories from "../Categories/Categories";
-import TaskName from "../../../components/UI/TaskName/TaskName";
-import DescriptionAndPhoto from "../../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
-import ChoiceCategory from "../ChoiceCategory/ChoiceCategory";
-import ChoiceSubCategory from "../ChoiceSubCategory";
+import Cap from "../../../../components/UI/Cap/Cap";
+import Categories from "../components/Categories/Categories";
+import TaskName from "../../../../components/UI/TaskName/TaskName";
+import DescriptionAndPhoto from "../../../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
+import ChoiceCategory from "../components/ChoiceCategory/ChoiceCategory";
+import ChoiceSubCategory from "../components/ChoiceSubCategory/ChoiceSubCategory";
 
-import CatchDate from "../../ADCreatingTwo/CatchDate/CatchDate";
-import "../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css";
-import MyDatePicker from "../../../components/AdCreating/MyDatePicker/MyDatePicker";
-import Text from "../../../components/Text/Text";
-import translation from "../../../functions/translate";
-import en from "../../../constants/language";
-
+import CatchDate from "../../../ADCreatingTwo/CatchDate/CatchDate";
+import "../../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css";
+import MyDatePicker from "../../../../components/AdCreating/MyDatePicker/MyDatePicker";
+import Text from "../../../../components/Text/Text";
+import translation from "../../../../functions/translate";
+import en from "../../../../constants/language";
 
 
 // eslint-disable-next-line
@@ -55,6 +54,7 @@ else{
     11: "Ноя",
     12: "Дек",
   };
+
 }
 let dateConfig;
 if (en){

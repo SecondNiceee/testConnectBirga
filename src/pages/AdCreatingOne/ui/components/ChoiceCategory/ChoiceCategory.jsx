@@ -1,12 +1,11 @@
 import React, { useEffect, useMemo, useState } from "react";
 import cl from "./ChoiceCategory.module.css";
-import OneInput from "../../../components/UI/OneInput/OneInput";
+import OneInput from "../../../../../components/UI/OneInput/OneInput";
+import BackButton from "../../../../../constants/BackButton";
+import MainButton from "../../../../../constants/MainButton";
+import Text from "../../../../../components/Text/Text";
+import translation from "../../../../../functions/translate";
 import CategoryItem from "../CategoryItem/CategoryItem";
-import BackButton from "../../../constants/BackButton";
-import MainButton from "../../../constants/MainButton";
-import Text from "../../../components/Text/Text";
-import translation from "../../../functions/translate";
-
 
 
 

@@ -5,6 +5,7 @@ import makeNewFile from "../functions/newMakeFile";
 import translation from "../functions/translate";
 import en from "../constants/language";
 import makeNewUser from "../functions/makeNewUser";
+import { USERID } from "../constants/tgStatic.config";
 
 
 
@@ -207,7 +208,7 @@ export const fetchResponses = createAsyncThunk(
         
         let im = await axios.get(`${process.env.REACT_APP_HOST}/response/findByUser` , {
             params : {
-                "userId" : window.Telegram.WebApp.initDataUnsafe.user.id,
+                "userId" : USERID,
                 page : par[1],
                 limit : 4
                 

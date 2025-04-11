@@ -33,13 +33,13 @@ const FirstBlock = ({
   task,
   agree = false,
   viewsNumber = 0,
-  setViewsNumber = () =>{}
+  setViewsNumber = () =>{},
+  setPhotoIndex,
+  setPhotos
  }) => {
-
   const [badPhotos, setBadPhotos] = useState([])
   useEffect(() => {
     if (end){
-
       function resizeImage(file, maxWidth, maxHeight, quality) {
         return new Promise((resolve, reject) => {
           const reader = new FileReader();
@@ -141,14 +141,10 @@ const FirstBlock = ({
     >
       {isVisible && (
         <Suspense fallback={<BlockSpinner style = { photos.length > 0 ? {minHeight : "283px"} :{minHeight : "144px"}} />}>
-          <Block {...props} photos={ end ? badPhotos : photos} />
+          <Block setSliderOpened={setSlideActive} setPhotos={setPhotos} setPhotoIndex={setPhotoIndex} {...props} photos={ end ? badPhotos : photos} />
         </Suspense>
       )}
-
-
-      
-
-<div ref={ref} style={{
+    <div ref={ref} style={{
                 width : "1px",
                 height : "2000px",
                 position : "absolute",
@@ -156,7 +152,6 @@ const FirstBlock = ({
                 opacity : "0",
                 zIndex : -1,
                 left: "40px"
-              
             }} className="catch_block"></div>
     </div>
   );

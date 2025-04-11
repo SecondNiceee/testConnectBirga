@@ -1,7 +1,11 @@
 import React, { memo } from 'react';
 import cl from './InnerCase.module.css'
 import Text from '../../Text/Text';
-const InnerCase = ({ className, task,  title , description , photos, agree = false,  ...props }) => {
+import { useSliderClicker } from '../../UI/PhotosSlider/hooks/useSliderClicker';
+
+const InnerCase = ({ className, task,  title , description , photos, agree = false, setPhotoIndex, setPhotos, setSliderOpened,  ...props }) => {
+
+    const photosClickHandler = useSliderClicker({photos, setPhotoIndex, setPhotos, setSlideOpened : setSliderOpened})
     return (
         <div
         {...props} 
@@ -12,7 +16,7 @@ const InnerCase = ({ className, task,  title , description , photos, agree = fal
               {photos.map((e , i) => {
                 let url = URL.createObjectURL(e)
                 return (
-                  <img key={i} style={photos.length === 1 ? 
+                  <img onClick={photosClickHandler(i)} key={i} style={photos.length === 1 ? 
                     {minWidth : '100%'} 
                     :
                     {}
@@ -29,11 +33,7 @@ const InnerCase = ({ className, task,  title , description , photos, agree = fal
             <h4>{title}</h4>
             <Text>Категория: Дизайн</Text>
           </div>
-  
-          
-  
-          
-          
+
           <div style={{
             gap : "0px"
           }} className={cl.caseRight}>

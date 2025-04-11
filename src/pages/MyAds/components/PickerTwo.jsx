@@ -13,11 +13,6 @@ const PickerTwo = forwardRef(({setSecondPage  , valueTwo ,  viewsNumber , setVie
         <AdCreateFunc text={"Создать объявление"} link={"/AdCreating"} />
         <AdsContainer valueTwo = {valueTwo}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} myAdsArray={myAdsArray} setSecondPage={setSecondPage}  />
 
-
-
-
-
-
       </div>
     );
 } );

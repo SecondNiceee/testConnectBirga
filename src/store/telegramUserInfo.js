@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import makeNewFile from "../functions/newMakeFile";
+import { USERID, USERLINK } from "../constants/tgStatic.config";
 
 
 
@@ -33,12 +34,11 @@ export const putCard = createAsyncThunk(
     "telegramUserInfo/putCard",
     async function (data){
         try{
-            //window.Telegram.WebApp.initDataUnsafe.user.id 
-            //
+
             let im = await axios.put(`${process.env.REACT_APP_HOST}/card` , data[0] , 
                 {
                     params : {
-                        id : String(window.Telegram.WebApp.initDataUnsafe.user.id),
+                        id : USERID,
                     },
                     headers: {
                         "Content-Type" :'multipart/form-data',
@@ -74,7 +74,7 @@ export const postCard = createAsyncThunk(
             let im = await axios.post(`${process.env.REACT_APP_HOST}/card` , data[0] , 
                 {
                     params : {
-                        userId : String(window.Telegram.WebApp.initDataUnsafe.user.id),
+                        userId : USERID,
                     },
                     headers: {
                         "Content-Type" :'multipart/form-data',
@@ -114,7 +114,7 @@ export const putUserInfo = createAsyncThunk(
         try{
             await axios.put(`${process.env.REACT_APP_HOST}/user` , data[0] , {
                 params : {
-                    userId : String(window.Telegram.WebApp.initDataUnsafe.user.id),
+                    userId : USERID,
                 },
                 headers: {
                     "Content-Type" :'application/json',
@@ -133,10 +133,8 @@ export const fetchUserInfo = createAsyncThunk(
   async function () {
     try {
 
-        //window.Telegram.WebApp.initDataUnsafe.user.id
         let firstName = window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.first_name : "Коля"
         let lastName = window.Telegram.WebApp.initDataUnsafe.user ?  window.Telegram.WebApp.initDataUnsafe.user.last_name : "Титов"
-        let UserId = window.Telegram.WebApp.initDataUnsafe.user.id
         let user;
         
         try{
@@ -144,7 +142,7 @@ export const fetchUserInfo = createAsyncThunk(
 
              user = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
               params: {
-                id: UserId,
+                id: USERID,
               },
               headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -157,9 +155,9 @@ export const fetchUserInfo = createAsyncThunk(
         catch(e){
             await axios.post(`${process.env.REACT_APP_HOST}/user/createByBot` , {}, {
                 params : {
-                    id : window.Telegram.WebApp.initDataUnsafe.user.id,
+                    id : USERID,
                     language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en",
-                    link : window.Telegram.WebApp.initDataUnsafe.user.link
+                    link : USERLINK
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -167,7 +165,7 @@ export const fetchUserInfo = createAsyncThunk(
             })
             user = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
                 params: {
-                  id: UserId,
+                  id: USERID,
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -179,7 +177,7 @@ export const fetchUserInfo = createAsyncThunk(
 
         let allCards = await axios.get(`${process.env.REACT_APP_HOST}/card/findByUser` , {
             params : {
-                userId : UserId
+                userId : USERID
             },
             headers : {
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -202,10 +200,6 @@ export const fetchUserInfo = createAsyncThunk(
                     
                 })
             }
-
-        //window.Telegram.WebApp.initDataUnsafe.user.id
-        //window.Telegram.WebApp.initDataUnsafe.user.id  window.Telegram.WebApp.initDataUnsafe.user.id
-
         let photoUrl = user.data.photo ? user.data.photo : ""
 
         return ( {
@@ -213,7 +207,7 @@ export const fetchUserInfo = createAsyncThunk(
             lastName: lastName,
             address : user.data.address,
             mnemonic : user.data.mnemonic,
-            id: UserId,
+            id: USERID,
             link : user.data.link,
             photo: photoUrl,
             about : user.data.about,

@@ -8,7 +8,6 @@ import Block from "./Block/Block";
 import AlertBlock from "./AlertBlock/AlertBlock";
 import { useDispatch, useSelector } from "react-redux";
 import translation from "../../functions/translate";
-import { getBalance } from "../../store/balance";
 
 const AdCreatingThree = ({taskInformation }) => {
 
@@ -17,18 +16,10 @@ const AdCreatingThree = ({taskInformation }) => {
   const balance = useSelector(state => state.balance.value)
   const address = useSelector( state => state.telegramUserInfo.address )
 
-  useEffect( () => {
-    dispatch(getBalance({userAddress : address}))
-  } , [dispatch, address] )
-
-  // window.Telegram.WebApp.initDataUnsafe.user.id
-
-  // window.Telegram.WebApp.initDataUnsafe.user.id
   const perventValue = useMemo( () => {
     return  Number((Number(taskInformation.tonValue) * 0.04).toFixed(3))
   }, [taskInformation.tonValue] ) 
 
-  // window.Telegram.WebApp.initDataUnsafe.user.id
 
   const rezult = useMemo( () => {
     return  (Number(taskInformation.tonValue) + perventValue + 0.02).toFixed(3)
