@@ -337,6 +337,7 @@ const MyAds = ({isPage = false}) => {
 
   const [myAdeOneStatus , setMyAdOneStatus] = useState(null)
   const [pageResponseStatus , setPageResponseStatus] = useState(null)
+  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
 
   const myAdOneResponse = useMemo( () => {
     async function getResponse() {
@@ -645,7 +646,7 @@ const MyAds = ({isPage = false}) => {
     }
   } , [isPage, setSecondPage] )
 
-  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
+
 
   return (
     <>
