@@ -179,6 +179,7 @@ const ShowMyResponse = ({
       ) : (
         <div style={MainButton.isVisible ? {paddingBottom : "74px"} : {paddingBottom : "97px"}} className={cl.wrapper}>
           <ResponseBlock
+            isForSliderOpened={true}
             isWatched={response.isWatched}
             index={index}
             func={openDetails}

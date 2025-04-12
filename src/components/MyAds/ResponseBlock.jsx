@@ -30,6 +30,10 @@ const ResponseBlock = ({
   isWatched,
   category,
   showStatus = false,
+  setPhotoIndex,
+  setPhotos,
+  setSlideOpened,
+  isForSliderOpened, // перемнная для понимания, что нужно делать при нажатии на фотки
   ...props
 }) => {
 
@@ -65,6 +69,17 @@ const ResponseBlock = ({
   }, [isWatched]);
 
 
+
+  const onClickImage = (id) => () => {
+    if (isForSliderOpened){
+      setPhotoIndex(id)
+      setPhotos(photos)
+      setSlideActive(true)
+    }
+    else{
+      func(index)
+    }
+  }
   return (
     <>
       {photos !== undefined ? (
@@ -81,7 +96,7 @@ const ResponseBlock = ({
                   <img
                     key={i}
                     src={URL.createObjectURL(e)}
-                    onClick={() => {func(i)}}
+                    onClick={onClickImage(i)}
                     style={
                       photos.length === 1
                         ? {
