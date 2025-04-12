@@ -112,7 +112,7 @@ const SavedPage = () => {
     return false;
   }, [savedTasks, details.id]);
 
-  console.log(responce.isOpen)
+  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
 
   useEffect(() => {
     // setStep(varStep)
@@ -168,8 +168,6 @@ const SavedPage = () => {
           }
         
         }
-
-
       }
     }
 
@@ -412,7 +410,7 @@ const SavedPage = () => {
     setResponce(value => ({...value , isOpen : false , isShablon : false ,isShablonModalActive : false , shablonMaker:false }))
   } , [changer] )
 
-  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
+
 
   return (
     <>

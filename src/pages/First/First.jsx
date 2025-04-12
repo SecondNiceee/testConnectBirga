@@ -540,6 +540,9 @@ const First = ({ isPage = false }) => {
           unmountOnExit
         >
           <CardPage
+          setPhotoIndex={setPhotoIndex}
+          setPhotos={setPhotos}
+          setSlideOpened={setSlideOpened}
             style={{ paddingBottom: "74px", left: "100vw" }}
             card={isCardOpen.card}
           />
@@ -553,6 +556,9 @@ const First = ({ isPage = false }) => {
           unmountOnExit
         >
           <AboutReaction
+          setPhotoIndex={setPhotoIndex}
+          setPhotos={setPhotos}
+          setSlideOpened={setSlideOpened}
             isFirst={true}
             isMyAds={false}
             isTelesgramVisible={false}
