@@ -69,9 +69,9 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
 
   return (
     
-    <div ref={ref} {...props} className="responce-wrapper">
-
-
+    <div ref={ref} {...props} style={{
+      left : left
+    }} className="responce-wrapper">
 
       <Block {...orderInformation} />
       <MakePrivate
@@ -141,7 +141,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
       unmountOnExit
       mountOnEnter
       >
-        <LoaderBlock top={ ref ? String(ref.current.scrollTop) + "px" : "0px"}  />
+        <LoaderBlock top={ ref ? ref.current ? String(ref.current.scrollTop) + "px" : "0px" : "0px"}  />
       </CSSTransition>
       
     </div>

@@ -20,7 +20,7 @@ import AboutReaction from "../MyAds/components/AboutReaction";
 import CardPage from "../CardPage/CardPage";
 import axios from "axios";
 import makeNewFile from "../../functions/newMakeFile";
-import {  clearTasks } from "../../store/information";
+import { clearTasks } from "../../store/information";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import translation from "../../functions/translate";
 import en from "../../constants/language";
@@ -35,28 +35,26 @@ import useAddHistory from "../../hooks/MyAds/useAddHistory";
 import useSlider from "../../hooks/useSlider";
 import useFilteredArray from "./hooks/useFilteredArray";
 import useIsMyResponse from "./hooks/useIsMyResponse";
+import useForward from "./hooks/useForward";
+import useBackButton from "./hooks/useBackButton";
 
 let isDetailsActiveVar = false;
 let localResponce;
 let localStep;
 
-const messageOne = translation("📣 Вы получили отклик на задачу «")
-const messageTwo = translation("» от ")
+const messageOne = translation("📣 Вы получили отклик на задачу «");
+const messageTwo = translation("» от ");
 const menu = document.documentElement.querySelector(".FirstMenu");
-let resp = translation("Откликнуться?")
+let resp = translation("Откликнуться?");
 
-const textButton = translation("Вы действительно хотите откликнуться?")
-const buttonText = translation("ОТКЛИКНУТЬСЯ")
+const textButton = translation("Вы действительно хотите откликнуться?");
+const buttonText = translation("ОТКЛИКНУТЬСЯ");
 
-const Yes = translation("Да")
-const No = translation("Нет")
-
-
-
+const Yes = translation("Да");
+const No = translation("Нет");
 
 const First = ({ isPage = false }) => {
-
-  const [pageValue, setPageValue] = useState(true)
+  const [pageValue, setPageValue] = useState(true);
 
   const firstRef = useRef(null);
 
@@ -66,9 +64,9 @@ const First = ({ isPage = false }) => {
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);
 
-  const address = useSelector( state => state.telegramUserInfo.address )
+  const address = useSelector((state) => state.telegramUserInfo.address);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   localStep = step;
 
@@ -81,7 +79,7 @@ const First = ({ isPage = false }) => {
     isOpen: false,
   });
 
-  const responseRef = useRef(null)
+  const responseRef = useRef(null);
 
   useEffect(() => {
     if (isPage) {
@@ -102,7 +100,6 @@ const First = ({ isPage = false }) => {
     shablonMaker: false,
   });
 
-
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
   );
@@ -121,7 +118,7 @@ const First = ({ isPage = false }) => {
     window.Telegram.WebApp.disableVerticalSwipes();
   }, []);
 
-  const secFilteredArray = useFilteredArray({filteredArr, filters})
+  const secFilteredArray = useFilteredArray({ filteredArr, filters });
 
   const [pageAdvertisement, setPageAdvertisement] = useState(null);
 
@@ -134,10 +131,9 @@ const First = ({ isPage = false }) => {
             params: {
               id: window.Telegram.WebApp.initDataUnsafe.start_param,
             },
-            headers : {
-              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY,
-              
-            }
+            headers: {
+              "X-API-KEY-AUTH": process.env.REACT_APP_API_KEY,
+            },
           }
         );
         let order = advertisement.data;
@@ -158,13 +154,13 @@ const First = ({ isPage = false }) => {
             params: {
               userId: order.user.id,
             },
-            headers : {
-              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-            }
+            headers: {
+              "X-API-KEY-AUTH": process.env.REACT_APP_API_KEY,
+            },
           }
         );
 
-        const newUser = await makeNewUser(order)
+        const newUser = await makeNewUser(order);
 
         return {
           id: order.id,
@@ -188,7 +184,7 @@ const First = ({ isPage = false }) => {
           category: order.category.id,
         };
       } catch (e) {
-        setPageValue(false)
+        setPageValue(false);
         setDetailsActive({ isOpen: false, id: 1 });
       }
     }
@@ -206,16 +202,19 @@ const First = ({ isPage = false }) => {
         return secFilteredArray[isDetailsActive.id];
       }
     }
-  }, [  
+  }, [
     isPage,
     pageAdvertisement,
     isDetailsActive.id,
     ordersInformation,
     secFilteredArray,
-    pageValue
+    pageValue,
   ]);
 
-  const isMyResponse = useIsMyResponse({detailsAdertisement, isDetailsActive})
+  const isMyResponse = useIsMyResponse({
+    detailsAdertisement,
+    isDetailsActive,
+  });
 
   const [isProfile, setProfile] = useState(false);
 
@@ -232,80 +231,47 @@ const First = ({ isPage = false }) => {
 
   isDetailsActiveVar = isDetailsActive.isOpen;
 
-  const {isSliderOpened, photoIndex, photos, setPhotoIndex ,setPhotos, setSlideOpened} = useSlider()
+  const {
+    isSliderOpened,
+    photoIndex,
+    photos,
+    setPhotoIndex,
+    setPhotos,
+    setSlideOpened,
+  } = useSlider();
+
+  const forward = useForward({
+    isMyResponse,
+    isSliderOpened,
+    setSlideOpened,
+    setStep,
+    step,
+  }); /// функция междлу подробнее и откликлм
+
+  const back = useBackButton({
+    isSliderOpened,
+    responce,
+    setProfile,
+    setResponce,
+    closeDetails,
+    setPageValue,
+    step,
+    isCardOpen,
+    isProfile,
+    setCardOpen,
+    setSlideOpened,
+    setStep,
+  });
+
+  function closeDetails() {
+    setDetailsActive((value) => ({ ...value, isOpen: false }));
+  }
 
   useEffect(() => {
-    function closeDetails() {
-      setDetailsActive((value) => ({ ...value, isOpen: false }));
-    }
-    function forward() {
-      if (!isSliderOpened){
-        if (isMyResponse) {
-          window.Telegram.WebApp.showPopup({
-            title: translation("Ошибка"),
-            message:
-              translation("Задание ваше или вы откликнулись уже на него."),
-          });
-        } else {
-          if (step === 0){
-              setStep(1)
-          }
-        }
-      }
-      else{
-        setSlideOpened(false)
-      }
-    }
-
-    function back() {
-      if (!isSliderOpened){
-        if (responce.isShablonModalActive) {
-          setResponce((value) => ({ ...value, isShablonModalActive: false }));
-        } else {
-          if (responce.shablonMaker) {
-            setResponce((value) => ({ ...value, shablonMaker: false }));
-          } else {
-            if (step === 1) {
-              setStep(0);
-              MainButton.setParams({
-                is_active: true,
-                color: "#2ea5ff",
-                text_color: "#ffffff",
-              });
-              // mainRef.current.classList.remove('secondStep')
-            } else {
-              if (isCardOpen.isOpen) {
-                setCardOpen((value) => ({ ...value, isOpen: false }));
-              } else {
-                if (isProfile) {
-                  setProfile(false);
-                } else {
-                  if (step === 0) {
-                    setResponce({
-                      text: "",
-                      photos: [],
-                      name: "привет",
-                      isShablonModalActive: false,
-                      shablonIndex: 0,
-                      isShablon: false,
-                      shablonMaker: false,
-                    });
-                    closeDetails();
-                    setPageValue(false)
-                  }
-                }
-              }
-            }
-          }
-        }
-
-      }
-      else{
-        setSlideOpened(false)
-      }
-    }
     MainButton.onClick(forward);
     BackButton.onClick(back);
+
+    
     if (isDetailsActiveVar) {
       menu.classList.add("disappearAnimation");
       menu.classList.remove("appearAnimation");
@@ -318,24 +284,23 @@ const First = ({ isPage = false }) => {
           text_color: "#606060",
         });
       } else {
-        if (localStep === 0 ) {
-          if (isDetailsActive.isOpen){
-            if (detailsAdertisement){
-              if (detailsAdertisement.status === "active"){
+        if (localStep === 0) {
+          if (isDetailsActive.isOpen) {
+            if (detailsAdertisement) {
+              if (detailsAdertisement.status === "active") {
                 MainButton.setParams({
                   is_active: true,
                   color: "#2ea5ff",
                   text_color: "#ffffff",
                 });
-              }
-              else{
+              } else {
                 MainButton.setParams({
                   is_active: false, //неизвесетно
                   color: "#2f2f2f",
                   text_color: "#606060",
                 });
               }
-            } 
+            }
           }
         }
       }
@@ -355,6 +320,7 @@ const First = ({ isPage = false }) => {
       BackButton.offClick(back);
     };
   }, [
+    back,
     isDetailsActive.isOpen,
     step,
     isMyResponse,
@@ -367,7 +333,8 @@ const First = ({ isPage = false }) => {
     detailsAdertisement,
     navigate,
     address,
-    isSliderOpened
+    isSliderOpened,
+    forward,
   ]);
 
   useEffect(() => {
@@ -398,7 +365,6 @@ const First = ({ isPage = false }) => {
     }
   }, [responce.text, step]);
 
-
   const me = useSelector((state) => state.telegramUserInfo);
 
   const [categoryOpen, setCategoryOpen] = useState(false);
@@ -409,32 +375,35 @@ const First = ({ isPage = false }) => {
     dispatch(clearTasks());
   }, [dispatch]);
 
-  const [putStatus , setPutStatus] = useState(false)
+  const [putStatus, setPutStatus] = useState(false);
 
   const forwardFunction = useCallback(() => {
-
     async function post(par) {
       try {
         let im;
-        setPutStatus(true)
-        responseRef.current.style.overflowY = "hidden"
+        setPutStatus(true);
+        responseRef.current.style.overflowY = "hidden";
         for (let i = 0; i < 1; i++) {
-          im = await axios.post(process.env.REACT_APP_HOST + "/response", par[0], {
-            params: {
-              advertisementId: par[1].advertisement.id,
-              userId: par[1].user.id,
-            },
-            headers : {
-              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+          im = await axios.post(
+            process.env.REACT_APP_HOST + "/response",
+            par[0],
+            {
+              params: {
+                advertisementId: par[1].advertisement.id,
+                userId: par[1].user.id,
+              },
+              headers: {
+                "X-API-KEY-AUTH": process.env.REACT_APP_API_KEY,
+              },
             }
-          });
+          );
         }
-        try{
-          await axios.get( process.env.REACT_APP_HOST + "/user/sendMessage", {
+        try {
+          await axios.get(process.env.REACT_APP_HOST + "/user/sendMessage", {
             params: {
               chatId: par[1].advertisement.user.chatId,
               text:
-              messageOne +
+                messageOne +
                 par[1].advertisement.taskName.bold() +
                 messageTwo +
                 par[1].user.fl,
@@ -443,15 +412,14 @@ const First = ({ isPage = false }) => {
                 String(par[1].advertisement.id) +
                 "&response=" +
                 String(im.data.id),
-                languageCode : en ? "en" : "ru"
+              languageCode: en ? "en" : "ru",
             },
-            headers : {
-              "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-            }
+            headers: {
+              "X-API-KEY-AUTH": process.env.REACT_APP_API_KEY,
+            },
           });
-        }
-        catch(e){
-          console.warn(e)
+        } catch (e) {
+          console.warn(e);
         }
         setDetailsActive((value) => ({ ...value, isOpen: false }));
         setStep(0);
@@ -466,9 +434,9 @@ const First = ({ isPage = false }) => {
           isShablon: false,
           shablonMaker: false,
         });
-        menu.style.display = "flex"
-        responseRef.current.style.overflowY = "scroll"
-        setPutStatus(false)
+        menu.style.display = "flex";
+        responseRef.current.style.overflowY = "scroll";
+        setPutStatus(false);
         return par[1];
       } catch (e) {
         console.log(e);
@@ -502,42 +470,32 @@ const First = ({ isPage = false }) => {
     }
 
     if (step !== 0 && !responce.shablonMaker) {
-          if (localResponce.text.length < 3){
-            window.Telegram.WebApp.showAlert(translation("Ваш отклик пуст!"))
+      if (localResponce.text.length < 3) {
+        window.Telegram.WebApp.showAlert(translation("Ваш отклик пуст!"));
+      } else {
+        window.Telegram.WebApp.showPopup(
+          {
+            title: resp,
+            message: textButton,
+            buttons: [
+              { id: "save", type: "default", text: Yes },
+              { id: "delete", type: "destructive", text: No },
+            ],
+          },
+          (buttonId) => {
+            if (buttonId === "delete" || buttonId === null) {
+            }
+            if (buttonId === "save") {
+              window.Telegram.WebApp.HapticFeedback.notificationOccurred(
+                "success"
+              );
+              postResponce(detailsAdertisement.id, USERID);
+            }
           }
-          else{
-
-            window.Telegram.WebApp.showPopup(
-              {
-                title: resp,
-                message: textButton,
-                buttons: [
-                  { id: "save", type: "default", text: Yes },
-                  { id: "delete", type: "destructive", text: No },
-                ],
-              },
-              (buttonId) => {
-                if (buttonId === "delete" || buttonId === null) {
-
-                }
-                if (buttonId === "save") {
-                  window.Telegram.WebApp.HapticFeedback.notificationOccurred(
-                    "success"
-                  );
-                  postResponce(detailsAdertisement.id, USERID);
-                }
-              }
-            );
-          }
+        );
+      }
     }
-  }, [
-    responce,
-    step,
-    setDetailsActive,
-    setStep,
-    me,
-    detailsAdertisement
-  ]);
+  }, [responce, step, setDetailsActive, setStep, me, detailsAdertisement]);
 
   useEffect(() => {
     MainButton.onClick(forwardFunction);
@@ -545,8 +503,6 @@ const First = ({ isPage = false }) => {
       MainButton.offClick(forwardFunction);
     };
   }, [responce, forwardFunction]);
-
-
 
   const firsStyle = useMemo(() => {
     if (step === 1) {
@@ -564,141 +520,171 @@ const First = ({ isPage = false }) => {
     }
   }, [step, isDetailsActive.isOpen]);
 
+  useBlockInputs();
 
-  useBlockInputs()
-
-  useMenuRejection({setCardOpen, setCategoryOpen, setDetailsActive, setProfile, setResponce, setStep, setSubCategory})
+  useMenuRejection({
+    setCardOpen,
+    setCategoryOpen,
+    setDetailsActive,
+    setProfile,
+    setResponce,
+    setStep,
+    setSubCategory,
+  });
 
   return (
     <>
-    <div style={firsStyle} className="first-container">
-      <motion.div
-        // style={style}
-        ref={firstRef}
-        id="First"
-        className="First"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.2 }}
-      >
-        <div className="first-wrapper">
-          <AllTasks
-            setFilters={setFilters}
-            setSubCategory={setSubCategory}
-            filters={filters}
-            setCategoryOpen={setCategoryOpen}
-            filterBy={filterBy}
-            setFilterBy={setFilterBy}
-            ordersInformation={secFilteredArray}
-            setDetailsActive={setDetailsActive}
-          />
-        </div>
+      <div style={firsStyle} className="first-container">
+        <motion.div
+          // style={style}
+          ref={firstRef}
+          id="First"
+          className="First"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="first-wrapper">
+            <AllTasks
+              setFilters={setFilters}
+              setSubCategory={setSubCategory}
+              filters={filters}
+              setCategoryOpen={setCategoryOpen}
+              filterBy={filterBy}
+              setFilterBy={setFilterBy}
+              ordersInformation={secFilteredArray}
+              setDetailsActive={setDetailsActive}
+            />
+          </div>
 
-        <CSSTransition in={categoryOpen} timeout={0} mountOnEnter unmountOnExit>
-          <FirstChoiceCategory
+          <CSSTransition
+            in={categoryOpen}
+            timeout={0}
+            mountOnEnter
+            unmountOnExit
+          >
+            <FirstChoiceCategory
               style={{
-              paddingBottom: "100px",
-              top : firstRef.current ? firstRef.current.scrollTop + "px" : "0px"
-            }}
-            subCategorys={subCategorys}
-            categorys={categorys}
-            setCatagoryChoiceOpen={setCategoryOpen}
-            taskInformation={filters}
-            setTaskInformation={setFilters}
+                paddingBottom: "100px",
+                top: firstRef.current
+                  ? firstRef.current.scrollTop + "px"
+                  : "0px",
+              }}
+              subCategorys={subCategorys}
+              categorys={categorys}
+              setCatagoryChoiceOpen={setCategoryOpen}
+              taskInformation={filters}
+              setTaskInformation={setFilters}
+            />
+          </CSSTransition>
+
+          <CSSTransition
+            in={subCategory}
+            timeout={0}
+            mountOnEnter
+            unmountOnExit
+          >
+            <FirstChoiceSubCategory
+              style={{
+                paddingBottom: "100px",
+                top: firstRef.current
+                  ? firstRef.current.scrollTop + "px"
+                  : "0px",
+              }}
+              setSubcategoryChoiceOpen={setSubCategory}
+              subCategorysPar={subCategorys}
+              taskInformation={filters}
+              setTaskInformation={setFilters}
+            />
+          </CSSTransition>
+        </motion.div>
+
+        <CSSTransition
+          classNames="left-right"
+          in={isCardOpen.isOpen}
+          timeout={400}
+          mountOnEnter
+          unmountOnExit
+        >
+          <CardPage
+            style={{ paddingBottom: "74px", left: "100vw" }}
+            card={isCardOpen.card}
           />
         </CSSTransition>
 
-        <CSSTransition in={subCategory} timeout={0} mountOnEnter unmountOnExit>
-          <FirstChoiceSubCategory
+        <CSSTransition
+          in={isProfile}
+          timeout={400}
+          classNames="left-right"
+          mountOnEnter
+          unmountOnExit
+        >
+          <AboutReaction
+            isFirst={true}
+            isMyAds={false}
+            isTelesgramVisible={false}
             style={{
-              paddingBottom: "100px",
-              top : firstRef.current ? firstRef.current.scrollTop + "px" : "0px"
+              paddingBottom: "74px",
+              left: "100vw",
             }}
-            setSubcategoryChoiceOpen={setSubCategory}
-            subCategorysPar={subCategorys}
-            taskInformation={filters}
-            setTaskInformation={setFilters}
+            setOneCard={setCardOpen}
+            responce={detailsAdertisement}
           />
         </CSSTransition>
-      </motion.div>
 
-      <CSSTransition
-        classNames="left-right"
-        in={isCardOpen.isOpen}
-        timeout={400}
-        mountOnEnter
-        unmountOnExit
-      >
-        <CardPage style={{ paddingBottom: "74px" , left : "100vw" }} card={isCardOpen.card} />
-      </CSSTransition>
+        <CSSTransition
+          in={isDetailsActive.isOpen}
+          timeout={400}
+          // classNames="left-right"
+        >
+          <FirstDetails
+            setPhotoIndex={setPhotoIndex}
+            setPhotos={setPhotos}
+            setSliderOpened={setSlideOpened}
+            isDetailsActive={isDetailsActive.isOpen}
+            breakRef={firstRef}
+            setProfile={setProfile}
+            // style={pageValue && isPage ? { transform: "translateX(0%)" } : {}}
+            // className={}
+            orderInformation={detailsAdertisement}
+          />
+        </CSSTransition>
 
-      <CSSTransition
-        in={isProfile}
-        timeout={400}
-        classNames="left-right"
-        mountOnEnter
-        unmountOnExit
-      >
-        <AboutReaction
-          isFirst={true}
-          isMyAds={false}
-          isTelesgramVisible={false}
-          style={{
-            paddingBottom: "74px",
-            left : "100vw"
-          }}
-          setOneCard={setCardOpen}
-          responce={
-            detailsAdertisement
-          }
-        />
-      </CSSTransition>
+        <CSSTransition
+          in={step === 1 ? true : false}
+          // in = {true}
+          timeout={400}
+          mountOnEnter
+          unmountOnExit
+        >
+          <Responce
+            ref={responseRef}
+            putStatus={putStatus}
+            responce={responce}
+            setResponce={setResponce}
+            orderInformation={
+              pageValue && isPage
+                ? pageAdvertisement
+                : secFilteredArray[isDetailsActive.id]
+                ? secFilteredArray[isDetailsActive.id]
+                : "he"
+            }
+          />
+        </CSSTransition>
+      </div>
 
-      <CSSTransition
-        in={isDetailsActive.isOpen}
-        timeout={400}
-        // classNames="left-right"
-      >
-        <FirstDetails
-          setPhotoIndex = {setPhotoIndex}
-          setPhotos = {setPhotos}
-          setSliderOpened = {setSlideOpened}
-          isDetailsActive={isDetailsActive.isOpen}
-          breakRef={firstRef}
-          setProfile={setProfile}
-          // style={pageValue && isPage ? { transform: "translateX(0%)" } : {}}
-          // className={}
-          orderInformation={detailsAdertisement}
-        />
-      </CSSTransition>
-
-      <CSSTransition
-         in={step === 1 ? true : false}
-        // in = {true}
-        timeout={400}
-        mountOnEnter
-        unmountOnExit
-      >
-        <Responce
-          ref={responseRef}
-          putStatus = {putStatus}
-          responce={responce}
-          setResponce={setResponce}
-          orderInformation={
-            (pageValue && isPage) ? 
-            pageAdvertisement
-            :
-            secFilteredArray[isDetailsActive.id]
-              ? secFilteredArray[isDetailsActive.id]
-              : "he"
-          }
-        /> 
-      </CSSTransition>
-    </div>
-
-    <CssTransitionSlider blockerAll={true} blockerId={""} isSliderOpened={isSliderOpened} leftPosition={0} renderMap={photos} setSliderOpened={setSlideOpened} sliderIndex={photoIndex} swiperId={"1"} top={0}  />
-    
+      <CssTransitionSlider
+        blockerAll={true}
+        blockerId={""}
+        isSliderOpened={isSliderOpened}
+        leftPosition={0}
+        renderMap={photos}
+        setSliderOpened={setSlideOpened}
+        sliderIndex={photoIndex}
+        swiperId={"1"}
+        top={0}
+      />
     </>
   );
 };
