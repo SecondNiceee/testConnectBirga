@@ -6,7 +6,7 @@ import { useInView } from 'react-intersection-observer';
 
 const ResponseBlock = lazy( () => import("../../../components/MyAds/ResponseBlock") )
 
-const ResponseSuspense = ({func , index, buttonText , task, isWatched, advertisement, setPhotos, setPhotoIndex, setSlideOpened,  viewsNumber = 0, setViewsNumber = () => {}}) => {
+const ResponseSuspense = ({func , index, buttonText , task, isWatched, advertisement,  viewsNumber = 0, setViewsNumber = () => {}}) => {
     const { ref, inView } = useInView({
         threshold: 0, // Порог видимости (от 0 до 1)
       });
@@ -34,7 +34,7 @@ const ResponseSuspense = ({func , index, buttonText , task, isWatched, advertise
         <div style={!isVisible ? style : {position : "relative"}} className="First__block">
             {
                 isVisible && <Suspense fallback = {<BlockSpinner style = {advertisement.photos.length > 0 ? {minHeight : "315px"} : {minHeight : "178px"}} />}>
-                    <ResponseBlock  setSlideOpened = {setSlideOpened} setPhotos = {setPhotos} setPhotoIndex = {setPhotoIndex}  func={func} index={index} buttonText={buttonText} task={task} isWatched={isWatched} {...advertisement} />
+                    <ResponseBlock  func={func} index={index} buttonText={buttonText} task={task} isWatched={isWatched} {...advertisement} />
                 </Suspense>
             }
             <div ref={ref} style={{

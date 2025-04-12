@@ -659,9 +659,6 @@ const MyAds = ({isPage = false}) => {
         >
 
           <MyAdOne
-          setPhotoIndex={setPhotoIndex}
-          setPhotos={setPhotos}
-          setSlideOpened={setSlideOpened}
           responsesArr = {filteredResponses}
           setMyResponse = {setMyResponse}
             setOneValue = {setValueOne}

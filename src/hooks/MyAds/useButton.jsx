@@ -151,14 +151,11 @@ export const useButton = ({
           });
         }
       }
-  
-      BackButton.onClick(goBack);
     }
-        else{
-          menu.classList.add("appearAnimation")
-          menu.classList.remove("disappearAnimation")
-        }
-    } 
+    else{
+      menu.classList.add("appearAnimation")
+      menu.classList.remove("disappearAnimation")
+    } } 
     else{
       MainButton.show();
       MainButton.setText("Закрыть")
@@ -168,8 +165,8 @@ export const useButton = ({
     if (happyHold){
       MainButton.setText(translation("Перейти к заданию"))
     }
+    BackButton.onClick(goBack);
     
-
     return () => {
       MainButton.setParams({
         color: "#2ea5ff",

@@ -13,7 +13,7 @@ import {  fetchResponses } from "../../../store/responses";
 import MyAnimation from "./MyAnimation";
 const MyResponses = forwardRef(
   ( 
-    { responsesArr, buttonFunction, viewsNumber, setViewsNumber, nowValue , text, setPhotos, setSlideOpened, setPhotoIndex },
+    { responsesArr, buttonFunction, viewsNumber, setViewsNumber, nowValue , text},
     ref
   ) => {
     const [page, setPage] = useState(2);
@@ -64,10 +64,6 @@ const MyResponses = forwardRef(
             {responsesArr.map((e, i) => {
               return (
                 <ResponseSuspense
-                
-                setSlideOpened = {setSlideOpened}
-                setPhotos = {setPhotos}
-                setPhotoIndex = {setPhotoIndex}
                   viewsNumber={viewsNumber}
                   setViewsNumber={setViewsNumber}
                   func={buttonFunction}

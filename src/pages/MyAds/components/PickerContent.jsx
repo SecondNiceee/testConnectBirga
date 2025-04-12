@@ -14,9 +14,6 @@ const PickerContent = ({
   setMyResponse,
   responsesArr,
   myAdsArray,
-  setSlideOpened,
-  setPhotoIndex,
-  setPhotos
 }) => {
 
 
@@ -82,7 +79,7 @@ const PickerContent = ({
       >
         
 
-        <PickerOne setSlideOpened = {setSlideOpened} setPhotos = {setPhotos} setPhotoIndex = {setPhotoIndex}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} ref={containerOne} oneValue = {valueOne} nowValue = {nowValue}  responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
+        <PickerOne  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} ref={containerOne} oneValue = {valueOne} nowValue = {nowValue}  responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
 
         <PickerTwo  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} ref={containerTwo} valueTwo = {valueTwo} myAdsArray={myAdsArray} setSecondPage = {setSecondPage}  />
 

@@ -30,8 +30,6 @@ const ResponseBlock = ({
   isWatched,
   category,
   showStatus = false,
-  setPhotos, setPhotoIndex,
-  setSlideOpened,
   ...props
 }) => {
 
@@ -67,7 +65,6 @@ const ResponseBlock = ({
   }, [isWatched]);
 
 
-  const photosClickEvent = useSliderClicker({photos, setPhotoIndex, setPhotos, setSlideOpened})
   return (
     <>
       {photos !== undefined ? (

@@ -35,7 +35,6 @@ const useBack = ({
 
   function goBack() {
     if (!isSliderOpened){
-
       if (!walletH) {
         if (happyHold) {
           setOpen({ ...isOpen, isActive: false });
