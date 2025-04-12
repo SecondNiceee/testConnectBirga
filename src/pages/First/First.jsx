@@ -281,7 +281,7 @@ const First = ({ isPage = false }) => {
   }, [step, isDetailsActive.isOpen]);
 
   useEffect(() => {
-    if (localResponce.text.length  < 3 && localStep === 1) {
+    if (responce.text.length  < 3 && localStep === 1) {
       MainButton.setParams({
         color: "#2f2f2f",
         text_color: "#606060",
@@ -402,7 +402,7 @@ const First = ({ isPage = false }) => {
     }
 
     if (step !== 0 && !responce.shablonMaker) {
-      if (localResponce.text.length < 3) {
+      if (responce.text.length < 3) {
         window.Telegram.WebApp.showAlert(translation("Ваш отклик пуст!"));
       } else {
         window.Telegram.WebApp.showPopup(

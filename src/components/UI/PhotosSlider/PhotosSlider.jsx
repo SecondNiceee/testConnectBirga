@@ -87,6 +87,7 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, 
                     slidesPerView={1}
                     onSlideChange={handleSlideChange}
                     ref={swiperRef}
+                    spaceBetween={20}
                     >
                 {renderMap.map(render)}
             </Swiper>
