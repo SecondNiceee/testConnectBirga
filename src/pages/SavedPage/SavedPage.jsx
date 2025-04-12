@@ -20,6 +20,8 @@ import en from "../../constants/language";
 import { USERID } from "../../constants/tgStatic.config";
 import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
 import useSlider from "../../hooks/useSlider";
+import useBlockInputs from "../../hooks/useBlockInputs";
+import useApiFetch from "./hooks/useApiFetch";
 
 const values = ["Заказы", "Отклики", "Кейсы"];
 const keys = ["advertisment", "responces", "cards"];
@@ -31,28 +33,7 @@ const Yes = translation("Да")
 const No = translation("Нет")
 const SavedPage = () => {
 
-  useEffect( () => {
-    
-    const input = document.querySelectorAll('input');
-    const textarea  = document.querySelectorAll('textarea');
-    for (let smallInput of input){
-      smallInput.addEventListener('focus', () => {
-        menu.style.display = 'none'; // скрываем меню
-      });
-      smallInput.addEventListener('blur', () => {
-        menu.style.display = 'flex'; // скрываем меню
-      });
-    }
-    for (let smallTextarea of textarea){
-      smallTextarea.addEventListener('focus', () => {
-        menu.style.display = 'none'; // скрываем меню
-      });
-      smallTextarea.addEventListener('blur', () => {
-        menu.style.display = 'flex'; // скрываем меню
-      });
-    }
-  } , [] )
-
+  useBlockInputs()
 
   const [card, setCard] = useState({
     isOpen: false,
@@ -85,6 +66,7 @@ const SavedPage = () => {
 
 
   const dispatch = useDispatch();
+
   const [nowKey, setNowKey] = useState("advertisment");
 
   const [isProfileOpen , setProfileOpen] = useState(false)
@@ -102,25 +84,19 @@ const SavedPage = () => {
     isOpen: false,
     id: 0,
   });
+
   const [extraDetails, setExtraDetails] = useState({
     isOpen : false,
     id : 0
     })
 
-  useEffect(() => {
-    dispatch(fetchSavedAdvertisements([1]))
-    dispatch(fetchSavedCards([1]))
-    dispatch(fetchSavedResponses([1]))
-    return () => {
+  useApiFetch() // Фетчим все таски и тд
 
-      pagesHistory.push("/SavedPage");
-      dispatch(clearAll())
 
-    };
-  }, [dispatch]);
+
   const savedTasks = useSelector((state) => state.saves.tasks);
 
-  const gotIt = useMemo(() => {
+  const isMyResponse = useMemo(() => {
     if (
       savedTasks !== null &&
       savedTasks.length > 0 &&
@@ -138,6 +114,8 @@ const SavedPage = () => {
     return false;
   }, [savedTasks, details.id]);
 
+  console.log(responce.isOpen)
+
   useEffect(() => {
     // setStep(varStep)
     // setDetailsActive({...isDetailsActive , isOpen : isDetailsActiveVar})
@@ -148,7 +126,7 @@ const SavedPage = () => {
 
   useEffect(() => {
     function forward() {
-      if (gotIt) {
+      if (isMyResponse) {
         window.Telegram.WebApp.showPopup({
           title: translation("Ошибка"),
           message:
@@ -160,13 +138,10 @@ const SavedPage = () => {
         }
       }
     }
-
     function back() {
       if (false) {
         // setSliderActive({...sliderActive, isActive : false})
       } else {
-
-        
 
           if (responce.isShablonModalActive) {
             setResponce((responce) => ({
@@ -203,6 +178,7 @@ const SavedPage = () => {
 
     MainButton.onClick(forward);
     BackButton.onClick(back);
+
     if (details.isOpen) {
       menu.classList.add("disappearAnimation")
       menu.classList.remove("appearAnimation")
@@ -210,7 +186,7 @@ const SavedPage = () => {
       MainButton.show();
       
 
-      if (gotIt) {
+      if (isMyResponse) {
         MainButton.setParams({
           //неизвесетно
           color: "#2f2f2f",
@@ -245,7 +221,7 @@ const SavedPage = () => {
   }, [
     details.isOpen,
     responce.isOpen,
-    gotIt,
+    isMyResponse,
     responce.isShablonModalActive,
     responce.shablonMaker,
     isProfile,
@@ -435,8 +411,8 @@ const SavedPage = () => {
     setResponce(value => ({...value , isOpen : false , isShablon : false ,isShablonModalActive : false , shablonMaker:false }))
   } , [changer] )
 
-
   const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
+
   return (
     <>
 
