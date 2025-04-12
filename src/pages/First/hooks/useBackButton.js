@@ -1,4 +1,3 @@
-import React from 'react';
 import MainButton from '../../../constants/MainButton';
 
 const useBackButton = ({isSliderOpened, responce, setResponce, setProfile, setPageValue, step,  closeDetails, isProfile, isCardOpen, setSlideOpened, setStep, setCardOpen}) => {

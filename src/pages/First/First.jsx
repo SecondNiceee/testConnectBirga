@@ -24,7 +24,6 @@ import { clearTasks } from "../../store/information";
 import FirstDetails from "../../components/First/FirstDetails/FirstDetails";
 import translation from "../../functions/translate";
 import en from "../../constants/language";
-import { useNavigate } from "react-router-dom";
 import makeNewUser from "../../functions/makeNewUser";
 import { USERID } from "../../constants/tgStatic.config";
 import FirstChoiceSubCategory from "../AdCreatingOne/ui/components/FirstChoiceSubCategory/FirstChoiceSubCategory";
@@ -37,8 +36,9 @@ import useFilteredArray from "./hooks/useFilteredArray";
 import useIsMyResponse from "./hooks/useIsMyResponse";
 import useForward from "./hooks/useForward";
 import useBackButton from "./hooks/useBackButton";
+import useMenuController from "./hooks/useMenuController";
+import useButtonActiveAndColorController from "./hooks/useButtonActiveAndColorController";
 
-let isDetailsActiveVar = false;
 let localResponce;
 let localStep;
 
@@ -63,10 +63,6 @@ const First = ({ isPage = false }) => {
   const categorys = useSelector((state) => state.categorys.category);
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);
-
-  const address = useSelector((state) => state.telegramUserInfo.address);
-
-  const navigate = useNavigate();
 
   localStep = step;
 
@@ -229,8 +225,6 @@ const First = ({ isPage = false }) => {
     }
   }, [isDetailsActive]);
 
-  isDetailsActiveVar = isDetailsActive.isOpen;
-
   const {
     isSliderOpened,
     photoIndex,
@@ -267,89 +261,27 @@ const First = ({ isPage = false }) => {
     setDetailsActive((value) => ({ ...value, isOpen: false }));
   }
 
-  useEffect(() => {
-    MainButton.onClick(forward);
-    BackButton.onClick(back);
+  useMenuController({isDetailsActive})
 
-    
-    if (isDetailsActiveVar) {
-      menu.classList.add("disappearAnimation");
-      menu.classList.remove("appearAnimation");
-      MainButton.show();
-      BackButton.show();
-      if (isMyResponse) {
-        MainButton.setParams({
-          //неизвесетно
-          color: "#2f2f2f",
-          text_color: "#606060",
-        });
-      } else {
-        if (localStep === 0) {
-          if (isDetailsActive.isOpen) {
-            if (detailsAdertisement) {
-              if (detailsAdertisement.status === "active") {
-                MainButton.setParams({
-                  is_active: true,
-                  color: "#2ea5ff",
-                  text_color: "#ffffff",
-                });
-              } else {
-                MainButton.setParams({
-                  is_active: false, //неизвесетно
-                  color: "#2f2f2f",
-                  text_color: "#606060",
-                });
-              }
-            }
-          }
-        }
-      }
-    } else {
-      BackButton.hide();
-      MainButton.hide();
-      menu.classList.add("appearAnimation");
-      menu.classList.remove("disappearAnimation");
-      MainButton.setParams({
-        is_active: true,
-        color: "#2ea5ff",
-        text_color: "#ffffff",
-      });
-    }
+  useEffect( () => {
+    MainButton.onClick(forward)
+    BackButton.onClick(back)
     return () => {
       MainButton.offClick(forward);
       BackButton.offClick(back);
-    };
-  }, [
-    back,
-    isDetailsActive.isOpen,
-    step,
-    isMyResponse,
-    responce.isShablonModalActive,
-    responce.shablonMaker,
-    isProfile,
-    isCardOpen.isOpen,
-    setProfile,
-    setCardOpen,
-    detailsAdertisement,
-    navigate,
-    address,
-    isSliderOpened,
-    forward,
-  ]);
+    }
+  }, [forward, back] )
+
+  useButtonActiveAndColorController({detailsAdertisement, isDetailsActive, isMyResponse, step});
 
   useEffect(() => {
-    if (step === 0) {
-      MainButton.setText(buttonText);
-    }
-    if (step === 1) {
+    if (step === 0 || step === 1) {
       MainButton.setText(buttonText);
     }
   }, [step, isDetailsActive.isOpen]);
 
-  localResponce = responce;
-
   useEffect(() => {
-    if (localResponce.text.length < 3 && localStep === 1) {
+    if (localResponce.text.length  < 3 && localStep === 1) {
       MainButton.setParams({
         color: "#2f2f2f",
         text_color: "#606060",

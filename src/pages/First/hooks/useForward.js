@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import translation from '../../../functions/translate';
 
 const useForward = ({isSliderOpened, isMyResponse, setSlideOpened, setStep, step}) => {

@@ -42,8 +42,6 @@ const No = translation("Нет")
 
 const sureText = translation("Вы уверены, что хотите удалить этот отклик?")
 
-const menu = document.documentElement.querySelector(".FirstMenu")
-
 let url = new URL(window.location.href);
 let advertisementId = url.searchParams.get("advertisement")
 let responseId = url.searchParams.get("response")
@@ -558,7 +556,9 @@ const MyAds = ({isPage = false}) => {
       walletH : walletH,
       setShowDetails : setShowDetails,
       showDetails : showDetails,
-      myAdOneAdvertisement : myAdOneAdvertisement
+      myAdOneAdvertisement : myAdOneAdvertisement,
+      isSliderOpened : isSliderOpened,
+      setSliderOpened : setSlideOpened
     }
   )
 
@@ -589,7 +589,7 @@ const MyAds = ({isPage = false}) => {
 
   const closeSlider = useCallback( () => {
     setSlideOpened(false)
-  }, [] )
+  }, [setSlideOpened] )
 
   useButton({
     closeSlider : closeSlider,
