@@ -189,7 +189,7 @@ const ShowMyResponse = ({
             task={response.advertisement}
             setPhotoIndex={setPhotoIndex}
             setPhotos={setPhotos}
-            setSlideOpened={setSlideOpened}
+            setSlideActive={setSlideOpened}
 
           />
           <MyReaction

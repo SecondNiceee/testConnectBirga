@@ -137,10 +137,9 @@ const SavedPage = () => {
       }
     }
     function back() {
-      if (false) {
-        // setSliderActive({...sliderActive, isActive : false})
+      if (isSliderOpened) {
+        setSlideOpened(false)
       } else {
-
           if (responce.isShablonModalActive) {
             setResponce((responce) => ({
               ...responce,
@@ -355,30 +354,34 @@ const SavedPage = () => {
         console.warn(e);
       }
     }
-
-    if (responce.isOpen && !responce.shablonMaker) {
-      window.Telegram.WebApp.showPopup(
-        {
-          title: translation("Откликнуться?"),
-          message: textButton,
-          buttons: [
-            { id: "save", type: "default", text: Yes },
-            { id: "delete", type: "destructive", text: No },
-          ],
-        },
-        (buttonId) => {
-          if (buttonId === "delete" || buttonId === null) {
-            // setShablon({...shablon , isActive : false})
+    if (!isSliderOpened){
+      if (responce.isOpen && !responce.shablonMaker) {
+        window.Telegram.WebApp.showPopup(
+          {
+            title: translation("Откликнуться?"),
+            message: textButton,
+            buttons: [
+              { id: "save", type: "default", text: Yes },
+              { id: "delete", type: "destructive", text: No },
+            ],
+          },
+          (buttonId) => {
+            if (buttonId === "delete" || buttonId === null) {
+              // setShablon({...shablon , isActive : false})
+            }
+            if (buttonId === "save") {
+              postResponce(savedTasks[details.id].id, USERID);
+              setResponce((value) => ({ ...value, isOpen: false }));
+              setDetails((value) => ({ ...value, isOpen: false }));
+            }
           }
-          if (buttonId === "save") {
-            postResponce(savedTasks[details.id].id, USERID);
-            setResponce((value) => ({ ...value, isOpen: false }));
-            setDetails((value) => ({ ...value, isOpen: false }));
-          }
-        }
-      );
+        );
+      }
     }
-  }, [responce, savedTasks, details.id, dispatch]);
+    else{
+      setSlideOpened(false)
+    }
+  }, [responce, savedTasks, details.id, dispatch, isSliderOpened, setSlideOpened]);
 
   window.Telegram.WebApp.disableVerticalSwipes();
 

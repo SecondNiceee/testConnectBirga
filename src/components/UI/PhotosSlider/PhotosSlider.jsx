@@ -8,7 +8,7 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, 
     const render = (src, index) => {
         return (
             <SwiperSlide className='!h-[50%] w-[100%] object-cover my-auto' key={index}>
-                <img className='w-[100%] h-[100%]' src={URL.createObjectURL(src)} alt={`Slide ${index}`} />
+                <img className='w-[100%] h-[100%] object-cover' src={URL.createObjectURL(src)} alt={`Slide ${index}`} />
             </SwiperSlide>
         );
     };
