@@ -29,6 +29,8 @@ const textButton = translation("Вы действительно хотите о�
 const menu = document.documentElement.querySelector(".FirstMenu")
 const Yes = translation("Да")
 const No = translation("Нет")
+
+console.log("Fix it")
 const SavedPage = () => {
 
   useBlockInputs()
