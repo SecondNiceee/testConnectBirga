@@ -17,10 +17,8 @@ let myResponse = {
 const textPlace = translation("Почему задание должны дать именно вам")
 const useTemplate = translation("Использовать шаблон")
 const menu = document.documentElement.querySelector(".FirstMenu")
-const Responce = forwardRef(({ orderInformation, responce, setResponce , left = "100%" , putStatus, ...props   } , ref) => {
+const Responce = forwardRef(({ orderInformation, responce, setResponce , left = "100%" , putStatus, setPhotoIndex, setPhotos, setSliderOpened, ...props   } , ref) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
-
-
   const [clearPhoto , setClearPhoto] = useState(1)
   useEffect( () => {
     function func(){
@@ -73,7 +71,8 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
       left : left
     }} className="responce-wrapper">
 
-      <Block {...orderInformation} />
+      <Block setSliderOpened={setSliderOpened} setPhotoIndex={setPhotoIndex} setPhotos={setPhotos}  {...orderInformation} />
+
       <MakePrivate
         isPrivate={responce.isShablon}
         setPrivate={(value) => {
@@ -100,8 +99,6 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
               photos : myResponse.photos,
             })
           }
-
-
         }}
         text={useTemplate}
         className={"responce-make-private"}

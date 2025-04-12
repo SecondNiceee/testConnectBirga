@@ -387,7 +387,7 @@ const SavedPage = () => {
     else{
       setSlideOpened(false)
     }
-  }, [responce, savedTasks, details.id, dispatch, isSliderOpened, setSlideOpened]);
+  }, [responce, savedTasks, details.id, dispatch, isSliderOpened, setSlideOpened, isSliderOpened, setSlideOpened]);
 
   window.Telegram.WebApp.disableVerticalSwipes();
 

@@ -400,32 +400,37 @@ const First = ({ isPage = false }) => {
         console.warn(e);
       }
     }
+    if (!isSliderOpened){
 
-    if (step !== 0 && !responce.shablonMaker) {
-      if (responce.text.length < 3) {
-        window.Telegram.WebApp.showAlert(translation("Ваш отклик пуст!"));
-      } else {
-        window.Telegram.WebApp.showPopup(
-          {
-            title: resp,
-            message: textButton,
-            buttons: [
-              { id: "save", type: "default", text: Yes },
-              { id: "delete", type: "destructive", text: No },
-            ],
-          },
-          (buttonId) => {
-            if (buttonId === "delete" || buttonId === null) {
+      if (step !== 0 && !responce.shablonMaker) {
+        if (responce.text.length < 3) {
+          window.Telegram.WebApp.showAlert(translation("Ваш отклик пуст!"));
+        } else {
+          window.Telegram.WebApp.showPopup(
+            {
+              title: resp,
+              message: textButton,
+              buttons: [
+                { id: "save", type: "default", text: Yes },
+                { id: "delete", type: "destructive", text: No },
+              ],
+            },
+            (buttonId) => {
+              if (buttonId === "delete" || buttonId === null) {
+              }
+              if (buttonId === "save") {
+                window.Telegram.WebApp.HapticFeedback.notificationOccurred(
+                  "success"
+                );
+                postResponce(detailsAdertisement.id, USERID);
+              }
             }
-            if (buttonId === "save") {
-              window.Telegram.WebApp.HapticFeedback.notificationOccurred(
-                "success"
-              );
-              postResponce(detailsAdertisement.id, USERID);
-            }
-          }
-        );
+          );
+        }
       }
+    }
+    else{
+      setSlideOpened(false)
     }
   }, [responce, step, setDetailsActive, setStep, me, detailsAdertisement]);
 
@@ -597,6 +602,9 @@ const First = ({ isPage = false }) => {
           unmountOnExit
         >
           <Responce
+            setPhotoIndex={setPhotoIndex}
+            setPhotos={setPhotos}
+            setSliderOpened={setSlideOpened}
             ref={responseRef}
             putStatus={putStatus}
             responce={responce}
