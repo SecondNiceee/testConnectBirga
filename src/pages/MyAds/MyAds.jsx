@@ -585,7 +585,14 @@ const MyAds = ({isPage = false}) => {
 
     }
   )
+
+  const closeSlider = useCallback( () => {
+    setSlideOpened(false)
+  }, [] )
+
   useButton({
+    closeSlider : closeSlider,
+    isSliderOpened : isSliderOpened,
     buyPage : buyPage,
     checkMistakes : checkMistakes,
     details : details ,
