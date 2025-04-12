@@ -11,8 +11,6 @@ import Text from "../../Text/Text";
 import translation from "../../../functions/translate";
 import {  useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import useSlider from "../../../hooks/useSlider";
-import CssTransitionSlider from "../../UI/PhotosSlider/CssTransitionSlider";
 const menu = document.documentElement.querySelector(".FirstMenu");
 
 const textButtonOne = translation("ВЫПОЛНИЛ")
@@ -194,10 +192,13 @@ const ShowMyResponse = ({
 
           />
           <MyReaction
+            setPhotoIndex={setPhotoIndex}
+            setPhotos={setPhotos}
+            setSlideOpened={setSlideOpened}
             openAboutReactionFunc={openAboutReaction}
             setLastAds={setLastAds}
             deleteFunction={deleteFunction}
-            responce={response}
+            responce={response}     
           />
           <Customer
             id = {response.advertisement.user.id}

@@ -10,8 +10,17 @@ const MyReaction = ({
   responce,
   deleteFunction,
   setLastAds,
+  setSlideOpened,
+  setPhotos,
+  setPhotoIndex,
   agree = false,
 }) => {
+
+  const photosClickHandler = (id) => () => {
+    setSlideOpened(true)
+    setPhotos(responce.photos)
+    setPhotoIndex(id)
+  }
   return (
     <>
       <div className="reaction">
@@ -19,7 +28,7 @@ const MyReaction = ({
           <div className="reactions__images">
             {responce.photos.map((e, i) => (
               <img
-                
+                onClick={photosClickHandler(i)}
                 style={responce.photos.length === 1 ? { width: "100%" } : {}}
                 src={URL.createObjectURL(e)}
                 alt=""
@@ -39,6 +48,7 @@ const MyReaction = ({
         >
           <img
             onClick={() => {
+              
               openAboutReactionFunc({ isActive: true, responce: responce });
             }}
             className="icon"

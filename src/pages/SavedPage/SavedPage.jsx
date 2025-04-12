@@ -505,7 +505,6 @@ const SavedPage = () => {
         mountOnEnter
       >
           <Responce
-            
             left="0%"
             responce={responce}
             setResponce={setResponce}

@@ -743,6 +743,9 @@ const MyAds = ({isPage = false}) => {
             unmountOnExit
           >
             <MyLastAds
+            setPhotoIndex={setPhotoIndex}
+            setPhotos={setPhotos}
+            setSlideOpened={setSlideOpened}
             responce = {lastAdsTwo.response}
               openAboutReactionFunc={setOpenAboutReaction}
 
