@@ -31,7 +31,7 @@ const FileInput = ({
       setLoader(true)
       setLoaderSize(newFiles.length)
       newFiles.forEach((event) => {  
-        resizeImage(event, 700, 700, 1).then((value) => {
+        resizeImage(event, 1024, 1024, 1).then((value) => {
           // reader.readAsDataURL(value);
           localImages.push(URL.createObjectURL(value));
           localFiles.push(value)
