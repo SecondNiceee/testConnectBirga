@@ -84,7 +84,7 @@ const ResponseBlock = ({
                   <img
                     key={i}
                     src={URL.createObjectURL(e)}
-                    onClick={photosClickEvent(i)}
+                    onClick={() => {func(i)}}
                     style={
                       photos.length === 1
                         ? {

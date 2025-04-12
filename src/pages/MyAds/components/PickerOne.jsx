@@ -9,12 +9,6 @@ import { clearResponses, fetchResponses } from '../../../store/responses';
 const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowValue, viewsNumber, setViewsNumber, setSlideOpened, setPhotos, setPhotoIndex } , ref) => {
 
 
-
-    console.warn(responsesArr)
-
-
-
-
     const interRef = useRef(null)
 
   
