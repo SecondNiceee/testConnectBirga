@@ -126,16 +126,22 @@ const SavedPage = () => {
 
   useEffect(() => {
     function forward() {
-      if (isMyResponse) {
-        window.Telegram.WebApp.showPopup({
-          title: translation("Ошибка"),
-          message:
-            translation("Вы уже откликнулись на это задание. Заказчик обязательно увидит ваш отклик."),
-        });
-      } else {
-        if (!responce.isOpen) {
-          setResponce((value) => ({ ...value, isOpen: true }));
+      if (!isSliderOpened){
+
+        if (isMyResponse) {
+          window.Telegram.WebApp.showPopup({
+            title: translation("Ошибка"),
+            message:
+              translation("Вы уже откликнулись на это задание. Заказчик обязательно увидит ваш отклик."),
+          });
+        } else {
+          if (!responce.isOpen) {
+            setResponce((value) => ({ ...value, isOpen: true }));
+          }
         }
+      }
+      else{
+        setSlideOpened(false)
       }
     }
     function back() {
