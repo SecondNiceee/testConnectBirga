@@ -63,7 +63,7 @@ const ChoiceCategory = ({
       MainButton.setText("ДАЛЕЕ")
       MainButton.offClick(buttonHandler)
     }
-  } , []  )
+  } , [choisenCategory]  )
 
   const [inputValue, setInputValue] = useState("");
 
