@@ -16,6 +16,7 @@ import FirstDetails from "../components/First/FirstDetails/FirstDetails";
 import translation from "../functions/translate";
 import { CSSTransition } from "react-transition-group";
 import { USERID } from "../constants/tgStatic.config";
+import useBlockInputs from "../hooks/useBlockInputs";
 
 
 const textButton = translation("Вы уверены, что хотите создать новое задание?")
@@ -29,35 +30,7 @@ const continueText = translation("ДАЛЕЕ")
 
 const AdCreating = () => {
 
-
-
-
-
-
-
-  useEffect( () => {
-    console.log("Это рендер AdCreating")
-    
-    const input = document.querySelectorAll('input');
-    const textarea  = document.querySelectorAll('textarea');
-    for (let smallInput of input){
-      smallInput.addEventListener('focus', () => {
-        menu.style.display = 'none'; // скрываем меню
-      });
-      smallInput.addEventListener('blur', () => {
-        menu.style.display = 'flex'; // скрываем меню
-      });
-    }
-    for (let smallTextarea of textarea){
-      smallTextarea.addEventListener('focus', () => {
-        menu.style.display = 'none'; // скрываем меню
-      });
-      smallTextarea.addEventListener('blur', () => {
-        menu.style.display = 'flex'; // скрываем меню
-      });
-    }
-  } , [] )
-
+  useBlockInputs();
 
   const me = useSelector(state => state.telegramUserInfo)
 
@@ -213,12 +186,7 @@ const AdCreating = () => {
     let localTaskInformation = {...secondPageCopy , ...firstPage}
     window.Telegram.WebApp.HapticFeedback.notificationOccurred("success")
     post(localTaskInformation);
-    // dispatch(addMyAds(taskInformationCopy))
 
-    
-    
-    
-    // MainButton.hide();
     spet = 0;
   }
   async function post(el) {
@@ -283,21 +251,7 @@ const AdCreating = () => {
     // );
   }
 
-  // useEffect( () => {
-  //   return () => {
-  //     if (pagesHistory[pagesHistory.length-1] === "/" || pagesHistory[pagesHistory.length-1] === "/MyAds" ){
-  //       window.scrollTo({
-  //         top: 40,
-  //         behavior: "auto",
-  //       });
-  //       document.documentElement.style.overflowY = "hidden"
-  //     }
-  //     else{
-  //       document.documentElement.style.overflowY = "unset"
-  //     }
-  //     pagesHistory.push('/AdCreating')
-  //   }
-  // } , [] )
+
   useEffect( () => {
       if (spet === 2){
         if (mainRef.current){
@@ -318,7 +272,9 @@ const AdCreating = () => {
         }
       }
   } , []  )
+
   const mainRef = useRef(null)
+
   function checking() {
     let taskName = false;
     let ton = false;
@@ -417,62 +373,61 @@ const AdCreating = () => {
 
   // eslint-disable-next-line
   const goForward = () => {
+
     if (blurRef.current) {
       blurRef.current.focus();
     }
-    if (checking()) {
-      mainRef.current.classList.remove('oneBack')
-      mainRef.current.classList.remove('twoBack')
-      if (spet === 0){
-          mainRef.current.classList.add('stepOne')
-      }
-      if (spet === 1){
-        mainRef.current.classList.add('stepTwo')
-      }
 
-      spet += 1;
-      
-        // spet += 1;
-        // animte()
-        if (spet === 2 || spet === 3) {
-          MainButton.setText(endText);
-        } else {
-          MainButton.setText(continueText);
+    if (!isCategoryChoiceOpen && isSubcategoryChoiceOpen){
+
+      if (checking()) {
+        mainRef.current.classList.remove('oneBack')
+        mainRef.current.classList.remove('twoBack')
+        if (spet === 0){
+            mainRef.current.classList.add('stepOne')
         }
-        if (spet === 3){
-
-          window.Telegram.WebApp.showPopup({
-            title: create,
-            message: textButton,
-            buttons: [
-              { id: "save", type: "default", text: Yes },
-              { id: "delete", type: "destructive", text: No },
-            ],
-          } , (buttonId) => {
-      
-            if (buttonId === "delete" || buttonId === null) {
-              spet -= 1
-            }
-            if (buttonId === "save") {
-              finish();
-            }
-            
-          } )
-
-
+        if (spet === 1){
+          mainRef.current.classList.add('stepTwo')
         }
-      
-    }
-    else{
-      window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+  
+        spet += 1;
+        
+          if (spet === 2 || spet === 3) {
+            MainButton.setText(endText);
+          } else {
+            MainButton.setText(continueText);
+          }
+          if (spet === 3){
+  
+            window.Telegram.WebApp.showPopup({
+              title: create,
+              message: textButton,
+              buttons: [
+                { id: "save", type: "default", text: Yes },
+                { id: "delete", type: "destructive", text: No },
+              ],
+            } , (buttonId) => {
+        
+              if (buttonId === "delete" || buttonId === null) {
+                spet -= 1
+              }
+              if (buttonId === "save") {
+                finish();
+              }
+              
+            } )
+          } 
+      }
+      else{
+        window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
+      }
+
     }
   } 
 
   window.Telegram.WebApp.disableVerticalSwipes();
 
   window.Telegram.WebApp.disableVerticalSwipes();
-
-
 
   const goBack = useCallback(() => {
     setError({    name: false,
@@ -482,16 +437,13 @@ const AdCreating = () => {
       endError: false})
     if (isCategoryChoiceOpen || isSubcategoryChoiceOpen){
       if (isCategoryChoiceOpen){
-
         setCatagoryChoiceOpen(false)
       }
       else{
-
         setSubcategoryChoiceOpen(false)
       }
     }
     else{
-
       if (spet === 0) {
         // clearInput()
         // if (!isCategoryChoiceOpen && !isSubcategoryChoiceOpen){
