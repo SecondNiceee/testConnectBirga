@@ -3,10 +3,12 @@ import cl from "./ChoiceCategory.module.css";
 import OneInput from "../../../../../components/UI/OneInput/OneInput";
 import BackButton from "../../../../../constants/BackButton";
 import MainButton from "../../../../../constants/MainButton";
-import Text from "../../../../../components/Text/Text";
 import translation from "../../../../../functions/translate";
 import CategoryItem from "../CategoryItem/CategoryItem";
 import useBlockInputs from "../../../../../hooks/useBlockInputs";
+import { softVibration } from "../../../../../functions/softVibration";
+import { disableColorAndActiveButton } from "../../../../../functions/disableColorAndActiveButton";
+import { enableColorAndActiveButton } from "../../../../../functions/enableColorAndActiveButton";
 
 
 
@@ -35,18 +37,31 @@ const ChoiceCategory = ({
 
   useBlockInputs();
 
+  
+  const [choisenCategory, setChoisenCategory] = useState(null);
+
   useEffect( () => {
-    MainButton.setParams({
-      is_active: false, //неизвесетно
-      color: "#2f2f2f",
-      text_color: "#606060",
-    });
+    function buttonHandler(){
+      if(choisenCategory.category === 'Другое'){
+        setTaskInformation({ ...taskInformation, category: choisenCategory , subCategory : subCategorys.find(e => e.subCategory === 'Другое')});
+    }
+    else{
+      let sortedCategorys = subCategorys.filter(el => el.category.id === choisenCategory.id)
+      setTaskInformation({ ...taskInformation, category: choisenCategory , subCategory : sortedCategorys.find(e => e.subCategory === 'Другое')});
+    }
+    }
+    MainButton.setText("Готово")
+    MainButton.onClick(buttonHandler)
+    if (!choisenCategory){
+      disableColorAndActiveButton()
+    }
+    else{
+      enableColorAndActiveButton()
+    }
     return () => {
-      MainButton.setParams({
-        color: "#2ea5ff",
-        text_color: "#ffffff",
-        is_active: true,
-      });
+      enableColorAndActiveButton()
+      MainButton.setText("ДАЛЕЕ")
+      MainButton.offClick(buttonHandler)
     }
   } , []  )
 
@@ -76,21 +91,16 @@ const ChoiceCategory = ({
     // eslint-disable-next-line
   } , [] )
 
-  useEffect( () => {
-    function closeCategory(){
-      setCatagoryChoiceOpen(false)
-    }
-    BackButton.onClick( closeCategory )
-    return () => {
-      BackButton.offClick( closeCategory )
-    }
-  }, [setCatagoryChoiceOpen]  )
-
 
   const myFilteredCategory = useMemo( () => {
     return realCategorys.filter(e =>  translation(e.category).includes(inputValue))
   } , [realCategorys , inputValue] )
-  
+
+
+  const categoryClickHandler = (category) => () => {
+    setChoisenCategory(category);
+    softVibration()
+  }
 
   return (
     <div className={cl.ChoiceCategory} {...props}>
@@ -127,21 +137,26 @@ const ChoiceCategory = ({
 
       <p className="mt-[31px] ml-[17px] font-sf-pro-display font-light text-[13px] text-[#84898f] uppercase mb-[10px]">КАТЕГОРИИ</p>
 
-
         <div className="flex rounded-[10px] bg-[#21303f] flex-col pl-[16px] pr-[16px]">
-          <div className="grid pt-[10px] grid-cols-[auto_auto] gap-y-[10px] gap-x-[11px] w-full">
-            <div className="rounded-full border-solid  border-[#384656] border-[1px] w-[20px] h-[20px] self-center"></div>
-            <div className="flex flex-col gap-[4px]">
-              <h3 className="font-light  text-[17px] text-white font-sf-pro-text">IT-разработка</h3>
-              <p className="font-sf-pro-display font-light  text-[14px] text-[#dbf5ff]">Веб-разработка, мобильные приложения, боты, интеграции, техническая поддержка.</p>
-            </div>
-            <div className="h-[0.5px] col-start-2 col-end-3 w-[100%] bg-[#384656]"></div>
-          </div>
-        </div>
+            {myFilteredCategory.map((category, id) => {
+              return (
+                <div onClick={categoryClickHandler(category)} className="grid cursor-pointer pt-[10px] grid-cols-[min-content_auto] gap-y-[10px] gap-x-[11px] w-full">
+                  <div className="rounded-full border-solid  border-[#384656] border-[1px] w-[20px] h-[20px] self-center flex justify-center items-center">
+                    <div className={`w-[80%] h-[80%] bg-blue-600 rounded-full ${choisenCategory?.id === category.id ? "" : "hidden"}`}>
 
-        
-    </div>
-  );
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-[4px]">
+                    <h3 className="font-light  text-[17px] text-white font-sf-pro-text">{category.category}</h3>
+                    <p className="font-sf-pro-display font-light  text-[14px] text-[#dbf5ff]">{category.description}</p>
+                  </div>
+                  <div className={`h-[0.5px] col-start-2 col-end-3 w-[100%] bg-[#384656]  ${id === myFilteredCategory.length-1 ? "opacity-0" : ""}`}></div>
+              </div>
+              )
+            })}
+        </div>
+      </div>
+    );
 };
 
 export default ChoiceCategory;
