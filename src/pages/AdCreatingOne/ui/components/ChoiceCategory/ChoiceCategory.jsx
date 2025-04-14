@@ -105,36 +105,6 @@ const ChoiceCategory = ({
 
   return (
     <div className={cl.ChoiceCategory} {...props}>
-      {/* <OneInput
-        placeholder={place}
-        value={inputValue}
-        setInputValue={setInputValue}
-        className={cl.OneInput}
-      />
-      <div className={cl.categoryContainer}>
-
-        {myFilteredCategory.map((e) => {
-          return (
-            <div
-              onClick={() => {
-                if(e.category === 'Другое'){
-                    setTaskInformation({ ...taskInformation, category: e , subCategory : subCategorys.find(e => e.subCategory === 'Другое')});
-                }
-                else{
-                  let sortedCategorys = subCategorys.filter(el => el.category.id === e.id)
-                  setTaskInformation({ ...taskInformation, category: e , subCategory : sortedCategorys.find(e => e.subCategory === 'Другое')});
-                }
-                setCatagoryChoiceOpen(false);
-              }}
-              className={cl.wrap}
-            >
-              <CategoryItem {...e} />
-            </div>
-          );
-        })}
-
-      </div>
-      <Text className={cl.anotherText}>{text}</Text> */}
 
       <p className="mt-[31px] ml-[17px] font-sf-pro-display font-light text-[13px] text-[#84898f] uppercase mb-[10px]">КАТЕГОРИИ</p>
 
