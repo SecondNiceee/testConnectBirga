@@ -49,6 +49,7 @@ const ChoiceCategory = ({
       let sortedCategorys = subCategorys.filter(el => el.category.id === choisenCategory.id)
       setTaskInformation({ ...taskInformation, category: choisenCategory , subCategory : sortedCategorys.find(e => e.subCategory === 'Другое')});
     }
+    setCatagoryChoiceOpen(false);
     }
     MainButton.setText("Готово")
     MainButton.onClick(buttonHandler)
