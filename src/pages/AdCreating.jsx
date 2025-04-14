@@ -355,11 +355,6 @@ const AdCreating = () => {
   } , [firstPage.taskDescription, navigate] )
 
 
-  useEffect( () => {
-    setTimeout( () => {
-      MainButton.setText(translation("ДАЛЕЕ"))
-  } , 2000 ) 
-  } , []  )
 
   useEffect( () => {
     var inputs = document.getElementsByTagName('input');
@@ -369,7 +364,6 @@ const AdCreating = () => {
       inputs[i].blur();
     }
   } , [] )
-  MainButton.setText(translation("ДАЛЕЕ"))
 
   // eslint-disable-next-line
   const goForward = () => {
@@ -395,7 +389,12 @@ const AdCreating = () => {
           if (spet === 2 || spet === 3) {
             MainButton.setText(endText);
           } else {
-            MainButton.setText(continueText);
+            if (isCategoryChoiceOpen || isSubcategoryChoiceOpen){
+              MainButton.setText("Готово")
+            }
+            else{
+              MainButton.setText(continueText);
+            }
           }
           if (spet === 3){
   
