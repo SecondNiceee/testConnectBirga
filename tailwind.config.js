@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sf-pro-display-400' : ['SF Pro Display 400'],
+        'sf-pro-display-400' : ["'SF Pro Display 400'"],
         'sf-pro-display': ['SF Pro Display', 'sans-serif'],
         "sf-compact-rounded" : ['Sf Compact Rounded' , 'sans-serif'],
         "sf-pro-text" : ['SF Pro Text' , 'sans-serif']
