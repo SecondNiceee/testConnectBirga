@@ -77,8 +77,8 @@ const FirstChoiceCategory = ({
           return (
             <div key={i}
               onClick={() => {
-setTaskInformation({ ...taskInformation, category: e , subCategory : {subCategory : "Все" , id : -1}});
-setCatagoryChoiceOpen(false)
+                setTaskInformation({ ...taskInformation, category: e , subCategory : {subCategory : "Все" , id : -1}});
+                setCatagoryChoiceOpen(false)
               }}
               className={cl.wrap}
             >
