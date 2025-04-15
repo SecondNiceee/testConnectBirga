@@ -111,6 +111,7 @@ const ChoiceCategory = ({
     }
   } )
 
+  console.log("dsa")
   return (
     <div className={cl.ChoiceCategory} {...props}>
 
