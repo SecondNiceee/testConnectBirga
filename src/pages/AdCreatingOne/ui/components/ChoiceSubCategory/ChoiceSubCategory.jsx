@@ -45,6 +45,7 @@ const ChoiceSubCategory = ({
     return () => {
       MainButton.offClick(buttonHander);
       enableColorAndActiveButton();
+      MainButton.setText("Продолжить");
     };
   }, [choisenSubCategory]);
 
@@ -104,35 +105,9 @@ const ChoiceSubCategory = ({
   };
 
   return (
-    // <div className="subCategory__container" {...props}>
-    //   <OneInput
-    //     placeholder={place}
-    //     inputValue={inputValue}
-    //     setInputValue={setInputValue}
-    //     className='subCategory__oneInput'
-    //   />
-    //   <div className="sub__block" style={{
-    //     paddingBottom : "20px"
-    //   }}>
-    //         <div className="sub__wrapper">
-    //                 {filteredSubCategorys.map((e, id) => {
-    //                     return (
-    //                         <div key={id}  className="SubBlock" onClick={() => {
-
-    //                                 setTaskInformation( {...taskInformation , subCategory : e})
-    //                                 setSubcategoryChoiceOpen(false)}} >
-
-    //                                 <Text>{e.subCategory}</Text>
-    //                                 <img className='arrowRight' src={rightArrow} alt="" />
-    //                         </div>
-    //                     )
-    //                 })}
-    //         </div>
-    //   </div>
-    // </div>
 
     <div className={cl.ChoiceCategory} {...props}>
-      <p className="mt-[31px] ml-[17px] font-sf-pro-display font-light text-[13px] text-[#84898f] uppercase mb-[10px]">
+      <p className="mt-[31px] tracking-[0.02em] ml-[17px] font-sf-pro-display font-light text-[13px] text-[#84898f] uppercase mb-[10px]">
         ПОДКАТЕГОРИИ
       </p>
 
