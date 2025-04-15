@@ -126,8 +126,8 @@ const ChoiceCategory = ({
                       </svg>
                   </div>
                   <div className="flex flex-col gap-[5px]">
-                    <h3 className="font-light tracking-[-3.6%]  text-[17px] text-white font-sf-pro-text leading-[17px]">{category.category}</h3>
-                    <p className="font-sf-pro-display font-light leading-[17.7px] text-[14px] text-[#dbf5ff]">{category.description}</p>
+                    <h3 className="font-light tracking-[-3.6%] mt-[1px] text-[17px] text-white font-sf-pro-text leading-[17px]">{category.category}</h3>
+                    <p className="font-sf-pro-display font-light tracking-[1%] leading-[17.7px] text-[14px] text-[#dbf5ff]">{category.description}</p>
                   </div>
                   <div className={`h-[0.5px] col-start-2 col-end-3 w-[100%] bg-[#384656]  ${id === myFilteredCategory.length-1 ? "opacity-0" : ""}`}></div>
               </div>
