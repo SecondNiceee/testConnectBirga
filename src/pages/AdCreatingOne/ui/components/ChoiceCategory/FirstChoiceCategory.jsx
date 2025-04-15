@@ -19,7 +19,7 @@ const FirstChoiceCategory = ({
 
 }) => {
 
-
+  console.log("Something")
   useEffect( () => {
     const First = document.documentElement.querySelector(".First")
     First.style.overflowY = "hidden"
