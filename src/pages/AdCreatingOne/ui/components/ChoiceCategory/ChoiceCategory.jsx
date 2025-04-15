@@ -117,7 +117,7 @@ const ChoiceCategory = ({
   return (
     <div className={cl.ChoiceCategory} {...props}>
 
-      <p className="mt-[13px] ml-[17px] font-sf-pro-display font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px] trac ">КАТЕГОРИИ</p>
+      <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px] trac ">КАТЕГОРИИ</p>
 
         <div className="flex rounded-[10px] bg-[#21303f] flex-col pl-[16px] pr-[16px]">
             {myFilteredCategory.map((category, id) => {
@@ -129,7 +129,7 @@ const ChoiceCategory = ({
                       </svg>
                   </div>
                   <div className="flex flex-col gap-[3px]">
-                    <h3  className="font-light tracking-[-3.6%] text-[17px] text-white font-sf-pro-text leading-[17px]">{category.category}</h3>
+                    <h3  className="font-light tracking-[-3.6%]  text-[17px] text-white font-sf-pro-text-400 leading-[17px]">{category.category}</h3>
                     <p className="font-sf-pro-display-400 font-light tracking-[1%] leading-[17.7px] text-[14px] text-[#dbf5ff]">{category.description}</p>
                   </div>
                   <div className={`h-[0.5px] col-start-2 col-end-3 w-[100%] bg-[#384656]  ${id === myFilteredCategory.length-1 ? "opacity-0" : ""}`}></div>
