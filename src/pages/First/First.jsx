@@ -403,8 +403,9 @@ const First = ({ isPage = false }) => {
         console.warn(e);
       }
     }
-    if (!isSliderOpened){
 
+    if (!subCategory && !categoryOpen){
+    if (!isSliderOpened){
       if (step !== 0 && !responce.shablonMaker) {
         if (responce.text.length < 3) {
           window.Telegram.WebApp.showAlert(translation("Ваш отклик пуст!"));
@@ -435,7 +436,8 @@ const First = ({ isPage = false }) => {
     else{
       setSlideOpened(false)
     }
-  }, [responce, step, setDetailsActive, setStep, me, detailsAdertisement]);
+  }
+  }, [responce, step, setDetailsActive, setStep, me, detailsAdertisement, subCategory, categoryOpen]);
 
   useEffect(() => {
     MainButton.onClick(forwardFunction);
