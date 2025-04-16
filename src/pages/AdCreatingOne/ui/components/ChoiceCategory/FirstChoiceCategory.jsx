@@ -1,15 +1,11 @@
 import React, { useEffect, useMemo, useState } from "react";
 import cl from "./ChoiceCategory.module.css";
-import CategoryItem from "../CategoryItem/CategoryItem";
 import translation from "../../../../../functions/translate";
-import Text from "../../../../../components/Text/Text";
 import BackButton from "../../../../../constants/BackButton";
-import OneInput from "../../../../../components/UI/OneInput/OneInput";
 import MainButton from "../../../../../constants/MainButton";
 import { enableColorAndActiveButton } from "../../../../../functions/enableColorAndActiveButton";
 import { disableColorAndActiveButton } from "../../../../../functions/disableColorAndActiveButton";
 
-const place = translation("Поиск по категориям")
 
 const FirstChoiceCategory = ({
   setTaskInformation,
@@ -32,11 +28,11 @@ const FirstChoiceCategory = ({
 
   const [choisenCategory, setChoisenCategory] = useState();
 
+  function buttonHandler(){
+    setTaskInformation({...taskInformation, category : choisenCategory})
+    setCatagoryChoiceOpen(false);
+  }
   useEffect( () => {
-    function buttonHandler(){
-      setTaskInformation({...taskInformation, category : choisenCategory})
-      setCatagoryChoiceOpen(false);
-    }
     if (choisenCategory){
       enableColorAndActiveButton();
     }
@@ -70,17 +66,9 @@ const FirstChoiceCategory = ({
     copy.unshift({id : -1, category : "Все"})
     return copy
    }, [categorys] )
+
   const [inputValue, setInputValue] = useState("");
 
-  useEffect( () => {
-    function closeCategory(){
-      setCatagoryChoiceOpen(false)
-    }
-    BackButton.onClick( closeCategory )
-    return () => {
-      BackButton.offClick( closeCategory )
-    }
-  }, [setCatagoryChoiceOpen]  )
 
   console.log(myCategorys)
 
@@ -109,6 +97,7 @@ const FirstChoiceCategory = ({
             {myFilteredCategory.map((category, id) => {
               return (
                 <>
+                
                 {category.category !== "Все" ? 
                 <div onClick={clickHandler(category)} className="grid cursor-pointer pt-[13px] grid-cols-[min-content_auto] gap-y-[10px] gap-x-[11px] w-full">
                   <div className={`rounded-full border-solid border-[1px] w-[21px] h-[21px] self-center flex justify-center items-center ${choisenCategory?.id === category.id ?  "bg-[#2EA6FF] border-[#2EA6FF] " : "border-[#384656]"}`}>

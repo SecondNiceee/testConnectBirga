@@ -4,7 +4,7 @@ import BackButton from '../../../../../constants/BackButton';
 import cl from "./ChoiceCategory.module.css";
 import { enableColorAndActiveButton } from '../../../../../functions/enableColorAndActiveButton';
 import { disableColorAndActiveButton } from '../../../../../functions/disableColorAndActiveButton';
-import { MainButton } from '@tma.js/sdk';
+import MainButton from '../../../../../constants/MainButton';
 const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar , ...props}) => {
 
 
@@ -61,6 +61,8 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
         return copy
         // eslint-disable-next-line
     }, [])
+    
+    console.log(subCategorys)
 
     function closeSebCategory(){
         setSubcategoryChoiceOpen(false)
@@ -72,8 +74,6 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
             BackButton.offClick(closeSebCategory)
         }
     } )
-
-
 
     const clickAll = () => {
       setSubcategoryChoiceOpen(false)
@@ -94,7 +94,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
             {subCategorys.map((category, id) => {
               return (
                 <>
-                {category.category !== "Все" ? 
+                {category.subCategory !== "Все" ? 
                 <div onClick={clickHandler(category)} className="grid cursor-pointer pt-[13px] grid-cols-[min-content_auto] gap-y-[10px] gap-x-[11px] w-full">
                   <div className={`rounded-full border-solid border-[1px] w-[21px] h-[21px] self-center flex justify-center items-center ${choisenSubCategory?.id === category.id ?  "bg-[#2EA6FF] border-[#2EA6FF] " : "border-[#384656]"}`}>
                       <svg className={`${choisenSubCategory?.id === category.id ? "" : "hidden"}`} width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -102,7 +102,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
                       </svg>
                   </div>
                   <div className="flex flex-col gap-[3px]">
-                    <h3  className="font-light tracking-[-3.6%]  text-[17px] text-white font-sf-pro-text-400 leading-[17px]">{category.category}</h3>
+                    <h3  className="font-light tracking-[-3.6%]  text-[17px] text-white font-sf-pro-text-400 leading-[17px]">{category.subCategory}</h3>
                     <p className="font-sf-pro-display-400 font-light tracking-[1%] leading-[17.7px] text-[14px] text-[#dbf5ff]">{category.description}</p>
                   </div>
                   <div className={`h-[0.5px] col-start-2 col-end-3 w-[100%] bg-[#384656]  ${id === subCategorys.length-1 ? "opacity-0" : ""}`}></div>
