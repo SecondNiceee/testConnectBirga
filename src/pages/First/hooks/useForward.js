@@ -21,7 +21,7 @@ const useForward = ({isSliderOpened, isMyResponse, setSlideOpened, setStep, step
         setSlideOpened(false)
       }
     }
-    }, [isSliderOpened, isMyResponse, setSlideOpened, setStep, step] )
+    }, [isSliderOpened, isMyResponse, setSlideOpened, setStep, step, isCatetegoryChoiceOpen, isSubCategoryChoiceOpen] )
     
     return forward
 };
