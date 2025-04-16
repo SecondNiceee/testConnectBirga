@@ -537,6 +537,7 @@ const First = ({ isPage = false }) => {
               }}
               setSubcategoryChoiceOpen={setSubCategory}
               subCategorysPar={subCategorys}
+              filterCategory = {filters.category}
               taskInformation={filters}
               setTaskInformation={setFilters}
             />

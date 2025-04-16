@@ -5,7 +5,7 @@ import cl from "./ChoiceCategory.module.css";
 import { enableColorAndActiveButton } from '../../../../../functions/enableColorAndActiveButton';
 import { disableColorAndActiveButton } from '../../../../../functions/disableColorAndActiveButton';
 import MainButton from '../../../../../constants/MainButton';
-const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , setTaskInformation, subCategorysPar , ...props}) => {
+const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , filterCategory, setTaskInformation, subCategorysPar , ...props}) => {
 
 
   useEffect( () => {
@@ -35,10 +35,15 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
 
     useEffect( () => {
       function buttonHandler(){
-        setTaskInformation({...taskInformation, subCategory : choisenSubCategory})
-        setSubcategoryChoiceOpen(false);
+        if (filterCategory.id !== -1){
+          setTaskInformation({...taskInformation, subCategory : choisenSubCategory})
+          setSubcategoryChoiceOpen(false);
+        }
+        else{
+          setSubcategoryChoiceOpen(false);
+        }
       }
-      if (choisenSubCategory){
+      if (choisenSubCategory || filterCategory.id === -1){
         enableColorAndActiveButton();
       }
       else{
@@ -51,7 +56,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
         MainButton.hide();
         MainButton.offClick(buttonHandler)
       }
-    } , [taskInformation, choisenSubCategory] )
+    } , [taskInformation, choisenSubCategory, filterCategory] )
 
 
 
@@ -86,8 +91,11 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
     return (
       <div className={cl.ChoiceCategory} {...props}>
 
-      <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px]">ПОДКАТЕГОРИИ</p>
 
+
+        {filterCategory.id !== -1 ? 
+        <>
+        <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px]">ПОДКАТЕГОРИИ</p>
         <div className="flex rounded-[10px] bg-[#21303f] flex-col pt-[13px] pl-[16px] pr-[16px]">
             <p onClick={() => {clickAll()}} className="font-sf-pro-text-400 cursor-pointer tracking-[-0.04em] text-[17px] text-[#2ea6ff]">Выбрать всё</p>
             <div  className={`h-[0.5px] cursor-pointer mt-[11px] col-start-2 col-end-3 w-[100%] bg-[#384656]`}></div>
@@ -116,7 +124,15 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
               
             })}
         </div>
-      </div>
+        </>
+
+:
+            <p className='font-sf-pro-display-400 font-extralight my-auto text-center mx-auto top-[40%] text-[17px] tracking-[0.02em] text-[#84898f]'>
+                Выберите сначала категорию, чтобы выбрать подкатегорию.
+            </p>
+}
+</div>
+
     );
 };
 
