@@ -7,9 +7,13 @@ let overflowYValue;
 const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, blockerAll, setSliderOpened, left = 0, top = 0 }, ref) => {
     const render = (src, index) => {
         return (
-            <SwiperSlide className='!h-[auto] max-h-[90vh] w-[100%] object-cover my-auto' key={index}>
-                <img className='w-[100%] h-[100%] object-cover' src={URL.createObjectURL(src)} alt={`Slide ${index}`} />
-            </SwiperSlide>
+            
+                <SwiperSlide className='!h-[100%] max-h-[90vh] w-[100%] object-cover my-auto' key={index}>
+                    <div className='h-[100%] flex items-center'>
+                        <img className='w-[100%] h-[auto] object-cover' src={URL.createObjectURL(src)} alt={`Slide ${index}`} />
+                    </div>
+                </SwiperSlide>
+           
         );
     };
 
