@@ -239,6 +239,8 @@ const First = ({ isPage = false }) => {
     setSlideOpened,
     setStep,
     step,
+    isCatetegoryChoiceOpen : categoryOpen,
+    isSubCategoryChoiceOpen : subCategory
   }); /// функция междлу подробнее и откликлм
 
   const back = useBackButton({
