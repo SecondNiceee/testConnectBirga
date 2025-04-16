@@ -26,7 +26,6 @@ import translation from "../../functions/translate";
 import en from "../../constants/language";
 import makeNewUser from "../../functions/makeNewUser";
 import { USERID } from "../../constants/tgStatic.config";
-import FirstChoiceSubCategory from "../AdCreatingOne/ui/components/FirstChoiceSubCategory/FirstChoiceSubCategory";
 import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
 import useMenuRejection from "./hooks/useMenuRejection";
 import useBlockInputs from "../../hooks/useBlockInputs";
@@ -38,6 +37,7 @@ import useForward from "./hooks/useForward";
 import useBackButton from "./hooks/useBackButton";
 import useMenuController from "./hooks/useMenuController";
 import useButtonActiveAndColorController from "./hooks/useButtonActiveAndColorController";
+import FirstChoiceSubCategory from "../AdCreatingOne/ui/components/ChoiceCategory/FirstChoiceSubCategory";
 
 let localStep;
 

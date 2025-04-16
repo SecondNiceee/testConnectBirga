@@ -35,6 +35,7 @@ const FirstChoiceCategory = ({
   useEffect( () => {
     function buttonHandler(){
       setTaskInformation({...taskInformation, category : choisenCategory})
+      setCatagoryChoiceOpen(false);
     }
     if (choisenCategory){
       enableColorAndActiveButton();

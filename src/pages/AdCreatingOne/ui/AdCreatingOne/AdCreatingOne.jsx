@@ -6,7 +6,6 @@ import Categories from "../components/Categories/Categories";
 import TaskName from "../../../../components/UI/TaskName/TaskName";
 import DescriptionAndPhoto from "../../../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import ChoiceCategory from "../components/ChoiceCategory/ChoiceCategory";
-import ChoiceSubCategory from "../components/ChoiceSubCategory/ChoiceSubCategory";
 
 import CatchDate from "../../../ADCreatingTwo/CatchDate/CatchDate";
 import "../../../ADCreatingTwo/AdCreatingTwo/SecondAddCreating.module.css";
@@ -14,6 +13,7 @@ import MyDatePicker from "../../../../components/AdCreating/MyDatePicker/MyDateP
 import Text from "../../../../components/Text/Text";
 import translation from "../../../../functions/translate";
 import en from "../../../../constants/language";
+import ChoiceSubCategory from "../components/ChoiceCategory/ChoiceSubCategory";
 
 
 // eslint-disable-next-line
