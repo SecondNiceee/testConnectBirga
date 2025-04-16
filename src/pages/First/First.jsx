@@ -405,6 +405,7 @@ const First = ({ isPage = false }) => {
     }
 
     if (!subCategory && !categoryOpen){
+      alert("Йоу")
     if (!isSliderOpened){
       if (step !== 0 && !responce.shablonMaker) {
         if (responce.text.length < 3) {
