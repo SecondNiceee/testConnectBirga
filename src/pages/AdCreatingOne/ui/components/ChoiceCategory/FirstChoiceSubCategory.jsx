@@ -36,7 +36,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , se
     useEffect( () => {
       function buttonHandler(){
         setTaskInformation({...taskInformation, category : choisenSubCategory})
-        setChoisenSubCategory(false);
+        setSubcategoryChoiceOpen(false);
       }
       if (choisenSubCategory){
         enableColorAndActiveButton();
