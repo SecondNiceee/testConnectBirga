@@ -39,7 +39,6 @@ import useBackButton from "./hooks/useBackButton";
 import useMenuController from "./hooks/useMenuController";
 import useButtonActiveAndColorController from "./hooks/useButtonActiveAndColorController";
 
-let localResponce;
 let localStep;
 
 const messageOne = translation("📣 Вы получили отклик на задачу «");

@@ -117,7 +117,7 @@ const ChoiceCategory = ({
   return (
     <div className={cl.ChoiceCategory} {...props}>
 
-      <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px] trac ">КАТЕГОРИИ</p>
+      <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px]">КАТЕГОРИИ</p>
 
         <div className="flex rounded-[10px] bg-[#21303f] flex-col pl-[16px] pr-[16px]">
             {myFilteredCategory.map((category, id) => {
