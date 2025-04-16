@@ -305,7 +305,7 @@ const First = ({ isPage = false }) => {
   const me = useSelector((state) => state.telegramUserInfo);
 
 
-
+  console.log("FIRST FIRST FIRST")
   useEffect(() => {
     dispatch(clearTasks());
   }, [dispatch]);
