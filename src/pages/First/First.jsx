@@ -63,6 +63,10 @@ const First = ({ isPage = false }) => {
 
   const subCategorys = useSelector((state) => state.categorys.subCategory);
 
+  const [categoryOpen, setCategoryOpen] = useState(false);
+
+  const [subCategory, setSubCategory] = useState(false);
+
   localStep = step;
 
   const dispatch = useDispatch();
@@ -300,9 +304,7 @@ const First = ({ isPage = false }) => {
 
   const me = useSelector((state) => state.telegramUserInfo);
 
-  const [categoryOpen, setCategoryOpen] = useState(false);
 
-  const [subCategory, setSubCategory] = useState(false);
 
   useEffect(() => {
     dispatch(clearTasks());
