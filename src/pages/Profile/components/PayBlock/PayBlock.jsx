@@ -30,23 +30,23 @@ const PayBlock = ({ className }) => {
     <>
     {
       address ?
-      <div className="rounded-[13px] bg-[#21303F] w-[100%] py-[12px] px-[16px] flex justify-between items-center">
+      <div className="rounded-[13px] bg-[#21303F] w-[100%] py-[12px] px-[19px] flex justify-between items-center">
         <div className="flex gap-[10px] items-center">
           
           <div className="rounded-full w-[40px] h-[40px] bg-[#2EA5FF] flex justify-center items-center">
             <WalletBackPack />
           </div>
           <div className="flex flex-col gap-[2px]">
-            <p className="font-sf-pro-display text-[17px] text-[white] font-normal">
+            <p className="font-sf-pro-display mt-[3px] tracking-normal text-[17px] leading-[18px] text-[white] font-normal">
               Connect Wallet
             </p>
-            <p className="font-sf-pro-display text-[14px] text-[#daf5ff] font-normal">
+            <p className="font-sf-pro-display leading-normal text-[14px] text-[#daf5ff] font-normal">
               {formatAdress(address)}
             </p>
           </div>
         </div>
 
-        <p className="font-sf-compact-rounded text-white font-normal text-[18px]">
+        <p className="font-sf-compact-rounded leading-normal text-white font-normal text-[18px]">
             {formateMoney(String(balance), 3, ".")}p
         </p>
 

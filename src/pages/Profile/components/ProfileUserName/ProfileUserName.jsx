@@ -1,11 +1,11 @@
 import React from 'react';
-import useGetUserName from '../../../../hooks/useGetUserName';
+import useGetFullUserName from '../../../../hooks/useGetFullUserName';
 
 const ProfileUserName = () => {
-    const userName = useGetUserName();
+    const userFullName = useGetFullUserName();
     return (
-      <h2 className="font-sf-compact-rounded font-medium text-white text-[23px]">
-        {userName}
+      <h2 className="font-sf-compact-rounded tracking-wide font-medium text-white text-[23px]">
+        {userFullName}
       </h2>
     );
 };

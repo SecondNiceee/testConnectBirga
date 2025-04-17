@@ -13,6 +13,7 @@ const NewProfile = () => {
     <div className="pt-[16px] px-[16px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[100px]">
 
       <NewProfileCup />
+      
       <PayBlock className="pay-block" />
 
       <div className="flex flex-col rounded-[12px] bg-[#20303f]">

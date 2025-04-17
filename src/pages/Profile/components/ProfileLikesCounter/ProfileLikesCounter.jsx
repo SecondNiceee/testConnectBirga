@@ -3,7 +3,7 @@ import Heart from '../Heart/Heart';
 
 const ProfileLikesCounter = () => {
     return (
-        <div className="flex items-center gap-[6.67px] mt-auto">
+        <div className="flex items-center gap-[6.67px] mt-auto mb-[2px]">
         <p className="font-sf-pro-display font-medium text-[17px] text-[#b5ced9]">
           189
         </p>

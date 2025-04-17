@@ -10,18 +10,18 @@ import ProfileLikesCounter from '../ProfileLikesCounter/ProfileLikesCounter';
 
 const NewProfileCup = () => {
     return (
-        <div className="flex py-[17px] px-[19px] flex-col gap-[17px] bg-[#20303f] rounded-[13px] ">
-        <div className="flex justify-between w-[100%]">
+        <div className="flex py-[17px] pb-[14px] px-[19px] flex-col gap-[13px] bg-[#20303f] rounded-[13px] ">
+        <div className="flex  w-[100%]">
             <ProfileUserIcon />
             <NitcheRating />
             <OverallRating />
-          <div className="h-[100%] flex flex-col gap-[8px]">
+          <div className="h-[100%] ml-auto flex flex-col gap-[8px]">
             <NewProfileShareIcon />
             <EditIcon />
           </div>
         </div>
         <div className="flex justify-between">
-          <div className="flex flex-col gap-[5px]">
+          <div className="flex flex-col gap-[1px]">
             <ProfileUserName />
             <Profession />
           </div>

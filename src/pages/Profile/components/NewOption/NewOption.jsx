@@ -11,7 +11,7 @@ const NewOption = ({text, isNededToFill, imgPath, neededActiveButton, isNeededBo
             <img src={imgPath} alt="" />
 
             <div className="flex gap-[7px] items-center ml-[19px]">
-                <p className="font-sf-pro-display-400 text-[17px] text-white">{text}</p>
+                <p className="font-sf-pro-display-400 tracking-wide text-[17px] text-white">{text}</p>
                 {IsNeededToFillJsxComponent}
                 {isNeededActiveJsxComponent}
             </div>
