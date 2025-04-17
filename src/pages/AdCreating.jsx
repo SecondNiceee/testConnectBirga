@@ -372,7 +372,7 @@ const AdCreating = () => {
       blurRef.current.focus();
     }
 
-    if (!isCategoryChoiceOpen && isSubcategoryChoiceOpen){
+    if (!isCategoryChoiceOpen && !isSubcategoryChoiceOpen){
 
       if (checking()) {
         mainRef.current.classList.remove('oneBack')
