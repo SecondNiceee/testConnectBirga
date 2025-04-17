@@ -438,7 +438,7 @@ const First = ({ isPage = false }) => {
       setSlideOpened(false)
     }
   }
-  }, [responce, step, setDetailsActive, setStep, me, detailsAdertisement, subCategory, categoryOpen]);
+  }, [responce, step, setDetailsActive, setStep, me, detailsAdertisement, subCategory, categoryOpen, isSliderOpened, setSlideOpened]);
 
   useEffect(() => {
     MainButton.onClick(forwardFunction);

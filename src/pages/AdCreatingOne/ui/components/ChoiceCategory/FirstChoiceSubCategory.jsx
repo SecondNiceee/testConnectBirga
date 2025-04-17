@@ -1,11 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import translation from '../../../../../functions/translate';
 import BackButton from '../../../../../constants/BackButton';
 import cl from "./ChoiceCategory.module.css";
 import { enableColorAndActiveButton } from '../../../../../functions/enableColorAndActiveButton';
 import { disableColorAndActiveButton } from '../../../../../functions/disableColorAndActiveButton';
 import MainButton from '../../../../../constants/MainButton';
 import { softVibration } from '../../../../../functions/softVibration';
+import menuController from '../../../../../functions/menuController';
 const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , filterCategory, setTaskInformation, subCategorysPar , ...props}) => {
 
 
@@ -57,7 +57,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
         MainButton.hide();
         MainButton.offClick(buttonHandler)
       }
-    } , [taskInformation, choisenSubCategory, filterCategory] )
+    } , [taskInformation, choisenSubCategory, filterCategory, setSubcategoryChoiceOpen, setTaskInformation] )
 
 
 
@@ -68,8 +68,6 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
         // eslint-disable-next-line
     }, [])
     
-    console.log(subCategorys)
-
     function closeSebCategory(){
         setSubcategoryChoiceOpen(false)
     }
@@ -86,7 +84,15 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
       setTaskInformation({...taskInformation, subCategory : {id : -1, subCategory : "Всё"} })
     }
 
-    const clickHandler = (category) => () => {
+    useEffect( () => {
+      menuController.hideMenu();
+      return () => {
+        menuController.showMenu();
+      }
+    } )
+
+    const clickHandler = (category) => (e) => {
+      e.preventDefault();
       softVibration();
       if (category.id === choisenSubCategory?.id){
         setChoisenSubCategory(false)
@@ -97,9 +103,6 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
     }
     return (
       <div className={cl.ChoiceCategory} {...props}>
-
-
-
         {filterCategory.id !== -1 ? 
         <>
         <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px]">ПОДКАТЕГОРИИ</p>

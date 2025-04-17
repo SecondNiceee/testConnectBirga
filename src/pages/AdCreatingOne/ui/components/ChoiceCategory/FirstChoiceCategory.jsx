@@ -1,6 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import cl from "./ChoiceCategory.module.css";
-import translation from "../../../../../functions/translate";
 import BackButton from "../../../../../constants/BackButton";
 import MainButton from "../../../../../constants/MainButton";
 import { enableColorAndActiveButton } from "../../../../../functions/enableColorAndActiveButton";
@@ -30,10 +29,12 @@ const FirstChoiceCategory = ({
 
   const [choisenCategory, setChoisenCategory] = useState();
 
-  function buttonHandler(){
+
+  const buttonHandler = useCallback( () => {
     setTaskInformation({...taskInformation, category : choisenCategory})
     setCatagoryChoiceOpen(false);
-  }
+  } , [taskInformation,choisenCategory, setTaskInformation, setCatagoryChoiceOpen ] )
+
   useEffect( () => {
     if (choisenCategory){
       enableColorAndActiveButton();
@@ -48,7 +49,7 @@ const FirstChoiceCategory = ({
       MainButton.hide();
       MainButton.offClick(buttonHandler)
     }
-  } , [taskInformation,choisenCategory] )
+  } , [taskInformation,choisenCategory, buttonHandler] )
 
   useEffect( () => {
     function closeFunction(){
@@ -63,23 +64,8 @@ const FirstChoiceCategory = ({
     // eslint-disable-next-line
   } , [] )
 
-   const myCategorys = useMemo( () => {
-    let copy = [...categorys.filter(e => e.category !== "Другое")]
-    copy.unshift({id : -1, category : "Все"})
-    return copy
-   }, [categorys] )
-
-  const [inputValue, setInputValue] = useState("");
-
-
-  console.log(myCategorys)
-
-  const myFilteredCategory = useMemo( () => {
-    return myCategorys.filter(e =>  translation(e.category).includes(inputValue))
-  } , [myCategorys , inputValue] )
-
-
-  const clickHandler = (category) => () => {
+  const clickHandler = (category) => (e) => {
+    e.preventDefault();
     softVibration();
     if (choisenCategory?.id === category.id){
       setChoisenCategory(false);
@@ -107,9 +93,9 @@ const FirstChoiceCategory = ({
       <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px]">КАТЕГОРИИ</p>
 
         <div className="flex rounded-[10px] bg-[#21303f] flex-col pt-[13px] pl-[16px] pr-[16px]">
-            <p onClick={() => {clickAll()}} className="font-sf-pro-text-400 cursor-pointer tracking-[-0.04em] text-[17px] text-[#2ea6ff]">Выбрать всё</p>
+            <p onClick={(e) => {clickAll()}} className="font-sf-pro-text-400 cursor-pointer tracking-[-0.04em] text-[17px] text-[#2ea6ff]">Выбрать всё</p>
             <div  className={`h-[0.5px] cursor-pointer mt-[11px] col-start-2 col-end-3 w-[100%] bg-[#384656]`}></div>
-            {myFilteredCategory.map((category, id) => {
+            {categorys.map((category, id) => {
               return (
                 <>
                 
@@ -124,7 +110,7 @@ const FirstChoiceCategory = ({
                     <h3  className="font-light tracking-[-3.6%]  text-[17px] text-white font-sf-pro-text-400 leading-[17px]">{category.category}</h3>
                     <p className="font-sf-pro-display-400 font-light tracking-[1%] leading-[17.7px] text-[14px] text-[#dbf5ff]">{category.description}</p>
                   </div>
-                  <div className={`h-[0.5px] col-start-2 col-end-3 w-[100%] bg-[#384656]  ${id === myFilteredCategory.length-1 ? "opacity-0" : ""}`}></div>
+                  <div className={`h-[0.5px] col-start-2 col-end-3 w-[100%] bg-[#384656]  ${id === categorys.length-1 ? "opacity-0" : ""}`}></div>
               </div>
               :
               <>

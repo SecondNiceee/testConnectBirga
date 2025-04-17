@@ -609,10 +609,7 @@ const MyAds = ({isPage = false}) => {
     myAdOneAdvertisement : myAdOneAdvertisement ? myAdOneAdvertisement : secondPage.task
   })
 
-
   useBlockInputs();
-
-
   const changer = useSelector( state => state.menuSlice.changer )
 
   useEffect( () => {
@@ -624,7 +621,6 @@ const MyAds = ({isPage = false}) => {
     setOpen( (value) => ({...value , isActive : false}) )
     setOpenAboutReaction((value) => ({...value , isActive : false}))
     setSecondPage( (value) => ({...value , isActive : false}) )
-
   } , [changer])
 
 

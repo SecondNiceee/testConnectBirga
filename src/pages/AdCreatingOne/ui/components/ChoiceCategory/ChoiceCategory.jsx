@@ -1,21 +1,13 @@
 import React, { useEffect, useMemo, useState } from "react";
 import cl from "./ChoiceCategory.module.css";
-import OneInput from "../../../../../components/UI/OneInput/OneInput";
 import BackButton from "../../../../../constants/BackButton";
 import MainButton from "../../../../../constants/MainButton";
-import translation from "../../../../../functions/translate";
-import CategoryItem from "../CategoryItem/CategoryItem";
 import useBlockInputs from "../../../../../hooks/useBlockInputs";
 import { softVibration } from "../../../../../functions/softVibration";
 import { disableColorAndActiveButton } from "../../../../../functions/disableColorAndActiveButton";
 import { enableColorAndActiveButton } from "../../../../../functions/enableColorAndActiveButton";
 import menuController from "../../../../../functions/menuController";
 
-
-
-
-
-const place = translation("Поиск по категориям")
 const ChoiceCategory = ({
   setTaskInformation,
   taskInformation,
@@ -65,9 +57,8 @@ const ChoiceCategory = ({
       MainButton.setText("ДАЛЕЕ")
       MainButton.offClick(buttonHandler)
     }
-  } , [choisenCategory]  )
+  } , [choisenCategory, setTaskInformation, setCatagoryChoiceOpen, subCategorys, taskInformation]  )
 
-  const [inputValue, setInputValue] = useState("");
 
   const realCategorys = useMemo( () => {
     if (!designOnly){
@@ -93,14 +84,6 @@ const ChoiceCategory = ({
     // eslint-disable-next-line
   } , [] )
 
-  console.log("sombody")
-
-
-  const myFilteredCategory = useMemo( () => {
-    return realCategorys.filter(e =>  translation(e.category).includes(inputValue))
-  } , [realCategorys , inputValue] )
-
-
   const categoryClickHandler = (category) => () => {
     if (category.id === choisenCategory?.id){
       setChoisenCategory(false)
@@ -125,7 +108,7 @@ const ChoiceCategory = ({
       <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px]">КАТЕГОРИИ</p>
 
         <div className="flex rounded-[10px] bg-[#21303f] flex-col pl-[16px] pr-[16px]">
-            {myFilteredCategory.map((category, id) => {
+            {realCategorys.map((category, id) => {
               return (
                 <div onClick={categoryClickHandler(category)} className="grid cursor-pointer pt-[13px] grid-cols-[min-content_auto] gap-y-[10px] gap-x-[11px] w-full">
                   <div className={`rounded-full border-solid border-[1px] w-[21px] h-[21px] self-center flex justify-center items-center ${choisenCategory?.id === category.id ? "bg-[#2EA6FF] border-[#2EA6FF] " : "border-[#384656]"}`}>
@@ -137,7 +120,7 @@ const ChoiceCategory = ({
                     <h3  className="font-light tracking-[-3.6%]  text-[17px] text-white font-sf-pro-text-400 leading-[17px]">{category.category}</h3>
                     <p className="font-sf-pro-display-400 font-light tracking-[1%] leading-[17.7px] text-[14px] text-[#dbf5ff]">{category.description}</p>
                   </div>
-                  <div className={`h-[0.5px] col-start-2 col-end-3 w-[100%] bg-[#384656]  ${id === myFilteredCategory.length-1 ? "opacity-0" : ""}`}></div>
+                  <div className={`h-[0.5px] col-start-2 col-end-3 w-[100%] bg-[#384656]  ${id === realCategorys.length-1 ? "opacity-0" : ""}`}></div>
               </div>
               )
             })}

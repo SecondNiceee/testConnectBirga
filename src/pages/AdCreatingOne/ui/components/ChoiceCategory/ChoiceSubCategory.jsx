@@ -2,15 +2,12 @@ import React, { useEffect, useMemo, useState } from "react";
 
 import BackButton from "../../../../../constants/BackButton";
 import MainButton from "../../../../../constants/MainButton";
-import translation from "../../../../../functions/translate";
 import useBlockInputs from "../../../../../hooks/useBlockInputs";
 import { softVibration } from "../../../../../functions/softVibration";
 import cl from "../ChoiceCategory/ChoiceCategory.module.css";
 import { enableColorAndActiveButton } from "../../../../../functions/enableColorAndActiveButton";
 import { disableColorAndActiveButton } from "../../../../../functions/disableColorAndActiveButton";
 import menuController from "../../../../../functions/menuController";
-const menu = document.documentElement.querySelector(".FirstMenu");
-const place = translation("Поиск по подкатегориям");
 const ChoiceSubCategory = ({
   taskInformation,
   setSubcategoryChoiceOpen,
@@ -48,7 +45,7 @@ const ChoiceSubCategory = ({
       enableColorAndActiveButton();
       MainButton.setText("Продолжить");
     };
-  }, [choisenSubCategory]);
+  }, [choisenSubCategory, setSubcategoryChoiceOpen, setTaskInformation, taskInformation]);
 
   useEffect(() => {
     function closeFunction() {
@@ -60,7 +57,7 @@ const ChoiceSubCategory = ({
       BackButton.offClick(closeFunction);
     };
     // eslint-disable-next-line
-  }, []);
+  }, [setSubcategoryChoiceOpen, setTaskInformation, taskInformation]);
 
   useEffect( () => {
     menuController.hideMenu();
