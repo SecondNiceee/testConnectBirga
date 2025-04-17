@@ -3,14 +3,15 @@ import { useSelector } from 'react-redux';
 
 const useFilteredArray = ({filteredArr, filters}) => {
     const tonConstant = useSelector((state) => state.ton.value);
+    const subCategorysIds = filters.subCategory.map((e) => e.id)
     const secFilteredArray = useMemo(() => {
     let copy = [...filteredArr];
     if (filters.category.id !== -1) {
-      if (filters.subCategory.id !== -1) {
+      if (filters.subCategory) {
         return copy.filter((e) => {
           return (
             e.category === filters.category.id &&
-            e.subCategory === filters.subCategory.id &&
+            subCategorysIds.indcludes(e.subCategory.id) &&
             e.tonValue * tonConstant >= filters.price
           );
         });

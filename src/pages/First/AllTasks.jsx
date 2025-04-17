@@ -79,7 +79,7 @@ const AllTasks = forwardRef(({
       />
               <div className="filtration-container">
           <CategoryBlock func={openCategoryFunc} name={"Категория"} value={format(filters.category.category)}/>
-          <CategoryBlock func={openSubCategoryFunc} name={"Подкатегория"}  value={format(filters.subCategory.subCategory)}/>
+          <CategoryBlock func={openSubCategoryFunc} name={"Подкатегория"}  value={filters.subCategory ? format(filters.subCategory.subCategory[0]) : "Все"}/>
           <InputBlock setValue={setValueFunc} value={String(filters.price)} />
         </div>
 

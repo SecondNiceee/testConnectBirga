@@ -32,23 +32,18 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
     } , [] )
 
 
-    const [choisenSubCategory, setChoisenSubCategory] = useState();
+    const [choisenSubCategorys, setChoisenSubCategorys] = useState([]);
 
     useEffect( () => {
       function buttonHandler(){
-        if (filterCategory.id !== -1){
-          setTaskInformation({...taskInformation, subCategory : choisenSubCategory})
+        if (choisenSubCategorys.length){
+          setTaskInformation({...taskInformation, subCategory : choisenSubCategorys})
           setSubcategoryChoiceOpen(false);
         }
         else{
+          setTaskInformation({...taskInformation, subCategory : null})
           setSubcategoryChoiceOpen(false);
         }
-      }
-      if (choisenSubCategory || filterCategory.id === -1){
-        enableColorAndActiveButton();
-      }
-      else{
-        disableColorAndActiveButton();
       }
       MainButton.show();
       MainButton.setText("Готово")
@@ -57,7 +52,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
         MainButton.hide();
         MainButton.offClick(buttonHandler)
       }
-    } , [taskInformation, choisenSubCategory, filterCategory, setSubcategoryChoiceOpen, setTaskInformation] )
+    } , [taskInformation, choisenSubCategorys, filterCategory, setSubcategoryChoiceOpen, setTaskInformation] )
 
 
 
@@ -91,16 +86,18 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
       }
     } )
 
+    const choiseCategorysIds = choisenSubCategorys.map( (e) => e.id )
+
     const clickHandler = (category) => (e) => {
-      e.preventDefault();
-      softVibration();
-      if (category.id === choisenSubCategory?.id){
-        setChoisenSubCategory(false)
+      if (choiseCategorysIds.includes(category.id)){
+        setChoisenSubCategorys([...choisenSubCategorys].filter((e) => e.id !== category.id))
       }
       else{
-        setChoisenSubCategory(category)
+        setChoisenSubCategorys([...choisenSubCategorys, category])
       }
     }
+
+
     return (
       <div className={cl.ChoiceCategory} {...props}>
         {filterCategory.id !== -1 ? 
@@ -114,8 +111,8 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
                 <>
                 {category.subCategory !== "Все" ? 
                 <div onClick={clickHandler(category)} className="grid cursor-pointer pt-[13px] grid-cols-[min-content_auto] gap-y-[10px] gap-x-[11px] w-full">
-                  <div className={`rounded-full border-solid border-[1px] w-[21px] h-[21px] self-center flex justify-center items-center ${choisenSubCategory?.id === category.id ?  "bg-[#2EA6FF] border-[#2EA6FF] " : "border-[#384656]"}`}>
-                      <svg className={`${choisenSubCategory?.id === category.id ? "" : "hidden"}`} width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <div className={`rounded-full border-solid border-[1px] w-[21px] h-[21px] self-center flex justify-center items-center ${choiseCategorysIds.includes(category.id) ?  "bg-[#2EA6FF] border-[#2EA6FF] " : "border-[#384656]"}`}>
+                      <svg className={`${choiseCategorysIds.includes(category.id) ? "" : "hidden"}`} width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.19553 10.5012C3.89935 10.5012 3.64759 10.3745 3.44027 10.1209L0.563626 6.60418C0.482176 6.50864 0.42294 6.41493 0.385918 6.32306C0.352598 6.23119 0.335938 6.13565 0.335938 6.03643C0.335938 5.81595 0.409982 5.63405 0.558072 5.49073C0.706162 5.34742 0.893125 5.27576 1.11896 5.27576C1.37442 5.27576 1.58915 5.38417 1.76315 5.60098L4.17331 8.63263L8.87702 1.23539C8.97327 1.0884 9.07323 0.985509 9.1769 0.926714C9.28056 0.864243 9.41014 0.833008 9.56563 0.833008C9.79147 0.833008 9.97658 0.902828 10.121 1.04247C10.2654 1.18211 10.3376 1.36033 10.3376 1.57714C10.3376 1.66534 10.3227 1.75353 10.2931 1.84172C10.2635 1.92992 10.2172 2.02178 10.1543 2.11733L4.95634 10.0989C4.77863 10.3671 4.52503 10.5012 4.19553 10.5012Z" fill="white" stroke="white" stroke-width="0.333387" />
                       </svg>
                   </div>

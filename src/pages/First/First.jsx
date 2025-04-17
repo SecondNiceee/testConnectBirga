@@ -105,7 +105,7 @@ const First = ({ isPage = false }) => {
 
   const [filters, setFilters] = useState({
     category: { id: -1, category: "Все" },
-    subCategory: { id: -1, subCategory: "Все" },
+    subCategory: null,
     price: 0,
   });
 
