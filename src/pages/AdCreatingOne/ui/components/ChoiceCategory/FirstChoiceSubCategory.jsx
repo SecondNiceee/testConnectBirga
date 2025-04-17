@@ -38,7 +38,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
       if (taskInformation.subCategory !== null){
         setChoisenSubCategorys(taskInformation.subCategory)
       }
-    }, [] )
+    }, [taskInformation.subCategory] )
 
 
     const  buttonHandler = useCallback(() => {
@@ -89,7 +89,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
 
     const clickAll = () => {
       softVibration();
-      if (choisenSubCategorys.length === subCategorys){
+      if (choisenSubCategorys.length === subCategorys.length){
         setChoisenSubCategorys([])
       }
       else{

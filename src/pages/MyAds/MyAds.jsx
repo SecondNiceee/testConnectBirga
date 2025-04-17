@@ -642,8 +642,6 @@ const MyAds = ({isPage = false}) => {
     }
   } , [isPage, setSecondPage] )
 
-
-
   return (
     <>
       { postStatus === "pending" ? (
