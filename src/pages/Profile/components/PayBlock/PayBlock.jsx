@@ -30,7 +30,7 @@ const PayBlock = ({ className }) => {
     <>
     {
       address ?
-      <div className="rounded-[13px] bg-[#21303F] w-[100%] py-[12px] px-[19px] flex justify-between items-center">
+      <div className="rounded-[13px] bg-[#21303F] w-[100%] py-[10px] px-[19px] flex justify-between items-center">
         <div className="flex gap-[10px] items-center">
           
           <div className="rounded-full w-[40px] h-[40px] bg-[#2EA5FF] flex justify-center items-center">

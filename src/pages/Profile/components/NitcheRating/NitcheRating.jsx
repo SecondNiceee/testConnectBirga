@@ -6,7 +6,7 @@ const NitcheRating = () => {
         <h2 className="font-sf-pro-display-600 text-[17px]  text-white leading-[18px]">
           #4
         </h2>
-        <p className="font-sf-pro-display max-w-[80px] text-[13px] tracking-wider text-white leading-[16px]">
+        <p className="font-sf-pro-display max-w-[80px] text-[13px] tracking-wide text-white leading-[16px]">
           в рейтинге по нише
         </p>
       </div>
