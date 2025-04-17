@@ -5,6 +5,8 @@ import BackButton from "../../../../../constants/BackButton";
 import MainButton from "../../../../../constants/MainButton";
 import { enableColorAndActiveButton } from "../../../../../functions/enableColorAndActiveButton";
 import { disableColorAndActiveButton } from "../../../../../functions/disableColorAndActiveButton";
+import menuController from "../../../../../functions/menuController";
+import { softVibration } from "../../../../../functions/softVibration";
 
 
 const FirstChoiceCategory = ({
@@ -78,13 +80,26 @@ const FirstChoiceCategory = ({
 
 
   const clickHandler = (category) => () => {
-    setChoisenCategory(category);
+    softVibration();
+    if (choisenCategory.id === category.id){
+      setChoisenCategory(false);
+    }
+    else{
+      setChoisenCategory(category);
+    }
   }
 
   const clickAll = () => {
     setTaskInformation({...taskInformation, category : { id: -1, category: "Все" }})
     setCatagoryChoiceOpen(false);
   }
+
+  useEffect( () => {
+   menuController.hideMenu()
+   return () => {
+    menuController.showMenu();
+   }
+  } )
 
   return (
     <div className={cl.ChoiceCategory} {...props}>

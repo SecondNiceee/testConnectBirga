@@ -8,6 +8,7 @@ import { softVibration } from "../../../../../functions/softVibration";
 import cl from "../ChoiceCategory/ChoiceCategory.module.css";
 import { enableColorAndActiveButton } from "../../../../../functions/enableColorAndActiveButton";
 import { disableColorAndActiveButton } from "../../../../../functions/disableColorAndActiveButton";
+import menuController from "../../../../../functions/menuController";
 const menu = document.documentElement.querySelector(".FirstMenu");
 const place = translation("Поиск по подкатегориям");
 const ChoiceSubCategory = ({
@@ -60,6 +61,13 @@ const ChoiceSubCategory = ({
     };
     // eslint-disable-next-line
   }, []);
+
+  useEffect( () => {
+    menuController.hideMenu();
+    return () => {
+      menuController.showMenu();
+    }
+  } )
 
   const subCategorys = useMemo(() => {
     let subCategorysCopy = [];
@@ -121,7 +129,7 @@ const ChoiceSubCategory = ({
                       </svg>
                   </div>
                   <div className="flex flex-col gap-[3px]">
-                    <h3  className="font-light tracking-[-3.6%]  text-[17px] text-white font-sf-pro-text-400 leading-[17px]">{category.category}</h3>
+                    <h3  className="font-light tracking-[-3.6%]  text-[17px] text-white font-sf-pro-text-400 leading-[17px]">{category.subCategory}</h3>
                     <p className="font-sf-pro-display-400 font-light tracking-[1%] leading-[17.7px] text-[14px] text-[#dbf5ff]">{category.description}</p>
                   </div>
                   <div className={`h-[0.5px] col-start-2 col-end-3 w-[100%] bg-[#384656]  ${id === subCategorys.length-1 ? "opacity-0" : ""}`}></div>
