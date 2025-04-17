@@ -10,7 +10,7 @@ const NewProfile = () => {
   const optionsConfig = useGetOptionsConfig();
 
   return (
-    <div className="pt-[20px] px-[20px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll">
+    <div className="pt-[20px] px-[20px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[103px]">
 
       <NewProfileCup />
       <PayBlock className="pay-block" />
