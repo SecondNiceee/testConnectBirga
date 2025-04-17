@@ -81,7 +81,7 @@ const FirstChoiceCategory = ({
 
   const clickHandler = (category) => () => {
     softVibration();
-    if (choisenCategory.id === category.id){
+    if (choisenCategory?.id === category.id){
       setChoisenCategory(false);
     }
     else{
