@@ -31,17 +31,16 @@ const FirstChoiceCategory = ({
 
 
   const buttonHandler = useCallback( () => {
-    setTaskInformation({...taskInformation, category : choisenCategory})
+    if (!choisenCategory){
+      setTaskInformation({...taskInformation, category : { id: -1, category: "Все" }, subCategory : {id:-1, subCategory : "Всё"}})
+    }
+    else{
+      setTaskInformation({...taskInformation, category : choisenCategory})
+    }
     setCatagoryChoiceOpen(false);
   } , [taskInformation,choisenCategory, setTaskInformation, setCatagoryChoiceOpen ] )
 
   useEffect( () => {
-    if (choisenCategory){
-      enableColorAndActiveButton();
-    }
-    else{
-      disableColorAndActiveButton();
-    }
     MainButton.show();
     MainButton.setText("Готово")
     MainButton.onClick(buttonHandler)
@@ -75,11 +74,6 @@ const FirstChoiceCategory = ({
     }
   }
 
-  const clickAll = () => {
-    setTaskInformation({...taskInformation, category : { id: -1, category: "Все" }})
-    setCatagoryChoiceOpen(false);
-  }
-
   useEffect( () => {
    menuController.hideMenu()
    return () => {
@@ -92,13 +86,10 @@ const FirstChoiceCategory = ({
 
       <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px]">КАТЕГОРИИ</p>
 
-        <div className="flex rounded-[10px] bg-[#21303f] flex-col pt-[13px] pl-[16px] pr-[16px]">
-            <p onClick={(e) => {clickAll()}} className="font-sf-pro-text-400 cursor-pointer tracking-[-0.04em] text-[17px] text-[#2ea6ff]">Выбрать всё</p>
-            <div  className={`h-[0.5px] cursor-pointer mt-[11px] col-start-2 col-end-3 w-[100%] bg-[#384656]`}></div>
+        <div className="flex rounded-[10px] bg-[#21303f] flex-col pl-[16px] pr-[16px]">
             {categorys.map((category, id) => {
               return (
                 <>
-                
                 {category.category !== "Все" ? 
                 <div onClick={clickHandler(category)} className="grid cursor-pointer pt-[13px] grid-cols-[min-content_auto] gap-y-[10px] gap-x-[11px] w-full">
                   <div className={`rounded-full border-solid border-[1px] w-[21px] h-[21px] self-center flex justify-center items-center ${choisenCategory?.id === category.id ?  "bg-[#2EA6FF] border-[#2EA6FF] " : "border-[#384656]"}`}>
