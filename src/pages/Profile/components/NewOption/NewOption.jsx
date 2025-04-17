@@ -6,7 +6,7 @@ const NewOption = ({text, isNededToFill, imgPath, neededActiveButton, isNeededBo
     const IsNeededToFillJsxComponent = useIsNeededToFill({isNededToFill})
     const isNeededActiveJsxComponent = useIsNeededToActive({isNeededToActive : neededActiveButton})
     return (
-        <div className={`flex ${isAloneElement ? "pl-[19px] rounded-[12px]" : "ml-[19px]"} ${isNeededBorder ? "border-[#606060] border-b-[0.5px]" : ""} border-solid bg-[#20303f]  pr-[16px] py-[8px] items-center`}>
+        <div className={`flex ${isAloneElement ? "pl-[19px] rounded-[12px] bg-[#20303f] " : "ml-[19px]"} ${isNeededBorder ? "border-[#606060] border-b-[0.5px]" : ""} border-solid  pr-[16px] py-[8px] items-center`}>
 
             <img src={imgPath} alt="" />
 
