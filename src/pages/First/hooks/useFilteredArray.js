@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 const useFilteredArray = ({filteredArr, filters}) => {
     const tonConstant = useSelector((state) => state.ton.value);
-    const subCategorysIds = filters.subCategory.map((e) => e.id)
+    const subCategorysIds = filters.subCategory ? filters.subCategory.map((e) => e.id) : null
     const secFilteredArray = useMemo(() => {
     let copy = [...filteredArr];
     if (filters.category.id !== -1) {
