@@ -22,7 +22,6 @@ import useBlockInputs from "../hooks/useBlockInputs";
 const textButton = translation("Вы уверены, что хотите создать новое задание?")
 let create = translation("Создать?")
 let spet = 0;
-const menu = document.documentElement.querySelector(".FirstMenu")
 const Yes = translation("Да")
 const No = translation("Нет")
 const endText = translation("СОЗДАТЬ ЗАДАНИЕ")

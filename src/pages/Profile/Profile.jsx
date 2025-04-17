@@ -8,8 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { CSSTransition } from "react-transition-group";
 
-import { useNavigate } from "react-router-dom";
-import BackButton from "../../constants/BackButton";
 import userPhoto from "../../images/userPhoto/user.png";
 
 import SmallTextarea from "../../components/UI/SmallTextarea/SmallTextarea";

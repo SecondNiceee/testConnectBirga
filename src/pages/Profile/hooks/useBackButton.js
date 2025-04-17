@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import BackButton from '../../../constants/BackButton';
 import { useNavigate } from 'react-router';
 

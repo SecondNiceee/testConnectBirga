@@ -1,10 +1,7 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import BackButton from '../../../../../constants/BackButton';
 import cl from "./ChoiceCategory.module.css";
-import { enableColorAndActiveButton } from '../../../../../functions/enableColorAndActiveButton';
-import { disableColorAndActiveButton } from '../../../../../functions/disableColorAndActiveButton';
 import MainButton from '../../../../../constants/MainButton';
-import { softVibration } from '../../../../../functions/softVibration';
 import menuController from '../../../../../functions/menuController';
 const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , filterCategory, setTaskInformation, subCategorysPar , ...props}) => {
 
@@ -16,6 +13,8 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
        First.style.overflowY = "scroll"
     }
   } , [] )
+
+  
 
 
   useEffect( () => {
@@ -35,30 +34,43 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
     const [choisenSubCategorys, setChoisenSubCategorys] = useState([]);
 
     useEffect( () => {
-      function buttonHandler(){
-        if (choisenSubCategorys.length){
-          setTaskInformation({...taskInformation, subCategory : choisenSubCategorys})
-          setSubcategoryChoiceOpen(false);
-        }
-        else{
-          setTaskInformation({...taskInformation, subCategory : null})
-          setSubcategoryChoiceOpen(false);
-        }
+      if (taskInformation.subCategory !== null){
+        setChoisenSubCategorys(taskInformation.subCategory)
       }
-      MainButton.show();
+    }, [] )
+
+
+    const  buttonHandler = useCallback(() => {
+      if (choisenSubCategorys.length){
+        setTaskInformation({...taskInformation, subCategory : choisenSubCategorys})
+        setSubcategoryChoiceOpen(false);
+      }
+      else{
+        setTaskInformation({...taskInformation, subCategory : null})
+        setSubcategoryChoiceOpen(false);
+      }
+    }, [setTaskInformation, taskInformation, setSubcategoryChoiceOpen, choisenSubCategorys])
+
+
+    useEffect( () => {
+      MainButton.show()
       MainButton.setText("Готово")
+      return () => {
+        MainButton.hide()
+      }
+    }, [] )
+
+    useEffect( () => {
       MainButton.onClick(buttonHandler)
       return () => {
-        MainButton.hide();
         MainButton.offClick(buttonHandler)
       }
-    } , [taskInformation, choisenSubCategorys, filterCategory, setSubcategoryChoiceOpen, setTaskInformation] )
+    } , [taskInformation, choisenSubCategorys, filterCategory, setSubcategoryChoiceOpen, setTaskInformation, buttonHandler] )
 
 
 
     const subCategorys = useMemo(() => {
       let copy = subCategorysPar.filter(e => e.category.id === taskInformation.category.id && e.subCategory !== "Другое")
-      copy.unshift({id : -1, subCategory : "Все"})
         return copy
         // eslint-disable-next-line
     }, [])
@@ -75,7 +87,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
     } )
 
     const clickAll = () => {
-      setTaskInformation({...taskInformation, subCategory : subCategorys })
+      setChoisenSubCategorys(subCategorys)
     }
 
     useEffect( () => {
@@ -101,14 +113,14 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
       <div className={cl.ChoiceCategory} {...props}>
         {filterCategory.id !== -1 ? 
         <>
+        <button onClick={() => {buttonHandler()}}>ГОООО</button>
         <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px]">ПОДКАТЕГОРИИ</p>
         <div className="flex rounded-[10px] bg-[#21303f] flex-col pt-[13px] pl-[16px] pr-[16px]">
-            <p onClick={() => {clickAll()}} className="font-sf-pro-text-400 cursor-pointer tracking-[-0.04em] text-[17px] text-[#2ea6ff]">Выбрать всё</p>
+            <p onClick={() => {clickAll()}} className="font-sf-pro-text-400 cursor-pointer tracking-[-0.04em] leading-[17.33px] text-[17px] text-[#2ea6ff]">Выбрать всё</p>
             <div  className={`h-[0.5px] cursor-pointer mt-[11px] col-start-2 col-end-3 w-[100%] bg-[#384656]`}></div>
             {subCategorys.map((category, id) => {
               return (
                 <>
-                {category.subCategory !== "Все" ? 
                 <div onClick={clickHandler(category)} className="grid cursor-pointer pt-[13px] grid-cols-[min-content_auto] gap-y-[10px] gap-x-[11px] w-full">
                   <div className={`rounded-full border-solid border-[1px] w-[21px] h-[21px] self-center flex justify-center items-center ${choiseCategorysIds.includes(category.id) ?  "bg-[#2EA6FF] border-[#2EA6FF] " : "border-[#384656]"}`}>
                       <svg className={`${choiseCategorysIds.includes(category.id) ? "" : "hidden"}`} width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -121,10 +133,6 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
                   </div>
                   <div className={`h-[0.5px] col-start-2 col-end-3 w-[100%] bg-[#384656]  ${id === subCategorys.length-1 ? "opacity-0" : ""}`}></div>
               </div>
-              :
-              <>
-              </>
-                }
               </>
               )
               

@@ -2,8 +2,6 @@ import React, { useCallback, useEffect, useState } from "react";
 import cl from "./ChoiceCategory.module.css";
 import BackButton from "../../../../../constants/BackButton";
 import MainButton from "../../../../../constants/MainButton";
-import { enableColorAndActiveButton } from "../../../../../functions/enableColorAndActiveButton";
-import { disableColorAndActiveButton } from "../../../../../functions/disableColorAndActiveButton";
 import menuController from "../../../../../functions/menuController";
 import { softVibration } from "../../../../../functions/softVibration";
 
@@ -18,6 +16,7 @@ const FirstChoiceCategory = ({
   ...props 
 
 }) => {
+  
 
   useEffect( () => {
     const First = document.documentElement.querySelector(".First")
@@ -29,23 +28,32 @@ const FirstChoiceCategory = ({
 
   const [choisenCategory, setChoisenCategory] = useState();
 
-
   const buttonHandler = useCallback( () => {
     if (!choisenCategory){
-      setTaskInformation({...taskInformation, category : { id: -1, category: "Все" }, subCategory : {id:-1, subCategory : "Всё"}})
+      setTaskInformation({...taskInformation, category : { id: -1, category: "Все" }, subCategory : null})
     }
     else{
-      setTaskInformation({...taskInformation, category : choisenCategory})
+      if (taskInformation.category.id !== choisenCategory.id){
+        setTaskInformation({...taskInformation, category : choisenCategory, subCategory : null})
+      }
+      else{
+        setTaskInformation({...taskInformation, category : choisenCategory})
+      }
     }
     setCatagoryChoiceOpen(false);
   } , [taskInformation,choisenCategory, setTaskInformation, setCatagoryChoiceOpen ] )
 
   useEffect( () => {
     MainButton.show();
+    return () => {
+      MainButton.hide()
+    }
+  }, [] )
+
+  useEffect( () => {
     MainButton.setText("Готово")
     MainButton.onClick(buttonHandler)
     return () => {
-      MainButton.hide();
       MainButton.offClick(buttonHandler)
     }
   } , [taskInformation,choisenCategory, buttonHandler] )
@@ -81,11 +89,17 @@ const FirstChoiceCategory = ({
    }
   } )
 
+  useEffect( () => {
+    if (taskInformation.category.id !== -1){
+      setChoisenCategory(taskInformation.category)
+    }
+  } , [taskInformation] )
+
   return (
     <div className={cl.ChoiceCategory} {...props}>
 
       <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px]">КАТЕГОРИИ</p>
-
+        <button onClick={() => buttonHandler()}>ГООООО</button>
         <div className="flex rounded-[10px] bg-[#21303f] flex-col pl-[16px] pr-[16px]">
             {categorys.map((category, id) => {
               return (
