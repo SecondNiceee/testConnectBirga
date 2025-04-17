@@ -509,7 +509,7 @@ const First = ({ isPage = false }) => {
           >
             <FirstChoiceCategory
               style={{
-                paddingBottom: "100px",
+                paddingBottom: "20px",
                 top: firstRef.current
                   ? firstRef.current.scrollTop + "px"
                   : "0px",
@@ -530,7 +530,7 @@ const First = ({ isPage = false }) => {
           >
             <FirstChoiceSubCategory
               style={{
-                paddingBottom: "100px",
+                paddingBottom: "20px",
                 top: firstRef.current
                   ? firstRef.current.scrollTop + "px"
                   : "0px",

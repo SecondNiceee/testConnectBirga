@@ -5,6 +5,7 @@ import cl from "./ChoiceCategory.module.css";
 import { enableColorAndActiveButton } from '../../../../../functions/enableColorAndActiveButton';
 import { disableColorAndActiveButton } from '../../../../../functions/disableColorAndActiveButton';
 import MainButton from '../../../../../constants/MainButton';
+import { softVibration } from '../../../../../functions/softVibration';
 const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , filterCategory, setTaskInformation, subCategorysPar , ...props}) => {
 
 
@@ -86,7 +87,13 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
     }
 
     const clickHandler = (category) => () => {
-      setChoisenSubCategory(category)
+      softVibration();
+      if (category.id === choisenSubCategory?.id){
+        setChoisenSubCategory(false)
+      }
+      else{
+        setChoisenSubCategory(category)
+      }
     }
     return (
       <div className={cl.ChoiceCategory} {...props}>

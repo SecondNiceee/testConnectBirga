@@ -102,7 +102,12 @@ const ChoiceCategory = ({
 
 
   const categoryClickHandler = (category) => () => {
-    setChoisenCategory(category);
+    if (category.id === choisenCategory?.id){
+      setChoisenCategory(false)
+    }
+    else{
+      setChoisenCategory(category);
+    }
     softVibration()
   }
 
