@@ -1,36 +1,40 @@
-import React from 'react';
-import useGetUserPhotoLink from '../../hooks/useGetUserPhotoLink';
-import ShareIcon from '../../components/UI/ShareIcon/ShareIcon';
+import React from "react";
+import PayBlock from "./components/PayBlock/PayBlock";
+import useGetOptionsConfig from "./hooks/useGetOptionsConfig";
+import NewOption from "./components/NewOption/NewOption";
+import NewProfileCup from "./components/NewProfileCup/NewProfileCup";
 
 const NewProfile = () => {
-    const userLinkPhoto = useGetUserPhotoLink();
-    return (
-        <div className='pt-[20px] px-[20px] bg-[#18222d]'>
-            <div className='py-[17px] px-[19px] bg-[#20303f] rounded-[13px] justify-between w-[100%]'>
-                <img
-                style={{ objectFit: "cover" }}
-                src={userLinkPhoto}
-                className="w-[94px] h-[94px] rounded-full "
-                alt=""
-                />
-            </div>
-            <div className='flex flex-col gap-[3px] my-auto'>
-                <h2 className='font-sf-pro-display-600 text-[17px] text-white tracking-[18px]'>#4</h2>
-                <p className='font-sf-pro-display max-w-[70px] text-[13px] text-white tracking-[18px]'>в рейтинге по нише</p>
-            </div>
-            <div className='flex flex-col gap-[3px] my-auto'>
-                <h2 className='font-sf-pro-display-600 text-[17px] text-white tracking-[18px]'>#4</h2>
-                <p className='font-sf-pro-display max-w-[70px] text-[13px] text-white tracking-[18px]'>в общем рейтинге</p>
-            </div>
-            <div className='h-[100%] flex flex-col'>
-                <ShareIcon style = {{
-                    width : "30px",
-                    height : "30px"
-                }} />
-                
-            </div>
-        </div>
-    );
+
+
+  const optionsConfig = useGetOptionsConfig();
+
+  return (
+    <div className="pt-[20px] px-[20px] bg-[#18222d] gap-[16px] flex flex-col">
+
+      <NewProfileCup />
+      <PayBlock className="pay-block" />
+
+      <div className="flex flex-col rounded-[12px] bg-[#20303f]">
+        {optionsConfig.map((option, i) => (
+          <NewOption
+            imgPath={option.imgPath}
+            isNededToFill={option.isNeededFill}
+            neededActiveButton={option.isNeededActiveTitle}
+            text={option.text}
+            key={i}
+            isNeededBorder={i !== Number(optionsConfig.length-1)}
+            isAloneElement={false}
+          />
+        ))}
+      </div>
+
+      <NewOption isAloneElement={true} imgPath={"/images/newProfile/subscription.svg"} isNededToFill={false} neededActiveButton={true} text={"Подписка"}  />
+
+      <NewOption isAloneElement={true} imgPath={"/images/newProfile/refSystemIcon.svg"} isNededToFill={false} neededActiveButton={false} text={"Реферальная система"}  />
+
+    </div>
+  );
 };
 
 export default NewProfile;

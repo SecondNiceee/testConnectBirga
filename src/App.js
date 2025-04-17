@@ -33,6 +33,7 @@ import { fetchAllShablons } from "./store/shablon";
 import { fetchAllIds } from "./store/saves";
 
 import { getBalance } from "./store/balance";
+import NewProfile from "./pages/Profile/NewProfile";
 const HappyPage = lazy( () => import("./pages/HappyHold/HappyPage") )
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -235,7 +236,7 @@ const AnimatedSwitch = () => {
               path="/Profile"
               element={
                 <Suspense fallback={<MyLoader />}>
-                  <Profile />
+                  <NewProfile />
                 </Suspense>
               }
             />

@@ -1,0 +1,14 @@
+import React from 'react';
+
+const useIsNeededToFill = ({isNededToFill}) => {
+    if (isNededToFill){
+        return (
+        <div className="bg-[#e18906] px-[4px] py-[3px] rounded-[5px] items-center">
+            <p className="font-sf-pro-display-700 text-[9px] font-bold leading-[10px] uppercase text-white">Заполните</p>
+        </div>
+        );
+    }
+    return null;
+};
+
+export default useIsNeededToFill;

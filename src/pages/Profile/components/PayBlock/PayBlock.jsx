@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from "react";
+import React, { memo, useEffect } from "react";
 import cl from "./PayBlock.module.scss";
 import CreateButton from "../CreateButton/CreateButton";
 import PayTextContainer from "../PayTextContainer/PayTextContainer";
@@ -16,7 +16,7 @@ const PayBlock = ({ className }) => {
 
   const balance = useSelector((state) => state.balance.value)
 
-  const {formatAdress, handleWalletAction, isLoading, tonWalletAddress} = useTonConnection()
+  const {formatAdress, handleWalletAction, tonWalletAddress} = useTonConnection()
 
 
   useEffect( () => { // Если tonWalletAddress !== null и также он не равен адресу , который у юзера, то ставим этот адресс сюда
@@ -24,15 +24,13 @@ const PayBlock = ({ className }) => {
         dispatch(putUserInfo([{
           address : tonWalletAddress}]))
       }
-  }, [tonWalletAddress] )
+  }, [tonWalletAddress, address, dispatch] )
 
   return (
     <>
-
     {
-
       address ?
-      <div className="rounded-[13px] mt-[28px] bg-[#21303F] w-[100%] py-[12px] px-[16px] flex justify-between items-center">
+      <div className="rounded-[13px] bg-[#21303F] w-[100%] py-[12px] px-[16px] flex justify-between items-center">
         <div className="flex gap-[10px] items-center">
           
           <div className="rounded-full w-[40px] h-[40px] bg-[#2EA5FF] flex justify-center items-center">
@@ -48,7 +46,7 @@ const PayBlock = ({ className }) => {
           </div>
         </div>
 
-        <p className="font-sf-compact-rounded font-normal text-[18px]">
+        <p className="font-sf-compact-rounded text-white font-normal text-[18px]">
             {formateMoney(String(balance), 3, ".")}p
         </p>
 
