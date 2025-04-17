@@ -3,6 +3,7 @@ import BackButton from '../../../../../constants/BackButton';
 import cl from "./ChoiceCategory.module.css";
 import MainButton from '../../../../../constants/MainButton';
 import menuController from '../../../../../functions/menuController';
+import { softVibration } from '../../../../../functions/softVibration';
 const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , filterCategory, setTaskInformation, subCategorysPar , ...props}) => {
 
 
@@ -87,7 +88,13 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
     } )
 
     const clickAll = () => {
-      setChoisenSubCategorys(subCategorys)
+      softVibration();
+      if (choisenSubCategorys.length === subCategorys){
+        setChoisenSubCategorys([])
+      }
+      else{
+        setChoisenSubCategorys(subCategorys)
+      }
     }
 
     useEffect( () => {
@@ -100,6 +107,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
     const choiseCategorysIds = choisenSubCategorys.map( (e) => e.id )
 
     const clickHandler = (category) => (e) => {
+      softVibration();
       if (choiseCategorysIds.includes(category.id)){
         setChoisenSubCategorys([...choisenSubCategorys].filter((e) => e.id !== category.id))
       }
@@ -113,7 +121,6 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
       <div className={cl.ChoiceCategory} {...props}>
         {filterCategory.id !== -1 ? 
         <>
-        <button onClick={() => {buttonHandler()}}>ГОООО</button>
         <p className="mt-[13px] ml-[17px] font-sf-pro-display-400 font-extralight text-[13px] tracking-[0.02em] text-[#84898f] uppercase mb-[9px]">ПОДКАТЕГОРИИ</p>
         <div className="flex rounded-[10px] bg-[#21303f] flex-col pt-[13px] pl-[16px] pr-[16px]">
             <p onClick={() => {clickAll()}} className="font-sf-pro-text-400 cursor-pointer tracking-[-0.04em] leading-[17.33px] text-[17px] text-[#2ea6ff]">Выбрать всё</p>
@@ -139,7 +146,6 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
             })}
         </div>
         </>
-
 :
             <p className='font-sf-pro-display-400 font-extralight my-auto text-center mx-auto top-[40%] text-[17px] tracking-[0.02em] text-[#84898f]'>
                 Выберите сначала категорию, чтобы выбрать подкатегорию.

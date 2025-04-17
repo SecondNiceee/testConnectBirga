@@ -1,5 +1,6 @@
 import React from 'react';
 import useGetUserPhotoLink from '../../hooks/useGetUserPhotoLink';
+import ShareIcon from '../../components/UI/ShareIcon/ShareIcon';
 
 const NewProfile = () => {
     const userLinkPhoto = useGetUserPhotoLink();
@@ -20,6 +21,13 @@ const NewProfile = () => {
             <div className='flex flex-col gap-[3px] my-auto'>
                 <h2 className='font-sf-pro-display-600 text-[17px] text-white tracking-[18px]'>#4</h2>
                 <p className='font-sf-pro-display max-w-[70px] text-[13px] text-white tracking-[18px]'>в общем рейтинге</p>
+            </div>
+            <div className='h-[100%] flex flex-col'>
+                <ShareIcon style = {{
+                    width : "30px",
+                    height : "30px"
+                }} />
+                
             </div>
         </div>
     );
