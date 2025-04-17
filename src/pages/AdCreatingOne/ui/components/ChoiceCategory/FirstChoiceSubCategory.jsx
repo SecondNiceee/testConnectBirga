@@ -75,8 +75,7 @@ const FirstChoiceSubCategory = ({taskInformation , setSubcategoryChoiceOpen , fi
     } )
 
     const clickAll = () => {
-      setSubcategoryChoiceOpen(false)
-      setTaskInformation({...taskInformation, subCategory : {id : -1, subCategory : "Всё"} })
+      setTaskInformation({...taskInformation, subCategory : subCategorys })
     }
 
     useEffect( () => {
