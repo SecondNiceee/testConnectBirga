@@ -37,10 +37,10 @@ const PayBlock = ({ className }) => {
             <WalletBackPack />
           </div>
           <div className="flex flex-col gap-[2px]">
-            <p className="font-sf-pro-display mt-[3px] tracking-normal text-[17px] leading-[18px] text-[white] font-normal">
+            <p className="font-sf-pro-display mt-[3px] tracking-[.015em] text-[17px] leading-[18px] text-[white] font-normal">
               Connect Wallet
             </p>
-            <p className="font-sf-pro-display leading-normal text-[14px] text-[#daf5ff] font-normal">
+            <p className="font-sf-pro-display tracking-[.015em] leading-normal text-[14px] text-[#daf5ff] font-normal">
               {formatAdress(address)}
             </p>
           </div>
