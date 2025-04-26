@@ -80,8 +80,8 @@ const BaidgeCreating = () => {
   }, [description, links, taggs]);
 
   useEffect(() => {
-    BaidgeButtonConroller.controlVisability({ errors, isCategoryOpen, isProfessionOpened });
-  }, [errors, isCategoryOpen, isProfessionOpened]);
+    BaidgeButtonConroller.controlVisability({ errors, isCategoryOpen, isProfessionOpened, step });
+  }, [errors, isCategoryOpen, isProfessionOpened, step]);
 
   useEffect(() => {
     const goFoward = BaidgeButtonConroller.forwardFunction({

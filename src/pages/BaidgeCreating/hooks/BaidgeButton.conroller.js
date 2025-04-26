@@ -4,15 +4,27 @@ import { enableColorAndActiveButton } from "../../../functions/enableColorAndAct
 
 class BaidgeButtonController{
     mainButton = MainButton;
-    controlVisability({errors, isCategoryOpen, isProfessionOpened}){
-        const isNeededToEnable = Object.values(errors).every((val) => !val)
+    controlVisability({errors, isCategoryOpen, isProfessionOpened, step}){
+        const isNeededToEnableFirstPage = !errors.descriptionError
+        const isNeededToEnableSecondPage = {taggsError : errors.taggsError, linksError : errors.linksError}.values(errors).every((val) => !val)
         if (!isCategoryOpen && !isProfessionOpened){
-            if (isNeededToEnable){
-                enableColorAndActiveButton()
+            if (step === 0){
+                if (isNeededToEnableFirstPage){
+                    enableColorAndActiveButton()
+                }
+                else{
+                    disableColorAndActiveButton();
+                }
             }
             else{
-                disableColorAndActiveButton()
+                if (isNeededToEnableSecondPage){
+                    enableColorAndActiveButton()
+                }
+                else{
+                    disableColorAndActiveButton();
+                }
             }
+            
         }
     }
 
