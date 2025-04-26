@@ -55,7 +55,7 @@ const BaidgeCreating = () => {
             taggsError : false,
             linksError : false
         }
-        if (description.length < 500){
+        if (description.length > 500 || description.length < 5 ){
             lErrors.descriptionError = true
         }
         if (links.length > 5){

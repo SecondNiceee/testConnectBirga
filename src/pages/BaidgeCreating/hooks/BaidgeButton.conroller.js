@@ -6,6 +6,8 @@ class BaidgeButtonController{
     mainButton = MainButton;
     controlVisability({errors}){
         const isNeededToEnable = Object.values(errors).every((val) => !val)
+        console.log(isNeededToEnable);
+        console.log(errors)
         if (isNeededToEnable){
             enableColorAndActiveButton()
            
