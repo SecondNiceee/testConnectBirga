@@ -17,24 +17,28 @@ class BaidgeButtonController{
         }
     }
 
-    forwardFunction({step, setStep}){
+    forwardFunction({step, setStep, isCategoryOpen, isProfessionOpened}){
         return () => {
-            if (step === 1){
-                alert("Создание бэфджа")
-            }
-            else{
-                setStep(1)
+            if (!isCategoryOpen && !isProfessionOpened){
+                if (step === 1){
+                    alert("Создание бэфджа")
+                }
+                else{
+                    setStep(1)
+                }
             }
         }
     }
-    backFunction({step, navigate, setStep}){
+    backFunction({step, navigate, setStep, isCategoryOpen, isProfessionOpened}){
         return () => {
-            if (step === 1){
-                setStep(0)
-            }
-            else{
-                navigate(-1);
-            }
+            if (!isCategoryOpen && !isProfessionOpened){
+                if (step === 1){
+                    setStep(0)
+                }
+                else{
+                    navigate(-1);
+                }
+            } 
         }
     }
     controlText({step}){

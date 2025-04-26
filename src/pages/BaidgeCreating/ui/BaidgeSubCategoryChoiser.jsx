@@ -65,7 +65,7 @@ const BaidgeSubCategoryChoiser = ({
         BackButton.offClick(closeFunction)
         BackButton.hide()
       }
-    } , [] )
+    } , [setProfessionOpen] )
   
     const categoryClickHandler = (profession) => () => {
       if (profession.id === choisenProfession?.id){

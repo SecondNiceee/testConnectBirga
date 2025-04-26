@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import Text from '../../components/Text/Text';
 import Cap from '../../components/UI/Cap/Cap';
 import DescriptionAndPhoto from '../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto';
@@ -8,17 +8,11 @@ import { CSSTransition } from 'react-transition-group';
 import BaidgeCategoryChoicer from './ui/BaidgeCategoryChoicer';
 import BaidgeSubCategoryChoiser from './ui/BaidgeSubCategoryChoiser';
 
-const BaidgeCreaitingOne = ({taskInformation, setDescription, description}) => {
+const BaidgeCreaitingOne = ({setDescription, description, setCategoryOpen, isCategoryOpen, categoryInformation, setCategoryInformation, isProfessionOpened, setProfessionOpened}) => {
 
     const categorys = useSelector((state) => state.categorys.category)
 
     const professions = useSelector((state) => state.profession.professions)
-
-    const [isCategoryOpen, setCategoryOpen] = useState(false); 
-
-    const [isProfessionOpened, setProfessionOpened] = useState(false);
-
-    const [categoryInformation, setCategoryInformation] = useState({category : categorys[0], profession : {}})
 
     const sortedProfessions = useMemo( () => {
         return  professions.filter((profession, id) => profession.category.id === categoryInformation.category.id)
@@ -26,7 +20,7 @@ const BaidgeCreaitingOne = ({taskInformation, setDescription, description}) => {
 
     useEffect( () => {
         setCategoryInformation((value) => ({...value, profession : sortedProfessions[0]}))
-    } , [categoryInformation.category, sortedProfessions] )
+    } , [categoryInformation.category, sortedProfessions, setCategoryInformation] )
 
     return (
         <>

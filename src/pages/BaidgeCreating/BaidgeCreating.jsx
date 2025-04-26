@@ -41,6 +41,12 @@ const BaidgeCreating = () => {
 
     const navigate = useNavigate();
 
+    const [isCategoryOpen, setCategoryOpen] = useState(false); 
+
+    const [isProfessionOpened, setProfessionOpened] = useState(false);
+
+    const [categoryInformation, setCategoryInformation] = useState({category : categorys[0], profession : {}})
+
     const [errors, setErrors] = useState({
         descriptionError : false,
         taggsError : false,
@@ -72,15 +78,15 @@ const BaidgeCreating = () => {
     } , [errors] )
 
     useEffect( () => {
-        const goFoward = BaidgeButtonConroller.forwardFunction({setStep, step});
-        const goBack = BaidgeButtonConroller.backFunction({navigate, step, setStep})
+        const goFoward = BaidgeButtonConroller.forwardFunction({setStep, step, isCategoryOpen, isProfessionOpened});
+        const goBack = BaidgeButtonConroller.backFunction({navigate, step, setStep, isCategoryOpen, isProfessionOpened})
         MainButton.onClick(goFoward);
         BackButton.onClick(goBack);
         return () => {
             MainButton.offClick(goFoward)
             BackButton.offClick(goBack)
         }
-    } , [step, navigate, setStep] )
+    } , [step, navigate, setStep, isCategoryOpen, isProfessionOpened] )
 
     useEffect( () => {
         MainButton.show();
@@ -102,7 +108,7 @@ const BaidgeCreating = () => {
     }
     return (
         <div className={`flex min-w-[200vw] transition-transform duration-300 ${step === 0 ? "translate-x-0" : "-translate-x-[100vw]"}`}>
-            <BaidgeCreaitingOne description={description} setDescription={setDescription} taskInformation={taskInformation} />
+            <BaidgeCreaitingOne categoryInformation={categoryInformation} isCategoryOpen={isCategoryOpen} isProfessionOpened={isProfessionOpened} setCategoryInformation={setCategoryInformation} setCategoryOpen={setCategoryOpen} setProfessionOpened={setProfessionOpened}  description={description} setDescription={setDescription} taskInformation={taskInformation} />
             <BaidgeCreatingTwo links={links} setLinks={setLinks} setTaggs={setTaggs} setTaggsText={setTaggsText} taggs={taggs} taggsText={taggsText} />
         </div>
     );
