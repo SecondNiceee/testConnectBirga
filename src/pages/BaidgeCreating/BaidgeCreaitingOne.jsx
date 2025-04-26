@@ -14,6 +14,7 @@ const BaidgeCreaitingOne = ({setDescription, description, setCategoryOpen, isCat
 
     const professions = useSelector((state) => state.profession.professions)
 
+
     const sortedProfessions = useMemo( () => {
         return  professions.filter((profession, id) => profession.category.id === categoryInformation.category.id)
     } , [categoryInformation.category, professions] )

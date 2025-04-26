@@ -7,6 +7,8 @@ import BackButton from '../../../constants/BackButton';
 import { softVibration } from '../../../functions/softVibration';
 import menuController from '../../../functions/menuController';
 
+
+const isEnabledButton = MainButton.isActive
 const BaidgeCategoryChoicer = ({
     setTaskInformation,
     taskInformation,
@@ -15,6 +17,7 @@ const BaidgeCategoryChoicer = ({
     professions,
     ...props
   }) => {
+
 
     const realCategorys = useMemo( () => {
         return categorys.slice(0, categorys.length-1)
@@ -49,11 +52,16 @@ const BaidgeCategoryChoicer = ({
         enableColorAndActiveButton()
       }
       return () => {
-        enableColorAndActiveButton()
+        if (isEnabledButton){
+            enableColorAndActiveButton()
+        }
+        else{
+            disableColorAndActiveButton();
+        }
         MainButton.setText("ДАЛЕЕ")
         MainButton.offClick(buttonHandler)
       }
-    } , [choisenCategory, setTaskInformation, setCatagoryChoiceOpen, professions, taskInformation, buttonHandler]  )
+    } , [choisenCategory, setTaskInformation, setCatagoryChoiceOpen, professions, taskInformation, buttonHandler, isEnabledButton]  )
   
     
     useEffect( () => {
