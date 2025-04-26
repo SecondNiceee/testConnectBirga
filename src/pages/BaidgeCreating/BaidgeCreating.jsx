@@ -91,7 +91,6 @@ const BaidgeCreating = () => {
 
     useEffect( () => {
         menuController.lowerMenu();
-        
     } , [] )
     
     if (categorys.length === 0){

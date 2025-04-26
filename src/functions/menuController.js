@@ -9,8 +9,10 @@ class MenuController{
     }
     lowerMenu(){
         this.menu.classList.add("disappearAnimation")
+        this.menu.classList.remove("appearAnimation ")
     }
     raiseMenu(){
+        this.menu.classList.add("appearAnimation")
         this.menu.classList.remove("disappearAnimation")
     }
 }
