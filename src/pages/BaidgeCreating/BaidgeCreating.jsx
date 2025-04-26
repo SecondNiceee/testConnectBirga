@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router';
 import BaidgeButtonConroller from './hooks/BaidgeButton.conroller';
 import MainButton from '../../constants/MainButton';
 import BackButton from "../../constants/BackButton";
+import menuController from '../../functions/menuController';
 
 
 const BaidgeCreating = () => {
@@ -79,7 +80,19 @@ const BaidgeCreating = () => {
         }
     } , [step, navigate, setStep] )
 
+    useEffect( () => {
+        MainButton.show();
+        BackButton.show();
+        return () => {
+            MainButton.hide();
+            BackButton.hide();
+        }
+    } , [] )
 
+    useEffect( () => {
+        menuController.lowerMenu();
+        
+    } , [] )
     
     if (categorys.length === 0){
         return (
