@@ -80,7 +80,7 @@ const BaidgeCreating = () => {
   }, [description, links, taggs]);
 
   useEffect(() => {
-    BaidgeButtonConroller.controlVisability({ errors });
+    BaidgeButtonConroller.controlVisability({ errors, isCategoryOpen, isProfessionOpened });
   }, [errors]);
 
   useEffect(() => {
@@ -128,6 +128,7 @@ const BaidgeCreating = () => {
       }`}
     >
       <BaidgeCreaitingOne
+    
         categoryInformation={categoryInformation}
         isCategoryOpen={isCategoryOpen}
         isProfessionOpened={isProfessionOpened}

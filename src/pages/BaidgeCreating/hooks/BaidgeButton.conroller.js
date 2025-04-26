@@ -4,16 +4,15 @@ import { enableColorAndActiveButton } from "../../../functions/enableColorAndAct
 
 class BaidgeButtonController{
     mainButton = MainButton;
-    controlVisability({errors}){
+    controlVisability({errors, isCategoryOpen, isProfessionOpened}){
         const isNeededToEnable = Object.values(errors).every((val) => !val)
-        console.log(isNeededToEnable);
-        console.log(errors)
-        if (isNeededToEnable){
-            enableColorAndActiveButton()
-           
-        }
-        else{
-            disableColorAndActiveButton()
+        if (!isCategoryOpen && !isProfessionOpened){
+            if (isNeededToEnable){
+                enableColorAndActiveButton()
+            }
+            else{
+                disableColorAndActiveButton()
+            }
         }
     }
 

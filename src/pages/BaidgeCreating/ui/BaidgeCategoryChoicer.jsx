@@ -51,21 +51,8 @@ const BaidgeCategoryChoicer = ({
       else{
         enableColorAndActiveButton()
       }
-    } , [choisenCategory, setTaskInformation, setCatagoryChoiceOpen, professions, taskInformation, buttonHandler, isEnabledButton]  )
+    } , [choisenCategory, setTaskInformation, setCatagoryChoiceOpen, professions, taskInformation, buttonHandler]  )
 
-    useEffect( () => {
-        return () => {
-            if (isEnabledButton){
-                enableColorAndActiveButton()
-                console.log("Заэнэйблил")
-            }
-            else{
-                disableColorAndActiveButton();
-            }
-            MainButton.setText("ДАЛЕЕ")
-            MainButton.offClick(buttonHandler)
-        }
-    } , [isEnabledButton] )
   
     
     useEffect( () => {

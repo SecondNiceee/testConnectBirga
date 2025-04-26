@@ -58,7 +58,7 @@ const BaidgeSubCategoryChoiser = ({
         MainButton.setText("ДАЛЕЕ")
         MainButton.offClick(buttonHandler)
       }
-    } , [choisenProfession, setTaskInformation, setChoisenProfession, professions, taskInformation, buttonHandler, isEnabledButton]  )
+    } , [choisenProfession, setTaskInformation, setChoisenProfession, professions, taskInformation, buttonHandler]  )
   
     
     useEffect( () => {
@@ -71,7 +71,7 @@ const BaidgeSubCategoryChoiser = ({
         BackButton.offClick(closeFunction)
         BackButton.hide()
       }
-    } , [setProfessionOpen] )
+    } , [setProfessionOpen, buttonHandler] )
   
     const categoryClickHandler = (profession) => () => {
       if (profession.id === choisenProfession?.id){
