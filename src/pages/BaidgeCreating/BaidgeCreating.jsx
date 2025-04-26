@@ -61,24 +61,23 @@ const BaidgeCreating = () => {
 
   useEffect(() => {
     const notEmptyLinks = links.filter( (link) => link.length !== 0 )
-    const notEmptyTaggs = links.filter( (tag) => tag.length !== 0 )
+    const notEmptyTaggs = taggs.filter( (tag) => tag.length !== 0 )
     const lErrors = {
       descriptionError: false,
       taggsError: false,
       linksError: false,
-
     };
     if (description.length > 500 || description.length < 5) {
       lErrors.descriptionError = true;
     }
-    if (notEmptyLinks.length > 5) {
+    if (notEmptyLinks.length > 5 || notEmptyLinks.length === 0) {
       lErrors.linksError = true;
     }
-    if (notEmptyTaggs.length > 5){
+    if (notEmptyTaggs.length > 5 || notEmptyTaggs.length === 0){
         lErrors.taggsError = true
     }
     setErrors(lErrors);
-  }, [description, links]);
+  }, [description, links, taggs]);
 
   useEffect(() => {
     BaidgeButtonConroller.controlVisability({ errors });
