@@ -103,6 +103,8 @@ const First = ({ isPage = false }) => {
     (state) => state.information.orderInformations
   );
 
+  console.log(ordersInformation)
+
   const [filters, setFilters] = useState({
     category: { id: -1, category: "Все" },
     subCategory: null,
@@ -125,7 +127,7 @@ const First = ({ isPage = false }) => {
     async function getAdvertisement() {
       try {
         let advertisement = await axios.get(
-          process.env.REACT_APP_HOST + "/advertisement/findOne",
+          process.env.REACT_APP_HOST + "ndOne",
           {
             params: {
               id: window.Telegram.WebApp.initDataUnsafe.start_param,
@@ -474,6 +476,8 @@ const First = ({ isPage = false }) => {
     setStep,
     setSubCategory,
   });
+  
+  console.log(secFilteredArray);
 
   return (
     <>

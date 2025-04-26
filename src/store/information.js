@@ -244,8 +244,8 @@ export const fetchTasksInformation = createAsyncThunk(
     } else {
       try {
         for (let order of task.data) {
-          let one = new Date(order.startTime);
 
+          let one = new Date(order.startTime);
           let two;
           if (order.endTime) {
             two = new Date(order.endTime);
@@ -311,13 +311,15 @@ export const fetchTasksInformation = createAsyncThunk(
             user: newUser,
             createNumber : imTwo.data,
             category : order.category.id,
-            subCategory : order.subCategory[0].id
+            subCategory : order.subCategory.id
           });
         }
 
       } catch (e) {
         console.warn(e);
       }
+
+      console.log(tasks)
       return tasks;
     }
   }

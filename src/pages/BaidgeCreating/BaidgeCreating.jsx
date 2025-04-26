@@ -25,6 +25,8 @@ const BaidgeCreating = () => {
 
     const professions = useSelector((state) => state.profession.professions)
 
+    console.log(professions);
+
     const [description, setDescription] = useState("")
 
     const taskInformation = {category : categorys[0], subCategory : {subCategory : "Привет"}}
