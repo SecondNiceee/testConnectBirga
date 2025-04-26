@@ -259,6 +259,7 @@ const telegramUserInfo = createSlice({
     congratulate : null,
     links : [],
     taggs : [],
+    profession : null,
     userLikes : [],
     profile : {
         about : "",

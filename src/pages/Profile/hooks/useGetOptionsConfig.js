@@ -11,7 +11,7 @@ const useGetOptionsConfig = () => {
             {
                 imgPath : "/images/newProfile/baidge-icon.svg",
                 text : "Бэйдж исполнителя",
-                isNeededFill : true,
+                isNeededFill : !userInfo.profession,
                 isNeededActiveTitle : false,
                 clickFunc : () => {
                     if (userInfo.profession){
