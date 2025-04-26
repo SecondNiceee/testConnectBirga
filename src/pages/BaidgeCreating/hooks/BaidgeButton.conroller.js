@@ -6,7 +6,7 @@ class BaidgeButtonController{
     mainButton = MainButton;
     controlVisability({errors, isCategoryOpen, isProfessionOpened, step}){
         const isNeededToEnableFirstPage = !errors.descriptionError
-        const isNeededToEnableSecondPage = {taggsError : errors.taggsError, linksError : errors.linksError}.values(errors).every((val) => !val)
+        const isNeededToEnableSecondPage = Object.values({taggsError : errors.taggsError, linksError : errors.linksError}).every((val) => !val)
         if (!isCategoryOpen && !isProfessionOpened){
             if (step === 0){
                 if (isNeededToEnableFirstPage){
