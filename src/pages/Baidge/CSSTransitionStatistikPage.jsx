@@ -1,6 +1,5 @@
 import React from 'react';
 import { CSSTransition } from 'react-transition-group';
-import Baidge from './Baidge';
 import "../../styles/left-right.css"
 import StatisticPage from '../StatisticPage/StatisticPage';
 
