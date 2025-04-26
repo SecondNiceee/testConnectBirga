@@ -67,7 +67,7 @@ const useGetUserConfig = ({ isMyBaidge, gotenConfig }) => {
         telegramProfileLink: userInfo.link,
         links : userInfo.links,
         stage : userInfo.stage,
-        completedTasks : userInfo.completedTasks.length,
+        completedTasks : userInfo.completedTasks,
         secureTask : "-",
         numberOfResponses : counterOfResponses,
         customerOffers : "-",

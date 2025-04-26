@@ -1,5 +1,6 @@
 
 const useGetOrderStatistics = ({userConfig}) => {
+    console.log(userConfig)
     return [
         {
             title : "Завершённые заказы" ,

@@ -26,7 +26,7 @@ const useGetProfileStatistics = ({userConfig, cards }) => {
         },
         {
             title : "Просмотров кейсов",
-            text : formatNumberWithSpaces(numberOfCardsWatches) 
+            text : "-"
         },
         {
             title : "Лайков профиля",
