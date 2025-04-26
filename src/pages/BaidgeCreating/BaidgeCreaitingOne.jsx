@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import Text from '../../components/Text/Text';
 import Cap from '../../components/UI/Cap/Cap';
-import Categories from '../AdCreatingOne/ui/components/Categories/Categories';
 import DescriptionAndPhoto from '../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto';
-import ChoiceCategory from '../AdCreatingOne/ui/components/ChoiceCategory/ChoiceCategory';
 import BaidgeCategories from './ui/BaidgeCategories';
 import { useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+import BaidgeCategoryChoicer from './ui/BaidgeCategoryChoicer';
+import BaidgeSubCategoryChoiser from './ui/BaidgeSubCategoryChoiser';
 
 const BaidgeCreaitingOne = ({taskInformation, setDescription, description}) => {
 
@@ -16,7 +16,17 @@ const BaidgeCreaitingOne = ({taskInformation, setDescription, description}) => {
 
     const [isCategoryOpen, setCategoryOpen] = useState(false); 
 
-    const [categoryInformation, setCategoryInformation] = useState({category : categorys[0], profession : {profession : "Привет"}})
+    const [isProfessionOpened, setProfessionOpened] = useState(false);
+
+    const [categoryInformation, setCategoryInformation] = useState({category : categorys[0], profession : {}})
+
+    const sortedProfessions = useMemo( () => {
+        return  professions.filter((profession, id) => profession.category.id === categoryInformation.category.id)
+    } , [categoryInformation.category, professions] )
+
+    useEffect( () => {
+        setCategoryInformation((value) => ({...value, profession : sortedProfessions[0]}))
+    } , [categoryInformation.category, sortedProfessions] )
 
     return (
         <>
@@ -25,7 +35,7 @@ const BaidgeCreaitingOne = ({taskInformation, setDescription, description}) => {
             <Cap steps={2} className={"mt-[4px] flex items-center"} step={1} > 
                 <Text className = {"font-sf-pro-display-600 text-[20px] font-semibold text-white"}> Создайте объявление </Text>{" "}
             </Cap>
-            <BaidgeCategories className={"mt-[18px]"} down='Профессия' categoryInformation={categoryInformation} />
+            <BaidgeCategories setProfessionOpen={setProfessionOpened} setCatagoryChoiceOpen={setCategoryOpen} className={"mt-[18px]"} down='Профессия' categoryInformation={categoryInformation} />
             <DescriptionAndPhoto className={"mt-[18px]"} titleStyles={{
                 color : "#DAF5FE"
             }} textTitle={"Краткое резюме"} textPlaceholder={"Краткое резюме"} setText={setDescription} isFileInput = {false} text={description} />
@@ -35,19 +45,24 @@ const BaidgeCreaitingOne = ({taskInformation, setDescription, description}) => {
         </div>
         
         <CSSTransition
+        in={isProfessionOpened}
+        timeout={0}
+        mountOnEnter
+        unmountOnExit
+      >
+        <BaidgeSubCategoryChoiser taskInformation={categoryInformation} professions={sortedProfessions} setProfessionOpen={setProfessionOpened} setTaskInformation={setCategoryInformation}  />
+      </CSSTransition>
+
+
+      <CSSTransition
         in={isCategoryOpen}
         timeout={0}
         mountOnEnter
         unmountOnExit
       >
-        <ChoiceCategory
-          style = {{top:document.documentElement.scrollTop + "px"}}
-          taskInformation={categoryInformation}
-          setTaskInformation={setCategoryInformation}
-          setCatagoryChoiceOpen={setCategoryOpen}
-          categorys={categorys}
-        />
+        <BaidgeCategoryChoicer professions={professions} setCatagoryChoiceOpen={setCategoryOpen} setTaskInformation={setCategoryInformation} taskInformation={categoryInformation} categorys={categorys}  />
       </CSSTransition>
+
         </>
     );
 };

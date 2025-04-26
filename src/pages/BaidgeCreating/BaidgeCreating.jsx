@@ -95,7 +95,7 @@ const BaidgeCreating = () => {
         menuController.lowerMenu();
     } , [] )
     
-    if (categorys.length === 0){
+    if (categorys.length === 0 || professions.length === 0){
         return (
             <MyLoader />
         )
