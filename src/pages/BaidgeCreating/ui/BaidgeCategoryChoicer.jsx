@@ -8,7 +8,6 @@ import { softVibration } from '../../../functions/softVibration';
 import menuController from '../../../functions/menuController';
 
 
-const isEnabledButton = MainButton.isActive
 const BaidgeCategoryChoicer = ({
     setTaskInformation,
     taskInformation,
@@ -18,7 +17,6 @@ const BaidgeCategoryChoicer = ({
     ...props
   }) => {
 
-    console.log(isEnabledButton)
     const realCategorys = useMemo( () => {
         return categorys.slice(0, categorys.length-1)
     } , [categorys] )
