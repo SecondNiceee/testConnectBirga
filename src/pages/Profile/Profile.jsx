@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { CSSTransition } from "react-transition-group";
 
-import userPhoto from "../../images/userPhoto/user.png";
+
 
 import SmallTextarea from "../../components/UI/SmallTextarea/SmallTextarea";
 import Compact from "../../components/UI/Compact/Compact";
@@ -25,7 +25,6 @@ import {
 import pagesHistory from "../../constants/pagesHistory";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import CardsArray from "./components/CardsArray/CardsArray";
-import Text from "../../components/Text/Text";
 import translation from "../../functions/translate";
 import PayBlock from "./components/PayBlock/PayBlock";
 import useBlockInputs from "../../hooks/useBlockInputs";
@@ -35,16 +34,11 @@ import useDeleteCardFunction from "./hooks/useDeleteCardFunction";
 import useYearAdittionInputs from "./hooks/useYearAdittionInputs";
 import { useStageInputController } from "./hooks/useStageInputController";
 import useBackButton from "./hooks/useBackButton";
-
+import ProfileCup from "./components/ProfileCup/ProfileCup";
 
 let aboutULocal = null;
 
-
-
-
 const menu = document.documentElement.querySelector(".FirstMenu");
-
-
 const Profile = () => {
 
   const mainRef = useRef(null);
@@ -195,18 +189,8 @@ const Profile = () => {
           style={profileStyle}
         >
           <div className="profile__container">
-            <img
-              style={{ objectFit: "cover" }}
-              src={userInfo.photo.length > 0 ? userInfo.photo.split('https://').length === 2 ? userInfo.photo : `${process.env.REACT_APP_HOST}/${userInfo.id}/${userInfo.photo}` : userPhoto}
-              className="profile__icon icon"
-              alt=""
-            />
 
-            <Text className="urName" id="Name">
-              {userInfo.firstName.length > 22
-                ? userInfo.firstName.slice(0, 22) + ".."
-                : userInfo.firstName}
-            </Text>
+            <ProfileCup /> 
 
             <PayBlock className="pay-block" />
 

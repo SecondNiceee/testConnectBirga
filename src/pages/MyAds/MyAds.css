@@ -323,7 +323,6 @@
     background-color: rgb(24, 34, 45);
     transition:  transform 0.3s;
     width: 100%;
-        
     transform: translateX(100%);
 }
 .aboutOne-enter{

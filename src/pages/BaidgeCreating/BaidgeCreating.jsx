@@ -1,0 +1,97 @@
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getProfessions } from '../../store/profession';
+import MyLoader from '../../components/UI/MyLoader/MyLoader';
+import BaidgeCreaitingOne from './BaidgeCreaitingOne';
+import BaidgeCreatingTwo from './BaidgeCreatingTwo';
+import { useNavigate } from 'react-router';
+import BaidgeButtonConroller from './hooks/BaidgeButton.conroller';
+import MainButton from '../../constants/MainButton';
+import BackButton from "../../constants/BackButton";
+
+
+const BaidgeCreating = () => {
+
+
+    const dispatch = useDispatch();
+
+    useEffect( () => {
+        dispatch(getProfessions())
+    } , [dispatch] )
+
+
+    const categorys = useSelector((state) => state.categorys.category)
+
+    const professions = useSelector((state) => state.profession.professions)
+
+    const [description, setDescription] = useState("")
+
+    const taskInformation = {category : categorys[0], subCategory : {subCategory : "Привет"}}
+
+    const [taggsText, setTaggsText] = useState("");
+
+    const [taggs, setTaggs] = useState([])
+
+    const [links, setLinks] = useState([""]);
+
+    const [step, setStep] = useState(0)
+
+    const navigate = useNavigate();
+
+    const [errors, setErrors] = useState({
+        descriptionError : false,
+        taggsError : false,
+        linksError : false
+    })
+
+    useEffect( () => {
+        BaidgeButtonConroller.controlText({step})
+    } , [step] )
+    
+    useEffect( () => {
+        const lErrors = {
+            descriptionError : false,
+            taggsError : false,
+            linksError : false
+        }
+        if (description.length < 500){
+            lErrors.descriptionError = true
+        }
+        if (links.length > 5){
+            lErrors.linksError = true
+        }
+        setErrors(lErrors)
+    } , [description, links] )
+    
+
+    useEffect( () => {
+        BaidgeButtonConroller.controlVisability({errors})
+    } , [errors] )
+
+    useEffect( () => {
+        const goFoward = BaidgeButtonConroller.forwardFunction({setStep, step});
+        const goBack = BaidgeButtonConroller.backFunction({navigate, step, setStep})
+        MainButton.onClick(goFoward);
+        BackButton.onClick(goBack);
+        return () => {
+            MainButton.offClick(goFoward)
+            BackButton.offClick(goBack)
+        }
+    } , [step, navigate, setStep] )
+
+
+    
+    if (categorys.length === 0){
+        return (
+            <MyLoader />
+        )
+    }
+    return (
+        <div className={`flex min-w-[200vw] transition-transform duration-300 ${step === 0 ? "translate-x-0" : "-translate-x-[100vw]"}`}>
+            <BaidgeCreaitingOne description={description} setDescription={setDescription} taskInformation={taskInformation} />
+            <BaidgeCreatingTwo links={links} setLinks={setLinks} setTaggs={setTaggs} setTaggsText={setTaggsText} taggs={taggs} taggsText={taggsText} />
+        </div>
+    );
+};
+
+export default BaidgeCreating;

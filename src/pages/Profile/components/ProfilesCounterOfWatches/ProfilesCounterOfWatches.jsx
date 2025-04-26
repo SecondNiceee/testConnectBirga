@@ -1,6 +1,6 @@
 import React from 'react';
 
-const OverallRating = () => {
+const ProfilesCounterOfWatches = ({watchesCounter}) => {
     return (
         <div className="flex mt-[23px] flex-col ml-[auto] mr-[3px] gap-[5px] my-auto">
         <h2 className="font-sf-pro-display-600 text-[17px]  text-white leading-[18px]">
@@ -13,4 +13,4 @@ const OverallRating = () => {
     );
 };
 
-export default OverallRating;
+export default ProfilesCounterOfWatches;

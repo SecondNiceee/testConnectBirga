@@ -1,7 +1,11 @@
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 
 const useGetOptionsConfig = () => {
+    const userInfo = useSelector((state) => state.telegramUserInfo); 
 
-
+    const navigate = useNavigate();
+    
     return (
         [
             {
@@ -9,21 +13,31 @@ const useGetOptionsConfig = () => {
                 text : "Бэйдж исполнителя",
                 isNeededFill : true,
                 isNeededActiveTitle : false,
-                clickFunc : () => {}
+                clickFunc : () => {
+                    if (userInfo.professionId){
+                        navigate("/Baidge")
+                    }
+                    else{
+                        navigate("/BaidgeCreating")
+                    }
+                },
+                numberNearToArrow : null
             },
             {
                 imgPath : "/images/newProfile/example-of-works-icon.svg",
                 text : "Примеры работ",
                 isNeededFill : true,
                 isNeededActiveTitle : false,
-                clickFunc : () => {}
+                clickFunc : () => {},
+                numberNearToArrow : null
             },
             {
                 imgPath : "/images/newProfile/template-of-responses-icon.svg",
                 text : "Шаблоны откликов",
                 isNeededFill : false,
                 isNeededActiveTitle : false,
-                clickFunc : () => {}
+                clickFunc : () => {},
+                numberNearToArrow : null
             }
         ]
     );

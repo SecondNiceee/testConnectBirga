@@ -149,7 +149,7 @@ export const fetchUserInfo = createAsyncThunk(
               }
             });
             console.log('====================================');
-            console.log(user);
+            console.log(user.data);
             console.log('====================================');
         }
         catch(e){
@@ -202,12 +202,15 @@ export const fetchUserInfo = createAsyncThunk(
             }
         let photoUrl = user.data.photo ? user.data.photo : ""
 
+        console.log(user.data)
+
         return ( {
             firstName: firstName,
             lastName: lastName,
             address : user.data.address,
             mnemonic : user.data.mnemonic,
             id: USERID,
+            views : user.data.views,
             link : user.data.link,
             photo: photoUrl,
             about : user.data.about,
@@ -217,7 +220,9 @@ export const fetchUserInfo = createAsyncThunk(
             cards : localCards,
             congradulations : user.data.congradulations,
             lastTransaction : user.data.lastTransaction,
-            congratulate : user.data.congratulate
+            congratulate : user.data.congratulate,
+            userLikes : user.data.userLikes,
+            professionId : null
           } );
     }
     catch (e){
@@ -234,15 +239,19 @@ const telegramUserInfo = createSlice({
   name: "telegramUserInfo",
   initialState: {
     state: null,
+    
     postState : null,
     putState : null,
+    status : "loading",
     id: "",
     photo: "",
     link : "",
+    linkes : 0,
     firstName: "неверный ферст нэйм",
     lastName: "",
     completedTasks : [],
     deals : 0,
+    views : 0,
     lastTransaction : "NO",
     congratulate : null,
     profile : {
@@ -291,6 +300,8 @@ const telegramUserInfo = createSlice({
       state.congradulations = action.payload.address
       state.congratulate = action.payload.congratulate
       state.state = "yes";
+      state.userLikes = action.payload.userLikes;
+      state.professionId = action.payload.professionId;
       
     });
     builder.addCase(fetchUserInfo.rejected, (state) => {

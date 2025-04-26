@@ -3,17 +3,36 @@ import PayBlock from "./components/PayBlock/PayBlock";
 import useGetOptionsConfig from "./hooks/useGetOptionsConfig";
 import NewOption from "./components/NewOption/NewOption";
 import NewProfileCup from "./components/NewProfileCup/NewProfileCup";
+import useGetUserPhotoLink from "../../hooks/useGetUserPhotoLink";
+import { useSelector } from "react-redux";
+import MyLoader from "../../components/UI/MyLoader/MyLoader";
+import ProfileCup from "./components/ProfileCup/ProfileCup";
 
 const NewProfile = () => {
-
-
   const optionsConfig = useGetOptionsConfig();
 
+  const photoLink = useGetUserPhotoLink();
+
+  const userInfo = useSelector((state) => state.telegramUserInfo);
+  
+  if (userInfo.state !== "yes"){
+    return <MyLoader />
+  }
   return (
     <div className="pt-[16px] px-[16px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[100px]">
 
-      <NewProfileCup />
-      
+      {userInfo.profileId ?  <NewProfileCup
+        counterOfLikes={userInfo.userLikes.length}
+        isLikeActive={false}
+        isBaidge = {false}
+        firstName={userInfo.firstName}
+        lastName={userInfo.lastName}
+        photoUrl={photoLink}
+        profession={"Дизайнер"}
+        profileWatches={12}
+      /> : <ProfileCup />}
+
+
       <PayBlock className="pay-block" />
 
       <div className="flex flex-col rounded-[12px] bg-[#20303f]">
@@ -24,15 +43,28 @@ const NewProfile = () => {
             neededActiveButton={option.isNeededActiveTitle}
             text={option.text}
             key={i}
-            isNeededBorder={i !== Number(optionsConfig.length-1)}
+            isNeededBorder={i !== Number(optionsConfig.length - 1)}
             isAloneElement={false}
+          onClick={option.clickFunc}
           />
         ))}
       </div>
 
-      <NewOption isAloneElement={true} imgPath={"/images/newProfile/subscription.svg"} isNededToFill={false} neededActiveButton={true} text={"Подписка"}  />
+      <NewOption
+        isAloneElement={true}
+        imgPath={"/images/newProfile/subscription.svg"}
+        isNededToFill={false}
+        neededActiveButton={true}
+        text={"Подписка"}
+      />
 
-      <NewOption isAloneElement={true} imgPath={"/images/newProfile/refSystemIcon.svg"} isNededToFill={false} neededActiveButton={false} text={"Реферальная система"}  />
+      <NewOption
+        isAloneElement={true}
+        imgPath={"/images/newProfile/refSystemIcon.svg"}
+        isNededToFill={false}
+        neededActiveButton={false}
+        text={"Реферальная система"}
+      />
 
     </div>
   );

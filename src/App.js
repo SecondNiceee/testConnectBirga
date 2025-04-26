@@ -1,15 +1,9 @@
-import {
-  lazy,
-  useEffect,
-  Suspense,
-  useRef,
-  useState,
-} from "react";
+import { lazy, useEffect, Suspense, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
-import axios from 'axios'
+import axios from "axios";
 
 import "./css/Main.css";
 import "./css/Fonts.css";
@@ -33,20 +27,21 @@ import { fetchAllShablons } from "./store/shablon";
 import { fetchAllIds } from "./store/saves";
 
 import { getBalance } from "./store/balance";
-import NewProfile from "./pages/Profile/NewProfile";
-const HappyPage = lazy( () => import("./pages/HappyHold/HappyPage") )
+
+const HappyPage = lazy(() => import("./pages/HappyHold/HappyPage"));
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
-const Profile = lazy(() => import("./pages/Profile/Profile"));
+const NewProfile = lazy(() => import("./pages/Profile/NewProfile"));
 const Balance = lazy(() => import("./pages/Balance"));
 const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
 const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
 const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
-const WalletEnter = lazy( () => import("./pages/WalletEnter/WalletEnter") )
-const Wallet = lazy( () => (import("./pages/Wallet")) )
-const WalletInit = lazy( () => (import("./pages/WalletEnter/WalletInit")) )
-
+const WalletEnter = lazy(() => import("./pages/WalletEnter/WalletEnter"));
+const Wallet = lazy(() => import("./pages/Wallet"));
+const WalletInit = lazy(() => import("./pages/WalletEnter/WalletInit"));
+const Baidge = lazy(() => import("./pages/Baidge/Baidge"));
+const BaidgeCreating = lazy(() => import("./pages/BaidgeCreating/BaidgeCreating"))
 
 export const API_KEY = process.env.REACT_APP_API_KEY;
 const MyLoader = () => {
@@ -74,75 +69,78 @@ const MyLoader = () => {
 };
 
 const AnimatedSwitch = () => {
-
-  
   const location = useLocation();
   const isMenuActive = useSelector((state) => state.menuSlice.value);
 
   const menuRef = useRef(null);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (
+      location.pathname === "/AdCreating" ||
+      location.pathname === "/createWallet" ||
+      location.pathname === "/Wallet" ||
+      location.pathname === "/WalletInit" ||
+      location.pathname === "/HappyPage"
+    ) {
+      if (location.pathname !== "/Wallet") {
+        document.documentElement.style.overflowY = "auto";
+        document.body.style.overflowY = "auto";
+      }
 
-    if (location.pathname === "/AdCreating" || location.pathname === "/createWallet" || location.pathname === "/Wallet" || location.pathname === "/WalletInit" || location.pathname === "/HappyPage") {
-        if (location.pathname !== "/Wallet"){
-          document.documentElement.style.overflowY = "auto";
-          document.body.style.overflowY = "auto"
-        }
-        
-        if(location.pathname !== "/Wallet"){
-          menuRef.current.classList.add("disappearAnimation");
-          menuRef.current.classList.remove("appearAnimation");
-        }
-        else{
-          menuRef.current.classList.add("appearAnimation");
-          menuRef.current.classList.remove("disappearAnimation");
-        }
-        
+      if (location.pathname !== "/Wallet") {
+        menuRef.current.classList.add("disappearAnimation");
+        menuRef.current.classList.remove("appearAnimation");
+      } else {
+        menuRef.current.classList.add("appearAnimation");
+        menuRef.current.classList.remove("disappearAnimation");
+      }
     } else {
       document.documentElement.style.overflowY = "hidden";
-      document.body.style.overflowY = "hidden"
+      document.body.style.overflowY = "hidden";
       menuRef.current.classList.add("appearAnimation");
       menuRef.current.classList.remove("disappearAnimation");
     }
   }, [location.pathname]);
 
-  const congratulate = useSelector(state => state.telegramUserInfo.congratulate)
-  const userId = useSelector(state => state.telegramUserInfo.id)
+  const congratulate = useSelector(
+    (state) => state.telegramUserInfo.congratulate
+  );
+  const userId = useSelector((state) => state.telegramUserInfo.id);
 
-  const [showCongradulate , setShowCongradulate] = useState(true)
+  const [showCongradulate, setShowCongradulate] = useState(true);
 
-  useEffect( () => {
-    if (congratulate && congratulate.length > 0 && showCongradulate){
-      navigate('/HappyPage')
+  useEffect(() => {
+    if (congratulate && congratulate.length > 0 && showCongradulate) {
+      navigate("/HappyPage");
     }
-  } , [congratulate, navigate, showCongradulate] )
-
+  }, [congratulate, navigate, showCongradulate]);
 
   useEffect(() => {
     async function makeUserVisit(params) {
-      try{
-        const response = await axios.put(`${process.env.REACT_APP_HOST}/user/visit`, {}, {
-          params: {
-            userId: String(userId)
-          },
-          headers: {
-            "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
+      try {
+        const response = await axios.put(
+          `${process.env.REACT_APP_HOST}/user/visit`,
+          {},
+          {
+            params: {
+              userId: String(userId),
+            },
+            headers: {
+              "X-API-KEY-AUTH": process.env.REACT_APP_API_KEY,
+            },
           }
-        })
-        console.log(response)
-      }
-      catch(e){
-        console.log(e)
+        );
+        console.log(response);
+      } catch (e) {
+        console.log(e);
       }
     }
-    if (userId){
-      makeUserVisit()
+    if (userId) {
+      makeUserVisit();
     }
+  }, [userId]);
 
-  }, [userId])
-  
-  
   return (
     <>
       <FirstMenu ref={menuRef} />
@@ -167,6 +165,14 @@ const AnimatedSwitch = () => {
                 </Suspense>
               }
             />
+            <Route
+              path="/BaidgeCreating"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <BaidgeCreating />
+                </Suspense>
+              }
+            />
 
             <Route
               path="/FirstPage"
@@ -181,7 +187,7 @@ const AnimatedSwitch = () => {
               path="/WalletInit"
               element={
                 <Suspense fallback={<MyLoader />}>
-                  <WalletInit  />
+                  <WalletInit />
                 </Suspense>
               }
             />
@@ -195,7 +201,16 @@ const AnimatedSwitch = () => {
               }
             />
 
-          <Route
+            <Route
+              path="/Baidge"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <Baidge />
+                </Suspense>
+              }
+            />
+
+            <Route
               path="/Wallet"
               element={
                 <Suspense fallback={<MyLoader />}>
@@ -203,7 +218,6 @@ const AnimatedSwitch = () => {
                 </Suspense>
               }
             />
-
 
             <Route
               path="/ProfilePage"
@@ -249,12 +263,18 @@ const AnimatedSwitch = () => {
                 </Suspense>
               }
             />
-            
+
             <Route
               path="/HappyPage"
               element={
                 <Suspense fallback={<MyLoader />}>
-                  <HappyPage setShowCongradulate = {setShowCongradulate} congradulate={congratulate} task={ congratulate ?  congratulate[congratulate.length - 1] : []} />
+                  <HappyPage
+                    setShowCongradulate={setShowCongradulate}
+                    congradulate={congratulate}
+                    task={
+                      congratulate ? congratulate[congratulate.length - 1] : []
+                    }
+                  />
                 </Suspense>
               }
             />
@@ -271,7 +291,7 @@ const AnimatedSwitch = () => {
               path="/ResponsePage"
               element={
                 <Suspense fallback={<MyLoader />}>
-                  <MyAds isPage = {true}/>
+                  <MyAds isPage={true} />
                 </Suspense>
               }
             />
@@ -291,9 +311,6 @@ const AnimatedSwitch = () => {
   );
 };
 function App() {
-
-  
-
   window.Telegram.WebApp.disableVerticalSwipes();
 
   window.Telegram.WebApp.disableVerticalSwipes();
@@ -303,10 +320,9 @@ function App() {
 
   const dispatch = useDispatch();
 
-  const address = useSelector( state => state.telegramUserInfo.address )
+  const address = useSelector((state) => state.telegramUserInfo.address);
 
   window.Telegram.WebApp.expand();
-
 
   useEffect(() => {
     dispatch(fetchTon());
@@ -320,27 +336,16 @@ function App() {
     // dispatch(fetchAllValues());
   }, [dispatch]);
 
-
-
   // useEffect(() =>{
   //   dispatch(fetchMyOrders(1));
   // },[] )
 
-
-
-  useEffect( () => {
-    if (address){
-      dispatch(getBalance({userAddress : address}))
+  useEffect(() => {
+    if (address) {
+      dispatch(getBalance({ userAddress: address }));
     }
-  } , [address, dispatch] )
+  }, [address, dispatch]);
 
-
-  
-
-  
-
-
-  
   return (
     <BrowserRouter>
       <div className="UperContainer">

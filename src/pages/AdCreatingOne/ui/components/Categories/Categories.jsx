@@ -9,7 +9,10 @@ const Categories = ({
   setCatagoryChoiceOpen,
   setSubcategoryChoiceOpen,
   categoryOnly,
+  upper = "Категория",
+  down = "Подкатегория"
 }) => {
+  console.log(taskInformation)
   function format(arg) {
     if (arg) {
       let str = arg.split(" ");
@@ -165,7 +168,7 @@ const Categories = ({
         }}
         className={cl.Categories__block}
       >
-        <Text ref={topWhiteText} >Категория</Text>
+        <Text ref={topWhiteText} >{upper}</Text>
         <Text ref={topText} className={[cl.Category__link, cl.quest].join(" ")} href="">
           {taskInformation.category.category
             ? taskInformation.category.category
@@ -190,7 +193,7 @@ const Categories = ({
             }}
             className={cl.Categories__block}
           >
-            <Text ref={bottomWhiteText}>Подкатегория</Text>
+            <Text ref={bottomWhiteText}>{down}</Text>
             <Text ref={bottomText} className={[cl.Category__link, cl.quest].join(" ")} href="">
               {taskInformation.subCategory.subCategory
                 ? format( translation(taskInformation.subCategory.subCategory))

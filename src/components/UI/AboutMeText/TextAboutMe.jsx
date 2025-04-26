@@ -3,16 +3,13 @@ import './TextAboutMe.css'
 import Text from '../../Text/Text';
 import translation from '../../../functions/translate';
 const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...props } ) => {
-    const [hideAboutMe, setHideAboutMe] = useState({
-      isActive : false,
-      show : false
-    })
-    const [empty , setEmpy] = useState(false)
-    const areaRef = useRef(null)
-    const refTwo = useRef(null)
-
-
-
+  const [hideAboutMe, setHideAboutMe] = useState({
+    isActive : false,
+    show : false
+  })
+  const [empty , setEmpy] = useState(false)
+  const areaRef = useRef(null)
+  const refTwo = useRef(null)
   useEffect( () => {
     refTwo.current.value = aboutU
     if (refTwo.current.scrollHeight > 140){
@@ -87,6 +84,7 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
           />
 
           <textarea
+            
             ref={areaRef}
             style={empty ? {opacity : 0.5} : {}}
             readOnly={true}

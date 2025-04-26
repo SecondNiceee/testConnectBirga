@@ -1861,6 +1861,19 @@ input {
   width: 94px;
   height: 94px;
 }
+.urName{  
+  color: rgb(255, 255, 255);
+  font-family: "SF Compact Rounded";
+  font-size: 23.33px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0%;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 18.33px;
+  text-align: center;
+}
 .profile__container .urName {
   color: rgb(255, 255, 255);
   font-family: "SF Compact Rounded";

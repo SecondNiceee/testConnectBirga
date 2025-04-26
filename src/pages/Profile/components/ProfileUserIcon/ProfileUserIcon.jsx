@@ -1,12 +1,11 @@
 import React from 'react';
 import useGetUserPhotoLink from '../../../../hooks/useGetUserPhotoLink';
 
-const ProfileUserIcon = () => {
-    const userLinkPhoto = useGetUserPhotoLink();
+const ProfileUserIcon = ({photoUrl}) => {
     return (
         <img
         style={{ objectFit: "cover" }}
-        src={userLinkPhoto}
+        src={photoUrl}
         className="w-[94px] h-[94px] rounded-full "
         alt=""
       />

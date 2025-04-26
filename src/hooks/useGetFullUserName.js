@@ -1,14 +1,11 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
+import { getFormatedUserFullName } from '../functions/getFormatedUserFullname';
 
 const useGetFullUserName = () => {
     const userInfo = useSelector((state) => state.telegramUserInfo);
-
     const userName = useMemo( () => {
-      const fullName = userInfo.firstName + ' ' + userInfo.lastName;
-      return fullName.length > 22
-      ? fullName.slice(0, 22) + ".."
-      : fullName.trim();
+      return getFormatedUserFullName(userInfo.firstName, userInfo.lastName)
     }, [userInfo.firstName, userInfo.lastName] )
   
     

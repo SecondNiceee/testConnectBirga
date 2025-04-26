@@ -17,6 +17,14 @@ module.exports = {
          "sf-pro-display-600" : "'SF Pro Display 600'",
          "sf-pro-display-700" : "'SF Pro Display 700'"
       },
+      backgroundColor : {
+        'card' : '#20303F',
+        'telegram' : '#2EA5FF',
+      },
+      borderColor : {
+        'card' : '#20303F',
+        'telegram' : '#2EA5FF',
+      }
     },
   },
   variants: {

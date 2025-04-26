@@ -9,6 +9,8 @@ import  watchedAds  from './watchedAds';
 import saves from './saves';
 import responses from './responses';
 import balance from './balance';
+import profession from "./profession";
+
 export default configureStore( {
     reducer : {
         information : information,
@@ -20,7 +22,8 @@ export default configureStore( {
         watchedAds : watchedAds,
         saves : saves,
         responses : responses,
-        balance : balance
+        balance : balance,
+        profession : profession
     },
     middleware: getDefaultMiddleware =>
         getDefaultMiddleware({

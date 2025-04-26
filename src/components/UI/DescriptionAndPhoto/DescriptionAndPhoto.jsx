@@ -17,6 +17,8 @@ const DescriptionAndPhoto = ({
   fileError,
   clearPhoto,
   textError = false,
+  isFileInput = true,
+  titleStyles = {},
   onFocus = () => {}
 }) => {
 
@@ -45,13 +47,12 @@ const DescriptionAndPhoto = ({
           : cl.DescriptionAndPhoto
       }
     >
-      <GreyText className={cl.GreyText}>{textTitle}</GreyText>
+      <GreyText style={titleStyles}  className={cl.GreyText}>{textTitle}</GreyText>
       <div style={ textError ? {border : "1px solid rgb(255, 103, 103)"} : {}} className={cl.InputContainer}>
         
         <textarea ref={hiddenRef} value={text} className={cl.hiddenText}/>
 
         <TextArea
-        
         onFocus = {onFocus}
         ref={myRef}
           value={text}
@@ -76,8 +77,8 @@ ref={miniRef}
       ) : (
         ""
       )}
-    
-        <FileInput
+
+        {isFileInput &&  <FileInput
         clear= {clearPhoto}
           fileError={fileError}
           setFiles={setPhotos}
@@ -87,7 +88,8 @@ ref={miniRef}
               ? [cl.FileInput, cl.marginTop].join(" ")
               : cl.FileInput
           }
-        />
+        />}
+
     </div>
   );
 };
