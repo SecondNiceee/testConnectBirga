@@ -1,6 +1,5 @@
 class MenuController{
     menu = document.documentElement.querySelector(".FirstMenu")
-    
     hideMenu(){
         this.menu.style.display = "none"
     }
@@ -9,7 +8,7 @@ class MenuController{
     }
     lowerMenu(){
         this.menu.classList.add("disappearAnimation")
-        this.menu.classList.remove("appearAnimation ")
+        this.menu.classList.remove("appearAnimation")
     }
     raiseMenu(){
         this.menu.classList.add("appearAnimation")
@@ -17,4 +16,4 @@ class MenuController{
     }
 }
 
-export default new MenuController;
+export default new MenuController();
