@@ -7,7 +7,7 @@ import BackButton from '../../../constants/BackButton';
 import { softVibration } from '../../../functions/softVibration';
 import menuController from '../../../functions/menuController';
 
-const isEnabledButton = MainButton.isActive
+const isEnabledButton = MainButton.isActive;
 const BaidgeSubCategoryChoiser = ({
     setTaskInformation,
     taskInformation,

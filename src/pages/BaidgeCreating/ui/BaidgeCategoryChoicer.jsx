@@ -18,7 +18,7 @@ const BaidgeCategoryChoicer = ({
     ...props
   }) => {
 
-
+    console.log(isEnabledButton)
     const realCategorys = useMemo( () => {
         return categorys.slice(0, categorys.length-1)
     } , [categorys] )
@@ -51,17 +51,21 @@ const BaidgeCategoryChoicer = ({
       else{
         enableColorAndActiveButton()
       }
-      return () => {
-        if (isEnabledButton){
-            enableColorAndActiveButton()
-        }
-        else{
-            disableColorAndActiveButton();
-        }
-        MainButton.setText("ДАЛЕЕ")
-        MainButton.offClick(buttonHandler)
-      }
     } , [choisenCategory, setTaskInformation, setCatagoryChoiceOpen, professions, taskInformation, buttonHandler, isEnabledButton]  )
+
+    useEffect( () => {
+        return () => {
+            if (isEnabledButton){
+                enableColorAndActiveButton()
+                console.log("Заэнэйблил")
+            }
+            else{
+                disableColorAndActiveButton();
+            }
+            MainButton.setText("ДАЛЕЕ")
+            MainButton.offClick(buttonHandler)
+        }
+    } , [isEnabledButton] )
   
     
     useEffect( () => {
