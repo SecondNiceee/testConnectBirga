@@ -1,6 +1,7 @@
 import MainButton from "../../../constants/MainButton"
 import { disableColorAndActiveButton } from "../../../functions/disableColorAndActiveButton"
 import { enableColorAndActiveButton } from "../../../functions/enableColorAndActiveButton"
+import { putUserInfo } from "../../../store/telegramUserInfo";
 
 class BaidgeButtonController{
     mainButton = MainButton;
@@ -28,11 +29,16 @@ class BaidgeButtonController{
         }
     }
 
-    forwardFunction({step, setStep, isCategoryOpen, isProfessionOpened}){
+    forwardFunction({step, setStep, isCategoryOpen, isProfessionOpened, dispatch, links, taggs, professionId, description}){
         return () => {
             if (!isCategoryOpen && !isProfessionOpened){
                 if (step === 1){
-                    alert("Создание бэфджа")
+                    dispatch(putUserInfo([{
+                        links : links,
+                        taggs : taggs,
+                        profession : professionId,
+                        about : description
+                    }]))
                 }
                 else{
                     setStep(1)

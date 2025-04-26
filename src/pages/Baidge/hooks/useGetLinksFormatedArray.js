@@ -2,6 +2,8 @@ import React from 'react';
 
 const useGetLinksFormatedArray = ({links}) => {
 
+    const notRecognisedLinks = []
+
     const tgName = "@" + links[0] .split("/").pop() 
 
     let dribbleLink = null;
@@ -29,74 +31,104 @@ const useGetLinksFormatedArray = ({links}) => {
     let figmaLink = null;
 
 
-    for (let i = 0; i < links.length; i++){
+    for (let i = 1; i < links.length; i++){
+        let isRecognisedLink = false;
 
-        if (links[i].includes("https://t.me/") && i!==0){
+        if (links[i].includes("https://t.me/")){
             telegramChannelLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://www.behance.net/")){
-            console.log("Я был тут")
             behanceLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://dribbble.com")){
             dribbleLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://www.artstation.com")){
             artstationLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://www.deviantart.com")){
             deviantartLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://ru.pinterest.com")){
             pinterestLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://github.com/")){
             githubLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://gitlab.com")){
             gitlabLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://codepen.io")){
             codepenLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://replit.com")){
             replitLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://www.youtube.com")){
             youtubeLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://vimeo.com")){
             vimeoLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes("https://www.tiktok.com")){
             tiktokLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes('https://www.instagram.com')){
             instagramLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes('https://www.linkedin.com')){
             linkedinLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes('https://hh.ru')){
             hhRuLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes('https://www.notion.com')){
             notionLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes('https://tilda.cc')){
             tildaLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes('https://readymag.com')){
             readymagLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes('https://webflow.com')){
             webflowLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes('https://www.framer.com')){
             framerLink = links[i]
+            isRecognisedLink = true;
         }
         if (links[i].includes('https://www.figma.com/')){
-            framerLink = links[i]
+            figmaLink = links[i]
+            isRecognisedLink = true;
+        }
+
+        if (!isRecognisedLink){
+            notRecognisedLinks.push({
+                title : "Сайт",
+                profession : links[i],
+                link : links[i]
+            })
         }
     }
 
@@ -215,7 +247,8 @@ const useGetLinksFormatedArray = ({links}) => {
             title : "Figma",
             profession : "Веб-дизайн",
             link : figmaLink
-        }
+        },
+        ...notRecognisedLinks
     ]
 
     return linksArray;

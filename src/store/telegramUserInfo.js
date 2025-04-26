@@ -222,7 +222,10 @@ export const fetchUserInfo = createAsyncThunk(
             lastTransaction : user.data.lastTransaction,
             congratulate : user.data.congratulate,
             userLikes : user.data.userLikes,
-            professionId : null
+            profession : user.data.profession,
+            links : [`https://t.me/${user.data.link}` , ...user.data.links],
+            taggs : user.data.taggs,
+            rating : user.data.rating
           } );
     }
     catch (e){
@@ -239,8 +242,8 @@ const telegramUserInfo = createSlice({
   name: "telegramUserInfo",
   initialState: {
     state: null,
-    
     postState : null,
+    rating : 0,
     putState : null,
     status : "loading",
     id: "",
@@ -254,6 +257,9 @@ const telegramUserInfo = createSlice({
     views : 0,
     lastTransaction : "NO",
     congratulate : null,
+    links : [],
+    taggs : [],
+    userLikes : [],
     profile : {
         about : "",
         stage : 0,
@@ -301,7 +307,10 @@ const telegramUserInfo = createSlice({
       state.congratulate = action.payload.congratulate
       state.state = "yes";
       state.userLikes = action.payload.userLikes;
-      state.professionId = action.payload.professionId;
+      state.profession = action.payload.profession;
+      state.links = action.payload.links;
+      state.taggs = action.payload.taggs;
+      state.rating = action.payload.rating;
       
     });
     builder.addCase(fetchUserInfo.rejected, (state) => {

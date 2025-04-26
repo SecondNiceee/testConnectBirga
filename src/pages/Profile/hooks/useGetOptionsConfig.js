@@ -14,7 +14,7 @@ const useGetOptionsConfig = () => {
                 isNeededFill : true,
                 isNeededActiveTitle : false,
                 clickFunc : () => {
-                    if (userInfo.professionId){
+                    if (userInfo.profession){
                         navigate("/Baidge")
                     }
                     else{

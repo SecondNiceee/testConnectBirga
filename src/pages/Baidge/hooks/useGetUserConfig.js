@@ -1,12 +1,21 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSelector } from "react-redux";
 import useGetUserPhotoLink from "../../../hooks/useGetUserPhotoLink";
+import { getCounterOfResponses } from "../../../functions/api/getCounterOfResponses";
 
 const useGetUserConfig = ({ isMyBaidge, gotenConfig }) => {
 
   const photoLink = useGetUserPhotoLink();
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
+
+  const [counterOfResponses, setCounterOfResponses] = useState(null)
+
+  useEffect( () => {
+    if (userInfo.id){
+      getCounterOfResponses(userInfo.id).then((value) => setCounterOfResponses(value)).catch((e) => setCounterOfResponses("-"))
+    }
+  } , [setCounterOfResponses, userInfo.id] )
 
   const links = [   // Всегда первая ссылка должна быть на мой тг 
     "https://t.me/Nick",
@@ -40,28 +49,29 @@ const useGetUserConfig = ({ isMyBaidge, gotenConfig }) => {
       return gotenConfig;
     }
     if (isMyBaidge) {
+      if (!userInfo.id){
+        return null;
+      }
       return {
-        counterOfLikes: 12,
-        positionOfNitcheRating: 5,
+        counterOfLikes: userInfo.userLikes.length,
+        positionOfNitcheRating: "-",
         firstName: userInfo.firstName,
         lastName: userInfo.lastName,
         photoUrl: photoLink,
-        positionOfCommonRating : 1,
-        profession: "some profession",
-        profileWatches: 12,
+        positionOfCommonRating : "-",
+        profession: userInfo.profession.profession,
+        profileWatches: userInfo.views,
         isLikeActive: false,
-        ratingCounter : 10,
-        aboutMe: `Привет это я Коля тут долгий текст так - то , но это по факту так нужно нужно ахахаха! Я легенда как цой, но такой молодой
-                Привет это я Коля тут долгий текст так - то , но это по факту так нужно нужно ахахаха! Я легенда как цой, но такой молодой
-                Привет это я Коля тут долгий текст так - то , но это по факту так нужно нужно ахахаха! Я легенда как цой, но такой молодой`,
-        taggs: ["Коля", "Николя", "Капсула", "Как", "Что "],
+        ratingCounter : userInfo.rating,
+        aboutMe: userInfo.profile.about ,
         telegramProfileLink: userInfo.link,
-        links : links,
-        stage : 20,
-        completedTasks : 2,
-        secureTask : 1,
-        numberOfResponses : 0,
-        customerOffers : 13
+        links : userInfo.links,
+        stage : userInfo.stage,
+        completedTasks : userInfo.completedTasks.length,
+        secureTask : "-",
+        numberOfResponses : counterOfResponses,
+        customerOffers : "-",
+        taggs : userInfo.taggs
       };
     }
     return {

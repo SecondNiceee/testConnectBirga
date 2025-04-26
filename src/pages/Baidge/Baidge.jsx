@@ -22,7 +22,10 @@ import CSSTransitionStatistikPage from "./CSSTransitionStatistikPage";
 //     aboutMe : "",
 //     taggs : ""
 // 
-const params = { id: 2 };
+
+
+// const params = { id: 2 };
+const params = null
 const Baidge = ({ gotenConfig }) => {
 
 
@@ -54,7 +57,7 @@ const Baidge = ({ gotenConfig }) => {
     },
   ];
 
-  if (!me.id) {
+  if (!userConfig) {
     return <MyLoader />;
   }
 

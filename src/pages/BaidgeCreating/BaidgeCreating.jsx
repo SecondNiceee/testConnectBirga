@@ -83,13 +83,18 @@ const BaidgeCreating = () => {
     BaidgeButtonConroller.controlVisability({ errors, isCategoryOpen, isProfessionOpened, step });
   }, [errors, isCategoryOpen, isProfessionOpened, step]);
 
+  const goFoward = BaidgeButtonConroller.forwardFunction({
+    setStep,
+    step,
+    isCategoryOpen,
+    isProfessionOpened,
+    description,
+    dispatch,
+    links,
+    professionId : categoryInformation.profession.id,
+    taggs
+  });
   useEffect(() => {
-    const goFoward = BaidgeButtonConroller.forwardFunction({
-      setStep,
-      step,
-      isCategoryOpen,
-      isProfessionOpened,
-    });
     const goBack = BaidgeButtonConroller.backFunction({
       navigate,
       step,
@@ -103,7 +108,7 @@ const BaidgeCreating = () => {
       MainButton.offClick(goFoward);
       BackButton.offClick(goBack);
     };
-  }, [step, navigate, setStep, isCategoryOpen, isProfessionOpened]);
+  }, [step, navigate, setStep, isCategoryOpen, isProfessionOpened, description, links, taggs, dispatch, categoryInformation.profession.id]);
 
   useEffect(() => {
     MainButton.show();
@@ -127,6 +132,8 @@ const BaidgeCreating = () => {
         step === 0 ? "translate-x-0" : "-translate-x-[100vw]"
       }`}
     >
+      <button className="fixed left-[100vw]" onClick={goFoward}>ГО</button>
+      <button className="fixed left-[0vw]" onClick={goFoward}>ГО</button>
       <BaidgeCreaitingOne
     
         categoryInformation={categoryInformation}
