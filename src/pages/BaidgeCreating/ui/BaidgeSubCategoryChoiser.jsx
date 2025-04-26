@@ -34,8 +34,8 @@ const BaidgeSubCategoryChoiser = ({
   
     const buttonHandler = useCallback( () => {
         setTaskInformation({ ...taskInformation , profession : choisenProfession });
-        setChoisenProfession(false);
-    } , [setTaskInformation, choisenProfession, setChoisenProfession, taskInformation] )
+        setProfessionOpen(false);
+    } , [setTaskInformation, choisenProfession, setProfessionOpen, taskInformation] )
     useEffect( () => {
 
     MainButton.setText("Готово")
@@ -57,7 +57,7 @@ const BaidgeSubCategoryChoiser = ({
     
     useEffect( () => {
       function closeFunction(){
-        setChoisenProfession(false)
+        setProfessionOpen(false)
       }
       BackButton.show()
       BackButton.onClick(closeFunction)
