@@ -49,7 +49,7 @@ const useGetUserConfig = ({ isMyBaidge, gotenConfig }) => {
       return gotenConfig;
     }
     if (isMyBaidge) {
-      if (!userInfo.id){
+      if (!userInfo.id || !userInfo.profession){
         return null;
       }
       return {
