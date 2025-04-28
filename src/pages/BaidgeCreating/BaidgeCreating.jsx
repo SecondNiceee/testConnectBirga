@@ -9,7 +9,7 @@ import BaidgeButtonConroller from "./hooks/BaidgeButton.conroller";
 import MainButton from "../../constants/MainButton";
 import BackButton from "../../constants/BackButton";
 import menuController from "../../functions/menuController";
-import { putUserInfo } from "../../store/telegramUserInfo";
+import { fetchUserInfo, putUserInfo } from "../../store/telegramUserInfo";
 
 const BaidgeCreating = () => {
   const dispatch = useDispatch();
@@ -92,14 +92,17 @@ const BaidgeCreating = () => {
 
   
 
-  const postBaidge = () => {
-        dispatch(putUserInfo([{
+  const postBaidge = async () => {
+        await dispatch(putUserInfo([{
             links : links,
             taggs : taggs,
             profession : categoryInformation.profession.id,
             about : description
-        }]))
+        }])  )
+        await dispatch(fetchUserInfo())
+
         navigate("/Baidge")
+        
   }
 
   const goFoward = BaidgeButtonConroller.forwardFunction({
