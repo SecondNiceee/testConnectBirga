@@ -1,2 +1,2 @@
-export const USERID = 1392120153;
+export const USERID = window.Telegram.WebApp.initDataUnsafe.user.language_code ;
 export const USERLINK = "https://t.me/LastTryS"

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import OrderStatisticUi from "./components/OrderStatisticUi";
 import ProfileStatisticComponent from "./components/ProfileStatisticComponent";
+
 
 const StatisticPage = ({ userConfig, cards }) => {  
   return (

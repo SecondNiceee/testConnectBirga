@@ -67,6 +67,12 @@ const BaidgeCreating = () => {
       taggsError: false,
       linksError: false,
     };
+    notEmptyLinks.forEach( (link, i) => {
+      if (!link.includes("http")){
+        lErrors.linksError = true
+      }
+    } )
+    
     if (description.length > 500 || description.length < 5) {
       lErrors.descriptionError = true;
     }
