@@ -29,16 +29,11 @@ class BaidgeButtonController{
         }
     }
 
-    forwardFunction({step, setStep, isCategoryOpen, isProfessionOpened, dispatch, links, taggs, professionId, description}){
+    forwardFunction({step, setStep, isCategoryOpen, isProfessionOpened, postBaidge}){
         return () => {
             if (!isCategoryOpen && !isProfessionOpened){
                 if (step === 1){
-                    dispatch(putUserInfo([{
-                        links : links,
-                        taggs : taggs,
-                        profession : professionId,
-                        about : description
-                    }]))
+                    postBaidge()
                 }
                 else{
                     setStep(1)

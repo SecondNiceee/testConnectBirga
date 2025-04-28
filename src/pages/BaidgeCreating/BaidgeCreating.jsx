@@ -9,6 +9,7 @@ import BaidgeButtonConroller from "./hooks/BaidgeButton.conroller";
 import MainButton from "../../constants/MainButton";
 import BackButton from "../../constants/BackButton";
 import menuController from "../../functions/menuController";
+import { putUserInfo } from "../../store/telegramUserInfo";
 
 const BaidgeCreating = () => {
   const dispatch = useDispatch();
@@ -72,7 +73,7 @@ const BaidgeCreating = () => {
         lErrors.linksError = true
       }
     } )
-    
+
     if (description.length > 500 || description.length < 5) {
       lErrors.descriptionError = true;
     }
@@ -89,6 +90,18 @@ const BaidgeCreating = () => {
     BaidgeButtonConroller.controlVisability({ errors, isCategoryOpen, isProfessionOpened, step });
   }, [errors, isCategoryOpen, isProfessionOpened, step]);
 
+  
+
+  const postBaidge = () => {
+        dispatch(putUserInfo([{
+            links : links,
+            taggs : taggs,
+            profession : categoryInformation.profession.id,
+            about : description
+        }]))
+        navigate("/Baidge")
+  }
+
   const goFoward = BaidgeButtonConroller.forwardFunction({
     setStep,
     step,
@@ -98,7 +111,8 @@ const BaidgeCreating = () => {
     dispatch,
     links,
     professionId : categoryInformation.profession.id,
-    taggs
+    taggs,
+    postBaidge
   });
   useEffect(() => {
     const goBack = BaidgeButtonConroller.backFunction({
