@@ -21,7 +21,7 @@ const NewProfile = () => {
   return (
     <div className="pt-[16px] px-[16px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[100px]">
 
-      {userInfo.profileId ?  <NewProfileCup
+      {userInfo.profile ?  <NewProfileCup
         counterOfLikes={userInfo.userLikes.length}
         isLikeActive={false}
         isBaidge = {false}
@@ -29,7 +29,7 @@ const NewProfile = () => {
         lastName={userInfo.lastName}
         photoUrl={photoLink}
         profession={"Дизайнер"}
-        profileWatches={12}
+        profileWatches={userInfo.views}
       /> : <ProfileCup />}
 
 
