@@ -4,6 +4,7 @@ import BaidgeCreatingLink from './ui/BaidgeCreatingLink';
 import Text from '../../components/Text/Text';
 import DescriptionAndPhoto from '../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto';
 import { showAllert } from '../../functions/showAlert';
+import useBlockInputs from '../../hooks/useBlockInputs';
 
 const BaidgeCreatingTwo = ({setLinks, links, taggsText, setTaggsText, setTaggs, taggs}) => {
 
@@ -35,6 +36,8 @@ const BaidgeCreatingTwo = ({setLinks, links, taggsText, setTaggsText, setTaggs, 
             return id !== index;
         })))
     }
+
+    useBlockInputs();
 
     
     useEffect( () => {

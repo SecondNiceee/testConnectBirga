@@ -7,12 +7,15 @@ import { useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import BaidgeCategoryChoicer from './ui/BaidgeCategoryChoicer';
 import BaidgeSubCategoryChoiser from './ui/BaidgeSubCategoryChoiser';
+import useBlockInputs from '../../hooks/useBlockInputs';
 
 const BaidgeCreaitingOne = ({setDescription, description, setCategoryOpen, isCategoryOpen, categoryInformation, setCategoryInformation, isProfessionOpened, setProfessionOpened}) => {
 
     const categorys = useSelector((state) => state.categorys.category)
 
     const professions = useSelector((state) => state.profession.professions)
+
+    useBlockInputs();
 
 
     const sortedProfessions = useMemo( () => {
