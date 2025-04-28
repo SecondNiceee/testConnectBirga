@@ -153,16 +153,18 @@ export const fetchUserInfo = createAsyncThunk(
             console.log('====================================');
         }
         catch(e){
-            await axios.post(`${process.env.REACT_APP_HOST}/user/createByBot` , {}, {
+            const response = await axios.post(`${process.env.REACT_APP_HOST}/user/createByBot` , {}, {
                 params : {
-                    id : USERID,
+                    id : String(USERID),
                     language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en",
-                    link : USERLINK
+                    link : USERLINK,
+                    chat : String(USERID)
                 },
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
+            console.log(response.data)
             user = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
                 params: {
                   id: USERID,
@@ -171,6 +173,8 @@ export const fetchUserInfo = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
               });
+
+            
         }
 
         let localCards = []

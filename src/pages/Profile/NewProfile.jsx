@@ -14,6 +14,8 @@ const NewProfile = () => {
   const photoLink = useGetUserPhotoLink();
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
+
+
   
   if (userInfo.state !== "yes"){
     return <MyLoader />
@@ -21,7 +23,7 @@ const NewProfile = () => {
   return (
     <div className="pt-[16px] px-[16px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[100px]">
 
-      {userInfo.profile ?  <NewProfileCup
+      {userInfo.profession ?  <NewProfileCup
         counterOfLikes={userInfo.userLikes.length}
         isLikeActive={false}
         isBaidge = {false}
