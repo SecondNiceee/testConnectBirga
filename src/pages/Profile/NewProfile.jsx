@@ -28,7 +28,7 @@ const NewProfile = () => {
         firstName={userInfo.firstName}
         lastName={userInfo.lastName}
         photoUrl={photoLink}
-        profession={"Дизайнер"}
+        profession={userInfo.profession.profession}
         profileWatches={userInfo.views}
       /> : <ProfileCup />}
 
