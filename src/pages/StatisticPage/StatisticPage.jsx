@@ -14,7 +14,7 @@ const StatisticPage = ({ userConfig , setStatistikClose}) => {
     return () => {
         BackButton.offClick(closeFunction);
     }
-  }, [] )
+  }, [setStatistikClose] )
   return (
     <div className="pt-[16px] transition-transform duration-300
      fixed left-right w-[100vw] overflow-y-scroll px-[16px] bg-[#18222d] flex flex-col h-[100vh] pb-[100px]">

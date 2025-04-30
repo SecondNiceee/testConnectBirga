@@ -5,11 +5,11 @@ const useGetProfileStatistics = ({userConfig }) => {
     return [
         {
             title : "Позиция в общем рейтинге",
-            text : "#" + "-"
+            text : "#-"
         },
         {
             title : "Позиция в рейтинге по нише",
-            text : "#" + "-"
+            text : "#-"
         },
         {
             title : "Очков рейтинга",

@@ -135,7 +135,7 @@ export const dislikeUser = createAsyncThunk(
     async function ({userId, dislikedUserId}) {
         try{
 
-            const response = await axios.post(`${process.env.REACT_APP_HOST}/user/dislike`, {} ,{
+            await axios.post(`${process.env.REACT_APP_HOST}/user/dislike`, {} ,{
                 params : {
                   userId : userId,
                   likedUserId : dislikedUserId
@@ -144,6 +144,7 @@ export const dislikeUser = createAsyncThunk(
                   "X-API-KEY-AUTH": process.env.REACT_APP_API_KEY,
                 }
               })
+            
 
             return dislikedUserId;
         }

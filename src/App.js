@@ -119,7 +119,7 @@ const AnimatedSwitch = () => {
   useEffect(() => {
     async function makeUserVisit(params) {
       try {
-        const response = await axios.put(
+        await axios.put(
           `${process.env.REACT_APP_HOST}/user/visit`,
           {},
           {

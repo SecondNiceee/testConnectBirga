@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import ModalChoicer from "../../components/UI/ModalChoicer/ModalChoicer";
 import { CardsFilterEnum } from "./enums/CardsFilterEnum";
 import { filterNames } from "./constants/filterNames";

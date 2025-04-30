@@ -39,7 +39,7 @@ import CssTransitionNewInnerCase from "../NewInnerCase/CssTransitionNewInnerCase
 
 
 // const params = { id: 2 };
-const params = null
+// const params = null
 const Baidge = ({ gotenUserInfo }) => {
 
   const me = useSelector((state) => state.telegramUserInfo);
@@ -48,7 +48,7 @@ const Baidge = ({ gotenUserInfo }) => {
 
   const userInfo = useMemo( () => {
     return gotenUserInfo ?? me
-  }, [me] )
+  }, [me, gotenUserInfo] )
 
   const isLikeActive = useMemo( () => {
     if (!userInfo){
@@ -88,7 +88,7 @@ const Baidge = ({ gotenUserInfo }) => {
         setCard(false);
       }
     }
-  } , [isStatistikOpened, navigate] )
+  } , [isStatistikOpened, navigate, card, isPortfolioOpened, setPortfoliosOpened] )
 
   useEffect( () => {
     BackButton.show();
