@@ -87,7 +87,7 @@ const Baidge = ({ gotenUserInfo }) => {
         }
       }
       else{
-        setCard(false);
+        setCardPageOpen(false);
       }
     }
   } , [isStatistikOpened, navigate, isCardPageOpened, isPortfolioOpened, setPortfoliosOpened] )
