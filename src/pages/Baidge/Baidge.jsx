@@ -68,11 +68,13 @@ const Baidge = ({ gotenUserInfo }) => {
   const optionsConfig = useGetBaidgeOprionsConfig({setStatistikOpened, userInfo, setPortfoliosOpened});
 
   const [card, setCard] = useState(null);
+
+  const [isCardPageOpened , setCardPageOpen] = useState(false);
   
 
   const backFunction = useCallback( () => {
     if (!isStatistikOpened){
-      if (!card){
+      if (!isCardPageOpened){
         if (!isPortfolioOpened){
           
           if (pagesHistory.length > 0){
@@ -88,7 +90,7 @@ const Baidge = ({ gotenUserInfo }) => {
         setCard(false);
       }
     }
-  } , [isStatistikOpened, navigate, card, isPortfolioOpened, setPortfoliosOpened] )
+  } , [isStatistikOpened, navigate, isCardPageOpened, isPortfolioOpened, setPortfoliosOpened] )
 
   useEffect( () => {
     BackButton.show();
@@ -172,7 +174,7 @@ const Baidge = ({ gotenUserInfo }) => {
 
       <CSSTransitionStatistikPage setStatistikClose={setStatistikOpened} userConfig={me} isStatisticOpened={isStatistikOpened} />
 
-      <CssTransitionNewInnerCase userInfo={userInfo}  card={card} isOpened={card}  />
+      <CssTransitionNewInnerCase userInfo={userInfo}  card={card} isOpened={isCardPageOpened}  />
 
     </>
   );
