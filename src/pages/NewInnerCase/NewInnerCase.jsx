@@ -15,7 +15,7 @@ const NewInnerCase = ({casePar, userInfo}) => {
     }
     const iconUrl = useGetUserPhotoLink({anotherUserInfo : userInfo});
     return (
-        <div className="pt-[20px] z-20 fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
+        <div className="pt-[20px] left-right z-20 fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
             
             <div className='rounded-[10px] bg-[#20303f] flex flex-col duration-200 relative z-50'>
                 <CasePhotos photos={casePar.photos}  />

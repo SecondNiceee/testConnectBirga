@@ -4,7 +4,6 @@ import { CardsFilterEnum } from "./enums/CardsFilterEnum";
 import { filterNames } from "./constants/filterNames";
 import { filterValues } from "./constants/filterValues";
 import Case from "../../components/UI/Case/Case";
-import BackButton from "../../constants/BackButton";
 
 const NewCardsPage = ({ userInfo, setCard }) => {
 
@@ -14,7 +13,7 @@ const NewCardsPage = ({ userInfo, setCard }) => {
   const cards = userInfo.profile.cards;
 
   return (
-    <div className="pt-[16px] z-20 fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
+    <div className="pt-[16px] left-right z-20 fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
       <h2 className="pl-4 font-semibold font-sf-pro-display-600 text-white text-[20px]">
         Портфолио
       </h2>
