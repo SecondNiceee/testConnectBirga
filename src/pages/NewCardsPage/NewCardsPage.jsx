@@ -5,7 +5,7 @@ import { filterNames } from "./constants/filterNames";
 import { filterValues } from "./constants/filterValues";
 import Case from "../../components/UI/Case/Case";
 
-const NewCardsPage = ({ userInfo, setCard }) => {
+const NewCardsPage = ({ userInfo, setCard, setCardPageOpen }) => {
 
   const [filter, setFilterBy] = useState(CardsFilterEnum.WATCHES);
 
@@ -43,6 +43,7 @@ const NewCardsPage = ({ userInfo, setCard }) => {
             card={card}
             openFunc={() => {
                 setCard(card)
+                setCardPageOpen(true)
             }}
           />
         ))}

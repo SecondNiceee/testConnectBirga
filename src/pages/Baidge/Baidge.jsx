@@ -170,7 +170,7 @@ const Baidge = ({ gotenUserInfo }) => {
 
       </div>
 
-      <CssTransitionedNewCardsPages setCard = {setCard} isOpened={isPortfolioOpened} userInfo={me} />
+      <CssTransitionedNewCardsPages setCardPageOpen = {setCardPageOpen} setCard = {setCard} isOpened={isPortfolioOpened} userInfo={me} />
 
       <CSSTransitionStatistikPage setStatistikClose={setStatistikOpened} userConfig={me} isStatisticOpened={isStatistikOpened} />
 
