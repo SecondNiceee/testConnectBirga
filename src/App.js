@@ -27,6 +27,9 @@ import { fetchAllShablons } from "./store/shablon";
 import { fetchAllIds } from "./store/saves";
 
 import { getBalance } from "./store/balance";
+import Profile from "./pages/Profile/Profile";
+
+
 
 const HappyPage = lazy(() => import("./pages/HappyHold/HappyPage"));
 const First = lazy(() => import("./pages/First/First"));
@@ -131,9 +134,8 @@ const AnimatedSwitch = () => {
             },
           }
         );
-        console.log(response);
       } catch (e) {
-        console.log(e);
+          console.warn(e)
       }
     }
     if (userId) {
@@ -250,7 +252,7 @@ const AnimatedSwitch = () => {
               path="/Profile"
               element={
                 <Suspense fallback={<MyLoader />}>
-                  <NewProfile />
+                  <Profile />
                 </Suspense>
               }
             />

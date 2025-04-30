@@ -162,7 +162,8 @@ const StyledButton = styled("button", { shouldForwardProp: () => true })(
     color: #2ea5ff;
     background-color : transparent;
     border : none;
-    font-size: 16px;
+    font-size: 13px;
+    text-transform:uppercase;
   `
 );
 
@@ -210,11 +211,11 @@ const Option = styled("li")(
   position : relative;
   font-family: "SF Pro Text 400";
   font-weight: 400;
-  font-size: 17px;
+  font-size: 13px;
   line-height: 129%;
   letter-spacing: -0.02em;
   color: white;
-
+  text-transform:uppercase;
 
   list-style: none;
   

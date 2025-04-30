@@ -23,11 +23,10 @@ const Customer = ({fl , photo, link, id, onImageClick}) => {
             } , (buttonId) => {
         
               if (buttonId === "save" || buttonId === null) {
-                console.log("Ok");
+                
                 
               }
-        
-        
+
             } )
         }
 

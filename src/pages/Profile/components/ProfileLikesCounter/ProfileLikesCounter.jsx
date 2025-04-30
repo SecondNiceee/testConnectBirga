@@ -3,19 +3,23 @@ import Heart from '../Heart/Heart';
 import ClickedHeart from '../ClickedHeart/ClickedHeart';
 import "../ClickedHeart/ClickHeart.css";
 
-const ProfileLikesCounter = ({likesCounter, isBaidge, isLikeActive}) => {
+const ProfileLikesCounter = ({likesCounter, isBaidge, isLikeActive, likeUser, clickDislikeUser}) => {
 
     const [localStateOfLikeActive, setLocalStateOfLikeActive] =  useState(isLikeActive)
+
+    console.log(isLikeActive);
 
     const [animation, setAnimation] = useState(0)
 
     const animationRef = useRef(null)
 
-    const clickHandler = () => {
+    const clickHandler = async () => {
         if (!localStateOfLikeActive){
+          likeUser(); 
           setAnimation(1)
         }
         else{
+          clickDislikeUser();
           setAnimation(0)
         }
         setLocalStateOfLikeActive((value) => !value)

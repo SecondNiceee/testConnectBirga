@@ -1,5 +1,5 @@
 
-const useGetBaidgeOprionsConfig = ({setStatistikOpened}) => {
+const useGetBaidgeOprionsConfig = ({setStatistikOpened, userInfo, setPortfoliosOpened}) => {
     return (
         [
             {
@@ -7,8 +7,8 @@ const useGetBaidgeOprionsConfig = ({setStatistikOpened}) => {
                 text : "Портфолио",
                 isNeededFill : false,
                 isNeededActiveTitle : false,
-                clickFunc : () => {},
-                numberNearToArrow : 2
+                clickFunc : () => {setPortfoliosOpened(true)},
+                numberNearToArrow : userInfo?.profile.cards.length
             },
             {
                 imgPath : "/images/Baidge/StatisticIcon.svg",

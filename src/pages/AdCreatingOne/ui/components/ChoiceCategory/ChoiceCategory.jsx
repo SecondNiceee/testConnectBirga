@@ -100,8 +100,6 @@ const ChoiceCategory = ({
       menuController.showMenu();
     }
   } )
-
-  console.log("dsa")
   return (
     <div className={cl.ChoiceCategory} {...props}>
 

@@ -1,0 +1,14 @@
+import React from 'react';
+import { CSSTransition } from 'react-transition-group';
+import "../../styles/left-right.css"
+import NewCardsPage from './NewCardsPage';
+
+const CssTransitionedNewCardsPages = ({isOpened, userInfo, setCard}) => {
+    return (
+        <CSSTransition in = {isOpened} unmountOnExit mountOnEnter classNames={"left-right"} timeout={{enter : 0, exit : 300}}>
+            <NewCardsPage setCard = {setCard} userInfo = {userInfo}  />
+        </CSSTransition>
+    );
+};
+
+export default CssTransitionedNewCardsPages;

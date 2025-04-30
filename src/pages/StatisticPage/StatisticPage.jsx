@@ -1,9 +1,20 @@
 import React, { useEffect } from "react";
 import OrderStatisticUi from "./components/OrderStatisticUi";
 import ProfileStatisticComponent from "./components/ProfileStatisticComponent";
+import BackButton from "../../constants/BackButton";
 
 
-const StatisticPage = ({ userConfig, cards }) => {  
+const StatisticPage = ({ userConfig , setStatistikClose}) => {  
+  useEffect( () => {
+    function closeFunction(){
+      setStatistikClose(false)
+    }
+    BackButton.show();
+    BackButton.onClick(closeFunction);
+    return () => {
+        BackButton.offClick(closeFunction);
+    }
+  }, [] )
   return (
     <div className="pt-[16px] transition-transform duration-300
      fixed left-right w-[100vw] overflow-y-scroll px-[16px] bg-[#18222d] flex flex-col h-[100vh] pb-[100px]">
@@ -17,7 +28,7 @@ const StatisticPage = ({ userConfig, cards }) => {
         </p>
       </div>
 
-    <ProfileStatisticComponent cards={cards} userConfig={userConfig} />
+    <ProfileStatisticComponent userConfig={userConfig} />
 
     <OrderStatisticUi userConfig={userConfig} />
 

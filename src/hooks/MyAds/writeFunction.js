@@ -74,7 +74,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                 navigate('/Profile')
               }
               if (buttonId === "delete" || buttonId === null) {
-                console.log("Он отказался");
+
               }
             }
           );
@@ -83,7 +83,6 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
           if (!buyPage){
 
             setBuyPage(true)
-            console.log("Buy page стал true")
           }
           else{
             if (happyHold){
@@ -93,8 +92,6 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                 // setSecondPage({ ...secondPage, isActive: false });
             }
             else{
-              console.log(balance)
-              console.log(secondPage.task.tonValue)
               if (Number(balance) < (rezult + serviceUs + service)){
   
                 setWalletH(true)
@@ -113,8 +110,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                     },
                     (buttonId) => {
                       if (buttonId === "save" || buttonId === null) {
-                        console.log("ок");
-                        
+                    
                       }
                     }
                   );
@@ -160,10 +156,7 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                           // MainButton.setText(translation("Перейти к заданию"))
       
                       }
-                      if (buttonId === "delete" || buttonId === null) {
-                        console.log("Он отказался");
-                        console.log("Да это так");
-                        
+                      if (buttonId === "delete" || buttonId === null) {                        
                       }
                     }
                   );

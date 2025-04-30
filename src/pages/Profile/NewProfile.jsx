@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PayBlock from "./components/PayBlock/PayBlock";
 import useGetOptionsConfig from "./hooks/useGetOptionsConfig";
 import NewOption from "./components/NewOption/NewOption";
@@ -7,14 +7,18 @@ import useGetUserPhotoLink from "../../hooks/useGetUserPhotoLink";
 import { useSelector } from "react-redux";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import ProfileCup from "./components/ProfileCup/ProfileCup";
+import pagesHistory from "../../constants/pagesHistory";
 
 const NewProfile = () => {
   const optionsConfig = useGetOptionsConfig();
 
-  const photoLink = useGetUserPhotoLink();
+  const photoLink = useGetUserPhotoLink({});
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
 
+  useEffect( () => {
+    pagesHistory.push("/Profile")
+  }, [] );
 
   
   if (userInfo.state !== "yes"){

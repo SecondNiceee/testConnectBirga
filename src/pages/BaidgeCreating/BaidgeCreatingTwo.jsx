@@ -11,7 +11,6 @@ const BaidgeCreatingTwo = ({setLinks, links, taggsText, setTaggsText, setTaggs, 
 
 
     const changeLinksHandler = useCallback( (id) => (text) => {
-        console.log(text)
         setLinks((value) => ([...value.map( (link, index) => {
             if (index === id) {
                 return text
@@ -32,7 +31,6 @@ const BaidgeCreatingTwo = ({setLinks, links, taggsText, setTaggsText, setTaggs, 
 
     const deleteLink = (index) => () => {
         setLinks((value) => ([...value].filter((link, id) => {
-            console.log(id)
             return id !== index;
         })))
     }

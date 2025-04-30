@@ -35,7 +35,6 @@ const CatchDate = ({ className , whichOne , state, setState,errors, isMyInformat
     return 'translateX(' + (-1)*widthOfDocument.toString() + 'px)'  
   }
 
-  console.log(isMyInformation)
 return (
     <div
     {...props}

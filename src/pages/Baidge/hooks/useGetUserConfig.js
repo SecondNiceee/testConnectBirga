@@ -5,7 +5,7 @@ import { getCounterOfResponses } from "../../../functions/api/getCounterOfRespon
 
 const useGetUserConfig = ({ isMyBaidge, gotenConfig }) => {
 
-  const photoLink = useGetUserPhotoLink();
+  const photoLink = useGetUserPhotoLink({});
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
 
@@ -44,6 +44,8 @@ const useGetUserConfig = ({ isMyBaidge, gotenConfig }) => {
     "https://www.figma.com/"
   ]
 
+
+  console.log()
   const userConfig = useMemo(() => {
     if (gotenConfig) {
       return gotenConfig;
@@ -53,6 +55,7 @@ const useGetUserConfig = ({ isMyBaidge, gotenConfig }) => {
         return null;
       }
       return {
+        id : userInfo.id,
         counterOfLikes: userInfo.userLikes.length,
         positionOfNitcheRating: "-",
         firstName: userInfo.firstName,
@@ -61,7 +64,7 @@ const useGetUserConfig = ({ isMyBaidge, gotenConfig }) => {
         positionOfCommonRating : "-",
         profession: userInfo.profession.profession,
         profileWatches: userInfo.views,
-        isLikeActive: false,
+        isLikeActive: userInfo.userLikes.map((like) => like.likedUser.id).includes(userInfo.id),
         ratingCounter : userInfo.rating,
         aboutMe: userInfo.profile.about ,
         telegramProfileLink: userInfo.link,
@@ -75,6 +78,7 @@ const useGetUserConfig = ({ isMyBaidge, gotenConfig }) => {
       };
     }
     return {
+      id : 1,
       counterOfLikes: 0,
       positionOfNitcheRating: 12,
       positionOfCommonRating : 1,

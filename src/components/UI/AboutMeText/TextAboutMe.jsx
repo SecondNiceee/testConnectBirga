@@ -1,7 +1,8 @@
 import React, { memo, useEffect, useRef, useState } from 'react';
-import './TextAboutMe.css'
+import './TextAboutMe.css';
 import Text from '../../Text/Text';
 import translation from '../../../functions/translate';
+
 const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...props } ) => {
   const [hideAboutMe, setHideAboutMe] = useState({
     isActive : false,

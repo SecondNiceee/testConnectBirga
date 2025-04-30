@@ -18,7 +18,9 @@ const NewProfileCup = ({
   photoUrl,
   isBaidge = false,
   isLikeActive,
-  editIconClickHandler = () => {}
+  editIconClickHandler = () => {},
+  likeUser,
+  clickDislikeUser
 }) => {
     return (
         <div className="flex py-[17px] pb-[14px] px-[19px] flex-col gap-[13px] bg-[#20303f] rounded-[13px] ">
@@ -36,7 +38,7 @@ const NewProfileCup = ({
             <ProfileUserName  firstName={firstName} lastName={lastName} />
             <Profession professtion={profession} />
           </div>
-           <ProfileLikesCounter isLikeActive={isLikeActive} isBaidge={isBaidge} likesCounter={counterOfLikes} />
+           <ProfileLikesCounter clickDislikeUser = {clickDislikeUser} likeUser = {likeUser} isLikeActive={isLikeActive} isBaidge={isBaidge} likesCounter={counterOfLikes} />
         </div>
       </div>
     );

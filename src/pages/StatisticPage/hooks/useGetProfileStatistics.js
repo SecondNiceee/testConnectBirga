@@ -1,40 +1,35 @@
 import formatNumberWithSpaces from "../../../functions/formateMoneyWithSpace";
 import getYearWord from "../../../functions/getYearWord";
 
-const useGetProfileStatistics = ({userConfig, cards }) => {
-    console.log(cards)
-    const numberOfCardsWatches = cards.reduce((acc, curValue, index, array) => {
-        return acc + curValue.watches
-        } , 0)
-    console.log(numberOfCardsWatches)
+const useGetProfileStatistics = ({userConfig }) => {
     return [
         {
             title : "Позиция в общем рейтинге",
-            text : "#" + userConfig.positionOfCommonRating
+            text : "#" + "-"
         },
         {
             title : "Позиция в рейтинге по нише",
-            text : "#" + userConfig.positionOfNitcheRating
+            text : "#" + "-"
         },
         {
             title : "Очков рейтинга",
-            text : formatNumberWithSpaces(userConfig.ratingCounter)
+            text : formatNumberWithSpaces(userConfig.rating)
         },
         {
             title : "Просмотров профиля",
-            text : formatNumberWithSpaces(userConfig.profileWatches)
+            text : formatNumberWithSpaces(userConfig.views)
         },
         {
             title : "Просмотров кейсов",
-            text : "-"
+            text : userConfig.profile.cards.reduce( (acc, el) => acc += el.views, 0 )
         },
         {
             title : "Лайков профиля",
-            text : formatNumberWithSpaces(userConfig.counterOfLikes)
+            text : "-"
         },
         {
             title : "Стаж/Опыт работы",
-            text : getYearWord(userConfig.stage)
+            text : getYearWord(userConfig.profile.stage)
         }
     ]
 };

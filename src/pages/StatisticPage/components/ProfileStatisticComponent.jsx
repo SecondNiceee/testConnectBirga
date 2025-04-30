@@ -1,9 +1,9 @@
 import React from 'react';
 import useGetProfileStatistics from '../hooks/useGetProfileStatistics';
 
-const ProfileStatisticComponent = ({userConfig, cards}) => {
+const ProfileStatisticComponent = ({userConfig}) => {
 
-    const profileStatisticConfig = useGetProfileStatistics({ userConfig, cards });
+    const profileStatisticConfig = useGetProfileStatistics({ userConfig });
     return (
 
         <div className="flex mt-[11px] flex-col gap-[7px] w-[100%] text-[#84898f]">

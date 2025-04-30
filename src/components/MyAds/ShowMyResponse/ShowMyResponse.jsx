@@ -48,7 +48,7 @@ const ShowMyResponse = ({
             clickHandler();
           }
           if (buttonId === "delete" || buttonId === null) {
-            console.log("Он отказался");
+
           }
         }
       );
@@ -71,11 +71,6 @@ const ShowMyResponse = ({
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
            } 
           });
-          console.log(String(response.user.id))
-          console.log(response.advertisement.user.id)
-          console.log(String(response.id))
-          console.log(String(response.advertisement.user.id))
-          console.log(String(response.advertisement.id))
   
           window.Telegram.WebApp
           .showPopup({
@@ -87,7 +82,7 @@ const ShowMyResponse = ({
           } , (buttonId) => {
       
             if (buttonId === "save" || buttonId === null) {
-              console.log("Ok");
+
               
             }
       
@@ -98,7 +93,7 @@ const ShowMyResponse = ({
             translation("Извините, подверждение не удалось отправить заказчику. Обратитесь в поддержку.")
           );
           window.Telegram.WebApp.showAlert(JSON.stringify(e));
-          console.log(e);
+          console.warn(e);
         }
       }
       else{

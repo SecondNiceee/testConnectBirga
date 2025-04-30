@@ -17,7 +17,6 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, 
         );
     };
 
-    console.log(renderMap)
 
     const [scrollPosition , setScrollPosition] = useState(0)
 
@@ -65,8 +64,6 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, 
         }
     } , [blockerAll, blockerId]) 
 
-
-    console.log(scrollPosition)
 
     const [activeIndex, setActiveIndex] = useState(sliderIndex);
 

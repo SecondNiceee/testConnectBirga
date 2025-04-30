@@ -50,7 +50,7 @@ const SavedProfile = ({responce, openFunc}) => {
         }
         catch(e){
           window.Telegram.WebApp.showAlert(e)
-          console.log(e)
+          console.warn(e)
         }
   
   

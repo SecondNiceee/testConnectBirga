@@ -5,8 +5,6 @@ import {Address} from "@ton/core";
 
 const useTonConnection = () => {
 
-    console.log("Привет")
-
     const [tonConnectUI] = useTonConnectUI();
   
     const [tonWalletAddress, setTonWalletAddress] = useState(null);
@@ -15,13 +13,11 @@ const useTonConnection = () => {
   
     const handleWalletConnection = useCallback((address) => {
       setTonWalletAddress(address);
-      console.log("Wallet connect successfuly");
       setIsLoading(false);
     }, [] )
   
     const handleWalletDisconnection = useCallback( () => {
       setTonWalletAddress(null);
-      console.log("Wallet discconnection successfuly!")
       setIsLoading(false)
     }, [] )
   

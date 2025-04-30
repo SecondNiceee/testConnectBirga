@@ -5,8 +5,6 @@ import { openLink } from '../../../functions/openLink';
 const Links = ({links}) => {
     const formatedLinks = useGetLinksFormatedArray({links})
 
-    console.log(links)
-
     const clickHandler = (link) => () => {
         openLink(link)
     }
@@ -15,7 +13,7 @@ const Links = ({links}) => {
             {formatedLinks.map( (link, i) => {
                 if (link.link){
                     return (
-                        <div onClick={clickHandler(link.link)} className='flex cursor-pointer py-[12px] items-center pl-[19px] pr-[16px]'>
+                        <div key={i} onClick={clickHandler(link.link)} className='flex cursor-pointer py-[12px] items-center pl-[19px] pr-[16px]'>
                             <div className='flex w-[40px] h-[40px] rounded-full bg-[#2ea5ff] items-center justify-center'>
                                 <img src='/images/Baidge/bag.svg' />
                             </div>

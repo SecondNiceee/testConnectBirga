@@ -225,9 +225,7 @@ const AdCreatingOne = ({
   }, [state.isOpen, dateObject, datePickerObject]);
 
 
-  const setTextDescription = useCallback( (e) => {
-    console.log("Вызов этой штуки")
-    
+  const setTextDescription = useCallback( (e) => {    
       setTaskInformation( (value) => ({...value, taskDescription : e}) )
 
   } , [ setTaskInformation] )

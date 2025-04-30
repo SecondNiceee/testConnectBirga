@@ -97,8 +97,6 @@ const AdCreating = () => {
     }
   }, [categorys, subCategorys]);
 
-  console.log("Хай")
-
   const [error, setError] = useState({
     name: false,
     ton: false,
@@ -217,37 +215,6 @@ const AdCreating = () => {
     await dispatch(postMyTask([myFormData, el.photos]))
     navigate("/MyAds")
     
-    // for (let i = 0 ; i < 1; i++){
-    //   try{
-    //     console.log("Создание задания")
-    //     await axios.post("https://www.connectbirga.ru/advertisement", myFormData, {
-    //       headers: {
-    //         "Content-Type" :'multipart/form-data',
-    //         "Access-Control-Allow-Origin": "*"
-    //       },
-    //     });
-    //   }
-    //   catch(e){
-    //     window.Telegram.WebApp.showAlert("Задание не было создано. Попробуйте позже")
-    //     console.log(e)
-    //   }
-    // }
-
-    // dispatch(changeMyAds([]))
-    // dispatch(fetchMyOrders(1))
-
-
-    
-    //   let state = await axios.post(
-    //   "https://www.connectbirga.ru/advertisement",
-    //   myFormData,
-    //   {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //       "Access-Control-Allow-Origin": "*"
-    //     },
-    //   }
-    // );
   }
 
 

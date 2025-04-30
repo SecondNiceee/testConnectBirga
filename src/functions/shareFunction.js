@@ -13,14 +13,9 @@ export const shareFunction = (id) => async () => {
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
         }
     })
-    console.log(repsonse)
     const messageId = repsonse.data
-    console.log(messageId)
-
     window.Telegram.WebApp.shareMessage(messageId).then((result) => {
-        console.log("Сообщение успешно отправлено:", result);
       }).catch((error) => {
-        console.error("Ошибка при отправке сообщения:", error);
       });
 
 }

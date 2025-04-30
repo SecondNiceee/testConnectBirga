@@ -128,6 +128,53 @@ export const putUserInfo = createAsyncThunk(
         }
     }
 )
+
+
+export const dislikeUser = createAsyncThunk(
+    'telelegramUserInfo/dislikeUser',
+    async function ({userId, dislikedUserId}) {
+        try{
+
+            const response = await axios.post(`${process.env.REACT_APP_HOST}/user/dislike`, {} ,{
+                params : {
+                  userId : userId,
+                  likedUserId : dislikedUserId
+                },
+                headers : {
+                  "X-API-KEY-AUTH": process.env.REACT_APP_API_KEY,
+                }
+              })
+
+            return dislikedUserId;
+        }
+        catch(e){
+            console.warn(e);
+            throw new Error(e);
+        }
+        
+    }
+)
+
+
+export const likeUser = createAsyncThunk(
+    'telelegramUserInfo/likeUser',
+    async function ({userId, likedUserId}) {
+
+            const response = await axios.post(`${process.env.REACT_APP_HOST}/user/like`, {} ,{
+                params : {
+                  userId : userId,
+                  likedUserId : likedUserId
+                },
+                headers : {
+                  "X-API-KEY-AUTH": process.env.REACT_APP_API_KEY,
+                }
+              })
+            console.log(response.data)
+
+            return likedUserId;
+        
+    }
+)
 export const fetchUserInfo = createAsyncThunk(
   "telegramUserInfo/fetchUserInfo",
   async function () {
@@ -187,20 +234,22 @@ export const fetchUserInfo = createAsyncThunk(
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
         })
+
+        console.log(allCards)
         for (let e of allCards.data)
             {
-                
                 let files =  await makeNewFile(e.folder, e.photos)
                 localCards.push({
                     id : e.id,
                     title : e.title,
-                    
                     description : e.description,
                     behanceLink : e.behance,
                     dribbbleLink : e.dribble,
                     dropfileLink : e.dropFile,
                     photosNames : e.photos,
                     photos : files,
+                    createdAt : e.createdAt,
+                    views : e.views
                     
                 })
             }
@@ -236,9 +285,6 @@ export const fetchUserInfo = createAsyncThunk(
         console.log(e)
     }
 
-    // let photo = 'бла бла фото еб'
-
-
   }
 );
 
@@ -250,7 +296,7 @@ const telegramUserInfo = createSlice({
     rating : 0,
     putState : null,
     status : "loading",
-    id: "",
+    id: null,
     photo: "",
     link : "",
     linkes : 0,
@@ -291,6 +337,24 @@ const telegramUserInfo = createSlice({
 },
   
   extraReducers: (builder) => {
+
+    builder.addCase(dislikeUser.fulfilled, (state, action) => {
+        state.userLikes = state.userLikes.filter( (like) => like.likedUser.id !== action.payload )
+    } );
+
+    builder.addCase(dislikeUser.rejected, (state, action) => {
+        console.warn(action.error);
+    } );
+
+    builder.addCase(likeUser.fulfilled , (state, action) => {
+        state.userLikes.push({id : null, likedUser : {id : action.payload}})
+    });
+
+
+    builder.addCase(likeUser.rejected, (state, action) => {
+        console.warn(action.error);
+    });
+
     builder.addCase(fetchUserInfo.pending, (state) => {
       state.status = "loading";
     });

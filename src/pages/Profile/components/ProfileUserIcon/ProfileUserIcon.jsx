@@ -1,5 +1,4 @@
 import React from 'react';
-import useGetUserPhotoLink from '../../../../hooks/useGetUserPhotoLink';
 
 const ProfileUserIcon = ({photoUrl}) => {
     return (

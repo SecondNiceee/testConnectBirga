@@ -13,17 +13,13 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
     const savedCards = useSelector(state => state.saves.cardIds)
     const dispatch = useDispatch()
 
-    console.warn(task)
-    console.warn(id)
-    console.warn(savedTasks)
+
     useEffect( () => {
         switch (navigate){
             case "advertisement":{
                 savedTasks.forEach( (e, i) => {
                     
                     if (e.id === id){
-                        console.log(id)
-                        console.log(e)
                         setActive(true)
                     }
                 } )
