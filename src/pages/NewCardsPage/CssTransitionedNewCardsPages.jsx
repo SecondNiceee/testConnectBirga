@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import "../../styles/left-right.css"
 import NewCardsPage from './NewCardsPage';
@@ -11,4 +11,4 @@ const CssTransitionedNewCardsPages = ({isOpened, setCardPageOpen, userInfo, setC
     );
 };
 
-export default CssTransitionedNewCardsPages;
+export default memo(CssTransitionedNewCardsPages);

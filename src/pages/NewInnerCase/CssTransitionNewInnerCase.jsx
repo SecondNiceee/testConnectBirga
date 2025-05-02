@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import NewInnerCase from './NewInnerCase';
 import { CSSTransition } from 'react-transition-group';
 
@@ -10,4 +10,4 @@ const CssTransitionNewInnerCase = ({isOpened, card, userInfo}) => {
     );
 };
 
-export default CssTransitionNewInnerCase;
+export default memo(CssTransitionNewInnerCase);

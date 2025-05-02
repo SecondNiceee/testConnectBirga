@@ -7,10 +7,11 @@ import React, {
   useState,
 } from "react";
 import cl from "./FileInput.module.css";
-import file from "../../../images/icons/file.svg";
+
 import BlockSpinner from "../BlockSpinner/BlockSpinner";
 import Text from "../../Text/Text";
 import translation from "../../../functions/translate";
+import NoPhotosComponent from "./ui/NoPhotosComponent";
 let counter = 0;
 const FileInput = ({
   className,
@@ -108,8 +109,6 @@ const FileInput = ({
 
   const myRef = useRef(null);
 
-  var device = navigator.userAgent.toLowerCase();
-
   const photoStyle = useMemo(() => {
     if (fileError) {
       return {
@@ -183,10 +182,6 @@ const FileInput = ({
         }
       >
 
-
-
-      
-
         {images.map((e, i) => {
           return (
             <div key={i} className={cl.imageFeetContainer}>
@@ -220,7 +215,7 @@ const FileInput = ({
         })}
 
 
-{ isLoader && Array.from({ length: loaderSize }).map((e, i) => {
+    { isLoader && Array.from({ length: loaderSize }).map((e, i) => {
           return (
               <div key={i} className="filesLoader">
                 <BlockSpinner style = {{...imageStyle , border : "1px solid black"}} />
@@ -228,57 +223,9 @@ const FileInput = ({
           )
         })}
 
-        <label
-          style={files.length === 5 ? { display: "none" } : imageStyle}
-          className={images.length !== 0 ? cl.ActiveMainLabel : cl.MainLabel}
-          htmlFor="file"
-        >
-          <input
-            ref={myRef}
-            onChange={(event) => {
-              if (event.target.files && event.target.files[0]) {
-                if (event.target.files.length + files.length > 5) {
-                  window.Telegram.WebApp.showAlert(translation("Максимум 5 файлов"));
-                } else {
-                  let newFiles = [];
-                  for (let i = 0; i < event.target.files.length; i++) {
-                    let photo = event.target.files[i];
-                    let blob = photo.slice(0, photo.size, "image/png");
-                    let newFile = new File(
-                      [blob],
-                      "nick" + String(counter) + ".png",
-                      { type: "image/png" }
-                    );
-                    counter += 1;
-                    newFiles.push(newFile);
-                  }
-                  // setFiles([...files, ...newFiles]);
-                  
-                  addFiles(newFiles);
-                }
-              }
+      <NoPhotosComponent files = {files} images={images} imageStyle={imageStyle} counter = {counter} addFiles = {addFiles} ref={myRef} />
 
-
-
-              // hideKeyboard(myRef.current)
-            }}
-            type="file"
-            multiple={device.includes("android") ? false : true}
-            name="file"
-            id="file"
-            accept="image/*"
-            className={cl.none}
-          />
-
-          <div className={cl.fileImageContainer}>
-            <img className={cl.fileImage} src={file} alt="" />
-          </div>
-          <Text>Добавить фото</Text>
-        </label>
       </div>
-      {/* {images.map( (e, i) => {
-      return <Text>{e}</Text>
-    }) } */}
       {fileError ? (
         <Text className={cl.fileError}>Добавьте хотя бы один пример работы</Text>
       ) : (

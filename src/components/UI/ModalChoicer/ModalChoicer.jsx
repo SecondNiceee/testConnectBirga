@@ -127,6 +127,7 @@ const CustomButton = React.forwardRef(function CustomButton(props, ref) {
       {other.children}
 
       <svg
+        className=""
         width="11"
         height="13"
         viewBox="0 0 11 13"
@@ -211,11 +212,11 @@ const Option = styled("li")(
   position : relative;
   font-family: "SF Pro Text 400";
   font-weight: 400;
-  font-size: 13px;
+  font-size: 17px;
   line-height: 129%;
   letter-spacing: -0.02em;
   color: white;
-  text-transform:uppercase;
+
 
   list-style: none;
   

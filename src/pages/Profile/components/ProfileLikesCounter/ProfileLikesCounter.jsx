@@ -7,8 +7,6 @@ const ProfileLikesCounter = ({likesCounter, isBaidge, isLikeActive, likeUser, cl
 
     const [localStateOfLikeActive, setLocalStateOfLikeActive] =  useState(isLikeActive)
 
-    console.log(isLikeActive);
-
     const [animation, setAnimation] = useState(0)
 
     const animationRef = useRef(null)

@@ -15,7 +15,7 @@ const NewInnerCase = ({casePar, userInfo}) => {
     }
     const iconUrl = useGetUserPhotoLink({anotherUserInfo : userInfo});
     return (
-        <div className="pt-[20px] left-right z-20 fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
+        <div className="pt-[20px] left-right fixed left-0 top-0 w-screen z-20 h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
             
             <div className='rounded-[10px] bg-[#20303f] flex flex-col duration-200 relative z-50'>
                 <CasePhotos photos={casePar.photos}  />
@@ -48,7 +48,7 @@ const NewInnerCase = ({casePar, userInfo}) => {
 
                 <div className="flex rounded-[13.33px] mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
                         <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ОПИСАНИЕ</p>
-                        <TextAboutMe aboutU={userInfo.profile.about} />
+                        <TextAboutMe buttonClassNames={"bg-[#1A2F42]"} textareaClassName={"!bg-card"} aboutU={userInfo.profile.about} />
                 </div>
                 
                 <div className="flex mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">

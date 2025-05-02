@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import "../../styles/left-right.css"
 import StatisticPage from '../StatisticPage/StatisticPage';
@@ -11,4 +11,4 @@ const CSSTransitionStatistikPage = ({isStatisticOpened, userConfig, setStatistik
     );
 };
 
-export default CSSTransitionStatistikPage;
+export default memo(CSSTransitionStatistikPage);

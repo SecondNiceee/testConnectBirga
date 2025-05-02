@@ -1,0 +1,106 @@
+import React, { useCallback, useEffect, useState } from 'react';
+import DescriptionAndPhoto from '../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto';
+import AddLinksComponent from '../../components/UI/AddLinksComponent/AddLinksComponent';
+import useCardsController from './hooks/useCardsController';
+import { disableColorAndActiveButton } from '../../functions/disableColorAndActiveButton';
+import { enableColorAndActiveButton } from '../../functions/enableColorAndActiveButton';
+
+
+
+// id : e.id,
+// title : e.title,
+// description : e.description,
+// // behanceLink : e.behance,
+// // dribbbleLink : e.dribble,
+// // dropfileLink : e.dropFile,
+// photosNames : e.photos,
+// photos : files,
+// createdAt : e.createdAt,
+// views : e.views,
+// links : e.links
+const NewChangeCard = ({card}) => {
+
+
+    const [errors, setErrors] = useState({
+        title : false,
+        description : false,
+        photos : false,
+        links : {
+            isError : false,
+            id : 0
+        }
+    })
+
+    const [changedCard, setChangedCard] = useState(card);
+
+    useEffect( () => {
+
+        const localErrors = {
+            title : false,
+            description : false,
+            photos : false,
+            links : {
+                isError : false,
+                ids : [0]
+            }
+        }
+        if (changedCard.description.length < 3 || changedCard.description.length > 500 ){
+            localErrors.description = true
+        }
+        if (changedCard.title.length < 3 || changedCard.title.length > 25){
+            localErrors.title = true
+        }
+        if (!changedCard.photos.lenght){
+            localErrors.photos = true
+        }
+        if ( changedCard.links?.filter((link) => link.length).length  ){
+            const errorsIds = [];
+            changedCard.links.forEach( (link, id) => {
+                if (!link.includes('http')){
+                    errorsIds.push(id);
+                }
+            } )
+            if (errorsIds.length){
+                localErrors.links = { isError : true, ids:errorsIds }
+            }
+        }
+        setErrors(localErrors);
+
+    } , [changedCard, setErrors] )
+
+    const {changeCardDescription, changeCardTitle, changePhotos} = useCardsController({setChangedCard})
+
+    useEffect( () => {
+        if (!Object.values(errors).every( (el) => !el )){
+            disableColorAndActiveButton();
+        }
+        else{
+            enableColorAndActiveButton();
+        }
+    } , [errors] )  // Чекаем на ерорсы
+
+    const setLinks = useCallback((updater) => {
+        setChangedCard((prev) => ({
+          ...prev,
+          links: typeof updater === 'function' ? updater(prev.links) : updater,
+        }));
+      }, [setChangedCard]);
+
+    const leftSymbols = 25 - card.title.length;
+    
+    return (
+        <div className="pt-[20px] left-right !z-[1000] fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
+            <h2 className='ml-4 text-[20.72px] font-semibold font-sf-pro-display-600 text-white'>Изменение кейса</h2>
+            <div className='py-3 mt-[18px] px-4 flex bg-card rounded-t-[11.7px] items-center border-b-[1px] border-solid border-[#2A343F]'>
+                <input value={changedCard.title} onChange={changeCardTitle} className='font-normal w-full text-[16.67px] font-sf-pro-display-400 text-white leading-[18.3px] placeholder:text-[#90979F]' placeholder='Название' type="text" />
+                <p className='ml-auto text-[#DAF5FE] font-sf-pro-display-400 font-normal leading-[14.34px]'>{leftSymbols}</p>
+            </div>
+            <DescriptionAndPhoto descriptionClassName={"!rounded-t-none"} setText={changeCardDescription} text={changedCard.description} textPlaceholder={"Описание"} isFileInput = {false} />
+            <p className='ml-4 mt-[5px] font-sf-pro-display-400 text-[13.33px] font-normal leading-[15.643px] text-[#DAF5FE]'>Название и описание для нового кейса.</p>
+            <DescriptionAndPhoto  className={"!mt-[10px]"} photos={changedCard.photos} setPhotos={changePhotos} isDescription = {false} />
+            <AddLinksComponent links={changedCard.links} setLinks={setLinks}  />
+        </div>
+    );
+};
+
+export default NewChangeCard;

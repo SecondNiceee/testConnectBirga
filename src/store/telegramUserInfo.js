@@ -2,6 +2,8 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import makeNewFile from "../functions/newMakeFile";
 import { USERID, USERLINK } from "../constants/tgStatic.config";
+import { apiLikes } from "../functions/api/ApiLikes";
+
 
 
 
@@ -134,18 +136,7 @@ export const dislikeUser = createAsyncThunk(
     'telelegramUserInfo/dislikeUser',
     async function ({userId, dislikedUserId}) {
         try{
-
-            await axios.post(`${process.env.REACT_APP_HOST}/user/dislike`, {} ,{
-                params : {
-                  userId : userId,
-                  likedUserId : dislikedUserId
-                },
-                headers : {
-                  "X-API-KEY-AUTH": process.env.REACT_APP_API_KEY,
-                }
-              })
-            
-
+            await apiLikes.dislikeUser({userId, dislikedUserId})
             return dislikedUserId;
         }
         catch(e){
@@ -160,20 +151,8 @@ export const dislikeUser = createAsyncThunk(
 export const likeUser = createAsyncThunk(
     'telelegramUserInfo/likeUser',
     async function ({userId, likedUserId}) {
-
-            const response = await axios.post(`${process.env.REACT_APP_HOST}/user/like`, {} ,{
-                params : {
-                  userId : userId,
-                  likedUserId : likedUserId
-                },
-                headers : {
-                  "X-API-KEY-AUTH": process.env.REACT_APP_API_KEY,
-                }
-              })
-            console.log(response.data)
-
-            return likedUserId;
-        
+        await apiLikes.likeUser({likedUserId, userId})
+        return likedUserId;
     }
 )
 export const fetchUserInfo = createAsyncThunk(
@@ -186,8 +165,6 @@ export const fetchUserInfo = createAsyncThunk(
         let user;
         
         try{
-
-
              user = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
               params: {
                 id: USERID,
@@ -220,11 +197,8 @@ export const fetchUserInfo = createAsyncThunk(
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
-              });
-
-            
+              });   
         }
-
         let localCards = []
 
         let allCards = await axios.get(`${process.env.REACT_APP_HOST}/card/findByUser` , {
@@ -244,14 +218,11 @@ export const fetchUserInfo = createAsyncThunk(
                     id : e.id,
                     title : e.title,
                     description : e.description,
-                    behanceLink : e.behance,
-                    dribbbleLink : e.dribble,
-                    dropfileLink : e.dropFile,
                     photosNames : e.photos,
                     photos : files,
                     createdAt : e.createdAt,
-                    views : e.views
-                    
+                    views : e.views,
+                    links : e.links
                 })
             }
         let photoUrl = user.data.photo ? user.data.photo : ""
@@ -340,7 +311,7 @@ const telegramUserInfo = createSlice({
   extraReducers: (builder) => {
 
     builder.addCase(dislikeUser.fulfilled, (state, action) => {
-        state.userLikes = state.userLikes.filter( (like) => like.likedUser.id !== action.payload )
+        state.userLikes = state.userLikes.filter( (like) => like.user.id !== action.payload )
     } );
 
     builder.addCase(dislikeUser.rejected, (state, action) => {
@@ -348,7 +319,7 @@ const telegramUserInfo = createSlice({
     } );
 
     builder.addCase(likeUser.fulfilled , (state, action) => {
-        state.userLikes.push({id : null, likedUser : {id : action.payload}})
+        state.userLikes.push({id : null, user : {id : action.payload}})
     });
 
 

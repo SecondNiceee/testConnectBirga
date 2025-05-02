@@ -3,7 +3,7 @@ import './TextAboutMe.css';
 import Text from '../../Text/Text';
 import translation from '../../../functions/translate';
 
-const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...props } ) => {
+const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, buttonClassNames, ...props } ) => {
   const [hideAboutMe, setHideAboutMe] = useState({
     isActive : false,
     show : false
@@ -98,7 +98,7 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, ...prop
           <div style={hideAboutMe.isActive 
         ? {display : 'flex'}
         : {display : 'none'}} 
-          className="also" 
+          className={`also ${buttonClassNames}`} 
           onClick={() => {  
 
                     setHideAboutMe({...hideAboutMe, show : !hideAboutMe.show})

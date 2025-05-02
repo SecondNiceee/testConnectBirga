@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import useGetLinksFormatedArray from '../hooks/useGetLinksFormatedArray';
 import { openLink } from '../../../functions/openLink';
 
@@ -15,7 +15,7 @@ const Links = ({links}) => {
                     return (
                         <div key={i} onClick={clickHandler(link.link)} className='flex cursor-pointer py-[12px] items-center pl-[19px] pr-[16px]'>
                             <div className='flex w-[40px] h-[40px] rounded-full bg-[#2ea5ff] items-center justify-center'>
-                                <img src='/images/Baidge/bag.svg' />
+                                <img alt='' src='/images/Baidge/bag.svg' />
                             </div>
                             <div className='flex ml-[10px] flex-col gap-[3px]'>
                                 <p className='font-sf-pro-display leading-[15px] text-[17px] tracking-wide text-white'>{link.title}</p>
@@ -25,9 +25,10 @@ const Links = ({links}) => {
                         </div>
                     )
                 }
+                return <></>
             } )}
         </div>
     );
 };
 
-export default Links;
+export default memo(Links);

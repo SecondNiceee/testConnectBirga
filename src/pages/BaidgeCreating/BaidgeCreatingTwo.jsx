@@ -1,43 +1,14 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {useEffect } from 'react';
 import Cap from '../../components/UI/Cap/Cap';
-import BaidgeCreatingLink from './ui/BaidgeCreatingLink';
 import Text from '../../components/Text/Text';
 import DescriptionAndPhoto from '../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto';
-import { showAllert } from '../../functions/showAlert';
 import useBlockInputs from '../../hooks/useBlockInputs';
+import AddLinksComponent from '../../components/UI/AddLinksComponent/AddLinksComponent';
 
 const BaidgeCreatingTwo = ({setLinks, links, taggsText, setTaggsText, setTaggs, taggs}) => {
 
-
-
-    const changeLinksHandler = useCallback( (id) => (text) => {
-        setLinks((value) => ([...value.map( (link, index) => {
-            if (index === id) {
-                return text
-            }
-            return link;
-        } )]))
-    } , [setLinks] )
-
-    const addLink = () => {
-        if (links.length === 5){
-            showAllert("Максимум 5 ссылок")
-        }
-        else{
-            setLinks((value) => ([...value, ""]))
-        }
-    } 
-
-
-    const deleteLink = (index) => () => {
-        setLinks((value) => ([...value].filter((link, id) => {
-            return id !== index;
-        })))
-    }
-
     useBlockInputs();
 
-    
     useEffect( () => {
         const splitedTaggs = taggsText.split(',').map((word, i) => word.trim()).filter((word) => word.length > 0)
         setTaggs(splitedTaggs)
@@ -57,9 +28,6 @@ const BaidgeCreatingTwo = ({setLinks, links, taggsText, setTaggsText, setTaggs, 
             setTaggsText(value)
         }
     }
-
-    const isAddActive = links.length !== 5;
-
 
     return (
         <div className="pt-[16px] min-h-fit min-w-[100vw] px-[16px] bg-[#18222d] flex flex-col h-[100vh] overflow-y-scroll pb-[100px]">
@@ -85,17 +53,7 @@ const BaidgeCreatingTwo = ({setLinks, links, taggsText, setTaggsText, setTaggs, 
             </div>
             }
 
-            <div className='flex flex-col gap-2 mt-[18px]'>
-                <p className='mr-4 ml-[16px] font-sf-pro-display text-[13px] leading-4 text-[#DAF5FE]'>
-                    ССЫЛКИ
-                </p>
-                <div className='flex flex-col w-full gap-2'>
-                    {links.map( (link, index) => (
-                        <BaidgeCreatingLink addLink={addLink} isAddActive = {isAddActive} deleteLink={deleteLink(index)} setLinks={setLinks} key={index} index={index} setText={changeLinksHandler(index)} text={link} />
-                    ) )}
-                </div>
-            </div>
-
+            <AddLinksComponent links={links} setLinks={setLinks} />
 
         </div>
     );

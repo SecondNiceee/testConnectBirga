@@ -1,4 +1,4 @@
-import React, { memo, useEffect,  useMemo,  useRef } from "react";
+import React, { memo, useEffect, useMemo, useRef } from "react";
 import cl from "./DescriptionAndPhoto.module.css";
 import GreyText from "../../../components/UI/GreyText/GreyText";
 import FileInput from "../../../components/UI/FileInput/FileInput";
@@ -7,7 +7,7 @@ import translation from "../../../functions/translate";
 const DescriptionAndPhoto = ({
   className,
   text,
-  photos,
+  photos = [],
   setText,
   setPhotos,
   MyInformation,
@@ -19,25 +19,24 @@ const DescriptionAndPhoto = ({
   textError = false,
   isFileInput = true,
   titleStyles = {},
-  onFocus = () => {}
+  onFocus = () => {},
+  descriptionClassName  = {},
+  isDescription = true
 }) => {
+  const hiddenRef = useRef(null);
+  const myRef = useRef(null);
 
-  const hiddenRef = useRef(null)
-  const myRef = useRef(null)
+  useEffect(() => {
+    if (myRef.current)
+    myRef.current.style.height =
+      hiddenRef.current.scrollHeight.toString() + "px";
+  }, [text]);
 
-  useEffect( () => {
-    // textAreaRef.current.style.height = (12 + 11 + 17.6*len).toString() + 'px'
-    myRef.current.style.height = (hiddenRef.current.scrollHeight).toString() + 'px'
-} , [text] )
+  const miniRef = useRef(null);
 
-  const miniRef = useRef(null)
-
-
-  const place = useMemo( () => {
-    return translation(textPlaceholder)
-  } , [textPlaceholder] )
-
-
+  const place = useMemo(() => {
+    return translation(textPlaceholder);
+  }, [textPlaceholder]);
 
   return (
     <div
@@ -47,30 +46,36 @@ const DescriptionAndPhoto = ({
           : cl.DescriptionAndPhoto
       }
     >
-      <GreyText style={titleStyles}  className={cl.GreyText}>{textTitle}</GreyText>
-      <div style={ textError ? {border : "1px solid rgb(255, 103, 103)"} : {}} className={cl.InputContainer}>
-        
-        <textarea ref={hiddenRef} value={text} className={cl.hiddenText}/>
+      {textTitle ? <GreyText style={titleStyles} className={cl.GreyText}>
+        {textTitle}
+      </GreyText> : <></>}
+
+      {isDescription ?  <div
+        style={textError ? { border: "1px solid rgb(255, 103, 103)" } : {}}
+        className={`${cl.InputContainer} ${descriptionClassName}`}
+      >
+        <textarea ref={hiddenRef} value={text} className={cl.hiddenText} />
 
         <TextArea
-        onFocus = {onFocus}
-        ref={myRef}
+          onFocus={onFocus}
+          ref={myRef}
           value={text}
           className={cl.DescriptionInput}
           placeholder={place}
           setValue={setText}
         ></TextArea>
 
-<p
-ref={miniRef}
+        <p
+          ref={miniRef}
           className={cl.inputCounter}
           style={text.length < 500 ? {} : { color: "#8a0303" }}
         >
           {text.length} / 500
         </p>
+      </div> : <>
+      </>}
 
 
-      </div>
 
       {MyInformation ? (
         <GreyText className={cl.SecondGreyText}>{filesTitle}</GreyText>
@@ -78,8 +83,9 @@ ref={miniRef}
         ""
       )}
 
-        {isFileInput &&  <FileInput
-        clear= {clearPhoto}
+      {isFileInput && (
+        <FileInput
+          clear={clearPhoto}
           fileError={fileError}
           setFiles={setPhotos}
           files={photos}
@@ -88,8 +94,8 @@ ref={miniRef}
               ? [cl.FileInput, cl.marginTop].join(" ")
               : cl.FileInput
           }
-        />}
-
+        />
+      )}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import useIsNeededToFill from './hooks/useIsNeededToFill';
 import useIsNeededToActive from './hooks/useIsNeededToActive';
 
@@ -27,4 +27,4 @@ const NewOption = ({text, isNededToFill, imgPath, neededActiveButton, isNeededBo
     );
 };
 
-export default NewOption;
+export default memo(NewOption);

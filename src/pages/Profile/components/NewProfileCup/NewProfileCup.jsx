@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import NitcheRating from '../NitcheRating/NitcheRating';
 import Profession from '../Profession/Profession';
 import ProfileUserIcon from '../ProfileUserIcon/ProfileUserIcon';
@@ -44,4 +44,4 @@ const NewProfileCup = ({
     );
 };
 
-export default NewProfileCup;
+export default memo(NewProfileCup);

@@ -8,13 +8,16 @@ import TextAboutMe from "../../components/UI/AboutMeText/TextAboutMe";
 import Taggs from "./components/Taggs";
 import Links from "./components/Links";
 import CSSTransitionStatistikPage from "./CSSTransitionStatistikPage";
-import { dislikeUser, likeUser } from "../../store/telegramUserInfo";
 import CssTransitionedNewCardsPages from "../NewCardsPage/CssTransitionedNewCardsPages";
 import useGetUserPhotoLink from "../../hooks/useGetUserPhotoLink";
 import { useNavigate } from "react-router";
-import pagesHistory from "../../constants/pagesHistory";
 import BackButton from "../../constants/BackButton";
 import CssTransitionNewInnerCase from "../NewInnerCase/CssTransitionNewInnerCase";
+import CssTransitionNewChangeCard from "../NewChangeCard/CssTransitionNewChangeCard";
+import backButtonController from "./controllers/BackButtonController";
+import { likesController } from "./controllers/LikesController";
+import { mainButtonController } from "./controllers/MainButtonController";
+import MainButton from "../../constants/MainButton";
 
 // id : userConfig.id,
 // counterOfLikes: userInfo.userLikes.length,
@@ -40,7 +43,13 @@ import CssTransitionNewInnerCase from "../NewInnerCase/CssTransitionNewInnerCase
 
 // const params = { id: 2 };
 // const params = null
-const Baidge = ({ gotenUserInfo }) => {
+
+
+
+
+
+// УЧТИ НУЖНО ДОНАСТРОИТЬ ЛАЙК
+const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
 
   const me = useSelector((state) => state.telegramUserInfo);
 
@@ -54,8 +63,8 @@ const Baidge = ({ gotenUserInfo }) => {
     if (!userInfo){
       return null;
     }
-    return userInfo.userLikes.map((like) => like.likedUser.id).includes(userInfo.id);
-  }, [userInfo] )
+    return userInfo.userLikes.map((like) => like.user.id).includes(me.id);
+  }, [userInfo, me.id] )
 
   const photoUrl = useGetUserPhotoLink({userInfo})
 
@@ -68,53 +77,57 @@ const Baidge = ({ gotenUserInfo }) => {
   const optionsConfig = useGetBaidgeOprionsConfig({setStatistikOpened, userInfo, setPortfoliosOpened});
 
   const [card, setCard] = useState(null);
+  
+  const [isChangingCardOpened, setChangingCardOpened] = useState(false);
 
   const [isCardPageOpened , setCardPageOpen] = useState(false);
-  
+
+
+
+  const fowardFunction = useCallback( () => {
+    return mainButtonController.fowardFunction({isCardPageOpened, isChangingCardOpened, myId : me.id, setChangingCardOpened, userInfoId : userInfo.id})
+  }, [isCardPageOpened, isChangingCardOpened, me.id, setChangingCardOpened, userInfo.id ] )
+
+  useEffect( () => {
+    MainButton.onClick(fowardFunction);
+    return ( ) => {
+      MainButton.offClick(fowardFunction)
+    }
+  }, [fowardFunction] )
+    
+  useEffect(  () => {
+    mainButtonController.controlVisability({isCardPageOpened, isChangingCardOpened, myId : me.id, userInfoId : userInfo.id});
+  }, [isCardPageOpened, isChangingCardOpened, me.id , userInfo.id]  )
+
+
 
   const backFunction = useCallback( () => {
-    if (!isStatistikOpened){
-      if (!isCardPageOpened){
-        if (!isPortfolioOpened){
-          
-          if (pagesHistory.length > 0){
-            navigate(-1)
-          }
-          navigate('/')
-        }
-        else{
-          setPortfoliosOpened(false);
-        }
-      }
-      else{
-        setCardPageOpen(false);
-      }
-    }
+    backButtonController.backButtonFunction({isCardPageOpened, isPortfolioOpened, isStatistikOpened, navigate, setCardPageOpen, setPortfoliosOpened})
   } , [isStatistikOpened, navigate, isCardPageOpened, isPortfolioOpened, setPortfoliosOpened] )
 
   useEffect( () => {
-    BackButton.show();
     BackButton.onClick(backFunction);
     return () => {
         BackButton.offClick(backFunction);
     }
   } , [backFunction] )
-    
+
+  useEffect( () => {
+    backButtonController.controllVisability();
+  } , [] )
+
+
+
+
+
   const clickLikeUser = () => {
-    dispatch(likeUser({
-      userId : me.id,
-      likedUserId : userInfo.id
-    }))
+    likesController.likeUser({dispatch : dispatch, userId : me.id, likedUserId : userInfo.id})
   }
 
   const clickDislikeUser = () => {
-    dispatch(dislikeUser({
-      userId : String(me.id),
-      dislikedUserId : String(userInfo.id)
-    }))
+    likesController.dislikeUser({dispatch : dispatch, userId : me.id, dislikedUserId : userInfo.id})
   }
 
-  console.log(card);
 
   if (!userInfo || userInfo.id === null) {
     return <MyLoader />;
@@ -122,12 +135,12 @@ const Baidge = ({ gotenUserInfo }) => {
 
   return (
     <>
+      <button onClick={fowardFunction} className="fixed left-1/2 bottom-1/3 z-[1000]">MAIN BUTTON</button>
       <div className="pt-[16px] px-[16px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[100px]">
-
         <NewProfileCup
           isLikeActive={isLikeActive}
           isBaidge={true}
-          counterOfLikes={0}
+          counterOfLikes={userInfo.userLikes.length}
           positionOfNitcheRating={0}
           firstName={userInfo.firstName}
           lastName={userInfo.lastName}
@@ -169,6 +182,8 @@ const Baidge = ({ gotenUserInfo }) => {
         </div>
 
       </div>
+
+      <CssTransitionNewChangeCard isChangingCardOpened={isChangingCardOpened} card={card}  />
 
       <CssTransitionedNewCardsPages setCardPageOpen = {setCardPageOpen} setCard = {setCard} isOpened={isPortfolioOpened} userInfo={me} />
 

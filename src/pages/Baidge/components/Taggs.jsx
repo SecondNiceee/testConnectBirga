@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 // taggs - массив слов
 const Taggs = ({taggs}) => {
@@ -14,4 +14,4 @@ const Taggs = ({taggs}) => {
     );
 };
 
-export default Taggs;
+export default memo(Taggs);
