@@ -1,10 +1,10 @@
 import React from 'react';
 
-const useGetLinksFormatedArray = ({links}) => {
+const useGetLinksFormatedArray = ({links, isFirstMyLink}) => {
 
     const notRecognisedLinks = []
 
-    const tgName = "@" + links[0] .split("/").pop() 
+    const tgName = isFirstMyLink ? "@" + links[0] .split("/").pop()  : ""
 
     let dribbleLink = null;
     let behanceLink = null;
@@ -30,8 +30,8 @@ const useGetLinksFormatedArray = ({links}) => {
     let framerLink = null;
     let figmaLink = null;
 
-
-    for (let i = 1; i < links.length; i++){
+    
+    for (let i = 1; i < links?.length; i++){
         let isRecognisedLink = false;
 
         if (links[i].includes("https://t.me/")){
@@ -136,7 +136,7 @@ const useGetLinksFormatedArray = ({links}) => {
         {
             title : "Мой Telegram",
             profession : tgName,
-            link : links[0],
+            link : null,
         },
         {
             title : "Telegram-канал",

@@ -1,4 +1,5 @@
 import { SecondatyButton } from "../../../constants/SecondaryButton";
+import { deleteCard, deleteServerCard } from "../../../store/telegramUserInfo";
 
 class SecondaryButtonController{
     secondaryButton = SecondatyButton;
@@ -12,6 +13,10 @@ class SecondaryButtonController{
         else{
             SecondatyButton.hide();
         }
+    }
+
+    secondaryButtonHandler({dispatch, cardId}){
+        dispatch(deleteServerCard(cardId))
     }
 }
 

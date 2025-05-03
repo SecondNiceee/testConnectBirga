@@ -10,7 +10,7 @@ import { apiLikes } from "../functions/api/ApiLikes";
 
 
 export const deleteServerCard = createAsyncThunk(
-    "telegramUserInfo/putCard",
+    "telegramUserInfo/deleteServerCard",
     async function (data){
         try{
             await axios.delete(`${process.env.REACT_APP_HOST}/card` , {
@@ -22,7 +22,6 @@ export const deleteServerCard = createAsyncThunk(
                   }
             }
             )
-
             return data
         }
         catch(e){
@@ -299,6 +298,10 @@ const telegramUserInfo = createSlice({
 },
   
   extraReducers: (builder) => {
+
+    builder.addCase( deleteServerCard.fulfilled, (state, action) => {
+        state.profile.cards = state.profile.cards.filter( (card) => card.id !== action.payload )
+    } )
 
     builder.addCase(dislikeUser.fulfilled, (state, action) => {
         state.userLikes = state.userLikes.filter( (like) => like.user.id !== action.payload )

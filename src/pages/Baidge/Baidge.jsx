@@ -84,7 +84,8 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
     description : "",
     links : [],
     photos : [],
-    photosNames : []
+    photosNames : [],
+    id : null
   });
   
   const [isChangingCardOpened, setChangingCardOpened] = useState(false);
@@ -98,6 +99,10 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
   useEffect( () => {
     secondaryButtonController.controllVisabiliry({isCardPageOpened});
   } , [isCardPageOpened] )
+
+  useEffect( () => {
+    secondaryButtonController.secondaryButtonHandler({cardId : card.id, dispatch})
+  }, [card.id, dispatch] )
 
   useEffect( () => {
     MainButton.onClick(fowardFunction);
