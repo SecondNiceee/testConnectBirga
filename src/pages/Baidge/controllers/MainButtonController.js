@@ -5,6 +5,11 @@ export class MainButtonController{
     mainButton = MainButton;
     controlVisability({isCardPageOpened, isPortfolioOpened, isChangingCardOpened, myId, userInfoId}){
         console.log(isPortfolioOpened && userInfoId === myId)
+        if (isCardPageOpened && (userInfoId === myId)){
+            this.mainButton.show();
+            this.mainButton.setText('ИЗМЕНИТЬ')
+            return ;
+        }
         if (isPortfolioOpened && myId === userInfoId){
             this.mainButton.show()
             this.mainButton.setText("СОЗДАТЬ")
@@ -16,11 +21,7 @@ export class MainButtonController{
             this.mainButton.setText("СОХРАНТЬ")
             return;
         }
-        if (isCardPageOpened && (userInfoId === myId)){
-            this.mainButton.show();
-            this.mainButton.setText('ИЗМЕНИТЬ')
-            return ;
-        }
+
         this.mainButton.hide();
     }
 
