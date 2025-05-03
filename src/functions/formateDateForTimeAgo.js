@@ -4,7 +4,7 @@ export default function formateDateForTimeAgo(dateString) {
   const secondsPast = Math.floor((now - date) / 1000);
 
   if (secondsPast < 60) {
-    return secondsPast === 0 ? 'только что' : `${secondsPast} секунд${plural(secondsPast, ['у', '', ''])} назад`;
+    return secondsPast < 0 ? 'только что' : `${secondsPast} секунд${plural(secondsPast, ['у', '', ''])} назад`;
   }
 
   const minutesPast = Math.floor(secondsPast / 60);

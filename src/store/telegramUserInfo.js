@@ -93,6 +93,7 @@ export const postCard = createAsyncThunk(
              })
             let localCard = {
                 ...data[2],
+                createdAt : im.data.createdAt,
                 photosNames : im.data.photos,
                 photos : photos,
                 id : im.data.id
