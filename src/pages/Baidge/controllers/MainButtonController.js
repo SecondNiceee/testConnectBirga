@@ -6,7 +6,6 @@ export class MainButtonController{
     controlVisability({isCardPageOpened, isPortfolioOpened, isChangingCardOpened, myId, userInfoId}){
         console.log(isPortfolioOpened && userInfoId === myId)
         if (isPortfolioOpened && myId === userInfoId){
-            alert("Привет")
             this.mainButton.show()
             this.mainButton.setText("СОЗДАТЬ")
             enableColorAndActiveButton();
