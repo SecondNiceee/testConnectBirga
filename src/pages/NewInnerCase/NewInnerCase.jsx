@@ -35,7 +35,7 @@ const NewInnerCase = ({casePar, userInfo}) => {
 
             </div>
 
-            <div className='flex rounded-[13.33px] bg-card py-[12px] pr-4 pl-[19px] items-center mt-2'>
+            <div onClick={() => {}} className='flex cursor-pointer rounded-[13.33px] bg-card py-[12px] pr-4 pl-[19px] items-center mt-2'>
                     <img className='w-[40px] h-[40px] rounded-full' src={iconUrl} alt="" />
                     <div className='flex flex-col gap-[2.33px] ml-[10px]'>
                         <h2 className='font-medium font-sf-pro-display text-[17px] leading-[18px] text-white'>{getFormatedUserFullName(userInfo.firstName, userInfo.lastName)}</h2>
@@ -44,16 +44,16 @@ const NewInnerCase = ({casePar, userInfo}) => {
                         </p>
                     </div>
                     <img className='w-[7px] h-[12px] ml-auto' src="/images/newProfile/leftArrow.svg" alt="leftArrow" />
-                </div>
+            </div>
 
                 <div className="flex rounded-[13.33px] mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
                         <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ОПИСАНИЕ</p>
-                        <TextAboutMe buttonClassNames={"bg-[#1A2F42]"} textareaClassName={"!bg-card"} aboutU={userInfo.profile.about} />
+                        <TextAboutMe buttonClassNames={"bg-[#1A2F42]"} textareaClassName={"!bg-card"} aboutU={casePar.description} />
                 </div>
                 
                 <div className="flex mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
                     <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ССЫЛКИ</p>
-                    <Links links={userInfo.links}/>
+                    <Links links={casePar.links}/>
                 </div>
 
         </div>

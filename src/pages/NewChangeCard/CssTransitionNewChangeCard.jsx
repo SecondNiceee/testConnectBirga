@@ -6,7 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 const CssTransitionNewChangeCard = ({card, isChangingCardOpened, setChangingCardOpened, setCard}) => {
     return (
         <CSSTransition in = {isChangingCardOpened} unmountOnExit mountOnEnter classNames={"left-right"} timeout={{enter : 0, exit : 300}}>
-            <NewChangeCard setCard={setCard} setChangingCardOpened = {setChangingCardOpened} card={card}/>
+            <NewChangeCard isChangingCardOpened={isChangingCardOpened}  setCard={setCard} setChangingCardOpened = {setChangingCardOpened} card={card}/>
         </CSSTransition>
     );
 };

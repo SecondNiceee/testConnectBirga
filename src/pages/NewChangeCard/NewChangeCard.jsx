@@ -2,14 +2,11 @@ import React, { useCallback, useEffect, useState } from 'react';
 import DescriptionAndPhoto from '../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto';
 import AddLinksComponent from '../../components/UI/AddLinksComponent/AddLinksComponent';
 import useCardsController from './hooks/useCardsController';
-import { disableColorAndActiveButton } from '../../functions/disableColorAndActiveButton';
-import { enableColorAndActiveButton } from '../../functions/enableColorAndActiveButton';
-import { showAllert } from '../../functions/showAlert';
 import { useDispatch } from 'react-redux';
-import { makeCardFormData } from './utils/makeCardFormData';
-import { putCard } from '../../store/telegramUserInfo';
 import MainButton from '../../constants/MainButton';
-import { isEqual } from 'lodash';
+import { mainButtonController } from './controllers/MainButtonController';
+import { backButtonController } from './controllers/BackButtonController';
+import BackButton from '../../constants/BackButton';
 
 
 
@@ -24,7 +21,7 @@ import { isEqual } from 'lodash';
 // createdAt : e.createdAt,
 // views : e.views,
 // links : e.links
-const NewChangeCard = ({card, setChangingCardOpened, setCard}) => {
+const NewChangeCard = ({card, setChangingCardOpened, setCard, isChangingCardOpened}) => {
 
     const dispatch = useDispatch();
 
@@ -40,10 +37,20 @@ const NewChangeCard = ({card, setChangingCardOpened, setCard}) => {
 
     const [changedCard, setChangedCard] = useState(card);
 
-    console.log(changedCard)
+    const backFunction = useCallback( () => {
+        backButtonController.backFunction({card, changedCard, dispatch, errors, setChangingCardOpened, setCard});
+    } , [card, changedCard, dispatch, errors, setChangingCardOpened, setCard ] )
 
     useEffect( () => {
+        BackButton.onClick(backFunction)
+        return () => {
+            BackButton.offClick(backFunction);
+        }
+    } , [backFunction] )
 
+    
+
+    useEffect( () => {
         const localErrors = {
             title : false,
             description : false,
@@ -78,22 +85,10 @@ const NewChangeCard = ({card, setChangingCardOpened, setCard}) => {
     } , [changedCard, setErrors] )
 
     const {changeCardDescription, changeCardTitle, changePhotos} = useCardsController({setChangedCard})
-    
+
+
     const forwardFunction = useCallback( async () => {
-        if (errors.links.isError){
-            showAllert("Ваши некоторые ссылки невалидны")
-        }
-        else{
-            const myFormData = makeCardFormData(changedCard);
-            try {
-                await dispatch(putCard([myFormData, changedCard.id, changedCard]));
-                setCard(changedCard);
-                setChangingCardOpened(false);
-              } catch (error) {
-                console.error('Ошибка при сохранении карточки:', error);
-                showAllert("Ошибка сохранения кейса. Проверьте введенные данные, возможно они не валидны или слишком велики/слишком малы. (Много ссылок, много фоток)")
-              }
-        }
+        mainButtonController.forwardFunction({dispatch, errors, setCard, setChangingCardOpened, changedCard});
     } , [errors,dispatch, changedCard, setChangingCardOpened, changedCard] )
 
     useEffect( () => {
@@ -102,15 +97,10 @@ const NewChangeCard = ({card, setChangingCardOpened, setCard}) => {
             MainButton.offClick(forwardFunction)
         }
     } , [forwardFunction] )
-    console.log(errors);
+
     useEffect( () => {
-        if (!(Object.values({...errors, links : false }).every( (el) => !el)) || isEqual(card, changedCard)){
-            disableColorAndActiveButton();
-        }
-        else{
-            enableColorAndActiveButton();
-        }
-    } , [errors, card, changedCard] )  // Чекаем на ерорсы
+        mainButtonController.visabilityController({card, changedCard, errors, isChangingCardOpened});
+    } , [errors, card, changedCard, isChangingCardOpened] )  // Чекаем на ерорсы
 
     const setLinks = useCallback((updater) => {
         setChangedCard((prev) => ({

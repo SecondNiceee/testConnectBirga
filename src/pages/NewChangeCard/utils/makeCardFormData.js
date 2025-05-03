@@ -1,6 +1,7 @@
 import sortFiles from "../../../functions/sortFiles"
 
 export const makeCardFormData = (card) => {
+    console.log(card);
     let myFormData = new FormData()
     myFormData.append("title" , String(card.title).trim())
     myFormData.append("description" , String(card.description.trim()))
