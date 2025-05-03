@@ -6,8 +6,11 @@ class SecondaryButtonController{
     controllVisabiliry({isCardPageOpened}){
         if (isCardPageOpened){
             SecondatyButton.show()
+            SecondatyButton.setText("Удалить")
             SecondatyButton.setParams({
-                position : "left"
+                position : "left",
+                color : "#462424",
+                text_color : "#FF4646"
             })
         }
         else{
@@ -15,8 +18,25 @@ class SecondaryButtonController{
         }
     }
 
-    secondaryButtonHandler({dispatch, cardId}){
-        dispatch(deleteServerCard(cardId))
+    secondaryButtonHandler({dispatch, cardId, secondaryButtonController}){
+        window.Telegram.WebApp.showPopup({
+                  title: "Удалить?",
+                  message: "Вы уверены, что хотите удалить этот кейс?",
+                  buttons: [
+                    { id: "save", type: "default", text: "Да" },
+                    { id: "delete", type: "destructive", text: "Нет" },
+                  ],
+                } , async (buttonId) => {
+            
+                  if (buttonId === "delete" || buttonId === null) {
+                    
+                  } 
+                  if (buttonId === "save") {
+                    await dispatch(deleteServerCard(cardId))
+                    secondaryButtonController(false);
+                  }
+                } )
+        
     }
 }
 

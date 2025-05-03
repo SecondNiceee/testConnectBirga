@@ -19,6 +19,7 @@ import { likesController } from "./controllers/LikesController";
 import { mainButtonController } from "./controllers/MainButtonController";
 import MainButton from "../../constants/MainButton";
 import { secondaryButtonController } from "./controllers/SecondaryButtonController";
+import { SecondatyButton } from "../../constants/SecondaryButton";
 
 // id : userConfig.id,
 // counterOfLikes: userInfo.userLikes.length,
@@ -100,9 +101,16 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
     secondaryButtonController.controllVisabiliry({isCardPageOpened});
   } , [isCardPageOpened] )
 
+  const secondButtonHandler = useCallback( () => {
+    secondaryButtonController.secondaryButtonHandler({cardId : card.id, dispatch, secondaryButtonController})
+  } , [] )
+
   useEffect( () => {
-    secondaryButtonController.secondaryButtonHandler({cardId : card.id, dispatch})
-  }, [card.id, dispatch] )
+    SecondatyButton.onClick(secondButtonHandler);
+    return () => {
+      SecondatyButton.offClick(secondButtonHandler);
+    }
+  }, [secondButtonHandler] )
 
   useEffect( () => {
     MainButton.onClick(fowardFunction);
@@ -113,8 +121,8 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
 
     
   useEffect(  () => {
-    mainButtonController.controlVisability({isCardPageOpened, isChangingCardOpened, myId : me.id, userInfoId : userInfo.id});
-  }, [isCardPageOpened, isChangingCardOpened, me.id , userInfo.id]  )
+    mainButtonController.controlVisability({isCardPageOpened, isChangingCardOpened, isPortfolioOpened, myId : me.id, userInfoId : userInfo.id});
+  }, [isCardPageOpened, isChangingCardOpened, me.id , userInfo.id, isPortfolioOpened]  )
 
   const backFunction = useCallback( () => {
     backButtonController.backButtonFunction({isCardPageOpened, isPortfolioOpened, isStatistikOpened, navigate, setCardPageOpen, setPortfoliosOpened})
