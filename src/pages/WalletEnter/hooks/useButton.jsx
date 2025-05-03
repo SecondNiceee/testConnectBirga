@@ -14,7 +14,6 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
 
     useEffect( () => {
         const mistakesCopy = [false, false, false ,false ,false, false]
-        
 
         if (mistakes.includes(true)){
             numbers.forEach((e, i) => {

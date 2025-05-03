@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 import { makeCardFormData } from './utils/makeCardFormData';
 import { putCard } from '../../store/telegramUserInfo';
 import MainButton from '../../constants/MainButton';
+import { isEqual } from 'lodash';
 
 
 
@@ -58,7 +59,7 @@ const NewChangeCard = ({card, setChangingCardOpened, setCard}) => {
         if (changedCard.title.length < 3 || changedCard.title.length > 25){
             localErrors.title = true
         }
-        if (!changedCard.photos.lenght){
+        if (!changedCard.photos.length){
             localErrors.photos = true
         }
         if ( changedCard.links?.filter((link) => link.length).length  ){
@@ -101,15 +102,15 @@ const NewChangeCard = ({card, setChangingCardOpened, setCard}) => {
             MainButton.offClick(forwardFunction)
         }
     } , [forwardFunction] )
-
+    console.log(errors);
     useEffect( () => {
-        if (!Object.values(errors).every( (el) => !el )){
+        if (!(Object.values({...errors, links : false }).every( (el) => !el)) || isEqual(card, changedCard)){
             disableColorAndActiveButton();
         }
         else{
             enableColorAndActiveButton();
         }
-    } , [errors] )  // Чекаем на ерорсы
+    } , [errors, card, changedCard] )  // Чекаем на ерорсы
 
     const setLinks = useCallback((updater) => {
         setChangedCard((prev) => ({
