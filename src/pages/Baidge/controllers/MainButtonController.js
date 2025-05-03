@@ -10,6 +10,7 @@ export class MainButtonController{
             this.mainButton.show()
             this.mainButton.setText("СОЗДАТЬ")
             enableColorAndActiveButton();
+            return;
         }
         if (isChangingCardOpened){
             this.mainButton.show()
