@@ -18,6 +18,7 @@ import backButtonController from "./controllers/BackButtonController";
 import { likesController } from "./controllers/LikesController";
 import { mainButtonController } from "./controllers/MainButtonController";
 import MainButton from "../../constants/MainButton";
+import { secondaryButtonController } from "./controllers/SecondaryButtonController";
 
 // id : userConfig.id,
 // counterOfLikes: userInfo.userLikes.length,
@@ -76,17 +77,27 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
 
   const optionsConfig = useGetBaidgeOprionsConfig({setStatistikOpened, userInfo, setPortfoliosOpened});
 
-  const [card, setCard] = useState(null);
+  console.log(isPortfolioOpened);
+
+  const [card, setCard] = useState({
+    title : "",
+    description : "",
+    links : [],
+    photos : [],
+    photosNames : []
+  });
   
   const [isChangingCardOpened, setChangingCardOpened] = useState(false);
 
   const [isCardPageOpened , setCardPageOpen] = useState(false);
 
-
-
   const fowardFunction = useCallback( () => {
-    return mainButtonController.fowardFunction({isCardPageOpened, isChangingCardOpened, myId : me.id, setChangingCardOpened, userInfoId : userInfo.id})
-  }, [isCardPageOpened, isChangingCardOpened, me.id, setChangingCardOpened, userInfo.id ] )
+    return mainButtonController.fowardFunction({isCardPageOpened, isPortfolioOpened,  isChangingCardOpened, myId : me.id, setChangingCardOpened, userInfoId : userInfo.id})
+  }, [isCardPageOpened, isChangingCardOpened, me.id, setChangingCardOpened, isPortfolioOpened, userInfo.id ] )
+
+  useEffect( () => {
+    secondaryButtonController.controllVisabiliry({isCardPageOpened});
+  } , [isCardPageOpened] )
 
   useEffect( () => {
     MainButton.onClick(fowardFunction);
@@ -94,12 +105,11 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
       MainButton.offClick(fowardFunction)
     }
   }, [fowardFunction] )
+
     
   useEffect(  () => {
     mainButtonController.controlVisability({isCardPageOpened, isChangingCardOpened, myId : me.id, userInfoId : userInfo.id});
   }, [isCardPageOpened, isChangingCardOpened, me.id , userInfo.id]  )
-
-
 
   const backFunction = useCallback( () => {
     backButtonController.backButtonFunction({isCardPageOpened, isPortfolioOpened, isStatistikOpened, navigate, setCardPageOpen, setPortfoliosOpened})
@@ -116,10 +126,6 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
     backButtonController.controllVisability();
   } , [] )
 
-
-
-
-
   const clickLikeUser = () => {
     likesController.likeUser({dispatch : dispatch, userId : me.id, likedUserId : userInfo.id})
   }
@@ -128,11 +134,9 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
     likesController.dislikeUser({dispatch : dispatch, userId : me.id, dislikedUserId : userInfo.id})
   }
 
-
   if (!userInfo || userInfo.id === null) {
     return <MyLoader />;
   }
-
   return (
     <>
       <button onClick={fowardFunction} className="fixed left-1/2 bottom-1/3 z-[1000]">MAIN BUTTON</button>

@@ -1,9 +1,7 @@
 import {isEqual} from "lodash";
 import { showAllert } from "../../../functions/showAlert";
-import { putCard } from "../../../store/telegramUserInfo";
-import { makeCardFormData } from "../utils/makeCardFormData";
 export class BackButtonController{
-    async backFunction({errors, changedCard, card, setChangingCardOpened, dispatch, setCard}){
+    async backFunction({errors, changedCard, card, setChangingCardOpened, save}){
         if (isEqual(changedCard, card)){
             setChangingCardOpened(false)
         }
@@ -21,10 +19,7 @@ export class BackButtonController{
                   if (buttonId === "save") {
                     if (Object.values({...errors, links : errors.links.isError}).every( (err) => !err ) ){
                         try{
-                            const myFormData = makeCardFormData(changedCard);
-                            await dispatch(putCard([myFormData, changedCard.id, changedCard]));
-                            setCard(changedCard);
-                            setChangingCardOpened(false);
+                            save()
                         }
                         catch(e){
                             showAllert("Ошибка сохранения кейса. Проверьте введенные данные, возможно они не валидны или слишком велики/слишком малы. (Много ссылок, много фоток)")

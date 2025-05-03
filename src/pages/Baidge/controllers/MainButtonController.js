@@ -1,8 +1,14 @@
 import MainButton from "../../../constants/MainButton"
+import { enableColorAndActiveButton } from "../../../functions/enableColorAndActiveButton";
 
 export class MainButtonController{
     mainButton = MainButton;
-    controlVisability({isCardPageOpened, isChangingCardOpened, myId, userInfoId}){
+    controlVisability({isCardPageOpened, isPortfolioOpened, isChangingCardOpened, myId, userInfoId}){
+        if (isPortfolioOpened && myId === userInfoId){
+            this.mainButton.show()
+            this.mainButton.setText("СОЗДАТЬ")
+            enableColorAndActiveButton();
+        }
         if (isChangingCardOpened){
             this.mainButton.show()
             this.mainButton.setText("СОХРАНТЬ")
@@ -16,12 +22,15 @@ export class MainButtonController{
         this.mainButton.hide();
     }
 
-    fowardFunction({isChangingCardOpened, isCardPageOpened, setChangingCardOpened, myId, userInfoId }){
+    fowardFunction({isChangingCardOpened, isPortfolioOpened, isCardPageOpened, setChangingCardOpened, myId, userInfoId }){
         if (isChangingCardOpened){
             return;
         }
         if (isCardPageOpened && (userInfoId === myId)){
             setChangingCardOpened(true)
+        }
+        if (isPortfolioOpened){
+            setChangingCardOpened(true);
         }
     }
 }

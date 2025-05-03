@@ -9,7 +9,7 @@ import formateDateForTimeAgo from '../../functions/formateDateForTimeAgo';
 import TextAboutMe from '../../components/UI/AboutMeText/TextAboutMe';
 
 const NewInnerCase = ({casePar, userInfo}) => {
-
+    console.log(casePar);
     const clickFunc = () => {
         console.log('Делюсь кейсом')
     }

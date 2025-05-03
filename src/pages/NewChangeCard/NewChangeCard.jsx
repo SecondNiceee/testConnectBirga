@@ -7,6 +7,9 @@ import MainButton from '../../constants/MainButton';
 import { mainButtonController } from './controllers/MainButtonController';
 import { backButtonController } from './controllers/BackButtonController';
 import BackButton from '../../constants/BackButton';
+import { makeCardFormData } from './utils/makeCardFormData';
+import { USERID } from '../../constants/tgStatic.config';
+import { postCard, putCard } from '../../store/telegramUserInfo';
 
 
 
@@ -34,12 +37,26 @@ const NewChangeCard = ({card, setChangingCardOpened, setCard, isChangingCardOpen
             id : 0
         }
     })
-
+    
     const [changedCard, setChangedCard] = useState(card);
+    
+    const save = useCallback( async ( ) => {
+        
+        if (!card.id){
+            const myFormData = makeCardFormData({card : changedCard, isCardNew : true} )
+            await dispatch(postCard([myFormData, USERID, changedCard]));
+        }
+        else{
+            const myFormData = makeCardFormData({card : changedCard, isCardNew : false} )
+            await dispatch(putCard([myFormData, changedCard.id, changedCard]));
+        }
+        setCard(changedCard);
+        setChangingCardOpened(false);
+    } , [card.id, changedCard, setCard, setChangingCardOpened, dispatch] )
 
     const backFunction = useCallback( () => {
-        backButtonController.backFunction({card, changedCard, dispatch, errors, setChangingCardOpened, setCard});
-    } , [card, changedCard, dispatch, errors, setChangingCardOpened, setCard ] )
+        backButtonController.backFunction({card, changedCard, errors, save,setChangingCardOpened});
+    } , [card, changedCard, errors, save, setChangingCardOpened  ] )
 
     useEffect( () => {
         BackButton.onClick(backFunction)
@@ -48,7 +65,6 @@ const NewChangeCard = ({card, setChangingCardOpened, setCard, isChangingCardOpen
         }
     } , [backFunction] )
 
-    
 
     useEffect( () => {
         const localErrors = {
@@ -86,10 +102,9 @@ const NewChangeCard = ({card, setChangingCardOpened, setCard, isChangingCardOpen
 
     const {changeCardDescription, changeCardTitle, changePhotos} = useCardsController({setChangedCard})
 
-
     const forwardFunction = useCallback( async () => {
-        mainButtonController.forwardFunction({dispatch, errors, setCard, setChangingCardOpened, changedCard});
-    } , [errors,dispatch, changedCard, setChangingCardOpened, changedCard] )
+        mainButtonController.forwardFunction({changedCard, errors, save});
+    } , [changedCard, errors, save] )
 
     useEffect( () => {
         MainButton.onClick(forwardFunction);
@@ -114,13 +129,13 @@ const NewChangeCard = ({card, setChangingCardOpened, setCard, isChangingCardOpen
     return (
         <div className="pt-[20px] left-right !z-[1000] fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
             <button onClick={forwardFunction}>ГО</button>
-            <h2 className='ml-4 text-[20.72px] font-semibold font-sf-pro-display-600 text-white'>Изменение кейса</h2>
+            <h2 className='ml-4 text-[20.72px] font-semibold font-sf-pro-display-600 text-white'>{!card.id ? "Создание кейса" : "Изменение кейса"}</h2>
             <div className='py-3 mt-[18px] px-4 flex bg-card rounded-t-[11.7px] items-center border-b-[1px] border-solid border-[#2A343F]'>
                 <input value={changedCard.title} onChange={changeCardTitle} className='font-normal w-full text-[16.67px] font-sf-pro-display-400 text-white leading-[18.3px] placeholder:text-[#90979F]' placeholder='Название' type="text" />
                 <p className={`ml-auto  font-sf-pro-display-400 font-normal leading-[14.34px] ${leftSymbols === 0 ? "text-red-500" : "text-[#DAF5FE]"}`}>{leftSymbols}</p>
             </div>
             <DescriptionAndPhoto descriptionClassName={"!rounded-t-none"} setText={changeCardDescription} text={changedCard.description} textPlaceholder={"Описание"} isFileInput = {false} />
-            <p className='ml-4 mt-[5px] font-sf-pro-display-400 text-[13.33px] font-normal leading-[15.643px] text-[#DAF5FE]'>Название и описание для нового кейса.</p>
+            <p className='ml-4 mt-[5px] font-sf-pro-display-400 text-[13.33px] font-normal leading-[15.643px] text-[#DAF5FE]'>Название и описание для кейса.</p>
             <DescriptionAndPhoto  className={"!mt-[10px]"} photos={changedCard.photos} setPhotos={changePhotos} isDescription = {false} />
             <AddLinksComponent links={changedCard.links} setLinks={setLinks}  />
         </div>
