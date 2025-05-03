@@ -30,7 +30,6 @@ const menu = document.documentElement.querySelector(".FirstMenu")
 const Yes = translation("Да")
 const No = translation("Нет")
 
-console.log("Fix it")
 const SavedPage = () => {
 
   useBlockInputs()
@@ -230,7 +229,9 @@ const SavedPage = () => {
     isProfile,
     setProfile,
     card.isOpen,
-    setCard
+    setCard,
+    isSliderOpened,
+    setSlideOpened
   ]);
 
   useEffect( () => {
@@ -387,7 +388,7 @@ const SavedPage = () => {
     else{
       setSlideOpened(false)
     }
-  }, [responce, savedTasks, details.id, dispatch, isSliderOpened, setSlideOpened, isSliderOpened, setSlideOpened]);
+  }, [responce, savedTasks, details.id, dispatch, isSliderOpened, setSlideOpened]);
 
   window.Telegram.WebApp.disableVerticalSwipes();
 

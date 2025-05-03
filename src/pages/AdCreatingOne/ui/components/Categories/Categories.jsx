@@ -12,7 +12,6 @@ const Categories = ({
   upper = "Категория",
   down = "Подкатегория"
 }) => {
-  console.log(taskInformation)
   function format(arg) {
     if (arg) {
       let str = arg.split(" ");

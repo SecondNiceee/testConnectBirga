@@ -57,9 +57,6 @@ const MyAds = ({isPage = false}) => {
   const [isPageValueTwo , setPageValueTwo] = useState(true)
   const [buyPage, setBuyPage] = useState(false)
   const [walletH, setWalletH] = useState(false)
-  console.log('====================================');
-  console.log(buyPage);
-  console.log('====================================');
   const [valueOne , setValueOne] = useState("all")
 
   const [valueTwo , setValueTwo] = useState("all")
@@ -118,13 +115,7 @@ const MyAds = ({isPage = false}) => {
 
   detailsVar = details;
 
-
-  
-  
   const myAdsArray = useSelector((state) => state.information.myAdsArray);
-
-
-  console.log(valueTwo);
 
   const filteredArray = useMemo( () => {
     switch (valueTwo){
@@ -142,10 +133,6 @@ const MyAds = ({isPage = false}) => {
         window.Telegram.WebApp.showAlert("Что - то пошло не так MyAds второй")
     }
   } , [myAdsArray , valueTwo] )
-
-  console.log(filteredArray);
-  
-
 
   
   const [secondPage, setSecondPage] = useState({
@@ -494,12 +481,6 @@ const MyAds = ({isPage = false}) => {
       return filteredArray[secondPage.index]
     }
   } , [isPage , myAdeOneStatus  , secondPage.index , filteredArray , isPageValueOne] )
-
-
-  console.log('====================================');
-  console.log(isPage , myAdOneAdvertisement, secondPage);
-  console.log('====================================');
-
 
   const deleteFunction = useCallback( (index) => {
     window.Telegram.WebApp

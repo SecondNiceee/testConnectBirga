@@ -3,10 +3,10 @@ import NewChangeCard from './NewChangeCard';
 import "../../styles/left-right.css";
 import { CSSTransition } from 'react-transition-group';
 
-const CssTransitionNewChangeCard = ({card, isChangingCardOpened}) => {
+const CssTransitionNewChangeCard = ({card, isChangingCardOpened, setChangingCardOpened, setCard}) => {
     return (
         <CSSTransition in = {isChangingCardOpened} unmountOnExit mountOnEnter classNames={"left-right"} timeout={{enter : 0, exit : 300}}>
-            <NewChangeCard card={card}/>
+            <NewChangeCard setCard={setCard} setChangingCardOpened = {setChangingCardOpened} card={card}/>
         </CSSTransition>
     );
 };

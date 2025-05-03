@@ -66,9 +66,6 @@ const AllTasks = forwardRef(({
     }
     return translation(e).slice(0, 7).trim() + ".."
   }
-
-
-  console.log(filters)
   return (
     <div className="AllTasks">
       <FirstTop

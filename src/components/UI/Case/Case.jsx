@@ -25,8 +25,6 @@ const Case = ({
   createdAt,
   ...props
 }) => {
-
-  console.log(card)
  const myRef = useRef(null)
 
   const vibrate = useCallback( () => {

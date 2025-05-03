@@ -25,7 +25,7 @@ const Links = ({links}) => {
                         </div>
                     )
                 }
-                return <></>
+                return null;
             } )}
         </div>
     );

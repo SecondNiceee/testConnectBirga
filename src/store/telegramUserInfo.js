@@ -40,7 +40,7 @@ export const putCard = createAsyncThunk(
             let im = await axios.put(`${process.env.REACT_APP_HOST}/card` , data[0] , 
                 {
                     params : {
-                        id : USERID,
+                        id : data[1],
                     },
                     headers: {
                         "Content-Type" :'multipart/form-data',
@@ -110,9 +110,6 @@ export const postCard = createAsyncThunk(
 export const putUserInfo = createAsyncThunk(
     "telegramUserInfo/putUserInfo",
     async function (data){
-        console.log("------------------------------------")
-        console.log("------------------------------------")
-        console.log(data[0])
         try{
             await axios.put(`${process.env.REACT_APP_HOST}/user` , data[0] , {
                 params : {
@@ -173,12 +170,10 @@ export const fetchUserInfo = createAsyncThunk(
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
             });
-            console.log('====================================');
-            console.log(user.data);
-            console.log('====================================');
+            
         }
         catch(e){
-            const response = await axios.post(`${process.env.REACT_APP_HOST}/user/createByBot` , {}, {
+            await axios.post(`${process.env.REACT_APP_HOST}/user/createByBot` , {}, {
                 params : {
                     id : String(USERID),
                     language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en",
@@ -189,7 +184,6 @@ export const fetchUserInfo = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-            console.log(response.data)
             user = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
                 params: {
                   id: USERID,
@@ -209,8 +203,6 @@ export const fetchUserInfo = createAsyncThunk(
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
         })
-
-        console.log(allCards)
         for (let e of allCards.data)
             {
                 let files =  await makeNewFile(e.folder, e.photos)
@@ -226,9 +218,7 @@ export const fetchUserInfo = createAsyncThunk(
                 })
             }
         let photoUrl = user.data.photo ? user.data.photo : ""
-
-        console.log(user.data)
-
+        console.log(user.data);
         return ( {
             firstName: firstName,
             lastName: lastName,

@@ -268,8 +268,6 @@ export const fetchResponses = createAsyncThunk(
                 window.Telegram.WebApp.showAlert(e);
               }
             
-            console.log(localResponses)
-
             const advertisementUser = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne` , {
                 params : {
                     "id" : advertisement.user.id
@@ -384,7 +382,6 @@ const responses = createSlice({
             if (action.payload.length < 4){
                 state.responsesByAStatus = "all"
             }
-            console.log(state.responsesByAIds)
         }))
 
         builder.addCase(fetchResponseByAdvertisement.pending, ((state , action) => {

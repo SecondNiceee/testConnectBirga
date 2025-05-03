@@ -4,6 +4,11 @@ import AddLinksComponent from '../../components/UI/AddLinksComponent/AddLinksCom
 import useCardsController from './hooks/useCardsController';
 import { disableColorAndActiveButton } from '../../functions/disableColorAndActiveButton';
 import { enableColorAndActiveButton } from '../../functions/enableColorAndActiveButton';
+import { showAllert } from '../../functions/showAlert';
+import { useDispatch } from 'react-redux';
+import { makeCardFormData } from './utils/makeCardFormData';
+import { putCard } from '../../store/telegramUserInfo';
+import MainButton from '../../constants/MainButton';
 
 
 
@@ -18,8 +23,9 @@ import { enableColorAndActiveButton } from '../../functions/enableColorAndActive
 // createdAt : e.createdAt,
 // views : e.views,
 // links : e.links
-const NewChangeCard = ({card}) => {
+const NewChangeCard = ({card, setChangingCardOpened, setCard}) => {
 
+    const dispatch = useDispatch();
 
     const [errors, setErrors] = useState({
         title : false,
@@ -32,6 +38,8 @@ const NewChangeCard = ({card}) => {
     })
 
     const [changedCard, setChangedCard] = useState(card);
+
+    console.log(changedCard)
 
     useEffect( () => {
 
@@ -69,6 +77,30 @@ const NewChangeCard = ({card}) => {
     } , [changedCard, setErrors] )
 
     const {changeCardDescription, changeCardTitle, changePhotos} = useCardsController({setChangedCard})
+    
+    const forwardFunction = useCallback( async () => {
+        if (errors.links.isError){
+            showAllert("Ваши некоторые ссылки невалидны")
+        }
+        else{
+            const myFormData = makeCardFormData(changedCard);
+            try {
+                await dispatch(putCard([myFormData, changedCard.id, changedCard]));
+                setCard(changedCard);
+                setChangingCardOpened(false);
+              } catch (error) {
+                console.error('Ошибка при сохранении карточки:', error);
+                showAllert("Ошибка сохранения кейса. Проверьте введенные данные, возможно они не валидны или слишком велики/слишком малы. (Много ссылок, много фоток)")
+              }
+        }
+    } , [errors,dispatch, changedCard, setChangingCardOpened, changedCard] )
+
+    useEffect( () => {
+        MainButton.onClick(forwardFunction);
+        return () => {
+            MainButton.offClick(forwardFunction)
+        }
+    } , [forwardFunction] )
 
     useEffect( () => {
         if (!Object.values(errors).every( (el) => !el )){
@@ -86,14 +118,15 @@ const NewChangeCard = ({card}) => {
         }));
       }, [setChangedCard]);
 
-    const leftSymbols = 25 - card.title.length;
+    const leftSymbols = 25 - changedCard.title.length < 0 ? 0 : 25 - changedCard.title.length;
     
     return (
         <div className="pt-[20px] left-right !z-[1000] fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
+            <button onClick={forwardFunction}>ГО</button>
             <h2 className='ml-4 text-[20.72px] font-semibold font-sf-pro-display-600 text-white'>Изменение кейса</h2>
             <div className='py-3 mt-[18px] px-4 flex bg-card rounded-t-[11.7px] items-center border-b-[1px] border-solid border-[#2A343F]'>
                 <input value={changedCard.title} onChange={changeCardTitle} className='font-normal w-full text-[16.67px] font-sf-pro-display-400 text-white leading-[18.3px] placeholder:text-[#90979F]' placeholder='Название' type="text" />
-                <p className='ml-auto text-[#DAF5FE] font-sf-pro-display-400 font-normal leading-[14.34px]'>{leftSymbols}</p>
+                <p className={`ml-auto  font-sf-pro-display-400 font-normal leading-[14.34px] ${leftSymbols === 0 ? "text-red-500" : "text-[#DAF5FE]"}`}>{leftSymbols}</p>
             </div>
             <DescriptionAndPhoto descriptionClassName={"!rounded-t-none"} setText={changeCardDescription} text={changedCard.description} textPlaceholder={"Описание"} isFileInput = {false} />
             <p className='ml-4 mt-[5px] font-sf-pro-display-400 text-[13.33px] font-normal leading-[15.643px] text-[#DAF5FE]'>Название и описание для нового кейса.</p>

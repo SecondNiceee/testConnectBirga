@@ -145,16 +145,8 @@ function useWriteFucntion({walletH, buyPage, setBuyPage, happyHold, setOpen, isO
                         }).catch(value => {
                           console.log(value);
                           alert(translation("Холд не прошел. Отправте в поддержку следующее сообщение"))
-                          alert(JSON.stringify(value))
-                          
-                        } )
-    
-    
-    
-                         
-
-                          // MainButton.setText(translation("Перейти к заданию"))
-      
+                          alert(JSON.stringify(value))                    
+                        } )  
                       }
                       if (buttonId === "delete" || buttonId === null) {                        
                       }

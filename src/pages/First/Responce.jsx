@@ -31,9 +31,7 @@ const Responce = forwardRef(({ orderInformation, responce, setResponce , left = 
   } , [clearPhoto , setClearPhoto] )
 
 
-  useEffect( () => {
-    console.log("Это рендер AdCreating")
-    
+  useEffect( () => {    
     const input = document.querySelectorAll('input');
     const textarea  = document.querySelectorAll('textarea');
     for (let smallInput of input){

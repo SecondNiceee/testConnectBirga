@@ -37,9 +37,6 @@ const CompactWithWidth = ({greyText, onChange,inputMistake = false, inputType = 
     const clickHndler = useCallback( () => {
         inputRef.current.focus()
     } , [] )
-    console.log('====================================');
-    console.log(inputValue);
-    console.log('====================================');
     return (
         <div className={[className, cl.adressBlock].join(' ')}>
                 <p ref={hiddenRef} className={cl.hiddenText}>{inputValue}</p>

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { fetchUserInfo } from '../../../store/telegramUserInfo';
 import translation from '../../../functions/translate';
-import { USERID, USERIDR } from '../../../constants/tgStatic.config';
+import { USERID } from '../../../constants/tgStatic.config';
 
 const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}) => {
     
@@ -26,18 +26,6 @@ const useButton = ({step, setStep, keys, values, setMistakes, mistakes, numbers}
                 setMistakes(mistakesCopy)
             }
         }
-        console.log(keys);
-        
-        console.log(values);
-        console.log(mistakes);
-        console.log(mistakesCopy);
-        console.log(numbers);
-        
-        
-        
-        
-
-
     } , [values, mistakes, keys, numbers, setMistakes] )
     
 

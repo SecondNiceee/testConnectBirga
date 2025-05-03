@@ -183,7 +183,7 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
 
       </div>
 
-      <CssTransitionNewChangeCard isChangingCardOpened={isChangingCardOpened} card={card}  />
+      <CssTransitionNewChangeCard setCard = {setCard} setChangingCardOpened = {setChangingCardOpened} isChangingCardOpened={isChangingCardOpened} card={card}  />
 
       <CssTransitionedNewCardsPages setCardPageOpen = {setCardPageOpen} setCard = {setCard} isOpened={isPortfolioOpened} userInfo={me} />
 

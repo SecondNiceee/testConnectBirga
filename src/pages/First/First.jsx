@@ -103,8 +103,6 @@ const First = ({ isPage = false }) => {
     (state) => state.information.orderInformations
   );
 
-  console.log(ordersInformation)
-
   const [filters, setFilters] = useState({
     category: { id: -1, category: "Все" },
     subCategory: null,
@@ -305,9 +303,6 @@ const First = ({ isPage = false }) => {
   }, [responce.text, step]);
 
   const me = useSelector((state) => state.telegramUserInfo);
-
-
-  console.log("FIRST FIRST FIRST")
   useEffect(() => {
     dispatch(clearTasks());
   }, [dispatch]);
@@ -476,9 +471,6 @@ const First = ({ isPage = false }) => {
     setStep,
     setSubCategory,
   });
-  
-  console.log(secFilteredArray);
-
   return (
     <>
       <div style={firsStyle} className="first-container">

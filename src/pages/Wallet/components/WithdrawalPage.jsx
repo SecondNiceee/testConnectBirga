@@ -48,7 +48,6 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
           },
           (buttonId) => {
             if (buttonId === "save" || buttonId === null) {
-              console.log("ок");
               
             }
           }
@@ -92,9 +91,6 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
   
         }
         catch(e){
-          console.log('====================================');
-          console.log(e);
-          console.log('====================================');
           window.Telegram.WebApp.HapticFeedback.notificationOccurred("error")
           window.Telegram.WebApp.showPopup(
             {
@@ -106,7 +102,6 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
             },
             (buttonId) => {
               if (buttonId === "save" || buttonId === null) {
-                console.log("Он что - то нажал");
                 
               }
             }
@@ -127,11 +122,6 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
     }
   } , [myValues, setWithDrawal, address, dispatch, lastTransaction] )
   
-  console.log('====================================');
-  console.log(lastTransaction);
-  console.log('====================================');
-
-
   const valuesChanger = useCallback((e) => {
     setMyValues((value) => ({ ...value, address: e }));
   }, []);
@@ -192,11 +182,6 @@ const WithdrawalPage = ({balance, setWithDrawal}) => {
       MainButton.hide()
     }
   }, [] )
-
-
-  console.log('====================================');
-  console.log(myValues.summ);
-  console.log('====================================');
 
   return (
     <>

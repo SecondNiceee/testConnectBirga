@@ -20,7 +20,6 @@ const BaidgeSubCategoryChoiser = ({
         return professions
     } , [professions] )
 
-    console.log(realProfessions)
     useEffect( () => {
       document.documentElement.style.overflowY = "hidden"
       return () => {

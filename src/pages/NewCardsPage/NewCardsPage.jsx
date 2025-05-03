@@ -4,10 +4,20 @@ import { CardsFilterEnum } from "./enums/CardsFilterEnum";
 import { filterNames } from "./constants/filterNames";
 import { filterValues } from "./constants/filterValues";
 import Case from "../../components/UI/Case/Case";
+import { useSelector } from "react-redux";
+import MyLoader from "../../components/UI/MyLoader/MyLoader";
 
 const NewCardsPage = ({ userInfo, setCard, setCardPageOpen }) => {
 
   const [filter, setFilterBy] = useState(CardsFilterEnum.WATCHES);
+
+  const postState = useSelector( (state) => state.telegramUserInfo.postState );
+  
+  const putState = useSelector( (state) => state.telegramUserInfo.putState );
+
+  if (postState === "pending" || putState === "pending"){
+    return <MyLoader />
+  }
 
 
   const cards = userInfo.profile.cards;

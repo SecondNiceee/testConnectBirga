@@ -74,9 +74,6 @@ const AboutReaction = ({
     [setOneCard]
   );
 
-
-  console.log("Тут тут")
-
   return (
     <>
       <div

@@ -348,11 +348,6 @@ export const fetchSavedAdvertisements = createAsyncThunk(
                 "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
               }
         })
-        console.log(im.data)
-
-
-
-
         let advertisements = im.data
         let trueAdvertisements = []
 

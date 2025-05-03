@@ -1,6 +1,6 @@
 const useCardsController = ({setChangedCard}) => {
     const changeCardDescription = (description) => {
-        setChangedCard((...value) => ({...value, description : description}))
+        setChangedCard((value) => ({...value, description : description}))
     }
     const changeCardTitle = (e) => {
         const value = e.target.value;

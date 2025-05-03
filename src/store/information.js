@@ -49,7 +49,6 @@ export const deleteAd = createAsyncThunk(
 export const putMyTask = createAsyncThunk(
   "inforation/putMyTask",
   async function (data) {
-    console.log("ЭТО ПОСТ")
     try {
       let answ = await axios.put(
         `${process.env.REACT_APP_HOST}/advertisement`,
@@ -95,7 +94,6 @@ export const postMyTask = createAsyncThunk(
 
       for (let i = 0 ; i < 1; i++){
         try{
-          console.log("Создание задания")
           await axios.post(`${process.env.REACT_APP_HOST}/advertisement`, arr[0], {
             headers: {
               "Content-Type" :'multipart/form-data',
@@ -231,9 +229,6 @@ export const fetchTasksInformation = createAsyncThunk(
           }
         }
       );
-      console.log('====================================');
-      console.log(task);
-      console.log('====================================');
     } catch (e) {
       alert("Сейчас идет обновление, пожалуйста перезайдите через минуту")
       console.log(e);
@@ -270,12 +265,11 @@ export const fetchTasksInformation = createAsyncThunk(
           const newUser = {...order.user}
           try{
             if (newUser.photo.includes('http')){
-              const response = await axios.get(newUser.photo)
+              await axios.get(newUser.photo)
             }
           }
           catch{
             try{
-              console.log("photo update")
             const responce = await axios.put(`${process.env.REACT_APP_HOST}/user/photo`, {}, {
               params : {
                 userId : newUser.id
@@ -318,8 +312,6 @@ export const fetchTasksInformation = createAsyncThunk(
       } catch (e) {
         console.warn(e);
       }
-
-      console.log(tasks)
       return tasks;
     }
   }

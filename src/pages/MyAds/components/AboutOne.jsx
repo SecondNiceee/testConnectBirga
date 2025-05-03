@@ -10,8 +10,6 @@ import {
 } from "../../../store/responses";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import translation from "../../../functions/translate";
-import useSlider from "../../../hooks/useSlider";
-import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
 
 const Yes = translation("Да");
 const No = translation("Нет");
@@ -55,7 +53,6 @@ const AboutOne = ({
           if (buttonId === "delete" || buttonId === null) {
           }
           if (buttonId === "save") {
-            console.log(e);
             dispatch(deleteAd(e.id));
             setSecondPage((value) => ({ ...value, isActive: false }));
           }
