@@ -3,7 +3,7 @@ import './TextAboutMe.css';
 import Text from '../../Text/Text';
 import translation from '../../../functions/translate';
 
-const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, buttonClassNames, ...props } ) => {
+const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName = '!border-[#242c37]', buttonClassNames, ...props } ) => {
   const [hideAboutMe, setHideAboutMe] = useState({
     isActive : false,
     show : false
@@ -13,13 +13,13 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, buttonC
   const refTwo = useRef(null)
   useEffect( () => {
     refTwo.current.value = aboutU
-    if (refTwo.current.scrollHeight > 140){
+    if (refTwo.current.scrollHeight > 85){
       if (!hideAboutMe.show){
 
         setHideAboutMe((value) => ({...value, isActive : true}) )
-        areaRef.current.style.height = "136px"
+        areaRef.current.style.height = "80px"
         let localAboutMe = aboutU;
-        while (refTwo.current.scrollHeight > 140){
+        while (refTwo.current.scrollHeight > 85){
           
           let localAboutMeArr = localAboutMe.split(' ')
           localAboutMe = localAboutMeArr.slice(0 , localAboutMeArr.length - 1).join(' ')
@@ -64,8 +64,6 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, buttonC
             : {display : 'none'}
           }></div> 
           : "" }
-
-
           
 <textarea
             ref={refTwo}
