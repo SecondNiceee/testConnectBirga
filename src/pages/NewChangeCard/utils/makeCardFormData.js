@@ -6,6 +6,7 @@ export const makeCardFormData = ({isCardNew, card, categoryId}) => {
     myFormData.append("title" , String(card.title).trim())
     myFormData.append("description" , String(card.description.trim()))
     myFormData.append("categoryId" , String(1))  
+    console.log(card);
     if (isCardNew){
         card.photos.forEach(e => {
             myFormData.append('photos' , e)
@@ -20,6 +21,8 @@ export const makeCardFormData = ({isCardNew, card, categoryId}) => {
         files.removedArr.forEach( (e, i )  => {
         myFormData.append(`deleteFiles[${i}]` , e)
         })
+
+        console.log(files);
     }
     card.links.filter(link => link.length).forEach( (link, i) => {
         myFormData.append(`links[${i}]`, link.trim())

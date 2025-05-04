@@ -47,6 +47,7 @@ const NewChangeCard = ({card, setChangingCardOpened, setCard, isChangingCardOpen
             await dispatch(postCard([myFormData, USERID, changedCard]));
         }
         else{
+            alert("")
             const myFormData = makeCardFormData({card : changedCard, isCardNew : false} )
             await dispatch(putCard([myFormData, changedCard.id, changedCard]));
         }
