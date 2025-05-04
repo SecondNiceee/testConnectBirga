@@ -11,7 +11,6 @@ import MyLoader from '../../components/UI/MyLoader/MyLoader';
 import { useSliderClicker } from '../../components/UI/PhotosSlider/hooks/useSliderClicker';
 
 const NewInnerCase = ({casePar, userInfo, setPhotoIndex, setPhotos, setSlideOpened }) => {
-    console.log(casePar);
     const clickFunc = () => {
         console.log('Делюсь кейсом')
     }

@@ -5,7 +5,6 @@ const useIsMyResponse = ({detailsAdertisement, isDetailsActive}) => {
       const gotIt = useMemo( () => {
         if (detailsAdertisement){
           if (detailsAdertisement.responces){
-            console.log(detailsAdertisement)
             if (detailsAdertisement.responces.find((e) =>
               String(e.user.id) === USERID) || String(detailsAdertisement.user.id) === USERID)
             {

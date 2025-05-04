@@ -2,6 +2,7 @@ import {isEqual} from "lodash";
 import { showAllert } from "../../../functions/showAlert";
 export class BackButtonController{
     async backFunction({errors, changedCard, card, setChangingCardOpened, save}){
+        console.log(changedCard, card);
         if (isEqual(changedCard, card)){
             setChangingCardOpened(false)
         }
@@ -45,7 +46,7 @@ export class BackButtonController{
                     }
                   }
                   if (buttonId === "delete" || buttonId === null) {
-    
+                    setChangingCardOpened(false);
                   }
                 }
               );

@@ -4,11 +4,9 @@ import { openLink } from '../../../functions/openLink';
 
 const Links = ({links, isFirstMyLink}) => {
     const formatedLinks = useGetLinksFormatedArray({links, isFirstMyLink})
-    console.log(links)
     const clickHandler = (link) => () => {
         openLink(link)
     }
-    console.log(formatedLinks)
     return (
         <div className='rounded-[13px] bg-[#21303f] '>
             {formatedLinks.map( (link, i) => {
