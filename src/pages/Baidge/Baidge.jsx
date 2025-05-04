@@ -93,23 +93,14 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
     setPhotos,
     setSlideOpened,
   } = useSlider();
-
-  // const [card, setCard] = useState({
-  //   title : "",
-  //   description : "",
-  //   links : [],
-  //   photos : [],
-  //   photosNames : [],
-  //   id : null
-  // });
   
   const [isChangingCardOpened, setChangingCardOpened] = useState(false);
 
   const [isCardPageOpened , setCardPageOpen] = useState(false);
 
   const fowardFunction = useCallback( () => {
-    return mainButtonController.fowardFunction({isCardPageOpened, isPortfolioOpened,  isChangingCardOpened, myId : me.id, setChangingCardOpened, userInfoId : userInfo.id, isSliderOpened})
-  }, [isCardPageOpened, isChangingCardOpened, me.id, setChangingCardOpened, isPortfolioOpened, userInfo.id , isSliderOpened] )
+    return mainButtonController.fowardFunction({isCardPageOpened, isPortfolioOpened,  isChangingCardOpened, setCardId, myId : me.id, setChangingCardOpened, userInfoId : userInfo.id, isSliderOpened})
+  }, [isCardPageOpened, isChangingCardOpened, me.id, setChangingCardOpened, isPortfolioOpened, userInfo.id , isSliderOpened, setCardId] )
 
   useEffect( () => {
     secondaryButtonController.controllVisabiliry({isCardPageOpened, isSliderOpened});

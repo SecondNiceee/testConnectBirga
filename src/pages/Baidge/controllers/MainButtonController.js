@@ -29,7 +29,7 @@ export class MainButtonController{
         this.mainButton.hide();
     }
 
-    fowardFunction({isChangingCardOpened, isPortfolioOpened, isCardPageOpened, setChangingCardOpened, myId, userInfoId, isSliderOpened }){
+    fowardFunction({isChangingCardOpened, isPortfolioOpened, isCardPageOpened, setChangingCardOpened, myId, setCardId , userInfoId, isSliderOpened }){
         if (isSliderOpened){
             return;
         }
@@ -38,9 +38,11 @@ export class MainButtonController{
         }
         if (isCardPageOpened && (userInfoId === myId)){
             setChangingCardOpened(true)
+            return;
         }
         if (isPortfolioOpened){
             setChangingCardOpened(true);
+            setCardId(null)
         }
     }
 }
