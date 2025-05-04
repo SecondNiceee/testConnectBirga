@@ -7,6 +7,7 @@ import { getFormatedUserFullName } from '../../functions/getFormatedUserFullname
 import Links from '../Baidge/components/Links';
 import formateDateForTimeAgo from '../../functions/formateDateForTimeAgo';
 import TextAboutMe from '../../components/UI/AboutMeText/TextAboutMe';
+import MyLoader from '../../components/UI/MyLoader/MyLoader';
 
 const NewInnerCase = ({casePar, userInfo}) => {
     console.log(casePar);
@@ -14,6 +15,9 @@ const NewInnerCase = ({casePar, userInfo}) => {
         console.log('Делюсь кейсом')
     }
     const iconUrl = useGetUserPhotoLink({anotherUserInfo : userInfo});
+    if (!casePar){
+        return <MyLoader />
+    }
     return (
         <div className="pt-[20px] left-right fixed left-0 top-0 w-screen z-20 h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
             

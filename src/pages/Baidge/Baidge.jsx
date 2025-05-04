@@ -154,7 +154,7 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
   }
   return (
     <>
-      <button onClick={fowardFunction} className="fixed left-1/2 bottom-1/3 z-[1000]">MAIN BUTTON</button>
+      {/* <button onClick={fowardFunction} className="fixed left-1/2 bottom-1/3 z-[1000]">MAIN BUTTON</button> */}
       <div className="pt-[16px] px-[16px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[100px]">
         <NewProfileCup
           isLikeActive={isLikeActive}
