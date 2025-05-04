@@ -214,7 +214,7 @@ export const fetchUserInfo = createAsyncThunk(
                     photos : files,
                     createdAt : e.createdAt,
                     views : e.views,
-                    links : e.links ?? [""]
+                    links : e.links
                 })
             }
         let photoUrl = user.data.photo ? user.data.photo : ""

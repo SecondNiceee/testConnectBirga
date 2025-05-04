@@ -3,7 +3,9 @@ import { showAllert } from "../../../functions/showAlert";
 export class BackButtonController{
     async backFunction({errors, changedCard, card, setChangingCardOpened, save}){
         console.log(changedCard, card);
-        if (isEqual(changedCard, card)){
+
+
+        if (isEqual(changedCard, {...card, links : card.links ?? ['']})){
             setChangingCardOpened(false)
         }
         else{
