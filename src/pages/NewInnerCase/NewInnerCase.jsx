@@ -53,7 +53,7 @@ const NewInnerCase = ({casePar, userInfo, setPhotoIndex, setPhotos, setSlideOpen
 
                 <div className="flex rounded-[13.33px] mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
                         <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ОПИСАНИЕ</p>
-                        <TextAboutMe buttonClassNames={"!bg-[#1A2F42]"} textareaClassName={"!bg-card !border-[#1A2F42]"} aboutU={casePar.description} />
+                        <TextAboutMe buttonClassNames={"!bg-[#1A2F42]"} textareaClassName={"!bg-card !border-card"} aboutU={casePar.description} />
                 </div>
                 {casePar.links ?                 <div className="flex mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
                     <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ССЫЛКИ</p>

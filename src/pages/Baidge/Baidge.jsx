@@ -103,8 +103,8 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
   }, [isCardPageOpened, isChangingCardOpened, me.id, setChangingCardOpened, isPortfolioOpened, userInfo.id , isSliderOpened, setCardId] )
 
   useEffect( () => {
-    secondaryButtonController.controllVisabiliry({isCardPageOpened, isSliderOpened});
-  } , [isCardPageOpened, isSliderOpened] )
+    secondaryButtonController.controllVisabiliry({isCardPageOpened, isSliderOpened, isChangingCardOpened});
+  } , [isCardPageOpened, isSliderOpened, isChangingCardOpened] )
 
   const secondButtonHandler = useCallback( () => {
     secondaryButtonController.secondaryButtonHandler({cardId : cardId, dispatch, setCardPageOpen})
