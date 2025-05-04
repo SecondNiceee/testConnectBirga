@@ -14,6 +14,7 @@ const NewInnerCase = ({casePar, userInfo}) => {
     const clickFunc = () => {
         console.log('Делюсь кейсом')
     }
+    console.log(casePar)
     const iconUrl = useGetUserPhotoLink({anotherUserInfo : userInfo});
     if (!casePar){
         return <MyLoader />
@@ -32,8 +33,9 @@ const NewInnerCase = ({casePar, userInfo}) => {
                     </p>
                     </div>
                     <div className='flex gap-[6px] items-center'>
+                        
                         <ShareIcon onClick = {clickFunc} />
-                        <FalseTie navigate={"card"} task={casePar} id={casePar.id}   />
+                        <FalseTie navigate={"card"} task={casePar} id={String(casePar.id)}   />
                     </div>
                 </div>
 

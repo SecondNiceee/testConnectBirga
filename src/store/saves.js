@@ -28,10 +28,11 @@ export const deleteCard = createAsyncThunk(
 export const addCard = createAsyncThunk(
     "addCard" ,
     async function (par){
+        console.log(par)
         try{
             await axios.post(`${process.env.REACT_APP_HOST}/card/save` , {
-                "userId" : USERID,
-                "cardId" : par[0]
+                "userId" : Number(USERID),
+                "cardId" : Number(par[0])
             },{
                 headers : {
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
@@ -181,8 +182,6 @@ export const fetchSavedCards = createAsyncThunk(
     "fetchSavedCards",
     async function ([page]) {
         
-
-
         let im = await axios.get(`${process.env.REACT_APP_HOST}/card/saved` , {
             params : {
                 "userId" : USERID,
@@ -194,10 +193,8 @@ export const fetchSavedCards = createAsyncThunk(
               }
         })
 
-
          let cards = im.data
          let localCards = []
-
 
          for (let e of cards)
             {
@@ -211,11 +208,10 @@ export const fetchSavedCards = createAsyncThunk(
                     dribbbleLink : e.dribble,
                     dropfileLink : e.dropFile,
                     photosNames : e.photos,
-                    photos : files
+                    photos : files,
+                    createdAt : e.createdAt
                 })
             }
-
-
 
         return localCards
     }
@@ -382,10 +378,6 @@ export const fetchSavedAdvertisements = createAsyncThunk(
                     "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
                   }
             })
-
-
-            
-
 
             trueAdvertisements.push(
                 {

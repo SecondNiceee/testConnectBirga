@@ -44,6 +44,8 @@ const ChoicerInfo = forwardRef(
     const cardStatus = useSelector((state) => state.saves.cardsStatus);
     const responsesStatus = useSelector((state) => state.saves.reponsesStatus);
 
+    console.log(arr);
+
     const allStatus = useMemo(() => {
       switch (navigate) {
         case "task":
@@ -109,6 +111,7 @@ const ChoicerInfo = forwardRef(
         return arr.map((e, i) => {
           return (
             <Case
+              createdAt={e.createdAt}
               setPhotoIndex={setPhotoIndex}
               setPhotos={setPhotos}
               setSliderOpened={setSlideOpened}
@@ -131,8 +134,6 @@ const ChoicerInfo = forwardRef(
     const [advertisementPage, setAdvertisementPage] = useState(2);
     const [responsesPage, setResponsesPage] = useState(2);
     const [cardPage, setCardPage] = useState(2);
-
-    
 
     const getMore = useCallback(async () => {
       if (navigate === "task") {
@@ -236,8 +237,6 @@ const ChoicerInfo = forwardRef(
             </div>
           )}
         </div>
-
-
       </>
     );
   }

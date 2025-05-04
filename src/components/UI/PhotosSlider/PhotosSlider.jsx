@@ -2,6 +2,7 @@ import React, { forwardRef, useCallback, useEffect, useRef, useState } from 'rea
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 import MainButton from '../../../constants/MainButton';
+import BackButton from '../../../constants/BackButton';
 
 let overflowYValue;
 const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, blockerAll, setSliderOpened, left = 0, top = 0 }, ref) => {
@@ -22,6 +23,13 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, 
 
     const closeSliderFunction = useCallback( () => {
         setSliderOpened(false)
+    }, [] )
+
+    useEffect( () => {
+        BackButton.onClick(closeSliderFunction);
+        return () => {
+            BackButton.offClick(closeSliderFunction);
+        }
     }, [] )
 
     useEffect( () => {
