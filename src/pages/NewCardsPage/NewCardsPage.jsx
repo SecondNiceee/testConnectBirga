@@ -7,7 +7,7 @@ import Case from "../../components/UI/Case/Case";
 import { useSelector } from "react-redux";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 
-const NewCardsPage = ({ userInfo, setCard, setCardPageOpen }) => {
+const NewCardsPage = ({ userInfo, setCardId, setCardPageOpen }) => {
 
   const [filter, setFilterBy] = useState(CardsFilterEnum.WATCHES);
 
@@ -49,7 +49,7 @@ const NewCardsPage = ({ userInfo, setCard, setCardPageOpen }) => {
             description={card.description}
             card={card}
             openFunc={() => {
-                setCard(card)
+                setCardId(card.id)
                 setCardPageOpen(true)
             }}
           />

@@ -24,7 +24,7 @@ import { postCard, putCard } from '../../store/telegramUserInfo';
 // createdAt : e.createdAt,
 // views : e.views,
 // links : e.links
-const NewChangeCard = ({card, setChangingCardOpened, setCard, isChangingCardOpened}) => {
+const NewChangeCard = ({card, setChangingCardOpened, isChangingCardOpened}) => {
 
     const dispatch = useDispatch();
 
@@ -47,13 +47,12 @@ const NewChangeCard = ({card, setChangingCardOpened, setCard, isChangingCardOpen
             await dispatch(postCard([myFormData, USERID, changedCard]));
         }
         else{
-            alert("")
+
             const myFormData = makeCardFormData({card : changedCard, isCardNew : false} )
             await dispatch(putCard([myFormData, changedCard.id, changedCard]));
         }
-        setCard(changedCard);
         setChangingCardOpened(false);
-    } , [card.id, changedCard, setCard, setChangingCardOpened, dispatch] )
+    } , [card.id, changedCard, setChangingCardOpened, dispatch] )
 
     const backFunction = useCallback( () => {
         backButtonController.backFunction({card, changedCard, errors, save,setChangingCardOpened});

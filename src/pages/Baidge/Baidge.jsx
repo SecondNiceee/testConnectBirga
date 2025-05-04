@@ -80,14 +80,16 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
 
   console.log(isPortfolioOpened);
 
-  const [card, setCard] = useState({
-    title : "",
-    description : "",
-    links : [],
-    photos : [],
-    photosNames : [],
-    id : null
-  });
+  const [cardId, setCardId] = useState( 0 )
+
+  // const [card, setCard] = useState({
+  //   title : "",
+  //   description : "",
+  //   links : [],
+  //   photos : [],
+  //   photosNames : [],
+  //   id : null
+  // });
   
   const [isChangingCardOpened, setChangingCardOpened] = useState(false);
 
@@ -102,8 +104,8 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
   } , [isCardPageOpened] )
 
   const secondButtonHandler = useCallback( () => {
-    secondaryButtonController.secondaryButtonHandler({cardId : card.id, dispatch, secondaryButtonController})
-  } , [] )
+    secondaryButtonController.secondaryButtonHandler({cardId : cardId, dispatch, setCardPageOpen})
+  } , [cardId, setCardPageOpen, dispatch] )
 
   useEffect( () => {
     SecondatyButton.onClick(secondButtonHandler);
@@ -119,9 +121,9 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
     }
   }, [fowardFunction] )
 
-    
+  
   useEffect(  () => {
-    mainButtonController.controlVisability({isCardPageOpened, isChangingCardOpened, isPortfolioOpened, myId : me.id, userInfoId : userInfo.id});
+    mainButtonController.controlVisability({isCardPageOpened, isChangingCardOpened,  isPortfolioOpened, myId : me.id, userInfoId : userInfo.id});
   }, [isCardPageOpened, isChangingCardOpened, me.id , userInfo.id, isPortfolioOpened]  )
 
   const backFunction = useCallback( () => {
@@ -200,13 +202,13 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
 
       </div>
 
-      <CssTransitionNewChangeCard setCard = {setCard} setChangingCardOpened = {setChangingCardOpened} isChangingCardOpened={isChangingCardOpened} card={card}  />
+      <CssTransitionNewChangeCard setChangingCardOpened = {setChangingCardOpened} isChangingCardOpened={isChangingCardOpened} card={userInfo.profile.cards.find( (card) => card.id === cardId )}  />
 
-      <CssTransitionedNewCardsPages setCardPageOpen = {setCardPageOpen} setCard = {setCard} isOpened={isPortfolioOpened} userInfo={me} />
+      <CssTransitionedNewCardsPages setCardPageOpen = {setCardPageOpen} setCardId = {setCardId} isOpened={isPortfolioOpened} userInfo={me} />
 
       <CSSTransitionStatistikPage setStatistikClose={setStatistikOpened} userConfig={me} isStatisticOpened={isStatistikOpened} />
 
-      <CssTransitionNewInnerCase userInfo={userInfo}  card={card} isOpened={isCardPageOpened}  />
+      <CssTransitionNewInnerCase userInfo={userInfo}  card={userInfo.profile.cards.find( (card) => card.id === cardId )} isOpened={isCardPageOpened}  />
 
     </>
   );

@@ -1,5 +1,5 @@
 import { SecondatyButton } from "../../../constants/SecondaryButton";
-import { deleteCard, deleteServerCard } from "../../../store/telegramUserInfo";
+import { deleteServerCard } from "../../../store/telegramUserInfo";
 
 class SecondaryButtonController{
     secondaryButton = SecondatyButton;
@@ -18,7 +18,7 @@ class SecondaryButtonController{
         }
     }
 
-    secondaryButtonHandler({dispatch, cardId, secondaryButtonController}){
+    secondaryButtonHandler({dispatch, cardId,setCardPageOpen}){
         window.Telegram.WebApp.showPopup({
                   title: "Удалить?",
                   message: "Вы уверены, что хотите удалить этот кейс?",
@@ -33,7 +33,7 @@ class SecondaryButtonController{
                   } 
                   if (buttonId === "save") {
                     await dispatch(deleteServerCard(cardId))
-                    secondaryButtonController(false);
+                    setCardPageOpen(false);
                   }
                 } )
         
