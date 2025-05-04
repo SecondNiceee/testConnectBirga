@@ -32,8 +32,7 @@ const NewInnerCase = ({casePar, userInfo}) => {
                         {formateDateForTimeAgo(casePar.createdAt)} · {casePar.views} просмотров
                     </p>
                     </div>
-                    <div className='flex gap-[6px] items-center'>
-                        
+                    <div className='flex gap-[6px] items-center'>     
                         <ShareIcon onClick = {clickFunc} />
                         <FalseTie navigate={"card"} task={casePar} id={String(casePar.id)}   />
                     </div>
@@ -54,13 +53,12 @@ const NewInnerCase = ({casePar, userInfo}) => {
 
                 <div className="flex rounded-[13.33px] mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
                         <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ОПИСАНИЕ</p>
-                        <TextAboutMe buttonClassNames={"bg-[#1A2F42]"} textareaClassName={"!bg-card"} aboutU={casePar.description} />
+                        <TextAboutMe buttonClassNames={"!bg-[#1A2F42]"} textareaClassName={"!bg-card"} aboutU={casePar.description} />
                 </div>
                 {casePar.links ?                 <div className="flex mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
                     <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ССЫЛКИ</p>
                     <Links isFirstMyLink={false} links={casePar.links}/>
                 </div> : <></>}
-
 
         </div>
     );

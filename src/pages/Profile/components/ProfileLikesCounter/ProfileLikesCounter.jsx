@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Heart from '../Heart/Heart';
 import ClickedHeart from '../ClickedHeart/ClickedHeart';
 import "../ClickedHeart/ClickHeart.css";
+import { softVibration } from '../../../../functions/softVibration';
 
 const ProfileLikesCounter = ({likesCounter, isBaidge, isLikeActive, likeUser, clickDislikeUser}) => {
 
@@ -13,10 +14,12 @@ const ProfileLikesCounter = ({likesCounter, isBaidge, isLikeActive, likeUser, cl
 
     const clickHandler = async () => {
         if (!localStateOfLikeActive){
+          softVibration();
           likeUser(); 
           setAnimation(1)
         }
         else{
+          softVibration();
           clickDislikeUser();
           setAnimation(0)
         }

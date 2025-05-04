@@ -42,7 +42,7 @@ const NoPhotosComponent = forwardRef(({files, images, imageStyle, counter, addFi
 
           <img src="/images/AdCreating/LoadImageIcon.svg" className='w-[24px] h-[24px]' alt="" />
 
-          <p className='!text-[#2EA6FF] font-sf-pro-display-400 font-semibold leading-[15.643px] tracking-[0.34px]'>Добавить фото</p>
+          <p className='!text-[#2EA6FF] !text-[17px] !containerfont-sf-pro-display-600 font-semibold leading-[15.643px] tracking-[0.34px]'>Добавить фото</p>
 
         </label>
     );

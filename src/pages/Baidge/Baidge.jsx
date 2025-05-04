@@ -22,6 +22,7 @@ import { secondaryButtonController } from "./controllers/SecondaryButtonControll
 import { SecondatyButton } from "../../constants/SecondaryButton";
 import useSlider from "../../hooks/useSlider";
 import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
+import useMenuController from "./hooks/useMenuController";
 
 // id : userConfig.id,
 // counterOfLikes: userInfo.userLikes.length,
@@ -80,9 +81,9 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
 
   const optionsConfig = useGetBaidgeOprionsConfig({setStatistikOpened, userInfo, setPortfoliosOpened});
 
-  console.log(isPortfolioOpened);
-
   const [cardId, setCardId] = useState( 0 )
+
+  useMenuController({isPortfolioOpened});
 
   const {
     isSliderOpened,
@@ -167,7 +168,7 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
   }
   return (
     <>
-      {/* <button onClick={fowardFunction} className="fixed left-1/2 bottom-1/3 z-[1000]">MAIN BUTTON</button> */}
+      <button onClick={fowardFunction} className="fixed left-1/2 bottom-1/3 z-[1000]">MAIN BUTTON</button>
       <div className="pt-[16px] px-[16px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[100px]">
         <NewProfileCup
           isLikeActive={isLikeActive}
