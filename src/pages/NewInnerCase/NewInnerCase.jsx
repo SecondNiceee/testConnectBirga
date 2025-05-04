@@ -52,7 +52,7 @@ const NewInnerCase = ({casePar, userInfo}) => {
                 </div>
                 {casePar.links ?                 <div className="flex mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
                     <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ССЫЛКИ</p>
-                    <Links links={casePar.links}/>
+                    <Links isFirstMyLink={false} links={casePar.links}/>
                 </div> : <></>}
 
 

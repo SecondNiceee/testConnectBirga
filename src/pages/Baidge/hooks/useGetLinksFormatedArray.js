@@ -31,7 +31,7 @@ const useGetLinksFormatedArray = ({links, isFirstMyLink}) => {
     let figmaLink = null;
 
     
-    for (let i = 1; i < links?.length; i++){
+    for (let i = isFirstMyLink ? 1 : 0; i < links?.length; i++){
         let isRecognisedLink = false;
 
         if (links[i].includes("https://t.me/")){
