@@ -2,8 +2,16 @@ import {isEqual} from "lodash";
 import { showAllert } from "../../../functions/showAlert";
 export class BackButtonController{
     async backFunction({errors, changedCard, card, setChangingCardOpened, save}){
-        console.log(changedCard, card);
-        if (isEqual(changedCard, {...card, links : card?.links ?? ['']})){
+        const isCloseSrazy = card ? isEqual(changedCard, {...card, links : card?.links ?? ['']}) : 
+        isEqual(changedCard, {
+            id : null,
+            title : "",
+            description : "",
+            photos : [],
+            photosNames : [],
+            links : []
+        })
+        if (isCloseSrazy){
             setChangingCardOpened(false)
         }
         else{

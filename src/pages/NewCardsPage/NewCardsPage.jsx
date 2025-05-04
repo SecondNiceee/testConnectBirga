@@ -25,7 +25,7 @@ const NewCardsPage = ({
   const cards = userInfo.profile.cards;
 
   return (
-    <div className="pt-[16px] z-20 fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
+    <div className="pt-[16px] z-20 fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[20px]">
       {!cards.length ? (
         <div className="h-screen flex justify-center items-center">
           <MyAnimation  height="100vh" text="Нет кейсов" />
