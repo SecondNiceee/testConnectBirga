@@ -8,14 +8,16 @@ import Links from '../Baidge/components/Links';
 import formateDateForTimeAgo from '../../functions/formateDateForTimeAgo';
 import TextAboutMe from '../../components/UI/AboutMeText/TextAboutMe';
 import MyLoader from '../../components/UI/MyLoader/MyLoader';
+import { useSliderClicker } from '../../components/UI/PhotosSlider/hooks/useSliderClicker';
 
-const NewInnerCase = ({casePar, userInfo}) => {
+const NewInnerCase = ({casePar, userInfo, setPhotoIndex, setPhotos, setSlideOpened }) => {
     console.log(casePar);
     const clickFunc = () => {
         console.log('Делюсь кейсом')
     }
     console.log(casePar)
     const iconUrl = useGetUserPhotoLink({anotherUserInfo : userInfo});
+    const photosClickEvent = useSliderClicker({photos:casePar.photos, setPhotoIndex, setPhotos, setSlideOpened})
     if (!casePar){
         return <MyLoader />
     }
@@ -23,8 +25,7 @@ const NewInnerCase = ({casePar, userInfo}) => {
         <div className="pt-[20px] left-right fixed left-0 top-0 w-screen z-20 h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
             
             <div className='rounded-[10px] bg-[#20303f] flex flex-col duration-200 relative z-50'>
-                <CasePhotos photos={casePar.photos}  />
-
+                <CasePhotos photosClickEvent={photosClickEvent} photos={casePar.photos}  />
                 <div className="my-4 ml-[17px] mr-[19px] flex justify-between items-center"> 
                     <div className="flex flex-col gap-[2px]">
                     <p className="font-sf-pro-display font-medium text-[17px] leading-[18.33px] text-white">{casePar.title}</p>
@@ -32,9 +33,9 @@ const NewInnerCase = ({casePar, userInfo}) => {
                         {formateDateForTimeAgo(casePar.createdAt)} · {casePar.views} просмотров
                     </p>
                     </div>
-                    <div className='flex gap-[6px] items-center'>     
-                        <ShareIcon onClick = {clickFunc} />
+                    <div className='flex gap-[10px] items-center'>     
                         <FalseTie navigate={"card"} task={casePar} id={String(casePar.id)}   />
+                        <ShareIcon onClick = {clickFunc} />
                     </div>
                 </div>
 

@@ -1,9 +1,9 @@
 .about__u-text{
     font-family: "SF Pro Display 400";
     font-weight: 400;
-    font-size: 17px;
+    font-size: 17.33px;
     line-height: 21px;
-    letter-spacing: 0.01em;
+    letter-spacing: 0.173px;
     color: white;
     text-align: left;
     outline: none;
@@ -20,12 +20,10 @@
     justify-content: center;
     border-radius: 6px 6px 10px 10px;
     width: 100%;
-    height: 43px;
+    height: 44.33px;
     background: #20303f;
     border: none;
     cursor: pointer;
-
-
 }
 .ur__town .also p{
     font-family: "SF Pro Display";

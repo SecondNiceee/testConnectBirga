@@ -139,8 +139,8 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
   }, [isCardPageOpened, isChangingCardOpened, me.id , userInfo.id, isPortfolioOpened, isSliderOpened]  )
 
   const backFunction = useCallback( () => {
-    backButtonController.backButtonFunction({isCardPageOpened, isSliderOpened, isPortfolioOpened, isStatistikOpened, navigate, setCardPageOpen, setPortfoliosOpened})
-  } , [isStatistikOpened, navigate, isCardPageOpened, isPortfolioOpened, setPortfoliosOpened, isSliderOpened] )
+    backButtonController.backButtonFunction({isCardPageOpened, isChangingCardOpened, isSliderOpened, isPortfolioOpened, isStatistikOpened, navigate, setCardPageOpen, setPortfoliosOpened})
+  } , [isStatistikOpened, navigate, isCardPageOpened, isPortfolioOpened, setPortfoliosOpened, isSliderOpened, isChangingCardOpened] )
 
   useEffect( () => {
     BackButton.onClick(backFunction);
@@ -222,7 +222,7 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
 
       <CSSTransitionStatistikPage setStatistikClose={setStatistikOpened} userConfig={me} isStatisticOpened={isStatistikOpened} />
 
-      <CssTransitionNewInnerCase userInfo={userInfo}  card={userInfo.profile.cards.find( (card) => card.id === cardId )} isOpened={isCardPageOpened}  />
+      <CssTransitionNewInnerCase  setSlideOpened={setSlideOpened} setPhotoIndex={setPhotoIndex} setPhotos={setPhotos}  userInfo={userInfo}  card={userInfo.profile.cards.find( (card) => card.id === cardId )} isOpened={isCardPageOpened}  />
 
       <CssTransitionSlider
         blockerAll={true}

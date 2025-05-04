@@ -35,7 +35,7 @@ export class BackButtonController{
                             }
                             else{
                                 if (errors.photos){
-                                    showAllert("Фото работы обязательно. Но не более 5 фоток")
+                                    showAllert("Добавьте примеры работ (не более 5)")
                                 }
                                 else{
                                     showAllert('Некоторые ваши ссылки невалидны')

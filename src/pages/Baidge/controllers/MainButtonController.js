@@ -11,18 +11,18 @@ export class MainButtonController{
         }
         if (isCardPageOpened && (userInfoId === myId)){
             this.mainButton.show();
-            this.mainButton.setText('ИЗМЕНИТЬ')
+            this.mainButton.setText('Сохранить')
             return ;
         }
         if (isPortfolioOpened && myId === userInfoId){
             this.mainButton.show()
-            this.mainButton.setText("СОЗДАТЬ")
+            this.mainButton.setText("Создать")
             enableColorAndActiveButton();
             return;
         }
         if (isChangingCardOpened){
             this.mainButton.show()
-            this.mainButton.setText("СОХРАНТЬ")
+            this.mainButton.setText("Сохранить")
             return;
         }
 

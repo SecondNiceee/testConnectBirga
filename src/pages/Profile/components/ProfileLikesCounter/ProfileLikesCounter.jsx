@@ -38,7 +38,7 @@ const ProfileLikesCounter = ({likesCounter, isBaidge, isLikeActive, likeUser, cl
     if(isBaidge){
       return (
         <div className='flex items-center gap-[6.67px] mt-auto mb-[2px]'>
-          <p className={`font-sf-pro-display font-medium text-[17px] ${!localStateOfLikeActive ? 'text-[#b5ced9]' : 'text-[#ff4949]'}`}>
+          <p className={`font-sf-pro-display font-medium text-[17px] ${!localStateOfLikeActive ? 'text-[white]' : 'text-[#ff4949]'}`}>
             {likesCounter}
           </p>
           <div ref={animationRef} onClick={clickHandler} className='flex relative justify-center rounded-full items-center bg-[#18222d] w-[30px] h-[30px]'>
