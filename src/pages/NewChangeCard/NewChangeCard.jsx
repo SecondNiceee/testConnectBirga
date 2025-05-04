@@ -135,7 +135,7 @@ const NewChangeCard = ({card, setChangingCardOpened, isChangingCardOpened}) => {
         <div className="pt-[20px] left-right !z-[1000] fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
             {/* <button onClick={forwardFunction}>ГО</button> */}
             <h2 className='ml-4 text-[20.72px] font-semibold font-sf-pro-display-600 text-white'>{!card ? "Создание кейса" : "Изменение кейса"}</h2>
-            <div className='py-3 mt-[18px] px-4 flex bg-card rounded-t-[11.7px] items-center border-b-[1px] border-solid border-[#2A343F]'>
+            <div className='py-3 mt-[18px] px-4 flex bg-card rounded-t-[11.7px] items-center border-b-[1px] border-[0px] border-solid border-[#2A343F]'>
                 <input value={changedCard.title} onChange={changeCardTitle} className='font-normal w-full text-[16.67px] font-sf-pro-display-400 text-white leading-[18.3px] placeholder:text-[#90979F]' placeholder='Название' type="text" />
                 <p className={`ml-auto  font-sf-pro-display-400 font-normal leading-[14.34px] ${leftSymbols === 0 ? "text-red-500" : "text-[#DAF5FE]"}`}>{leftSymbols}</p>
             </div>
