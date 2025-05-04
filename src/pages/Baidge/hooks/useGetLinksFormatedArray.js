@@ -1,10 +1,9 @@
-import React from 'react';
 
 const useGetLinksFormatedArray = ({links, isFirstMyLink}) => {
 
     const notRecognisedLinks = []
 
-    const tgName = isFirstMyLink ? "@" + links[0] .split("/").pop()  : ""
+    const tgName = isFirstMyLink ? "@" + links[0].split("/").pop()  : ""
 
     let dribbleLink = null;
     let behanceLink = null;
@@ -139,8 +138,13 @@ const useGetLinksFormatedArray = ({links, isFirstMyLink}) => {
             link : null,
         },
         {
+            title : "HH",
+            profession : "Опыт и резюме",
+            link : hhRuLink
+        },
+        {
             title : "Telegram-канал",
-            profession : telegramChannelLink ? "@" + telegramChannelLink .split("/").pop() : '',
+            profession : telegramChannelLink ? "@" + telegramChannelLink.split("/").pop() : '',
             link : telegramChannelLink,
         },
         {

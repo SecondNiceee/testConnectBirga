@@ -7,7 +7,7 @@ import Case from "../../components/UI/Case/Case";
 import { useSelector } from "react-redux";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 
-const NewCardsPage = ({ userInfo, setCardId, setCardPageOpen }) => {
+const NewCardsPage = ({ userInfo, setCardId, setCardPageOpen, setPhotoIndex,setPhotos, setSlideOpened, }) => {
 
   const [filter, setFilterBy] = useState(CardsFilterEnum.WATCHES);
 
@@ -43,6 +43,9 @@ const NewCardsPage = ({ userInfo, setCardId, setCardPageOpen }) => {
       <div className="flex flex-col gap-2 w-full mt-2">
         {cards.map((card, i) => (
           <Case
+            setPhotoIndex={setPhotoIndex}
+            setPhotos={setPhotos}
+            setSliderOpened={setSlideOpened}
             createdAt={card.createdAt}
             photos={card.photos}
             title={card.title}

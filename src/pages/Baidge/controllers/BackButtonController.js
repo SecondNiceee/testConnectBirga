@@ -9,7 +9,11 @@ class BackButtonController {
     navigate,
     setPortfoliosOpened,
     setCardPageOpen,
+    isSliderOpened
   }) {
+    if (isSliderOpened){
+      return;
+    }
     if (!isStatistikOpened) {
       if (!isCardPageOpened) {
         if (!isPortfolioOpened) {

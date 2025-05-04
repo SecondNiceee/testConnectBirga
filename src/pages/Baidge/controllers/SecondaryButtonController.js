@@ -3,7 +3,11 @@ import { deleteServerCard } from "../../../store/telegramUserInfo";
 
 class SecondaryButtonController{
     secondaryButton = SecondatyButton;
-    controllVisabiliry({isCardPageOpened}){
+    controllVisabiliry({isCardPageOpened, isSliderOpened}){
+        if (isSliderOpened){
+            this.secondaryButton.hide();
+            return;
+        }
         if (isCardPageOpened){
             SecondatyButton.show()
             SecondatyButton.setText("Удалить")

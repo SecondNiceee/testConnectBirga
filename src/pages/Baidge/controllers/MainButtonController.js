@@ -3,8 +3,12 @@ import { enableColorAndActiveButton } from "../../../functions/enableColorAndAct
 
 export class MainButtonController{
     mainButton = MainButton;
-    controlVisability({isCardPageOpened, isPortfolioOpened, isChangingCardOpened, myId, userInfoId}){
-        console.log(isPortfolioOpened && userInfoId === myId)
+    controlVisability({isCardPageOpened, isPortfolioOpened, isChangingCardOpened, myId, userInfoId, isSliderOpened}){
+        if(isSliderOpened){
+            this.mainButton.show();
+            enableColorAndActiveButton();
+            return;
+        }
         if (isCardPageOpened && (userInfoId === myId)){
             this.mainButton.show();
             this.mainButton.setText('ИЗМЕНИТЬ')
@@ -25,7 +29,10 @@ export class MainButtonController{
         this.mainButton.hide();
     }
 
-    fowardFunction({isChangingCardOpened, isPortfolioOpened, isCardPageOpened, setChangingCardOpened, myId, userInfoId }){
+    fowardFunction({isChangingCardOpened, isPortfolioOpened, isCardPageOpened, setChangingCardOpened, myId, userInfoId, isSliderOpened }){
+        if (isSliderOpened){
+            return;
+        }
         if (isChangingCardOpened){
             return;
         }
