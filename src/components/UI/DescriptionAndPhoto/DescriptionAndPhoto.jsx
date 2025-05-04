@@ -21,7 +21,8 @@ const DescriptionAndPhoto = ({
   titleStyles = {},
   onFocus = () => {},
   descriptionClassName  = {},
-  isDescription = true
+  isDescription = true,
+  textAreaClassName = {}
 }) => {
   const hiddenRef = useRef(null);
   const myRef = useRef(null);
@@ -60,7 +61,7 @@ const DescriptionAndPhoto = ({
           onFocus={onFocus}
           ref={myRef}
           value={text}
-          className={cl.DescriptionInput}
+          className={`${textAreaClassName} ${cl.DescriptionInput}`}
           placeholder={place}
           setValue={setText}
         ></TextArea>

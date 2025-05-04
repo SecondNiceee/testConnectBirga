@@ -68,7 +68,7 @@ const BaidgeCreatingLink = ({text, setText, index, addLink, deleteLink, isAddAct
     return (
         <div className='py-[7px] px-[19px] items-center flex bg-card rounded-[12px]'>
             <img className='w-[30px] h-[30px]'  src={iconSrc} alt="" />
-            <input onFocus={handleFocus} onBlur={handleBlur} value={displayValue} placeholder='Ссылка' ref={inputRef} onChange={handleInputChange} className='text-white w-full mr-[5px] ml-[13px] font-sf-pro-display text-[17px] leading-[18px]' type="text" />
+            <input onFocus={handleFocus} onBlur={handleBlur} value={displayValue} placeholder='Ссылка' ref={inputRef} onChange={handleInputChange} className='text-white w-full mr-[5px] ml-[13px] font-sf-pro-display-400 text-[16.67px] leading-[18px]' type="text" />
             {index !== 0 ? 
                     <img onClick={deleteLink} className='ml-auto w-[22px] h-[22px]' src="/images/BaidgeCreating/minus.svg" alt='#' />
                         :

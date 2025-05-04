@@ -27,18 +27,18 @@ export class BackButtonController{
                     }
                     else{
                         if (errors.title){
-                            showAllert("Заголовок должен быть от 3 до 25 символов")
+                            showAllert("Некорректная длина заголовка (3–25 символов)")
                         }
                         else{
                             if (errors.description){
-                                showAllert("Описание должно быть от 5 до 500 символов")
+                                showAllert("Слишком короткое описание (от 5 до 500 символов)")
                             }
                             else{
                                 if (errors.photos){
-                                    showAllert("Добавьте примеры работ (не более 5)")
+                                    showAllert("Добавьте примеры работ (максимум 5)")
                                 }
                                 else{
-                                    showAllert('Некоторые ваши ссылки невалидны')
+                                    showAllert('Недействительные ссылки (проверьте URL)')
                                 }
                             }
                         }

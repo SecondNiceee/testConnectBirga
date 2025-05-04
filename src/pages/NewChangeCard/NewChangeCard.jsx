@@ -138,7 +138,7 @@ const NewChangeCard = ({card, setChangingCardOpened, isChangingCardOpened}) => {
                 <input value={changedCard.title} onChange={changeCardTitle} className='font-normal w-full text-[16.67px] font-sf-pro-display-400 text-white leading-[18.3px] placeholder:text-[#90979F]' placeholder='Название' type="text" />
                 <p className={`ml-auto text-[13px] text-[#95979e] font-sf-pro-display-400 font-normal leading-[14.34px] ${leftSymbols === 0 ? "text-red-500" : "text-[#DAF5FE]"}`}>{leftSymbols}</p>
             </div>
-            <DescriptionAndPhoto descriptionClassName={"!rounded-t-none"} setText={changeCardDescription} text={changedCard.description} textPlaceholder={"Описание"} isFileInput = {false} />
+            <DescriptionAndPhoto textAreaClassName={"!min-h-[73px]"} descriptionClassName={"!rounded-t-none !min-h-[100px]"} setText={changeCardDescription} text={changedCard.description} textPlaceholder={"Описание"} isFileInput = {false} />
             <p className='ml-4 mt-[5px] font-sf-pro-display-400 text-[13.33px] font-normal leading-[15.643px] text-[#DAF5FE]'>Название и описание для кейса.</p>
             <DescriptionAndPhoto  className={"!mt-[10px]"} photos={changedCard.photos} setPhotos={changePhotos} isDescription = {false} />
             <AddLinksComponent links={changedCard.links} setLinks={setLinks}  />
