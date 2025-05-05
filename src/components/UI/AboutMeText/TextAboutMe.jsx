@@ -3,7 +3,7 @@ import './TextAboutMe.css';
 import Text from '../../Text/Text';
 import translation from '../../../functions/translate';
 
-const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName = '!border-[#242c37]', buttonClassNames, ...props } ) => {
+const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, buttonClassNames, ...props } ) => {
   const [hideAboutMe, setHideAboutMe] = useState({
     isActive : false,
     show : false
@@ -13,15 +13,16 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName = '!bord
   const refTwo = useRef(null)
   useEffect( () => {
     refTwo.current.value = aboutU
+    console.log(refTwo.current.scrollHeight)
     if (refTwo.current.scrollHeight > 85){
       if (!hideAboutMe.show){
-
+        console.log("Kj")
         setHideAboutMe((value) => ({...value, isActive : true}) )
-        areaRef.current.style.height = "80px"
+        areaRef.current.style.height = "85px"
         let localAboutMe = aboutU;
         while (refTwo.current.scrollHeight > 85){
-          
-          let localAboutMeArr = localAboutMe.split(' ')
+          let localAboutMeArr = localAboutMe.split(" ");
+          console.log(localAboutMeArr)
           localAboutMe = localAboutMeArr.slice(0 , localAboutMeArr.length - 1).join(' ')
           refTwo.current.value = localAboutMe
         
@@ -64,6 +65,8 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName = '!bord
             : {display : 'none'}
           }></div> 
           : "" }
+
+
           
 <textarea
             ref={refTwo}
