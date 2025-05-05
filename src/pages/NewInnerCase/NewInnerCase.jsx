@@ -16,7 +16,7 @@ const NewInnerCase = ({casePar, userInfo, setPhotoIndex, setPhotos, setSlideOpen
     }
     console.log(casePar)
     const iconUrl = useGetUserPhotoLink({anotherUserInfo : userInfo});
-    const photosClickEvent = useSliderClicker({photos:casePar.photos, setPhotoIndex, setPhotos, setSlideOpened})
+    const photosClickEvent = useSliderClicker({photos:casePar?.photos, setPhotoIndex, setPhotos, setSlideOpened})
     if (!casePar){
         return <MyLoader />
     }
