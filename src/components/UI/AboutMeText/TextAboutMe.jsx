@@ -21,7 +21,7 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, buttonC
         areaRef.current.style.height = "85px"
         let localAboutMe = aboutU;
         while (refTwo.current.scrollHeight > 85){
-          let localAboutMeArr = localAboutMe.split(" ");
+          let localAboutMeArr = localAboutMe.split(/  |[\r\n]/g);
           console.log(localAboutMeArr)
           localAboutMe = localAboutMeArr.slice(0 , localAboutMeArr.length - 1).join(' ')
           refTwo.current.value = localAboutMe

@@ -18,11 +18,21 @@ const BaidgeCreating = () => {
     dispatch(getProfessions());
   }, [dispatch]);
 
+  
+
   const categorys = useSelector((state) => state.categorys.category);
 
   const professions = useSelector((state) => state.profession.professions);
 
-  const [description, setDescription] = useState("");
+  console.log(professions);
+
+  const me = useSelector( (state) => state.telegramUserInfo )
+
+  console.log(me)
+
+  const [description, setDescription] = useState(me.profile.about ?? "");
+
+
 
   const taskInformation = {
     category: categorys[0],
@@ -31,11 +41,12 @@ const BaidgeCreating = () => {
 
   const [taggsText, setTaggsText] = useState("");
 
-  const [taggs, setTaggs] = useState([]);
+  const [taggs, setTaggs] = useState(me.taggs ?? []);
 
-  const [links, setLinks] = useState([""]);
+  const [links, setLinks] = useState(me.links ?? [""]);
 
   const [step, setStep] = useState(0);
+
 
   const navigate = useNavigate();
 
@@ -47,6 +58,21 @@ const BaidgeCreating = () => {
     category: categorys[0],
     profession: {},
   });
+
+  useEffect( () => {
+    if (me.profile){
+      setDescription(me.profile.about);
+      setTaggs(me.taggs);
+      if (me.links.length === 1){
+        setLinks([""])
+      }
+      else{
+        setLinks(me.links.slice(1, me.links.length));
+      }
+      // setCategoryInformation({profession : me.profession, category : categorys[0]})
+      setTaggsText(me.taggs.join(', '))
+    }
+  } , [me] )
 
   const [errors, setErrors] = useState({
     descriptionError: false,
