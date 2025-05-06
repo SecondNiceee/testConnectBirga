@@ -175,9 +175,6 @@ export const addAdvertisment = createAsyncThunk(
     }
 )
 
-
-
-
 export const fetchSavedCards = createAsyncThunk(
     "fetchSavedCards",
     async function ([page]) {

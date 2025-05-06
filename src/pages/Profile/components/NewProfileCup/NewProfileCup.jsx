@@ -7,6 +7,7 @@ import NewProfileShareIcon from '../NewProfileShareIcon/NewProfileShareIcon';
 import ProfileUserName from '../ProfileUserName/ProfileUserName';
 import ProfileLikesCounter from '../ProfileLikesCounter/ProfileLikesCounter';
 import ProfilesCounterOfWatches from '../ProfilesCounterOfWatches/ProfilesCounterOfWatches';
+import { useNavigate } from 'react-router';
 
 const NewProfileCup = ({
   firstName ,
@@ -18,10 +19,13 @@ const NewProfileCup = ({
   photoUrl,
   isBaidge = false,
   isLikeActive,
-  editIconClickHandler = () => {},
   likeUser,
   clickDislikeUser
 }) => {
+  const navigate = useNavigate();
+  const editIconClickHandler = ( ) => {
+    navigate("/BaidgeCreating")
+  }
     return (
         <div className="flex py-[17px] pb-[14px] px-[19px] flex-col gap-[13px] bg-[#20303f] rounded-[13px] ">
         <div className="flex  w-[100%]">

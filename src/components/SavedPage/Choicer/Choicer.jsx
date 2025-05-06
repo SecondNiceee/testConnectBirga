@@ -44,7 +44,6 @@ const Choicer = ({ nowKey, keys, setDetails, setResponce, setCard }) => {
         }
       }
 
-
       return () => {
 
       }

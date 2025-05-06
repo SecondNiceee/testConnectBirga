@@ -91,8 +91,6 @@ const SavedPage = () => {
 
   useApiFetch() // Фетчим все таски и тд
 
-
-
   const savedTasks = useSelector((state) => state.saves.tasks);
 
   const isMyResponse = useMemo(() => {
@@ -268,7 +266,6 @@ const SavedPage = () => {
         
       }
   } , [myResponse.isActive, isProfileOpen, card.isOpen, setMyResponse, setProfileOpen, extraDetails.isOpen, setCard] )
-
 
 
   useEffect( () => {

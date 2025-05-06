@@ -63,15 +63,6 @@ const FullPicker = ({
         )
       })}
 
-
-      
-
-
-
-
-
-
-
     </div>
   );
 };

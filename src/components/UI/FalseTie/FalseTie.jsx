@@ -34,13 +34,12 @@ const FalseTie = ({className, id, task, navigate, agree, end = false, ...props})
                 break
             }
             case "card":{
-
                 savedCards.forEach( (e,i ) => {
                     if (e.id === id){
                         setActive(true)
                     }
                 } )
-                break
+                break;
             }
             default : {
                 window.Telegram.WebApp.showAlert('что-то пошло не так')
