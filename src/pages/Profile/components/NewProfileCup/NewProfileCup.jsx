@@ -8,6 +8,7 @@ import ProfileUserName from '../ProfileUserName/ProfileUserName';
 import ProfileLikesCounter from '../ProfileLikesCounter/ProfileLikesCounter';
 import ProfilesCounterOfWatches from '../ProfilesCounterOfWatches/ProfilesCounterOfWatches';
 import { useNavigate } from 'react-router';
+import { softVibration } from '../../../../functions/softVibration';
 
 const NewProfileCup = ({
   firstName ,
@@ -24,6 +25,7 @@ const NewProfileCup = ({
 }) => {
   const navigate = useNavigate();
   const editIconClickHandler = ( ) => {
+    softVibration();
     navigate("/BaidgeCreating")
   }
     return (

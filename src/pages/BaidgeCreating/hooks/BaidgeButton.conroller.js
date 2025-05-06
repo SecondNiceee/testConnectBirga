@@ -1,7 +1,7 @@
 import MainButton from "../../../constants/MainButton"
 import { disableColorAndActiveButton } from "../../../functions/disableColorAndActiveButton"
 import { enableColorAndActiveButton } from "../../../functions/enableColorAndActiveButton"
-import { putUserInfo } from "../../../store/telegramUserInfo";
+import { successVibration } from "../../../functions/successVibration";
 
 class BaidgeButtonController{
     mainButton = MainButton;
@@ -33,6 +33,7 @@ class BaidgeButtonController{
         return () => {
             if (!isCategoryOpen && !isProfessionOpened){
                 if (step === 1){
+                    successVibration();
                     postBaidge()
                 }
                 else{

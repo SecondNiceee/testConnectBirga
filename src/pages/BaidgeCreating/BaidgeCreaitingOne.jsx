@@ -31,7 +31,7 @@ const BaidgeCreaitingOne = ({setDescription, description, setCategoryOpen, isCat
         
         <div className="pt-[16px] min-h-fit px-[16px] min-w-[100vw] bg-[#18222d] flex flex-col h-[100vh] overflow-y-scroll pb-[100px]">
             <Cap steps={2} className={"mt-[4px] flex items-center"} step={1} > 
-                <Text className = {"font-sf-pro-display-600 text-[20px] font-semibold text-white"}> Создайте объявление </Text>{" "}
+                <Text className = {"font-sf-pro-display-600 text-[20px] font-semibold text-white"}> Бейдж исполнителя </Text>{" "}
             </Cap>
             <BaidgeCategories setProfessionOpen={setProfessionOpened} setCatagoryChoiceOpen={setCategoryOpen} className={"mt-[18px]"} down='Профессия' categoryInformation={categoryInformation} />
             <DescriptionAndPhoto className={"mt-[18px]"} titleStyles={{
