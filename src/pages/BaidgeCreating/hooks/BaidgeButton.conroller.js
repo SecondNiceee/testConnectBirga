@@ -53,11 +53,14 @@ class BaidgeButtonController{
             } 
         }
     }
-    controlText({step}){
+    controlText({step, me}){
         if (step === 0){
             this.mainButton.setText("ДАЛЕЕ")
         }
         else{
+            if (me.profession){
+                this.mainButton.setText("Изменить бэйдж")
+            }
             this.mainButton.setText("Создать бэйдж")
         }
     }
