@@ -1,6 +1,6 @@
 import MainButton from '../../../constants/MainButton';
 
-const useBackButton = ({isSliderOpened, responce, setResponce, setProfile, setPageValue, step,  closeDetails, isProfile, isCardOpen, setSlideOpened, setStep, setCardOpen}) => {
+const useBackButton = ({isSliderOpened, responce, setResponce, setPageValue, step,  closeDetails, setSlideOpened, setStep, isBaidge}) => {
     const back = () => {
       if (!isSliderOpened){
         if (responce.isShablonModalActive) {
@@ -18,12 +18,7 @@ const useBackButton = ({isSliderOpened, responce, setResponce, setProfile, setPa
               });
               // mainRef.current.classList.remove('secondStep')
             } else {
-              if (isCardOpen.isOpen) {
-                setCardOpen((value) => ({ ...value, isOpen: false }));
-              } else {
-                if (isProfile) {
-                  setProfile(false);
-                } else {
+              if (!isBaidge){
                   if (step === 0) {
                     setResponce({
                       text: "",
@@ -37,9 +32,8 @@ const useBackButton = ({isSliderOpened, responce, setResponce, setProfile, setPa
                     closeDetails();
                     setPageValue(false)
                   }
-                }
-              }
             }
+          }
           }
         }
 

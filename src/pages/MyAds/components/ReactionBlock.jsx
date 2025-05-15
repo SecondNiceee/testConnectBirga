@@ -6,9 +6,7 @@ const values = ["all", "withCompletedTasks", "withCards"];
 const names = ["Все", "С выполненными заданиями", "С примерами работ"].map(e => translation(e));
 const ReactionBlock = ({
   setFilterBy,
-  setOpen,
   responces,
-  openAboutReactionFunc,
   getMore,
   setPhotos,
   setPhotoIndex,
@@ -28,8 +26,6 @@ const ReactionBlock = ({
         values={values}
         names={names}
         responces={responces}
-        openAboutReactionFunc={openAboutReactionFunc}
-        setOpen={setOpen}
       />
       
     </div>

@@ -5,7 +5,7 @@ import MainButton from '../../../constants/MainButton';
 import BackButton from '../../../constants/BackButton';
 
 let overflowYValue;
-const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, blockerAll, setSliderOpened, left = 0, top = 0 }, ref) => {
+const PhotosSlider = forwardRef(({ swiperId, renderMap, className, sliderIndex, blockerId, blockerAll, setSliderOpened, left = 0, top = 0 }, ref) => {
     const render = (src, index) => {
         return (
             
@@ -23,14 +23,14 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, 
 
     const closeSliderFunction = useCallback( () => {
         setSliderOpened(false)
-    }, [] )
+    }, [setSliderOpened] )
 
     useEffect( () => {
         BackButton.onClick(closeSliderFunction);
         return () => {
             BackButton.offClick(closeSliderFunction);
         }
-    }, [] )
+    }, [closeSliderFunction] )
 
     useEffect( () => {
         const buttonText = MainButton.text
@@ -38,7 +38,7 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, 
         MainButton.onClick(closeSliderFunction)
         MainButton.show();
         MainButton.setText("Закрыть")
-        MainButton.onClick(setSliderOpened)
+        MainButton.onClick(closeSliderFunction)
         return () => {
             MainButton.setText(buttonText)
             MainButton.offClick(closeSliderFunction)
@@ -46,7 +46,7 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, 
                 MainButton.hide()
             }
         }
-    } , [] );
+    } , [closeSliderFunction] );
 
 
     useEffect( () => {
@@ -86,7 +86,7 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, sliderIndex, blockerId, 
     const numberOfPhotos = renderMap.length
 
     return (
-        <div ref={ref} className={`w-[100vw] h-[100vh] fixed z-[200000] flex-col bg-black flex justify-center items-center`} style={{
+        <div ref={ref} className={`w-[100vw] h-[100vh] fixed z-[200000] flex-col bg-black flex justify-center items-center ${className}`} style={{
             left : left,
             top : top ? top : scrollPosition + "px"
         }}>

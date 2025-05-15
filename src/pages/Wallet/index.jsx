@@ -67,28 +67,20 @@ const Wallet = ({ onClose = false , isFixed = false, left = false, ...props}) =>
 
   const balance = useSelector(state => state.balance.value)
 
-  useEffect( () => {
-    const menu = document.documentElement.querySelector(".FirstMenu");
-    menu.classList.add("appearAnimation")
-    menu.classList.remove("disappearAnimation")
-    if (!(withdrawal || depositShow)){
-      document.documentElement.style.overflowY = "hidden"
-      document.body.style.overflowY = "hidden"
-      menu.style.display = "flex"
-    }
-    else{
-      document.body.style.overflowY = "auto"
-      document.documentElement.style.overflowY = "auto"
-       menu.style.display = "none"
-    }
-    return () => {
-      if (isFixed){
-        document.body.style.overflowY = "hidden"
-        document.documentElement.style.overflowY = "hidden"
-      }
-      menu.style.display = "flex"
-    }
-  }, [withdrawal, depositShow, isFixed] )
+  // useEffect( () => {
+  //   const menu = document.documentElement.querySelector(".FirstMenu");
+  //   menu.classList.add("appearAnimation")
+  //   menu.classList.remove("disappearAnimation")
+  //   if (!(withdrawal || depositShow)){
+  //     menu.style.display = "flex"
+  //   }
+  //   else{
+  //      menu.style.display = "none"
+  //   }
+  //   return () => {
+  //     menu.style.display = "flex"
+  //   }
+  // }, [withdrawal, depositShow, isFixed] )
   
 
 

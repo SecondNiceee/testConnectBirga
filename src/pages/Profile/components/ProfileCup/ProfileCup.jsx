@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import userPhoto from "../../../../images/userPhoto/user.png";
 import Text from "../../../../components/Text/Text";
 import "../../../../scss/main.css";
 
-const ProfileCup = () => {
-  const userInfo = useSelector((state) => state.telegramUserInfo);
+const ProfileCup = ({gotenUserInfo}) => {
+  const me = useSelector((state) => state.telegramUserInfo);
+  const [userInfo, setUerInfo] = useState(null);
+  useEffect( () => {
+    if (gotenUserInfo){
+      setUerInfo(gotenUserInfo)
+    }
+    else{
+      setUerInfo(me);
+    }
+  } , [gotenUserInfo, me] )
+  if (!userInfo){
+    return null;
+  }
   return (
     <div className="flex flex-col w-[100%] items-center justify-center">
       <img

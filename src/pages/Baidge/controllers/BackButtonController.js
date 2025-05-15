@@ -10,7 +10,8 @@ class BackButtonController {
     setPortfoliosOpened,
     setCardPageOpen,
     isSliderOpened,
-    isChangingCardOpened
+    isChangingCardOpened,
+    setBaidgeClose
   }) {
     if (isChangingCardOpened){
       return;
@@ -21,10 +22,15 @@ class BackButtonController {
     if (!isStatistikOpened) {
       if (!isCardPageOpened) {
         if (!isPortfolioOpened) {
-          if (pagesHistory.length > 0) {
-            navigate(-1);
+          if (setBaidgeClose){
+            setBaidgeClose(true);
           }
-          navigate("/");
+          else{
+            if (pagesHistory.length > 0) {
+              navigate(-1);
+            }
+            navigate("/");
+          }
         } else {
           setPortfoliosOpened(false);
         }

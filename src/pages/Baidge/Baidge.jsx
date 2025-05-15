@@ -1,28 +1,13 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
-import NewProfileCup from "../Profile/components/NewProfileCup/NewProfileCup";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useCallback, useEffect, useState } from "react";
+import {useSelector } from "react-redux";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
-import useGetBaidgeOprionsConfig from "./hooks/useGetBaidgeOprionsConfig";
-import NewOption from "../Profile/components/NewOption/NewOption";
-import TextAboutMe from "../../components/UI/AboutMeText/TextAboutMe";
-import Taggs from "./components/Taggs";
-import Links from "./components/Links";
-import CSSTransitionStatistikPage from "./CSSTransitionStatistikPage";
-import CssTransitionedNewCardsPages from "../NewCardsPage/CssTransitionedNewCardsPages";
-import useGetUserPhotoLink from "../../hooks/useGetUserPhotoLink";
-import { useNavigate } from "react-router";
-import BackButton from "../../constants/BackButton";
-import CssTransitionNewInnerCase from "../NewInnerCase/CssTransitionNewInnerCase";
-import CssTransitionNewChangeCard from "../NewChangeCard/CssTransitionNewChangeCard";
-import backButtonController from "./controllers/BackButtonController";
-import { likesController } from "./controllers/LikesController";
-import { mainButtonController } from "./controllers/MainButtonController";
-import MainButton from "../../constants/MainButton";
-import { secondaryButtonController } from "./controllers/SecondaryButtonController";
-import { SecondatyButton } from "../../constants/SecondaryButton";
 import useSlider from "../../hooks/useSlider";
 import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
-import useMenuController from "./hooks/useMenuController";
+import { getUserWithoutCards } from "../../functions/api/getUserWithoutCards";
+import { getCardByUserId } from "../../functions/api/getCardsByUserId";
+import { getAdvertisementsByUserId } from "../../functions/api/getAdvertisementsByUserId";
+import BaidgeWithProfile from "./components/BaidgeWithProfile";
+import BaidgeWithoutProfile from "./components/BaidgeWithoutProfile";
 
 // id : userConfig.id,
 // counterOfLikes: userInfo.userLikes.length,
@@ -45,45 +30,37 @@ import useMenuController from "./hooks/useMenuController";
 // customerOffers : "-",
 // taggs : userInfo.taggs
 
-
 // const params = { id: 2 };
 // const params = null
 
-
-
-
-
 // УЧТИ НУЖНО ДОНАСТРОИТЬ ЛАЙК
-const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
-
+const Baidge = ({ gotenUserId, setBaidgeClose, className }) => {
   const me = useSelector((state) => state.telegramUserInfo);
 
-  const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState(null);
 
-  const userInfo = useMemo( () => {
-    return gotenUserInfo ?? me
-  }, [me, gotenUserInfo] )
+  console.log(gotenUserId);
 
-  const isLikeActive = useMemo( () => {
-    if (!userInfo){
-      return null;
+  const getUserInformation = useCallback(async () => {
+    const user = await getUserWithoutCards(gotenUserId);
+    if (user.profession) {
+      const cards = await getCardByUserId(gotenUserId);
+      user.cards = cards;
+      return user;
+    } else {
+      const userAdvertisements = await getAdvertisementsByUserId(gotenUserId, 1, 1);
+      user.advertisements = userAdvertisements;
+      return user;
     }
-    return userInfo.userLikes.map((like) => like.user.id).includes(me.id);
-  }, [userInfo, me.id] )
+  }, [gotenUserId]);
 
-  const photoUrl = useGetUserPhotoLink({userInfo})
-
-  const dispatch = useDispatch();
-  
-  const [isStatistikOpened, setStatistikOpened] = useState(false)
-
-  const [isPortfolioOpened, setPortfoliosOpened] = useState(false);
-
-  const optionsConfig = useGetBaidgeOprionsConfig({setStatistikOpened, userInfo, setPortfoliosOpened});
-
-  const [cardId, setCardId] = useState( 0 )
-
-  useMenuController({isPortfolioOpened});
+  useEffect(() => {
+    if (gotenUserId) {
+      getUserInformation().then((user) => setUserInfo(user));
+    } else {
+      setUserInfo(me);
+    }
+  }, [gotenUserId, me, getUserInformation]);
 
   const {
     isSliderOpened,
@@ -93,129 +70,29 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
     setPhotos,
     setSlideOpened,
   } = useSlider();
-  
-  const [isChangingCardOpened, setChangingCardOpened] = useState(false);
-
-  const [isCardPageOpened , setCardPageOpen] = useState(false);
-
-  const fowardFunction = useCallback( () => {
-    return mainButtonController.fowardFunction({isCardPageOpened, isPortfolioOpened,  isChangingCardOpened, setCardId, myId : me.id, setChangingCardOpened, userInfoId : userInfo.id, isSliderOpened})
-  }, [isCardPageOpened, isChangingCardOpened, me.id, setChangingCardOpened, isPortfolioOpened, userInfo.id , isSliderOpened, setCardId] )
-
-  useEffect( () => {
-    secondaryButtonController.controllVisabiliry({isCardPageOpened, isSliderOpened, isChangingCardOpened});
-  } , [isCardPageOpened, isSliderOpened, isChangingCardOpened] )
-
-  const secondButtonHandler = useCallback( () => {
-    secondaryButtonController.secondaryButtonHandler({cardId : cardId, dispatch, setCardPageOpen})
-  } , [cardId, setCardPageOpen, dispatch] )
-
-  useEffect( () => {
-    SecondatyButton.onClick(secondButtonHandler);
-    return () => {
-      SecondatyButton.offClick(secondButtonHandler);
-    }
-  }, [secondButtonHandler] )
-
-  useEffect( () => {
-    MainButton.onClick(fowardFunction);
-    return ( ) => {
-      MainButton.offClick(fowardFunction)
-    }
-  }, [fowardFunction] )
-
-  
-  useEffect(  () => {
-    mainButtonController.controlVisability({isCardPageOpened, isChangingCardOpened,  isPortfolioOpened, myId : me.id, userInfoId : userInfo.id, isSliderOpened});
-  }, [isCardPageOpened, isChangingCardOpened, me.id , userInfo.id, isPortfolioOpened, isSliderOpened]  )
-
-  const backFunction = useCallback( () => {
-    backButtonController.backButtonFunction({isCardPageOpened, isChangingCardOpened, isSliderOpened, isPortfolioOpened, isStatistikOpened, navigate, setCardPageOpen, setPortfoliosOpened})
-  } , [isStatistikOpened, navigate, isCardPageOpened, isPortfolioOpened, setPortfoliosOpened, isSliderOpened, isChangingCardOpened] )
-
-  useEffect( () => {
-    BackButton.onClick(backFunction);
-    return () => {
-        BackButton.offClick(backFunction);
-    }
-  } , [backFunction] )
-
-  useEffect( () => {
-    backButtonController.controllVisability();
-  } , [] )
-
-  const clickLikeUser = () => {
-    likesController.likeUser({dispatch : dispatch, userId : me.id, likedUserId : userInfo.id})
-  }
-
-  const clickDislikeUser = () => {
-    likesController.dislikeUser({dispatch : dispatch, userId : me.id, dislikedUserId : userInfo.id})
-  }
-
-    
 
   if (!userInfo || userInfo.id === null) {
-    return <MyLoader />;
+    return <MyLoader className = {className} />;
   }
   return (
     <>
-      <button onClick={fowardFunction} className="fixed left-1/2 bottom-1/3 z-[1000]">MAIN BUTTON</button>
-      <div className="pt-[16px] px-[16px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[100px]">
-        <NewProfileCup
-          isLikeActive={isLikeActive}
-          isBaidge={true}
-          counterOfLikes={userInfo.userLikes.length}
-          positionOfNitcheRating={0}
-          firstName={userInfo.firstName}
-          lastName={userInfo.lastName}
-          photoUrl={photoUrl}
-          profession={userInfo.profession.profession}
-          profileWatches={userInfo.views}
-          likeUser = {clickLikeUser}
-          clickDislikeUser = {clickDislikeUser}
+      {/* <button onClick={fowardFunction} className="fixed left-1/2 bottom-1/3 z-[1000]">MAIN BUTTON</button> */}
+      {userInfo.profession ? (
+        <BaidgeWithProfile
+          isSliderOpened={isSliderOpened}
+          setBaidgeClose={setBaidgeClose}
+          setPhotoIndex={setPhotoIndex}
+          setPhotos={setPhotos}
+          setSlideOpened={setSlideOpened}
+          userInfo={userInfo}
+          className={className}
         />
-
-        <div className="flex flex-col rounded-[12px] bg-[#20303f]">
-          {optionsConfig.map((option, i) => (
-            <NewOption
-              numberNearToArrow={option.numberNearToArrow}
-              imgPath={option.imgPath}
-              isNededToFill={option.isNeededFill}
-              neededActiveButton={option.isNeededActiveTitle}
-              text={option.text}
-              key={i}
-              isNeededBorder={i !== Number(optionsConfig.length - 1)}
-              isAloneElement={false}
-              onClick={option.clickFunc}
-            />
-          ))}
-        </div>
-        <div className="flex flex-col gap-[7px] w-[100%] text-[#84898f]">
-              <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">КРАТКОЕ РЕЗЮМЕ</p>
-              <TextAboutMe aboutU={userInfo.profile.about} />
-        </div>
-        <div className="flex flex-col gap-[7px] w-[100%] text-[#84898f]">
-              <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ТЕГИ</p>
-              <Taggs taggs={userInfo.taggs} />
-        </div>
-
-
-        <div className="flex flex-col gap-[7px] w-[100%] text-[#84898f]">
-              <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ССЫЛКИ</p>
-              <Links links={userInfo.links}/>
-        </div>
-
-      </div>
-
-      <CssTransitionNewChangeCard setChangingCardOpened = {setChangingCardOpened} isChangingCardOpened={isChangingCardOpened} card={userInfo.profile.cards.find( (card) => card.id === cardId )}  />
-
-      <CssTransitionedNewCardsPages setSlideOpened={setSlideOpened} setPhotoIndex={setPhotoIndex} setPhotos={setPhotos}  setCardPageOpen = {setCardPageOpen} setCardId = {setCardId} isOpened={isPortfolioOpened} userInfo={me} />
-
-      <CSSTransitionStatistikPage setStatistikClose={setStatistikOpened} userConfig={me} isStatisticOpened={isStatistikOpened} />
-
-      <CssTransitionNewInnerCase  setSlideOpened={setSlideOpened} setPhotoIndex={setPhotoIndex} setPhotos={setPhotos}  userInfo={userInfo}  card={userInfo.profile.cards.find( (card) => card.id === cardId )} isOpened={isCardPageOpened}  />
+      ) : (
+        <BaidgeWithoutProfile className = {className} userInfo={userInfo} />
+      )}
 
       <CssTransitionSlider
+      className={className}
         blockerAll={true}
         blockerId={""}
         isSliderOpened={isSliderOpened}
@@ -226,7 +103,6 @@ const Baidge = ({ gotenUserInfo, setGotenUserInfo }) => {
         swiperId={"1"}
         top={0}
       />
-
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 
 import Reaction from "./Reaction";
 import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
@@ -7,33 +7,59 @@ import formatDate from "../../../functions/makeDate";
 import { postResponse } from "../../../store/responses";
 import Text from "../../../components/Text/Text";
 import MainButton from "../../../constants/MainButton";
+import { useParams } from "react-router";
+import useGetResponseById from "../../../hooks/useGetResponseById";
 import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
 import useSlider from "../../../hooks/useSlider";
-const LastAds = ({
-  openAboutReactionFunc,
-  responce,
-  setPhotoIndex,
-  setPhotos,
-  setSlideOpened,
-  ...props
-}) => {
+import MyLoader from "../../../components/UI/MyLoader/MyLoader";
+const LastAds = () => {
+
+  const {id} = useParams();
+
   const dispatch = useDispatch();
 
+
+
+  const {response, responseStatus} = useGetResponseById({id })
+
   useEffect(() => {
-    if (
-      responce.isWatched !== "watched" &&
-      responce.isWatched !== "inProcess"
-      && responce.isWatched !== "completed"
-    ) {
-      dispatch(postResponse(responce.id));
+    if (response){
+
+      if (
+        response.isWatched !== "watched" &&
+        response.isWatched !== "inProcess"
+        && response.isWatched !== "completed"
+      ) {
+        dispatch(postResponse(response.id));
+      }
     }
     // eslint-disable-next-line
-  }, []);
+  }, [response]);
+
+  const openAboutReactionFunc = () => {
+    alert("Nothing")
+  }
+
+    const {
+    isSliderOpened,
+    photoIndex,
+    photos,
+    setPhotoIndex,
+    setPhotos,
+    setSlideOpened,
+  } = useSlider();
+
+  console.log(response);
+
+  if(responseStatus === "pending" || response === null){
+    return <MyLoader />
+  }
+
 
   return (
     <>
     
-      <div style={MainButton.isVisible ? {paddingBottom : "74px"} : {paddingBottom : "97px"} }  className={"last-ads"} {...props}>
+      <div style={MainButton.isVisible ? {paddingBottom : "74px"} : {paddingBottom : "97px"} }  className={"last-ads"}>
         {/* <LastTop name = {name} photo = {photo} stage = {stage} openAboutReactionFunc={openAboutReactionFunc} /> */}
 
         <Reaction
@@ -44,28 +70,35 @@ const LastAds = ({
           blue={true}
           openAboutReactionFunc={openAboutReactionFunc}
           put={true}
-          responce={responce}
+          responce={response}
         />
 
-        {/* <LastImages images = {images} /> */}
-
-        {/* <LastSertificates /> */}
         <TextAboutMe
           textareaClassName={"new-textarea"}
           style={{
             marginTop: "8px",
           }}
-          aboutU={responce.information}
+          aboutU={response.information}
         />
 
         <div className="creationTimeBlock">
           <Text>Создано</Text>
-          <p>{formatDate(new Date(responce.createdAt))}</p>
+          <p>{formatDate(new Date(response.createdAt))}</p>
         </div>
 
-        {/* 
-        <textarea className="last-textarea" name="" id="" value={text} /> */}
       </div>
+
+      <CssTransitionSlider  
+        blockerAll={true}
+        blockerId={""}
+        isSliderOpened={isSliderOpened}
+        leftPosition={0}
+        renderMap={photos}
+        setSliderOpened={setSlideOpened}
+        sliderIndex={photoIndex}
+        swiperId={"1"}
+        top={0}
+      />
 
     </>
   );

@@ -664,7 +664,7 @@
   transition-duration: 0.4s;
   transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
   left: 0;
-  transform: translateX(100%);
+  transform: translateX(0);
   position: fixed;
   padding-bottom: 74px;
 }
@@ -2397,12 +2397,9 @@ input {
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;
-  position: fixed;
-  left: 100vw;
   height: 100vh;
   top: 0;
   overflow-y: auto;
-  transform: translateX(100%);
   z-index: 100000;
   transition: 0.4s;
   background-color: #18222d;
@@ -2695,19 +2692,9 @@ input {
   margin: 0px;
 }
 
-html {
-  position: absolute;
-  overflow: hidden;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-}
-
 body {
   width: 100%;
   height: auto;
-  overflow: hidden;
   background: rgb(24, 34, 45);
 }
 

@@ -38,7 +38,6 @@ const MainBottomRight = ({
         isMyAds={isMyAds}
         isButton={isButton}
         isResponce={isResponce}
-        setDetailsActive={setDetailsActive}
         index={index}
         dispatch={dispatch}
         id={id}

@@ -50,6 +50,7 @@ export const putMyTask = createAsyncThunk(
   "inforation/putMyTask",
   async function (data) {
     try {
+      console.log(data);
       let answ = await axios.put(
         `${process.env.REACT_APP_HOST}/advertisement`,
         data[0],
@@ -68,6 +69,8 @@ export const putMyTask = createAsyncThunk(
       let localTask = data[2];
       let changedFiles = [];
 
+      console.warn(answ);
+
       for (let i = 0; i < localTask.photos.length; i++) {
         let file = localTask.photos[i];
         let blob = file.slice(0, file.size, "image/png");
@@ -78,12 +81,12 @@ export const putMyTask = createAsyncThunk(
       }
       localTask.photos = changedFiles;
       localTask.photosNames = answ.data.photos;
+      alert("Закончил")
 
       return {...localTask , myAds : true};
     } catch (e) {
       console.warn(e);
     }
-
     return false;
   }
 );
@@ -203,6 +206,7 @@ export const fetchMyOrders = createAsyncThunk(
   }
 );
 
+
 export const fetchTasksInformation = createAsyncThunk(
   "information/fetchTasksInformation",
   async function (par) {
@@ -236,10 +240,9 @@ export const fetchTasksInformation = createAsyncThunk(
 
     if (task.data.length === 0) {
       return [];
-    } else {
+    } else {   
       try {
         for (let order of task.data) {
-
           let one = new Date(order.startTime);
           let two;
           if (order.endTime) {
@@ -325,6 +328,8 @@ const information = createSlice({
     postTaskStatus: null,
     putTaskStatus: null,
     ordersIds : [],
+    advertisement : null,
+    response : null,
     taskInformation: {
       category: { name: "", value: "" },
       subCategory: "Выбрать",
@@ -347,6 +352,12 @@ const information = createSlice({
     myPaginationArray: [],
   },
   reducers: {
+    setAdvertisement(state,action){
+      state.advertisement = action.payload
+    },
+    setResponse(state, action){
+      state.response = action.payload
+    },
     clearMyOrders(state,action){
       state.myAdsArray = []
       state.ordersIds = []

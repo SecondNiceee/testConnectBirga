@@ -9,7 +9,6 @@ const FirstMain = (
   (
     {
       ordersInformation,
-      setDetailsActive,
       orderStatus,
     }
   ) => {
@@ -55,7 +54,6 @@ const FirstMain = (
                 index={i}
                 isWatched={watchedArr.includes(e.id) ? true : false}
                 key={i}
-                setDetailsActive={setDetailsActive}
                 task={e}
                 {...e}
                 isButton={true}

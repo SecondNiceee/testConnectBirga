@@ -3183,14 +3183,9 @@ input {
   padding-top: 18px;
   padding-left: 16px;
   padding-right: 16px;
-  position: fixed;
-  left: 100vw;
   height: 100vh;
   top: 0;
   overflow-y: auto;
-  -webkit-transform: translateX(100%);
-      -ms-transform: translateX(100%);
-          transform: translateX(100%);
   z-index: 100000;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -3535,19 +3530,10 @@ input {
   margin: 0px;
 }
 
-html {
-  position: absolute;
-  overflow: hidden;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-}
 
 body {
   width: 100%;
   height: auto;
-  overflow: hidden;
   background: rgb(24, 34, 45);
 }
 

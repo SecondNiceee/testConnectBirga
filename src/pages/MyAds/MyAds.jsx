@@ -47,11 +47,6 @@ let advertisementId = url.searchParams.get("advertisement")
 let responseId = url.searchParams.get("response")
 
 
-const defaultDate = new Date(0)
-
-
-
-
 const MyAds = ({isPage = false}) => {
   const [isPageValueOne , setPageValueOne] = useState(true)
   const [isPageValueTwo , setPageValueTwo] = useState(true)
@@ -60,8 +55,6 @@ const MyAds = ({isPage = false}) => {
   const [valueOne , setValueOne] = useState("all")
 
   const [valueTwo , setValueTwo] = useState("all")
-
-
 
   const responsesArr = useSelector((state) => state.responses.responses);
 
@@ -173,43 +166,6 @@ const MyAds = ({isPage = false}) => {
     card : {}
   })
 
-
-
-
-
-
-  function checkMistakes(changingTask , isSet = true) {
-    let taskName = false;
-    let timeError = false;
-    let descriptionError = false;
-    if (changingTask.taskName.length < 3) {
-      taskName = true;
-    }
-
-    if (changingTask.time.end.getTime() !== defaultDate.getTime()) {
-      if (changingTask.time.end < changingTask.time.start) {
-        timeError = true;
-        if (isSet){
-          window.Telegram.WebApp.showAlert(translation("У вас дата начала меньше даты завершения."))
-        }
-      }
-    }
-    if (changingTask.taskDescription.length > 500){
-      descriptionError = true
-      if (isSet){
-        window.Telegram.WebApp.showAlert("Описание больше 500 символов")
-      }
-    }
-    let rezult = { taskName: taskName, timeError: timeError, descriptionError : descriptionError };
-
-    if (isSet){
-      setMistakes(rezult);
-    }
-    return Object.values(rezult).every((value) => value === false);
-  } 
-
-
-
   const [isOpen, setOpen] = useState({ isActive: false, responce: {
     information: "",
     photos: [],
@@ -222,18 +178,18 @@ const MyAds = ({isPage = false}) => {
     }
   } });
 
-  const save = useSave({
+  // const save = useSave({
   
-    detailsVar,
-    myAdsArray : filteredArray,
-    secondPage,
-    checkMistakes,
-    sortFiles,
-    dispatch,
-    setDetails,
-    details,
-    setDetailsShow : setShowDetails
-  })// функция сохранения , а также модалка телеграма
+  //   detailsVar,
+  //   myAdsArray : filteredArray,
+  //   secondPage,
+  //   checkMistakes,
+  //   sortFiles,
+  //   dispatch,
+  //   setDetails,
+  //   details,
+  //   setDetailsShow : setShowDetails
+  // })// функция сохранения , а также модалка телеграма
 
   const [myResponse, setMyResponse] = useState({
     isOpen: false,
@@ -262,12 +218,6 @@ const MyAds = ({isPage = false}) => {
 
 
 
-  const [mistakes, setMistakes] = useState({
-    taskName: false,
-    timeError: false,
-  }); // контролер ошибок
-
-  
 
   window.Telegram.WebApp.disableVerticalSwipes();
 
@@ -510,46 +460,39 @@ const MyAds = ({isPage = false}) => {
   const postStatus = useSelector( state => state.information.postTaskStatus )
 
 
-  const goBack = useBack(
-    {buyPage : buyPage,
-      details : details,
-      detailsTwo : detailsTwo,
-      happyHold : happyHold ,
-      isOpen : isOpen,
-      lastAdsTwo : lastAdsTwo ,
-      myResponse : myResponse,
-      oneCards : oneCards,
-      openAboutReaction : openAboutReaction,
-      save : save,
-      secondPage : secondPage,
-      setBuyPage : setBuyPage, 
-      setDetails : setDetails,
-      setDetailsTwo : setDetailsTwo,
-      setHappyHold : setHappyHold,
-      setLastAdsTwo : setLastAdsTwo,
-      setMyResponse : setMyResponse,
-      setOneCard : setOneCard,
-      setOpen : setOpen,
-      setOpenAboutReaction : setOpenAboutReaction,
-      setPageValueOne : setPageValueOne ,
-      setPageValueTwo : setPageValueTwo,
-      setSecondPage : setSecondPage,
-      walletH : walletH,
-      setShowDetails : setShowDetails,
-      showDetails : showDetails,
-      myAdOneAdvertisement : myAdOneAdvertisement,
-      isSliderOpened : isSliderOpened,
-      setSliderOpened : setSlideOpened
-    }
-  )
+  // const goBack = useBack(
+  //   {buyPage : buyPage,
+  //     details : details,
+  //     detailsTwo : detailsTwo,
+  //     happyHold : happyHold ,
+  //     isOpen : isOpen,
+  //     lastAdsTwo : lastAdsTwo ,
+  //     myResponse : myResponse,
+  //     oneCards : oneCards,
+  //     openAboutReaction : openAboutReaction,
+  //     save : save,
+  //     secondPage : secondPage,
+  //     setBuyPage : setBuyPage, 
+  //     setDetails : setDetails,
+  //     setDetailsTwo : setDetailsTwo,
+  //     setHappyHold : setHappyHold,
+  //     setLastAdsTwo : setLastAdsTwo,
+  //     setMyResponse : setMyResponse,
+  //     setOneCard : setOneCard,
+  //     setOpen : setOpen,
+  //     setOpenAboutReaction : setOpenAboutReaction,
+  //     setPageValueOne : setPageValueOne ,
+  //     setPageValueTwo : setPageValueTwo,
+  //     setSecondPage : setSecondPage,
+  //     walletH : walletH,
+  //     setShowDetails : setShowDetails,
+  //     showDetails : showDetails,
+  //     myAdOneAdvertisement : myAdOneAdvertisement,
+  //     isSliderOpened : isSliderOpened,
+  //     setSliderOpened : setSlideOpened
+  //   }
+  // )
 
-  const putTask = usePut({
-    details : details,
-    setSecondPage : setSecondPage,
-    setDetails : setDetails,
-    dispatch : dispatch,
-    setDetailsShow : setShowDetails
-  })
   
   const writeFucntion  = useWriteFucntion(
     {
@@ -572,37 +515,27 @@ const MyAds = ({isPage = false}) => {
     setSlideOpened(false)
   }, [setSlideOpened] )
 
-  useButton({
-    closeSlider : closeSlider,
-    isSliderOpened : isSliderOpened,
-    buyPage : buyPage,
-    checkMistakes : checkMistakes,
-    details : details ,
-    goBack : goBack,
-    happyHold : happyHold, 
-    isOpen : isOpen,
-    myResponse : myResponse,
-    putTask : putTask,
-    secondPage : secondPage,
-    walletH : walletH,
-    writeFucntion : writeFucntion,
-    showDetails : showDetails,
-    myAdOneAdvertisement : myAdOneAdvertisement ? myAdOneAdvertisement : secondPage.task
-  })
+  // useButton({
+  //   closeSlider : closeSlider,
+  //   isSliderOpened : isSliderOpened,
+  //   buyPage : buyPage,
+  //   checkMistakes : checkMistakes,
+  //   details : details ,
+  //   goBack : goBack,
+  //   happyHold : happyHold, 
+  //   isOpen : isOpen,
+  //   myResponse : myResponse,
+  //   putTask : putTask,
+  //   secondPage : secondPage,
+  //   walletH : walletH,
+  //   writeFucntion : writeFucntion,
+  //   showDetails : showDetails,
+  //   myAdOneAdvertisement : myAdOneAdvertisement ? myAdOneAdvertisement : secondPage.task
+  // })
 
   useBlockInputs();
   const changer = useSelector( state => state.menuSlice.changer )
 
-  useEffect( () => {
-    setDetails(value => ({...value , isActive : false}))
-    setDetailsTwo( (value) => ({...value, isOpen:false}) )
-    setLastAdsTwo( (value) => ({...value , isOpen: false}) )
-    setMyResponse( (value) => ({...value, isOpen : false}) )
-    setOneCard( (value) => ({...value , isOpen : false}) )
-    setOpen( (value) => ({...value , isActive : false}) )
-    setOpenAboutReaction((value) => ({...value , isActive : false}))
-    setSecondPage( (value) => ({...value , isActive : false}) )
-  } , [changer])
 
 
   const style = useMemo( () => {
@@ -654,7 +587,6 @@ const MyAds = ({isPage = false}) => {
                 overflowY : "scroll",
                 paddingBottom : "74px"
               }}
-              mistakes={mistakes}
               className="AdCreatingMy"
               taskInformation={details}
               setTaskInformation={setDetails}
@@ -662,29 +594,6 @@ const MyAds = ({isPage = false}) => {
               isDetailsActive={showDetails}
             />
           </CSSTransition>
-
-          <CSSTransition
-            classNames="aboutOne"
-            in={(secondPage.isActive && myAdOneAdvertisement !== null)}
-            timeout={400}
-            mountOnEnter
-            unmountOnExit
-          >
-            <AboutOne
-            setPhotos={setPhotos}
-            setPhotoIndex={setPhotoIndex}
-            setSlideOpened={setSlideOpened}
-            setDetailsShow={setShowDetails}
-            style = { (isPageValueOne && isPage) ? {left : "0px"} : {}}
-            setDetails={setDetails}
-              setSecondPage={setSecondPage}
-              setOpen={setOpen}
-              task={myAdOneAdvertisement}
-              openAboutReactionFunc={setOpenAboutReaction}
-            />
-          </CSSTransition>
-
-
 
           <CSSTransition
             // classNames="left-right"

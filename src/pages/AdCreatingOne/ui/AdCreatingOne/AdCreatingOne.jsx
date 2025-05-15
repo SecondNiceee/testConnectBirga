@@ -22,6 +22,8 @@ Date.prototype.addHours = function (h) {
   return this;
 };
 let monthMap;
+
+
 if (en){
   monthMap = {
     1: "Jan",
@@ -98,6 +100,7 @@ else{
 
 const min = new Date(new Date().addHours(1) + 1);
 const menu = document.documentElement.querySelector(".FirstMenu")
+
 const AdCreatingOne = ({
   taskInformation,
   setTaskInformation,
@@ -125,6 +128,10 @@ const AdCreatingOne = ({
     isStartOpen: false,
     isEndOpen: false,
   });
+
+  
+  console.log(taskInformation)
+
 
   useEffect(() => {
     setState((value) => ({
@@ -238,6 +245,7 @@ const AdCreatingOne = ({
     setTaskInformation( (value) => ({...value , photos : e}) )
     
   } , [setTaskInformation] )
+
 
 
   return (

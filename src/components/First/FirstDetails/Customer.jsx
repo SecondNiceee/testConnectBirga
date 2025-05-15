@@ -3,7 +3,7 @@ import galks from '../../../images/icons/Subtract.svg'
 import userImage from "../../../images/userPhoto/user.png"
 import Text from '../../Text/Text';
 import { useSelector } from 'react-redux';
-const Customer = ({customerName, rate, userPhoto, setProfile, id}) => {
+const Customer = ({customerName, rate, userPhoto, setBaidge, setBaidgeUserId, id}) => {
     const userInfo = useSelector(state => state.telegramUserInfo)
     const urId = useMemo( () => {
         if (id){
@@ -15,7 +15,8 @@ const Customer = ({customerName, rate, userPhoto, setProfile, id}) => {
     } , [id, userInfo.id] )
     return (
         <div onClick={() => {
-            setProfile(true)
+            setBaidge(true)
+            setBaidgeUserId(id)
         }} className = 'customerContainer'>
             <Text className='customer__up'>Заказчик</Text>
             <div className="customer__information">

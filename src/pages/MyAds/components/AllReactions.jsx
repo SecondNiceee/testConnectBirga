@@ -3,13 +3,10 @@ import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ReactionBlock from "./ReactionBlock";
 import { useSelector } from "react-redux";
 import useSlider from "../../../hooks/useSlider";
-import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
 
 const AllReactions = ({
   setFilterBy,
-  openAboutReactionFunc,
   responces,
-  setOpen,
   filteredArray,
   getMore,
   setPhotos,
@@ -35,9 +32,7 @@ const AllReactions = ({
           setSlideOpened={setSliderOpened}
           getMore = {getMore}
           setFilterBy={setFilterBy}
-          openAboutReactionFunc={openAboutReactionFunc}
           responces={filteredArray}
-          setOpen={setOpen}
         />
       )}
     </>

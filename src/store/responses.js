@@ -134,15 +134,6 @@ export const addResponse = createAsyncThunk(
     "addResponse" , 
     async function (par){
         try{
-            // for (let i = 0 ; i < 20;i++){
-
-            //     await axios.post(`${process.env.REACT_APP_HOST}/response` , par[0], {
-            //         params : {
-            //             advertisementId : par[1].advertisement.id,
-            //             userId : par[1].user.id
-            //         }
-            //     })
-            // }
 
             const messageOne = translation("📣 Вы получили отклик на задачу «")
             const messageTwo = translation("» от ")
@@ -156,7 +147,6 @@ export const addResponse = createAsyncThunk(
                   }
 
             })
-
 
             const en = true
             

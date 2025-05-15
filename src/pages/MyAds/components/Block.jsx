@@ -1,7 +1,9 @@
 import React, { memo } from 'react';
 import MyFirstBlock from '../../../components/MyAds/MyFirstBlock';
+import { useNavigate } from 'react-router';
 
 const Block = ({e, i, setSecondPage }) => {
+  const navigate = useNavigate();
     return (
         <>
           <div 
@@ -12,7 +14,7 @@ const Block = ({e, i, setSecondPage }) => {
                 {...e}
   
                 myAdsFunc={(value) => {
-                  setSecondPage({ isActive: true, task: e, index: i });
+                  navigate(`/advertisementResponses/${e.id}`);
                 }}
                 
                 isButton={true}

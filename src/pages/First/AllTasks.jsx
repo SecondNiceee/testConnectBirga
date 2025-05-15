@@ -9,7 +9,6 @@ import InputBlock from "../../components/First/CategoryBlock/InputBlock";
 import translation from "../../functions/translate";
 // let count = 0
 const AllTasks = forwardRef(({
-  setDetailsActive,
   setMenuActive,
   ordersInformation,
   filterBy,
@@ -19,8 +18,6 @@ const AllTasks = forwardRef(({
   setFilters,
   setSubCategory
 } , ref) => {
-
-
 
   const orderStatus = useSelector((state) => state.information.orderStatus)
 
@@ -73,6 +70,7 @@ const AllTasks = forwardRef(({
         setMenuActive={setMenuActive}
         setFilterBy={setFilterBy}
         userInfo={userInfo}
+  
       />
               <div className="filtration-container">
           <CategoryBlock func={openCategoryFunc} name={"Категория"} value={format(filters.category.category)}/>
@@ -83,9 +81,9 @@ const AllTasks = forwardRef(({
       { (orderStatus === 'complete' || orderStatus === 'all') && tonConstant !== 0 ? (
         <>
           <FirstMain
+
             // style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
             orderStatus = {orderStatus}
-            setDetailsActive={setDetailsActive}
             ordersInformation={ordersInformation}
           />                                     
         </>

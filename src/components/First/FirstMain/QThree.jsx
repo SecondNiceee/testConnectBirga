@@ -1,9 +1,10 @@
 import React, { memo } from "react";
 import MyButton from "../../UI/MyButton/MyButton";
 import { addWatch } from "../../../store/watchedAds";
+import { useNavigate } from "react-router";
 
-const QThree = ({isMyAds , isResponce, isButton, setDetailsActive, index, dispatch, id }) => {
-    
+const QThree = ({isMyAds , isResponce, isButton, index, dispatch, id }) => {
+  const navigate = useNavigate();
   return (
     <>
       {!isMyAds && !isResponce ? (
@@ -11,8 +12,9 @@ const QThree = ({isMyAds , isResponce, isButton, setDetailsActive, index, dispat
         hard = {true}
           style={isButton ? {} : { display: "none" }}
           onClick={(e) => {
-            setDetailsActive({ isOpen: true, id: index });
+            
             dispatch(addWatch(id));
+            navigate(`/FirstDetails/${id}`)
           }}
         >
           Подробнее

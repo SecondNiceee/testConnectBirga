@@ -2,7 +2,7 @@ import React, { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Block from '../../pages/MyAds/components/Block';
 
-const SuspenseBlock = ({i , e, setSecondPage ,  viewsNumber = 0, setViewsNumber = () => {}}) => {
+const SuspenseBlock = ({i , e, setSecondPage, setViewsNumber = () => {}}) => {
     const { ref, inView } = useInView({
         threshold: 0, // Порог видимости (от 0 до 1)
       });

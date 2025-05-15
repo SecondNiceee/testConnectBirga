@@ -28,6 +28,9 @@ import { fetchAllIds } from "./store/saves";
 
 import { getBalance } from "./store/balance";
 
+const FirstDetails = lazy(() =>
+  import("./components/First/FirstDetails/FirstDetails")
+);
 const HappyPage = lazy(() => import("./pages/HappyHold/HappyPage"));
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -41,7 +44,16 @@ const WalletEnter = lazy(() => import("./pages/WalletEnter/WalletEnter"));
 const Wallet = lazy(() => import("./pages/Wallet"));
 const WalletInit = lazy(() => import("./pages/WalletEnter/WalletInit"));
 const Baidge = lazy(() => import("./pages/Baidge/Baidge"));
-const BaidgeCreating = lazy(() => import("./pages/BaidgeCreating/BaidgeCreating"))
+const BaidgeCreating = lazy(() =>
+  import("./pages/BaidgeCreating/BaidgeCreating")
+);
+
+const LastAds = lazy( () => import("./pages/MyAds/components/LastAds") )
+
+
+const AboutOne = lazy( () => import("./pages/MyAds/components/AboutOne") )
+const Response = lazy(() => import("./pages/First/Responce"));
+const ChangeAdvertisement = lazy( () => import("./pages/ChangeAdvertisement/ChangeAdvertisement") )
 
 export const API_KEY = process.env.REACT_APP_API_KEY;
 const MyLoader = () => {
@@ -96,8 +108,6 @@ const AnimatedSwitch = () => {
         menuRef.current.classList.remove("disappearAnimation");
       }
     } else {
-      document.documentElement.style.overflowY = "hidden";
-      document.body.style.overflowY = "hidden";
       menuRef.current.classList.add("appearAnimation");
       menuRef.current.classList.remove("disappearAnimation");
     }
@@ -132,7 +142,7 @@ const AnimatedSwitch = () => {
           }
         );
       } catch (e) {
-          console.warn(e)
+        console.warn(e);
       }
     }
     if (userId) {
@@ -156,6 +166,25 @@ const AnimatedSwitch = () => {
 
         <AnimatePresence>
           <Routes location={location} key={location.pathname}>
+
+            <Route
+              path="/changeAdvertisement/:advId"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <ChangeAdvertisement />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/response/:id"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <LastAds />
+                </Suspense>
+              }
+            />
+            
             <Route
               path="/"
               element={
@@ -164,6 +193,16 @@ const AnimatedSwitch = () => {
                 </Suspense>
               }
             />
+
+            <Route
+              path="advertisementResponses/:advId"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <AboutOne />
+                </Suspense>
+              }
+            />
+
             <Route
               path="/BaidgeCreating"
               element={
@@ -178,6 +217,15 @@ const AnimatedSwitch = () => {
               element={
                 <Suspense fallback={<MyLoader />}>
                   <First isPage={true} />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/FirstDetails/:id"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <FirstDetails isPage={true} />
                 </Suspense>
               }
             />
@@ -282,6 +330,15 @@ const AnimatedSwitch = () => {
               element={
                 <Suspense fallback={<MyLoader />}>
                   <MyAds />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/response/:id"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <Response />
                 </Suspense>
               }
             />

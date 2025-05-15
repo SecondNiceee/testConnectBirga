@@ -18,7 +18,6 @@ const FirstBlock = ({
   time,
   end = false,
   category,
-  setDetailsActive,
   isButton,
   photos,
   isMyAds,
@@ -32,7 +31,6 @@ const FirstBlock = ({
   tonValue,
   task,
   agree = false,
-  viewsNumber = 0,
   setViewsNumber = () =>{},
   setPhotoIndex,
   setPhotos
@@ -112,7 +110,6 @@ const FirstBlock = ({
     isWatched: isWatched,
     index: index,
     id: id,
-    setDetailsActive: setDetailsActive,
     setSlideActive: setSlideActive,
     tonValue: tonValue,
     task: task,

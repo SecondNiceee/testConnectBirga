@@ -12,7 +12,6 @@ const Block = ({
   taskName,
   time,
   end = false,
-  setDetailsActive,
   isButton,
   photos,
   isMyAds,
@@ -36,6 +35,7 @@ const Block = ({
   setPhotoIndex,
   setPhotos,
   setSliderOpened,
+  setDetailsActive
 }) => {
 
   const dispatch = useDispatch();
@@ -56,12 +56,6 @@ const Block = ({
   const isFirstPagePhotos = !isMyAds && !isResponce && isButton // Фотки ли это первой странички
   const isFirstDetailsPhotos = !isMyAds && !isResponce && !isButton // Фотки принадлежат подробнее в первом  первой страничке
 
-  const photosClickFunction = () => {
-    if (isFirstPagePhotos) {
-      setDetailsActive({ isOpen: true, id: index });
-    }
-  };
-
   return (
     <>
       {photos && (
@@ -76,7 +70,6 @@ const Block = ({
             setPhotoIndex={setPhotoIndex}
             setPhotos={setPhotos}
             setSliderOpened={setSliderOpened}
-            onClick={photosClickFunction}
             photos={photos}
           />
 
@@ -112,10 +105,10 @@ const Block = ({
               agree,
               task,
               isResponce,
-              setDetailsActive,
               index,
               dispatch,
               deleteFunction,
+              setDetailsActive
             }}
           />
         </div>

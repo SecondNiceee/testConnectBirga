@@ -5,6 +5,7 @@ import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ReactionSuspense from "./ReactionSuspense";
 import MyAnimation from "./MyAnimation";
 import Text from "../../../components/Text/Text";
+import { useNavigate } from "react-router";
 
 const height = { height: "calc(calc(100vh) - 330px)" };
 const Responses = ({
@@ -12,8 +13,6 @@ const Responses = ({
   responces,
   values,
   names,
-  openAboutReactionFunc,
-  setOpen,
   getMore,
   setPhotos,
   setPhotoIndex,
@@ -52,6 +51,8 @@ const Responses = ({
     // eslint-disable-next-line
   }, [responces]);
 
+  const navigate = useNavigate();
+  
 
   return (
     <>
@@ -71,13 +72,15 @@ const Responses = ({
       {responces.length > 0 ? (
         <>
           {responces.map((e, i) => {
+            const setOpen = () => {
+              navigate(`/response/${e.id}`)
+            }
             return (
               <>
                 <ReactionSuspense
                   setPhotos = {setPhotos}
                   setPhotoIndex = {setPhotoIndex}
                   setSlideOpened = {setSlideOpened}
-                  openAboutReactionFunc={openAboutReactionFunc}
                   responce={e}
                   setOpen={setOpen}
                 />

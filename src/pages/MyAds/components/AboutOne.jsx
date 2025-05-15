@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { memo } from "react";
-import { deleteAd } from "../../../store/information";
 import { useDispatch, useSelector } from "react-redux";
 import AllReactions from "./AllReactions";
 import Block from "../../../components/First/Block";
@@ -9,27 +8,22 @@ import {
   fetchResponseByAdvertisement,
 } from "../../../store/responses";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
+import useSlider from "../../../hooks/useSlider";
+import useGetAdvertisement from "../../../hooks/api/useGetAdvertisement";
+import { useNavigate, useParams } from "react-router";
+import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
 import translation from "../../../functions/translate";
+import { deleteAd } from "../../../store/information";
 
-const Yes = translation("Да");
-const No = translation("Нет");
 const showStatus = true;
-const AboutOne = ({
-  task,
-  setMenuActive,
-  setOpen,
-  setSecondPage,
-  setDetails,
-  setDetailsShow,
-  openAboutReactionFunc,
-  setPhotoIndex,
-  setPhotos,
-  setSlideOpened,
-  ...props
-}) => {
+const AboutOne = () => {
   const responces = useSelector((state) => state.responses.responsesByA);
   const startStatus = useSelector((state) => state.responses.startStatus);
   const dispatch = useDispatch();
+  const {advId} = useParams();
+
+  const {advertisementStatus, orderInformation : task} = useGetAdvertisement({id : advId});
+
   useEffect(() => {
     if (task && startStatus === "completed") {
       dispatch(clearResponsesByA());
@@ -45,8 +39,8 @@ const AboutOne = ({
           title: translation("Удалить?"),
           message: translation("Вы хотите удалить это задание?"),
           buttons: [
-            { id: "save", type: "default", text: Yes },
-            { id: "delete", type: "destructive", text: No },
+            { id: "save", type: "default", text: "Да" },
+            { id: "delete", type: "destructive", text:"Нет" },
           ],
         },
         (buttonId) => {
@@ -54,12 +48,12 @@ const AboutOne = ({
           }
           if (buttonId === "save") {
             dispatch(deleteAd(e.id));
-            setSecondPage((value) => ({ ...value, isActive: false }));
+            navigate(-1);
           }
         }
       );
     },
-    [dispatch, setSecondPage]
+    [dispatch]
   );
 
   const [filterBy, setFilterBy] = useState("all");
@@ -84,19 +78,7 @@ const AboutOne = ({
     }
   }, [responces, filterBy]);
 
-  const deleteCallback = useCallback(() => {
-    deleteFunction(task);
-    // eslint-disable-next-line
-  }, [task]);
-
-  const setDetailsCallback = useCallback(() => {
-    setDetails({
-      ...task,
-      myAds: true,
-    });
-    setDetailsShow(true);
-    // eslint-disable-next-line
-  }, [task]);
+  const navigate = useNavigate();
 
   const getMore = useCallback(
     (page, setPage) => {
@@ -108,18 +90,32 @@ const AboutOne = ({
 
   const putStatus = useSelector((state) => state.information.putTaskStatus);
 
+  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos,setSlideOpened} = useSlider()
+
+
+  const openDetails = () => {
+      navigate(`/changeAdvertisement/${task.id}`)
+  }
+
+  if (advertisementStatus === "pending" || advertisementStatus === "rejected"){
+    return <MyLoader />
+  }
+
+  const openAboutReactionFunc = () => {
+
+  }
 
   return (
     <>
-      <div className="aboutOne" {...props}>
+      <div className="aboutOne p-4">
         {task && putStatus !== "pending" ? (
           <Block
             setPhotos={setPhotos}
             setSliderOpened={setSlideOpened}
             setPhotoIndex={setPhotoIndex}
             showStatus={showStatus}
-            deleteFunction={deleteCallback}
-            setDetailsActive={setDetailsCallback}
+            deleteFunction={deleteFunction}
+            setDetailsActive={openDetails}
             isResponce={
               task.status !== "inProcess" && task.status !== "completed"
             }
@@ -143,9 +139,11 @@ const AboutOne = ({
           filteredArray={filteredArray}
           setFilterBy={setFilterBy}
           openAboutReactionFunc={openAboutReactionFunc}
-          setOpen={setOpen}
+
         />
+
       </div>
+        <CssTransitionSlider blockerAll={true} blockerId={""} isSliderOpened={isSliderOpened} leftPosition={0} renderMap={photos} setSliderOpened={setSlideOpened} sliderIndex={photoIndex} swiperId={"1"} top={0} />
     </>
   );
 };

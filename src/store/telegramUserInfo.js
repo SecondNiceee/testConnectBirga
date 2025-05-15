@@ -144,7 +144,6 @@ export const dislikeUser = createAsyncThunk(
     }
 )
 
-
 export const likeUser = createAsyncThunk(
     'telelegramUserInfo/likeUser',
     async function ({userId, likedUserId}) {
@@ -160,7 +159,6 @@ export const fetchUserInfo = createAsyncThunk(
         let firstName = window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.first_name : "Коля"
         let lastName = window.Telegram.WebApp.initDataUnsafe.user ?  window.Telegram.WebApp.initDataUnsafe.user.last_name : "Титов"
         let user;
-        
         try{
              user = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
               params: {

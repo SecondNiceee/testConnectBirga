@@ -1,17 +1,17 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
-const useMenuRejection = ({setCardOpen, setCategoryOpen, setDetailsActive, setProfile, setResponce, setStep, setSubCategory  }) => {
+const useMenuRejection = ({setCategoryOpen, setDetailsActive, setBaidge, setBaidgeUserId, setResponce, setStep, setSubCategory  }) => {
     const changer = useSelector( state => state.menuSlice.changer )
     useEffect( () => {
-      setCardOpen((value) => ({...value , isOpen : false}))
       setCategoryOpen(false)
       setDetailsActive((value) => ({...value , isOpen : false}))
-      setProfile(false)
+      setBaidge(false)
+      setBaidgeUserId(0)
       setResponce((value) => ({...value , isShablon : false , isShablonModalActive: false, shablonMaker : false}))
       setStep(0)
       setSubCategory(false)
-    } , [changer] )
+    } , [changer, setBaidge, setBaidgeUserId, setCategoryOpen, setDetailsActive, setResponce, setStep, setSubCategory] )
 };
 
 export default useMenuRejection;
