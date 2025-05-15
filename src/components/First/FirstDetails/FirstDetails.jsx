@@ -12,6 +12,7 @@ import CssTransitionSlider from "../../UI/PhotosSlider/CssTransitionSlider";
 import useGetAdvertisement from "../../../hooks/api/useGetAdvertisement";
 import useNavigateBack from "../../../hooks/useNavigateBack";
 
+console.log("фыв")
 const FirstDetails = ({ end, className, ...props }) => {
 
   const disatch = useDispatch();
