@@ -213,7 +213,7 @@ const AnimatedSwitch = () => {
             />
 
             <Route
-              path="advertisementResponses/:advId"
+              path="/advertisementResponses/:advId"
               element={
                 <Suspense fallback={<MyLoader />}>
                   <AboutOne />
@@ -421,7 +421,7 @@ function App() {
   }, [address, dispatch]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/">
       <div className="UperContainer">
         <div className="MainContainer">
           <AnimatedSwitch />
