@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
-const menu = document.documentElement.querySelector(".FirstMenu");
 
 const useBlockInputs = () => {
-    useEffect(() => {
+  useEffect(() => {
+      const menu = document.documentElement.querySelector(".FirstMenu");
         const input = document.querySelectorAll('input'); 
         const textarea = document.querySelectorAll("textarea");
         for (let smallInput of input) {

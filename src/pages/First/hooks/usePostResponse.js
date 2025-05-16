@@ -10,9 +10,9 @@ const usePostResponse = ({
 }) => {
   const me = useSelector((state) => state.telegramUserInfo);
   const postResponse = useCallback(async () => {
-    const myFormData = createResponseFormData(responce, detailsAdertisement.id);
     console.log(responce)
     try {
+      const myFormData = createResponseFormData(responce, detailsAdertisement.id);
       await createResponse({
         responseAdvertisement: detailsAdertisement,
         responseFormData: myFormData,
