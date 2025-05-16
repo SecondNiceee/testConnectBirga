@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from "react";
+import { memo, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Photos from "./FirstMain/Photos";
@@ -7,6 +7,8 @@ import FirstMainTop from "./FirstMain/FirstMainTop";
 import FirstMainMiddle from "./FirstMain/FirstMainMiddle";
 import MainBottom from "./FirstMain/MainBottom";
 import { setDetailsAdvertisement } from "../../store/information";
+import { addWatch } from "../../store/watchedAds";
+import { useNavigate } from "react-router";
 
 const Block = ({
   className,
@@ -42,8 +44,12 @@ const Block = ({
 
   const tonConstant = useSelector((state) => state.ton.value);
 
+  const navigate = useNavigate();
+
   const setDetailsActive = () => {
+    navigate(`/FirstDetails/${id}`)
     dispatch(setDetailsAdvertisement(task));
+    dispatch(addWatch(task.id));
   }
 
   const timing = useMemo(() => {

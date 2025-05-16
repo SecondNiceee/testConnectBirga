@@ -1,9 +1,8 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import MyButton from "../../UI/MyButton/MyButton";
-import { addWatch } from "../../../store/watchedAds";
 import { useNavigate } from "react-router";
 
-const QThree = ({isMyAds , isResponce, isButton, index, dispatch, id }) => {
+const QThree = ({isMyAds , isResponce, isButton, setDetailsActive, index, dispatch, id }) => {
   const navigate = useNavigate();
   return (
     <>
@@ -11,11 +10,7 @@ const QThree = ({isMyAds , isResponce, isButton, index, dispatch, id }) => {
         <MyButton
         hard = {true}
           style={isButton ? {} : { display: "none" }}
-          onClick={(e) => {
-            console.log("Вызов")
-            dispatch(addWatch(id));
-            navigate(`/FirstDetails/${id}`)
-          }}
+          onClick={setDetailsActive}
         >
           Подробнее
         </MyButton>
