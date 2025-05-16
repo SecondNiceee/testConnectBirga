@@ -28,6 +28,11 @@ import { fetchAllIds } from "./store/saves";
 
 import { getBalance } from "./store/balance";
 import FirstDetails from "./components/First/FirstDetails/FirstDetails";
+import ShowMyResponse from "./components/MyAds/ShowMyResponse/ShowMyResponse";
+import ChangeAdvertisement from "./pages/ChangeAdvertisement/ChangeAdvertisement";
+import LastAds from "./pages/MyAds/components/LastAds";
+import AboutOne from "./pages/MyAds/components/AboutOne";
+import Responce from "./pages/First/Responce";
 const HappyPage = lazy(() => import("./pages/HappyHold/HappyPage"));
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -45,13 +50,7 @@ const BaidgeCreating = lazy(() =>
   import("./pages/BaidgeCreating/BaidgeCreating")
 );
 
-const ShowMyResponse = lazy( () => import("./components/MyAds/ShowMyResponse/ShowMyResponse") )
 
-const LastAds = lazy( () => import("./pages/MyAds/components/LastAds") )
-
-const AboutOne = lazy( () => import("./pages/MyAds/components/AboutOne") )
-const Response = lazy(() => import("./pages/First/Responce"));
-const ChangeAdvertisement = lazy( () => import("./pages/ChangeAdvertisement/ChangeAdvertisement") )
 
 export const API_KEY = process.env.REACT_APP_API_KEY;
 const MyLoader = () => {
@@ -168,36 +167,28 @@ const AnimatedSwitch = () => {
             <Route
               path="/changeAdvertisement/:advId"
               element={
-                <Suspense fallback={<MyLoader />}>
                   <ChangeAdvertisement />
-                </Suspense>
               }
             />
 
             <Route
               path="/responsedAdvertisement/:id"
               element={
-                <Suspense fallback={<MyLoader />}>
                   <FirstDetails showButton = {false} />
-                </Suspense>
               }
             />
 
             <Route
               path="/confirm/:advId/:resId"
               element={
-                <Suspense fallback={<MyLoader />}>
                   <ShowMyResponse />
-                </Suspense>
               }
             />
 
             <Route
               path="/response/:id"
               element={
-                <Suspense fallback={<MyLoader />}>
                   <LastAds />
-                </Suspense>
               }
             />
             
@@ -213,9 +204,7 @@ const AnimatedSwitch = () => {
             <Route
               path="/advertisementResponses/:advId"
               element={
-                <Suspense fallback={<MyLoader />}>
                   <AboutOne />
-                </Suspense>
               }
             />
 
@@ -350,9 +339,7 @@ const AnimatedSwitch = () => {
             <Route
               path="/response/:id"
               element={
-                <Suspense fallback={<MyLoader />}>
-                  <Response />
-                </Suspense>
+                  <Responce />
               }
             />
 
