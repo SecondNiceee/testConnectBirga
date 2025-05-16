@@ -337,7 +337,7 @@ const AnimatedSwitch = () => {
             />
 
             <Route
-              path="/response/:id"
+              path="/makeresponse/:id"
               element={
                   <Responce />
               }

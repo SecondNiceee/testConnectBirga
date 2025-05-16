@@ -15,6 +15,7 @@ import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
 import { showAllert } from "../../functions/showAlert";
 import usePostResponse from "./hooks/usePostResponse";
+import menuController from "../../functions/menuController";
 
 
 let myResponse = {
@@ -62,6 +63,10 @@ const Responce = ( ) => {
     setPhotos,
     setSlideOpened,
   } = useSlider();
+
+  useEffect( () => {
+    menuController.lowerMenu();
+  }, [] )
 
 
   useNavigateBack({isSliderOpened, setSlideOpened});
