@@ -145,7 +145,7 @@ const NewChangeCard = ({isNewCard}) => {
         }));
       }, [setChangedCard]);
 
-    const leftSymbols = 25 - changedCard.title.length < 0 ? 0 : 25 - changedCard.title.length;
+    const leftSymbols = 25 - changedCard?.title?.length < 0 ? 0 : 25 - changedCard?.title?.length;
 
     if (!changedCard){
         return <MyLoader />
