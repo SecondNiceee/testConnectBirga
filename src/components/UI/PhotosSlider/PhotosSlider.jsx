@@ -3,9 +3,21 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 import MainButton from '../../../constants/MainButton';
 import BackButton from '../../../constants/BackButton';
+import { enableColorAndActiveButton } from '../../../functions/enableColorAndActiveButton';
 
 let overflowYValue;
 const PhotosSlider = forwardRef(({ swiperId, renderMap, className, sliderIndex, blockerId, blockerAll, setSliderOpened, left = 0, top = 0 }, ref) => {
+    const closeSlider = () => {
+        setSliderOpened(false)
+    }
+    useEffect( () => {
+        MainButton.show();
+        enableColorAndActiveButton();
+        MainButton.onClick(closeSlider);
+        return () => {
+            MainButton.offClick(closeSlider);
+        }
+    }, [] )
     const render = (src, index) => {
         return (
             

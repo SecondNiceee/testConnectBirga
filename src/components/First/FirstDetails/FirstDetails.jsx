@@ -24,7 +24,16 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
 
   const orderInformation = useSelector( (state) => state.information.detailsAdvertisement );
 
-  console.log(orderInformation);
+  
+    const {
+    isSliderOpened,
+    photoIndex,
+    photos,
+    setPhotoIndex,
+    setPhotos,
+    setSlideOpened,
+  } = useSlider();
+
 
   useEffect( () => {
     if (!orderInformation){
@@ -48,26 +57,29 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
     }
   }, [showButton]);
   
-  
   const isMyResponse = useIsMyResponse({detailsAdertisement : orderInformation})
   
   useEffect( () => {
-    if (isMyResponse){
+    if (isMyResponse && !isSliderOpened){
       disableColorButton();
     }
     return () => {
       enableColorAndActiveButton();
     }
-  }, [isMyResponse] )
+  }, [isMyResponse, isSliderOpened] )
 
   const goForward = useCallback( () => {
+    if (isSliderOpened){
+      setSlideOpened(false)
+      return ;
+    }
     if (isMyResponse){
       showAllert("Вы уже откликнулись на это задание.")
     }
     else{
       navigate(`/makeresponse/${id}`)
     }
-  }, [id, navigate, isMyResponse] )
+  }, [id, navigate, isMyResponse, isSliderOpened, setSlideOpened] )
 
   useEffect( () => {
     menuController.hideMenu();
@@ -80,14 +92,6 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
     }
   }, [goForward] )
 
-    const {
-    isSliderOpened,
-    photoIndex,
-    photos,
-    setPhotoIndex,
-    setPhotos,
-    setSlideOpened,
-  } = useSlider();
 
   useNavigateBack({isSliderOpened, setSlideOpened});
 
