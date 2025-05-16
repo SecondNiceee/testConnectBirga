@@ -12,6 +12,7 @@ import useGetResponseById from "../../../hooks/useGetResponseById";
 import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
 import useSlider from "../../../hooks/useSlider";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
+import menuController from "../../../functions/menuController";
 const LastAds = () => {
 
   const {id} = useParams();
@@ -22,9 +23,18 @@ const LastAds = () => {
 
   const {response, responseStatus} = useGetResponseById({id })
 
+  useEffect( () => {
+    if (response){
+      if (response.isWatched !== "inProcess" && response.isWatched !== "completed"){
+        menuController.lowerMenu();
+        MainButton.show();
+        MainButton.setText("Выбрать исполнителя")
+      }
+    }
+  }, [response] )
+
   useEffect(() => {
     if (response){
-
       if (
         response.isWatched !== "watched" &&
         response.isWatched !== "inProcess"
