@@ -16,9 +16,7 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
 
   const disatch = useDispatch();
 
-  const id = 12;
-
-  console.log(id)
+  const { id } = useParams();
 
   const {advertisementStatus, orderInformation} = useGetAdvertisement({id})
 

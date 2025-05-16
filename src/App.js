@@ -27,9 +27,7 @@ import { fetchAllShablons } from "./store/shablon";
 import { fetchAllIds } from "./store/saves";
 
 import { getBalance } from "./store/balance";
-const FirstDetails = lazy(() =>
-  import("./components/First/FirstDetails/FirstDetails")
-);
+import FirstDetails from "./components/First/FirstDetails/FirstDetails";
 const HappyPage = lazy(() => import("./pages/HappyHold/HappyPage"));
 const First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -242,10 +240,7 @@ const AnimatedSwitch = () => {
             <Route
               path="/FirstDetails/:id"
               element={
-                <Suspense fallback={<MyLoader />}>
-                  <FirstDetails isPage={true} />
-                </Suspense>
-              }
+                  <FirstDetails isPage={true} />}
             />
 
             <Route
