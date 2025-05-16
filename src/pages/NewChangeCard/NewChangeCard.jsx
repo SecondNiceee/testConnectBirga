@@ -112,7 +112,7 @@ const NewChangeCard = ({isNewCard}) => {
         if (!changedCard?.photos.length){
             localErrors.photos = true
         }
-        if ( changedCard?.links.filter((link) => link.length).length  ){
+        if ( changedCard?.links?.filter((link) => link.length).length  ){
             const errorsIds = [];
             changedCard.links.forEach( (link, id) => {
                 if (!link.includes('http')){

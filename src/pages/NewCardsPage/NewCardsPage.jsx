@@ -10,6 +10,7 @@ import menuController from "../../functions/menuController";
 import { useNavigate } from "react-router";
 import MainButton from "../../constants/MainButton";
 import useNavigateBack from "../../hooks/useNavigateBack";
+import { enableColorAndActiveButton } from "../../functions/enableColorAndActiveButton";
 
 const NewCardsPage = () => {
 
@@ -47,13 +48,13 @@ const NewCardsPage = () => {
   }, [navigate, isSliderOpened, setSlideOpened] )
 
   useEffect( () => {
+    MainButton.show();
+    enableColorAndActiveButton();
     if (userInfo.id === me.id){
-      MainButton.show();
       MainButton.setText("Создать")
       MainButton.onClick(createCard);
     }
     else{
-      MainButton.show();
       MainButton.setText("Hазад");
       MainButton.onClick(BackFunction)
     }
