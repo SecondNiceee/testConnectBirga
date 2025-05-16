@@ -38,11 +38,6 @@ const DescriptionAndPhoto = ({
     return translation(textPlaceholder);
   }, [textPlaceholder]);
 
-  const onFocus = () => {
-    setTimeout( () => {
-      myRef.current.scrollIntoView();
-    }, 200 )
-  }
 
   return (
     <div
@@ -63,7 +58,6 @@ const DescriptionAndPhoto = ({
         <textarea ref={hiddenRef} value={text} className={cl.hiddenText} />
 
         <TextArea
-          onFocus={onFocus}
           ref={myRef}
           value={text}
           className={`${textAreaClassName} ${cl.DescriptionInput}`}
