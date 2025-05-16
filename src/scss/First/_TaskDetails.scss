@@ -10,13 +10,10 @@
     // height: 100%;
     background: rgb(24, 34, 45);
     padding: 18px 16px;
-    transition-duration: 0.4s;
-    transition-timing-function: cubic-bezier(0.42, 0, 0.58, 1);
     left: 0;
     transform: translateX(0%);
     position: fixed;
-    padding-bottom: 74px;
-    
+    padding-bottom: 16px;
     // transform: translateX(100%);
     &.active{
         transform: translateX(0%);

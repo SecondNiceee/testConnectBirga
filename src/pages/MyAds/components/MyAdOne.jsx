@@ -20,9 +20,7 @@ const MyAdOne = ({
   
 }) => {
 
-
   let putStatus = useSelector((state) => state.information.putTaskStatus);
-
   useEffect(() => {
     if (putStatus === "error") {
       window.Telegram.WebApp.showAlert('ничего не сохранилось')

@@ -123,8 +123,6 @@ const AllShablons = () => {
   );
 
 
-  
-
   const save = useCallback( (put) => {
     const myFormData = new FormData()
     myFormData.append("name" , String(shablon.name.trim()) )
@@ -198,8 +196,6 @@ const AllShablons = () => {
       setShablonShow( (value) => ({...value , isActive : false}) )
     }
   } , [check, save, shablon, putShablonState, setShablonShow] )
-
-
 
   useEffect(() => {
     function back() {

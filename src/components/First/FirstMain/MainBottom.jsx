@@ -7,6 +7,7 @@ const MainBottom = ({tonConstant, tonValue, isMyAds, myAdsFunc, isButton, end, i
         <div className="FirstMain__bottom">
             <FirstMainBottomLeft tonConstant={tonConstant} tonValue={tonValue} />
             <MainBottomRight 
+            
               isMyAds = {isMyAds}
               myAdsFunc = {myAdsFunc}
               isButton = {isButton}

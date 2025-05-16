@@ -84,7 +84,7 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
             <div className="AdsContainer">
               {myAdsArray.map((e, i) => {
                 return (
-                    <SuspenseBlock  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} key={i} e={e} i={i} setSecondPage={setSecondPage} />
+                    <SuspenseBlock   viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} key={i} e={e} i={i} setSecondPage={setSecondPage} />
 
                 );
               })}

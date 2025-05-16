@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import getResponseById from '../functions/api/getResponseById';
 
 const useGetResponseById = ({id}) => {
@@ -13,7 +13,7 @@ const useGetResponseById = ({id}) => {
         .catch((err) => {
             setResponseStatus("rejected");
         });
-    }, [] )
+    }, [id] )
 
     return {responseStatus, response};
 

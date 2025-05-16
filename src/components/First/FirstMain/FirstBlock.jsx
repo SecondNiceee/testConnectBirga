@@ -122,6 +122,7 @@ const FirstBlock = ({
   });
 
   const [isVisible, setVisible] = useState(false);
+  
   useEffect(() => {
     if (!isVisible){
       if (inView) {

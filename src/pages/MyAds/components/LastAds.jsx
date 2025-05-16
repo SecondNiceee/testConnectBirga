@@ -13,6 +13,7 @@ import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransiti
 import useSlider from "../../../hooks/useSlider";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import menuController from "../../../functions/menuController";
+import useNavigateBack from "../../../hooks/useNavigateBack";
 const LastAds = () => {
 
   const {id} = useParams();
@@ -59,7 +60,7 @@ const LastAds = () => {
     setSlideOpened,
   } = useSlider();
 
-  console.log(response);
+  useNavigateBack({isSliderOpened, setSlideOpened})
 
   if(responseStatus === "pending" || response === null){
     return <MyLoader />

@@ -4,7 +4,6 @@ import en from "../../constants/language";
 const messageOne = translation("📣 Вы получили отклик на задачу «");
 const messageTwo = translation("» от ");
 export const createResponse = async ({responseFormData, responseAdvertisement, responseUser}) => {
-  console.log(responseFormData);
     try {
       let im;
       for (let i = 0; i < 1; i++) {

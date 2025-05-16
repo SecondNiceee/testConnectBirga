@@ -34,7 +34,7 @@ import LastAds from "./pages/MyAds/components/LastAds";
 import AboutOne from "./pages/MyAds/components/AboutOne";
 import Responce from "./pages/First/Responce";
 const HappyPage = lazy(() => import("./pages/HappyHold/HappyPage"));
-const First = lazy(() => import("./pages/First/First"));
+const   First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
 const NewProfile = lazy(() => import("./pages/Profile/NewProfile"));
 const Balance = lazy(() => import("./pages/Balance"));
@@ -217,14 +217,6 @@ const AnimatedSwitch = () => {
               }
             />
 
-            <Route
-              path="/FirstPage"
-              element={
-                <Suspense fallback={<MyLoader />}>
-                  <First isPage={true} />
-                </Suspense>
-              }
-            />
 
             <Route
               path="/FirstDetails/:id"
@@ -264,15 +256,6 @@ const AnimatedSwitch = () => {
               element={
                 <Suspense fallback={<MyLoader />}>
                   <Wallet />
-                </Suspense>
-              }
-            />
-
-            <Route
-              path="/ProfilePage"
-              element={
-                <Suspense fallback={<MyLoader />}>
-                  <ProfilePage />
                 </Suspense>
               }
             />
@@ -343,14 +326,6 @@ const AnimatedSwitch = () => {
               }
             />
 
-            <Route
-              path="/ResponsePage"
-              element={
-                <Suspense fallback={<MyLoader />}>
-                  <MyAds isPage={true} />
-                </Suspense>
-              }
-            />
 
             <Route
               path="/AllShablons"

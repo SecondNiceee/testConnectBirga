@@ -8,7 +8,7 @@ const PickerTwo = forwardRef(({setSecondPage  , valueTwo ,  viewsNumber , setVie
     return (
         <div className="picker__block" ref={ref}>
         <AdCreateFunc text={"Создать объявление"} link={"/AdCreating"} />
-        <AdsContainer valueTwo = {valueTwo}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} myAdsArray={myAdsArray} setSecondPage={setSecondPage}  />
+        <AdsContainer  valueTwo = {valueTwo}  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} myAdsArray={myAdsArray} setSecondPage={setSecondPage}  />
 
       </div>
     );

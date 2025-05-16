@@ -14,6 +14,7 @@ import { useNavigate, useParams } from "react-router";
 import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
 import translation from "../../../functions/translate";
 import { deleteAd } from "../../../store/information";
+import useNavigateBack from "../../../hooks/useNavigateBack";
 
 const showStatus = true;
 const AboutOne = () => {
@@ -31,6 +32,9 @@ const AboutOne = () => {
     }
     // eslint-disable-next-line
   }, [task, startStatus]);
+
+  const navigate = useNavigate();
+
 
   const deleteFunction = useCallback(
     (e) => {
@@ -53,7 +57,7 @@ const AboutOne = () => {
         }
       );
     },
-    [dispatch]
+    [dispatch, navigate]
   );
 
   const [filterBy, setFilterBy] = useState("all");
@@ -78,7 +82,6 @@ const AboutOne = () => {
     }
   }, [responces, filterBy]);
 
-  const navigate = useNavigate();
 
   const getMore = useCallback(
     (page, setPage) => {
@@ -91,6 +94,8 @@ const AboutOne = () => {
   const putStatus = useSelector((state) => state.information.putTaskStatus);
 
   const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos,setSlideOpened} = useSlider()
+
+  useNavigateBack({isSliderOpened, setSlideOpened})
 
 
   const openDetails = () => {

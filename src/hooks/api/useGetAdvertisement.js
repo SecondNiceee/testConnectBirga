@@ -7,7 +7,6 @@ const useGetAdvertisement = ({id}) => {
 
     const [advertisementStatus, setAdvertisementStatus] = useState("pending");
 
-    
 
     useEffect(() => {
       getAdvertisementById(id)

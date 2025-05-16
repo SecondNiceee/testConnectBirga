@@ -16,7 +16,10 @@ const AllTasks = forwardRef(({
   setCategoryOpen,
   filters,
   setFilters,
-  setSubCategory
+  setSubCategory,
+  setPhotoIndex,
+  setSlideActive,
+  setPhotos
 } , ref) => {
 
   const orderStatus = useSelector((state) => state.information.orderStatus)
@@ -72,7 +75,7 @@ const AllTasks = forwardRef(({
         userInfo={userInfo}
   
       />
-              <div className="filtration-container">
+        <div className="filtration-container">
           <CategoryBlock func={openCategoryFunc} name={"Категория"} value={format(filters.category.category)}/>
           <CategoryBlock isActive = {filters.category.id !== -1} func={openSubCategoryFunc} name={"Подкатегория"}  value={filters.subCategory ? format(filters.subCategory[0].subCategory) : "Все"}/>
           <InputBlock setValue={setValueFunc} value={String(filters.price)} />
@@ -81,7 +84,9 @@ const AllTasks = forwardRef(({
       { (orderStatus === 'complete' || orderStatus === 'all') && tonConstant !== 0 ? (
         <>
           <FirstMain
-
+            setPhotos = {setPhotos}
+            setPhotoIndex={setPhotoIndex}
+            setSlideActive={setSlideActive}
             // style={isMenuActive ? { background: "rgba(0,0,0,0.5)" } : {}}
             orderStatus = {orderStatus}
             ordersInformation={ordersInformation}

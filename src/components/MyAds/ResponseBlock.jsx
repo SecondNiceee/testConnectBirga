@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from "react";
+import { memo, useMemo } from "react";
 import Pallete from "../UI/Pallete/Pallete";
 import FalseTie from "../UI/FalseTie/FalseTie";
 import { useSelector } from "react-redux";
@@ -9,7 +9,6 @@ import en from "../../constants/language";
 import RealTon from "../../images/icons/RealTon.svg";
 import { shareFunction } from "../../functions/shareFunction";
 import ShareIcon from "../UI/ShareIcon/ShareIcon";
-import { useSliderClicker } from "../UI/PhotosSlider/hooks/useSliderClicker";
 
 
 const textPrice = en ? 'USD' : "RUB"
@@ -80,6 +79,7 @@ const ResponseBlock = ({
       func(index)
     }
   }
+
   return (
     <>
       {photos !== undefined ? (

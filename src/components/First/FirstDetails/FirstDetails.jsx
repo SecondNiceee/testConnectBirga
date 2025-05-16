@@ -1,16 +1,20 @@
-import { memo, useCallback, useEffect } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import TaskDetailsContainer from "./TaskDetailsContainer";
 import TimeAndWatches from "./TimeAndWatches";
-import { useDispatch } from "react-redux";
-import { addWatch } from "../../../store/information";
+import { useDispatch, useSelector } from "react-redux";
+import { addWatch, setAdvertisement, setDetailsAdvertisement } from "../../../store/information";
 import MyLoader from "../../UI/MyLoader/MyLoader";
 import {  useNavigate, useParams } from "react-router";
 import menuController from "../../../functions/menuController";
 import MainButton from "../../../constants/MainButton";
 import useSlider from "../../../hooks/useSlider";
 import CssTransitionSlider from "../../UI/PhotosSlider/CssTransitionSlider";
-import useGetAdvertisement from "../../../hooks/api/useGetAdvertisement";
 import useNavigateBack from "../../../hooks/useNavigateBack";
+import { getAdvertisementById } from "../../../functions/api/getAdvertisemetById";
+import useIsMyResponse from "../../../pages/First/hooks/useIsMyResponse";
+import { showAllert } from "../../../functions/showAlert";
+import { enableColorAndActiveButton } from "../../../functions/enableColorAndActiveButton";
+import { disableColorButton } from "../../../functions/disableColorButton";
 
 const FirstDetails = ({ end, className, showButton =true, ...props }) => {
 
@@ -18,7 +22,21 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
 
   const { id } = useParams();
 
-  const {advertisementStatus, orderInformation} = useGetAdvertisement({id})
+  const orderInformation = useSelector( (state) => state.information.detailsAdvertisement );
+
+  console.log(orderInformation);
+
+  useEffect( () => {
+    if (!orderInformation){
+        getAdvertisementById(id)
+          .then((advertisement) => {
+            disatch(setDetailsAdvertisement(advertisement));
+          })
+          .catch((err) => {
+            console.warn(err);
+          });
+    }
+  }, [ id, orderInformation ] )
 
   const navigate = useNavigate();
 
@@ -28,11 +46,26 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
       MainButton.show();
       MainButton.setText("Откликнуться");
     }
-  }, []);
+  }, [showButton]);
+  
+  
+  const isMyResponse = useIsMyResponse({detailsAdertisement : orderInformation})
+  
+  useEffect( () => {
+    if (isMyResponse){
+      disableColorButton();
+    }
+    return () => {
+      enableColorAndActiveButton();
+    }
+  }, [isMyResponse] )
 
   const goForward = useCallback( () => {
+    if (isMyResponse){
+      showAllert("Вы уже откликнулись на это задание.")
+    }
     navigate(`/makeresponse/${id}`)
-  }, [id, navigate] )
+  }, [id, navigate, isMyResponse] )
 
   useEffect( () => {
     menuController.hideMenu();
@@ -62,7 +95,7 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
     }
   }, [disatch, end, orderInformation]);
 
-  if (advertisementStatus === "pending" || advertisementStatus === "rejected") {
+  if (!orderInformation) {
     return <MyLoader />;
   }
   return (
@@ -71,8 +104,8 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
         {...props}
         className={
           className
-            ? ["TaskDetails !pb-[100px]", className].join(" ")
-            : "TaskDetails !pb-[100px]"
+            ? ["TaskDetails ", className].join(" ")
+            : "TaskDetails"
         }
       >
         <div onClick={goForward} className="fixed left-1/2 top-1/2 rounded p-2 border-black border-solid border-2 cursor-pointer">

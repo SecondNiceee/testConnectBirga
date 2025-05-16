@@ -16,7 +16,8 @@ import { getAdvertisementById } from "../../../functions/api/getAdvertisemetById
 import useSlider from "../../../hooks/useSlider";
 import useClickHandler from "./hooks/useClickHandler";
 import CssTransitionSlider from "../../UI/PhotosSlider/CssTransitionSlider";
-const menu = document.documentElement.querySelector(".FirstMenu");
+import menuController from "../../../functions/menuController";
+import useNavigateBack from "../../../hooks/useNavigateBack";
 
 const textButtonOne = translation("ВЫПОЛНИЛ")
 const isTake = translation("Вы выполнили это задание?")
@@ -46,7 +47,7 @@ const ShowMyResponse = () => {
         dispatch(setAdvertisement(adv))
        } )
     }
-  }, [response, advertisement,resId, advId] )
+  }, [response, advertisement,resId, advId, dispatch] )
 
   useEffect(() => {
     
@@ -72,21 +73,18 @@ const ShowMyResponse = () => {
     }
 
     if (response?.isWatched === "inProcess") {
-      menu.classList.add("disappearAnimation")
-      menu.classList.remove("appearAnimation")
+      menuController.lowerMenu();
       MainButton.show();
       MainButton.setParams({
         color: "#2ea5ff",
         text_color: "#ffffff",
         is_active: true,
       });
-      
       MainButton.setText(textButtonOne);
       MainButton.onClick(click);
     }
     return () => {
-      menu.classList.add("appearAnimation")
-      menu.classList.remove("disappearAnimation")
+      menuController.raiseMenu(); 
       MainButton.hide();
       MainButton.offClick(click);
     };
@@ -121,8 +119,7 @@ const ShowMyResponse = () => {
     setSlideOpened,
   } = useSlider();
 
-
-  console.log(advertisement);
+  useNavigateBack({isSliderOpened,setSlideOpened})
   return (
     <>
       {(!response || !advertisement) ? (

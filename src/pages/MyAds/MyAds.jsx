@@ -5,14 +5,13 @@ import { useSelector } from "react-redux";
 import "./MyAds.css";
 import MyAdOne from "./components/MyAdOne";
 import axios from "axios";
-import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import pagesHistory from "../../constants/pagesHistory";
 import { USERID } from "../../constants/tgStatic.config";
 import useBlockInputs from "../../hooks/useBlockInputs";
 import useSlider from "../../hooks/useSlider";
 import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
+import useNavigateBack from "../../hooks/useNavigateBack";
 
-let url = new URL(window.location.href);
 
 const MyAds = () => {
   const [valueOne , setValueOne] = useState("all")
@@ -115,6 +114,8 @@ const MyAds = () => {
 
   const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
 
+  useNavigateBack({isSliderOpened : false, setSlideOpened : false});
+
   // const postStatus = useSelector( state => state.information.postTaskStatus )
 
 
@@ -144,6 +145,7 @@ const MyAds = () => {
         >
 
           <MyAdOne
+
           responsesArr = {filteredResponses}
             setOneValue = {setValueOne}
             setTwoValue = {setValueTwo}

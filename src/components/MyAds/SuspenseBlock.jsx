@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useMemo, useState } from 'react';
+import {useEffect, useMemo, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Block from '../../pages/MyAds/components/Block';
 
@@ -14,7 +14,7 @@ const SuspenseBlock = ({i , e, setSecondPage, setViewsNumber = () => {}}) => {
                 setViewsNumber((value) => (value + 1))
             }
         }
-    } , [inView, isVisible] )
+    } , [inView, isVisible, setVisible, setViewsNumber] )
     const style = useMemo( () =>{
         if (e.photos.length > 0){
             return {minHeight : "calc(184px + 35vh)" , position : "relative"}

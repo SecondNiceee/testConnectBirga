@@ -17,6 +17,7 @@ import useAddHistory from "../../hooks/MyAds/useAddHistory";
 import useSlider from "../../hooks/useSlider";
 import useFilteredArray from "./hooks/useFilteredArray";
 import FirstChoiceSubCategory from "../AdCreatingOne/ui/components/ChoiceCategory/FirstChoiceSubCategory";
+import BackButton from "../../constants/BackButton";
 
 const First = () => {
   const firstRef = useRef(null);
@@ -33,6 +34,10 @@ const First = () => {
 
   useAddHistory();
 
+  useEffect( () => {
+    BackButton.hide();
+  }, [] )
+
   const ordersInformation = useSelector(
     (state) => state.information.orderInformations
   );
@@ -46,6 +51,7 @@ const First = () => {
   const [filterBy, setFilterBy] = useState("");
 
   const filteredArr = useFilteredArr(ordersInformation, filterBy);
+
 
   const secFilteredArray = useFilteredArray({ filteredArr, filters });
 
@@ -64,6 +70,7 @@ const First = () => {
 
   useBlockInputs();
 
+
   return (
     <>
       <div className="first-container">
@@ -79,6 +86,9 @@ const First = () => {
         >
           <div className="first-wrapper">
             <AllTasks
+              setPhotos = {setPhotos}
+              setPhotoIndex = {setPhotoIndex}
+              setSlideActive = {setSlideOpened}
               setFilters={setFilters}
               setSubCategory={setSubCategory}
               filters={filters}

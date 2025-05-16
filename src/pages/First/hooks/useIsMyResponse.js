@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { USERID } from "../../../constants/tgStatic.config";
 
-const useIsMyResponse = ({detailsAdertisement, isDetailsActive}) => {
+const useIsMyResponse = ({detailsAdertisement}) => {
       const gotIt = useMemo( () => {
         if (detailsAdertisement){
           if (detailsAdertisement.responces){
@@ -17,8 +17,7 @@ const useIsMyResponse = ({detailsAdertisement, isDetailsActive}) => {
         }
         return false
         // eslint-disable-next-line
-      },[detailsAdertisement,isDetailsActive.isOpen ] )
-
+      },[detailsAdertisement ] )
       return gotIt
 };
 

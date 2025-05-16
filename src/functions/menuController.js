@@ -1,5 +1,4 @@
 class MenuController{
-    menu = document.documentElement.querySelector(".FirstMenu")
     hideMenu(){
         setTimeout( () => {
             document.documentElement.querySelector(".FirstMenu").style.display = "none"
@@ -24,4 +23,5 @@ class MenuController{
     }
 }
 
-export default new MenuController();
+const menuController = new MenuController();
+export default menuController;

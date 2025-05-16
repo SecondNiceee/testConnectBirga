@@ -19,7 +19,6 @@ const MainBottomRight = ({
   deleteFunction
 }) => {
 
-  
   return (
     <div className="FirstMain__bottom-right">
       <QOne isMyAds={isMyAds} myAdsFunc={myAdsFunc} isButton={isButton} />
@@ -35,6 +34,7 @@ const MainBottomRight = ({
       />
 
       <QThree
+        setDetailsActive = {setDetailsActive}
         isMyAds={isMyAds}
         isButton={isButton}
         isResponce={isResponce}

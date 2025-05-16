@@ -6,6 +6,7 @@ import MyAdsTop from "./FirstMain/MyAdsTop";
 import FirstMainTop from "./FirstMain/FirstMainTop";
 import FirstMainMiddle from "./FirstMain/FirstMainMiddle";
 import MainBottom from "./FirstMain/MainBottom";
+import { setDetailsAdvertisement } from "../../store/information";
 
 const Block = ({
   className,
@@ -35,11 +36,15 @@ const Block = ({
   setPhotoIndex,
   setPhotos,
   setSliderOpened,
-  setDetailsActive
 }) => {
 
   const dispatch = useDispatch();
+
   const tonConstant = useSelector((state) => state.ton.value);
+
+  const setDetailsActive = () => {
+    dispatch(setDetailsAdvertisement(task));
+  }
 
   const timing = useMemo(() => {
     if (!end) {
@@ -53,7 +58,9 @@ const Block = ({
     }
   }, [end, endTime, singleTime, time, whichOne]);
 
-  const isFirstPagePhotos = !isMyAds && !isResponce && isButton // Фотки ли это первой странички
+  
+  
+
   const isFirstDetailsPhotos = !isMyAds && !isResponce && !isButton // Фотки принадлежат подробнее в первом  первой страничке
 
   return (

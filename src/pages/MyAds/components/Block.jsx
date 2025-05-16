@@ -19,7 +19,6 @@ const Block = ({e, i, setSecondPage }) => {
                 
                 isButton={true}
               />
-
             </div>
           
     </>

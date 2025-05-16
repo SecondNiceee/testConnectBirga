@@ -75,7 +75,7 @@ export const deleteResponse = createAsyncThunk(
     async function(id){
         try{
 
-            await axios.delete(`${process.env.REACT_APP_HOST}/response`, {
+            await axios.delete(`${process.env.REACT_APP_HOST}/respon    se`, {
                 params : {
                     id : id
                 },

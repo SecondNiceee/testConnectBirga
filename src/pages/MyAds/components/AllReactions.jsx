@@ -2,7 +2,6 @@ import React from "react";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import ReactionBlock from "./ReactionBlock";
 import { useSelector } from "react-redux";
-import useSlider from "../../../hooks/useSlider";
 
 const AllReactions = ({
   setFilterBy,

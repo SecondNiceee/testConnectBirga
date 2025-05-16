@@ -330,6 +330,7 @@ const information = createSlice({
     ordersIds : [],
     advertisement : null,
     response : null,
+    detailsAdvertisement : null,
     taskInformation: {
       category: { name: "", value: "" },
       subCategory: "Выбрать",
@@ -352,6 +353,9 @@ const information = createSlice({
     myPaginationArray: [],
   },
   reducers: {
+    setDetailsAdvertisement(state,action){
+      state.detailsAdvertisement = action.payload;
+    },
     setAdvertisement(state,action){
       state.advertisement = action.payload
     },
@@ -502,6 +506,7 @@ export const {
   getMoreMyAds,
   clearTasks,
   setAdvertisement,
-  setResponse
+  setResponse,
+  setDetailsAdvertisement
 } = information.actions;
 export default information.reducer;

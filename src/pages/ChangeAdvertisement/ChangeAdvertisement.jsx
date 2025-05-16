@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import useGetAdvertisement from '../../hooks/api/useGetAdvertisement';
 import AdCreatingOne from '../AdCreatingOne/ui/AdCreatingOne/AdCreatingOne';
@@ -7,6 +7,7 @@ import MainButton from '../../constants/MainButton';
 import usePut from '../../hooks/MyAds/usePut';
 import checkMistakes from './utils/checkMistakes';
 import menuController from '../../functions/menuController';
+import useNavigateBack from '../../hooks/useNavigateBack';
 
 const ChangeAdvertisement = () => {
 
@@ -33,6 +34,8 @@ const ChangeAdvertisement = () => {
         }
     }, [advertisementStatus, orderInformation] )
 
+
+    useNavigateBack();
     
     useEffect( () => {
         MainButton.show();
@@ -45,7 +48,6 @@ const ChangeAdvertisement = () => {
             MainButton.offClick(goForward)
         }
     } , [goForward])
-    console.log(changeedAdvertisement);
 
     useEffect( () => {
         menuController.lowerMenu();

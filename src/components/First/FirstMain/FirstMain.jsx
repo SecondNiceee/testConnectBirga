@@ -10,6 +10,9 @@ const FirstMain = (
     {
       ordersInformation,
       orderStatus,
+      setPhotoIndex,
+      setSlideActive,
+      setPhotos
     }
   ) => {
 
@@ -51,6 +54,9 @@ const FirstMain = (
           ordersInformation.map((e, i) => {
             return (
               <FirstBlock
+                setPhotos={setPhotos}
+                setPhotoIndex={setPhotoIndex}
+                setSlideActive={setSlideActive}
                 index={i}
                 isWatched={watchedArr.includes(e.id) ? true : false}
                 key={i}
@@ -61,7 +67,6 @@ const FirstMain = (
             );
           })
         )}
-
 
         {orderStatus !== "all" && (
           <MyLoader

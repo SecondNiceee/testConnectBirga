@@ -1,7 +1,7 @@
 import { memo, useCallback, useEffect, useState } from "react";
 import DescriptionAndPhoto from "../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto";
 import MakePrivate from "../../components/UI/MakePrivate/MakePrivate";
-import {  useSelector } from "react-redux";
+import {  useDispatch, useSelector } from "react-redux";
 import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 import Block from "../../components/First/Block";
 import MainButton from "../../constants/MainButton";
@@ -9,13 +9,14 @@ import translation from "../../functions/translate";
 import useBlockInputs from "../../hooks/useBlockInputs";
 import useSlider from "../../hooks/useSlider";
 import useNavigateBack from "../../hooks/useNavigateBack";
-import useGetAdvertisement from "../../hooks/api/useGetAdvertisement";
 import { useNavigate, useParams } from "react-router";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
 import { showAllert } from "../../functions/showAlert";
 import usePostResponse from "./hooks/usePostResponse";
 import menuController from "../../functions/menuController";
+import { getAdvertisementById } from "../../functions/api/getAdvertisemetById";
+import { setDetailsAdvertisement } from "../../store/information";
 
 
 let myResponse = {
@@ -30,6 +31,9 @@ const Responce = ( ) => {
   const shablonsArr = useSelector((state) => state.shablon.shablonsArr);
   const [clearPhoto , setClearPhoto] = useState(1);
 
+  const dispatch = useDispatch();
+  
+  const orderInformation = useSelector( (state) => state.information.detailsAdvertisement );
   const {id} = useParams();
 
   useEffect( () => {
@@ -42,7 +46,20 @@ const Responce = ( ) => {
     }
   } , [clearPhoto , setClearPhoto] )
 
-  const {advertisementStatus, orderInformation } = useGetAdvertisement({id})
+
+  useEffect( () => {
+    if (!orderInformation){
+        getAdvertisementById(id)
+          .then((advertisement) => {
+            dispatch(setDetailsAdvertisement(advertisement));
+          })
+          .catch((err) => {
+            console.warn(err);
+          });
+    }
+  }, [ id, orderInformation ] )
+
+
 
   const [responce, setResponce] = useState({
     text: "",
@@ -89,7 +106,9 @@ const Responce = ( ) => {
     MainButton.onClick()
   }, [] )
 
-  if (advertisementStatus === "pending" | advertisementStatus === "rejected"){
+  useNavigateBack({isSliderOpened, setSlideOpened})
+
+  if (!orderInformation){
     return <MyLoader />
   }
   return (

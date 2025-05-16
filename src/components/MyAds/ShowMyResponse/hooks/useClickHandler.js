@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 import { useSelector } from "react-redux";
 import translation from "../../../../functions/translate";
 import { useNavigate } from "react-router";
@@ -71,7 +71,7 @@ const useClickHandler = ({advertisement, response}) => {
       );
     }
 }
-  }, [address, advertisement, response]);
+  }, [address, advertisement, response, navigate]);
   return clickHandler;
 };
 
