@@ -35,6 +35,10 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
   }, [id, navigate] )
 
   useEffect( () => {
+    menuController.hideMenu();
+  }, [] )
+
+  useEffect( () => {
     MainButton.onClick(goForward);
     return () => {
       MainButton.offClick(goForward)
