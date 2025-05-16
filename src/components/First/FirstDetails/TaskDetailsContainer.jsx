@@ -38,12 +38,9 @@ const TaskDetailsContainer = ({orderInformation, end = false, setPhotoIndex,
     }
   } , [orderInformation, end] )
 
-  const areaRef = useRef(null);
   
   return (
-    <div ref={areaRef} className="Task__container-one" onClick={() => {
-      areaRef.current.scrollIntoView();
-    }}>
+    <div  className="Task__container-one">
       <Block   setPhotoIndex={setPhotoIndex}
               setPhotos={setPhotos}
               setSliderOpened={setSliderOpened} sliderLeftPosition="0" sliderPreviousText="ОТКЛИКНУТЬСЯ"  sliderBlockId="First"  sliderBlockerAll = {true} sliderHideButton = {false} end = {end} task={orderInformation} {...orderInformation} isButton = {false} />

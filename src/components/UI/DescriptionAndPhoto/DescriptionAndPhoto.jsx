@@ -19,7 +19,6 @@ const DescriptionAndPhoto = ({
   textError = false,
   isFileInput = true,
   titleStyles = {},
-  onFocus = () => {},
   descriptionClassName  = {},
   isDescription = true,
   textAreaClassName = {}
@@ -38,6 +37,12 @@ const DescriptionAndPhoto = ({
   const place = useMemo(() => {
     return translation(textPlaceholder);
   }, [textPlaceholder]);
+
+  const onFocus = () => {
+    setTimeout( () => {
+      myRef.current.scrollIntoView();
+    }, 200 )
+  }
 
   return (
     <div
