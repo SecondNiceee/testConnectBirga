@@ -26,13 +26,25 @@ const NewCardsPage = () => {
 
   const navigate = useNavigate();
 
+  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider();
+
   const createCard = useCallback( () => {
-    navigate('/cardCreation')
-  },[navigate] )
+    if (!isSliderOpened){
+      navigate('/cardCreation')
+    }
+    else{
+      setSlideOpened(false)
+    }
+  },[navigate, isSliderOpened, setSlideOpened] )
 
   const BackFunction = useCallback( () => {
-    navigate('/baidge')
-  }, [navigate] )
+    if (!isSliderOpened){
+      navigate('/baidge')
+    }
+    else{
+      setSlideOpened(false)
+    }
+  }, [navigate, isSliderOpened, setSlideOpened] )
 
   useEffect( () => {
     if (userInfo.id === me.id){
@@ -45,6 +57,10 @@ const NewCardsPage = () => {
       MainButton.setText("Hазад");
       MainButton.onClick(BackFunction)
     }
+    return () => {
+      MainButton.offClick(createCard);
+      MainButton.offClick(BackFunction);
+    }
   }, [createCard, BackFunction, me, userInfo] )
 
   useNavigateBack({isSliderOpened : false, setSlideOpened : false});
@@ -52,7 +68,7 @@ const NewCardsPage = () => {
     menuController.hideMenu();
   }, [] )
   
-  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider();
+
 
   if (postState === "pending" || putState === "pending" || !userInfo) {
     return <MyLoader />;

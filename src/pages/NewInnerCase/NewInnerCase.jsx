@@ -15,6 +15,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import menuController from '../../functions/menuController';
 import MainButton from '../../constants/MainButton';
 import { setCard, setUser } from '../../store/information';
+import useNavigateBack from '../../hooks/useNavigateBack';
+import useSlider from '../../hooks/useSlider';
+import CssTransitionSlider from '../../components/UI/PhotosSlider/CssTransitionSlider';
 
 const NewInnerCase = () => {
     const clickFunc = () => {
@@ -35,6 +38,10 @@ const NewInnerCase = () => {
     const navigate = useNavigate();
 
     const me = useSelector( (state) => state.telegramUserInfo );
+
+    const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider();
+
+    useNavigateBack({isSliderOpened, setSlideOpened})
 
     useEffect( () => {
         menuController.hideMenu();
@@ -59,13 +66,30 @@ const NewInnerCase = () => {
         }
     }, [cardId, userId, card, user, navigate, casePar, dispatch])
 
+
+
+    const onClickPhotos = (i) => {
+        setPhotoIndex(i)
+        setPhotos(casePar?.photos);
+    }
+
     const changeCard = useCallback(() => {
-        navigate('/changeCard');
-    }, [navigate])
+        if (!isSliderOpened){
+            navigate('/changeCard');
+        }
+        else{
+            setSlideOpened(false);
+        }
+    }, [navigate, isSliderOpened, setSlideOpened])
 
     const backFunction = useCallback( () => {
-        navigate('/cardsPage')
-    }, [navigate] )
+        if (!isSliderOpened){ 
+            navigate('/cardsPage')
+        }
+        else{
+            setSlideOpened(false);
+        }
+    }, [navigate, isSliderOpened, setSlideOpened] )
 
     useEffect( () => {
         if (userInfo?.id === me?.id){
@@ -80,6 +104,8 @@ const NewInnerCase = () => {
         }
     }, [backFunction, changeCard, me, userInfo] )
 
+
+
     if (!casePar || !userInfo){
         return <MyLoader />
     }
@@ -90,7 +116,7 @@ const NewInnerCase = () => {
         <div className="pt-[20px] left-right z-20 px-[16px] bg-[#18222d] flex flex-col pb-[16px]">
             
             <div className='rounded-[10px] bg-[#20303f] flex flex-col duration-200 relative z-50'>
-                <CasePhotos   photos={casePar.photos}  />
+                <CasePhotos  onClickPhotos={onClickPhotos}  photos={casePar.photos}  />
                 <div className="my-4 ml-[17px] mr-[19px] flex justify-between items-center"> 
                     <div className="flex flex-col gap-[2px]">
                     <p className="font-sf-pro-display font-medium text-[17px] leading-[18.33px] text-white">{casePar.title}</p>
@@ -127,6 +153,17 @@ const NewInnerCase = () => {
                 </div> : <></>}
 
         </div>
+        <CssTransitionSlider
+        blockerAll={true}
+        blockerId={""}
+        isSliderOpened={isSliderOpened}
+        leftPosition={0}
+        renderMap={photos}
+        setSliderOpened={setSlideOpened}
+        sliderIndex={photoIndex}
+        swiperId={"1"}
+        top={0}
+        />
     </>
     );
 };

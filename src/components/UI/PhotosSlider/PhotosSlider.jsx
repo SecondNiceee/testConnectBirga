@@ -17,7 +17,7 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, className, sliderIndex, 
         return () => {
             MainButton.offClick(closeSlider);
         }
-    }, [] )
+    }, [closeSlider] )
     const render = (src, index) => {
         return (
             

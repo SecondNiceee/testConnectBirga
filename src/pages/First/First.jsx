@@ -6,7 +6,7 @@ import {
 import { motion } from "framer-motion";
 import "../MyAds/MyAds.css";
 import AllTasks from "./AllTasks";
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
 import FirstChoiceCategory from "../AdCreatingOne/ui/components/ChoiceCategory/FirstChoiceCategory";
@@ -31,8 +31,6 @@ const First = () => {
   const [categoryOpen, setCategoryOpen] = useState(false);
 
   const [subCategory, setSubCategory] = useState(false);
-
-  const dispatch = useDispatch();
 
   useEffect( () => {
     MainButton.hide();

@@ -53,7 +53,7 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
     if (showButton){
       menuController.lowerMenu();
       MainButton.show();
-      MainButton.setText("Откликнуться");
+      MainButton.setText("ОТКЛИКНУТЬСЯ");
     }
   }, [showButton]);
   
