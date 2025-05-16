@@ -184,9 +184,20 @@ const AnimatedSwitch = () => {
             />
 
             <Route
+              path="/changeCard"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <NewChangeCard isNewCard={false} />
+                </Suspense>
+              }
+            />
+
+            <Route
               path="/cardCreation"
               element={
-                  <NewChangeCard  />
+                <Suspense fallback={<MyLoader />}>
+                  <NewChangeCard isNewCard={true} />
+                </Suspense>
               }
             />
 

@@ -27,7 +27,6 @@ class MainButtonController{
             else{
                 enableColorAndActiveButton();
             }
-        
     }
 
 }
