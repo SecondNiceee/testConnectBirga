@@ -59,8 +59,6 @@ const Responce = ( ) => {
     }
   }, [ id, orderInformation, dispatch ] )
 
-
-
   const [responce, setResponce] = useState({
     text: "",
     photos: [],
@@ -97,14 +95,18 @@ const Responce = ( ) => {
       showAllert("Ваш отклик пуст")
     }
     else{
+      alert("Port response")
       await postResponce();
       navigate('/')
     }
   }  , [responce, postResponce, navigate] )
 
   useEffect( () => {
-    MainButton.onClick()
-  }, [] )
+    MainButton.onClick(goForward)
+    return () => {
+      MainButton.offClick(goForward);
+    }
+  }, [goForward] )
 
   useNavigateBack({isSliderOpened, setSlideOpened})
 
