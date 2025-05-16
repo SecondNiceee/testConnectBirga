@@ -34,7 +34,7 @@ const NewCardsPage = () => {
   }, [navigate] )
 
   useEffect( () => {
-    if (userInfo === me.id){
+    if (userInfo.id === me.id){
       MainButton.show();
       MainButton.setText("Создать")
       MainButton.onClick(createCard);

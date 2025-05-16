@@ -151,7 +151,7 @@ const NewChangeCard = ({isNewCard}) => {
         return <MyLoader />
     }
     return (
-        <div className="pt-[20px] left-right !z-[1000] fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
+        <div className="pt-[20px] left-0 top-0 px-[16px] bg-[#18222d] flex flex-col pb-[16px]">
             <button onClick={forwardFunction}>ГО</button>
             <h2 className='ml-4 text-[20.72px] font-semibold font-sf-pro-display-600 text-white'>{isNewCard ? "Создание кейса" : "Изменение кейса"}</h2>
             <div className='py-3 mt-[18px] px-4 flex bg-card rounded-t-[11.7px] items-center border-b-[1px] border-[0px] border-solid border-[#2A343F]'>
