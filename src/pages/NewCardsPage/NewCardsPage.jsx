@@ -9,6 +9,7 @@ import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionS
 import menuController from "../../functions/menuController";
 import { useNavigate } from "react-router";
 import MainButton from "../../constants/MainButton";
+import useNavigateBack from "../../hooks/useNavigateBack";
 
 const NewCardsPage = () => {
 
@@ -46,7 +47,7 @@ const NewCardsPage = () => {
     }
   }, [createCard, BackFunction, me, userInfo] )
 
-
+  useNavigateBack({isSliderOpened : false, setSlideOpened : false});
   useEffect( () => {
     menuController.hideMenu();
   }, [] )

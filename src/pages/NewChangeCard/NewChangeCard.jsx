@@ -64,6 +64,7 @@ const NewChangeCard = ({isNewCard}) => {
     } , [isNewCard, baidgeCard]) 
     
     const save = useCallback( async ( ) => {
+        alert("Вызов save");
         if (isNewCard){
             const myFormData = makeCardFormData({card : changedCard, isCardNew : true} )
             await dispatch(postCard([myFormData, USERID, changedCard]));
@@ -124,8 +125,8 @@ const NewChangeCard = ({isNewCard}) => {
     const {changeCardDescription, changeCardTitle, changePhotos} = useCardsController({setChangedCard})
 
     const forwardFunction = useCallback( async () => {
-        mainButtonController.forwardFunction({changedCard, errors, save});
-    } , [changedCard, errors, save] )
+        mainButtonController.forwardFunction({errors, save});
+    } , [errors, save] )
 
     useEffect( () => {
         MainButton.onClick(forwardFunction);
