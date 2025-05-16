@@ -14,7 +14,6 @@ const PickerOne = forwardRef(({responsesArr, buttonFunction,  oneValue ,  nowVal
   
     const responsesStatus = useSelector(state => state.responses.status)
   
-   
 
     const text = useMemo( () => {
         switch (oneValue){

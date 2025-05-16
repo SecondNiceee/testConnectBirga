@@ -12,21 +12,24 @@ import CssTransitionSlider from "../../UI/PhotosSlider/CssTransitionSlider";
 import useGetAdvertisement from "../../../hooks/api/useGetAdvertisement";
 import useNavigateBack from "../../../hooks/useNavigateBack";
 
-console.log("фыв")
-const FirstDetails = ({ end, className, ...props }) => {
+const FirstDetails = ({ end, className, showButton =true, ...props }) => {
 
   const disatch = useDispatch();
 
-  const { id } = useParams();
+  const id = 12;
+
+  console.log(id)
 
   const {advertisementStatus, orderInformation} = useGetAdvertisement({id})
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    menuController.lowerMenu();
-    MainButton.show();
-    MainButton.setText("Откликнуться");
+    if (showButton){
+      menuController.lowerMenu();
+      MainButton.show();
+      MainButton.setText("Откликнуться");
+    }
   }, []);
 
   const goForward = useCallback( () => {
@@ -60,7 +63,6 @@ const FirstDetails = ({ end, className, ...props }) => {
   if (advertisementStatus === "pending" || advertisementStatus === "rejected") {
     return <MyLoader />;
   }
-
   return (
     <>
       <div

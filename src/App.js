@@ -27,7 +27,6 @@ import { fetchAllShablons } from "./store/shablon";
 import { fetchAllIds } from "./store/saves";
 
 import { getBalance } from "./store/balance";
-
 const FirstDetails = lazy(() =>
   import("./components/First/FirstDetails/FirstDetails")
 );
@@ -48,8 +47,9 @@ const BaidgeCreating = lazy(() =>
   import("./pages/BaidgeCreating/BaidgeCreating")
 );
 
-const LastAds = lazy( () => import("./pages/MyAds/components/LastAds") )
+const ShowMyResponse = lazy( () => import("./components/MyAds/ShowMyResponse/ShowMyResponse") )
 
+const LastAds = lazy( () => import("./pages/MyAds/components/LastAds") )
 
 const AboutOne = lazy( () => import("./pages/MyAds/components/AboutOne") )
 const Response = lazy(() => import("./pages/First/Responce"));
@@ -172,6 +172,24 @@ const AnimatedSwitch = () => {
               element={
                 <Suspense fallback={<MyLoader />}>
                   <ChangeAdvertisement />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/responsedAdvertisement/:id"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <FirstDetails showButton = {false} />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/confirm/:advId/:resId"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <ShowMyResponse />
                 </Suspense>
               }
             />

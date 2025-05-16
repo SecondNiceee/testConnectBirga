@@ -11,9 +11,11 @@ import ResponseSuspense from "./ResponseSuspense";
 import { useDispatch, useSelector } from "react-redux";
 import {  fetchResponses } from "../../../store/responses";
 import MyAnimation from "./MyAnimation";
+import { useNavigate } from "react-router";
+import { setAdvertisement, setResponse } from "../../../store/information";
 const MyResponses = forwardRef(
   ( 
-    { responsesArr, buttonFunction, viewsNumber, setViewsNumber, nowValue , text},
+    { responsesArr, viewsNumber, setViewsNumber, nowValue , text},
     ref
   ) => {
     const [page, setPage] = useState(2);
@@ -40,6 +42,10 @@ const MyResponses = forwardRef(
       [orderStatus, getMore]
     );
 
+    const navigate = useNavigate();
+
+
+
     // useEffect( () => {
     //   if (nowValue === "cus")
     // } , [nowValue] )
@@ -62,8 +68,14 @@ const MyResponses = forwardRef(
         ) : (
           <>
             {responsesArr.map((e, i) => {
+              dispatch(setResponse(e))
+              dispatch(setAdvertisement(e.advertisement))
+              const buttonFunction = () => {
+                navigate(`/confirm/${e.advertisement.id}/${e.id}`)
+              }
               return (
                 <ResponseSuspense
+                  
                   viewsNumber={viewsNumber}
                   setViewsNumber={setViewsNumber}
                   func={buttonFunction}

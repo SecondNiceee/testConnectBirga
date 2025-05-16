@@ -500,6 +500,8 @@ export const {
   addResponce,
   changeStatus,
   getMoreMyAds,
-  clearTasks
+  clearTasks,
+  setAdvertisement,
+  setResponse
 } = information.actions;
 export default information.reducer;
