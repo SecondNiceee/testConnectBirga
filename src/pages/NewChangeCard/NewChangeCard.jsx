@@ -97,16 +97,16 @@ const NewChangeCard = ({isNewCard}) => {
                 ids : [0]
             }
         }
-        if (changedCard.description.length < 3 || changedCard.description.length > 500 ){
+        if (changedCard?.description.length < 3 || changedCard?.description.length > 500 ){
             localErrors.description = true
         }
-        if (changedCard.title.length < 3 || changedCard.title.length > 25){
+        if (changedCard?.title.length < 3 || changedCard?.title.length > 25){
             localErrors.title = true
         }
-        if (!changedCard.photos.length){
+        if (!changedCard?.photos.length){
             localErrors.photos = true
         }
-        if ( changedCard.links?.filter((link) => link.length).length  ){
+        if ( changedCard?.links.filter((link) => link.length).length  ){
             const errorsIds = [];
             changedCard.links.forEach( (link, id) => {
                 if (!link.includes('http')){
