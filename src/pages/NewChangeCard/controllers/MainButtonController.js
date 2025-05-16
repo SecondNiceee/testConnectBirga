@@ -20,15 +20,14 @@ class MainButtonController{
         }
     }
 
-    visabilityController({errors, card, changedCard, isChangingCardOpened}){
-        if (isChangingCardOpened){
+    visabilityController({errors, card, changedCard}){
             if (!(Object.values({...errors, links : false }).every( (el) => !el)) || isEqual(card, changedCard)){
                 disableColorAndActiveButton();
             }
             else{
                 enableColorAndActiveButton();
             }
-        }
+        
     }
 
 }

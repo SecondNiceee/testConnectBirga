@@ -1,7 +1,7 @@
 import {isEqual} from "lodash";
 import { showAllert } from "../../../functions/showAlert";
 export class BackButtonController{
-    async backFunction({errors, changedCard, card, setChangingCardOpened, save}){
+    async backFunction({errors, changedCard, isNewCard, card, save, navigate}){
         const isCloseSrazy = card ? isEqual(changedCard, {...card, links : card?.links ?? ['']}) : 
         isEqual(changedCard, {
             id : null,
@@ -12,7 +12,7 @@ export class BackButtonController{
             links : []
         })
         if (isCloseSrazy){
-            setChangingCardOpened(false)
+            navigate(-1)
         }
         else{
             window.Telegram.WebApp.showPopup(
@@ -54,7 +54,7 @@ export class BackButtonController{
                     }
                   }
                   if (buttonId === "delete" || buttonId === null) {
-                    setChangingCardOpened(false);
+                    navigate(-1);
                   }
                 }
               );

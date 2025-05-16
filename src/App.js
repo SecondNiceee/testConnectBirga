@@ -34,6 +34,8 @@ import LastAds from "./pages/MyAds/components/LastAds";
 import AboutOne from "./pages/MyAds/components/AboutOne";
 import Responce from "./pages/First/Responce";
 import NewInnerCase from "./pages/NewInnerCase/NewInnerCase";
+
+const NewChangeCard = lazy( () => import('./pages/NewChangeCard/NewChangeCard') )
 const HappyPage = lazy(() => import("./pages/HappyHold/HappyPage"));
 const   First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -52,6 +54,7 @@ const BaidgeCreating = lazy(() =>
 const NewCardsPage = lazy( () => import("./pages/NewCardsPage/NewCardsPage") )
 
 const StatisticPage = lazy( () => import("./pages/StatisticPage/StatisticPage") )
+
 
 
 export const API_KEY = process.env.REACT_APP_API_KEY;
@@ -177,6 +180,13 @@ const AnimatedSwitch = () => {
               path="/responsedAdvertisement/:id"
               element={
                   <FirstDetails showButton = {false} />
+              }
+            />
+
+            <Route
+              path="/cardCreation"
+              element={
+                  <NewChangeCard  />
               }
             />
 

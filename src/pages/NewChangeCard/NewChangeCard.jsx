@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import DescriptionAndPhoto from '../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto';
 import AddLinksComponent from '../../components/UI/AddLinksComponent/AddLinksComponent';
 import useCardsController from './hooks/useCardsController';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import MainButton from '../../constants/MainButton';
 import { mainButtonController } from './controllers/MainButtonController';
 import { backButtonController } from './controllers/BackButtonController';
@@ -10,6 +10,8 @@ import BackButton from '../../constants/BackButton';
 import { makeCardFormData } from './utils/makeCardFormData';
 import { USERID } from '../../constants/tgStatic.config';
 import { postCard, putCard } from '../../store/telegramUserInfo';
+import MyLoader from '../../components/UI/MyLoader/MyLoader';
+import { useNavigate } from 'react-router';
 
 
 
@@ -24,7 +26,7 @@ import { postCard, putCard } from '../../store/telegramUserInfo';
 // createdAt : e.createdAt,
 // views : e.views,
 // links : e.links
-const NewChangeCard = ({card, setChangingCardOpened, isChangingCardOpened}) => {
+const NewChangeCard = ({isNewCard}) => {
 
     const dispatch = useDispatch();
 
@@ -38,17 +40,31 @@ const NewChangeCard = ({card, setChangingCardOpened, isChangingCardOpened}) => {
         }
     })
     
-    const [changedCard, setChangedCard] = useState(card ?? {
-        id : null,
-        title : "",
-        description : "",
-        photos : [],
-        photosNames : [],
-        links : []
-    });
+    const [changedCard, setChangedCard] = useState(null);
+
+    const navigate = useNavigate();
+
+    const baidgeCard = useSelector( (state) => state.information.baidgeCard );
+
+
+    useEffect( () => {
+        if (isNewCard){
+            setChangedCard( {
+                id : null,
+                title : "",
+                description : "",
+                photos : [],
+                photosNames : [],
+                links : []
+            })
+        }
+        else{
+            setChangedCard(baidgeCard)
+        }
+    } , [isNewCard, baidgeCard]) 
     
     const save = useCallback( async ( ) => {
-        if (!card){
+        if (isNewCard){
             const myFormData = makeCardFormData({card : changedCard, isCardNew : true} )
             await dispatch(postCard([myFormData, USERID, changedCard]));
         }
@@ -56,12 +72,12 @@ const NewChangeCard = ({card, setChangingCardOpened, isChangingCardOpened}) => {
             const myFormData = makeCardFormData({card : changedCard, isCardNew : false} )
             await dispatch(putCard([myFormData, changedCard.id, changedCard]));
         }
-        setChangingCardOpened(false);
-    } , [card, changedCard, setChangingCardOpened, dispatch] )
+        navigate(-1);
+    } , [changedCard, dispatch, isNewCard, navigate] )
 
     const backFunction = useCallback( () => {
-        backButtonController.backFunction({card, changedCard, errors, save, setChangingCardOpened});
-    } , [card, changedCard, errors, save, setChangingCardOpened  ] )
+        backButtonController.backFunction({changedCard, errors, card :baidgeCard,  isNewCard, navigate, save});
+    } , [changedCard, errors, save, navigate , baidgeCard, isNewCard ] )
 
     useEffect( () => {
         BackButton.onClick(backFunction)
@@ -119,8 +135,8 @@ const NewChangeCard = ({card, setChangingCardOpened, isChangingCardOpened}) => {
     } , [forwardFunction] )
 
     useEffect( () => {
-        mainButtonController.visabilityController({card, changedCard, errors, isChangingCardOpened});
-    } , [errors, card, changedCard, isChangingCardOpened] )  // Чекаем на ерорсы
+        mainButtonController.visabilityController({card : baidgeCard, changedCard, errors});
+    } , [errors, changedCard, baidgeCard] )  // Чекаем на ерорсы
 
     const setLinks = useCallback((updater) => {
         setChangedCard((prev) => ({
@@ -130,10 +146,14 @@ const NewChangeCard = ({card, setChangingCardOpened, isChangingCardOpened}) => {
       }, [setChangedCard]);
 
     const leftSymbols = 25 - changedCard.title.length < 0 ? 0 : 25 - changedCard.title.length;
+
+    if (!changedCard){
+        return <MyLoader />
+    }
     return (
         <div className="pt-[20px] left-right !z-[1000] fixed left-0 top-0 w-screen h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
             <button onClick={forwardFunction}>ГО</button>
-            <h2 className='ml-4 text-[20.72px] font-semibold font-sf-pro-display-600 text-white'>{!card ? "Создание кейса" : "Изменение кейса"}</h2>
+            <h2 className='ml-4 text-[20.72px] font-semibold font-sf-pro-display-600 text-white'>{isNewCard ? "Создание кейса" : "Изменение кейса"}</h2>
             <div className='py-3 mt-[18px] px-4 flex bg-card rounded-t-[11.7px] items-center border-b-[1px] border-[0px] border-solid border-[#2A343F]'>
                 <input value={changedCard.title} onChange={changeCardTitle} className='font-normal w-full text-[16.67px] font-sf-pro-display-400 text-white leading-[18.3px] placeholder:text-[#90979F]' placeholder='Название' type="text" />
                 <p className={`ml-auto text-[13px] !text-[#95979e] font-sf-pro-display-400 font-normal leading-[14.34px] ${leftSymbols === 0 ? "text-red-500" : "text-[#DAF5FE]"}`}>{leftSymbols}</p>
