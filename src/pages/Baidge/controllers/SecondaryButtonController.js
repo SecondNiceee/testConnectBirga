@@ -18,7 +18,7 @@ class SecondaryButtonController{
         })
     }
 
-    secondaryButtonHandler({dispatch, cardId,navigate, me}){
+    secondaryButtonHandler({dispatch, card ,navigate, me}){
         window.Telegram.WebApp.showPopup({
                   title: "Удалить?",
                   message: "Вы уверены, что хотите удалить этот кейс?",
@@ -32,7 +32,7 @@ class SecondaryButtonController{
                     
                   } 
                   if (buttonId === "save") {
-                    await dispatch(deleteServerCard(cardId))
+                    await dispatch(deleteServerCard(card.id))
                     dispatch(setUser(me));
                     navigate(-1);
                   }

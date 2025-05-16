@@ -79,7 +79,7 @@ const NewChangeCard = ({isNewCard}) => {
             dispatch(setUser(me));
         }
         navigate(-1);
-    } , [changedCard, dispatch, isNewCard, navigate] )
+    } , [changedCard, dispatch, isNewCard, navigate, me] )
 
     const backFunction = useCallback( () => {
         backButtonController.backFunction({changedCard, errors, card :baidgeCard,  isNewCard, navigate, save});

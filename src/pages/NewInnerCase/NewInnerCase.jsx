@@ -117,15 +117,15 @@ const NewInnerCase = () => {
 
 
     const secondaryButtonHandler = useCallback( () => {
-        secondaryButtonController.secondaryButtonHandler({cardId, dispatch, me});
-    }, [card, dispatch, me] )
+        secondaryButtonController.secondaryButtonHandler({card, dispatch, me, navigate});
+    }, [card, dispatch, me, navigate] )
 
     useEffect( () => {
         SecondatyButton.onClick(secondaryButtonHandler);
         return () => {
             SecondatyButton.offClick(secondaryButtonHandler);
         }
-    } , [])
+    } , [secondaryButtonHandler])
 
     useEffect( () => {
         secondaryButtonController.controllVisabiliry({isSliderOpened});
