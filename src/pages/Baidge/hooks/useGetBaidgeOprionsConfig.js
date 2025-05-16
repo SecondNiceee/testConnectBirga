@@ -1,5 +1,10 @@
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import { setUser } from "../../../store/information";
 
-const useGetBaidgeOprionsConfig = ({setStatistikOpened, userInfo, setPortfoliosOpened}) => {
+const useGetBaidgeOprionsConfig = ({userInfo}) => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     return (
         [
             {
@@ -7,7 +12,10 @@ const useGetBaidgeOprionsConfig = ({setStatistikOpened, userInfo, setPortfoliosO
                 text : "Портфолио",
                 isNeededFill : false,
                 isNeededActiveTitle : false,
-                clickFunc : () => {setPortfoliosOpened(true)},
+                clickFunc : () => {
+                    dispatch(setUser(userInfo))
+                    navigate("/cardsPage")
+                },
                 numberNearToArrow : userInfo?.profile.cards.length
             },
             {
@@ -15,7 +23,10 @@ const useGetBaidgeOprionsConfig = ({setStatistikOpened, userInfo, setPortfoliosO
                 text : "Статистика",
                 isNeededFill : false,
                 isNeededActiveTitle : false,
-                clickFunc : () => {setStatistikOpened(true)},
+                clickFunc : () => {
+                    dispatch(setUser(userInfo))
+                    navigate("/statistik")
+                },
                 numberNearToArrow : null
             }
         ]

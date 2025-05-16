@@ -1,8 +1,8 @@
-import { memo, useCallback, useEffect, useState } from "react";
+import { memo, useCallback, useEffect } from "react";
 import TaskDetailsContainer from "./TaskDetailsContainer";
 import TimeAndWatches from "./TimeAndWatches";
 import { useDispatch, useSelector } from "react-redux";
-import { addWatch, setAdvertisement, setDetailsAdvertisement } from "../../../store/information";
+import { addWatch, setDetailsAdvertisement } from "../../../store/information";
 import MyLoader from "../../UI/MyLoader/MyLoader";
 import {  useNavigate, useParams } from "react-router";
 import menuController from "../../../functions/menuController";
@@ -36,7 +36,7 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
             console.warn(err);
           });
     }
-  }, [ id, orderInformation ] )
+  }, [ id, orderInformation, disatch ] )
 
   const navigate = useNavigate();
 

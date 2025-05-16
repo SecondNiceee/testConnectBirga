@@ -1,4 +1,3 @@
-import axios from "axios";
 import { createUserByBot } from "./createUserByBot";
 import { getCardByUserId } from "./getCardsByUserId";
 import { formatUserFromApi } from "./formatUserFromApi";

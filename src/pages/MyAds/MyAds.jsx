@@ -8,8 +8,6 @@ import axios from "axios";
 import pagesHistory from "../../constants/pagesHistory";
 import { USERID } from "../../constants/tgStatic.config";
 import useBlockInputs from "../../hooks/useBlockInputs";
-import useSlider from "../../hooks/useSlider";
-import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
 import useNavigateBack from "../../hooks/useNavigateBack";
 
 
@@ -112,7 +110,6 @@ const MyAds = () => {
   
   } , [] )
 
-  const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider()
 
   useNavigateBack({isSliderOpened : false, setSlideOpened : false});
 
@@ -145,7 +142,6 @@ const MyAds = () => {
         >
 
           <MyAdOne
-
           responsesArr = {filteredResponses}
             setOneValue = {setValueOne}
             setTwoValue = {setValueTwo}
@@ -178,7 +174,6 @@ const MyAds = () => {
 
         </div>
 
-        <CssTransitionSlider blockerAll={true} blockerId={""} isSliderOpened={isSliderOpened} leftPosition={0} renderMap={photos} setSliderOpened={setSlideOpened} sliderIndex={photoIndex} swiperId={"1"} top={0} />
     </>
   );
 };

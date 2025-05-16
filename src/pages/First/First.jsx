@@ -18,6 +18,7 @@ import useSlider from "../../hooks/useSlider";
 import useFilteredArray from "./hooks/useFilteredArray";
 import FirstChoiceSubCategory from "../AdCreatingOne/ui/components/ChoiceCategory/FirstChoiceSubCategory";
 import BackButton from "../../constants/BackButton";
+import menuController from "../../functions/menuController";
 
 const First = () => {
   const firstRef = useRef(null);
@@ -35,6 +36,7 @@ const First = () => {
   useAddHistory();
 
   useEffect( () => {
+    menuController.showMenu();
     BackButton.hide();
   }, [] )
 

@@ -1,3 +1,6 @@
+import axios from "axios"
+import { USERLINK } from "../../constants/tgStatic.config"
+
 export const createUserByBot = async (id) => {
     await axios.post(`${process.env.REACT_APP_HOST}/user/createByBot` , {}, {
         params : {

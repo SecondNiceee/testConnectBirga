@@ -33,6 +33,7 @@ import ChangeAdvertisement from "./pages/ChangeAdvertisement/ChangeAdvertisement
 import LastAds from "./pages/MyAds/components/LastAds";
 import AboutOne from "./pages/MyAds/components/AboutOne";
 import Responce from "./pages/First/Responce";
+import NewInnerCase from "./pages/NewInnerCase/NewInnerCase";
 const HappyPage = lazy(() => import("./pages/HappyHold/HappyPage"));
 const   First = lazy(() => import("./pages/First/First"));
 const AdCreating = lazy(() => import("./pages/AdCreating"));
@@ -41,7 +42,6 @@ const Balance = lazy(() => import("./pages/Balance"));
 const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
 const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
-const ProfilePage = lazy(() => import("./pages/ProfilePage/ProfilePage"));
 const WalletEnter = lazy(() => import("./pages/WalletEnter/WalletEnter"));
 const Wallet = lazy(() => import("./pages/Wallet"));
 const WalletInit = lazy(() => import("./pages/WalletEnter/WalletInit"));
@@ -49,7 +49,9 @@ const Baidge = lazy(() => import("./pages/Baidge/Baidge"));
 const BaidgeCreating = lazy(() =>
   import("./pages/BaidgeCreating/BaidgeCreating")
 );
+const NewCardsPage = lazy( () => import("./pages/NewCardsPage/NewCardsPage") )
 
+const StatisticPage = lazy( () => import("./pages/StatisticPage/StatisticPage") )
 
 
 export const API_KEY = process.env.REACT_APP_API_KEY;
@@ -201,6 +203,53 @@ const AnimatedSwitch = () => {
               }
             />
 
+
+
+            <Route
+              path="/cardsPage"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <NewCardsPage />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/cardsPage/:userId"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <NewCardsPage />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/card/:cardId/:userId"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <NewInnerCase />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/card"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <NewInnerCase />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/statistik"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <StatisticPage />
+                </Suspense>
+              }
+            />
+
             <Route
               path="/advertisementResponses/:advId"
               element={
@@ -244,6 +293,15 @@ const AnimatedSwitch = () => {
 
             <Route
               path="/Baidge"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <Baidge />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/Baidge/:id"
               element={
                 <Suspense fallback={<MyLoader />}>
                   <Baidge />

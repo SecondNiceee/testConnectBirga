@@ -1,13 +1,11 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import {useSelector } from "react-redux";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
-import useSlider from "../../hooks/useSlider";
-import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
-import { getUserWithoutCards } from "../../functions/api/getUserWithoutCards";
-import { getCardByUserId } from "../../functions/api/getCardsByUserId";
-import { getAdvertisementsByUserId } from "../../functions/api/getAdvertisementsByUserId";
 import BaidgeWithProfile from "./components/BaidgeWithProfile";
 import BaidgeWithoutProfile from "./components/BaidgeWithoutProfile";
+import { useParams } from "react-router";
+import { findUserById } from "../../functions/api/findUserById";
+import menuController from "../../functions/menuController";
 
 // id : userConfig.id,
 // counterOfLikes: userInfo.userLikes.length,
@@ -34,75 +32,41 @@ import BaidgeWithoutProfile from "./components/BaidgeWithoutProfile";
 // const params = null
 
 // УЧТИ НУЖНО ДОНАСТРОИТЬ ЛАЙК
-const Baidge = ({ gotenUserId, setBaidgeClose, className }) => {
+const Baidge = () => {
+
   const me = useSelector((state) => state.telegramUserInfo);
+
+  const {id} = useParams();
 
   const [userInfo, setUserInfo] = useState(null);
 
-  console.log(gotenUserId);
-
-  const getUserInformation = useCallback(async () => {
-    const user = await getUserWithoutCards(gotenUserId);
-    if (user.profession) {
-      const cards = await getCardByUserId(gotenUserId);
-      user.cards = cards;
-      return user;
-    } else {
-      const userAdvertisements = await getAdvertisementsByUserId(gotenUserId, 1, 1);
-      user.advertisements = userAdvertisements;
-      return user;
-    }
-  }, [gotenUserId]);
+  useEffect( () => {
+    menuController.showMenu();
+  }, [] );
 
   useEffect(() => {
-    if (gotenUserId) {
-      getUserInformation().then((user) => setUserInfo(user));
+    if (id) {
+      findUserById(id).then( (user) => {setUserInfo(user)} )
     } else {
       setUserInfo(me);
     }
-  }, [gotenUserId, me, getUserInformation]);
+  }, [ me, id]);
 
-  const {
-    isSliderOpened,
-    photoIndex,
-    photos,
-    setPhotoIndex,
-    setPhotos,
-    setSlideOpened,
-  } = useSlider();
 
   if (!userInfo || userInfo.id === null) {
-    return <MyLoader className = {className} />;
+    return <MyLoader />;
   }
   return (
     <>
       {/* <button onClick={fowardFunction} className="fixed left-1/2 bottom-1/3 z-[1000]">MAIN BUTTON</button> */}
       {userInfo.profession ? (
         <BaidgeWithProfile
-          isSliderOpened={isSliderOpened}
-          setBaidgeClose={setBaidgeClose}
-          setPhotoIndex={setPhotoIndex}
-          setPhotos={setPhotos}
-          setSlideOpened={setSlideOpened}
           userInfo={userInfo}
-          className={className}
         />
       ) : (
-        <BaidgeWithoutProfile className = {className} userInfo={userInfo} />
+        <BaidgeWithoutProfile userInfo={userInfo} />
       )}
 
-      <CssTransitionSlider
-      className={className}
-        blockerAll={true}
-        blockerId={""}
-        isSliderOpened={isSliderOpened}
-        leftPosition={0}
-        renderMap={photos}
-        setSliderOpened={setSlideOpened}
-        sliderIndex={photoIndex}
-        swiperId={"1"}
-        top={0}
-      />
     </>
   );
 };

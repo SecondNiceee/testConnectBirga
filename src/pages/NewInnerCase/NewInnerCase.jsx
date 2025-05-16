@@ -1,4 +1,4 @@
-import React from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import CasePhotos from './CasePhotos';
 import ShareIcon from '../../components/UI/ShareIcon/ShareIcon';
 import FalseTie from '../../components/UI/FalseTie/FalseTie';
@@ -8,23 +8,89 @@ import Links from '../Baidge/components/Links';
 import formateDateForTimeAgo from '../../functions/formateDateForTimeAgo';
 import TextAboutMe from '../../components/UI/AboutMeText/TextAboutMe';
 import MyLoader from '../../components/UI/MyLoader/MyLoader';
-import { useSliderClicker } from '../../components/UI/PhotosSlider/hooks/useSliderClicker';
+import { useNavigate, useParams } from 'react-router';
+import { findUserById } from '../../functions/api/findUserById';
+import { getCardById } from '../../functions/api/getCardById';
+import { useDispatch, useSelector } from 'react-redux';
+import menuController from '../../functions/menuController';
+import MainButton from '../../constants/MainButton';
+import { setCard, setUser } from '../../store/information';
 
-const NewInnerCase = ({casePar, userInfo, setPhotoIndex, setPhotos, setSlideOpened }) => {
+const NewInnerCase = () => {
     const clickFunc = () => {
         console.log('Делюсь кейсом')
+        
     }
-    console.log(casePar)
+    const {userId, cardId} = useParams();
+    
+    const [userInfo, setUserInfo] = useState(null);
+
     const iconUrl = useGetUserPhotoLink({anotherUserInfo : userInfo});
-    const photosClickEvent = useSliderClicker({photos:casePar?.photos, setPhotoIndex, setPhotos, setSlideOpened})
-    if (!casePar){
+
+    const [casePar, setCasePar] = useState(null);
+
+    const user = useSelector( state => state.information.baidgeUser );
+    const card = useSelector( state => state.information.baidgeCard );
+
+    const navigate = useNavigate();
+
+    const me = useSelector( (state) => state.telegramUserInfo );
+
+    useEffect( () => {
+        menuController.hideMenu();
+    }, [] )
+
+    const dispatch = useDispatch();
+
+    useEffect( () => {
+        if (userId || cardId){
+            findUserById(userId).then( (user) => {
+                dispatch(setUser(user))
+                setUserInfo(user);
+            } )
+            getCardById(cardId).then( (card) => {
+                dispatch(setCard(card));
+                setCasePar(card)
+            } )
+        }
+        else{
+            setCasePar(card);
+            setUserInfo(user)
+        }
+    }, [cardId, userId, card, user, navigate, casePar, dispatch])
+
+    const changeCard = useCallback(() => {
+        navigate('/changeCard');
+    }, [navigate])
+
+    const backFunction = useCallback( () => {
+        navigate('/cardsPage')
+    }, [navigate] )
+
+    useEffect( () => {
+        if (userInfo?.id === me?.id){
+            MainButton.show();
+            MainButton.setText("Изменить")
+            MainButton.onClick(changeCard);
+        }
+        else{
+            MainButton.show();
+            MainButton.setText("Назад")
+            MainButton.onClick(backFunction)
+        }
+    }, [backFunction, changeCard, me, userInfo] )
+
+    if (!casePar || !userInfo){
         return <MyLoader />
     }
     return (
-        <div className="pt-[20px] left-right fixed left-0 top-0 w-screen z-20 h-screen overflow-y-auto px-[16px] bg-[#18222d] flex flex-col pb-[100px]">
+
+        <>
+
+        <div className="pt-[20px] left-right z-20 px-[16px] bg-[#18222d] flex flex-col pb-[16px]">
             
             <div className='rounded-[10px] bg-[#20303f] flex flex-col duration-200 relative z-50'>
-                <CasePhotos photosClickEvent={photosClickEvent} photos={casePar.photos}  />
+                <CasePhotos   photos={casePar.photos}  />
                 <div className="my-4 ml-[17px] mr-[19px] flex justify-between items-center"> 
                     <div className="flex flex-col gap-[2px]">
                     <p className="font-sf-pro-display font-medium text-[17px] leading-[18.33px] text-white">{casePar.title}</p>
@@ -61,6 +127,7 @@ const NewInnerCase = ({casePar, userInfo, setPhotoIndex, setPhotos, setSlideOpen
                 </div> : <></>}
 
         </div>
+    </>
     );
 };
 

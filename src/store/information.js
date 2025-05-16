@@ -331,6 +331,8 @@ const information = createSlice({
     advertisement : null,
     response : null,
     detailsAdvertisement : null,
+    baidgeUser : null,
+    baidgeCard : null,
     taskInformation: {
       category: { name: "", value: "" },
       subCategory: "Выбрать",
@@ -353,6 +355,12 @@ const information = createSlice({
     myPaginationArray: [],
   },
   reducers: {
+    setCard(state, action){
+      state.baidgeCard = action.payload;
+    },
+    setUser(state, action){
+      state.baidgeUser = action.payload;
+    },
     setDetailsAdvertisement(state,action){
       state.detailsAdvertisement = action.payload;
     },
@@ -507,6 +515,8 @@ export const {
   clearTasks,
   setAdvertisement,
   setResponse,
-  setDetailsAdvertisement
+  setDetailsAdvertisement,
+  setUser,
+  setCard
 } = information.actions;
 export default information.reducer;

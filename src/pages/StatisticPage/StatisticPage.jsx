@@ -1,23 +1,20 @@
-import React, { useEffect } from "react";
 import OrderStatisticUi from "./components/OrderStatisticUi";
 import ProfileStatisticComponent from "./components/ProfileStatisticComponent";
-import BackButton from "../../constants/BackButton";
+import useNavigateBack from "../../hooks/useNavigateBack";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import menuController from "../../functions/menuController";
 
 
-const StatisticPage = ({ userConfig , setStatistikClose}) => {  
+const StatisticPage = () => {  
+  const userConfig = useSelector( (state) => state.information.baidgeUser );
+  useNavigateBack({isSliderOpened : false, setSlideOpened : false});
   useEffect( () => {
-    function closeFunction(){
-      setStatistikClose(false)
-    }
-    BackButton.show();
-    BackButton.onClick(closeFunction);
-    return () => {
-        BackButton.offClick(closeFunction);
-    }
-  }, [setStatistikClose] )
+    menuController.hideMenu();
+  }, [] )
+
   return (
-    <div className="pt-[16px] transition-transform duration-300
-     fixed left-right w-[100vw] overflow-y-scroll px-[16px] bg-[#18222d] flex flex-col h-[100vh] pb-[100px]">
+    <div className="pt-[16px] transition-transform w-full px-[16px] pb-[16px] bg-[#18222d] flex flex-col">
 
       <div className="flex flex-col ml-[16px] gap-[2px]">
         <p className="font-sf-pro-display-600 text-[20px] text-white tracking-wider leading-normal">
