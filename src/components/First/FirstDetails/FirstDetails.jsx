@@ -31,7 +31,7 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
   }, []);
 
   const goForward = useCallback( () => {
-    navigate(`/response/${id}`)
+    navigate(`/makeresponse/${id}`)
   }, [id, navigate] )
 
   useEffect( () => {

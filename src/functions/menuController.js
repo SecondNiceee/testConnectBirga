@@ -1,26 +1,26 @@
 class MenuController{
     menu = document.documentElement.querySelector(".FirstMenu")
     hideMenu(){
-        if (this.menu){
-            this.menu.style.display = "none"
-        }
+        setTimeout( () => {
+            document.documentElement.querySelector(".FirstMenu").style.display = "none"
+        }, 200 )
     }
     showMenu(){
-        if (this.menu){
-            this.menu.style.display = "flex"
-        }
+        setTimeout( () => {
+            document.documentElement.querySelector(".FirstMenu").style.display = "flex"
+        }, 200 )
     }
     lowerMenu(){
-        if (this.menu){
-            this.menu.classList.add("disappearAnimation")
-            this.menu.classList.remove("appearAnimation")
-        }
+        setTimeout( () => {
+            document.documentElement.querySelector(".FirstMenu").classList.add("disappearAnimation")
+            document.documentElement.querySelector(".FirstMenu").classList.remove("appearAnimation")
+        }, 200 )
     }
     raiseMenu(){
-        if (this.menu){
-            this.menu.classList.add("appearAnimation")
-            this.menu.classList.remove("disappearAnimation")
-        }
+        setTimeout( () => {
+            document.documentElement.querySelector(".FirstMenu").classList.add("appearAnimation")
+            document.documentElement.querySelector(".FirstMenu").classList.remove("disappearAnimation")
+        }, 200 )
     }
 }
 
