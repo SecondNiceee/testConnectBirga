@@ -14,6 +14,7 @@ const useNavigateBack = ({isSliderOpened, setSlideOpened}) => {
   }, [isSliderOpened, setSlideOpened, navigate] )
 
   useEffect( () => {
+    BackButton.show();
     BackButton.onClick(goBack);
     return () => {
       BackButton.offClick(goBack);

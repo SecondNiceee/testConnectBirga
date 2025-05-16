@@ -64,7 +64,9 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
     if (isMyResponse){
       showAllert("Вы уже откликнулись на это задание.")
     }
-    navigate(`/makeresponse/${id}`)
+    else{
+      navigate(`/makeresponse/${id}`)
+    }
   }, [id, navigate, isMyResponse] )
 
   useEffect( () => {
