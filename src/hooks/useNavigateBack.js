@@ -5,6 +5,7 @@ import BackButton from '../constants/BackButton';
 const useNavigateBack = ({isSliderOpened, setSlideOpened}) => {
   const navigate = useNavigate();
   const goBack = useCallback( () => {
+    console.log(isSliderOpened);
     if (isSliderOpened){
       setSlideOpened(false)
     }

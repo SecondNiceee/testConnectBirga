@@ -12,7 +12,7 @@ const QThree = ({isMyAds , isResponce, isButton, index, dispatch, id }) => {
         hard = {true}
           style={isButton ? {} : { display: "none" }}
           onClick={(e) => {
-            
+            console.log("Вызов")
             dispatch(addWatch(id));
             navigate(`/FirstDetails/${id}`)
           }}

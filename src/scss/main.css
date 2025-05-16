@@ -27,14 +27,9 @@
 }
 
 .First {
-  position: fixed;
-  overflow: scroll;
-  height: 100vh;
   display: flex;
-  transition: transform 0.4s;
-  will-change: transform;
   overflow-x: hidden;
-  min-width: 100vw;
+  width: 100%;
 }
 
 .first-container {
@@ -54,13 +49,8 @@
 }
 
 .first-wrapper {
-  height: -moz-max-content;
-  height: max-content;
   display: flex;
-  transform: translateX(0%);
-  transition: transform 0.4s;
-  will-change: transform;
-  width: 100vw;
+  width: 100%;
   margin-bottom: 96px;
 }
 

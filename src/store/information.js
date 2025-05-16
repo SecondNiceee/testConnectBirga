@@ -333,6 +333,7 @@ const information = createSlice({
     detailsAdvertisement : null,
     baidgeUser : null,
     baidgeCard : null,
+    tasksPage : 2,
     taskInformation: {
       category: { name: "", value: "" },
       subCategory: "Выбрать",
@@ -355,6 +356,9 @@ const information = createSlice({
     myPaginationArray: [],
   },
   reducers: {
+    setPage( state, action ){
+      state.tasksPage = action.payload
+    },
     setCard(state, action){
       state.baidgeCard = action.payload;
     },
@@ -388,7 +392,6 @@ const information = createSlice({
 
     changeStatus(state, action) {
       state.orderStatus = action.payload;
-      state.orderInformations = [];
     },
     clearTasks(state){
       state.orderInformations = [];
@@ -517,6 +520,7 @@ export const {
   setResponse,
   setDetailsAdvertisement,
   setUser,
-  setCard
+  setCard,
+  setPage
 } = information.actions;
 export default information.reducer;

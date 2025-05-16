@@ -6,6 +6,7 @@ const MyButton = ({
   hard = false,
   blue = true,
   children,
+  onClick = () => {},
   ...props
 }) => {
   const myRef = useRef(null);
@@ -58,6 +59,7 @@ const MyButton = ({
       ref={element}
       onClick={() => {
         vibrate();
+        onClick()
       }}
       onTouchEnd={touchEnd}
       onTouchStart={clickHandler}

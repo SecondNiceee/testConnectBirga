@@ -1,8 +1,8 @@
-import React, {  memo, useCallback, useEffect, useRef, useState } from "react";
+import  {  memo, useCallback, useEffect, useRef } from "react";
 import FirstBlock from "./FirstBlock";
 import { useDispatch, useSelector } from "react-redux";
 import MyLoader from "../../UI/MyLoader/MyLoader";
-import {  fetchTasksInformation } from "../../../store/information";
+import {  fetchTasksInformation, setPage } from "../../../store/information";
 import translation from "../../../functions/translate";
 const noWay = translation(" Нет таких предложений ")
 const FirstMain = (
@@ -17,15 +17,18 @@ const FirstMain = (
   ) => {
 
     const dispatch = useDispatch()
+
     const watchedArr = useSelector((state) => state.watchedAds.watchedAds);
 
-    const [page , setPage] = useState(2)
+    const page = useSelector(state => state.information.tasksPage)
     const elementRef = useRef(null)
+
+    console.log(ordersInformation);
 
     const getMore = useCallback(async () => {
       dispatch(fetchTasksInformation(page));
-      setPage(page + 1);
-    }, [page, setPage, dispatch]);
+      dispatch(setPage(page + 1))
+    }, [page, dispatch]);
 
     const onIntersaction = useCallback(
       (entries) => {

@@ -15,19 +15,9 @@
 }
 
 .First {
-  position: fixed;
-  overflow: scroll;
-  height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-transition: -webkit-transform 0.4s;
-  transition: -webkit-transform 0.4s;
-  transition: transform 0.4s;
-  transition: transform 0.4s, -webkit-transform 0.4s;
-  will-change: transform;
-  overflow-x: hidden;
-  min-width: 100vw;
 }
 
 .first-container {
@@ -54,21 +44,10 @@
 }
 
 .first-wrapper {
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-transform: translateX(0%);
-      -ms-transform: translateX(0%);
-          transform: translateX(0%);
-  -webkit-transition: -webkit-transform 0.4s;
-  transition: -webkit-transform 0.4s;
-  transition: transform 0.4s;
-  transition: transform 0.4s, -webkit-transform 0.4s;
-  will-change: transform;
-  width: 100vw;
+  width: 100%;
   margin-bottom: 96px;
 }
 

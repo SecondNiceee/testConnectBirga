@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import { useFilteredArr } from "../../hooks/useFilteredArr";
 import FirstChoiceCategory from "../AdCreatingOne/ui/components/ChoiceCategory/FirstChoiceCategory";
-import { clearTasks } from "../../store/information";
 import CssTransitionSlider from "../../components/UI/PhotosSlider/CssTransitionSlider";
 import useBlockInputs from "../../hooks/useBlockInputs";
 import useAddHistory from "../../hooks/MyAds/useAddHistory";
@@ -19,8 +18,10 @@ import useFilteredArray from "./hooks/useFilteredArray";
 import FirstChoiceSubCategory from "../AdCreatingOne/ui/components/ChoiceCategory/FirstChoiceSubCategory";
 import BackButton from "../../constants/BackButton";
 import menuController from "../../functions/menuController";
+import MainButton from "../../constants/MainButton";
 
 const First = () => {
+
   const firstRef = useRef(null);
 
   const categorys = useSelector((state) => state.categorys.category);
@@ -33,6 +34,9 @@ const First = () => {
 
   const dispatch = useDispatch();
 
+  useEffect( () => {
+    MainButton.hide();
+  }, [])
   useAddHistory();
 
   useEffect( () => {
@@ -66,12 +70,7 @@ const First = () => {
     setSlideOpened,
   } = useSlider();
 
-  useEffect(() => {
-    dispatch(clearTasks());
-  }, [dispatch]);
-
   useBlockInputs();
-
 
   return (
     <>
