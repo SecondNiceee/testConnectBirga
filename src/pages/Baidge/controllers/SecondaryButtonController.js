@@ -1,32 +1,24 @@
 import { SecondatyButton } from "../../../constants/SecondaryButton";
+import { setUser } from "../../../store/information";
 import { deleteServerCard } from "../../../store/telegramUserInfo";
 
 class SecondaryButtonController{
     secondaryButton = SecondatyButton;
-    controllVisabiliry({isCardPageOpened, isSliderOpened, isChangingCardOpened}){
+    controllVisabiliry({isSliderOpened, isChangingCardOpened}){
         if (isSliderOpened){
             this.secondaryButton.hide();
             return;
         }
-        if (isChangingCardOpened){
-            this.secondaryButton.hide();
-            return;
-        }
-        if (isCardPageOpened){
-            SecondatyButton.show()
-            SecondatyButton.setText("Удалить")
-            SecondatyButton.setParams({
-                position : "left",
-                color : "#462424",
-                text_color : "#FF4646"
-            })
-        }
-        else{
-            SecondatyButton.hide();
-        }
+        SecondatyButton.show()
+        SecondatyButton.setText("Удалить")
+        SecondatyButton.setParams({
+            position : "left",
+            color : "#462424",
+            text_color : "#FF4646"
+        })
     }
 
-    secondaryButtonHandler({dispatch, cardId,setCardPageOpen}){
+    secondaryButtonHandler({dispatch, cardId,navigate, me}){
         window.Telegram.WebApp.showPopup({
                   title: "Удалить?",
                   message: "Вы уверены, что хотите удалить этот кейс?",
@@ -41,7 +33,8 @@ class SecondaryButtonController{
                   } 
                   if (buttonId === "save") {
                     await dispatch(deleteServerCard(cardId))
-                    setCardPageOpen(false);
+                    dispatch(setUser(me));
+                    navigate(-1);
                   }
                 } )
         

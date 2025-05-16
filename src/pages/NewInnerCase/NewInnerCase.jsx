@@ -18,6 +18,8 @@ import { setCard, setUser } from '../../store/information';
 import useNavigateBack from '../../hooks/useNavigateBack';
 import useSlider from '../../hooks/useSlider';
 import CssTransitionSlider from '../../components/UI/PhotosSlider/CssTransitionSlider';
+import { secondaryButtonController } from '../Baidge/controllers/SecondaryButtonController';
+import { SecondatyButton } from '../../constants/SecondaryButton';
 
 const NewInnerCase = () => {
     const clickFunc = () => {
@@ -96,6 +98,14 @@ const NewInnerCase = () => {
             MainButton.show();
             MainButton.setText("Изменить")
             MainButton.onClick(changeCard);
+
+            SecondatyButton.show()
+            SecondatyButton.setText("Удалить")
+            SecondatyButton.setParams({
+                position : "left",
+                color : "#462424",
+                text_color : "#FF4646"
+            })
         }
         else{
             MainButton.show();
@@ -104,6 +114,25 @@ const NewInnerCase = () => {
         }
     }, [backFunction, changeCard, me, userInfo] )
 
+
+
+    const secondaryButtonHandler = useCallback( () => {
+        secondaryButtonController.secondaryButtonHandler({cardId, dispatch, me});
+    }, [card, dispatch, me] )
+
+    useEffect( () => {
+        SecondatyButton.onClick(secondaryButtonHandler);
+        return () => {
+            SecondatyButton.offClick(secondaryButtonHandler);
+        }
+    } , [])
+
+    useEffect( () => {
+        secondaryButtonController.controllVisabiliry({isSliderOpened});
+        return () => {
+            SecondatyButton.hide();
+        }
+    }, [isSliderOpened] )
 
 
     if (!casePar || !userInfo){

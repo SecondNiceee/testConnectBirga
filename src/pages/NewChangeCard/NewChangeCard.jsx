@@ -12,6 +12,7 @@ import { USERID } from '../../constants/tgStatic.config';
 import { postCard, putCard } from '../../store/telegramUserInfo';
 import MyLoader from '../../components/UI/MyLoader/MyLoader';
 import { useNavigate } from 'react-router';
+import { setUser } from '../../store/information';
 
 
 
@@ -46,6 +47,8 @@ const NewChangeCard = ({isNewCard}) => {
 
     const baidgeCard = useSelector( (state) => state.information.baidgeCard );
 
+    const me = useSelector( (state) => state.telegramUserInfo )
+
 
     useEffect( () => {
         if (isNewCard){
@@ -68,10 +71,12 @@ const NewChangeCard = ({isNewCard}) => {
         if (isNewCard){
             const myFormData = makeCardFormData({card : changedCard, isCardNew : true} )
             await dispatch(postCard([myFormData, USERID, changedCard]));
+            dispatch(setUser(me));
         }
         else{
             const myFormData = makeCardFormData({card : changedCard, isCardNew : false} )
             await dispatch(putCard([myFormData, changedCard.id, changedCard]));
+            dispatch(setUser(me));
         }
         navigate(-1);
     } , [changedCard, dispatch, isNewCard, navigate] )
