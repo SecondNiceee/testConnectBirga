@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useRef } from "react";
 import FullDescription from "./FullDescription"
 import Dedline from './Dedline'
 import Status from './Status'
@@ -37,8 +37,13 @@ const TaskDetailsContainer = ({orderInformation, end = false, setPhotoIndex,
       }
     }
   } , [orderInformation, end] )
+
+  const areaRef = useRef(null);
+  
   return (
-    <div className="Task__container-one">
+    <div ref={areaRef} className="Task__container-one" onClick={() => {
+      areaRef.current.scrollIntoView();
+    }}>
       <Block   setPhotoIndex={setPhotoIndex}
               setPhotos={setPhotos}
               setSliderOpened={setSliderOpened} sliderLeftPosition="0" sliderPreviousText="ОТКЛИКНУТЬСЯ"  sliderBlockId="First"  sliderBlockerAll = {true} sliderHideButton = {false} end = {end} task={orderInformation} {...orderInformation} isButton = {false} />
