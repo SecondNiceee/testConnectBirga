@@ -6,16 +6,21 @@ import BackButton from '../../../constants/BackButton';
 import { enableColorAndActiveButton } from '../../../functions/enableColorAndActiveButton';
 
 let overflowYValue;
+let previousText = "";
 const PhotosSlider = forwardRef(({ swiperId, renderMap, className, sliderIndex, blockerId, blockerAll, setSliderOpened, left = 0, top = 0 }, ref) => {
     useEffect( () => {
         const closeSlider = () => {
             setSliderOpened(false)
         }
         MainButton.show();
+        previousText = MainButton.text;
+        console.log(previousText);
+        MainButton.setText('Закрыть')
         enableColorAndActiveButton();
         MainButton.onClick(closeSlider);
         return () => {
             MainButton.offClick(closeSlider);
+            MainButton.setText(previousText);
         }
     }, [setSliderOpened] )
     const render = (src, index) => {
