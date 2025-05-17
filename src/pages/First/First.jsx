@@ -79,6 +79,22 @@ const First = () => {
     }
   }, [isSliderOpened,setSlideOpened] )
 
+  const backFunction = useCallback( () => {
+    if (isSliderOpened){
+      setSlideOpened(false);
+    }
+  }, [isSliderOpened] )
+
+  useEffect( () => {
+    if(isSliderOpened){
+      BackButton.show();
+      BackButton.onClick(backFunction);
+    }
+    return() => {
+      BackButton.offClick(backFunction)
+    }
+  }, [isSliderOpened, backFunction] )
+
   useEffect( () => {
     if (isSliderOpened){
       MainButton.show();
