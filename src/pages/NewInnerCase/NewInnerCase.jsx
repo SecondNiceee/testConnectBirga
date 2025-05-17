@@ -73,6 +73,7 @@ const NewInnerCase = () => {
     const onClickPhotos = (i) => {
         setPhotoIndex(i)
         setPhotos(casePar?.photos);
+        setSlideOpened(true);
     }
 
     const changeCard = useCallback(() => {

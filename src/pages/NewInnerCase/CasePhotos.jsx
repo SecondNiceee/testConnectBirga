@@ -8,7 +8,7 @@ const CasePhotos = ({photos, onClickPhotos}) => {
         return (
             <img
             className='min-w-[calc(0.48*100vw)] h-[calc(0.35*100vw)] rounded-[6.67px] object-cover'
-            onClick={onClickPhotos(i)}
+            onClick={() => {onClickPhotos(i)}}
             key={i}
             style={photos.length === 1 ? { minWidth: "100%" } : {}}
             src={url}
