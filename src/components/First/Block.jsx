@@ -38,6 +38,7 @@ const Block = ({
   setPhotoIndex,
   setPhotos,
   setSliderOpened,
+  isFirst
 }) => {
 
   const dispatch = useDispatch();
@@ -67,7 +68,7 @@ const Block = ({
   
   
 
-  const isFirstDetailsPhotos = !isMyAds && !isResponce && !isButton // Фотки принадлежат подробнее в первом  первой страничке
+  const isFirstDetailsPhotos = (!isMyAds && !isResponce && !isButton) || isFirst // Фотки принадлежат подробнее в первом  первой страничке
 
   return (
     <>

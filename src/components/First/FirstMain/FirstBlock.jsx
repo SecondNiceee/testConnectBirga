@@ -20,9 +20,9 @@ const FirstBlock = ({
   tonValue,
   task,
   agree = false,
-  setViewsNumber = () =>{},
   setPhotoIndex,
-  setPhotos
+  setPhotos,
+  isFirst
  }) => {
   const props = {
     className: className,
@@ -42,12 +42,13 @@ const FirstBlock = ({
     tonValue: tonValue,
     task: task,
     agree: agree,
-    category : category
+    category : category,
+    isFirst : isFirst
   };
 ;
 
   return (
-          <Block setSliderOpened={setSlideActive} setPhotos={setPhotos} setPhotoIndex={setPhotoIndex} {...props} photos={ photos} />
+        <Block setSliderOpened={setSlideActive} setPhotos={setPhotos} setPhotoIndex={setPhotoIndex} {...props} photos={ photos} />
   );
 };
 

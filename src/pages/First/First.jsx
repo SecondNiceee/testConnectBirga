@@ -1,4 +1,5 @@
 import {
+  useCallback,
   useEffect,
   useRef,
   useState,
@@ -37,6 +38,8 @@ const First = () => {
   }, [])
   useAddHistory();
 
+  
+
   useEffect( () => {
     menuController.showMenu();
     BackButton.hide();
@@ -56,7 +59,6 @@ const First = () => {
 
   const filteredArr = useFilteredArr(ordersInformation, filterBy);
 
-
   const secFilteredArray = useFilteredArray({ filteredArr, filters });
 
   const {
@@ -67,6 +69,25 @@ const First = () => {
     setPhotos,
     setSlideOpened,
   } = useSlider();
+
+  const forwardFunction = useCallback( () => {
+    if (isSliderOpened){
+        setSlideOpened(false);
+    }
+    else{
+      console.log("Другая логика")
+    }
+  }, [isSliderOpened,setSlideOpened] )
+
+  useEffect( () => {
+    if (isSliderOpened){
+      MainButton.show();
+      MainButton.setText('Закрыть')
+    }
+    else{
+      MainButton.hide();
+    }
+  }, [isSliderOpened, forwardFunction] )
 
   useBlockInputs();
 

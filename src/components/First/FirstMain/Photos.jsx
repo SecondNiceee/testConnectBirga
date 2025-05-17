@@ -17,7 +17,11 @@ setSliderOpened, }) => {
     }, [photos] )
 
     const clickHandler = (id) => () => {
+      console.log("asd")
+      console.log(isFirstDetailsPhotos)
+      console.log(isResponse);
       if (isFirstDetailsPhotos || isResponse){
+        console.log("Хэй")
         setPhotoIndex(id);
         setPhotos(photos);
         setSliderOpened(true)

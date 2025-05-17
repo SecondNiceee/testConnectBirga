@@ -20,7 +20,8 @@ const FirstMain = (
 
     const watchedArr = useSelector((state) => state.watchedAds.watchedAds);
 
-    const page = useSelector(state => state.information.tasksPage)
+    const page = useSelector(state => state.information.tasksPage);
+
     const elementRef = useRef(null)
 
     console.log(ordersInformation);
@@ -57,6 +58,7 @@ const FirstMain = (
           ordersInformation.map((e, i) => {
             return (
               <FirstBlock
+                isFirst={true}
                 setPhotos={setPhotos}
                 setPhotoIndex={setPhotoIndex}
                 setSlideActive={setSlideActive}
