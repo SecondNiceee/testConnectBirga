@@ -60,13 +60,19 @@ const NewCardsPage = () => {
   useEffect( () => {
     MainButton.show();
     enableColorAndActiveButton();
-    if (userInfo.id === me.id){
-      MainButton.setText("Создать")
+    if (isSliderOpened){
+      MainButton.setText("Закрыть")
     }
     else{
-      MainButton.setText("Hазад");
+
+      if (userInfo.id === me.id){
+        MainButton.setText("Создать")
+      }
+      else{
+        MainButton.setText("Hазад");
+      }
     }
-  }, [userInfo, me] )
+  }, [userInfo, me, isSliderOpened] )
 
   useEffect( () => {
     if (userInfo.id === me.id){
