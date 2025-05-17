@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { CardsFilterEnum } from "./enums/CardsFilterEnum";
 import { useSelector } from "react-redux";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
@@ -20,9 +20,18 @@ const NewCardsPage = () => {
 
   const putState = useSelector((state) => state.telegramUserInfo.putState);
 
-  const userInfo = useSelector( (state) => state.information.baidgeUser );
-
+  const baidgeUser = useSelector( (state) => state.information.baidgeUser );
+  
   const me = useSelector( (state) => state.telegramUserInfo )
+
+  const userInfo = useMemo( () => {
+    if (me.id === baidgeUser.id){
+      return me
+    }
+    else{
+      return baidgeUser;
+    }
+  }, [me,baidgeUser] )
 
 
   const navigate = useNavigate();
