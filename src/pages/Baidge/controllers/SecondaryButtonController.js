@@ -33,7 +33,7 @@ class SecondaryButtonController{
                   } 
                   if (buttonId === "save") {
                     await dispatch(deleteServerCard(card.id))
-                    dispatch(setUser(me));
+                    dispatch(setUser({...me, ...me.cards.filter( (c) => card.id !== c.id)}));
                     navigate(-1);
                   }
                 } )
