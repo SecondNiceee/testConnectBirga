@@ -50,12 +50,21 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (showButton){
-      menuController.lowerMenu();
-      MainButton.show();
-      MainButton.setText("ОТКЛИКНУТЬСЯ");
+    if (isSliderOpened){
+      MainButton.setText("Закрыть");
     }
-  }, [showButton]);
+    else{
+      if (showButton){
+        menuController.lowerMenu();
+        MainButton.show();
+        MainButton.setText("ОТКЛИКНУТЬСЯ");
+      }
+      else{
+        menuController.hideMenu();
+        MainButton.hide();
+      }
+    }
+  }, [showButton, isSliderOpened]);
   
   const isMyResponse = useIsMyResponse({detailsAdertisement : orderInformation})
   
