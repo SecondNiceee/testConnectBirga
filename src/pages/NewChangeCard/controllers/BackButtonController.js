@@ -2,7 +2,7 @@ import {isEqual} from "lodash";
 import { showAllert } from "../../../functions/showAlert";
 export class BackButtonController{
     async backFunction({errors, changedCard, isNewCard, card, save, navigate}){
-        const isCloseSrazy = card ? isEqual(changedCard, {...card, links : card?.links ?? ['']}) : 
+        const isCloseSrazy = !isNewCard ? isEqual(changedCard, {...card, links : card?.links ?? ['']}) : 
         isEqual(changedCard, {
             id : null,
             title : "",
@@ -12,6 +12,7 @@ export class BackButtonController{
             links : []
         })
         if (isCloseSrazy){
+            alert("Хэй вызов этого")
             navigate(-1)
         }
         else{
