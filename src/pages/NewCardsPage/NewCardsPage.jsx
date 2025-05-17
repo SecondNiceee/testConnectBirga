@@ -56,15 +56,23 @@ const NewCardsPage = () => {
     }
   }, [navigate, isSliderOpened, setSlideOpened] )
 
+
   useEffect( () => {
     MainButton.show();
     enableColorAndActiveButton();
     if (userInfo.id === me.id){
       MainButton.setText("Создать")
-      MainButton.onClick(createCard);
     }
     else{
       MainButton.setText("Hазад");
+    }
+  }, [userInfo, me] )
+
+  useEffect( () => {
+    if (userInfo.id === me.id){
+      MainButton.onClick(createCard);
+    }
+    else{
       MainButton.onClick(BackFunction)
     }
     return () => {

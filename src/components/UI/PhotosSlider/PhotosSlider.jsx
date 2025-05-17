@@ -14,7 +14,6 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, className, sliderIndex, 
         }
         MainButton.show();
         previousText = MainButton.text;
-        console.log(previousText);
         MainButton.setText('Закрыть')
         enableColorAndActiveButton();
         MainButton.onClick(closeSlider);

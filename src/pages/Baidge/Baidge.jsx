@@ -6,6 +6,7 @@ import BaidgeWithoutProfile from "./components/BaidgeWithoutProfile";
 import { useParams } from "react-router";
 import { findUserById } from "../../functions/api/findUserById";
 import menuController from "../../functions/menuController";
+import MainButton from "../../constants/MainButton";
 
 // id : userConfig.id,
 // counterOfLikes: userInfo.userLikes.length,
@@ -51,6 +52,11 @@ const Baidge = () => {
       setUserInfo(me);
     }
   }, [ me, id]);
+
+  useEffect( () => {
+    MainButton.hide();
+    
+  }, [] )
 
 
   if (!userInfo || userInfo.id === null) {
