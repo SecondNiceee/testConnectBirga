@@ -95,22 +95,33 @@ const NewInnerCase = () => {
     }, [navigate, isSliderOpened, setSlideOpened] )
 
     useEffect( () => {
-        if (userInfo?.id === me?.id){
-            MainButton.show();
-            MainButton.setText("Изменить")
-            MainButton.onClick(changeCard);
-
-            SecondatyButton.show()
-            SecondatyButton.setText("Удалить")
-            SecondatyButton.setParams({
-                position : "left",
-                color : "#462424",
-                text_color : "#FF4646"
-            })
+        if (isSliderOpened){
+            MainButton.setText("Закрыть")
         }
         else{
-            MainButton.show();
-            MainButton.setText("Назад")
+            if (userInfo?.id === me?.id){
+                MainButton.setText("Изменить")
+                SecondatyButton.show()
+                SecondatyButton.setText("Удалить")
+                SecondatyButton.setParams({
+                    position : "left",
+                    color : "#462424",
+                    text_color : "#FF4646"
+                })
+            }
+            else{
+                MainButton.setText("Назад")
+                SecondatyButton.hide();
+            }
+        }
+
+    }, [isSliderOpened, userInfo, me] )
+
+    useEffect( () => {
+        if (userInfo?.id === me?.id){
+            MainButton.onClick(changeCard);
+        }
+        else{
             MainButton.onClick(backFunction)
         }
     }, [backFunction, changeCard, me, userInfo] )
