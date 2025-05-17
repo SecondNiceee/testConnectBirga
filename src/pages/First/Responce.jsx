@@ -84,8 +84,6 @@ const Responce = ( ) => {
   }, [] )
 
 
-  useNavigateBack({isSliderOpened, setSlideOpened});
-
   const postResponce = usePostResponse({detailsAdertisement : orderInformation, responce : responce});
 
   const navigate = useNavigate();
