@@ -73,7 +73,7 @@ const NewCardsPage = () => {
     }
   }, [createCard, BackFunction, me, userInfo] )
 
-  useNavigateBack({isSliderOpened : false, setSlideOpened : false});
+  useNavigateBack({isSliderOpened : isSliderOpened, setSlideOpened : setSlideOpened});
   useEffect( () => {
     menuController.hideMenu();
   }, [] )
