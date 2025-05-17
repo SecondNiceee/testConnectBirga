@@ -7,7 +7,7 @@ import { enableColorAndActiveButton } from '../../../functions/enableColorAndAct
 
 let overflowYValue;
 let previousText = "";
-const PhotosSlider = forwardRef(({ swiperId, renderMap, className, sliderIndex, blockerId, blockerAll, setSliderOpened, left = 0, top = 0 }, ref) => {
+const PhotosSlider = forwardRef(({ swiperId, renderMap, className, sliderIndex,  blockerId, blockerAll, setSliderOpened, left = 0, top = 0 }, ref) => {
     useEffect( () => {
         const closeSlider = () => {
             setSliderOpened(false)
@@ -19,8 +19,6 @@ const PhotosSlider = forwardRef(({ swiperId, renderMap, className, sliderIndex, 
         enableColorAndActiveButton();
         MainButton.onClick(closeSlider);
         return () => {
-            console.log(previousText);
-            MainButton.setText(previousText);
             MainButton.offClick(closeSlider);
         }
     }, [setSliderOpened] )
