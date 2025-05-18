@@ -124,6 +124,10 @@ const NewInnerCase = () => {
         else{
             MainButton.onClick(backFunction)
         }
+        return () => {
+            MainButton.offClick(changeCard);
+            MainButton.offClick(backFunction);
+        }
     }, [backFunction, changeCard, me, userInfo] )
 
 
