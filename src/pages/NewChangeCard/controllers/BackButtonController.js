@@ -12,6 +12,7 @@ export class BackButtonController{
             links : []
         })
         if (isCloseSrazy){
+            console.log("Вызов вызор этого G")
             alert("Хэй вызов этогоG")
             // navigate(-1)
         }
