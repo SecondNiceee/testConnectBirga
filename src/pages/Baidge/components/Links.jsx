@@ -7,6 +7,7 @@ const Links = ({links, isFirstMyLink}) => {
     const clickHandler = (link) => () => {
         openLink(link)
     }
+    console.log(formatedLinks);
     return (
         <div className='rounded-[13px] bg-[#21303f] '>
             {formatedLinks.map( (link, i) => {

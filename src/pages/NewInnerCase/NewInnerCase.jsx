@@ -20,6 +20,7 @@ import useSlider from '../../hooks/useSlider';
 import CssTransitionSlider from '../../components/UI/PhotosSlider/CssTransitionSlider';
 import { secondaryButtonController } from '../Baidge/controllers/SecondaryButtonController';
 import { SecondatyButton } from '../../constants/SecondaryButton';
+import { enableColorAndActiveButton } from '../../functions/enableColorAndActiveButton';
 
 const NewInnerCase = () => {
     const clickFunc = () => {
@@ -54,6 +55,10 @@ const NewInnerCase = () => {
     console.log(me);
 
     useEffect( () => {
+        enableColorAndActiveButton();
+    } , [])
+
+    useEffect( () => {
 
         if (userId && cardId){
             if (String(userId) === String(me.id)){
@@ -84,7 +89,6 @@ const NewInnerCase = () => {
         }
 
      , [cardId, userId, card, user, me, casePar, dispatch])
-
 
 
     const onClickPhotos = (i) => {
@@ -211,7 +215,7 @@ const NewInnerCase = () => {
                         <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ОПИСАНИЕ</p>
                         <TextAboutMe buttonClassNames={"!bg-[#1A2F42]"} textareaClassName={"!bg-card !border-card"} aboutU={casePar.description} />
                 </div>
-                {casePar.links ?                 <div className="flex mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
+                {casePar.links ?  <div className="flex mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
                     <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ССЫЛКИ</p>
                     <Links isFirstMyLink={false} links={casePar.links}/>
                 </div> : <></>}
