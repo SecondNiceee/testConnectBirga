@@ -34,6 +34,7 @@ export const deleteServerCard = createAsyncThunk(
 export const putCard = createAsyncThunk(
     "telegramUserInfo/putCard",
     async function (data){
+        console.warn(data[2]);
         try{
 
             let im = await axios.put(`${process.env.REACT_APP_HOST}/card` , data[0] , 
@@ -55,6 +56,8 @@ export const putCard = createAsyncThunk(
                 let newFile = new File([blob], im.data.photos[i], {type: 'image/png'});
                 photos.push(newFile)
              })
+             console.warn(data[2]);
+             console.warn(im.data);
              let localCard = {
                 ...data[2],
                 photosNames : im.data.photos,
