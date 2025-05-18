@@ -146,6 +146,8 @@ const NewInnerCase = () => {
         }
     }, [isSliderOpened] )
 
+    console.log("New INner cASE");
+
 
     if (!casePar || !userInfo){
         return <MyLoader />
@@ -161,7 +163,7 @@ const NewInnerCase = () => {
                 <div className="my-4 ml-[17px] mr-[19px] flex justify-between items-center"> 
                     <div className="flex flex-col gap-[2px]">
                     <p className="font-sf-pro-display font-medium text-[17px] leading-[18.33px] text-white">{casePar.title}</p>
-                    <p className="font-sf-pro-display-400 font-normal text-[14.67px] leading-[17.7px] text-[#B5CED9]">
+                    <p className="font-sf-pro-display-400 font-normal textP-[14.67px] leading-[17.7px] text-[#B5CED9]">
                         {formateDateForTimeAgo(casePar.createdAt)} · {casePar.views} просмотров
                     </p>
                     </div>
