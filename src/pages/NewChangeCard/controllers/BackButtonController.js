@@ -13,7 +13,6 @@ export class BackButtonController{
         })
         if (isCloseSrazy){
             console.log("Вызов вызор этого G")
-            alert("Хэй вызов этогоG")
             window.history.back();
         }
         else{

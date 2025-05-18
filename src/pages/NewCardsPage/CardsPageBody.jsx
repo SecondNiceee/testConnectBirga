@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { setCard } from "../../store/information";
 
-const CardsPageBody = ({setFilterBy, cards, setPhotoIndex, setPhotos, setSlideOpened}) => {
+const CardsPageBody = ({setFilterBy, cards, setPhotoIndex, setPhotos, setSlideOpened, userInfo}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   return (
@@ -44,7 +44,7 @@ const CardsPageBody = ({setFilterBy, cards, setPhotoIndex, setPhotos, setSlideOp
             card={card}
             openFunc={() => {
               dispatch(setCard(card))
-              navigate(`/card`)
+              navigate(`/card/${card.id}/${userInfo.id}`)
             }}
           />
         ))}

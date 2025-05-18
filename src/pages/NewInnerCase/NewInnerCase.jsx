@@ -52,21 +52,33 @@ const NewInnerCase = () => {
     const dispatch = useDispatch();
 
     useEffect( () => {
-        if (userId || cardId){
-            findUserById(userId).then( (user) => {
-                dispatch(setUser(user))
-                setUserInfo(user);
-            } )
-            getCardById(cardId).then( (card) => {
-                dispatch(setCard(card));
-                setCasePar(card)
-            } )
+
+        if (userId && cardId){
+            if (String(userId) === String(me.id)){
+                setUserInfo(me);
+                setCasePar(me.profile.cards.find( (card) => card.id === cardId))
+            }
+            else{
+                findUserById(userId).then( (user) => {
+                    dispatch(setUser(user))
+                    setUserInfo(user);
+                } )
+                getCardById(cardId).then( (card) => {
+                    dispatch(setCard(card));
+                    setCasePar(card)
+                } )
+            }
         }
         else{
+            if (user.id === me.id){
+                setUserInfo(me);
+                setCasePar(me.profile.cards.find( (myCard) => myCard.id === card.id))
+            }
+        }
             setCasePar(card);
             setUserInfo(user)
         }
-    }, [cardId, userId, card, user, casePar, dispatch])
+     , [cardId, userId, card, user, casePar, dispatch])
 
 
 

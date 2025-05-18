@@ -49,7 +49,7 @@ const NewCardsPage = () => {
 
   const BackFunction = useCallback( () => {
     if (!isSliderOpened){
-      navigate('/baidge')
+      navigate(-1)
     }
     else{
       setSlideOpened(false)
@@ -110,6 +110,7 @@ const NewCardsPage = () => {
         </div>
       ) : (
         <CardsPageBody
+          userInfo = {userInfo}
           cards={cards}
           setFilterBy={setFilterBy}
           setPhotoIndex={setPhotoIndex}
