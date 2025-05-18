@@ -66,7 +66,7 @@ const NewInnerCase = () => {
             setCasePar(card);
             setUserInfo(user)
         }
-    }, [cardId, userId, card, user, navigate, casePar, dispatch])
+    }, [cardId, userId, card, user, casePar, dispatch])
 
 
 
@@ -87,7 +87,7 @@ const NewInnerCase = () => {
 
     const backFunction = useCallback( () => {
         if (!isSliderOpened){ 
-            navigate('/cardsPage')
+            navigate(-1)
         }
         else{
             setSlideOpened(false);
