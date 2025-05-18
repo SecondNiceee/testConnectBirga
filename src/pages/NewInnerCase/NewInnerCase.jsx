@@ -99,12 +99,12 @@ const NewInnerCase = () => {
 
     const changeCard = useCallback(() => {
         if (!isSliderOpened){
-            navigate('/changeCard');
+            navigate(`/changeCard/${card.id}`);
         }
         else{
             setSlideOpened(false);
         }
-    }, [navigate, isSliderOpened, setSlideOpened])
+    }, [navigate, isSliderOpened, setSlideOpened, card.id])
 
     const backFunction = useCallback( () => {
         if (!isSliderOpened){ 
@@ -215,7 +215,7 @@ const NewInnerCase = () => {
                         <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ОПИСАНИЕ</p>
                         <TextAboutMe buttonClassNames={"!bg-[#1A2F42]"} textareaClassName={"!bg-card !border-card"} aboutU={casePar.description} />
                 </div>
-                {casePar.links ?  <div className="flex mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
+                {casePar.links.filter( (link) => link.length ).length ?  <div className="flex mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
                     <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ССЫЛКИ</p>
                     <Links isFirstMyLink={false} links={casePar.links}/>
                 </div> : <></>}

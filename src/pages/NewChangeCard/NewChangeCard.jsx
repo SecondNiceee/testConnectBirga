@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import DescriptionAndPhoto from '../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto';
 import AddLinksComponent from '../../components/UI/AddLinksComponent/AddLinksComponent';
 import useCardsController from './hooks/useCardsController';
@@ -11,7 +11,7 @@ import { makeCardFormData } from './utils/makeCardFormData';
 import { USERID } from '../../constants/tgStatic.config';
 import { postCard, putCard } from '../../store/telegramUserInfo';
 import MyLoader from '../../components/UI/MyLoader/MyLoader';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { setUser } from '../../store/information';
 
 
@@ -45,9 +45,12 @@ const NewChangeCard = ({isNewCard}) => {
 
     const navigate = useNavigate();
 
-    const baidgeCard = useSelector( (state) => state.information.baidgeCard );
+    const {id} = useParams();
+
+    const userCards = useSelector( (state) => state.telegramUserInfo.profile.cards );
 
     const me = useSelector( (state) => state.telegramUserInfo )
+    const baidgeCard = useMemo(() => userCards.find((card) => String(card.id) === id) ?? {}, [userCards, id])
 
 
     useEffect( () => {
@@ -64,7 +67,7 @@ const NewChangeCard = ({isNewCard}) => {
         else{
             setChangedCard(baidgeCard)
         }
-    } , [isNewCard, baidgeCard]) 
+    } , [isNewCard, baidgeCard, id, userCards]) 
     
     const save = useCallback( async ( ) => {
         alert("Вызов save");
