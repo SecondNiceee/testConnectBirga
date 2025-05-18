@@ -14,7 +14,7 @@ export class BackButtonController{
         if (isCloseSrazy){
             console.log("Вызов вызор этого G")
             alert("Хэй вызов этогоG")
-            navigate(-1)
+            window.history.back();
         }
         else{
             console.log("Вызов другого G")
