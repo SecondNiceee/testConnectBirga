@@ -17,6 +17,7 @@ export class BackButtonController{
             navigate(-1)
         }
         else{
+            console.log("Вызов другого G")
             window.Telegram.WebApp.showPopup(
                 {
                   title: "Сохранить?",
