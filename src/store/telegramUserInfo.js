@@ -71,6 +71,7 @@ export const putCard = createAsyncThunk(
 export const postCard = createAsyncThunk(
     "telegramUserInfo/postUserInfo",
     async function (data){
+        console.warn(data[2]);
         try{
             let im = await axios.post(`${process.env.REACT_APP_HOST}/card` , data[0] , 
                 {
@@ -91,6 +92,7 @@ export const postCard = createAsyncThunk(
                 photos.push(newFile)
 
              })
+             console.warn(im.data);
             let localCard = {
                 ...data[2],
                 createdAt : im.data.createdAt,
