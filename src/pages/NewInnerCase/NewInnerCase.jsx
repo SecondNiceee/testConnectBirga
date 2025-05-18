@@ -51,12 +51,18 @@ const NewInnerCase = () => {
 
     const dispatch = useDispatch();
 
+    console.log(me);
+
     useEffect( () => {
 
         if (userId && cardId){
             if (String(userId) === String(me.id)){
-                setUserInfo(me);
-                setCasePar(me.profile.cards.find( (card) => card.id === cardId))
+                if (me.id){
+                    setUserInfo(me);
+                    console.log("Я именно тут")
+                    console.log(me.profile);
+                    setCasePar(me.profile.cards.find( (card) => String(card.id) === String(cardId)))
+                }
             }
             else{
                 findUserById(userId).then( (user) => {
@@ -75,10 +81,9 @@ const NewInnerCase = () => {
                 setCasePar(me.profile.cards.find( (myCard) => myCard.id === card.id))
             }
         }
-            setCasePar(card);
-            setUserInfo(user)
         }
-     , [cardId, userId, card, user, casePar, dispatch])
+
+     , [cardId, userId, card, user, me, casePar, dispatch])
 
 
 

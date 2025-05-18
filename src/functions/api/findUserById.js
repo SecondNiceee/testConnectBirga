@@ -13,6 +13,7 @@ export const findUserById = async (id) => {
             await createUserByBot(id);
             user = await getUserWithoutCards(id); 
         }
+        console.log(user);
         const userCards = await getCardByUserId(id);
         return formatUserFromApi(user.data, userCards);
     }
