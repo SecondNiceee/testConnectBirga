@@ -12,8 +12,8 @@ export class BackButtonController{
             links : []
         })
         if (isCloseSrazy){
-            alert("Хэй вызов этого")
-            navigate(-1)
+            alert("Хэй вызов этогоG")
+            // navigate(-1)
         }
         else{
             window.Telegram.WebApp.showPopup(

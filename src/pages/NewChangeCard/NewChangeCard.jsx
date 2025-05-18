@@ -82,7 +82,7 @@ const NewChangeCard = ({isNewCard}) => {
     } , [changedCard, dispatch, isNewCard, navigate, me] )
 
     const backFunction = useCallback( () => {
-        backButtonController.backFunction({changedCard, errors, card :baidgeCard,  isNewCard, navigate, save});
+        backButtonController.backFunction({changedCard, errors, card : baidgeCard,  isNewCard, navigate, save});
     } , [changedCard, errors, save, navigate , baidgeCard, isNewCard ] )
 
     useEffect( () => {
