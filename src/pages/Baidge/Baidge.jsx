@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import {useSelector } from "react-redux";
+import { useCallback, useEffect, useRef, useState } from "react";
+import {useDispatch, useSelector } from "react-redux";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import BaidgeWithProfile from "./components/BaidgeWithProfile";
 import BaidgeWithoutProfile from "./components/BaidgeWithoutProfile";
@@ -7,6 +7,8 @@ import { useParams } from "react-router";
 import { findUserById } from "../../functions/api/findUserById";
 import menuController from "../../functions/menuController";
 import MainButton from "../../constants/MainButton";
+import { putUserInfo } from "../../store/telegramUserInfo";
+import { apiRating } from "../../functions/api/ApiRating";
 
 // id : userConfig.id,
 // counterOfLikes: userInfo.userLikes.length,
@@ -59,6 +61,26 @@ const Baidge = () => {
     MainButton.hide();
     
   }, [] )
+
+  const dispatch = useDispatch();
+
+  const addWatch = useCallback( async () => {
+    if (userInfo){
+      dispatch(putUserInfo([{
+        views : userInfo.views + 1
+      }, userInfo.id]))
+    }
+  }, [dispatch, userInfo] )
+
+
+
+  useEffect( () => {
+    if (userInfo && userInfo.id && me.id ){
+      if (userInfo.id !== me.id){
+        addWatch();
+      }
+    }
+  } , [userInfo, me, addWatch])
 
 
   if (!userInfo || userInfo.id === null) {

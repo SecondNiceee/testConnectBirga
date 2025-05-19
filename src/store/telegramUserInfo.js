@@ -115,21 +115,16 @@ export const postCard = createAsyncThunk(
 export const putUserInfo = createAsyncThunk(
     "telegramUserInfo/putUserInfo",
     async function (data){
-        try{
-            await axios.put(`${process.env.REACT_APP_HOST}/user` , data[0] , {
-                params : {
-                    userId : USERID,
+        await axios.put(`${process.env.REACT_APP_HOST}/user` , data[0] , {
+            params : {
+                userId : data[1] ?? USERID,
+            },
+            headers: {
+                "Content-Type" :'application/json',
+                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY,
                 },
-                headers: {
-                    "Content-Type" :'application/json',
-                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY,
-                  },
-            })
-            return true
-        }
-        catch(e){
-            console.warn(e)
-        }
+        })
+        return true
     }
 )
 
@@ -345,6 +340,7 @@ const telegramUserInfo = createSlice({
       state.congradulations = action.payload.address
       state.congratulate = action.payload.congratulate
       state.state = "yes";
+      state.link = action.payload.link;
       state.userLikes = action.payload.userLikes;
       state.profession = action.payload.profession;
       state.links = action.payload.links;

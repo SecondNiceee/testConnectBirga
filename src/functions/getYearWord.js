@@ -1,9 +1,6 @@
 export default function getYearWord(years) {
     // Проверяем последние две цифры числа
-
-    if (!years){
-        return null;
-    }
+    if (years === null || years === undefined) return '0 лет';
     
     const lastTwoDigits = years % 100;
   

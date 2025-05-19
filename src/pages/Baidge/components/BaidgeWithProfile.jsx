@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import NewProfileCup from "../../Profile/components/NewProfileCup/NewProfileCup";
 import NewOption from "../../Profile/components/NewOption/NewOption";
 import { useDispatch, useSelector } from "react-redux";
@@ -9,6 +9,8 @@ import Links from "./Links";
 import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
 import useNavigateBack from "../../../hooks/useNavigateBack";
 import useGetBaidgeOprionsConfig from "../hooks/useGetBaidgeOprionsConfig";
+import { apiRating } from "../../../functions/api/ApiRating";
+import { getCounterOfResponses } from "../../../functions/api/getCounterOfResponses";
 
 const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
 
@@ -48,6 +50,29 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
       setGotenUserInfo : setUserInfo
     });
   };
+
+
+  const ratingLoaded = useRef(false);
+
+  useEffect( () => {
+      async function fetchAdditionalUserInfo(params) {
+        let commonRating = null;
+        let responsesCounter = null;
+        await apiRating.getByUserId(userInfo.id).then((rate) => {
+          commonRating = rate
+        } ).catch(err => console.warn(err))
+        await getCounterOfResponses(userInfo.id).then( (counter) =>  {
+          responsesCounter = counter;
+        })
+        return {commonRating, responsesCounter}
+      } 
+      if (!ratingLoaded.current){
+        ratingLoaded.current = true;
+        fetchAdditionalUserInfo().then( (info) => setUserInfo((value) => ({...value, ...info})) )
+      }
+
+  } , [userInfo, setUserInfo])
+  
 
   return (
     <>

@@ -1,4 +1,3 @@
-import React from 'react';
 import useGetProfileStatistics from '../hooks/useGetProfileStatistics';
 
 const ProfileStatisticComponent = ({userConfig}) => {

@@ -104,9 +104,9 @@ const NewCardsPage = () => {
       if (filter === "WATCHES"){
         return [...cards].sort((a, b) => b.views - a.views);
       }
-      else{
+  
         return [...cards].reverse();
-      }
+      
     } 
     return []
   }, [filter, cards] )
@@ -128,7 +128,7 @@ const NewCardsPage = () => {
       ) : (
         <CardsPageBody
           userInfo = {userInfo}
-          cards={cards}
+          cards={filteredArray}
           setFilterBy={setFilterBy}
           setPhotoIndex={setPhotoIndex}
           setPhotos={setPhotos}

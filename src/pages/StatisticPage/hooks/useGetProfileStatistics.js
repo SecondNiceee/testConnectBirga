@@ -2,10 +2,12 @@ import formatNumberWithSpaces from "../../../functions/formateMoneyWithSpace";
 import getYearWord from "../../../functions/getYearWord";
 
 const useGetProfileStatistics = ({userConfig }) => {
+    
+    console.log(userConfig.profile.stage)
     return [
         {
             title : "Позиция в общем рейтинге",
-            text : "#-"
+            text : userConfig.commonRating ?? "-"
         },
         {
             title : "Позиция в рейтинге по нише",
@@ -25,7 +27,7 @@ const useGetProfileStatistics = ({userConfig }) => {
         },
         {
             title : "Лайков профиля",
-            text : "-"
+            text : userConfig.userLikes.length
         },
         {
             title : "Стаж/Опыт работы",

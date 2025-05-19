@@ -3,6 +3,7 @@ import useGetLinksFormatedArray from '../hooks/useGetLinksFormatedArray';
 import { openLink } from '../../../functions/openLink';
 
 const Links = ({links, isFirstMyLink}) => {
+    console.log(links);
     const formatedLinks = useGetLinksFormatedArray({links, isFirstMyLink})
     const clickHandler = (link) => () => {
         openLink(link)

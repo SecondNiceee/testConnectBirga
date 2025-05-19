@@ -3,7 +3,7 @@ const useGetLinksFormatedArray = ({links, isFirstMyLink}) => {
 
     const notRecognisedLinks = []
 
-    const tgName = isFirstMyLink ? "@" + links[0].split("/").pop()  : ""
+    const tgName = isFirstMyLink ? "@" + links[0]  : ""
 
     let dribbleLink = null;
     let behanceLink = null;
@@ -130,7 +130,9 @@ const useGetLinksFormatedArray = ({links, isFirstMyLink}) => {
             })
         }
     }
-
+    
+    console.log(tgName);
+    console.log(links[0])
     const linksArray = [
         {
             title : "Мой Telegram",

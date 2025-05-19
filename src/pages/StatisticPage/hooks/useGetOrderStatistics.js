@@ -11,7 +11,7 @@ const useGetOrderStatistics = ({userConfig}) => {
         },
         {
             title : "Количество откликлов",
-            text : userConfig.numberOfResponses
+            text : userConfig.responsesCounter
         },
         {
             title : "Предложений от заказчиков",
