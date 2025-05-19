@@ -102,7 +102,7 @@ const NewCardsPage = () => {
     const filteredArray = useMemo( () => {
     if (cards){
       if (filter === "WATCHES"){
-        return cards.sort((a, b) => b.views - a.views);
+        return [...cards].sort((a, b) => b.views - a.views);
       }
       else{
         return [...cards].reverse();
