@@ -34,6 +34,7 @@ import LastAds from "./pages/MyAds/components/LastAds";
 import AboutOne from "./pages/MyAds/components/AboutOne";
 import Responce from "./pages/First/Responce";
 import NewInnerCase from "./pages/NewInnerCase/NewInnerCase";
+import Baidge from "./pages/Baidge/Baidge";
 
 const NewChangeCard = lazy( () => import('./pages/NewChangeCard/NewChangeCard') )
 const HappyPage = lazy(() => import("./pages/HappyHold/HappyPage"));
@@ -47,7 +48,6 @@ const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
 const WalletEnter = lazy(() => import("./pages/WalletEnter/WalletEnter"));
 const Wallet = lazy(() => import("./pages/Wallet"));
 const WalletInit = lazy(() => import("./pages/WalletEnter/WalletInit"));
-const Baidge = lazy(() => import("./pages/Baidge/Baidge"));
 const BaidgeCreating = lazy(() =>
   import("./pages/BaidgeCreating/BaidgeCreating")
 );
@@ -315,18 +315,14 @@ const AnimatedSwitch = () => {
             <Route
               path="/Baidge"
               element={
-                <Suspense fallback={<MyLoader />}>
                   <Baidge />
-                </Suspense>
               }
             />
 
             <Route
               path="/Baidge/:id"
               element={
-                <Suspense fallback={<MyLoader />}>
                   <Baidge />
-                </Suspense>
               }
             />
 
