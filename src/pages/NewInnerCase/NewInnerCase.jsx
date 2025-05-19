@@ -21,6 +21,8 @@ import CssTransitionSlider from '../../components/UI/PhotosSlider/CssTransitionS
 import { secondaryButtonController } from '../Baidge/controllers/SecondaryButtonController';
 import { SecondatyButton } from '../../constants/SecondaryButton';
 import { enableColorAndActiveButton } from '../../functions/enableColorAndActiveButton';
+import axios from 'axios';
+import formatViews from './utils/formatViews';
 
 const NewInnerCase = () => {
     const clickFunc = () => {
@@ -52,11 +54,34 @@ const NewInnerCase = () => {
 
     const dispatch = useDispatch();
 
-    console.log(me);
 
     useEffect( () => {
         enableColorAndActiveButton();
     } , [])
+
+    const addWatches = useCallback(async () => {
+        console.log(casePar);
+        if (casePar?.views !== null && casePar?.views !== undefined){
+            console.log(casePar.views);
+            console.log(String(casePar.views + 1))
+            await axios.put(`${process.env.REACT_APP_HOST}/card`, {
+                views : String(casePar.views + 1)
+            }, {
+                params : {
+                    id : casePar.id
+                },
+                headers: {
+            "X-API-KEY-AUTH": process.env.REACT_APP_API_KEY,
+          },
+            })
+        }
+    }, [casePar] )
+
+    useEffect( () => {
+        if (String(me?.id) !== String(userInfo?.id)){
+            addWatches();
+        }
+    }, [me, userInfo] )
 
     useEffect( () => {
 
@@ -64,8 +89,6 @@ const NewInnerCase = () => {
             if (String(userId) === String(me.id)){
                 if (me.id){
                     setUserInfo(me);
-                    console.log("Я именно тут")
-                    console.log(me.profile);
                     setCasePar(me.profile.cards.find( (card) => String(card.id) === String(cardId)))
                 }
             }
@@ -87,8 +110,8 @@ const NewInnerCase = () => {
             }
         }
         }
-
-     , [cardId, userId, card, user, me, casePar, dispatch])
+// eslint-disable-next-line
+     , [cardId, userId, me, dispatch])
 
 
     const onClickPhotos = (i) => {
@@ -104,7 +127,7 @@ const NewInnerCase = () => {
         else{
             setSlideOpened(false);
         }
-    }, [navigate, isSliderOpened, setSlideOpened, card.id])
+    }, [navigate, isSliderOpened, setSlideOpened, card?.id])
 
     const backFunction = useCallback( () => {
         if (!isSliderOpened){ 
@@ -171,16 +194,13 @@ const NewInnerCase = () => {
         }
     }, [isSliderOpened] )
 
-    console.log("New INner cASE");
 
 
     if (!casePar || !userInfo){
         return <MyLoader />
     }
     return (
-
         <>
-
         <div className="pt-[20px] left-right z-20 px-[16px] bg-[#18222d] flex flex-col pb-[16px]">
             <div className='fixed left-1/2 top-1/2' onClick={changeCard}>MAIN</div>
             <div className='rounded-[10px] bg-[#20303f] flex flex-col duration-200 relative z-50'>
@@ -189,7 +209,7 @@ const NewInnerCase = () => {
                     <div className="flex flex-col gap-[2px]">
                     <p className="font-sf-pro-display font-medium text-[17px] leading-[18.33px] text-white">{casePar.title}</p>
                     <p className="font-sf-pro-display-400 font-normal textP-[14.67px] leading-[17.7px] text-[#B5CED9]">
-                        {formateDateForTimeAgo(casePar.createdAt)} · {casePar.views} просмотров
+                        {formateDateForTimeAgo(casePar.createdAt)} · {formatViews(casePar.views)}
                     </p>
                     </div>
                     <div className='flex gap-[10px] items-center'>     
@@ -215,7 +235,7 @@ const NewInnerCase = () => {
                         <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ОПИСАНИЕ</p>
                         <TextAboutMe buttonClassNames={"!bg-[#1A2F42]"} textareaClassName={"!bg-card !border-card"} aboutU={casePar.description} />
                 </div>
-                {casePar.links.filter( (link) => link.length ).length ?  <div className="flex mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
+                {casePar.links?.filter( (link) => link.length ).length ?  <div className="flex mt-4 flex-col gap-[7px] w-[100%] text-[#84898f]">
                     <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">ССЫЛКИ</p>
                     <Links isFirstMyLink={false} links={casePar.links}/>
                 </div> : <></>}

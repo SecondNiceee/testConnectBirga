@@ -13,16 +13,13 @@ const TextAboutMe = ( { aboutU , darkSide, className, textareaClassName, buttonC
   const refTwo = useRef(null)
   useEffect( () => {
     refTwo.current.value = aboutU
-    console.log(refTwo.current.scrollHeight)
     if (refTwo.current.scrollHeight > 85){
       if (!hideAboutMe.show){
-        console.log("Kj")
         setHideAboutMe((value) => ({...value, isActive : true}) )
         areaRef.current.style.height = "85px"
         let localAboutMe = aboutU;
         while (refTwo.current.scrollHeight > 85){
           let localAboutMeArr = localAboutMe.split(/  |[\r\n]/g);
-          console.log(localAboutMeArr)
           localAboutMe = localAboutMeArr.slice(0 , localAboutMeArr.length - 1).join(' ')
           refTwo.current.value = localAboutMe
         

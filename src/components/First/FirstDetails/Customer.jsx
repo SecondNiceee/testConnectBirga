@@ -3,8 +3,10 @@ import galks from '../../../images/icons/Subtract.svg'
 import userImage from "../../../images/userPhoto/user.png"
 import Text from '../../Text/Text';
 import { useSelector } from 'react-redux';
-const Customer = ({customerName, rate, userPhoto, setBaidge, setBaidgeUserId, id}) => {
+import { useNavigate } from 'react-router';
+const Customer = ({customerName, rate, userPhoto, id}) => {
     const userInfo = useSelector(state => state.telegramUserInfo)
+    const navigate = useNavigate();
     const urId = useMemo( () => {
         if (id){
             return id
@@ -15,8 +17,7 @@ const Customer = ({customerName, rate, userPhoto, setBaidge, setBaidgeUserId, id
     } , [id, userInfo.id] )
     return (
         <div onClick={() => {
-            setBaidge(true)
-            setBaidgeUserId(id)
+            navigate(`/Baidge/${id}`)
         }} className = 'customerContainer'>
             <Text className='customer__up'>Заказчик</Text>
             <div className="customer__information">

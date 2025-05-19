@@ -2,7 +2,7 @@ import axios from "axios";
 import makeNewFile from "../newMakeFile";
 
 export const getCardById = async (id) => {
-  let card = await axios.get(
+  let response = await axios.get(
     `${process.env.REACT_APP_HOST}/card/findOne`,
     {
       params: {
@@ -13,6 +13,7 @@ export const getCardById = async (id) => {
       },
     }
   );
+  const card = response.data;
     let files = await makeNewFile(card.folder, card.photos);
     const formattedCard =  {
       id: card.id,

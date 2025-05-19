@@ -241,7 +241,7 @@ export const fetchUserInfo = createAsyncThunk(
             congratulate : user.data.congratulate,
             userLikes : user.data.userLikes,
             profession : user.data.profession,
-            links :  user.data.links ? [`https://t.me/${user.data.link}` , ...user.data.links] : [],
+            links :  user.data.links ?? [],
             taggs : user.data.taggs,
             rating : user.data.rating
           } );

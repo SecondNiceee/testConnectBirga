@@ -24,7 +24,6 @@ const FirstMain = (
 
     const elementRef = useRef(null)
 
-    console.log(ordersInformation);
 
     const getMore = useCallback(async () => {
       dispatch(fetchTasksInformation(page));

@@ -45,6 +45,8 @@ const Baidge = () => {
     menuController.showMenu();
   }, [] );
 
+  console.log(me);
+
   useEffect(() => {
     if (id) {
       findUserById(id).then( (user) => {setUserInfo(user)} )
@@ -65,8 +67,9 @@ const Baidge = () => {
   return (
     <>
       {/* <button onClick={fowardFunction} className="fixed left-1/2 bottom-1/3 z-[1000]">MAIN BUTTON</button> */}
-      {userInfo.profession ? (
+      {true? (
         <BaidgeWithProfile
+          setUserInfo={setUserInfo}
           userInfo={userInfo}
         />
       ) : (

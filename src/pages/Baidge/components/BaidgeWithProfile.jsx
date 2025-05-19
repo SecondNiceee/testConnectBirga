@@ -10,7 +10,7 @@ import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
 import useNavigateBack from "../../../hooks/useNavigateBack";
 import useGetBaidgeOprionsConfig from "../hooks/useGetBaidgeOprionsConfig";
 
-const BaidgeWithProfile = ({ userInfo, className}) => {
+const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
 
   const me = useSelector((state) => state.telegramUserInfo);
 
@@ -22,10 +22,12 @@ const BaidgeWithProfile = ({ userInfo, className}) => {
     if (!userInfo) {
       return null;
     }
+    console.log(me.id);
+    console.log(userInfo.userLikes); 
     return userInfo.userLikes.map((like) => like.user.id).includes(me.id);
   }, [userInfo, me.id]);
 
-  const photoUrl = useGetUserPhotoLink(userInfo);
+  const photoUrl = useGetUserPhotoLink({anotherUserInfo : userInfo});
 
   const optionsConfig = useGetBaidgeOprionsConfig({userInfo})
 
@@ -34,6 +36,7 @@ const BaidgeWithProfile = ({ userInfo, className}) => {
       dispatch: dispatch,
       userId: me.id,
       likedUserId: userInfo.id,
+      setGotenUserInfo : setUserInfo
     });
   };
 
@@ -42,6 +45,7 @@ const BaidgeWithProfile = ({ userInfo, className}) => {
       dispatch: dispatch,
       userId: me.id,
       dislikedUserId: userInfo.id,
+      setGotenUserInfo : setUserInfo
     });
   };
 
@@ -56,7 +60,7 @@ const BaidgeWithProfile = ({ userInfo, className}) => {
           firstName={userInfo.firstName}
           lastName={userInfo.lastName}
           photoUrl={photoUrl}
-          profession={userInfo.profession.profession}
+          profession={userInfo?.profession?.profession}
           profileWatches={userInfo.views}
           likeUser={clickLikeUser}
           clickDislikeUser={clickDislikeUser}
@@ -83,18 +87,20 @@ const BaidgeWithProfile = ({ userInfo, className}) => {
           </p>
           <TextAboutMe aboutU={userInfo.profile.about} />
         </div>
+
+        {userInfo.taggs?.length > 0 && 
         <div className="flex flex-col gap-[7px] w-[100%] text-[#84898f]">
           <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">
             ТЕГИ
           </p>
           <Taggs taggs={userInfo.taggs} />
-        </div>
+        </div> }
 
         <div className="flex flex-col gap-[7px] w-[100%] text-[#84898f]">
           <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">
             ССЫЛКИ
           </p>
-          <Links links={userInfo.links} />
+          <Links isFirstMyLink={true} links={[userInfo.link, ...userInfo.links]} />
         </div>
       </div>
       {/* <CssTransitionNewChangeCard

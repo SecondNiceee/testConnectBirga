@@ -4,6 +4,7 @@ import { formatUserFromApi } from "./formatUserFromApi";
 import { getUserWithoutCards } from "./getUserWithoutCards";
 
 export const findUserById = async (id) => {
+    
     try {
         let user;
         try{
@@ -13,9 +14,8 @@ export const findUserById = async (id) => {
             await createUserByBot(id);
             user = await getUserWithoutCards(id); 
         }
-        console.log(user);
         const userCards = await getCardByUserId(id);
-        return formatUserFromApi(user.data, userCards);
+        return {...user, profile : {...user.profile, cards : userCards}};
     }
     catch (e){
         console.log(e)

@@ -34,6 +34,7 @@ const CardsPageBody = ({setFilterBy, cards, setPhotoIndex, setPhotos, setSlideOp
       <div className="flex flex-col gap-2 w-full mt-2">
         {cards.map((card, i) => (
           <Case
+            key={card.id}
             setPhotoIndex={setPhotoIndex}
             setPhotos={setPhotos}
             setSliderOpened={setSlideOpened}

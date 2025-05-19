@@ -16,7 +16,7 @@ const NewOption = ({text, isNededToFill, imgPath, neededActiveButton, isNeededBo
                     {isNeededActiveJsxComponent}
                 </div>
                 <div className='flex gap-[11px] items-center ml-auto'>
-                    {numberNearToArrow && <p className='font-sf-pro-display-400 text-[17px] text-white'>{numberNearToArrow}</p>}
+                    {(numberNearToArrow !== null || numberNearToArrow !== undefined)  && <p className='font-sf-pro-display-400 text-[17px] !text-white'>{numberNearToArrow}</p>}
                     <img className="ml-auto mr-[16px]"  src={"/images/newProfile/leftArrow.svg"} alt="" />
                 </div>
             </div>

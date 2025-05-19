@@ -135,7 +135,7 @@ const useGetLinksFormatedArray = ({links, isFirstMyLink}) => {
         {
             title : "Мой Telegram",
             profession : tgName,
-            link : null,
+            link : `https://t.me/${tgName.slice(1)}`,
         },
         {
             title : "HH",

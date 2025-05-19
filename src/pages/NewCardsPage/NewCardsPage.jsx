@@ -25,7 +25,7 @@ const NewCardsPage = () => {
   const me = useSelector( (state) => state.telegramUserInfo )
 
   const userInfo = useMemo( () => {
-    if (me.id === baidgeUser.id){
+    if (me?.id === baidgeUser?.id){
       return me
     }
     else{
@@ -47,6 +47,11 @@ const NewCardsPage = () => {
     }
   },[navigate, isSliderOpened, setSlideOpened] )
 
+  console.log(filter);
+
+
+
+
   const BackFunction = useCallback( () => {
     if (!isSliderOpened){
       navigate(-1)
@@ -65,7 +70,7 @@ const NewCardsPage = () => {
     }
     else{
 
-      if (userInfo.id === me.id){
+      if (userInfo?.id === me?.id){
         MainButton.setText("Создать")
       }
       else{
@@ -75,7 +80,7 @@ const NewCardsPage = () => {
   }, [userInfo, me, isSliderOpened] )
 
   useEffect( () => {
-    if (userInfo.id === me.id){
+    if (userInfo?.id === me?.id){
       MainButton.onClick(createCard);
     }
     else{
@@ -92,13 +97,25 @@ const NewCardsPage = () => {
     menuController.hideMenu();
   }, [] )
   
+  const cards = userInfo?.profile?.cards;
 
+    const filteredArray = useMemo( () => {
+    if (cards){
+      if (filter === "WATCHES"){
+        return cards.sort((a, b) => b.views - a.views);
+      }
+      else{
+        return [...cards].reverse();
+      }
+    } 
+    return []
+  }, [filter, cards] )
 
   if (postState === "pending" || putState === "pending" || !userInfo) {
     return <MyLoader />;
     
   }
-  const cards = userInfo.profile.cards;
+
 
   return (
     <>
