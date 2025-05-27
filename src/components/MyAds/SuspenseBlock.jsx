@@ -2,7 +2,7 @@ import {useEffect, useMemo, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
 import Block from '../../pages/MyAds/components/Block';
 
-const SuspenseBlock = ({i , e, setSecondPage, setViewsNumber = () => {}}) => {
+const SuspenseBlock = ({i , e, setViewsNumber = () => {}}) => {
     const { ref, inView } = useInView({
         threshold: 0, // Порог видимости (от 0 до 1)
       });
@@ -35,7 +35,7 @@ const SuspenseBlock = ({i , e, setSecondPage, setViewsNumber = () => {}}) => {
                 zIndex : -1
             }} className="catch_block"></div>
             {isVisible &&
-                <Block e={e} i={i} setSecondPage={setSecondPage}/>
+                <Block e={e} i={i}/>
                 }
         </div>
     );

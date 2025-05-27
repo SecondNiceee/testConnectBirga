@@ -2,6 +2,7 @@ import "../../pages/MyAds/MyAds.css";
 import MyButton from "../UI/MyButton/MyButton";
 import userPhoto from "../../images/userPhoto/user.png"
 import Text from "../Text/Text";
+import { useNavigate } from "react-router";
 const MyReaction = ({
   openAboutReactionFunc,
   responce,
@@ -18,6 +19,7 @@ const MyReaction = ({
     setPhotos(responce.photos)
     setPhotoIndex(id)
   }
+  const navigate = useNavigate();
   return (
     <>
       <div className="reaction">
@@ -45,7 +47,7 @@ const MyReaction = ({
         >
           <img
             onClick={() => {
-              openAboutReactionFunc({ isActive: true, responce: responce });
+              navigate(`/Baidge/${responce.user.id}`)
             }}
             className="icon"
             style={{objectFit : "cover"}}
@@ -85,7 +87,7 @@ const MyReaction = ({
                 className="circle"
               >
                 <svg
-                  className="center"
+                  className="centered"
                   width="25"
                   height="25"
                   viewBox="0 0 25 25"

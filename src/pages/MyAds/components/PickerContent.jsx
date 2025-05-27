@@ -8,7 +8,6 @@ import PickerOne from "./PickerOne";
 
 const PickerContent = ({
   nowValue,
-  setSecondPage,
   valueTwo,
   valueOne,
   setMyResponse,
@@ -81,7 +80,7 @@ const PickerContent = ({
 
         <PickerOne  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} ref={containerOne} oneValue = {valueOne} nowValue = {nowValue}  responsesArr = {responsesArr} buttonFunction = {buttonFunction} />
 
-        <PickerTwo  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} ref={containerTwo} valueTwo = {valueTwo} myAdsArray={myAdsArray} setSecondPage = {setSecondPage}  />
+        <PickerTwo  viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} ref={containerTwo} valueTwo = {valueTwo} myAdsArray={myAdsArray}   />
 
       </div>
 

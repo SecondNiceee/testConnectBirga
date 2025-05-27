@@ -11,6 +11,8 @@ import useNavigateBack from "../../../hooks/useNavigateBack";
 import useGetBaidgeOprionsConfig from "../hooks/useGetBaidgeOprionsConfig";
 import { apiRating } from "../../../functions/api/ApiRating";
 import { getCounterOfResponses } from "../../../functions/api/getCounterOfResponses";
+import { getRatingByProfession } from "../../../functions/api/getRatingByProfession";
+import { getCommonRating } from "../../../functions/api/getCommonRating";
 
 const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
 
@@ -50,25 +52,32 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
       setGotenUserInfo : setUserInfo
     });
   };
-
-
   const ratingLoaded = useRef(false);
 
   useEffect( () => {
       async function fetchAdditionalUserInfo(params) {
         let commonRating = null;
         let responsesCounter = null;
+        let ratingByProfession = null;
         await apiRating.getByUserId(userInfo.id).then((rate) => {
           commonRating = rate
         } ).catch(err => console.warn(err))
         await getCounterOfResponses(userInfo.id).then( (counter) =>  {
           responsesCounter = counter;
         })
-        return {commonRating, responsesCounter}
+        await getRatingByProfession(userInfo).then( (rating) => {
+          ratingByProfession = rating;
+        } )
+        await getCommonRating(userInfo.id).then( (rate) => {
+          commonRating = rate;
+        } )
+        return {commonRating, responsesCounter, ratingByProfession}
       } 
-      if (!ratingLoaded.current){
-        ratingLoaded.current = true;
-        fetchAdditionalUserInfo().then( (info) => setUserInfo((value) => ({...value, ...info})) )
+      if (userInfo){
+        if (!ratingLoaded.current){
+          ratingLoaded.current = true;
+          fetchAdditionalUserInfo().then( (info) => setUserInfo((value) => ({...value, ...info})) )
+        }
       }
 
   } , [userInfo, setUserInfo])
@@ -81,7 +90,7 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
           isLikeActive={isLikeActive}
           isBaidge={true}
           counterOfLikes={userInfo.userLikes.length}
-          positionOfNitcheRating={0}
+          positionOfNitcheRating={userInfo.ratingByProfession}
           firstName={userInfo.firstName}
           lastName={userInfo.lastName}
           photoUrl={photoUrl}

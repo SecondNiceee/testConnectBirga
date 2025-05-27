@@ -1,20 +1,10 @@
-import React, { useMemo } from 'react';
 import galks from '../../../images/icons/Subtract.svg'
-import userImage from "../../../images/userPhoto/user.png"
 import Text from '../../Text/Text';
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
-const Customer = ({customerName, rate, userPhoto, id}) => {
-    const userInfo = useSelector(state => state.telegramUserInfo)
+import useGetUserPhotoLink from '../../../hooks/useGetUserPhotoLink';
+const Customer = ({customerName, rate, userPhoto, id, userId}) => {
     const navigate = useNavigate();
-    const urId = useMemo( () => {
-        if (id){
-            return id
-        }
-        else{
-            return userInfo.id
-        }
-    } , [id, userInfo.id] )
+    const link = useGetUserPhotoLink({anotherUserInfo : {photo : userPhoto, id : userId}});
     return (
         <div onClick={() => {
             navigate(`/Baidge/${id}`)
@@ -24,7 +14,7 @@ const Customer = ({customerName, rate, userPhoto, id}) => {
                 <img style={{
                     borderRadius : '50%',
                     objectFit : "cover"
-                }} className='information-icon' src={userPhoto.length > 0 ? userPhoto.split('https://').length === 2 ? userPhoto : `${process.env.REACT_APP_HOST}/${urId}/${userPhoto}` : userImage} alt="" />
+                }} className='information-icon' src={link} alt="" />
                 <div className="customer__information-right">
                     <div className="customer__information-right-name">
                         <Text>{customerName.length > 15 ? 

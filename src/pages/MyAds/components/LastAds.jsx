@@ -1,4 +1,4 @@
-import { memo, useEffect } from "react";
+import { memo, useCallback, useEffect } from "react";
 
 import Reaction from "./Reaction";
 import TextAboutMe from "../../../components/UI/AboutMeText/TextAboutMe";
@@ -7,32 +7,39 @@ import formatDate from "../../../functions/makeDate";
 import { postResponse } from "../../../store/responses";
 import Text from "../../../components/Text/Text";
 import MainButton from "../../../constants/MainButton";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useGetResponseById from "../../../hooks/useGetResponseById";
 import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
 import useSlider from "../../../hooks/useSlider";
 import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 import menuController from "../../../functions/menuController";
 import useNavigateBack from "../../../hooks/useNavigateBack";
-const LastAds = () => {
+const LastAds = ({isMyResponse = false}) => {
 
-  const {id} = useParams();
+  const {responseId, advertisementId} = useParams();
 
   const dispatch = useDispatch();
 
+  const {response, responseStatus} = useGetResponseById({id : responseId});
 
+  const navigate = useNavigate();
 
-  const {response, responseStatus} = useGetResponseById({id })
+  const goForward = useCallback( () => {
+    navigate(`/hold/${advertisementId}/${responseId}`)
+  }, [] )
 
   useEffect( () => {
-    if (response){
-      if (response.isWatched !== "inProcess" && response.isWatched !== "completed"){
-        menuController.lowerMenu();
-        MainButton.show();
-        MainButton.setText("Выбрать исполнителя")
+    if (!isMyResponse){
+      if (response){
+        if (response.isWatched !== "inProcess" && response.isWatched !== "completed"){
+          menuController.lowerMenu();
+          MainButton.show();
+          MainButton.setText("Выбрать исполнителя")
+          MainButton.onClick(goForward)
+        }
       }
     }
-  }, [response] )
+  }, [response, isMyResponse, goForward] )
 
   useEffect(() => {
     if (response){
@@ -62,6 +69,8 @@ const LastAds = () => {
 
   useNavigateBack({isSliderOpened, setSlideOpened})
 
+  
+
   if(responseStatus === "pending" || response === null){
     return <MyLoader />
   }
@@ -72,7 +81,7 @@ const LastAds = () => {
     
       <div style={MainButton.isVisible ? {paddingBottom : "74px"} : {paddingBottom : "97px"} }  className={"last-ads"}>
         {/* <LastTop name = {name} photo = {photo} stage = {stage} openAboutReactionFunc={openAboutReactionFunc} /> */}
-
+          <div className='fixed left-1/2 top-1/2' onClick={goForward}>MAIN</div>
         <Reaction
           setPhotoIndex={setPhotoIndex}
           setPhotos={setPhotos}

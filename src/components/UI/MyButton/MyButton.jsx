@@ -12,17 +12,21 @@ const MyButton = ({
   const myRef = useRef(null);
   const vibrate = useCallback(() => {
     // window.navigator.vibrate(100);
-    myRef.current.style.backgroundColor = "#47A2E7";
-    myRef.current.style.color = "#E6E6E7";
-    setTimeout(() => {
-      if (blue) {
-        myRef.current.style.backgroundColor = "rgb(46, 165, 255)";
-        myRef.current.style.color = "white";
-      } else {
-        myRef.current.style.backgroundColor = "transparent";
-        myRef.current.style.color = "rgb(46, 165, 255)";
-      }
-    }, 100);
+    if (myRef.current){
+      myRef.current.style.backgroundColor = "#47A2E7";
+      myRef.current.style.color = "#E6E6E7";
+      setTimeout(() => {
+        if (myRef.current){
+          if (blue) {
+            myRef.current.style.backgroundColor = "rgb(46, 165, 255)";
+            myRef.current.style.color = "white";
+          } else {
+            myRef.current.style.backgroundColor = "transparent";
+            myRef.current.style.color = "rgb(46, 165, 255)";
+          }
+        }
+      }, 100);
+    }
   }, [blue]);
   const clickHandler = useCallback((e) => {
     myRef.current.style.backgroundColor = "#47A2E7";

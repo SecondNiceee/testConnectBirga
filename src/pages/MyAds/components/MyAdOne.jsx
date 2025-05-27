@@ -7,8 +7,6 @@ import { useSelector } from "react-redux";
 // const popup = initPopup();
 const MyAdOne = ({
   myAdsArray,
-  setMenuActive,
-  setSecondPage,
   nowValue,
   setNowKey,
   setOneValue,
@@ -48,7 +46,6 @@ const MyAdOne = ({
           valueOne = {valueOne}
           valueTwo = {valueTwo}
             myAdsArray={myAdsArray}
-            setSecondPage = {setSecondPage}
           />
     </div>
 

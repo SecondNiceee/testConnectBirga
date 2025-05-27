@@ -34,7 +34,7 @@ const NewProfileCup = ({
             <ProfileUserIcon photoUrl={photoUrl}  />
             <NitcheRating  nitcheRating={positionOfNitcheRating} />
             <ProfilesCounterOfWatches watchesCounter={profileWatches} />
-          <div className="h-[100%] ml-auto flex flex-col gap-[8px]">
+          <div className="h-[100%] ml-auto flex flex-col gap-[8px]">  
             <NewProfileShareIcon />
             {!isBaidge && <EditIcon onClick={editIconClickHandler} />} 
           </div>

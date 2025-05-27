@@ -13,17 +13,30 @@ import useGetAdvertisement from "../../../hooks/api/useGetAdvertisement";
 import { useNavigate, useParams } from "react-router";
 import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
 import translation from "../../../functions/translate";
-import { deleteAd } from "../../../store/information";
+import { deleteAd, setAdvertisement } from "../../../store/information";
 import useNavigateBack from "../../../hooks/useNavigateBack";
+import { getAdvertisementById } from "../../../functions/api/getAdvertisemetById";
 
 const showStatus = true;
 const AboutOne = () => {
   const responces = useSelector((state) => state.responses.responsesByA);
   const startStatus = useSelector((state) => state.responses.startStatus);
   const dispatch = useDispatch();
-  const {advId} = useParams();
 
-  const {advertisementStatus, orderInformation : task} = useGetAdvertisement({id : advId});
+  const [task, setOrderInformation] = useState(null);
+  const {advId} = useParams()
+
+  const advertisementFormStore = useSelector(state => state.information.advertisement);
+  useEffect( () => {
+    if (advertisementFormStore){
+      setOrderInformation(advertisementFormStore);
+    }
+    else{
+      getAdvertisementById(advId).then(adv => {setOrderInformation(advId)
+        dispatch(setAdvertisement(adv))
+      })
+    }
+  },[advertisementFormStore, setOrderInformation, dispatch] )
 
   useEffect(() => {
     if (task && startStatus === "completed") {
@@ -102,7 +115,7 @@ const AboutOne = () => {
       navigate(`/changeAdvertisement/${task.id}`)
   }
 
-  if (advertisementStatus === "pending" || advertisementStatus === "rejected"){
+  if (!task){
     return <MyLoader />
   }
 

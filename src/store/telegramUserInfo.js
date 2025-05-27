@@ -3,6 +3,11 @@ import axios from "axios";
 import makeNewFile from "../functions/newMakeFile";
 import { USERID, USERLINK } from "../constants/tgStatic.config";
 import { apiLikes } from "../functions/api/ApiLikes";
+import { getRatingByProfession } from "../functions/api/getRatingByProfession";
+import { createUserByBot } from "../functions/api/createUserByBot";
+import { getUserWithoutCards } from "../functions/api/getUserWithoutCards";
+import { getCardByUserId } from "../functions/api/getCardsByUserId";
+import { findUserById } from "../functions/api/findUserById";
 
 
 
@@ -154,97 +159,7 @@ export const likeUser = createAsyncThunk(
 export const fetchUserInfo = createAsyncThunk(
   "telegramUserInfo/fetchUserInfo",
   async function () {
-    try {
-
-        let firstName = window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.first_name : "Коля"
-        let lastName = window.Telegram.WebApp.initDataUnsafe.user ?  window.Telegram.WebApp.initDataUnsafe.user.last_name : "Титов"
-        let user;
-        try{
-             user = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
-              params: {
-                id: USERID,
-              },
-              headers : {
-                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-              }
-            });
-            
-        }
-        catch(e){
-            await axios.post(`${process.env.REACT_APP_HOST}/user/createByBot` , {}, {
-                params : {
-                    id : String(USERID),
-                    language_code : window.Telegram.WebApp.initDataUnsafe.user ? window.Telegram.WebApp.initDataUnsafe.user.language_code : "en",
-                    link : USERLINK,
-                    chat : String(USERID)
-                },
-                headers : {
-                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-                  }
-            })
-            user = await axios.get(`${process.env.REACT_APP_HOST}/user/findOne`, {
-                params: {
-                  id: USERID,
-                },
-                headers : {
-                    "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-                  }
-              });   
-        }
-        let localCards = []
-
-        let allCards = await axios.get(`${process.env.REACT_APP_HOST}/card/findByUser` , {
-            params : {
-                userId : USERID
-            },
-            headers : {
-                "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
-              }
-        })
-        for (let e of allCards.data)
-            {
-                let files =  await makeNewFile(e.folder, e.photos)
-                localCards.push({
-                    id : e.id,
-                    title : e.title,
-                    description : e.description,
-                    photosNames : e.photos,
-                    photos : files,
-                    createdAt : e.createdAt,
-                    views : e.views,
-                    links : e.links
-                })
-            }
-        let photoUrl = user.data.photo ? user.data.photo : ""
-        console.log(user.data);
-        return ( {
-            firstName: firstName,
-            lastName: lastName,
-            address : user.data.address,
-            mnemonic : user.data.mnemonic,
-            id: USERID,
-            views : user.data.views,
-            link : user.data.link,
-            photo: photoUrl,
-            about : user.data.about,
-            stage : user.data.stage,
-            deals : user.data.deals,
-            completedTasks : user.data.completedAdvertisements,
-            cards : localCards,
-            congradulations : user.data.congradulations,
-            lastTransaction : user.data.lastTransaction,
-            congratulate : user.data.congratulate,
-            userLikes : user.data.userLikes,
-            profession : user.data.profession,
-            links :  user.data.links ?? [],
-            taggs : user.data.taggs,
-            rating : user.data.rating
-          } );
-    }
-    catch (e){
-        console.log(e)
-    }
-
+    return await findUserById(USERID);
   }
 );
 
@@ -270,7 +185,9 @@ const telegramUserInfo = createSlice({
     links : [],
     taggs : [],
     profession : null,
+    commonRating : null,
     userLikes : [],
+    ratingByProfession : null,
     profile : {
         about : "",
         stage : 0,
@@ -323,7 +240,6 @@ const telegramUserInfo = createSlice({
       state.status = "loading";
     });
     builder.addCase(fetchUserInfo.fulfilled, (state, action) => {
-
       state.lastTransaction = action.payload.lastTransaction
       state.id = action.payload.id;
       state.firstName = action.payload.firstName;

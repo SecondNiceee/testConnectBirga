@@ -52,6 +52,8 @@ const Responses = ({
   }, [responces]);
 
   const navigate = useNavigate();
+
+  const advertisement = useSelector(state=>state.information.advertisement)
   
 
   return (
@@ -73,7 +75,7 @@ const Responses = ({
         <>
           {responces.map((e, i) => {
             const setOpen = () => {
-              navigate(`/response/${e.id}`)
+              navigate(`/response/${advertisement.id}/${e.id}`)
             }
             return (
               <>

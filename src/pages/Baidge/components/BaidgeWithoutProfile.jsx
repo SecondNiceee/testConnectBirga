@@ -1,9 +1,19 @@
-import React, { useMemo } from "react";
+import React, { useEffect, useMemo } from "react";
 import ProfileCup from "../../Profile/components/ProfileCup/ProfileCup";
 import GoToMessageButton from "./GoToMessageButton";
 import StatistikComponent from "./StatistikComponent";
+import { getAdvertisementsByUserId } from "../../../functions/api/getAdvertisementsByUserId";
+import BaidgeAdvertisements from "./BaidgeAdvertisements";
+import MyLoader from "../../../components/UI/MyLoader/MyLoader";
 
-const BaidgeWithoutProfile = ({ userInfo, className }) => {
+const BaidgeWithoutProfile = ({ userInfo, setUserInfo,className }) => {
+  useEffect( () => {
+    getAdvertisementsByUserId(userInfo).then((advertisements) => {
+      setUserInfo((userInfo) => ({...userInfo, advertisements}))
+    })
+  },[setUserInfo] )
+
+  console.log(userInfo)
   const statistikConfig = useMemo(() => {
     return [
       {
@@ -12,15 +22,22 @@ const BaidgeWithoutProfile = ({ userInfo, className }) => {
       },
       {
         title: "Завершено заданий",
-        text: userInfo?.advertisements.filter(
-          (task) => task.staus === "completed"
+        text: userInfo?.advertisements?.filter(
+          (task) => task.status === "completed"
         ).length,
       },
+      {
+        title : "Выполнено заданий",
+        text : userInfo.completedTasks
+      }
     ];
-  }, [userInfo.advertisement]);
+  }, [userInfo.advertisements]);
+  if (!userInfo.advertisements){
+    return <MyLoader />
+  }
   return (
     <div
-      className={`pt-[37px] fixed left-0 top-0 z-50 px-[16px] bg-[#18222d] flex flex-col h-[100vh] overflow-y-scroll pb-[100px] ${className}`}
+      className={`pt-[37px] w-full  z-50 px-[16px] bg-[#18222d] flex flex-col h-[100vh] overflow-y-scroll pb-[100px] ${className}`}
     >
       <ProfileCup gotenUserInfo={userInfo} />
       <GoToMessageButton className={"mt-[28px]"} link={userInfo.link} />
@@ -29,6 +46,7 @@ const BaidgeWithoutProfile = ({ userInfo, className }) => {
         config={statistikConfig}
         title={"Статистика"}
       />
+      <BaidgeAdvertisements advertisements={userInfo.advertisements}  />
     </div>
   );
 };

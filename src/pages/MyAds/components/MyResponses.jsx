@@ -69,8 +69,8 @@ const MyResponses = forwardRef(
           <>
             {responsesArr.map((e, i) => {
               dispatch(setResponse(e))
-              dispatch(setAdvertisement(e.advertisement))
               const buttonFunction = () => {
+                dispatch(setAdvertisement(e.advertisement))
                 navigate(`/confirm/${e.advertisement.id}/${e.id}`)
               }
               return (

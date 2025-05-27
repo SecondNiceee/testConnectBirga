@@ -1,3 +1,4 @@
+import plugin from "tailwindcss/plugin";
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -30,5 +31,16 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    plugin(function({addUtilities}){
+      addUtilities({
+        ".centered" : {
+          transform : "translateX(-50%) translateY(-50%)",
+          left : '50%',
+          top : '50%',
+          position : "absolute"
+        }
+      })
+    })
+  ],
 }

@@ -5,9 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearMyOrders, fetchMyOrders } from '../../../store/information';
 import MyAnimation from './MyAnimation';
 
-const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, myAdsArray}) => {
-
-
+const AdsContainer = ({ viewsNumber , setViewsNumber , valueTwo, myAdsArray}) => {
     const [page , setPage] = useState(2)
     const orderStatus = useSelector(state => state.information.myOrderStatus)
     const elementRef = useRef(null)
@@ -78,13 +76,11 @@ const AdsContainer = ({setSecondPage,  viewsNumber , setViewsNumber , valueTwo, 
         {myAdsArray.lenght === 0 ?
         
             <MyAnimation style = {{height : "calc(calc(100vh) - 300px)"}} text={text}/>
-
             :
-
             <div className="AdsContainer">
               {myAdsArray.map((e, i) => {
                 return (
-                    <SuspenseBlock   viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} key={i} e={e} i={i} setSecondPage={setSecondPage} />
+                    <SuspenseBlock   viewsNumber = {viewsNumber} setViewsNumber = {setViewsNumber} key={i} e={e} i={i}  />
 
                 );
               })}

@@ -10,6 +10,7 @@ import breakShare from "../../../functions/breakShare";
 import Text from "../../../components/Text/Text";
 import en from "../../../constants/language";
 import translation from "../../../functions/translate";
+import { useNavigate } from "react-router";
 
 
 const Reaction = ({
@@ -99,6 +100,8 @@ const Reaction = ({
     setSlideOpened(true)
   }
 
+  const navigate = useNavigate();
+
   return (
     <>
       <div
@@ -129,8 +132,9 @@ const Reaction = ({
           <img
             style={{objectFit : "cover"}}
             onClick={() => {
-              openAboutReactionFunc({ isActive: true, responce: responce });
+              navigate(`/Baidge/${responce.user.id}`)
             }}
+            
             className="icon"
             src={ responce.user.photo ? responce.user.photo.length > 0 ? responce.user.photo.split('https://').length === 2 ? responce.user.photo : `${process.env.REACT_APP_HOST}/${responce.user.id}/${responce.user.photo}` : userPhoto : userPhoto}
             alt=""

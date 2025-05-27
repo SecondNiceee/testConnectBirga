@@ -225,7 +225,7 @@ export const fetchTasksInformation = createAsyncThunk(
         `${process.env.REACT_APP_HOST}/advertisement/findAll`,
         {
           params: {
-            limit: 2,
+            limit: 10,
             page: par,
           },
           headers : {
@@ -369,6 +369,7 @@ const information = createSlice({
       state.detailsAdvertisement = action.payload;
     },
     setAdvertisement(state,action){
+      console.log(action.payload);
       state.advertisement = action.payload
     },
     setResponse(state, action){

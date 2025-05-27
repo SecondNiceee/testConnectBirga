@@ -35,6 +35,7 @@ import AboutOne from "./pages/MyAds/components/AboutOne";
 import Responce from "./pages/First/Responce";
 import NewInnerCase from "./pages/NewInnerCase/NewInnerCase";
 import Baidge from "./pages/Baidge/Baidge";
+import AdCreatingThree from "./pages/AdCreatingThree/AdCreatingThree";
 
 const NewChangeCard = lazy( () => import('./pages/NewChangeCard/NewChangeCard') )
 const HappyPage = lazy(() => import("./pages/HappyHold/HappyPage"));
@@ -69,6 +70,7 @@ const MyLoader = () => {
         justifyContent: "center",
       }}
     >
+
       <Triangle
         visible={true}
         height="80"
@@ -209,9 +211,16 @@ const AnimatedSwitch = () => {
             />
 
             <Route
-              path="/response/:id"
+              path="/response/:advertisementId/:responseId"
               element={
                   <LastAds />
+              }
+            />
+
+            <Route
+              path="/hold/:advertisementId/:responseId"
+              element={
+                  <AdCreatingThree />
               }
             />
             
@@ -433,8 +442,6 @@ function App() {
   useEffect(() => {
     dispatch(fetchTon());
     dispatch(fetchUserInfo());
-    dispatch(getCategorys());
-    dispatch(getSubCategorys());
     dispatch(getCategorys());
     dispatch(getSubCategorys());
     dispatch(fetchAllShablons());

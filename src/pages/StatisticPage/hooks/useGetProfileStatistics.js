@@ -3,7 +3,7 @@ import getYearWord from "../../../functions/getYearWord";
 
 const useGetProfileStatistics = ({userConfig }) => {
     
-    console.log(userConfig.profile.stage)
+    console.log(userConfig)
     return [
         {
             title : "Позиция в общем рейтинге",
@@ -11,7 +11,7 @@ const useGetProfileStatistics = ({userConfig }) => {
         },
         {
             title : "Позиция в рейтинге по нише",
-            text : "#-"
+            text : userConfig.ratingByProfession
         },
         {
             title : "Очков рейтинга",

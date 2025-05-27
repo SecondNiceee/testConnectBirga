@@ -2,6 +2,8 @@ import { createUserByBot } from "./createUserByBot";
 import { getCardByUserId } from "./getCardsByUserId";
 import { formatUserFromApi } from "./formatUserFromApi";
 import { getUserWithoutCards } from "./getUserWithoutCards";
+import { getRatingByProfession } from "./getRatingByProfession";
+import { getCommpnRating } from "./getCommonRating";
 
 export const findUserById = async (id) => {
     
@@ -15,7 +17,10 @@ export const findUserById = async (id) => {
             user = await getUserWithoutCards(id); 
         }
         const userCards = await getCardByUserId(id);
-        return {...user, profile : {...user.profile, cards : userCards}};
+        if (user.profession){
+            return {...user, profile : {...user.profile, cards : userCards} };
+        }
+        return {...user, profile : {...user.profile, cards : userCards} };
     }
     catch (e){
         console.log(e)
