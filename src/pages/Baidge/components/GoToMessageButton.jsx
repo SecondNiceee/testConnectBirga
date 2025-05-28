@@ -1,9 +1,19 @@
 import  { memo } from "react";
 import { openLink } from "../../../functions/openLink";
+import { showAllert } from "../../../functions/showAlert";
 
 const GoToMessageButton = ({link, className, isActive}) => {
+
+  const onClick = () => {
+    if (!isActive){
+      showAllert("Чтобы связаться с пользователем, необходимо сначала откликнуться на его задание");
+    }
+    else{
+      openLink(`https://t.me/${link}`)
+    }
+  }
   return (
-    <div onClick={() => {openLink(`https://t.me/${link}`)}} className={`w-full cursor-pointer py-[11px] justify-center items-center gap-1 flex ${isActive ? 'bg-telegram' : 'bg-[#2F2F2F]' } rounded-[11.67px] ${className}`}>
+    <div onClick={onClick} className={`w-full cursor-pointer py-[11px] justify-center items-center gap-1 flex ${isActive ? 'bg-telegram' : 'bg-[#2F2F2F]' } rounded-[11.67px] ${className}`}>
       <p className={`${isActive ? 'text-white' : 'text-[#606060]'} items-center tracking-wide font-sf-pro-display-600  leading-[15.643px]`}>
         Написать сообщение
       </p>

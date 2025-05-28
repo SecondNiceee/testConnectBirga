@@ -1,6 +1,6 @@
 import FirstBlock from "../../../components/First/FirstMain/FirstBlock";
 
-const BaidgeAdvertisements = ({ advertisements }) => {
+const BaidgeAdvertisements = ({ advertisements, setPhotoIndex, setPhotos, setSlideActive }) => {
   return (
     <div className={`flex flex-col gap-[7px] mt-[15px]`}>
       <p className="leading-4 text-[13px] ml-[17px] text-[#84898F] uppercase font-sf-pro-display-400 tracking-wider">
@@ -10,6 +10,9 @@ const BaidgeAdvertisements = ({ advertisements }) => {
         advertisements.map((e, i) => {
           return (
             <FirstBlock
+              setPhotoIndex={setPhotoIndex}
+              setPhotos={setPhotos}
+              setSlideActive={setSlideActive}
               isFirst={true}
               index={i}
               isWatched={false}
@@ -17,6 +20,7 @@ const BaidgeAdvertisements = ({ advertisements }) => {
               task={e}
               {...e}
               isButton={true}
+              
             />
           );
         })
