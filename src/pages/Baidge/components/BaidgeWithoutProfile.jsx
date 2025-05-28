@@ -12,6 +12,7 @@ import useNavigateBack from "../../../hooks/useNavigateBack";
 import useSlider from "../../../hooks/useSlider";
 import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
 import menuController from "../../../functions/menuController";
+import MainButton from "../../../constants/MainButton";
 
 const BaidgeWithoutProfile = ({ userInfo, setUserInfo,className }) => {
 
@@ -40,13 +41,12 @@ const BaidgeWithoutProfile = ({ userInfo, setUserInfo,className }) => {
  
   const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider();
 
-
-
   useEffect( () => {
     if(isSliderOpened){
       menuController.hideMenu();
     }
     else{
+      MainButton.hide();
       menuController.showMenu();
       menuController.lowerMenu();
     }
