@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import userPhoto from "../../../../images/userPhoto/user.png";
 import Text from "../../../../components/Text/Text";
 import "../../../../scss/main.css";
+import { getFormatedUserFullName } from "../../../../functions/getFormatedUserFullname";
 
 const ProfileCup = ({gotenUserInfo}) => {
   const me = useSelector((state) => state.telegramUserInfo);
@@ -34,9 +35,7 @@ const ProfileCup = ({gotenUserInfo}) => {
       />
 
       <Text className="urName" id="Name">
-        {userInfo.firstName.length > 22
-          ? userInfo.firstName.slice(0, 22) + ".."
-          : userInfo.firstName}
+        {getFormatedUserFullName(gotenUserInfo.fl, "") }
       </Text>
     </div>
 

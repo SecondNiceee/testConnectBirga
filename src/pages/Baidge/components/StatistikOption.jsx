@@ -1,8 +1,8 @@
-import React, { memo } from "react";
+import { memo } from "react";
 
 const StatistikOption = ({ text, title, index, configLength }) => {
   return (
-    <div className={`flex cursor-pointer flex-col  pt-[8px] `}>
+    <div className={`flex cursor-pointer flex-col pt-[14px] `}>
       <div className="flex items-center justify-center">
         <p className="font-sf-pro-display-400 ml-[19px] tracking-[.015em]  text-[17px] text-white">
           {title}
@@ -14,7 +14,7 @@ const StatistikOption = ({ text, title, index, configLength }) => {
       <div
         className={`${
           index !== configLength - 1 ? "opacity-1" : "opacity-0"
-        } w-[calc(100%-19px)] mt-[8px] h-[0.5px] ml-auto bg-[#384656]`}
+        } w-[calc(100%-19px)] mt-[14px] h-[0.5px] ml-auto bg-[#384656]`}
       ></div>
     </div>
   );

@@ -8,6 +8,7 @@ import { createUserByBot } from "../functions/api/createUserByBot";
 import { getUserWithoutCards } from "../functions/api/getUserWithoutCards";
 import { getCardByUserId } from "../functions/api/getCardsByUserId";
 import { findUserById } from "../functions/api/findUserById";
+import { act } from "react";
 
 
 
@@ -173,7 +174,9 @@ const telegramUserInfo = createSlice({
     status : "loading",
     id: null,
     photo: "",
+    fl : "",
     link : "",
+    createdAt : new Date(),
     linkes : 0,
     firstName: "неверный ферст нэйм",
     lastName: "",
@@ -243,6 +246,7 @@ const telegramUserInfo = createSlice({
       state.lastTransaction = action.payload.lastTransaction
       state.id = action.payload.id;
       state.firstName = action.payload.firstName;
+      state.fl = action.payload.fl
       state.lastName = action.payload.lastName;
       state.photo = action.payload.photo ? action.payload.photo : "";
       state.profile = {...state.profile , about : action.payload.about, stage : action.payload.stage === null ? '0' : action.payload.stage};
@@ -252,6 +256,7 @@ const telegramUserInfo = createSlice({
       state.deals = action.payload.deals
       state.mnemonic = action.payload.mnemonic
       state.address = action.payload.address
+      state.createdAt = action.payload.createdAt
       state.profile.cards.sort((a, b) => a.id - b.id)
       state.congradulations = action.payload.address
       state.congratulate = action.payload.congratulate

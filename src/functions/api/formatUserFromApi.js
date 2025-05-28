@@ -5,6 +5,7 @@ export const formatUserFromApi = (userFromApi, userCards) => {
     return ( {
         firstName: userFromApi.fl.split(' ')[0],
         lastName: userFromApi.fl.split(' ')[1] ?? "",
+        fl : userFromApi.fl,
         address : userFromApi.address,
         mnemonic : userFromApi.mnemonic,
         id: userFromApi.id,
@@ -28,6 +29,7 @@ export const formatUserFromApi = (userFromApi, userCards) => {
         profession : userFromApi.profession,
         links :  userFromApi.links ? [`https://t.me/${userFromApi.link}` , ...userFromApi.links] : [],
         taggs : userFromApi.taggs,
-        rating : userFromApi.rating
+        rating : userFromApi.rating,
+        createdAt : userFromApi.createdAt
       } );
 }
