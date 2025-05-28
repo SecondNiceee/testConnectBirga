@@ -4,7 +4,7 @@ import { getIsResponsed } from '../../../functions/api/getIsResponsed';
 
 const useGetIsResponsed = ({consumerId}) => {
     const me = useSelector(state => state.telegramUserInfo);
-    const [isResponsed, setIsResponsed] = useState();
+    const [isResponsed, setIsResponsed] = useState(null);
     useEffect( () => {
         if (me.id){
             getIsResponsed(me.id, consumerId).then((val) => setIsResponsed(val));

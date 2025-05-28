@@ -15,7 +15,7 @@ import { showAllert } from "../../functions/showAlert";
 import usePostResponse from "./hooks/usePostResponse";
 import menuController from "../../functions/menuController";
 import { getAdvertisementById } from "../../functions/api/getAdvertisemetById";
-import { setDetailsAdvertisement } from "../../store/information";
+import { addMyLocalResponses, setDetailsAdvertisement } from "../../store/information";
 
 
 let myResponse = {
@@ -82,9 +82,11 @@ const Responce = ( ) => {
   }, [] )
 
 
-  const postResponce = usePostResponse({detailsAdertisement : orderInformation, responce});
+  const postResponce = usePostResponse();
 
   const navigate = useNavigate();
+
+  const me = useSelector( (state) => state.telegramUserInfo )
 
   const goForward = useCallback( async () => {
     if (responce.text.length < 3){
@@ -92,10 +94,11 @@ const Responce = ( ) => {
     }
     else{
       alert("Port response")
-      await postResponce();
+      await postResponce(responce, orderInformation);
+      dispatch(addMyLocalResponses({advertisement : {id : orderInformation.id}}))
       navigate(-2);
     }
-  }  , [responce, postResponce, navigate] )
+  }  , [responce, postResponce, dispatch, me.id, navigate, orderInformation] )
 
   useEffect( () => {
     MainButton.onClick(goForward)

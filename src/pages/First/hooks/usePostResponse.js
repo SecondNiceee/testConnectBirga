@@ -2,14 +2,10 @@ import { useCallback } from "react";
 import { createResponse } from "../../../functions/api/createResponse";
 import menuController from "../../../functions/menuController";
 import { useSelector } from "react-redux";
-import { createResponseFormData } from "../../../functions/createResponseFormData";
 
-const usePostResponse = ({
-  responce,
-  detailsAdertisement,
-}) => {
+const usePostResponse = () => {
   const me = useSelector((state) => state.telegramUserInfo);
-  const postResponse = useCallback(async () => {
+  const postResponse = useCallback(async (responce, detailsAdertisement) => {
     try {
       await createResponse({
         responseAdvertisement: detailsAdertisement,
@@ -27,7 +23,7 @@ const usePostResponse = ({
       console.warn(e);
     }
     menuController.showMenu();
-  }, [detailsAdertisement, me, responce]);
+  }, [me]);
   return postResponse;
 };
 export default usePostResponse;

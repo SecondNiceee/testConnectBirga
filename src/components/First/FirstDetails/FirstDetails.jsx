@@ -24,7 +24,8 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
 
   const orderInformation = useSelector( (state) => state.information.detailsAdvertisement );
 
-  
+  console.log(orderInformation);
+
     const {
     isSliderOpened,
     photoIndex,

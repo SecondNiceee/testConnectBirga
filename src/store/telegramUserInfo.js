@@ -1,19 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import makeNewFile from "../functions/newMakeFile";
-import { USERID, USERLINK } from "../constants/tgStatic.config";
+import { USERID } from "../constants/tgStatic.config";
 import { apiLikes } from "../functions/api/ApiLikes";
-import { getRatingByProfession } from "../functions/api/getRatingByProfession";
-import { createUserByBot } from "../functions/api/createUserByBot";
-import { getUserWithoutCards } from "../functions/api/getUserWithoutCards";
-import { getCardByUserId } from "../functions/api/getCardsByUserId";
 import { findUserById } from "../functions/api/findUserById";
-import { act } from "react";
-
-
-
-
-
 
 export const deleteServerCard = createAsyncThunk(
     "telegramUserInfo/deleteServerCard",

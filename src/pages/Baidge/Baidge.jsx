@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import {useDispatch, useSelector } from "react-redux";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import BaidgeWithProfile from "./components/BaidgeWithProfile";
@@ -8,7 +8,6 @@ import { findUserById } from "../../functions/api/findUserById";
 import menuController from "../../functions/menuController";
 import MainButton from "../../constants/MainButton";
 import { putUserInfo } from "../../store/telegramUserInfo";
-import { apiRating } from "../../functions/api/ApiRating";
 
 // id : userConfig.id,
 // counterOfLikes: userInfo.userLikes.length,

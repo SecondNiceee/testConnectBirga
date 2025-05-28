@@ -5,10 +5,8 @@ import Holding from "./Holding/Holding";
 import cl from "./AdCreatingThree.module.css";
 import Upper from "./Upper/Upper";
 import Block from "./Block/Block";
-import AlertBlock from "./AlertBlock/AlertBlock";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import translation from "../../functions/translate";
-import { getAdvertisementById } from "../../functions/api/getAdvertisemetById";
 import { useParams } from "react-router";
 import useGetAdvertisement from "../../hooks/api/useGetAdvertisement";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
@@ -17,11 +15,9 @@ import useTonConnection from "../../hooks/useTonConnection";
 
 const AdCreatingThree = () => {
 
-  const dispatch = useDispatch()
+  const {advertisementId} = useParams();
 
-  const {advertisementId, responseId} = useParams();
-
-  const {advertisementStatus, orderInformation : taskInformation} = useGetAdvertisement({id:advertisementId});
+  const {orderInformation : taskInformation} = useGetAdvertisement({id:advertisementId});
 
   // const balance = useSelector(state => state.balance.value)
   // const address = useSelector( state => state.telegramUserInfo.address );

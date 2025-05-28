@@ -11,7 +11,7 @@ import translation from "../../../functions/translate";
 import {  useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import getResponseById from "../../../functions/api/getResponseById";
-import { setAdvertisement, setResponse, setUser } from "../../../store/information";
+import { setAdvertisement, setResponse } from "../../../store/information";
 import { getAdvertisementById } from "../../../functions/api/getAdvertisemetById";
 import useSlider from "../../../hooks/useSlider";
 import useClickHandler from "./hooks/useClickHandler";

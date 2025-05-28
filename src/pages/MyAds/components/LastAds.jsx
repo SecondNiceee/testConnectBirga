@@ -26,7 +26,7 @@ const LastAds = ({isMyResponse = false}) => {
 
   const goForward = useCallback( () => {
     navigate(`/hold/${advertisementId}/${responseId}`)
-  }, [] )
+  }, [advertisementId, responseId, navigate] )
 
   useEffect( () => {
     if (!isMyResponse){

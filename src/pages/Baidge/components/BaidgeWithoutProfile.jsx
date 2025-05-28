@@ -15,12 +15,9 @@ import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransiti
 const BaidgeWithoutProfile = ({ userInfo, setUserInfo,className }) => {
 
   const {isResponsed} = useGetIsResponsed({consumerId : userInfo.id})
-
-
-
   useEffect( () => {
     getAdvertisementsByUserId(userInfo).then((advertisements) => {
-      setUserInfo((userInfo) => ({...userInfo, advertisements}))
+      setUserInfo((userInf) => ({...userInf, advertisements}))
     })
   },[setUserInfo] )
   
@@ -42,6 +39,8 @@ const BaidgeWithoutProfile = ({ userInfo, setUserInfo,className }) => {
   const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider();
 
   useNavigateBack({isSliderOpened : false, setSlideOpened : false})
+
+  console.log(isResponsed);
 
   if (!userInfo.advertisements){
     return <MyLoader />

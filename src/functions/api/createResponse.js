@@ -1,11 +1,18 @@
 import axios from "axios";
 import translation from "../translate";
 import en from "../../constants/language";
-import { createResponseFormData } from "../createResponseFormData";
+import { USERID } from "../../constants/tgStatic.config";
 const messageOne = translation("📣 Вы получили отклик на задачу «");
 const messageTwo = translation("» от ");
 export const createResponse = async ({responce, responseAdvertisement, responseUser}) => {
-    const myFormData = createResponseFormData(responce, responseAdvertisement.id);
+    alert(JSON.stringify(responce));
+    let myFormData = new FormData();
+    myFormData.append("information", String(responce.text));
+    myFormData.append("userId", String(USERID));
+    myFormData.append("advertismentId", String(responseAdvertisement.id));
+    responce.photos.forEach((e, i) => {
+      myFormData.append(`photos`, e);
+    });
     try {
       let im;
       for (let i = 0; i < 1; i++) {

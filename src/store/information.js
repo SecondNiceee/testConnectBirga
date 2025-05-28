@@ -332,6 +332,7 @@ const information = createSlice({
     detailsAdvertisement : null,
     baidgeUser : null,
     baidgeCard : null,
+    myLocalResponses : [],
     tasksPage : 2,
     taskInformation: {
       category: { name: "", value: "" },
@@ -355,6 +356,9 @@ const information = createSlice({
     myPaginationArray: [],
   },
   reducers: {
+    addMyLocalResponses(state, action){
+      state.myLocalResponses.push(action.payload)
+    },
     setPage( state, action ){
       state.tasksPage = action.payload
     },
@@ -521,6 +525,7 @@ export const {
   setDetailsAdvertisement,
   setUser,
   setCard,
-  setPage
+  setPage,
+  addMyLocalResponses
 } = information.actions;
 export default information.reducer;

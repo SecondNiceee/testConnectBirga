@@ -10,5 +10,6 @@ export const getIsResponsed = async (executorId, consumerId) => {
         "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
         }
     })
+    console.log(response);
     return response.data;
 }
