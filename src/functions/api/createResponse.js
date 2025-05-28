@@ -1,15 +1,17 @@
 import axios from "axios";
 import translation from "../translate";
 import en from "../../constants/language";
+import { createResponseFormData } from "../createResponseFormData";
 const messageOne = translation("📣 Вы получили отклик на задачу «");
 const messageTwo = translation("» от ");
-export const createResponse = async ({responseFormData, responseAdvertisement, responseUser}) => {
+export const createResponse = async ({responce, responseAdvertisement, responseUser}) => {
+    const myFormData = createResponseFormData(responce, responseAdvertisement.id);
     try {
       let im;
       for (let i = 0; i < 1; i++) {
         im = await axios.post(
           process.env.REACT_APP_HOST + "/response",
-          responseFormData,
+          myFormData,
           {
             params: {
               advertisementId: responseAdvertisement.id,

@@ -6,7 +6,6 @@ import ShablinBlock from "./components/ShablonBlock/ShablinBlock";
 import Block from "../../components/First/Block";
 import MainButton from "../../constants/MainButton";
 import translation from "../../functions/translate";
-import useBlockInputs from "../../hooks/useBlockInputs";
 import useSlider from "../../hooks/useSlider";
 import useNavigateBack from "../../hooks/useNavigateBack";
 import { useNavigate, useParams } from "react-router";
@@ -69,7 +68,6 @@ const Responce = ( ) => {
     shablonMaker: false,
   });
 
-  useBlockInputs();
     const {
     isSliderOpened,
     photoIndex,
@@ -84,7 +82,7 @@ const Responce = ( ) => {
   }, [] )
 
 
-  const postResponce = usePostResponse({detailsAdertisement : orderInformation, responce : responce});
+  const postResponce = usePostResponse({detailsAdertisement : orderInformation, responce});
 
   const navigate = useNavigate();
 
@@ -95,7 +93,7 @@ const Responce = ( ) => {
     else{
       alert("Port response")
       await postResponce();
-      navigate('/')
+      navigate(-2);
     }
   }  , [responce, postResponce, navigate] )
 
