@@ -67,8 +67,8 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
     }
   }, [showButton, isSliderOpened]);
   
-  const isMyResponse = useIsMyResponse({detailsAdertisement : orderInformation})
-  
+  const isMyResponse = useIsMyResponse({detailsAdertisement : orderInformation});
+
   useEffect( () => {
     if (isMyResponse && !isSliderOpened){
       disableColorButton();

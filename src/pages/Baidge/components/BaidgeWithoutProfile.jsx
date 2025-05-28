@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import{ useEffect, useMemo } from "react";
 import ProfileCup from "../../Profile/components/ProfileCup/ProfileCup";
 import GoToMessageButton from "./GoToMessageButton";
 import StatistikComponent from "./StatistikComponent";
@@ -11,15 +11,17 @@ import useGetIsResponsed from "../hooks/useGetIsResponsed";
 import useNavigateBack from "../../../hooks/useNavigateBack";
 import useSlider from "../../../hooks/useSlider";
 import CssTransitionSlider from "../../../components/UI/PhotosSlider/CssTransitionSlider";
+import menuController from "../../../functions/menuController";
 
 const BaidgeWithoutProfile = ({ userInfo, setUserInfo,className }) => {
 
-  const {isResponsed} = useGetIsResponsed({consumerId : userInfo.id})
+  const {isResponsed} = useGetIsResponsed({consumerId : userInfo.id});
+
   useEffect( () => {
     getAdvertisementsByUserId(userInfo).then((advertisements) => {
       setUserInfo((userInf) => ({...userInf, advertisements}))
     })
-  },[setUserInfo] )
+  },[setUserInfo]);
   
   const statistikConfig = useMemo(() => {
     return [
@@ -35,11 +37,24 @@ const BaidgeWithoutProfile = ({ userInfo, setUserInfo,className }) => {
       }
     ];
   }, [userInfo.advertisements]);
-
+ 
   const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider();
 
-  useNavigateBack({isSliderOpened : isSliderOpened, setSlideOpened : setSlideOpened})
-  
+
+
+  useEffect( () => {
+    if(isSliderOpened){
+      menuController.hideMenu();
+    }
+    else{
+      menuController.showMenu();
+      menuController.lowerMenu();
+    }
+  }, [isSliderOpened] )
+
+
+
+  useNavigateBack({isSliderOpened, setSlideOpened});
 
   if (!userInfo.advertisements){
     return <MyLoader />
