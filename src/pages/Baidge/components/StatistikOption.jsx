@@ -4,10 +4,10 @@ const StatistikOption = ({ text, title, index, configLength }) => {
   return (
     <div className={`flex cursor-pointer flex-col pt-[14px] `}>
       <div className="flex items-center justify-center">
-        <p className="font-sf-pro-display-400 ml-[19px] tracking-[.015em]  text-[17px] text-white">
+        <p className="font-sf-pro-display-400 ml-[19px] tracking-[.015em] leading-[18.31px]  text-[17px] text-white">
           {title}
         </p>
-        <p className="font-sf-pro-display-400 text-[17px] mr-[19px] ml-auto  text-white">
+        <p className="font-sf-pro-display-400 text-[17px] mr-[19px] ml-auto leading-[18.31px] text-[#DAF5FE]">
           {text}
         </p>
       </div>
