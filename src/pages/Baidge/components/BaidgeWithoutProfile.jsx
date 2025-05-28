@@ -52,7 +52,7 @@ const BaidgeWithoutProfile = ({ userInfo, setUserInfo,className }) => {
               <StatistikOption text={userInfo.completedTasks} title={"Выполнено заданий"} configLength={1} index={0}  />
         </div>
       <BaidgeAdvertisements advertisements={userInfo.advertisements}  />
-      <p className="text-[11.667px] mx-auto font-sf-pro-display leading-[12.535px] tracking-[0.117px] text-[#95979E] mt-[11.67px]">На Connect с {formatDate(new Date(userInfo.createdAt), false, true)} года.</p>
+      <p className="text-[11.667px] mx-auto font-sf-pro-display leading-[12.535px] tracking-[0.117px] text-[#95979E] mt-[11.67px]">На Connect с {formatDate(new Date(userInfo.createdAt), false, false, true)}</p>
     </div>
   );
 };
