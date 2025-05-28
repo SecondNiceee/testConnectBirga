@@ -13,6 +13,7 @@ import { useParams } from "react-router";
 import useGetAdvertisement from "../../hooks/api/useGetAdvertisement";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import menuController from "../../functions/menuController";
+import useTonConnection from "../../hooks/useTonConnection";
 
 const AdCreatingThree = () => {
 
@@ -22,8 +23,10 @@ const AdCreatingThree = () => {
 
   const {advertisementStatus, orderInformation : taskInformation} = useGetAdvertisement({id:advertisementId});
 
-  const balance = useSelector(state => state.balance.value)
-  const address = useSelector( state => state.telegramUserInfo.address );
+  // const balance = useSelector(state => state.balance.value)
+  // const address = useSelector( state => state.telegramUserInfo.address );
+
+  const {formatAdress, tonWalletAddress} = useTonConnection();
 
   useEffect( () => {
     menuController.hideMenu();

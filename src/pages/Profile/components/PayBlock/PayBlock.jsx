@@ -18,7 +18,6 @@ const PayBlock = ({ className }) => {
 
   const {formatAdress, handleWalletAction, tonWalletAddress} = useTonConnection()
 
-
   useEffect( () => { // Если tonWalletAddress !== null и также он не равен адресу , который у юзера, то ставим этот адресс сюда
       if (tonWalletAddress !== address && tonWalletAddress){
         dispatch(putUserInfo([{

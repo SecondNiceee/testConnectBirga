@@ -55,7 +55,7 @@ const DescriptionAndPhoto = ({
         style={textError ? { border: "1px solid rgb(255, 103, 103)" } : {}}
         className={`${cl.InputContainer} ${descriptionClassName}`}
       >
-        <textarea ref={hiddenRef} value={text} className={cl.hiddenText} />
+        <textarea onChange={() => {}} ref={hiddenRef} value={text} className={cl.hiddenText} />
 
         <TextArea
           ref={myRef}

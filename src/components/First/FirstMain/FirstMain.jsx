@@ -24,7 +24,6 @@ const FirstMain = (
 
     const elementRef = useRef(null)
 
-
     const getMore = useCallback(async () => {
       dispatch(fetchTasksInformation(page));
       dispatch(setPage(page + 1))

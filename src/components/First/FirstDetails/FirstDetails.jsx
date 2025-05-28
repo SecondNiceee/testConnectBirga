@@ -110,8 +110,6 @@ const FirstDetails = ({ end, className, showButton =true, ...props }) => {
     }
   }, [disatch, end, orderInformation]);
 
-  console.log(orderInformation)
-
   if (!orderInformation) {
     return <MyLoader />;
   }

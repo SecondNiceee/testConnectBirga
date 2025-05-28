@@ -219,7 +219,6 @@ export const fetchTasksInformation = createAsyncThunk(
     // }
     let tasks = [];
     let task;
-    
     try {
       task = await axios.get(
         `${process.env.REACT_APP_HOST}/advertisement/findAll`,

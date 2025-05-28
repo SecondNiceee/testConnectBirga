@@ -419,7 +419,7 @@ export const fetchAllIds = createAsyncThunk(
     "fetchAllIds", 
     async function (params) {
         try{
-            let imOne = await axios.get(`${process.env.REACT_APP_HOST}/advertisement/savedIds` , {
+            let imOne = await await axios.get(`${process.env.REACT_APP_HOST}/category/subCategory` , {
                 params : {
                     "userId" : USERID
                 },

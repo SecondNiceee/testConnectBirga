@@ -57,9 +57,8 @@ const Baidge = () => {
     }
   }, [ me, id]);
 
-  useEffect( () => {
+  useEffect( () => { 
     MainButton.hide();
-    
   }, [] )
 
   const dispatch = useDispatch();

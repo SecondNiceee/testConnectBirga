@@ -69,8 +69,6 @@ const LastAds = ({isMyResponse = false}) => {
 
   useNavigateBack({isSliderOpened, setSlideOpened})
 
-  
-
   if(responseStatus === "pending" || response === null){
     return <MyLoader />
   }

@@ -150,6 +150,7 @@ const MyAds = () => {
             valueOne = {valueOne}
             setNowKey={setNowKey}
             myAdsArray={filteredArray}
+            
           />
 
         {/* <CSSTransition             
