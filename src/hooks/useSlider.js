@@ -7,9 +7,7 @@ const useSlider = () => {
     
       const [photoIndex, setPhotoIndex] = useState(0);
       
-
       return {isSliderOpened, setSlideOpened, photos, setPhotos, photoIndex, setPhotoIndex};
-
 };
 
 export default useSlider;

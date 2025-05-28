@@ -38,9 +38,8 @@ const BaidgeWithoutProfile = ({ userInfo, setUserInfo,className }) => {
 
   const {isSliderOpened, photoIndex, photos, setPhotoIndex, setPhotos, setSlideOpened} = useSlider();
 
-  useNavigateBack({isSliderOpened : false, setSlideOpened : false})
-
-  console.log(isResponsed);
+  useNavigateBack({isSliderOpened : isSliderOpened, setSlideOpened : setSlideOpened})
+  
 
   if (!userInfo.advertisements){
     return <MyLoader />
