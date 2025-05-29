@@ -9,7 +9,7 @@ const GoToMessageButton = ({link, className, isActive}) => {
     if (!isActive){
           window.Telegram.WebApp
           .showPopup({
-            title: translation("Доступ ограничен"),
+            title: "Доступ ограничен",
             message: "Чтобы связаться с пользователем, необходимо сначала откликнуться на его задание",
             buttons: [
               { id: "save", type: "default", text: "Понятно" },
