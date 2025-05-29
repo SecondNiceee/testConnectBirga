@@ -5,8 +5,22 @@ import { showAllert } from "../../../functions/showAlert";
 const GoToMessageButton = ({link, className, isActive}) => {
 
   const onClick = () => {
+
     if (!isActive){
-      showAllert("Чтобы связаться с пользователем, необходимо сначала откликнуться на его задание");
+          window.Telegram.WebApp
+          .showPopup({
+            title: translation("Доступ ограничен"),
+            message: "Чтобы связаться с пользователем, необходимо сначала откликнуться на его задание",
+            buttons: [
+              { id: "save", type: "default", text: "Понятно" },
+            ],
+          } , (buttonId) => {
+      
+            if (buttonId === "save" || buttonId === null) {
+              
+
+            }
+          } )
     }
     else{
       openLink(`https://t.me/${link}`)

@@ -48,7 +48,7 @@ const BaidgeWithoutProfile = ({ userInfo, setUserInfo,className }) => {
     else{
       MainButton.hide();
       menuController.showMenu();
-      menuController.lowerMenu();
+      menuController.raiseMenu();
     }
   }, [isSliderOpened] )
 
