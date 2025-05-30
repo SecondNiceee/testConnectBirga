@@ -10,10 +10,7 @@ export const getUserWithoutCards = async (id) => {
             headers : {
               "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
             }
-          });
-
-          console.log(user.data);
-          
+          });          
           return formatUserFromApi(user.data, []);
     }
     catch(e){

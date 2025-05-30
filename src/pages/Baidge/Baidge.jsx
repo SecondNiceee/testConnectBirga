@@ -7,33 +7,8 @@ import { useParams } from "react-router";
 import { findUserById } from "../../functions/api/findUserById";
 import menuController from "../../functions/menuController";
 import MainButton from "../../constants/MainButton";
-import { putUserInfo } from "../../store/telegramUserInfo";
+import { putUserInfo } from "../../store/telegramUserInfo/thunks/putUserInfo";
 
-// id : userConfig.id,
-// counterOfLikes: userInfo.userLikes.length,
-// positionOfNitcheRating: "-",
-// firstName: userInfo.firstName,
-// lastName: userInfo.lastName,
-// photoUrl: photoLink,
-// positionOfCommonRating : "-",
-// profession: userInfo.profession.profession,
-// profileWatches: userInfo.views,
-// isLikeActive: userInfo.userLikes.includes(userInfo.id),
-// ratingCounter : userInfo.rating,
-// aboutMe: userInfo.profile.about ,
-// telegramProfileLink: userInfo.link,
-// links : userInfo.links,
-// stage : userInfo.stage,
-// completedTasks : userInfo.completedTasks,
-// secureTask : "-",
-// numberOfResponses : counterOfResponses,
-// customerOffers : "-",
-// taggs : userInfo.taggs
-
-// const params = { id: 2 };
-// const params = null
-
-// УЧТИ НУЖНО ДОНАСТРОИТЬ ЛАЙК
 const Baidge = () => {
 
   const me = useSelector((state) => state.telegramUserInfo);
@@ -79,7 +54,7 @@ const Baidge = () => {
       }
     }
   } , [userInfo, me, addWatch])
- 
+
 
   if (!userInfo || userInfo.id === null) {
     return <MyLoader />;

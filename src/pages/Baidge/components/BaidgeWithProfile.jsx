@@ -13,6 +13,11 @@ import { apiRating } from "../../../functions/api/ApiRating";
 import { getCounterOfResponses } from "../../../functions/api/getCounterOfResponses";
 import { getRatingByProfession } from "../../../functions/api/getRatingByProfession";
 import { getCommonRating } from "../../../functions/api/getCommonRating";
+import { fetchCommonRating } from "../../../store/telegramUserInfo/thunks/fetchCommonRating";
+import { fetchCounterOfResponses } from "../../../store/telegramUserInfo/thunks/fetchCounterOfResponses";
+import { fetchRatingByProfession } from "../../../store/telegramUserInfo/thunks/fetchRatingByProfession";
+import StatistikComponent from "./StatistikComponent";
+import getYearWord from "../../../functions/getYearWord";
 
 const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
 
@@ -26,8 +31,6 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
     if (!userInfo) {
       return null;
     }
-    console.log(me.id);
-    console.log(userInfo.userLikes); 
     return userInfo.userLikes.map((like) => like.user.id).includes(me.id);
   }, [userInfo, me.id]);
 
@@ -75,12 +78,27 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
       } 
       if (userInfo){
         if (!ratingLoaded.current){
-          ratingLoaded.current = true;
-          fetchAdditionalUserInfo().then( (info) => setUserInfo((value) => ({...value, ...info})) )
+          if (userInfo.id === me.id){
+            if (!userInfo.commonRating){
+              dispatch(fetchCommonRating())
+            }
+            if (!userInfo.responsesCounter){
+              dispatch(fetchCounterOfResponses());
+            }
+            if (!userInfo.ratingByProfession){
+              dispatch(fetchRatingByProfession());
+            }
+          }
+          else{
+              fetchAdditionalUserInfo().then( (info) => setUserInfo((value) => ({...value, ...info})) )
+          }
         }
+        ratingLoaded.current = true;
       }
 
-  } , [userInfo, setUserInfo])
+  } , [userInfo, setUserInfo, me.id, dispatch])
+
+  console.log(userInfo);
   
 
   return (
@@ -103,6 +121,7 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
         <div className="flex flex-col rounded-[12px] bg-[#20303f]">
           {optionsConfig.map((option, i) => (
             <NewOption
+              node={option.node}
               numberNearToArrow={option.numberNearToArrow}
               imgPath={option.imgPath}
               isNededToFill={option.isNeededFill}
@@ -115,6 +134,7 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
             />
           ))}
         </div>
+        <StatistikComponent  className={"-mt-2"} title={null} config={[{title : "Опыт работы", text : getYearWord(userInfo.profile.stage)}]} />
         <div className="flex flex-col gap-[7px] w-[100%] text-[#84898f]">
           <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">
             КРАТКОЕ РЕЗЮМЕ

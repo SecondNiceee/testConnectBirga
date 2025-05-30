@@ -63,7 +63,6 @@ export const getAdvertisementsByUserId = async (user, page, limit = 1) => {
             newUser.photo = ""
           }
           }
-          console.log(user);
           tasks.push({
             id: order.id,
             taskName: order.title,

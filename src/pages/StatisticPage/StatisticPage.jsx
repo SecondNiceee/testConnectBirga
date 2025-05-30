@@ -1,18 +1,22 @@
-import OrderStatisticUi from "./components/OrderStatisticUi";
-import ProfileStatisticComponent from "./components/ProfileStatisticComponent";
 import useNavigateBack from "../../hooks/useNavigateBack";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import menuController from "../../functions/menuController";
+import StatistikComponent from "../Baidge/components/StatistikComponent";
+import useGetProfileStatistics from './hooks/useGetProfileStatistics';
+import useGetOrderStatistics from "./hooks/useGetOrderStatistics";
 
 
 const StatisticPage = () => {  
   const userConfig = useSelector( (state) => state.information.baidgeUser );
   useNavigateBack({isSliderOpened : false, setSlideOpened : false});
+  
   useEffect( () => {
     menuController.hideMenu();
   }, [] )
 
+  const profileStatisticConfig = useGetProfileStatistics({ userConfig });
+  const orderStatistics = useGetOrderStatistics({userConfig})
   return (
     <div className="pt-[16px] transition-transform w-full px-[16px] pb-[16px] bg-[#18222d] flex flex-col">
 
@@ -25,9 +29,9 @@ const StatisticPage = () => {
         </p>
       </div>
 
-    <ProfileStatisticComponent userConfig={userConfig} />
+    <StatistikComponent className={"mt-[12.8px]"} config={profileStatisticConfig} title={"Профиль"}  />
 
-    <OrderStatisticUi userConfig={userConfig} />
+    <StatistikComponent className={"mt-[12.6px]"} config={orderStatistics} title={"Заказы"} />
 
     </div>
   );

@@ -1,13 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import PayBlock from "./components/PayBlock/PayBlock";
 import useGetOptionsConfig from "./hooks/useGetOptionsConfig";
 import NewOption from "./components/NewOption/NewOption";
 import NewProfileCup from "./components/NewProfileCup/NewProfileCup";
 import useGetUserPhotoLink from "../../hooks/useGetUserPhotoLink";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
 import ProfileCup from "./components/ProfileCup/ProfileCup";
 import pagesHistory from "../../constants/pagesHistory";
+import { fetchRatingByProfession } from "../../store/telegramUserInfo/thunks/fetchRatingByProfession";
+import { fetchCommonRating } from "../../store/telegramUserInfo/thunks/fetchCommonRating";
 
 const NewProfile = () => {
   const optionsConfig = useGetOptionsConfig();
@@ -20,7 +22,23 @@ const NewProfile = () => {
     pagesHistory.push("/Profile")
   }, [] );
 
-  
+  const dispatch = useDispatch();
+
+  const isLoadedInf = useRef(false);
+  useEffect( () => {
+    if (userInfo.profession && !isLoadedInf.current){
+      if (!userInfo.ratingByProfession){
+        dispatch(fetchRatingByProfession());
+      }
+      if (!userInfo.commonRating){
+        dispatch(fetchCommonRating());
+      }
+      isLoadedInf.current = <tr></tr>
+    }
+  }, [userInfo.profession, dispatch, userInfo.ratingByProfession, userInfo.commonRating] ) ;
+  if (userInfo.profession && (!userInfo.ratingByProfession || !userInfo.commonRating)){
+    return <MyLoader />
+  }
   if (userInfo.state !== "yes"){
     return <MyLoader />
   }
@@ -36,7 +54,9 @@ const NewProfile = () => {
         photoUrl={photoLink}
         profession={userInfo.profession.profession}
         profileWatches={userInfo.views}
-      /> : <ProfileCup />}
+        positionOfNitcheRating={userInfo.ratingByProfession}
+        commonRating = {userInfo.commonRating}
+      /> : <ProfileCup gotenUserInfo={userInfo} />}
 
 
       <PayBlock className="pay-block" />

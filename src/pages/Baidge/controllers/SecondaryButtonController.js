@@ -1,5 +1,5 @@
 import { SecondatyButton } from "../../../constants/SecondaryButton";
-import { deleteServerCard } from "../../../store/telegramUserInfo";
+import { deleteServerCard } from "../../../store/telegramUserInfo/thunks/deleteServerCard";
 
 class SecondaryButtonController{
     secondaryButton = SecondatyButton;

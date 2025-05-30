@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import DescriptionAndPhoto from '../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto';
 import AddLinksComponent from '../../components/UI/AddLinksComponent/AddLinksComponent';
 import useCardsController from './hooks/useCardsController';
@@ -9,10 +9,11 @@ import { backButtonController } from './controllers/BackButtonController';
 import BackButton from '../../constants/BackButton';
 import { makeCardFormData } from './utils/makeCardFormData';
 import { USERID } from '../../constants/tgStatic.config';
-import { postCard, putCard } from '../../store/telegramUserInfo';
 import MyLoader from '../../components/UI/MyLoader/MyLoader';
 import { useNavigate, useParams } from 'react-router';
 import { setUser } from '../../store/information';
+import { postCard } from '../../store/telegramUserInfo/thunks/postCard';
+import { putCard } from '../../store/telegramUserInfo/thunks/putCard';
 
 
 

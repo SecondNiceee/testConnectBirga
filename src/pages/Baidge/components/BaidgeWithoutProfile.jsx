@@ -22,6 +22,7 @@ const BaidgeWithoutProfile = ({ userInfo, setUserInfo,className }) => {
     getAdvertisementsByUserId(userInfo).then((advertisements) => {
       setUserInfo((userInf) => ({...userInf, advertisements}))
     })
+    // eslint-disable-next-line 
   },[setUserInfo]);
   
   const statistikConfig = useMemo(() => {

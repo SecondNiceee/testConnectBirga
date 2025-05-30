@@ -1,6 +1,8 @@
 import { USERID } from "../../../constants/tgStatic.config";
 import { apiLikes } from "../../../functions/api/ApiLikes";
-import { dislikeUser, likeUser } from "../../../store/telegramUserInfo";
+import { dislikeUser } from "../../../store/telegramUserInfo/thunks/dislikeUser";
+import { likeUser } from "../../../store/telegramUserInfo/thunks/likeUser";
+
 
 class LikesController{
 

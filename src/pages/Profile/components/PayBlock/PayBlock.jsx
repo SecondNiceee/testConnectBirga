@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import { memo, useEffect } from "react";
 import cl from "./PayBlock.module.scss";
 import CreateButton from "../CreateButton/CreateButton";
 import PayTextContainer from "../PayTextContainer/PayTextContainer";
@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import translation from "../../../../functions/translate";
 import useTonConnection from "../../../../hooks/useTonConnection";
 import WalletBackPack from "./WalletBackPack";
-import { putUserInfo } from "../../../../store/telegramUserInfo";
+import { putUserInfo } from "../../../../store/telegramUserInfo/thunks/putUserInfo";
 import formateMoney from "../../../../functions/formateMoney";
 const PayBlock = ({ className }) => {
   

@@ -9,7 +9,8 @@ import BaidgeButtonConroller from "./hooks/BaidgeButton.conroller";
 import MainButton from "../../constants/MainButton";
 import BackButton from "../../constants/BackButton";
 import menuController from "../../functions/menuController";
-import { fetchUserInfo, putUserInfo } from "../../store/telegramUserInfo";
+import { fetchUserInfo } from "../../store/telegramUserInfo/thunks/fetchUserInfo";
+import { putUserInfo } from "../../store/telegramUserInfo/thunks/putUserInfo";
 
 const BaidgeCreating = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,6 @@ const BaidgeCreating = () => {
     dispatch(getProfessions());
   }, [dispatch]);
 
-  
 
   const categorys = useSelector((state) => state.categorys.category);
 
@@ -31,8 +31,6 @@ const BaidgeCreating = () => {
   console.log(me)
 
   const [description, setDescription] = useState(me.profile.about ?? "");
-
-
 
   const taskInformation = {
     category: categorys[0],
@@ -60,6 +58,12 @@ const BaidgeCreating = () => {
   });
 
   useEffect( () => {
+    if (categorys){
+      setCategoryInformation({category : categorys[0], profession : {}})
+    }
+  }, [categorys] )
+
+  useEffect( () => {
     if (me.profile){
       setDescription(me.profile.about);
       setTaggs(me.taggs);
@@ -81,8 +85,8 @@ const BaidgeCreating = () => {
   });
 
   useEffect(() => {
-    BaidgeButtonConroller.controlText({ step });
-  }, [step]);
+    BaidgeButtonConroller.controlText({ step, me });
+  }, [step, me]);
 
   useEffect(() => {
     const notEmptyLinks = links.filter( (link) => link.length !== 0 )
@@ -126,7 +130,6 @@ const BaidgeCreating = () => {
         await dispatch(fetchUserInfo())
 
         navigate("/Baidge")
-        
   }
 
   const goFoward = BaidgeButtonConroller.forwardFunction({
@@ -137,7 +140,7 @@ const BaidgeCreating = () => {
     description,
     dispatch,
     links,
-    professionId : categoryInformation.profession.id,
+    professionId : categoryInformation?.profession?.id,
     taggs,
     postBaidge
   });
@@ -155,7 +158,7 @@ const BaidgeCreating = () => {
       MainButton.offClick(goFoward);
       BackButton.offClick(goBack);
     };
-  }, [step, navigate, setStep, isCategoryOpen, isProfessionOpened, description, links, taggs, dispatch, categoryInformation.profession.id]);
+  }, [step, navigate, setStep, isCategoryOpen, isProfessionOpened, goFoward, description, links, taggs, dispatch, categoryInformation?.profession?.id]);
 
   useEffect(() => {
     MainButton.show();

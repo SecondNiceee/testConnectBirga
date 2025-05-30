@@ -1,7 +1,5 @@
 export const formatUserFromApi = (userFromApi, userCards) => {
-    console.log(userFromApi);
     const photoUrl = userFromApi.photo ?? "";
-    console.log(userFromApi);
     return ( {
         firstName: userFromApi.fl.split(' ')[0],
         lastName: userFromApi.fl.split(' ')[1] ?? "",
@@ -28,7 +26,7 @@ export const formatUserFromApi = (userFromApi, userCards) => {
         userLikes : userFromApi.userLikes,
         profession : userFromApi.profession,
         links :  userFromApi.links ? [`https://t.me/${userFromApi.link}` , ...userFromApi.links] : [],
-        taggs : userFromApi.taggs,
+        taggs : userFromApi.taggs ?? [],
         rating : userFromApi.rating,
         createdAt : userFromApi.createdAt
       } );

@@ -1,7 +1,5 @@
 import  { memo } from "react";
 import { openLink } from "../../../functions/openLink";
-import { showAllert } from "../../../functions/showAlert";
-
 const GoToMessageButton = ({link, className, isActive}) => {
 
   const onClick = () => {
@@ -15,11 +13,10 @@ const GoToMessageButton = ({link, className, isActive}) => {
               { id: "save", type: "default", text: "Понятно" },
             ],
           } , (buttonId) => {
-      
+                      
             if (buttonId === "save" || buttonId === null) {
-              
 
-            }
+            };
           } )
     }
     else{

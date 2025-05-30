@@ -8,6 +8,7 @@ import { CSSTransition } from 'react-transition-group';
 import BaidgeCategoryChoicer from './ui/BaidgeCategoryChoicer';
 import BaidgeSubCategoryChoiser from './ui/BaidgeSubCategoryChoiser';
 import useBlockInputs from '../../hooks/useBlockInputs';
+import MyLoader from '../../components/UI/MyLoader/MyLoader';
 
 const BaidgeCreaitingOne = ({setDescription, description, setCategoryOpen, isCategoryOpen, categoryInformation, setCategoryInformation, isProfessionOpened, setProfessionOpened}) => {
 
@@ -19,13 +20,20 @@ const BaidgeCreaitingOne = ({setDescription, description, setCategoryOpen, isCat
 
 
     const sortedProfessions = useMemo( () => {
-        return  professions.filter((profession, id) => profession.category.id === categoryInformation.category.id)
+      console.log(professions);
+      if (!professions || !categoryInformation?.category){
+        return []
+      }
+      return  professions.filter((profession, id) => profession.category.id === categoryInformation.category.id)
     } , [categoryInformation.category, professions] )
 
     useEffect( () => {
         setCategoryInformation((value) => ({...value, profession : sortedProfessions[0]}))
     } , [categoryInformation.category, sortedProfessions, setCategoryInformation] )
 
+    if (!categoryInformation.category || !professions || !categoryInformation.profession.id){
+      return <MyLoader />
+    }
     return (
         <>
         

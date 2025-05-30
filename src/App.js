@@ -19,7 +19,7 @@ import "./css/index.css";
 import FirstMenu from "./pages/FirstMenu/FirstMenu";
 
 import { fetchTon } from "./store/ton";
-import { fetchUserInfo } from "./store/telegramUserInfo";
+import { fetchUserInfo } from "./store/telegramUserInfo/thunks/fetchUserInfo";
 import { Triangle } from "react-loader-spinner";
 import { getCategorys, getSubCategorys } from "./store/categorys";
 import { fetchAllShablons } from "./store/shablon";
@@ -46,9 +46,7 @@ const Balance = lazy(() => import("./pages/Balance"));
 const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
 const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
-const WalletEnter = lazy(() => import("./pages/WalletEnter/WalletEnter"));
-const Wallet = lazy(() => import("./pages/Wallet"));
-const WalletInit = lazy(() => import("./pages/WalletEnter/WalletInit"));
+
 const BaidgeCreating = lazy(() =>
   import("./pages/BaidgeCreating/BaidgeCreating")
 );
@@ -90,32 +88,6 @@ const AnimatedSwitch = () => {
 
   const menuRef = useRef(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (
-      location.pathname === "/AdCreating" ||
-      location.pathname === "/createWallet" ||
-      location.pathname === "/Wallet" ||
-      location.pathname === "/WalletInit" ||
-      location.pathname === "/HappyPage"
-    ) {
-      if (location.pathname !== "/Wallet") {
-        document.documentElement.style.overflowY = "auto";
-        document.body.style.overflowY = "auto";
-      }
-
-      if (location.pathname !== "/Wallet") {
-        menuRef.current.classList.add("disappearAnimation");
-        menuRef.current.classList.remove("appearAnimation");
-      } else {
-        menuRef.current.classList.add("appearAnimation");
-        menuRef.current.classList.remove("disappearAnimation");
-      }
-    } else {
-      menuRef.current.classList.add("appearAnimation");
-      menuRef.current.classList.remove("disappearAnimation");
-    }
-  }, [location.pathname]);
 
   const congratulate = useSelector(
     (state) => state.telegramUserInfo.congratulate
@@ -304,24 +276,6 @@ const AnimatedSwitch = () => {
             />
 
             <Route
-              path="/WalletInit"
-              element={
-                <Suspense fallback={<MyLoader />}>
-                  <WalletInit />
-                </Suspense>
-              }
-            />
-
-            <Route
-              path="/createWallet"
-              element={
-                <Suspense fallback={<MyLoader />}>
-                  <WalletEnter />
-                </Suspense>
-              }
-            />
-
-            <Route
               path="/Baidge"
               element={
                   <Baidge />
@@ -332,15 +286,6 @@ const AnimatedSwitch = () => {
               path="/Baidge/:id"
               element={
                   <Baidge />
-              }
-            />
-
-            <Route
-              path="/Wallet"
-              element={
-                <Suspense fallback={<MyLoader />}>
-                  <Wallet />
-                </Suspense>
               }
             />
 

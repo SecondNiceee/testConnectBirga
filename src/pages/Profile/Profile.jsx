@@ -8,8 +8,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { CSSTransition } from "react-transition-group";
 
-
-
 import SmallTextarea from "../../components/UI/SmallTextarea/SmallTextarea";
 import Compact from "../../components/UI/Compact/Compact";
 import SmallInput from "../../components/UI/SmallInput/SmallInput";
