@@ -33,12 +33,12 @@ const NewProfileCup = ({
     softVibration();
     navigate("/BaidgeCreating")
   }
-  const [shownRating, setShownRating] = useState('nitche');
+  const [shownRating, setShownRating] = useState('common');
   useEffect( () => {
-    if (commonRating < 52){
-      setShownRating('common');
+    if (commonRating < positionOfNitcheRating ){
+      setShownRating('nitche');
     }
-  }, [commonRating] )
+  }, [commonRating, positionOfNitcheRating] );
   const switchShownRating = () => {
     if (shownRating === "nitche"){
       setShownRating("common")
@@ -48,8 +48,8 @@ const NewProfileCup = ({
     }
     window.Telegram.WebApp.HapticFeedback.selectionChanged();
   }
-  const {nitchIcon} = useGetNitcheIcon({nitchRating : positionOfNitcheRating, className : 'rating-icon'});
-  const {commonIcon} = useGetCommonIcon({commonRating, className : 'rating-icon'})
+  const {nitchIcon} = useGetNitcheIcon({nitchRating : positionOfNitcheRating, textClassName : 'rating-icon__text', className : 'rating-icon',});
+  const {commonIcon} = useGetCommonIcon({commonRating, className : 'rating-icon', textClassName : 'rating-icon__text'})
     return (
         <div className="flex py-[17px]  pb-[14px] px-[19px] flex-col gap-[13px] bg-[#20303f] rounded-[13px] ">
         <div className="flex w-[100%]">

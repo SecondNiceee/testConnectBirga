@@ -23,10 +23,10 @@ const NitcheRating = ({nitcheRating, onClick}) => {
     } , [nitcheRating])
     return (
         <div onClick={onClick} className={`flex cursor-pointer ml-[23px] mt-[23px] flex-col gap-[5px] my-auto`}>
-        <h2 className={`font-sf-pro-display-600 text-[17px] ${color.title}  text-white leading-[18px]`}>
+        <h2 className={`font-sf-pro-display-600 text-[17px] ${color.title} leading-[18px]`}>
           #{nitcheRating}
         </h2>
-        <p className={`font-sf-pro-display max-w-[80px] ${color.text} text-[13px] tracking-wide text-white leading-[16px]`}>
+        <p className={`font-sf-pro-display max-w-[80px] ${color.text} text-[13px] tracking-wide leading-[16px]`}>
           в рейтинге по нише
         </p>
       </div>
