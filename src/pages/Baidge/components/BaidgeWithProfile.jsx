@@ -16,6 +16,8 @@ import { getCommonRating } from "../../../functions/api/getCommonRating";
 import { fetchCommonRating } from "../../../store/telegramUserInfo/thunks/fetchCommonRating";
 import { fetchCounterOfResponses } from "../../../store/telegramUserInfo/thunks/fetchCounterOfResponses";
 import { fetchRatingByProfession } from "../../../store/telegramUserInfo/thunks/fetchRatingByProfession";
+import { fetchFeedBacks } from "../../../store/telegramUserInfo/thunks/fetchFeedbacks";
+import { fetchFeedBacksByUserId } from "../../../functions/api/fetchFeedbacksByUserId";
 
 const BaidgeWithProfile = ({ userInfo, className, setUserInfo, urlParametr}) => {
 
@@ -55,11 +57,14 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo, urlParametr}) => 
   };
   const ratingLoaded = useRef(false);
 
+
+
   useEffect( () => {
       async function fetchAdditionalUserInfo(params) {
         let commonRating = null;
         let responsesCounter = null;
         let ratingByProfession = null;
+        let feedbacks = null;
         await apiRating.getByUserId(userInfo.id).then((rate) => {
           commonRating = rate
         } ).catch(err => console.warn(err))
@@ -72,7 +77,10 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo, urlParametr}) => 
         await getCommonRating(userInfo.id).then( (rate) => {
           commonRating = rate;
         } )
-        return {commonRating, responsesCounter, ratingByProfession}
+        await fetchFeedBacksByUserId(userInfo.id).then(feedbacksData => {
+          feedbacks = feedbacksData;
+        })
+        return {commonRating, responsesCounter, ratingByProfession, feedbacks}
       } 
       if (userInfo){
         if (!ratingLoaded.current){
@@ -85,6 +93,9 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo, urlParametr}) => 
             }
             if (!userInfo.ratingByProfession){
               dispatch(fetchRatingByProfession());
+            }
+            if (!userInfo.feedbacks){
+              dispatch(fetchFeedBacks());
             }
           }
           else{
@@ -100,6 +111,7 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo, urlParametr}) => 
     <>
       <div className={`pt-[16px] w-full  z-50 px-[16px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[100px] ${className}`}>
         <NewProfileCup
+          canLike={true}
           fl={userInfo.fl}
           isLikeActive={isLikeActive}
           isBaidge={urlParametr}

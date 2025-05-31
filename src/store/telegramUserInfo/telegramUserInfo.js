@@ -7,6 +7,7 @@ import { postCard } from "./thunks/postCard";
 import { putCard } from "./thunks/putCard";
 import { fetchCommonRating } from "./thunks/fetchCommonRating";
 import { fetchRatingByProfession } from "./thunks/fetchRatingByProfession";
+import { fetchFeedBacks } from "./thunks/fetchFeedbacks";
 
 const telegramUserInfo = createSlice({
   name: "telegramUserInfo",
@@ -35,7 +36,7 @@ const telegramUserInfo = createSlice({
     responsesCounter : null,
     ratingByProfession : null,
     commonRating : null,
-    feedbacks : [],
+    feedbacks : null,
     userLikes : [],
     profile : {
         about : "",
@@ -62,6 +63,9 @@ const telegramUserInfo = createSlice({
 },
   
   extraReducers: (builder) => {
+    builder.addCase(fetchFeedBacks.fulfilled, (state, action) => {
+        state.feedbacks = action.payload;
+    })
     builder.addCase( deleteServerCard.fulfilled, (state, action) => {
         state.profile.cards = state.profile.cards.filter( (card) => card.id !== action.payload )
     } )

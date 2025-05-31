@@ -21,6 +21,7 @@ const NewProfileCup = ({
   profileWatches,
   photoUrl,
   isBaidge = false,
+  canLike,
   isLikeActive,
   likeUser,
   clickDislikeUser,
@@ -70,7 +71,7 @@ const NewProfileCup = ({
             <ProfileUserName fl={fl} />
             <Profession professtion={profession} />
           </div>
-           <ProfileLikesCounter clickDislikeUser = {clickDislikeUser} likeUser = {likeUser} isLikeActive={isLikeActive} isBaidge={isBaidge} likesCounter={counterOfLikes} />
+           <ProfileLikesCounter canLike = {canLike} clickDislikeUser = {clickDislikeUser} likeUser = {likeUser} isLikeActive={isLikeActive} isBaidge={isBaidge} likesCounter={counterOfLikes} />
         </div>
       </div>
     );

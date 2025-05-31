@@ -1,6 +1,5 @@
 
 const Profession = ({professtion}) => {
-  console.log(professtion);
     return (
         <div className={`py-[3px] px-[9px] rounded-[7px] bg-[#FFD60A1A] w-fit`}>
         <p style={{

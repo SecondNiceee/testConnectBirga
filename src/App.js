@@ -46,6 +46,8 @@ const Balance = lazy(() => import("./pages/Balance"));
 const MyAds = lazy(() => import("./pages/MyAds/MyAds"));
 const AllShablons = lazy(() => import("./pages/AllShablons/AllShablons"));
 const SavedPage = lazy(() => import("./pages/SavedPage/SavedPage"));
+const Feedbacks = lazy( () => import("./pages/Feedbacks/ui/Feedbacks") )
+
 
 const BaidgeCreating = lazy(() =>
   import("./pages/BaidgeCreating/BaidgeCreating")
@@ -162,6 +164,15 @@ const AnimatedSwitch = () => {
               element={
                 <Suspense fallback={<MyLoader />}>
                   <NewChangeCard isNewCard={false} />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="/feedbacks"
+              element={
+                <Suspense fallback={<MyLoader />}>
+                  <Feedbacks />
                 </Suspense>
               }
             />

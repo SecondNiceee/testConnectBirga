@@ -38,8 +38,11 @@ const BaidgeCreating = () => {
   const taskInformation = {
     category: categorys[0],
     subCategory: { subCategory: "Привет" },
+    
   };
 
+  console.log(categorys[0]);
+  console.log(me);
   const [taggsText, setTaggsText] = useState("");
 
   const [taggs, setTaggs] = useState(me.taggs ?? []);

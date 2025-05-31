@@ -1,11 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Heart from '../Heart/Heart';
 import ClickedHeart from '../ClickedHeart/ClickedHeart';
 import "../ClickedHeart/ClickHeart.css";
-import { softVibration } from '../../../../functions/softVibration';
 import { changeVibration } from '../../../../functions/changeVibration';
 
-const ProfileLikesCounter = ({likesCounter, isBaidge, isLikeActive, likeUser, clickDislikeUser}) => {
+const ProfileLikesCounter = ({likesCounter, canLike, isLikeActive, likeUser, clickDislikeUser}) => {
 
     const [localStateOfLikeActive, setLocalStateOfLikeActive] =  useState(isLikeActive)
 
@@ -36,7 +35,7 @@ const ProfileLikesCounter = ({likesCounter, isBaidge, isLikeActive, likeUser, cl
       }
     }, [animation] )
 
-    if(isBaidge){
+    if(canLike){
       return (
         <div className='flex items-center gap-[6.67px] mt-auto mb-[2px]'>
           <p className={`font-sf-pro-display font-medium text-[17px] ${!localStateOfLikeActive ? 'text-[white]' : 'text-[#ff4949]'}`}>
