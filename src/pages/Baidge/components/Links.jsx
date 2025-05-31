@@ -1,14 +1,12 @@
-import React, { memo } from 'react';
+import { memo } from 'react';
 import useGetLinksFormatedArray from '../hooks/useGetLinksFormatedArray';
 import { openLink } from '../../../functions/openLink';
 
 const Links = ({links, isFirstMyLink}) => {
-    console.log(links);
     const formatedLinks = useGetLinksFormatedArray({links, isFirstMyLink})
     const clickHandler = (link) => () => {
         openLink(link)
     }
-    console.log(formatedLinks);
     return (
         <div className='rounded-[13px] bg-[#21303f] '>
             {formatedLinks.map( (link, i) => {

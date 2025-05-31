@@ -35,6 +35,7 @@ const telegramUserInfo = createSlice({
     responsesCounter : null,
     ratingByProfession : null,
     commonRating : null,
+    feedbacks : [],
     userLikes : [],
     profile : {
         about : "",
@@ -92,7 +93,7 @@ const telegramUserInfo = createSlice({
         state.ratingByProfession = action.payload;
     })
     builder.addCase(fetchUserInfo.fulfilled, (state, action) => {
-
+      
       state.lastTransaction = action.payload.lastTransaction
       state.id = action.payload.id;
       state.firstName = action.payload.firstName;

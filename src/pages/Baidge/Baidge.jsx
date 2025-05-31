@@ -8,6 +8,7 @@ import { findUserById } from "../../functions/api/findUserById";
 import menuController from "../../functions/menuController";
 import MainButton from "../../constants/MainButton";
 import { putUserInfo } from "../../store/telegramUserInfo/thunks/putUserInfo";
+import useBackHandler from "./hooks/useBackHandler";
 
 const Baidge = () => {
 
@@ -37,6 +38,8 @@ const Baidge = () => {
 
   const dispatch = useDispatch();
 
+  useBackHandler();
+
   const addWatch = useCallback( async () => {
     if (userInfo){
       dispatch(putUserInfo([{
@@ -64,6 +67,7 @@ const Baidge = () => {
       {/* <button onClick={fowardFunction} className="fixed left-1/2 bottom-1/3 z-[1000]">MAIN BUTTON</button> */}
       {userInfo.profession ? (
         <BaidgeWithProfile
+          urlParametr={id}
           setUserInfo={setUserInfo}
           userInfo={userInfo}
         />

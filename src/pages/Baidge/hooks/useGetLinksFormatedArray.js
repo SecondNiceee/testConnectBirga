@@ -28,7 +28,6 @@ const useGetLinksFormatedArray = ({links, isFirstMyLink}) => {
     let webflowLink = null;
     let framerLink = null;
     let figmaLink = null;
-
     
     for (let i = isFirstMyLink ? 1 : 0; i < links?.length; i++){
         let isRecognisedLink = false;
@@ -131,8 +130,6 @@ const useGetLinksFormatedArray = ({links, isFirstMyLink}) => {
         }
     }
     
-    console.log(tgName);
-    console.log(links[0])
     const linksArray = [
         {
             title : "Мой Telegram",

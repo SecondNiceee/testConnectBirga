@@ -1,4 +1,4 @@
-import React, {useEffect } from 'react';
+import {useEffect } from 'react';
 import Cap from '../../components/UI/Cap/Cap';
 import Text from '../../components/Text/Text';
 import DescriptionAndPhoto from '../../components/UI/DescriptionAndPhoto/DescriptionAndPhoto';

@@ -83,12 +83,15 @@ const First = () => {
     if (isSliderOpened){
       setSlideOpened(false);
     }
-  }, [isSliderOpened] )
+  }, [isSliderOpened, setSlideOpened] )
 
   useEffect( () => {
+    BackButton.onClick(backFunction);
     if(isSliderOpened){
       BackButton.show();
-      BackButton.onClick(backFunction);
+    }
+    else{
+      BackButton.hide();
     }
     return() => {
       BackButton.offClick(backFunction)

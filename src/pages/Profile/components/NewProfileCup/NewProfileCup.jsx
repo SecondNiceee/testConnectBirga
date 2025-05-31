@@ -15,8 +15,6 @@ import "./new-profile-cup.css";
 import useGetCommonIcon from '../../hooks/useGetCommonIcon';
 
 const NewProfileCup = ({
-  firstName ,
-  lastName,
   profession,
   counterOfLikes,
   positionOfNitcheRating,
@@ -26,16 +24,18 @@ const NewProfileCup = ({
   isLikeActive,
   likeUser,
   clickDislikeUser,
-  commonRating
+  commonRating,
+  fl
 }) => {
   const navigate = useNavigate();
   const editIconClickHandler = ( ) => {
     softVibration();
     navigate("/BaidgeCreating")
   }
+  console.log(commonRating);
   const [shownRating, setShownRating] = useState('common');
   useEffect( () => {
-    if (commonRating < positionOfNitcheRating ){
+    if (commonRating > positionOfNitcheRating ){
       setShownRating('nitche');
     }
   }, [commonRating, positionOfNitcheRating] );
@@ -67,7 +67,7 @@ const NewProfileCup = ({
         </div>
         <div className="flex justify-between">
           <div className="flex flex-col gap-[1px]">
-            <ProfileUserName  firstName={firstName} lastName={lastName} />
+            <ProfileUserName fl={fl} />
             <Profession professtion={profession} />
           </div>
            <ProfileLikesCounter clickDislikeUser = {clickDislikeUser} likeUser = {likeUser} isLikeActive={isLikeActive} isBaidge={isBaidge} likesCounter={counterOfLikes} />

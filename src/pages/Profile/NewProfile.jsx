@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import PayBlock from "./components/PayBlock/PayBlock";
 import useGetOptionsConfig from "./hooks/useGetOptionsConfig";
 import NewOption from "./components/NewOption/NewOption";
@@ -10,6 +10,8 @@ import ProfileCup from "./components/ProfileCup/ProfileCup";
 import pagesHistory from "../../constants/pagesHistory";
 import { fetchRatingByProfession } from "../../store/telegramUserInfo/thunks/fetchRatingByProfession";
 import { fetchCommonRating } from "../../store/telegramUserInfo/thunks/fetchCommonRating";
+import { useNavigate } from "react-router";
+import BackButton from "../../constants/BackButton";
 
 const NewProfile = () => {
   const optionsConfig = useGetOptionsConfig();
@@ -17,6 +19,25 @@ const NewProfile = () => {
   const photoLink = useGetUserPhotoLink({});
 
   const userInfo = useSelector((state) => state.telegramUserInfo);
+
+  const navigate = useNavigate();
+
+  const goBack = useCallback( () => {
+    if (pagesHistory[pagesHistory.length-1] === "/BaidgeCreating"){
+      navigate(-2);
+    }
+    else{
+      navigate(-1);
+    }
+  }, [navigate] )
+
+  useEffect( () => {
+    BackButton.show();
+    BackButton.onClick(goBack)
+    return () => {
+      BackButton.offClick(goBack);
+    }
+  }, [goBack] )
 
   useEffect( () => {
     pagesHistory.push("/Profile")
@@ -33,7 +54,7 @@ const NewProfile = () => {
       if (!userInfo.commonRating){
         dispatch(fetchCommonRating());
       }
-      isLoadedInf.current = <tr></tr>
+      isLoadedInf.current = true;
     }
   }, [userInfo.profession, dispatch, userInfo.ratingByProfession, userInfo.commonRating] ) ;
   if (userInfo.profession && (!userInfo.ratingByProfession || !userInfo.commonRating)){
@@ -52,10 +73,12 @@ const NewProfile = () => {
         firstName={userInfo.firstName}
         lastName={userInfo.lastName}
         photoUrl={photoLink}
-        profession={userInfo.profession.profession}
+        profession={userInfo?.profession}
         profileWatches={userInfo.views}
         positionOfNitcheRating={userInfo.ratingByProfession}
         commonRating = {userInfo.commonRating}
+        fl={userInfo.fl}
+
       /> : <ProfileCup gotenUserInfo={userInfo} />}
 
 

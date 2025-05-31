@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProfessions } from "../../store/profession";
 import MyLoader from "../../components/UI/MyLoader/MyLoader";
@@ -11,6 +11,9 @@ import BackButton from "../../constants/BackButton";
 import menuController from "../../functions/menuController";
 import { fetchUserInfo } from "../../store/telegramUserInfo/thunks/fetchUserInfo";
 import { putUserInfo } from "../../store/telegramUserInfo/thunks/putUserInfo";
+import useAddHistory from "../../hooks/useAddHistory";
+import { fetchCommonRating } from "../../store/telegramUserInfo/thunks/fetchCommonRating";
+import { fetchRatingByProfession } from "../../store/telegramUserInfo/thunks/fetchRatingByProfession";
 
 const BaidgeCreating = () => {
   const dispatch = useDispatch();
@@ -41,7 +44,8 @@ const BaidgeCreating = () => {
 
   const [taggs, setTaggs] = useState(me.taggs ?? []);
 
-  const [links, setLinks] = useState(me.links ?? [""]);
+  const [links, setLinks] = useState(me.links ? (me.links.length === 0 ? [""] : me.links) : [""]);
+
 
   const [step, setStep] = useState(0);
 
@@ -64,14 +68,14 @@ const BaidgeCreating = () => {
   }, [categorys] )
 
   useEffect( () => {
-    if (me.profile){
+    if (me.profession){
       setDescription(me.profile.about);
       setTaggs(me.taggs);
       if (me.links.length === 1){
         setLinks([""])
       }
       else{
-        setLinks(me.links.slice(1, me.links.length));
+        setLinks(me.links.slice(1, me.links.length)); // Зачем мы делаем слайс всех ссылок от одной до последней? Типо потому что первая ссылка всегда ссылка на тг?
       }
       // setCategoryInformation({profession : me.profession, category : categorys[0]})
       setTaggsText(me.taggs.join(', '))
@@ -80,33 +84,23 @@ const BaidgeCreating = () => {
 
   const [errors, setErrors] = useState({
     descriptionError: false,
-    taggsError: false,
-    linksError: false,
-  });
+    taggsError: false});
 
   useEffect(() => {
     BaidgeButtonConroller.controlText({ step, me });
   }, [step, me]);
 
+  useAddHistory();
+
   useEffect(() => {
-    const notEmptyLinks = links.filter( (link) => link.length !== 0 )
     const notEmptyTaggs = taggs.filter( (tag) => tag.length !== 0 )
     const lErrors = {
       descriptionError: false,
       taggsError: false,
-      linksError: false,
     };
-    notEmptyLinks.forEach( (link, i) => {
-      if (!link.includes("http")){
-        lErrors.linksError = true
-      }
-    } )
 
     if (description.length > 500 || description.length < 5) {
       lErrors.descriptionError = true;
-    }
-    if (notEmptyLinks.length > 5 || notEmptyLinks.length === 0) {
-      lErrors.linksError = true;
     }
     if (notEmptyTaggs.length > 5 || notEmptyTaggs.length === 0){
         lErrors.taggsError = true
@@ -121,6 +115,7 @@ const BaidgeCreating = () => {
   
 
   const postBaidge = async () => {
+        
         await dispatch(putUserInfo([{
             links : links,
             taggs : taggs,
@@ -128,6 +123,8 @@ const BaidgeCreating = () => {
             about : description
         }])  )
         await dispatch(fetchUserInfo())
+        await dispatch(fetchCommonRating());
+        await dispatch(fetchRatingByProfession());
 
         navigate("/Baidge")
   }

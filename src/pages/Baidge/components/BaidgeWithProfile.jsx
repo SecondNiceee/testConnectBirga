@@ -16,10 +16,8 @@ import { getCommonRating } from "../../../functions/api/getCommonRating";
 import { fetchCommonRating } from "../../../store/telegramUserInfo/thunks/fetchCommonRating";
 import { fetchCounterOfResponses } from "../../../store/telegramUserInfo/thunks/fetchCounterOfResponses";
 import { fetchRatingByProfession } from "../../../store/telegramUserInfo/thunks/fetchRatingByProfession";
-import StatistikComponent from "./StatistikComponent";
-import getYearWord from "../../../functions/getYearWord";
 
-const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
+const BaidgeWithProfile = ({ userInfo, className, setUserInfo, urlParametr}) => {
 
   const me = useSelector((state) => state.telegramUserInfo);
 
@@ -98,23 +96,22 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
 
   } , [userInfo, setUserInfo, me.id, dispatch])
 
-  console.log(userInfo);
-  
-
   return (
     <>
       <div className={`pt-[16px] w-full  z-50 px-[16px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[100px] ${className}`}>
         <NewProfileCup
+          fl={userInfo.fl}
           isLikeActive={isLikeActive}
-          isBaidge={true}
+          isBaidge={urlParametr}
           counterOfLikes={userInfo.userLikes.length}
           positionOfNitcheRating={userInfo.ratingByProfession}
           firstName={userInfo.firstName}
           lastName={userInfo.lastName}
           photoUrl={photoUrl}
-          profession={userInfo?.profession?.profession}
+          profession={userInfo?.profession}
           profileWatches={userInfo.views}
           likeUser={clickLikeUser}
+          commonRating={userInfo.commonRating}
           clickDislikeUser={clickDislikeUser}
         />
 
@@ -134,7 +131,6 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
             />
           ))}
         </div>
-        <StatistikComponent  className={"-mt-2"} title={null} config={[{title : "Опыт работы", text : getYearWord(userInfo.profile.stage)}]} />
         <div className="flex flex-col gap-[7px] w-[100%] text-[#84898f]">
           <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">
             КРАТКОЕ РЕЗЮМЕ
@@ -154,7 +150,7 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo}) => {
           <p className="ml-[17px] leading-4 text-[13px] uppercase font-sf-pro-display-400 tracking-wider">
             ССЫЛКИ
           </p>
-          <Links isFirstMyLink={true} links={[userInfo.link, ...userInfo.links]} />
+          <Links isFirstMyLink={true} links={[userInfo.link, ...userInfo.links.slice(1)]} />
         </div>
       </div>
       {/* <CssTransitionNewChangeCard
