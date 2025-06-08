@@ -33,11 +33,15 @@ const NewProfileCup = ({
     softVibration();
     navigate("/BaidgeCreating")
   }
-  console.log(commonRating);
   const [shownRating, setShownRating] = useState('common');
   useEffect( () => {
-    if (commonRating > positionOfNitcheRating ){
-      setShownRating('nitche');
+    if (commonRating <= 3){
+
+    }
+    else if (commonRating && positionOfNitcheRating){
+      if (commonRating > positionOfNitcheRating ){
+        setShownRating('nitche');
+      }
     }
   }, [commonRating, positionOfNitcheRating] );
   const switchShownRating = () => {
@@ -54,9 +58,11 @@ const NewProfileCup = ({
     return (
         <div className="flex py-[17px]  pb-[14px] px-[19px] flex-col gap-[13px] bg-[#20303f] rounded-[13px] ">
         <div className="flex w-[100%]">
-            <div className='relative'>
+            <div className='relative flex gap-2'>
               <ProfileUserIcon photoUrl={photoUrl}  />
-              {shownRating === "nitche" ? nitchIcon : commonIcon}
+              {nitchIcon()}
+              <img src='/images/Rating/nitche-top1-50.svg' />
+              {shownRating === "nitche" ? nitchIcon() : commonIcon}
             </div>
             
             {shownRating === "common" ? <CommonRating onClick={switchShownRating} commonRating={commonRating} /> : <NitcheRating onClick={switchShownRating}  nitcheRating={positionOfNitcheRating} />}

@@ -25,7 +25,7 @@ const Baidge = () => {
   console.log(me);
 
   useEffect(() => {
-    if (id) {
+    if (id && String(id) !== me.id) {
       findUserById(id).then( (user) => {setUserInfo(user)} )
     } else {
       setUserInfo(me);

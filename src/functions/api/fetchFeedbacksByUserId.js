@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const fetchFeedBacksByUserId = async (userId) => {
-    const feedbacks = await axios.get(`${process.env.REACT_APP_HOST}/findByReviewedUser`, {
+    const feedbacks = await axios.get(`${process.env.REACT_APP_HOST}/review/findByReviewedUser`, {
         params : {
             reviewedUserId : userId
         },
@@ -9,6 +9,5 @@ export const fetchFeedBacksByUserId = async (userId) => {
             "X-API-KEY-AUTH" : process.env.REACT_APP_API_KEY
         }
     })
-    console.log(feedbacks.data);
     return feedbacks.data;
 }

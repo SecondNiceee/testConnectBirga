@@ -80,6 +80,7 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo, urlParametr}) => 
         await fetchFeedBacksByUserId(userInfo.id).then(feedbacksData => {
           feedbacks = feedbacksData;
         })
+        console.warn({commonRating, responsesCounter, ratingByProfession, feedbacks});
         return {commonRating, responsesCounter, ratingByProfession, feedbacks}
       } 
       if (userInfo){
@@ -106,10 +107,12 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo, urlParametr}) => 
       }
 
   } , [userInfo, setUserInfo, me.id, dispatch])
+  console.log(userInfo);
 
   return (
     <>
       <div className={`pt-[16px] w-full  z-50 px-[16px] bg-[#18222d] gap-[16px] flex flex-col h-[100vh] overflow-y-scroll pb-[100px] ${className}`}>
+
         <NewProfileCup
           canLike={true}
           fl={userInfo.fl}
@@ -124,8 +127,8 @@ const BaidgeWithProfile = ({ userInfo, className, setUserInfo, urlParametr}) => 
           profileWatches={userInfo.views}
           likeUser={clickLikeUser}
           commonRating={userInfo.commonRating}
-          clickDislikeUser={clickDislikeUser}
-        />
+          clickDislikeUser={clickDislikeUser} />
+
 
         <div className="flex flex-col rounded-[12px] bg-[#20303f]">
           {optionsConfig.map((option, i) => (
