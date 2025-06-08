@@ -60,9 +60,8 @@ const NewProfileCup = ({
         <div className="flex w-[100%]">
             <div className='relative flex gap-2'>
               <ProfileUserIcon photoUrl={photoUrl}  />
-              {nitchIcon()}
               <img src='/images/Rating/nitche-top1-50.svg' />
-              {shownRating === "nitche" ? nitchIcon() : commonIcon}
+              {shownRating === "nitche" ? nitchIcon : commonIcon}
             </div>
             
             {shownRating === "common" ? <CommonRating onClick={switchShownRating} commonRating={commonRating} /> : <NitcheRating onClick={switchShownRating}  nitcheRating={positionOfNitcheRating} />}

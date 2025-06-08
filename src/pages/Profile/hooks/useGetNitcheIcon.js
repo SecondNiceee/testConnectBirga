@@ -1,11 +1,12 @@
 
+import { useMemo } from "react";
 import nitchTopOneToFifty from "../../../images/Rating/nitche-top1-50.svg";
 import nitcheTop1 from "../../../images/Rating/nitche-top1.svg";
 import nitcheTop2 from "../../../images/Rating/nitche-top2.svg";
 import nitcheTop3 from "../../../images/Rating/nitche-top3.svg";
 
 const useGetNitcheIcon = ({className = "", textClassName, nitchRating }) => {
-    const nitchIcon = () => {
+    const nitchIcon = useMemo(() => {
         if (nitchRating === 1){
             return <img alt="rating-icon" className={className} src={nitcheTop1} /> 
         }
@@ -22,8 +23,7 @@ const useGetNitcheIcon = ({className = "", textClassName, nitchRating }) => {
             </div>) 
         }
         return null;
-    }
-    
+    })
     return {nitchIcon};
 };
 
